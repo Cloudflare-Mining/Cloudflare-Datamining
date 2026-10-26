@@ -4925,21 +4925,12 @@
 										"messages": {
 											"type": "array",
 											"items": {
-												"nullable": true
+												"type": "object"
 											}
 										},
 										"result": {
-											"anyOf": [
-												{
-													"nullable": true
-												},
-												{
-													"type": "object"
-												},
-												{
-													"nullable": true
-												}
-											]
+											"type": "object",
+											"nullable": true
 										},
 										"success": {
 											"type": "boolean",

@@ -265,8 +265,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /zones/{zone_id}/subscriptions": {
 		"operationId": "zone-subscription-delete-zone-subscriptions",
@@ -534,8 +533,7 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "deleteBulk",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete-bulk"
 	},
 	"GET /zones/{zone_id}/subscription": {
 		"operationId": "zone-subscription-zone-subscription-details",
@@ -856,27 +854,32 @@
 															"x-auditable": true
 														},
 														"zone": {
-															"description": "A simple zone object. May have null properties if not a zone subscription.",
-															"type": "object",
-															"properties": {
-																"id": {
-																	"description": "Identifier",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "The domain name",
-																	"type": "string",
-																	"example": "example.com",
-																	"maxLength": 253,
-																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																	"readOnly": true,
-																	"x-auditable": true
+															"allOf": [
+																{
+																	"description": "A simple zone object. May have null properties if not a zone subscription.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "The domain name",
+																			"type": "string",
+																			"example": "example.com",
+																			"maxLength": 253,
+																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	}
 																}
-															}
+															],
+															"x-fern-property-name": "subscription-zone"
 														}
 													}
 												},
@@ -1257,27 +1260,32 @@
 								"x-auditable": true
 							},
 							"zone": {
-								"description": "A simple zone object. May have null properties if not a zone subscription.",
-								"type": "object",
-								"properties": {
-									"id": {
-										"description": "Identifier",
-										"type": "string",
-										"example": "023e105f4ecef8ad9ca31a8372d0c353",
-										"maxLength": 32,
-										"readOnly": true,
-										"x-auditable": true
-									},
-									"name": {
-										"description": "The domain name",
-										"type": "string",
-										"example": "example.com",
-										"maxLength": 253,
-										"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-										"readOnly": true,
-										"x-auditable": true
+								"allOf": [
+									{
+										"description": "A simple zone object. May have null properties if not a zone subscription.",
+										"type": "object",
+										"properties": {
+											"id": {
+												"description": "Identifier",
+												"type": "string",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"maxLength": 32,
+												"readOnly": true,
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The domain name",
+												"type": "string",
+												"example": "example.com",
+												"maxLength": 253,
+												"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+												"readOnly": true,
+												"x-auditable": true
+											}
+										}
 									}
-								}
+								],
+								"x-fern-property-name": "subscription-zone"
 							}
 						}
 					}
@@ -1584,27 +1592,32 @@
 															"x-auditable": true
 														},
 														"zone": {
-															"description": "A simple zone object. May have null properties if not a zone subscription.",
-															"type": "object",
-															"properties": {
-																"id": {
-																	"description": "Identifier",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "The domain name",
-																	"type": "string",
-																	"example": "example.com",
-																	"maxLength": 253,
-																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																	"readOnly": true,
-																	"x-auditable": true
+															"allOf": [
+																{
+																	"description": "A simple zone object. May have null properties if not a zone subscription.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "The domain name",
+																			"type": "string",
+																			"example": "example.com",
+																			"maxLength": 253,
+																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	}
 																}
-															}
+															],
+															"x-fern-property-name": "subscription-zone"
 														}
 													}
 												},
@@ -1985,27 +1998,32 @@
 								"x-auditable": true
 							},
 							"zone": {
-								"description": "A simple zone object. May have null properties if not a zone subscription.",
-								"type": "object",
-								"properties": {
-									"id": {
-										"description": "Identifier",
-										"type": "string",
-										"example": "023e105f4ecef8ad9ca31a8372d0c353",
-										"maxLength": 32,
-										"readOnly": true,
-										"x-auditable": true
-									},
-									"name": {
-										"description": "The domain name",
-										"type": "string",
-										"example": "example.com",
-										"maxLength": 253,
-										"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-										"readOnly": true,
-										"x-auditable": true
+								"allOf": [
+									{
+										"description": "A simple zone object. May have null properties if not a zone subscription.",
+										"type": "object",
+										"properties": {
+											"id": {
+												"description": "Identifier",
+												"type": "string",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"maxLength": 32,
+												"readOnly": true,
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The domain name",
+												"type": "string",
+												"example": "example.com",
+												"maxLength": 253,
+												"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+												"readOnly": true,
+												"x-auditable": true
+											}
+										}
 									}
-								}
+								],
+								"x-fern-property-name": "subscription-zone"
 							}
 						}
 					}
@@ -2312,27 +2330,32 @@
 															"x-auditable": true
 														},
 														"zone": {
-															"description": "A simple zone object. May have null properties if not a zone subscription.",
-															"type": "object",
-															"properties": {
-																"id": {
-																	"description": "Identifier",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "The domain name",
-																	"type": "string",
-																	"example": "example.com",
-																	"maxLength": 253,
-																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																	"readOnly": true,
-																	"x-auditable": true
+															"allOf": [
+																{
+																	"description": "A simple zone object. May have null properties if not a zone subscription.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "The domain name",
+																			"type": "string",
+																			"example": "example.com",
+																			"maxLength": 253,
+																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	}
 																}
-															}
+															],
+															"x-fern-property-name": "subscription-zone"
 														}
 													}
 												},
@@ -2499,8 +2522,7 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "createBulk",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create-bulk"
 	},
 	"PUT /zones/{zone_id}/subscription": {
 		"operationId": "zone-subscription-update-zone-subscription",
@@ -2714,27 +2736,32 @@
 								"x-auditable": true
 							},
 							"zone": {
-								"description": "A simple zone object. May have null properties if not a zone subscription.",
-								"type": "object",
-								"properties": {
-									"id": {
-										"description": "Identifier",
-										"type": "string",
-										"example": "023e105f4ecef8ad9ca31a8372d0c353",
-										"maxLength": 32,
-										"readOnly": true,
-										"x-auditable": true
-									},
-									"name": {
-										"description": "The domain name",
-										"type": "string",
-										"example": "example.com",
-										"maxLength": 253,
-										"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-										"readOnly": true,
-										"x-auditable": true
+								"allOf": [
+									{
+										"description": "A simple zone object. May have null properties if not a zone subscription.",
+										"type": "object",
+										"properties": {
+											"id": {
+												"description": "Identifier",
+												"type": "string",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"maxLength": 32,
+												"readOnly": true,
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The domain name",
+												"type": "string",
+												"example": "example.com",
+												"maxLength": 253,
+												"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+												"readOnly": true,
+												"x-auditable": true
+											}
+										}
 									}
-								}
+								],
+								"x-fern-property-name": "subscription-zone"
 							}
 						}
 					}
@@ -3041,27 +3068,32 @@
 															"x-auditable": true
 														},
 														"zone": {
-															"description": "A simple zone object. May have null properties if not a zone subscription.",
-															"type": "object",
-															"properties": {
-																"id": {
-																	"description": "Identifier",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "The domain name",
-																	"type": "string",
-																	"example": "example.com",
-																	"maxLength": 253,
-																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																	"readOnly": true,
-																	"x-auditable": true
+															"allOf": [
+																{
+																	"description": "A simple zone object. May have null properties if not a zone subscription.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "The domain name",
+																			"type": "string",
+																			"example": "example.com",
+																			"maxLength": 253,
+																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	}
 																}
-															}
+															],
+															"x-fern-property-name": "subscription-zone"
 														}
 													}
 												},
@@ -3442,27 +3474,32 @@
 								"x-auditable": true
 							},
 							"zone": {
-								"description": "A simple zone object. May have null properties if not a zone subscription.",
-								"type": "object",
-								"properties": {
-									"id": {
-										"description": "Identifier",
-										"type": "string",
-										"example": "023e105f4ecef8ad9ca31a8372d0c353",
-										"maxLength": 32,
-										"readOnly": true,
-										"x-auditable": true
-									},
-									"name": {
-										"description": "The domain name",
-										"type": "string",
-										"example": "example.com",
-										"maxLength": 253,
-										"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-										"readOnly": true,
-										"x-auditable": true
+								"allOf": [
+									{
+										"description": "A simple zone object. May have null properties if not a zone subscription.",
+										"type": "object",
+										"properties": {
+											"id": {
+												"description": "Identifier",
+												"type": "string",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"maxLength": 32,
+												"readOnly": true,
+												"x-auditable": true
+											},
+											"name": {
+												"description": "The domain name",
+												"type": "string",
+												"example": "example.com",
+												"maxLength": 253,
+												"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+												"readOnly": true,
+												"x-auditable": true
+											}
+										}
 									}
-								}
+								],
+								"x-fern-property-name": "subscription-zone"
 							}
 						}
 					}
@@ -3769,27 +3806,32 @@
 															"x-auditable": true
 														},
 														"zone": {
-															"description": "A simple zone object. May have null properties if not a zone subscription.",
-															"type": "object",
-															"properties": {
-																"id": {
-																	"description": "Identifier",
-																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"name": {
-																	"description": "The domain name",
-																	"type": "string",
-																	"example": "example.com",
-																	"maxLength": 253,
-																	"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-																	"readOnly": true,
-																	"x-auditable": true
+															"allOf": [
+																{
+																	"description": "A simple zone object. May have null properties if not a zone subscription.",
+																	"type": "object",
+																	"properties": {
+																		"id": {
+																			"description": "Identifier",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"readOnly": true,
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "The domain name",
+																			"type": "string",
+																			"example": "example.com",
+																			"maxLength": 253,
+																			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	}
 																}
-															}
+															],
+															"x-fern-property-name": "subscription-zone"
 														}
 													}
 												},
@@ -3956,7 +3998,6 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "updateBulk",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update-bulk"
 	}
 }

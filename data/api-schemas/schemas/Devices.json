@@ -482,6 +482,13 @@
 														"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
 														"type": "object",
 														"properties": {
+															"allow_manual_override": {
+																"description": "Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.",
+																"type": "boolean",
+																"example": true,
+																"default": true,
+																"x-auditable": true
+															},
 															"api_endpoints": {
 																"description": "IP:port entries for the API endpoints.",
 																"type": "array",
@@ -3746,6 +3753,13 @@
 														"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
 														"type": "object",
 														"properties": {
+															"allow_manual_override": {
+																"description": "Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.",
+																"type": "boolean",
+																"example": true,
+																"default": true,
+																"x-auditable": true
+															},
 															"api_endpoints": {
 																"description": "IP:port entries for the API endpoints.",
 																"type": "array",
@@ -4554,6 +4568,13 @@
 													"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
 													"type": "object",
 													"properties": {
+														"allow_manual_override": {
+															"description": "Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.",
+															"type": "boolean",
+															"example": true,
+															"default": true,
+															"x-auditable": true
+														},
 														"api_endpoints": {
 															"description": "IP:port entries for the API endpoints.",
 															"type": "array",
@@ -5354,6 +5375,13 @@
 													"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
 													"type": "object",
 													"properties": {
+														"allow_manual_override": {
+															"description": "Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.",
+															"type": "boolean",
+															"example": true,
+															"default": true,
+															"x-auditable": true
+														},
 														"api_endpoints": {
 															"description": "IP:port entries for the API endpoints.",
 															"type": "array",
@@ -8030,6 +8058,13 @@
 								"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
 								"type": "object",
 								"properties": {
+									"allow_manual_override": {
+										"description": "Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.",
+										"type": "boolean",
+										"example": true,
+										"default": true,
+										"x-auditable": true
+									},
 									"api_endpoints": {
 										"description": "IP:port entries for the API endpoints.",
 										"type": "array",
@@ -8655,6 +8690,13 @@
 													"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
 													"type": "object",
 													"properties": {
+														"allow_manual_override": {
+															"description": "Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.",
+															"type": "boolean",
+															"example": true,
+															"default": true,
+															"x-auditable": true
+														},
 														"api_endpoints": {
 															"description": "IP:port entries for the API endpoints.",
 															"type": "array",
@@ -9219,6 +9261,13 @@
 								"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
 								"type": "object",
 								"properties": {
+									"allow_manual_override": {
+										"description": "Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.",
+										"type": "boolean",
+										"example": true,
+										"default": true,
+										"x-auditable": true
+									},
 									"api_endpoints": {
 										"description": "IP:port entries for the API endpoints.",
 										"type": "array",
@@ -9898,6 +9947,13 @@
 													"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
 													"type": "object",
 													"properties": {
+														"allow_manual_override": {
+															"description": "Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.",
+															"type": "boolean",
+															"example": true,
+															"default": true,
+															"x-auditable": true
+														},
 														"api_endpoints": {
 															"description": "IP:port entries for the API endpoints.",
 															"type": "array",
@@ -10787,6 +10843,13 @@
 								"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
 								"type": "object",
 								"properties": {
+									"allow_manual_override": {
+										"description": "Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.",
+										"type": "boolean",
+										"example": true,
+										"default": true,
+										"x-auditable": true
+									},
 									"api_endpoints": {
 										"description": "IP:port entries for the API endpoints.",
 										"type": "array",
@@ -11480,6 +11543,13 @@
 													"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
 													"type": "object",
 													"properties": {
+														"allow_manual_override": {
+															"description": "Whether WARP users may manually override the automatic Global Acceleration decision. Defaults to true when not provided.",
+															"type": "boolean",
+															"example": true,
+															"default": true,
+															"x-auditable": true
+														},
 														"api_endpoints": {
 															"description": "IP:port entries for the API endpoints.",
 															"type": "array",

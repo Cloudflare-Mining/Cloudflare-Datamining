@@ -240,323 +240,109 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													]
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"authentication_settings": {
-															"description": "Configuration for classifying login authentication outcomes based on the origin response.\nRequires `user_profiles` to be enabled.\n\n- Success and failure criteria are independently updatable — sending only `success_criteria`\n  leaves failure codes untouched, and vice versa.\n- Omit `authentication_settings` entirely to leave both unchanged.\n- Status codes must not overlap between success and failure criteria.\n",
-															"type": "object",
-															"properties": {
-																"failure_criteria": {
-																	"description": "Criterion for identifying failed login responses.",
-																	"allOf": [
-																		{
-																			"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
-																			"type": "object",
-																			"properties": {
-																				"kind": {
-																					"description": "The type of criterion. Currently only `status_code` is supported.",
-																					"type": "string",
-																					"example": "status_code",
-																					"enum": [
-																						"status_code"
-																					],
-																					"x-auditable": true
-																				},
-																				"status_codes": {
-																					"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
-																					"type": "array",
-																					"items": {
-																						"maximum": 599,
-																						"minimum": 100,
-																						"type": "integer"
-																					},
-																					"example": [
-																						200,
-																						201
-																					],
-																					"maxItems": 10,
-																					"x-auditable": true
-																				}
-																			},
-																			"additionalProperties": false,
-																			"required": [
-																				"kind"
-																			]
-																		}
-																	]
-																},
-																"success_criteria": {
-																	"description": "Criterion for identifying successful login responses.",
-																	"allOf": [
-																		{
-																			"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
-																			"type": "object",
-																			"properties": {
-																				"kind": {
-																					"description": "The type of criterion. Currently only `status_code` is supported.",
-																					"type": "string",
-																					"example": "status_code",
-																					"enum": [
-																						"status_code"
-																					],
-																					"x-auditable": true
-																				},
-																				"status_codes": {
-																					"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
-																					"type": "array",
-																					"items": {
-																						"maximum": 599,
-																						"minimum": 100,
-																						"type": "integer"
-																					},
-																					"example": [
-																						200,
-																						201
-																					],
-																					"maxItems": 10,
-																					"x-auditable": true
-																				}
-																			},
-																			"additionalProperties": false,
-																			"required": [
-																				"kind"
-																			]
-																		}
-																	]
-																}
-															},
-															"additionalProperties": false
-														},
-														"user_profiles": {
-															"description": "Whether Fraud User Profiles is enabled for the zone.",
-															"type": "string",
-															"example": "disabled",
-															"enum": [
-																"enabled",
-																"disabled"
-															],
-															"x-auditable": true
-														},
-														"username_expressions": {
-															"description": "List of expressions to detect usernames in write HTTP requests.\n\n- Maximum of 10 expressions.\n- Omit or set to null to leave unchanged on update.\n- Provide an empty array `[]` to clear all expressions on update.\n- Invalid expressions will result in a 10400 Bad Request with details in the `messages` array.\n",
-															"type": "array",
-															"items": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"example": [
-																"http.request.body.form[\"username\"][0]",
-																"lookup_json_string(http.request.body.raw, \"username\")"
-															],
-															"maxItems": 10
-														}
+													"documentation_url": {
+														"type": "string"
 													},
-													"additionalProperties": false
-												}
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -581,8 +367,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "fraud",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /zones/{zone_id}/fraud_detection/settings": {
 		"operationId": "fraud-detection-zone-update-settings",
@@ -998,323 +783,109 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													]
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"authentication_settings": {
-															"description": "Configuration for classifying login authentication outcomes based on the origin response.\nRequires `user_profiles` to be enabled.\n\n- Success and failure criteria are independently updatable — sending only `success_criteria`\n  leaves failure codes untouched, and vice versa.\n- Omit `authentication_settings` entirely to leave both unchanged.\n- Status codes must not overlap between success and failure criteria.\n",
-															"type": "object",
-															"properties": {
-																"failure_criteria": {
-																	"description": "Criterion for identifying failed login responses.",
-																	"allOf": [
-																		{
-																			"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
-																			"type": "object",
-																			"properties": {
-																				"kind": {
-																					"description": "The type of criterion. Currently only `status_code` is supported.",
-																					"type": "string",
-																					"example": "status_code",
-																					"enum": [
-																						"status_code"
-																					],
-																					"x-auditable": true
-																				},
-																				"status_codes": {
-																					"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
-																					"type": "array",
-																					"items": {
-																						"maximum": 599,
-																						"minimum": 100,
-																						"type": "integer"
-																					},
-																					"example": [
-																						200,
-																						201
-																					],
-																					"maxItems": 10,
-																					"x-auditable": true
-																				}
-																			},
-																			"additionalProperties": false,
-																			"required": [
-																				"kind"
-																			]
-																		}
-																	]
-																},
-																"success_criteria": {
-																	"description": "Criterion for identifying successful login responses.",
-																	"allOf": [
-																		{
-																			"description": "A criterion for determining authentication outcome. The `kind` field determines which\nother fields are used for matching.\n",
-																			"type": "object",
-																			"properties": {
-																				"kind": {
-																					"description": "The type of criterion. Currently only `status_code` is supported.",
-																					"type": "string",
-																					"example": "status_code",
-																					"enum": [
-																						"status_code"
-																					],
-																					"x-auditable": true
-																				},
-																				"status_codes": {
-																					"description": "HTTP status codes to match against the origin response.\n- Maximum of 10 codes per criterion.\n- Each code must be a valid HTTP status code (100-599).\n- Codes are deduplicated and sorted on save.\n- Omit to leave unchanged on update.\n- Provide an empty array `[]` to clear codes on update.\n",
-																					"type": "array",
-																					"items": {
-																						"maximum": 599,
-																						"minimum": 100,
-																						"type": "integer"
-																					},
-																					"example": [
-																						200,
-																						201
-																					],
-																					"maxItems": 10,
-																					"x-auditable": true
-																				}
-																			},
-																			"additionalProperties": false,
-																			"required": [
-																				"kind"
-																			]
-																		}
-																	]
-																}
-															},
-															"additionalProperties": false
-														},
-														"user_profiles": {
-															"description": "Whether Fraud User Profiles is enabled for the zone.",
-															"type": "string",
-															"example": "disabled",
-															"enum": [
-																"enabled",
-																"disabled"
-															],
-															"x-auditable": true
-														},
-														"username_expressions": {
-															"description": "List of expressions to detect usernames in write HTTP requests.\n\n- Maximum of 10 expressions.\n- Omit or set to null to leave unchanged on update.\n- Provide an empty array `[]` to clear all expressions on update.\n- Invalid expressions will result in a 10400 Bad Request with details in the `messages` array.\n",
-															"type": "array",
-															"items": {
-																"type": "string",
-																"x-auditable": true
-															},
-															"example": [
-																"http.request.body.form[\"username\"][0]",
-																"lookup_json_string(http.request.body.raw, \"username\")"
-															],
-															"maxItems": 10
-														}
+													"documentation_url": {
+														"type": "string"
 													},
-													"additionalProperties": false
-												}
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1338,7 +909,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "fraud",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

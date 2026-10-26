@@ -110,8 +110,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.finetunes",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/ai/finetunes": {
 		"operationId": "workers-ai-list-finetunes",
@@ -252,8 +251,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.finetunes",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai/finetunes/public": {
 		"operationId": "workers-ai-list-public-finetunes",
@@ -431,8 +429,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.finetunes.public",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/ai/finetunes": {
 		"operationId": "workers-ai-create-finetune",
@@ -595,8 +592,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.finetunes",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets": {
 		"operationId": "workers-ai-upload-finetune-asset",
@@ -720,7 +716,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.finetunes.assets",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

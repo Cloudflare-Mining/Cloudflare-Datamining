@@ -249,7 +249,8 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"title": "Shared Config"
@@ -310,7 +311,8 @@
 																	"readOnly": true,
 																	"title": "stale_zone_configuration"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "Bot Fight Mode"
@@ -449,7 +451,8 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"title": "Shared Config"
@@ -514,7 +517,8 @@
 																	"readOnly": true,
 																	"title": "stale_zone_configuration"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "SBFM Pro Plan"
@@ -653,7 +657,8 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"title": "Shared Config"
@@ -724,7 +729,8 @@
 																	"readOnly": true,
 																	"title": "stale_zone_configuration"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "SBFM Biz Plan"
@@ -863,7 +869,8 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"title": "Shared Config"
@@ -938,7 +945,8 @@
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "BM Enterprise Subscription"
@@ -958,1041 +966,109 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													]
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"oneOf": [
-														{
-															"allOf": [
-																{
-																	"allOf": [
-																		{
-																			"properties": {
-																				"ai_bots_migration_opt_out": {
-																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_bots_protection": {
-																					"description": "Enable rule to block AI Scrapers and Crawlers.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"block",
-																						"disabled",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_search": {
-																					"description": "Configure robots.txt policy for AI search bots.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_training": {
-																					"description": "Configure robots.txt policy for AI model training bots.",
-																					"type": "string",
-																					"example": "disallow",
-																					"enum": [
-																						"disabled",
-																						"disallow",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_user": {
-																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
-																					"type": "string",
-																					"example": "only_on_ad_pages",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"bot_preference_sync_enabled": {
-																					"description": "Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"cf_robots_variant": {
-																					"description": "Specifies the Robots Access Control License variant to use.",
-																					"type": "string",
-																					"example": "policy_only",
-																					"enum": [
-																						"off",
-																						"policy_only"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"content_bots_protection": {
-																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
-																					"type": "string",
-																					"example": "disabled",
-																					"enum": [
-																						"block",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"crawler_protection": {
-																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
-																					"type": "string",
-																					"example": "enabled",
-																					"enum": [
-																						"enabled",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"enable_js": {
-																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"is_robots_txt_managed": {
-																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"jsd_api_results_enabled": {
-																					"description": "Whether to use JavaScript Detection results submitted through the API for this zone.",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"using_latest_model": {
-																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
-																					"type": "boolean",
-																					"example": true,
-																					"readOnly": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			}
-																		}
-																	],
-																	"title": "Shared Config"
-																},
-																{
-																	"properties": {
-																		"fight_mode": {
-																			"description": "Whether to enable Bot Fight Mode.",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"stale_zone_configuration": {
-																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
-																			"type": "object",
-																			"properties": {
-																				"optimize_wordpress": {
-																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
-																					"type": "boolean",
-																					"title": "optimize_wordpress",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"sbfm_definitely_automated": {
-																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
-																					"type": "string",
-																					"title": "sbfm_definitely_automated",
-																					"x-auditable": true
-																				},
-																				"sbfm_likely_automated": {
-																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
-																					"type": "string",
-																					"title": "sbfm_likely_automated",
-																					"x-auditable": true
-																				},
-																				"sbfm_static_resource_protection": {
-																					"description": "Indicates that the zone's static resource protection is turned on.",
-																					"type": "string",
-																					"title": "sbfm_static_resource_protection",
-																					"x-auditable": true
-																				},
-																				"sbfm_verified_bots": {
-																					"description": "Indicates that the zone's verified bot requests are being blocked.",
-																					"type": "string",
-																					"title": "sbfm_verified_bots",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"suppress_session_score": {
-																					"description": "Indicates that the zone's session score tracking is disabled.",
-																					"type": "boolean",
-																					"title": "suppress_session_score",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			},
-																			"readOnly": true,
-																			"title": "stale_zone_configuration"
-																		}
-																	}
-																}
-															],
-															"title": "Bot Fight Mode"
-														},
-														{
-															"allOf": [
-																{
-																	"allOf": [
-																		{
-																			"properties": {
-																				"ai_bots_migration_opt_out": {
-																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_bots_protection": {
-																					"description": "Enable rule to block AI Scrapers and Crawlers.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"block",
-																						"disabled",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_search": {
-																					"description": "Configure robots.txt policy for AI search bots.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_training": {
-																					"description": "Configure robots.txt policy for AI model training bots.",
-																					"type": "string",
-																					"example": "disallow",
-																					"enum": [
-																						"disabled",
-																						"disallow",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_user": {
-																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
-																					"type": "string",
-																					"example": "only_on_ad_pages",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"bot_preference_sync_enabled": {
-																					"description": "Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"cf_robots_variant": {
-																					"description": "Specifies the Robots Access Control License variant to use.",
-																					"type": "string",
-																					"example": "policy_only",
-																					"enum": [
-																						"off",
-																						"policy_only"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"content_bots_protection": {
-																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
-																					"type": "string",
-																					"example": "disabled",
-																					"enum": [
-																						"block",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"crawler_protection": {
-																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
-																					"type": "string",
-																					"example": "enabled",
-																					"enum": [
-																						"enabled",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"enable_js": {
-																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"is_robots_txt_managed": {
-																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"jsd_api_results_enabled": {
-																					"description": "Whether to use JavaScript Detection results submitted through the API for this zone.",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"using_latest_model": {
-																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
-																					"type": "boolean",
-																					"example": true,
-																					"readOnly": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			}
-																		}
-																	],
-																	"title": "Shared Config"
-																},
-																{
-																	"properties": {
-																		"optimize_wordpress": {
-																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_definitely_automated": {
-																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
-																			"type": "string",
-																			"example": "allow",
-																			"enum": [
-																				"allow",
-																				"block",
-																				"managed_challenge"
-																			],
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_static_resource_protection": {
-																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_verified_bots": {
-																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
-																			"type": "string",
-																			"example": "allow",
-																			"enum": [
-																				"allow",
-																				"block"
-																			],
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"stale_zone_configuration": {
-																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
-																			"type": "object",
-																			"properties": {
-																				"fight_mode": {
-																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
-																					"type": "boolean",
-																					"title": "fight_mode",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"sbfm_likely_automated": {
-																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
-																					"type": "string",
-																					"title": "sbfm_likely_automated",
-																					"x-auditable": true
-																				}
-																			},
-																			"readOnly": true,
-																			"title": "stale_zone_configuration"
-																		}
-																	}
-																}
-															],
-															"title": "SBFM Pro Plan"
-														},
-														{
-															"allOf": [
-																{
-																	"allOf": [
-																		{
-																			"properties": {
-																				"ai_bots_migration_opt_out": {
-																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_bots_protection": {
-																					"description": "Enable rule to block AI Scrapers and Crawlers.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"block",
-																						"disabled",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_search": {
-																					"description": "Configure robots.txt policy for AI search bots.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_training": {
-																					"description": "Configure robots.txt policy for AI model training bots.",
-																					"type": "string",
-																					"example": "disallow",
-																					"enum": [
-																						"disabled",
-																						"disallow",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_user": {
-																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
-																					"type": "string",
-																					"example": "only_on_ad_pages",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"bot_preference_sync_enabled": {
-																					"description": "Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"cf_robots_variant": {
-																					"description": "Specifies the Robots Access Control License variant to use.",
-																					"type": "string",
-																					"example": "policy_only",
-																					"enum": [
-																						"off",
-																						"policy_only"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"content_bots_protection": {
-																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
-																					"type": "string",
-																					"example": "disabled",
-																					"enum": [
-																						"block",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"crawler_protection": {
-																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
-																					"type": "string",
-																					"example": "enabled",
-																					"enum": [
-																						"enabled",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"enable_js": {
-																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"is_robots_txt_managed": {
-																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"jsd_api_results_enabled": {
-																					"description": "Whether to use JavaScript Detection results submitted through the API for this zone.",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"using_latest_model": {
-																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
-																					"type": "boolean",
-																					"example": true,
-																					"readOnly": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			}
-																		}
-																	],
-																	"title": "Shared Config"
-																},
-																{
-																	"properties": {
-																		"optimize_wordpress": {
-																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_definitely_automated": {
-																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
-																			"type": "string",
-																			"example": "allow",
-																			"enum": [
-																				"allow",
-																				"block",
-																				"managed_challenge"
-																			],
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_likely_automated": {
-																			"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
-																			"type": "string",
-																			"example": "allow",
-																			"enum": [
-																				"allow",
-																				"block",
-																				"managed_challenge"
-																			],
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_static_resource_protection": {
-																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_verified_bots": {
-																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
-																			"type": "string",
-																			"example": "allow",
-																			"enum": [
-																				"allow",
-																				"block"
-																			],
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"stale_zone_configuration": {
-																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
-																			"type": "object",
-																			"properties": {
-																				"fight_mode": {
-																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
-																					"type": "boolean",
-																					"title": "fight_mode",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			},
-																			"readOnly": true,
-																			"title": "stale_zone_configuration"
-																		}
-																	}
-																}
-															],
-															"title": "SBFM Biz Plan"
-														},
-														{
-															"allOf": [
-																{
-																	"allOf": [
-																		{
-																			"properties": {
-																				"ai_bots_migration_opt_out": {
-																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_bots_protection": {
-																					"description": "Enable rule to block AI Scrapers and Crawlers.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"block",
-																						"disabled",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_search": {
-																					"description": "Configure robots.txt policy for AI search bots.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_training": {
-																					"description": "Configure robots.txt policy for AI model training bots.",
-																					"type": "string",
-																					"example": "disallow",
-																					"enum": [
-																						"disabled",
-																						"disallow",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_user": {
-																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
-																					"type": "string",
-																					"example": "only_on_ad_pages",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"bot_preference_sync_enabled": {
-																					"description": "Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"cf_robots_variant": {
-																					"description": "Specifies the Robots Access Control License variant to use.",
-																					"type": "string",
-																					"example": "policy_only",
-																					"enum": [
-																						"off",
-																						"policy_only"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"content_bots_protection": {
-																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
-																					"type": "string",
-																					"example": "disabled",
-																					"enum": [
-																						"block",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"crawler_protection": {
-																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
-																					"type": "string",
-																					"example": "enabled",
-																					"enum": [
-																						"enabled",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"enable_js": {
-																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"is_robots_txt_managed": {
-																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"jsd_api_results_enabled": {
-																					"description": "Whether to use JavaScript Detection results submitted through the API for this zone.",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"using_latest_model": {
-																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
-																					"type": "boolean",
-																					"example": true,
-																					"readOnly": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			}
-																		}
-																	],
-																	"title": "Shared Config"
-																},
-																{
-																	"properties": {
-																		"auto_update_model": {
-																			"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"bm_cookie_enabled": {
-																			"description": "Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"stale_zone_configuration": {
-																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
-																			"type": "object",
-																			"properties": {
-																				"fight_mode": {
-																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
-																					"type": "boolean",
-																					"title": "fight_mode",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"optimize_wordpress": {
-																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
-																					"type": "boolean",
-																					"title": "optimize_wordpress",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"sbfm_definitely_automated": {
-																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
-																					"type": "string",
-																					"title": "sbfm_definitely_automated",
-																					"x-auditable": true
-																				},
-																				"sbfm_likely_automated": {
-																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
-																					"type": "string",
-																					"title": "sbfm_likely_automated",
-																					"x-auditable": true
-																				},
-																				"sbfm_static_resource_protection": {
-																					"description": "Indicates that the zone's static resource protection is turned on.",
-																					"type": "string",
-																					"title": "sbfm_static_resource_protection",
-																					"x-auditable": true
-																				},
-																				"sbfm_verified_bots": {
-																					"description": "Indicates that the zone's verified bot requests are being blocked.",
-																					"type": "string",
-																					"title": "sbfm_verified_bots",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			},
-																			"readOnly": true,
-																			"title": "stale_zone_configuration"
-																		},
-																		"suppress_session_score": {
-																			"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		}
-																	}
-																}
-															],
-															"title": "BM Enterprise Subscription"
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
 														}
-													]
-												}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2023,8 +1099,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "bot-management",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /zones/{zone_id}/bot_management": {
 		"operationId": "bot-management-for-a-zone-update-config",
@@ -2185,7 +1260,8 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													}
-												}
+												},
+												"type": "object"
 											}
 										],
 										"title": "Shared Config"
@@ -2246,7 +1322,8 @@
 												"readOnly": true,
 												"title": "stale_zone_configuration"
 											}
-										}
+										},
+										"type": "object"
 									}
 								],
 								"title": "Bot Fight Mode"
@@ -2385,7 +1462,8 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													}
-												}
+												},
+												"type": "object"
 											}
 										],
 										"title": "Shared Config"
@@ -2450,7 +1528,8 @@
 												"readOnly": true,
 												"title": "stale_zone_configuration"
 											}
-										}
+										},
+										"type": "object"
 									}
 								],
 								"title": "SBFM Pro Plan"
@@ -2589,7 +1668,8 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													}
-												}
+												},
+												"type": "object"
 											}
 										],
 										"title": "Shared Config"
@@ -2660,7 +1740,8 @@
 												"readOnly": true,
 												"title": "stale_zone_configuration"
 											}
-										}
+										},
+										"type": "object"
 									}
 								],
 								"title": "SBFM Biz Plan"
@@ -2799,7 +1880,8 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													}
-												}
+												},
+												"type": "object"
 											}
 										],
 										"title": "Shared Config"
@@ -2874,7 +1956,8 @@
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
-										}
+										},
+										"type": "object"
 									}
 								],
 								"title": "BM Enterprise Subscription"
@@ -3116,7 +2199,8 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"title": "Shared Config"
@@ -3177,7 +2261,8 @@
 																	"readOnly": true,
 																	"title": "stale_zone_configuration"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "Bot Fight Mode"
@@ -3316,7 +2401,8 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"title": "Shared Config"
@@ -3381,7 +2467,8 @@
 																	"readOnly": true,
 																	"title": "stale_zone_configuration"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "SBFM Pro Plan"
@@ -3520,7 +2607,8 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"title": "Shared Config"
@@ -3591,7 +2679,8 @@
 																	"readOnly": true,
 																	"title": "stale_zone_configuration"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "SBFM Biz Plan"
@@ -3730,7 +2819,8 @@
 																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"title": "Shared Config"
@@ -3805,7 +2895,8 @@
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"title": "BM Enterprise Subscription"
@@ -3825,1041 +2916,109 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													]
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"oneOf": [
-														{
-															"allOf": [
-																{
-																	"allOf": [
-																		{
-																			"properties": {
-																				"ai_bots_migration_opt_out": {
-																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_bots_protection": {
-																					"description": "Enable rule to block AI Scrapers and Crawlers.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"block",
-																						"disabled",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_search": {
-																					"description": "Configure robots.txt policy for AI search bots.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_training": {
-																					"description": "Configure robots.txt policy for AI model training bots.",
-																					"type": "string",
-																					"example": "disallow",
-																					"enum": [
-																						"disabled",
-																						"disallow",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_user": {
-																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
-																					"type": "string",
-																					"example": "only_on_ad_pages",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"bot_preference_sync_enabled": {
-																					"description": "Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"cf_robots_variant": {
-																					"description": "Specifies the Robots Access Control License variant to use.",
-																					"type": "string",
-																					"example": "policy_only",
-																					"enum": [
-																						"off",
-																						"policy_only"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"content_bots_protection": {
-																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
-																					"type": "string",
-																					"example": "disabled",
-																					"enum": [
-																						"block",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"crawler_protection": {
-																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
-																					"type": "string",
-																					"example": "enabled",
-																					"enum": [
-																						"enabled",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"enable_js": {
-																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"is_robots_txt_managed": {
-																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"jsd_api_results_enabled": {
-																					"description": "Whether to use JavaScript Detection results submitted through the API for this zone.",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"using_latest_model": {
-																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
-																					"type": "boolean",
-																					"example": true,
-																					"readOnly": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			}
-																		}
-																	],
-																	"title": "Shared Config"
-																},
-																{
-																	"properties": {
-																		"fight_mode": {
-																			"description": "Whether to enable Bot Fight Mode.",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"stale_zone_configuration": {
-																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
-																			"type": "object",
-																			"properties": {
-																				"optimize_wordpress": {
-																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
-																					"type": "boolean",
-																					"title": "optimize_wordpress",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"sbfm_definitely_automated": {
-																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
-																					"type": "string",
-																					"title": "sbfm_definitely_automated",
-																					"x-auditable": true
-																				},
-																				"sbfm_likely_automated": {
-																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
-																					"type": "string",
-																					"title": "sbfm_likely_automated",
-																					"x-auditable": true
-																				},
-																				"sbfm_static_resource_protection": {
-																					"description": "Indicates that the zone's static resource protection is turned on.",
-																					"type": "string",
-																					"title": "sbfm_static_resource_protection",
-																					"x-auditable": true
-																				},
-																				"sbfm_verified_bots": {
-																					"description": "Indicates that the zone's verified bot requests are being blocked.",
-																					"type": "string",
-																					"title": "sbfm_verified_bots",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"suppress_session_score": {
-																					"description": "Indicates that the zone's session score tracking is disabled.",
-																					"type": "boolean",
-																					"title": "suppress_session_score",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			},
-																			"readOnly": true,
-																			"title": "stale_zone_configuration"
-																		}
-																	}
-																}
-															],
-															"title": "Bot Fight Mode"
-														},
-														{
-															"allOf": [
-																{
-																	"allOf": [
-																		{
-																			"properties": {
-																				"ai_bots_migration_opt_out": {
-																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_bots_protection": {
-																					"description": "Enable rule to block AI Scrapers and Crawlers.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"block",
-																						"disabled",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_search": {
-																					"description": "Configure robots.txt policy for AI search bots.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_training": {
-																					"description": "Configure robots.txt policy for AI model training bots.",
-																					"type": "string",
-																					"example": "disallow",
-																					"enum": [
-																						"disabled",
-																						"disallow",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_user": {
-																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
-																					"type": "string",
-																					"example": "only_on_ad_pages",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"bot_preference_sync_enabled": {
-																					"description": "Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"cf_robots_variant": {
-																					"description": "Specifies the Robots Access Control License variant to use.",
-																					"type": "string",
-																					"example": "policy_only",
-																					"enum": [
-																						"off",
-																						"policy_only"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"content_bots_protection": {
-																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
-																					"type": "string",
-																					"example": "disabled",
-																					"enum": [
-																						"block",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"crawler_protection": {
-																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
-																					"type": "string",
-																					"example": "enabled",
-																					"enum": [
-																						"enabled",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"enable_js": {
-																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"is_robots_txt_managed": {
-																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"jsd_api_results_enabled": {
-																					"description": "Whether to use JavaScript Detection results submitted through the API for this zone.",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"using_latest_model": {
-																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
-																					"type": "boolean",
-																					"example": true,
-																					"readOnly": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			}
-																		}
-																	],
-																	"title": "Shared Config"
-																},
-																{
-																	"properties": {
-																		"optimize_wordpress": {
-																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_definitely_automated": {
-																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
-																			"type": "string",
-																			"example": "allow",
-																			"enum": [
-																				"allow",
-																				"block",
-																				"managed_challenge"
-																			],
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_static_resource_protection": {
-																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_verified_bots": {
-																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
-																			"type": "string",
-																			"example": "allow",
-																			"enum": [
-																				"allow",
-																				"block"
-																			],
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"stale_zone_configuration": {
-																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
-																			"type": "object",
-																			"properties": {
-																				"fight_mode": {
-																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
-																					"type": "boolean",
-																					"title": "fight_mode",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"sbfm_likely_automated": {
-																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
-																					"type": "string",
-																					"title": "sbfm_likely_automated",
-																					"x-auditable": true
-																				}
-																			},
-																			"readOnly": true,
-																			"title": "stale_zone_configuration"
-																		}
-																	}
-																}
-															],
-															"title": "SBFM Pro Plan"
-														},
-														{
-															"allOf": [
-																{
-																	"allOf": [
-																		{
-																			"properties": {
-																				"ai_bots_migration_opt_out": {
-																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_bots_protection": {
-																					"description": "Enable rule to block AI Scrapers and Crawlers.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"block",
-																						"disabled",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_search": {
-																					"description": "Configure robots.txt policy for AI search bots.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_training": {
-																					"description": "Configure robots.txt policy for AI model training bots.",
-																					"type": "string",
-																					"example": "disallow",
-																					"enum": [
-																						"disabled",
-																						"disallow",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_user": {
-																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
-																					"type": "string",
-																					"example": "only_on_ad_pages",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"bot_preference_sync_enabled": {
-																					"description": "Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"cf_robots_variant": {
-																					"description": "Specifies the Robots Access Control License variant to use.",
-																					"type": "string",
-																					"example": "policy_only",
-																					"enum": [
-																						"off",
-																						"policy_only"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"content_bots_protection": {
-																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
-																					"type": "string",
-																					"example": "disabled",
-																					"enum": [
-																						"block",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"crawler_protection": {
-																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
-																					"type": "string",
-																					"example": "enabled",
-																					"enum": [
-																						"enabled",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"enable_js": {
-																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"is_robots_txt_managed": {
-																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"jsd_api_results_enabled": {
-																					"description": "Whether to use JavaScript Detection results submitted through the API for this zone.",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"using_latest_model": {
-																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
-																					"type": "boolean",
-																					"example": true,
-																					"readOnly": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			}
-																		}
-																	],
-																	"title": "Shared Config"
-																},
-																{
-																	"properties": {
-																		"optimize_wordpress": {
-																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_definitely_automated": {
-																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
-																			"type": "string",
-																			"example": "allow",
-																			"enum": [
-																				"allow",
-																				"block",
-																				"managed_challenge"
-																			],
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_likely_automated": {
-																			"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
-																			"type": "string",
-																			"example": "allow",
-																			"enum": [
-																				"allow",
-																				"block",
-																				"managed_challenge"
-																			],
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_static_resource_protection": {
-																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"sbfm_verified_bots": {
-																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
-																			"type": "string",
-																			"example": "allow",
-																			"enum": [
-																				"allow",
-																				"block"
-																			],
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"stale_zone_configuration": {
-																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
-																			"type": "object",
-																			"properties": {
-																				"fight_mode": {
-																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
-																					"type": "boolean",
-																					"title": "fight_mode",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			},
-																			"readOnly": true,
-																			"title": "stale_zone_configuration"
-																		}
-																	}
-																}
-															],
-															"title": "SBFM Biz Plan"
-														},
-														{
-															"allOf": [
-																{
-																	"allOf": [
-																		{
-																			"properties": {
-																				"ai_bots_migration_opt_out": {
-																					"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_bots_protection": {
-																					"description": "Enable rule to block AI Scrapers and Crawlers.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"block",
-																						"disabled",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_search": {
-																					"description": "Configure robots.txt policy for AI search bots.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_training": {
-																					"description": "Configure robots.txt policy for AI model training bots.",
-																					"type": "string",
-																					"example": "disallow",
-																					"enum": [
-																						"disabled",
-																						"disallow",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"ai_user": {
-																					"description": "Configure robots.txt policy for AI assistant and agent bots.",
-																					"type": "string",
-																					"example": "only_on_ad_pages",
-																					"enum": [
-																						"disabled",
-																						"block",
-																						"only_on_ad_pages"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"bot_preference_sync_enabled": {
-																					"description": "Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.",
-																					"type": "boolean",
-																					"example": true,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"cf_robots_variant": {
-																					"description": "Specifies the Robots Access Control License variant to use.",
-																					"type": "string",
-																					"example": "policy_only",
-																					"enum": [
-																						"off",
-																						"policy_only"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"content_bots_protection": {
-																					"description": "Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.",
-																					"type": "string",
-																					"example": "disabled",
-																					"enum": [
-																						"block",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"crawler_protection": {
-																					"description": "Enable rule to punish AI Scrapers and Crawlers via a link maze.",
-																					"type": "string",
-																					"example": "enabled",
-																					"enum": [
-																						"enabled",
-																						"disabled"
-																					],
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"enable_js": {
-																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"is_robots_txt_managed": {
-																					"description": "Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.",
-																					"type": "boolean",
-																					"example": false,
-																					"default": false,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"jsd_api_results_enabled": {
-																					"description": "Whether to use JavaScript Detection results submitted through the API for this zone.",
-																					"type": "boolean",
-																					"example": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"using_latest_model": {
-																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
-																					"type": "boolean",
-																					"example": true,
-																					"readOnly": true,
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			}
-																		}
-																	],
-																	"title": "Shared Config"
-																},
-																{
-																	"properties": {
-																		"auto_update_model": {
-																			"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"bm_cookie_enabled": {
-																			"description": "Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true",
-																			"type": "boolean",
-																			"example": true,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"stale_zone_configuration": {
-																			"description": "A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.",
-																			"type": "object",
-																			"properties": {
-																				"fight_mode": {
-																					"description": "Indicates that the zone's Bot Fight Mode is turned on.",
-																					"type": "boolean",
-																					"title": "fight_mode",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"optimize_wordpress": {
-																					"description": "Indicates that the zone's wordpress optimization for SBFM is turned on.",
-																					"type": "boolean",
-																					"title": "optimize_wordpress",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				},
-																				"sbfm_definitely_automated": {
-																					"description": "Indicates that the zone's definitely automated requests are being blocked or challenged.",
-																					"type": "string",
-																					"title": "sbfm_definitely_automated",
-																					"x-auditable": true
-																				},
-																				"sbfm_likely_automated": {
-																					"description": "Indicates that the zone's likely automated requests are being blocked or challenged.",
-																					"type": "string",
-																					"title": "sbfm_likely_automated",
-																					"x-auditable": true
-																				},
-																				"sbfm_static_resource_protection": {
-																					"description": "Indicates that the zone's static resource protection is turned on.",
-																					"type": "string",
-																					"title": "sbfm_static_resource_protection",
-																					"x-auditable": true
-																				},
-																				"sbfm_verified_bots": {
-																					"description": "Indicates that the zone's verified bot requests are being blocked.",
-																					"type": "string",
-																					"title": "sbfm_verified_bots",
-																					"x-auditable": true,
-																					"x-stainless-terraform-configurability": "computed_optional"
-																				}
-																			},
-																			"readOnly": true,
-																			"title": "stale_zone_configuration"
-																		},
-																		"suppress_session_score": {
-																			"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
-																			"type": "boolean",
-																			"example": false,
-																			"x-auditable": true,
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		}
-																	}
-																}
-															],
-															"title": "BM Enterprise Subscription"
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
 														}
-													]
-												}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4889,7 +3048,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "bot-management",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -769,6 +769,12 @@
 												"nullable": true,
 												"x-auditable": true
 											},
+											"multiuser": {
+												"description": "True if this device is in [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
+												"type": "boolean",
+												"example": true,
+												"x-auditable": true
+											},
 											"name": {
 												"description": "The name of the device.",
 												"type": "string",
@@ -1201,6 +1207,12 @@
 											"nullable": true,
 											"x-auditable": true
 										},
+										"multiuser": {
+											"description": "True if this device is in [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										},
 										"name": {
 											"description": "The name of the device.",
 											"type": "string",
@@ -1617,6 +1629,12 @@
 											"nullable": true,
 											"x-auditable": true
 										},
+										"multiuser": {
+											"description": "True if this device is in [multi-user mode](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/windows-multiuser/).",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										},
 										"name": {
 											"description": "The name of the device.",
 											"type": "string",
@@ -1682,6 +1700,73 @@
 								"success": {
 									"description": "Whether the API call was successful.",
 									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "The device tags were modified concurrently. Retry the request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "A message which can be returned in either the 'errors' or 'messages' fields in a v4 API response.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
 								}
 							},
 							"required": [
