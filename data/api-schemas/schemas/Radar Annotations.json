@@ -464,6 +464,12 @@
 														"type": "array",
 														"items": {
 															"properties": {
+																"entityLocation": {
+																	"description": "Alpha-2 code of the country the entity belongs to (GEOLOCATION and AS entities only).",
+																	"type": "string",
+																	"example": "PT",
+																	"nullable": true
+																},
 																"entityName": {
 																	"type": "string",
 																	"example": "GPTBot",
@@ -481,7 +487,8 @@
 															"required": [
 																"entityType",
 																"entityValue",
-																"entityName"
+																"entityName",
+																"entityLocation"
 															],
 															"type": "object"
 														}
@@ -810,6 +817,12 @@
 													"type": "array",
 													"items": {
 														"properties": {
+															"entityLocation": {
+																"description": "Alpha-2 code of the country the entity belongs to (GEOLOCATION and AS entities only).",
+																"type": "string",
+																"example": "PT",
+																"nullable": true
+															},
 															"entityName": {
 																"type": "string",
 																"example": "GPTBot",
@@ -827,7 +840,8 @@
 														"required": [
 															"entityType",
 															"entityValue",
-															"entityName"
+															"entityName",
+															"entityLocation"
 														],
 														"type": "object"
 													}
@@ -1471,6 +1485,12 @@
 														"type": "array",
 														"items": {
 															"properties": {
+																"entityLocation": {
+																	"description": "Alpha-2 code of the country the entity belongs to (GEOLOCATION and AS entities only).",
+																	"type": "string",
+																	"example": "PT",
+																	"nullable": true
+																},
 																"entityName": {
 																	"type": "string",
 																	"example": "GPTBot",
@@ -1488,7 +1508,8 @@
 															"required": [
 																"entityType",
 																"entityValue",
-																"entityName"
+																"entityName",
+																"entityLocation"
 															],
 															"type": "object"
 														}

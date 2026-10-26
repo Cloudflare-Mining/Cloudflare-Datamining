@@ -708167,7 +708167,7 @@
 			"get": {
 				"operationId": "rssArticleSeverityAggregate",
 				"summary": "Count Threat Signals articles by severity band",
-				"description": "Beta. Counts the account's Threat Signals articles in each intrinsic severity band. An article's band is the severity level nearest its severity, from informational to critical. Articles without a severity are not counted. min_relevance counts only articles at or above a relevance band for any active Priority Intelligence Requirement. Like the article severity field, severity is reported only while the account has an active Priority Intelligence Requirement, including one the matcher paused; otherwise every count is zero. All counts are read together and are exact.",
+				"description": "Beta. Counts the account's Threat Signals articles in each intrinsic severity band. An article's band is the severity level nearest its severity, from informational to critical. Articles without a severity are not counted. Also counts, for each active Priority Intelligence Requirement, the articles scored against it. min_relevance counts only articles at or above a relevance band: overall, for any active PIR; per PIR, for that PIR, the same rule as the per-PIR relevance counts. pir_id counts for one active PIR only. Like the article severity field, severity is reported only while the account has an active Priority Intelligence Requirement, including one the matcher paused; otherwise every count is zero and priorities is empty. All counts are read together and are exact.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -708196,10 +708196,19 @@
 						}
 					},
 					{
+						"name": "pir_id",
+						"in": "query",
+						"schema": {
+							"description": "Beta. Active Priority Intelligence Requirement to count for. articles then counts only articles scored against it, min_relevance applies to its score, and priorities lists only it. Returns a 400 error unless the PIR is active.",
+							"type": "string",
+							"format": "uuid"
+						}
+					},
+					{
 						"name": "min_relevance",
 						"in": "query",
 						"schema": {
-							"description": "Beta. Count only articles at or above this relevance band for any active Priority Intelligence Requirement, as the article list's min_relevance does without pir_id. Excludes articles that have not been scored against an active PIR.",
+							"description": "Beta. Count only articles at or above this relevance band: in articles, for any active Priority Intelligence Requirement, as the article list's min_relevance does without pir_id; in each priority, for that PIR. Excludes articles that have not been scored against an active PIR.",
 							"type": "string",
 							"enum": [
 								"low",
@@ -708266,10 +708275,62 @@
 														"high",
 														"critical"
 													]
+												},
+												"priorities": {
+													"description": "Beta. Each active PIR, including PIRs the matcher paused, ordered by ID. Drafts and deleted PIRs are excluded. An article can count toward several PIRs, so these are not parts of articles.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"articles": {
+																"description": "Beta. Number of articles scored against this PIR in each severity band. With min_relevance, only articles whose relevance to this PIR is at or above that band. Articles without a severity are not counted.",
+																"type": "object",
+																"properties": {
+																	"critical": {
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"high": {
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"informational": {
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"low": {
+																		"type": "integer",
+																		"minimum": 0
+																	},
+																	"medium": {
+																		"type": "integer",
+																		"minimum": 0
+																	}
+																},
+																"required": [
+																	"informational",
+																	"low",
+																	"medium",
+																	"high",
+																	"critical"
+																]
+															},
+															"id": {
+																"description": "Active Priority Intelligence Requirement ID.",
+																"type": "string",
+																"format": "uuid"
+															}
+														},
+														"required": [
+															"id",
+															"articles"
+														],
+														"type": "object"
+													}
 												}
 											},
 											"required": [
-												"articles"
+												"articles",
+												"priorities"
 											]
 										},
 										"success": {
@@ -969044,7 +969105,7 @@
 																"type": "object",
 																"properties": {
 																	"reason": {
-																		"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																		"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																		"type": "string",
 																		"example": "customer_dns_indeterminate"
 																	},
@@ -969084,7 +969145,7 @@
 																"type": "object",
 																"properties": {
 																	"reason": {
-																		"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																		"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																		"type": "string",
 																		"example": "customer_dns_indeterminate"
 																	},
@@ -969752,8 +969813,7 @@
 					]
 				},
 				"x-fern-sdk-group-name": "email-domains",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
 				"operationId": "email-domains-create",
@@ -970116,7 +970176,7 @@
 															"type": "object",
 															"properties": {
 																"reason": {
-																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																	"type": "string",
 																	"example": "customer_dns_indeterminate"
 																},
@@ -970156,7 +970216,7 @@
 															"type": "object",
 															"properties": {
 																"reason": {
-																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																	"type": "string",
 																	"example": "customer_dns_indeterminate"
 																},
@@ -971049,8 +971109,7 @@
 					]
 				},
 				"x-fern-sdk-group-name": "email-domains",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/accounts/{account_id}/email/domains/{email_domain_id}": {
@@ -971419,7 +971478,7 @@
 															"type": "object",
 															"properties": {
 																"reason": {
-																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																	"type": "string",
 																	"example": "customer_dns_indeterminate"
 																},
@@ -971459,7 +971518,7 @@
 															"type": "object",
 															"properties": {
 																"reason": {
-																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																	"type": "string",
 																	"example": "customer_dns_indeterminate"
 																},
@@ -972192,8 +972251,7 @@
 					]
 				},
 				"x-fern-sdk-group-name": "email-domains",
-				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "delete"
 			},
 			"get": {
 				"operationId": "email-domains-get",
@@ -973090,7 +973148,7 @@
 															"type": "object",
 															"properties": {
 																"reason": {
-																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																	"type": "string",
 																	"example": "customer_dns_indeterminate"
 																},
@@ -973130,7 +973188,7 @@
 															"type": "object",
 															"properties": {
 																"reason": {
-																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																	"type": "string",
 																	"example": "customer_dns_indeterminate"
 																},
@@ -973773,8 +973831,7 @@
 					]
 				},
 				"x-fern-sdk-group-name": "email-domains",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/email/domains/{email_domain_id}/verify": {
@@ -974135,7 +974192,7 @@
 															"type": "object",
 															"properties": {
 																"reason": {
-																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																	"type": "string",
 																	"example": "customer_dns_indeterminate"
 																},
@@ -974175,7 +974232,7 @@
 															"type": "object",
 															"properties": {
 																"reason": {
-																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																	"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																	"type": "string",
 																	"example": "customer_dns_indeterminate"
 																},
@@ -975028,8 +975085,7 @@
 					]
 				},
 				"x-fern-sdk-group-name": "email-domains",
-				"x-fern-sdk-method-name": "verify",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "verify"
 			}
 		},
 		"/accounts/{account_id}/email/routing/addresses": {
@@ -978580,7 +978636,7 @@
 																			]
 																		},
 																		"suspension_after_hours": {
-																			"description": "The grace period before suspension. The value must be a whole number of days.",
+																			"description": "The grace period before suspension. The value must be a whole number of days. It applies only while grace_started_at is set; when grace_started_at is null, the account is not counting down to an automatic suspension.",
 																			"type": "integer",
 																			"format": "int64",
 																			"example": 168,
@@ -978606,7 +978662,7 @@
 															"nullable": true
 														},
 														"grace_started_at": {
-															"description": "When the current At Risk suspension grace period started. This can be later than status_since if the grace period was restarted. Null outside At Risk. Automatic suspension remains subject to enforcement and suspension exemptions.",
+															"description": "When the current At Risk suspension grace period started. This can be later than status_since if the grace period was restarted. Null outside At Risk, and null when the account cannot be suspended automatically.",
 															"type": "string",
 															"format": "date-time",
 															"example": "2026-07-09T00:00:00Z",
@@ -1352630,14 +1352686,6 @@
 															"is_used_in_update": false,
 															"title": "Authorize Application",
 															"type": "oauth_redirect"
-														},
-														{
-															"description": "Re-authorize this integration from the Cloudflare dashboard to refresh its access token.",
-															"dynamic_content": null,
-															"is_used_in_create": false,
-															"is_used_in_update": true,
-															"title": "How to repair this integration",
-															"type": "instruction"
 														}
 													],
 													"supported_environments": [
@@ -1353144,14 +1353192,7 @@
 													"status": "Healthy",
 													"updated": "2025-04-10T08:30:00Z",
 													"use_cases": [
-														{
-															"id": "casb",
-															"is_enabled": true
-														},
-														{
-															"id": "ces",
-															"is_enabled": false
-														}
+														"casb"
 													]
 												}
 											],
@@ -1353255,19 +1353296,7 @@
 														"description": "Use cases enabled for the integration.",
 														"type": "array",
 														"items": {
-															"properties": {
-																"id": {
-																	"type": "string"
-																},
-																"is_enabled": {
-																	"type": "boolean"
-																}
-															},
-															"required": [
-																"id",
-																"is_enabled"
-															],
-															"type": "object"
+															"type": "string"
 														},
 														"readOnly": true
 													}
@@ -1488221,7 +1488250,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1488585,7 +1488616,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1497189,7 +1497222,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1505796,7 +1505831,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1506043,7 +1506080,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1506275,7 +1506314,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1514870,7 +1514911,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1523481,7 +1523524,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1532088,7 +1532133,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1540648,7 +1540695,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1549255,7 +1549304,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1549510,7 +1549561,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1558117,7 +1558170,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1566687,7 +1566742,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1575294,7 +1575351,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1575528,7 +1575587,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1575892,7 +1575953,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1576159,7 +1576222,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1576403,7 +1576468,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1584998,7 +1585065,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1585265,7 +1585334,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1593860,7 +1593931,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1594128,7 +1594201,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1602723,7 +1602798,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1611316,7 +1611393,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1619923,7 +1620002,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1620183,7 +1620264,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1620547,7 +1620630,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1620827,7 +1620912,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1629422,7 +1629509,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1989338,6 +1989427,12 @@
 																"type": "array",
 																"items": {
 																	"properties": {
+																		"entityLocation": {
+																			"description": "Alpha-2 code of the country the entity belongs to (GEOLOCATION and AS entities only).",
+																			"type": "string",
+																			"example": "PT",
+																			"nullable": true
+																		},
 																		"entityName": {
 																			"type": "string",
 																			"example": "GPTBot",
@@ -1989355,7 +1989450,8 @@
 																	"required": [
 																		"entityType",
 																		"entityValue",
-																		"entityName"
+																		"entityName",
+																		"entityLocation"
 																	],
 																	"type": "object"
 																}
@@ -1989686,6 +1989782,12 @@
 															"type": "array",
 															"items": {
 																"properties": {
+																	"entityLocation": {
+																		"description": "Alpha-2 code of the country the entity belongs to (GEOLOCATION and AS entities only).",
+																		"type": "string",
+																		"example": "PT",
+																		"nullable": true
+																	},
 																	"entityName": {
 																		"type": "string",
 																		"example": "GPTBot",
@@ -1989703,7 +1989805,8 @@
 																"required": [
 																	"entityType",
 																	"entityValue",
-																	"entityName"
+																	"entityName",
+																	"entityLocation"
 																],
 																"type": "object"
 															}
@@ -1990349,6 +1990452,12 @@
 																"type": "array",
 																"items": {
 																	"properties": {
+																		"entityLocation": {
+																			"description": "Alpha-2 code of the country the entity belongs to (GEOLOCATION and AS entities only).",
+																			"type": "string",
+																			"example": "PT",
+																			"nullable": true
+																		},
 																		"entityName": {
 																			"type": "string",
 																			"example": "GPTBot",
@@ -1990366,7 +1990475,8 @@
 																	"required": [
 																		"entityType",
 																		"entityValue",
-																		"entityName"
+																		"entityName",
+																		"entityLocation"
 																	],
 																	"type": "object"
 																}
@@ -2112638,12 +2112748,19 @@
 																	"name"
 																]
 															},
+															"outageId": {
+																"description": "ID of the published outage this anomaly was confirmed as, if any.",
+																"type": "string",
+																"example": "1234",
+																"nullable": true
+															},
 															"startDate": {
 																"type": "string",
 																"format": "date-time",
 																"example": "2023-08-02T23:15:00Z"
 															},
 															"status": {
+																"description": "Verification status: UNVERIFIED (automatically detected, not yet validated by Radar), TP (verified by Radar) or VERIFIED (verified by Radar and a third-party source).",
 																"type": "string",
 																"example": "UNVERIFIED"
 															},
@@ -2112672,7 +2112789,8 @@
 															"endDate",
 															"locationDetails",
 															"asnDetails",
-															"originDetails"
+															"originDetails",
+															"outageId"
 														],
 														"type": "object"
 													}
@@ -2112886,12 +2113004,19 @@
 																"name"
 															]
 														},
+														"outageId": {
+															"description": "ID of the published outage this anomaly was confirmed as, if any.",
+															"type": "string",
+															"example": "1234",
+															"nullable": true
+														},
 														"startDate": {
 															"type": "string",
 															"format": "date-time",
 															"example": "2023-08-02T23:15:00Z"
 														},
 														"status": {
+															"description": "Verification status: UNVERIFIED (automatically detected, not yet validated by Radar), TP (verified by Radar) or VERIFIED (verified by Radar and a third-party source).",
 															"type": "string",
 															"example": "UNVERIFIED"
 														},
@@ -2112920,7 +2113045,8 @@
 														"endDate",
 														"locationDetails",
 														"asnDetails",
-														"originDetails"
+														"originDetails",
+														"outageId"
 													]
 												}
 											},
@@ -2237614,7 +2237740,7 @@
 					"Zone Write"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "zone",
+				"x-fern-sdk-group-name": "zones.activation-check",
 				"x-fern-sdk-method-name": "activate"
 			}
 		},
@@ -2380303,7 +2380429,7 @@
 								"type": "object",
 								"properties": {
 									"name": {
-										"description": "The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.",
+										"description": "The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.",
 										"type": "string",
 										"example": "sub.example.com"
 									}
@@ -2382789,7 +2382915,7 @@
 								"type": "object",
 								"properties": {
 									"name": {
-										"description": "The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement.",
+										"description": "The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. The derived Return-Path hostname, including its bounce prefix, must be at most 201 characters after ASCII conversion; wildcards use the base hostname.",
 										"type": "string",
 										"example": "sub.example.com"
 									}
@@ -2443374,7 +2443500,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2443606,7 +2443734,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2443974,7 +2444104,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2444397,7 +2444529,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2444765,7 +2444899,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2484571,7 +2484707,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2484935,7 +2485073,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2493565,7 +2493705,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2502172,7 +2502314,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2502432,7 +2502576,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2502677,7 +2502823,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2511272,7 +2511420,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2519909,7 +2520059,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2528516,7 +2528668,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2537089,7 +2537243,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2545696,7 +2545852,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2545964,7 +2546122,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2554571,7 +2554731,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2563154,7 +2563316,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2571761,7 +2571925,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2572008,7 +2572174,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2572372,7 +2572540,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2572665,7 +2572835,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2572922,7 +2573094,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2581517,7 +2581691,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2581810,7 +2581986,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2590405,7 +2590583,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2590699,7 +2590879,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2599294,7 +2599476,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2607913,7 +2608097,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2616520,7 +2616706,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2616793,7 +2616981,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2617157,7 +2617347,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2617463,7 +2617655,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2626058,7 +2626252,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2742485,7 +2742681,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2742717,7 +2742915,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2742950,7 +2743150,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2743242,7 +2743444,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2743475,7 +2743679,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{

@@ -645,7 +645,7 @@
 																	]
 																},
 																"suspension_after_hours": {
-																	"description": "The grace period before suspension. The value must be a whole number of days.",
+																	"description": "The grace period before suspension. The value must be a whole number of days. It applies only while grace_started_at is set; when grace_started_at is null, the account is not counting down to an automatic suspension.",
 																	"type": "integer",
 																	"format": "int64",
 																	"example": 168,
@@ -671,7 +671,7 @@
 													"nullable": true
 												},
 												"grace_started_at": {
-													"description": "When the current At Risk suspension grace period started. This can be later than status_since if the grace period was restarted. Null outside At Risk. Automatic suspension remains subject to enforcement and suspension exemptions.",
+													"description": "When the current At Risk suspension grace period started. This can be later than status_since if the grace period was restarted. Null outside At Risk, and null when the account cannot be suspended automatically.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2026-07-09T00:00:00Z",

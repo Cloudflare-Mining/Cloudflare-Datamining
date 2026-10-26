@@ -182,14 +182,7 @@
 											"status": "Healthy",
 											"updated": "2025-04-10T08:30:00Z",
 											"use_cases": [
-												{
-													"id": "casb",
-													"is_enabled": true
-												},
-												{
-													"id": "ces",
-													"is_enabled": false
-												}
+												"casb"
 											]
 										}
 									],
@@ -293,19 +286,7 @@
 												"description": "Use cases enabled for the integration.",
 												"type": "array",
 												"items": {
-													"properties": {
-														"id": {
-															"type": "string"
-														},
-														"is_enabled": {
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"id",
-														"is_enabled"
-													],
-													"type": "object"
+													"type": "string"
 												},
 												"readOnly": true
 											}

@@ -2036,7 +2036,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/severity/aggregate": {
 		"operationId": "rssArticleSeverityAggregate",
 		"summary": "Count Threat Signals articles by severity band",
-		"description": "Beta. Counts the account's Threat Signals articles in each intrinsic severity band. An article's band is the severity level nearest its severity, from informational to critical. Articles without a severity are not counted. min_relevance counts only articles at or above a relevance band for any active Priority Intelligence Requirement. Like the article severity field, severity is reported only while the account has an active Priority Intelligence Requirement, including one the matcher paused; otherwise every count is zero. All counts are read together and are exact.",
+		"description": "Beta. Counts the account's Threat Signals articles in each intrinsic severity band. An article's band is the severity level nearest its severity, from informational to critical. Articles without a severity are not counted. Also counts, for each active Priority Intelligence Requirement, the articles scored against it. min_relevance counts only articles at or above a relevance band: overall, for any active PIR; per PIR, for that PIR, the same rule as the per-PIR relevance counts. pir_id counts for one active PIR only. Like the article severity field, severity is reported only while the account has an active Priority Intelligence Requirement, including one the matcher paused; otherwise every count is zero and priorities is empty. All counts are read together and are exact.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2065,10 +2065,19 @@
 				}
 			},
 			{
+				"name": "pir_id",
+				"in": "query",
+				"schema": {
+					"description": "Beta. Active Priority Intelligence Requirement to count for. articles then counts only articles scored against it, min_relevance applies to its score, and priorities lists only it. Returns a 400 error unless the PIR is active.",
+					"type": "string",
+					"format": "uuid"
+				}
+			},
+			{
 				"name": "min_relevance",
 				"in": "query",
 				"schema": {
-					"description": "Beta. Count only articles at or above this relevance band for any active Priority Intelligence Requirement, as the article list's min_relevance does without pir_id. Excludes articles that have not been scored against an active PIR.",
+					"description": "Beta. Count only articles at or above this relevance band: in articles, for any active Priority Intelligence Requirement, as the article list's min_relevance does without pir_id; in each priority, for that PIR. Excludes articles that have not been scored against an active PIR.",
 					"type": "string",
 					"enum": [
 						"low",
@@ -2135,10 +2144,62 @@
 												"high",
 												"critical"
 											]
+										},
+										"priorities": {
+											"description": "Beta. Each active PIR, including PIRs the matcher paused, ordered by ID. Drafts and deleted PIRs are excluded. An article can count toward several PIRs, so these are not parts of articles.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"articles": {
+														"description": "Beta. Number of articles scored against this PIR in each severity band. With min_relevance, only articles whose relevance to this PIR is at or above that band. Articles without a severity are not counted.",
+														"type": "object",
+														"properties": {
+															"critical": {
+																"type": "integer",
+																"minimum": 0
+															},
+															"high": {
+																"type": "integer",
+																"minimum": 0
+															},
+															"informational": {
+																"type": "integer",
+																"minimum": 0
+															},
+															"low": {
+																"type": "integer",
+																"minimum": 0
+															},
+															"medium": {
+																"type": "integer",
+																"minimum": 0
+															}
+														},
+														"required": [
+															"informational",
+															"low",
+															"medium",
+															"high",
+															"critical"
+														]
+													},
+													"id": {
+														"description": "Active Priority Intelligence Requirement ID.",
+														"type": "string",
+														"format": "uuid"
+													}
+												},
+												"required": [
+													"id",
+													"articles"
+												],
+												"type": "object"
+											}
 										}
 									},
 									"required": [
-										"articles"
+										"articles",
+										"priorities"
 									]
 								},
 								"success": {
