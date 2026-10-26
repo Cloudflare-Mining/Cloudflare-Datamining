@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/create-nimbus-docs",
 	"dist-tags": {
-		"latest": "0.8.0"
+		"latest": "0.8.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1080,12 +1080,59 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIFeiSZj7oa5THk5Xf+7dQXVaET02Xa3YKMWQTVCRF+FhAiB9hgOra2Zn6fZJq382mOa2lmSjZ8MFmEK5Hgfviz993Q=="
+						"sig": "MEQCIFeiSZj7oa5THk5Xf+7dQXVaET02Xa3YKMWQTVCRF+FhAiB9hgOra2Zn6fZJq382mOa2lmSjZ8MFmEK5Hgfviz993Q==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcreate-nimbus-docs@0.8.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 178785
+			},
+			"engines": {
+				"node": ">=22.12.0"
+			}
+		},
+		"0.8.1": {
+			"name": "@cloudflare/create-nimbus-docs",
+			"version": "0.8.1",
+			"dependencies": {
+				"mri": "^1.2.0",
+				"yaml": "^2.7.1",
+				"giget": "^3.3.0",
+				"typescript": "^5.8.3",
+				"@clack/prompts": "^1.8.0"
+			},
+			"devDependencies": {
+				"tsx": "^4.22.3",
+				"tsdown": "^0.20.3",
+				"@types/mri": "^1.1.4",
+				"@types/node": "^22.20.5",
+				"@cloudflare/nimbus-docs": "0.19.1"
+			},
+			"bin": {
+				"create-nimbus-docs": "dist/index.js"
+			},
+			"dist": {
+				"shasum": "7df61ad5f4118471cc32c8cf0a52520e9393771f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/create-nimbus-docs/-/create-nimbus-docs-0.8.1.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-6edg5PKgxlIaCOPVBKZ1MOHB9FnDg2orh4jdvWVg7CW7dtM5n/rsl/a9Ahu7Crr1P6Y9nEe9ikidJWrXf3jC9g==",
+				"signatures": [
+					{
+						"sig": "MEUCICNbe6QQP0+KI7Nd/gFKyipcXqZnbUf9V+6Q9pWYdDwhAiEAi+xKwJC4w/dEb1kXNymP2zI3OUO16C/5wCsCeJcbbgE=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQDByAHwP3CxWLkJ/JbWWhbxjyXhw4cpDweMIPTgDcX+7wIgQwkwP1ntRlw8sf0SNazrxGa73Ugv9vtMjF0G4UpLBV0="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcreate-nimbus-docs@0.8.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}

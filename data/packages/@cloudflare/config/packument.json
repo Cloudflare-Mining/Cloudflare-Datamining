@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/config",
 	"dist-tags": {
-		"latest": "0.28.0"
+		"latest": "0.28.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1103,12 +1103,51 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIHZ9O/EuQjqBjkVF/WD4sbyMGFiGkvJCgMNFndw6sTS7AiEA9EXS+Xi8+R9Dzzy80GdfEhudMeC400woLbZpm/qAIUI="
+						"sig": "MEUCIHZ9O/EuQjqBjkVF/WD4sbyMGFiGkvJCgMNFndw6sTS7AiEA9EXS+Xi8+R9Dzzy80GdfEhudMeC400woLbZpm/qAIUI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fconfig@0.28.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 221750
+			}
+		},
+		"0.28.1": {
+			"name": "@cloudflare/config",
+			"version": "0.28.1",
+			"dependencies": {
+				"zod": "4.6.6"
+			},
+			"devDependencies": {
+				"tsdown": "0.16.3",
+				"vitest": "5.0.4",
+				"ts-dedent": "^2.2.0",
+				"typescript": "5.8.3",
+				"@cloudflare/workers-types": "^5.20261023.1",
+				"@cloudflare/workers-utils": "0.49.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "98b77e2982123100058ffc551b1e5f935af44d71",
+				"tarball": "https://registry.npmjs.org/@cloudflare/config/-/config-0.28.1.tgz",
+				"fileCount": 8,
+				"integrity": "sha512-pQS0jJmk2grEK2XdkvJxyk8y8W607D4daOrEdv+iyqSslSLTvH7lChF/3fpCQIy//3rBLUnzanZ8rgyekbh0/g==",
+				"signatures": [
+					{
+						"sig": "MEUCICSQp0p3/PaJQ/eDYBRwXJE/uXo94k5v5HB4+57tEeKMAiEAugkxyGDJUdoRzyXCzhSqBUnEZzh7Gq/3sIIsphbKIcE=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDrwR8tm2Worv0r92GeRAqDQTcEI5crHwH8bLpD1+ncIQIhAIh/z7DB/1qI6zfYy82cKQuS6zPCrDaIs2Ry7/E9m0N4"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fconfig@0.28.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
