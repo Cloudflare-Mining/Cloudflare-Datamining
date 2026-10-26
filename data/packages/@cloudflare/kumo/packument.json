@@ -2,7 +2,7 @@
 	"name": "@cloudflare/kumo",
 	"dist-tags": {
 		"backport": "2.3.1",
-		"latest": "2.15.0"
+		"latest": "2.16.0"
 	},
 	"versions": {
 		"1.0.0": {
@@ -4230,8 +4230,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDokEIfhpKzQ6ULNPlzfjhospKUhwN8c+TR01pHViy3RgIgQYyM9x51Cy5yj3mjswBf+BIqWRcJj80XvQVejIltnEg="
+						"sig": "MEUCIQDokEIfhpKzQ6ULNPlzfjhospKUhwN8c+TR01pHViy3RgIgQYyM9x51Cy5yj3mjswBf+BIqWRcJj80XvQVejIltnEg=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -4241,6 +4241,88 @@
 					}
 				},
 				"unpackedSize": 7642426
+			}
+		},
+		"2.16.0": {
+			"name": "@cloudflare/kumo",
+			"version": "2.16.0",
+			"dependencies": {
+				"cn": "0.4.0",
+				"shiki": "^4.0.0",
+				"d3-geo": "^3.1.1",
+				"motion": "^12.34.1",
+				"@base-ui/react": "^1.9.0",
+				"@shikijs/langs": "^4.0.0",
+				"@shikijs/themes": "^4.0.0",
+				"react-day-picker": "^9.13.2",
+				"use-sync-external-store": "^1.6.0"
+			},
+			"devDependencies": {
+				"tsx": "^4.19.2",
+				"zod": "^4.0.0",
+				"glob": "13.0.0",
+				"plop": "4.0.4",
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.3.1",
+				"vitest": "4.1.10",
+				"esbuild": "0.27.2",
+				"publint": "^0.3.21",
+				"wrangler": "4.127.1",
+				"happy-dom": "^20.8.8",
+				"vite-plus": "0.3.1",
+				"@vitest/ui": "4.1.10",
+				"playwright": "^1.57.0",
+				"typescript": "^5.9.2",
+				"@types/glob": "9.0.0",
+				"@types/node": "^22.10.2",
+				"tailwindcss": "^4.1.17",
+				"@types/react": "19.2.4",
+				"@types/d3-geo": "^3.1.0",
+				"@oxlint/plugins": "=1.73.0",
+				"svg-path-parser": "^1.1.0",
+				"@tailwindcss/cli": "^4.1.17",
+				"@types/react-dom": "19.2.3",
+				"@tailwindcss/vite": "^4.1.17",
+				"@vitejs/plugin-react": "~6.0.3",
+				"vitest-browser-react": "^2.0.5",
+				"@arethetypeswrong/core": "^0.18.5",
+				"@testing-library/react": "16.3.1",
+				"@types/svg-path-parser": "^1.1.6",
+				"ts-json-schema-generator": "2.4.0",
+				"@vitest/browser-playwright": "4.1.10",
+				"@testing-library/user-event": "14.6.1"
+			},
+			"peerDependencies": {
+				"zod": "^4.0.0",
+				"react": "^18.0.0 || ^19.0.0",
+				"echarts": "^6.0.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"@phosphor-icons/react": "^2.1.10"
+			},
+			"bin": {
+				"kumo": "./bin/kumo.js"
+			},
+			"dist": {
+				"shasum": "7a4c756c583cd3e23e3990d24b324641fce48f6b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-2.16.0.tgz",
+				"fileCount": 567,
+				"integrity": "sha512-8XLxYI+Zn/XV3e33C1gDU6UpPcmZNDz9v9Z65vNRINPGXsdKvCe3pKPqCz/SExn556/gaUE4+qTObxxKyopneQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDH0ZtNtHtJSrmPDSJRk9W8t4KekLcRoLu0Ltz+QDt/VgIgLhqE8TC78qmLJv2EtMmMhvVdquvFLoc8o26gKPzqEeA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQCA/wPOdWFCdc39DfRuuGmfbgSKq+ae/f8BWwL6AsWc1QIgcYcbp2+d+16KP3ox1GpU7fXUUvECwZ5TfNRCCdFLKw4="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@2.16.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 7652973
 			}
 		}
 	}
