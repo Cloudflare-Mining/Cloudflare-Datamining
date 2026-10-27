@@ -23,13 +23,13 @@
 	"branches": [
 		"add-api-request-metrics",
 		"bot/forge-tools",
-		"chore/migrate-to-cf",
 		"chore/upgrade-workers-oauth-provider-0.8.3",
 		"docs/add-server-json-registry",
 		"feat/add-pkg-pr-new",
 		"feat/auth-improvements",
 		"feat/consent-page-csp",
 		"feat/direct-tools-oauth-coverage",
+		"feat/ema-preview",
 		"feat/forge-tools",
 		"feat/insufficient-scope-challenge",
 		"feat/mcp-server-instructions",
@@ -52,6 +52,14 @@
 		"fix/token-refresh-invalid-grant",
 		"fix/tools-list-changed-false",
 		"fix/truncate-account-list-for-many-accounts",
-		"main"
+		"forge-plain-request",
+		"main",
+		"perf/cached-tool-list",
+		"perf/cached-tool-schemas",
+		"perf/isolate-cache-artifacts",
+		"perf/isolate-cache-forge-service",
+		"perf/isolate-cache-lib",
+		"perf/permission-index",
+		"perf/search-spec-module"
 	]
 }
