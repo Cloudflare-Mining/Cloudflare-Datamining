@@ -10,6 +10,24 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 27, 2026 [<h2>Introducing the Cloudflare PHP Capture the Flag challenge</h2>](https://blog.cloudflare.com/php-ctf/)
+
+We are launching a PHP Capture the Flag challenge integrated with our Bug Bounty program to test our WAF protections. Security researchers are invited to bypass our defenses and capture the flag to help make the Internet safer.
+
+![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Sven Sauleau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HRDMNZR42T04V7Y1R5XY.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Celso Martinho](https://blog.cloudflare.com/author/celso/),  [Sven Sauleau](https://blog.cloudflare.com/author/sven/), and  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5YGNS8F8NYE3V5QERKYNG79.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/php-ctf/)
+
+October 27, 2026 [<h2>What took the Internet offline in Q3 2026</h2>](https://blog.cloudflare.com/q3-2026-internet-disruption-summary/)
+
+An examination of global Internet disruptions observed by Cloudflare Radar during the third quarter of 2026. This review analyzes how power failures, natural disasters, and government shutdowns impacted network connectivity and traffic.
+
+![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
+
 October 26, 2026 [<h2>Cross-request KV cache exposure in the GLM-5.3 Workers AI model, and our remediation with SGLang</h2>](https://blog.cloudflare.com/kv-cache-exposure-remediation/)
 
 A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that exposed KV cache pages across requests. Here is how we addressed the issue.
@@ -17,8 +35,6 @@ A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that e
 ![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/) and  [Michelle Chen](https://blog.cloudflare.com/author/michelle/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5X2P2KSNBX6J13E3B4219PW.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/kv-cache-exposure-remediation/)
 
 October 23, 2026 [<h2>Origin Range Requests: Serving large files without range-request tuning</h2>](https://blog.cloudflare.com/origin-range-requests/)
 
@@ -147,22 +163,6 @@ When strikes hit Yandex data centers, many assumed Russian bot operations went d
 ![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/) and  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
-
-October 14, 2026 [<h2>Inside Hyperdrive: How we solved a rare Hyperdrive MySQL caching bug</h2>](https://blog.cloudflare.com/hyperdrive-mysql/)
-
-While adding MySQL support to Hyperdrive, we found a subtle protocol bug when caching query results. Here is how we tracked down a 0.001% rate error and made Hyperdrive MySQL generally available.
-
-![Pranoy Dutta](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4VK61ABP982X8ARDP51MPZ3.01M4VK624NKY2ZRQFDJP3JPHW2.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Pranoy Dutta](https://blog.cloudflare.com/author/pranoy-dutta/)
-
-October 13, 2026 [<h2>Under the hood, off the hot path: How D1 scales to millions of databases</h2>](https://blog.cloudflare.com/d1-control-plane/)
-
-A deep dive into how D1 architected its control plane to scale and manage millions of databases, while keeping data plane query operations at the edge. We share guiding principles on how to build on the Developer Platform effectively.
-
-![David Laban](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XD0TS97ET65W53NTJ30DM.01M34XD1GRAZN4A2HXX71EEZ5N.webp&w=64&h=64&f=webp&fit=cover&position=center)![Lambros Petrou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WA9G46YD5HZY63QTNT9A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[David Laban](https://blog.cloudflare.com/author/david-laban/) and  [Lambros Petrou](https://blog.cloudflare.com/author/lambros-petrou/)
 
 Load more
 
