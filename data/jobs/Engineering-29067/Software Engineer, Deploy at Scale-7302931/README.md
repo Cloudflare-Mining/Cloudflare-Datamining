@@ -20,8 +20,8 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For San Francisco based hires: Estimated annual salary of $194,000 - $266,000</li>
-	<li>For New York City based hires: Estimated annual salary of $185,000 - $254,000</li>
+	<li>For San Francisco based hires: Estimated annual salary of $157,000 - $216,000</li>
+	<li>For New York City based hires: Estimated annual salary of $150,000 - $206,000</li>
 </ul>
 <h4><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h4>
 <p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
