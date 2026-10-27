@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 26, 2026 [<h2>Cross-request KV cache exposure in the GLM-5.3 Workers AI model, and our remediation with SGLang</h2>](https://blog.cloudflare.com/kv-cache-exposure-remediation/)
+
+A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that exposed KV cache pages across requests. Here is how we addressed the issue.
+
+![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/) and  [Michelle Chen](https://blog.cloudflare.com/author/michelle/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5X2P2KSNBX6J13E3B4219PW.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/kv-cache-exposure-remediation/)
+
 October 23, 2026 [<h2>Origin Range Requests: Serving large files without range-request tuning</h2>](https://blog.cloudflare.com/origin-range-requests/)
 
 Naive byte-range caching can waste gigabytes of origin bandwidth on small requests. We rebuilt our cache architecture in Pingora to coordinate partial fetches automatically, cutting R2 p99 latency in half.
@@ -17,8 +27,6 @@ Naive byte-range caching can waste gigabytes of origin bandwidth on small reques
 ![Matthew Gumport](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MRN7JAQQFSHSNAJAM1QNS7.01M5MRN86CH33YX9T3KVKHYEAR.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matthew Gumport](https://blog.cloudflare.com/author/matthew-gumport/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MZP89Y10XGACD5T6G2F398.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/origin-range-requests/)
 
 October 23, 2026 [<h2>Bringing post-quantum cryptography to geographically fenced key management</h2>](https://blog.cloudflare.com/post-quantum-geo-key-manager/)
 
@@ -155,14 +163,6 @@ A deep dive into how D1 architected its control plane to scale and manage millio
 ![David Laban](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M34XD0TS97ET65W53NTJ30DM.01M34XD1GRAZN4A2HXX71EEZ5N.webp&w=64&h=64&f=webp&fit=cover&position=center)![Lambros Petrou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WA9G46YD5HZY63QTNT9A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [David Laban](https://blog.cloudflare.com/author/david-laban/) and  [Lambros Petrou](https://blog.cloudflare.com/author/lambros-petrou/)
-
-October 13, 2026 [<h2>Rewinding the exponential: How we keep hardware usage down</h2>](https://blog.cloudflare.com/rewinding-the-exponential/)
-
-Our strategies to optimize our data pipeline throughput without compromising data quality.
-
-![Cathy Chi](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BW29GFVNFAGYMYGYE13W.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Sergey Nuzhdin](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4RZSTYSC3FYTCKQQ8VDWNVF.01M4RZSVDJE561F1HM16DXYGP7.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christian Endres](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446RYCN9GFDAVP4BR4X64Q.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Cathy Chi](https://blog.cloudflare.com/author/cathy-chi/),  [Sergey Nuzhdin](https://blog.cloudflare.com/author/sergey-nuzhdin/), and  [Christian Endres](https://blog.cloudflare.com/author/christian-endres/)
 
 Load more
 
