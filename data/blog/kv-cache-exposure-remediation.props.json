@@ -1,0 +1,33 @@
+{
+	"initialReadingTime": "16",
+	"locale": "en-us",
+	"post": {
+		"authors": [
+			{
+				"name": "Kevin Flansburg",
+				"slug": "kevin-flansburg"
+			},
+			{
+				"name": "Michelle Chen",
+				"slug": "michelle"
+			}
+		],
+		"excerpt": "A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that exposed KV cache pages across requests. Here is how we addressed the issue.",
+		"feature_image": "https://blog.cloudflare.com/_emdash/api/media/file/01M5X2YJT16K16BFFJGEMCAXRS.01M5X2YM62P3YQRBGRP96FS4P6.png",
+		"published_at": "2026-10-26T22:01:23.889Z",
+		"slug": "kv-cache-exposure-remediation",
+		"tags": [
+			{
+				"name": "Security",
+				"slug": "security"
+			},
+			{
+				"name": "Workers AI",
+				"slug": "workers-ai"
+			}
+		],
+		"title": "Cross-request KV cache exposure in the GLM-5.3 Workers AI model, and our remediation with SGLang",
+		"updated_at": "2026-10-26T22:01:23.889Z",
+		"url": "https://blog.cloudflare.com/kv-cache-exposure-remediation/"
+	}
+}
