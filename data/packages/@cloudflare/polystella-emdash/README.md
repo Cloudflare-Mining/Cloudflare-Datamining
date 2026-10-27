@@ -102,13 +102,23 @@ The native editor panel appears for Editors and Administrators. The PolyStella
 translatable fields. The source locale is always the code-defined
 `catalogs.defaultLocale` and cannot be changed in plugin settings. No collection
 is enabled until an Administrator saves a valid policy. Missing or malformed
-stored policy fails closed.
+stored policy fails closed. Translation also checks the live collection schema
+(`schema:read`) and refuses fields that were removed, changed type, or marked
+non-translatable. Settings saves are conditional on the loaded revision; a
+concurrent save by another Administrator is rejected instead of overwritten.
 
 The panel translates selected `string`, `text`, and Portable Text fields in an
 existing target-locale draft. The private route rereads selected values through
 its `content:read` capability, while the panel updates with EmDash's `_rev` token
 and reloads after success. Unsaved browser changes are not translated and are
-lost after confirmation.
+lost after confirmation. A save refused by another editor's edit lock names the
+lock holder.
+
+On a source-locale entry, the panel instead creates a missing locale: it
+translates the selected fields, creates the draft as the signed-in user through
+EmDash's content API (copying the source entry and slug, like EmDash's
+**Create translation** button), and opens it. Locales that already have an
+entry are not offered.
 
 Content translation displays named percentage stages while loading the saved
 entry, translating fields, and saving the patch.
@@ -131,6 +141,8 @@ batch completion.
 Repository JSON remains canonical. The catalog page can generate, edit, clear,
 inspect deployment state, and export temporary per-key overrides. Runtime
 overrides are disabled per locale until an Administrator explicitly enables them.
+Override saves are conditional on the value you loaded, and **Clear synced
+overrides** removes every override that already matches the deployed catalog.
 
 The catalog view groups entries by their first key segment; groups with an
 `i18n_group_title` show that title with the group key alongside. A search box
@@ -172,12 +184,10 @@ the client types and use the request-bound factory:
 const t = await Astro.locals.buildCatalogTranslator(locale);
 ```
 
-## EmDash 0.36 Limitations
+## EmDash Limitations
 
 - Panels use the latest saved entry, not unsaved form state.
-- EmDash leaves an empty PolyStella section on collections disabled in plugin
-  settings because panel visibility cannot be resolved asynchronously.
-- EmDash does not expose authoritative collection schema metadata to plugin
-  routes. The server enforces the stored collection/field policy and saved value
-  shapes; administrators must revisit the **Collections** tab after schema
-  changes.
+- EmDash shows the PolyStella section on every collection because panel
+  visibility cannot be resolved asynchronously. On collections not enabled in
+  plugin settings, the panel says so and links Administrators to the
+  Collections tab.

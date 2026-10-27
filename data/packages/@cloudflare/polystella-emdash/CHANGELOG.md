@@ -1,5 +1,11 @@
 # @cloudflare/polystella-emdash
 
+## 0.2.0
+
+### Minor Changes
+
+- [#62](https://github.com/cloudflare/polystella/pull/62) [`fb53a06`](https://github.com/cloudflare/polystella/commit/fb53a06a5f9ad4912e4b9bdb8c8b7c151b7472bc) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Require EmDash `^1.3.1` and `@emdash-cms/admin` `^1.3.1` (verified against `1.3.1`). Content translation now checks the live collection schema (`schema:read`) and refuses fields that were removed, changed type, or marked non-translatable. Settings and catalog-override saves are conditional, so a concurrent edit returns a 409 conflict instead of being overwritten. A new **Clear synced overrides** action removes overrides that already match the deployed catalog. The source-locale lookup uses `ctx.content.getTranslations()`, routes declare their HTTP methods, settings use `ctx.settings`, and the editor panel explains when another editor's lock blocks the save. With custom Astro locale paths such as `{ path: "fr", codes: ["fr-FR"] }`, content that EmDash 1.3 stores under the path (`fr`) now matches the catalog code (`fr-FR`), so the editor panel keeps working for new entries. On a source-locale entry, the editor panel can now create a missing locale as a translated draft in one step.
+
 ## 0.1.0
 
 ### Minor Changes
