@@ -228,19 +228,8 @@ import { getWeather } from "ws:tools";
 export default async () => (await getWeather({ city: "Lisbon" })).text;
 ```
 
-To work in a Workspace another Durable Object owns, use `lazyWorkspace`:
-
-```ts
-import { getWorkspace } from "@cloudflare/computer";
-import { lazyWorkspace } from "@cloudflare/think";
-
-override workspace = lazyWorkspace(async () =>
-  getWorkspace(await this.parentAgent(Directory))
-);
-```
-
-Every Think agent can hand out its own Workspace the same way: `getWorkspace`
-calls the agent's `__getWorkspaceStub()` over RPC.
+Every Think agent can hand out its own Workspace: `getWorkspace(stub)` from
+`@cloudflare/computer` calls the agent's `__getWorkspaceStub()` over RPC.
 
 ## Agent Skills
 
@@ -384,7 +373,7 @@ Script execution requires a Worker Loader binding:
 
 | Export                                  | Description                                                   |
 | --------------------------------------- | ------------------------------------------------------------- |
-| `@cloudflare/think`                     | `Think`, `Session`, `lazyWorkspace` — main class + re-exports |
+| `@cloudflare/think`                     | `Think`, `Session` — main class + re-exports                  |
 | `agents/sessions`                       | `Sessions`, `Session`, `createCompactFunction`, attachments   |
 | `agents/context`                        | `ContextBlocks`, providers, `ContextConfig` — prompt assembly |
 | `@cloudflare/think/messengers`          | Messenger contracts, Chat SDK bridge, state agent, delivery   |
@@ -725,9 +714,7 @@ Extensions can subscribe to `beforeTurn`, `beforeToolCall`, `afterToolCall`, `on
 ```js
 // extension source (loaded via getExtensions())
 ({
-  tools: {
-    /* ... */
-  },
+  tools: {/* ... */},
   hooks: {
     beforeToolCall: async (snapshot, host) => {
       /* observation */
@@ -1162,7 +1149,7 @@ getTools() {
 | Package                      | Notes                                                     |
 | ---------------------------- | --------------------------------------------------------- |
 | `agents`                     | Cloudflare Agents SDK peer dependency                     |
-| `ai`                         | Vercel AI SDK v6 peer dependency                          |
+| `ai`                         | Vercel AI SDK v7 peer dependency                          |
 | `zod`                        | Schema validation peer dependency                         |
 | `@cloudflare/computer`       | Workspace and workspace tools peer dependency             |
 | `@cloudflare/codemode`       | Code execution, `createExecuteTool`, and JS skill scripts |

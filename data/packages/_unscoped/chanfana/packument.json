@@ -1,7 +1,7 @@
 {
 	"name": "chanfana",
 	"dist-tags": {
-		"latest": "3.4.0"
+		"latest": "3.4.2"
 	},
 	"versions": {
 		"2.0.0": {
@@ -1486,52 +1486,168 @@
 			"name": "chanfana",
 			"version": "3.4.0",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^8.5.0",
+				"zod": "^4.4.3",
 				"js-yaml": "^4.3.1",
 				"openapi3-ts": "^4.6.1",
 				"yargs-parser": "^22.0.0",
-				"zod": "^4.4.3"
+				"@asteasolutions/zod-to-openapi": "^8.5.0"
 			},
 			"devDependencies": {
-				"@biomejs/biome": "2.5.8",
-				"@changesets/changelog-github": "^0.5.2",
-				"@changesets/cli": "^2.31.1",
-				"@cloudflare/vitest-pool-workers": "^0.12.17",
-				"@cloudflare/workers-types": "4.20260702.1",
-				"@types/js-yaml": "^4.0.9",
-				"@types/node": "25.3.0",
-				"@vitest/coverage-istanbul": "^3.2.7",
 				"hono": "4.13.2",
-				"itty-router": "5.0.24",
-				"pkg-pr-new": "^0.0.88",
 				"tsup": "8.5.1",
-				"typescript": "5.9.3",
-				"vitepress": "^1.6.4",
 				"vitest": "^3.2.7",
+				"wrangler": "4.107.1",
+				"vitepress": "^1.6.4",
+				"pkg-pr-new": "^0.0.88",
+				"typescript": "5.9.3",
+				"@types/node": "25.3.0",
+				"itty-router": "5.0.24",
+				"@biomejs/biome": "2.5.8",
+				"@types/js-yaml": "^4.0.9",
 				"vitest-openapi": "^1.0.3",
-				"wrangler": "4.107.1"
+				"@changesets/cli": "^2.31.1",
+				"@cloudflare/workers-types": "4.20260702.1",
+				"@vitest/coverage-istanbul": "^3.2.7",
+				"@changesets/changelog-github": "^0.5.2",
+				"@cloudflare/vitest-pool-workers": "^0.12.17"
 			},
 			"bin": {
 				"chanfana": "dist/cli.js"
 			},
 			"dist": {
-				"integrity": "sha512-zNXyjQWnuhxd2m5QOQjAT7dCi8jg/SXckhD3y/Z6PKJfsf/XfSlvxyxFJpJh8O19lrvrsM4SUgEz2628imtWJQ==",
 				"shasum": "66571cdbf74aad1a0c2f7a04523bff51a494b684",
 				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-3.4.0.tgz",
 				"fileCount": 59,
-				"unpackedSize": 709228,
+				"integrity": "sha512-zNXyjQWnuhxd2m5QOQjAT7dCi8jg/SXckhD3y/Z6PKJfsf/XfSlvxyxFJpJh8O19lrvrsM4SUgEz2628imtWJQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCpVtLL49oW/kqKaXCaNc2fv5cPPtfLqqw1gHfQ04r6KgIgV22rEGvtHldqCiQJPPNLrvymGMT7Sq6ClwsmDJGY5zs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/chanfana@3.4.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
+				"unpackedSize": 709228
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"3.4.1": {
+			"name": "chanfana",
+			"version": "3.4.1",
+			"dependencies": {
+				"zod": "^4.6.7",
+				"js-yaml": "^5.5.0",
+				"openapi3-ts": "^4.6.2",
+				"yargs-parser": "^22.0.0",
+				"@asteasolutions/zod-to-openapi": "^9.1.0"
+			},
+			"devDependencies": {
+				"hono": "4.13.14",
+				"tsup": "9.0.0",
+				"vitest": "^5.0.5",
+				"wrangler": "4.153.0",
+				"vitepress": "^1.6.4",
+				"pkg-pr-new": "^0.0.92",
+				"typescript": "6.0.3",
+				"@types/node": "26.6.5",
+				"itty-router": "5.0.24",
+				"@biomejs/biome": "2.6.3",
+				"vitest-openapi": "^1.0.3",
+				"@changesets/cli": "^3.0.3",
+				"@cloudflare/vitest-plugin": "^1.4.8",
+				"@cloudflare/workers-types": "5.20261027.1",
+				"@vitest/coverage-istanbul": "^5.0.5",
+				"@changesets/changelog-github": "^1.0.1"
+			},
+			"bin": {
+				"chanfana": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "b9d18518f869edfae720d8a2246766ad09d48026",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-3.4.1.tgz",
+				"fileCount": 60,
+				"integrity": "sha512-VAJQN9TaqxW4wn0s3KGioWdk27iaRsrh5z7+NnAo9T8h+M0dBMJqFxUVaRx4UQPTSM6QY8RM6VS3VsIWEFb+Kw==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCpVtLL49oW/kqKaXCaNc2fv5cPPtfLqqw1gHfQ04r6KgIgV22rEGvtHldqCiQJPPNLrvymGMT7Sq6ClwsmDJGY5zs="
+						"sig": "MEUCIFXebX/VZJ4Wru1YTYqca5gHciuA9IQ1IhesxK0WbxGJAiEAt2JMC6H/EvHPADjMU9TEb2zRavjuLA19/AygmVyU5Us=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"sig": "MEYCIQC0MtL8Ccu9/g0/A4RvNISFYJmJIIl2Pbt7jGT/XMyjngIhAIlaqvdeYnNyGEhBBvg68f4EB41MsA1iYwYeh3Xa2QC8",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/chanfana@3.4.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 748725
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"3.4.2": {
+			"name": "chanfana",
+			"version": "3.4.2",
+			"dependencies": {
+				"zod": "^4.6.7",
+				"js-yaml": "^5.5.0",
+				"openapi3-ts": "^4.6.2",
+				"yargs-parser": "^22.0.0",
+				"@asteasolutions/zod-to-openapi": "^9.1.0"
+			},
+			"devDependencies": {
+				"hono": "4.13.14",
+				"tsup": "9.0.0",
+				"vitest": "^5.0.5",
+				"wrangler": "4.153.0",
+				"vitepress": "^1.6.4",
+				"pkg-pr-new": "^0.0.92",
+				"typescript": "6.0.3",
+				"@types/node": "26.6.5",
+				"itty-router": "5.0.24",
+				"@biomejs/biome": "2.6.3",
+				"vitest-openapi": "^1.0.3",
+				"@changesets/cli": "^3.0.3",
+				"@cloudflare/vitest-plugin": "^1.4.8",
+				"@cloudflare/workers-types": "5.20261027.1",
+				"@vitest/coverage-istanbul": "^5.0.5",
+				"@changesets/changelog-github": "^1.0.1"
+			},
+			"bin": {
+				"chanfana": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "26c6f04fc31f9e364f11f4f1fd1c10a6739706f6",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-3.4.2.tgz",
+				"fileCount": 60,
+				"integrity": "sha512-IqBIWetzVyfO/8OROKOk3F61PhDwrHtL7sGbtoBGNRamwEf2OZyMr7JLzT0crrSoc7n23QXGaeHGeAAfE32VGw==",
+				"signatures": [
+					{
+						"sig": "MEQCIAs3zhEQess3NjVseSn6i0XFz5R4nvQZKFB5L3LWDe/AAiBs4AgkewNw0p4zUZv3Jq6vOyzeg1pn8JzzZIq1OrP62Q==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIHY+ms35fjqdeXtpvTpAjl/ogCzzdc07Mg6Ta8gnd464AiEAiBBHFrT1FSKqOFLuN9zOnHndPrnGRN8FzhKB1kimiWs="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/chanfana@3.4.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 749447
 			},
 			"engines": {
 				"node": ">=18"
