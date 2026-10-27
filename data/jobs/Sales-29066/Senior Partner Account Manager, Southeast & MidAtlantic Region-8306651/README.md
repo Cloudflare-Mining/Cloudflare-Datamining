@@ -3,49 +3,43 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations</h3>
+<p><strong>Open to any of the listed location(s):</strong></p>
 <ul>
-	<li>New York, NY</li>
-	<li>Washington DC</li>
+	<li>Florida: Miami (MIA), Tampa (TPA)</li>
+	<li>Georgia: Atlanta (ATL)</li>
+	<li>North Carolina: Charlotte (CLT), Raleigh (RDU)</li>
+	<li>Tennessee: Nashville (BNA)</li>
 </ul>
-<h3><strong>About the Role</strong></h3>
-<p>The Manager, Customer Experience is a strategic people leader responsible for building, coaching, and scaling a high-performing team of Customer Experience Managers (CXMs). In this role, you will empower your team to lead the post-sale journey, from onboarding to long-term retention and expansion. You will serve as a mentor and escalation point, guiding your team in building strategic stakeholder relationships and articulating business value. You will lead the operational strategy for your region, ensuring accurate forecasting and driving team-wide adoption of AI-driven workflows to automate routine tasks and uncover growth opportunities. Your focus is on developing talent, optimizing the customer journey, and scaling our CX organization to accelerate customer outcomes and maximize operational efficiency.</p>
-<h3><strong>Responsibilities</strong></h3>
-<p>Team Leadership &amp; Career Development</p>
+<h3><strong>About the Department</strong></h3>
+<p>Partner Account Managers, Account Executives, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
+<h3><strong>What you'll do</strong></h3>
+<p>We are looking for a seasoned channel sales professional to help us build out the channel organization in the Southeast and MidAtlantic regions.</p>
+<p>In this role, you’ll identify and operationalize varied types of partner organizations to help expand Cloudflare’s sales team reach within an assigned territory. You will build a regional partner business plan with quantified goals and milestones to achieve partner sourced revenue metrics to meet all quarterly sales requirements.</p>
+<p>As a Partner Account Manager, you will work with a strategic group of partners in your territory and build a plan to drive alignment, enablement and pipeline generation efforts. &nbsp; You will work with partner stakeholders to drive sales enablement and coordinate technical training of Cloudflare’s solutions, work with respective field teams on demand gen initiatives and campaigns, as well as working with direct sales on various Channel oriented opps.</p>
+<p>&nbsp;</p>
+<p><strong>Additional responsibilities will include:</strong></p>
 <ul>
-	<li>Directly manage and coach a team of CXMs, fostering a culture of high performance, accountability, and continuous learning.</li>
-	<li>Drive career development initiatives, including regular 1:1s, performance reviews, and skill-gap analysis to prepare team members for growth.</li>
+	<li>Lead business planning and execution with partners and internal sales teams (e.g., QBRs, health checks, annual planning).</li>
+	<li>Conduct joint partner territory planning with aligned sales segments.</li>
+	<li>Deliver internal partner training to direct sales teams to foster collaborative selling.</li>
+	<li>Drive pipeline creation and revenue through creative joint GTM activity with our channel and direct sales teams.</li>
+	<li>Build product and sales competency within core regional and national partners, influencing their GTM strategies to maximize partner-sourced pipeline.</li>
+	<li>Leverage data analytics and AI tooling to optimize and scale partner growth.</li>
 </ul>
-<p>Operational Strategy &amp; Performance Management</p>
+<p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Oversee regional forecasting and pipeline hygiene in Salesforce, ensuring accurate reporting to leadership.</li>
-	<li>Establish and optimize operational workflows, including the integration of AI tools for account quoting and automated lifecycle alerts.</li>
+	<li>5+ years in Software/SaaS/Security Sales &amp; Channel management.</li>
+	<li>3+ years of proven success developing and scaling a partner ecosystem (VARs, SIs, MSPs/MSSPs) within a SaaS model.</li>
+	<li>Understanding of cloud infrastructure ecosystem and cloud security is highly preferred.</li>
+	<li>Direct experience in onboarding and enabling resellers/SI's.</li>
+	<li>Experience working in a start-up environment.</li>
+	<li>Ability to travel 30-50% of the time within the assigned territory.</li>
+	<li>Technical competence strongly preferred.</li>
 </ul>
-<p>Cross-Functional Alignment &amp; Escalation</p>
-<ul>
-	<li>Act as the ultimate point of escalation for complex commercial negotiations, legal redlines, and commercial business issues.</li>
-	<li>Maintain strong alignment with Sales, Product, and Support leadership to resolve friction points in the customer journey.</li>
-</ul>
-<p>AI Competencies</p>
-<ul>
-	<li>Generative AI: Mastery of LLMs to rapidly draft renewal communications, synthesize quarterly review data, and prepare executive summaries.</li>
-	<li>Data Analysis: Proficiency in leveraging AI analytics tools to parse customer usage metrics and instantly highlight up-sell or cross-sell opportunities.</li>
-	<li>Workflow Automation: Ability to build automations to synchronize CRM data, update weekly forecasts, and trigger lifecycle alerts.</li>
-	<li>AI Problem Solving: The instinct to view AI as a partner in solving tough problems to keep the Internet moving forward.</li>
-</ul>
-<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
-<ul>
-	<li>Minimum of 5 years of experience in Customer Success and Renewals Sales, with at least 2 years in a direct people management role.</li>
-	<li>Proven track record of scaling teams and managing organizational transitions in a high-growth SaaS environment.</li>
-	<li>Expertise in SaaS retention strategies, commercial negotiations, and value-driven sales leadership.</li>
-	<li>Strong proficiency in coaching teams on AI competencies, including LLM utilization and automated workflow building.</li>
-	<li>Deep understanding of cloud security and networking industries; ability to translate technical concepts into business strategy.</li>
-	<li>Exceptional mentorship and leadership skills with a focus on empathy, transparency, and results.</li>
-	<li>Excellent problem solving skills with the ability to creatively achieve resolutions.</li>
-</ul>
-<h3><strong>Compensation</strong></h3>
-<p>Compensation may be adjusted depending on work location. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
-<p>For New York and DC based hires: Estimated annual salary of $158,000 - $218,000.</p>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>This role is eligible to earn incentive compensation under Cloudflare's Sales Compensation Plan.&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
