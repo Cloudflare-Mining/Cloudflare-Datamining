@@ -100,6 +100,15 @@
 								"operation_group_id": 1650
 							},
 							{
+								"operation_name": "SendPrompt",
+								"operation_id": 8004,
+								"application_control": "Prompt",
+								"application_control_id": 1652,
+								"contains_payload": true,
+								"operation_group": "Chat",
+								"operation_group_id": 1650
+							},
+							{
 								"operation_name": "EnableVoiceMode",
 								"operation_id": 8003,
 								"application_control": "Voice",
@@ -203,6 +212,15 @@
 								"operation_id": 8011,
 								"application_control": "Voice",
 								"application_control_id": 1655,
+								"contains_payload": false,
+								"operation_group": "Chat",
+								"operation_group_id": 1650
+							},
+							{
+								"operation_name": "CreateShare",
+								"operation_id": 31868,
+								"application_control": "Share",
+								"application_control_id": 1654,
 								"contains_payload": false,
 								"operation_group": "Chat",
 								"operation_group_id": 1650
@@ -381,6 +399,24 @@
 								"operation_group_id": 1656
 							},
 							{
+								"operation_name": "SendPrompt",
+								"operation_id": 8021,
+								"application_control": "Prompt",
+								"application_control_id": 1657,
+								"contains_payload": true,
+								"operation_group": "Chat",
+								"operation_group_id": 1656
+							},
+							{
+								"operation_name": "SendPrompt",
+								"operation_id": 8021,
+								"application_control": "Prompt",
+								"application_control_id": 1657,
+								"contains_payload": true,
+								"operation_group": "Chat",
+								"operation_group_id": 1656
+							},
+							{
 								"operation_name": "UploadFile",
 								"operation_id": 8022,
 								"application_control": "Upload",
@@ -440,24 +476,6 @@
 								"application_control": "Voice",
 								"application_control_id": 1659,
 								"contains_payload": false,
-								"operation_group": "Chat",
-								"operation_group_id": 1656
-							},
-							{
-								"operation_name": "SendPrompt",
-								"operation_id": 8021,
-								"application_control": "Prompt",
-								"application_control_id": 1657,
-								"contains_payload": true,
-								"operation_group": "Chat",
-								"operation_group_id": 1656
-							},
-							{
-								"operation_name": "SendPrompt",
-								"operation_id": 8021,
-								"application_control": "Prompt",
-								"application_control_id": 1657,
-								"contains_payload": true,
 								"operation_group": "Chat",
 								"operation_group_id": 1656
 							}
