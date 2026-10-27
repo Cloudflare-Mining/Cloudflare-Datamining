@@ -492599,7 +492599,7 @@
 						}
 					},
 					"400": {
-						"description": "Bad Request",
+						"description": "Input Validation Error",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -492609,26 +492609,35 @@
 											"type": "array",
 											"items": {
 												"properties": {
+													"code": {
+														"type": "number",
+														"example": 7001
+													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"example": "Input Validation Error"
+													},
+													"path": {
+														"type": "array",
+														"items": {
+															"example": "body",
+															"type": "string"
+														}
 													}
 												},
 												"required": [
-													"message"
+													"code",
+													"message",
+													"path"
 												],
 												"type": "object"
 											}
 										},
-										"result": {
-											"type": "object"
-										},
 										"success": {
-											"type": "boolean",
-											"example": false
+											"type": "boolean"
 										}
 									},
 									"required": [
-										"result",
 										"success",
 										"errors"
 									]
@@ -506643,6 +506652,53 @@
 							}
 						}
 					},
+					"400": {
+						"description": "Input Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number",
+														"example": 7001
+													},
+													"message": {
+														"type": "string",
+														"example": "Input Validation Error"
+													},
+													"path": {
+														"type": "array",
+														"items": {
+															"example": "body",
+															"type": "string"
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message",
+													"path"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
+					},
 					"404": {
 						"description": "Not Found",
 						"content": {
@@ -507458,6 +507514,53 @@
 									"required": [
 										"success",
 										"result"
+									]
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Input Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number",
+														"example": 7001
+													},
+													"message": {
+														"type": "string",
+														"example": "Input Validation Error"
+													},
+													"path": {
+														"type": "array",
+														"items": {
+															"example": "body",
+															"type": "string"
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message",
+													"path"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
 									]
 								}
 							}
