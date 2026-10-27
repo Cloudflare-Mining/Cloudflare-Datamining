@@ -498,10 +498,19 @@
 																		"default": 1,
 																		"minimum": 1,
 																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Customer-defined name, unique within the account by exact string equality (case-sensitive, with no Unicode normalization). Must be valid UTF-8 and at most 255 UTF-8 bytes, not 255 characters. Only graphical Unicode characters are allowed; leading or trailing whitespace is rejected. The name can be changed without changing the set's nameservers or addresses.",
+																		"type": "string",
+																		"example": "Production nameservers",
+																		"maxLength": 255,
+																		"minLength": 1,
+																		"x-auditable": true
 																	}
 																},
 																"required": [
 																	"id",
+																	"name",
 																	"ip_set",
 																	"created_on"
 																]
@@ -601,10 +610,19 @@
 																		"default": 1,
 																		"minimum": 1,
 																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Customer-defined name, unique within the account by exact string equality (case-sensitive, with no Unicode normalization). Must be valid UTF-8 and at most 255 UTF-8 bytes, not 255 characters. Only graphical Unicode characters are allowed; leading or trailing whitespace is rejected. The name can be changed without changing the set's nameservers or addresses.",
+																		"type": "string",
+																		"example": "Production nameservers",
+																		"maxLength": 255,
+																		"minLength": 1,
+																		"x-auditable": true
 																	}
 																},
 																"required": [
 																	"id",
+																	"name",
 																	"ip_set",
 																	"created_on"
 																]
@@ -1024,10 +1042,19 @@
 																	"default": 1,
 																	"minimum": 1,
 																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Customer-defined name, unique within the account by exact string equality (case-sensitive, with no Unicode normalization). Must be valid UTF-8 and at most 255 UTF-8 bytes, not 255 characters. Only graphical Unicode characters are allowed; leading or trailing whitespace is rejected. The name can be changed without changing the set's nameservers or addresses.",
+																	"type": "string",
+																	"example": "Production nameservers",
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"x-auditable": true
 																}
 															},
 															"required": [
 																"id",
+																"name",
 																"ip_set",
 																"created_on"
 															]
@@ -1127,10 +1154,19 @@
 																	"default": 1,
 																	"minimum": 1,
 																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Customer-defined name, unique within the account by exact string equality (case-sensitive, with no Unicode normalization). Must be valid UTF-8 and at most 255 UTF-8 bytes, not 255 characters. Only graphical Unicode characters are allowed; leading or trailing whitespace is rejected. The name can be changed without changing the set's nameservers or addresses.",
+																	"type": "string",
+																	"example": "Production nameservers",
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"x-auditable": true
 																}
 															},
 															"required": [
 																"id",
+																"name",
 																"ip_set",
 																"created_on"
 															]
@@ -1387,10 +1423,573 @@
 		"x-fern-sdk-method-name": "get",
 		"x-stability": "beta"
 	},
+	"PATCH /accounts/{account_id}/dns_settings/nameserver_sets/{nameserver_set_id}": {
+		"operationId": "dns-settings-for-an-account-update-custom-nameserver-set",
+		"summary": "Update Custom Nameserver Set",
+		"description": "Renames a Custom Nameserver Set owned by the account. Only name may be supplied; immutable and unknown fields are rejected even if unchanged. An empty object or the existing name is a successful no-op. Requires the account-scoped creation entitlements for the existing set.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "nameserver_set_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier for a nameserver set.",
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Updates only the customer-defined name. All other fields are rejected, even if unchanged. An empty object or the current name succeeds without changing the set. A null name is invalid. Requires the account-scoped creation entitlements, including eligibility for the set's current IP set and the Advanced entitlement for an Advanced set.",
+						"type": "object",
+						"properties": {
+							"name": {
+								"description": "Customer-defined name, unique within the account by exact string equality (case-sensitive, with no Unicode normalization). Must be valid UTF-8 and at most 255 UTF-8 bytes, not 255 characters. Only graphical Unicode characters are allowed; leading or trailing whitespace is rejected. The name can be changed without changing the set's nameservers or addresses.",
+								"type": "string",
+								"example": "Production nameservers",
+								"maxLength": 255,
+								"minLength": 1,
+								"x-auditable": true
+							}
+						},
+						"additionalProperties": false
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the complete modified Custom Nameserver Set.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"created_on": {
+																	"description": "When the nameserver set was created.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2026-09-01T12:00:00Z",
+																	"readOnly": true,
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Identifier for a nameserver set.",
+																	"type": "string",
+																	"example": "0123456789abcdef0123456789abcdef",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"pattern": "^[0-9a-f]{32}$",
+																	"x-auditable": true
+																},
+																"ip_set": {
+																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																	"type": "integer",
+																	"format": "int64",
+																	"example": 1,
+																	"default": 1,
+																	"minimum": 1,
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Customer-defined name, unique within the account by exact string equality (case-sensitive, with no Unicode normalization). Must be valid UTF-8 and at most 255 UTF-8 bytes, not 255 characters. Only graphical Unicode characters are allowed; leading or trailing whitespace is rejected. The name can be changed without changing the set's nameservers or addresses.",
+																	"type": "string",
+																	"example": "Production nameservers",
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"ip_set",
+																"created_on"
+															]
+														},
+														{
+															"properties": {
+																"advanced": {
+																	"description": "Whether the nameserver set uses Advanced anycast groups.",
+																	"type": "boolean",
+																	"example": false,
+																	"enum": [
+																		false
+																	],
+																	"x-auditable": true
+																},
+																"nameservers": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"ipv4": {
+																				"description": "IPv4 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "192.0.2.1",
+																					"format": "ipv4",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv6": {
+																				"description": "IPv6 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "2001:db8::1",
+																					"format": "ipv6",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"name": {
+																				"description": "A unique lowercase Punycode nameserver name within the set.",
+																				"type": "string",
+																				"example": "ns1.example.com",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"ipv4",
+																			"ipv6"
+																		]
+																	},
+																	"maxItems": 5,
+																	"minItems": 2
+																}
+															},
+															"required": [
+																"advanced",
+																"nameservers"
+															],
+															"type": "object"
+														}
+													]
+												},
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"created_on": {
+																	"description": "When the nameserver set was created.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2026-09-01T12:00:00Z",
+																	"readOnly": true,
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Identifier for a nameserver set.",
+																	"type": "string",
+																	"example": "0123456789abcdef0123456789abcdef",
+																	"maxLength": 32,
+																	"minLength": 32,
+																	"pattern": "^[0-9a-f]{32}$",
+																	"x-auditable": true
+																},
+																"ip_set": {
+																	"description": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+																	"type": "integer",
+																	"format": "int64",
+																	"example": 1,
+																	"default": 1,
+																	"minimum": 1,
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Customer-defined name, unique within the account by exact string equality (case-sensitive, with no Unicode normalization). Must be valid UTF-8 and at most 255 UTF-8 bytes, not 255 characters. Only graphical Unicode characters are allowed; leading or trailing whitespace is rejected. The name can be changed without changing the set's nameservers or addresses.",
+																	"type": "string",
+																	"example": "Production nameservers",
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"ip_set",
+																"created_on"
+															]
+														},
+														{
+															"properties": {
+																"advanced": {
+																	"description": "Whether the nameserver set uses Advanced anycast groups.",
+																	"type": "boolean",
+																	"example": true,
+																	"enum": [
+																		true
+																	],
+																	"x-auditable": true
+																},
+																"nameservers": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"ipv4": {
+																				"description": "IPv4 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "192.0.2.1",
+																					"format": "ipv4",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv4_groups": {
+																				"description": "Advanced anycast group for each address in the corresponding address array. Entries have the same order as, and correspond one-to-one with, the addresses.",
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"a",
+																						"b",
+																						"c"
+																					],
+																					"example": "a",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv6": {
+																				"description": "IPv6 addresses assigned to the nameserver.",
+																				"type": "array",
+																				"items": {
+																					"example": "2001:db8::1",
+																					"format": "ipv6",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"ipv6_groups": {
+																				"description": "Advanced anycast group for each address in the corresponding address array. Entries have the same order as, and correspond one-to-one with, the addresses.",
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"a",
+																						"b",
+																						"c"
+																					],
+																					"example": "a",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"maxItems": 3,
+																				"readOnly": true
+																			},
+																			"name": {
+																				"description": "A unique lowercase Punycode nameserver name within the set.",
+																				"type": "string",
+																				"example": "ns1.example.com",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"ipv4",
+																			"ipv4_groups",
+																			"ipv6",
+																			"ipv6_groups"
+																		]
+																	},
+																	"maxItems": 5,
+																	"minItems": 2
+																}
+															},
+															"required": [
+																"advanced",
+																"nameservers"
+															],
+															"type": "object"
+														}
+													]
+												}
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Returns an error when the Custom Nameserver Set cannot be updated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Custom Nameserver Sets for an Account"
+		],
+		"x-api-token-group": [
+			"Account DNS Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.custom-ns-set.update"
+			]
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "dns.settings.account.nameserver-sets",
+		"x-fern-sdk-method-name": "edit",
+		"x-stability": "beta"
+	},
 	"POST /accounts/{account_id}/dns_settings/nameserver_sets": {
 		"operationId": "dns-settings-for-an-account-create-custom-nameserver-set",
 		"summary": "Create Custom Nameserver Set",
-		"description": "Creates an immutable Custom Nameserver Set. To change a set, create a new one, move any zone assignments, and delete the old set.",
+		"description": "Creates a named Custom Nameserver Set. Only the customer-defined name can be changed later. To change nameservers or addresses, create a new set, move any zone assignments, and delete the old set.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1428,6 +2027,14 @@
 								"minimum": 1,
 								"x-auditable": true
 							},
+							"name": {
+								"description": "Customer-defined name, unique within the account by exact string equality (case-sensitive, with no Unicode normalization). Must be valid UTF-8 and at most 255 UTF-8 bytes, not 255 characters. Only graphical Unicode characters are allowed; leading or trailing whitespace is rejected. The name can be changed without changing the set's nameservers or addresses.",
+								"type": "string",
+								"example": "Production nameservers",
+								"maxLength": 255,
+								"minLength": 1,
+								"x-auditable": true
+							},
 							"nameservers": {
 								"description": "Lists each nameserver and the number of addresses to allocate to it. Requires a unique name for each entry in the set.",
 								"type": "array",
@@ -1460,6 +2067,7 @@
 							}
 						},
 						"required": [
+							"name",
 							"nameservers"
 						]
 					}
@@ -1595,10 +2203,19 @@
 																	"default": 1,
 																	"minimum": 1,
 																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Customer-defined name, unique within the account by exact string equality (case-sensitive, with no Unicode normalization). Must be valid UTF-8 and at most 255 UTF-8 bytes, not 255 characters. Only graphical Unicode characters are allowed; leading or trailing whitespace is rejected. The name can be changed without changing the set's nameservers or addresses.",
+																	"type": "string",
+																	"example": "Production nameservers",
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"x-auditable": true
 																}
 															},
 															"required": [
 																"id",
+																"name",
 																"ip_set",
 																"created_on"
 															]
@@ -1698,10 +2315,19 @@
 																	"default": 1,
 																	"minimum": 1,
 																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Customer-defined name, unique within the account by exact string equality (case-sensitive, with no Unicode normalization). Must be valid UTF-8 and at most 255 UTF-8 bytes, not 255 characters. Only graphical Unicode characters are allowed; leading or trailing whitespace is rejected. The name can be changed without changing the set's nameservers or addresses.",
+																	"type": "string",
+																	"example": "Production nameservers",
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"x-auditable": true
 																}
 															},
 															"required": [
 																"id",
+																"name",
 																"ip_set",
 																"created_on"
 															]

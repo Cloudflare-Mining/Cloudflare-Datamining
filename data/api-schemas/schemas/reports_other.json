@@ -11,7 +11,7 @@
 				"schema": {
 					"description": "Cloudflare public account ID (32-character hexadecimal string)",
 					"type": "string",
-					"example": "f1234567890abcdef1234567890abcdef",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[a-f0-9]{32}$"
@@ -792,6 +792,74 @@
 						}
 					}
 				}
+			},
+			"400": {
+				"description": "Invalid account identifier",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -824,7 +892,7 @@
 				"schema": {
 					"description": "Cloudflare public account ID (32-character hexadecimal string)",
 					"type": "string",
-					"example": "f1234567890abcdef1234567890abcdef",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[a-f0-9]{32}$"
@@ -993,11 +1061,26 @@
 								"messages": {
 									"type": "array",
 									"items": {
-										"nullable": true
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
 									},
 									"default": []
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1058,7 +1141,7 @@
 				"schema": {
 					"description": "Cloudflare public account ID (32-character hexadecimal string)",
 					"type": "string",
-					"example": "f1234567890abcdef1234567890abcdef",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[a-f0-9]{32}$"
@@ -1224,11 +1307,26 @@
 								"messages": {
 									"type": "array",
 									"items": {
-										"nullable": true
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
 									},
 									"default": []
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1278,7 +1376,7 @@
 				"schema": {
 					"description": "Cloudflare public account ID (32-character hexadecimal string)",
 					"type": "string",
-					"example": "f1234567890abcdef1234567890abcdef",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[a-f0-9]{32}$"
@@ -1577,11 +1675,26 @@
 								"messages": {
 									"type": "array",
 									"items": {
-										"nullable": true
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
 									},
 									"default": []
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -1631,7 +1744,7 @@
 				"schema": {
 					"description": "Cloudflare public account ID (32-character hexadecimal string)",
 					"type": "string",
-					"example": "f1234567890abcdef1234567890abcdef",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[a-f0-9]{32}$"
@@ -3171,11 +3284,26 @@
 								"messages": {
 									"type": "array",
 									"items": {
-										"nullable": true
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
 									},
 									"default": []
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -3225,7 +3353,7 @@
 				"schema": {
 					"description": "Cloudflare public account ID (32-character hexadecimal string)",
 					"type": "string",
-					"example": "f1234567890abcdef1234567890abcdef",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
 					"pattern": "^[a-f0-9]{32}$"
@@ -4744,11 +4872,26 @@
 								"messages": {
 									"type": "array",
 									"items": {
-										"nullable": true
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
 									},
 									"default": []
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -4797,11 +4940,26 @@
 								"messages": {
 									"type": "array",
 									"items": {
-										"nullable": true
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
 									},
 									"default": []
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {
@@ -4850,11 +5008,26 @@
 								"messages": {
 									"type": "array",
 									"items": {
-										"nullable": true
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
 									},
 									"default": []
 								},
 								"result": {
+									"type": "object",
 									"nullable": true
 								},
 								"success": {

@@ -202,9 +202,8 @@
 			"Field Extractors"
 		],
 		"x-fern-availability": "alpha",
-		"x-fern-sdk-group-name": "fieldExtractors",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "field-extractors",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/field_extractors/{extractor}": {
 		"operationId": "getFieldExtractor",
@@ -463,9 +462,8 @@
 			"Field Extractors"
 		],
 		"x-fern-availability": "alpha",
-		"x-fern-sdk-group-name": "fieldExtractors",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "field-extractors",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /accounts/{account_id}/field_extractors/{extractor}": {
 		"operationId": "updateFieldExtractor",
@@ -864,8 +862,7 @@
 			"Field Extractors"
 		],
 		"x-fern-availability": "alpha",
-		"x-fern-sdk-group-name": "fieldExtractors",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "field-extractors",
+		"x-fern-sdk-method-name": "update"
 	}
 }

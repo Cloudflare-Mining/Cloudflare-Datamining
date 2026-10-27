@@ -697,15 +697,26 @@
 											"description": "Whether the report already has an open (undecided) appeal.",
 											"type": "boolean"
 										},
+										"has_pending_notice": {
+											"description": "Whether the report is in its Notice and Takedown notice period. No mitigation is applied yet, but one will be applied at `notice_deadline` unless the report is resolved first.",
+											"type": "boolean"
+										},
 										"max_appeals": {
 											"description": "Maximum number of appeals allowed per report.",
 											"type": "integer"
+										},
+										"notice_deadline": {
+											"description": "When the notice period ends and the mitigation is applied. Present only when `has_pending_notice` is true. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+											"type": "string",
+											"format": "date-time",
+											"example": "2009-11-10T23:00:00Z"
 										}
 									},
 									"required": [
 										"appealable",
 										"has_appealable_mitigations",
 										"has_open_appeal",
+										"has_pending_notice",
 										"appeal_count",
 										"max_appeals"
 									]
@@ -4430,7 +4441,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Submit an appeal for a report. Provide either a list of mitigations to appeal, or an appeal type with its supporting details, but not both. When type is \"counter_notice\", the counter-notice details are required.",
+						"description": "Submit an appeal for a report. Provide either a list of mitigations to appeal, or an appeal type with its supporting details, but not both. When type is \"counter_notice\", the counter-notice details are required. A \"content_removed\" appeal takes an optional explanation instead and is accepted only while the report is in its Notice and Takedown notice period (`has_pending_notice` on the eligibility response). Reports that allow a single appeal (`max_appeals` of 1) never have a notice period and accept it whenever `appealable` is true.",
 						"type": "object",
 						"properties": {
 							"appeals": {
@@ -4525,6 +4536,11 @@
 									"jurisdiction_consent",
 									"signature"
 								]
+							},
+							"explanation": {
+								"description": "Optional explanation for a \"content_removed\" appeal, such as how the content was removed. Not accepted for other appeal types.",
+								"type": "string",
+								"maxLength": 5000
 							},
 							"type": {
 								"description": "The type of appeal being submitted.",

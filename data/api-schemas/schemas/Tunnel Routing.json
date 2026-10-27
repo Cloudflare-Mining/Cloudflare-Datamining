@@ -48,6 +48,11 @@
 														"type": "integer",
 														"minimum": 1000
 													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
+													},
 													"message": {
 														"type": "string"
 													}
@@ -68,6 +73,11 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
+													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
 													},
 													"message": {
 														"type": "string"
@@ -199,6 +209,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -219,6 +234,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -347,6 +367,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -373,6 +398,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -532,6 +562,11 @@
 														"type": "integer",
 														"minimum": 1000
 													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
+													},
 													"message": {
 														"type": "string"
 													}
@@ -552,6 +587,11 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
+													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
 													},
 													"message": {
 														"type": "string"
@@ -683,6 +723,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -703,6 +748,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -831,6 +881,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -857,6 +912,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -1106,6 +1166,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -1126,6 +1191,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -1330,6 +1400,11 @@
 																		"type": "integer",
 																		"minimum": 1000
 																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
 																	"message": {
 																		"type": "string"
 																	}
@@ -1350,6 +1425,11 @@
 																	"code": {
 																		"type": "integer",
 																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
 																	},
 																	"message": {
 																		"type": "string"
@@ -1548,6 +1628,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -1574,6 +1659,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -1693,6 +1783,11 @@
 														"type": "integer",
 														"minimum": 1000
 													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
+													},
 													"message": {
 														"type": "string"
 													}
@@ -1713,6 +1808,11 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
+													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
 													},
 													"message": {
 														"type": "string"
@@ -1844,6 +1944,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -1864,6 +1969,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -1992,6 +2102,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -2018,6 +2133,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -2148,6 +2268,11 @@
 														"type": "integer",
 														"minimum": 1000
 													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
+													},
 													"message": {
 														"type": "string"
 													}
@@ -2168,6 +2293,11 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
+													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
 													},
 													"message": {
 														"type": "string"
@@ -2327,6 +2457,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -2347,6 +2482,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -2503,6 +2643,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -2529,6 +2674,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -2691,6 +2841,11 @@
 														"type": "integer",
 														"minimum": 1000
 													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
+													},
 													"message": {
 														"type": "string"
 													}
@@ -2711,6 +2866,11 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
+													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
 													},
 													"message": {
 														"type": "string"
@@ -2842,6 +3002,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -2862,6 +3027,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -2990,6 +3160,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -3016,6 +3191,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -3131,6 +3311,11 @@
 														"type": "integer",
 														"minimum": 1000
 													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
+													},
 													"message": {
 														"type": "string"
 													}
@@ -3151,6 +3336,11 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
+													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
 													},
 													"message": {
 														"type": "string"
@@ -3282,6 +3472,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -3302,6 +3497,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -3430,6 +3630,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -3456,6 +3661,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -3610,6 +3820,11 @@
 														"type": "integer",
 														"minimum": 1000
 													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
+													},
 													"message": {
 														"type": "string"
 													}
@@ -3630,6 +3845,11 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
+													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
 													},
 													"message": {
 														"type": "string"
@@ -3761,6 +3981,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -3781,6 +4006,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -3909,6 +4139,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -3935,6 +4170,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -4089,6 +4329,11 @@
 														"type": "integer",
 														"minimum": 1000
 													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
+													},
 													"message": {
 														"type": "string"
 													}
@@ -4109,6 +4354,11 @@
 													"code": {
 														"type": "integer",
 														"minimum": 1000
+													},
+													"context": {
+														"description": "Optional error-specific context.",
+														"type": "object",
+														"additionalProperties": true
 													},
 													"message": {
 														"type": "string"
@@ -4240,6 +4490,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -4260,6 +4515,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
@@ -4388,6 +4648,11 @@
 																"type": "integer",
 																"minimum": 1000
 															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
 															"message": {
 																"type": "string"
 															}
@@ -4414,6 +4679,11 @@
 															"code": {
 																"type": "integer",
 																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"message": {
 																"type": "string"
