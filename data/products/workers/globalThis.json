@@ -275,6 +275,7 @@
 			"cache_option_preserves_cache_control": "boolean",
 			"cache_reload_enabled": "boolean",
 			"capture_async_api_throws": "boolean",
+			"connect_handler_starttls": "boolean",
 			"connect_pass_through": "boolean",
 			"containers_pid_namespace": "boolean",
 			"crypto_preserve_public_exponent": "boolean",
@@ -7921,14 +7922,7 @@
 				"_prototype": {
 					"length": "undefined",
 					"name": "undefined",
-					"prototype": "undefined",
-					"hasSubscribers": "function",
-					"publish": "function",
-					"subscribe": "function",
-					"unsubscribe": "function",
-					"bindStore": "function",
-					"unbindStore": "function",
-					"runStores": "function"
+					"prototype": "undefined"
 				}
 			},
 			"subscribe": {
@@ -7957,50 +7951,7 @@
 				"__type": "function",
 				"length": "number",
 				"name": "string",
-				"_prototype": {
-					"hasSubscribers": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"publish": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"subscribe": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"unsubscribe": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"bindStore": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"unbindStore": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"runStores": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					}
-				}
+				"_prototype": {}
 			}
 		},
 		"dns": {
