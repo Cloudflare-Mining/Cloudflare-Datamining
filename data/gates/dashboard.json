@@ -116,7 +116,7 @@
 		"enabled": true
 	},
 	"ai-auto-rag-stream-source": {
-		"enabled": false
+		"enabled": true
 	},
 	"ai-auto-rag-test-models": {
 		"enabled": true
@@ -672,6 +672,9 @@
 	"containers-ui": {
 		"enabled": true
 	},
+	"control-access-for-top-personal-ai-agents": {
+		"enabled": false
+	},
 	"control-plane-large-orgs": {
 		"enabled": true
 	},
@@ -1055,7 +1058,7 @@
 		"enabled": true
 	},
 	"deseng-speed-settings-kumo": {
-		"enabled": false
+		"enabled": true
 	},
 	"deseng-ssl-tls-kumo": {
 		"enabled": true
@@ -3247,6 +3250,9 @@
 			"modal",
 			"drawer"
 		]
+	},
+	"worker-preview-profiling": {
+		"enabled": true
 	},
 	"worker-previews": {
 		"enabled": true
