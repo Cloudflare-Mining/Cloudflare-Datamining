@@ -1588,6 +1588,16 @@
 													"type": "number"
 												}
 											},
+											"jurisdiction": {
+												"description": "Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.",
+												"type": "string",
+												"enum": [
+													"eu",
+													"fedramp",
+													"us"
+												],
+												"nullable": true
+											},
 											"modified_on": {
 												"type": "string",
 												"format": "date-time"
@@ -1863,6 +1873,16 @@
 											"additionalProperties": {
 												"type": "number"
 											}
+										},
+										"jurisdiction": {
+											"description": "Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.",
+											"type": "string",
+											"enum": [
+												"eu",
+												"fedramp",
+												"us"
+											],
+											"nullable": true
 										},
 										"modified_on": {
 											"type": "string",
@@ -11126,6 +11146,15 @@
 									}
 								}
 							},
+							"jurisdiction": {
+								"description": "Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.",
+								"type": "string",
+								"enum": [
+									"eu",
+									"fedramp",
+									"us"
+								]
+							},
 							"limits": {
 								"type": "object",
 								"properties": {
@@ -11228,6 +11257,16 @@
 										},
 										"is_deleted": {
 											"type": "number"
+										},
+										"jurisdiction": {
+											"description": "Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.",
+											"type": "string",
+											"enum": [
+												"eu",
+												"fedramp",
+												"us"
+											],
+											"nullable": true
 										},
 										"modified_on": {
 											"type": "string",

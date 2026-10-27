@@ -1,4 +1,166 @@
 {
+	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
+		"operationId": "delete_IndicatorDeleteBulk",
+		"summary": "Delete indicators in bulk",
+		"description": "Deletes up to 200 indicators from a dataset. Pass the indicator UUIDs in `indicatorIds`; UUIDs that are not found are returned in `missingUUIDs`.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "dataset_id",
+				"in": "path",
+				"description": "Dataset ID.",
+				"required": true,
+				"schema": {
+					"description": "Dataset ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "indicatorIds",
+				"in": "query",
+				"description": "Indicator UUIDs to delete, 1-200 per request.",
+				"required": true,
+				"schema": {
+					"description": "Indicator UUIDs to delete, 1-200 per request.",
+					"type": "array",
+					"items": {
+						"format": "uuid",
+						"type": "string"
+					},
+					"maxItems": 200,
+					"minItems": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the number of deleted indicators.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"deletedCount": {
+									"description": "Number of indicators deleted.",
+									"type": "integer",
+									"minimum": 0
+								},
+								"missingUUIDs": {
+									"description": "Requested UUIDs that were not found in the dataset. Omitted when every UUID was deleted.",
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							},
+							"required": [
+								"deletedCount"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators",
+		"x-fern-sdk-method-name": "bulk-delete"
+	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"operationId": "delete_IndicatorDelete",
 		"summary": "Delete an indicator",

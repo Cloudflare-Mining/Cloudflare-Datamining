@@ -18446,6 +18446,10 @@
 																											"type": "string",
 																											"example": "Allow devs"
 																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
+																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																											"type": "array",
@@ -21582,6 +21586,10 @@
 																											"description": "The name of the Access policy.",
 																											"type": "string",
 																											"example": "Allow devs"
+																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
 																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -25008,6 +25016,10 @@
 																											"type": "string",
 																											"example": "Allow devs"
 																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
+																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																											"type": "array",
@@ -28433,6 +28445,10 @@
 																											"type": "string",
 																											"example": "Allow devs"
 																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
+																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																											"type": "array",
@@ -30985,6 +31001,10 @@
 																											"type": "string",
 																											"example": "Allow devs"
 																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
+																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																											"type": "array",
@@ -33454,6 +33474,10 @@
 																											"description": "The name of the Access policy.",
 																											"type": "string",
 																											"example": "Allow devs"
+																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
 																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -35925,6 +35949,10 @@
 																											"type": "string",
 																											"example": "Allow devs"
 																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
+																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																											"type": "array",
@@ -38395,6 +38423,10 @@
 																											"type": "string",
 																											"example": "Allow devs"
 																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
+																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																											"type": "array",
@@ -40805,6 +40837,10 @@
 																											"description": "The name of the Access policy.",
 																											"type": "string",
 																											"example": "Allow devs"
+																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
 																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -43454,6 +43490,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -47176,6 +47216,10 @@
 																											"type": "string",
 																											"example": "Allow devs"
 																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
+																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																											"type": "array",
@@ -50385,6 +50429,10 @@
 																											"description": "The name of the Access policy.",
 																											"type": "string",
 																											"example": "Allow devs"
+																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
 																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -53600,6 +53648,10 @@
 																											"description": "The name of the Access policy.",
 																											"type": "string",
 																											"example": "Allow devs"
+																										},
+																										"policy_resolution_account_id": {
+																											"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																											"type": "string"
 																										},
 																										"require": {
 																											"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -57566,6 +57618,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -61048,6 +61104,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -64820,6 +64880,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -68591,6 +68655,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -71489,6 +71557,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -73951,6 +74023,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -76415,6 +76491,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -78878,6 +78958,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -81281,6 +81365,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -83858,6 +83946,10 @@
 																			"description": "The name of the Access policy.",
 																			"type": "string",
 																			"example": "Allow devs"
+																		},
+																		"policy_resolution_account_id": {
+																			"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																			"type": "string"
 																		},
 																		"require": {
 																			"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -87585,6 +87677,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -90787,6 +90883,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -93995,6 +94095,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -97924,6 +98028,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -101060,6 +101168,10 @@
 																												"description": "The name of the Access policy.",
 																												"type": "string",
 																												"example": "Allow devs"
+																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
 																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -104486,6 +104598,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -107911,6 +108027,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -110463,6 +110583,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -112932,6 +113056,10 @@
 																												"description": "The name of the Access policy.",
 																												"type": "string",
 																												"example": "Allow devs"
+																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
 																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -115403,6 +115531,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -117873,6 +118005,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -120283,6 +120419,10 @@
 																												"description": "The name of the Access policy.",
 																												"type": "string",
 																												"example": "Allow devs"
+																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
 																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -122932,6 +123072,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -126654,6 +126798,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -129863,6 +130011,10 @@
 																												"description": "The name of the Access policy.",
 																												"type": "string",
 																												"example": "Allow devs"
+																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
 																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -133078,6 +133230,10 @@
 																												"description": "The name of the Access policy.",
 																												"type": "string",
 																												"example": "Allow devs"
+																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
 																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -136925,6 +137081,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -140061,6 +140221,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -143487,6 +143651,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -146912,6 +147080,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -149464,6 +149636,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -151933,6 +152109,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -154404,6 +154584,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -156874,6 +157058,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -159284,6 +159472,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -161933,6 +162125,10 @@
 																								"description": "The name of the Access policy.",
 																								"type": "string",
 																								"example": "Allow devs"
+																							},
+																							"policy_resolution_account_id": {
+																								"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																								"type": "string"
 																							},
 																							"require": {
 																								"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -165655,6 +165851,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -168864,6 +169064,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -172079,6 +172283,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -176492,6 +176700,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -179628,6 +179840,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -183054,6 +183270,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -186479,6 +186699,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -189031,6 +189255,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -191500,6 +191728,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -193971,6 +194203,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -196441,6 +196677,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -198851,6 +199091,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -201500,6 +201744,10 @@
 																								"description": "The name of the Access policy.",
 																								"type": "string",
 																								"example": "Allow devs"
+																							},
+																							"policy_resolution_account_id": {
+																								"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																								"type": "string"
 																							},
 																							"require": {
 																								"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -205222,6 +205470,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -208431,6 +208683,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -211646,6 +211902,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -215633,6 +215893,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -219115,6 +219379,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -222887,6 +223155,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -226658,6 +226930,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -229556,6 +229832,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -232018,6 +232298,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -234482,6 +234766,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -236945,6 +237233,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -239348,6 +239640,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -241925,6 +242221,10 @@
 																			"description": "The name of the Access policy.",
 																			"type": "string",
 																			"example": "Allow devs"
+																		},
+																		"policy_resolution_account_id": {
+																			"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																			"type": "string"
 																		},
 																		"require": {
 																			"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -245652,6 +245952,10 @@
 																									"type": "string",
 																									"example": "Allow devs"
 																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
+																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																									"type": "array",
@@ -248854,6 +249158,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -252062,6 +252370,10 @@
 																									"description": "The name of the Access policy.",
 																									"type": "string",
 																									"example": "Allow devs"
+																								},
+																								"policy_resolution_account_id": {
+																									"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																									"type": "string"
 																								},
 																								"require": {
 																									"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -255991,6 +256303,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -259127,6 +259443,10 @@
 																												"description": "The name of the Access policy.",
 																												"type": "string",
 																												"example": "Allow devs"
+																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
 																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -262553,6 +262873,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -265978,6 +266302,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -268530,6 +268858,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -270999,6 +271331,10 @@
 																												"description": "The name of the Access policy.",
 																												"type": "string",
 																												"example": "Allow devs"
+																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
 																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -273470,6 +273806,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -275940,6 +276280,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -278350,6 +278694,10 @@
 																												"description": "The name of the Access policy.",
 																												"type": "string",
 																												"example": "Allow devs"
+																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
 																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -280999,6 +281347,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -284721,6 +285073,10 @@
 																												"type": "string",
 																												"example": "Allow devs"
 																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
+																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																												"type": "array",
@@ -287930,6 +288286,10 @@
 																												"description": "The name of the Access policy.",
 																												"type": "string",
 																												"example": "Allow devs"
+																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
 																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -291145,6 +291505,10 @@
 																												"description": "The name of the Access policy.",
 																												"type": "string",
 																												"example": "Allow devs"
+																											},
+																											"policy_resolution_account_id": {
+																												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																												"type": "string"
 																											},
 																											"require": {
 																												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -294992,6 +295356,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -298128,6 +298496,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -301554,6 +301926,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -304979,6 +305355,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -307531,6 +307911,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -310000,6 +310384,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -312471,6 +312859,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -314941,6 +315333,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -317351,6 +317747,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -320000,6 +320400,10 @@
 																								"description": "The name of the Access policy.",
 																								"type": "string",
 																								"example": "Allow devs"
+																							},
+																							"policy_resolution_account_id": {
+																								"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																								"type": "string"
 																							},
 																							"require": {
 																								"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -323722,6 +324126,10 @@
 																										"type": "string",
 																										"example": "Allow devs"
 																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
+																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																										"type": "array",
@@ -326931,6 +327339,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -330146,6 +330558,10 @@
 																										"description": "The name of the Access policy.",
 																										"type": "string",
 																										"example": "Allow devs"
+																									},
+																									"policy_resolution_account_id": {
+																										"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																										"type": "string"
 																									},
 																									"require": {
 																										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -333641,6 +334057,10 @@
 																						"type": "string",
 																						"example": "Allow devs"
 																					},
+																					"policy_resolution_account_id": {
+																						"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																						"type": "string"
+																					},
 																					"require": {
 																						"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																						"type": "array",
@@ -335828,6 +336248,10 @@
 																				"description": "The name of the Access policy.",
 																				"type": "string",
 																				"example": "Allow devs"
+																			},
+																			"policy_resolution_account_id": {
+																				"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																				"type": "string"
 																			},
 																			"require": {
 																				"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -338271,6 +338695,10 @@
 																"type": "string",
 																"example": "Allow devs"
 															},
+															"policy_resolution_account_id": {
+																"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																"type": "string"
+															},
 															"require": {
 																"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																"type": "array",
@@ -340429,6 +340857,10 @@
 														"description": "The name of the Access policy.",
 														"type": "string",
 														"example": "Allow devs"
+													},
+													"policy_resolution_account_id": {
+														"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+														"type": "string"
 													},
 													"require": {
 														"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -342796,6 +343228,10 @@
 																					"type": "string",
 																					"example": "Allow devs"
 																				},
+																				"policy_resolution_account_id": {
+																					"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																					"type": "string"
+																				},
 																				"require": {
 																					"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																					"type": "array",
@@ -344983,6 +345419,10 @@
 																			"description": "The name of the Access policy.",
 																			"type": "string",
 																			"example": "Allow devs"
+																		},
+																		"policy_resolution_account_id": {
+																			"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																			"type": "string"
 																		},
 																		"require": {
 																			"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -347831,6 +348271,10 @@
 																					"type": "string",
 																					"example": "Allow devs"
 																				},
+																				"policy_resolution_account_id": {
+																					"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																					"type": "string"
+																				},
 																				"require": {
 																					"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																					"type": "array",
@@ -350018,6 +350462,10 @@
 																			"description": "The name of the Access policy.",
 																			"type": "string",
 																			"example": "Allow devs"
+																		},
+																		"policy_resolution_account_id": {
+																			"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																			"type": "string"
 																		},
 																		"require": {
 																			"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -352527,6 +352975,10 @@
 																"type": "string",
 																"example": "Allow devs"
 															},
+															"policy_resolution_account_id": {
+																"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																"type": "string"
+															},
 															"require": {
 																"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																"type": "array",
@@ -354685,6 +355137,10 @@
 														"description": "The name of the Access policy.",
 														"type": "string",
 														"example": "Allow devs"
+													},
+													"policy_resolution_account_id": {
+														"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+														"type": "string"
 													},
 													"require": {
 														"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -357052,6 +357508,10 @@
 																					"type": "string",
 																					"example": "Allow devs"
 																				},
+																				"policy_resolution_account_id": {
+																					"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																					"type": "string"
+																				},
 																				"require": {
 																					"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																					"type": "array",
@@ -359239,6 +359699,10 @@
 																			"description": "The name of the Access policy.",
 																			"type": "string",
 																			"example": "Allow devs"
+																		},
+																		"policy_resolution_account_id": {
+																			"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																			"type": "string"
 																		},
 																		"require": {
 																			"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -361829,6 +362293,10 @@
 																						"type": "string",
 																						"example": "Allow devs"
 																					},
+																					"policy_resolution_account_id": {
+																						"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																						"type": "string"
+																					},
 																					"require": {
 																						"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																						"type": "array",
@@ -364016,6 +364484,10 @@
 																				"description": "The name of the Access policy.",
 																				"type": "string",
 																				"example": "Allow devs"
+																			},
+																			"policy_resolution_account_id": {
+																				"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																				"type": "string"
 																			},
 																			"require": {
 																				"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -428069,6 +428541,916 @@
 				"x-forge-require-confirmation": "This operation revokes all access tokens for a user destructively."
 			}
 		},
+		"/accounts/{account_id}/access/organizations/trust_settings": {
+			"get": {
+				"operationId": "zero-trust-organization-get-trust-settings",
+				"summary": "Get Zero Trust organization trust settings",
+				"description": "Returns the trust settings for your Zero Trust organization.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Identifier.",
+							"type": "string",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"x-auditable": true
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Zero Trust organization trust settings",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"grant_trust_to_all_accounts_in_org": {
+															"description": "Whether all accounts in the organization are trusted to use this account's cross-account Access resources.",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"trusting_accounts": {
+															"description": "Explicit account IDs trusted to use this account's cross-account Access resources. At most 100 unique valid account IDs are accepted. Omitted from responses when empty.",
+															"type": "array",
+															"items": {
+																"pattern": "^[0-9a-fA-F]{32}$",
+																"type": "string"
+															},
+															"example": [
+																"023e105f4ecef8ad9ca31a8372d0c353"
+															],
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"grant_trust_to_all_accounts_in_org"
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "Failed to get Zero Trust organization trust settings",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
+					}
+				],
+				"tags": [
+					"Zero Trust organization"
+				],
+				"x-api-token-group": [
+					"Access: Organizations, Identity Providers, and Groups Revoke",
+					"Access: Organizations, Identity Providers, and Groups Write",
+					"Access: Organizations, Identity Providers, and Groups Read"
+				],
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "zero-trust.organization.trust-settings",
+				"x-fern-sdk-method-name": "get"
+			},
+			"patch": {
+				"operationId": "zero-trust-organization-update-trust-settings",
+				"summary": "Update Zero Trust organization trust settings",
+				"description": "Updates the trust settings for your Zero Trust organization.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Identifier.",
+							"type": "string",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"x-auditable": true
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"grant_trust_to_all_accounts_in_org": {
+										"description": "Whether all accounts in the organization are trusted to use this account's cross-account Access resources.",
+										"type": "boolean",
+										"example": false,
+										"x-auditable": true
+									},
+									"trusting_accounts": {
+										"description": "Explicit account IDs trusted to use this account's cross-account Access resources. At most 100 unique valid account IDs are accepted. Omitted from responses when empty.",
+										"type": "array",
+										"items": {
+											"pattern": "^[0-9a-fA-F]{32}$",
+											"type": "string"
+										},
+										"example": [
+											"023e105f4ecef8ad9ca31a8372d0c353"
+										],
+										"x-auditable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Updated Zero Trust organization trust settings",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"grant_trust_to_all_accounts_in_org": {
+															"description": "Whether all accounts in the organization are trusted to use this account's cross-account Access resources.",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"trusting_accounts": {
+															"description": "Explicit account IDs trusted to use this account's cross-account Access resources. At most 100 unique valid account IDs are accepted. Omitted from responses when empty.",
+															"type": "array",
+															"items": {
+																"pattern": "^[0-9a-fA-F]{32}$",
+																"type": "string"
+															},
+															"example": [
+																"023e105f4ecef8ad9ca31a8372d0c353"
+															],
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"grant_trust_to_all_accounts_in_org"
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "Failed to update Zero Trust organization trust settings",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
+					}
+				],
+				"tags": [
+					"Zero Trust organization"
+				],
+				"x-api-token-group": [
+					"Access: Organizations, Identity Providers, and Groups Write"
+				],
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "zero-trust.organization.trust-settings",
+				"x-fern-sdk-method-name": "update"
+			},
+			"put": {
+				"operationId": "zero-trust-organization-replace-trust-settings",
+				"summary": "Replace Zero Trust organization trust settings",
+				"description": "Replaces the trust settings for your Zero Trust organization.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Identifier.",
+							"type": "string",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"x-auditable": true
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"grant_trust_to_all_accounts_in_org": {
+										"description": "Whether all accounts in the organization are trusted to use this account's cross-account Access resources.",
+										"type": "boolean",
+										"example": false,
+										"x-auditable": true
+									},
+									"trusting_accounts": {
+										"description": "Explicit account IDs trusted to use this account's cross-account Access resources. At most 100 unique valid account IDs are accepted. Omitted from responses when empty.",
+										"type": "array",
+										"items": {
+											"pattern": "^[0-9a-fA-F]{32}$",
+											"type": "string"
+										},
+										"example": [
+											"023e105f4ecef8ad9ca31a8372d0c353"
+										],
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"grant_trust_to_all_accounts_in_org"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Replaced Zero Trust organization trust settings",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"grant_trust_to_all_accounts_in_org": {
+															"description": "Whether all accounts in the organization are trusted to use this account's cross-account Access resources.",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"trusting_accounts": {
+															"description": "Explicit account IDs trusted to use this account's cross-account Access resources. At most 100 unique valid account IDs are accepted. Omitted from responses when empty.",
+															"type": "array",
+															"items": {
+																"pattern": "^[0-9a-fA-F]{32}$",
+																"type": "string"
+															},
+															"example": [
+																"023e105f4ecef8ad9ca31a8372d0c353"
+															],
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"grant_trust_to_all_accounts_in_org"
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "Failed to replace Zero Trust organization trust settings",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
+					}
+				],
+				"tags": [
+					"Zero Trust organization"
+				],
+				"x-api-token-group": [
+					"Access: Organizations, Identity Providers, and Groups Write"
+				],
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "zero-trust.organization.trust-settings",
+				"x-fern-sdk-method-name": "replace"
+			}
+		},
 		"/accounts/{account_id}/access/policies": {
 			"get": {
 				"operationId": "access-policies-list-access-reusable-policies",
@@ -429807,6 +431189,10 @@
 																				"description": "The name of the Access policy.",
 																				"type": "string",
 																				"example": "Allow devs"
+																			},
+																			"policy_resolution_account_id": {
+																				"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																				"type": "string"
 																			},
 																			"require": {
 																				"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -432247,6 +433633,10 @@
 												"type": "string",
 												"example": "Allow devs"
 											},
+											"policy_resolution_account_id": {
+												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+												"type": "string"
+											},
 											"require": {
 												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 												"type": "array",
@@ -434608,6 +435998,10 @@
 																			"description": "The name of the Access policy.",
 																			"type": "string",
 																			"example": "Allow devs"
+																		},
+																		"policy_resolution_account_id": {
+																			"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																			"type": "string"
 																		},
 																		"require": {
 																			"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -437445,6 +438839,10 @@
 																			"type": "string",
 																			"example": "Allow devs"
 																		},
+																		"policy_resolution_account_id": {
+																			"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																			"type": "string"
+																		},
 																		"require": {
 																			"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 																			"type": "array",
@@ -439894,6 +441292,10 @@
 												"type": "string",
 												"example": "Allow devs"
 											},
+											"policy_resolution_account_id": {
+												"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+												"type": "string"
+											},
 											"require": {
 												"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 												"type": "array",
@@ -442255,6 +443657,10 @@
 																			"description": "The name of the Access policy.",
 																			"type": "string",
 																			"example": "Allow devs"
+																		},
+																		"policy_resolution_account_id": {
+																			"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																			"type": "string"
 																		},
 																		"require": {
 																			"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -444701,6 +446107,10 @@
 																	"description": "The name of the Access policy.",
 																	"type": "string",
 																	"example": "Allow devs"
+																},
+																"policy_resolution_account_id": {
+																	"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
+																	"type": "string"
 																},
 																"require": {
 																	"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -653272,6 +654682,168 @@
 			}
 		},
 		"/accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
+			"delete": {
+				"operationId": "delete_IndicatorDeleteBulk",
+				"summary": "Delete indicators in bulk",
+				"description": "Deletes up to 200 indicators from a dataset. Pass the indicator UUIDs in `indicatorIds`; UUIDs that are not found are returned in `missingUUIDs`.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"schema": {
+							"description": "Account ID.",
+							"type": "string"
+						}
+					},
+					{
+						"name": "dataset_id",
+						"in": "path",
+						"description": "Dataset ID.",
+						"required": true,
+						"schema": {
+							"description": "Dataset ID.",
+							"type": "string"
+						}
+					},
+					{
+						"name": "indicatorIds",
+						"in": "query",
+						"description": "Indicator UUIDs to delete, 1-200 per request.",
+						"required": true,
+						"schema": {
+							"description": "Indicator UUIDs to delete, 1-200 per request.",
+							"type": "array",
+							"items": {
+								"format": "uuid",
+								"type": "string"
+							},
+							"maxItems": 200,
+							"minItems": 1
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Returns the number of deleted indicators.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"deletedCount": {
+											"description": "Number of indicators deleted.",
+											"type": "integer",
+											"minimum": 0
+										},
+										"missingUUIDs": {
+											"description": "Requested UUIDs that were not found in the dataset. Omitted when every UUID was deleted.",
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									},
+									"required": [
+										"deletedCount"
+									]
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Bad Request.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string",
+														"example": "An error occurred."
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Bad Request.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string",
+														"example": "An error occurred."
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					}
+				],
+				"tags": [
+					"Indicator"
+				],
+				"x-api-token-group": [
+					"Cloudforce One Write"
+				],
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "cloudforce-one.threat-intel.indicators",
+				"x-fern-sdk-method-name": "bulk-delete"
+			},
 			"get": {
 				"operationId": "get_IndicatorListLegacy",
 				"summary": "List indicators in a dataset (legacy)",
@@ -1124076,6 +1125648,7 @@
 							"enum": [
 								"access_requests",
 								"account_abuse_protection_events",
+								"ai_gateway_events",
 								"audit_logs",
 								"audit_logs_v2",
 								"biso_user_actions",
@@ -1124401,6 +1125974,7 @@
 							"enum": [
 								"access_requests",
 								"account_abuse_protection_events",
+								"ai_gateway_events",
 								"audit_logs",
 								"audit_logs_v2",
 								"biso_user_actions",
@@ -1124600,6 +1126174,7 @@
 																		"enum": [
 																			"access_requests",
 																			"account_abuse_protection_events",
+																			"ai_gateway_events",
 																			"audit_logs",
 																			"audit_logs_v2",
 																			"biso_user_actions",
@@ -1125223,6 +1126798,7 @@
 																		"enum": [
 																			"access_requests",
 																			"account_abuse_protection_events",
+																			"ai_gateway_events",
 																			"audit_logs",
 																			"audit_logs_v2",
 																			"biso_user_actions",
@@ -1125743,6 +1127319,7 @@
 										"enum": [
 											"access_requests",
 											"account_abuse_protection_events",
+											"ai_gateway_events",
 											"audit_logs",
 											"audit_logs_v2",
 											"biso_user_actions",
@@ -1126182,6 +1127759,7 @@
 																	"enum": [
 																		"access_requests",
 																		"account_abuse_protection_events",
+																		"ai_gateway_events",
 																		"audit_logs",
 																		"audit_logs_v2",
 																		"biso_user_actions",
@@ -1127102,6 +1128680,7 @@
 																	"enum": [
 																		"access_requests",
 																		"account_abuse_protection_events",
+																		"ai_gateway_events",
 																		"audit_logs",
 																		"audit_logs_v2",
 																		"biso_user_actions",
@@ -1128018,6 +1129597,7 @@
 																	"enum": [
 																		"access_requests",
 																		"account_abuse_protection_events",
+																		"ai_gateway_events",
 																		"audit_logs",
 																		"audit_logs_v2",
 																		"biso_user_actions",
@@ -1943271,6 +1944851,16 @@
 															"type": "number"
 														}
 													},
+													"jurisdiction": {
+														"description": "Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.",
+														"type": "string",
+														"enum": [
+															"eu",
+															"fedramp",
+															"us"
+														],
+														"nullable": true
+													},
 													"modified_on": {
 														"type": "string",
 														"format": "date-time"
@@ -1943824,6 +1945414,16 @@
 														"type": "number"
 													}
 												},
+												"jurisdiction": {
+													"description": "Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.",
+													"type": "string",
+													"enum": [
+														"eu",
+														"fedramp",
+														"us"
+													],
+													"nullable": true
+												},
 												"modified_on": {
 													"type": "string",
 													"format": "date-time"
@@ -1944145,6 +1945745,15 @@
 											}
 										}
 									},
+									"jurisdiction": {
+										"description": "Jurisdiction where instances of this workflow run and store data. Can only be set when the workflow is created and cannot be changed afterwards; omit it to keep the existing jurisdiction.",
+										"type": "string",
+										"enum": [
+											"eu",
+											"fedramp",
+											"us"
+										]
+									},
 									"limits": {
 										"type": "object",
 										"properties": {
@@ -1944247,6 +1945856,16 @@
 												},
 												"is_deleted": {
 													"type": "number"
+												},
+												"jurisdiction": {
+													"description": "Jurisdiction where instances of this workflow run and store data. Set when the workflow is created and cannot be changed.",
+													"type": "string",
+													"enum": [
+														"eu",
+														"fedramp",
+														"us"
+													],
+													"nullable": true
 												},
 												"modified_on": {
 													"type": "string",
@@ -2434093,6 +2435712,7 @@
 							"enum": [
 								"access_requests",
 								"account_abuse_protection_events",
+								"ai_gateway_events",
 								"audit_logs",
 								"audit_logs_v2",
 								"biso_user_actions",
@@ -2434417,6 +2436037,7 @@
 							"enum": [
 								"access_requests",
 								"account_abuse_protection_events",
+								"ai_gateway_events",
 								"audit_logs",
 								"audit_logs_v2",
 								"biso_user_actions",
@@ -2434615,6 +2436236,7 @@
 																		"enum": [
 																			"access_requests",
 																			"account_abuse_protection_events",
+																			"ai_gateway_events",
 																			"audit_logs",
 																			"audit_logs_v2",
 																			"biso_user_actions",
@@ -2436170,6 +2437792,7 @@
 																		"enum": [
 																			"access_requests",
 																			"account_abuse_protection_events",
+																			"ai_gateway_events",
 																			"audit_logs",
 																			"audit_logs_v2",
 																			"biso_user_actions",
@@ -2436690,6 +2438313,7 @@
 										"enum": [
 											"access_requests",
 											"account_abuse_protection_events",
+											"ai_gateway_events",
 											"audit_logs",
 											"audit_logs_v2",
 											"biso_user_actions",
@@ -2437129,6 +2438753,7 @@
 																	"enum": [
 																		"access_requests",
 																		"account_abuse_protection_events",
+																		"ai_gateway_events",
 																		"audit_logs",
 																		"audit_logs_v2",
 																		"biso_user_actions",
@@ -2438049,6 +2439674,7 @@
 																	"enum": [
 																		"access_requests",
 																		"account_abuse_protection_events",
+																		"ai_gateway_events",
 																		"audit_logs",
 																		"audit_logs_v2",
 																		"biso_user_actions",
@@ -2438965,6 +2440591,7 @@
 																	"enum": [
 																		"access_requests",
 																		"account_abuse_protection_events",
+																		"ai_gateway_events",
 																		"audit_logs",
 																		"audit_logs_v2",
 																		"biso_user_actions",
