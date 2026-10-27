@@ -6671,6 +6671,7 @@
 		"imageId": "Identifier of the requested image. Note: high-cardinality - prefer filtering over grouping for large time windows",
 		"isFlexibleVariant": "1 when the request used a flexible variant, otherwise 0",
 		"isSigned": "1 when the image request used a signed URL, otherwise 0",
+		"tag": "Beta. Currently only available on selected accounts. Value of a specific resource tag on the image. Returns an empty string when the tag is absent or its value is empty. Requires the name argument.",
 		"userAgentBrowser": "Browser parsed from the image request User-Agent header",
 		"userAgentOS": "OS parsed from the image request User-Agent header",
 		"variant": "Requested image variant"
@@ -6718,6 +6719,7 @@
 		"imageId": "Identifier of the requested image. Note: high-cardinality - prefer filtering over grouping for large time windows",
 		"isFlexibleVariant": "1 when the request used a flexible variant, otherwise 0",
 		"isSigned": "1 when the image request used a signed URL, otherwise 0",
+		"tag": "Beta. Currently only available on selected accounts. Value of a specific resource tag on the image. Returns an empty string when the tag is absent or its value is empty. Requires the name argument.",
 		"userAgentBrowser": "Browser parsed from the image request User-Agent header",
 		"userAgentOS": "OS parsed from the image request User-Agent header",
 		"variant": "Requested image variant"
@@ -8463,6 +8465,80 @@
 	},
 	"AccountMagicWANConnectorMetricsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountMarkdownForAgentsAdaptiveGroups": {
+		"__description": "Sampled in-process Markdown for Agents conversion attempts, including partial output and failures. Completion does not establish downstream delivery.",
+		"avg": "Sample characteristics.",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Estimated conversion attempts. Skipped requests and some early cancellations are not recorded.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "Sample-weighted estimates, except explicitly unweighted sampled observation counts."
+	},
+	"AccountMarkdownForAgentsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sampling expansion factor; not producer-event coverage or confidence in rare failures."
+	},
+	"AccountMarkdownForAgentsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated conversion attempts. Skipped requests and some early cancellations are not recorded., with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "Sample-weighted estimates, except explicitly unweighted sampled observation counts., with confidence intervals"
+	},
+	"AccountMarkdownForAgentsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Analytics event date.",
+		"datetime": "Analytics event time, not necessarily request start.",
+		"datetimeFifteenMinutes": "Analytics event time truncated to fifteen minutes.",
+		"datetimeFiveMinutes": "Analytics event time truncated to five minutes.",
+		"datetimeHour": "Analytics event time truncated to the hour.",
+		"datetimeMinute": "Analytics event time truncated to the minute.",
+		"errorCode": "Content-free terminal error tag emitted by the converter; none for completed or unfinished streams. New tags may be added.",
+		"frontmatterStatus": "not_omitted, omitted, or unknown. Not omitted does not establish that front matter existed.",
+		"hostname": "Lowercase hostname from the logged URL; empty if unparseable.",
+		"inputStatus": "not_truncated, truncated, or unknown.",
+		"jsonLdStatus": "not_omitted, omitted, or unknown. Not omitted does not establish that JSON-LD existed.",
+		"outcome": "full, partial, completed_unknown, error, or unfinished. Full means no reported content-loss limits, not lossless HTML preservation or delivery.",
+		"pageUrl": "Logged URL without query, fragment or authority credentials, capped by the producer at 1024 bytes. Long prefixes may collide; invalid UTF-8 is replaced.",
+		"userAgent": "Caller-supplied user agent, not verified crawler identity.",
+		"zoneTag": "Zone identifier, or empty if unavailable."
+	},
+	"AccountMarkdownForAgentsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMarkdownForAgentsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountMarkdownForAgentsAdaptiveGroupsSum": {
+		"__description": "",
+		"completedUnknownRequests": "Completed conversions whose limit telemetry cannot establish full or partial output.",
+		"estimatedTokensSaved": "Signed net input-minus-output token estimate for full, savings-eligible conversions. Expansion contributes negatively.",
+		"failedRequests": "Terminal conversion failures, excluding unfinished streams.",
+		"frontmatterOmittedRequests": "Completed conversions with oversized front matter omitted. May overlap other limits.",
+		"fullRequests": "Completed conversions with all three content-loss flags known false; not lossless HTML preservation.",
+		"inputTruncatedRequests": "Completed conversions with known input cutoff. May overlap metadata omissions.",
+		"jsonLdOmittedRequests": "Completed conversions with oversized JSON-LD omitted. May overlap other limits.",
+		"partialRequests": "Completed conversions with at least one known content-loss limit.",
+		"sampledFailedRequests": "Actual terminal-failure observations, without population expansion.",
+		"sampledPartialRequests": "Actual partial-output observations, without population expansion.",
+		"sampledRequests": "Actual observed sample rows, without population expansion.",
+		"savingsEligibleRequests": "Full conversions with a positive input estimate used for all token-savings sums.",
+		"savingsInputTokens": "Estimated input tokens on savings-eligible conversions. Per-event estimate is floor(decompressed HTML bytes fed to converter / 4), not a tokenizer count.",
+		"savingsOutputTokens": "Estimated produced Markdown tokens on the same savings-eligible cohort, using floor(bytes / 4); not proof of delivery.",
+		"unfinishedRequests": "Streams without a terminal converter outcome; cause is unknown."
+	},
+	"AccountMarkdownForAgentsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"completedUnknownRequests": "Confidence interval for the corresponding point estimate",
+		"failedRequests": "Confidence interval for the corresponding point estimate",
+		"frontmatterOmittedRequests": "Confidence interval for the corresponding point estimate",
+		"fullRequests": "Confidence interval for the corresponding point estimate",
+		"inputTruncatedRequests": "Confidence interval for the corresponding point estimate",
+		"jsonLdOmittedRequests": "Confidence interval for the corresponding point estimate",
+		"partialRequests": "Confidence interval for the corresponding point estimate",
+		"savingsEligibleRequests": "Confidence interval for the corresponding point estimate",
+		"savingsInputTokens": "Confidence interval for the corresponding point estimate",
+		"savingsOutputTokens": "Confidence interval for the corresponding point estimate",
+		"unfinishedRequests": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountMconnTelemetryEventsAdaptiveGroups": {
 		"__description": "Aggregated Magic WAN Connector events with adaptive sampling",
@@ -11982,6 +12058,7 @@
 		"magicTransitTunnelHealthCheckSLOsAdaptiveGroups": "",
 		"magicTransitTunnelHealthChecksAdaptiveGroups": "",
 		"magicTransitTunnelTrafficAdaptiveGroups": "",
+		"markdownForAgentsAdaptiveGroups": "",
 		"mconnTelemetryEventsAdaptiveGroups": "",
 		"mconnTelemetryEventsStagingAdaptiveGroups": "",
 		"mconnTelemetrySnapshotDhcpLeasesAdaptiveGroups": "",
@@ -16750,6 +16827,79 @@
 		"bytesOut": "Confidence interval for the corresponding point estimate",
 		"records": "Confidence interval for the corresponding point estimate"
 	},
+	"ZoneMarkdownForAgentsAdaptiveGroups": {
+		"__description": "Sampled in-process Markdown for Agents conversion attempts, including partial output and failures. Completion does not establish downstream delivery.",
+		"avg": "Sample characteristics.",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Estimated conversion attempts. Skipped requests and some early cancellations are not recorded.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "Sample-weighted estimates, except explicitly unweighted sampled observation counts."
+	},
+	"ZoneMarkdownForAgentsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sampling expansion factor; not producer-event coverage or confidence in rare failures."
+	},
+	"ZoneMarkdownForAgentsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated conversion attempts. Skipped requests and some early cancellations are not recorded., with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "Sample-weighted estimates, except explicitly unweighted sampled observation counts., with confidence intervals"
+	},
+	"ZoneMarkdownForAgentsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Analytics event date.",
+		"datetime": "Analytics event time, not necessarily request start.",
+		"datetimeFifteenMinutes": "Analytics event time truncated to fifteen minutes.",
+		"datetimeFiveMinutes": "Analytics event time truncated to five minutes.",
+		"datetimeHour": "Analytics event time truncated to the hour.",
+		"datetimeMinute": "Analytics event time truncated to the minute.",
+		"errorCode": "Content-free terminal error tag emitted by the converter; none for completed or unfinished streams. New tags may be added.",
+		"frontmatterStatus": "not_omitted, omitted, or unknown. Not omitted does not establish that front matter existed.",
+		"hostname": "Lowercase hostname from the logged URL; empty if unparseable.",
+		"inputStatus": "not_truncated, truncated, or unknown.",
+		"jsonLdStatus": "not_omitted, omitted, or unknown. Not omitted does not establish that JSON-LD existed.",
+		"outcome": "full, partial, completed_unknown, error, or unfinished. Full means no reported content-loss limits, not lossless HTML preservation or delivery.",
+		"pageUrl": "Logged URL without query, fragment or authority credentials, capped by the producer at 1024 bytes. Long prefixes may collide; invalid UTF-8 is replaced.",
+		"userAgent": "Caller-supplied user agent, not verified crawler identity."
+	},
+	"ZoneMarkdownForAgentsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneMarkdownForAgentsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneMarkdownForAgentsAdaptiveGroupsSum": {
+		"__description": "",
+		"completedUnknownRequests": "Completed conversions whose limit telemetry cannot establish full or partial output.",
+		"estimatedTokensSaved": "Signed net input-minus-output token estimate for full, savings-eligible conversions. Expansion contributes negatively.",
+		"failedRequests": "Terminal conversion failures, excluding unfinished streams.",
+		"frontmatterOmittedRequests": "Completed conversions with oversized front matter omitted. May overlap other limits.",
+		"fullRequests": "Completed conversions with all three content-loss flags known false; not lossless HTML preservation.",
+		"inputTruncatedRequests": "Completed conversions with known input cutoff. May overlap metadata omissions.",
+		"jsonLdOmittedRequests": "Completed conversions with oversized JSON-LD omitted. May overlap other limits.",
+		"partialRequests": "Completed conversions with at least one known content-loss limit.",
+		"sampledFailedRequests": "Actual terminal-failure observations, without population expansion.",
+		"sampledPartialRequests": "Actual partial-output observations, without population expansion.",
+		"sampledRequests": "Actual observed sample rows, without population expansion.",
+		"savingsEligibleRequests": "Full conversions with a positive input estimate used for all token-savings sums.",
+		"savingsInputTokens": "Estimated input tokens on savings-eligible conversions. Per-event estimate is floor(decompressed HTML bytes fed to converter / 4), not a tokenizer count.",
+		"savingsOutputTokens": "Estimated produced Markdown tokens on the same savings-eligible cohort, using floor(bytes / 4); not proof of delivery.",
+		"unfinishedRequests": "Streams without a terminal converter outcome; cause is unknown."
+	},
+	"ZoneMarkdownForAgentsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"completedUnknownRequests": "Confidence interval for the corresponding point estimate",
+		"failedRequests": "Confidence interval for the corresponding point estimate",
+		"frontmatterOmittedRequests": "Confidence interval for the corresponding point estimate",
+		"fullRequests": "Confidence interval for the corresponding point estimate",
+		"inputTruncatedRequests": "Confidence interval for the corresponding point estimate",
+		"jsonLdOmittedRequests": "Confidence interval for the corresponding point estimate",
+		"partialRequests": "Confidence interval for the corresponding point estimate",
+		"savingsEligibleRequests": "Confidence interval for the corresponding point estimate",
+		"savingsInputTokens": "Confidence interval for the corresponding point estimate",
+		"savingsOutputTokens": "Confidence interval for the corresponding point estimate",
+		"unfinishedRequests": "Confidence interval for the corresponding point estimate"
+	},
 	"ZoneNelReportsAdaptiveGroups": {
 		"__description": "Data to visualize network error logs",
 		"avg": "",
@@ -17060,6 +17210,7 @@
 		"loadBalancingRequestsAdaptiveGroups": "",
 		"logpushHealthAdaptiveGroups": "",
 		"logpushTransformersAdaptiveGroups": "",
+		"markdownForAgentsAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
 		"ohttpGatewayMetricsAdaptiveGroups": "",
 		"pageShieldReportsAdaptiveGroups": "",
@@ -18038,6 +18189,7 @@
 		"magicTransitTunnelHealthCheckSLOsAdaptiveGroups": "Magic Transit Tunnel Health Check SLO events with adaptive sampling.",
 		"magicTransitTunnelHealthChecksAdaptiveGroups": "Beta. Magic Transit Health check results for customer GRE Tunnels with adaptive sampling (ABR).",
 		"magicTransitTunnelTrafficAdaptiveGroups": "Bandwidth usage metric of a Magic Transit tunnel.",
+		"markdownForAgentsAdaptiveGroups": "Sampled in-process Markdown for Agents conversion attempts, including partial output and failures. Completion does not establish downstream delivery.",
 		"mconnTelemetryEventsAdaptiveGroups": "Aggregated Magic WAN Connector events with adaptive sampling",
 		"mconnTelemetryEventsStagingAdaptiveGroups": "Aggregated Magic WAN Connector events with adaptive sampling",
 		"mconnTelemetrySnapshotDhcpLeasesAdaptiveGroups": "Aggregated Magic WAN Connector snapshots of DHCP leases with adaptive sampling",
@@ -18242,6 +18394,7 @@
 		"loadBalancingRequestsAdaptiveGroups": "Aggregated Load Balancing origin requests with adaptive sampling",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
 		"logpushTransformersAdaptiveGroups": "Beta. Logpush transformer health metrics",
+		"markdownForAgentsAdaptiveGroups": "Sampled in-process Markdown for Agents conversion attempts, including partial output and failures. Completion does not establish downstream delivery.",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"ohttpGatewayMetricsAdaptiveGroups": "Aggregated oHTTP request metrics with adaptive sampling for Privacy Gateway customers",
 		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
