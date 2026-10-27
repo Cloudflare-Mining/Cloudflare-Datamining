@@ -4589,6 +4589,13 @@
 						"experimental": true
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "pythonSharedStandardLibrary",
+					"annotations": {
+						"compatEnableFlag": "python_shared_standard_library"
+					},
+					"type": "Bool"
 				}
 			]
 		},
