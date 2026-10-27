@@ -283,7 +283,7 @@
 	"tunnels.detail.routes.add.vpc.navigate": "Go to Workers VPC",
 	"tunnels.detail.routes.delete.title": "Delete route?",
 	"tunnels.detail.routes.delete.description": "Are you sure you want to delete this route? This action cannot be undone.",
-	"tunnels.detail.routes.delete.warning": "<strong>Warning:</strong> Deleting this route will permanently remove it. Any services using this route will stop working. If this route has an associated <0>DNS record</0>, it will also be removed.",
+	"tunnels.detail.routes.delete.warning": "<strong>Warning:</strong> Deleting this route will permanently remove it. Any services using this route will stop working. If this route has an associated <0>DNS record</0>, it will only be removed if no other routes in this tunnel use the same hostname.",
 	"tunnels.detail.routes.delete.confirm": "Delete route",
 	"tunnels.detail.routes.edit.public_hostname.title": "Edit published application",
 	"tunnels.detail.routes.edit.public_hostname.description": "Update the configuration for this published application. <0>Learn more about routing to tunnels</0>",

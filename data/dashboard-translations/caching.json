@@ -114,6 +114,8 @@
 	"caching.cache_topology_card.control.options.upper_tier": "Upper Tier Cache",
 	"caching.cache_topology_card.control.options.upper_tier.manual": "Manually Configured",
 	"caching.cache_topology_card.control.recommended_label": "Recommended",
+	"caching.cache_topology_card.custom_topology_notice.description": "Custom Tiered Cache takes precedence over Smart and Generic Tiered Cache. To switch to Smart or Generic Tiered Cache, contact Cloudflare Support to disable your custom topology.",
+	"caching.cache_topology_card.custom_topology_notice.switching_disabled": "Contact Cloudflare Support to switch to Smart or Generic Tiered Cache.",
 	"caching.cache_topology_card.error": "Something went wrong updating your cache topology. Please try again.",
 	"caching.cache_topology_card.short_description": "Selecting your cache topology allows you to control how your origin connects to Cloudflare’s data centers to help ensure higher cache hit ratios, fewer origin connections, and a reduction of Internet latency.",
 	"caching.cache_topology_card.title": "Tiered Cache Topology",

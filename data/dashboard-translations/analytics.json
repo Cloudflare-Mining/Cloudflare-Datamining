@@ -1418,6 +1418,7 @@
 	"logpush.account.title": "Account-scoped Logpush",
 	"logpush.account.description": "Get logs from account-level services.",
 	"logpush.usage.egressed": "**%{egressed} GB** of data exported this month",
+	"logpush.usage.transformer_processed": "**%{processed} GB** of data processed by transformers this month",
 	"logpush.account.view_transformations": "Custom transformations",
 	"logpush.zone.view_transformations": "Custom transformations",
 	"logpush.account.help_drawer": "**What is Logpush?**\n\nCloudflare customers have access to detailed logs of their traffic. These logs are helpful for debugging, identifying configuration adjustments, and creating analytics, especially when combined with other data sources, such as server logs. You can use Logpush to configure regularly uploading your logs to your cloud provider.\n\n",
