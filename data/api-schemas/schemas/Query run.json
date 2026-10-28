@@ -1388,6 +1388,19 @@
 																		"description": "Human-readable name for this span.",
 																		"type": "string"
 																	},
+																	"spanStatus": {
+																		"description": "OpenTelemetry span status. Present only on spans. `unset` when the span did not set a status, including spans recorded before status was captured.",
+																		"type": "string",
+																		"enum": [
+																			"unset",
+																			"ok",
+																			"error"
+																		]
+																	},
+																	"spanStatusMessage": {
+																		"description": "OpenTelemetry span status message. Present only on spans when the status is `error` and a message was set.",
+																		"type": "string"
+																	},
 																	"stackId": {
 																		"description": "Stack / deployment identifier.",
 																		"type": "string"
@@ -1931,6 +1944,19 @@
 																},
 																"spanName": {
 																	"description": "Human-readable name for this span.",
+																	"type": "string"
+																},
+																"spanStatus": {
+																	"description": "OpenTelemetry span status. Present only on spans. `unset` when the span did not set a status, including spans recorded before status was captured.",
+																	"type": "string",
+																	"enum": [
+																		"unset",
+																		"ok",
+																		"error"
+																	]
+																},
+																"spanStatusMessage": {
+																	"description": "OpenTelemetry span status message. Present only on spans when the status is `error` and a message was set.",
 																	"type": "string"
 																},
 																"stackId": {

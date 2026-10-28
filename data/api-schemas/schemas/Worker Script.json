@@ -5737,7 +5737,7 @@
 																		"type": "object",
 																		"properties": {
 																			"identity": {
-																				"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																				"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id or an explicit \"cf1:vnet:<UUID>\" network_id.\n",
 																				"type": "string",
 																				"enum": [
 																					"runtime-email-alpha"
@@ -5751,7 +5751,7 @@
 																				"x-auditable": true
 																			},
 																			"network_id": {
-																				"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+																				"description": "Identifier of the network to bind to. Use \"cf1:network\" to select the account's default virtual network at runtime, or \"cf1:vnet:<UUID>\" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.\n",
 																				"type": "string",
 																				"example": "cf1:network",
 																				"x-auditable": true
@@ -7160,7 +7160,7 @@
 																		"type": "object",
 																		"properties": {
 																			"identity": {
-																				"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																				"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id or an explicit \"cf1:vnet:<UUID>\" network_id.\n",
 																				"type": "string",
 																				"enum": [
 																					"runtime-email-alpha"
@@ -7174,7 +7174,7 @@
 																				"x-auditable": true
 																			},
 																			"network_id": {
-																				"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+																				"description": "Identifier of the network to bind to. Use \"cf1:network\" to select the account's default virtual network at runtime, or \"cf1:vnet:<UUID>\" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.\n",
 																				"type": "string",
 																				"example": "cf1:network",
 																				"x-auditable": true
@@ -12446,7 +12446,7 @@
 															"type": "object",
 															"properties": {
 																"identity": {
-																	"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																	"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id or an explicit \"cf1:vnet:<UUID>\" network_id.\n",
 																	"type": "string",
 																	"enum": [
 																		"runtime-email-alpha"
@@ -12460,7 +12460,7 @@
 																	"x-auditable": true
 																},
 																"network_id": {
-																	"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+																	"description": "Identifier of the network to bind to. Use \"cf1:network\" to select the account's default virtual network at runtime, or \"cf1:vnet:<UUID>\" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.\n",
 																	"type": "string",
 																	"example": "cf1:network",
 																	"x-auditable": true
@@ -13869,7 +13869,7 @@
 															"type": "object",
 															"properties": {
 																"identity": {
-																	"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																	"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id or an explicit \"cf1:vnet:<UUID>\" network_id.\n",
 																	"type": "string",
 																	"enum": [
 																		"runtime-email-alpha"
@@ -13883,7 +13883,7 @@
 																	"x-auditable": true
 																},
 																"network_id": {
-																	"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+																	"description": "Identifier of the network to bind to. Use \"cf1:network\" to select the account's default virtual network at runtime, or \"cf1:vnet:<UUID>\" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.\n",
 																	"type": "string",
 																	"example": "cf1:network",
 																	"x-auditable": true
@@ -16739,7 +16739,7 @@
 																		"type": "object",
 																		"properties": {
 																			"identity": {
-																				"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																				"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id or an explicit \"cf1:vnet:<UUID>\" network_id.\n",
 																				"type": "string",
 																				"enum": [
 																					"runtime-email-alpha"
@@ -16753,7 +16753,7 @@
 																				"x-auditable": true
 																			},
 																			"network_id": {
-																				"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+																				"description": "Identifier of the network to bind to. Use \"cf1:network\" to select the account's default virtual network at runtime, or \"cf1:vnet:<UUID>\" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.\n",
 																				"type": "string",
 																				"example": "cf1:network",
 																				"x-auditable": true
@@ -18162,7 +18162,7 @@
 																		"type": "object",
 																		"properties": {
 																			"identity": {
-																				"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																				"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id or an explicit \"cf1:vnet:<UUID>\" network_id.\n",
 																				"type": "string",
 																				"enum": [
 																					"runtime-email-alpha"
@@ -18176,7 +18176,7 @@
 																				"x-auditable": true
 																			},
 																			"network_id": {
-																				"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+																				"description": "Identifier of the network to bind to. Use \"cf1:network\" to select the account's default virtual network at runtime, or \"cf1:vnet:<UUID>\" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.\n",
 																				"type": "string",
 																				"example": "cf1:network",
 																				"x-auditable": true
@@ -22545,7 +22545,7 @@
 															"type": "object",
 															"properties": {
 																"identity": {
-																	"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id.\n",
+																	"description": "Enables Gateway identity for the binding. Requires network_id to be \"cf1:network\" and cannot be combined with tunnel_id or an explicit \"cf1:vnet:<UUID>\" network_id.\n",
 																	"type": "string",
 																	"enum": [
 																		"runtime-email-alpha"
@@ -22559,7 +22559,7 @@
 																	"x-auditable": true
 																},
 																"network_id": {
-																	"description": "Identifier of the network to bind to. Only \"cf1:network\" is currently supported. Mutually exclusive with tunnel_id.\n",
+																	"description": "Identifier of the network to bind to. Use \"cf1:network\" to select the account's default virtual network at runtime, or \"cf1:vnet:<UUID>\" to select an explicit virtual network in the Worker's account. Mutually exclusive with tunnel_id.\n",
 																	"type": "string",
 																	"example": "cf1:network",
 																	"x-auditable": true
@@ -22621,6 +22621,63 @@
 												"additionalProperties": false,
 												"required": [
 													"enabled"
+												]
+											},
+											"code_update_strategy": {
+												"description": "Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.",
+												"oneOf": [
+													{
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"description": "Apply Durable Object code updates immediately.",
+																		"type": "string",
+																		"enum": [
+																			"immediate"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"max_delay": {
+																		"description": "Set the maximum number of seconds to wait before forcing the update. When omitted, the default maximum delay applies.",
+																		"type": "number",
+																		"maximum": 86400,
+																		"minimum": 0,
+																		"multipleOf": 0.001,
+																		"nullable": true
+																	},
+																	"mode": {
+																		"description": "Allow active Durable Objects to hibernate before updating their code.",
+																		"type": "string",
+																		"enum": [
+																			"deferred"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															}
+														],
+														"x-auditable": true
+													},
+													{
+														"enum": [
+															null
+														],
+														"nullable": true,
+														"type": "object"
+													}
 												]
 											},
 											"compatibility_date": {

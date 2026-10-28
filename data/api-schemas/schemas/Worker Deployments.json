@@ -497,6 +497,65 @@
 																"readOnly": true,
 																"x-auditable": true
 															},
+															"code_update_strategy": {
+																"description": "Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.",
+																"oneOf": [
+																	{
+																		"oneOf": [
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"mode": {
+																						"description": "Apply Durable Object code updates immediately.",
+																						"type": "string",
+																						"enum": [
+																							"immediate"
+																						]
+																					}
+																				},
+																				"required": [
+																					"mode"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"additionalProperties": false,
+																				"properties": {
+																					"max_delay": {
+																						"description": "Set the maximum number of seconds to wait before forcing the update. When omitted, the default maximum delay applies.",
+																						"type": "number",
+																						"maximum": 86400,
+																						"minimum": 0,
+																						"multipleOf": 0.001,
+																						"nullable": true
+																					},
+																					"mode": {
+																						"description": "Allow active Durable Objects to hibernate before updating their code.",
+																						"type": "string",
+																						"enum": [
+																							"deferred"
+																						]
+																					}
+																				},
+																				"required": [
+																					"mode"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"x-auditable": true
+																	},
+																	{
+																		"enum": [
+																			null
+																		],
+																		"nullable": true,
+																		"type": "object"
+																	}
+																],
+																"writeOnly": true,
+																"x-auditable": true
+															},
 															"created_on": {
 																"type": "string",
 																"format": "date-time",
@@ -882,6 +941,65 @@
 													"readOnly": true,
 													"x-auditable": true
 												},
+												"code_update_strategy": {
+													"description": "Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.",
+													"oneOf": [
+														{
+															"oneOf": [
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"mode": {
+																			"description": "Apply Durable Object code updates immediately.",
+																			"type": "string",
+																			"enum": [
+																				"immediate"
+																			]
+																		}
+																	},
+																	"required": [
+																		"mode"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"max_delay": {
+																			"description": "Set the maximum number of seconds to wait before forcing the update. When omitted, the default maximum delay applies.",
+																			"type": "number",
+																			"maximum": 86400,
+																			"minimum": 0,
+																			"multipleOf": 0.001,
+																			"nullable": true
+																		},
+																		"mode": {
+																			"description": "Allow active Durable Objects to hibernate before updating their code.",
+																			"type": "string",
+																			"enum": [
+																				"deferred"
+																			]
+																		}
+																	},
+																	"required": [
+																		"mode"
+																	],
+																	"type": "object"
+																}
+															],
+															"x-auditable": true
+														},
+														{
+															"enum": [
+																null
+															],
+															"nullable": true,
+															"type": "object"
+														}
+													],
+													"writeOnly": true,
+													"x-auditable": true
+												},
 												"created_on": {
 													"type": "string",
 													"format": "date-time",
@@ -1174,6 +1292,65 @@
 								"readOnly": true,
 								"x-auditable": true
 							},
+							"code_update_strategy": {
+								"description": "Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.",
+								"oneOf": [
+									{
+										"oneOf": [
+											{
+												"additionalProperties": false,
+												"properties": {
+													"mode": {
+														"description": "Apply Durable Object code updates immediately.",
+														"type": "string",
+														"enum": [
+															"immediate"
+														]
+													}
+												},
+												"required": [
+													"mode"
+												],
+												"type": "object"
+											},
+											{
+												"additionalProperties": false,
+												"properties": {
+													"max_delay": {
+														"description": "Set the maximum number of seconds to wait before forcing the update. When omitted, the default maximum delay applies.",
+														"type": "number",
+														"maximum": 86400,
+														"minimum": 0,
+														"multipleOf": 0.001,
+														"nullable": true
+													},
+													"mode": {
+														"description": "Allow active Durable Objects to hibernate before updating their code.",
+														"type": "string",
+														"enum": [
+															"deferred"
+														]
+													}
+												},
+												"required": [
+													"mode"
+												],
+												"type": "object"
+											}
+										],
+										"x-auditable": true
+									},
+									{
+										"enum": [
+											null
+										],
+										"nullable": true,
+										"type": "object"
+									}
+								],
+								"writeOnly": true,
+								"x-auditable": true
+							},
 							"created_on": {
 								"type": "string",
 								"format": "date-time",
@@ -1361,6 +1538,65 @@
 													"type": "string",
 													"format": "email",
 													"readOnly": true,
+													"x-auditable": true
+												},
+												"code_update_strategy": {
+													"description": "Choose whether to apply Durable Object code updates immediately or defer them. When omitted, the default strategy applies.",
+													"oneOf": [
+														{
+															"oneOf": [
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"mode": {
+																			"description": "Apply Durable Object code updates immediately.",
+																			"type": "string",
+																			"enum": [
+																				"immediate"
+																			]
+																		}
+																	},
+																	"required": [
+																		"mode"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"max_delay": {
+																			"description": "Set the maximum number of seconds to wait before forcing the update. When omitted, the default maximum delay applies.",
+																			"type": "number",
+																			"maximum": 86400,
+																			"minimum": 0,
+																			"multipleOf": 0.001,
+																			"nullable": true
+																		},
+																		"mode": {
+																			"description": "Allow active Durable Objects to hibernate before updating their code.",
+																			"type": "string",
+																			"enum": [
+																				"deferred"
+																			]
+																		}
+																	},
+																	"required": [
+																		"mode"
+																	],
+																	"type": "object"
+																}
+															],
+															"x-auditable": true
+														},
+														{
+															"enum": [
+																null
+															],
+															"nullable": true,
+															"type": "object"
+														}
+													],
+													"writeOnly": true,
 													"x-auditable": true
 												},
 												"created_on": {
