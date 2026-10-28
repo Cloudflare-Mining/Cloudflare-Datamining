@@ -4596,6 +4596,15 @@
 						"compatEnableFlag": "python_shared_standard_library"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "wasmSourceUrlSupport",
+					"annotations": {
+						"compatEnableFlag": "wasm_source_url_support",
+						"compatDisableFlag": "no_wasm_source_url_support",
+						"compatEnableDate": "2026-12-01"
+					},
+					"type": "Bool"
 				}
 			]
 		},
@@ -6049,6 +6058,11 @@
 				},
 				{
 					"name": "containerEgressInterceptorImage",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "sessionId",
 					"annotations": {},
 					"type": "Text"
 				}
