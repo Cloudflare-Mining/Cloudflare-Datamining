@@ -21,27 +21,27 @@
 		"description": "Created by the Cloudflare security team, this ruleset is designed to provide protection for free zones",
 		"id": "77454fe2d30c4220b5701f6fdfb893ba",
 		"kind": "managed",
-		"last_updated": "2026-10-23T15:07:01.484907Z",
+		"last_updated": "2026-10-28T16:17:28.732841Z",
 		"name": "Cloudflare Managed Free Ruleset",
 		"phase": "http_request_firewall_managed",
 		"source": "firewall_managed",
-		"version": "82"
+		"version": "83"
 	},
 	{
 		"description": "Automatic mitigation of HTTP-based DDoS attacks. Cloudflare routinely adds signatures to address new attack vectors. Additional configuration allows you to customize the sensitivity of each rule and the performed mitigation action.",
 		"id": "4d21379b4f9f4bb088e0729962c8b3cf",
 		"kind": "managed",
-		"last_updated": "2026-10-27T22:19:17.109195Z",
+		"last_updated": "2026-10-28T19:01:14.432653Z",
 		"name": "DDoS L7 ruleset",
 		"phase": "ddos_l7",
-		"version": "3482"
+		"version": "3486"
 	},
 	{
 		"description": "",
-		"id": "2495acfa26c9456a9d67bba7876a017f",
+		"id": "6ed076bef1fb42ff94d55bd1a364f4fc",
 		"kind": "managed",
-		"last_updated": "2026-10-28T07:06:06.237153Z",
-		"name": "rulesets-ams-production-f5883d0a2de6c9cf50c48f94115c40d3-pytest-7gx9bVzEs0UM4kS3LAk5BWGX3PmwTXnO",
+		"last_updated": "2026-10-28T19:46:51.455166Z",
+		"name": "rulesets-ams-production-7800186fe3060227028a430821e6ddf8-pytest-0iq5aGASGrUtIfqUAK0V93njdnYtFSq2",
 		"phase": "http_response_firewall_custom",
 		"version": "1"
 	},
