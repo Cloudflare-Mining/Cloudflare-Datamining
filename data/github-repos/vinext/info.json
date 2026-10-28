@@ -22,7 +22,6 @@
 	"default_branch": "main",
 	"branches": [
 		"alt/prerender-rsc-sidechannel",
-		"changeset-release/main",
 		"chonky-list",
 		"chore/bundle-zero-dep-leaves",
 		"ci/commit-version-bump",
@@ -320,6 +319,7 @@
 		"fix/rsc-client-only-tree-shaking",
 		"fix/rsc-navigation-credentials",
 		"fix/rsc-optimizedeps-react-server",
+		"fix/search-transition-suspense-flake",
 		"fix/server-action-client-sourcemaps",
 		"fix/server-only-use-cache-client",
 		"fix/strip-set-cookie-from-app-route-isr-cache-clean",
