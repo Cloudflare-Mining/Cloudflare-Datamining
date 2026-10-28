@@ -335,6 +335,9 @@
 	"banda-billing-transition": {
 		"enabled": true
 	},
+	"basin-catalog-object-authz": {
+		"enabled": false
+	},
 	"basin-rename": {
 		"enabled": true
 	},
@@ -1051,6 +1054,9 @@
 	"deseng-rules-analytics": {
 		"enabled": false
 	},
+	"deseng-safari-preload-fix": {
+		"enabled": false
+	},
 	"deseng-skeleton-loading": {
 		"enabled": true
 	},
@@ -1076,7 +1082,7 @@
 		"enabled": false
 	},
 	"deseng-token-builder": {
-		"enabled": false
+		"enabled": true
 	},
 	"deseng-unified-turnstile-combobox": {
 		"enabled": true
@@ -3230,6 +3236,9 @@
 		"enabled": false
 	},
 	"wobs-latency-heatmap": {
+		"enabled": true
+	},
+	"wobs-observability-config": {
 		"enabled": true
 	},
 	"wobs-plans": {
