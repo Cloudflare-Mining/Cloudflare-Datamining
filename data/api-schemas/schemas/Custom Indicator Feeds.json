@@ -469,8 +469,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}": {
 		"operationId": "custom-indicator-feeds-get-indicator-feed-metadata",
@@ -1219,8 +1218,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/data": {
 		"operationId": "custom-indicator-feeds-get-indicator-feed-data",
@@ -1374,8 +1372,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds",
-		"x-fern-sdk-method-name": "data",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "data"
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/download": {
 		"operationId": "custom-indicator-feeds-download-indicator-feed-data",
@@ -1657,8 +1654,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds.downloads",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/uploads/{upload_id}": {
 		"operationId": "custom-indicator-feeds-get-upload-status",
@@ -2158,8 +2154,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds.uploads",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/permissions/view": {
 		"operationId": "custom-indicator-feeds-view-permissions",
@@ -2591,8 +2586,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds.permissions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/intel/indicator-feeds": {
 		"operationId": "custom-indicator-feeds-create-indicator-feeds",
@@ -3057,8 +3051,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/{feed_id}": {
 		"operationId": "custom-indicator-feeds-update-indicator-feed-metadata",
@@ -3550,8 +3543,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/{feed_id}/snapshot": {
 		"operationId": "custom-indicator-feeds-update-indicator-feed-data",
@@ -4081,8 +4073,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds.snapshots",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/permissions/add": {
 		"operationId": "custom-indicator-feeds-add-permission",
@@ -4451,8 +4442,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds.permissions",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/permissions/createProvider": {
 		"operationId": "custom-indicator-feeds-create-provider",
@@ -4862,8 +4852,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds.providers",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/permissions/remove": {
 		"operationId": "custom-indicator-feeds-remove-permission",
@@ -5233,7 +5222,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.indicator-feeds.permissions",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation destructively removes a permission entry."
 	}
 }

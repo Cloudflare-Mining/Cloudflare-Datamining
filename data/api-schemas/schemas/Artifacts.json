@@ -8931,7 +8931,7 @@
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tree/{hash}": {
 		"operationId": "artifacts_repos_tree_get",
 		"summary": "Read a Git tree",
-		"description": "Returns decoded entries for an immutable Git tree object. Tree responses are cacheable forever by hash.",
+		"description": "Returns decoded entries for an immutable Git tree object. A commit hash returns that commit's root tree; a blob or tag hash returns 422. Tree responses are cacheable forever by hash.",
 		"parameters": [
 			{
 				"name": "namespace",
@@ -9441,6 +9441,99 @@
 			},
 			"404": {
 				"description": "Resource not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"maximum": 9007199254740991,
+												"minimum": -9007199254740991
+											},
+											"documentation_url": {
+												"type": "string",
+												"format": "uri"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "Unprocessable entity.",
 				"content": {
 					"application/json": {
 						"schema": {

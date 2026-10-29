@@ -570939,7 +570939,7 @@
 			"get": {
 				"operationId": "artifacts_repos_tree_get",
 				"summary": "Read a Git tree",
-				"description": "Returns decoded entries for an immutable Git tree object. Tree responses are cacheable forever by hash.",
+				"description": "Returns decoded entries for an immutable Git tree object. A commit hash returns that commit's root tree; a blob or tag hash returns 422. Tree responses are cacheable forever by hash.",
 				"parameters": [
 					{
 						"name": "namespace",
@@ -571449,6 +571449,99 @@
 					},
 					"404": {
 						"description": "Resource not found.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"maximum": 9007199254740991,
+														"minimum": -9007199254740991
+													},
+													"documentation_url": {
+														"type": "string",
+														"format": "uri"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"minItems": 1
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"maximum": 9007199254740991,
+														"minimum": -9007199254740991
+													},
+													"documentation_url": {
+														"type": "string",
+														"format": "uri"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									]
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Unprocessable entity.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -1088362,8 +1088455,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.asn",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/intel/asn/{asn}/subnets": {
@@ -1088588,8 +1088680,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.asn.subnets",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/intel/attack-surface-report/issue-types": {
@@ -1091712,8 +1091803,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.dns",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			}
 		},
 		"/accounts/{account_id}/intel/domain": {
@@ -1092399,8 +1092489,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.domains",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/intel/domain-history": {
@@ -1092946,8 +1093035,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.domain-history",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/intel/domain/bulk": {
@@ -1093696,8 +1093784,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.domains.bulks",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/intel/indicator-feeds": {
@@ -1094171,8 +1094258,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			},
 			"post": {
 				"operationId": "custom-indicator-feeds-create-indicator-feeds",
@@ -1094637,8 +1094723,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/accounts/{account_id}/intel/indicator-feeds/{feed_id}": {
@@ -1095389,8 +1095474,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"put": {
 				"operationId": "custom-indicator-feeds-update-indicator-feed-metadata",
@@ -1095882,8 +1095966,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/accounts/{account_id}/intel/indicator-feeds/{feed_id}/data": {
@@ -1096039,8 +1096122,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds",
-				"x-fern-sdk-method-name": "data",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "data"
 			}
 		},
 		"/accounts/{account_id}/intel/indicator-feeds/{feed_id}/download": {
@@ -1096324,8 +1096406,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds.downloads",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/intel/indicator-feeds/{feed_id}/snapshot": {
@@ -1096857,8 +1096938,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds.snapshots",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/accounts/{account_id}/intel/indicator-feeds/{feed_id}/uploads/{upload_id}": {
@@ -1097360,8 +1097440,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds.uploads",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/intel/indicator-feeds/permissions/add": {
@@ -1097732,8 +1097811,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds.permissions",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/accounts/{account_id}/intel/indicator-feeds/permissions/createProvider": {
@@ -1098145,8 +1098223,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds.providers",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/accounts/{account_id}/intel/indicator-feeds/permissions/remove": {
@@ -1098518,7 +1098595,6 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds.permissions",
 				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true,
 				"x-forge-require-confirmation": "This operation destructively removes a permission entry."
 			}
 		},
@@ -1098953,8 +1099029,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.indicator-feeds.permissions",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			}
 		},
 		"/accounts/{account_id}/intel/ip": {
@@ -1099570,8 +1099645,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.ips",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/intel/ip-lists": {
@@ -1100041,8 +1100115,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.ip-lists",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/intel/miscategorization": {
@@ -1100433,8 +1100506,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.miscategorizations",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/accounts/{account_id}/intel/sinkholes": {
@@ -1102885,8 +1102957,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "intel.urls",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/accounts/{account_id}/intel/whois": {
@@ -2453346,6 +2453417,9 @@
 				"tags": [
 					"Observability"
 				],
+				"x-api-token-group": [
+					"Zone Observability Write"
+				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "observability.tracing.rules",
 				"x-fern-sdk-method-name": "delete",
@@ -2453719,6 +2453793,10 @@
 				},
 				"tags": [
 					"Observability"
+				],
+				"x-api-token-group": [
+					"Zone Observability Write",
+					"Zone Observability Read"
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "observability.tracing.rules",
@@ -2454162,6 +2454240,9 @@
 				"tags": [
 					"Observability"
 				],
+				"x-api-token-group": [
+					"Zone Observability Write"
+				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "observability.tracing.rules",
 				"x-fern-sdk-method-name": "update",
@@ -2454529,6 +2454610,9 @@
 				"tags": [
 					"Observability"
 				],
+				"x-api-token-group": [
+					"Zone Observability Write"
+				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "observability.tracing.settings",
 				"x-fern-sdk-method-name": "delete",
@@ -2454893,6 +2454977,10 @@
 				},
 				"tags": [
 					"Observability"
+				],
+				"x-api-token-group": [
+					"Zone Observability Write",
+					"Zone Observability Read"
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "observability.tracing.settings",
@@ -2455310,6 +2455398,9 @@
 				},
 				"tags": [
 					"Observability"
+				],
+				"x-api-token-group": [
+					"Zone Observability Write"
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "observability.tracing.settings",

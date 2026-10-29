@@ -363,6 +363,9 @@
 		"tags": [
 			"Observability"
 		],
+		"x-api-token-group": [
+			"Zone Observability Write"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",
 		"x-fern-sdk-method-name": "delete",
@@ -727,6 +730,9 @@
 		},
 		"tags": [
 			"Observability"
+		],
+		"x-api-token-group": [
+			"Zone Observability Write"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
@@ -1102,6 +1108,10 @@
 		"tags": [
 			"Observability"
 		],
+		"x-api-token-group": [
+			"Zone Observability Write",
+			"Zone Observability Read"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",
 		"x-fern-sdk-method-name": "get",
@@ -1466,6 +1476,10 @@
 		},
 		"tags": [
 			"Observability"
+		],
+		"x-api-token-group": [
+			"Zone Observability Write",
+			"Zone Observability Read"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
@@ -1883,6 +1897,9 @@
 		},
 		"tags": [
 			"Observability"
+		],
+		"x-api-token-group": [
+			"Zone Observability Write"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.settings",
@@ -2325,6 +2342,9 @@
 		},
 		"tags": [
 			"Observability"
+		],
+		"x-api-token-group": [
+			"Zone Observability Write"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "observability.tracing.rules",
