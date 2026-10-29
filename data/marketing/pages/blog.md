@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 29, 2026 [<h2>Cloudflare DDoS Threat Report 2026 Q3: More swarms, fewer giants</h2>](https://blog.cloudflare.com/ddos-threat-report-2026-q3/)
+
+Cloudflare mitigated over 8,200 DDoS attacks per hour in Q3 2026 as attackers shifted to shorter, high-frequency strikes. Explore the latest threat data, including the collapse of CLDAP vectors and the impact of recent botnet takedowns.
+
+![Cloudforce One](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F4NKW3JJWXAED2MVFY7Y.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Cloudforce One](https://blog.cloudflare.com/author/cloudforce/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6256EDR0931RP6THCDNZ2R5.01M6256F3NTWXMKQE0RGKEM0G2.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/ddos-threat-report-2026-q3/)
+
 October 27, 2026 [<h2>Introducing the Cloudflare PHP Capture the Flag challenge</h2>](https://blog.cloudflare.com/php-ctf/)
 
 We are launching a PHP Capture the Flag challenge integrated with our Bug Bounty program to test our WAF protections. Security researchers are invited to bypass our defenses and capture the flag to help make the Internet safer.
@@ -17,8 +27,6 @@ We are launching a PHP Capture the Flag challenge integrated with our Bug Bounty
 ![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Sven Sauleau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HRDMNZR42T04V7Y1R5XY.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Celso Martinho](https://blog.cloudflare.com/author/celso/),  [Sven Sauleau](https://blog.cloudflare.com/author/sven/), and  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5YGNS8F8NYE3V5QERKYNG79.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/php-ctf/)
 
 October 27, 2026 [<h2>What took the Internet offline in Q3 2026</h2>](https://blog.cloudflare.com/q3-2026-internet-disruption-summary/)
 
@@ -155,14 +163,6 @@ How Cloudflare and OpenAI are working together to help AI find useful content, k
 ![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Henry Aspegren (OpenAI)](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4ZF9JPY469VR3ZSXJ5TCC72.01M4ZF9K94YMAVD6CKV497K7W2.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![James Balfour (OpenAI)](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y82NHNS7DZN6RAJ3P8ZZ6Q.01M3Y82P64N5C1T5CGXRENCEAR.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/),  [Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/),  [Henry Aspegren (OpenAI)](https://blog.cloudflare.com/author/henry-aspegren/), and  [James Balfour (OpenAI)](https://blog.cloudflare.com/author/james-balfour/)
-
-October 14, 2026 [<h2>Yandex outage: Data shows that instead of going dark, malicious bots went on the move</h2>](https://blog.cloudflare.com/yandex-outage/)
-
-When strikes hit Yandex data centers, many assumed Russian bot operations went dark. Cloudflare data reveals that while search crawling stopped, malicious bots simply migrated to other networks.
-
-![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/) and  [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
 
 Load more
 
