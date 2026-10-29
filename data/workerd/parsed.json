@@ -4605,6 +4605,23 @@
 						"compatEnableDate": "2026-12-01"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "temporal",
+					"annotations": {
+						"compatEnableFlag": "temporal",
+						"compatDisableFlag": "no_temporal",
+						"compatEnableDate": "2026-12-01"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "pythonZstdSnapshot",
+					"annotations": {
+						"compatEnableFlag": "python_zstd_snapshot",
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
@@ -8310,6 +8327,41 @@
 			]
 		},
 		{
+			"name": "workerd/server/workerd.capnp:ClusterConfig",
+			"fields": [
+				{
+					"name": "bucket",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "bucketOptions",
+					"annotations": {},
+					"type": "List(Text)"
+				},
+				{
+					"name": "address",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "key",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "advertise",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "unsafePublicAddress",
+					"annotations": {},
+					"type": "Bool"
+				}
+			]
+		},
+		{
 			"name": "workerd/server/workerd.capnp:Config",
 			"fields": [
 				{
@@ -8346,6 +8398,11 @@
 					"name": "logging",
 					"annotations": {},
 					"type": "workerd/server/workerd.capnp:LoggingOptions"
+				},
+				{
+					"name": "cluster",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ClusterConfig"
 				}
 			]
 		},
@@ -8576,6 +8633,196 @@
 					"name": "attributes",
 					"annotations": {},
 					"type": "List(workerd/server/workerd.capnp:FallbackServiceRequest.Attribute)"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/cluster/frames.capnp:Frame",
+			"fields": [
+				{
+					"name": "session",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "sequence",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "lane",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "newLane",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/cluster/frames.capnp:LaneDescription"
+				},
+				{
+					"name": "deleteLane",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "write",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/cluster/frames.capnp:Frame.write"
+				},
+				{
+					"name": "obsolete7",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "consume",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/cluster/frames.capnp:Frame.consume"
+				},
+				{
+					"name": "initialize",
+					"annotations": {},
+					"type": "Data"
+				},
+				{
+					"name": "continueFromSession",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "continueFromSequence",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "setReplicaInformation",
+					"annotations": {},
+					"type": "AnyPointer"
+				},
+				{
+					"name": "cloneLane",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/cluster/frames.capnp:Frame.cloneLane"
+				},
+				{
+					"name": "pages",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/cluster/frames.capnp:Frame.pages"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/cluster/frames.capnp:Page",
+			"fields": [
+				{
+					"name": "number",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "data",
+					"annotations": {},
+					"type": "Data"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/cluster/frames.capnp:LaneDescription",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "sqlite",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "journal",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "replicaInformation",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "sqlitePages",
+					"annotations": {},
+					"type": "Void"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/cluster/frames.capnp:SnapshotHeader.Lane",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "deleted",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "sqlite",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/cluster/frames.capnp:SnapshotHeader.Lane.sqlite"
+				},
+				{
+					"name": "journal",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/cluster/frames.capnp:SnapshotHeader.Lane.journal"
+				},
+				{
+					"name": "replicaInformation",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/cluster/frames.capnp:SnapshotHeader.Lane.replicaInformation"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/cluster/frames.capnp:SnapshotHeader",
+			"fields": [
+				{
+					"name": "session",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "frame",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "lanes",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/server/cluster/frames.capnp:SnapshotHeader.Lane)"
+				},
+				{
+					"name": "logBytesSinceLastSnapshot",
+					"annotations": {},
+					"type": "UInt64"
+				},
+				{
+					"name": "continueFromSession",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "continueFromSequence",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "justification",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/cluster/frames.capnp:SnapshotJustification"
 				}
 			]
 		}
@@ -9287,6 +9534,51 @@
 					"annotations": {}
 				}
 			]
+		},
+		{
+			"name": "workerd/src/workerd/server/cluster/frames.capnp:SnapshotJustification",
+			"enumerants": [
+				{
+					"name": "unknown",
+					"annotations": {}
+				},
+				{
+					"name": "clientRequested",
+					"annotations": {}
+				},
+				{
+					"name": "pointInTimeRecovery",
+					"annotations": {}
+				},
+				{
+					"name": "snapshotFallback",
+					"annotations": {}
+				},
+				{
+					"name": "lostAndFoundRecovery",
+					"annotations": {}
+				},
+				{
+					"name": "coldStartMitigation",
+					"annotations": {}
+				},
+				{
+					"name": "cleanShutdown",
+					"annotations": {}
+				},
+				{
+					"name": "test",
+					"annotations": {}
+				},
+				{
+					"name": "srsTools",
+					"annotations": {}
+				},
+				{
+					"name": "localOnly",
+					"annotations": {}
+				}
+			]
 		}
 	],
 	"interfaces": [
@@ -9460,6 +9752,8 @@
 		"workerd/src/workerd/server/compiled-bindings.capnp",
 		"workerd/server/workerd.capnp",
 		"workerd/src/workerd/server/docker-api.capnp",
-		"workerd/src/workerd/server/log-schema.capnp"
+		"workerd/src/workerd/server/log-schema.capnp",
+		"workerd/src/workerd/server/cluster/frames.capnp",
+		"workerd/src/workerd/server/cluster/frames.capnp:Frame.unknownContinueFromSession"
 	]
 }
