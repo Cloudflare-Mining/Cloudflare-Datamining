@@ -907632,6 +907632,825 @@
 					"possibleTypes": []
 				},
 				{
+					"description": "Estimated Precursor sessions represented by Ready Aggregates events",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Averages calculated from Ready Aggregates events",
+							"isDeprecated": false,
+							"name": "avg",
+							"type": {
+								"kind": "OBJECT",
+								"name": "ZonePrecursorSessionsGroupsAvg",
+								"ofType": null
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Estimated distinct sessions represented by Ready Aggregates events",
+							"isDeprecated": false,
+							"name": "count",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "List of dimensions to group by",
+							"isDeprecated": false,
+							"name": "dimensions",
+							"type": {
+								"kind": "OBJECT",
+								"name": "ZonePrecursorSessionsGroupsDimensions",
+								"ofType": null
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZonePrecursorSessionsGroups",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Ready Aggregates event count divided by estimated distinct sessions",
+							"isDeprecated": false,
+							"name": "evalsPerSession",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Average session age in seconds at each recorded evaluation, weighted by evaluations",
+							"isDeprecated": false,
+							"name": "sessionLengthSeconds",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZonePrecursorSessionsGroupsAvg",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The UTC date containing the recorded evaluations",
+							"isDeprecated": false,
+							"name": "date",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Date",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The UTC fifteen-minute bucket containing the recorded evaluations",
+							"isDeprecated": false,
+							"name": "datetimeFifteenMinutes",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The UTC five-minute bucket containing the recorded evaluations",
+							"isDeprecated": false,
+							"name": "datetimeFiveMinutes",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The UTC hour containing the recorded evaluations",
+							"isDeprecated": false,
+							"name": "datetimeHour",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The UTC minute containing the recorded evaluations",
+							"isDeprecated": false,
+							"name": "datetimeMinute",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZonePrecursorSessionsGroupsDimensions",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [],
+					"inputFields": [
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "AND",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "ZonePrecursorSessionsGroupsFilter_InputObject",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "OR",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "ZonePrecursorSessionsGroupsFilter_InputObject",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Date",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Date",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						}
+					],
+					"interfaces": [],
+					"kind": "INPUT_OBJECT",
+					"name": "ZonePrecursorSessionsGroupsFilter_InputObject",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [
+						{
+							"deprecationReason": null,
+							"description": "avg(evalsPerSession) ascending",
+							"isDeprecated": false,
+							"name": "avg_evalsPerSession_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(evalsPerSession) descending",
+							"isDeprecated": false,
+							"name": "avg_evalsPerSession_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(sessionLengthSeconds) ascending",
+							"isDeprecated": false,
+							"name": "avg_sessionLengthSeconds_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(sessionLengthSeconds) descending",
+							"isDeprecated": false,
+							"name": "avg_sessionLengthSeconds_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "count() ascending",
+							"isDeprecated": false,
+							"name": "count_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "count() descending",
+							"isDeprecated": false,
+							"name": "count_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "date ascending",
+							"isDeprecated": false,
+							"name": "date_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "date descending",
+							"isDeprecated": false,
+							"name": "date_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFifteenMinutes ascending",
+							"isDeprecated": false,
+							"name": "datetimeFifteenMinutes_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFifteenMinutes descending",
+							"isDeprecated": false,
+							"name": "datetimeFifteenMinutes_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFiveMinutes ascending",
+							"isDeprecated": false,
+							"name": "datetimeFiveMinutes_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFiveMinutes descending",
+							"isDeprecated": false,
+							"name": "datetimeFiveMinutes_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeHour ascending",
+							"isDeprecated": false,
+							"name": "datetimeHour_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeHour descending",
+							"isDeprecated": false,
+							"name": "datetimeHour_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeMinute ascending",
+							"isDeprecated": false,
+							"name": "datetimeMinute_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeMinute descending",
+							"isDeprecated": false,
+							"name": "datetimeMinute_DESC"
+						}
+					],
+					"fields": [],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "ENUM",
+					"name": "ZonePrecursorSessionsGroupsOrderBy",
+					"possibleTypes": []
+				},
+				{
 					"description": "Access and limitations for a zone",
 					"enumValues": [],
 					"fields": [
@@ -908297,6 +909116,22 @@
 							"description": "",
 							"isDeprecated": false,
 							"name": "preRenderRenderAttemptsAdaptiveGroups",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Settings",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "",
+							"isDeprecated": false,
+							"name": "precursorSessionsGroups",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -977934,6 +978769,77 @@
 										"ofType": {
 											"kind": "OBJECT",
 											"name": "ZonePreRenderRenderAttemptsAdaptiveGroups",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "filter",
+									"type": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "INPUT_OBJECT",
+											"name": "ZonePrecursorSessionsGroupsFilter_InputObject",
+											"ofType": null
+										}
+									}
+								},
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "limit",
+									"type": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint64",
+											"ofType": null
+										}
+									}
+								},
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "orderBy",
+									"type": {
+										"kind": "LIST",
+										"name": "",
+										"ofType": {
+											"kind": "NON_NULL",
+											"name": "",
+											"ofType": {
+												"kind": "ENUM",
+												"name": "ZonePrecursorSessionsGroupsOrderBy",
+												"ofType": null
+											}
+										}
+									}
+								}
+							],
+							"deprecationReason": null,
+							"description": "Estimated Precursor sessions represented by Ready Aggregates events",
+							"isDeprecated": false,
+							"name": "precursorSessionsGroups",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "OBJECT",
+											"name": "ZonePrecursorSessionsGroups",
 											"ofType": null
 										}
 									}

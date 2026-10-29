@@ -17172,6 +17172,31 @@
 		"browserSecondsUsed": "Confidence interval for the corresponding point estimate",
 		"htmlBytes": "Confidence interval for the corresponding point estimate"
 	},
+	"ZonePrecursorSessionsGroups": {
+		"__description": "Estimated Precursor sessions represented by Ready Aggregates events",
+		"avg": "Averages calculated from Ready Aggregates events",
+		"count": "Estimated distinct sessions represented by Ready Aggregates events",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZonePrecursorSessionsGroupsAvg": {
+		"__description": "",
+		"evalsPerSession": "Ready Aggregates event count divided by estimated distinct sessions",
+		"sessionLengthSeconds": "Average session age in seconds at each recorded evaluation, weighted by evaluations"
+	},
+	"ZonePrecursorSessionsGroupsDimensions": {
+		"__description": "",
+		"date": "The UTC date containing the recorded evaluations",
+		"datetimeFifteenMinutes": "The UTC fifteen-minute bucket containing the recorded evaluations",
+		"datetimeFiveMinutes": "The UTC five-minute bucket containing the recorded evaluations",
+		"datetimeHour": "The UTC hour containing the recorded evaluations",
+		"datetimeMinute": "The UTC minute containing the recorded evaluations"
+	},
+	"ZonePrecursorSessionsGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZonePrecursorSessionsGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneSettings": {
 		"__description": "Access and limitations for a zone",
 		"accountAbuseProtectionAdaptiveGroups": "",
@@ -17216,6 +17241,7 @@
 		"pageShieldReportsAdaptiveGroups": "",
 		"preRenderBotRequestsAdaptiveGroups": "",
 		"preRenderRenderAttemptsAdaptiveGroups": "",
+		"precursorSessionsGroups": "",
 		"userProfilesAdaptiveGroups": "",
 		"userProfilesPiiGroups": "",
 		"userProfilesRawEventsGroups": "",
@@ -18400,6 +18426,7 @@
 		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
 		"preRenderBotRequestsAdaptiveGroups": "Aggregated pre-render bot requests with adaptive sampling",
 		"preRenderRenderAttemptsAdaptiveGroups": "Aggregated pre-render render attempts with adaptive sampling",
+		"precursorSessionsGroups": "Estimated Precursor sessions represented by Ready Aggregates events",
 		"settings": "",
 		"userProfilesAdaptiveGroups": "User ID profiles for login and sign up attempts",
 		"userProfilesPiiGroups": "Per-user PII attribute lookup for login and signup events. PII fields such as email require the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; callers without it receive the literal REDACTED.",
