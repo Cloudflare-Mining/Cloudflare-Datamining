@@ -101,7 +101,7 @@
 			</svg></span></button>
 </div>
 <h3>Geographic Routing</h3>
-<p>Cloudflare adds <a href="https://support.cloudflare.com/hc/en-us/articles/200168236-What-does-Cloudflare-IP-Geolocation-do-" target="_blank" rel="noopener noreferrer">CF-IPCountry</a> header to all requests once Cloudflare IP Geolocation is enabled.</p>
+<p>Cloudflare adds <a href="https://developers.cloudflare.com/network/ip-geolocation" target="_blank" rel="noopener noreferrer">CF-IPCountry</a> header to all requests once Cloudflare IP Geolocation is enabled.</p>
 <p>You can access it using:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> countryCode </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> event.request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(‘</span><span class="sk-005cc5-fff">CF</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">IPCountry’);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">

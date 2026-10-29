@@ -3,7 +3,7 @@
 <h3>How a shared web cache works</h3>
 <p>Say a user requests a cacheable file, <code>index.html</code>. We first check if it’s in cache, and if it’s not, we fetch it from the origin and store it. Subsequent users can request that file from our cache until it expires or gets evicted.</p>
 <p>Although contents of a response can vary slightly between requests, customers may want to cache a single version of the file to improve performance:</p>
-<p><em>(See <a href="https://support.cloudflare.com/hc/en-us/articles/200172256-How-do-I-cache-static-HTML-" target="_blank" rel="noopener noreferrer">this support page</a> for more info about how to cache HTML with Cloudflare.)</em></p>
+<p><em>(See <a href="https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-everything" target="_blank" rel="noopener noreferrer">this support page</a> for more info about how to cache HTML with Cloudflare.)</em></p>
 <p>How do we know it’s the same file? We create something called a “cache key” which contains several fields, for example:</p>
 <ul>
 	<li>HTTP Scheme</li>
@@ -56,6 +56,6 @@
 	<li>…</li>
 </ul>
 <p>In order to prevent unnecessary cache sharding, we only include these header values when they differ from what’s in the URL or Host header. For example, if the HTTP Host is <code>www.example.com</code>, and X-Forwarded-Host is also <code>www.example.com</code>, we will not add the X-Forwarded-Host header to the cache key. Of course, it’s still crucial that applications do not send back data from any other headers!</p>
-<p>One side effect of this change is that customers who use these headers, and also rely on Purge by URL, may need to specify more headers in their Purge API calls. You can read more detail in <a href="https://support.cloudflare.com/hc/en-us/articles/200169246" target="_blank" rel="noopener noreferrer">this support page</a>.</p>
+<p>One side effect of this change is that customers who use these headers, and also rely on Purge by URL, may need to specify more headers in their Purge API calls. You can read more detail in <a href="https://developers.cloudflare.com/cache/how-to/purge-cache" target="_blank" rel="noopener noreferrer">this support page</a>.</p>
 <h3>Conclusion</h3>
 <p>Cloudflare is committed to protecting our customers. If you notice anything unusual with your account, or have more questions, please contact <a href="mailto:support@cloudflare.com">Cloudflare Support</a>.</p>

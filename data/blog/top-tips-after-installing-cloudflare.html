@@ -4,7 +4,7 @@
 <h3>1. Check to make sure that your DNS records are correct on the DNS settings page.</h3>
 <p>If you need to add or edit entries to your DNS records, you can do so by going to:</p>
 <p>Your Websites-&gt;Settings-&gt;DNS settings</p>
-<p>One very important note to make about DNS: While CloudFlare can resolveDNS for all of your subdomains, CloudFlare can only proxy domains thatwould be considered web traffic (www, blog, etc.). Please read more about the <a href="https://support.cloudflare.com/entries/22280786-What-subdomains-are-appropriate-for-orange-gray-clouds-" target="_blank" rel="noopener noreferrer">subdomains that are suitable to have a gray or orange cloud here</a>.</p>
+<p>One very important note to make about DNS: While CloudFlare can resolveDNS for all of your subdomains, CloudFlare can only proxy domains thatwould be considered web traffic (www, blog, etc.). Please read more about the <a href="https://developers.cloudflare.com/dns/proxy-status" target="_blank" rel="noopener noreferrer">subdomains that are suitable to have a gray or orange cloud here</a>.</p>
 <h3>2. Familiarize yourself with the CloudFlare Settings page</h3>
 <p>The CloudFlare Settings page is where you will find all of the optionalfeatures that can be turned on or off. Some key features on this pageinclude:</p>
 <h4>CloudFlare Security Level Settings</h4>
@@ -15,7 +15,7 @@
 <p>Use case: You want to clear the CloudFlare cache of all the static files for a domain</p>
 <p>CloudFlare --&gt; Websites --&gt; Settings (pull down menu) --&gt; CloudFlare Settings</p>
 <h3>3. Install mod_cloudflare to get the original visitor IP</h3>
-<p>Since CloudFlare acts as a reverse proxy for you site, your visitor logswill show our IP addresses unless you make a modification to yourserver. We have a <a href="https://support.cloudflare.com/forums/21318827-How-do-I-restore-original-visitor-IP-to-my-server-logs-" target="_blank" rel="noopener noreferrer">group of resources available here, including for Apache servers</a>. Note: WordPress users also have the option of installing our <a href="https://blog.cloudflare.com/introducing-the-cloudflare-wordpress-plugin">WordPress plugin</a> instead.</p>
+<p>Since CloudFlare acts as a reverse proxy for you site, your visitor logswill show our IP addresses unless you make a modification to yourserver. We have a <a href="https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips" target="_blank" rel="noopener noreferrer">group of resources available here, including for Apache servers</a>. Note: WordPress users also have the option of installing our <a href="https://blog.cloudflare.com/introducing-the-cloudflare-wordpress-plugin">WordPress plugin</a> instead.</p>
 <h3>4. Allow CloudFlare's IP addresses (recommended)</h3>
 <p>Allowing our <a href="https://www.cloudflare.com/ips" target="_blank" rel="noopener noreferrer">IP ranges</a> with your hosting provider ensures all of your website's requests are served properly.</p>
 <p>Note: CloudFlare customers that are activated through our partners,<a href="http://www.hostgator.com" target="_blank" rel="noopener noreferrer">HostGator</a> and <a href="http://vexxhost.com/cloudflare_hosting" target="_blank" rel="noopener noreferrer">VEXXHost</a>, are not required to take this step.</p>

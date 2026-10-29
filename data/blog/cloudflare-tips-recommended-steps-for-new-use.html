@@ -11,14 +11,14 @@
 <p>Changing name servers away from CloudFlare makes it difficult to troubleshoot. If you 'pause' the service, the issue will likely be immediately resolved. Then, contact our technical support team so we can work with you to resolve the root cause.</p>
 <p>Also see: <a href="https://blog.cloudflare.com/cloudflare-tips-troubleshooting-common-proble">Troubleshooting CloudFlare Problems</a></p>
 <p><em>2. Preserving IP information --&gt; Install modcloudflare (or equivalent)</em></p>
-<p>Since CloudFlare acts as a reverse proxy for websites, CloudFlare's IPs are going to show in your server logs. There is an easy fix to <a href="https://support.cloudflare.com/forums/21318827-how-do-i-restore-original-visitor-ip-to-my-server-logs" target="_blank" rel="noopener noreferrer">restore original visitor IP</a> for any web server.</p>
+<p>Since CloudFlare acts as a reverse proxy for websites, CloudFlare's IPs are going to show in your server logs. There is an easy fix to <a href="https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips" target="_blank" rel="noopener noreferrer">restore original visitor IP</a> for any web server.</p>
 <p>If you have issues with things like GeoIP or .htaccess blocks not working properly on your site, installing <a href="https://www.cloudflare.com/resources-downloads" target="_blank" rel="noopener noreferrer">mod_cloudflare</a> will resolve the problem immediately.</p>
 <p>You should also allowlist all of <a href="https://www.cloudflare.com/ips" target="_blank" rel="noopener noreferrer">CloudFlare's IP addresses</a> with your hosting provider and on your server.</p>
 <p>Note: This is not required if you have activated CloudFlare through a <a href="http://www.cloudflare.com/hosting-partners" target="_blank" rel="noopener noreferrer">CloudFlare CertifiedPartner</a>.</p>
 <p><em>3. Create PageRules</em></p>
 <p>PageRules gives you more performance and configuration options, including:</p>
 <ul>
-	<li><a href="https://blog.cloudflare.com/introducing-pagerules-advanced-caching">Cache HTML</a> (our default configuration only <a href="https://support.cloudflare.com/entries/22037282-what-file-extensions-does-cloudflare-cache-for-static-content" target="_blank" rel="noopener noreferrer">caches these static content files</a>)</li>
+	<li><a href="https://blog.cloudflare.com/introducing-pagerules-advanced-caching">Cache HTML</a> (our default configuration only <a href="https://developers.cloudflare.com/cache/concepts/default-cache-behavior" target="_blank" rel="noopener noreferrer">caches these static content files</a>)</li>
 	<li><a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">Exclude certain URLs from CloudFlare features and caching</a></li>
 	<li><a href="https://blog.cloudflare.com/introducing-pagerules-url-forwarding">302 redirects</a></li>
 </ul>
@@ -47,7 +47,7 @@
 	<li><a href="https://www.cloudflare.com/apps/highlight" target="_blank" rel="noopener noreferrer">Highlight</a>: Add contextual search with one click to your site (developed by CloudFlare)</li>
 </ul>
 <p><em>6. Search our Knowledge Base for FAQs</em></p>
-<p>While we love answering questions from our customers as quickly as possible, many questions can be answered by doing a quick search through <a href="https://support.cloudflare.com" target="_blank" rel="noopener noreferrer">CloudFlare's help content</a>.</p>
+<p>While we love answering questions from our customers as quickly as possible, many questions can be answered by doing a quick search through <a href="https://developers.cloudflare.com/support" target="_blank" rel="noopener noreferrer">CloudFlare's help content</a>.</p>
 <p><em>7. Follow us on Facebook and Twitter</em></p>
 <p>We use <a href="https://www.facebook.com/CloudFlare" target="_blank" rel="noopener noreferrer">Facebook</a> and <a href="https://twitter.com/cloudflare" target="_blank" rel="noopener noreferrer">Twitter</a> as our primary communication channels for announcing new product releases, known system issues and to give users early access to beta features. If you want to know as much as you can about CloudFlare, or if you only have a really quick question to ask, Facebook and Twitter are the best places to go. We also recently launched a <a href="https://plus.google.com/100611700350554803650" target="_blank" rel="noopener noreferrer">Google+</a> page.</p>
 <p>If you ever have a question, please <a href="mailto:support@cloudflare.com">contact us</a>. We read every email that we get and love to hear from our users.</p>

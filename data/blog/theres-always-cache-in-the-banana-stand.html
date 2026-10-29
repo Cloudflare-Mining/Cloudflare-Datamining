@@ -1,5 +1,5 @@
 <p>We’re happy to announce that we now support all HTTP Cache-Control response directives. This puts powerful control in the hands of you, the people running origin servers around the world. We believe we have the strongest support for Internet standard cache-control directives of any large scale cache on the Internet.</p>
-<p>Documentation on Cache-Control is available <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>Documentation on Cache-Control is available <a href="https://developers.cloudflare.com/cache/concepts/cache-control" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <p>Cloudflare runs a Content Distribution Network (CDN) across our globally distributed network edge. Our CDN works by caching our customers’ web content at over 119 data centers around the world and serving that content to the visitors nearest to each of our network locations. In turn, our customers’ websites and applications are <a href="https://www.cdnperf.com" target="_blank" rel="noopener noreferrer">much faster</a>, moreavailable, and more secure for their end users.</p>
 <p>A CDN’s fundamental working principle is simple: storing stuff closer to where it’s needed means it will get to its ultimate destination faster. And, serving something from more places means it’s more reliably available.</p>
 <figure class="emdash-image pt-portable-image">
@@ -23,4 +23,4 @@
 <p>If they did, they could serve their banana related assets with the following header:</p>
 <p><code>Cache-Control: public, max-age=259200, proxy-revalidate</code></p>
 <p>Public means this banana is allowed to be served from an edge cache. Max-age=259200 means it can stay in cache for up to 3 days (3 days * 24 hours * 60 minutes * 60 seconds = 259200). Proxy-revalidate means the edge cache must revalidate the content with the origin when that expiration time is up, no exceptions.</p>
-<p>For a full list of supported directives and a lot more examples (but no more bananas), check out the <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852s" target="_blank" rel="noopener noreferrer">documentation</a> in our Help Center.</p>
+<p>For a full list of supported directives and a lot more examples (but no more bananas), check out the <a href="https://developers.cloudflare.com/cache/concepts/cache-control" target="_blank" rel="noopener noreferrer">documentation</a> in our Help Center.</p>
