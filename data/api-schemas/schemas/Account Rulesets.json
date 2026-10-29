@@ -243,8 +243,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
 		"operationId": "deleteAccountRulesetRule",
@@ -9107,8 +9106,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.rules",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 		"operationId": "deleteAccountRulesetVersion",
@@ -9365,9 +9363,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.versions",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/rulesets": {
 		"operationId": "listAccountRulesets",
@@ -9984,8 +9982,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/rulesets/{ruleset_id}": {
 		"operationId": "getAccountRuleset",
@@ -18823,8 +18820,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/rulesets/{ruleset_id}/versions": {
 		"operationId": "listAccountRulesetVersions",
@@ -19430,9 +19426,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.versions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 		"operationId": "getAccountRulesetVersion",
@@ -28281,9 +28277,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.versions",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}/by_tag/{rule_tag}": {
 		"operationId": "listAccountRulesetVersionRulesByTag",
@@ -37145,9 +37141,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.versions.by-tag",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 		"operationId": "getAccountEntrypointRuleset",
@@ -46011,8 +46007,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.entrypoint",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions": {
 		"operationId": "listAccountEntrypointRulesetVersions",
@@ -46644,9 +46639,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.entrypoint.versions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}": {
 		"operationId": "getAccountEntrypointRulesetVersion",
@@ -55521,9 +55516,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.entrypoint.versions",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
 		"operationId": "updateAccountRulesetRule",
@@ -72703,8 +72698,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.rules",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/rulesets": {
 		"operationId": "createAccountRuleset",
@@ -89910,8 +89904,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/rulesets/{ruleset_id}/rules": {
 		"operationId": "createAccountRulesetRule",
@@ -107079,8 +107072,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.rules",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/rulesets/{ruleset_id}": {
 		"operationId": "updateAccountRuleset",
@@ -124293,8 +124285,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 		"operationId": "updateAccountEntrypointRuleset",
@@ -141489,7 +141480,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.entrypoint",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

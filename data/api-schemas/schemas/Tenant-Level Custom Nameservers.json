@@ -1,5 +1,5 @@
 {
-	"DELETE /tenants/{tenant_tag}/custom_ns/{custom_ns_id}": {
+	"DELETE /tenants/{tenant_id}/custom_ns/{custom_ns_id}": {
 		"operationId": "tenant-level-custom-nameservers-delete-tenant-custom-nameserver",
 		"summary": "Delete Tenant Custom Nameserver",
 		"description": "Deletes a tenant's custom nameserver.",
@@ -17,7 +17,7 @@
 				}
 			},
 			{
-				"name": "tenant_tag",
+				"name": "tenant_id",
 				"in": "path",
 				"required": true,
 				"schema": {
@@ -458,16 +458,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tenant-custom-nameservers",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
-	"GET /tenants/{tenant_tag}/custom_ns": {
+	"GET /tenants/{tenant_id}/custom_ns": {
 		"operationId": "tenant-level-custom-nameservers-list-tenant-custom-nameservers",
 		"summary": "List Tenant Custom Nameservers",
 		"description": "Lists a tenant's custom nameservers.",
 		"parameters": [
 			{
-				"name": "tenant_tag",
+				"name": "tenant_id",
 				"in": "path",
 				"required": true,
 				"schema": {
@@ -1044,16 +1043,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tenant-custom-nameservers",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
-	"POST /tenants/{tenant_tag}/custom_ns": {
+	"POST /tenants/{tenant_id}/custom_ns": {
 		"operationId": "tenant-level-custom-nameservers-add-tenant-custom-nameserver",
 		"summary": "Add Tenant Custom Nameserver",
 		"description": "Adds a custom nameserver for a tenant.",
 		"parameters": [
 			{
-				"name": "tenant_tag",
+				"name": "tenant_id",
 				"in": "path",
 				"required": true,
 				"schema": {
@@ -1586,7 +1584,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tenant-custom-nameservers",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

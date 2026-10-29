@@ -123,7 +123,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -224,7 +225,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -327,7 +329,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the notification policy."
 	},
 	"GET /accounts/{account_id}/alerting/v3/policies": {
@@ -999,7 +1000,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1113,8 +1115,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
 		"operationId": "notification-policies-get-a-notification-policy",
@@ -1799,7 +1800,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2459,7 +2461,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2564,8 +2567,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/alerting/v3/policies/{policy_id}/email/unsubscribe": {
 		"operationId": "notification-policies-show-email-unsubscribe-details",
@@ -2722,7 +2724,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2829,8 +2832,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies.email",
-		"x-fern-sdk-method-name": "details",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "details"
 	},
 	"POST /accounts/{account_id}/alerting/v3/policies": {
 		"operationId": "notification-policies-create-a-notification-policy",
@@ -2856,6 +2858,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"alert_interval": {
 								"description": "Optional specification of how often to re-alert from the same incident, not support on all alert types.",
@@ -3506,7 +3509,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3598,7 +3602,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3700,8 +3705,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/alerting/v3/policies/{policy_id}/email/unsubscribe": {
 		"operationId": "notification-policies-unsubscribe-email-from-notification-policy",
@@ -3848,7 +3852,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3948,8 +3953,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies.email",
-		"x-fern-sdk-method-name": "unsubscribe",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "unsubscribe"
 	},
 	"POST /accounts/{account_id}/alerting/v3/policies/{policy_id}/test": {
 		"operationId": "notification-policies-test-a-notification-policy",
@@ -4189,8 +4193,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
-		"x-fern-sdk-method-name": "test",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "test"
 	},
 	"PUT /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
 		"operationId": "notification-policies-update-a-notification-policy",
@@ -4228,6 +4231,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"alert_interval": {
 								"description": "Optional specification of how often to re-alert from the same incident, not support on all alert types.",
@@ -4872,7 +4876,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4964,7 +4969,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -5066,7 +5072,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

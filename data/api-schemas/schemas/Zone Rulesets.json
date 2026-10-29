@@ -256,8 +256,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.zone",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
 		"operationId": "deleteZoneRulesetRule",
@@ -9133,8 +9132,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.zone.rules",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 		"operationId": "deleteZoneRulesetVersion",
@@ -9404,9 +9402,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.zone.versions",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/rulesets": {
 		"operationId": "listZoneRulesets",
@@ -10049,8 +10047,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.zone",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/rulesets/{ruleset_id}": {
 		"operationId": "getZoneRuleset",
@@ -18914,8 +18911,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.zone",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/rulesets/{ruleset_id}/versions": {
 		"operationId": "listZoneRulesetVersions",
@@ -19547,9 +19543,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.zone.versions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 		"operationId": "getZoneRulesetVersion",
@@ -28424,9 +28420,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.zone.versions",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}/by_tag/{rule_tag}": {
 		"operationId": "listZoneRulesetVersionRulesByTag",
@@ -37314,9 +37310,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.zone.versions.by-tag",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 		"operationId": "getZoneEntrypointRuleset",
@@ -46206,8 +46202,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.zone.entrypoint",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions": {
 		"operationId": "listZoneEntrypointRulesetVersions",
@@ -46865,9 +46860,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.zone.entrypoint.versions",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}": {
 		"operationId": "getZoneEntrypointRulesetVersion",
@@ -55768,9 +55763,9 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rulesets.zone.entrypoint.versions",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
 		"operationId": "updateZoneRulesetRule",
@@ -72963,8 +72958,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.zone.rules",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /zones/{zone_id}/rulesets": {
 		"operationId": "createZoneRuleset",
@@ -90183,8 +90177,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.zone",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/rulesets/{ruleset_id}/rules": {
 		"operationId": "createZoneRulesetRule",
@@ -107365,8 +107358,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.zone.rules",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /zones/{zone_id}/rulesets/{ruleset_id}": {
 		"operationId": "updateZoneRuleset",
@@ -124592,8 +124584,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.zone",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 		"operationId": "updateZoneEntrypointRuleset",
@@ -141801,7 +141792,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rulesets.zone.entrypoint",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/email/domains/{email_domain_id}": {
 		"operationId": "email-domains-delete",
 		"summary": "Delete an Email Domain",
-		"description": "Requires an empty body. Unclaimed unpublished candidates are purged immediately. Claimed domains persist deleting state and retain claims until the deletion worker acknowledges safe revocation and token retirement. Repeated requests while deleting are idempotent. Available only to the configured OpenAI pilot account behind a default-off gate. Authentication failures may use the gateway error envelope.",
+		"description": "Requires an empty body. Unclaimed, unpublished candidates are removed immediately after token retirement. Acquired or published resources retain deleting state and claims until the deletion worker acknowledges safe revocation and token retirement: deletion completes after the last authorization FWDR may still hold has expired, up to about 31 minutes after the request. Until then the hostname and client_reference cannot be enrolled again. Repeated requests while deleting are idempotent. Retry-After is the expected time until GET returns 404; follow the Location header after it. Available only to the configured OpenAI pilot account behind a default-off gate; while the gate is off, the pilot account gets 503 with error 2090 and Retry-After, and existing domains are unaffected. Unsupported methods return 405 with error 2091. Authentication failures may use the gateway error envelope.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -58,26 +58,26 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "valid",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
 												"validation_status": "valid",
 												"verification_group": "ownership_any"
@@ -110,6 +110,7 @@
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_reason": "deleting",
 										"lifecycle_status": "deleting",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"reason": "deleting",
 											"status": "suspended"
@@ -153,6 +154,12 @@
 											"maxLength": 32,
 											"x-auditable": true
 										},
+										"claim_release_at": {
+											"description": "When the claim will enter blocked-first release if both ownership records remain continuously invalid. Absent outside that recovery period.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2099-01-31T12:00:00Z"
+										},
 										"client_reference": {
 											"description": "Opaque customer enrollment reference supplied at Create. The platform must map customers by this reference and EmailDomain ID, never by hostname alone.",
 											"type": "string",
@@ -182,7 +189,7 @@
 													"name": {
 														"description": "Exact owner name to publish in the customer's DNS.",
 														"type": "string",
-														"example": "s1._domainkey.agents.customer.com",
+														"example": "cf1._domainkey.agents.customer.com",
 														"maxLength": 253
 													},
 													"observed_at": {
@@ -224,10 +231,12 @@
 														]
 													},
 													"selector": {
-														"description": "DKIM selector; present only for DKIM assignments.",
+														"description": "DKIM selector, the first label of name; present only for DKIM assignments. New enrollments use cf1 and cf2. Enrollments created before cf1 and cf2 keep s1 and s2.",
 														"type": "string",
-														"example": "s1",
+														"example": "cf1",
 														"enum": [
+															"cf1",
+															"cf2",
 															"s1",
 															"s2"
 														]
@@ -277,24 +286,24 @@
 											"example": [
 												{
 													"content": "token.s1.dkim.byod.chatgpt.email",
-													"name": "s1._domainkey.agents.customer.com",
+													"name": "cf1._domainkey.agents.customer.com",
 													"purpose": "dkim",
 													"required_for": [
 														"sending"
 													],
-													"selector": "s1",
+													"selector": "cf1",
 													"type": "CNAME",
 													"validation_status": "pending",
 													"verification_group": "ownership_any"
 												},
 												{
 													"content": "token.s2.dkim.byod.chatgpt.email",
-													"name": "s2._domainkey.agents.customer.com",
+													"name": "cf2._domainkey.agents.customer.com",
 													"purpose": "dkim",
 													"required_for": [
 														"sending"
 													],
-													"selector": "s2",
+													"selector": "cf2",
 													"type": "CNAME",
 													"validation_status": "pending",
 													"verification_group": "ownership_any"
@@ -353,6 +362,12 @@
 												"deleting"
 											]
 										},
+										"modified_at": {
+											"description": "Last state change. Use the opaque change-feed cursor rather than comparing this value alone.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2099-01-01T12:00:00Z"
+										},
 										"routing": {
 											"description": "Whether this exact domain can currently receive mail.",
 											"example": {
@@ -364,7 +379,7 @@
 													"type": "object",
 													"properties": {
 														"reason": {
-															"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+															"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 															"type": "string",
 															"example": "customer_dns_indeterminate"
 														},
@@ -404,7 +419,7 @@
 													"type": "object",
 													"properties": {
 														"reason": {
-															"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+															"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 															"type": "string",
 															"example": "customer_dns_indeterminate"
 														},
@@ -493,6 +508,7 @@
 										"hostname",
 										"dns_management",
 										"lifecycle_status",
+										"modified_at",
 										"verification",
 										"sending",
 										"routing"
@@ -504,6 +520,8 @@
 							},
 							"required": [
 								"success",
+								"errors",
+								"messages",
 								"result"
 							]
 						}
@@ -524,7 +542,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -556,7 +574,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -635,7 +653,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -667,7 +685,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -712,7 +730,7 @@
 				}
 			},
 			"404": {
-				"description": "Domain or feature unavailable",
+				"description": "Domain not found",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -746,7 +764,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -778,7 +796,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -836,7 +854,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -868,7 +886,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -926,7 +944,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -958,7 +976,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -1003,7 +1021,7 @@
 				}
 			},
 			"503": {
-				"description": "Setup dependency unavailable",
+				"description": "Setup dependency (2074, 2080) or the API itself (2090) temporarily unavailable",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds before retrying the request, when supplied.",
@@ -1016,6 +1034,25 @@
 				"content": {
 					"application/json": {
 						"examples": {
+							"feature_unavailable": {
+								"summary": "feature unavailable",
+								"value": {
+									"errors": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"messages": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							},
 							"setup_unavailable": {
 								"summary": "setup unavailable",
 								"value": {
@@ -1046,7 +1083,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -1078,7 +1115,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -1139,10 +1176,1395 @@
 		"x-fern-sdk-group-name": "email-domains",
 		"x-fern-sdk-method-name": "delete"
 	},
+	"GET /accounts/{account_id}/email/domain-changes": {
+		"operationId": "email-domains-changes",
+		"summary": "List Email Domain changes",
+		"description": "Returns retained domain-specific state changes and completed-removal tombstones in a transaction-safe opaque order. The top-level platform field is the current shared gate and must be combined with each domain's state. Store next_cursor after processing every response, and continue immediately while has_more is true. To take a checkpoint, request this operation with modified_since set to the current time, follow has_more to the end, and save the final next_cursor; it replays every change committed after the first of those requests. Initial bootstrap and error 2086 recovery take a checkpoint, list the full inventory, then replay from the saved checkpoint, so changes made during the inventory are not lost. Only a tombstone proves that a domain was removed. Available only to the configured OpenAI pilot account behind a default-off gate; while the gate is off, the pilot account gets 503 with error 2090 and Retry-After, and existing domains are unaffected. Unsupported methods return 405 with error 2091. Authentication failures may use the gateway error envelope.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Maximum changes to return in one page.",
+				"schema": {
+					"description": "Maximum changes to return in one page.",
+					"type": "integer",
+					"format": "int64",
+					"example": 20,
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				},
+				"explode": false
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque cursor returned by the previous change page. Omit it for the first page.",
+				"schema": {
+					"description": "Opaque cursor returned by the previous change page. Omit it for the first page.",
+					"type": "string",
+					"example": "eyJ2IjoyLCJ0cmFuc2FjdGlvbl9pZCI6NDIsImNoYW5nZV9pZCI6N30"
+				},
+				"explode": false
+			},
+			{
+				"name": "modified_since",
+				"in": "query",
+				"description": "Optional RFC 3339 lower bound for the first request only. Values outside the retained history return error 2086. A value up to one minute ahead of the server clock is read as the current time; a later value returns 400.",
+				"schema": {
+					"description": "Optional RFC 3339 lower bound for the first request only. Values outside the retained history return error 2086. A value up to one minute ahead of the server clock is read as the current time; a later value returns 400.",
+					"type": "string",
+					"format": "date-time",
+					"example": "2026-10-01T12:00:00Z"
+				},
+				"explode": false
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Email Domain operation response",
+				"content": {
+					"application/json": {
+						"examples": {
+							"changes": {
+								"summary": "changes",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"platform": {
+										"routing": {
+											"status": "active"
+										},
+										"sending": {
+											"status": "active"
+										}
+									},
+									"result": [
+										{
+											"email_domain": {
+												"account_id": "9b0a4d77dfb881c1a3b7d61ea9443e19",
+												"dns_management": "external",
+												"hostname": "agents.customer.com",
+												"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
+												"lifecycle_status": "provisioned",
+												"modified_at": "2099-01-01T12:00:00Z",
+												"routing": {
+													"status": "active"
+												},
+												"sending": {
+													"status": "active"
+												},
+												"verification": {
+													"observed_at": "2099-01-01T12:00:00Z",
+													"status": "verified",
+													"verified_at": "2099-01-01T12:00:00Z"
+												}
+											},
+											"kind": "email_domain"
+										},
+										{
+											"kind": "tombstone",
+											"tombstone": {
+												"hostname": "removed.customer.com",
+												"id": "c0a527d8-2fe5-4d73-8df4-86b1eaa5cce6",
+												"modified_at": "2099-01-01T12:00:01Z",
+												"reason": "deleted"
+											}
+										}
+									],
+									"result_info": {
+										"count": 2,
+										"has_more": false,
+										"next_cursor": "eyJ2IjoyLCJ0cmFuc2FjdGlvbl9pZCI6NDIsImNoYW5nZV9pZCI6N30",
+										"per_page": 20
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"platform": {
+									"type": "object",
+									"properties": {
+										"routing": {
+											"description": "Shared platform Routing gate. A suspended value blocks Routing for every EmailDomain regardless of its domain-specific state.",
+											"example": {
+												"status": "active"
+											},
+											"allOf": [
+												{
+													"description": "Current Sending or Routing availability for the exact domain.",
+													"type": "object",
+													"properties": {
+														"reason": {
+															"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+															"type": "string",
+															"example": "customer_dns_indeterminate"
+														},
+														"status": {
+															"description": "Current capability state. Treat suspended and unknown future values as unavailable.",
+															"type": "string",
+															"example": "pending_dns",
+															"enum": [
+																"pending_dns",
+																"active",
+																"degraded",
+																"suspended"
+															]
+														},
+														"uncertainty_expires_at": {
+															"description": "End of the immutable last-known-good lease; present only while degraded.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2099-01-01T12:15:00Z"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"status"
+													]
+												}
+											]
+										},
+										"sending": {
+											"description": "Shared platform Sending gate. A suspended value blocks Sending for every EmailDomain regardless of its domain-specific state.",
+											"example": {
+												"status": "active"
+											},
+											"allOf": [
+												{
+													"description": "Current Sending or Routing availability for the exact domain.",
+													"type": "object",
+													"properties": {
+														"reason": {
+															"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+															"type": "string",
+															"example": "customer_dns_indeterminate"
+														},
+														"status": {
+															"description": "Current capability state. Treat suspended and unknown future values as unavailable.",
+															"type": "string",
+															"example": "pending_dns",
+															"enum": [
+																"pending_dns",
+																"active",
+																"degraded",
+																"suspended"
+															]
+														},
+														"uncertainty_expires_at": {
+															"description": "End of the immutable last-known-good lease; present only while degraded.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2099-01-01T12:15:00Z"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"status"
+													]
+												}
+											]
+										}
+									},
+									"additionalProperties": false,
+									"required": [
+										"sending",
+										"routing"
+									]
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"email_domain": {
+												"description": "EmailDomain state at this change. Present only when kind is email_domain; DNS assignments are omitted.",
+												"example": {
+													"account_id": "9b0a4d77dfb881c1a3b7d61ea9443e19",
+													"dns_management": "external",
+													"hostname": "agents.customer.com",
+													"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
+													"lifecycle_status": "provisioned",
+													"modified_at": "2099-01-01T12:00:00Z",
+													"routing": {
+														"status": "active"
+													},
+													"sending": {
+														"status": "active"
+													},
+													"verification": {
+														"status": "verified"
+													}
+												},
+												"allOf": [
+													{
+														"type": "object",
+														"properties": {
+															"account_id": {
+																"description": "Identifier.",
+																"type": "string",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"x-auditable": true
+															},
+															"claim_release_at": {
+																"description": "When the claim will enter blocked-first release if both ownership records remain continuously invalid. Absent outside that recovery period.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2099-01-31T12:00:00Z"
+															},
+															"client_reference": {
+																"description": "Opaque customer enrollment reference supplied at Create. The platform must map customers by this reference and EmailDomain ID, never by hostname alone.",
+																"type": "string",
+																"example": "customer-42-enrollment-1",
+																"maxLength": 128
+															},
+															"dns_management": {
+																"description": "The customer publishes the returned DNS instructions.",
+																"type": "string",
+																"example": "external",
+																"enum": [
+																	"external"
+																]
+															},
+															"dns_records": {
+																"description": "Four immutable assignments, including one Routing MX record. Included on single-resource responses and optionally on lists; operation examples show the complete set.",
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"content": {
+																			"description": "Assigned target. CNAME targets contain the enrollment token; use the returned value verbatim.",
+																			"example": "token.s1.dkim.byod.chatgpt.email",
+																			"maxLength": 253,
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "Exact owner name to publish in the customer's DNS.",
+																			"type": "string",
+																			"example": "cf1._domainkey.agents.customer.com",
+																			"maxLength": 253
+																		},
+																		"observed_at": {
+																			"description": "Time of the latest accepted observation for this assignment.",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2099-01-01T12:00:00Z"
+																		},
+																		"priority": {
+																			"description": "MX preference; present only for MX records.",
+																			"type": "integer",
+																			"format": "int64",
+																			"example": 10,
+																			"maximum": 65535,
+																			"minimum": 0
+																		},
+																		"purpose": {
+																			"description": "Role of this DNS assignment.",
+																			"type": "string",
+																			"example": "dkim",
+																			"enum": [
+																				"return_path",
+																				"dkim",
+																				"routing"
+																			]
+																		},
+																		"required_for": {
+																			"description": "Capabilities that depend on this assignment.",
+																			"type": "array",
+																			"items": {
+																				"enum": [
+																					"sending",
+																					"routing"
+																				],
+																				"type": "string"
+																			},
+																			"example": [
+																				"sending"
+																			]
+																		},
+																		"selector": {
+																			"description": "DKIM selector, the first label of name; present only for DKIM assignments. New enrollments use cf1 and cf2. Enrollments created before cf1 and cf2 keep s1 and s2.",
+																			"type": "string",
+																			"example": "cf1",
+																			"enum": [
+																				"cf1",
+																				"cf2",
+																				"s1",
+																				"s2"
+																			]
+																		},
+																		"type": {
+																			"description": "DNS record type to publish.",
+																			"type": "string",
+																			"example": "CNAME",
+																			"enum": [
+																				"CNAME",
+																				"MX"
+																			]
+																		},
+																		"validation_status": {
+																			"description": "Observation of the exact customer record.",
+																			"type": "string",
+																			"example": "pending",
+																			"enum": [
+																				"pending",
+																				"valid",
+																				"missing",
+																				"mismatch",
+																				"conflict",
+																				"indeterminate",
+																				"dnssec_bogus"
+																			]
+																		},
+																		"verification_group": {
+																			"description": "Either current DKIM alias can establish ownership.",
+																			"type": "string",
+																			"example": "ownership_any",
+																			"enum": [
+																				"ownership_any"
+																			]
+																		}
+																	},
+																	"additionalProperties": false,
+																	"required": [
+																		"purpose",
+																		"type",
+																		"name",
+																		"content",
+																		"required_for",
+																		"validation_status"
+																	]
+																},
+																"example": [
+																	{
+																		"content": "token.s1.dkim.byod.chatgpt.email",
+																		"name": "cf1._domainkey.agents.customer.com",
+																		"purpose": "dkim",
+																		"required_for": [
+																			"sending"
+																		],
+																		"selector": "cf1",
+																		"type": "CNAME",
+																		"validation_status": "pending",
+																		"verification_group": "ownership_any"
+																	},
+																	{
+																		"content": "token.s2.dkim.byod.chatgpt.email",
+																		"name": "cf2._domainkey.agents.customer.com",
+																		"purpose": "dkim",
+																		"required_for": [
+																			"sending"
+																		],
+																		"selector": "cf2",
+																		"type": "CNAME",
+																		"validation_status": "pending",
+																		"verification_group": "ownership_any"
+																	},
+																	{
+																		"content": "token.rp.byod.chatgpt.email",
+																		"name": "cf-bounce.agents.customer.com",
+																		"purpose": "return_path",
+																		"required_for": [
+																			"sending"
+																		],
+																		"type": "CNAME",
+																		"validation_status": "pending"
+																	},
+																	{
+																		"content": "route1.mx.cloudflare.net",
+																		"name": "agents.customer.com",
+																		"priority": 10,
+																		"purpose": "routing",
+																		"required_for": [
+																			"routing"
+																		],
+																		"type": "MX",
+																		"validation_status": "pending"
+																	}
+																],
+																"maxItems": 4,
+																"minItems": 4
+															},
+															"hostname": {
+																"description": "Canonical exact external customer hostname.",
+																"type": "string",
+																"example": "agents.customer.com",
+																"maxLength": 253
+															},
+															"id": {
+																"description": "Stable identifier of this exact domain enrollment.",
+																"type": "string",
+																"format": "uuid",
+																"example": "918f3a1a-04ed-4383-9cbe-df5e561d28f8"
+															},
+															"lifecycle_reason": {
+																"description": "Why the resource is leaving the provisioned lifecycle.",
+																"type": "string",
+																"example": "deleting",
+																"enum": [
+																	"deleting"
+																]
+															},
+															"lifecycle_status": {
+																"description": "Resource lifecycle; provisioned does not imply active mail, and completed deletion returns HTTP 404.",
+																"type": "string",
+																"example": "provisioned",
+																"enum": [
+																	"provisioned",
+																	"deleting"
+																]
+															},
+															"modified_at": {
+																"description": "Last state change. Use the opaque change-feed cursor rather than comparing this value alone.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2099-01-01T12:00:00Z"
+															},
+															"routing": {
+																"description": "Whether this exact domain can currently receive mail.",
+																"example": {
+																	"status": "pending_dns"
+																},
+																"allOf": [
+																	{
+																		"description": "Current Sending or Routing availability for the exact domain.",
+																		"type": "object",
+																		"properties": {
+																			"reason": {
+																				"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																				"type": "string",
+																				"example": "customer_dns_indeterminate"
+																			},
+																			"status": {
+																				"description": "Current capability state. Treat suspended and unknown future values as unavailable.",
+																				"type": "string",
+																				"example": "pending_dns",
+																				"enum": [
+																					"pending_dns",
+																					"active",
+																					"degraded",
+																					"suspended"
+																				]
+																			},
+																			"uncertainty_expires_at": {
+																				"description": "End of the immutable last-known-good lease; present only while degraded.",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2099-01-01T12:15:00Z"
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"status"
+																		]
+																	}
+																]
+															},
+															"sending": {
+																"description": "Whether this exact domain can currently send mail.",
+																"example": {
+																	"status": "pending_dns"
+																},
+																"allOf": [
+																	{
+																		"description": "Current Sending or Routing availability for the exact domain.",
+																		"type": "object",
+																		"properties": {
+																			"reason": {
+																				"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																				"type": "string",
+																				"example": "customer_dns_indeterminate"
+																			},
+																			"status": {
+																				"description": "Current capability state. Treat suspended and unknown future values as unavailable.",
+																				"type": "string",
+																				"example": "pending_dns",
+																				"enum": [
+																					"pending_dns",
+																					"active",
+																					"degraded",
+																					"suspended"
+																				]
+																			},
+																			"uncertainty_expires_at": {
+																				"description": "End of the immutable last-known-good lease; present only while degraded.",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2099-01-01T12:15:00Z"
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"status"
+																		]
+																	}
+																]
+															},
+															"verification": {
+																"description": "Customer DNS ownership status, independent of mail capability readiness.",
+																"example": {
+																	"status": "pending"
+																},
+																"allOf": [
+																	{
+																		"description": "Customer DNS ownership status, independent of mail capability readiness.",
+																		"type": "object",
+																		"properties": {
+																			"expires_at": {
+																				"description": "Expiry of an unclaimed candidate; absent once ownership is claimed.",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2099-01-08T12:00:00Z"
+																			},
+																			"observed_at": {
+																				"description": "Time of the latest accepted customer DNS observation.",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2099-01-01T12:00:00Z"
+																			},
+																			"reason": {
+																				"description": "Machine-readable explanation. Current values are customer_dns_indeterminate, customer_dns_invalid, and platform_dependency_unavailable. Clients must tolerate unknown future values and treat ownership as unverified unless status is verified.",
+																				"type": "string",
+																				"example": "customer_dns_indeterminate"
+																			},
+																			"status": {
+																				"description": "Current ownership-verification result.",
+																				"type": "string",
+																				"example": "pending",
+																				"enum": [
+																					"pending",
+																					"verified",
+																					"indeterminate",
+																					"invalid"
+																				]
+																			},
+																			"verified_at": {
+																				"description": "Time ownership was first verified for this enrollment.",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2099-01-01T12:00:00Z"
+																			}
+																		},
+																		"additionalProperties": false,
+																		"required": [
+																			"status"
+																		]
+																	}
+																]
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"id",
+															"account_id",
+															"hostname",
+															"dns_management",
+															"lifecycle_status",
+															"modified_at",
+															"verification",
+															"sending",
+															"routing"
+														]
+													}
+												]
+											},
+											"kind": {
+												"description": "Change type. email_domain carries the domain state at this change; tombstone records a completed removal.",
+												"type": "string",
+												"example": "email_domain",
+												"enum": [
+													"email_domain",
+													"tombstone"
+												]
+											},
+											"tombstone": {
+												"description": "Bounded reconciliation record for a completed removal. Present only when kind is tombstone.",
+												"example": {
+													"hostname": "agents.customer.com",
+													"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
+													"modified_at": "2099-01-01T12:00:00Z",
+													"reason": "deleted"
+												},
+												"allOf": [
+													{
+														"type": "object",
+														"properties": {
+															"hostname": {
+																"description": "Canonical hostname released by the removal.",
+																"type": "string",
+																"example": "agents.customer.com",
+																"maxLength": 253
+															},
+															"id": {
+																"description": "Identifier of the removed EmailDomain.",
+																"type": "string",
+																"format": "uuid",
+																"example": "918f3a1a-04ed-4383-9cbe-df5e561d28f8"
+															},
+															"modified_at": {
+																"description": "Time the removal completed.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2099-01-01T12:00:00Z"
+															},
+															"reason": {
+																"description": "Why the resource disappeared from the live inventory: deleted by DELETE or account deletion; claim_released after 30 days of lost ownership DNS; expired, an unverified candidate whose records must be published again under a new enrollment; claim_lost, an unverified candidate whose hostname another enrollment holds. Clients must tolerate unknown future values.",
+																"type": "string",
+																"example": "deleted",
+																"enum": [
+																	"deleted",
+																	"claim_released",
+																	"expired",
+																	"claim_lost"
+																]
+															}
+														},
+														"additionalProperties": false,
+														"required": [
+															"id",
+															"hostname",
+															"modified_at",
+															"reason"
+														]
+													}
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"kind"
+										]
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Number of changes in this response.",
+											"type": "integer",
+											"example": 2,
+											"minimum": 0
+										},
+										"has_more": {
+											"description": "True when another retained page is already available from next_cursor.",
+											"type": "boolean",
+											"example": true
+										},
+										"next_cursor": {
+											"description": "Opaque checkpoint for the next page or poll. Store it only after processing the response.",
+											"type": "string",
+											"example": "eyJ2IjoyLCJ0cmFuc2FjdGlvbl9pZCI6NDIsImNoYW5nZV9pZCI6N30"
+										},
+										"per_page": {
+											"description": "Requested maximum number of changes per page.",
+											"type": "integer",
+											"example": 20,
+											"minimum": 1
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"next_cursor",
+										"has_more"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result",
+								"platform",
+								"result_info"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "One or more structured API errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [
+										{
+											"code": 2077,
+											"message": "Invalid external domain hostname"
+										}
+									]
+								},
+								"messages": {
+									"description": "Structured messages from the standard API error handler; normally empty on success.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for this error envelope.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Permission or pilot-account denial",
+				"content": {
+					"application/json": {
+						"examples": {
+							"forbidden": {
+								"summary": "forbidden",
+								"value": {
+									"errors": [
+										{
+											"code": 2079,
+											"message": "Email Domain operation forbidden: Domain API is unavailable for this account"
+										}
+									],
+									"messages": [
+										{
+											"code": 2079,
+											"message": "Email Domain operation forbidden: Domain API is unavailable for this account"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "One or more structured API errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [
+										{
+											"code": 2077,
+											"message": "Invalid external domain hostname"
+										}
+									]
+								},
+								"messages": {
+									"description": "Structured messages from the standard API error handler; normally empty on success.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for this error envelope.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Domain not found",
+				"content": {
+					"application/json": {
+						"examples": {
+							"not_found": {
+								"summary": "not found",
+								"value": {
+									"errors": [
+										{
+											"code": 2078,
+											"message": "Email Domain not found"
+										}
+									],
+									"messages": [
+										{
+											"code": 2078,
+											"message": "Email Domain not found"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "One or more structured API errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [
+										{
+											"code": 2077,
+											"message": "Invalid external domain hostname"
+										}
+									]
+								},
+								"messages": {
+									"description": "Structured messages from the standard API error handler; normally empty on success.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for this error envelope.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Expired change cursor (2086) or inconsistent domain state (2084)",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "One or more structured API errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [
+										{
+											"code": 2077,
+											"message": "Invalid external domain hostname"
+										}
+									]
+								},
+								"messages": {
+									"description": "Structured messages from the standard API error handler; normally empty on success.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for this error envelope.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "One or more structured API errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [
+										{
+											"code": 2077,
+											"message": "Invalid external domain hostname"
+										}
+									]
+								},
+								"messages": {
+									"description": "Structured messages from the standard API error handler; normally empty on success.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for this error envelope.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Setup dependency (2074, 2080) or the API itself (2090) temporarily unavailable",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds before retrying the request, when supplied.",
+						"schema": {
+							"type": "integer",
+							"minimum": 1
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"examples": {
+							"feature_unavailable": {
+								"summary": "feature unavailable",
+								"value": {
+									"errors": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"messages": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							},
+							"setup_unavailable": {
+								"summary": "setup unavailable",
+								"value": {
+									"errors": [
+										{
+											"code": 2080,
+											"message": "Email Domain dependency is unavailable"
+										}
+									],
+									"messages": [
+										{
+											"code": 2080,
+											"message": "Email Domain dependency is unavailable"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "One or more structured API errors.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": [
+										{
+											"code": 2077,
+											"message": "Invalid external domain hostname"
+										}
+									]
+								},
+								"messages": {
+									"description": "Structured messages from the standard API error handler; normally empty on success.",
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"code": {
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
+												"type": "integer",
+												"format": "int64",
+												"example": 2077,
+												"minimum": 2000
+											},
+											"message": {
+												"description": "Human-readable explanation; do not use as a programmatic discriminator.",
+												"type": "string",
+												"example": "Invalid external domain hostname"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"example": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for this error envelope.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"additionalProperties": false,
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Email for Platforms"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.email.domain.list"
+			]
+		},
+		"x-fern-sdk-group-name": "email-domains",
+		"x-fern-sdk-method-name": "changes"
+	},
 	"GET /accounts/{account_id}/email/domains": {
 		"operationId": "email-domains-list",
 		"summary": "List Email Domains",
-		"description": "Returns account-scoped domain status. DNS records are omitted unless requested; exact hostname filtering may return several candidates; retain the EmailDomain ID for each enrollment. Available only to the configured OpenAI pilot account behind a default-off gate. Authentication failures may use the gateway error envelope.",
+		"description": "Returns account-scoped domain status. DNS records are omitted unless requested; exact hostname filtering may return several candidates; retain the EmailDomain ID for each enrollment. Available only to the configured OpenAI pilot account behind a default-off gate; while the gate is off, the pilot account gets 503 with error 2090 and Retry-After, and existing domains are unaffected. Unsupported methods return 405 with error 2091. Authentication failures may use the gateway error envelope.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1221,6 +2643,7 @@
 											"hostname": "agents.customer.com",
 											"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 											"lifecycle_status": "provisioned",
+											"modified_at": "2099-01-01T12:00:00Z",
 											"routing": {
 												"status": "pending_dns"
 											},
@@ -1253,24 +2676,24 @@
 											"dns_records": [
 												{
 													"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-													"name": "s1._domainkey.agents.customer.com",
+													"name": "cf1._domainkey.agents.customer.com",
 													"purpose": "dkim",
 													"required_for": [
 														"sending"
 													],
-													"selector": "s1",
+													"selector": "cf1",
 													"type": "CNAME",
 													"validation_status": "pending",
 													"verification_group": "ownership_any"
 												},
 												{
 													"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-													"name": "s2._domainkey.agents.customer.com",
+													"name": "cf2._domainkey.agents.customer.com",
 													"purpose": "dkim",
 													"required_for": [
 														"sending"
 													],
-													"selector": "s2",
+													"selector": "cf2",
 													"type": "CNAME",
 													"validation_status": "pending",
 													"verification_group": "ownership_any"
@@ -1300,6 +2723,7 @@
 											"hostname": "agents.customer.com",
 											"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 											"lifecycle_status": "provisioned",
+											"modified_at": "2099-01-01T12:00:00Z",
 											"routing": {
 												"status": "pending_dns"
 											},
@@ -1348,6 +2772,12 @@
 												"maxLength": 32,
 												"x-auditable": true
 											},
+											"claim_release_at": {
+												"description": "When the claim will enter blocked-first release if both ownership records remain continuously invalid. Absent outside that recovery period.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2099-01-31T12:00:00Z"
+											},
 											"client_reference": {
 												"description": "Opaque customer enrollment reference supplied at Create. The platform must map customers by this reference and EmailDomain ID, never by hostname alone.",
 												"type": "string",
@@ -1377,7 +2807,7 @@
 														"name": {
 															"description": "Exact owner name to publish in the customer's DNS.",
 															"type": "string",
-															"example": "s1._domainkey.agents.customer.com",
+															"example": "cf1._domainkey.agents.customer.com",
 															"maxLength": 253
 														},
 														"observed_at": {
@@ -1419,10 +2849,12 @@
 															]
 														},
 														"selector": {
-															"description": "DKIM selector; present only for DKIM assignments.",
+															"description": "DKIM selector, the first label of name; present only for DKIM assignments. New enrollments use cf1 and cf2. Enrollments created before cf1 and cf2 keep s1 and s2.",
 															"type": "string",
-															"example": "s1",
+															"example": "cf1",
 															"enum": [
+																"cf1",
+																"cf2",
 																"s1",
 																"s2"
 															]
@@ -1472,24 +2904,24 @@
 												"example": [
 													{
 														"content": "token.s1.dkim.byod.chatgpt.email",
-														"name": "s1._domainkey.agents.customer.com",
+														"name": "cf1._domainkey.agents.customer.com",
 														"purpose": "dkim",
 														"required_for": [
 															"sending"
 														],
-														"selector": "s1",
+														"selector": "cf1",
 														"type": "CNAME",
 														"validation_status": "pending",
 														"verification_group": "ownership_any"
 													},
 													{
 														"content": "token.s2.dkim.byod.chatgpt.email",
-														"name": "s2._domainkey.agents.customer.com",
+														"name": "cf2._domainkey.agents.customer.com",
 														"purpose": "dkim",
 														"required_for": [
 															"sending"
 														],
-														"selector": "s2",
+														"selector": "cf2",
 														"type": "CNAME",
 														"validation_status": "pending",
 														"verification_group": "ownership_any"
@@ -1548,6 +2980,12 @@
 													"deleting"
 												]
 											},
+											"modified_at": {
+												"description": "Last state change. Use the opaque change-feed cursor rather than comparing this value alone.",
+												"type": "string",
+												"format": "date-time",
+												"example": "2099-01-01T12:00:00Z"
+											},
 											"routing": {
 												"description": "Whether this exact domain can currently receive mail.",
 												"example": {
@@ -1559,7 +2997,7 @@
 														"type": "object",
 														"properties": {
 															"reason": {
-																"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																"type": "string",
 																"example": "customer_dns_indeterminate"
 															},
@@ -1599,7 +3037,7 @@
 														"type": "object",
 														"properties": {
 															"reason": {
-																"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+																"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 																"type": "string",
 																"example": "customer_dns_indeterminate"
 															},
@@ -1688,6 +3126,7 @@
 											"hostname",
 											"dns_management",
 											"lifecycle_status",
+											"modified_at",
 											"verification",
 											"sending",
 											"routing"
@@ -1723,6 +3162,8 @@
 							},
 							"required": [
 								"success",
+								"errors",
+								"messages",
 								"result",
 								"result_info"
 							]
@@ -1744,7 +3185,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -1776,7 +3217,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -1855,7 +3296,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -1887,7 +3328,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -1932,7 +3373,7 @@
 				}
 			},
 			"404": {
-				"description": "Domain or feature unavailable",
+				"description": "Domain not found",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -1966,7 +3407,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -1998,7 +3439,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -2056,7 +3497,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -2088,7 +3529,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -2133,7 +3574,7 @@
 				}
 			},
 			"503": {
-				"description": "Setup dependency unavailable",
+				"description": "Setup dependency (2074, 2080) or the API itself (2090) temporarily unavailable",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds before retrying the request, when supplied.",
@@ -2146,6 +3587,25 @@
 				"content": {
 					"application/json": {
 						"examples": {
+							"feature_unavailable": {
+								"summary": "feature unavailable",
+								"value": {
+									"errors": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"messages": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							},
 							"setup_unavailable": {
 								"summary": "setup unavailable",
 								"value": {
@@ -2176,7 +3636,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -2208,7 +3668,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -2272,7 +3732,7 @@
 	"GET /accounts/{account_id}/email/domains/{email_domain_id}": {
 		"operationId": "email-domains-get",
 		"summary": "Get an Email Domain",
-		"description": "Returns domain status and its four assigned DNS records. Shared provider health is reported by the capability states rather than duplicated on each DNS record. Expired unclaimed candidates and completed deletions return 404. Available only to the configured OpenAI pilot account behind a default-off gate. Authentication failures may use the gateway error envelope.",
+		"description": "Returns domain status and its four assigned DNS records. Shared provider health is reported by the capability states rather than duplicated on each DNS record. Expired unclaimed candidates and completed deletions return 404. Available only to the configured OpenAI pilot account behind a default-off gate; while the gate is off, the pilot account gets 503 with error 2090 and Retry-After, and existing domains are unaffected. Unsupported methods return 405 with error 2091. Authentication failures may use the gateway error envelope.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2313,26 +3773,26 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "valid",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
 												"validation_status": "valid",
 												"verification_group": "ownership_any"
@@ -2364,6 +3824,7 @@
 										"hostname": "agents.customer.com",
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_status": "provisioned",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"status": "active"
 										},
@@ -2390,26 +3851,26 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "missing",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
 												"validation_status": "missing",
 												"verification_group": "ownership_any"
@@ -2441,6 +3902,7 @@
 										"hostname": "agents.customer.com",
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_status": "provisioned",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"status": "pending_dns"
 										},
@@ -2467,26 +3929,26 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "valid",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
 												"validation_status": "valid",
 												"verification_group": "ownership_any"
@@ -2518,6 +3980,7 @@
 										"hostname": "agents.customer.com",
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_status": "provisioned",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"reason": "platform_dependency_unavailable",
 											"status": "suspended"
@@ -2546,28 +4009,28 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "valid",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
-												"validation_status": "valid",
+												"validation_status": "indeterminate",
 												"verification_group": "ownership_any"
 											},
 											{
@@ -2591,26 +4054,26 @@
 													"routing"
 												],
 												"type": "MX",
-												"validation_status": "valid"
+												"validation_status": "indeterminate"
 											}
 										],
 										"hostname": "agents.customer.com",
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_status": "provisioned",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"reason": "customer_dns_indeterminate",
 											"status": "degraded",
-											"uncertainty_expires_at": "2099-01-01T12:15:00Z"
+											"uncertainty_expires_at": "2099-01-01T12:20:00Z"
 										},
 										"sending": {
 											"reason": "customer_dns_indeterminate",
 											"status": "degraded",
-											"uncertainty_expires_at": "2099-01-01T12:15:00Z"
+											"uncertainty_expires_at": "2099-01-01T12:20:00Z"
 										},
 										"verification": {
 											"observed_at": "2099-01-01T12:00:00Z",
-											"reason": "customer_dns_indeterminate",
-											"status": "indeterminate",
+											"status": "verified",
 											"verified_at": "2099-01-01T12:00:00Z"
 										}
 									},
@@ -2628,26 +4091,26 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "indeterminate",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
 												"validation_status": "indeterminate",
 												"verification_group": "ownership_any"
@@ -2679,6 +4142,7 @@
 										"hostname": "agents.customer.com",
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_status": "provisioned",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"status": "pending_dns"
 										},
@@ -2706,26 +4170,26 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "valid",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
 												"validation_status": "valid",
 												"verification_group": "ownership_any"
@@ -2757,6 +4221,7 @@
 										"hostname": "agents.customer.com",
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_status": "provisioned",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"status": "pending_dns"
 										},
@@ -2783,26 +4248,26 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "missing",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
 												"validation_status": "missing",
 												"verification_group": "ownership_any"
@@ -2834,6 +4299,7 @@
 										"hostname": "agents.customer.com",
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_status": "provisioned",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"status": "pending_dns"
 										},
@@ -2861,26 +4327,26 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "valid",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"observed_at": "2099-01-01T12:00:00Z",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
 												"validation_status": "missing",
 												"verification_group": "ownership_any"
@@ -2912,6 +4378,7 @@
 										"hostname": "agents.customer.com",
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_status": "provisioned",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"status": "pending_dns"
 										},
@@ -2953,6 +4420,12 @@
 											"maxLength": 32,
 											"x-auditable": true
 										},
+										"claim_release_at": {
+											"description": "When the claim will enter blocked-first release if both ownership records remain continuously invalid. Absent outside that recovery period.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2099-01-31T12:00:00Z"
+										},
 										"client_reference": {
 											"description": "Opaque customer enrollment reference supplied at Create. The platform must map customers by this reference and EmailDomain ID, never by hostname alone.",
 											"type": "string",
@@ -2982,7 +4455,7 @@
 													"name": {
 														"description": "Exact owner name to publish in the customer's DNS.",
 														"type": "string",
-														"example": "s1._domainkey.agents.customer.com",
+														"example": "cf1._domainkey.agents.customer.com",
 														"maxLength": 253
 													},
 													"observed_at": {
@@ -3024,10 +4497,12 @@
 														]
 													},
 													"selector": {
-														"description": "DKIM selector; present only for DKIM assignments.",
+														"description": "DKIM selector, the first label of name; present only for DKIM assignments. New enrollments use cf1 and cf2. Enrollments created before cf1 and cf2 keep s1 and s2.",
 														"type": "string",
-														"example": "s1",
+														"example": "cf1",
 														"enum": [
+															"cf1",
+															"cf2",
 															"s1",
 															"s2"
 														]
@@ -3077,24 +4552,24 @@
 											"example": [
 												{
 													"content": "token.s1.dkim.byod.chatgpt.email",
-													"name": "s1._domainkey.agents.customer.com",
+													"name": "cf1._domainkey.agents.customer.com",
 													"purpose": "dkim",
 													"required_for": [
 														"sending"
 													],
-													"selector": "s1",
+													"selector": "cf1",
 													"type": "CNAME",
 													"validation_status": "pending",
 													"verification_group": "ownership_any"
 												},
 												{
 													"content": "token.s2.dkim.byod.chatgpt.email",
-													"name": "s2._domainkey.agents.customer.com",
+													"name": "cf2._domainkey.agents.customer.com",
 													"purpose": "dkim",
 													"required_for": [
 														"sending"
 													],
-													"selector": "s2",
+													"selector": "cf2",
 													"type": "CNAME",
 													"validation_status": "pending",
 													"verification_group": "ownership_any"
@@ -3153,6 +4628,12 @@
 												"deleting"
 											]
 										},
+										"modified_at": {
+											"description": "Last state change. Use the opaque change-feed cursor rather than comparing this value alone.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2099-01-01T12:00:00Z"
+										},
 										"routing": {
 											"description": "Whether this exact domain can currently receive mail.",
 											"example": {
@@ -3164,7 +4645,7 @@
 													"type": "object",
 													"properties": {
 														"reason": {
-															"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+															"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 															"type": "string",
 															"example": "customer_dns_indeterminate"
 														},
@@ -3204,7 +4685,7 @@
 													"type": "object",
 													"properties": {
 														"reason": {
-															"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+															"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 															"type": "string",
 															"example": "customer_dns_indeterminate"
 														},
@@ -3293,6 +4774,7 @@
 										"hostname",
 										"dns_management",
 										"lifecycle_status",
+										"modified_at",
 										"verification",
 										"sending",
 										"routing"
@@ -3304,6 +4786,8 @@
 							},
 							"required": [
 								"success",
+								"errors",
+								"messages",
 								"result"
 							]
 						}
@@ -3324,7 +4808,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -3356,7 +4840,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -3435,7 +4919,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -3467,7 +4951,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -3512,7 +4996,7 @@
 				}
 			},
 			"404": {
-				"description": "Domain or feature unavailable",
+				"description": "Domain not found",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -3546,7 +5030,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -3578,7 +5062,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -3636,7 +5120,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -3668,7 +5152,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -3713,7 +5197,7 @@
 				}
 			},
 			"503": {
-				"description": "Setup dependency unavailable",
+				"description": "Setup dependency (2074, 2080) or the API itself (2090) temporarily unavailable",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds before retrying the request, when supplied.",
@@ -3726,6 +5210,25 @@
 				"content": {
 					"application/json": {
 						"examples": {
+							"feature_unavailable": {
+								"summary": "feature unavailable",
+								"value": {
+									"errors": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"messages": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							},
 							"setup_unavailable": {
 								"summary": "setup unavailable",
 								"value": {
@@ -3756,7 +5259,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -3788,7 +5291,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -3852,7 +5355,7 @@
 	"POST /accounts/{account_id}/email/domains": {
 		"operationId": "email-domains-create",
 		"summary": "Create an Email Domain",
-		"description": "Creates a candidate and four DNS instructions. Rejects hostnames whose assigned Return-Path exceeds 201 ASCII characters. Creation follows read-only checks of the saved provider bundle and published exclusion. Hostnames inside an active full Cloudflare DNS zone return the generic hostname conflict error 2083. No per-domain provider DNS writes occur. Customer DNS observations remain pending and mail remains inactive. Unverified candidates may share a hostname. Supply an account-unique client_reference to retry the same enrollment safely; reuse with a different hostname returns error 2083. Final public-DNS, namespace protection and runtime readiness are separate gates. Available only to the configured OpenAI pilot account behind a default-off gate. Authentication failures may use the gateway error envelope.",
+		"description": "Creates a candidate and four DNS instructions. Rejects hostnames with more than 16 labels or whose assigned Return-Path exceeds 201 ASCII characters; error 2077 names the hostname rule that failed. Creation follows read-only checks of the saved provider bundle and published exclusion. Hostnames inside an active full Cloudflare DNS zone, including zones under a PSL private suffix such as workers.dev, or held by another enrollment, return the generic hostname conflict error 2083. While an earlier enrollment of this account with the same hostname or client_reference is being deleted, create returns error 2084 with Retry-After set to the expected completion time. No per-domain provider DNS writes occur. Customer DNS observations remain pending and mail remains inactive. Unverified candidates may share a hostname. Supply an account-unique client_reference to retry the same enrollment safely; reuse with a different hostname returns error 2089. A full domain quota returns error 2081 and frees only when domains are deleted or candidates expire, so it is not retryable; the create rate limit returns 429 with error 2088 and Retry-After. Requests rejected before the Cloudflare zone check do not count toward the rate limit. Final public-DNS, namespace protection and runtime readiness are separate gates. Available only to the configured OpenAI pilot account behind a default-off gate; while the gate is off, the pilot account gets 503 with error 2090 and Retry-After, and existing domains are unaffected. Unsupported methods return 405 with error 2091. Authentication failures may use the gateway error envelope.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3912,24 +5415,24 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "pending",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
 												"validation_status": "pending",
 												"verification_group": "ownership_any"
@@ -3959,6 +5462,7 @@
 										"hostname": "agents.customer.com",
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_status": "provisioned",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"status": "pending_dns"
 										},
@@ -3999,6 +5503,12 @@
 											"maxLength": 32,
 											"x-auditable": true
 										},
+										"claim_release_at": {
+											"description": "When the claim will enter blocked-first release if both ownership records remain continuously invalid. Absent outside that recovery period.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2099-01-31T12:00:00Z"
+										},
 										"client_reference": {
 											"description": "Opaque customer enrollment reference supplied at Create. The platform must map customers by this reference and EmailDomain ID, never by hostname alone.",
 											"type": "string",
@@ -4028,7 +5538,7 @@
 													"name": {
 														"description": "Exact owner name to publish in the customer's DNS.",
 														"type": "string",
-														"example": "s1._domainkey.agents.customer.com",
+														"example": "cf1._domainkey.agents.customer.com",
 														"maxLength": 253
 													},
 													"observed_at": {
@@ -4070,10 +5580,12 @@
 														]
 													},
 													"selector": {
-														"description": "DKIM selector; present only for DKIM assignments.",
+														"description": "DKIM selector, the first label of name; present only for DKIM assignments. New enrollments use cf1 and cf2. Enrollments created before cf1 and cf2 keep s1 and s2.",
 														"type": "string",
-														"example": "s1",
+														"example": "cf1",
 														"enum": [
+															"cf1",
+															"cf2",
 															"s1",
 															"s2"
 														]
@@ -4123,24 +5635,24 @@
 											"example": [
 												{
 													"content": "token.s1.dkim.byod.chatgpt.email",
-													"name": "s1._domainkey.agents.customer.com",
+													"name": "cf1._domainkey.agents.customer.com",
 													"purpose": "dkim",
 													"required_for": [
 														"sending"
 													],
-													"selector": "s1",
+													"selector": "cf1",
 													"type": "CNAME",
 													"validation_status": "pending",
 													"verification_group": "ownership_any"
 												},
 												{
 													"content": "token.s2.dkim.byod.chatgpt.email",
-													"name": "s2._domainkey.agents.customer.com",
+													"name": "cf2._domainkey.agents.customer.com",
 													"purpose": "dkim",
 													"required_for": [
 														"sending"
 													],
-													"selector": "s2",
+													"selector": "cf2",
 													"type": "CNAME",
 													"validation_status": "pending",
 													"verification_group": "ownership_any"
@@ -4199,6 +5711,12 @@
 												"deleting"
 											]
 										},
+										"modified_at": {
+											"description": "Last state change. Use the opaque change-feed cursor rather than comparing this value alone.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2099-01-01T12:00:00Z"
+										},
 										"routing": {
 											"description": "Whether this exact domain can currently receive mail.",
 											"example": {
@@ -4210,7 +5728,7 @@
 													"type": "object",
 													"properties": {
 														"reason": {
-															"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+															"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 															"type": "string",
 															"example": "customer_dns_indeterminate"
 														},
@@ -4250,7 +5768,7 @@
 													"type": "object",
 													"properties": {
 														"reason": {
-															"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+															"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 															"type": "string",
 															"example": "customer_dns_indeterminate"
 														},
@@ -4339,6 +5857,7 @@
 										"hostname",
 										"dns_management",
 										"lifecycle_status",
+										"modified_at",
 										"verification",
 										"sending",
 										"routing"
@@ -4350,6 +5869,8 @@
 							},
 							"required": [
 								"success",
+								"errors",
+								"messages",
 								"result"
 							]
 						}
@@ -4367,13 +5888,13 @@
 									"errors": [
 										{
 											"code": 2077,
-											"message": "Invalid external domain hostname"
+											"message": "Invalid external domain hostname: wildcard hostnames are not supported"
 										}
 									],
 									"messages": [
 										{
 											"code": 2077,
-											"message": "Invalid external domain hostname"
+											"message": "Invalid external domain hostname: wildcard hostnames are not supported"
 										}
 									],
 									"result": null,
@@ -4391,7 +5912,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4423,7 +5944,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4502,7 +6023,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4534,7 +6055,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4579,7 +6100,7 @@
 				}
 			},
 			"404": {
-				"description": "Domain or feature unavailable",
+				"description": "Domain not found",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -4613,7 +6134,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4645,7 +6166,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4690,10 +6211,38 @@
 				}
 			},
 			"409": {
-				"description": "Hostname conflict or invalid state",
+				"description": "Hostname conflict (2083), client_reference conflict (2089), deletion in progress (2084, with Retry-After) or full domain quota (2081)",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds until a deletion in progress is expected to complete (error 2084 only).",
+						"schema": {
+							"type": "integer",
+							"minimum": 1
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"examples": {
+							"deletion_pending": {
+								"summary": "deletion pending",
+								"value": {
+									"errors": [
+										{
+											"code": 2084,
+											"message": "Email Domain state does not permit this operation: an earlier enrollment of this hostname or client_reference is still being deleted; retry after 1800 seconds"
+										}
+									],
+									"messages": [
+										{
+											"code": 2084,
+											"message": "Email Domain state does not permit this operation: an earlier enrollment of this hostname or client_reference is still being deleted; retry after 1800 seconds"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							},
 							"hostname_reserved": {
 								"summary": "hostname reserved",
 								"value": {
@@ -4731,6 +6280,44 @@
 									"result": null,
 									"success": false
 								}
+							},
+							"quota_exceeded": {
+								"summary": "quota exceeded",
+								"value": {
+									"errors": [
+										{
+											"code": 2081,
+											"message": "Email Domain quota exceeded"
+										}
+									],
+									"messages": [
+										{
+											"code": 2081,
+											"message": "Email Domain quota exceeded"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							},
+							"reference_conflict": {
+								"summary": "reference conflict",
+								"value": {
+									"errors": [
+										{
+											"code": 2089,
+											"message": "Email Domain client_reference names another hostname"
+										}
+									],
+									"messages": [
+										{
+											"code": 2089,
+											"message": "Email Domain client_reference names another hostname"
+										}
+									],
+									"result": null,
+									"success": false
+								}
 							}
 						},
 						"schema": {
@@ -4743,7 +6330,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4775,7 +6362,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4820,7 +6407,7 @@
 				}
 			},
 			"429": {
-				"description": "Quota or verification rate limit",
+				"description": "Account create rate limit (2088)",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds before retrying the request, when supplied.",
@@ -4832,6 +6419,27 @@
 				},
 				"content": {
 					"application/json": {
+						"examples": {
+							"request_rate_limited": {
+								"summary": "request rate limited",
+								"value": {
+									"errors": [
+										{
+											"code": 2088,
+											"message": "Email Domain request rate exceeded: Domain creation rate exceeded"
+										}
+									],
+									"messages": [
+										{
+											"code": 2088,
+											"message": "Email Domain request rate exceeded: Domain creation rate exceeded"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							}
+						},
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -4842,7 +6450,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4874,7 +6482,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4932,7 +6540,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -4964,7 +6572,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -5009,7 +6617,7 @@
 				}
 			},
 			"503": {
-				"description": "Setup dependency unavailable",
+				"description": "Setup dependency (2074, 2080) or the API itself (2090) temporarily unavailable",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds before retrying the request, when supplied.",
@@ -5022,6 +6630,25 @@
 				"content": {
 					"application/json": {
 						"examples": {
+							"feature_unavailable": {
+								"summary": "feature unavailable",
+								"value": {
+									"errors": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"messages": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							},
 							"setup_unavailable": {
 								"summary": "setup unavailable",
 								"value": {
@@ -5052,7 +6679,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -5084,7 +6711,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -5148,7 +6775,7 @@
 	"POST /accounts/{account_id}/email/domains/{email_domain_id}/verify": {
 		"operationId": "email-domains-verify",
 		"summary": "Verify an Email Domain",
-		"description": "Requires an empty body. Schedules an expedited check and coalesces queued or leased work. It does not accept verification results, bypass activation gates, or perform customer DNS checks synchronously. Follow the Location header after Retry-After seconds until verification.observed_at appears or advances beyond the value in this 202 response; status may remain unchanged. Candidate expiry returns 404. Available only to the configured OpenAI pilot account behind a default-off gate. Authentication failures may use the gateway error envelope.",
+		"description": "Requires an empty body. Schedules an expedited check and coalesces queued or leased work. It does not accept verification results, bypass activation gates, or perform customer DNS checks synchronously. Follow the Location header after Retry-After seconds until verification.observed_at appears or advances beyond the value in this 202 response; status may remain unchanged. Candidate expiry returns 404. A repeat within 30 seconds returns error 2082 with the remaining cooldown in Retry-After. Only a request that schedules a check counts toward the account rate limit, error 2088. Available only to the configured OpenAI pilot account behind a default-off gate; while the gate is off, the pilot account gets 503 with error 2090 and Retry-After, and existing domains are unaffected. Unsupported methods return 405 with error 2091. Authentication failures may use the gateway error envelope.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5204,24 +6831,24 @@
 										"dns_records": [
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s1.dkim.byod.chatgpt.email",
-												"name": "s1._domainkey.agents.customer.com",
+												"name": "cf1._domainkey.agents.customer.com",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s1",
+												"selector": "cf1",
 												"type": "CNAME",
 												"validation_status": "pending",
 												"verification_group": "ownership_any"
 											},
 											{
 												"content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.s2.dkim.byod.chatgpt.email",
-												"name": "s2._domainkey.agents.customer.com",
+												"name": "cf2._domainkey.agents.customer.com",
 												"purpose": "dkim",
 												"required_for": [
 													"sending"
 												],
-												"selector": "s2",
+												"selector": "cf2",
 												"type": "CNAME",
 												"validation_status": "pending",
 												"verification_group": "ownership_any"
@@ -5251,6 +6878,7 @@
 										"hostname": "agents.customer.com",
 										"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
 										"lifecycle_status": "provisioned",
+										"modified_at": "2099-01-01T12:00:00Z",
 										"routing": {
 											"status": "pending_dns"
 										},
@@ -5291,6 +6919,12 @@
 											"maxLength": 32,
 											"x-auditable": true
 										},
+										"claim_release_at": {
+											"description": "When the claim will enter blocked-first release if both ownership records remain continuously invalid. Absent outside that recovery period.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2099-01-31T12:00:00Z"
+										},
 										"client_reference": {
 											"description": "Opaque customer enrollment reference supplied at Create. The platform must map customers by this reference and EmailDomain ID, never by hostname alone.",
 											"type": "string",
@@ -5320,7 +6954,7 @@
 													"name": {
 														"description": "Exact owner name to publish in the customer's DNS.",
 														"type": "string",
-														"example": "s1._domainkey.agents.customer.com",
+														"example": "cf1._domainkey.agents.customer.com",
 														"maxLength": 253
 													},
 													"observed_at": {
@@ -5362,10 +6996,12 @@
 														]
 													},
 													"selector": {
-														"description": "DKIM selector; present only for DKIM assignments.",
+														"description": "DKIM selector, the first label of name; present only for DKIM assignments. New enrollments use cf1 and cf2. Enrollments created before cf1 and cf2 keep s1 and s2.",
 														"type": "string",
-														"example": "s1",
+														"example": "cf1",
 														"enum": [
+															"cf1",
+															"cf2",
 															"s1",
 															"s2"
 														]
@@ -5415,24 +7051,24 @@
 											"example": [
 												{
 													"content": "token.s1.dkim.byod.chatgpt.email",
-													"name": "s1._domainkey.agents.customer.com",
+													"name": "cf1._domainkey.agents.customer.com",
 													"purpose": "dkim",
 													"required_for": [
 														"sending"
 													],
-													"selector": "s1",
+													"selector": "cf1",
 													"type": "CNAME",
 													"validation_status": "pending",
 													"verification_group": "ownership_any"
 												},
 												{
 													"content": "token.s2.dkim.byod.chatgpt.email",
-													"name": "s2._domainkey.agents.customer.com",
+													"name": "cf2._domainkey.agents.customer.com",
 													"purpose": "dkim",
 													"required_for": [
 														"sending"
 													],
-													"selector": "s2",
+													"selector": "cf2",
 													"type": "CNAME",
 													"validation_status": "pending",
 													"verification_group": "ownership_any"
@@ -5491,6 +7127,12 @@
 												"deleting"
 											]
 										},
+										"modified_at": {
+											"description": "Last state change. Use the opaque change-feed cursor rather than comparing this value alone.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2099-01-01T12:00:00Z"
+										},
 										"routing": {
 											"description": "Whether this exact domain can currently receive mail.",
 											"example": {
@@ -5502,7 +7144,7 @@
 													"type": "object",
 													"properties": {
 														"reason": {
-															"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+															"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 															"type": "string",
 															"example": "customer_dns_indeterminate"
 														},
@@ -5542,7 +7184,7 @@
 													"type": "object",
 													"properties": {
 														"reason": {
-															"description": "Machine-readable explanation. V1 reasons: customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
+															"description": "Machine-readable explanation. V1 reasons: policy_suspended denotes an unavailable capability; customer_dns_invalid, customer_dns_indeterminate, and verification_invalid reflect customer ownership records; rollout_unacknowledged, sending_not_ready, routing_not_ready, worker_unavailable, platform_dependency_unavailable, platform_health_unavailable, platform_health_stale, platform_dns_invalid, platform_dns_indeterminate, publication_invalid, publication_unavailable, and validation_overdue reflect service readiness or internal evidence; deleting means teardown is in progress. Clients must tolerate unknown future values and treat the capability as unavailable.",
 															"type": "string",
 															"example": "customer_dns_indeterminate"
 														},
@@ -5631,6 +7273,7 @@
 										"hostname",
 										"dns_management",
 										"lifecycle_status",
+										"modified_at",
 										"verification",
 										"sending",
 										"routing"
@@ -5642,6 +7285,8 @@
 							},
 							"required": [
 								"success",
+								"errors",
+								"messages",
 								"result"
 							]
 						}
@@ -5662,7 +7307,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -5694,7 +7339,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -5773,7 +7418,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -5805,7 +7450,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -5850,7 +7495,7 @@
 				}
 			},
 			"404": {
-				"description": "Domain or feature unavailable",
+				"description": "Domain not found",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -5884,7 +7529,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -5916,7 +7561,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -5974,7 +7619,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -6006,7 +7651,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -6051,7 +7696,7 @@
 				}
 			},
 			"429": {
-				"description": "Quota or verification rate limit",
+				"description": "Per-domain verification cooldown (2082) or account verification rate limit (2088)",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds before retrying the request, when supplied.",
@@ -6070,13 +7715,13 @@
 									"errors": [
 										{
 											"code": 2082,
-											"message": "Email Domain verification rate exceeded: Verification request rate exceeded"
+											"message": "Email Domain verification rate exceeded"
 										}
 									],
 									"messages": [
 										{
 											"code": 2082,
-											"message": "Email Domain verification rate exceeded: Verification request rate exceeded"
+											"message": "Email Domain verification rate exceeded"
 										}
 									],
 									"result": null,
@@ -6094,7 +7739,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -6126,7 +7771,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -6184,7 +7829,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -6216,7 +7861,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -6261,7 +7906,7 @@
 				}
 			},
 			"503": {
-				"description": "Setup dependency unavailable",
+				"description": "Setup dependency (2074, 2080) or the API itself (2090) temporarily unavailable",
 				"headers": {
 					"Retry-After": {
 						"description": "Seconds before retrying the request, when supplied.",
@@ -6274,6 +7919,25 @@
 				"content": {
 					"application/json": {
 						"examples": {
+							"feature_unavailable": {
+								"summary": "feature unavailable",
+								"value": {
+									"errors": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"messages": [
+										{
+											"code": 2090,
+											"message": "Email Domain API is temporarily unavailable"
+										}
+									],
+									"result": null,
+									"success": false
+								}
+							},
 							"setup_unavailable": {
 								"summary": "setup unavailable",
 								"value": {
@@ -6304,7 +7968,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,
@@ -6336,7 +8000,7 @@
 										"additionalProperties": false,
 										"properties": {
 											"code": {
-												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure. Clients must tolerate unknown future values.",
+												"description": "Stable numeric code: 2076 invalid request, 2077 invalid hostname, 2078 not found, 2079 forbidden, 2080 dependency unavailable, 2081 quota exceeded, 2082 verification rate limited, 2083 hostname reserved, 2084 invalid state, 2085 internal failure, or 2086 expired change cursor. Clients must tolerate unknown future values.",
 												"type": "integer",
 												"format": "int64",
 												"example": 2077,

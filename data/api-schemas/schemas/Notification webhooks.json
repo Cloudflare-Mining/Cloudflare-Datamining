@@ -207,7 +207,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the webhook destination."
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/webhooks": {
@@ -368,7 +367,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -515,7 +515,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -626,8 +627,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}": {
 		"operationId": "notification-webhooks-get-a-webhook",
@@ -801,7 +801,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -950,7 +951,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1061,8 +1063,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/alerting/v3/destinations/webhooks": {
 		"operationId": "notification-webhooks-create-a-webhook",
@@ -1088,6 +1089,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
@@ -1199,7 +1201,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1291,7 +1294,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1399,8 +1403,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}": {
 		"operationId": "notification-webhooks-update-a-webhook",
@@ -1438,6 +1441,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"name": {
 								"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
@@ -1549,7 +1553,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1641,7 +1646,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1749,7 +1755,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

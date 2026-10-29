@@ -330,7 +330,8 @@
 											"type": "boolean",
 											"example": true
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"type": "object",
@@ -570,7 +571,8 @@
 													"type": "boolean",
 													"example": true
 												}
-											}
+											},
+											"type": "object"
 										},
 										{
 											"type": "object",
@@ -735,8 +737,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "audit-logs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/logs/audit": {
 		"operationId": "audit-logs-v2-get-account-audit-logs",
@@ -1749,8 +1750,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.logs.audit",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/logs/audit/{id}/history": {
 		"operationId": "audit-logs-v2-get-account-audit-log-history",
@@ -2274,8 +2274,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.logs.audit",
-		"x-fern-sdk-method-name": "history",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "history"
 	},
 	"GET /accounts/{account_id}/logs/audit/product_categories": {
 		"operationId": "audit-logs-v2-list-account-product-categories",
@@ -2449,8 +2448,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.logs.audit",
-		"x-fern-sdk-method-name": "product-categories",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "product-categories"
 	},
 	"GET /organizations/{organization_id}/logs/audit": {
 		"operationId": "audit-logs-v2-get-organization-audit-logs",
@@ -3321,8 +3319,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.logs.audit",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /organizations/{organization_id}/logs/audit/{id}/history": {
 		"operationId": "audit-logs-v2-get-organization-audit-log-history",
@@ -3820,8 +3817,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.logs.audit",
-		"x-fern-sdk-method-name": "history",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "history"
 	},
 	"GET /user/audit_logs": {
 		"operationId": "audit-logs-get-user-audit-logs",
@@ -4142,7 +4138,8 @@
 											"type": "boolean",
 											"example": true
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"type": "object",
@@ -4382,7 +4379,8 @@
 													"type": "boolean",
 													"example": true
 												}
-											}
+											},
+											"type": "object"
 										},
 										{
 											"type": "object",
@@ -4547,7 +4545,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.audit-logs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	}
 }

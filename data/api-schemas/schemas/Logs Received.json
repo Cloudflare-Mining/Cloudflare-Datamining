@@ -114,18 +114,24 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object",
-											"properties": {
-												"flag": {
-													"description": "The log retention flag for Logpull API.",
-													"type": "boolean",
-													"example": true,
-													"x-auditable": true
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"flag": {
+															"description": "The log retention flag for Logpull API.",
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														}
+													},
+													"nullable": true
 												}
-											},
+											],
 											"nullable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -278,8 +284,7 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "logs.control.retention",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/logs/rayids/{ray_id}": {
 		"operationId": "get-zones-zone_id-logs-rayids-ray_id",
@@ -382,19 +387,8 @@
 																"type": "integer",
 																"minimum": 1000
 															},
-															"documentation_url": {
-																"type": "string"
-															},
 															"message": {
 																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
 															}
 														},
 														"required": [
@@ -403,8 +397,7 @@
 														],
 														"type": "object",
 														"uniqueItems": true
-													},
-													"example": []
+													}
 												}
 											],
 											"minLength": 1
@@ -420,19 +413,8 @@
 																"type": "integer",
 																"minimum": 1000
 															},
-															"documentation_url": {
-																"type": "string"
-															},
 															"message": {
 																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
 															}
 														},
 														"required": [
@@ -441,8 +423,7 @@
 														],
 														"type": "object",
 														"uniqueItems": true
-													},
-													"example": []
+													}
 												}
 											]
 										},
@@ -497,8 +478,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.rayid",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/logs/received": {
 		"operationId": "get-zones-zone_id-logs-received",
@@ -645,19 +625,8 @@
 																"type": "integer",
 																"minimum": 1000
 															},
-															"documentation_url": {
-																"type": "string"
-															},
 															"message": {
 																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
 															}
 														},
 														"required": [
@@ -666,8 +635,7 @@
 														],
 														"type": "object",
 														"uniqueItems": true
-													},
-													"example": []
+													}
 												}
 											],
 											"minLength": 1
@@ -683,19 +651,8 @@
 																"type": "integer",
 																"minimum": 1000
 															},
-															"documentation_url": {
-																"type": "string"
-															},
 															"message": {
 																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
 															}
 														},
 														"required": [
@@ -704,8 +661,7 @@
 														],
 														"type": "object",
 														"uniqueItems": true
-													},
-													"example": []
+													}
 												}
 											]
 										},
@@ -765,8 +721,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.received",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/logs/received/fields": {
 		"operationId": "get-zones-zone_id-logs-received-fields",
@@ -829,19 +784,8 @@
 																"type": "integer",
 																"minimum": 1000
 															},
-															"documentation_url": {
-																"type": "string"
-															},
 															"message": {
 																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
 															}
 														},
 														"required": [
@@ -850,8 +794,7 @@
 														],
 														"type": "object",
 														"uniqueItems": true
-													},
-													"example": []
+													}
 												}
 											],
 											"minLength": 1
@@ -867,19 +810,8 @@
 																"type": "integer",
 																"minimum": 1000
 															},
-															"documentation_url": {
-																"type": "string"
-															},
 															"message": {
 																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
 															}
 														},
 														"required": [
@@ -888,8 +820,7 @@
 														],
 														"type": "object",
 														"uniqueItems": true
-													},
-													"example": []
+													}
 												}
 											]
 										},
@@ -944,8 +875,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.received.fields",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/logs/control/retention/flag": {
 		"operationId": "post-zones-zone_id-logs-control-retention-flag",
@@ -1081,18 +1011,24 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object",
-											"properties": {
-												"flag": {
-													"description": "The log retention flag for Logpull API.",
-													"type": "boolean",
-													"example": true,
-													"x-auditable": true
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"flag": {
+															"description": "The log retention flag for Logpull API.",
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														}
+													},
+													"nullable": true
 												}
-											},
+											],
 											"nullable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1243,7 +1179,6 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "logs.control.retention",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

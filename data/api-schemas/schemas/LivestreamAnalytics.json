@@ -91,11 +91,11 @@
 											},
 											"total_ingest_seconds": {
 												"description": "Total time duration for which the input was given or the meeting was streamed.",
-												"type": "integer"
+												"type": "number"
 											},
 											"total_viewer_seconds": {
 												"description": "Total view time for which the viewers watched the stream.",
-												"type": "integer"
+												"type": "number"
 											}
 										},
 										"type": "object"
@@ -105,6 +105,96 @@
 									"type": "boolean"
 								}
 							}
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -210,11 +300,11 @@
 										},
 										"total_ingest_seconds": {
 											"description": "Total time duration for which the input was given or the meeting was streamed.",
-											"type": "integer"
+											"type": "number"
 										},
 										"total_viewer_seconds": {
 											"description": "Total view time for which the viewers watched the stream.",
-											"type": "integer"
+											"type": "number"
 										}
 									}
 								},
@@ -222,6 +312,96 @@
 									"type": "boolean"
 								}
 							}
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}

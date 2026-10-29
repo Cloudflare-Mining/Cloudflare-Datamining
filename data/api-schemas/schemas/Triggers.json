@@ -65,8 +65,18 @@
 									}
 								},
 								"result": {
-									"type": "object",
-									"nullable": true
+									"oneOf": [
+										{
+											"nullable": true,
+											"type": "object"
+										},
+										{
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										}
+									]
 								},
 								"result_info": {
 									"type": "object",
@@ -112,60 +122,64 @@
 				"description": "Authentication required",
 				"content": {
 					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 12005,
-									"message": "Missing token from authorization header"
-								}
-							],
-							"messages": [],
-							"result": null,
-							"success": false
-						},
 						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer",
-												"example": 12000
-											},
-											"message": {
-												"type": "string",
-												"example": "Not found"
+							"example": {
+								"errors": [
+									{
+										"code": 12005,
+										"message": "Missing token from authorization header"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
 											}
 										},
-										"required": [
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
 									},
-									"example": []
-								},
-								"result": {
-									"type": "object",
-									"nullable": true
-								},
-								"success": {
-									"type": "boolean",
-									"example": false
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -175,60 +189,64 @@
 				"description": "Resource not found",
 				"content": {
 					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 12000,
-									"message": "Not found"
-								}
-							],
-							"messages": [],
-							"result": null,
-							"success": false
-						},
 						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer",
-												"example": 12000
-											},
-											"message": {
-												"type": "string",
-												"example": "Not found"
+							"example": {
+								"errors": [
+									{
+										"code": 12000,
+										"message": "Not found"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
 											}
 										},
-										"required": [
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
 									},
-									"example": []
-								},
-								"result": {
-									"type": "object",
-									"nullable": true
-								},
-								"success": {
-									"type": "boolean",
-									"example": false
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -253,7 +271,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the build trigger and cancels its unfinished builds."
 	},
 	"PATCH /accounts/{account_id}/builds/triggers/{trigger_uuid}": {
@@ -402,8 +419,18 @@
 											}
 										},
 										"result": {
-											"type": "object",
-											"nullable": true
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
 										},
 										"result_info": {
 											"type": "object",
@@ -614,60 +641,64 @@
 				"description": "Authentication required",
 				"content": {
 					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 12005,
-									"message": "Missing token from authorization header"
-								}
-							],
-							"messages": [],
-							"result": null,
-							"success": false
-						},
 						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer",
-												"example": 12000
-											},
-											"message": {
-												"type": "string",
-												"example": "Not found"
+							"example": {
+								"errors": [
+									{
+										"code": 12005,
+										"message": "Missing token from authorization header"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
 											}
 										},
-										"required": [
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
 									},
-									"example": []
-								},
-								"result": {
-									"type": "object",
-									"nullable": true
-								},
-								"success": {
-									"type": "boolean",
-									"example": false
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -677,60 +708,64 @@
 				"description": "Resource not found",
 				"content": {
 					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 12000,
-									"message": "Not found"
-								}
-							],
-							"messages": [],
-							"result": null,
-							"success": false
-						},
 						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer",
-												"example": 12000
-											},
-											"message": {
-												"type": "string",
-												"example": "Not found"
+							"example": {
+								"errors": [
+									{
+										"code": 12000,
+										"message": "Not found"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
 											}
 										},
-										"required": [
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
 									},
-									"example": []
-								},
-								"result": {
-									"type": "object",
-									"nullable": true
-								},
-								"success": {
-									"type": "boolean",
-									"example": false
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -754,8 +789,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/builds/triggers": {
 		"operationId": "createTrigger",
@@ -916,8 +950,18 @@
 											}
 										},
 										"result": {
-											"type": "object",
-											"nullable": true
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
 										},
 										"result_info": {
 											"type": "object",
@@ -1128,60 +1172,64 @@
 				"description": "Authentication required",
 				"content": {
 					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 12005,
-									"message": "Missing token from authorization header"
-								}
-							],
-							"messages": [],
-							"result": null,
-							"success": false
-						},
 						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer",
-												"example": 12000
-											},
-											"message": {
-												"type": "string",
-												"example": "Not found"
+							"example": {
+								"errors": [
+									{
+										"code": 12005,
+										"message": "Missing token from authorization header"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
 											}
 										},
-										"required": [
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
 									},
-									"example": []
-								},
-								"result": {
-									"type": "object",
-									"nullable": true
-								},
-								"success": {
-									"type": "boolean",
-									"example": false
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -1205,8 +1253,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/builds/triggers/{trigger_uuid}/builds": {
 		"operationId": "createManualBuild",
@@ -1393,8 +1440,18 @@
 											}
 										},
 										"result": {
-											"type": "object",
-											"nullable": true
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
 										},
 										"result_info": {
 											"type": "object",
@@ -1780,60 +1837,64 @@
 				"description": "Authentication required",
 				"content": {
 					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 12005,
-									"message": "Missing token from authorization header"
-								}
-							],
-							"messages": [],
-							"result": null,
-							"success": false
-						},
 						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer",
-												"example": 12000
-											},
-											"message": {
-												"type": "string",
-												"example": "Not found"
+							"example": {
+								"errors": [
+									{
+										"code": 12005,
+										"message": "Missing token from authorization header"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
 											}
 										},
-										"required": [
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
 									},
-									"example": []
-								},
-								"result": {
-									"type": "object",
-									"nullable": true
-								},
-								"success": {
-									"type": "boolean",
-									"example": false
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -1857,8 +1918,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/builds/triggers/{trigger_uuid}/purge_build_cache": {
 		"operationId": "purgeBuildCache",
@@ -1926,8 +1986,18 @@
 									}
 								},
 								"result": {
-									"type": "object",
-									"nullable": true
+									"oneOf": [
+										{
+											"nullable": true,
+											"type": "object"
+										},
+										{
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										}
+									]
 								},
 								"result_info": {
 									"type": "object",
@@ -1973,60 +2043,64 @@
 				"description": "Authentication required",
 				"content": {
 					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 12005,
-									"message": "Missing token from authorization header"
-								}
-							],
-							"messages": [],
-							"result": null,
-							"success": false
-						},
 						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer",
-												"example": 12000
-											},
-											"message": {
-												"type": "string",
-												"example": "Not found"
+							"example": {
+								"errors": [
+									{
+										"code": 12005,
+										"message": "Missing token from authorization header"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
 											}
 										},
-										"required": [
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
 									},
-									"example": []
-								},
-								"result": {
-									"type": "object",
-									"nullable": true
-								},
-								"success": {
-									"type": "boolean",
-									"example": false
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -2036,60 +2110,64 @@
 				"description": "Resource not found",
 				"content": {
 					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 12000,
-									"message": "Not found"
-								}
-							],
-							"messages": [],
-							"result": null,
-							"success": false
-						},
 						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer",
-												"example": 12000
-											},
-											"message": {
-												"type": "string",
-												"example": "Not found"
+							"example": {
+								"errors": [
+									{
+										"code": 12000,
+										"message": "Not found"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
 											}
 										},
-										"required": [
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "string"
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
 									},
-									"example": []
-								},
-								"result": {
-									"type": "object",
-									"nullable": true
-								},
-								"success": {
-									"type": "boolean",
-									"example": false
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -2114,7 +2192,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers.cache",
 		"x-fern-sdk-method-name": "purge",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation purges the build cache for a Workers Builds trigger."
 	}
 }

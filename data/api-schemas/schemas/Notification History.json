@@ -154,7 +154,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -284,7 +285,8 @@
 												"per_page": 20
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -387,7 +389,8 @@
 																}
 															}
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -517,7 +520,8 @@
 														"per_page": 20
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -622,7 +626,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.history",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	}
 }

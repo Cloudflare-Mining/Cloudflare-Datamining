@@ -141,7 +141,13 @@
 					"application/json": {
 						"examples": {
 							"default": {
-								"value": "{\n  \"success\": false,\n  \"error\": { \"code\": 400, \"message\": \"BAD_REQUEST \\\"id\\\" must be a valid GUID\" }\n}\n"
+								"value": {
+									"error": {
+										"code": 400,
+										"message": "BAD_REQUEST: \"id\" must be a valid GUID"
+									},
+									"success": false
+								}
 							}
 						},
 						"schema": {
@@ -512,7 +518,13 @@
 					"application/json": {
 						"examples": {
 							"default": {
-								"value": "{\n  success: false,\n  error: { code: 400, message: 'BAD_REQUEST: \"id\" must be a valid GUID' }\n}\n"
+								"value": {
+									"error": {
+										"code": 400,
+										"message": "BAD_REQUEST: \"id\" must be a valid GUID"
+									},
+									"success": false
+								}
 							}
 						},
 						"schema": {
@@ -647,6 +659,96 @@
 						}
 					}
 				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -709,7 +811,7 @@
 				"application/json": {
 					"examples": {
 						"default": {
-							"value": "{\n  \"name\": \"test\",\n  \"events\": [ \"meeting.started\" ],\n  \"url\": \"https://new-test-url.com\"\n}\n"
+							"value": {}
 						}
 					},
 					"schema": {
@@ -759,7 +861,20 @@
 					"application/json": {
 						"examples": {
 							"default": {
-								"value": "{\n  \"success\": true,\n  \"data\": {\n    id: \"901e9adf-ebd9-41f0-9098-28171bc04ddd\",\n    \"name\": \"test\",\n    \"events\": [ \"meeting.started\" ],\n    \"url\": \"https://new-test-url.com\",\n    \"created_at\": \"2021-09-09T10:25:12.330Z\",\n    \"updated_at\": \"2021-09-09T10:25:12.376Z\"\n  }\n}\n"
+								"value": {
+									"data": {
+										"created_at": "2023-07-15T07:08:26.634Z",
+										"enabled": true,
+										"events": [
+											"meeting.started"
+										],
+										"id": "b6e0fd13-d7f4-4122-9ad5-7994b35d24b8",
+										"name": "My Webhook",
+										"updated_at": "2023-07-15T07:08:26.634Z",
+										"url": "https://example.com/webhook"
+									},
+									"success": true
+								}
 							}
 						},
 						"schema": {
@@ -861,7 +976,13 @@
 					"application/json": {
 						"examples": {
 							"default": {
-								"value": "{\n  \"success\": false,\n  \"error\": { \"code\": 400, \"message\": \"BAD_REQUEST \\\"id\\\" must be a valid GUID\" }\n}\n"
+								"value": {
+									"error": {
+										"code": 400,
+										"message": "BAD_REQUEST: \"id\" must be a valid GUID"
+									},
+									"success": false
+								}
 							}
 						},
 						"schema": {
@@ -1125,7 +1246,13 @@
 					"application/json": {
 						"examples": {
 							"default": {
-								"value": "{\n  success: false,\n  error: { code: 400, message: 'BAD_REQUEST: \"name\" is required' }\n}\n"
+								"value": {
+									"error": {
+										"code": 400,
+										"message": "BAD_REQUEST: \"name\" is required"
+									},
+									"success": false
+								}
 							}
 						},
 						"schema": {
@@ -1238,7 +1365,13 @@
 				"application/json": {
 					"examples": {
 						"default": {
-							"value": "{\n  \"name\": \"test\",\n  \"events\": [ \"meeting.started\" ],\n  \"url\": \"https://new-test-url.com\"\n}\n"
+							"value": {
+								"events": [
+									"meeting.started"
+								],
+								"name": "My Webhook",
+								"url": "https://example.com/webhook"
+							}
 						}
 					},
 					"schema": {
@@ -1306,7 +1439,20 @@
 					"application/json": {
 						"examples": {
 							"default": {
-								"value": "{\n  \"success\": true,\n  \"data\": {\n    id: \"901e9adf-ebd9-41f0-9098-28171bc04ddd\",\n    \"name\": \"test\",\n    \"events\": [ \"meeting.started\" ],\n    \"url\": \"https://new-test-url.com\",\n    \"created_at\": \"2021-09-09T10:25:12.330Z\",\n    \"updated_at\": \"2021-09-09T10:25:12.376Z\"\n  }\n}\n"
+								"value": {
+									"data": {
+										"created_at": "2023-07-15T07:08:26.634Z",
+										"enabled": true,
+										"events": [
+											"meeting.started"
+										],
+										"id": "b6e0fd13-d7f4-4122-9ad5-7994b35d24b8",
+										"name": "My Webhook",
+										"updated_at": "2023-07-15T07:08:26.634Z",
+										"url": "https://example.com/webhook"
+									},
+									"success": true
+								}
 							}
 						},
 						"schema": {
@@ -1408,7 +1554,13 @@
 					"application/json": {
 						"examples": {
 							"default": {
-								"value": "{\n  \"success\": false,\n  \"error\": { \"code\": 400, \"message\": \"BAD_REQUEST \\\"id\\\" must be a valid GUID\" }\n}\n"
+								"value": {
+									"error": {
+										"code": 400,
+										"message": "BAD_REQUEST: \"id\" must be a valid GUID"
+									},
+									"success": false
+								}
 							}
 						},
 						"schema": {

@@ -46,7 +46,8 @@
 							"x-auditable": true
 						}
 					]
-				}
+				},
+				"x-fern-parameter-name": "waf-mode"
 			},
 			{
 				"name": "page",
@@ -669,8 +670,7 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.waf.packages.groups",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}": {
 		"operationId": "waf-rule-groups-get-a-waf-rule-group",
@@ -1034,8 +1034,7 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.waf.packages.groups",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}": {
 		"operationId": "waf-rule-groups-update-a-waf-rule-group",
@@ -1090,14 +1089,19 @@
 						"type": "object",
 						"properties": {
 							"mode": {
-								"description": "Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
-								"type": "string",
-								"default": "on",
-								"enum": [
-									"on",
-									"off"
+								"allOf": [
+									{
+										"description": "Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+										"type": "string",
+										"default": "on",
+										"enum": [
+											"on",
+											"off"
+										],
+										"x-auditable": true
+									}
 								],
-								"x-auditable": true
+								"x-fern-property-name": "waf-mode"
 							}
 						}
 					}
@@ -1420,7 +1424,6 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.waf.packages.groups",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	}
 }

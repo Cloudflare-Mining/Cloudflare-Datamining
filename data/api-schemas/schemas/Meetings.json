@@ -104,7 +104,141 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -286,7 +420,51 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -332,7 +510,51 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -378,7 +600,51 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -946,6 +1212,96 @@
 									},
 									"type": "object"
 								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
 							]
 						}
 					}
@@ -1828,7 +2184,141 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -2062,7 +2552,141 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -2236,7 +2860,141 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -3577,7 +4335,141 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -3806,7 +4698,141 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -5143,6 +6169,96 @@
 						}
 					}
 				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -5382,7 +6498,51 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -5428,7 +6588,51 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -5627,7 +6831,51 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -5673,7 +6921,51 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -6998,6 +8290,96 @@
 						}
 					}
 				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -7014,8 +8396,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.meetings",
-		"x-fern-sdk-method-name": "replace",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "replace"
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}": {
 		"operationId": "replace_participant",
@@ -7204,7 +8585,141 @@
 											"type": "number"
 										},
 										"details": {
-											"description": "Additional context about the error, when available."
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
 										},
 										"message": {
 											"description": "Error message describing what went wrong.",
@@ -7250,7 +8765,6 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.meetings.participants",
-		"x-fern-sdk-method-name": "replace",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "replace"
 	}
 }

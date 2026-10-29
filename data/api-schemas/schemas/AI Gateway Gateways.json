@@ -41,6 +41,7 @@
 									"type": "object",
 									"properties": {
 										"authentication": {
+											"description": "Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.",
 											"type": "boolean",
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
@@ -224,6 +225,13 @@
 																"BLOCK"
 															]
 														},
+														"S14": {
+															"type": "string",
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															]
+														},
 														"S2": {
 															"type": "string",
 															"enum": [
@@ -321,6 +329,13 @@
 															]
 														},
 														"S13": {
+															"type": "string",
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															]
+														},
+														"S14": {
 															"type": "string",
 															"enum": [
 																"FLAG",
@@ -921,6 +936,7 @@
 									"items": {
 										"properties": {
 											"authentication": {
+												"description": "Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.",
 												"type": "boolean",
 												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
@@ -1104,6 +1120,13 @@
 																	"BLOCK"
 																]
 															},
+															"S14": {
+																"type": "string",
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																]
+															},
 															"S2": {
 																"type": "string",
 																"enum": [
@@ -1201,6 +1224,13 @@
 																]
 															},
 															"S13": {
+																"type": "string",
+																"enum": [
+																	"FLAG",
+																	"BLOCK"
+																]
+															},
+															"S14": {
 																"type": "string",
 																"enum": [
 																	"FLAG",
@@ -1883,6 +1913,7 @@
 									"type": "object",
 									"properties": {
 										"authentication": {
+											"description": "Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.",
 											"type": "boolean",
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
@@ -2066,6 +2097,13 @@
 																"BLOCK"
 															]
 														},
+														"S14": {
+															"type": "string",
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															]
+														},
 														"S2": {
 															"type": "string",
 															"enum": [
@@ -2163,6 +2201,13 @@
 															]
 														},
 														"S13": {
+															"type": "string",
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															]
+														},
+														"S14": {
 															"type": "string",
 															"enum": [
 																"FLAG",
@@ -2730,6 +2775,7 @@
 						"type": "object",
 						"properties": {
 							"authentication": {
+								"description": "Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.",
 								"type": "boolean",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
@@ -2889,6 +2935,13 @@
 													"BLOCK"
 												]
 											},
+											"S14": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
 											"S2": {
 												"type": "string",
 												"enum": [
@@ -2986,6 +3039,13 @@
 												]
 											},
 											"S13": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S14": {
 												"type": "string",
 												"enum": [
 													"FLAG",
@@ -3406,6 +3466,7 @@
 									"type": "object",
 									"properties": {
 										"authentication": {
+											"description": "Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.",
 											"type": "boolean",
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
@@ -3589,6 +3650,13 @@
 																"BLOCK"
 															]
 														},
+														"S14": {
+															"type": "string",
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															]
+														},
 														"S2": {
 															"type": "string",
 															"enum": [
@@ -3686,6 +3754,13 @@
 															]
 														},
 														"S13": {
+															"type": "string",
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															]
+														},
+														"S14": {
 															"type": "string",
 															"enum": [
 																"FLAG",
@@ -4228,6 +4303,7 @@
 						"type": "object",
 						"properties": {
 							"authentication": {
+								"description": "Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.",
 								"type": "boolean",
 								"x-auditable": true,
 								"x-stainless-terraform-configurability": "computed_optional"
@@ -4387,6 +4463,13 @@
 													"BLOCK"
 												]
 											},
+											"S14": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
 											"S2": {
 												"type": "string",
 												"enum": [
@@ -4484,6 +4567,13 @@
 												]
 											},
 											"S13": {
+												"type": "string",
+												"enum": [
+													"FLAG",
+													"BLOCK"
+												]
+											},
+											"S14": {
 												"type": "string",
 												"enum": [
 													"FLAG",
@@ -4894,6 +4984,7 @@
 									"type": "object",
 									"properties": {
 										"authentication": {
+											"description": "Require authentication for gateway access. New gateways must have authentication enabled. Once enabled, authentication cannot be disabled.",
 											"type": "boolean",
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
@@ -5077,6 +5168,13 @@
 																"BLOCK"
 															]
 														},
+														"S14": {
+															"type": "string",
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															]
+														},
 														"S2": {
 															"type": "string",
 															"enum": [
@@ -5174,6 +5272,13 @@
 															]
 														},
 														"S13": {
+															"type": "string",
+															"enum": [
+																"FLAG",
+																"BLOCK"
+															]
+														},
+														"S14": {
 															"type": "string",
 															"enum": [
 																"FLAG",

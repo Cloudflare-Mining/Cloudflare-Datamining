@@ -91,11 +91,11 @@
 											},
 											"total_ingest_seconds": {
 												"description": "Total time duration for which the input was given or the meeting was streamed.",
-												"type": "integer"
+												"type": "number"
 											},
 											"total_viewer_seconds": {
 												"description": "Total view time for which the viewers watched the stream.",
-												"type": "integer"
+												"type": "number"
 											}
 										},
 										"type": "object"
@@ -105,6 +105,96 @@
 									"type": "boolean"
 								}
 							}
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -210,11 +300,11 @@
 										},
 										"total_ingest_seconds": {
 											"description": "Total time duration for which the input was given or the meeting was streamed.",
-											"type": "integer"
+											"type": "number"
 										},
 										"total_viewer_seconds": {
 											"description": "Total view time for which the viewers watched the stream.",
-											"type": "integer"
+											"type": "number"
 										}
 									}
 								},
@@ -222,6 +312,96 @@
 									"type": "boolean"
 								}
 							}
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -330,16 +510,18 @@
 								"value": {
 									"data": [
 										{
-											"created_at": "2023-07-15T11:48:34.753Z",
+											"created_at": "2023-07-15T07:08:26.634Z",
 											"disabled": false,
-											"id": "3fd739f4-3c41-456e-bfba-6ebd51e16d2c",
+											"external_id": "7de6a3fec0f9c05bf1df140950d3a237",
+											"id": "b60ef3da-fbbb-441b-9168-8235b0035248",
 											"ingest_server": "rtmps://live.cloudflare.com:443/live/",
-											"meeting_id": null,
-											"name": null,
+											"manual_ingest": false,
+											"meeting_id": "bbb87945-df1c-49d9-8159-262a7ae6cfde",
+											"name": "test",
 											"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
-											"status": "IDLE",
+											"status": "LIVE",
 											"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
-											"updated_at": "2023-07-15T11:48:34.753Z"
+											"updated_at": "2023-07-15T07:08:40.726Z"
 										}
 									],
 									"paging": {
@@ -355,87 +537,212 @@
 							"type": "object",
 							"properties": {
 								"data": {
-									"type": "object",
-									"properties": {
-										"created_at": {
-											"description": "Timestamp the object was created at. The time is returned in ISO format.",
-											"type": "string",
-											"format": "date-time",
-											"example": "2023-07-15T11:48:34.753Z"
-										},
-										"disabled": {
-											"description": "Specifies if the livestream was disabled.",
-											"type": "string"
-										},
-										"id": {
-											"description": "The ID of the livestream.",
-											"type": "string",
-											"format": "uuid",
-											"example": "3fd739f4-3c41-456e-bfba-6ebd51e16d2d"
-										},
-										"ingest_server": {
-											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
-											"type": "string",
-											"example": "rtmps://live.cloudflare.com:443/live/"
-										},
-										"meeting_id": {
-											"description": "ID of the meeting.",
-											"type": "string"
-										},
-										"name": {
-											"description": "Name of the livestream.",
-											"type": "string",
-											"example": "test"
-										},
-										"paging": {
-											"type": "object",
-											"properties": {
-												"end_offset": {
-													"type": "integer",
-													"example": 1
-												},
-												"start_offset": {
-													"type": "integer",
-													"example": 1
-												},
-												"total_count": {
-													"type": "integer",
-													"example": 1
-												}
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"created_at": {
+												"description": "Timestamp the livestream was created at, in ISO format.",
+												"type": "string",
+												"format": "date-time"
+											},
+											"disabled": {
+												"description": "Specifies if the livestream is disabled.",
+												"type": "boolean"
+											},
+											"external_id": {
+												"description": "ID of the underlying Cloudflare Stream live input.",
+												"type": "string"
+											},
+											"id": {
+												"description": "ID of the livestream.",
+												"type": "string",
+												"format": "uuid"
+											},
+											"ingest_server": {
+												"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+												"type": "string"
+											},
+											"manual_ingest": {
+												"description": "Specifies if the livestream is ingested manually by an RTMP encoder.",
+												"type": "boolean"
+											},
+											"meeting_id": {
+												"description": "ID of the meeting being livestreamed, if any.",
+												"type": "string",
+												"nullable": true
+											},
+											"name": {
+												"description": "Name of the livestream.",
+												"type": "string",
+												"nullable": true
+											},
+											"playback_url": {
+												"description": "The web address that viewers can use to watch the livestream.",
+												"type": "string"
+											},
+											"status": {
+												"description": "Status of the livestream.",
+												"type": "string",
+												"enum": [
+													"LIVE",
+													"IDLE",
+													"ERRORED",
+													"INVOKED",
+													"METRICS_READY"
+												]
+											},
+											"stream_key": {
+												"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
+												"type": "string",
+												"x-sensitive": true
+											},
+											"updated_at": {
+												"description": "Timestamp the livestream was last updated at, in ISO format.",
+												"type": "string",
+												"format": "date-time"
 											}
 										},
-										"playback_url": {
-											"description": "The web address that viewers can use to watch the livestream.",
-											"type": "string",
-											"example": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8"
-										},
-										"status": {
-											"type": "string",
-											"enum": [
-												"LIVE",
-												"IDLE",
-												"ERRORED",
-												"INVOKED"
-											]
-										},
-										"stream_key": {
-											"description": "Unique key for accessing each livestream.",
-											"type": "string",
-											"example": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
-											"x-sensitive": true
-										},
-										"updated_at": {
-											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
-											"type": "string",
-											"format": "date-time",
-											"example": "2023-07-15T11:48:34.753Z"
-										}
+										"required": [
+											"id",
+											"name",
+											"ingest_server",
+											"stream_key",
+											"status",
+											"external_id",
+											"meeting_id",
+											"playback_url",
+											"created_at",
+											"updated_at",
+											"disabled",
+											"manual_ingest"
+										],
+										"title": "Livestream"
 									}
+								},
+								"paging": {
+									"type": "object",
+									"properties": {
+										"end_offset": {
+											"type": "number",
+											"example": 30
+										},
+										"start_offset": {
+											"type": "number",
+											"example": 1
+										},
+										"total_count": {
+											"type": "number",
+											"example": 30,
+											"minimum": 0
+										}
+									},
+									"required": [
+										"total_count",
+										"start_offset",
+										"end_offset"
+									],
+									"title": "PagingInfo"
 								},
 								"success": {
 									"type": "boolean"
 								}
-							}
+							},
+							"required": [
+								"success",
+								"data",
+								"paging"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -521,10 +828,12 @@
 										"livestream": {
 											"created_at": "2023-07-15T07:08:26.634Z",
 											"disabled": false,
+											"external_id": "7de6a3fec0f9c05bf1df140950d3a237",
 											"id": "b60ef3da-fbbb-441b-9168-8235b0035248",
 											"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+											"manual_ingest": false,
 											"meeting_id": "bbb87945-df1c-49d9-8159-262a7ae6cfde",
-											"name": null,
+											"name": "test",
 											"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
 											"status": "LIVE",
 											"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
@@ -535,13 +844,13 @@
 												"created_at": "2023-07-15T07:08:40.742Z",
 												"err_message": null,
 												"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
-												"ingest_seconds": 60,
-												"invoked_time": null,
+												"ingest_seconds": 600,
+												"invoked_time": "2023-07-15T07:08:26.634Z",
 												"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
 												"started_time": "2023-07-15T07:08:39Z",
-												"stopped_time": null,
-												"updated_at": "2023-07-15T07:08:40.742Z",
-												"viewer_seconds": 60
+												"stopped_time": "2023-07-15T07:18:39Z",
+												"updated_at": "2023-07-15T07:18:40.742Z",
+												"viewer_seconds": 1200
 											}
 										]
 									},
@@ -564,124 +873,284 @@
 											"type": "object",
 											"properties": {
 												"created_at": {
-													"description": "Timestamp the object was created at. The time is returned in ISO format.",
-													"type": "string"
+													"description": "Timestamp the livestream was created at, in ISO format.",
+													"type": "string",
+													"format": "date-time"
 												},
 												"disabled": {
-													"description": "Specifies if the livestream was disabled.",
+													"description": "Specifies if the livestream is disabled.",
+													"type": "boolean"
+												},
+												"external_id": {
+													"description": "ID of the underlying Cloudflare Stream live input.",
 													"type": "string"
 												},
 												"id": {
 													"description": "ID of the livestream.",
-													"type": "string"
+													"type": "string",
+													"format": "uuid"
 												},
 												"ingest_server": {
 													"description": "The server URL to which the RTMP encoder sends the video and audio data.",
 													"type": "string"
 												},
+												"manual_ingest": {
+													"description": "Specifies if the livestream is ingested manually by an RTMP encoder.",
+													"type": "boolean"
+												},
 												"meeting_id": {
-													"description": "The ID of the meeting.",
-													"type": "string"
+													"description": "ID of the meeting being livestreamed, if any.",
+													"type": "string",
+													"nullable": true
 												},
 												"name": {
 													"description": "Name of the livestream.",
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"playback_url": {
 													"description": "The web address that viewers can use to watch the livestream.",
 													"type": "string"
 												},
 												"status": {
+													"description": "Status of the livestream.",
 													"type": "string",
 													"enum": [
 														"LIVE",
 														"IDLE",
 														"ERRORED",
-														"INVOKED"
+														"INVOKED",
+														"METRICS_READY"
 													]
 												},
 												"stream_key": {
-													"description": "Unique key for accessing each livestream.",
+													"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
 													"type": "string",
 													"x-sensitive": true
 												},
 												"updated_at": {
-													"description": "Timestamp the object was updated at. The time is returned in ISO format.",
-													"type": "string"
+													"description": "Timestamp the livestream was last updated at, in ISO format.",
+													"type": "string",
+													"format": "date-time"
 												}
-											}
+											},
+											"required": [
+												"id",
+												"name",
+												"ingest_server",
+												"stream_key",
+												"status",
+												"external_id",
+												"meeting_id",
+												"playback_url",
+												"created_at",
+												"updated_at",
+												"disabled",
+												"manual_ingest"
+											],
+											"title": "Livestream"
 										},
-										"paging": {
-											"type": "object",
-											"properties": {
-												"end_offset": {
-													"type": "integer",
-													"example": 1
+										"sessions": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"created_at": {
+														"description": "Timestamp the livestream session was created at, in ISO format.",
+														"type": "string",
+														"format": "date-time"
+													},
+													"err_message": {
+														"description": "Error message, if the livestream session failed.",
+														"type": "string",
+														"nullable": true
+													},
+													"id": {
+														"description": "ID of the livestream session.",
+														"type": "string",
+														"format": "uuid"
+													},
+													"ingest_seconds": {
+														"description": "The time duration for which the input was given or the meeting was streamed.",
+														"type": "number"
+													},
+													"invoked_time": {
+														"description": "Timestamp the livestream session was invoked at, in ISO format.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true
+													},
+													"livestream_id": {
+														"description": "ID of the livestream.",
+														"type": "string",
+														"format": "uuid"
+													},
+													"started_time": {
+														"description": "Timestamp the livestream session started at, in ISO format.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true
+													},
+													"stopped_time": {
+														"description": "Timestamp the livestream session stopped at, in ISO format.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true
+													},
+													"updated_at": {
+														"description": "Timestamp the livestream session was last updated at, in ISO format.",
+														"type": "string",
+														"format": "date-time"
+													},
+													"viewer_seconds": {
+														"description": "The total view time for which the viewers watched the stream.",
+														"type": "number"
+													}
 												},
-												"start_offset": {
-													"type": "integer",
-													"example": 1
-												},
-												"total_count": {
-													"type": "integer",
-													"example": 1
-												}
-											}
-										},
-										"session": {
-											"type": "object",
-											"properties": {
-												"created_at": {
-													"description": "Timestamp the object was created at. The time is returned in ISO format.",
-													"type": "string",
-													"format": "date-time"
-												},
-												"err_message": {
-													"type": "string"
-												},
-												"id": {
-													"description": "ID of the session.",
-													"type": "string"
-												},
-												"ingest_seconds": {
-													"description": "The time duration for which the input was given or the meeting was streamed.",
-													"type": "number"
-												},
-												"invoked_time": {
-													"description": "Timestamp the object was invoked. The time is returned in ISO format.",
-													"type": "string",
-													"format": "date-time"
-												},
-												"livestream_id": {
-													"type": "string"
-												},
-												"started_time": {
-													"description": "Timestamp the object was started. The time is returned in ISO format.",
-													"type": "string",
-													"format": "date-time"
-												},
-												"stopped_time": {
-													"description": "Timestamp the object was stopped. The time is returned in ISO format.",
-													"type": "string",
-													"format": "date-time"
-												},
-												"updated_at": {
-													"description": "Timestamp the object was updated at. The time is returned in ISO format.",
-													"type": "string",
-													"format": "date-time"
-												},
-												"viewer_seconds": {
-													"description": "The total view time for which the viewers watched the stream.",
-													"type": "number"
-												}
+												"required": [
+													"id",
+													"livestream_id",
+													"err_message",
+													"invoked_time",
+													"started_time",
+													"stopped_time",
+													"created_at",
+													"updated_at",
+													"ingest_seconds",
+													"viewer_seconds"
+												],
+												"title": "LivestreamSession"
 											}
 										}
-									}
+									},
+									"required": [
+										"livestream",
+										"sessions"
+									]
+								},
+								"paging": {
+									"type": "object",
+									"properties": {
+										"end_offset": {
+											"type": "number",
+											"example": 30
+										},
+										"start_offset": {
+											"type": "number",
+											"example": 1
+										},
+										"total_count": {
+											"type": "number",
+											"example": 30,
+											"minimum": 0
+										}
+									},
+									"required": [
+										"total_count",
+										"start_offset",
+										"end_offset"
+									],
+									"title": "PagingInfo"
 								},
 								"success": {
 									"type": "boolean"
 								}
-							}
+							},
+							"required": [
+								"success",
+								"data",
+								"paging"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -751,10 +1220,12 @@
 										"livestream": {
 											"created_at": "2023-07-15T07:08:26.634Z",
 											"disabled": false,
+											"external_id": "7de6a3fec0f9c05bf1df140950d3a237",
 											"id": "b60ef3da-fbbb-441b-9168-8235b0035248",
 											"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+											"manual_ingest": false,
 											"meeting_id": "bbb87945-df1c-49d9-8159-262a7ae6cfde",
-											"name": null,
+											"name": "test",
 											"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
 											"status": "LIVE",
 											"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
@@ -764,13 +1235,13 @@
 											"created_at": "2023-07-15T07:08:40.742Z",
 											"err_message": null,
 											"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
-											"ingest_seconds": 60,
-											"invoked_time": null,
+											"ingest_seconds": 600,
+											"invoked_time": "2023-07-15T07:08:26.634Z",
 											"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
 											"started_time": "2023-07-15T07:08:39Z",
 											"stopped_time": null,
-											"updated_at": "2023-07-15T07:08:40.742Z",
-											"viewer_seconds": 60
+											"updated_at": "2023-07-15T07:18:40.742Z",
+											"viewer_seconds": 1200
 										}
 									},
 									"success": true
@@ -787,107 +1258,256 @@
 											"type": "object",
 											"properties": {
 												"created_at": {
-													"description": "Timestamp the object was created at. The time is returned in ISO format.",
+													"description": "Timestamp the livestream was created at, in ISO format.",
 													"type": "string",
 													"format": "date-time"
 												},
 												"disabled": {
-													"description": "Specifies if the livestream was disabled.",
+													"description": "Specifies if the livestream is disabled.",
+													"type": "boolean"
+												},
+												"external_id": {
+													"description": "ID of the underlying Cloudflare Stream live input.",
 													"type": "string"
 												},
 												"id": {
-													"type": "string"
+													"description": "ID of the livestream.",
+													"type": "string",
+													"format": "uuid"
 												},
 												"ingest_server": {
 													"description": "The server URL to which the RTMP encoder sends the video and audio data.",
 													"type": "string"
 												},
+												"manual_ingest": {
+													"description": "Specifies if the livestream is ingested manually by an RTMP encoder.",
+													"type": "boolean"
+												},
 												"meeting_id": {
-													"description": "ID of the meeting.",
-													"type": "string"
+													"description": "ID of the meeting being livestreamed, if any.",
+													"type": "string",
+													"nullable": true
 												},
 												"name": {
 													"description": "Name of the livestream.",
-													"type": "string"
+													"type": "string",
+													"nullable": true
 												},
 												"playback_url": {
 													"description": "The web address that viewers can use to watch the livestream.",
 													"type": "string"
 												},
 												"status": {
+													"description": "Status of the livestream.",
 													"type": "string",
 													"enum": [
 														"LIVE",
 														"IDLE",
 														"ERRORED",
-														"INVOKED"
+														"INVOKED",
+														"METRICS_READY"
 													]
 												},
 												"stream_key": {
-													"description": "Unique key for accessing each livestream.",
+													"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
 													"type": "string",
 													"x-sensitive": true
 												},
 												"updated_at": {
-													"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+													"description": "Timestamp the livestream was last updated at, in ISO format.",
 													"type": "string",
 													"format": "date-time"
 												}
-											}
+											},
+											"required": [
+												"id",
+												"name",
+												"ingest_server",
+												"stream_key",
+												"status",
+												"external_id",
+												"meeting_id",
+												"playback_url",
+												"created_at",
+												"updated_at",
+												"disabled",
+												"manual_ingest"
+											],
+											"title": "Livestream"
 										},
 										"session": {
 											"type": "object",
 											"properties": {
 												"created_at": {
-													"description": "Timestamp the object was created at. The time is returned in ISO format.",
+													"description": "Timestamp the livestream session was created at, in ISO format.",
 													"type": "string",
 													"format": "date-time"
 												},
 												"err_message": {
-													"type": "string"
+													"description": "Error message, if the livestream session failed.",
+													"type": "string",
+													"nullable": true
 												},
 												"id": {
-													"type": "string"
+													"description": "ID of the livestream session.",
+													"type": "string",
+													"format": "uuid"
 												},
 												"ingest_seconds": {
 													"description": "The time duration for which the input was given or the meeting was streamed.",
-													"type": "string"
+													"type": "number"
 												},
 												"invoked_time": {
-													"description": "Timestamp the object was invoked. The time is returned in ISO format.",
+													"description": "Timestamp the livestream session was invoked at, in ISO format.",
 													"type": "string",
-													"format": "date-time"
+													"format": "date-time",
+													"nullable": true
 												},
 												"livestream_id": {
-													"type": "string"
+													"description": "ID of the livestream.",
+													"type": "string",
+													"format": "uuid"
 												},
 												"started_time": {
-													"description": "Timestamp the object was started. The time is returned in ISO format.",
+													"description": "Timestamp the livestream session started at, in ISO format.",
 													"type": "string",
-													"format": "date-time"
+													"format": "date-time",
+													"nullable": true
 												},
 												"stopped_time": {
-													"description": "Timestamp the object was stopped. The time is returned in ISO format.",
+													"description": "Timestamp the livestream session stopped at, in ISO format.",
 													"type": "string",
-													"format": "date-time"
+													"format": "date-time",
+													"nullable": true
 												},
 												"updated_at": {
-													"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+													"description": "Timestamp the livestream session was last updated at, in ISO format.",
 													"type": "string",
 													"format": "date-time"
 												},
 												"viewer_seconds": {
 													"description": "The total view time for which the viewers watched the stream.",
-													"type": "string"
+													"type": "number"
 												}
-											}
+											},
+											"required": [
+												"id",
+												"livestream_id",
+												"err_message",
+												"invoked_time",
+												"started_time",
+												"stopped_time",
+												"created_at",
+												"updated_at",
+												"ingest_seconds",
+												"viewer_seconds"
+											],
+											"title": "LivestreamSession"
 										}
-									}
+									},
+									"required": [
+										"livestream",
+										"session"
+									]
 								},
 								"success": {
 									"type": "boolean"
 								}
-							}
+							},
+							"required": [
+								"success",
+								"data"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -957,13 +1577,13 @@
 										"created_at": "2023-07-15T07:08:40.742Z",
 										"err_message": null,
 										"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
-										"ingest_seconds": 60,
-										"invoked_time": null,
+										"ingest_seconds": 600,
+										"invoked_time": "2023-07-15T07:08:26.634Z",
 										"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
 										"started_time": "2023-07-15T07:08:39Z",
-										"stopped_time": null,
-										"updated_at": "2023-07-15T07:08:40.742Z",
-										"viewer_seconds": 60
+										"stopped_time": "2023-07-15T07:18:39Z",
+										"updated_at": "2023-07-15T07:18:40.742Z",
+										"viewer_seconds": 1200
 									},
 									"success": true
 								}
@@ -976,47 +1596,169 @@
 									"type": "object",
 									"properties": {
 										"created_at": {
-											"description": "Timestamp the object was created at. The time is returned in ISO format.",
+											"description": "Timestamp the livestream session was created at, in ISO format.",
 											"type": "string",
 											"format": "date-time"
 										},
 										"err_message": {
-											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
-											"type": "string"
+											"description": "Error message, if the livestream session failed.",
+											"type": "string",
+											"nullable": true
 										},
 										"id": {
-											"description": "The livestream ID.",
-											"type": "string"
+											"description": "ID of the livestream session.",
+											"type": "string",
+											"format": "uuid"
 										},
 										"ingest_seconds": {
-											"description": "Name of the livestream.",
-											"type": "integer"
+											"description": "The time duration for which the input was given or the meeting was streamed.",
+											"type": "number"
+										},
+										"invoked_time": {
+											"description": "Timestamp the livestream session was invoked at, in ISO format.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
 										},
 										"livestream_id": {
-											"type": "string"
+											"description": "ID of the livestream.",
+											"type": "string",
+											"format": "uuid"
 										},
 										"started_time": {
-											"description": "Unique key for accessing each livestream.",
-											"type": "string"
+											"description": "Timestamp the livestream session started at, in ISO format.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
 										},
 										"stopped_time": {
-											"description": "The web address that viewers can use to watch the livestream.",
-											"type": "string"
+											"description": "Timestamp the livestream session stopped at, in ISO format.",
+											"type": "string",
+											"format": "date-time",
+											"nullable": true
 										},
 										"updated_at": {
-											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
-											"type": "string"
+											"description": "Timestamp the livestream session was last updated at, in ISO format.",
+											"type": "string",
+											"format": "date-time"
 										},
 										"viewer_seconds": {
-											"description": "Specifies if the livestream was disabled.",
-											"type": "integer"
+											"description": "The total view time for which the viewers watched the stream.",
+											"type": "number"
 										}
-									}
+									},
+									"required": [
+										"id",
+										"livestream_id",
+										"err_message",
+										"invoked_time",
+										"started_time",
+										"stopped_time",
+										"created_at",
+										"updated_at",
+										"ingest_seconds",
+										"viewer_seconds"
+									],
+									"title": "LivestreamSession"
 								},
 								"success": {
 									"type": "boolean"
 								}
-							}
+							},
+							"required": [
+								"success",
+								"data"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -1063,14 +1805,18 @@
 							"example-1": {
 								"value": {
 									"data": {
-										"created_at": "2023-07-15T11:58:08.404Z",
+										"created_at": "2023-07-15T07:08:26.634Z",
 										"disabled": false,
-										"id": "61e03cb4-d4da-42ad-9169-f53360f4f4b4",
-										"meeting_id": "bbb03399-24e3-4b0c-90ec-172e97e636be",
-										"name": null,
+										"external_id": "7de6a3fec0f9c05bf1df140950d3a237",
+										"id": "b60ef3da-fbbb-441b-9168-8235b0035248",
+										"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+										"manual_ingest": false,
+										"meeting_id": "bbb87945-df1c-49d9-8159-262a7ae6cfde",
+										"name": "test",
 										"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
 										"status": "LIVE",
-										"updated_at": "2023-07-15T11:58:24.278Z"
+										"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
+										"updated_at": "2023-07-15T07:08:40.726Z"
 									},
 									"success": true
 								}
@@ -1083,24 +1829,35 @@
 									"type": "object",
 									"properties": {
 										"created_at": {
-											"description": "Timestamp the object was created at. The time is returned in ISO format.",
+											"description": "Timestamp the livestream was created at, in ISO format.",
 											"type": "string",
 											"format": "date-time"
 										},
 										"disabled": {
-											"description": "Specifies if the livestream was disabled.",
+											"description": "Specifies if the livestream is disabled.",
+											"type": "boolean"
+										},
+										"external_id": {
+											"description": "ID of the underlying Cloudflare Stream live input.",
 											"type": "string"
 										},
 										"id": {
-											"description": "The livestream ID.",
-											"type": "string"
+											"description": "ID of the livestream.",
+											"type": "string",
+											"format": "uuid"
 										},
 										"ingest_server": {
 											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
 											"type": "string"
 										},
+										"manual_ingest": {
+											"description": "Specifies if the livestream is ingested manually by an RTMP encoder.",
+											"type": "boolean"
+										},
 										"meeting_id": {
-											"type": "string"
+											"description": "ID of the meeting being livestreamed, if any.",
+											"type": "string",
+											"nullable": true
 										},
 										"name": {
 											"description": "Name of the livestream.",
@@ -1112,30 +1869,141 @@
 											"type": "string"
 										},
 										"status": {
+											"description": "Status of the livestream.",
 											"type": "string",
 											"enum": [
 												"LIVE",
 												"IDLE",
 												"ERRORED",
-												"INVOKED"
+												"INVOKED",
+												"METRICS_READY"
 											]
 										},
 										"stream_key": {
-											"description": "Unique key for accessing each livestream.",
+											"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
 											"type": "string",
 											"x-sensitive": true
 										},
 										"updated_at": {
-											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
+											"description": "Timestamp the livestream was last updated at, in ISO format.",
 											"type": "string",
 											"format": "date-time"
 										}
-									}
+									},
+									"required": [
+										"id",
+										"name",
+										"ingest_server",
+										"stream_key",
+										"status",
+										"external_id",
+										"meeting_id",
+										"playback_url",
+										"created_at",
+										"updated_at",
+										"disabled",
+										"manual_ingest"
+									],
+									"title": "Livestream"
 								},
 								"success": {
 									"type": "boolean"
 								}
-							}
+							},
+							"required": [
+								"success",
+								"data"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -1199,37 +2067,41 @@
 								"summary": "Get LiveStream From StreamId Success",
 								"value": {
 									"data": {
-										"livestream": {
-											"created_at": "2023-07-15T07:08:26.634Z",
-											"disabled": false,
-											"id": "b60ef3da-fbbb-441b-9168-8235b0035248",
-											"ingest_server": "rtmps://live.cloudflare.com:443/live/",
-											"meeting_id": "aaa87945-df1c-49d9-8159-262a7ae6cfde",
-											"name": null,
-											"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
-											"status": "LIVE",
-											"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
-											"updated_at": "2023-07-15T07:08:40.726Z"
+										"data": {
+											"livestream": {
+												"created_at": "2023-07-15T07:08:26.634Z",
+												"disabled": false,
+												"external_id": "7de6a3fec0f9c05bf1df140950d3a237",
+												"id": "b60ef3da-fbbb-441b-9168-8235b0035248",
+												"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+												"manual_ingest": false,
+												"meeting_id": "bbb87945-df1c-49d9-8159-262a7ae6cfde",
+												"name": "test",
+												"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
+												"status": "LIVE",
+												"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4",
+												"updated_at": "2023-07-15T07:08:40.726Z"
+											},
+											"sessions": [
+												{
+													"created_at": "2023-07-15T07:08:40.742Z",
+													"err_message": null,
+													"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
+													"ingest_seconds": 600,
+													"invoked_time": "2023-07-15T07:08:26.634Z",
+													"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
+													"started_time": "2023-07-15T07:08:39Z",
+													"stopped_time": "2023-07-15T07:18:39Z",
+													"updated_at": "2023-07-15T07:18:40.742Z",
+													"viewer_seconds": 1200
+												}
+											]
 										},
-										"sessions": [
-											{
-												"created_at": "2023-07-15T07:08:40.742Z",
-												"err_message": null,
-												"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
-												"ingest_seconds": 60,
-												"invoked_time": null,
-												"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
-												"started_time": "2023-07-15T07:08:39Z",
-												"stopped_time": null,
-												"updated_at": "2023-07-15T07:08:40.742Z",
-												"viewer_seconds": 60
-											}
-										]
-									},
-									"paging": {
-										"end_offset": 1,
-										"start_offset": 1,
-										"total_count": 1
+										"paging": {
+											"end_offset": 1,
+											"start_offset": 1,
+											"total_count": 1
+										}
 									},
 									"success": true
 								}
@@ -1241,131 +2113,296 @@
 								"data": {
 									"type": "object",
 									"properties": {
-										"livestreams": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"created_at": {
-														"description": "The timestamp at which the livestream was created. The time is returned in ISO format.",
-														"type": "string",
-														"format": "date-time"
+										"data": {
+											"type": "object",
+											"properties": {
+												"livestream": {
+													"type": "object",
+													"properties": {
+														"created_at": {
+															"description": "Timestamp the livestream was created at, in ISO format.",
+															"type": "string",
+															"format": "date-time"
+														},
+														"disabled": {
+															"description": "Specifies if the livestream is disabled.",
+															"type": "boolean"
+														},
+														"external_id": {
+															"description": "ID of the underlying Cloudflare Stream live input.",
+															"type": "string"
+														},
+														"id": {
+															"description": "ID of the livestream.",
+															"type": "string",
+															"format": "uuid"
+														},
+														"ingest_server": {
+															"description": "The server URL to which the RTMP encoder sends the video and audio data.",
+															"type": "string"
+														},
+														"manual_ingest": {
+															"description": "Specifies if the livestream is ingested manually by an RTMP encoder.",
+															"type": "boolean"
+														},
+														"meeting_id": {
+															"description": "ID of the meeting being livestreamed, if any.",
+															"type": "string",
+															"nullable": true
+														},
+														"name": {
+															"description": "Name of the livestream.",
+															"type": "string",
+															"nullable": true
+														},
+														"playback_url": {
+															"description": "The web address that viewers can use to watch the livestream.",
+															"type": "string"
+														},
+														"status": {
+															"description": "Status of the livestream.",
+															"type": "string",
+															"enum": [
+																"LIVE",
+																"IDLE",
+																"ERRORED",
+																"INVOKED",
+																"METRICS_READY"
+															]
+														},
+														"stream_key": {
+															"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
+															"type": "string",
+															"x-sensitive": true
+														},
+														"updated_at": {
+															"description": "Timestamp the livestream was last updated at, in ISO format.",
+															"type": "string",
+															"format": "date-time"
+														}
 													},
-													"disabled": {
-														"description": "Specifies if the livestream was disabled.",
-														"type": "boolean"
-													},
-													"id": {
-														"description": "The livestream ID.",
-														"type": "string"
-													},
-													"ingest_server": {
-														"description": "The server URL to which the RTMP encoder sends the video and audio data.",
-														"type": "string"
-													},
-													"meeting_id": {
-														"description": "The ID of the meeting that was livestreamed.",
-														"type": "string"
-													},
-													"name": {
-														"description": "Name of the livestream.",
-														"type": "string",
-														"nullable": true
-													},
-													"playback_url": {
-														"description": "The web address that viewers can use to watch the livestream.",
-														"type": "string"
-													},
-													"status": {
-														"type": "string",
-														"enum": [
-															"LIVE",
-															"INVOKED",
-															"ERRORED",
-															"IDLE"
-														]
-													},
-													"stream_key": {
-														"description": "Unique key for accessing each livestream.",
-														"type": "string",
-														"x-sensitive": true
-													},
-													"updated_at": {
-														"description": "The timestamp at which the livestream was updated. The time is returned in ISO format.",
-														"type": "string",
-														"format": "date-time"
-													}
+													"required": [
+														"id",
+														"name",
+														"ingest_server",
+														"stream_key",
+														"status",
+														"external_id",
+														"meeting_id",
+														"playback_url",
+														"created_at",
+														"updated_at",
+														"disabled",
+														"manual_ingest"
+													],
+													"title": "Livestream"
 												},
-												"type": "object"
-											}
+												"sessions": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"created_at": {
+																"description": "Timestamp the livestream session was created at, in ISO format.",
+																"type": "string",
+																"format": "date-time"
+															},
+															"err_message": {
+																"description": "Error message, if the livestream session failed.",
+																"type": "string",
+																"nullable": true
+															},
+															"id": {
+																"description": "ID of the livestream session.",
+																"type": "string",
+																"format": "uuid"
+															},
+															"ingest_seconds": {
+																"description": "The time duration for which the input was given or the meeting was streamed.",
+																"type": "number"
+															},
+															"invoked_time": {
+																"description": "Timestamp the livestream session was invoked at, in ISO format.",
+																"type": "string",
+																"format": "date-time",
+																"nullable": true
+															},
+															"livestream_id": {
+																"description": "ID of the livestream.",
+																"type": "string",
+																"format": "uuid"
+															},
+															"started_time": {
+																"description": "Timestamp the livestream session started at, in ISO format.",
+																"type": "string",
+																"format": "date-time",
+																"nullable": true
+															},
+															"stopped_time": {
+																"description": "Timestamp the livestream session stopped at, in ISO format.",
+																"type": "string",
+																"format": "date-time",
+																"nullable": true
+															},
+															"updated_at": {
+																"description": "Timestamp the livestream session was last updated at, in ISO format.",
+																"type": "string",
+																"format": "date-time"
+															},
+															"viewer_seconds": {
+																"description": "The total view time for which the viewers watched the stream.",
+																"type": "number"
+															}
+														},
+														"required": [
+															"id",
+															"livestream_id",
+															"err_message",
+															"invoked_time",
+															"started_time",
+															"stopped_time",
+															"created_at",
+															"updated_at",
+															"ingest_seconds",
+															"viewer_seconds"
+														],
+														"title": "LivestreamSession"
+													}
+												}
+											},
+											"required": [
+												"livestream",
+												"sessions"
+											]
 										},
 										"paging": {
 											"type": "object",
 											"properties": {
 												"end_offset": {
-													"type": "integer",
-													"example": 1
+													"type": "number",
+													"example": 30
 												},
 												"start_offset": {
-													"type": "integer",
+													"type": "number",
 													"example": 1
 												},
 												"total_count": {
-													"type": "integer",
-													"example": 1
+													"type": "number",
+													"example": 30,
+													"minimum": 0
 												}
-											}
-										},
-										"sessions": {
-											"type": "object",
-											"properties": {
-												"created_at": {
-													"description": "The timestamp at which the livestream was created. The time is returned in ISO format.",
-													"type": "string",
-													"format": "date-time"
-												},
-												"err_message": {
-													"type": "string"
-												},
-												"id": {
-													"description": "The ID of the livestream session.",
-													"type": "string"
-												},
-												"ingest_seconds": {
-													"description": "The time duration for which the input was given or the meeting was streamed.",
-													"type": "string"
-												},
-												"invoked_time": {
-													"description": "The time at which the livestream was invoked.",
-													"type": "string",
-													"format": "date-time"
-												},
-												"livestream_id": {
-													"description": "The ID of the livestream.",
-													"type": "string"
-												},
-												"started_time": {
-													"description": "The time at which the livestream was started.",
-													"type": "string",
-													"format": "date-time"
-												},
-												"stopped_time": {
-													"description": "The time at which the livestream was stopped.",
-													"type": "string",
-													"format": "date-time"
-												},
-												"updated_at": {
-													"description": "The timestamp at which the livestream was updated. The time is returned in ISO format.",
-													"type": "string",
-													"format": "date-time"
-												}
-											}
+											},
+											"required": [
+												"total_count",
+												"start_offset",
+												"end_offset"
+											],
+											"title": "PagingInfo"
 										}
-									}
+									},
+									"required": [
+										"data",
+										"paging"
+									]
 								},
 								"success": {
 									"type": "boolean"
 								}
-							}
+							},
+							"required": [
+								"success",
+								"data"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -1454,13 +2491,13 @@
 												"created_at": "2023-07-15T07:08:40.742Z",
 												"err_message": null,
 												"id": "cf55a850-c3fd-46b5-b5d2-25b3b9aa1686",
-												"ingest_seconds": 118,
-												"invoked_time": null,
-												"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035123",
+												"ingest_seconds": 600,
+												"invoked_time": "2023-07-15T07:08:26.634Z",
+												"livestream_id": "b60ef3da-fbbb-441b-9168-8235b0035248",
 												"started_time": "2023-07-15T07:08:39Z",
-												"stopped_time": "2023-07-15T07:10:45Z",
-												"updated_at": "2023-07-15T07:11:47.274Z",
-												"viewer_seconds": 116.11599994199997
+												"stopped_time": "2023-07-15T07:18:39Z",
+												"updated_at": "2023-07-15T07:18:40.742Z",
+												"viewer_seconds": 1200
 											}
 										],
 										"paging": {
@@ -1479,71 +2516,206 @@
 								"data": {
 									"type": "object",
 									"properties": {
-										"created_at": {
-											"description": "Timestamp the object was created at. The time is returned in ISO format.",
-											"type": "string",
-											"format": "date-time"
-										},
-										"err_message": {
-											"type": "string",
-											"enum": [
-												"LIVE",
-												"IDLE",
-												"ERRORED",
-												"INVOKED"
-											]
-										},
-										"id": {
-											"description": "The livestream session ID.",
-											"type": "string"
-										},
-										"ingest_seconds": {
-											"description": "The time duration for which the input was given or the meeting was streamed.",
-											"type": "number"
-										},
-										"invoked_time": {
-											"description": "Name of the livestream.",
-											"type": "string",
-											"nullable": true
-										},
-										"livestream_id": {
-											"description": "The ID of the livestream.",
-											"type": "string"
+										"data": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"created_at": {
+														"description": "Timestamp the livestream session was created at, in ISO format.",
+														"type": "string",
+														"format": "date-time"
+													},
+													"err_message": {
+														"description": "Error message, if the livestream session failed.",
+														"type": "string",
+														"nullable": true
+													},
+													"id": {
+														"description": "ID of the livestream session.",
+														"type": "string",
+														"format": "uuid"
+													},
+													"ingest_seconds": {
+														"description": "The time duration for which the input was given or the meeting was streamed.",
+														"type": "number"
+													},
+													"invoked_time": {
+														"description": "Timestamp the livestream session was invoked at, in ISO format.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true
+													},
+													"livestream_id": {
+														"description": "ID of the livestream.",
+														"type": "string",
+														"format": "uuid"
+													},
+													"started_time": {
+														"description": "Timestamp the livestream session started at, in ISO format.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true
+													},
+													"stopped_time": {
+														"description": "Timestamp the livestream session stopped at, in ISO format.",
+														"type": "string",
+														"format": "date-time",
+														"nullable": true
+													},
+													"updated_at": {
+														"description": "Timestamp the livestream session was last updated at, in ISO format.",
+														"type": "string",
+														"format": "date-time"
+													},
+													"viewer_seconds": {
+														"description": "The total view time for which the viewers watched the stream.",
+														"type": "number"
+													}
+												},
+												"required": [
+													"id",
+													"livestream_id",
+													"err_message",
+													"invoked_time",
+													"started_time",
+													"stopped_time",
+													"created_at",
+													"updated_at",
+													"ingest_seconds",
+													"viewer_seconds"
+												],
+												"title": "LivestreamSession"
+											}
 										},
 										"paging": {
 											"type": "object",
 											"properties": {
 												"end_offset": {
-													"type": "number"
+													"type": "number",
+													"example": 30
 												},
 												"start_offset": {
-													"type": "number"
+													"type": "number",
+													"example": 1
 												},
 												"total_count": {
-													"type": "number"
+													"type": "number",
+													"example": 30,
+													"minimum": 0
 												}
-											}
-										},
-										"stopped_time": {
-											"description": "Specifies if the livestream was disabled.",
-											"type": "string",
-											"format": "date-time"
-										},
-										"updated_at": {
-											"description": "Timestamp the object was updated at. The time is returned in ISO format.",
-											"type": "string",
-											"format": "date-time"
-										},
-										"viewer_seconds": {
-											"description": "The total view time for which the viewers watched the stream.",
-											"type": "number"
+											},
+											"required": [
+												"total_count",
+												"start_offset",
+												"end_offset"
+											],
+											"title": "PagingInfo"
 										}
-									}
+									},
+									"required": [
+										"data",
+										"paging"
+									]
 								},
 								"success": {
 									"type": "boolean"
 								}
-							}
+							},
+							"required": [
+								"success",
+								"data"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -1611,6 +2783,96 @@
 									"type": "boolean"
 								}
 							}
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}
@@ -1695,10 +2957,12 @@
 							"example-1": {
 								"value": {
 									"data": {
-										"id": "7088bba8-f522-49a8-b59b-3cd0e946bbb0",
+										"id": "b60ef3da-fbbb-441b-9168-8235b0035248",
 										"ingest_server": "rtmps://live.cloudflare.com:443/live/",
+										"meeting_id": "bbb87945-df1c-49d9-8159-262a7ae6cfde",
+										"name": "test",
 										"playback_url": "https://customer-s8oj0c1n5ek8ah1e.cloudflarestream.com/7de6a3fec0f9c05bf1df140950d3a237/manifest/video.m3u8",
-										"status": "INVOKED",
+										"status": "LIVE",
 										"stream_key": "f26566285faca6fbe2e79a73a66rsrrsrrsr3cde23a2bb7dbc6c2c1761b98f4e4"
 									},
 									"success": true
@@ -1712,37 +2976,153 @@
 									"type": "object",
 									"properties": {
 										"id": {
-											"description": "The livestream ID.",
-											"type": "string"
+											"description": "ID of the livestream.",
+											"type": "string",
+											"format": "uuid"
 										},
 										"ingest_server": {
 											"description": "The server URL to which the RTMP encoder sends the video and audio data.",
 											"type": "string"
+										},
+										"meeting_id": {
+											"description": "ID of the meeting being livestreamed, if any.",
+											"type": "string",
+											"nullable": true
+										},
+										"name": {
+											"description": "Name of the livestream.",
+											"type": "string",
+											"nullable": true
 										},
 										"playback_url": {
 											"description": "The web address that viewers can use to watch the livestream.",
 											"type": "string"
 										},
 										"status": {
+											"description": "Status of the livestream.",
 											"type": "string",
 											"enum": [
 												"LIVE",
 												"IDLE",
 												"ERRORED",
-												"INVOKED"
+												"INVOKED",
+												"METRICS_READY"
 											]
 										},
 										"stream_key": {
-											"description": "Unique key for accessing each livestream.",
+											"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
 											"type": "string",
 											"x-sensitive": true
 										}
-									}
+									},
+									"required": [
+										"id",
+										"status",
+										"name",
+										"meeting_id",
+										"ingest_server",
+										"stream_key",
+										"playback_url"
+									]
 								},
 								"success": {
 									"type": "boolean"
 								}
-							}
+							},
+							"required": [
+								"success",
+								"data"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
 						}
 					}
 				}

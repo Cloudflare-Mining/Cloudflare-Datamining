@@ -115,7 +115,8 @@
 											],
 											"nullable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -261,7 +262,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "logs.control.cmb.config",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation deletes the CMB config."
 	},
 	"GET /accounts/{account_id}/logs/control/cmb/config": {
@@ -379,26 +379,32 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object",
-											"properties": {
-												"allow_out_of_region_access": {
-													"description": "Allow out of region access",
-													"type": "boolean",
-													"example": false,
-													"x-auditable": true
-												},
-												"regions": {
-													"description": "Name of the region.",
-													"type": "string",
-													"example": "eu",
-													"maxLength": 256,
-													"pattern": "^[a-z]*$",
-													"x-auditable": true
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"allow_out_of_region_access": {
+															"description": "Allow out of region access",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"regions": {
+															"description": "Name of the region.",
+															"type": "string",
+															"example": "eu",
+															"maxLength": 256,
+															"pattern": "^[a-z]*$",
+															"x-auditable": true
+														}
+													},
+													"nullable": true
 												}
-											},
+											],
 											"nullable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -545,8 +551,7 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "logs.control.cmb.config",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/logs/control/cmb/config": {
 		"operationId": "post-accounts-account_id-logs-control-cmb-config",
@@ -690,26 +695,32 @@
 								{
 									"properties": {
 										"result": {
-											"type": "object",
-											"properties": {
-												"allow_out_of_region_access": {
-													"description": "Allow out of region access",
-													"type": "boolean",
-													"example": false,
-													"x-auditable": true
-												},
-												"regions": {
-													"description": "Name of the region.",
-													"type": "string",
-													"example": "eu",
-													"maxLength": 256,
-													"pattern": "^[a-z]*$",
-													"x-auditable": true
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"allow_out_of_region_access": {
+															"description": "Allow out of region access",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"regions": {
+															"description": "Name of the region.",
+															"type": "string",
+															"example": "eu",
+															"maxLength": 256,
+															"pattern": "^[a-z]*$",
+															"x-auditable": true
+														}
+													},
+													"nullable": true
 												}
-											},
+											],
 											"nullable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -854,7 +865,6 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "logs.control.cmb.config",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

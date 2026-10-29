@@ -976,6 +976,10 @@
 		"tags": [
 			"Applications"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write",
+			"Resource Library Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
 		"x-fern-sdk-method-name": "delete",
@@ -6054,6 +6058,12 @@
 		"tags": [
 			"Applications"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Resource Library Read",
+			"Resource Library Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
 		"x-fern-sdk-method-name": "list"
@@ -6483,6 +6493,12 @@
 		],
 		"tags": [
 			"Applications"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Resource Library Read",
+			"Resource Library Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
@@ -8332,6 +8348,10 @@
 		],
 		"tags": [
 			"Applications"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write",
+			"Resource Library Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
@@ -10443,6 +10463,10 @@
 		"tags": [
 			"Applications"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write",
+			"Resource Library Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
 		"x-fern-sdk-method-name": "create"
@@ -11290,6 +11314,12 @@
 		],
 		"tags": [
 			"Applications"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Resource Library Read",
+			"Resource Library Write"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "accounts.applications",

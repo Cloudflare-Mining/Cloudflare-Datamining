@@ -801,6 +801,30 @@
 				}
 			},
 			{
+				"name": "severity",
+				"in": "query",
+				"schema": {
+					"description": "Beta. Repeatable intrinsic severity band filter. An article matches any selected band, the band reported as its severity. Excludes articles without a severity. Like the severity field, severity is reported only while the account has an active Priority Intelligence Requirement; otherwise no articles match.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"informational",
+							"low",
+							"medium",
+							"high",
+							"critical"
+						],
+						"type": "string"
+					},
+					"example": [
+						"high",
+						"critical"
+					],
+					"maxItems": 5,
+					"minItems": 1
+				}
+			},
+			{
 				"name": "sort",
 				"in": "query",
 				"schema": {
@@ -4928,6 +4952,249 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
 		"x-fern-sdk-method-name": "update"
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/reprocess": {
+		"operationId": "rssArticleReprocess",
+		"summary": "Reprocess a Threat Signals article",
+		"description": "Synchronously re-runs every processing step for a Threat Signals article: content acquisition, summary, indicator extraction, CVE tags, IOC context, and default tags. Replaces the article's summary, AI tags, and indicators; indicators no longer found are removed. Creates a Threat Event only when the article has none; an existing Event is never updated. Takes over the article from any queued processing. Requires a paid Threat Signals subscription and the Cloudforce One Write permission.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "article_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Threat Signals article UUID",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"additionalProperties": false
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Threat Signals response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_feed_count": {
+												"description": "The current count of custom feeds for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_feed_limit": {
+												"description": "The custom feed limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"threat_signals_feed_limit",
+													"free_custom_skills_disabled",
+													"free_skill_run_disabled",
+													"free_tier_reconciliation_in_progress",
+													"free_tier_reconciliation_failed",
+													"raw_content_expired",
+													"curated_visibility_changed"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"article_id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"event_id": {
+											"description": "The article's Threat Event ID after the run, or null when it has none or its existence could not be confirmed. An existing Event is never updated by reprocessing.",
+											"type": "string",
+											"nullable": true
+										},
+										"outcome": {
+											"description": "`completed` when every step succeeded, `failed` when at least one step failed, or `superseded` when another reprocess took over the article during this run.",
+											"type": "string",
+											"enum": [
+												"completed",
+												"failed",
+												"superseded"
+											]
+										},
+										"pending_retry": {
+											"description": "True when the article returned to pending and the next feed poll will retry it.",
+											"type": "boolean"
+										},
+										"steps": {
+											"description": "Per-step result, in pipeline order.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"outcome": {
+														"type": "string",
+														"enum": [
+															"completed",
+															"noop",
+															"failed",
+															"skipped"
+														]
+													},
+													"step": {
+														"type": "string",
+														"enum": [
+															"content",
+															"summary",
+															"indicators",
+															"cves",
+															"ioc_context",
+															"tags",
+															"event"
+														]
+													}
+												},
+												"required": [
+													"step",
+													"outcome"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"article_id",
+										"outcome",
+										"steps",
+										"event_id",
+										"pending_retry"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Threat Signals"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
+		"x-fern-sdk-method-name": "reprocess",
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/run": {
 		"operationId": "rssArticleSkillRun",

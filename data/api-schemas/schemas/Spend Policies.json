@@ -1,0 +1,5977 @@
+{
+	"DELETE /accounts/{account_id}/billing/spend-policies/{policy_id}": {
+		"operationId": "spend-policies-delete",
+		"summary": "Delete Spend Policy",
+		"description": "Soft-deletes the spend policy. The policy is disabled and no longer appears in list, get or audit responses. The `If-Match` header must equal the policy's current `version`.",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare account (account tag).",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"description": "Identifies the spend policy.",
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of the spend policy.",
+					"type": "string",
+					"format": "uuid",
+					"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+				}
+			},
+			{
+				"description": "The policy `version` the change is based on, as returned in `ETag`. Quoted (`\"3\"`) and bare (`3`) values are both accepted. Weak ETags (`W/\"3\"`) and `*` are not.",
+				"in": "header",
+				"name": "If-Match",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "\"3\"",
+					"pattern": "^\"?[1-9][0-9]*\"?$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The spend policy was deleted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "A successful response confirming that a spend policy was deleted.",
+							"allOf": [
+								{
+									"description": "Represents a successful API response.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Always empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"messages": {
+											"description": "Contains informational notices about the response.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"description": "The unique identifier of the spend policy.",
+													"type": "string",
+													"format": "uuid",
+													"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+												}
+											},
+											"required": [
+												"id"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request was malformed. Code `1004`: the account ID is invalid.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Code `1000`. The caller could not be authenticated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Code `1002`. The caller lacks the required permission (`#billing:read` for reads, `#billing:edit` for writes), or the account in the path does not match the authenticated account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Code `1003`. Returned when the policy does not exist or was deleted, and also when the account is not allowlisted. The two cases return the same body.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"412": {
+				"description": "Code `1008`. `If-Match` does not match the policy's current `version`. Fetch the policy again and retry with the new version.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"428": {
+				"description": "Code `1007`. The `If-Match` header is missing or does not hold a positive integer version.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Code `1010`. An unexpected server error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Code `1001`. The service could not load the gateway signing keys. Retry later.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Spend Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "billing.spend-policies",
+		"x-fern-sdk-method-name": "delete",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/billing/spend-policies": {
+		"operationId": "spend-policies-list",
+		"summary": "List Spend Policies",
+		"description": "Returns every spend policy on the account that has not been deleted, including disabled ones. Results are sorted by `name`, then `id`. There is no pagination.",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare account (account tag).",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Spend policies were successfully retrieved.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "A successful response containing a list of spend policies.",
+							"allOf": [
+								{
+									"description": "Represents a successful API response.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Always empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"messages": {
+											"description": "Contains informational notices about the response.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The account's spend policies. An empty array when there are none.",
+											"type": "array",
+											"items": {
+												"description": "A spend policy.",
+												"type": "object",
+												"properties": {
+													"account_id": {
+														"description": "Internal numeric ID of the account that owns the policy. This is not the account tag used in the path.",
+														"type": "integer",
+														"format": "int64",
+														"example": 1234567
+													},
+													"action": {
+														"description": "The action taken when the threshold is reached. `notification` sends an email to `notification_email`. `usage_block` blocks further usage of the product until the end of the billing period. Raising the threshold above the current balance, disabling the policy, or deleting it lifts the block early.",
+														"type": "string",
+														"example": "notification",
+														"enum": [
+															"notification",
+															"usage_block"
+														]
+													},
+													"current_state": {
+														"description": "Read-only state on list/get responses, evaluated from the latest owning projector snapshot at request time, independently of the API replica. Configuration enabled/version/ETag do not change when a cycle rolls over. Audit history remains unchanged. Missing during a rolling upgrade or on mutation responses; clients must treat missing state as unavailable. Balances are asynchronous estimates, not a synchronous usage read.",
+														"type": "object",
+														"properties": {
+															"balance_cents": {
+																"type": "integer",
+																"format": "int64",
+																"nullable": true
+															},
+															"billing_period_end": {
+																"type": "string",
+																"format": "date-time",
+																"nullable": true
+															},
+															"billing_period_start": {
+																"type": "string",
+																"format": "date-time",
+																"nullable": true
+															},
+															"enforcement": {
+																"description": "Durable desired cap and delivery bookkeeping for this policy, or null if no owned effect exists. Separate from threshold evaluation: pending/leased/retry can lag the new billing period. Succeeded with equal generations means delivery completed, not an EWC readback.",
+																"type": "object",
+																"nullable": true,
+																"properties": {
+																	"applied_generation": {
+																		"type": "integer",
+																		"format": "int64"
+																	},
+																	"delivery_status": {
+																		"type": "string",
+																		"enum": [
+																			"pending",
+																			"leased",
+																			"retry",
+																			"succeeded"
+																		]
+																	},
+																	"desired_generation": {
+																		"type": "integer",
+																		"format": "int64"
+																	},
+																	"desired_state": {
+																		"type": "string",
+																		"enum": [
+																			"active",
+																			"inactive"
+																		]
+																	},
+																	"expires_at": {
+																		"type": "string",
+																		"format": "date-time",
+																		"nullable": true
+																	}
+																},
+																"required": [
+																	"desired_state",
+																	"delivery_status",
+																	"desired_generation",
+																	"applied_generation",
+																	"expires_at"
+																]
+															},
+															"evaluated_at": {
+																"description": "Evaluation time; not the timestamp of the latest usage event.",
+																"type": "string",
+																"format": "date-time"
+															},
+															"status": {
+																"description": "Threshold evaluation, not proof of an edge cap. No current active period yields no_current_period for enabled policies; failed aggregate reads yield unavailable for enabled policies. Disabled policies report disabled. Neither no_current_period nor unavailable implies a zero balance or below-limit state. Operators may disable current-state reads, in which case current_state is omitted.",
+																"type": "string",
+																"enum": [
+																	"disabled",
+																	"no_current_period",
+																	"unavailable",
+																	"below_limit",
+																	"approaching_limit",
+																	"limit_reached"
+																]
+															}
+														},
+														"readOnly": true,
+														"required": [
+															"status",
+															"billing_period_start",
+															"billing_period_end",
+															"balance_cents",
+															"evaluated_at",
+															"enforcement"
+														]
+													},
+													"enabled": {
+														"description": "Whether the policy is evaluated.",
+														"type": "boolean",
+														"example": true
+													},
+													"id": {
+														"description": "The unique identifier of the spend policy.",
+														"type": "string",
+														"format": "uuid",
+														"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+													},
+													"name": {
+														"description": "Display name of the policy.",
+														"type": "string",
+														"example": "Workers cap"
+													},
+													"notification_email": {
+														"description": "Email address that receives notifications. An empty string when none is set.",
+														"type": "string",
+														"example": "billing@example.com"
+													},
+													"product_id": {
+														"description": "The product the policy applies to: `workers` or `durable_objects`. Each product's balance and policies are separate. Both products support `notification` and `usage_block` policies on create and update.",
+														"type": "string",
+														"example": "workers",
+														"enum": [
+															"workers",
+															"durable_objects"
+														]
+													},
+													"threshold_cents": {
+														"description": "The spend threshold for the current billing period, in US cents.",
+														"type": "integer",
+														"format": "int64",
+														"example": 100
+													},
+													"version": {
+														"description": "Optimistic-concurrency version. It starts at 1 and goes up by one on every update or delete. This value is also returned in `ETag`.",
+														"type": "integer",
+														"format": "int64",
+														"example": 1,
+														"minimum": 1
+													}
+												},
+												"required": [
+													"id",
+													"account_id",
+													"name",
+													"product_id",
+													"enabled",
+													"threshold_cents",
+													"action",
+													"notification_email",
+													"version"
+												]
+											}
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request was malformed. Code `1004`: the account ID is invalid.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Code `1000`. The caller could not be authenticated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Code `1002`. The caller lacks the required permission (`#billing:read` for reads, `#billing:edit` for writes), or the account in the path does not match the authenticated account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Code `1003`. Returned when the policy does not exist or was deleted, and also when the account is not allowlisted. The two cases return the same body.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Code `1010`. An unexpected server error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Code `1001`. The service could not load the gateway signing keys. Retry later.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Spend Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "billing.spend-policies",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/billing/spend-policies/{policy_id}": {
+		"operationId": "spend-policies-get",
+		"summary": "Get Spend Policy",
+		"description": "Returns one spend policy. The `ETag` response header holds the current `version`; send it as `If-Match` on a later update or delete.",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare account (account tag).",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"description": "Identifies the spend policy.",
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of the spend policy.",
+					"type": "string",
+					"format": "uuid",
+					"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The spend policy was successfully retrieved.",
+				"headers": {
+					"ETag": {
+						"description": "The policy `version`, quoted, for use in `If-Match`.",
+						"schema": {
+							"type": "string",
+							"example": "\"3\""
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "A successful response containing one spend policy.",
+							"allOf": [
+								{
+									"description": "Represents a successful API response.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Always empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"messages": {
+											"description": "Contains informational notices about the response.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A spend policy.",
+											"type": "object",
+											"properties": {
+												"account_id": {
+													"description": "Internal numeric ID of the account that owns the policy. This is not the account tag used in the path.",
+													"type": "integer",
+													"format": "int64",
+													"example": 1234567
+												},
+												"action": {
+													"description": "The action taken when the threshold is reached. `notification` sends an email to `notification_email`. `usage_block` blocks further usage of the product until the end of the billing period. Raising the threshold above the current balance, disabling the policy, or deleting it lifts the block early.",
+													"type": "string",
+													"example": "notification",
+													"enum": [
+														"notification",
+														"usage_block"
+													]
+												},
+												"current_state": {
+													"description": "Read-only state on list/get responses, evaluated from the latest owning projector snapshot at request time, independently of the API replica. Configuration enabled/version/ETag do not change when a cycle rolls over. Audit history remains unchanged. Missing during a rolling upgrade or on mutation responses; clients must treat missing state as unavailable. Balances are asynchronous estimates, not a synchronous usage read.",
+													"type": "object",
+													"properties": {
+														"balance_cents": {
+															"type": "integer",
+															"format": "int64",
+															"nullable": true
+														},
+														"billing_period_end": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true
+														},
+														"billing_period_start": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true
+														},
+														"enforcement": {
+															"description": "Durable desired cap and delivery bookkeeping for this policy, or null if no owned effect exists. Separate from threshold evaluation: pending/leased/retry can lag the new billing period. Succeeded with equal generations means delivery completed, not an EWC readback.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"applied_generation": {
+																	"type": "integer",
+																	"format": "int64"
+																},
+																"delivery_status": {
+																	"type": "string",
+																	"enum": [
+																		"pending",
+																		"leased",
+																		"retry",
+																		"succeeded"
+																	]
+																},
+																"desired_generation": {
+																	"type": "integer",
+																	"format": "int64"
+																},
+																"desired_state": {
+																	"type": "string",
+																	"enum": [
+																		"active",
+																		"inactive"
+																	]
+																},
+																"expires_at": {
+																	"type": "string",
+																	"format": "date-time",
+																	"nullable": true
+																}
+															},
+															"required": [
+																"desired_state",
+																"delivery_status",
+																"desired_generation",
+																"applied_generation",
+																"expires_at"
+															]
+														},
+														"evaluated_at": {
+															"description": "Evaluation time; not the timestamp of the latest usage event.",
+															"type": "string",
+															"format": "date-time"
+														},
+														"status": {
+															"description": "Threshold evaluation, not proof of an edge cap. No current active period yields no_current_period for enabled policies; failed aggregate reads yield unavailable for enabled policies. Disabled policies report disabled. Neither no_current_period nor unavailable implies a zero balance or below-limit state. Operators may disable current-state reads, in which case current_state is omitted.",
+															"type": "string",
+															"enum": [
+																"disabled",
+																"no_current_period",
+																"unavailable",
+																"below_limit",
+																"approaching_limit",
+																"limit_reached"
+															]
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"status",
+														"billing_period_start",
+														"billing_period_end",
+														"balance_cents",
+														"evaluated_at",
+														"enforcement"
+													]
+												},
+												"enabled": {
+													"description": "Whether the policy is evaluated.",
+													"type": "boolean",
+													"example": true
+												},
+												"id": {
+													"description": "The unique identifier of the spend policy.",
+													"type": "string",
+													"format": "uuid",
+													"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+												},
+												"name": {
+													"description": "Display name of the policy.",
+													"type": "string",
+													"example": "Workers cap"
+												},
+												"notification_email": {
+													"description": "Email address that receives notifications. An empty string when none is set.",
+													"type": "string",
+													"example": "billing@example.com"
+												},
+												"product_id": {
+													"description": "The product the policy applies to: `workers` or `durable_objects`. Each product's balance and policies are separate. Both products support `notification` and `usage_block` policies on create and update.",
+													"type": "string",
+													"example": "workers",
+													"enum": [
+														"workers",
+														"durable_objects"
+													]
+												},
+												"threshold_cents": {
+													"description": "The spend threshold for the current billing period, in US cents.",
+													"type": "integer",
+													"format": "int64",
+													"example": 100
+												},
+												"version": {
+													"description": "Optimistic-concurrency version. It starts at 1 and goes up by one on every update or delete. This value is also returned in `ETag`.",
+													"type": "integer",
+													"format": "int64",
+													"example": 1,
+													"minimum": 1
+												}
+											},
+											"required": [
+												"id",
+												"account_id",
+												"name",
+												"product_id",
+												"enabled",
+												"threshold_cents",
+												"action",
+												"notification_email",
+												"version"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request was malformed. Code `1004`: the account ID is invalid.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Code `1000`. The caller could not be authenticated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Code `1002`. The caller lacks the required permission (`#billing:read` for reads, `#billing:edit` for writes), or the account in the path does not match the authenticated account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Code `1003`. Returned when the policy does not exist or was deleted, and also when the account is not allowlisted. The two cases return the same body.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Code `1010`. An unexpected server error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Code `1001`. The service could not load the gateway signing keys. Retry later.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Spend Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "billing.spend-policies",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/billing/spend-policies/{policy_id}/audit": {
+		"operationId": "spend-policies-list-audit",
+		"summary": "List Spend Policy Audit Entries",
+		"description": "Returns the policy's evaluation history, newest first. At most one entry is recorded per trigger (`approaching_limit` or `limit_reached`), policy version and billing period, so a policy update can record a new entry without any change in balance. Disabled policies still return their history; deleted policies return `404`. There is no pagination: use `limit` to set how many entries come back.",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare account (account tag).",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"description": "Identifies the spend policy.",
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of the spend policy.",
+					"type": "string",
+					"format": "uuid",
+					"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+				}
+			},
+			{
+				"description": "Maximum number of audit entries to return. Defaults to 50. Values above 100 are capped at 100 rather than rejected.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"type": "integer",
+					"example": 50,
+					"default": 50,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Audit entries were successfully retrieved.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "A successful response containing spend policy audit entries.",
+							"allOf": [
+								{
+									"description": "Represents a successful API response.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Always empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"messages": {
+											"description": "Contains informational notices about the response.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Audit entries, newest first. An empty array when there are none.",
+											"type": "array",
+											"items": {
+												"description": "A state transition recorded when the policy was evaluated against the account's balance.",
+												"type": "object",
+												"properties": {
+													"action": {
+														"description": "The action taken when the threshold is reached. `notification` sends an email to `notification_email`. `usage_block` blocks further usage of the product until the end of the billing period. Raising the threshold above the current balance, disabling the policy, or deleting it lifts the block early.",
+														"type": "string",
+														"example": "notification",
+														"enum": [
+															"notification",
+															"usage_block"
+														]
+													},
+													"balance_cents": {
+														"description": "The account's balance for the product at evaluation time, in US cents.",
+														"type": "integer",
+														"format": "int64",
+														"example": 104
+													},
+													"billing_period_end": {
+														"description": "Exclusive end of the billing period that was evaluated.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2026-11-01T00:00:00Z"
+													},
+													"billing_period_start": {
+														"description": "Inclusive start of the billing period that was evaluated.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2026-10-01T00:00:00Z"
+													},
+													"created_at": {
+														"description": "When the entry was recorded.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2026-10-14T12:34:56Z"
+													},
+													"policy_version": {
+														"description": "The policy `version` that was evaluated.",
+														"type": "integer",
+														"format": "int64",
+														"example": 2
+													},
+													"reason": {
+														"description": "A human-readable explanation of the trigger.",
+														"type": "string",
+														"example": "balance reached or exceeded the configured threshold"
+													},
+													"source": {
+														"description": "What caused the evaluation. `kafka` means a balance update. `policy_revision` means a change to the policy.",
+														"type": "string",
+														"example": "kafka",
+														"enum": [
+															"kafka",
+															"policy_revision"
+														]
+													},
+													"threshold_cents": {
+														"description": "The policy threshold at evaluation time, in US cents.",
+														"type": "integer",
+														"format": "int64",
+														"example": 100
+													},
+													"trigger": {
+														"description": "The state the balance moved into. `approaching_limit` means the balance is at least 80% of the threshold (rounded up to a whole cent), but below the threshold. `limit_reached` means the balance reached or exceeded the threshold.",
+														"type": "string",
+														"example": "limit_reached",
+														"enum": [
+															"approaching_limit",
+															"limit_reached"
+														]
+													}
+												},
+												"required": [
+													"billing_period_start",
+													"billing_period_end",
+													"policy_version",
+													"trigger",
+													"action",
+													"reason",
+													"balance_cents",
+													"threshold_cents",
+													"source",
+													"created_at"
+												]
+											}
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request was malformed. Code `1004`: the account ID is invalid. Code `1006`: `limit` is not a positive integer.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Code `1000`. The caller could not be authenticated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Code `1002`. The caller lacks the required permission (`#billing:read` for reads, `#billing:edit` for writes), or the account in the path does not match the authenticated account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Code `1003`. Returned when the policy does not exist or was deleted, and also when the account is not allowlisted. The two cases return the same body.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Code `1010`. An unexpected server error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Code `1001`. The service could not load the gateway signing keys. Retry later.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Spend Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "billing.spend-policies.audit",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/billing/spend-policies/activity": {
+		"operationId": "spend-policies-activity",
+		"summary": "List Spend Policy Activity",
+		"description": "Returns configuration history from immutable policy revisions for the account, including deleted policies. Entries contain before/after values and verified actor attribution. Pages use descending revision IDs, not event or commit order; refresh the first page for new entries. This cursor is not an incremental consumer checkpoint.",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare account (account tag).",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"description": "Maximum number of audit entries to return. Defaults to 50. Values above 100 are capped at 100 rather than rejected.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"type": "integer",
+					"example": 50,
+					"default": 50,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque token from the preceding response's result_info.cursor. Pass it unchanged to retrieve older entries.",
+				"schema": {
+					"type": "string",
+					"maxLength": 1024
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Activity was successfully retrieved.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "A successful response containing spend policy activity.",
+							"allOf": [
+								{
+									"description": "Represents a successful API response.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Always empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"messages": {
+											"description": "Contains informational notices about the response.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"action": {
+														"type": "string",
+														"enum": [
+															"created",
+															"updated",
+															"enabled",
+															"disabled",
+															"deleted"
+														]
+													},
+													"actor": {
+														"description": "Verified actor identifier, unknown when absent, or trusted internal actor.",
+														"type": "string"
+													},
+													"details": {
+														"type": "object",
+														"properties": {
+															"after": {
+																"description": "A spend policy.",
+																"type": "object",
+																"properties": {
+																	"account_id": {
+																		"description": "Internal numeric ID of the account that owns the policy. This is not the account tag used in the path.",
+																		"type": "integer",
+																		"format": "int64",
+																		"example": 1234567
+																	},
+																	"action": {
+																		"description": "The action taken when the threshold is reached. `notification` sends an email to `notification_email`. `usage_block` blocks further usage of the product until the end of the billing period. Raising the threshold above the current balance, disabling the policy, or deleting it lifts the block early.",
+																		"type": "string",
+																		"example": "notification",
+																		"enum": [
+																			"notification",
+																			"usage_block"
+																		]
+																	},
+																	"current_state": {
+																		"description": "Read-only state on list/get responses, evaluated from the latest owning projector snapshot at request time, independently of the API replica. Configuration enabled/version/ETag do not change when a cycle rolls over. Audit history remains unchanged. Missing during a rolling upgrade or on mutation responses; clients must treat missing state as unavailable. Balances are asynchronous estimates, not a synchronous usage read.",
+																		"type": "object",
+																		"properties": {
+																			"balance_cents": {
+																				"type": "integer",
+																				"format": "int64",
+																				"nullable": true
+																			},
+																			"billing_period_end": {
+																				"type": "string",
+																				"format": "date-time",
+																				"nullable": true
+																			},
+																			"billing_period_start": {
+																				"type": "string",
+																				"format": "date-time",
+																				"nullable": true
+																			},
+																			"enforcement": {
+																				"description": "Durable desired cap and delivery bookkeeping for this policy, or null if no owned effect exists. Separate from threshold evaluation: pending/leased/retry can lag the new billing period. Succeeded with equal generations means delivery completed, not an EWC readback.",
+																				"type": "object",
+																				"nullable": true,
+																				"properties": {
+																					"applied_generation": {
+																						"type": "integer",
+																						"format": "int64"
+																					},
+																					"delivery_status": {
+																						"type": "string",
+																						"enum": [
+																							"pending",
+																							"leased",
+																							"retry",
+																							"succeeded"
+																						]
+																					},
+																					"desired_generation": {
+																						"type": "integer",
+																						"format": "int64"
+																					},
+																					"desired_state": {
+																						"type": "string",
+																						"enum": [
+																							"active",
+																							"inactive"
+																						]
+																					},
+																					"expires_at": {
+																						"type": "string",
+																						"format": "date-time",
+																						"nullable": true
+																					}
+																				},
+																				"required": [
+																					"desired_state",
+																					"delivery_status",
+																					"desired_generation",
+																					"applied_generation",
+																					"expires_at"
+																				]
+																			},
+																			"evaluated_at": {
+																				"description": "Evaluation time; not the timestamp of the latest usage event.",
+																				"type": "string",
+																				"format": "date-time"
+																			},
+																			"status": {
+																				"description": "Threshold evaluation, not proof of an edge cap. No current active period yields no_current_period for enabled policies; failed aggregate reads yield unavailable for enabled policies. Disabled policies report disabled. Neither no_current_period nor unavailable implies a zero balance or below-limit state. Operators may disable current-state reads, in which case current_state is omitted.",
+																				"type": "string",
+																				"enum": [
+																					"disabled",
+																					"no_current_period",
+																					"unavailable",
+																					"below_limit",
+																					"approaching_limit",
+																					"limit_reached"
+																				]
+																			}
+																		},
+																		"readOnly": true,
+																		"required": [
+																			"status",
+																			"billing_period_start",
+																			"billing_period_end",
+																			"balance_cents",
+																			"evaluated_at",
+																			"enforcement"
+																		]
+																	},
+																	"enabled": {
+																		"description": "Whether the policy is evaluated.",
+																		"type": "boolean",
+																		"example": true
+																	},
+																	"id": {
+																		"description": "The unique identifier of the spend policy.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+																	},
+																	"name": {
+																		"description": "Display name of the policy.",
+																		"type": "string",
+																		"example": "Workers cap"
+																	},
+																	"notification_email": {
+																		"description": "Email address that receives notifications. An empty string when none is set.",
+																		"type": "string",
+																		"example": "billing@example.com"
+																	},
+																	"product_id": {
+																		"description": "The product the policy applies to: `workers` or `durable_objects`. Each product's balance and policies are separate. Both products support `notification` and `usage_block` policies on create and update.",
+																		"type": "string",
+																		"example": "workers",
+																		"enum": [
+																			"workers",
+																			"durable_objects"
+																		]
+																	},
+																	"threshold_cents": {
+																		"description": "The spend threshold for the current billing period, in US cents.",
+																		"type": "integer",
+																		"format": "int64",
+																		"example": 100
+																	},
+																	"version": {
+																		"description": "Optimistic-concurrency version. It starts at 1 and goes up by one on every update or delete. This value is also returned in `ETag`.",
+																		"type": "integer",
+																		"format": "int64",
+																		"example": 1,
+																		"minimum": 1
+																	}
+																},
+																"required": [
+																	"id",
+																	"account_id",
+																	"name",
+																	"product_id",
+																	"enabled",
+																	"threshold_cents",
+																	"action",
+																	"notification_email",
+																	"version"
+																]
+															},
+															"before": {
+																"description": "Prior configuration; null on creation or if a previous revision is unavailable.",
+																"type": "object",
+																"allOf": [
+																	{
+																		"description": "A spend policy.",
+																		"type": "object",
+																		"properties": {
+																			"account_id": {
+																				"description": "Internal numeric ID of the account that owns the policy. This is not the account tag used in the path.",
+																				"type": "integer",
+																				"format": "int64",
+																				"example": 1234567
+																			},
+																			"action": {
+																				"description": "The action taken when the threshold is reached. `notification` sends an email to `notification_email`. `usage_block` blocks further usage of the product until the end of the billing period. Raising the threshold above the current balance, disabling the policy, or deleting it lifts the block early.",
+																				"type": "string",
+																				"example": "notification",
+																				"enum": [
+																					"notification",
+																					"usage_block"
+																				]
+																			},
+																			"current_state": {
+																				"description": "Read-only state on list/get responses, evaluated from the latest owning projector snapshot at request time, independently of the API replica. Configuration enabled/version/ETag do not change when a cycle rolls over. Audit history remains unchanged. Missing during a rolling upgrade or on mutation responses; clients must treat missing state as unavailable. Balances are asynchronous estimates, not a synchronous usage read.",
+																				"type": "object",
+																				"properties": {
+																					"balance_cents": {
+																						"type": "integer",
+																						"format": "int64",
+																						"nullable": true
+																					},
+																					"billing_period_end": {
+																						"type": "string",
+																						"format": "date-time",
+																						"nullable": true
+																					},
+																					"billing_period_start": {
+																						"type": "string",
+																						"format": "date-time",
+																						"nullable": true
+																					},
+																					"enforcement": {
+																						"description": "Durable desired cap and delivery bookkeeping for this policy, or null if no owned effect exists. Separate from threshold evaluation: pending/leased/retry can lag the new billing period. Succeeded with equal generations means delivery completed, not an EWC readback.",
+																						"type": "object",
+																						"nullable": true,
+																						"properties": {
+																							"applied_generation": {
+																								"type": "integer",
+																								"format": "int64"
+																							},
+																							"delivery_status": {
+																								"type": "string",
+																								"enum": [
+																									"pending",
+																									"leased",
+																									"retry",
+																									"succeeded"
+																								]
+																							},
+																							"desired_generation": {
+																								"type": "integer",
+																								"format": "int64"
+																							},
+																							"desired_state": {
+																								"type": "string",
+																								"enum": [
+																									"active",
+																									"inactive"
+																								]
+																							},
+																							"expires_at": {
+																								"type": "string",
+																								"format": "date-time",
+																								"nullable": true
+																							}
+																						},
+																						"required": [
+																							"desired_state",
+																							"delivery_status",
+																							"desired_generation",
+																							"applied_generation",
+																							"expires_at"
+																						]
+																					},
+																					"evaluated_at": {
+																						"description": "Evaluation time; not the timestamp of the latest usage event.",
+																						"type": "string",
+																						"format": "date-time"
+																					},
+																					"status": {
+																						"description": "Threshold evaluation, not proof of an edge cap. No current active period yields no_current_period for enabled policies; failed aggregate reads yield unavailable for enabled policies. Disabled policies report disabled. Neither no_current_period nor unavailable implies a zero balance or below-limit state. Operators may disable current-state reads, in which case current_state is omitted.",
+																						"type": "string",
+																						"enum": [
+																							"disabled",
+																							"no_current_period",
+																							"unavailable",
+																							"below_limit",
+																							"approaching_limit",
+																							"limit_reached"
+																						]
+																					}
+																				},
+																				"readOnly": true,
+																				"required": [
+																					"status",
+																					"billing_period_start",
+																					"billing_period_end",
+																					"balance_cents",
+																					"evaluated_at",
+																					"enforcement"
+																				]
+																			},
+																			"enabled": {
+																				"description": "Whether the policy is evaluated.",
+																				"type": "boolean",
+																				"example": true
+																			},
+																			"id": {
+																				"description": "The unique identifier of the spend policy.",
+																				"type": "string",
+																				"format": "uuid",
+																				"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+																			},
+																			"name": {
+																				"description": "Display name of the policy.",
+																				"type": "string",
+																				"example": "Workers cap"
+																			},
+																			"notification_email": {
+																				"description": "Email address that receives notifications. An empty string when none is set.",
+																				"type": "string",
+																				"example": "billing@example.com"
+																			},
+																			"product_id": {
+																				"description": "The product the policy applies to: `workers` or `durable_objects`. Each product's balance and policies are separate. Both products support `notification` and `usage_block` policies on create and update.",
+																				"type": "string",
+																				"example": "workers",
+																				"enum": [
+																					"workers",
+																					"durable_objects"
+																				]
+																			},
+																			"threshold_cents": {
+																				"description": "The spend threshold for the current billing period, in US cents.",
+																				"type": "integer",
+																				"format": "int64",
+																				"example": 100
+																			},
+																			"version": {
+																				"description": "Optimistic-concurrency version. It starts at 1 and goes up by one on every update or delete. This value is also returned in `ETag`.",
+																				"type": "integer",
+																				"format": "int64",
+																				"example": 1,
+																				"minimum": 1
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"account_id",
+																			"name",
+																			"product_id",
+																			"enabled",
+																			"threshold_cents",
+																			"action",
+																			"notification_email",
+																			"version"
+																		]
+																	}
+																],
+																"nullable": true
+															}
+														}
+													},
+													"id": {
+														"type": "string",
+														"pattern": "^[1-9][0-9]*$"
+													},
+													"occurred_at": {
+														"type": "string",
+														"format": "date-time"
+													},
+													"policy_id": {
+														"description": "The unique identifier of the spend policy.",
+														"type": "string",
+														"format": "uuid",
+														"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+													},
+													"policy_version": {
+														"type": "integer",
+														"format": "int64",
+														"minimum": 1
+													},
+													"product_id": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"policy_id",
+													"policy_version",
+													"product_id",
+													"action",
+													"actor",
+													"occurred_at",
+													"details"
+												]
+											}
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Number of entries in this response.",
+													"type": "integer",
+													"minimum": 0
+												},
+												"cursor": {
+													"description": "Opaque next-page token. Omitted when no older entries were visible at query time.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"count"
+											]
+										}
+									},
+									"required": [
+										"result",
+										"result_info"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid limit or pagination cursor (error code 1006 or 1011).",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Code `1000`. The caller could not be authenticated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Code `1002`. The caller lacks the required permission (`#billing:read` for reads, `#billing:edit` for writes), or the account in the path does not match the authenticated account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Code `1003`. Returned when the policy does not exist or was deleted, and also when the account is not allowlisted. The two cases return the same body.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Code `1010`. An unexpected server error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Code `1001`. The service could not load the gateway signing keys. Retry later.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Spend Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "billing.spend-policies.activity",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/billing/spend-policies": {
+		"operationId": "spend-policies-create",
+		"summary": "Create Spend Policy",
+		"description": "Creates a spend policy. Each account can have only one enabled `usage_block` policy per product. A second one returns `409`. There is no limit on `notification` policies.",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare account (account tag).",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"examples": {
+						"durable_objects_notification": {
+							"summary": "Email when Durable Objects spend reaches $1.00",
+							"value": {
+								"action": "notification",
+								"enabled": true,
+								"name": "Durable Objects alert",
+								"notification_email": "billing@example.com",
+								"product_id": "durable_objects",
+								"threshold_cents": 100
+							}
+						},
+						"durable_objects_usage_block": {
+							"summary": "Block Durable Objects usage at $50.00",
+							"value": {
+								"action": "usage_block",
+								"enabled": true,
+								"name": "Durable Objects hard cap",
+								"product_id": "durable_objects",
+								"threshold_cents": 5000
+							}
+						},
+						"notification": {
+							"summary": "Email when Workers spend reaches $1.00",
+							"value": {
+								"action": "notification",
+								"enabled": true,
+								"name": "Workers cap",
+								"notification_email": "billing@example.com",
+								"product_id": "workers",
+								"threshold_cents": 100
+							}
+						},
+						"usage_block": {
+							"summary": "Block Workers usage at $50.00",
+							"value": {
+								"action": "usage_block",
+								"enabled": true,
+								"name": "Workers hard cap",
+								"product_id": "workers",
+								"threshold_cents": 5000
+							}
+						}
+					},
+					"schema": {
+						"description": "A spend policy as sent on create and on full replacement. Unknown fields and trailing JSON are rejected. Only the first 1 MiB of the body is read.",
+						"type": "object",
+						"properties": {
+							"action": {
+								"description": "The action taken when the threshold is reached. `notification` sends an email to `notification_email`. `usage_block` blocks further usage of the product until the end of the billing period. Raising the threshold above the current balance, disabling the policy, or deleting it lifts the block early.",
+								"type": "string",
+								"example": "notification",
+								"enum": [
+									"notification",
+									"usage_block"
+								]
+							},
+							"enabled": {
+								"description": "Whether the policy is evaluated.",
+								"type": "boolean",
+								"example": true
+							},
+							"name": {
+								"description": "Display name of the policy. After surrounding whitespace is trimmed, it must be 1 to 200 bytes long. The value is stored as sent, untrimmed.",
+								"type": "string",
+								"example": "Workers cap",
+								"minLength": 1
+							},
+							"notification_email": {
+								"description": "Email address that receives notifications. Required when `action` is `notification`. When set, it must be a bare address (`user@example.com`); display-name forms such as `Name <user@example.com>` are rejected.",
+								"type": "string",
+								"format": "email",
+								"example": "billing@example.com"
+							},
+							"product_id": {
+								"description": "The product the policy applies to: `workers` or `durable_objects`. Each product's balance and policies are separate. Both products support `notification` and `usage_block` policies on create and update.",
+								"type": "string",
+								"example": "workers",
+								"enum": [
+									"workers",
+									"durable_objects"
+								]
+							},
+							"threshold_cents": {
+								"description": "The spend threshold for the current billing period, in US cents. Must be greater than zero.",
+								"type": "integer",
+								"format": "int64",
+								"example": 100,
+								"minimum": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"product_id",
+							"enabled",
+							"threshold_cents",
+							"action"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "The spend policy was created.",
+				"headers": {
+					"ETag": {
+						"description": "The policy `version`, quoted, for use in `If-Match`.",
+						"schema": {
+							"type": "string",
+							"example": "\"3\""
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "A successful response containing one spend policy.",
+							"allOf": [
+								{
+									"description": "Represents a successful API response.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Always empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"messages": {
+											"description": "Contains informational notices about the response.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A spend policy.",
+											"type": "object",
+											"properties": {
+												"account_id": {
+													"description": "Internal numeric ID of the account that owns the policy. This is not the account tag used in the path.",
+													"type": "integer",
+													"format": "int64",
+													"example": 1234567
+												},
+												"action": {
+													"description": "The action taken when the threshold is reached. `notification` sends an email to `notification_email`. `usage_block` blocks further usage of the product until the end of the billing period. Raising the threshold above the current balance, disabling the policy, or deleting it lifts the block early.",
+													"type": "string",
+													"example": "notification",
+													"enum": [
+														"notification",
+														"usage_block"
+													]
+												},
+												"current_state": {
+													"description": "Read-only state on list/get responses, evaluated from the latest owning projector snapshot at request time, independently of the API replica. Configuration enabled/version/ETag do not change when a cycle rolls over. Audit history remains unchanged. Missing during a rolling upgrade or on mutation responses; clients must treat missing state as unavailable. Balances are asynchronous estimates, not a synchronous usage read.",
+													"type": "object",
+													"properties": {
+														"balance_cents": {
+															"type": "integer",
+															"format": "int64",
+															"nullable": true
+														},
+														"billing_period_end": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true
+														},
+														"billing_period_start": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true
+														},
+														"enforcement": {
+															"description": "Durable desired cap and delivery bookkeeping for this policy, or null if no owned effect exists. Separate from threshold evaluation: pending/leased/retry can lag the new billing period. Succeeded with equal generations means delivery completed, not an EWC readback.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"applied_generation": {
+																	"type": "integer",
+																	"format": "int64"
+																},
+																"delivery_status": {
+																	"type": "string",
+																	"enum": [
+																		"pending",
+																		"leased",
+																		"retry",
+																		"succeeded"
+																	]
+																},
+																"desired_generation": {
+																	"type": "integer",
+																	"format": "int64"
+																},
+																"desired_state": {
+																	"type": "string",
+																	"enum": [
+																		"active",
+																		"inactive"
+																	]
+																},
+																"expires_at": {
+																	"type": "string",
+																	"format": "date-time",
+																	"nullable": true
+																}
+															},
+															"required": [
+																"desired_state",
+																"delivery_status",
+																"desired_generation",
+																"applied_generation",
+																"expires_at"
+															]
+														},
+														"evaluated_at": {
+															"description": "Evaluation time; not the timestamp of the latest usage event.",
+															"type": "string",
+															"format": "date-time"
+														},
+														"status": {
+															"description": "Threshold evaluation, not proof of an edge cap. No current active period yields no_current_period for enabled policies; failed aggregate reads yield unavailable for enabled policies. Disabled policies report disabled. Neither no_current_period nor unavailable implies a zero balance or below-limit state. Operators may disable current-state reads, in which case current_state is omitted.",
+															"type": "string",
+															"enum": [
+																"disabled",
+																"no_current_period",
+																"unavailable",
+																"below_limit",
+																"approaching_limit",
+																"limit_reached"
+															]
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"status",
+														"billing_period_start",
+														"billing_period_end",
+														"balance_cents",
+														"evaluated_at",
+														"enforcement"
+													]
+												},
+												"enabled": {
+													"description": "Whether the policy is evaluated.",
+													"type": "boolean",
+													"example": true
+												},
+												"id": {
+													"description": "The unique identifier of the spend policy.",
+													"type": "string",
+													"format": "uuid",
+													"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+												},
+												"name": {
+													"description": "Display name of the policy.",
+													"type": "string",
+													"example": "Workers cap"
+												},
+												"notification_email": {
+													"description": "Email address that receives notifications. An empty string when none is set.",
+													"type": "string",
+													"example": "billing@example.com"
+												},
+												"product_id": {
+													"description": "The product the policy applies to: `workers` or `durable_objects`. Each product's balance and policies are separate. Both products support `notification` and `usage_block` policies on create and update.",
+													"type": "string",
+													"example": "workers",
+													"enum": [
+														"workers",
+														"durable_objects"
+													]
+												},
+												"threshold_cents": {
+													"description": "The spend threshold for the current billing period, in US cents.",
+													"type": "integer",
+													"format": "int64",
+													"example": 100
+												},
+												"version": {
+													"description": "Optimistic-concurrency version. It starts at 1 and goes up by one on every update or delete. This value is also returned in `ETag`.",
+													"type": "integer",
+													"format": "int64",
+													"example": 1,
+													"minimum": 1
+												}
+											},
+											"required": [
+												"id",
+												"account_id",
+												"name",
+												"product_id",
+												"enabled",
+												"threshold_cents",
+												"action",
+												"notification_email",
+												"version"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request was malformed. Code `1004`: the account ID is invalid. Code `1005`: the body is not valid JSON, contains unknown fields, or fails validation. The error message names the rule that failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Code `1000`. The caller could not be authenticated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Code `1002`. The caller lacks the required permission (`#billing:read` for reads, `#billing:edit` for writes), or the account in the path does not match the authenticated account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Code `1003`. Returned when the policy does not exist or was deleted, and also when the account is not allowlisted. The two cases return the same body.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Code `1009`. The account already has an enabled `usage_block` policy for this product.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Code `1010`. An unexpected server error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Code `1001`. The service could not load the gateway signing keys. Retry later.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Spend Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "billing.spend-policies",
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/billing/spend-policies/{policy_id}": {
+		"operationId": "spend-policies-update",
+		"summary": "Update Spend Policy",
+		"description": "Replaces the whole spend policy. Every field is required, as on create; there are no partial updates and `PATCH` is not supported. The `If-Match` header must equal the policy's current `version`. On success, `version` goes up by one and the new value is returned in `ETag`.",
+		"parameters": [
+			{
+				"description": "Identifies the Cloudflare account (account tag).",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"description": "Identifies the spend policy.",
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of the spend policy.",
+					"type": "string",
+					"format": "uuid",
+					"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+				}
+			},
+			{
+				"description": "The policy `version` the change is based on, as returned in `ETag`. Quoted (`\"3\"`) and bare (`3`) values are both accepted. Weak ETags (`W/\"3\"`) and `*` are not.",
+				"in": "header",
+				"name": "If-Match",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "\"3\"",
+					"pattern": "^\"?[1-9][0-9]*\"?$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A spend policy as sent on create and on full replacement. Unknown fields and trailing JSON are rejected. Only the first 1 MiB of the body is read.",
+						"type": "object",
+						"properties": {
+							"action": {
+								"description": "The action taken when the threshold is reached. `notification` sends an email to `notification_email`. `usage_block` blocks further usage of the product until the end of the billing period. Raising the threshold above the current balance, disabling the policy, or deleting it lifts the block early.",
+								"type": "string",
+								"example": "notification",
+								"enum": [
+									"notification",
+									"usage_block"
+								]
+							},
+							"enabled": {
+								"description": "Whether the policy is evaluated.",
+								"type": "boolean",
+								"example": true
+							},
+							"name": {
+								"description": "Display name of the policy. After surrounding whitespace is trimmed, it must be 1 to 200 bytes long. The value is stored as sent, untrimmed.",
+								"type": "string",
+								"example": "Workers cap",
+								"minLength": 1
+							},
+							"notification_email": {
+								"description": "Email address that receives notifications. Required when `action` is `notification`. When set, it must be a bare address (`user@example.com`); display-name forms such as `Name <user@example.com>` are rejected.",
+								"type": "string",
+								"format": "email",
+								"example": "billing@example.com"
+							},
+							"product_id": {
+								"description": "The product the policy applies to: `workers` or `durable_objects`. Each product's balance and policies are separate. Both products support `notification` and `usage_block` policies on create and update.",
+								"type": "string",
+								"example": "workers",
+								"enum": [
+									"workers",
+									"durable_objects"
+								]
+							},
+							"threshold_cents": {
+								"description": "The spend threshold for the current billing period, in US cents. Must be greater than zero.",
+								"type": "integer",
+								"format": "int64",
+								"example": 100,
+								"minimum": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"product_id",
+							"enabled",
+							"threshold_cents",
+							"action"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The spend policy was updated.",
+				"headers": {
+					"ETag": {
+						"description": "The policy `version`, quoted, for use in `If-Match`.",
+						"schema": {
+							"type": "string",
+							"example": "\"3\""
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "A successful response containing one spend policy.",
+							"allOf": [
+								{
+									"description": "Represents a successful API response.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "Always empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"messages": {
+											"description": "Contains informational notices about the response.",
+											"type": "array",
+											"items": {
+												"description": "Represents an API notice or error detail.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Identifies the error or notice type.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error or notice.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												]
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A spend policy.",
+											"type": "object",
+											"properties": {
+												"account_id": {
+													"description": "Internal numeric ID of the account that owns the policy. This is not the account tag used in the path.",
+													"type": "integer",
+													"format": "int64",
+													"example": 1234567
+												},
+												"action": {
+													"description": "The action taken when the threshold is reached. `notification` sends an email to `notification_email`. `usage_block` blocks further usage of the product until the end of the billing period. Raising the threshold above the current balance, disabling the policy, or deleting it lifts the block early.",
+													"type": "string",
+													"example": "notification",
+													"enum": [
+														"notification",
+														"usage_block"
+													]
+												},
+												"current_state": {
+													"description": "Read-only state on list/get responses, evaluated from the latest owning projector snapshot at request time, independently of the API replica. Configuration enabled/version/ETag do not change when a cycle rolls over. Audit history remains unchanged. Missing during a rolling upgrade or on mutation responses; clients must treat missing state as unavailable. Balances are asynchronous estimates, not a synchronous usage read.",
+													"type": "object",
+													"properties": {
+														"balance_cents": {
+															"type": "integer",
+															"format": "int64",
+															"nullable": true
+														},
+														"billing_period_end": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true
+														},
+														"billing_period_start": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true
+														},
+														"enforcement": {
+															"description": "Durable desired cap and delivery bookkeeping for this policy, or null if no owned effect exists. Separate from threshold evaluation: pending/leased/retry can lag the new billing period. Succeeded with equal generations means delivery completed, not an EWC readback.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"applied_generation": {
+																	"type": "integer",
+																	"format": "int64"
+																},
+																"delivery_status": {
+																	"type": "string",
+																	"enum": [
+																		"pending",
+																		"leased",
+																		"retry",
+																		"succeeded"
+																	]
+																},
+																"desired_generation": {
+																	"type": "integer",
+																	"format": "int64"
+																},
+																"desired_state": {
+																	"type": "string",
+																	"enum": [
+																		"active",
+																		"inactive"
+																	]
+																},
+																"expires_at": {
+																	"type": "string",
+																	"format": "date-time",
+																	"nullable": true
+																}
+															},
+															"required": [
+																"desired_state",
+																"delivery_status",
+																"desired_generation",
+																"applied_generation",
+																"expires_at"
+															]
+														},
+														"evaluated_at": {
+															"description": "Evaluation time; not the timestamp of the latest usage event.",
+															"type": "string",
+															"format": "date-time"
+														},
+														"status": {
+															"description": "Threshold evaluation, not proof of an edge cap. No current active period yields no_current_period for enabled policies; failed aggregate reads yield unavailable for enabled policies. Disabled policies report disabled. Neither no_current_period nor unavailable implies a zero balance or below-limit state. Operators may disable current-state reads, in which case current_state is omitted.",
+															"type": "string",
+															"enum": [
+																"disabled",
+																"no_current_period",
+																"unavailable",
+																"below_limit",
+																"approaching_limit",
+																"limit_reached"
+															]
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"status",
+														"billing_period_start",
+														"billing_period_end",
+														"balance_cents",
+														"evaluated_at",
+														"enforcement"
+													]
+												},
+												"enabled": {
+													"description": "Whether the policy is evaluated.",
+													"type": "boolean",
+													"example": true
+												},
+												"id": {
+													"description": "The unique identifier of the spend policy.",
+													"type": "string",
+													"format": "uuid",
+													"example": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d"
+												},
+												"name": {
+													"description": "Display name of the policy.",
+													"type": "string",
+													"example": "Workers cap"
+												},
+												"notification_email": {
+													"description": "Email address that receives notifications. An empty string when none is set.",
+													"type": "string",
+													"example": "billing@example.com"
+												},
+												"product_id": {
+													"description": "The product the policy applies to: `workers` or `durable_objects`. Each product's balance and policies are separate. Both products support `notification` and `usage_block` policies on create and update.",
+													"type": "string",
+													"example": "workers",
+													"enum": [
+														"workers",
+														"durable_objects"
+													]
+												},
+												"threshold_cents": {
+													"description": "The spend threshold for the current billing period, in US cents.",
+													"type": "integer",
+													"format": "int64",
+													"example": 100
+												},
+												"version": {
+													"description": "Optimistic-concurrency version. It starts at 1 and goes up by one on every update or delete. This value is also returned in `ETag`.",
+													"type": "integer",
+													"format": "int64",
+													"example": 1,
+													"minimum": 1
+												}
+											},
+											"required": [
+												"id",
+												"account_id",
+												"name",
+												"product_id",
+												"enabled",
+												"threshold_cents",
+												"action",
+												"notification_email",
+												"version"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request was malformed. Code `1004`: the account ID is invalid. Code `1005`: the body is not valid JSON, contains unknown fields, or fails validation. The error message names the rule that failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Code `1000`. The caller could not be authenticated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Code `1002`. The caller lacks the required permission (`#billing:read` for reads, `#billing:edit` for writes), or the account in the path does not match the authenticated account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Code `1003`. Returned when the policy does not exist or was deleted, and also when the account is not allowlisted. The two cases return the same body.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Code `1009`. The account already has an enabled `usage_block` policy for this product.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"412": {
+				"description": "Code `1008`. `If-Match` does not match the policy's current `version`. Fetch the policy again and retry with the new version.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"428": {
+				"description": "Code `1007`. The `If-Match` header is missing or does not hold a positive integer version.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Code `1010`. An unexpected server error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Code `1001`. The service could not load the gateway signing keys. Retry later.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"minItems": 1
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"type": "array",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Spend Policies"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "billing.spend-policies",
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
+	}
+}

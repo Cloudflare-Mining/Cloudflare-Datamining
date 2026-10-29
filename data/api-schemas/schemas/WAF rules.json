@@ -43,7 +43,8 @@
 						"BLK",
 						"SIM"
 					]
-				}
+				},
+				"x-fern-parameter-name": "waf-mode"
 			},
 			{
 				"name": "group_id",
@@ -1171,8 +1172,7 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.waf.packages.rules",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}": {
 		"operationId": "waf-rules-get-a-waf-rule",
@@ -1536,8 +1536,7 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.waf.packages.rules",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}": {
 		"operationId": "waf-rules-update-a-waf-rule",
@@ -1603,7 +1602,8 @@
 									"challenge",
 									"on",
 									"off"
-								]
+								],
+								"x-fern-property-name": "waf-mode"
 							}
 						}
 					}
@@ -2626,7 +2626,6 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.waf.packages.rules",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	}
 }

@@ -399,9 +399,10 @@
 									"example": "4c27f9a8-6050-41a7-bc8a-b417641e646d"
 								},
 								"investigation_id": {
-									"description": "Investigation UUID",
+									"description": "Linked Casefiles case UUID. Null until an analyst links a case to the request.",
 									"type": "string",
-									"example": "75a73d09-5938-4544-aeba-ab791dcdb445"
+									"example": "75a73d09-5938-4544-aeba-ab791dcdb445",
+									"nullable": true
 								},
 								"is_free_request": {
 									"description": "Whether this is a free request",
@@ -825,9 +826,10 @@
 									"example": "4c27f9a8-6050-41a7-bc8a-b417641e646d"
 								},
 								"investigation_id": {
-									"description": "Investigation UUID",
+									"description": "Linked Casefiles case UUID. Null until an analyst links a case to the request.",
 									"type": "string",
-									"example": "75a73d09-5938-4544-aeba-ab791dcdb445"
+									"example": "75a73d09-5938-4544-aeba-ab791dcdb445",
+									"nullable": true
 								},
 								"is_free_request": {
 									"description": "Whether this is a free request",
@@ -1250,9 +1252,10 @@
 									"example": "4c27f9a8-6050-41a7-bc8a-b417641e646d"
 								},
 								"investigation_id": {
-									"description": "Investigation UUID",
+									"description": "Linked Casefiles case UUID. Null until an analyst links a case to the request.",
 									"type": "string",
-									"example": "75a73d09-5938-4544-aeba-ab791dcdb445"
+									"example": "75a73d09-5938-4544-aeba-ab791dcdb445",
+									"nullable": true
 								},
 								"is_free_request": {
 									"description": "Whether this is a free request",

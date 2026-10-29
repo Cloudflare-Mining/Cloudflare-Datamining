@@ -138,7 +138,9 @@
 														"filter_options": {
 															"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings.",
 															"type": "array",
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"example": [
 																{
 																	"AvailableValues": null,
@@ -174,7 +176,8 @@
 												"type": "array"
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -288,7 +291,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.available-alerts",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	}
 }
