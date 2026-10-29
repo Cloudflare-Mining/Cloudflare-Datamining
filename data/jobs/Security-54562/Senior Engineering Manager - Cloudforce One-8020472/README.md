@@ -3,7 +3,11 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX (US), Washington, DC (US), London (UK)</p>
+<p><strong>Available Locations: </strong></p>
+<ul>
+	<li>United States: Austin, TX; Washington, DC; San Francisco, CA; New York City</li>
+	<li>United Kingdom: London</li>
+</ul>
 <p><strong>About the team</strong></p>
 <p>Cloudflare’s mission is to help build a better internet and the Threat Application Services (TAS) team lives at the core of that effort. The team builds the automated services and systems that transform Cloudflare’s massive network telemetry into actionable intelligence. We empower customers with products to combat advanced threats, enabling them to query, investigate, and automatically mitigate attacks using Cloudflare’s unique visibility into global threat actor activity.</p>
 <p>At a high level, the Threat Application Services team is the engineering engine within Cloudforce One. We are responsible for the end-to-end lifecycle of threat intelligence data, from ingestion and enrichment to exposing high-fidelity indicators through the Threat Events platform and high-performance APIs. Our work ensures that threat intelligence is not just a report, but a scalable, real-time defensive layer across the Cloudflare stack.</p>
@@ -29,6 +33,8 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For Washington, DC based hires: Estimated annual salary of $220,000 - $303,000</li>
+	<li>For New York City based hires: Estimated annual salary of $220,000 - $303,000</li>
+	<li>For San Francisco, CA based hires: Estimated annual salary of $230,000 - $317,000</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

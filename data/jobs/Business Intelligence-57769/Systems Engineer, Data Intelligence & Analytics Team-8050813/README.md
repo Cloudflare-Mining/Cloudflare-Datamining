@@ -4,13 +4,10 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <p><strong>Location: Austin </strong>(Hybrid)</p>
-<p>&nbsp;</p>
 <p><strong>About the team.</strong></p>
 <p>The Data Intelligence &amp; Analytics&nbsp; team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
-<p>&nbsp;</p>
 <p><strong>About the role</strong></p>
 <p>We are looking for a Systems Engineer to join our Austin team to scale our development efforts on Platform Tooling initiatives. You will work on building data application tools and frameworks which empowers our Internal Teams. You&nbsp; will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
-<p>&nbsp;</p>
 <p><strong>What you'll do</strong></p>
 <ul>
 	<li>Design and implement key features of our internal applications</li>
@@ -18,7 +15,6 @@
 	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
 	<li>Continuously involved in knowledge sharing and mentorship</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
@@ -28,14 +24,12 @@
 	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
 	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Bonus Points</strong></p>
 <ul>
 	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
 	<li>Familiarity with Google Cloud Platform or something similar</li>
 	<li>Familiarity with Javascript, Typescript, and React</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>

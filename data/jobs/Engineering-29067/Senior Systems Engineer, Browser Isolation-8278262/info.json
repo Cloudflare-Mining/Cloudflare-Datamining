@@ -25,9 +25,14 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, GA",
 				"Austin, TX",
+				"Denver, CO",
 				"Lisbon, Portugal",
-				"London, UK"
+				"London, UK",
+				"Seattle, WA",
+				"Toronto, Canada",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -41,7 +46,7 @@
 		}
 	],
 	"id": 8278262,
-	"updated_at": "2026-10-21T14:43:01-04:00",
+	"updated_at": "2026-10-29T11:05:59-04:00",
 	"requisition_id": null,
 	"title": "Senior Systems Engineer, Browser Isolation",
 	"company_name": "Cloudflare",
@@ -72,11 +77,46 @@
 			"parent_id": 74843
 		},
 		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"location": "Lisboa, Lisboa, Portugal",
 			"child_ids": [],
 			"parent_id": 74843
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 73335,
+			"name": "Toronto, ON",
+			"location": "Toronto, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
 		}
 	],
 	"ai_disclaimer": null,

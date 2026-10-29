@@ -3,7 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p>Available Locations:<strong> London </strong>or<strong> Austin</strong><br><br>At Cloudflare, our mission is to build a better Internet by giving customers control on they might introduce configuration changes so that they are safe, reliable, and predictable at scale.</p>
+<p>Available Locations:<strong> London </strong>or<strong> Austin</strong><br><br></p>
 <p>We are looking for a Product Manager to lead <strong>Safe Change</strong> for Cloudflare’s control plane. In this role, you will define how customers preview, stage, roll out, monitor, and recover from configuration changes. You will also shape platform foundations that enable internal teams to deploy changes with higher confidence, stronger guardrails, and lower operational risk.</p>
 <p>Cloudflare’s control plane converts dashboard and API changes into global network configurations. Today’s enterprise customers expect robust change-management features: deployment previews, gradual rollouts, quick rollbacks, versioning, traffic segmentation, data residency, auditability, and verification of applied state.</p>
 <p>You will own a high-leverage product domain spanning distributed systems, reliability, developer experience, and enterprise governance. Working closely with engineering and product leaders across the entire platform. You will help turn proven deployment safety patterns into reusable platform primitives across Cloudflare.</p>
@@ -21,7 +21,6 @@
 </ul>
 <h2>Examples of desirable skills, knowledge, and experience</h2>
 <p>The ideal candidate is customer-focused, data-driven, methodical and thrives in a goal-oriented and data-driven environment.&nbsp; You have a deep technical understanding of the observability space and outstanding communication and collaboration skills.&nbsp; You are able to work with a diverse group, get consensus, and drive the product forward.&nbsp; You are execution focused, you emphasize getting things done while paying attention to important details. You have a passion for building frameworks that scale massively and make it easy for all teams to get the most out of data as you.&nbsp;&nbsp;</p>
-<p>&nbsp;</p>
 <ul>
 	<li>4+ years of previous product management experience</li>
 	<li>Domain expertise in making deployment decisions based on data.&nbsp; You have been there, done that as either an architect or product owner for safe change or very closely related technology space</li>
@@ -55,7 +54,6 @@
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

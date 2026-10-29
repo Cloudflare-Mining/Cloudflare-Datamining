@@ -33,9 +33,9 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $120,000 - $165,000.</li>
-	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $132,000 - $182,000.</li>
-	<li>For Bay Area based hires: Estimated annual salary of $138,000 - $190,000</li>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $120,000 - $169,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $132,000 - $186,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $138,000 - $195,000</li>
 	<li>Application Deadline: ~January 2027</li>
 </ul>
 <p><strong>Equity</strong></p>

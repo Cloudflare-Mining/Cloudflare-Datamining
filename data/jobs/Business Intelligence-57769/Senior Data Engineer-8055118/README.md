@@ -4,17 +4,11 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <p><strong>Location: Austin </strong>(Hybrid)</p>
-<p>&nbsp;</p>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</p>
 <h3><strong>About the team</strong></h3>
 <p>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack, build specialized data solutions for predictive modeling and machine learning applications, and construct systems that truly run the business.</p>
 <h3><strong>About the role</strong></h3>
 <p>We are looking for an experienced Data Engineer to join our Austin team and help scale the development of our internal data products. In this role, you will build data-driven applications that empower teams across the company, including go-to-market, engineering, and product. Because the products we build are initiated and owned by the team, you will be involved end-to-end — from shaping requirements and designing features to implementation and long-term ownership.</p>
 <p>You will work on building scalable, reliable systems that solve critical business problems, partnering closely with full-stack engineers to develop new features and operate the data pipelines and services behind our applications. Our stack spans multiple languages and technologies, including Go, Scala, and ClickHouse, and continues to evolve. Many of our products also incorporate strong AI components, giving you opportunities to build sophisticated, AI-ready data layers and work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <h3><strong>What you'll do</strong></h3>
 <ul>
 	<li>Design and implement core components of our data pipelines and services in Go and Scala, with a focus on scalability, performance, and long-term maintainability.</li>
@@ -24,7 +18,6 @@
 	<li>Develop a deep understanding of the company’s data ecosystem — including source systems, tooling, and data flows — and collaborate closely with the data and system engineers in Austin, Lisbon, and London to improve data ingestion, quality, and governance.</li>
 	<li>Lead by example through design reviews, knowledge sharing, and mentorship, helping raise the technical bar, data engineering practices, and AI implementation standards across the organization.</li>
 </ul>
-<p><br><br><br></p>
 <h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
 	<li>B.S. or M.S. in Computer Science, Engineering, Statistics, Mathematics, or a related quantitative field, or equivalent practical experience.</li>
@@ -34,13 +27,11 @@
 	<li>Experience building scalable, reliable, and observable data pipelines, with an understanding of performance, data quality, and operational best practices.</li>
 	<li>Proven problem-solving and communication skills, with a track record of driving projects in ambiguous environments and partnering effectively with cross-functional teams.</li>
 </ul>
-<p>&nbsp;</p>
 <h3><strong><em>Bonus Points</em></strong></h3>
 <ul>
 	<li><em>Familiarity with container based deployments such as Docker &amp; Kubernetes.</em></li>
 	<li><em>Familiarity with Google Cloud Platform, foundational Large Language Model (LLM) orchestration frameworks, or something similar.</em></li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>

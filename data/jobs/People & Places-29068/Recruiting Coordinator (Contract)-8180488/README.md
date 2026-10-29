@@ -8,7 +8,7 @@
 	<li>Singapore</li>
 </ul>
 <h4>About the Role</h4>
-<p>Cloudflare is looking for a highly organized and detail-oriented Recruiting Coordinator to be a cornerstone of our hiring engine in Austin, Texas. This isn't just about managing calendars; you'll be a key player in bringing structure to our hiring efforts, ensuring an exceptional global candidate experience, and supporting the high-quality hiring decisions that drive our mission forward.</p>
+<p>Cloudflare is looking for a highly organized and detail-oriented Recruiting Coordinator to be a cornerstone of our hiring engine in Singapore. This isn't just about managing calendars; you'll be a key player in bringing structure to our hiring efforts, ensuring an exceptional global candidate experience, and supporting the high-quality hiring decisions that drive our mission forward.</p>
 <p>If you're someone who thrives in a collaborative, fast-paced setting, possesses a keen eye for detail, and is dedicated to delivering positive experiences, we want to hear from you. You'll work closely with recruiters, hiring managers, and interviewers, ensuring every candidate interaction truly reflects Cloudflare's best. This is a fantastic opportunity to launch or pivot into a career in Talent Acquisition, where your organizational skills and candidate-centric approach will directly influence our ability to attract top talent and shape their perception of Cloudflare.&nbsp;</p>
 <h4>Responsibilities</h4>
 <ul>

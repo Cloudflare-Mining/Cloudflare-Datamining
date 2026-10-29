@@ -16,19 +16,14 @@
 	<li>Represent Cloudflare. Many of our largest customers want to speak to us about their concerns and our plans in the billing domain. You will spend time learning from them.&nbsp;</li>
 	<li>Provide and demand accountability. You are responsible for the delivery of your commitments and you will hold your peers and subordinates accountable for theirs.&nbsp;</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Some of the domains you will touch include</strong>: Billing, Invoicing, Sales &amp; Opportunity management, Credit &amp; Collections, Pricing &amp; Quoting, Contract &amp; Entitlement Management, Partners &amp; Resellers, Taxation, Bad debt, BI Reporting, ERP Implementation.&nbsp;</p>
-<p>&nbsp;</p>
 <p><strong>Desirable Skills</strong></p>
-<p>&nbsp;</p>
 <ul>
 	<li>Demonstrated success delivering technology solutions in the Billing space</li>
 	<li>Knowledge of best practices for in fintech, financial reporting, compliance or other similar domain at a Saas company</li>
 	<li>Experience managing customer facing products focused on global payments, tax, checkout, invoicing, and other quote to cash activities&nbsp;</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Bonus Points</strong></p>
-<p>&nbsp;</p>
 <ul>
 	<li>Internet native companies tend to think a little differently than the Fortune 500. We’d love to meet folks with a history of delivering with the cadence and timescales of those born on the Internet.&nbsp;</li>
 	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
@@ -50,14 +45,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><br><strong>Financial Benefits</strong></p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><br><strong>Time Off</strong></p>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

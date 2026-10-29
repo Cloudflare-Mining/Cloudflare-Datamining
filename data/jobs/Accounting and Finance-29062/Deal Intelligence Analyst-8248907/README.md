@@ -5,7 +5,7 @@
 </div>
 <p><strong>Available Locations: </strong>Lisbon&nbsp;</p>
 <hr>
-<h4><strong>About the Deal Desk Team</strong></h4>
+<p><strong>About the Deal Desk Team</strong></p>
 <p>The Deal Desk team is a critical component of the Finance function, serving as a trusted advisor to critical internal stakeholders as deal architect working on structuring, negotiating, approving and closing large complex commitment deals while balancing margin preservation, compliance, and velocity. We are committed to building a data-centric and AI-augmented Deal Desk that leverages predictive analytics and automated workflows to optimize pricing in real-time and automate routine approvals, allowing for deeper strategic focus.</p>
 <p><strong>Role Summary</strong></p>
 <p>As a Deal Intelligence Analyst, you will be the analytical engine driving our transition to a data-centric and AI-augmented Deal Desk. Sitting within the Finance function, you will design the data systems and executive dashboards that allow our deal architects to analyze complex deal terms, protect margins, and close large, complex commitment deals with unprecedented velocity.</p>
@@ -38,7 +38,34 @@
 	<li>Familiarity with data transformation frameworks and orchestration tools (like Airflow).</li>
 	<li>Familiarity with Google Cloud Platform or other analytics databases</li>
 </ul>
-<p>If you're excited by fast-paced innovation, dedicated to driving global growth, and want to help build a better internet, we'd love to hear from you.</p>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <p><strong>&nbsp;</strong></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

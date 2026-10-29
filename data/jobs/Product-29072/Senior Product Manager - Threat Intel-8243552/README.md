@@ -7,7 +7,6 @@
 <p>As a Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
 <p>We are seeking a strategic and technical Senior Product Manager to lead the vision, strategy, and evolution of our Threat Intelligence portfolio. Your mission is to ensure Cloudflare’s security products and customers can identify, understand, and respond to emerging threats earlier and with greater confidence. You will own the end-to-end roadmap for the platforms, data, and workflows that transform Cloudflare’s unique network signals and security research into timely, actionable intelligence, balancing speed and coverage with accuracy, context, and low false-positive rates.</p>
 <p>You will translate a rapidly evolving threat landscape, from emerging attacker infrastructure and campaigns to new tactics, techniques, and procedures, into scalable capabilities that improve detection and response across Cloudflare’s security portfolio. You will serve as a bridge between threat researchers, intelligence analysts, engineering teams, and market-facing functions, working closely with Sales, Customer Success, and our customers to understand their challenges and drive adoption. Your success will be measured by the quality, timeliness, and actionability of our intelligence and its impact on customer security outcomes.</p>
-<p>&nbsp;</p>
 <p>You will:</p>
 <ul>
 	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on detecting advanced threat actors.&nbsp;</li>
@@ -27,8 +26,9 @@
 	<li>Preferred: candidate with professional experience in threat intelligence, adversary tactics and common TI frameworks, and/or general intelligence requirements and prioritization concepts.</li>
 </ul>
 <div>
+	<p>&nbsp;</p>
 	<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
-	<p><br><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
+	<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
 	<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 	<p><strong>Health &amp; Welfare Benefits</strong></p>
 	<ul>
@@ -41,14 +41,14 @@
 		<li>On-demand mental health support and Employee Assistance Program</li>
 		<li>Global Travel Medical Insurance</li>
 	</ul>
-	<p><br><strong>Financial Benefits</strong></p>
+	<p><strong>Financial Benefits</strong></p>
 	<ul>
 		<li>Short and Long Term Disability Insurance</li>
 		<li>Life &amp; Accident Insurance</li>
 		<li>401(k) Retirement Savings Plan</li>
 		<li>Employee Stock Participation Plan</li>
 	</ul>
-	<p><br><strong>Time Off</strong></p>
+	<p><strong>Time Off</strong></p>
 	<ul>
 		<li>Flexible paid time off covering vacation and sick leave</li>
 		<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

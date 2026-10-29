@@ -3,7 +3,13 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX (US)</p>
+<p><strong>Available Locations:</strong></p>
+<ul>
+	<li>United States: Atlanta, GA; Austin, TX; Denver, CO; Seattle, WA; Washington DC</li>
+	<li>United Kingdom: London</li>
+	<li>Portugal: Lisbon</li>
+	<li>Canada: Toronto</li>
+</ul>
 <p><strong>About the team</strong></p>
 <p><a href="https://www.cloudflare.com/zero-trust/products/browser-isolation/">Cloudflare Browser Isolation</a> runs web content in remote browsers, helping protect users from threats while preserving a responsive browsing experience. Our team builds the Chromium-based browsing engine, remote rendering and streaming technology, and distributed services that manage browser sessions across Cloudflare’s global network.</p>
 <p>You will work at the intersection of systems programming, distributed systems, and security. Engineers contribute across the product, collaborating on browser changes, service orchestration, observability, and build infrastructure.</p>
@@ -47,6 +53,43 @@
 	<li>Experience using Rust for systems programming or distributed services.</li>
 	<li>Go or TypeScript; WebRTC, Skia, WebAssembly, or WebGL.</li>
 	<li>Production observability, capacity planning, incident response, or build and release infrastructure.</li>
+</ul>
+<h4>Compensation</h4>
+<ul>
+	<li>For Denver based hires: Estimated annual salary of 136,000 - 187,000 USD</li>
+	<li>For Seattle based hires: Estimated annual salary of 150,000 - 206,000 USD</li>
+	<li>For Washington DC based hires: Estimated annual salary of 150,000 - 206,000 USD</li>
+	<li>For Toronto based hires: Estimated annual salary of 117,000 - 161,000 CAD</li>
+	<li>For Lisbon based hires: Estimated annual salary of 54,000 - 75,000 EUR</li>
+</ul>
+<p data-path-to-node="2,0,0">The final offer will be in alignment with the applicable law and collective bargaining agreements.</p>
+<p>Applications will be accepted until November 25, 2026.</p>
+<h4><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h4>
+<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p data-path-to-node="4"><strong>Benefits</strong></p>
+<p data-path-to-node="4">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p data-path-to-node="4"><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p data-path-to-node="4"><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p data-path-to-node="4"><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

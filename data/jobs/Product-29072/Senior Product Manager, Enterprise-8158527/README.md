@@ -30,6 +30,7 @@
 	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
 	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity. &nbsp;</li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Application Deadline:</strong> December 09, 2026</p>
 <h4>Compensation</h4>
 <p>Compensation may be adjusted depending on work location.</p>

@@ -14,7 +14,7 @@
 </ul>
 <p>DIA is a ~ 75-member strong geographically distributed but organizationally centralized team. This role is within the growth &amp; adoption analytics pod based in London that works across several business functions, offering broad exposure to Cloudflare's entire business.</p>
 <p><strong>Role Summary</strong></p>
-<p>We are looking for an experienced Senior Data Analyst in London to scale our growth &amp; adoption analytics initiatives. You will be a trusted data advisor to our business partners, a technical coach to your peers, and the lead in terms of shaping AI-first data models, workflows, and agent-ready-datasets.</p>
+<p>We are looking for an experienced Data Analyst in London to scale our growth &amp; adoption analytics initiatives. You will be a trusted data advisor to our business partners, a technical coach to your peers, and the lead in terms of shaping AI-first data models, workflows, and agent-ready-datasets.</p>
 <p>Success in this role will rely on marrying a strong analytics background with product and business acumen to deliver highly strategic and compelling insights that accelerate growth and influence adoption. This role also requires a deep understanding of data infrastructure, job orchestration, and lineage, all with the use of AI-tooling as default.</p>
 <p><strong>Role Responsibilities</strong></p>
 <ul>

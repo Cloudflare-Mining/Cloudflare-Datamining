@@ -8,7 +8,6 @@
 <p>As a Senior Product Manager for Application Protection &amp; Governance, you’ll join our core Application Security team to protect web, API applications against evolving abuse and threat patterns. You will own the product outcomes that help customers deploy, operate, and improve security controls over time, turning complex security requirements into practical capabilities and operational guidance.</p>
 <p>In this role, you will partner with engineering, security specialists and the go-to-market organization to define product direction and drive adoption across areas including web, LLM and API protection (for example, profiling and validation of traffic patterns, schema-aware enforcement, and reducing risks from interconnected third- and fourth-party integrations). You’ll also establish measurement and feedback loops to assess effectiveness, reduce customer operational friction, and continuously iterate based on real-world results.</p>
 <p>You’ll be the strategic anchor for these initiatives aligning customer needs, internal safety requirements, and technical feasibility to deliver reliable protection for applications at global scale.</p>
-<h3>&nbsp;</h3>
 <p><strong>Responsibilities</strong></p>
 <ul>
 	<li><strong>End-to-End Product Ownership:</strong> Own the entire user journey for your product portfolio, ensuring a seamless experience across both programmatic APIs and user-facing dashboards (UX). Collaborate closely with design teams to build intuitive, developer-friendly interfaces.</li>
@@ -19,7 +18,6 @@
 	<li><strong>Cross-Functional Leadership:</strong> Serve as the primary point of contact for your products, both internally and externally.</li>
 	<li><strong>Sales &amp; Support Enablement:</strong> Actively support the sales organization across all stages of customer engagement (pre-sales strategy and post-sales expansion and adoption). Collaborate tightly with Customer Support to resolve technical issues and incidents.</li>
 </ul>
-<h3>&nbsp;</h3>
 <p><strong>Key Qualifications</strong></p>
 <ul>
 	<li><strong>Proven Product Management Experience:</strong> 4+ years of experience as a Product Manager successfully delivering high-scale cloud solutions targeted at a technical audience within the B2B SaaS industry.</li>
