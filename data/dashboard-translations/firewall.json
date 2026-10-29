@@ -1308,7 +1308,7 @@
 	"rate-limiting.incoming_requests": "If incoming requests match…",
 	"rate-limiting.with_the_same": "With the same characteristics…",
 	"rate-limiting.global.title": "Use global rate limiting",
-	"rate-limiting.global.description": "Counts requests across the entire Cloudflare network. This option is unavailable when the rule uses IP, IP with NAT support, or a custom characteristic.",
+	"rate-limiting.global.description": "Counts requests across the entire Cloudflare network. This option is unavailable when the rule uses a characteristic that is not globally replicated, such as IP, IP with NAT support, Clearance UUID, or a custom characteristic.",
 	"rate-limiting.when_rate_exceeds": "When rate exceeds…",
 	"rate-limiting.when_rate_exceeds.request_based": "Request based",
 	"rate-limiting.when_rate_exceeds.complexity_based": "Complexity based",
