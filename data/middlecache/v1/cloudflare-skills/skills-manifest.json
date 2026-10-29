@@ -18,6 +18,7 @@
 				"references/queue-retries.md",
 				"references/routing.md",
 				"references/server-driven-messages.md",
+				"references/skill-feedback.md",
 				"references/state-scheduling.md",
 				"references/streaming-chat.md",
 				"references/think.md",
@@ -41,6 +42,7 @@
 				"references/pipelines/configuration.md",
 				"references/pipelines/gotchas.md",
 				"references/pipelines/patterns.md",
+				"references/skill-feedback.md",
 				"references/sql/README.md",
 				"references/sql/api.md",
 				"references/sql/configuration.md",
@@ -52,7 +54,8 @@
 			"name": "cf-cli",
 			"description": "Cloudflare's official cf CLI (beta) for the public Cloudflare API and Workers projects. Use for finding and running Cloudflare commands from the terminal — sign-in and profiles, cf cli search, cf schema, cf deploy/dev/build, resource commands for DNS, zones, D1, KV, and R2 — and for choosing between cf and Wrangler in a project.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
@@ -151,6 +154,7 @@
 				"references/secrets-store/configuration.md",
 				"references/secrets-store/gotchas.md",
 				"references/secrets-store/patterns.md",
+				"references/skill-feedback.md",
 				"references/smart-placement/README.md",
 				"references/smart-placement/api.md",
 				"references/smart-placement/configuration.md",
@@ -209,21 +213,24 @@
 				"references/deliverability.md",
 				"references/rest-api.md",
 				"references/routing.md",
-				"references/sending.md"
+				"references/sending.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
 			"name": "cloudflare-one",
 			"description": "Design, configure, troubleshoot, or review Cloudflare One Zero Trust and SASE deployments. Use cloudflare-one-migrations for migration planning from other vendors.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
 			"name": "cloudflare-one-migrations",
 			"description": "Assess and plan migrations from existing VPN, SWG, or SASE platforms to Cloudflare One, including policy mapping, parity gaps, and rollout.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
@@ -232,6 +239,7 @@
 			"files": [
 				"SKILL.md",
 				"references/rules.md",
+				"references/skill-feedback.md",
 				"references/testing.md",
 				"references/workers.md"
 			]
@@ -240,28 +248,32 @@
 			"name": "gateway-workers",
 			"description": "Build, debug, or review Cloudflare Workers invoked by the Forward action in Gateway HTTP policies, including the GatewayMiddleware entrypoint, Gateway types, context, and continuation.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
 			"name": "k2",
 			"description": "Build and troubleshoot Cloudflare K2 or K2 Streams durable logs. Use for stream setup, producing from Workers or HTTP, configuring retention and inputs, and consuming through subscriptions.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
 			"name": "nextjs-on-cloudflare",
 			"description": "Build, migrate, and deploy Next.js apps on Cloudflare Workers with vinext. Use when starting a Next.js project on Cloudflare, moving an existing app to Workers, choosing between vinext and OpenNext, or setting up vinext for Workers. For setup, migration, or deployment, install vinext's upstream skills with `npx skills add cloudflare/vinext` if missing, then read and follow the applicable skill and docs.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
 			"name": "sandbox-migrate-to-next",
 			"description": "Migrate Cloudflare Sandbox apps from stable @cloudflare/sandbox to @cloudflare/sandbox@next (SDK 1.0 preview). Use sandbox-next for apps already on the preview.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
@@ -270,14 +282,16 @@
 			"files": [
 				"SKILL.md",
 				"references/api-quick-ref.md",
-				"references/examples.md"
+				"references/examples.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
 			"name": "sandbox-stable",
 			"description": "Build or maintain Cloudflare Sandbox apps on the stable @cloudflare/sandbox package. Use sandbox-next for preview apps and sandbox-migrate-to-next for stable-to-preview migrations.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
@@ -290,6 +304,7 @@
 				"references/hugo.md",
 				"references/nextjs-app.md",
 				"references/nextjs-pages.md",
+				"references/skill-feedback.md",
 				"references/sveltekit.md",
 				"references/vanilla-html.md",
 				"scripts/auth-probe.sh",
@@ -304,7 +319,8 @@
 			"name": "web-perf",
 			"description": "Audit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
@@ -314,21 +330,24 @@
 				"SKILL.md",
 				"references/configuration.md",
 				"references/platform-apis.md",
-				"references/runtime-patterns.md"
+				"references/runtime-patterns.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
 			"name": "workers-profiling",
 			"description": "Profile or debug CPU usage and memory allocation in deployed Cloudflare Workers and Durable Objects. Then use this information to optimize your code.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
 			"name": "wrangler",
 			"description": "Run or troubleshoot Wrangler CLI commands in projects that have a wrangler.jsonc, wrangler.json, or wrangler.toml file, including local development, Previews, deployment, and resource management. For new projects and projects without a Wrangler configuration file, use the cf CLI instead.",
 			"files": [
-				"SKILL.md"
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		}
 	]
