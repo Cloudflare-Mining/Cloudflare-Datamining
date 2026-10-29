@@ -65,6 +65,9 @@
 	"ai-audit-robots-txt": {
 		"true": 100
 	},
+	"ai-auto-rag-billing-usage": {
+		"true": 100
+	},
 	"ai-auto-rag-disable-max-num-rules": {
 		"false": 100
 	},
@@ -177,14 +180,16 @@
 		"true": 100
 	},
 	"billing-modular-checkout-orchestrator-invoices": {
-		"false": 100
+		"false": 81,
+		"true": 19
 	},
 	"billing-modular-checkout-orchestrator-registrar": {
-		"false": 100
+		"false": 99,
+		"true": 1
 	},
 	"billing-modular-checkout-orchestrator-subscription": {
-		"true": 11,
-		"false": 89
+		"true": 22,
+		"false": 78
 	},
 	"billing-no-profile-payment-method-only": {
 		"true": 100
@@ -1077,8 +1082,8 @@
 		"true": 100
 	},
 	"registrar-new-registrations-checkout": {
-		"false": 77,
-		"true": 23
+		"false": 53,
+		"true": 47
 	},
 	"registrar-rhf-contact-form": {
 		"true": 100
@@ -1406,9 +1411,6 @@
 		"true": 100
 	},
 	"zt-dynamic-routes": {
-		"true": 100
-	},
-	"ai-auto-rag-billing-usage": {
 		"true": 100
 	}
 }
