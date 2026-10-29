@@ -88,7 +88,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -124,7 +126,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -371,7 +374,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -407,7 +412,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -613,235 +619,6 @@
 		"x-fern-sdk-group-name": "zones.holds",
 		"x-fern-sdk-method-name": "get"
 	},
-	"GET /zones/{zone_id}/hold/{zone_name}": {
-		"operationId": "zones-0-hold-zone-name-get",
-		"summary": "Get Zone Hold by Zone Name",
-		"description": "Retrieve whether a given hostname is subject to a zone hold, and metadata about the hold.\nThis endpoint checks whether the given hostname (or any of its ancestor domains) is blocked\nby an active zone hold. If a hold with `include_subdomains` is active on an ancestor domain,\nthat hold is returned. This endpoint is used internally by SSL/COMS to check hold status\nduring zone activation.",
-		"parameters": [
-			{
-				"name": "zone_id",
-				"in": "path",
-				"description": "Zone identifier. Consumed by the API gateway for routing; the backend\nhandler does not use this value directly.",
-				"required": true,
-				"schema": {
-					"description": "Identifier.",
-					"type": "string",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"x-auditable": true
-				}
-			},
-			{
-				"name": "zone_name",
-				"in": "path",
-				"description": "The hostname to check for a zone hold. May be a subdomain (e.g. `subdomain.example.com`)\nor an apex domain (e.g. `example.com`). The service checks the hostname and its ancestor\ndomains for active holds with `include_subdomains` enabled.",
-				"required": true,
-				"schema": {
-					"type": "string",
-					"example": "subdomain.example.com",
-					"maxLength": 253,
-					"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"description": "Successful Response",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"hold": {
-									"description": "Whether the hostname is currently subject to a zone hold.",
-									"type": "boolean",
-									"example": true
-								},
-								"hold_after": {
-									"description": "The RFC3339-formatted timestamp at which the hold will be automatically\nre-enabled, if the hold was temporarily disabled. Null if the hold is\npermanently enabled or not set.",
-									"type": "string",
-									"format": "date-time",
-									"example": "2023-01-31T15:56:36Z",
-									"nullable": true
-								},
-								"include_subdomains": {
-									"description": "Whether the hold extends to block subdomains of the held zone.",
-									"type": "boolean",
-									"example": false
-								}
-							}
-						}
-					}
-				}
-			},
-			"4XX": {
-				"description": "Client Error",
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									]
-								}
-							]
-						}
-					}
-				}
-			}
-		},
-		"security": [],
-		"tags": [
-			"Zone Holds"
-		],
-		"x-api-token-group": [
-			"Trust and Safety Write",
-			"Trust and Safety Read",
-			"Zero Trust: PII Read",
-			"Zaraz Edit",
-			"Zaraz Read",
-			"Zaraz Admin",
-			"Access: Apps and Policies Revoke",
-			"Access: Apps and Policies Write",
-			"Access: Apps and Policies Read",
-			"Access: Apps and Policies Revoke",
-			"Access: Mutual TLS Certificates Write",
-			"Access: Organizations, Identity Providers, and Groups Write",
-			"Zone Settings Write",
-			"Zone Settings Read",
-			"Zone Read",
-			"DNS Read",
-			"Workers Scripts Write",
-			"Workers Scripts Read",
-			"Zone Write",
-			"Workers Routes Write",
-			"Workers Routes Read",
-			"Stream Write",
-			"Stream Read",
-			"SSL and Certificates Write",
-			"SSL and Certificates Read",
-			"Logs Write",
-			"Logs Read",
-			"Cache Purge",
-			"Page Rules Write",
-			"Page Rules Read",
-			"Load Balancers Write",
-			"Load Balancers Read",
-			"Firewall Services Write",
-			"Firewall Services Read",
-			"DNS Write",
-			"Apps Write",
-			"Analytics Read",
-			"Access: Apps and Policies Write",
-			"Access: Apps and Policies Read"
-		],
-		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zones.holds",
-		"x-fern-sdk-method-name": "getByName",
-		"x-forge-hidden": true
-	},
 	"PATCH /zones/{zone_id}/hold": {
 		"operationId": "zones-0-hold-patch",
 		"summary": "Update Zone Hold",
@@ -947,7 +724,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -983,7 +762,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1247,7 +1027,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1283,7 +1065,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},

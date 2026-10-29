@@ -98,7 +98,8 @@
 												"id"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -473,7 +474,8 @@
 												}
 											}
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -669,6 +671,7 @@
 													},
 													"plan": {
 														"description": "A Zones subscription information.",
+														"type": "object",
 														"deprecated": true,
 														"properties": {
 															"can_subscribe": {
@@ -739,6 +742,7 @@
 													},
 													"tenant": {
 														"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
+														"type": "object",
 														"properties": {
 															"id": {
 																"description": "Identifier",
@@ -755,6 +759,7 @@
 													},
 													"tenant_unit": {
 														"description": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).",
+														"type": "object",
 														"properties": {
 															"id": {
 																"description": "Identifier",
@@ -815,7 +820,8 @@
 												]
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1200,6 +1206,7 @@
 												},
 												"plan": {
 													"description": "A Zones subscription information.",
+													"type": "object",
 													"deprecated": true,
 													"properties": {
 														"can_subscribe": {
@@ -1270,6 +1277,7 @@
 												},
 												"tenant": {
 													"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
@@ -1286,6 +1294,7 @@
 												},
 												"tenant_unit": {
 													"description": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
@@ -1837,6 +1846,7 @@
 												},
 												"plan": {
 													"description": "A Zones subscription information.",
+													"type": "object",
 													"deprecated": true,
 													"properties": {
 														"can_subscribe": {
@@ -1907,6 +1917,7 @@
 												},
 												"tenant": {
 													"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
@@ -1923,6 +1934,7 @@
 												},
 												"tenant_unit": {
 													"description": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
@@ -2408,6 +2420,7 @@
 												},
 												"plan": {
 													"description": "A Zones subscription information.",
+													"type": "object",
 													"deprecated": true,
 													"properties": {
 														"can_subscribe": {
@@ -2478,6 +2491,7 @@
 												},
 												"tenant": {
 													"description": "The root organizational unit that this zone belongs to (such as a tenant or organization).",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",
@@ -2494,6 +2508,7 @@
 												},
 												"tenant_unit": {
 													"description": "The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).",
+													"type": "object",
 													"properties": {
 														"id": {
 															"description": "Identifier",

@@ -487,6 +487,21 @@
 																"example": "Demo Parent Organization",
 																"readOnly": true,
 																"x-auditable": true
+															},
+															"root_org_id": {
+																"description": "ID of the root Organization, if one exists",
+																"type": "string",
+																"example": "46f0a1ce86ec3d91fae00db3b8b48cee",
+																"maxLength": 32,
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"should_display_parent_orgs": {
+																"description": "Indicates whether the parent Organization hierarchy should be displayed",
+																"type": "boolean",
+																"example": true,
+																"readOnly": true,
+																"x-auditable": true
 															}
 														}
 													},
@@ -494,7 +509,7 @@
 														"description": "Account name",
 														"type": "string",
 														"example": "Demo Account",
-														"maxLength": 100,
+														"maxLength": 120,
 														"x-auditable": true
 													},
 													"settings": {
@@ -830,6 +845,21 @@
 															"example": "Demo Parent Organization",
 															"readOnly": true,
 															"x-auditable": true
+														},
+														"root_org_id": {
+															"description": "ID of the root Organization, if one exists",
+															"type": "string",
+															"example": "46f0a1ce86ec3d91fae00db3b8b48cee",
+															"maxLength": 32,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"should_display_parent_orgs": {
+															"description": "Indicates whether the parent Organization hierarchy should be displayed",
+															"type": "boolean",
+															"example": true,
+															"readOnly": true,
+															"x-auditable": true
 														}
 													}
 												},
@@ -837,7 +867,7 @@
 													"description": "Account name",
 													"type": "string",
 													"example": "Demo Account",
-													"maxLength": 100,
+													"maxLength": 120,
 													"x-auditable": true
 												},
 												"settings": {
@@ -1543,7 +1573,8 @@
 						"properties": {
 							"name": {
 								"description": "Account name",
-								"type": "string"
+								"type": "string",
+								"maxLength": 65
 							},
 							"standalone": {
 								"description": "Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.",
@@ -1721,6 +1752,21 @@
 															"example": "Demo Parent Organization",
 															"readOnly": true,
 															"x-auditable": true
+														},
+														"root_org_id": {
+															"description": "ID of the root Organization, if one exists",
+															"type": "string",
+															"example": "46f0a1ce86ec3d91fae00db3b8b48cee",
+															"maxLength": 32,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"should_display_parent_orgs": {
+															"description": "Indicates whether the parent Organization hierarchy should be displayed",
+															"type": "boolean",
+															"example": true,
+															"readOnly": true,
+															"x-auditable": true
 														}
 													}
 												},
@@ -1728,7 +1774,7 @@
 													"description": "Account name",
 													"type": "string",
 													"example": "Demo Account",
-													"maxLength": 100,
+													"maxLength": 120,
 													"x-auditable": true
 												},
 												"settings": {
@@ -2338,6 +2384,21 @@
 												"example": "Demo Parent Organization",
 												"readOnly": true,
 												"x-auditable": true
+											},
+											"root_org_id": {
+												"description": "ID of the root Organization, if one exists",
+												"type": "string",
+												"example": "46f0a1ce86ec3d91fae00db3b8b48cee",
+												"maxLength": 32,
+												"readOnly": true,
+												"x-auditable": true
+											},
+											"should_display_parent_orgs": {
+												"description": "Indicates whether the parent Organization hierarchy should be displayed",
+												"type": "boolean",
+												"example": true,
+												"readOnly": true,
+												"x-auditable": true
 											}
 										}
 									},
@@ -2345,7 +2406,7 @@
 										"description": "Account name",
 										"type": "string",
 										"example": "Demo Account",
-										"maxLength": 100,
+										"maxLength": 120,
 										"x-auditable": true
 									},
 									"settings": {
@@ -2378,6 +2439,15 @@
 									"name",
 									"type"
 								]
+							},
+							{
+								"properties": {
+									"name": {
+										"type": "string",
+										"maxLength": 65
+									}
+								},
+								"type": "object"
 							}
 						]
 					}
@@ -2517,6 +2587,21 @@
 															"example": "Demo Parent Organization",
 															"readOnly": true,
 															"x-auditable": true
+														},
+														"root_org_id": {
+															"description": "ID of the root Organization, if one exists",
+															"type": "string",
+															"example": "46f0a1ce86ec3d91fae00db3b8b48cee",
+															"maxLength": 32,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"should_display_parent_orgs": {
+															"description": "Indicates whether the parent Organization hierarchy should be displayed",
+															"type": "boolean",
+															"example": true,
+															"readOnly": true,
+															"x-auditable": true
 														}
 													}
 												},
@@ -2524,7 +2609,7 @@
 													"description": "Account name",
 													"type": "string",
 													"example": "Demo Account",
-													"maxLength": 100,
+													"maxLength": 120,
 													"x-auditable": true
 												},
 												"settings": {

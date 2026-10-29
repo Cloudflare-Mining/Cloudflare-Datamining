@@ -740,6 +740,22 @@
 														],
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"token_prefix": {
+														"description": "The prefix of the token value, before the first underscore. Use it with\n`token_suffix` to identify a token. Only present for tokens created or\nrolled after this field was added.",
+														"type": "string",
+														"example": "cfat",
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"token_suffix": {
+														"description": "The last 4 characters of the token value. Use it with `token_prefix` to\nidentify a token. It is not unique. Only present for tokens created or\nrolled after this field was added.",
+														"type": "string",
+														"example": "a1b2",
+														"maxLength": 4,
+														"minLength": 4,
+														"readOnly": true,
+														"x-auditable": true
 													}
 												}
 											}
@@ -1298,6 +1314,22 @@
 													],
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"token_prefix": {
+													"description": "The prefix of the token value, before the first underscore. Use it with\n`token_suffix` to identify a token. Only present for tokens created or\nrolled after this field was added.",
+													"type": "string",
+													"example": "cfat",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"token_suffix": {
+													"description": "The last 4 characters of the token value. Use it with `token_prefix` to\nidentify a token. It is not unique. Only present for tokens created or\nrolled after this field was added.",
+													"type": "string",
+													"example": "a1b2",
+													"maxLength": 4,
+													"minLength": 4,
+													"readOnly": true,
+													"x-auditable": true
 												}
 											}
 										}
@@ -2782,6 +2814,22 @@
 															],
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"token_prefix": {
+															"description": "The prefix of the token value, before the first underscore. Use it with\n`token_suffix` to identify a token. Only present for tokens created or\nrolled after this field was added.",
+															"type": "string",
+															"example": "cfat",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"token_suffix": {
+															"description": "The last 4 characters of the token value. Use it with `token_prefix` to\nidentify a token. It is not unique. Only present for tokens created or\nrolled after this field was added.",
+															"type": "string",
+															"example": "a1b2",
+															"maxLength": 4,
+															"minLength": 4,
+															"readOnly": true,
+															"x-auditable": true
 														}
 													}
 												},
@@ -3264,6 +3312,22 @@
 										],
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"token_prefix": {
+										"description": "The prefix of the token value, before the first underscore. Use it with\n`token_suffix` to identify a token. Only present for tokens created or\nrolled after this field was added.",
+										"type": "string",
+										"example": "cfat",
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"token_suffix": {
+										"description": "The last 4 characters of the token value. Use it with `token_prefix` to\nidentify a token. It is not unique. Only present for tokens created or\nrolled after this field was added.",
+										"type": "string",
+										"example": "a1b2",
+										"maxLength": 4,
+										"minLength": 4,
+										"readOnly": true,
+										"x-auditable": true
 									}
 								}
 							},
@@ -3666,6 +3730,22 @@
 													],
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"token_prefix": {
+													"description": "The prefix of the token value, before the first underscore. Use it with\n`token_suffix` to identify a token. Only present for tokens created or\nrolled after this field was added.",
+													"type": "string",
+													"example": "cfat",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"token_suffix": {
+													"description": "The last 4 characters of the token value. Use it with `token_prefix` to\nidentify a token. It is not unique. Only present for tokens created or\nrolled after this field was added.",
+													"type": "string",
+													"example": "a1b2",
+													"maxLength": 4,
+													"minLength": 4,
+													"readOnly": true,
+													"x-auditable": true
 												}
 											}
 										}
