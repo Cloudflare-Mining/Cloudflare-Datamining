@@ -1,5 +1,520 @@
 [
 	{
+		"id": "d90d0f2e05ac9e80203b28f3c8f22610",
+		"name": "Account Rulesets Admin",
+		"description": "Can manage Account Rulesets.",
+		"permissions": {
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "f156a6985f8ca092e266b8a5691b7572",
+		"name": "Account Rulesets Read",
+		"description": "Can view Account Rulesets.",
+		"permissions": {
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "249d34bf3d127c5f3909e5e0708936ed",
+		"name": "Billing Read",
+		"description": "Can view billing profiles, subscriptions, usage data, invoices, entitlements, and rate plans.",
+		"permissions": {
+			"billing": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "f3c2a51afcc0eaf70c434170d34ef551",
+		"name": "Constellation Admin",
+		"description": "Can manage Constellation configuration and models.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "b10c36286e9b939edf3221ee4f2b11ef",
+		"name": "Constellation Read",
+		"description": "Can view Constellation configuration and models.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "9a04e46096845cdad76749031fda5d19",
+		"name": "Custom Pages Admin",
+		"description": "Can manage account and zone custom pages and assets.",
+		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": true
+			}
+		}
+	},
+	{
+		"id": "4e3e4c29b80472b085e3eb96e1101aa7",
+		"name": "Notifications Admin",
+		"description": "Can manage Notifications.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "bc6d0a16ca305899beaad6146f9f8f81",
+		"name": "Notifications Read",
+		"description": "Can view Notifications.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "17fb214b79602dd28b959d2e4487cb45",
+		"name": "Resource Sharing Read",
+		"description": "Can view Resource Sharing.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "3de1d41dd1325875da0824f5a9778e8a",
+		"name": "Tag Read",
+		"description": "Can view resource tags.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "c5e018371f5a0e500259966f1a1cc5af",
+		"name": "Trust and Safety Read",
+		"description": "Can view abuse reports, abuse actions, and blocks.",
+		"permissions": {
+			"blocks": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "fc4f5fff97f674faff03d7cb88b3a089",
+		"name": "Artifacts Admin",
+		"description": "Can manage Artifacts.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "dc7fc309a92e3c04884ea1fac3e7f97d",
+		"name": "Artifacts Read",
+		"description": "Can view Artifacts.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "8ed8673a641cbc6abb361d6ede5753d7",
+		"name": "Auto RAG Read",
+		"description": "Can view Auto RAG data.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "188e78a35105295e40cd8623f660f6a6",
+		"name": "Calls Read",
+		"description": "Can view Calls configuration.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "d9450a7ce10fc0069d2e66ce1faf0d12",
+		"name": "Workers Containers Admin",
+		"description": "Can manage Workers Containers.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "5e80c21e6a32c84876794e9af19966e5",
+		"name": "Workers Containers Read",
+		"description": "Can view Workers Containers.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "fbe833a953b671fbd6c5995e71d17fe9",
+		"name": "D1 Admin",
+		"description": "Can manage D1 configuration and SQL query data.",
+		"permissions": {
+			"d1": {
+				"read": false,
+				"edit": true
+			},
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "e31841f93ebb6ff0a8f1e4c282c6a6c7",
+		"name": "D1 Read",
+		"description": "Can view D1 configuration and SQL query data.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "434cf6a4e8fc5f3a31972e8006ba6af5",
+		"name": "Email Admin",
+		"description": "Can manage Email Routing, Email Sending, and Email Security DMARC Reports.",
+		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "348b054b050f7f1867f46bdb79d128e1",
+		"name": "Email Read",
+		"description": "Can view Email Routing, Email Sending, and Email Security DMARC Reports.",
+		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"dns_records": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "81c9b9d5501b4ea6bfb3a38f844ea70c",
+		"name": "Cloudflare Images Read",
+		"description": "Can view Cloudflare Images assets.",
+		"permissions": {
+			"image": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "1acec048a5d9d81deba0eee3808b2315",
+		"name": "Cloudflare Pages Admin",
+		"description": "Can manage Cloudflare Pages projects, settings, and deployments.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "8fc9ea5119d0dfb2b0de66c96d87e8f3",
+		"name": "Cloudflare Pages Read",
+		"description": "Can view Cloudflare Pages projects, settings, and deployments.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "dff7309eaa85043266275ed25996e12b",
+		"name": "Cloudflare Stream Read",
+		"description": "Can view Cloudflare Stream media.",
+		"permissions": {
+			"stream": {
+				"read": true,
+				"edit": false,
+				"content_read": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "ea93f62bac7d43ce0a901f4ad39cd3fa",
+		"name": "Workers AI Admin",
+		"description": "Can manage Workers AI models.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "480cb23a65846fba42774aa3332d14aa",
+		"name": "Workers AI Read",
+		"description": "Can view and run Workers AI models.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "c5fd9ce19d7ae7b0257c38d429eb272c",
+		"name": "Workers KV Storage Read",
+		"description": "Can view Cloudflare Workers KV Storage.",
+		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "bd8ed5a6faa74d78946194ce5eeaad25",
+		"name": "Workflows Admin",
+		"description": "Can manage Cloudflare Workflows configuration and instance data.",
+		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "be9877ec881cb0d08ea82891c8116375",
+		"name": "Workflows Read",
+		"description": "Can view Cloudflare Workflows configuration and instance data.",
+		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "534440fd818fbbb98cc0af6309281582",
 		"name": "RUM Admin",
 		"description": "Can manage RUM analytics, sites, and rules.",
@@ -1257,779 +1772,6 @@
 		"name": "Cloudflare One Connector Read and Monitor: cloudflared",
 		"description": "Grants read access to cloudflared connector resources including log streaming",
 		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "46569757cdb1414d114c4e0b6034c849",
-		"name": "Resource Library Admin",
-		"description": "Resource library or Alexandria, allows full Admin permissions to Resource library",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "49bd55f88a9c235865bb29a8211e5a4e",
-		"name": "Tag Admin",
-		"description": "Can manage resource tags.",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "e5a9dfabf3315484950f460a5a1e2076",
-		"name": "AI Search Admin",
-		"description": "Can create, read, update, delete and run AI inferences in AI Search.",
-		"permissions": {
-			"organization": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "91e0020c2095cd38fd6da90006a9c94b",
-		"name": "AI Search (Read-only)",
-		"description": "Grants access to reading data from AI Search.",
-		"permissions": {
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "308416ae9b24e806205c406d0a32c8ec",
-		"name": "Cloudflare CASB Read",
-		"description": "Can read Cloudflare CASB.",
-		"permissions": {
-			"teams": {
-				"read": true,
-				"edit": false
-			},
-			"cf1_integration": {
-				"read": true,
-				"edit": false
-			},
-			"cds": {
-				"read": true,
-				"edit": false
-			},
-			"casb": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "218ab9c58f4e8612b8f87d12f7d3a8e4",
-		"name": "Cloudflare CASB",
-		"description": "Can edit Cloudflare CASB.",
-		"permissions": {
-			"teams": {
-				"read": true,
-				"edit": false
-			},
-			"cf1_integration": {
-				"read": true,
-				"edit": true,
-				"casb_enroll": true
-			},
-			"cds": {
-				"read": true,
-				"edit": true
-			},
-			"casb": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "8f3dbb652cd75d015ea448e59daf8a97",
-		"name": "Load Balancing Account Read",
-		"description": "Can read Load Balancing resources such as Load Balancers, Monitors, Monitor Groups, Pools, and Health Checks.",
-		"permissions": {
-			"lb": {
-				"read": true,
-				"edit": false
-			},
-			"waf": {
-				"read": true,
-				"edit": false
-			},
-			"healthchecks": {
-				"read": true,
-				"edit": false
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "98a33bce907b575c9607725ec26ef20a",
-		"name": "Workers Editor",
-		"description": "Read, update, and deploy all Workers in this account. Includes\nscript content, settings, routes, schedules, versions, deployments,\nand observability. Cannot create or delete Workers — use Workers\nAdmin for that. This replaces Workers Editor (now deprecated),\nwhich previously covered the dash code editor.\n",
-		"permissions": {
-			"worker": {
-				"read": true,
-				"edit": true
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "12fe3514ee0d7eeff51139ea4a91c612",
-		"name": "Connectivity Directory Admin",
-		"description": "Can view, edit, create, and delete Connectivity Directory Services and Networks, including the ability to create Services that bind to Cloudflare Tunnel",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "5adcc50087e86ef14cf4c4f8cb191726",
-		"name": "Connectivity Directory Bind",
-		"description": "Can read, list, and bind to Connectivity Directory services and networks, as well as read and list Cloudflare Tunnels",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "bd1b70f416289b65c90d1aa91ac732e6",
-		"name": "Connectivity Directory Read",
-		"description": "Can view Connectivity Directory services, networks, and Cloudflare Tunnels",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "8e117fdd57cd531947dbdcfd82f7a1a1",
-		"name": "Email Security Policy Admin",
-		"description": "Write access to Email Security policies",
-		"permissions": {
-			"ces_policies": {
-				"read": true,
-				"edit": true
-			},
-			"ces_integration": {
-				"read": true,
-				"edit": false
-			},
-			"ces_phishguard": {
-				"read": true,
-				"edit": false
-			},
-			"ces_settings": {
-				"read": true,
-				"edit": false
-			},
-			"ces_analytics": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "c5d1310163c3a1d561a641710f4a1adc",
-		"name": "Realtime",
-		"description": "Grants access to Realtime configuration excluding sensitive data",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "23c0e77be0cb347c05ae9be2f5046c89",
-		"name": "Realtime Admin",
-		"description": "Grants admin access to Realtime configuration",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "8f58ae6bea632a03804326561220615a",
-		"name": "Application Security Reports Read",
-		"description": "Can read Application Security Reports",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "e58cefd75d7adae0b761796c28815e5c",
-		"name": "Workers Platform (Read-only)",
-		"description": "Can read all resources in the Workers Platform.",
-		"permissions": {
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"worker": {
-				"read": true,
-				"edit": false
-			},
-			"stream": {
-				"read": true,
-				"edit": false,
-				"content_read": true
-			},
-			"image": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"dns_records": {
-				"read": true,
-				"edit": false
-			},
-			"vectorize": {
-				"read": true,
-				"edit": false
-			},
-			"query_cache": {
-				"read": true,
-				"edit": false
-			},
-			"r2_bucket_item": {
-				"read": true,
-				"edit": false
-			},
-			"integration": {
-				"read": true,
-				"edit": false
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"r2_bucket": {
-				"read": true,
-				"edit": false
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "a4154d230e664f8b3e6e5c95a8cc812f",
-		"name": "Cloudchamber Admin Read Only",
-		"description": "Can manage Cloudchamber deployments in read only mode",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "a9f7f84d75bddf998c6cb2e357bdf3cc",
-		"name": "Cloudchamber Admin",
-		"description": "Can manage Cloudchamber deployments",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "b0825febc8edc7216a8023813f69a987",
-		"name": "Secrets Store Reporter",
-		"description": "Can list all Secrets from the Secrets Store",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "360eb4ab6f4d6130c39367e030b0f0b9",
-		"name": "Secrets Store Deployer",
-		"description": "Can deploy Secrets from the Secrets Store",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "1319d079df965f0c7b695e91330b3b89",
-		"name": "Secrets Store Admin",
-		"description": "Can perform all CRUD actions on a Secret from the Secrets Store",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "94a8a5ccfcb2ade88ad5154d09f27715",
-		"name": "Cloudflare Zero Trust Secure DNS Locations Write",
-		"description": "Can read any DNS Location data in teams but only edit secure DNS Locations",
-		"permissions": {
-			"teams": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "524d8604ba35958b4a8d9e5fb06d5eeb",
-		"name": "Brand Protection",
-		"description": "Grants access to abuse reports and brand protection",
-		"permissions": {
-			"blocks": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "fe700b87d989a8a99428e5258301e277",
-		"name": "Cloudforce One Read",
-		"description": "Grants read access to Cloudforce One",
-		"permissions": {
-			"cfone": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "2741c27a8ba4829e5e6ce89bfb778c16",
-		"name": "Cloudforce One Admin",
-		"description": "Grants write access to Cloudforce One",
-		"permissions": {
-			"cfone": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "dfed41846ee1b4952dbeec65c7195e31",
-		"name": "Email Security Reporting",
-		"description": "Read access to Email Security Home, PhishGuard, and Submission Transparency",
-		"permissions": {
-			"ces_pra_report": {
-				"read": true,
-				"edit": true
-			},
-			"ces_submissions": {
-				"read": true,
-				"edit": false
-			},
-			"ces_phishguard": {
-				"read": true,
-				"edit": false
-			},
-			"ces_analytics": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "3390240245b5d4d8be9f8c5789dca2d7",
-		"name": "Email Security Readonly",
-		"description": "Read access to all of Email Security, cannot see raw email, take action on emails, or make submissions.",
-		"permissions": {
-			"cf1_integration": {
-				"read": true,
-				"edit": false
-			},
-			"ces_pra_report": {
-				"read": true,
-				"edit": false
-			},
-			"ces_policies": {
-				"read": true,
-				"edit": false
-			},
-			"ces_submissions": {
-				"read": true,
-				"edit": false
-			},
-			"ces_integration": {
-				"read": true,
-				"edit": false
-			},
-			"ces_phishguard": {
-				"read": true,
-				"edit": false
-			},
-			"ces_settings": {
-				"read": true,
-				"edit": false
-			},
-			"ces_search": {
-				"read": true,
-				"edit": false,
-				"trace": true,
-				"preview": true
-			},
-			"ces_analytics": {
-				"read": true,
-				"edit": false
-			},
-			"access": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "d9290f651ced29c9524b79aa5ac4fcaf",
-		"name": "Email Security Analyst",
-		"description": "Read access to all of Email Security including Settings, and can also action emails.",
-		"permissions": {
-			"ces_submissions": {
-				"read": true,
-				"edit": true
-			},
-			"cf1_integration": {
-				"read": true,
-				"edit": false
-			},
-			"ces_pra_report": {
-				"read": true,
-				"edit": true
-			},
-			"ces_policies": {
-				"read": true,
-				"edit": false
-			},
-			"ces_integration": {
-				"read": true,
-				"edit": false
-			},
-			"ces_search": {
-				"read": true,
-				"edit": false,
-				"action": true,
-				"preview": true,
-				"raw": true,
-				"trace": true
-			},
-			"ces_phishguard": {
-				"read": true,
-				"edit": false
-			},
-			"ces_settings": {
-				"read": true,
-				"edit": false
-			},
-			"ces_analytics": {
-				"read": true,
-				"edit": false
-			},
-			"access": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "70035ec03549c8799c170a2afc25c139",
-		"name": "Email Configuration Admin",
-		"description": "Write access to all of Email Security, except for mail preview, raw email, on-demand reports, actions on emails, submissions, submission transparency.",
-		"permissions": {
-			"cf1_integration": {
-				"read": true,
-				"edit": true,
-				"ces_enroll": true
-			},
-			"ces_policies": {
-				"read": true,
-				"edit": true
-			},
-			"ces_integration": {
-				"read": true,
-				"edit": true
-			},
-			"ces_phishguard": {
-				"read": true,
-				"edit": false
-			},
-			"ces_settings": {
-				"read": true,
-				"edit": true
-			},
-			"ces_search": {
-				"read": true,
-				"edit": false,
-				"trace": true
-			},
-			"ces_analytics": {
-				"read": true,
-				"edit": false
-			},
-			"access": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "43801681f525f111da3f15d07ffafdf1",
-		"name": "Email Integration Admin",
-		"description": "Write access to Email Security account integration, settings, and policies",
-		"permissions": {
-			"cf1_integration": {
-				"read": true,
-				"edit": true,
-				"ces_enroll": true
-			},
-			"ces_pra_report": {
-				"read": true,
-				"edit": true
-			},
-			"ces_policies": {
-				"read": true,
-				"edit": true
-			},
-			"ces_integration": {
-				"read": true,
-				"edit": true
-			},
-			"ces_settings": {
-				"read": true,
-				"edit": true
-			},
 			"zone": {
 				"read": true,
 				"edit": false

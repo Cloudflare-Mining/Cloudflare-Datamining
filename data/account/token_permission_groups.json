@@ -1010,6 +1010,16 @@
 		"is_selectable": true
 	},
 	{
+		"id": "477938ebf30f4bc781d5cb94a8710606",
+		"name": "Audit Logs Read",
+		"description": "Grants read access to Audit Logs",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "analytics_and_logs",
+		"is_selectable": true
+	},
+	{
 		"id": "d7887c7a417e4cf2a69f1d01c1a1dc3b",
 		"name": "Auto Rag Read",
 		"description": "Grants access to reading data from Auto Rag",
