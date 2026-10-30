@@ -1,0 +1,93 @@
+<p>Today, Cloudflare services for private origins is generally&nbsp;available. Point a proxied DNS record at a private IP, and Cloudflare reaches the origin over your existing <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectivity-options"><u>Cloudflare One connection</u></a>. Your origin stays private, while web application firewall (<a href="https://www.cloudflare.com/products/waf"><u>WAF</u></a>), <a href="https://developers.cloudflare.com/cache"><u>caching</u></a>, <a href="https://developers.cloudflare.com/bots/get-started/bot-management"><u>bot management</u></a>, and <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a>&nbsp;work just as they do for public origins.</p>
+<p>In June, <a href="https://blog.cloudflare.com/private-origins-dns-routing"><u>we launched this capability in closed beta</u></a>&nbsp;to address a problem we kept hearing from customers: Their internal APIs, AI agent backends, MCP servers, and operational tools weren’t built to face the Internet, but those services still need to accept requests from partners, customers, or agents over the Internet. Before the beta, putting Cloudflare in front of these services meant exposing a public IP, opening a firewall port, or running <code>cloudflared</code>&nbsp;alongside the origin.</p>
+<p>Those requirements often left private applications without the same protections and controls they used for public applications, including WAF, bot management, rate limiting, caching, traffic acceleration, rewrites, and Workers.</p>
+<h3>What is generally available today</h3>
+<p>During the closed beta, eligible customers requested access through their account team. Today, we’re opening access beyond that beta group.</p>
+<p>Point a proxied A or AAAA record at a private IP, and Cloudflare’s application services work as they do for public origins:</p>
+<ul>
+	<li>WAF and managed rules</li>
+	<li>Bot management</li>
+	<li>Rate limiting</li>
+	<li>Caching</li>
+	<li>Transform and rewrite rules</li>
+	<li>Workers</li>
+</ul>
+<p>Some limitations remain. <a href="https://developers.cloudflare.com/argo-smart-routing"><u>Argo Smart Routing</u></a> and <a href="https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips"><u>Dedicated CDN Egress IPs</u></a> aren’t supported, and origin health checks require <a href="https://developers.cloudflare.com/load-balancing"><u>Load Balancing</u></a>. See the <a href="https://developers.cloudflare.com/dns/private-origins"><u>developer documentation</u></a> for the full list of current limitations.&nbsp;</p>
+<p>Your origin keeps its private IP, with no inbound firewall exception required. With <a href="https://developers.cloudflare.com/cloudflare-wan"><u>Cloudflare WAN</u></a>,&nbsp; no connector software on the origin is required. With <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh"><u>Cloudflare Mesh</u></a>, a connector runs within your private network and can serve multiple origins.</p>
+<h3>How it works</h3>
+<p>Create a proxied A or AAAA record pointing to your origin. For supported private IP ranges, <strong>use</strong> <strong>private network routing</strong>&nbsp;is enabled automatically. If your origin uses a public IP that’s reachable only through your private network, you can enable the setting manually.</p>
+<p>The rest of the request flow stays the same: TLS termination, WAF, rules, and caching continue to run on Cloudflare’s network.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA6urm5OTh2djY1tXV3N3a4ePd2NnYx8bN8fHt6+vp4ODh3d3e5OXi6erl3+DhzMvX/Pv59vX06uvt5+jp7/Dt9PTw6unt1dXk////////9vf59PX2/Pz5///99vb54uPx////////////////////////////8vL9////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="184" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KA0C86TV3S0X0BGQ1BGW.png&amp;w=715&amp;h=184&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KA0C86TV3S0X0BGQ1BGW.png&amp;w=640&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KA0C86TV3S0X0BGQ1BGW.png&amp;w=715&amp;h=184&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KA0C86TV3S0X0BGQ1BGW.png&amp;w=750&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KA0C86TV3S0X0BGQ1BGW.png&amp;w=828&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KA0C86TV3S0X0BGQ1BGW.png&amp;w=1080&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KA0C86TV3S0X0BGQ1BGW.png&amp;w=1280&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KA0C86TV3S0X0BGQ1BGW.png&amp;w=1430&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KA0C86TV3S0X0BGQ1BGW.png&amp;w=1399&amp;h=360&amp;q=100&amp;f=webp" data-lightbox-width="1399" data-lightbox-height="360" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="184" class="pt-portable-image-media"></div>
+</figure>
+<p>The setting turns on automatically for RFC 1918 private IPv4 addresses, RFC 6598 CGNAT addresses (100.64.0.0/10), and RFC 4193 unique local IPv6 addresses (fc00::/7). It can’t be turned off for these ranges; attempts to disable it through the API return an error.</p>
+<h3>What the API looks like</h3>
+<p>For customers automating deployments through the API, private routing is simply an additional attribute on a standard DNS record.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>POST /zones/{zone_id}/dns_records</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span> "type": "A",</span></span>
+<span class="line"><span> "name": "app.example.com",</span></span>
+<span class="line"><span> "content": "10.0.0.50",</span></span>
+<span class="line"><span> "ttl": 300,</span></span>
+<span class="line"><span> "proxied": true,</span></span>
+<span class="line"><span> "private_routing": true</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Behind the scenes, Cloudflare's proxy platform determines where to send traffic for <code>app.example.com</code>&nbsp;by querying Cloudflare's Origin API. The response includes metadata indicating that the destination should be reached through a private network path:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799"> "zone_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799"> "ipv4_addresses"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"10.0.0.50"</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799"> "private_routing"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>The <code>private_routing</code>&nbsp;flag is the key signal. When our proxy sees it, instead of attempting to connect directly to the private IP address over the public Internet, it hands the request to our private networking layer, which then routes the connection across the customer's existing private network connectivity, whether that's <a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec"><u>IPsec</u></a>, <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling"><u>GRE</u></a>, <a href="https://developers.cloudflare.com/tunnel"><u>Cloudflare Tunnel</u></a>, <a href="https://developers.cloudflare.com/network-interconnect"><u>CNI</u></a>, or Cloudflare Mesh.</p>
+<p>The<a href="https://blog.cloudflare.com/private-origins-dns-routing">&nbsp;<u>beta post</u></a>&nbsp;covers the routing layer in more detail.</p>
+<h3>Get started</h3>
+<p>Before you begin, you’ll need:</p>
+<ol>
+	<li>The Private Origins entitlement on your account. Ask your account team to turn it on.</li>
+	<li><a href="https://developers.cloudflare.com/cloudflare-one/networks/connectivity-options"><u>Cloudflare One connectivity</u></a> using IPsec, GRE, CNI, Cloudflare Tunnel, or <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh"><u>Cloudflare Mesh</u></a>.</li>
+	<li>Unified Routing enabled on your account, unless you connect over Cloudflare Tunnel (Tunnel doesn't need it). New and existing accounts can upgrade through their account team.</li>
+	<li>If you connect over Cloudflare WAN or Cloudflare Mesh, configure a return route for Cloudflare’s source ranges: 100.64.0.0/12 for IPv4 and 2606:4700:cf1:5000::/64 for IPv6. Then, create a proxied A or AAAA record for the private IP and confirm that <strong>Use private network routing</strong> is enabled. Your existing WAF, cache, and bot management configuration applies to that hostname without further changes.</li>
+</ol>
+<p>Then, create a proxied A or AAAA record for the private IP and confirm that <strong>Use private network routing</strong>&nbsp;is enabled. Your existing WAF, cache, and bot management configuration applies to that hostname without further changes.</p>
+<p>One note from the beta: if requests time out and nothing arrives at the origin, check the return route first. A missing route for Cloudflare’s source range was the most common setup failure we saw.</p>
+<p>Once enabled, follow our<a href="https://developers.cloudflare.com/dns/private-origins">&nbsp;<u>developer documentation</u></a>, which walks through the full setup.</p>
+<h3>What comes next</h3>
+<p>Today’s release covers public traffic reaching private origins. Next, we’re working on private-to-private traffic: users, services, and AI agents on private networks reaching applications on other private networks through Cloudflare’s application services.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/////fv79fTz8fHv9fPy+fX19vPy7u3q/v3/+fr98PL17e/x8/L0+fb39/T17+7t/P3/9vn/6/H36e7z8fL3+vj7+fb48PDw/P//9vr/6/L76O/28vX6/Pv/+/r88vP0////+v//7/b/7PP79vn+//////7/9vf5////////9vv/8/j/+/3/////////+vv8/////////P//+f3//////////////f7+////////////+/7/////////////////" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M64V2R2JSRJ44YNQM8X985AK.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M64V2R2JSRJ44YNQM8X985AK.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M64V2R2JSRJ44YNQM8X985AK.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M64V2R2JSRJ44YNQM8X985AK.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M64V2R2JSRJ44YNQM8X985AK.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M64V2R2JSRJ44YNQM8X985AK.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M64V2R2JSRJ44YNQM8X985AK.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M64V2R2JSRJ44YNQM8X985AK.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M64V2R2JSRJ44YNQM8X985AK.png&amp;w=960&amp;h=540&amp;q=100&amp;f=webp" data-lightbox-width="960" data-lightbox-height="540" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>Engineering work is underway, and we’re targeting a closed beta in early 2027. If you’d like to participate, talk to your account team.</p>
+<p>The goal is to give private applications the same protections and controls as public applications. An employee opening <code>wiki.company.internal</code>, for example, could benefit from WAF, rate limiting, and bot management. Service-to-service traffic between clouds and data centers could use those controls too, even when neither side touches the public Internet.</p>
+<p>For now, today’s release brings the WAF, caching, bot management, and Workers you use for public applications to private origins over connectivity you already operate.</p>
+<p>Questions or feedback? Join the conversation in our<a href="https://community.cloudflare.com">&nbsp;<u>community forums</u></a>&nbsp;or reach out to your account team.</p>
