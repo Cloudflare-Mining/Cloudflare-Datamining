@@ -32,18 +32,6 @@ Browse upcoming Cloudflare events around the world.
 
 AmericasEMEAAPJC
 
-Las Vegas, NV
-
-AWS re:Invent
-
-Nov 30–Dec 4
-
-Coming soon
-
-Previous events
-
-[San Francisco, CACloudflare Global Connect 2026Oct 19–21Learn more](https://www.cloudflare.com/connect/)
-
 # Build without boundaries
 
  Join thousands of developers who've eliminated infrastructure complexity and deployed globally with Cloudflare. Start building for free — no credit card required. 

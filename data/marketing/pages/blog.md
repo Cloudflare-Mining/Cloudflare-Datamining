@@ -10,6 +10,24 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+October 30, 2026 [<h2>4 real? Tracking exploitation and patching of eMudhra's weak keys</h2>](https://blog.cloudflare.com/emudhra-patching/)
+
+Four, just four: that's the key to break into any unpatched connection on the Internet that is using eMudhra certificates. Here's how we quickly patched Cloudflare, what evidence we can see of attempted exploitation, and how much of the rest of the Internet remains exposed.
+
+![Maxime Guerreiro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FG4DN12FTWVE3SWJY7WF.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Rupert Carr](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WZZ1214FNVNSGC0MBC58.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Miguel de Moura](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469GP192YFYYEYAD222W8R.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Maxime Guerreiro](https://blog.cloudflare.com/author/maxime/),  [Rupert Carr](https://blog.cloudflare.com/author/rupert-carr/),  [Miguel de Moura](https://blog.cloudflare.com/author/miguel/), and  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M66XYHSQQJRRA4097AJD12PN.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/emudhra-patching/)
+
+October 30, 2026 [<h2>Cloudflare services for private origins is now generally available</h2>](https://blog.cloudflare.com/private-origins-public-to-private/)
+
+Public traffic to private origins, with WAF, bot management, caching, and Workers, is now available to every customer with Cloudflare One connectivity.
+
+![Enrique Somoza](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY0CFW3DJ9J69XDCMWR1NNSG.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Enrique Somoza](https://blog.cloudflare.com/author/enrique-somoza/)
+
 October 29, 2026 [<h2>Cloudflare DDoS Threat Report 2026 Q3: More swarms, fewer giants</h2>](https://blog.cloudflare.com/ddos-threat-report-2026-q3/)
 
 Cloudflare mitigated over 8,200 DDoS attacks per hour in Q3 2026 as attackers shifted to shorter, high-frequency strikes. Explore the latest threat data, including the collapse of CLDAP vectors and the impact of recent botnet takedowns.
@@ -17,8 +35,6 @@ Cloudflare mitigated over 8,200 DDoS attacks per hour in Q3 2026 as attackers sh
 ![Cloudforce One](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F4NKW3JJWXAED2MVFY7Y.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Cloudforce One](https://blog.cloudflare.com/author/cloudforce/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6256EDR0931RP6THCDNZ2R5.01M6256F3NTWXMKQE0RGKEM0G2.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/ddos-threat-report-2026-q3/)
 
 October 27, 2026 [<h2>Introducing the Cloudflare PHP Capture the Flag challenge</h2>](https://blog.cloudflare.com/php-ctf/)
 
@@ -147,22 +163,6 @@ Cloudflare Gateway and Data Loss Prevention have inherited the flexibility and p
 ![AJ Gerstenhaber](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M508VRM0SPP4S4MS7CZXEHJA.01M508VT8EKZQHWR6HJHQVTQPV.png&w=64&h=64&f=webp&fit=cover&position=center)![Abe Carryl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JJ6YPQY3M4A69P72QXE8.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [AJ Gerstenhaber](https://blog.cloudflare.com/author/aj/) and  [Abe Carryl](https://blog.cloudflare.com/author/abe/)
-
-October 15, 2026 [<h2>Deploy with Void</h2>](https://blog.cloudflare.com/deploy-with-void/)
-
-Introducing Void: an open-source SDK, CLI, and self-hosted platform for building full-stack Vite apps and deploying them to Cloudflare.
-
-![Christoph Nakazawa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EX98BAG8QN2EG73TZW7RKE.01M4EX98Y0AM8PEJP2VR66W6PN.webp&w=64&h=64&f=webp&fit=cover&position=center)![Michael Dong](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EX7VKAAKSR7MZBFE5VQ9JZ.01M4EX7W0EXTB3MQ1C9BZZ5C38.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Christoph Nakazawa](https://blog.cloudflare.com/author/christoph-nakazawa/) and  [Michael Dong](https://blog.cloudflare.com/author/michael-dong/)
-
-October 15, 2026 [<h2>Cloudflare and OpenAI: Making AI discovery better for everyone</h2>](https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/)
-
-How Cloudflare and OpenAI are working together to help AI find useful content, keep up with changes, and make fewer wasted requests — making the experience better for users and website owners alike.
-
-![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Henry Aspegren (OpenAI)](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4ZF9JPY469VR3ZSXJ5TCC72.01M4ZF9K94YMAVD6CKV497K7W2.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![James Balfour (OpenAI)](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3Y82NHNS7DZN6RAJ3P8ZZ6Q.01M3Y82P64N5C1T5CGXRENCEAR.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/),  [Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/),  [Henry Aspegren (OpenAI)](https://blog.cloudflare.com/author/henry-aspegren/), and  [James Balfour (OpenAI)](https://blog.cloudflare.com/author/james-balfour/)
 
 Load more
 
