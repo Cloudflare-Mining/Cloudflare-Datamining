@@ -1,5 +1,5 @@
 ---
-title: Website Under Attack? | 24/7 Emergency Support
+title: Website Under Attack? | 24/7 Emergency Support 
 description: Protect against ongoing cyber attacks within minutes with Cloudflare. Get emergency support for DDoS, ransomware, and application attacks.
 image: https://www.cloudflare.com/preview.png
 ---
@@ -8,21 +8,21 @@ image: https://www.cloudflare.com/preview.png
 
 ##  Comprehensive protection against cyber attacks 
 
-###### Multi-vector attack defense
+######  Multi-vector attack defense 
 
-Cloudflare can protect you against DDoS, ransomware, identity or access, network, web and application attacks.
+ Cloudflare can protect you against DDoS, ransomware, identity or access, network, web and application attacks. 
 
-###### Unified security & performance
+######  Unified security & performance 
 
-DDoS + WAF + CDN and other security and performance functions are all built on the same global network. Deploy in minutes, not weeks.
+ DDoS + WAF + CDN and other security and performance functions are all built on the same global network. Deploy in minutes, not weeks. 
 
-###### Zero Trust security
+######  Zero Trust security 
 
-Keep known and unknown threats away from your apps, user devices, network, and email accounts. Threat intelligence derived from 1+ trillion daily DNS requests.
+ Keep known and unknown threats away from your apps, user devices, network, and email accounts. Threat intelligence derived from 1+ trillion daily DNS requests. 
 
-###### Largest global DDoS mitigation network
+######  Largest global DDoS mitigation network 
 
-Cloudflare's network has 330+ data centers across the globe. That's five times more than key competitors. Block DDoS attacks of any size and kind.
+ Cloudflare's network has 330+ data centers across the globe. That's five times more than key competitors. Block DDoS attacks of any size and kind. 
 
 Loading form
 
@@ -105,5 +105,5 @@ Reduce cost and complexity. Augment existing applications or create new ones wit
 ```json
 {"@context":"https://schema.org","@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com","logo":"https://www.cloudflare.com/logo.svg","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"]}
 {"@context":"https://schema.org","@type":"WebSite","name":"Cloudflare","url":"https://www.cloudflare.com","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://www.cloudflare.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
-{"@context":"https://schema.org","@type":"WebPage","name":"Website Under Attack? | 24/7 Emergency Support","description":"Protect against ongoing cyber attacks within minutes with Cloudflare. Get emergency support for DDoS, ransomware, and application attacks.","url":"https://www.cloudflare.com/under-attack-hotline/","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"WebPage","name":"Website Under Attack? | 24/7 Emergency Support ","description":"Protect against ongoing cyber attacks within minutes with Cloudflare. Get emergency support for DDoS, ransomware, and application attacks.","url":"https://www.cloudflare.com/under-attack-hotline/","inLanguage":"en"}
 ```
