@@ -371,6 +371,7 @@
 			"nodejs_compat_v2": "boolean",
 			"nodejs_zlib": "boolean",
 			"nonclass_entrypoint_reuses_ctx_across_invocations": "boolean",
+			"offpeak_location_hint": "boolean",
 			"pedantic_wpt": "boolean",
 			"pipe_to_backward_propagation": "boolean",
 			"precise_timers": "boolean",
@@ -380,6 +381,7 @@
 			"python_no_global_handlers": "boolean",
 			"python_process_pth_files": "boolean",
 			"python_request_headers_preserve_commas": "boolean",
+			"python_shared_standard_library": "boolean",
 			"python_workers": "boolean",
 			"python_workers_20250116": "boolean",
 			"python_workers_20260610": "boolean",
@@ -441,6 +443,7 @@
 			"vectorize_query_metadata_optional": "boolean",
 			"wasm_esm_integration_builtins": "boolean",
 			"wasm_memory_discard": "boolean",
+			"wasm_source_url_support": "boolean",
 			"web_socket_auto_reply_to_close": "boolean",
 			"web_socket_compression": "boolean",
 			"webcrypto_modern_algorithms": "boolean",
@@ -16198,60 +16201,6 @@
 				"length": "number",
 				"name": "string",
 				"_prototype": {
-					"delete": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"get": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"has": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"set": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"entries": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"keys": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"values": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"toString": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
-					"toJSON": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string"
-					},
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
@@ -16262,7 +16211,7 @@
 				"__type": "function",
 				"length": "number",
 				"name": "string",
-				"_prototype": "object"
+				"_prototype": {}
 			},
 			"toUSVString": {
 				"__proto": "function",
