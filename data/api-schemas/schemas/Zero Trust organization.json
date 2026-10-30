@@ -1,4 +1,285 @@
 {
+	"DELETE /accounts/{account_id}/access/organizations/trust_settings": {
+		"operationId": "zero-trust-organization-delete-trust-settings",
+		"summary": "Delete Zero Trust organization trust settings",
+		"description": "Resets the trust settings for your Zero Trust organization.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Reset Zero Trust organization trust settings",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"grant_trust_to_all_accounts_in_org": {
+													"description": "Whether all accounts in the organization are trusted to use this account's cross-account Access resources.",
+													"type": "boolean",
+													"example": false,
+													"x-auditable": true
+												},
+												"trusting_accounts": {
+													"description": "Explicit account IDs trusted to use this account's cross-account Access resources. At most 100 unique valid account IDs are accepted. Omitted from responses when empty.",
+													"type": "array",
+													"items": {
+														"pattern": "^[0-9a-fA-F]{32}$",
+														"type": "string"
+													},
+													"example": [
+														"023e105f4ecef8ad9ca31a8372d0c353"
+													],
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"grant_trust_to_all_accounts_in_org"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failed to reset Zero Trust organization trust settings",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zero Trust organization"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.organization.trust-settings",
+		"x-fern-sdk-method-name": "delete"
+	},
 	"GET /accounts/{account_id}/access/organizations": {
 		"operationId": "zero-trust-organization-get-your-zero-trust-organization",
 		"summary": "Get your Zero Trust organization",
@@ -806,6 +1087,20 @@
 															"description": "The name of the service token.",
 															"type": "string",
 															"example": "CI/CD token",
+															"x-auditable": true
+														},
+														"tags": {
+															"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
+															"type": "object",
+															"example": {
+																"environment": "production"
+															},
+															"additionalProperties": {
+																"maxLength": 256,
+																"type": "string"
+															},
+															"maxProperties": 5,
+															"nullable": true,
 															"x-auditable": true
 														},
 														"updated_at": {
@@ -3777,6 +4072,20 @@
 															"description": "The name of the service token.",
 															"type": "string",
 															"example": "CI/CD token",
+															"x-auditable": true
+														},
+														"tags": {
+															"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
+															"type": "object",
+															"example": {
+																"environment": "production"
+															},
+															"additionalProperties": {
+																"maxLength": 256,
+																"type": "string"
+															},
+															"maxProperties": 5,
+															"nullable": true,
 															"x-auditable": true
 														},
 														"updated_at": {

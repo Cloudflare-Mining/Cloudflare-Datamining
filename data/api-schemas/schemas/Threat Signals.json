@@ -4956,7 +4956,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/reprocess": {
 		"operationId": "rssArticleReprocess",
 		"summary": "Reprocess a Threat Signals article",
-		"description": "Synchronously re-runs every processing step for a Threat Signals article: content acquisition, summary, indicator extraction, CVE tags, IOC context, and default tags. Replaces the article's summary, AI tags, and indicators; indicators no longer found are removed. Creates a Threat Event only when the article has none; an existing Event is never updated. Takes over the article from any queued processing. Requires a paid Threat Signals subscription and the Cloudforce One Write permission.",
+		"description": "Synchronously re-runs every processing step for a Threat Signals article: pull content, clean content, extract IOCs, filter IOCs, summary, CVE tags, IOC context, article tags, and Event publication. Replaces the article's summary, AI tags, and indicators; indicators no longer found are removed. Creates a Threat Event only when the article has none; an existing Event is never updated. Takes over the article from any queued processing. Requires a paid Threat Signals subscription and the Cloudforce One Write permission.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5133,9 +5133,11 @@
 													"step": {
 														"type": "string",
 														"enum": [
-															"content",
+															"pull",
+															"clean",
+															"extract",
+															"filter",
 															"summary",
-															"indicators",
 															"cves",
 															"ioc_context",
 															"tags",

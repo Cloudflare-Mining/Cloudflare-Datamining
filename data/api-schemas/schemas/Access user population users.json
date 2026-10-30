@@ -1047,7 +1047,28 @@
 										"path": {
 											"type": "string"
 										},
-										"value": {}
+										"value": {
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"type": "object"
+												}
+											]
+										}
 									},
 									"required": [
 										"op"
@@ -1086,7 +1107,28 @@
 										"path": {
 											"type": "string"
 										},
-										"value": {}
+										"value": {
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"type": "object"
+												}
+											]
+										}
 									},
 									"required": [
 										"op"

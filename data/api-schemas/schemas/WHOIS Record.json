@@ -451,505 +451,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Returns a boolean for the success/failure of the API call.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													]
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"allOf": [
-														{
-															"type": "object",
-															"properties": {
-																"administrative_city": {
-																	"type": "string"
-																},
-																"administrative_country": {
-																	"type": "string"
-																},
-																"administrative_email": {
-																	"type": "string"
-																},
-																"administrative_fax": {
-																	"type": "string"
-																},
-																"administrative_fax_ext": {
-																	"type": "string"
-																},
-																"administrative_id": {
-																	"type": "string"
-																},
-																"administrative_name": {
-																	"type": "string"
-																},
-																"administrative_org": {
-																	"type": "string"
-																},
-																"administrative_phone": {
-																	"type": "string"
-																},
-																"administrative_phone_ext": {
-																	"type": "string"
-																},
-																"administrative_postal_code": {
-																	"type": "string"
-																},
-																"administrative_province": {
-																	"type": "string"
-																},
-																"administrative_referral_url": {
-																	"type": "string"
-																},
-																"administrative_street": {
-																	"type": "string"
-																},
-																"billing_city": {
-																	"type": "string"
-																},
-																"billing_country": {
-																	"type": "string"
-																},
-																"billing_email": {
-																	"type": "string"
-																},
-																"billing_fax": {
-																	"type": "string"
-																},
-																"billing_fax_ext": {
-																	"type": "string"
-																},
-																"billing_id": {
-																	"type": "string"
-																},
-																"billing_name": {
-																	"type": "string"
-																},
-																"billing_org": {
-																	"type": "string"
-																},
-																"billing_phone": {
-																	"type": "string"
-																},
-																"billing_phone_ext": {
-																	"type": "string"
-																},
-																"billing_postal_code": {
-																	"type": "string"
-																},
-																"billing_province": {
-																	"type": "string"
-																},
-																"billing_referral_url": {
-																	"type": "string"
-																},
-																"billing_street": {
-																	"type": "string"
-																},
-																"created_date": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2009-02-17T22:07:54Z"
-																},
-																"created_date_raw": {
-																	"type": "string",
-																	"example": "2009-02-17T22:07:54Z"
-																},
-																"dnssec": {
-																	"type": "boolean",
-																	"example": true
-																},
-																"domain": {
-																	"type": "string",
-																	"example": "cloudflare.com"
-																},
-																"expiration_date": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2033-02-17T22:07:54Z"
-																},
-																"expiration_date_raw": {
-																	"type": "string",
-																	"example": "2033-02-17T22:07:54Z"
-																},
-																"extension": {
-																	"type": "string",
-																	"example": "com"
-																},
-																"found": {
-																	"type": "boolean",
-																	"example": true
-																},
-																"id": {
-																	"type": "string",
-																	"example": "1542998887_DOMAIN_COM-VRSN"
-																},
-																"nameservers": {
-																	"type": "array",
-																	"items": {
-																		"type": "string"
-																	},
-																	"example": [
-																		"ns3.cloudflare.com",
-																		"ns4.cloudflare.com",
-																		"ns5.cloudflare.com",
-																		"ns6.cloudflare.com",
-																		"ns7.cloudflare.com"
-																	]
-																},
-																"punycode": {
-																	"type": "string",
-																	"example": "cloudflare.com"
-																},
-																"registrant": {
-																	"type": "string"
-																},
-																"registrant_city": {
-																	"type": "string"
-																},
-																"registrant_country": {
-																	"type": "string"
-																},
-																"registrant_email": {
-																	"type": "string"
-																},
-																"registrant_fax": {
-																	"type": "string"
-																},
-																"registrant_fax_ext": {
-																	"type": "string"
-																},
-																"registrant_id": {
-																	"type": "string"
-																},
-																"registrant_name": {
-																	"type": "string"
-																},
-																"registrant_org": {
-																	"type": "string"
-																},
-																"registrant_phone": {
-																	"type": "string"
-																},
-																"registrant_phone_ext": {
-																	"type": "string"
-																},
-																"registrant_postal_code": {
-																	"type": "string"
-																},
-																"registrant_province": {
-																	"type": "string"
-																},
-																"registrant_referral_url": {
-																	"type": "string"
-																},
-																"registrant_street": {
-																	"type": "string"
-																},
-																"registrar": {
-																	"type": "string",
-																	"example": "Cloudflare, Inc."
-																},
-																"registrar_city": {
-																	"type": "string"
-																},
-																"registrar_country": {
-																	"type": "string"
-																},
-																"registrar_email": {
-																	"type": "string"
-																},
-																"registrar_fax": {
-																	"type": "string"
-																},
-																"registrar_fax_ext": {
-																	"type": "string"
-																},
-																"registrar_id": {
-																	"type": "string"
-																},
-																"registrar_name": {
-																	"type": "string"
-																},
-																"registrar_org": {
-																	"type": "string"
-																},
-																"registrar_phone": {
-																	"type": "string"
-																},
-																"registrar_phone_ext": {
-																	"type": "string"
-																},
-																"registrar_postal_code": {
-																	"type": "string"
-																},
-																"registrar_province": {
-																	"type": "string"
-																},
-																"registrar_referral_url": {
-																	"type": "string"
-																},
-																"registrar_street": {
-																	"type": "string"
-																},
-																"status": {
-																	"type": "array",
-																	"items": {
-																		"type": "string"
-																	},
-																	"example": [
-																		"clientdeleteprohibited",
-																		"clienttransferprohibited",
-																		"clientupdateprohibited",
-																		"serverdeleteprohibited",
-																		"servertransferprohibited",
-																		"serverupdateprohibited"
-																	]
-																},
-																"technical_city": {
-																	"type": "string"
-																},
-																"technical_country": {
-																	"type": "string"
-																},
-																"technical_email": {
-																	"type": "string"
-																},
-																"technical_fax": {
-																	"type": "string"
-																},
-																"technical_fax_ext": {
-																	"type": "string"
-																},
-																"technical_id": {
-																	"type": "string"
-																},
-																"technical_name": {
-																	"type": "string"
-																},
-																"technical_org": {
-																	"type": "string"
-																},
-																"technical_phone": {
-																	"type": "string"
-																},
-																"technical_phone_ext": {
-																	"type": "string"
-																},
-																"technical_postal_code": {
-																	"type": "string"
-																},
-																"technical_province": {
-																	"type": "string"
-																},
-																"technical_referral_url": {
-																	"type": "string"
-																},
-																"technical_street": {
-																	"type": "string"
-																},
-																"updated_date": {
-																	"type": "string",
-																	"format": "date-time",
-																	"example": "2024-01-09T16:45:28Z"
-																},
-																"updated_date_raw": {
-																	"type": "string",
-																	"example": "2024-01-09T16:45:28Z"
-																},
-																"whois_server": {
-																	"type": "string",
-																	"example": "whois.cloudflare.com"
-																}
-															},
-															"required": [
-																"found",
-																"domain",
-																"dnssec",
-																"extension",
-																"nameservers",
-																"punycode",
-																"registrar",
-																"registrant"
-															]
-														}
-													]
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Returns a boolean for the success/failure of the API call.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Returns a boolean for the success/failure of the API call.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -974,7 +556,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.whois",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	}
 }

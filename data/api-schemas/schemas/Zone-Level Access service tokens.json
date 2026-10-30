@@ -203,6 +203,20 @@
 													"type": "string",
 													"example": "CI/CD token"
 												},
+												"tags": {
+													"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
+													"type": "object",
+													"example": {
+														"environment": "production"
+													},
+													"additionalProperties": {
+														"maxLength": 256,
+														"type": "string"
+													},
+													"maxProperties": 5,
+													"nullable": true,
+													"x-auditable": true
+												},
 												"updated_at": {
 													"type": "string",
 													"format": "date-time",
@@ -582,6 +596,20 @@
 														"type": "string",
 														"example": "CI/CD token"
 													},
+													"tags": {
+														"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
+														"type": "object",
+														"example": {
+															"environment": "production"
+														},
+														"additionalProperties": {
+															"maxLength": 256,
+															"type": "string"
+														},
+														"maxProperties": 5,
+														"nullable": true,
+														"x-auditable": true
+													},
 													"updated_at": {
 														"type": "string",
 														"format": "date-time",
@@ -938,6 +966,20 @@
 													"type": "string",
 													"example": "CI/CD token"
 												},
+												"tags": {
+													"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
+													"type": "object",
+													"example": {
+														"environment": "production"
+													},
+													"additionalProperties": {
+														"maxLength": 256,
+														"type": "string"
+													},
+													"maxProperties": 5,
+													"nullable": true,
+													"x-auditable": true
+												},
 												"updated_at": {
 													"type": "string",
 													"format": "date-time",
@@ -1142,6 +1184,20 @@
 								"format": "date-time",
 								"example": "2014-01-01T05:20:00.12345Z",
 								"x-auditable": true
+							},
+							"tags": {
+								"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
+								"type": "object",
+								"example": {
+									"environment": "production"
+								},
+								"additionalProperties": {
+									"maxLength": 256,
+									"type": "string"
+								},
+								"maxProperties": 5,
+								"nullable": true,
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1287,6 +1343,20 @@
 													"description": "The name of the service token.",
 													"type": "string",
 													"example": "CI/CD token"
+												},
+												"tags": {
+													"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
+													"type": "object",
+													"example": {
+														"environment": "production"
+													},
+													"additionalProperties": {
+														"maxLength": 256,
+														"type": "string"
+													},
+													"maxProperties": 5,
+													"nullable": true,
+													"x-auditable": true
 												},
 												"updated_at": {
 													"type": "string",
@@ -1503,6 +1573,20 @@
 								"format": "date-time",
 								"example": "2014-01-01T05:20:00.12345Z",
 								"x-auditable": true
+							},
+							"tags": {
+								"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
+								"type": "object",
+								"example": {
+									"environment": "production"
+								},
+								"additionalProperties": {
+									"maxLength": 256,
+									"type": "string"
+								},
+								"maxProperties": 5,
+								"nullable": true,
+								"x-auditable": true
 							}
 						}
 					}
@@ -1682,6 +1766,20 @@
 													"description": "The name of the service token.",
 													"type": "string",
 													"example": "CI/CD token"
+												},
+												"tags": {
+													"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
+													"type": "object",
+													"example": {
+														"environment": "production"
+													},
+													"additionalProperties": {
+														"maxLength": 256,
+														"type": "string"
+													},
+													"maxProperties": 5,
+													"nullable": true,
+													"x-auditable": true
 												},
 												"updated_at": {
 													"type": "string",

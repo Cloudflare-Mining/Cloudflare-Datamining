@@ -1481,6 +1481,39 @@
 																		"title": "Service Token"
 																	},
 																	{
+																		"description": "Matches an Access service token with the specified tag key and value. Only compatible with non_identity decisions.",
+																		"type": "object",
+																		"properties": {
+																			"service_token_tag": {
+																				"type": "object",
+																				"properties": {
+																					"key": {
+																						"description": "The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.",
+																						"type": "string",
+																						"example": "environment",
+																						"maxLength": 256,
+																						"minLength": 1
+																					},
+																					"value": {
+																						"description": "The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.",
+																						"type": "string",
+																						"example": "production",
+																						"maxLength": 256,
+																						"minLength": 1
+																					}
+																				},
+																				"required": [
+																					"key",
+																					"value"
+																				]
+																			}
+																		},
+																		"required": [
+																			"service_token_tag"
+																		],
+																		"title": "Service Token Tag"
+																	},
+																	{
 																		"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
 																		"type": "object",
 																		"properties": {
@@ -2165,6 +2198,39 @@
 																			"service_token"
 																		],
 																		"title": "Service Token"
+																	},
+																	{
+																		"description": "Matches an Access service token with the specified tag key and value. Only compatible with non_identity decisions.",
+																		"type": "object",
+																		"properties": {
+																			"service_token_tag": {
+																				"type": "object",
+																				"properties": {
+																					"key": {
+																						"description": "The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.",
+																						"type": "string",
+																						"example": "environment",
+																						"maxLength": 256,
+																						"minLength": 1
+																					},
+																					"value": {
+																						"description": "The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.",
+																						"type": "string",
+																						"example": "production",
+																						"maxLength": 256,
+																						"minLength": 1
+																					}
+																				},
+																				"required": [
+																					"key",
+																					"value"
+																				]
+																			}
+																		},
+																		"required": [
+																			"service_token_tag"
+																		],
+																		"title": "Service Token Tag"
 																	},
 																	{
 																		"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
@@ -2860,6 +2926,39 @@
 																			"service_token"
 																		],
 																		"title": "Service Token"
+																	},
+																	{
+																		"description": "Matches an Access service token with the specified tag key and value. Only compatible with non_identity decisions.",
+																		"type": "object",
+																		"properties": {
+																			"service_token_tag": {
+																				"type": "object",
+																				"properties": {
+																					"key": {
+																						"description": "The tag key to match. Keys are case-sensitive and may contain Unicode letters and digits, underscores, periods, and hyphens.",
+																						"type": "string",
+																						"example": "environment",
+																						"maxLength": 256,
+																						"minLength": 1
+																					},
+																					"value": {
+																						"description": "The tag value to match. Values are case-sensitive, preserve whitespace, and must not contain NUL characters.",
+																						"type": "string",
+																						"example": "production",
+																						"maxLength": 256,
+																						"minLength": 1
+																					}
+																				},
+																				"required": [
+																					"key",
+																					"value"
+																				]
+																			}
+																		},
+																		"required": [
+																			"service_token_tag"
+																		],
+																		"title": "Service Token Tag"
 																	},
 																	{
 																		"description": "Matches OAuth 2.0 access tokens issued by the specified Access OIDC SaaS application. Only compatible with non_identity and bypass decisions.",
