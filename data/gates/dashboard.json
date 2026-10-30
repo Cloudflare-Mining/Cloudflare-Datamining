@@ -107,7 +107,7 @@
 		"enabled": true
 	},
 	"ai-auto-rag-d1-source": {
-		"enabled": false
+		"enabled": true
 	},
 	"ai-auto-rag-disable-max-num-rules": {
 		"enabled": true
@@ -203,7 +203,7 @@
 		"enabled": true
 	},
 	"aig-fed-dashboard": {
-		"enabled": false
+		"enabled": true
 	},
 	"aig-force-authenticated-gateways": {
 		"enabled": false
@@ -1950,7 +1950,7 @@
 		"enabled": true
 	},
 	"markdown-for-agents-playground": {
-		"enabled": false
+		"enabled": true
 	},
 	"markdown-to-agents": {
 		"enabled": true
@@ -2210,7 +2210,8 @@
 		"branches": [
 			"baseline",
 			"variant-a",
-			"variant-b"
+			"variant-b",
+			"variant-c"
 		]
 	},
 	"prg-domain-success-page-experiment": {
