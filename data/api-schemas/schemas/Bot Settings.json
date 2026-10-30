@@ -121,6 +121,65 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_agents": {
+																			"description": "Configure blocking behavior for supported personal AI agents.",
+																			"type": "object",
+																			"properties": {
+																				"anthropic_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"google_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"instinct": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"muse": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"openai_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				}
+																			},
+																			"additionalProperties": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_migration_opt_out": {
 																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 																			"type": "boolean",
@@ -323,6 +382,65 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_agents": {
+																			"description": "Configure blocking behavior for supported personal AI agents.",
+																			"type": "object",
+																			"properties": {
+																				"anthropic_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"google_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"instinct": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"muse": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"openai_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				}
+																			},
+																			"additionalProperties": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_migration_opt_out": {
 																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 																			"type": "boolean",
@@ -529,6 +647,65 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_agents": {
+																			"description": "Configure blocking behavior for supported personal AI agents.",
+																			"type": "object",
+																			"properties": {
+																				"anthropic_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"google_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"instinct": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"muse": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"openai_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				}
+																			},
+																			"additionalProperties": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_migration_opt_out": {
 																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 																			"type": "boolean",
@@ -741,6 +918,65 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_agents": {
+																			"description": "Configure blocking behavior for supported personal AI agents.",
+																			"type": "object",
+																			"properties": {
+																				"anthropic_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"google_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"instinct": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"muse": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"openai_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				}
+																			},
+																			"additionalProperties": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_migration_opt_out": {
 																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 																			"type": "boolean",
@@ -1132,6 +1368,65 @@
 										"allOf": [
 											{
 												"properties": {
+													"ai_agents": {
+														"description": "Configure blocking behavior for supported personal AI agents.",
+														"type": "object",
+														"properties": {
+															"anthropic_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"google_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"instinct": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"muse": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"openai_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															}
+														},
+														"additionalProperties": false,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"ai_bots_migration_opt_out": {
 														"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 														"type": "boolean",
@@ -1334,6 +1629,65 @@
 										"allOf": [
 											{
 												"properties": {
+													"ai_agents": {
+														"description": "Configure blocking behavior for supported personal AI agents.",
+														"type": "object",
+														"properties": {
+															"anthropic_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"google_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"instinct": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"muse": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"openai_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															}
+														},
+														"additionalProperties": false,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"ai_bots_migration_opt_out": {
 														"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 														"type": "boolean",
@@ -1540,6 +1894,65 @@
 										"allOf": [
 											{
 												"properties": {
+													"ai_agents": {
+														"description": "Configure blocking behavior for supported personal AI agents.",
+														"type": "object",
+														"properties": {
+															"anthropic_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"google_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"instinct": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"muse": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"openai_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															}
+														},
+														"additionalProperties": false,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"ai_bots_migration_opt_out": {
 														"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 														"type": "boolean",
@@ -1752,6 +2165,65 @@
 										"allOf": [
 											{
 												"properties": {
+													"ai_agents": {
+														"description": "Configure blocking behavior for supported personal AI agents.",
+														"type": "object",
+														"properties": {
+															"anthropic_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"google_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"instinct": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"muse": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															},
+															"openai_agent": {
+																"description": "Action to apply to one supported personal AI agent.",
+																"type": "string",
+																"example": "block",
+																"enum": [
+																	"disabled",
+																	"block",
+																	"only_on_ad_pages"
+																]
+															}
+														},
+														"additionalProperties": false,
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"ai_bots_migration_opt_out": {
 														"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 														"type": "boolean",
@@ -2071,6 +2543,65 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_agents": {
+																			"description": "Configure blocking behavior for supported personal AI agents.",
+																			"type": "object",
+																			"properties": {
+																				"anthropic_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"google_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"instinct": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"muse": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"openai_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				}
+																			},
+																			"additionalProperties": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_migration_opt_out": {
 																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 																			"type": "boolean",
@@ -2273,6 +2804,65 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_agents": {
+																			"description": "Configure blocking behavior for supported personal AI agents.",
+																			"type": "object",
+																			"properties": {
+																				"anthropic_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"google_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"instinct": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"muse": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"openai_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				}
+																			},
+																			"additionalProperties": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_migration_opt_out": {
 																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 																			"type": "boolean",
@@ -2479,6 +3069,65 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_agents": {
+																			"description": "Configure blocking behavior for supported personal AI agents.",
+																			"type": "object",
+																			"properties": {
+																				"anthropic_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"google_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"instinct": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"muse": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"openai_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				}
+																			},
+																			"additionalProperties": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_migration_opt_out": {
 																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 																			"type": "boolean",
@@ -2691,6 +3340,65 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"ai_agents": {
+																			"description": "Configure blocking behavior for supported personal AI agents.",
+																			"type": "object",
+																			"properties": {
+																				"anthropic_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"google_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"instinct": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"muse": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				},
+																				"openai_agent": {
+																					"description": "Action to apply to one supported personal AI agent.",
+																					"type": "string",
+																					"example": "block",
+																					"enum": [
+																						"disabled",
+																						"block",
+																						"only_on_ad_pages"
+																					]
+																				}
+																			},
+																			"additionalProperties": false,
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
 																		"ai_bots_migration_opt_out": {
 																			"description": "Temporary migration flag tracking zones opted out of AI bots managed-rule updates.",
 																			"type": "boolean",

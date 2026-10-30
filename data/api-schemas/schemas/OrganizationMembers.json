@@ -30,11 +30,69 @@
 			}
 		],
 		"responses": {
-			"204": {
-				"description": "There is no content to send for this request, but the headers may be useful."
+			"200": {
+				"description": "The request has succeeded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"id"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
-				"description": "An unexpected error response.",
+				"description": "The request failed due to a client error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -77,7 +135,71 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "The request failed due to a server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean",
@@ -108,7 +230,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organization.member",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Delete this organization membership? The member will lose access to this organization and its sub-organizations."
 	},
 	"GET /organizations/{organization_id}/members": {
@@ -143,7 +264,9 @@
 						],
 						"type": "string"
 					}
-				}
+				},
+				"explode": true,
+				"style": "form"
 			},
 			{
 				"name": "user.email",
@@ -257,6 +380,61 @@
 													"type": "object"
 												}
 											},
+											"policies": {
+												"description": "Direct policies of the membership. Present only for DSR members enrolled in Organization Roles.",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"description": "Omit to create a policy. An unchanged policy keeps its ID; a changed policy is replaced under a new ID.",
+															"type": "string"
+														},
+														"roles": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																]
+															},
+															"maxItems": 10,
+															"minItems": 1
+														},
+														"scopes": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"key": {
+																		"description": "An Organization (`com.cloudflare.api.tenant.unit.<tag>`) or Account (`com.cloudflare.api.account.<tag>`) key.",
+																		"type": "string"
+																	},
+																	"subset_of": {
+																		"description": "The route Organization for Account scopes. Optional in requests and always returned for Account scopes.",
+																		"type": "array",
+																		"items": "[Circular ~.GET /organizations/{organization_id}/members.responses.200.content.application/json.schema.properties.result.items.properties.policies.items.properties.scopes.items]"
+																	}
+																},
+																"required": [
+																	"key"
+																]
+															},
+															"maxItems": 10,
+															"minItems": 1
+														}
+													},
+													"required": [
+														"roles",
+														"scopes"
+													]
+												}
+											},
 											"status": {
 												"type": "string",
 												"enum": [
@@ -341,7 +519,7 @@
 				}
 			},
 			"4XX": {
-				"description": "An unexpected error response.",
+				"description": "The request failed due to a client error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -384,7 +562,71 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "The request failed due to a server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean",
@@ -414,8 +656,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organization.member",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /organizations/{organization_id}/members/{member_id}": {
 		"operationId": "Members_retrieve",
@@ -500,6 +741,61 @@
 												"type": "object"
 											}
 										},
+										"policies": {
+											"description": "Direct policies of the membership. Present only for DSR members enrolled in Organization Roles.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"description": "Omit to create a policy. An unchanged policy keeps its ID; a changed policy is replaced under a new ID.",
+														"type": "string"
+													},
+													"roles": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															]
+														},
+														"maxItems": 10,
+														"minItems": 1
+													},
+													"scopes": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"key": {
+																	"description": "An Organization (`com.cloudflare.api.tenant.unit.<tag>`) or Account (`com.cloudflare.api.account.<tag>`) key.",
+																	"type": "string"
+																},
+																"subset_of": {
+																	"description": "The route Organization for Account scopes. Optional in requests and always returned for Account scopes.",
+																	"type": "array",
+																	"items": "[Circular ~.GET /organizations/{organization_id}/members/{member_id}.responses.200.content.application/json.schema.properties.result.properties.policies.items.properties.scopes.items]"
+																}
+															},
+															"required": [
+																"key"
+															]
+														},
+														"maxItems": 10,
+														"minItems": 1
+													}
+												},
+												"required": [
+													"roles",
+													"scopes"
+												]
+											}
+										},
 										"status": {
 											"type": "string",
 											"enum": [
@@ -569,7 +865,7 @@
 				}
 			},
 			"4XX": {
-				"description": "An unexpected error response.",
+				"description": "The request failed due to a client error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -612,7 +908,71 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "The request failed due to a server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean",
@@ -642,8 +1002,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organization.member",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /organizations/{organization_id}/members": {
 		"operationId": "Members_create",
@@ -673,14 +1032,6 @@
 							"member": {
 								"type": "object",
 								"properties": {
-									"status": {
-										"type": "string",
-										"enum": [
-											"active",
-											"canceled"
-										],
-										"x-auditable": true
-									},
 									"user": {
 										"type": "object",
 										"properties": {
@@ -759,6 +1110,61 @@
 												"type": "object"
 											}
 										},
+										"policies": {
+											"description": "Direct policies of the membership. Present only for DSR members enrolled in Organization Roles.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"description": "Omit to create a policy. An unchanged policy keeps its ID; a changed policy is replaced under a new ID.",
+														"type": "string"
+													},
+													"roles": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															]
+														},
+														"maxItems": 10,
+														"minItems": 1
+													},
+													"scopes": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"key": {
+																	"description": "An Organization (`com.cloudflare.api.tenant.unit.<tag>`) or Account (`com.cloudflare.api.account.<tag>`) key.",
+																	"type": "string"
+																},
+																"subset_of": {
+																	"description": "The route Organization for Account scopes. Optional in requests and always returned for Account scopes.",
+																	"type": "array",
+																	"items": "[Circular ~.POST /organizations/{organization_id}/members.responses.200.content.application/json.schema.properties.result.properties.policies.items.properties.scopes.items]"
+																}
+															},
+															"required": [
+																"key"
+															]
+														},
+														"maxItems": 10,
+														"minItems": 1
+													}
+												},
+												"required": [
+													"roles",
+													"scopes"
+												]
+											}
+										},
 										"status": {
 											"type": "string",
 											"enum": [
@@ -828,7 +1234,7 @@
 				}
 			},
 			"4XX": {
-				"description": "An unexpected error response.",
+				"description": "The request failed due to a client error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -871,7 +1277,71 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "The request failed due to a server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean",
@@ -901,8 +1371,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organization.member",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /organizations/{organization_id}/members:batchCreate": {
 		"operationId": "Members_batchCreate",
@@ -930,18 +1399,11 @@
 						"type": "object",
 						"properties": {
 							"members": {
+								"description": "Omitted or null members are treated as an empty batch.",
 								"type": "array",
 								"items": {
 									"type": "object",
 									"properties": {
-										"status": {
-											"type": "string",
-											"enum": [
-												"active",
-												"canceled"
-											],
-											"x-auditable": true
-										},
 										"user": {
 											"type": "object",
 											"properties": {
@@ -959,12 +1421,10 @@
 										"user"
 									]
 								},
-								"maxItems": 10
+								"maxItems": 10,
+								"nullable": true
 							}
-						},
-						"required": [
-							"members"
-						]
+						}
 					}
 				}
 			}
@@ -1022,6 +1482,61 @@
 												"type": "object",
 												"additionalProperties": {
 													"type": "object"
+												}
+											},
+											"policies": {
+												"description": "Direct policies of the membership. Present only for DSR members enrolled in Organization Roles.",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"description": "Omit to create a policy. An unchanged policy keeps its ID; a changed policy is replaced under a new ID.",
+															"type": "string"
+														},
+														"roles": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																]
+															},
+															"maxItems": 10,
+															"minItems": 1
+														},
+														"scopes": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"key": {
+																		"description": "An Organization (`com.cloudflare.api.tenant.unit.<tag>`) or Account (`com.cloudflare.api.account.<tag>`) key.",
+																		"type": "string"
+																	},
+																	"subset_of": {
+																		"description": "The route Organization for Account scopes. Optional in requests and always returned for Account scopes.",
+																		"type": "array",
+																		"items": "[Circular ~.POST /organizations/{organization_id}/members:batchCreate.responses.200.content.application/json.schema.properties.result.items.properties.policies.items.properties.scopes.items]"
+																	}
+																},
+																"required": [
+																	"key"
+																]
+															},
+															"maxItems": 10,
+															"minItems": 1
+														}
+													},
+													"required": [
+														"roles",
+														"scopes"
+													]
 												}
 											},
 											"status": {
@@ -1094,7 +1609,7 @@
 				}
 			},
 			"4XX": {
-				"description": "An unexpected error response.",
+				"description": "The request failed due to a client error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1137,7 +1652,71 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "The request failed due to a server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean",
@@ -1167,7 +1746,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organization.member.batch",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

@@ -192,6 +192,29 @@
 													"type": "integer",
 													"example": 1
 												},
+												"remote_subnets": {
+													"type": "array",
+													"items": {
+														"description": "A remote subnet reachable through Cloudflare that is addressed from this LAN by a local alias prefix of the same size. The local alias prefix must not overlap other subnets on the LAN, and the remote prefix must not overlap other remote prefixes on the LAN.",
+														"type": "object",
+														"properties": {
+															"local_alias_prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"type": "string",
+																"example": "192.0.2.0/24"
+															},
+															"remote_prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"type": "string",
+																"example": "192.0.2.0/24"
+															}
+														},
+														"required": [
+															"remote_prefix",
+															"local_alias_prefix"
+														]
+													}
+												},
 												"routed_subnets": {
 													"type": "array",
 													"items": {
@@ -675,6 +698,29 @@
 													"physport": {
 														"type": "integer",
 														"example": 1
+													},
+													"remote_subnets": {
+														"type": "array",
+														"items": {
+															"description": "A remote subnet reachable through Cloudflare that is addressed from this LAN by a local alias prefix of the same size. The local alias prefix must not overlap other subnets on the LAN, and the remote prefix must not overlap other remote prefixes on the LAN.",
+															"type": "object",
+															"properties": {
+																"local_alias_prefix": {
+																	"description": "A valid CIDR notation representing an IP range.",
+																	"type": "string",
+																	"example": "192.0.2.0/24"
+																},
+																"remote_prefix": {
+																	"description": "A valid CIDR notation representing an IP range.",
+																	"type": "string",
+																	"example": "192.0.2.0/24"
+																}
+															},
+															"required": [
+																"remote_prefix",
+																"local_alias_prefix"
+															]
+														}
 													},
 													"routed_subnets": {
 														"type": "array",
@@ -1168,6 +1214,29 @@
 													"type": "integer",
 													"example": 1
 												},
+												"remote_subnets": {
+													"type": "array",
+													"items": {
+														"description": "A remote subnet reachable through Cloudflare that is addressed from this LAN by a local alias prefix of the same size. The local alias prefix must not overlap other subnets on the LAN, and the remote prefix must not overlap other remote prefixes on the LAN.",
+														"type": "object",
+														"properties": {
+															"local_alias_prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"type": "string",
+																"example": "192.0.2.0/24"
+															},
+															"remote_prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"type": "string",
+																"example": "192.0.2.0/24"
+															}
+														},
+														"required": [
+															"remote_prefix",
+															"local_alias_prefix"
+														]
+													}
+												},
 												"routed_subnets": {
 													"type": "array",
 													"items": {
@@ -1553,6 +1622,29 @@
 								"type": "integer",
 								"example": 1
 							},
+							"remote_subnets": {
+								"type": "array",
+								"items": {
+									"description": "A remote subnet reachable through Cloudflare that is addressed from this LAN by a local alias prefix of the same size. The local alias prefix must not overlap other subnets on the LAN, and the remote prefix must not overlap other remote prefixes on the LAN.",
+									"type": "object",
+									"properties": {
+										"local_alias_prefix": {
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										},
+										"remote_prefix": {
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										}
+									},
+									"required": [
+										"remote_prefix",
+										"local_alias_prefix"
+									]
+								}
+							},
 							"routed_subnets": {
 								"type": "array",
 								"items": {
@@ -1871,6 +1963,29 @@
 												"physport": {
 													"type": "integer",
 													"example": 1
+												},
+												"remote_subnets": {
+													"type": "array",
+													"items": {
+														"description": "A remote subnet reachable through Cloudflare that is addressed from this LAN by a local alias prefix of the same size. The local alias prefix must not overlap other subnets on the LAN, and the remote prefix must not overlap other remote prefixes on the LAN.",
+														"type": "object",
+														"properties": {
+															"local_alias_prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"type": "string",
+																"example": "192.0.2.0/24"
+															},
+															"remote_prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"type": "string",
+																"example": "192.0.2.0/24"
+															}
+														},
+														"required": [
+															"remote_prefix",
+															"local_alias_prefix"
+														]
+													}
 												},
 												"routed_subnets": {
 													"type": "array",
@@ -2243,6 +2358,29 @@
 								"type": "integer",
 								"example": 1
 							},
+							"remote_subnets": {
+								"type": "array",
+								"items": {
+									"description": "A remote subnet reachable through Cloudflare that is addressed from this LAN by a local alias prefix of the same size. The local alias prefix must not overlap other subnets on the LAN, and the remote prefix must not overlap other remote prefixes on the LAN.",
+									"type": "object",
+									"properties": {
+										"local_alias_prefix": {
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										},
+										"remote_prefix": {
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										}
+									},
+									"required": [
+										"remote_prefix",
+										"local_alias_prefix"
+									]
+								}
+							},
 							"routed_subnets": {
 								"type": "array",
 								"items": {
@@ -2563,6 +2701,29 @@
 													"physport": {
 														"type": "integer",
 														"example": 1
+													},
+													"remote_subnets": {
+														"type": "array",
+														"items": {
+															"description": "A remote subnet reachable through Cloudflare that is addressed from this LAN by a local alias prefix of the same size. The local alias prefix must not overlap other subnets on the LAN, and the remote prefix must not overlap other remote prefixes on the LAN.",
+															"type": "object",
+															"properties": {
+																"local_alias_prefix": {
+																	"description": "A valid CIDR notation representing an IP range.",
+																	"type": "string",
+																	"example": "192.0.2.0/24"
+																},
+																"remote_prefix": {
+																	"description": "A valid CIDR notation representing an IP range.",
+																	"type": "string",
+																	"example": "192.0.2.0/24"
+																}
+															},
+															"required": [
+																"remote_prefix",
+																"local_alias_prefix"
+															]
+														}
 													},
 													"routed_subnets": {
 														"type": "array",
@@ -2943,6 +3104,29 @@
 								"type": "integer",
 								"example": 1
 							},
+							"remote_subnets": {
+								"type": "array",
+								"items": {
+									"description": "A remote subnet reachable through Cloudflare that is addressed from this LAN by a local alias prefix of the same size. The local alias prefix must not overlap other subnets on the LAN, and the remote prefix must not overlap other remote prefixes on the LAN.",
+									"type": "object",
+									"properties": {
+										"local_alias_prefix": {
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										},
+										"remote_prefix": {
+											"description": "A valid CIDR notation representing an IP range.",
+											"type": "string",
+											"example": "192.0.2.0/24"
+										}
+									},
+									"required": [
+										"remote_prefix",
+										"local_alias_prefix"
+									]
+								}
+							},
 							"routed_subnets": {
 								"type": "array",
 								"items": {
@@ -3261,6 +3445,29 @@
 												"physport": {
 													"type": "integer",
 													"example": 1
+												},
+												"remote_subnets": {
+													"type": "array",
+													"items": {
+														"description": "A remote subnet reachable through Cloudflare that is addressed from this LAN by a local alias prefix of the same size. The local alias prefix must not overlap other subnets on the LAN, and the remote prefix must not overlap other remote prefixes on the LAN.",
+														"type": "object",
+														"properties": {
+															"local_alias_prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"type": "string",
+																"example": "192.0.2.0/24"
+															},
+															"remote_prefix": {
+																"description": "A valid CIDR notation representing an IP range.",
+																"type": "string",
+																"example": "192.0.2.0/24"
+															}
+														},
+														"required": [
+															"remote_prefix",
+															"local_alias_prefix"
+														]
+													}
 												},
 												"routed_subnets": {
 													"type": "array",

@@ -267,7 +267,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -308,7 +311,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -349,7 +355,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -360,6 +369,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -639,7 +651,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -680,7 +695,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -721,7 +739,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -762,7 +783,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -773,6 +797,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

@@ -509,7 +509,6 @@
 														"description": "Account name",
 														"type": "string",
 														"example": "Demo Account",
-														"maxLength": 120,
 														"x-auditable": true
 													},
 													"settings": {
@@ -867,7 +866,6 @@
 													"description": "Account name",
 													"type": "string",
 													"example": "Demo Account",
-													"maxLength": 120,
 													"x-auditable": true
 												},
 												"settings": {
@@ -1156,6 +1154,10 @@
 													"type": "object"
 												},
 												"properties": {
+													"are_child_accounts_accessible_by_org_members": {
+														"type": "boolean",
+														"readOnly": true
+													},
 													"hierarchy_tags": {
 														"description": "Ordered chain of organization tags from the root organization down to\n(and including) this organization itself. Root organizations return a\nsingle-element array containing their own tag; sub-organizations return\n`[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for\nconstructing authorization scopes that need to cover every ancestor\nin the hierarchy.",
 														"type": "array",
@@ -1209,6 +1211,9 @@
 																]
 															}
 														]
+													},
+													"tenant_type": {
+														"type": "string"
 													}
 												},
 												"readOnly": true
@@ -1242,16 +1247,20 @@
 												"type": "object",
 												"properties": {
 													"business_address": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"business_email": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"business_name": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"business_phone": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"external_metadata": {
 														"type": "string"
@@ -1292,7 +1301,7 @@
 				}
 			},
 			"4XX": {
-				"description": "An unexpected error response.",
+				"description": "The request failed due to a client error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1335,7 +1344,71 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "The request failed due to a server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean",
@@ -1370,13 +1443,13 @@
 			"Account Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "accounts.organization",
+		"x-fern-sdk-group-name": "accounts.organizations",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/profile": {
 		"operationId": "Accounts_getAccountProfile",
 		"summary": "Get account profile",
-		"description": "Retrieves the business profile (name, email, phone, address, and external metadata)\nassociated with this account's parent organization customer record. Profiles can be shared\nacross accounts and organizations. Only available to members of an organization that\ncontains the account.",
+		"description": "Retrieves the business profile (name, email, phone, address, and external metadata)\nassociated with this account's customer record. Profiles can be shared across accounts and\norganizations. Only available to members of an organization that contains the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1425,16 +1498,20 @@
 									"type": "object",
 									"properties": {
 										"business_address": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"business_email": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"business_name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"business_phone": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"external_metadata": {
 											"type": "string"
@@ -1466,7 +1543,7 @@
 				}
 			},
 			"4XX": {
-				"description": "An unexpected error response.",
+				"description": "The request failed due to a client error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1509,7 +1586,71 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "The request failed due to a server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean",
@@ -1550,7 +1691,7 @@
 	"POST /accounts": {
 		"operationId": "account-creation",
 		"summary": "Create an Account",
-		"description": "Create an Account. To create the Account within an Organization, provide `unit.id` and omit `standalone`. To create a standalone Free Account, provide `standalone: true` and omit `unit`. Providing both fields is invalid. If you omit both fields, Cloudflare can determine the destination only when the User is an administrator of exactly one Organization. Cloudflare creates the Account in that Organization; otherwise, the request returns an error.",
+		"description": "Create an Account. To create the Account within an Organization, provide `unit.id` and omit `standalone`. To create a standalone Free Account, provide `standalone: true` and omit `unit`. Providing both fields is invalid. If you omit both fields, Cloudflare can determine the destination only when the User is an administrator of exactly one Organization. Cloudflare creates the Account in that Organization; otherwise, the request returns an error. Account names are limited to 65 UTF-8 bytes.",
 		"parameters": [
 			{
 				"name": "Idempotency-Key",
@@ -1572,9 +1713,8 @@
 						"type": "object",
 						"properties": {
 							"name": {
-								"description": "Account name",
-								"type": "string",
-								"maxLength": 65
+								"description": "Account name, limited to 65 UTF-8 bytes.",
+								"type": "string"
 							},
 							"standalone": {
 								"description": "Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.",
@@ -1774,7 +1914,6 @@
 													"description": "Account name",
 													"type": "string",
 													"example": "Demo Account",
-													"maxLength": 120,
 													"x-auditable": true
 												},
 												"settings": {
@@ -1976,7 +2115,8 @@
 						"properties": {
 							"destination_organization_id": {
 								"description": "The ID of the organization to move the account into.",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2023,13 +2163,16 @@
 									"type": "object",
 									"properties": {
 										"account_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"destination_organization_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"source_organization_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2056,7 +2199,7 @@
 				}
 			},
 			"4XX": {
-				"description": "An unexpected error response.",
+				"description": "The request failed due to a client error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2099,7 +2242,71 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "The request failed due to a server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean",
@@ -2132,194 +2339,10 @@
 		"x-fern-sdk-group-name": "accounts",
 		"x-fern-sdk-method-name": "move"
 	},
-	"POST /accounts/move": {
-		"operationId": "Accounts_batchMoveAccounts",
-		"summary": "Batch move accounts",
-		"description": "Batch move a collection of accounts to a specific organization. ⚠️ Not implemented.",
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"account_ids": {
-								"description": "Move these accounts to the destination organization.",
-								"type": "array",
-								"items": {
-									"type": "string"
-								}
-							},
-							"destination_organization_id": {
-								"description": "Move accounts to this organization ID.",
-								"type": "string"
-							}
-						},
-						"required": [
-							"account_ids",
-							"destination_organization_id"
-						]
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"description": "The request has succeeded.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"type": "object"
-									},
-									"maxItems": 0
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										]
-									}
-								},
-								"result": {
-									"type": "object",
-									"properties": {
-										"statuses": {
-											"type": "object",
-											"properties": {
-												"message": {
-													"type": "string"
-												},
-												"moved": {
-													"type": "boolean"
-												},
-												"tag": {
-													"type": "string"
-												}
-											},
-											"required": [
-												"tag",
-												"moved"
-											]
-										}
-									},
-									"required": [
-										"statuses"
-									]
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										true
-									]
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							]
-						}
-					}
-				}
-			},
-			"4XX": {
-				"description": "An unexpected error response.",
-				"content": {
-					"application/json": {
-						"schema": {
-							"type": "object",
-							"properties": {
-								"errors": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"code": {
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										]
-									}
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean",
-									"enum": [
-										false
-									]
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages"
-							]
-						}
-					}
-				}
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"tags": [
-			"Accounts"
-		],
-		"x-fern-availability": "alpha",
-		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "accounts.batch",
-		"x-fern-sdk-method-name": "move"
-	},
 	"PUT /accounts/{account_id}": {
 		"operationId": "accounts-update-account",
 		"summary": "Update Account",
-		"description": "Update an existing account.",
+		"description": "Update an existing account. Account names are limited to 65 UTF-8 bytes.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2406,7 +2429,6 @@
 										"description": "Account name",
 										"type": "string",
 										"example": "Demo Account",
-										"maxLength": 120,
 										"x-auditable": true
 									},
 									"settings": {
@@ -2443,8 +2465,8 @@
 							{
 								"properties": {
 									"name": {
-										"type": "string",
-										"maxLength": 65
+										"description": "Account name, limited to 65 UTF-8 bytes.",
+										"type": "string"
 									}
 								},
 								"type": "object"
@@ -2609,7 +2631,6 @@
 													"description": "Account name",
 													"type": "string",
 													"example": "Demo Account",
-													"maxLength": 120,
 													"x-auditable": true
 												},
 												"settings": {
@@ -2797,7 +2818,7 @@
 	"PUT /accounts/{account_id}/profile": {
 		"operationId": "Accounts_modifyAccountProfile",
 		"summary": "Update account profile",
-		"description": "Updates the business profile (name, email, phone, address, and external metadata) associated\nwith this account's parent organization customer record. Changes apply to every account and\norganization sharing that profile. Omitted or empty fields are left unchanged. Only\navailable to members of an organization that contains the account.",
+		"description": "Partially updates the business profile (name, email, phone, address, and external metadata)\nassociated with this account's parent organization customer record, creating the profile if\nit does not exist. Changes apply to every account and organization sharing that profile.\nOmitted, empty, or null fields are left unchanged. Each profile field is limited to 1,000\nUTF-8 bytes. Only available to members of an organization that contains the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2814,31 +2835,34 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"description": "Partial business profile update. Omitted, empty, or null fields remain unchanged. At least\none of business name, address, phone, or email must be non-empty.",
 						"type": "object",
 						"properties": {
 							"business_address": {
-								"type": "string"
+								"type": "string",
+								"nullable": true,
+								"x-auditable": true
 							},
 							"business_email": {
-								"type": "string"
+								"type": "string",
+								"nullable": true,
+								"x-auditable": true
 							},
 							"business_name": {
-								"type": "string"
+								"type": "string",
+								"nullable": true,
+								"x-auditable": true
 							},
 							"business_phone": {
-								"type": "string"
+								"type": "string",
+								"nullable": true,
+								"x-auditable": true
 							},
 							"external_metadata": {
-								"type": "string"
+								"type": "string",
+								"nullable": true
 							}
-						},
-						"required": [
-							"business_name",
-							"business_email",
-							"business_phone",
-							"business_address",
-							"external_metadata"
-						]
+						}
 					}
 				}
 			}
@@ -2848,7 +2872,7 @@
 				"description": "There is no content to send for this request, but the headers may be useful."
 			},
 			"4XX": {
-				"description": "An unexpected error response.",
+				"description": "The request failed due to a client error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2891,7 +2915,71 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "The request failed due to a server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean",

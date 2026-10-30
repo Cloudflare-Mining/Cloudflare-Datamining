@@ -55,7 +55,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -99,7 +101,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -185,7 +189,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -226,7 +233,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -267,7 +277,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -278,6 +291,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -353,7 +369,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -397,7 +415,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -528,7 +548,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -569,7 +592,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -610,7 +636,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -621,6 +650,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -696,7 +728,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -740,7 +774,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -997,7 +1033,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1038,7 +1077,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1079,7 +1121,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1090,6 +1135,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1175,7 +1223,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -1219,7 +1269,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -1245,42 +1297,47 @@
 									}
 								},
 								"result": {
-									"type": "object",
-									"properties": {
-										"created_at": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"effective_at": {
-											"description": "The first accepted price is effective from the start of the current UTC day. A replacement becomes effective at the start of the next UTC day.",
-											"type": "string",
-											"format": "date-time",
-											"nullable": true
-										},
-										"expires_at": {
-											"description": "The exclusive per-agreement expiration timestamp. Publisher opt-out schedules it for the start of the next UTC month. When an active price is replaced, the previous price expires at the start of the next UTC day as the replacement becomes effective. Zone-wide grace is represented by the zone configuration expires_at instead.",
-											"type": "string",
-											"format": "date-time",
-											"nullable": true
-										},
-										"price_usd_microcents": {
-											"description": "Price in microcents. 1 USD = 100,000,000 microcents.",
-											"type": "integer"
-										},
-										"status": {
-											"type": "string",
-											"enum": [
-												"proposed",
-												"accepted",
-												"rejected"
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"effective_at": {
+													"description": "The first accepted price is effective from the start of the current UTC day. A replacement becomes effective at the start of the next UTC day.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"expires_at": {
+													"description": "The exclusive per-agreement expiration timestamp. Publisher opt-out schedules it for the start of the next UTC month. When an active price is replaced, the previous price expires at the start of the next UTC day as the replacement becomes effective. Zone-wide grace is represented by the zone configuration expires_at instead.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"price_usd_microcents": {
+													"description": "Price in microcents. 1 USD = 100,000,000 microcents.",
+													"type": "integer"
+												},
+												"status": {
+													"type": "string",
+													"enum": [
+														"proposed",
+														"accepted",
+														"rejected"
+													]
+												}
+											},
+											"required": [
+												"status",
+												"price_usd_microcents",
+												"created_at"
 											]
 										}
-									},
-									"required": [
-										"status",
-										"price_usd_microcents",
-										"created_at"
-									]
+									],
+									"nullable": true
 								},
 								"result_info": {
 									"type": "object",
@@ -1343,7 +1400,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1384,7 +1444,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1425,7 +1488,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1466,7 +1532,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1477,6 +1546,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1649,7 +1721,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -1693,7 +1767,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -1719,42 +1795,47 @@
 									}
 								},
 								"result": {
-									"type": "object",
-									"properties": {
-										"created_at": {
-											"type": "string",
-											"format": "date-time"
-										},
-										"effective_at": {
-											"description": "The first accepted price is effective from the start of the current UTC day. A replacement becomes effective at the start of the next UTC day.",
-											"type": "string",
-											"format": "date-time",
-											"nullable": true
-										},
-										"expires_at": {
-											"description": "The exclusive per-agreement expiration timestamp. Publisher opt-out schedules it for the start of the next UTC month. When an active price is replaced, the previous price expires at the start of the next UTC day as the replacement becomes effective. Zone-wide grace is represented by the zone configuration expires_at instead.",
-											"type": "string",
-											"format": "date-time",
-											"nullable": true
-										},
-										"price_usd_microcents": {
-											"description": "Price in microcents. 1 USD = 100,000,000 microcents.",
-											"type": "integer"
-										},
-										"status": {
-											"type": "string",
-											"enum": [
-												"proposed",
-												"accepted",
-												"rejected"
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"effective_at": {
+													"description": "The first accepted price is effective from the start of the current UTC day. A replacement becomes effective at the start of the next UTC day.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"expires_at": {
+													"description": "The exclusive per-agreement expiration timestamp. Publisher opt-out schedules it for the start of the next UTC month. When an active price is replaced, the previous price expires at the start of the next UTC day as the replacement becomes effective. Zone-wide grace is represented by the zone configuration expires_at instead.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"price_usd_microcents": {
+													"description": "Price in microcents. 1 USD = 100,000,000 microcents.",
+													"type": "integer"
+												},
+												"status": {
+													"type": "string",
+													"enum": [
+														"proposed",
+														"accepted",
+														"rejected"
+													]
+												}
+											},
+											"required": [
+												"status",
+												"price_usd_microcents",
+												"created_at"
 											]
 										}
-									},
-									"required": [
-										"status",
-										"price_usd_microcents",
-										"created_at"
-									]
+									],
+									"nullable": true
 								},
 								"result_info": {
 									"type": "object",
@@ -1817,7 +1898,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1858,7 +1942,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1899,7 +1986,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1940,7 +2030,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -1951,6 +2044,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

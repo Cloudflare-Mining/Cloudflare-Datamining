@@ -413,7 +413,7 @@
 	"GET /user/tenants": {
 		"operationId": "User_listUserTenants",
 		"summary": "List user tenants",
-		"description": "Retrieves list of tenants the authenticated user / method has access to.",
+		"description": "Retrieves the legacy Tenants associated with the authenticated user. Use `GET /organizations`\nto list modern Organizations the user has access to.",
 		"responses": {
 			"200": {
 				"description": "The request has succeeded.",
@@ -450,147 +450,304 @@
 								"result": {
 									"type": "array",
 									"items": {
-										"description": "References an Organization in the Cloudflare data model.",
 										"type": "object",
 										"properties": {
-											"create_time": {
+											"cdate": {
 												"type": "string",
-												"format": "date-time",
-												"readOnly": true
+												"format": "date-time"
 											},
-											"id": {
-												"allOf": [
-													{
-														"type": "string",
-														"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
-														"pattern": "^[a-f0-9]{32}$",
-														"title": "Organization ID",
-														"x-auditable": true
-													}
-												],
-												"readOnly": true
+											"customer_id": {
+												"type": "string",
+												"nullable": true
 											},
-											"meta": {
+											"edate": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"tenant_contacts": {
 												"type": "object",
-												"additionalProperties": {
-													"type": "object"
-												},
 												"properties": {
-													"hierarchy_tags": {
-														"description": "Ordered chain of organization tags from the root organization down to\n(and including) this organization itself. Root organizations return a\nsingle-element array containing their own tag; sub-organizations return\n`[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for\nconstructing authorization scopes that need to cover every ancestor\nin the hierarchy.",
-														"type": "array",
-														"items": {
+													"email": {
+														"type": "string"
+													},
+													"website": {
+														"type": "string"
+													}
+												}
+											},
+											"tenant_labels": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"nullable": true
+											},
+											"tenant_metadata": {
+												"type": "object",
+												"properties": {
+													"billing_account_type": {
+														"type": "string"
+													},
+													"configuration_account": {
+														"type": "string"
+													},
+													"created_by": {
+														"type": "string"
+													},
+													"dns": {
+														"type": "object",
+														"properties": {
+															"ns_pool": {
+																"type": "object",
+																"properties": {
+																	"primary": {
+																		"type": "string",
+																		"nullable": true
+																	},
+																	"secondary": {
+																		"type": "string",
+																		"nullable": true
+																	}
+																},
+																"required": [
+																	"primary",
+																	"secondary"
+																]
+															}
+														},
+														"required": [
+															"ns_pool"
+														]
+													},
+													"flags": {
+														"type": "object",
+														"additionalProperties": {
 															"type": "string"
 														}
 													},
-													"managed_by": {
-														"type": "string"
+													"innate_account_entitlements": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"allocation": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		},
+																		"value": {
+																			"anyOf": [
+																				{
+																					"type": "boolean"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"additionalProperties": true,
+																					"nullable": true,
+																					"type": "object"
+																				},
+																				{
+																					"items": "[Circular ~.GET /user/tenants.responses.200.content.application/json.schema.properties.result.items.properties.tenant_metadata.properties.innate_account_entitlements.items.properties.allocation.properties.value]",
+																					"type": "array"
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"value"
+																	]
+																},
+																"feature": {
+																	"type": "object",
+																	"properties": {
+																		"key": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"key"
+																	]
+																}
+															},
+															"required": [
+																"feature",
+																"allocation"
+															]
+														}
 													},
-													"tenant_flags": {
-														"allOf": [
-															{
-																"description": "Enable features for Organizations.",
+													"tenant_entitlements": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"allocation": {
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		},
+																		"value": {
+																			"anyOf": [
+																				{
+																					"type": "boolean"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"additionalProperties": true,
+																					"nullable": true,
+																					"type": "object"
+																				},
+																				{
+																					"items": "[Circular ~.GET /user/tenants.responses.200.content.application/json.schema.properties.result.items.properties.tenant_metadata.properties.tenant_entitlements.items.properties.allocation.properties.value]",
+																					"type": "array"
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"value"
+																	]
+																},
+																"feature": {
+																	"type": "object",
+																	"properties": {
+																		"key": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"key"
+																	]
+																}
+															},
+															"required": [
+																"feature",
+																"allocation"
+															]
+														}
+													}
+												}
+											},
+											"tenant_name": {
+												"type": "string"
+											},
+											"tenant_network": {
+												"type": "object",
+												"properties": {
+													"choices": {
+														"type": "object",
+														"additionalProperties": {
+															"type": "object"
+														}
+													}
+												}
+											},
+											"tenant_status": {
+												"type": "string"
+											},
+											"tenant_tag": {
+												"type": "string"
+											},
+											"tenant_type": {
+												"type": "string"
+											},
+											"tenant_units": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"unit_memberships": {
+															"type": "array",
+															"items": {
 																"type": "object",
 																"properties": {
-																	"account_creation": {
+																	"member_metadata": {
+																		"type": "object"
+																	},
+																	"member_status": {
 																		"type": "string"
 																	},
-																	"account_creation_applies_tenant_defaults": {
-																		"type": "string"
-																	},
-																	"account_deletion": {
-																		"type": "string"
-																	},
-																	"account_migration": {
-																		"type": "string"
-																	},
-																	"account_mobility": {
-																		"type": "string"
-																	},
-																	"enterprise_capability": {
-																		"type": "string"
-																	},
-																	"member_management": {
-																		"type": "string"
-																	},
-																	"sub_org_creation": {
+																	"member_tag": {
 																		"type": "string"
 																	}
 																},
 																"required": [
-																	"account_creation",
-																	"account_creation_applies_tenant_defaults",
-																	"account_deletion",
-																	"account_migration",
-																	"account_mobility",
-																	"enterprise_capability",
-																	"member_management",
-																	"sub_org_creation"
+																	"member_tag",
+																	"member_status",
+																	"member_metadata"
 																]
-															}
-														]
-													}
+															},
+															"nullable": true
+														},
+														"unit_metadata": {
+															"type": "object"
+														},
+														"unit_name": {
+															"type": "string"
+														},
+														"unit_status": {
+															"type": "string"
+														},
+														"unit_tag": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"unit_tag",
+														"unit_name",
+														"unit_status",
+														"unit_metadata",
+														"unit_memberships"
+													]
 												},
-												"readOnly": true
+												"nullable": true
 											},
-											"name": {
-												"type": "string",
-												"x-auditable": true
-											},
-											"parent": {
+											"ui_flags": {
+												"description": "Which top-level dashboard experiences to render for this tenant; both may be true.",
 												"type": "object",
 												"properties": {
-													"id": {
-														"type": "string",
-														"example": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
-														"pattern": "^[a-f0-9]{32}$",
-														"title": "Organization ID",
-														"x-auditable": true
+													"show_orgs_ui": {
+														"description": "Render the Organizations experience for this tenant.",
+														"type": "boolean"
 													},
-													"name": {
-														"type": "string",
-														"readOnly": true,
-														"x-auditable": true
+													"show_tenants_ui": {
+														"description": "Render the legacy Tenants experience for this tenant.",
+														"type": "boolean"
 													}
 												},
 												"required": [
-													"id",
-													"name"
-												]
-											},
-											"profile": {
-												"type": "object",
-												"properties": {
-													"business_address": {
-														"type": "string"
-													},
-													"business_email": {
-														"type": "string"
-													},
-													"business_name": {
-														"type": "string"
-													},
-													"business_phone": {
-														"type": "string"
-													},
-													"external_metadata": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"business_name",
-													"business_email",
-													"business_phone",
-													"business_address",
-													"external_metadata"
+													"show_orgs_ui",
+													"show_tenants_ui"
 												]
 											}
 										},
 										"required": [
-											"id",
-											"name",
-											"create_time",
-											"meta"
+											"tenant_tag",
+											"tenant_name",
+											"tenant_labels",
+											"tenant_type",
+											"tenant_status",
+											"tenant_metadata",
+											"tenant_contacts",
+											"cdate",
+											"edate",
+											"customer_id",
+											"tenant_network",
+											"tenant_units",
+											"ui_flags"
 										]
 									}
 								},
@@ -612,7 +769,7 @@
 				}
 			},
 			"4XX": {
-				"description": "An unexpected error response.",
+				"description": "The request failed due to a client error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -655,7 +812,71 @@
 									}
 								},
 								"result": {
-									"type": "object"
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "The request failed due to a server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
 								},
 								"success": {
 									"type": "boolean",
@@ -688,9 +909,9 @@
 			"User Details Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "user.tenant",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /user": {
 		"operationId": "user-edit-user",

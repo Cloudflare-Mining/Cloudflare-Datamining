@@ -42,7 +42,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -86,7 +88,9 @@
 												"type": "string"
 											},
 											"meta": {
-												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!"
+												"description": "Meta object containing non-standard meta-information about the error.\nThis field must be an object or null!",
+												"type": "object",
+												"nullable": true
 											},
 											"source": {
 												"type": "object",
@@ -239,7 +243,10 @@
 										}
 									}
 								},
-								"result": {},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
 								"success": {
 									"type": "boolean"
 								}
@@ -250,6 +257,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

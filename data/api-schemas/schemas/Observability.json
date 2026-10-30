@@ -744,6 +744,379 @@
 			}
 		]
 	},
+	"GET /accounts/{account_id}/observability/usage/limit": {
+		"operationId": "observability.usage_limit.get",
+		"summary": "Get usage limit status",
+		"description": "Whether Workers Observability is keeping fewer of the account's events, usually because it passed its daily limit, and what that limit is. Daily limits reset at 00:00 UTC; paid accounts are brought back in stages over the following hours.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Your Cloudflare account ID.",
+				"required": true,
+				"schema": {
+					"description": "Your Cloudflare account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"limit": {
+											"description": "The plan's daily limit.",
+											"type": "object",
+											"properties": {
+												"daily": {
+													"description": "The plan's daily limit, in events or bytes as given by unit, counted from 00:00 UTC.",
+													"type": "number"
+												},
+												"unit": {
+													"description": "The unit the daily limit is counted in.",
+													"type": "string",
+													"enum": [
+														"events",
+														"bytes"
+													]
+												}
+											},
+											"required": [
+												"unit",
+												"daily"
+											]
+										},
+										"plan": {
+											"description": "free: the account has no Workers Paid or Enterprise plan. paid: it has one of them.",
+											"type": "string",
+											"enum": [
+												"free",
+												"paid"
+											]
+										},
+										"resets_at": {
+											"description": "When a limited free account is expected to start keeping events again, at the daily limit reset. Not guaranteed if the account was limited for another reason. null otherwise, including for paid accounts, which are brought back in stages.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2026-10-30T00:00:00Z",
+											"nullable": true
+										},
+										"sample_rate": {
+											"description": "Share of the account's events being kept, from 0 to 1.",
+											"type": "number",
+											"example": 0.01,
+											"maximum": 1,
+											"minimum": 0
+										},
+										"status": {
+											"description": "Whether telemetry is being dropped, and why. More values may be added; treat unknown values like normal.\n- normal: every event is kept.\n- limited: the account keeps only sample_rate of its events, usually because it passed its daily limit. A free account over its limit keeps none until resets_at; a paid one keeps about 10 events a second and is brought back in stages after 00:00 UTC.\n- restricted: events are dropped for another reason. Contact support.",
+											"type": "string",
+											"enum": [
+												"normal",
+												"limited",
+												"restricted"
+											]
+										}
+									},
+									"required": [
+										"plan",
+										"status",
+										"sample_rate",
+										"resets_at",
+										"limit"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too many requests",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Too many requests"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			}
+		},
+		"tags": [
+			"Observability"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.usage-limit",
+		"x-fern-sdk-method-name": "get"
+	},
 	"GET /zones/{zone_id}/observability/tracing/rules": {
 		"operationId": "zone.observability.tracing.rules.get",
 		"summary": "View zone trace rules",

@@ -315,13 +315,11 @@
 				}
 			},
 			{
-				"description": "Page number for premium partner asset results.",
+				"description": "Opaque cursor from the previous response's `result_info.cursor`. Omit for the first page.",
 				"in": "query",
-				"name": "page",
+				"name": "cursor",
 				"schema": {
-					"type": "integer",
-					"default": 1,
-					"minimum": 1
+					"type": "string"
 				}
 			},
 			{
@@ -349,9 +347,15 @@
 						}
 					},
 					"X-Collection-Truncated": {
-						"description": "Whether partner data reached the service collection limit. Returned with CSV responses.",
+						"description": "Whether the partner reported that the relevant parent asset's child collection was truncated. Returned with CSV responses.",
 						"schema": {
 							"type": "boolean"
+						}
+					},
+					"X-Next-Cursor": {
+						"description": "Opaque cursor for the next CSV page. Absent when there are no more results.",
+						"schema": {
+							"type": "string"
 						}
 					}
 				},
@@ -448,7 +452,7 @@
 											"additionalProperties": false,
 											"properties": {
 												"collection_truncated": {
-													"description": "Whether partner data reached the service collection limit.",
+													"description": "Whether the partner reported that the parent organization's domain collection was truncated.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -461,12 +465,6 @@
 														"baseline",
 														"premium"
 													],
-													"x-auditable": true
-												},
-												"has_more": {
-													"description": "Whether another page of items is available.",
-													"type": "boolean",
-													"example": true,
 													"x-auditable": true
 												},
 												"items": {
@@ -518,8 +516,36 @@
 												"entitlement",
 												"total_count",
 												"items",
-												"has_more",
 												"collection_truncated"
+											]
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Number of items in the current page.",
+													"type": "integer",
+													"format": "int64",
+													"example": 25,
+													"minimum": 0
+												},
+												"cursor": {
+													"description": "Opaque cursor for the next page. Absent when there are no more results.",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "Requested maximum number of items per page.",
+													"type": "integer",
+													"format": "int64",
+													"example": 25,
+													"maximum": 1000,
+													"minimum": 1
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"count",
+												"per_page"
 											]
 										}
 									},
@@ -705,13 +731,11 @@
 				}
 			},
 			{
-				"description": "Page number for premium partner asset results.",
+				"description": "Opaque cursor from the previous response's `result_info.cursor`. Omit for the first page.",
 				"in": "query",
-				"name": "page",
+				"name": "cursor",
 				"schema": {
-					"type": "integer",
-					"default": 1,
-					"minimum": 1
+					"type": "string"
 				}
 			},
 			{
@@ -739,9 +763,15 @@
 						}
 					},
 					"X-Collection-Truncated": {
-						"description": "Whether partner data reached the service collection limit. Returned with CSV responses.",
+						"description": "Whether the partner reported that the relevant parent asset's child collection was truncated. Returned with CSV responses.",
 						"schema": {
 							"type": "boolean"
+						}
+					},
+					"X-Next-Cursor": {
+						"description": "Opaque cursor for the next CSV page. Absent when there are no more results.",
+						"schema": {
+							"type": "string"
 						}
 					}
 				},
@@ -838,7 +868,7 @@
 											"additionalProperties": false,
 											"properties": {
 												"collection_truncated": {
-													"description": "Whether partner data reached the service collection limit.",
+													"description": "Whether the partner reported that the parent domain's host collection was truncated.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -857,12 +887,6 @@
 														"baseline",
 														"premium"
 													],
-													"x-auditable": true
-												},
-												"has_more": {
-													"description": "Whether another page of items is available.",
-													"type": "boolean",
-													"example": true,
 													"x-auditable": true
 												},
 												"items": {
@@ -941,8 +965,36 @@
 												"domain",
 												"total_count",
 												"items",
-												"has_more",
 												"collection_truncated"
+											]
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Number of items in the current page.",
+													"type": "integer",
+													"format": "int64",
+													"example": 25,
+													"minimum": 0
+												},
+												"cursor": {
+													"description": "Opaque cursor for the next page. Absent when there are no more results.",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "Requested maximum number of items per page.",
+													"type": "integer",
+													"format": "int64",
+													"example": 25,
+													"maximum": 1000,
+													"minimum": 1
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"count",
+												"per_page"
 											]
 										}
 									},
@@ -1118,13 +1170,11 @@
 				}
 			},
 			{
-				"description": "Page number for premium partner asset results.",
+				"description": "Opaque cursor from the previous response's `result_info.cursor`. Omit for the first page.",
 				"in": "query",
-				"name": "page",
+				"name": "cursor",
 				"schema": {
-					"type": "integer",
-					"default": 1,
-					"minimum": 1
+					"type": "string"
 				}
 			},
 			{
@@ -1152,9 +1202,15 @@
 						}
 					},
 					"X-Collection-Truncated": {
-						"description": "Whether partner data reached the service collection limit. Returned with CSV responses.",
+						"description": "Whether the partner reported that the relevant parent asset's child collection was truncated. Returned with CSV responses.",
 						"schema": {
 							"type": "boolean"
+						}
+					},
+					"X-Next-Cursor": {
+						"description": "Opaque cursor for the next CSV page. Absent when there are no more results.",
+						"schema": {
+							"type": "string"
 						}
 					}
 				},
@@ -1251,7 +1307,7 @@
 											"additionalProperties": false,
 											"properties": {
 												"collection_truncated": {
-													"description": "Whether partner data reached the service collection limit.",
+													"description": "Whether the partner reported that the parent domain's host collection was truncated.",
 													"type": "boolean",
 													"example": false,
 													"x-auditable": true
@@ -1270,12 +1326,6 @@
 														"baseline",
 														"premium"
 													],
-													"x-auditable": true
-												},
-												"has_more": {
-													"description": "Whether another page of items is available.",
-													"type": "boolean",
-													"example": true,
 													"x-auditable": true
 												},
 												"items": {
@@ -1354,8 +1404,36 @@
 												"domain",
 												"total_count",
 												"items",
-												"has_more",
 												"collection_truncated"
+											]
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Number of items in the current page.",
+													"type": "integer",
+													"format": "int64",
+													"example": 25,
+													"minimum": 0
+												},
+												"cursor": {
+													"description": "Opaque cursor for the next page. Absent when there are no more results.",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "Requested maximum number of items per page.",
+													"type": "integer",
+													"format": "int64",
+													"example": 25,
+													"maximum": 1000,
+													"minimum": 1
+												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"count",
+												"per_page"
 											]
 										}
 									},
