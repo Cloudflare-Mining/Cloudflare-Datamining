@@ -1,95 +1,28 @@
 ---
-title: DHL Parcel | Case Study
-description: DHL Parcel &amp; Cloudflare | Case Study
+title: Customer Case Studies | Cloudflare
+description: Learn how companies like yours leverage Cloudflare for security, performance, and reliability.
 image: https://www.cloudflare.com/preview.png
 ---
 
-# DHL Parcel
+##  You're in good company 
 
-> #### "  Cloudflare helps DHL Parcel protect our customer data and client communications, simplifying compliance with data privacy regulations like GDPR. " 
+#####  Learn how companies like yours are leveraging our platform. Cloudflare provides Security, Performance, and Reliability for anything connected to the Internet. 
 
-## **Logistics leader handles peak customer demand with scalable global network from Cloudflare**
+Filter By:
 
-DHL is the first international delivery service, and since its founding in 1969, it has grown into one of the largest logistics companies in the world. In the Netherlands, DHL Parcel delivers 1.5 million parcels every day to businesses and homes using Europe's largest fleet of zero-emissions electric vehicles. Globally, the company has more than 650,000 employees, including 6,000 in Belgium, Netherlands, and Luxembourg. 
+All Industries
 
-### **Reshaping last-mile logistics**
+All Regions
 
-Package delivery has always been seasonal, surging during big holidays and mega-shopping days, but at the start of the COVID-19 pandemic, DHL Parcel saw its volumes nearly double. Well positioned for post-pandemic growth, [DHL saw revenue increase 22% in 2021](https://www.dhl.com/global-en/home/press/press-archive/2022/dpdhl-group-closes-2021-with-record-earnings.html), its highest ever.
+All Use Cases
 
-Consumers are buying more online, and they want to know exactly when their packages are arriving. Businesses need real-time tracking of their deliveries to improve efficiency, maintain traceability, and meet their customers' expectations in a changed world. 
+All Products
 
-As the pandemic upended last-mile logistics virtually overnight, DHL Parcel Netherlands was ready for the surge. 
+[![New Harbor logo](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/7b7b2xVKVpmRVPncXFXqjd/21de77536399f341de0e5b493964b3dc/logo-new-harbor.png)New Harbor is on a mission to make cybersecurity simple. Cloudflare is how they're building it.Learn More](/case-studies/new-harbor)[![Caliente logo](https://images.ctfassets.net/slt3lc6tev37/sOvE1WhMMLneHD2Dku8VL/3f942b314949102c542b19fd3c3635ed/Grupo-Caliente-Logo.png)Mexico's leading online gambling company consolidates security, performance, and developer tools to scale for millions of users.Learn More](/case-studies/caliente)[![TAP Air Portugal logo](https://images.ctfassets.net/slt3lc6tev37/2mhFhTALgwfhv1CH6G1J0v/2f8efd687136266d4d2ca2b691f8b225/TAP-Portugal-Logo.png)TAP Air Portugal gains operational agility by adopting Cloudflare cybersecurity.Learn More](/case-studies/tap-air-portugal)[![VFS Global logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fMzGdLPQOmkXIL83IMYuL/fc0398f01d84bb6e2a77e99cc2d98760/VFS_Global_Logo.png)VFS Global uses Cloudflare to protect confidential applicants and government data while improving site performance around the globe.Learn More](/case-studies/vfs-global)[![ComfortDelGro logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/35a1jsxlPkyHOOWLY3HVCy/64a6c8e1e2717b079872823e0dd44764/CDG_Logo_H_RGB.png)ComfortDelGro Strengthens Digital Resilience Across Its Global Operations with CloudflareLearn More](/case-studies/comfortdelgro)[![Gusto logo](https://images.ctfassets.net/dzlvafdwdttg/1jzZ7mD168RiQ7J3bxYTxv/80710328be459666347b2d32bfc93b0f/Gusto_Logo.png)Gusto improved remote access reliability, enhanced vendor relationships and upgraded their support levels by switching to Cloudflare.Learn More](/case-studies/gusto)[![Fujitec logo](https://images.ctfassets.net/slt3lc6tev37/6eLNTSHLAgcRxjZYXmC6cK/f1bd0d70b285140bb64c1e460cde860c/fujitec-logo.jpg)Fujitec accelerates global safety and security with transitioning to Cloudflare One, eliminating VPNs and deploying zero trust in just 45 daysLearn More](/case-studies/fujitec)[![CrazyGames logo](https://images.ctfassets.net/slt3lc6tev37/2mkiv03JURdnN8HtkFVqR8/678887e7dc573b46f4cc93fd2673e019/crazygames_logo.png)CrazyGames keeps a global free-to-play gaming platform stable and fast for 50 million monthly users using Cloudflare, mitigating 25 million threats a month with a team of just 50 people.Learn More](/case-studies/crazygames)[![Hack The Box logo](https://images.ctfassets.net/slt3lc6tev37/3oWMko8boDq7nnGBF7UfBs/d199bb16612c96b281f4aca5521b3375/hack_the_box_logo.png)Hack The Box secures a global cybersecurity training platform with Cloudflare, stopping 13.37 million threats monthly while scaling to 4 million users.Learn More](/case-studies/hack-the-box)[![Olive Young logo](https://images.ctfassets.net/slt3lc6tev37/62tMdNDOpMJr0RSYUxJIt8/e9cd1beeeb399e706898337547cd1da3/OliveYoung-Logo.png)Olive Young scaled K-Beauty globally by using Cloudflare to integrate its infrastructure, leveraging AI bot defense and ultra-low latency for a faster, more secure retail experience.Learn More](/case-studies/olive-young)[![BAFTA logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/7J46Cg1yvhVCD1dYz6YT0V/925507482f4fe3fa314c1ccf40f167d1/bafta_logo.jpg)The British Academy of Film and Television Arts (BAFTA) has used Cloudflare's platform to bring their public voting system in‐house, prioritizing brand trust, security, and scalability.Learn More](/case-studies/bafta)[![Hapag-Lloyd logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/5l90tbVQdTHipEbyBMgqcU/dad1fd451b49c25c430211612ad1e772/hapag_lloyd_logo.png)Cloudflare helps Hapag-Lloyd consolidate security and performance, cut costs, and improve reliability worldwide.Learn More](/case-studies/hapag-lloyd)
 
-"Managing peaks is in our nature," says Jan De Groot, Vice President of Digital and Business Process Optimization at DHL Parcel Netherlands. "We didn't need to change anything because we were prepared."
+Showing 12 of 264 case studies
 
-DHL Parcel Netherlands had already moved key applications to the cloud, including track and trace, and had designed its microservices environment for maximum scalability. "All of our microservices can scale indefinitely," he says. 
-
-DHL Parcel Netherlands partnered with Cloudflare to ensure scalability, simplify security, and maintain operational efficiency as the business continues to grow. 
-
-### **Delivering a better customer experience**
-
-DHL Parcel leverages Cloudflare Content Delivery Network (CDN), Cloudflare Web Application Firewall (WAF), and Cloudflare TLS Encryption for its operations in the Benelux. 
-
-Cloudflare CDN allows DHL Parcel to deliver its content over the global Cloudflare edge network. Cloudflare Argo Smart Routing provides a unique vantage point to detect real-time congestion and route traffic across the fastest and most reliable paths, ensuring customers have real-time, personalized visibility into their package deliveries. 
-
-"With Cloudflare, we can serve content from the edge," says De Groot. "The closer the content is to the edge, the better the user experience is." 
-
-The global Cloudflare network provides DHL Parcel with precise control over how both dynamic and static content is cached. Delivering content from the edge improves the user experience and drives down bandwidth costs because it reduces the need to source content from DHL's backend databases and web systems. 
-
-"We can reduce the amount of traffic we get from bots and crawlers who hit our site," says De Groot. "Cloudflare helps us manage our traffic and avoid getting a flood of requests that would limit our ability to serve new information to customers." 
-
-Reducing automated traffic reduces costs and preserves bandwidth for legitimate business use. 
-
-### **Ensuring strong security and compliance**
-
-"We have zero tolerance for security breaches," says De Groot. "We protect customer data and make sure all communications with our clients are secure." 
-
-With Cloudflare TLS, DHL Parcel can extend strong encryption to its consumer and business-to-business customer communications, regardless of which web browser they use. 
-
-From malicious browser plug-ins to the latest application and network threats, Cloudflare helps DHL Parcel protect its business and customers against data breaches and business disruption. 
-
-Even as attacks rise, DHL Parcel can simplify compliance requirements for customer-facing applications who need to comply with the EU's General Data Protection Requirements (GDPR) as well as Germany's even more stringent data protection laws. 
-
-"Cloudflare helps DHL Parcel protect our customer data and client communications, simplifying compliance with data privacy regulations like GDPR," says de Groot. 
-
-Cloudflare WAF protects the company's web applications and [APIs](https://www.cloudflare.com/application-services/solutions/api-security/) from zero-day vulnerability exploits as well as attacks such as cross-site forgery, cross-site scripting, and SQL injection. This way, DHL can protect its web applications — even as attacks become more complex and diverse. 
-
-Cloudflare Rate Limiting automatically identifies and mitigates excessive requests. "We can block certain IP addresses where people are trying to hack our systems," he says. "It's a big advantage that we don't have to bother with the malicious traffic," de Groot says. 
-
-Unmetered DDoS, built into Cloudflare CDN, provides powerful protection for the company's cloud-native applications and websites and ensures the [performance](https://www.cloudflare.com/retail/) of legitimate traffic is not compromised. 
-
-### **A relationship built on proven value**
-
-DHL Parcel initially looked to Cloudflare to protect its web operations from rising DDoS attacks, but over the years, the relationship has grown. "We collaborate well with Cloudflare," says De Groot. "Cloudflare is constantly delivering new features," he says. "We can play with new technologies easily, and if there's a benefit, we can enable them." 
-
-That agility and innovation adds value as [ecommerce](https://www.cloudflare.com/retail/) continues to grow for both businesses and consumers. DHL sees a bright future for business-to-business ecommerce, predicting that [80% of sales interactions between suppliers and buyers](https://www.logisticsbusiness.com/latest-news/dhl-express-predicts-considerable-b2b-e-commerce-growth/) will take place through digital channels by 2025.
-
-DHL Parcel Netherlands is ready to adapt to changing consumer tastes and keep global economies running as it delivers more packages to homes and businesses. DHL Parcel's operations in Sweden, Poland, Portugal and other regions rely on the cloud applications created by the Netherlands team. 
-
-"Cloudflare is a growth enabler for DHL Parcel," says De Groot. "Cloudflare provides out-of-the-box security that helps alleviate my team's workload and allows us to focus on the business."
-
-![DHL Parcel logo](https://images.ctfassets.net/slt3lc6tev37/5eTyXJ3dLhRZRyc0p0M1xd/29460705dde5c839f165cf4f97fc0d97/DHL_logo_rgb.png) 
-
-Cloudflare ensures availability and security for 30% increase in package tracking requests 
-
- Cloudflare Products 
-* [  Web Application Firewall (WAF) ](/application-services/products/waf/)
-* [  CDN ](/application-services/products/cdn/)
-* [  SSL / TLS ](/application-services/products/ssl/)
-
- Products Used 
-
-CDN SSL/TLS WAF 
-
- Details 
-
- Industry 
-
-High Technology 
-
- Region 
-
-Europe, Middle East & Africa 
+Load More
 
 # Build without boundaries
 
@@ -102,5 +35,5 @@ Europe, Middle East & Africa
 ```json
 {"@context":"https://schema.org","@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com","logo":"https://www.cloudflare.com/logo.svg","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"]}
 {"@context":"https://schema.org","@type":"WebSite","name":"Cloudflare","url":"https://www.cloudflare.com","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://www.cloudflare.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
-{"@context":"https://schema.org","@type":"WebPage","name":"DHL Parcel | Case Study","description":"DHL Parcel & Cloudflare | Case Study","url":"https://www.cloudflare.com/case-studies/dhl-parcel/","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"WebPage","name":"Customer Case Studies | Cloudflare","description":"Learn how companies like yours leverage Cloudflare for security, performance, and reliability.","url":"https://www.cloudflare.com/case-studies/","inLanguage":"en"}
 ```
