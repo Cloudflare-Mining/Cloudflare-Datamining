@@ -26,6 +26,7 @@ Docs index: https://developers.cloudflare.com/cf/llms.txt
 | Using `cf` with coding agents (safety rules) | https://developers.cloudflare.com/cf/agents/index.md |
 | CI, API tokens, unattended authentication | https://developers.cloudflare.com/cf/ci/index.md |
 | Environment variables | https://developers.cloudflare.com/cf/environment-variables/index.md |
+| Find slow or expensive D1 databases and queries with `cf sql query` | https://developers.cloudflare.com/d1/observability/find-expensive-queries/index.md |
 
 ## FIRST: check installation and sign in
 
