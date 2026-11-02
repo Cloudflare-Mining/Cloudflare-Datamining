@@ -13,6 +13,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -25,6 +27,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -46,8 +50,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -75,12 +78,15 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"account_name": {
@@ -92,15 +98,17 @@
 												"associated_recipient_count": {
 													"description": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 10
+													"example": 10,
+													"x-auditable": true
 												},
 												"associating_recipient_count": {
 													"description": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 1
+													"example": 1,
+													"x-auditable": true
 												},
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -109,18 +117,22 @@
 												"disassociated_recipient_count": {
 													"description": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 0
+													"example": 0,
+													"x-auditable": true
 												},
 												"disassociating_recipient_count": {
 													"description": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 0
+													"example": 0,
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Share identifier tag.",
 													"type": "string",
 													"example": "3fd85f74b32742f1bff64a85009dda07",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"kind": {
@@ -132,7 +144,7 @@
 													"x-auditable": true
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -149,15 +161,18 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"resources": {
 													"description": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter.",
 													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created": {
-																"description": "When the share was created.",
+																"description": "When the object was created.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2023-09-21T18:56:32.624632Z",
@@ -168,6 +183,8 @@
 																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
+																"minLength": 32,
+																"pattern": "^[0-9a-fA-F]{32}$",
 																"x-auditable": true
 															},
 															"meta": {
@@ -175,7 +192,7 @@
 																"type": "object"
 															},
 															"modified": {
-																"description": "When the share was modified.",
+																"description": "When the object was last modified.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2023-09-21T18:56:32.624632Z",
@@ -186,13 +203,14 @@
 																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
+																"minLength": 32,
+																"pattern": "^[0-9a-fA-F]{32}$",
 																"x-auditable": true
 															},
 															"resource_id": {
-																"description": "Share Resource identifier.",
+																"description": "Identifier assigned by the service that owns the shared resource.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 																"x-auditable": true
 															},
 															"resource_type": {
@@ -247,6 +265,18 @@
 													],
 													"x-auditable": true
 												},
+												"tags": {
+													"description": "Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `include_tags_from` parameter is set.",
+													"allOf": [
+														{
+															"description": "Tags associated with the share.",
+															"type": "object",
+															"additionalProperties": {
+																"type": "string"
+															}
+														}
+													]
+												},
 												"target_type": {
 													"type": "string",
 													"enum": [
@@ -298,8 +328,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -313,20 +342,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -363,8 +388,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -378,20 +402,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -441,6 +461,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -453,6 +475,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -465,6 +489,8 @@
 					"type": "string",
 					"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -486,8 +512,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -515,16 +540,19 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -535,10 +563,12 @@
 													"type": "string",
 													"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -582,8 +612,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -597,20 +626,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -647,8 +672,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -662,20 +686,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -708,7 +728,8 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "Removing the exclusion makes the share apply to this account."
 	},
 	"DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
 		"operationId": "share-recipient-delete",
@@ -724,6 +745,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -736,6 +759,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -748,6 +773,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -769,8 +796,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -799,12 +825,15 @@
 									"properties": {
 										"result": {
 											"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"association_status": {
@@ -819,7 +848,7 @@
 													"x-auditable": true
 												},
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -830,10 +859,12 @@
 													"type": "string",
 													"example": "3fd85f74b32742f1bff64a85009dda07",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -842,29 +873,31 @@
 												"resources": {
 													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"error": {
-																"description": "Share Recipient error message.",
+																"description": "Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.",
 																"type": "string",
 																"example": "Recipient is missing necessary entitlement",
 																"x-auditable": true
 															},
 															"resource_id": {
-																"description": "Share Resource identifier.",
+																"description": "Identifier assigned by the service that owns the shared resource.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 																"x-auditable": true
 															},
 															"resource_version": {
-																"description": "Resource Version.",
+																"description": "Resource version applied to the recipient, if reconciliation has occurred.",
 																"type": "integer",
+																"nullable": true,
 																"x-auditable": true
 															},
 															"terminal": {
 																"description": "Whether the error is terminal or will be continually retried.",
 																"type": "boolean",
 																"example": true,
+																"nullable": true,
 																"x-auditable": true
 															}
 														},
@@ -915,8 +948,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -930,20 +962,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -980,8 +1008,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -995,20 +1022,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -1058,6 +1081,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -1070,6 +1095,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -1082,6 +1109,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -1103,8 +1132,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -1132,9 +1160,10 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -1145,6 +1174,8 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"meta": {
@@ -1152,7 +1183,7 @@
 													"type": "object"
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -1163,13 +1194,14 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"resource_id": {
-													"description": "Share Resource identifier.",
+													"description": "Identifier assigned by the service that owns the shared resource.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 													"x-auditable": true
 												},
 												"resource_type": {
@@ -1244,8 +1276,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -1259,20 +1290,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -1309,8 +1336,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -1324,20 +1350,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -1387,6 +1409,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -1479,7 +1503,7 @@
 				}
 			},
 			{
-				"description": "Page number. Defaults to `1` when `per_page` is supplied without\n`page`. May be omitted entirely along with `per_page` to receive a\nnon-paginated response.",
+				"description": "Page number. Defaults to `1` when omitted.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -1491,7 +1515,7 @@
 				}
 			},
 			{
-				"description": "Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
+				"description": "Number of objects to return per page. Defaults to `20` when omitted.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -1519,6 +1543,18 @@
 				"schema": {
 					"type": "boolean",
 					"example": true
+				}
+			},
+			{
+				"description": "Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.",
+				"in": "query",
+				"name": "include_tags_from",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"api",
+						"mirror"
+					]
 				}
 			},
 			{
@@ -1558,8 +1594,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -1590,28 +1625,28 @@
 													"type": "object",
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
-															"type": "number",
+															"description": "Number of results on the current page.",
+															"type": "integer",
 															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"type": "number",
+															"type": "integer",
 															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"type": "number",
+															"type": "integer",
 															"example": 20
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"type": "number",
+															"description": "Total number of results matching the current filters before pagination.",
+															"type": "integer",
 															"example": 2000
 														},
 														"total_pages": {
 															"description": "Total number of pages using the given per page.",
-															"type": "number",
+															"type": "integer",
 															"example": 50
 														}
 													}
@@ -1626,12 +1661,15 @@
 										"result": {
 											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"account_id": {
 														"description": "Account identifier.",
 														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"account_name": {
@@ -1643,15 +1681,17 @@
 													"associated_recipient_count": {
 														"description": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 														"type": "integer",
-														"example": 10
+														"example": 10,
+														"x-auditable": true
 													},
 													"associating_recipient_count": {
 														"description": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 														"type": "integer",
-														"example": 1
+														"example": 1,
+														"x-auditable": true
 													},
 													"created": {
-														"description": "When the share was created.",
+														"description": "When the object was created.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2023-09-21T18:56:32.624632Z",
@@ -1660,18 +1700,22 @@
 													"disassociated_recipient_count": {
 														"description": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 														"type": "integer",
-														"example": 0
+														"example": 0,
+														"x-auditable": true
 													},
 													"disassociating_recipient_count": {
 														"description": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 														"type": "integer",
-														"example": 0
+														"example": 0,
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Share identifier tag.",
 														"type": "string",
 														"example": "3fd85f74b32742f1bff64a85009dda07",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"kind": {
@@ -1683,7 +1727,7 @@
 														"x-auditable": true
 													},
 													"modified": {
-														"description": "When the share was modified.",
+														"description": "When the object was last modified.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2023-09-21T18:56:32.624632Z",
@@ -1700,15 +1744,18 @@
 														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"resources": {
 														"description": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter.",
 														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"created": {
-																	"description": "When the share was created.",
+																	"description": "When the object was created.",
 																	"type": "string",
 																	"format": "date-time",
 																	"example": "2023-09-21T18:56:32.624632Z",
@@ -1719,6 +1766,8 @@
 																	"type": "string",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
+																	"minLength": 32,
+																	"pattern": "^[0-9a-fA-F]{32}$",
 																	"x-auditable": true
 																},
 																"meta": {
@@ -1726,7 +1775,7 @@
 																	"type": "object"
 																},
 																"modified": {
-																	"description": "When the share was modified.",
+																	"description": "When the object was last modified.",
 																	"type": "string",
 																	"format": "date-time",
 																	"example": "2023-09-21T18:56:32.624632Z",
@@ -1737,13 +1786,14 @@
 																	"type": "string",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
+																	"minLength": 32,
+																	"pattern": "^[0-9a-fA-F]{32}$",
 																	"x-auditable": true
 																},
 																"resource_id": {
-																	"description": "Share Resource identifier.",
+																	"description": "Identifier assigned by the service that owns the shared resource.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 																	"x-auditable": true
 																},
 																"resource_type": {
@@ -1798,6 +1848,18 @@
 														],
 														"x-auditable": true
 													},
+													"tags": {
+														"description": "Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `include_tags_from` parameter is set.",
+														"allOf": [
+															{
+																"description": "Tags associated with the share.",
+																"type": "object",
+																"additionalProperties": {
+																	"type": "string"
+																}
+															}
+														]
+													},
 													"target_type": {
 														"type": "string",
 														"enum": [
@@ -1850,8 +1912,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -1865,20 +1926,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -1915,8 +1972,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -1930,20 +1986,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -2003,6 +2055,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -2015,6 +2069,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -2035,6 +2091,18 @@
 					"type": "boolean",
 					"example": true
 				}
+			},
+			{
+				"description": "Include share tags in the response. `api` reads tags from the tag service; `mirror` reads a local, eventually consistent replica. If the tag lookup fails, the response omits `tags`.",
+				"in": "query",
+				"name": "include_tags_from",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"api",
+						"mirror"
+					]
+				}
 			}
 		],
 		"responses": {
@@ -2054,8 +2122,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -2083,12 +2150,15 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"account_name": {
@@ -2100,15 +2170,17 @@
 												"associated_recipient_count": {
 													"description": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 10
+													"example": 10,
+													"x-auditable": true
 												},
 												"associating_recipient_count": {
 													"description": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 1
+													"example": 1,
+													"x-auditable": true
 												},
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -2117,18 +2189,22 @@
 												"disassociated_recipient_count": {
 													"description": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 0
+													"example": 0,
+													"x-auditable": true
 												},
 												"disassociating_recipient_count": {
 													"description": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 0
+													"example": 0,
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Share identifier tag.",
 													"type": "string",
 													"example": "3fd85f74b32742f1bff64a85009dda07",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"kind": {
@@ -2140,7 +2216,7 @@
 													"x-auditable": true
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -2157,15 +2233,18 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"resources": {
 													"description": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter.",
 													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created": {
-																"description": "When the share was created.",
+																"description": "When the object was created.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2023-09-21T18:56:32.624632Z",
@@ -2176,6 +2255,8 @@
 																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
+																"minLength": 32,
+																"pattern": "^[0-9a-fA-F]{32}$",
 																"x-auditable": true
 															},
 															"meta": {
@@ -2183,7 +2264,7 @@
 																"type": "object"
 															},
 															"modified": {
-																"description": "When the share was modified.",
+																"description": "When the object was last modified.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2023-09-21T18:56:32.624632Z",
@@ -2194,13 +2275,14 @@
 																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
+																"minLength": 32,
+																"pattern": "^[0-9a-fA-F]{32}$",
 																"x-auditable": true
 															},
 															"resource_id": {
-																"description": "Share Resource identifier.",
+																"description": "Identifier assigned by the service that owns the shared resource.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 																"x-auditable": true
 															},
 															"resource_type": {
@@ -2255,6 +2337,18 @@
 													],
 													"x-auditable": true
 												},
+												"tags": {
+													"description": "Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `include_tags_from` parameter is set.",
+													"allOf": [
+														{
+															"description": "Tags associated with the share.",
+															"type": "object",
+															"additionalProperties": {
+																"type": "string"
+															}
+														}
+													]
+												},
 												"target_type": {
 													"type": "string",
 													"enum": [
@@ -2306,8 +2400,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -2321,20 +2414,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -2371,8 +2460,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -2386,20 +2474,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -2447,7 +2531,7 @@
 	"GET /accounts/{account_id}/shares/{share_id}/excluded-recipients": {
 		"operationId": "share-excluded-recipients-list",
 		"summary": "List share excluded recipients by share ID",
-		"description": "Lists the accounts excluded from an organization-targeted share. Only valid for shares with `target_type=organization`.",
+		"description": "Lists the accounts excluded from an organization-targeted share. Returns an empty list for account-targeted shares.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2458,6 +2542,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -2470,11 +2556,13 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
 			{
-				"description": "Page number. Defaults to `1` when `per_page` is supplied without\n`page`. May be omitted entirely along with `per_page` to receive a\nnon-paginated response.",
+				"description": "Page number. Defaults to `1` when omitted.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -2486,7 +2574,7 @@
 				}
 			},
 			{
-				"description": "Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
+				"description": "Number of objects to return per page. Defaults to `20` when omitted.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -2519,8 +2607,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -2551,28 +2638,28 @@
 													"type": "object",
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
-															"type": "number",
+															"description": "Number of results on the current page.",
+															"type": "integer",
 															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"type": "number",
+															"type": "integer",
 															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"type": "number",
+															"type": "integer",
 															"example": 20
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"type": "number",
+															"description": "Total number of results matching the current filters before pagination.",
+															"type": "integer",
 															"example": 2000
 														},
 														"total_pages": {
 															"description": "Total number of pages using the given per page.",
-															"type": "number",
+															"type": "integer",
 															"example": 50
 														}
 													}
@@ -2587,16 +2674,19 @@
 										"result": {
 											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"account_id": {
 														"description": "Account identifier.",
 														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"created": {
-														"description": "When the share was created.",
+														"description": "When the object was created.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2023-09-21T18:56:32.624632Z",
@@ -2607,10 +2697,12 @@
 														"type": "string",
 														"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"modified": {
-														"description": "When the share was modified.",
+														"description": "When the object was last modified.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2023-09-21T18:56:32.624632Z",
@@ -2655,8 +2747,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -2670,20 +2761,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -2720,8 +2807,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -2735,20 +2821,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -2797,6 +2879,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -2809,6 +2893,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -2821,6 +2907,8 @@
 					"type": "string",
 					"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -2842,8 +2930,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -2871,16 +2958,19 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -2891,10 +2981,12 @@
 													"type": "string",
 													"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -2938,8 +3030,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -2953,20 +3044,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -3003,8 +3090,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -3018,20 +3104,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -3080,6 +3162,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -3092,6 +3176,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -3105,7 +3191,7 @@
 				}
 			},
 			{
-				"description": "Page number. Defaults to `1` when `per_page` is supplied without\n`page`. May be omitted entirely along with `per_page` to receive a\nnon-paginated response.",
+				"description": "Page number. Defaults to `1` when omitted.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -3117,7 +3203,7 @@
 				}
 			},
 			{
-				"description": "Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
+				"description": "Number of objects to return per page. Defaults to `20` when omitted.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -3150,8 +3236,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -3182,28 +3267,28 @@
 													"type": "object",
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
-															"type": "number",
+															"description": "Number of results on the current page.",
+															"type": "integer",
 															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"type": "number",
+															"type": "integer",
 															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"type": "number",
+															"type": "integer",
 															"example": 20
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"type": "number",
+															"description": "Total number of results matching the current filters before pagination.",
+															"type": "integer",
 															"example": 2000
 														},
 														"total_pages": {
 															"description": "Total number of pages using the given per page.",
-															"type": "number",
+															"type": "integer",
 															"example": 50
 														}
 													}
@@ -3219,12 +3304,15 @@
 											"type": "array",
 											"items": {
 												"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
+												"type": "object",
 												"properties": {
 													"account_id": {
 														"description": "Account identifier.",
 														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"association_status": {
@@ -3239,7 +3327,7 @@
 														"x-auditable": true
 													},
 													"created": {
-														"description": "When the share was created.",
+														"description": "When the object was created.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2023-09-21T18:56:32.624632Z",
@@ -3250,10 +3338,12 @@
 														"type": "string",
 														"example": "3fd85f74b32742f1bff64a85009dda07",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"modified": {
-														"description": "When the share was modified.",
+														"description": "When the object was last modified.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2023-09-21T18:56:32.624632Z",
@@ -3262,29 +3352,31 @@
 													"resources": {
 														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"error": {
-																	"description": "Share Recipient error message.",
+																	"description": "Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.",
 																	"type": "string",
 																	"example": "Recipient is missing necessary entitlement",
 																	"x-auditable": true
 																},
 																"resource_id": {
-																	"description": "Share Resource identifier.",
+																	"description": "Identifier assigned by the service that owns the shared resource.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 																	"x-auditable": true
 																},
 																"resource_version": {
-																	"description": "Resource Version.",
+																	"description": "Resource version applied to the recipient, if reconciliation has occurred.",
 																	"type": "integer",
+																	"nullable": true,
 																	"x-auditable": true
 																},
 																"terminal": {
 																	"description": "Whether the error is terminal or will be continually retried.",
 																	"type": "boolean",
 																	"example": true,
+																	"nullable": true,
 																	"x-auditable": true
 																}
 															},
@@ -3336,8 +3428,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -3351,20 +3442,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -3401,8 +3488,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -3416,20 +3502,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -3478,6 +3560,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -3490,6 +3574,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -3502,6 +3588,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -3532,8 +3620,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -3562,12 +3649,15 @@
 									"properties": {
 										"result": {
 											"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"association_status": {
@@ -3582,7 +3672,7 @@
 													"x-auditable": true
 												},
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -3593,10 +3683,12 @@
 													"type": "string",
 													"example": "3fd85f74b32742f1bff64a85009dda07",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -3605,29 +3697,31 @@
 												"resources": {
 													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"error": {
-																"description": "Share Recipient error message.",
+																"description": "Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.",
 																"type": "string",
 																"example": "Recipient is missing necessary entitlement",
 																"x-auditable": true
 															},
 															"resource_id": {
-																"description": "Share Resource identifier.",
+																"description": "Identifier assigned by the service that owns the shared resource.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 																"x-auditable": true
 															},
 															"resource_version": {
-																"description": "Resource Version.",
+																"description": "Resource version applied to the recipient, if reconciliation has occurred.",
 																"type": "integer",
+																"nullable": true,
 																"x-auditable": true
 															},
 															"terminal": {
 																"description": "Whether the error is terminal or will be continually retried.",
 																"type": "boolean",
 																"example": true,
+																"nullable": true,
 																"x-auditable": true
 															}
 														},
@@ -3678,8 +3772,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -3693,20 +3786,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -3743,8 +3832,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -3758,20 +3846,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -3820,6 +3904,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -3832,6 +3918,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -3870,7 +3958,7 @@
 				}
 			},
 			{
-				"description": "Page number. Defaults to `1` when `per_page` is supplied without\n`page`. May be omitted entirely along with `per_page` to receive a\nnon-paginated response.",
+				"description": "Page number. Defaults to `1` when omitted.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -3882,7 +3970,7 @@
 				}
 			},
 			{
-				"description": "Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
+				"description": "Number of objects to return per page. Defaults to `20` when omitted.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -3915,8 +4003,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -3947,28 +4034,28 @@
 													"type": "object",
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
-															"type": "number",
+															"description": "Number of results on the current page.",
+															"type": "integer",
 															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"type": "number",
+															"type": "integer",
 															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"type": "number",
+															"type": "integer",
 															"example": 20
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"type": "number",
+															"description": "Total number of results matching the current filters before pagination.",
+															"type": "integer",
 															"example": 2000
 														},
 														"total_pages": {
 															"description": "Total number of pages using the given per page.",
-															"type": "number",
+															"type": "integer",
 															"example": 50
 														}
 													}
@@ -3983,9 +4070,10 @@
 										"result": {
 											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"created": {
-														"description": "When the share was created.",
+														"description": "When the object was created.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2023-09-21T18:56:32.624632Z",
@@ -3996,6 +4084,8 @@
 														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"meta": {
@@ -4003,7 +4093,7 @@
 														"type": "object"
 													},
 													"modified": {
-														"description": "When the share was modified.",
+														"description": "When the object was last modified.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2023-09-21T18:56:32.624632Z",
@@ -4014,13 +4104,14 @@
 														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"resource_id": {
-														"description": "Share Resource identifier.",
+														"description": "Identifier assigned by the service that owns the shared resource.",
 														"type": "string",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
+														"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 														"x-auditable": true
 													},
 													"resource_type": {
@@ -4096,8 +4187,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -4111,20 +4201,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -4161,8 +4247,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -4176,20 +4261,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -4238,6 +4319,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -4250,6 +4333,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -4262,6 +4347,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -4283,8 +4370,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -4312,9 +4398,10 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -4325,6 +4412,8 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"meta": {
@@ -4332,7 +4421,7 @@
 													"type": "object"
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -4343,13 +4432,14 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"resource_id": {
-													"description": "Share Resource identifier.",
+													"description": "Identifier assigned by the service that owns the shared resource.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 													"x-auditable": true
 												},
 												"resource_type": {
@@ -4424,8 +4514,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -4439,20 +4528,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -4489,8 +4574,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -4504,20 +4588,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -4566,6 +4646,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -4581,54 +4663,6 @@
 						"deleted"
 					],
 					"x-auditable": true
-				}
-			},
-			{
-				"description": "Filter shares by kind.",
-				"in": "query",
-				"name": "kind",
-				"schema": {
-					"type": "string",
-					"enum": [
-						"sent",
-						"received"
-					],
-					"x-auditable": true
-				}
-			},
-			{
-				"description": "Filter shares by target_type.",
-				"in": "query",
-				"name": "target_type",
-				"schema": {
-					"type": "string",
-					"enum": [
-						"account",
-						"organization"
-					],
-					"x-auditable": true
-				}
-			},
-			{
-				"description": "Filter share resources by resource_types.",
-				"in": "query",
-				"name": "resource_types",
-				"schema": {
-					"type": "array",
-					"items": {
-						"description": "Resource Type.",
-						"type": "string",
-						"enum": [
-							"custom-ruleset",
-							"gateway-policy",
-							"gateway-destination-ip",
-							"gateway-block-page-settings",
-							"gateway-extended-email-matching",
-							"idp-federation-grant",
-							"trust-grant"
-						],
-						"x-auditable": true
-					}
 				}
 			},
 			{
@@ -4658,7 +4692,7 @@
 				}
 			},
 			{
-				"description": "Page number. Defaults to `1` when `per_page` is supplied without\n`page`. May be omitted entirely along with `per_page` to receive a\nnon-paginated response.",
+				"description": "Page number. Defaults to `1` when omitted.",
 				"in": "query",
 				"name": "page",
 				"schema": {
@@ -4670,7 +4704,7 @@
 				}
 			},
 			{
-				"description": "Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response.",
+				"description": "Number of objects to return per page. Defaults to `20` when omitted.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
@@ -4703,8 +4737,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -4735,28 +4768,28 @@
 													"type": "object",
 													"properties": {
 														"count": {
-															"description": "Total number of results for the requested service.",
-															"type": "number",
+															"description": "Number of results on the current page.",
+															"type": "integer",
 															"example": 1
 														},
 														"page": {
 															"description": "Current page within paginated list of results.",
-															"type": "number",
+															"type": "integer",
 															"example": 1
 														},
 														"per_page": {
 															"description": "Number of results per page of results.",
-															"type": "number",
+															"type": "integer",
 															"example": 20
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"type": "number",
+															"description": "Total number of results matching the current filters before pagination.",
+															"type": "integer",
 															"example": 2000
 														},
 														"total_pages": {
 															"description": "Total number of pages using the given per page.",
-															"type": "number",
+															"type": "integer",
 															"example": 50
 														}
 													}
@@ -4771,12 +4804,15 @@
 										"result": {
 											"type": "array",
 											"items": {
+												"type": "object",
 												"properties": {
 													"account_id": {
 														"description": "Account identifier.",
 														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"account_name": {
@@ -4788,15 +4824,17 @@
 													"associated_recipient_count": {
 														"description": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 														"type": "integer",
-														"example": 10
+														"example": 10,
+														"x-auditable": true
 													},
 													"associating_recipient_count": {
 														"description": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 														"type": "integer",
-														"example": 1
+														"example": 1,
+														"x-auditable": true
 													},
 													"created": {
-														"description": "When the share was created.",
+														"description": "When the object was created.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2023-09-21T18:56:32.624632Z",
@@ -4805,18 +4843,22 @@
 													"disassociated_recipient_count": {
 														"description": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 														"type": "integer",
-														"example": 0
+														"example": 0,
+														"x-auditable": true
 													},
 													"disassociating_recipient_count": {
 														"description": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 														"type": "integer",
-														"example": 0
+														"example": 0,
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Share identifier tag.",
 														"type": "string",
 														"example": "3fd85f74b32742f1bff64a85009dda07",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"kind": {
@@ -4828,7 +4870,7 @@
 														"x-auditable": true
 													},
 													"modified": {
-														"description": "When the share was modified.",
+														"description": "When the object was last modified.",
 														"type": "string",
 														"format": "date-time",
 														"example": "2023-09-21T18:56:32.624632Z",
@@ -4845,15 +4887,18 @@
 														"type": "string",
 														"example": "023e105f4ecef8ad9ca31a8372d0c353",
 														"maxLength": 32,
+														"minLength": 32,
+														"pattern": "^[0-9a-fA-F]{32}$",
 														"x-auditable": true
 													},
 													"resources": {
 														"description": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter.",
 														"type": "array",
 														"items": {
+															"type": "object",
 															"properties": {
 																"created": {
-																	"description": "When the share was created.",
+																	"description": "When the object was created.",
 																	"type": "string",
 																	"format": "date-time",
 																	"example": "2023-09-21T18:56:32.624632Z",
@@ -4864,6 +4909,8 @@
 																	"type": "string",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
+																	"minLength": 32,
+																	"pattern": "^[0-9a-fA-F]{32}$",
 																	"x-auditable": true
 																},
 																"meta": {
@@ -4871,7 +4918,7 @@
 																	"type": "object"
 																},
 																"modified": {
-																	"description": "When the share was modified.",
+																	"description": "When the object was last modified.",
 																	"type": "string",
 																	"format": "date-time",
 																	"example": "2023-09-21T18:56:32.624632Z",
@@ -4882,13 +4929,14 @@
 																	"type": "string",
 																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																	"maxLength": 32,
+																	"minLength": 32,
+																	"pattern": "^[0-9a-fA-F]{32}$",
 																	"x-auditable": true
 																},
 																"resource_id": {
-																	"description": "Share Resource identifier.",
+																	"description": "Identifier assigned by the service that owns the shared resource.",
 																	"type": "string",
-																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																	"maxLength": 32,
+																	"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 																	"x-auditable": true
 																},
 																"resource_type": {
@@ -4943,6 +4991,18 @@
 														],
 														"x-auditable": true
 													},
+													"tags": {
+														"description": "Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `include_tags_from` parameter is set.",
+														"allOf": [
+															{
+																"description": "Tags associated with the share.",
+																"type": "object",
+																"additionalProperties": {
+																	"type": "string"
+																}
+															}
+														]
+													},
 													"target_type": {
 														"type": "string",
 														"enum": [
@@ -4995,8 +5055,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -5010,20 +5069,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -5060,8 +5115,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -5075,20 +5129,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -5119,13 +5169,13 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization.share",
+		"x-fern-sdk-group-name": "organizations.shares",
 		"x-fern-sdk-method-name": "list"
 	},
 	"POST /accounts/{account_id}/shares": {
 		"operationId": "share-create",
 		"summary": "Trigger a share creation",
-		"description": "Creates a new resource share for sharing Cloudflare resources with other accounts or organizations.",
+		"description": "Creates a share that makes a resource available to specific accounts in the caller's organization, or to the whole organization.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5136,6 +5186,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -5147,6 +5199,33 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"excluded_recipients": {
+								"description": "Accounts to exclude from an organization-targeted share. Only allowed when `recipients` contains no account entries. The share owner cannot be excluded. Duplicate entries are ignored.",
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"account_id": {
+											"description": "The account to exclude from the organization-targeted share.",
+											"allOf": [
+												{
+													"description": "Account identifier.",
+													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
+													"x-auditable": true
+												}
+											]
+										}
+									},
+									"required": [
+										"account_id"
+									]
+								},
+								"maxItems": 1000
+							},
 							"name": {
 								"description": "The name of the share.",
 								"type": "string",
@@ -5167,6 +5246,8 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												}
 											],
@@ -5181,6 +5262,8 @@
 											"type": "string",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
 											"maxLength": 32,
+											"minLength": 32,
+											"pattern": "^[0-9a-fA-F]{32}$",
 											"x-auditable": true
 										},
 										"recipient_account_id": {
@@ -5191,12 +5274,15 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												}
 											]
 										}
 									}
-								}
+								},
+								"maxItems": 100
 							},
 							"resources": {
 								"type": "array",
@@ -5208,17 +5294,23 @@
 											"type": "object"
 										},
 										"resource_account_id": {
-											"description": "Account identifier.",
-											"type": "string",
-											"example": "023e105f4ecef8ad9ca31a8372d0c353",
-											"maxLength": 32,
-											"x-auditable": true
+											"description": "The account that owns the resource. Must match the `account_id` in the path.",
+											"allOf": [
+												{
+													"description": "Account identifier.",
+													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
+													"x-auditable": true
+												}
+											]
 										},
 										"resource_id": {
-											"description": "Share Resource identifier.",
+											"description": "Identifier assigned by the service that owns the shared resource.",
 											"type": "string",
-											"example": "023e105f4ecef8ad9ca31a8372d0c353",
-											"maxLength": 32,
+											"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 											"x-auditable": true
 										},
 										"resource_type": {
@@ -5242,13 +5334,19 @@
 										"resource_account_id",
 										"meta"
 									]
+								},
+								"maxItems": 1
+							},
+							"tags": {
+								"description": "Tags associated with the share.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
 								}
 							}
 						},
 						"required": [
-							"name",
-							"resources",
-							"recipients"
+							"name"
 						]
 					}
 				}
@@ -5271,8 +5369,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -5300,12 +5397,15 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"account_name": {
@@ -5317,15 +5417,17 @@
 												"associated_recipient_count": {
 													"description": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 10
+													"example": 10,
+													"x-auditable": true
 												},
 												"associating_recipient_count": {
 													"description": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 1
+													"example": 1,
+													"x-auditable": true
 												},
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -5334,18 +5436,22 @@
 												"disassociated_recipient_count": {
 													"description": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 0
+													"example": 0,
+													"x-auditable": true
 												},
 												"disassociating_recipient_count": {
 													"description": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 0
+													"example": 0,
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Share identifier tag.",
 													"type": "string",
 													"example": "3fd85f74b32742f1bff64a85009dda07",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"kind": {
@@ -5357,7 +5463,7 @@
 													"x-auditable": true
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -5374,15 +5480,18 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"resources": {
 													"description": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter.",
 													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created": {
-																"description": "When the share was created.",
+																"description": "When the object was created.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2023-09-21T18:56:32.624632Z",
@@ -5393,6 +5502,8 @@
 																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
+																"minLength": 32,
+																"pattern": "^[0-9a-fA-F]{32}$",
 																"x-auditable": true
 															},
 															"meta": {
@@ -5400,7 +5511,7 @@
 																"type": "object"
 															},
 															"modified": {
-																"description": "When the share was modified.",
+																"description": "When the object was last modified.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2023-09-21T18:56:32.624632Z",
@@ -5411,13 +5522,14 @@
 																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
+																"minLength": 32,
+																"pattern": "^[0-9a-fA-F]{32}$",
 																"x-auditable": true
 															},
 															"resource_id": {
-																"description": "Share Resource identifier.",
+																"description": "Identifier assigned by the service that owns the shared resource.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 																"x-auditable": true
 															},
 															"resource_type": {
@@ -5472,6 +5584,18 @@
 													],
 													"x-auditable": true
 												},
+												"tags": {
+													"description": "Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `include_tags_from` parameter is set.",
+													"allOf": [
+														{
+															"description": "Tags associated with the share.",
+															"type": "object",
+															"additionalProperties": {
+																"type": "string"
+															}
+														}
+													]
+												},
 												"target_type": {
 													"type": "string",
 													"enum": [
@@ -5523,8 +5647,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -5538,20 +5661,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -5588,8 +5707,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -5603,20 +5721,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -5665,6 +5779,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -5677,6 +5793,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -5696,6 +5814,8 @@
 										"type": "string",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
+										"minLength": 32,
+										"pattern": "^[0-9a-fA-F]{32}$",
 										"x-auditable": true
 									}
 								]
@@ -5725,8 +5845,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -5754,16 +5873,19 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -5774,10 +5896,12 @@
 													"type": "string",
 													"example": "4ae96b85c43850f2c0a7b9101a0eeb18",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -5821,8 +5945,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -5836,20 +5959,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -5886,8 +6005,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -5901,20 +6019,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -5963,6 +6077,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -5975,6 +6091,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -5984,7 +6102,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Optionally specify `recipient_account_id` to target a specific account, or `organization_id` to target the caller's whole organization. If neither is provided, the caller's organization is used.\nThe legacy field `account_id` is accepted as a synonym for `recipient_account_id` during the deprecation period (see `x-sunset` on that field).\n",
+						"description": "Specify the account receiving the share using `recipient_account_id`.\nThe legacy field `account_id` is accepted as a synonym during the deprecation period (see `x-sunset` on that field).\n",
 						"type": "object",
 						"properties": {
 							"account_id": {
@@ -5995,6 +6113,8 @@
 										"type": "string",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
+										"minLength": 32,
+										"pattern": "^[0-9a-fA-F]{32}$",
 										"x-auditable": true
 									}
 								],
@@ -6004,13 +6124,6 @@
 									"terraform"
 								]
 							},
-							"organization_id": {
-								"description": "Organization identifier.",
-								"type": "string",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"maxLength": 32,
-								"x-auditable": true
-							},
 							"recipient_account_id": {
 								"description": "The account that will receive the share.",
 								"allOf": [
@@ -6019,11 +6132,14 @@
 										"type": "string",
 										"example": "023e105f4ecef8ad9ca31a8372d0c353",
 										"maxLength": 32,
+										"minLength": 32,
+										"pattern": "^[0-9a-fA-F]{32}$",
 										"x-auditable": true
 									}
 								]
 							}
-						}
+						},
+						"minProperties": 1
 					}
 				}
 			}
@@ -6045,8 +6161,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -6075,12 +6190,15 @@
 									"properties": {
 										"result": {
 											"description": "A recipient of a share. The `association_status` field tracks the\nlifecycle of the shared resources in the recipient account. All\nrecipients are returned by the list endpoint regardless of status;\nfilter client-side if only active recipients are needed.\n",
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"association_status": {
@@ -6095,7 +6213,7 @@
 													"x-auditable": true
 												},
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -6106,10 +6224,12 @@
 													"type": "string",
 													"example": "3fd85f74b32742f1bff64a85009dda07",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -6118,29 +6238,31 @@
 												"resources": {
 													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"error": {
-																"description": "Share Recipient error message.",
+																"description": "Error from the most recent attempt to apply the resource to the recipient. Empty string when no error has been recorded.",
 																"type": "string",
 																"example": "Recipient is missing necessary entitlement",
 																"x-auditable": true
 															},
 															"resource_id": {
-																"description": "Share Resource identifier.",
+																"description": "Identifier assigned by the service that owns the shared resource.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 																"x-auditable": true
 															},
 															"resource_version": {
-																"description": "Resource Version.",
+																"description": "Resource version applied to the recipient, if reconciliation has occurred.",
 																"type": "integer",
+																"nullable": true,
 																"x-auditable": true
 															},
 															"terminal": {
 																"description": "Whether the error is terminal or will be continually retried.",
 																"type": "boolean",
 																"example": true,
+																"nullable": true,
 																"x-auditable": true
 															}
 														},
@@ -6191,8 +6313,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -6206,20 +6327,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -6256,8 +6373,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -6271,20 +6387,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -6333,6 +6445,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -6345,6 +6459,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -6361,17 +6477,23 @@
 								"type": "object"
 							},
 							"resource_account_id": {
-								"description": "Account identifier.",
-								"type": "string",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"maxLength": 32,
-								"x-auditable": true
+								"description": "The account that owns the resource. Must match the `account_id` in the path.",
+								"allOf": [
+									{
+										"description": "Account identifier.",
+										"type": "string",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"minLength": 32,
+										"pattern": "^[0-9a-fA-F]{32}$",
+										"x-auditable": true
+									}
+								]
 							},
 							"resource_id": {
-								"description": "Share Resource identifier.",
+								"description": "Identifier assigned by the service that owns the shared resource.",
 								"type": "string",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"maxLength": 32,
+								"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 								"x-auditable": true
 							},
 							"resource_type": {
@@ -6416,8 +6538,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -6445,9 +6566,10 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -6458,6 +6580,8 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"meta": {
@@ -6465,7 +6589,7 @@
 													"type": "object"
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -6476,13 +6600,14 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"resource_id": {
-													"description": "Share Resource identifier.",
+													"description": "Identifier assigned by the service that owns the shared resource.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 													"x-auditable": true
 												},
 												"resource_type": {
@@ -6557,8 +6682,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -6572,20 +6696,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -6622,8 +6742,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -6637,20 +6756,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -6687,8 +6802,8 @@
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}": {
 		"operationId": "share-update",
-		"summary": "Trigger a share rename",
-		"description": "Updates the share's display name and tags. This endpoint does **not**\nmodify recipients or resources — those are managed via dedicated\nsubresource endpoints:\n\n- **Recipients**: Use `POST /accounts/{account_id}/shares/{share_id}/recipients`\n  to add a single recipient, `PUT /accounts/{account_id}/shares/{share_id}/recipients`\n  to replace the full recipient list, or\n  `DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}`\n  to remove a recipient.\n- **Resources**: Use the share's resource subresource endpoints.\n\nUpdating is not immediate; an updated share object with a new status\nwill be returned.\n",
+		"summary": "Trigger a share update",
+		"description": "Updates the share's display name and tags. Omitting `tags` leaves the\nexisting tags unchanged. Recipients and resources are managed via their\nsubresource endpoints.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -6699,6 +6814,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -6711,6 +6828,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -6728,6 +6847,13 @@
 								"type": "string",
 								"example": "My Shared WAF Managed Rule",
 								"x-auditable": true
+							},
+							"tags": {
+								"description": "Tags associated with the share.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								}
 							}
 						},
 						"required": [
@@ -6754,8 +6880,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -6783,12 +6908,15 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"account_id": {
 													"description": "Account identifier.",
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"account_name": {
@@ -6800,15 +6928,17 @@
 												"associated_recipient_count": {
 													"description": "The number of recipients in the 'associated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 10
+													"example": 10,
+													"x-auditable": true
 												},
 												"associating_recipient_count": {
 													"description": "The number of recipients in the 'associating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 1
+													"example": 1,
+													"x-auditable": true
 												},
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -6817,18 +6947,22 @@
 												"disassociated_recipient_count": {
 													"description": "The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 0
+													"example": 0,
+													"x-auditable": true
 												},
 												"disassociating_recipient_count": {
 													"description": "The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include_recipient_counts' parameter.",
 													"type": "integer",
-													"example": 0
+													"example": 0,
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Share identifier tag.",
 													"type": "string",
 													"example": "3fd85f74b32742f1bff64a85009dda07",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"kind": {
@@ -6840,7 +6974,7 @@
 													"x-auditable": true
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -6857,15 +6991,18 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"resources": {
 													"description": "A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter.",
 													"type": "array",
 													"items": {
+														"type": "object",
 														"properties": {
 															"created": {
-																"description": "When the share was created.",
+																"description": "When the object was created.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2023-09-21T18:56:32.624632Z",
@@ -6876,6 +7013,8 @@
 																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
+																"minLength": 32,
+																"pattern": "^[0-9a-fA-F]{32}$",
 																"x-auditable": true
 															},
 															"meta": {
@@ -6883,7 +7022,7 @@
 																"type": "object"
 															},
 															"modified": {
-																"description": "When the share was modified.",
+																"description": "When the object was last modified.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2023-09-21T18:56:32.624632Z",
@@ -6894,13 +7033,14 @@
 																"type": "string",
 																"example": "023e105f4ecef8ad9ca31a8372d0c353",
 																"maxLength": 32,
+																"minLength": 32,
+																"pattern": "^[0-9a-fA-F]{32}$",
 																"x-auditable": true
 															},
 															"resource_id": {
-																"description": "Share Resource identifier.",
+																"description": "Identifier assigned by the service that owns the shared resource.",
 																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 																"x-auditable": true
 															},
 															"resource_type": {
@@ -6955,6 +7095,18 @@
 													],
 													"x-auditable": true
 												},
+												"tags": {
+													"description": "Tags associated with the share. Included in create and update responses when tags are supplied, and in read responses when the `include_tags_from` parameter is set.",
+													"allOf": [
+														{
+															"description": "Tags associated with the share.",
+															"type": "object",
+															"additionalProperties": {
+																"type": "string"
+															}
+														}
+													]
+												},
 												"target_type": {
 													"type": "string",
 													"enum": [
@@ -7006,8 +7158,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -7021,20 +7172,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -7071,8 +7218,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -7086,20 +7232,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -7147,6 +7289,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -7159,6 +7303,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -7180,6 +7326,8 @@
 											"type": "string",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
 											"maxLength": 32,
+											"minLength": 32,
+											"pattern": "^[0-9a-fA-F]{32}$",
 											"x-auditable": true
 										}
 									]
@@ -7188,7 +7336,8 @@
 							"required": [
 								"account_id"
 							]
-						}
+						},
+						"maxItems": 1000
 					}
 				}
 			}
@@ -7220,8 +7369,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -7235,20 +7383,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -7285,8 +7429,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -7300,20 +7443,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -7345,12 +7484,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-require-confirmation": "Accounts omitted from the list are no longer excluded and will receive the share."
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/recipients": {
 		"operationId": "share-recipients-update",
 		"summary": "Trigger recipient reconciliation on a share",
-		"description": "Replaces the full recipient list for an account-targeted share. The\nserver computes the diff between the current and desired recipients:\nnew accounts are added, accounts no longer in the list are marked for\ndisassociation, and unchanged accounts are left as-is.\n\nReturns an error if the share targets an organization\n(`target_type=organization`); org-targeted shares derive their\nrecipients dynamically from org membership and cannot be modified\nthrough this endpoint.\n",
+		"description": "Replaces the full recipient list for an account-targeted share. The\nserver computes the diff between the current and desired recipients:\nnew accounts are added, accounts no longer in the list are marked for\ndisassociation, and unchanged accounts are left as-is.\n\nReturns an error if the share targets an organization\n(`target_type=organization`) and the list is non-empty; org-targeted\nshares derive their recipients dynamically from org membership and\ncannot be modified through this endpoint.\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7361,6 +7501,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -7373,6 +7515,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -7384,7 +7528,7 @@
 					"schema": {
 						"type": "array",
 						"items": {
-							"description": "Optionally specify `recipient_account_id` to target a specific account, or `organization_id` to target the caller's whole organization. If neither is provided, the caller's organization is used.\nThe legacy field `account_id` is accepted as a synonym for `recipient_account_id` during the deprecation period (see `x-sunset` on that field).\n",
+							"description": "Specify the account receiving the share using `recipient_account_id`.\nThe legacy field `account_id` is accepted as a synonym during the deprecation period (see `x-sunset` on that field).\n",
 							"type": "object",
 							"properties": {
 								"account_id": {
@@ -7395,6 +7539,8 @@
 											"type": "string",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
 											"maxLength": 32,
+											"minLength": 32,
+											"pattern": "^[0-9a-fA-F]{32}$",
 											"x-auditable": true
 										}
 									],
@@ -7404,13 +7550,6 @@
 										"terraform"
 									]
 								},
-								"organization_id": {
-									"description": "Organization identifier.",
-									"type": "string",
-									"example": "023e105f4ecef8ad9ca31a8372d0c353",
-									"maxLength": 32,
-									"x-auditable": true
-								},
 								"recipient_account_id": {
 									"description": "The account that will receive the share.",
 									"allOf": [
@@ -7419,12 +7558,16 @@
 											"type": "string",
 											"example": "023e105f4ecef8ad9ca31a8372d0c353",
 											"maxLength": 32,
+											"minLength": 32,
+											"pattern": "^[0-9a-fA-F]{32}$",
 											"x-auditable": true
 										}
 									]
 								}
-							}
-						}
+							},
+							"minProperties": 1
+						},
+						"maxItems": 100
 					}
 				}
 			}
@@ -7456,8 +7599,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -7471,20 +7613,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -7521,8 +7659,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -7536,20 +7673,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -7581,12 +7714,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.recipients",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-require-confirmation": "Accounts omitted from the list are disassociated from the share."
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"operationId": "share-resource-update",
 		"summary": "Trigger a resource metadata update in a share",
-		"description": "Update is not immediate, an updated share resource object with a new status will be returned.",
+		"description": "Updates the resource's `meta`. Only resources with `status=active` can be updated.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7597,6 +7731,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -7609,6 +7745,8 @@
 					"type": "string",
 					"example": "3fd85f74b32742f1bff64a85009dda07",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			},
@@ -7621,6 +7759,8 @@
 					"type": "string",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-fA-F]{32}$",
 					"x-auditable": true
 				}
 			}
@@ -7661,8 +7801,7 @@
 												"type": "object",
 												"properties": {
 													"code": {
-														"type": "integer",
-														"minimum": 1000
+														"type": "integer"
 													},
 													"message": {
 														"type": "string"
@@ -7690,9 +7829,10 @@
 									"type": "object",
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"created": {
-													"description": "When the share was created.",
+													"description": "When the object was created.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -7703,6 +7843,8 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"meta": {
@@ -7710,7 +7852,7 @@
 													"type": "object"
 												},
 												"modified": {
-													"description": "When the share was modified.",
+													"description": "When the object was last modified.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2023-09-21T18:56:32.624632Z",
@@ -7721,13 +7863,14 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"minLength": 32,
+													"pattern": "^[0-9a-fA-F]{32}$",
 													"x-auditable": true
 												},
 												"resource_id": {
-													"description": "Share Resource identifier.",
+													"description": "Identifier assigned by the service that owns the shared resource.",
 													"type": "string",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"example": "0a679032-bbb2-4b7e-9acc-dd5c5cb27a17",
 													"x-auditable": true
 												},
 												"resource_type": {
@@ -7802,8 +7945,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -7817,20 +7959,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [
@@ -7867,8 +8005,7 @@
 														"type": "object",
 														"properties": {
 															"code": {
-																"type": "integer",
-																"minimum": 1000
+																"type": "integer"
 															},
 															"message": {
 																"type": "string"
@@ -7882,20 +8019,16 @@
 													"example": []
 												}
 											],
-											"minLength": 1
+											"minItems": 1
 										},
 										"result": {
 											"type": "object",
-											"enum": [
-												null
-											],
 											"nullable": true
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"type": "boolean",
-											"example": false,
-											"x-auditable": true
+											"example": false
 										}
 									},
 									"required": [

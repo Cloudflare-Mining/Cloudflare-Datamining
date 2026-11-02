@@ -67,104 +67,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"example": {
-												"code": 10433,
-												"message": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
-									}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -188,8 +179,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
 		"operationId": "delete-scan",
@@ -544,104 +534,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"example": {
-												"code": 10433,
-												"message": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
-									}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -662,8 +643,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.results",
-		"x-fern-sdk-method-name": "getBanners",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-banners"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "get_ConfigFetch",
@@ -828,7 +808,8 @@
 												"title": "Config"
 											}
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -840,104 +821,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"example": {
-												"code": 10433,
-												"message": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
-									}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -962,8 +934,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/results/{config_id}": {
 		"operationId": "get_GetOpenPorts",
@@ -1064,104 +1035,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"example": {
-												"code": 10433,
-												"message": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
-									}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -1186,8 +1148,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.results",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/vuln_scanner/scans": {
 		"operationId": "list-scans",
@@ -3005,7 +2966,8 @@
 											],
 											"title": "Config"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3017,104 +2979,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"example": {
-												"code": 10433,
-												"message": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
-									}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -3138,8 +3091,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "post_ConfigCreate",
@@ -3346,7 +3298,8 @@
 											],
 											"title": "Config"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3358,104 +3311,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"example": {
-												"code": 10433,
-												"message": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
+												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
-									}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -3479,8 +3423,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/vuln_scanner/scans": {
 		"operationId": "create-scan",
