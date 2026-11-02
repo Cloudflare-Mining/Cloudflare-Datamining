@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/polystella-astro",
 	"dist-tags": {
-		"latest": "0.5.0"
+		"latest": "0.6.0"
 	},
 	"versions": {
 		"0.0.0-stage": {
@@ -82,8 +82,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCMrIoJ+TewBLsKytr20vUZdxXJAj2Bww1Wl9YOthNEQgIgeGFXMdFS3f3hZfaFQFr8gRbCZORU/BGqdlq45Uhh8ZI="
+						"sig": "MEUCIQCMrIoJ+TewBLsKytr20vUZdxXJAj2Bww1Wl9YOthNEQgIgeGFXMdFS3f3hZfaFQFr8gRbCZORU/BGqdlq45Uhh8ZI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -93,6 +93,59 @@
 					}
 				},
 				"unpackedSize": 1125308
+			}
+		},
+		"0.6.0": {
+			"name": "@cloudflare/polystella-astro",
+			"version": "0.6.0",
+			"dependencies": {
+				"yaml": "^2.8.3",
+				"acorn": "^8.17.0",
+				"s3mini": "^0.9.4",
+				"p-retry": "^8.0.0",
+				"satteri": "^0.9.4",
+				"picomatch": "^4.0.4",
+				"@cloudflare/polystella-core": "^0.6.0"
+			},
+			"devDependencies": {
+				"astro": "^7.4.2",
+				"react": "^19.3.1",
+				"vitest": "^4.1.9",
+				"typescript": "^6.0.3",
+				"@types/mdast": "^4.0.4",
+				"@types/react": "^19.2.14",
+				"@astrojs/sitemap": "^3.7.3",
+				"@types/picomatch": "^4.0.0"
+			},
+			"peerDependencies": {
+				"astro": "^7.0.10",
+				"react": "^17.0.0 || ^18.0.0 || ^19.0.0"
+			},
+			"bin": {
+				"polystella": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "5e4ef35ce40ffa54f127db4735e58b40ec9795ab",
+				"tarball": "https://registry.npmjs.org/@cloudflare/polystella-astro/-/polystella-astro-0.6.0.tgz",
+				"fileCount": 338,
+				"integrity": "sha512-c7mZdhzay0NDNUWhY/xCInPG32OtTUuZRiSzLcGa93Ok4b10CtfaDLXHJY3ahoekoK4n6XEo2TPMyg4PZjzQrQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIDkwOnzI1JHcohjtPyDCj+7iX90QhD9cFq3kdcpo33fCAiBq+YQj0/xZBOs8/bt2tsUDAYtK8e8nAfXXuzXQsT15PA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIF2ZSWinTYpKLGcAXbHRPnOX05CA4plqyRbPC8wD66L9AiB4Zw/rn8aW+zkt9TSTWKvpuu71LnVmNXURAzCoudBgYw=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fpolystella-astro@0.6.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1142639
 			}
 		}
 	}

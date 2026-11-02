@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-functions",
 	"dist-tags": {
-		"latest": "0.1.3"
+		"latest": "0.1.4"
 	},
 	"versions": {
 		"0.0.1": {
@@ -184,8 +184,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQC633iJ81hp5f+gtQfaGLR2Q4WH3GRJSxd7ZRN5hAePogIhAJis7epIyF8445JTgId1Vkei7+Hlcn4udwb1HIvJ0MFt"
+						"sig": "MEYCIQC633iJ81hp5f+gtQfaGLR2Q4WH3GRJSxd7ZRN5hAePogIhAJis7epIyF8445JTgId1Vkei7+Hlcn4udwb1HIvJ0MFt",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -195,6 +195,51 @@
 					}
 				},
 				"unpackedSize": 4466085
+			},
+			"engines": {
+				"node": ">=22.0.0"
+			}
+		},
+		"0.1.4": {
+			"name": "@cloudflare/pages-functions",
+			"version": "0.1.4",
+			"dependencies": {
+				"esbuild": "0.28.2",
+				"path-to-regexp": "6.3.0"
+			},
+			"devDependencies": {
+				"tsdown": "0.16.3",
+				"vitest": "5.0.4",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@cloudflare/workers-utils": "0.51.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"bin": {
+				"pages-functions": "bin/pages-functions"
+			},
+			"dist": {
+				"shasum": "1d7d3ef65bd74fa02b651bc5e484f0a3561ff64a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-functions/-/pages-functions-0.1.4.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-xRboIYioKD9H8Ye72k225wCOEpZvXx6dGyitin28g6bytigMR66IvxTjZv7lYAkBVH1zBTOvkFnrU+9hsrOTzg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCQLAgEnVtx/rqx6NZpxPQ1V3oNzBN3P2BV7ixqvC76JAIhALOTOKFXPBCgCQIVKuRI28Qd16MHVmpzE2vr7EyZdrrv",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIAzehYYKqJeSSjhlC2E1hspV93mg3EWO+RQihu4HAUiyAiEAyBiPx9diiS8vwPO4vik3iw/lIo6aXNTOqq8oQ9sUbw8="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fpages-functions@0.1.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4480337
 			},
 			"engines": {
 				"node": ">=22.0.0"

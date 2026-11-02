@@ -13,7 +13,7 @@ The root entrypoint owns:
 - Translation execution, retries, cancellation, and `PermanentProviderError`.
 - Optional per-attempt observation of prompts, normalized responses, parsing,
   timing, and batch metrics.
-- Catalog lookup, fallback, interpolation, and UI-string translation.
+- Catalog lookup, fallback, ICU message formatting (plurals, select, numbers, dates), locale tags, and UI-string translation.
 
 Namespaced subpaths own the rest:
 
