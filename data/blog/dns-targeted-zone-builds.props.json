@@ -1,0 +1,41 @@
+{
+	"initialReadingTime": "18",
+	"locale": "en-us",
+	"post": {
+		"authors": [
+			{
+				"name": "Alex Fattouche",
+				"slug": "alex-fattouche"
+			}
+		],
+		"excerpt": "Zone setting changes used to rebuild entire DNS zones, even ones with tens of millions of records. Here is how we built a planner that picks the smallest safe build, cutting full builds by 40%, peak memory by 85%, and halving build delay.",
+		"feature_image": "https://blog.cloudflare.com/_emdash/api/media/file/01M6426V7J1FR4KZEYMQP555R0.01M6426VZJHB2XCKTQ39W2S71Z.png",
+		"published_at": "2026-11-02T14:00:00.000Z",
+		"slug": "dns-targeted-zone-builds",
+		"tags": [
+			{
+				"name": "Deep Dive",
+				"slug": "deep-dive"
+			},
+			{
+				"name": "DNS",
+				"slug": "dns"
+			},
+			{
+				"name": "Kafka",
+				"slug": "kafka"
+			},
+			{
+				"name": "Quicksilver",
+				"slug": "quicksilver"
+			},
+			{
+				"name": "Speed & Reliability",
+				"slug": "speed-and-reliability"
+			}
+		],
+		"title": "How we halved DNS build delay and cut memory use by 85%",
+		"updated_at": "2026-11-02T14:00:17.301Z",
+		"url": "https://blog.cloudflare.com/dns-targeted-zone-builds/"
+	}
+}
