@@ -4593,7 +4593,11 @@
 				{
 					"name": "pythonSharedStandardLibrary",
 					"annotations": {
-						"compatEnableFlag": "python_shared_standard_library"
+						"compatEnableFlag": "python_shared_standard_library",
+						"impliedByAfterDate": {
+							"name": "pythonWorkers",
+							"date": "2026-11-19"
+						}
 					},
 					"type": "Bool"
 				},
@@ -4619,6 +4623,23 @@
 					"name": "pythonZstdSnapshot",
 					"annotations": {
 						"compatEnableFlag": "python_zstd_snapshot",
+						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "nodeJsProcessVersion24",
+					"annotations": {
+						"compatEnableFlag": "nodejs_process_version_24",
+						"compatDisableFlag": "no_nodejs_process_version_24",
+						"compatEnableDate": "2026-11-24"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "r2BindingsJsrpc",
+					"annotations": {
+						"compatEnableFlag": "r2_binding_jsrpc",
 						"experimental": true
 					},
 					"type": "Bool"
