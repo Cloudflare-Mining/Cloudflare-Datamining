@@ -240,7 +240,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes the target environment from Vulnerability Scanner."
 	},
 	"GET /accounts/{account_id}/vuln_scanner/target_environments": {
@@ -428,7 +427,7 @@
 														"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 														"discriminator": {
 															"mapping": {
-																"zone": "#/components/schemas/vuln_scanner_zone-target"
+																"zone": "#/components/schemas/vuln-scanner_zone-target"
 															},
 															"propertyName": "type"
 														},
@@ -601,8 +600,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
 		"operationId": "get-target-environment",
@@ -724,7 +722,7 @@
 													"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 													"discriminator": {
 														"mapping": {
-															"zone": "#/components/schemas/vuln_scanner_zone-target"
+															"zone": "#/components/schemas/vuln-scanner_zone-target"
 														},
 														"propertyName": "type"
 													},
@@ -900,8 +898,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
 		"operationId": "edit-target-environment",
@@ -930,7 +927,7 @@
 								"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 								"discriminator": {
 									"mapping": {
-										"zone": "#/components/schemas/vuln_scanner_zone-target"
+										"zone": "#/components/schemas/vuln-scanner_zone-target"
 									},
 									"propertyName": "type"
 								},
@@ -1080,7 +1077,7 @@
 													"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 													"discriminator": {
 														"mapping": {
-															"zone": "#/components/schemas/vuln_scanner_zone-target"
+															"zone": "#/components/schemas/vuln-scanner_zone-target"
 														},
 														"propertyName": "type"
 													},
@@ -1256,8 +1253,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/vuln_scanner/target_environments": {
 		"operationId": "create-target-environment",
@@ -1285,7 +1281,7 @@
 								"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 								"discriminator": {
 									"mapping": {
-										"zone": "#/components/schemas/vuln_scanner_zone-target"
+										"zone": "#/components/schemas/vuln-scanner_zone-target"
 									},
 									"propertyName": "type"
 								},
@@ -1439,7 +1435,7 @@
 													"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 													"discriminator": {
 														"mapping": {
-															"zone": "#/components/schemas/vuln_scanner_zone-target"
+															"zone": "#/components/schemas/vuln-scanner_zone-target"
 														},
 														"propertyName": "type"
 													},
@@ -1615,8 +1611,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
 		"operationId": "update-target-environment",
@@ -1645,7 +1640,7 @@
 								"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 								"discriminator": {
 									"mapping": {
-										"zone": "#/components/schemas/vuln_scanner_zone-target"
+										"zone": "#/components/schemas/vuln-scanner_zone-target"
 									},
 									"propertyName": "type"
 								},
@@ -1799,7 +1794,7 @@
 													"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 													"discriminator": {
 														"mapping": {
-															"zone": "#/components/schemas/vuln_scanner_zone-target"
+															"zone": "#/components/schemas/vuln-scanner_zone-target"
 														},
 														"propertyName": "type"
 													},
@@ -1975,7 +1970,6 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

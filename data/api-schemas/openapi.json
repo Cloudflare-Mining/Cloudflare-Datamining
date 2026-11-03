@@ -602292,7 +602292,6 @@
 																			"no_current_period",
 																			"unavailable",
 																			"below_limit",
-																			"approaching_limit",
 																			"limit_reached"
 																		]
 																	}
@@ -603151,7 +603150,6 @@
 																		"no_current_period",
 																		"unavailable",
 																		"below_limit",
-																		"approaching_limit",
 																		"limit_reached"
 																	]
 																}
@@ -604758,7 +604756,6 @@
 																		"no_current_period",
 																		"unavailable",
 																		"below_limit",
-																		"approaching_limit",
 																		"limit_reached"
 																	]
 																}
@@ -605595,7 +605592,6 @@
 																		"no_current_period",
 																		"unavailable",
 																		"below_limit",
-																		"approaching_limit",
 																		"limit_reached"
 																	]
 																}
@@ -606384,7 +606380,7 @@
 			"get": {
 				"operationId": "spend-policies-list-audit",
 				"summary": "List Spend Policy Audit Entries",
-				"description": "Returns the policy's evaluation history, newest first. At most one entry is recorded per trigger (`approaching_limit` or `limit_reached`), policy version and billing period, so a policy update can record a new entry without any change in balance. Disabled policies still return their history; deleted policies return `404`. There is no pagination: use `limit` to set how many entries come back.",
+				"description": "Returns the policy's evaluation history, newest first. At most one threshold-crossing entry (`limit_reached`) is recorded per policy version and billing period, so a policy update can record a new entry without any change in balance. Disabled policies still return their history; deleted policies return `404`. There is no pagination: use `limit` to set how many entries come back.",
 				"parameters": [
 					{
 						"description": "Identifies the Cloudflare account (account tag).",
@@ -606563,13 +606559,9 @@
 																"example": 100
 															},
 															"trigger": {
-																"description": "The state the balance moved into. `approaching_limit` means the balance is at least 80% of the threshold (rounded up to a whole cent), but below the threshold. `limit_reached` means the balance reached or exceeded the threshold.",
+																"description": "The trigger recorded at evaluation time. New evaluations record `limit_reached` when the balance reaches or exceeds the configured threshold. Earlier entries retain their recorded trigger.",
 																"type": "string",
-																"example": "limit_reached",
-																"enum": [
-																	"approaching_limit",
-																	"limit_reached"
-																]
+																"example": "limit_reached"
 															}
 														},
 														"required": [
@@ -607301,7 +607293,6 @@
 																							"no_current_period",
 																							"unavailable",
 																							"below_limit",
-																							"approaching_limit",
 																							"limit_reached"
 																						]
 																					}
@@ -607470,7 +607461,6 @@
 																									"no_current_period",
 																									"unavailable",
 																									"below_limit",
-																									"approaching_limit",
 																									"limit_reached"
 																								]
 																							}
@@ -787917,6 +787907,22 @@
 						}
 					},
 					{
+						"name": "ids",
+						"in": "query",
+						"description": "Comma-separated list of database UUIDs to return, up to 50. Databases that do not\nexist or belong to another account are omitted from the results. Can be combined\nwith `name` and pagination.\n",
+						"schema": {
+							"type": "array",
+							"items": {
+								"format": "uuid",
+								"type": "string"
+							},
+							"maxItems": 50
+						},
+						"example": "6c029b90-472b-409d-a1ff-94d7840e8b35,0b3e8b0e-6a3f-4b5e-9a0f-3f1c2d4e5f60",
+						"explode": false,
+						"style": "form"
+					},
+					{
 						"name": "page",
 						"in": "query",
 						"schema": {
@@ -789835,6 +789841,16 @@
 									"dump_options": {
 										"type": "object",
 										"properties": {
+											"compatibility": {
+												"description": "Dump format. `d1` (the default) gives a dump that D1 can import. `sqlite3_cli_only` matches the output of the `sqlite3 .dump` command, including virtual tables such as FTS5 or R*Tree tables, but cannot be imported back into D1.",
+												"type": "string",
+												"default": "d1",
+												"enum": [
+													"d1",
+													"sqlite3_cli_only"
+												],
+												"x-auditable": true
+											},
 											"no_data": {
 												"description": "Export only the table definitions, not their contents",
 												"type": "boolean",
@@ -947929,7 +947945,6 @@
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "dns-firewall.analytics.reports",
 				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true,
 				"x-stainless-deprecation-message": "This endpoint is deprecated. See [the API deprecation notice](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-12-09)."
 			}
 		},
@@ -948721,7 +948736,6 @@
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "dns-firewall.analytics.reports.bytimes",
 				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true,
 				"x-stainless-deprecation-message": "This endpoint is deprecated. See [the API deprecation notice](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-12-09)."
 			}
 		},
@@ -1336348,6 +1336362,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1336568,6 +1336586,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1336777,6 +1336799,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1337120,6 +1337146,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1337554,6 +1337584,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1337913,6 +1337947,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1338166,6 +1338204,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1338800,6 +1338842,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1340197,6 +1340243,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1341241,6 +1341291,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1342751,6 +1342805,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1344136,6 +1344194,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1344383,6 +1344445,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1344612,6 +1344678,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1344874,6 +1344944,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1345167,6 +1345241,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1345340,6 +1345418,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1345586,6 +1345668,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1345777,6 +1345863,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1345969,6 +1346059,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1346370,6 +1346464,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1346691,6 +1346789,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1347061,6 +1347163,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1347464,6 +1347570,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1347753,6 +1347863,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1348062,6 +1348176,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1348460,6 +1348578,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1348829,6 +1348951,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1349236,6 +1349362,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1349569,6 +1349699,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1349825,6 +1349959,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1351256,6 +1351394,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1352081,6 +1352223,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1352905,6 +1353051,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1354215,6 +1354365,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1355656,6 +1355810,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1356606,6 +1356764,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1357497,6 +1357659,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1358022,6 +1358188,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1358568,6 +1358738,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1358849,6 +1359023,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1359198,6 +1359376,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1359561,6 +1359743,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1359819,6 +1360005,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1359999,6 +1360189,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1360314,6 +1360508,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1360771,6 +1360969,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1361069,6 +1361271,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1361253,6 +1361459,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1361425,6 +1361635,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1361624,6 +1361838,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1363744,6 +1363962,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1363904,6 +1364126,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1364173,6 +1364399,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1364392,6 +1364622,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1364611,6 +1364845,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1364896,6 +1365134,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1365205,6 +1365447,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1365381,6 +1365627,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1365606,6 +1365856,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1365801,6 +1366055,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1365983,6 +1366241,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1366219,6 +1366481,10 @@
 				"security": [
 					{
 						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
 					}
 				],
 				"tags": [
@@ -1654304,8 +1654570,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			},
 			"parameters": [
 				{
@@ -1654598,8 +1654863,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/accounts/{account_id}/vuln_scanner/credential_sets/{credential_set_id}": {
@@ -1654844,7 +1655108,6 @@
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets",
 				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true,
 				"x-forge-require-confirmation": "This operation permanently deletes the credential set and every credential it contains."
 			},
 			"get": {
@@ -1655103,8 +1655366,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"parameters": [
 				{
@@ -1655405,8 +1655667,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			},
 			"put": {
 				"operationId": "update-credential-set",
@@ -1655685,8 +1655946,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/accounts/{account_id}/vuln_scanner/credential_sets/{credential_set_id}/credentials": {
@@ -1656033,8 +1656293,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets.credentials",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			},
 			"parameters": [
 				{
@@ -1656386,8 +1656645,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets.credentials",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/accounts/{account_id}/vuln_scanner/credential_sets/{credential_set_id}/credentials/{credential_id}": {
@@ -1656632,7 +1656890,6 @@
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets.credentials",
 				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true,
 				"x-forge-require-confirmation": "This operation permanently deletes the credential from the credential set."
 			},
 			"get": {
@@ -1656916,8 +1657173,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets.credentials",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"parameters": [
 				{
@@ -1657274,8 +1657530,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets.credentials",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			},
 			"put": {
 				"operationId": "update-credential",
@@ -1657603,8 +1657858,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.credential-sets.credentials",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/accounts/{account_id}/vuln_scanner/scans": {
@@ -1658091,10 +1658345,10 @@
 																																				"description": "HTTP response body preview.",
 																																				"discriminator": {
 																																					"mapping": {
-																																						"bytes": "#/components/schemas/vuln_scanner_bola-body-response-bytes",
-																																						"json": "#/components/schemas/vuln_scanner_bola-body-response-json",
-																																						"not_found": "#/components/schemas/vuln_scanner_bola-body-response-not-found",
-																																						"text": "#/components/schemas/vuln_scanner_bola-body-response-text"
+																																						"bytes": "#/components/schemas/vuln-scanner_bola-body-response-bytes",
+																																						"json": "#/components/schemas/vuln-scanner_bola-body-response-json",
+																																						"not_found": "#/components/schemas/vuln-scanner_bola-body-response-not-found",
+																																						"text": "#/components/schemas/vuln-scanner_bola-body-response-text"
 																																					},
 																																					"propertyName": "kind"
 																																				},
@@ -1658438,8 +1658692,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			},
 			"parameters": [
 				{
@@ -1658468,7 +1658721,7 @@
 								"description": "Create a new vulnerability scan. The `scan_type` discriminator\nselects the scan variant and its required context fields.\n",
 								"discriminator": {
 									"mapping": {
-										"bola": "#/components/schemas/vuln_scanner_create-bola-scan-request"
+										"bola": "#/components/schemas/vuln-scanner_create-bola-scan-request"
 									},
 									"propertyName": "scan_type"
 								},
@@ -1658938,10 +1659191,10 @@
 																																			"description": "HTTP response body preview.",
 																																			"discriminator": {
 																																				"mapping": {
-																																					"bytes": "#/components/schemas/vuln_scanner_bola-body-response-bytes",
-																																					"json": "#/components/schemas/vuln_scanner_bola-body-response-json",
-																																					"not_found": "#/components/schemas/vuln_scanner_bola-body-response-not-found",
-																																					"text": "#/components/schemas/vuln_scanner_bola-body-response-text"
+																																					"bytes": "#/components/schemas/vuln-scanner_bola-body-response-bytes",
+																																					"json": "#/components/schemas/vuln-scanner_bola-body-response-json",
+																																					"not_found": "#/components/schemas/vuln-scanner_bola-body-response-not-found",
+																																					"text": "#/components/schemas/vuln-scanner_bola-body-response-text"
 																																				},
 																																				"propertyName": "kind"
 																																			},
@@ -1659288,8 +1659541,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
@@ -1659544,7 +1659796,6 @@
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
 				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true,
 				"x-forge-require-confirmation": "This operation permanently deletes the completed or failed scan and all associated scan data."
 			},
 			"get": {
@@ -1659965,10 +1660216,10 @@
 																																			"description": "HTTP response body preview.",
 																																			"discriminator": {
 																																				"mapping": {
-																																					"bytes": "#/components/schemas/vuln_scanner_bola-body-response-bytes",
-																																					"json": "#/components/schemas/vuln_scanner_bola-body-response-json",
-																																					"not_found": "#/components/schemas/vuln_scanner_bola-body-response-not-found",
-																																					"text": "#/components/schemas/vuln_scanner_bola-body-response-text"
+																																					"bytes": "#/components/schemas/vuln-scanner_bola-body-response-bytes",
+																																					"json": "#/components/schemas/vuln-scanner_bola-body-response-json",
+																																					"not_found": "#/components/schemas/vuln-scanner_bola-body-response-not-found",
+																																					"text": "#/components/schemas/vuln-scanner_bola-body-response-text"
 																																				},
 																																				"propertyName": "kind"
 																																			},
@@ -1660315,8 +1660566,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"parameters": [
 				{
@@ -1660530,7 +1660780,7 @@
 																"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 																"discriminator": {
 																	"mapping": {
-																		"zone": "#/components/schemas/vuln_scanner_zone-target"
+																		"zone": "#/components/schemas/vuln-scanner_zone-target"
 																	},
 																	"propertyName": "type"
 																},
@@ -1660703,8 +1660953,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-				"x-fern-sdk-method-name": "list",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "list"
 			},
 			"parameters": [
 				{
@@ -1660747,7 +1660996,7 @@
 										"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 										"discriminator": {
 											"mapping": {
-												"zone": "#/components/schemas/vuln_scanner_zone-target"
+												"zone": "#/components/schemas/vuln-scanner_zone-target"
 											},
 											"propertyName": "type"
 										},
@@ -1660901,7 +1661150,7 @@
 															"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 															"discriminator": {
 																"mapping": {
-																	"zone": "#/components/schemas/vuln_scanner_zone-target"
+																	"zone": "#/components/schemas/vuln-scanner_zone-target"
 																},
 																"propertyName": "type"
 															},
@@ -1661077,8 +1661326,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-				"x-fern-sdk-method-name": "create",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "create"
 			}
 		},
 		"/accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
@@ -1661323,7 +1661571,6 @@
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
 				"x-fern-sdk-method-name": "delete",
-				"x-forge-hidden": true,
 				"x-forge-require-confirmation": "This operation permanently deletes the target environment from Vulnerability Scanner."
 			},
 			"get": {
@@ -1661446,7 +1661693,7 @@
 															"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 															"discriminator": {
 																"mapping": {
-																	"zone": "#/components/schemas/vuln_scanner_zone-target"
+																	"zone": "#/components/schemas/vuln-scanner_zone-target"
 																},
 																"propertyName": "type"
 															},
@@ -1661622,8 +1661869,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-				"x-fern-sdk-method-name": "get",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "get"
 			},
 			"parameters": [
 				{
@@ -1661677,7 +1661923,7 @@
 										"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 										"discriminator": {
 											"mapping": {
-												"zone": "#/components/schemas/vuln_scanner_zone-target"
+												"zone": "#/components/schemas/vuln-scanner_zone-target"
 											},
 											"propertyName": "type"
 										},
@@ -1661827,7 +1662073,7 @@
 															"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 															"discriminator": {
 																"mapping": {
-																	"zone": "#/components/schemas/vuln_scanner_zone-target"
+																	"zone": "#/components/schemas/vuln-scanner_zone-target"
 																},
 																"propertyName": "type"
 															},
@@ -1662003,8 +1662249,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			},
 			"put": {
 				"operationId": "update-target-environment",
@@ -1662033,7 +1662278,7 @@
 										"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 										"discriminator": {
 											"mapping": {
-												"zone": "#/components/schemas/vuln_scanner_zone-target"
+												"zone": "#/components/schemas/vuln-scanner_zone-target"
 											},
 											"propertyName": "type"
 										},
@@ -1662187,7 +1662432,7 @@
 															"description": "Identifies the Cloudflare asset to scan. Uses a `type` discriminator.\nCurrently the service supports only `zone` targets.\n",
 															"discriminator": {
 																"mapping": {
-																	"zone": "#/components/schemas/vuln_scanner_zone-target"
+																	"zone": "#/components/schemas/vuln-scanner_zone-target"
 																},
 																"propertyName": "type"
 															},
@@ -1662363,8 +1662608,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-				"x-fern-sdk-method-name": "update",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/accounts/{account_id}/waiting_rooms": {
@@ -1675789,8 +1676033,8 @@
 			},
 			"put": {
 				"operationId": "namespace-worker-script-upload-worker-module",
-				"summary": "Upload Workers for Platforms Script Module",
-				"description": "Upload a Workers for Platforms script module to a dispatch namespace. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/.",
+				"summary": "Upload Workers for Platforms Script",
+				"description": "Upload Worker code and configuration to a Workers for Platforms dispatch\nnamespace. For ES module and other module-based Workers, use\n`multipart/form-data` with a JSON `metadata` part whose `main_module`\nfield names the entrypoint file. Upload each module as a separate file\npart; JavaScript ES module parts use the `application/javascript+module`\ncontent type.\n\nRaw `application/javascript` and `text/javascript` request bodies accept\nonly legacy service-worker syntax using `addEventListener`. They do not\naccept ES module syntax such as `export default`. To upload a module\nWorker, use the multipart request format instead.\n\nLearn more about multipart metadata in the [documentation](https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/).\n",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -1675844,7 +1676088,7 @@
 					"content": {
 						"application/javascript": {
 							"schema": {
-								"description": "Raw javascript content comprising a Worker. Must be in service worker syntax.",
+								"description": "Raw JavaScript for a legacy service-worker syntax Worker using\n`addEventListener`. ES module syntax such as `export default` is\nnot supported in this request format. For ES module and other\nmodule-based Workers, use `multipart/form-data` with\n`metadata.main_module` identifying the entrypoint file.\n",
 								"type": "string",
 								"example": "addEventListener('fetch', (event) => event.respondWith(new Response('OK')))"
 							}
@@ -1678763,7 +1679007,7 @@
 						},
 						"text/javascript": {
 							"schema": {
-								"description": "Raw javascript content comprising a Worker. Must be in service worker syntax.",
+								"description": "Raw JavaScript for a legacy service-worker syntax Worker using\n`addEventListener`. ES module syntax such as `export default` is\nnot supported in this request format. For ES module and other\nmodule-based Workers, use `multipart/form-data` with\n`metadata.main_module` identifying the entrypoint file.\n",
 								"type": "string",
 								"example": "addEventListener('fetch', (event) => event.respondWith(new Response('OK')))"
 							}
@@ -1678773,7 +1679017,7 @@
 				},
 				"responses": {
 					"200": {
-						"description": "Upload Worker Module response.",
+						"description": "Upload Worker response.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -1679839,7 +1680083,7 @@
 						}
 					},
 					"4XX": {
-						"description": "Upload Worker Module response failure. When the upload uses the\ndeclarative `exports` field and one or more entries fail\nreconciliation, the response is the exports reconciliation\nerror envelope (error code 100402) with per-class detail in\n`errors[].meta.details`.\n",
+						"description": "Upload Worker response failure. When the upload uses the\ndeclarative `exports` field and one or more entries fail\nreconciliation, the response is the exports reconciliation\nerror envelope (error code 100402) with per-class detail in\n`errors[].meta.details`.\n",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -1732012,8 +1732256,8 @@
 			},
 			"put": {
 				"operationId": "worker-script-upload-worker-module",
-				"summary": "Upload Worker Module",
-				"description": "Upload a worker module. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/.",
+				"summary": "Upload Worker",
+				"description": "Upload Worker code and configuration. For ES module and other module-based\nWorkers, use `multipart/form-data` with a JSON `metadata` part whose\n`main_module` field names the entrypoint file. Upload each module as a\nseparate file part; JavaScript ES module parts use the\n`application/javascript+module` content type.\n\nRaw `application/javascript` and `text/javascript` request bodies accept\nonly legacy service-worker syntax using `addEventListener`. They do not\naccept ES module syntax such as `export default`. To upload a module\nWorker, use the multipart request format instead.\n\nLearn more about multipart metadata in the [documentation](https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/).\n",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -1732055,7 +1732299,7 @@
 					"content": {
 						"application/javascript": {
 							"schema": {
-								"description": "Raw javascript content comprising a Worker. Must be in service worker syntax.",
+								"description": "Raw JavaScript for a legacy service-worker syntax Worker using\n`addEventListener`. ES module syntax such as `export default` is\nnot supported in this request format. For ES module and other\nmodule-based Workers, use `multipart/form-data` with\n`metadata.main_module` identifying the entrypoint file.\n",
 								"type": "string",
 								"example": "addEventListener('fetch', (event) => event.respondWith(new Response('OK')))"
 							}
@@ -1735006,7 +1735250,7 @@
 						},
 						"text/javascript": {
 							"schema": {
-								"description": "Raw javascript content comprising a Worker. Must be in service worker syntax.",
+								"description": "Raw JavaScript for a legacy service-worker syntax Worker using\n`addEventListener`. ES module syntax such as `export default` is\nnot supported in this request format. For ES module and other\nmodule-based Workers, use `multipart/form-data` with\n`metadata.main_module` identifying the entrypoint file.\n",
 								"type": "string",
 								"example": "addEventListener('fetch', (event) => event.respondWith(new Response('OK')))"
 							}
@@ -1735016,7 +1735260,7 @@
 				},
 				"responses": {
 					"200": {
-						"description": "Upload Worker Module response.",
+						"description": "Upload Worker response.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -1736082,7 +1736326,7 @@
 						}
 					},
 					"4XX": {
-						"description": "Upload Worker Module response failure. When the upload uses the\ndeclarative `exports` field and one or more entries fail\nreconciliation, the response is the exports reconciliation\nerror envelope (error code 100402) with per-class detail in\n`errors[].meta.details`.\n",
+						"description": "Upload Worker response failure. When the upload uses the\ndeclarative `exports` field and one or more entries fail\nreconciliation, the response is the exports reconciliation\nerror envelope (error code 100402) with per-class detail in\n`errors[].meta.details`.\n",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -1738489,6 +1738733,7 @@
 																"type": "object",
 																"properties": {
 																	"annotations": {
+																		"description": "Metadata attached to the deployment.",
 																		"type": "object",
 																		"properties": {
 																			"workers/message": {
@@ -1738590,6 +1738835,7 @@
 																		"x-auditable": true
 																	},
 																	"strategy": {
+																		"description": "Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.",
 																		"type": "string",
 																		"enum": [
 																			"percentage"
@@ -1738846,6 +1739092,7 @@
 								"type": "object",
 								"properties": {
 									"annotations": {
+										"description": "Metadata attached to the deployment.",
 										"type": "object",
 										"properties": {
 											"workers/message": {
@@ -1738947,6 +1739194,7 @@
 										"x-auditable": true
 									},
 									"strategy": {
+										"description": "Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.",
 										"type": "string",
 										"enum": [
 											"percentage"
@@ -1739094,6 +1739342,7 @@
 													"type": "object",
 													"properties": {
 														"annotations": {
+															"description": "Metadata attached to the deployment.",
 															"type": "object",
 															"properties": {
 																"workers/message": {
@@ -1739195,6 +1739444,7 @@
 															"x-auditable": true
 														},
 														"strategy": {
+															"description": "Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.",
 															"type": "string",
 															"enum": [
 																"percentage"
@@ -1739426,6 +1739676,7 @@
 					{
 						"name": "deployment_id",
 						"in": "path",
+						"description": "Identifier of the Worker Deployment.",
 						"required": true,
 						"schema": {
 							"type": "string",
@@ -1739692,6 +1739943,7 @@
 					{
 						"name": "deployment_id",
 						"in": "path",
+						"description": "Identifier of the Worker Deployment.",
 						"required": true,
 						"schema": {
 							"type": "string",
@@ -1739794,6 +1740046,7 @@
 													"type": "object",
 													"properties": {
 														"annotations": {
+															"description": "Metadata attached to the deployment.",
 															"type": "object",
 															"properties": {
 																"workers/message": {
@@ -1739895,6 +1740148,7 @@
 															"x-auditable": true
 														},
 														"strategy": {
+															"description": "Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.",
 															"type": "string",
 															"enum": [
 																"percentage"
@@ -2613720,9 +2613974,11 @@
 					}
 				],
 				"requestBody": {
+					"description": "Send the workflow name as plain text (`realtime` or `preview`), without JSON quotes.",
 					"required": true,
 					"content": {
-						"application/json": {
+						"text/plain": {
+							"example": "realtime",
 							"schema": {
 								"description": "Zaraz workflow.",
 								"type": "string",

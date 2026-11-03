@@ -954,7 +954,6 @@
 																	"no_current_period",
 																	"unavailable",
 																	"below_limit",
-																	"approaching_limit",
 																	"limit_reached"
 																]
 															}
@@ -1718,7 +1717,6 @@
 																"no_current_period",
 																"unavailable",
 																"below_limit",
-																"approaching_limit",
 																"limit_reached"
 															]
 														}
@@ -2277,7 +2275,7 @@
 	"GET /accounts/{account_id}/billing/spend-policies/{policy_id}/audit": {
 		"operationId": "spend-policies-list-audit",
 		"summary": "List Spend Policy Audit Entries",
-		"description": "Returns the policy's evaluation history, newest first. At most one entry is recorded per trigger (`approaching_limit` or `limit_reached`), policy version and billing period, so a policy update can record a new entry without any change in balance. Disabled policies still return their history; deleted policies return `404`. There is no pagination: use `limit` to set how many entries come back.",
+		"description": "Returns the policy's evaluation history, newest first. At most one threshold-crossing entry (`limit_reached`) is recorded per policy version and billing period, so a policy update can record a new entry without any change in balance. Disabled policies still return their history; deleted policies return `404`. There is no pagination: use `limit` to set how many entries come back.",
 		"parameters": [
 			{
 				"description": "Identifies the Cloudflare account (account tag).",
@@ -2456,13 +2454,9 @@
 														"example": 100
 													},
 													"trigger": {
-														"description": "The state the balance moved into. `approaching_limit` means the balance is at least 80% of the threshold (rounded up to a whole cent), but below the threshold. `limit_reached` means the balance reached or exceeded the threshold.",
+														"description": "The trigger recorded at evaluation time. New evaluations record `limit_reached` when the balance reaches or exceeds the configured threshold. Earlier entries retain their recorded trigger.",
 														"type": "string",
-														"example": "limit_reached",
-														"enum": [
-															"approaching_limit",
-															"limit_reached"
-														]
+														"example": "limit_reached"
 													}
 												},
 												"required": [
@@ -3192,7 +3186,6 @@
 																					"no_current_period",
 																					"unavailable",
 																					"below_limit",
-																					"approaching_limit",
 																					"limit_reached"
 																				]
 																			}
@@ -3361,7 +3354,6 @@
 																							"no_current_period",
 																							"unavailable",
 																							"below_limit",
-																							"approaching_limit",
 																							"limit_reached"
 																						]
 																					}
@@ -4277,7 +4269,6 @@
 																"no_current_period",
 																"unavailable",
 																"below_limit",
-																"approaching_limit",
 																"limit_reached"
 															]
 														}
@@ -5190,7 +5181,6 @@
 																"no_current_period",
 																"unavailable",
 																"below_limit",
-																"approaching_limit",
 																"limit_reached"
 															]
 														}

@@ -31,6 +31,7 @@
 			{
 				"name": "deployment_id",
 				"in": "path",
+				"description": "Identifier of the Worker Deployment.",
 				"required": true,
 				"schema": {
 					"type": "string",
@@ -474,6 +475,7 @@
 														"type": "object",
 														"properties": {
 															"annotations": {
+																"description": "Metadata attached to the deployment.",
 																"type": "object",
 																"properties": {
 																	"workers/message": {
@@ -575,6 +577,7 @@
 																"x-auditable": true
 															},
 															"strategy": {
+																"description": "Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.",
 																"type": "string",
 																"enum": [
 																	"percentage"
@@ -816,6 +819,7 @@
 			{
 				"name": "deployment_id",
 				"in": "path",
+				"description": "Identifier of the Worker Deployment.",
 				"required": true,
 				"schema": {
 					"type": "string",
@@ -918,6 +922,7 @@
 											"type": "object",
 											"properties": {
 												"annotations": {
+													"description": "Metadata attached to the deployment.",
 													"type": "object",
 													"properties": {
 														"workers/message": {
@@ -1019,6 +1024,7 @@
 													"x-auditable": true
 												},
 												"strategy": {
+													"description": "Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.",
 													"type": "string",
 													"enum": [
 														"percentage"
@@ -1269,6 +1275,7 @@
 						"type": "object",
 						"properties": {
 							"annotations": {
+								"description": "Metadata attached to the deployment.",
 								"type": "object",
 								"properties": {
 									"workers/message": {
@@ -1370,6 +1377,7 @@
 								"x-auditable": true
 							},
 							"strategy": {
+								"description": "Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.",
 								"type": "string",
 								"enum": [
 									"percentage"
@@ -1517,6 +1525,7 @@
 											"type": "object",
 											"properties": {
 												"annotations": {
+													"description": "Metadata attached to the deployment.",
 													"type": "object",
 													"properties": {
 														"workers/message": {
@@ -1618,6 +1627,7 @@
 													"x-auditable": true
 												},
 												"strategy": {
+													"description": "Strategy for routing traffic across the listed versions. `percentage` splits traffic according to each version's `percentage`.",
 													"type": "string",
 													"enum": [
 														"percentage"

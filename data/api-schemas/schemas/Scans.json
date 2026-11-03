@@ -432,7 +432,6 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation permanently deletes the completed or failed scan and all associated scan data."
 	},
 	"GET /accounts/{account_id}/cloudforce-one/banner/{config_id}": {
@@ -1633,10 +1632,10 @@
 																																		"description": "HTTP response body preview.",
 																																		"discriminator": {
 																																			"mapping": {
-																																				"bytes": "#/components/schemas/vuln_scanner_bola-body-response-bytes",
-																																				"json": "#/components/schemas/vuln_scanner_bola-body-response-json",
-																																				"not_found": "#/components/schemas/vuln_scanner_bola-body-response-not-found",
-																																				"text": "#/components/schemas/vuln_scanner_bola-body-response-text"
+																																				"bytes": "#/components/schemas/vuln-scanner_bola-body-response-bytes",
+																																				"json": "#/components/schemas/vuln-scanner_bola-body-response-json",
+																																				"not_found": "#/components/schemas/vuln-scanner_bola-body-response-not-found",
+																																				"text": "#/components/schemas/vuln-scanner_bola-body-response-text"
 																																			},
 																																			"propertyName": "kind"
 																																		},
@@ -1980,8 +1979,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
 		"operationId": "get-scan",
@@ -2401,10 +2399,10 @@
 																																	"description": "HTTP response body preview.",
 																																	"discriminator": {
 																																		"mapping": {
-																																			"bytes": "#/components/schemas/vuln_scanner_bola-body-response-bytes",
-																																			"json": "#/components/schemas/vuln_scanner_bola-body-response-json",
-																																			"not_found": "#/components/schemas/vuln_scanner_bola-body-response-not-found",
-																																			"text": "#/components/schemas/vuln_scanner_bola-body-response-text"
+																																			"bytes": "#/components/schemas/vuln-scanner_bola-body-response-bytes",
+																																			"json": "#/components/schemas/vuln-scanner_bola-body-response-json",
+																																			"not_found": "#/components/schemas/vuln-scanner_bola-body-response-not-found",
+																																			"text": "#/components/schemas/vuln-scanner_bola-body-response-text"
 																																		},
 																																		"propertyName": "kind"
 																																	},
@@ -2751,8 +2749,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
 		"operationId": "post_ConfigUpdate",
@@ -3437,7 +3434,7 @@
 						"description": "Create a new vulnerability scan. The `scan_type` discriminator\nselects the scan variant and its required context fields.\n",
 						"discriminator": {
 							"mapping": {
-								"bola": "#/components/schemas/vuln_scanner_create-bola-scan-request"
+								"bola": "#/components/schemas/vuln-scanner_create-bola-scan-request"
 							},
 							"propertyName": "scan_type"
 						},
@@ -3907,10 +3904,10 @@
 																																	"description": "HTTP response body preview.",
 																																	"discriminator": {
 																																		"mapping": {
-																																			"bytes": "#/components/schemas/vuln_scanner_bola-body-response-bytes",
-																																			"json": "#/components/schemas/vuln_scanner_bola-body-response-json",
-																																			"not_found": "#/components/schemas/vuln_scanner_bola-body-response-not-found",
-																																			"text": "#/components/schemas/vuln_scanner_bola-body-response-text"
+																																			"bytes": "#/components/schemas/vuln-scanner_bola-body-response-bytes",
+																																			"json": "#/components/schemas/vuln-scanner_bola-body-response-json",
+																																			"not_found": "#/components/schemas/vuln-scanner_bola-body-response-not-found",
+																																			"text": "#/components/schemas/vuln-scanner_bola-body-response-text"
 																																		},
 																																		"propertyName": "kind"
 																																	},
@@ -4257,7 +4254,6 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

@@ -12975,9 +12975,11 @@
 			}
 		],
 		"requestBody": {
+			"description": "Send the workflow name as plain text (`realtime` or `preview`), without JSON quotes.",
 			"required": true,
 			"content": {
-				"application/json": {
+				"text/plain": {
+					"example": "realtime",
 					"schema": {
 						"description": "Zaraz workflow.",
 						"type": "string",

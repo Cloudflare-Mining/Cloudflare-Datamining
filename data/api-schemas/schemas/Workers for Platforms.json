@@ -23378,8 +23378,8 @@
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"operationId": "namespace-worker-script-upload-worker-module",
-		"summary": "Upload Workers for Platforms Script Module",
-		"description": "Upload a Workers for Platforms script module to a dispatch namespace. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/.",
+		"summary": "Upload Workers for Platforms Script",
+		"description": "Upload Worker code and configuration to a Workers for Platforms dispatch\nnamespace. For ES module and other module-based Workers, use\n`multipart/form-data` with a JSON `metadata` part whose `main_module`\nfield names the entrypoint file. Upload each module as a separate file\npart; JavaScript ES module parts use the `application/javascript+module`\ncontent type.\n\nRaw `application/javascript` and `text/javascript` request bodies accept\nonly legacy service-worker syntax using `addEventListener`. They do not\naccept ES module syntax such as `export default`. To upload a module\nWorker, use the multipart request format instead.\n\nLearn more about multipart metadata in the [documentation](https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/).\n",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -23433,7 +23433,7 @@
 			"content": {
 				"application/javascript": {
 					"schema": {
-						"description": "Raw javascript content comprising a Worker. Must be in service worker syntax.",
+						"description": "Raw JavaScript for a legacy service-worker syntax Worker using\n`addEventListener`. ES module syntax such as `export default` is\nnot supported in this request format. For ES module and other\nmodule-based Workers, use `multipart/form-data` with\n`metadata.main_module` identifying the entrypoint file.\n",
 						"type": "string",
 						"example": "addEventListener('fetch', (event) => event.respondWith(new Response('OK')))"
 					}
@@ -26352,7 +26352,7 @@
 				},
 				"text/javascript": {
 					"schema": {
-						"description": "Raw javascript content comprising a Worker. Must be in service worker syntax.",
+						"description": "Raw JavaScript for a legacy service-worker syntax Worker using\n`addEventListener`. ES module syntax such as `export default` is\nnot supported in this request format. For ES module and other\nmodule-based Workers, use `multipart/form-data` with\n`metadata.main_module` identifying the entrypoint file.\n",
 						"type": "string",
 						"example": "addEventListener('fetch', (event) => event.respondWith(new Response('OK')))"
 					}
@@ -26362,7 +26362,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Upload Worker Module response.",
+				"description": "Upload Worker response.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -27428,7 +27428,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Upload Worker Module response failure. When the upload uses the\ndeclarative `exports` field and one or more entries fail\nreconciliation, the response is the exports reconciliation\nerror envelope (error code 100402) with per-class detail in\n`errors[].meta.details`.\n",
+				"description": "Upload Worker response failure. When the upload uses the\ndeclarative `exports` field and one or more entries fail\nreconciliation, the response is the exports reconciliation\nerror envelope (error code 100402) with per-class detail in\n`errors[].meta.details`.\n",
 				"content": {
 					"application/json": {
 						"schema": {
