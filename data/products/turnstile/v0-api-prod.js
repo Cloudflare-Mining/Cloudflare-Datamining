@@ -2365,7 +2365,7 @@
 						case ne.Invisible:
 							x('Invalid value for parameter "size", expected "'.concat(ne.Compact, '", "').concat(ne.Flexible, '", or "').concat(ne.Normal, '", got "').concat(n, '"'), 2817);
 						case ne.Normal:
-							e.style.width = "300px", e.style.height = "65px";
+							e.style.width = "300px", e.style.maxWidth = "100%", e.style.height = "65px";
 							break;
 						case ne.Flexible:
 							e.style.width = "100%", e.style.maxWidth = "100vw", e.style.minWidth = "300px", e.style.height = "65px";
@@ -2897,7 +2897,7 @@
 											appearance: o.params.appearance,
 											au: y.scriptUrl,
 											cData: o.cData,
-											ch: "c787ce48cf6b",
+											ch: "5c2e6b612edd",
 											chlPageData: o.chlPageData,
 											cs: Wt(o),
 											event: "extraParams",
