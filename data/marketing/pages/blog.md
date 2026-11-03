@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 2, 2026 [<h2>How we halved DNS build delay and cut memory use by 85%</h2>](https://blog.cloudflare.com/dns-targeted-zone-builds/)
+
+Zone setting changes used to rebuild entire DNS zones, even ones with tens of millions of records. Here is how we built a planner that picks the smallest safe build, cutting full builds by 40%, peak memory by 85%, and halving build delay.
+
+![Alex Fattouche](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0J66VY9AP4Y8GXCS4RZ.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Alex Fattouche](https://blog.cloudflare.com/author/alex-fattouche/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6427MMYH94N030R2BSS8Z72.01M6427NA85VEN498BC5RPEDXK.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/dns-targeted-zone-builds/)
+
 October 30, 2026 [<h2>4 real? Tracking exploitation and patching of eMudhra's weak keys</h2>](https://blog.cloudflare.com/emudhra-patching/)
 
 Four, just four: that's the key to break into any unpatched connection on the Internet that is using eMudhra certificates. Here's how we quickly patched Cloudflare, what evidence we can see of attempted exploitation, and how much of the rest of the Internet remains exposed.
@@ -17,8 +27,6 @@ Four, just four: that's the key to break into any unpatched connection on the In
 ![Maxime Guerreiro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FG4DN12FTWVE3SWJY7WF.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Rupert Carr](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WZZ1214FNVNSGC0MBC58.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Miguel de Moura](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469GP192YFYYEYAD222W8R.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Maxime Guerreiro](https://blog.cloudflare.com/author/maxime/),  [Rupert Carr](https://blog.cloudflare.com/author/rupert-carr/),  [Miguel de Moura](https://blog.cloudflare.com/author/miguel/), and  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M66XYHSQQJRRA4097AJD12PN.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/emudhra-patching/)
 
 October 30, 2026 [<h2>Cloudflare services for private origins is now generally available</h2>](https://blog.cloudflare.com/private-origins-public-to-private/)
 
@@ -155,14 +163,6 @@ Identity alone doesn't guarantee a bot will behave responsibly. We are introduci
 ![Chris Tsoukaladelis](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M510X23G1YWXBVVEV3X5ZCPK.01M510X2WF46AM3BFDZ8R47H1H.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Chris Tsoukaladelis](https://blog.cloudflare.com/author/chris-tsoukaladelis/)
-
-October 15, 2026 [<h2>A fully programmable secure web gateway</h2>](https://blog.cloudflare.com/programmable-gateway-dlp/)
-
-Cloudflare Gateway and Data Loss Prevention have inherited the flexibility and power of Cloudflare Workers through our full-stack integration with the Cloudflare Developer platform.
-
-![AJ Gerstenhaber](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M508VRM0SPP4S4MS7CZXEHJA.01M508VT8EKZQHWR6HJHQVTQPV.png&w=64&h=64&f=webp&fit=cover&position=center)![Abe Carryl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JJ6YPQY3M4A69P72QXE8.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[AJ Gerstenhaber](https://blog.cloudflare.com/author/aj/) and  [Abe Carryl](https://blog.cloudflare.com/author/abe/)
 
 Load more
 
