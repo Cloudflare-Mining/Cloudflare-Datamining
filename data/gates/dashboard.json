@@ -220,9 +220,6 @@
 	"aig-provider-key-activity": {
 		"enabled": true
 	},
-	"aig-provider-key-usage-notice": {
-		"enabled": true
-	},
 	"aig-send-payment-method-id": {
 		"enabled": true
 	},
@@ -443,6 +440,9 @@
 	},
 	"billing-unified-checkout-cache-reserve": {
 		"enabled": true
+	},
+	"billing-unified-checkout-hipaa-baa": {
+		"enabled": false
 	},
 	"billing-unified-checkout-images": {
 		"enabled": true
@@ -1049,6 +1049,9 @@
 		"enabled": true
 	},
 	"deseng-new-deployments-screen": {
+		"enabled": true
+	},
+	"deseng-notifications": {
 		"enabled": true
 	},
 	"deseng-oidc-error-redirect": {
@@ -2628,7 +2631,7 @@
 		"enabled": false
 	},
 	"registrar-multi-domain-purchase": {
-		"enabled": false
+		"enabled": true
 	},
 	"registrar-new-registrations-checkout": {
 		"enabled": true
