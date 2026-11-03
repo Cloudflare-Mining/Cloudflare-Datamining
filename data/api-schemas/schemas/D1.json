@@ -255,22 +255,6 @@
 				}
 			},
 			{
-				"name": "ids",
-				"in": "query",
-				"description": "Comma-separated list of database UUIDs to return, up to 50. Databases that do not\nexist or belong to another account are omitted from the results. Can be combined\nwith `name` and pagination.\n",
-				"schema": {
-					"type": "array",
-					"items": {
-						"format": "uuid",
-						"type": "string"
-					},
-					"maxItems": 50
-				},
-				"example": "6c029b90-472b-409d-a1ff-94d7840e8b35,0b3e8b0e-6a3f-4b5e-9a0f-3f1c2d4e5f60",
-				"explode": false,
-				"style": "form"
-			},
-			{
 				"name": "page",
 				"in": "query",
 				"schema": {

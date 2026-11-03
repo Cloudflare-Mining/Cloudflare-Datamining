@@ -606380,7 +606380,7 @@
 			"get": {
 				"operationId": "spend-policies-list-audit",
 				"summary": "List Spend Policy Audit Entries",
-				"description": "Returns the policy's evaluation history, newest first. At most one threshold-crossing entry (`limit_reached`) is recorded per policy version and billing period, so a policy update can record a new entry without any change in balance. Disabled policies still return their history; deleted policies return `404`. There is no pagination: use `limit` to set how many entries come back.",
+				"description": "Returns the policy's evaluation history, newest first. At most one threshold-crossing entry (`limit_reached`) is recorded per policy version and billing period, so a policy update can record a new entry without any change in balance. Disabled policies still return their history; deleted policies return `404`. There is no pagination: use `limit` to set how many entries come back. Defaults to `period=current_billing_cycle`, resolved from the product's canonical aggregates, not calendar months. Crossings match their recorded billing-period bounds, even if recorded late. Set `period=all` for history across cycles. Filtering happens before LIMIT. No current cycle returns an empty array; unavailable or disabled cycle resolution returns `503` with code `1013`, never an empty success.",
 				"parameters": [
 					{
 						"description": "Identifies the Cloudflare account (account tag).",
@@ -606416,6 +606416,19 @@
 							"example": 50,
 							"default": 50,
 							"minimum": 1
+						}
+					},
+					{
+						"description": "Select current subscription billing-cycle history or history across all cycles.",
+						"in": "query",
+						"name": "period",
+						"schema": {
+							"type": "string",
+							"default": "current_billing_cycle",
+							"enum": [
+								"current_billing_cycle",
+								"all"
+							]
 						}
 					}
 				],
@@ -606590,7 +606603,7 @@
 						}
 					},
 					"400": {
-						"description": "The request was malformed. Code `1004`: the account ID is invalid. Code `1006`: `limit` is not a positive integer.",
+						"description": "The request was malformed. Code `1004`: invalid account ID. Code `1006`: invalid limit. Code `1012`: period must be current_billing_cycle or all.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -606970,7 +606983,7 @@
 						}
 					},
 					"503": {
-						"description": "Code `1001`. The service could not load the gateway signing keys. Retry later.",
+						"description": "Code `1001`: authentication verification is unavailable. Code `1013`: current billing-cycle resolution is unavailable or disabled. Retry or request period=all, which does not require aggregate reads.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -607068,7 +607081,7 @@
 			"get": {
 				"operationId": "spend-policies-activity",
 				"summary": "List Spend Policy Activity",
-				"description": "Returns configuration history from immutable policy revisions for the account, including deleted policies. Entries contain before/after values and verified actor attribution. Pages use descending revision IDs, not event or commit order; refresh the first page for new entries. This cursor is not an incremental consumer checkpoint.",
+				"description": "Returns configuration history from immutable policy revisions for the account, including deleted policies. Entries contain before/after values and verified actor attribution. Pages use descending revision IDs, not event or commit order; refresh the first page for new entries. This cursor is not an incremental consumer checkpoint. Defaults to `period=current_billing_cycle`: each revision's timestamp must be within its product's current subscription cycle (inclusive start, exclusive end). Each product's cycle is resolved independently from canonical aggregates, including for disabled or deleted policies. Set `period=all` for history across cycles. Filtering happens before pagination. No current cycles returns an empty page; unavailable or disabled cycle resolution returns `503` with code `1013`. Cursors pin resolved cycle bounds across pages and must be used with the same period selection. Cursors obtained before this filter was introduced must be refreshed.",
 				"parameters": [
 					{
 						"description": "Identifies the Cloudflare account (account tag).",
@@ -607092,6 +607105,19 @@
 							"example": 50,
 							"default": 50,
 							"minimum": 1
+						}
+					},
+					{
+						"description": "Select current subscription billing-cycle history or history across all cycles.",
+						"in": "query",
+						"name": "period",
+						"schema": {
+							"type": "string",
+							"default": "current_billing_cycle",
+							"enum": [
+								"current_billing_cycle",
+								"all"
+							]
 						}
 					},
 					{
@@ -607601,7 +607627,7 @@
 						}
 					},
 					"400": {
-						"description": "Invalid limit or pagination cursor (error code 1006 or 1011).",
+						"description": "Invalid limit, pagination cursor, or period (error code 1006, 1011, or 1012).",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -607981,7 +608007,7 @@
 						}
 					},
 					"503": {
-						"description": "Code `1001`. The service could not load the gateway signing keys. Retry later.",
+						"description": "Code `1001`: authentication verification is unavailable. Code `1013`: current billing-cycle resolution is unavailable or disabled. Retry or request period=all, which does not require aggregate reads.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -614778,6 +614804,73 @@
 											"type": "string"
 										}
 									}
+								}
+							}
+						}
+					},
+					"503": {
+						"description": "Saved query deletion could not be confirmed.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object"
+											},
+											"maxItems": 0
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
 								}
 							}
 						}
@@ -787905,22 +787998,6 @@
 							"description": "a database name to search for.",
 							"type": "string"
 						}
-					},
-					{
-						"name": "ids",
-						"in": "query",
-						"description": "Comma-separated list of database UUIDs to return, up to 50. Databases that do not\nexist or belong to another account are omitted from the results. Can be combined\nwith `name` and pagination.\n",
-						"schema": {
-							"type": "array",
-							"items": {
-								"format": "uuid",
-								"type": "string"
-							},
-							"maxItems": 50
-						},
-						"example": "6c029b90-472b-409d-a1ff-94d7840e8b35,0b3e8b0e-6a3f-4b5e-9a0f-3f1c2d4e5f60",
-						"explode": false,
-						"style": "form"
 					},
 					{
 						"name": "page",
@@ -1871522,6 +1871599,7 @@
 																	"risk_level": {
 																		"type": "string",
 																		"enum": [
+																			"info",
 																			"low",
 																			"medium",
 																			"high"
@@ -1871553,6 +1871631,7 @@
 																{
 																	"type": "string",
 																	"enum": [
+																		"info",
 																		"low",
 																		"medium",
 																		"high"
@@ -1872103,6 +1872182,7 @@
 																	"risk_level": {
 																		"type": "string",
 																		"enum": [
+																			"info",
 																			"low",
 																			"medium",
 																			"high"
@@ -1872296,6 +1872376,7 @@
 												"risk_level": {
 													"type": "string",
 													"enum": [
+														"info",
 														"low",
 														"medium",
 														"high"
@@ -1872426,6 +1872507,7 @@
 																	"risk_level": {
 																		"type": "string",
 																		"enum": [
+																			"info",
 																			"low",
 																			"medium",
 																			"high"
@@ -1874613,6 +1874695,7 @@
 																	"max_risk_level": {
 																		"type": "string",
 																		"enum": [
+																			"info",
 																			"low",
 																			"medium",
 																			"high"
@@ -2298422,88 +2298505,87 @@
 						"description": "Bad request — invalid zone identifier or object type.",
 						"content": {
 							"application/json": {
-								"examples": {
-									"invalid_object_type": {
-										"summary": "Invalid object type",
-										"value": {
-											"errors": [
-												{
-													"code": 2005,
-													"message": "failed to fetch entitlements: invalid object type"
-												}
-											],
-											"messages": [],
-											"result": null,
-											"success": false
-										}
-									}
-								},
 								"schema": {
-									"description": "Standard Cloudflare API failure response.",
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"description": "Represents an error that the API returns.",
-												"type": "object",
-												"properties": {
-													"code": {
-														"description": "Numeric error code.",
-														"type": "integer",
-														"example": 2000
-													},
-													"message": {
-														"description": "Human-readable error message.",
-														"type": "string",
-														"example": "failed to fetch entitlements: internal server error"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												]
+									"example": {
+										"errors": [
+											{
+												"code": 2005,
+												"message": "failed to fetch entitlements: invalid object type"
 											}
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"description": "Represents an informational message that the API returns.",
-												"type": "object",
-												"properties": {
-													"code": {
-														"description": "Numeric message code.",
-														"type": "integer",
-														"example": 0
-													},
-													"message": {
-														"description": "Human-readable message.",
-														"type": "string",
-														"example": ""
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												]
-											}
-										},
-										"result": {
-											"description": "Always null for error responses.",
-											"type": "object",
-											"nullable": true
-										},
-										"success": {
-											"description": "Always false for error responses.",
-											"type": "boolean",
-											"example": false
-										}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"allOf": [
+										{
+											"description": "Standard Cloudflare API failure response.",
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"description": "Represents an error that the API returns.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Numeric error code.",
+																"type": "integer",
+																"example": 2000
+															},
+															"message": {
+																"description": "Human-readable error message.",
+																"type": "string",
+																"example": "failed to fetch entitlements: internal server error"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"description": "Represents an informational message that the API returns.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Numeric message code.",
+																"type": "integer",
+																"example": 0
+															},
+															"message": {
+																"description": "Human-readable message.",
+																"type": "string",
+																"example": ""
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"result": {
+													"description": "Always null for error responses.",
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"description": "Always false for error responses.",
+													"type": "boolean",
+													"example": false
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
 									]
 								}
 							}
@@ -2298663,88 +2298745,87 @@
 						"description": "Zone not found or unknown route.",
 						"content": {
 							"application/json": {
-								"examples": {
-									"not_found": {
-										"summary": "Unknown route",
-										"value": {
-											"errors": [
-												{
-													"code": 2004,
-													"message": "failed to fetch entitlements: unknown route"
-												}
-											],
-											"messages": [],
-											"result": null,
-											"success": false
-										}
-									}
-								},
 								"schema": {
-									"description": "Standard Cloudflare API failure response.",
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"description": "Represents an error that the API returns.",
-												"type": "object",
-												"properties": {
-													"code": {
-														"description": "Numeric error code.",
-														"type": "integer",
-														"example": 2000
-													},
-													"message": {
-														"description": "Human-readable error message.",
-														"type": "string",
-														"example": "failed to fetch entitlements: internal server error"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												]
+									"example": {
+										"errors": [
+											{
+												"code": 2004,
+												"message": "failed to fetch entitlements: unknown route"
 											}
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"description": "Represents an informational message that the API returns.",
-												"type": "object",
-												"properties": {
-													"code": {
-														"description": "Numeric message code.",
-														"type": "integer",
-														"example": 0
-													},
-													"message": {
-														"description": "Human-readable message.",
-														"type": "string",
-														"example": ""
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												]
-											}
-										},
-										"result": {
-											"description": "Always null for error responses.",
-											"type": "object",
-											"nullable": true
-										},
-										"success": {
-											"description": "Always false for error responses.",
-											"type": "boolean",
-											"example": false
-										}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"allOf": [
+										{
+											"description": "Standard Cloudflare API failure response.",
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"description": "Represents an error that the API returns.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Numeric error code.",
+																"type": "integer",
+																"example": 2000
+															},
+															"message": {
+																"description": "Human-readable error message.",
+																"type": "string",
+																"example": "failed to fetch entitlements: internal server error"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"description": "Represents an informational message that the API returns.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Numeric message code.",
+																"type": "integer",
+																"example": 0
+															},
+															"message": {
+																"description": "Human-readable message.",
+																"type": "string",
+																"example": ""
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"result": {
+													"description": "Always null for error responses.",
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"description": "Always false for error responses.",
+													"type": "boolean",
+													"example": false
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
 									]
 								}
 							}
@@ -2298754,88 +2298835,87 @@
 						"description": "HTTP method not allowed.",
 						"content": {
 							"application/json": {
-								"examples": {
-									"method_not_allowed": {
-										"summary": "Method not allowed",
-										"value": {
-											"errors": [
-												{
-													"code": 2001,
-													"message": "failed to fetch entitlements: method not allowed"
-												}
-											],
-											"messages": [],
-											"result": null,
-											"success": false
-										}
-									}
-								},
 								"schema": {
-									"description": "Standard Cloudflare API failure response.",
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"description": "Represents an error that the API returns.",
-												"type": "object",
-												"properties": {
-													"code": {
-														"description": "Numeric error code.",
-														"type": "integer",
-														"example": 2000
-													},
-													"message": {
-														"description": "Human-readable error message.",
-														"type": "string",
-														"example": "failed to fetch entitlements: internal server error"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												]
+									"example": {
+										"errors": [
+											{
+												"code": 2001,
+												"message": "failed to fetch entitlements: method not allowed"
 											}
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"description": "Represents an informational message that the API returns.",
-												"type": "object",
-												"properties": {
-													"code": {
-														"description": "Numeric message code.",
-														"type": "integer",
-														"example": 0
-													},
-													"message": {
-														"description": "Human-readable message.",
-														"type": "string",
-														"example": ""
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												]
-											}
-										},
-										"result": {
-											"description": "Always null for error responses.",
-											"type": "object",
-											"nullable": true
-										},
-										"success": {
-											"description": "Always false for error responses.",
-											"type": "boolean",
-											"example": false
-										}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"allOf": [
+										{
+											"description": "Standard Cloudflare API failure response.",
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"description": "Represents an error that the API returns.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Numeric error code.",
+																"type": "integer",
+																"example": 2000
+															},
+															"message": {
+																"description": "Human-readable error message.",
+																"type": "string",
+																"example": "failed to fetch entitlements: internal server error"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"description": "Represents an informational message that the API returns.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Numeric message code.",
+																"type": "integer",
+																"example": 0
+															},
+															"message": {
+																"description": "Human-readable message.",
+																"type": "string",
+																"example": ""
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"result": {
+													"description": "Always null for error responses.",
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"description": "Always false for error responses.",
+													"type": "boolean",
+													"example": false
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
 									]
 								}
 							}
@@ -2298845,88 +2298925,87 @@
 						"description": "Internal server error.",
 						"content": {
 							"application/json": {
-								"examples": {
-									"internal_error": {
-										"summary": "Internal server error",
-										"value": {
-											"errors": [
-												{
-													"code": 2000,
-													"message": "failed to fetch entitlements: internal server error"
-												}
-											],
-											"messages": [],
-											"result": null,
-											"success": false
-										}
-									}
-								},
 								"schema": {
-									"description": "Standard Cloudflare API failure response.",
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"description": "Represents an error that the API returns.",
-												"type": "object",
-												"properties": {
-													"code": {
-														"description": "Numeric error code.",
-														"type": "integer",
-														"example": 2000
-													},
-													"message": {
-														"description": "Human-readable error message.",
-														"type": "string",
-														"example": "failed to fetch entitlements: internal server error"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												]
+									"example": {
+										"errors": [
+											{
+												"code": 2000,
+												"message": "failed to fetch entitlements: internal server error"
 											}
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"description": "Represents an informational message that the API returns.",
-												"type": "object",
-												"properties": {
-													"code": {
-														"description": "Numeric message code.",
-														"type": "integer",
-														"example": 0
-													},
-													"message": {
-														"description": "Human-readable message.",
-														"type": "string",
-														"example": ""
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												]
-											}
-										},
-										"result": {
-											"description": "Always null for error responses.",
-											"type": "object",
-											"nullable": true
-										},
-										"success": {
-											"description": "Always false for error responses.",
-											"type": "boolean",
-											"example": false
-										}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"allOf": [
+										{
+											"description": "Standard Cloudflare API failure response.",
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"description": "Represents an error that the API returns.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Numeric error code.",
+																"type": "integer",
+																"example": 2000
+															},
+															"message": {
+																"description": "Human-readable error message.",
+																"type": "string",
+																"example": "failed to fetch entitlements: internal server error"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"description": "Represents an informational message that the API returns.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Numeric message code.",
+																"type": "integer",
+																"example": 0
+															},
+															"message": {
+																"description": "Human-readable message.",
+																"type": "string",
+																"example": ""
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"result": {
+													"description": "Always null for error responses.",
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"description": "Always false for error responses.",
+													"type": "boolean",
+													"example": false
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
 									]
 								}
 							}
@@ -2298936,88 +2299015,87 @@
 						"description": "Upstream entitlements service unavailable or timed out.",
 						"content": {
 							"application/json": {
-								"examples": {
-									"timeout": {
-										"summary": "Upstream timeout",
-										"value": {
-											"errors": [
-												{
-													"code": 2003,
-													"message": "failed to fetch entitlements: timeout occurred"
-												}
-											],
-											"messages": [],
-											"result": null,
-											"success": false
-										}
-									}
-								},
 								"schema": {
-									"description": "Standard Cloudflare API failure response.",
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"description": "Represents an error that the API returns.",
-												"type": "object",
-												"properties": {
-													"code": {
-														"description": "Numeric error code.",
-														"type": "integer",
-														"example": 2000
-													},
-													"message": {
-														"description": "Human-readable error message.",
-														"type": "string",
-														"example": "failed to fetch entitlements: internal server error"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												]
+									"example": {
+										"errors": [
+											{
+												"code": 2003,
+												"message": "failed to fetch entitlements: timeout occurred"
 											}
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"description": "Represents an informational message that the API returns.",
-												"type": "object",
-												"properties": {
-													"code": {
-														"description": "Numeric message code.",
-														"type": "integer",
-														"example": 0
-													},
-													"message": {
-														"description": "Human-readable message.",
-														"type": "string",
-														"example": ""
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												]
-											}
-										},
-										"result": {
-											"description": "Always null for error responses.",
-											"type": "object",
-											"nullable": true
-										},
-										"success": {
-											"description": "Always false for error responses.",
-											"type": "boolean",
-											"example": false
-										}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
 									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"allOf": [
+										{
+											"description": "Standard Cloudflare API failure response.",
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"description": "Represents an error that the API returns.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Numeric error code.",
+																"type": "integer",
+																"example": 2000
+															},
+															"message": {
+																"description": "Human-readable error message.",
+																"type": "string",
+																"example": "failed to fetch entitlements: internal server error"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"description": "Represents an informational message that the API returns.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Numeric message code.",
+																"type": "integer",
+																"example": 0
+															},
+															"message": {
+																"description": "Human-readable message.",
+																"type": "string",
+																"example": ""
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														]
+													}
+												},
+												"result": {
+													"description": "Always null for error responses.",
+													"type": "object",
+													"nullable": true
+												},
+												"success": {
+													"description": "Always false for error responses.",
+													"type": "boolean",
+													"example": false
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
 									]
 								}
 							}
