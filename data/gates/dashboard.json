@@ -220,6 +220,9 @@
 	"aig-provider-key-activity": {
 		"enabled": true
 	},
+	"aig-provider-key-usage-notice": {
+		"enabled": true
+	},
 	"aig-send-payment-method-id": {
 		"enabled": true
 	},
@@ -3071,6 +3074,14 @@
 	},
 	"tsf-frictionless-no-category": {
 		"enabled": true
+	},
+	"tsf-outage-ribbon-new-datasource": {
+		"enabled": false,
+		"branches": [
+			"off",
+			"dryrun",
+			"on"
+		]
 	},
 	"tsf-remove-support-dropdown": {
 		"enabled": true
