@@ -3,40 +3,78 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><span style="font-size: 12pt;"><strong>Available Locations: Lisbon, London</strong></span></p>
-<p><span style="font-size: 12pt;"><strong>About the role</strong></span></p>
-<p><span style="font-size: 12pt;">Our primary focus is attracting top talent and empowering them to excel. We are seeking a motivated and collaborative Senior Recruiter to support the growth of our Tech teams. We value solution-oriented self- starters who thrive in a fast-paced, team-oriented environment and are passionate about making a meaningful impact. Your role will involve partnering strategically with hiring managers to design and implement tailored recruitment strategies, ensuring the successful acquisition of exceptional candidates, primarily through active sourcing. You'll collaborate closely with our People Business Partners, Coordinators, and various business leaders to drive the growth and success of our Tech Teams.</span></p>
-<h4><span style="font-size: 12pt;"><strong>What you'll do</strong></span></h4>
+<h3>About the Team</h3>
+<p>The Global Resource Management team is a small, focused group of engineers dedicated to driving organization and clarity across Cloudflare's platform. We develop and maintain applications that live in the foundational platform to enable features that span all of Cloudflare’s resources. The work we do is absolutely critical to enabling Cloudflare to scale its operations efficiently, reach new customers, and maintain the reliability our users expect. Joining us means working on the core of Cloudflare's ability to operate and grow.</p>
+<h3>What You’ll Do</h3>
+<p>As a System Engineer on the Global Resource Management team, you'll be at the forefront of tackling our most challenging system architecture problems:</p>
 <ul>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Strategic Partnership:</strong> Serve as a trusted advisor to hiring managers, offering guidance, market insights, and best practices to shape effective hiring strategies.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Full-Cycle Recruiting:</strong> Own the end-to-end recruitment process, from developing customized hiring plans with your stakeholders to sourcing, interviewing, and closing top talent.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Diversity &amp; Inclusion: </strong>Work closely with hiring teams to enhance the attraction and hiring of a diverse range of candidates, championing inclusive processes at every step.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Creative Sourcing: </strong>Utilize creative sourcing techniques, with a heavy emphasis on direct outreach via LinkedIn and other platforms, to identify and engage highly qualified candidates for our cybersecurity and network security sales teams.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Pipeline Management:</strong> Proactively manage and maintain a healthy candidate pipeline, ensuring data integrity in our ATS (Greenhouse) and providing regular, insightful updates to internal stakeholders.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Project Leadership:</strong> Collaborate with the wider recruiting team on key initiatives and hiring projects, contributing to the continuous improvement of our talent acquisition function.</span></li>
+	<li>
+		<p>Solve Deep, Foundational Problems: Dive into complex, cross-cutting engineering challenges that benefit all Cloudflare products by creating organized, efficient, and well-managed applications.</p>
+	</li>
+	<li>
+		<p>Architect for Organization and Clarity: Design and make core architectural decisions focused on reducing fanout and simplifying system dependencies. The objective is to make platform adoption seamless and straightforward for product engineering teams.</p>
+	</li>
+	<li>
+		<p>Build Scalable Systems: Be responsible for proposing architectures, writing detailed specifications, and implementing high-quality, maintainable code to build scalable and highly available systems.</p>
+	</li>
+	<li>
+		<p>Drive Code Quality: Actively participate in thorough code reviews, provide constructive feedback on technical specifications and designs, and ensure all implementations adhere to best practices for reliability and security.</p>
+	</li>
+</ul>
+<h3>Skills, Knowledge, and Experience</h3>
+<ul>
+	<li>
+		<p>Professional Experience: 5+ years of professional experience in software development, building and operating mission-critical, high-scale distributed systems.</p>
+	</li>
+	<li>
+		<p>Programming Languages: Strong proficiency in Go (Golang) or a similar modern systems language.</p>
+	</li>
+	<li>
+		<p>Systems Design: Proven experience in designing, building, and operating scalable, highly available services at cloud-scale.</p>
+	</li>
+	<li>
+		<p>Architectural Thinking: Understanding of concepts related to organization, dependency management, and resource orchestration in a large, multi-tenant environment.</p>
+	</li>
+	<li>
+		<p>Collaboration: Experience participating in a code review process and contributing thoughtful feedback to design specifications. Comfortable working across teams to identify shared challenges and propose platform-level solutions.</p>
+	</li>
+</ul>
+<h3>Bonus Skills:</h3>
+<ul>
+	<li>
+		<p>Familiarity with Cloudflare's core technologies, such as edge computing or global networking.</p>
+	</li>
+	<li>
+		<p>Experience with Infrastructure as Code (IaC) tools and related technologies.</p>
+	</li>
 </ul>
 <p>&nbsp;</p>
-<h4><span style="font-size: 12pt;"><strong>Desirable Skills, Knowledge, and Experience:</strong></span></h4>
+<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;">A minimum of 5 years of end-to-end recruiting experience, ideally within a high-growth tech or SaaS company.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Direct experience hiring for Tech roles, with a strong preference for experience in the network security or cybersecurity sales domain.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Proven expertise in active sourcing and candidate engagement using tools like LinkedIn Recruiter.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Demonstrated experience driving diversity and inclusion initiatives within the recruiting process and helping to build diverse, high-performing teams.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Strong influencing skills and a solution-oriented, results-driven mindset. The ability to be proactive and resourceful, identifying and addressing potential hiring bottlenecks before they arise.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Excellent organizational skills and a keen eye for detail.</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;">A highly collaborative nature and the ability to thrive in a team-based environment.</span></li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>&nbsp;</p>
-<p><span style="font-size: 12pt;"><strong>Compensation</strong></span></p>
-<p><span style="font-size: 12pt;">Compensation may be adjusted depending on work location.</span></p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;" data-sheets-root="1">For Lisbon based hires: Estimated annual salary of €34,000 - €50,000</span></li>
-	<li style="font-size: 12pt;"><span style="font-size: 12pt;" data-sheets-root="1">For London based hires: Estimated annual salary of £60,000 - £90,000</span></li>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
 </ul>
-<p>&nbsp;</p>
-<p><span style="font-size: 12pt;"><strong>Equity</strong></span></p>
-<p><span style="font-size: 12pt;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
-<p>&nbsp;</p>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

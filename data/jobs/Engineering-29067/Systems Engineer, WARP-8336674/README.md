@@ -3,91 +3,49 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations:</strong> London</p>
-<p><strong>About the Department</strong></p>
-<p>As part of the Cloudflare Infrastructure Engineering organization, our platform SREs are primarily responsible for production reliability. SREs are based&nbsp; in locations in Asia, Europe and the US enabling follow the sun coverage during daytime hours.</p>
-<p>SREs are supported by all engineering teams at Cloudflare who participate in on call schedules for their services. The SRE teams facilitate remediation and follow up of production issues and mature the tooling to enable all engineering teams to self-service on production. Incident follow up work across all engineering teams is prioritized above product innovation and the impact of production incidents influences the priority.&nbsp;</p>
-<p>SREs support two main environments: Edge SRE are focused on edge distribution where most client traffic is served. Core SRE are focused on the core services like control plane, data pipeline and other supporting supporting services&nbsp;&nbsp;</p>
-<p><strong>Who you are</strong></p>
+<p><strong>Available Locations: Lisbon, Portugal</strong></p>
+<p><strong>About the role</strong></p>
 <ul>
 	<li>
-		<p>You have 5+ years of software engineering, reliability, or operations experience in a customer-focused environment.</p>
-	</li>
-	<li>
-		<p>You have 2+ years experience managing a team of 5 or more engineers on projects in the areas of: distributed systems, tooling, Linux, Internetworking, infrastructure security or infrastructure management</p>
-	</li>
-	<li>
-		<p>You are comfortable collaborating and co-ordinating on cross-team projects and workflows</p>
-	</li>
-	<li>
-		<p>You can provide a strong technical vision for systems and infrastructure teams</p>
-	</li>
-	<li>
-		<p>You have experience building services and systems, have successfully taken projects from inception to production, and are comfortable diving in to provide leadership for major projects when needed</p>
-	</li>
-	<li>
-		<p>You are capable of leading a discussion with upper management, and are able to tailor the level of technical detail to suit your audience</p>
-	</li>
-</ul>
-<p><strong>What you'll do</strong></p>
-<p>We are looking for an Engineering Manager to lead the Edge SRE team in London. You will lead and develop a team of SREs that are responsible for Cloudflare edge production and building the tools for all teams to understand and interact with it. You will play a lead role in driving our Platform initiatives for edge services and will be tasked with leading engineers who build tools and best practices for engineering teams to debug in production, measure availability and performance indicators, track and report on thresholds.&nbsp;</p>
-<p>Key responsibilities</p>
-<ul>
-	<li>
-		<p>Lead a team of engineers who are working to keep the Cloudflare edge reliable and scalable</p>
-	</li>
-	<li>
-		<p>Mentor, grow, and empower your team by giving them the skills, confidence and motivation to make decisions</p>
-	</li>
-	<li>
-		<p>Help the individuals on your team to build and execute personal development plans that align with Cloudflare’s goals and objectives</p>
-	</li>
-	<li>
-		<p>Take an active role in prioritizing the roadmap for the SRE Org</p>
-	</li>
-	<li>
-		<p>Drive cross-team and cross-org alignment in engineering, infrastructure and product teams</p>
-	</li>
-	<li>
-		<p>Partner with other Engineering Managers across Cloudflare to achieve reliability outcomes for their services</p>
-	</li>
-	<li>
-		<p>Participate in deep technical design discussions within your team, and across partner teams, and ensure that we're building the right systems and keeping the quality high</p>
+		<p>As a Systems engineer in the WARP team you will join a team that works on the backend system that allows our customers to manage their devices via our Zero Trust Network solution.&nbsp; <br>In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our WARP and Zero Trust product, such as Device Posture, Orchestration and Notification.</p>
+		<p>We are looking for engineers that are versatile and eager to contribute to the technical direction of the product, with a focus on growth, scalability and high-availability.<br>You will collaborate with your team on the planning, priority, deadlines and deliverables of solutions to our customers requirements.</p>
+		<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+		<ul>
+			<li>At least 3 years of professional software engineering experience</li>
+			<li>Experience managing high available systems with disaster recovery support.</li>
+			<li>Experience in at least of the following languages: Go, Rust</li>
+			<li>Experience in Typescript</li>
+			<li>Experience designing and integrating RESTful APIs at scale</li>
+			<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+			<li>Knowledge on distributed NoSQL databases</li>
+			<li>Excellent debugging experience and optimization skills</li>
+			<li>Experience with Kubernetes</li>
+		</ul>
+		<p><strong>Responsibilities</strong></p>
+		<ul>
+			<li>Design, develop, test, deploy, maintain, and enhance large scale software solutions.</li>
+			<li>Own features end-to-end and contribute to the team projects and objectives</li>
+			<li>Collaborate with a distributed team of engineers through code reviews, design discussions and knowledge sharing.</li>
+			<li>Contribute to the team roadmap by identifying engineering opportunities and improvements for the success of the team and product.</li>
+			<li>Collaborate with other Zero Trust teams on goals, outcomes, and timelines.</li>
+			<li>Help the team meet project priorities, deadlines, and deliverables.</li>
+		</ul>
 	</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
+<p></p>
+<h3 class="" data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<ul data-path-to-node="1">
 	<li>
-		<p>Hands-on experience with software or reliability engineering</p>
-	</li>
-	<li>
-		<p>Experience leading and hiring a team that builds and runs tools and platforms</p>
-	</li>
-	<li>
-		<p>Excel at planning and overseeing execution to meet commitments and deliver with predictability</p>
-	</li>
-	<li>
-		<p>Incident root cause analysis and follow-ups</p>
-	</li>
-	<li>
-		<p>Incident management</p>
-	</li>
-	<li>
-		<p>Comfortable managing teams/projections with deadlines and short release cycles</p>
-	</li>
-	<li>
-		<p>Experience using observability tools such as Jaeger, OpenTracing, ELK, Prometheus, Thanos, Grafana, Clickhouse</p>
-	</li>
-	<li>
-		<p>Experience running and maturing distributed systems</p>
-	</li>
-	<li>
-		<p>Familiarity working with Proxies, DNS, Databases, Internet and Security</p>
-	</li>
-	<li>
-		<p>Experience developing tools and APIs</p>
+		<p data-path-to-node="1,0,0">For Portugal based hires: Estimated annual salary is between €54,000 - €75,000.</p>
 	</li>
 </ul>
+<h3 class="" data-path-to-node="2"><strong data-path-to-node="2" data-index-in-node="0">Equity</strong></h3>
+<ul data-path-to-node="3">
+	<li>
+		<p data-path-to-node="3,0,0">This role is eligible to participate in Cloudflare's equity plan.</p>
+	</li>
+</ul>
+<p></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

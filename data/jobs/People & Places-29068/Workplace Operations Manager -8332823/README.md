@@ -3,41 +3,38 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p>Infrastructure Operations Analyst</p>
-<p><strong>Available Location:</strong> Lisbon, Portugal&nbsp;</p>
-<p><strong>Job Description:</strong>&nbsp;</p>
-<p>We are looking for an Infrastructure Operations Analyst to support our Infrastructure Strategy team with strategic commercial and settlement-free partners, focused on network bandwidth services. You will be part of the Infrastructure team that specializes in Network Strategy and building both external and internal relationships that allow for Cloudflare to scale and reach user populations around the world. Our group takes a long term and technical approach to forging mutually beneficial and sustainable relationships with all of our network partners.&nbsp;</p>
-<p><strong>What you'll do:&nbsp;</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>About the role</strong></p>
+<p>The <strong>Places Team</strong> at Cloudflare is seeking an experienced and enthusiastic <strong>Workplace Operations Manager</strong> to lead and elevate the day-to-day operations of our Austin hub. In this role, you’ll be the go-to person for creating a smooth, welcoming, and highly functional workplace—partnering with global counterparts to share best practices and continuously enhance our spaces.</p>
+<p>You’ll gather feedback from employees and guests to shape how the hub evolves, contribute to future buildouts, and collaborate with teams across IT, Legal, Physical Security, EBC, and more. You're comfortable navigating fast-paced environments, solving problems on the fly, and thinking creatively about how to improve systems and experiences. With a hospitality mindset and strong communication skills, you take pride in delivering excellent service and building a space that reflects our culture and values.</p>
+<p>This role reports to the <strong>Regional Manager, Workplace Operations</strong>.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Manage the team’s general workflow and assist in the implementation of Network Strategy</li>
-	<li>Assist in the creation and maintenance of operational trackers</li>
-	<li>Prioritize resource assignments for deployment and build projects</li>
-	<li>Invoice review in Coupa (invoice review system) and reconciliation with tracking data</li>
-	<li>Monitor and report on Legal contract processing to ensure timely execution</li>
-	<li>Ensure all Jira projects have owners and are tracked for completion</li>
-	<li>Help with Purchase Requisitions and Orders processing</li>
-	<li>Partner onboarding and updating of contact information</li>
-	<li>Help build our capabilities to turn our workflows into always-on, continuous forecasts</li>
+	<li><strong><em>Workplace Experience:</em></strong> Ensure our hub is a functional, inspiring space that reflects our culture and supports hybrid work. Act as the first point of contact for employee workplace needs, solving issues quickly and thoughtfully.</li>
+	<li><strong><em>Stay Connected Across Channels:</em></strong><strong> </strong>Maintain clear, responsive communication with the local team across platforms like chat, email, and in-person touchpoints—ensuring everyone stays informed, supported, and aligned on workplace updates and needs.</li>
+	<li><strong><em>Track and Report Workplace Metrics: </em></strong>Monitor key data points such as space utilization, occupancy, and service ticket volume to support data-driven decision-making and long-term planning.</li>
+	<li><strong><em>Support Workplace Programs: </em></strong>Help drive local implementation of global workplace programs—from our food program (think snack stocking, team lunches, and special food moments) and sustainability initiatives to employee engagement efforts.</li>
+	<li><strong><em>Support Internal Events &amp; Experiences:</em></strong> Plan and execute a range of onsite events—including team onsites, in-person weeks, executive briefings, customer meetings, and cultural moments—both independently and in collaboration with the Global Events &amp; Experiences team, ensuring each gathering is seamless, engaging, and reflective of our culture.</li>
+	<li><strong><em>Safety &amp; Compliance:</em></strong><strong> </strong>Partner with Security and Legal teams to maintain a safe and compliant workplace. Support emergency preparedness efforts, safety drills, and incident response protocols.</li>
+	<li><strong><em>Scale Smartly</em></strong><strong>: </strong>As the hub grows, help onboard new team members, support hiring needs for workplace roles, and participate in long-term workplace planning.</li>
+	<li><strong><em>Support the Regional Places Team:</em></strong> Assist with administrative tasks such as responding to tickets, managing emails and inquiries, and providing holiday coverage to ensure seamless team operations across regions.</li>
+	<li><strong><em>Lead Onsite Operations:</em></strong> Own the day-to-day management of the workplace—from front desk services, greeting guests/employees/visiting employees, and mail handling to office supplies, swag, deliveries, and space readiness. You’ll make sure everything flows, looks great, and feels seamless for employees and visitors alike.</li>
+	<li><strong><em>Be the go-to for Vendors and Places Team:</em></strong><strong> </strong>Liaise with building management, building security, and external vendors (cleaning crews, caterers, property managers, etc.) to keep our operations running efficiently. Oversee vendor performance and contracts, lead RFPs when needed, and track workplace budgets responsibly.</li>
+	<li><strong><em>Create a World-Class Environment:</em></strong> Champion an inspiring, inclusive, and vibrant office culture. Plan and execute engaging onsite events, team celebrations, catering, and daily amenities that make coming into the office exciting, productive, and memorable for our team.</li>
 </ul>
-<p><strong>Preferred Qualifications</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Know the difference between clean data and messy data, and have a deeply-rooted desire to organize data.</li>
-	<li>Advanced knowledge of Excel or Google Sheets.</li>
-	<li>Previous experience with multiple different vendor interface systems, and the ability to quickly pick up new systems and work between different systems.</li>
-	<li>A “get to Yes” attitude and the ability to work through problems coming up with workable and realistic solutions.</li>
+	<li>Have 5+ years of experience leading workplace operations teams, ideally in a fast-paced, high-growth environment, including 3+ years of people management experience.</li>
+	<li>Are people-first and service-minded, with a friendly, professional presence that makes everyone feel welcome</li>
+	<li>Know how to juggle vendors, projects, and priorities—and still sweat the small stuff</li>
+	<li>Bring sharp budget management skills and make thoughtful, cost-effective decisions</li>
+	<li>Communicate clearly and confidently across all levels and time zones using Google Workspace</li>
+	<li>Are highly organized, detail-oriented, and proactive—you spot what needs doing before anyone else does</li>
+	<li>Thrive in fast-moving environments, stay calm under pressure, and love finding creative solutions</li>
+	<li>Have experience collaborating cross-functionally with teams like IT, Security, People Ops, and more</li>
+	<li>Bring a hospitality mindset and a passion for building inspiring, functional spaces where people love to work</li>
+	<li>Work onsite in the office 5 days a week (Monday–Friday).</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Required Systems</strong></p>
-<ul>
-	<li>Coupa, Ironclad, JIRA, Google Spreadsheets</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €36,000-50,000</span></li>
-</ul>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
