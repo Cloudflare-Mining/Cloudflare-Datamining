@@ -262,6 +262,14 @@
 	"vpc.networks.table.created": "Created",
 	"vpc.networks.search.placeholder": "Search networks and tunnels...",
 	"vpc.networks.actions.copyBinding": "Copy binding",
+	"vpc.networks.cloudflareMeshName": "Cloudflare Mesh",
+	"vpc.networks.cloudflareMeshDefaultName": "Cloudflare Mesh (default Virtual Network)",
+	"vpc.networks.cloudflareMeshVirtualNetworkName": "Cloudflare Mesh Virtual Network",
+	"vpc.networks.virtualNetwork.defaultName": "%{name} (default)",
+	"vpc.networks.virtualNetwork.modal.title": "Copy Cloudflare Mesh Virtual Network binding",
+	"vpc.networks.virtualNetwork.modal.description": "Choose the virtual network to include in the Workers VPC network binding.",
+	"vpc.networks.virtualNetwork.modal.selectLabel": "Virtual network",
+	"vpc.networks.virtualNetwork.modal.selectPlaceholder": "Select a virtual network...",
 	"vpc.networks.empty.title": "No results",
 	"vpc.networks.empty.description": "No networks or tunnels match your search.",
 	"vpc.networks.table.networkName": "Name",
@@ -276,5 +284,10 @@
 	"vpc.diagram.cloudflareMesh": "Cloudflare Mesh",
 	"vpc.overview.diagram_too_large.title": "Diagram hidden",
 	"vpc.overview.diagram_too_large.body": "A diagram with %{count} resources exceeds the %{limit} maximum for clean visualisation.",
-	"vpc.overview.diagram_too_large.show_button": "Show anyway"
+	"vpc.overview.diagram_too_large.show_button": "Show anyway",
+	"vpc.overview.diagram_rate_limited.title": "Diagram temporarily unavailable",
+	"vpc.overview.diagram_rate_limited.body": "The API rate limit was reached while loading Worker bindings. Reload the page in a few minutes.",
+	"vpc.overview.diagram_unavailable.title": "Diagram unavailable",
+	"vpc.overview.diagram_unavailable.body": "Your Workers could not be loaded.",
+	"vpc.overview.diagram_truncated": "Showing connections for the %{limit} most recently modified Workers of %{total}."
 }
