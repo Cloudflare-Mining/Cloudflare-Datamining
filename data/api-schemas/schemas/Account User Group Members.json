@@ -177,6 +177,7 @@
 												},
 												"status": {
 													"description": "The member's status in the account.",
+													"type": "string",
 													"example": "accepted",
 													"enum": [
 														"accepted",
@@ -313,6 +314,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -338,7 +342,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.user-groups.members",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/iam/user_groups/{user_group_id}/members": {
@@ -547,7 +550,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -574,6 +578,7 @@
 													},
 													"status": {
 														"description": "The member's status in the account.",
+														"type": "string",
 														"example": "accepted",
 														"enum": [
 															"accepted",
@@ -712,6 +717,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -737,8 +745,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.user-groups.members",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/iam/user_groups/{user_group_id}/members/{member_id}": {
 		"operationId": "account-user-group-member-get",
@@ -925,6 +932,7 @@
 												},
 												"status": {
 													"description": "The member's status in the account.",
+													"type": "string",
 													"example": "accepted",
 													"enum": [
 														"accepted",
@@ -1093,6 +1101,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1118,8 +1129,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.user-groups.members",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/iam/user_groups/{user_group_id}/members": {
 		"operationId": "account-user-group-member-create",
@@ -1314,6 +1324,7 @@
 													},
 													"status": {
 														"description": "The member's status in the account.",
+														"type": "string",
 														"example": "accepted",
 														"enum": [
 															"accepted",
@@ -1451,6 +1462,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1475,8 +1489,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.user-groups.members",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/iam/user_groups/{user_group_id}/members": {
 		"operationId": "account-user-group-members-update",
@@ -1673,6 +1686,7 @@
 													},
 													"status": {
 														"description": "The member's status in the account.",
+														"type": "string",
 														"example": "accepted",
 														"enum": [
 															"accepted",
@@ -1810,6 +1824,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1829,7 +1846,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.user-groups.members",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

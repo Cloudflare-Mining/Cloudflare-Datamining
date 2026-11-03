@@ -164,7 +164,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -443,7 +444,8 @@
 																}
 															},
 															{
-																"readOnly": true
+																"readOnly": true,
+																"type": "object"
 															}
 														]
 													}
@@ -581,6 +583,9 @@
 		"deprecated": true,
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -601,7 +606,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "accounts.roles",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use /accounts/{account_id}/iam/permission_groups instead."
 	},
 	"GET /accounts/{account_id}/roles/{role_id}": {
@@ -1008,7 +1012,8 @@
 															}
 														},
 														{
-															"readOnly": true
+															"readOnly": true,
+															"type": "object"
 														}
 													]
 												}
@@ -1145,6 +1150,9 @@
 		"deprecated": true,
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1165,7 +1173,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "accounts.roles",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true,
 		"x-stainless-deprecation-message": "Use /accounts/{account_id}/iam/permission_groups/{permission_group_id} instead."
 	}
 }

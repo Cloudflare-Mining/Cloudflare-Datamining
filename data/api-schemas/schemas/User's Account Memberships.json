@@ -115,6 +115,7 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"id": {
 													"description": "Membership identifier tag.",
@@ -250,6 +251,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -263,7 +267,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.memberships",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /memberships": {
@@ -477,7 +480,8 @@
 																}
 															}
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -508,6 +512,34 @@
 																				"maxLength": 32,
 																				"minLength": 32,
 																				"x-auditable": true
+																			},
+																			"legacy_flags": {
+																				"description": "Legacy account flags.",
+																				"type": "object",
+																				"properties": {
+																					"enterprise_zone_quota": {
+																						"description": "Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.",
+																						"type": "object",
+																						"properties": {
+																							"available": {
+																								"description": "Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.",
+																								"type": "integer",
+																								"example": 168
+																							},
+																							"current": {
+																								"description": "Current number of Enterprise zones.",
+																								"type": "integer",
+																								"example": 82
+																							},
+																							"maximum": {
+																								"description": "Maximum number of Enterprise zones allowed.",
+																								"type": "integer",
+																								"example": 250
+																							}
+																						}
+																					}
+																				},
+																				"readOnly": true
 																			},
 																			"managed_by": {
 																				"description": "Parent container details",
@@ -994,7 +1026,8 @@
 																}
 															}
 														}
-													}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -1025,6 +1058,34 @@
 																				"maxLength": 32,
 																				"minLength": 32,
 																				"x-auditable": true
+																			},
+																			"legacy_flags": {
+																				"description": "Legacy account flags.",
+																				"type": "object",
+																				"properties": {
+																					"enterprise_zone_quota": {
+																						"description": "Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.",
+																						"type": "object",
+																						"properties": {
+																							"available": {
+																								"description": "Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.",
+																								"type": "integer",
+																								"example": 168
+																							},
+																							"current": {
+																								"description": "Current number of Enterprise zones.",
+																								"type": "integer",
+																								"example": 82
+																							},
+																							"maximum": {
+																								"description": "Maximum number of Enterprise zones allowed.",
+																								"type": "integer",
+																								"example": 250
+																							}
+																						}
+																					}
+																				},
+																				"readOnly": true
 																			},
 																			"managed_by": {
 																				"description": "Parent container details",
@@ -1513,38 +1574,43 @@
 																						"x-auditable": true
 																					},
 																					"scope": {
-																						"description": "A scope is a combination of scope objects which provides additional context.",
-																						"type": "object",
-																						"properties": {
-																							"key": {
-																								"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-																								"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																								"readOnly": true,
-																								"x-auditable": true
-																							},
-																							"objects": {
-																								"description": "A list of scope objects for additional context.",
-																								"type": "array",
-																								"items": {
-																									"description": "A scope object represents any resource that can have actions applied against invite.",
-																									"type": "object",
-																									"properties": {
-																										"key": {
-																											"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-																											"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-																											"readOnly": true,
-																											"x-auditable": true
-																										}
+																						"description": "The scope associated to the resource group",
+																						"allOf": [
+																							{
+																								"description": "A scope is a combination of scope objects which provides additional context.",
+																								"type": "object",
+																								"properties": {
+																									"key": {
+																										"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																										"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																										"readOnly": true,
+																										"x-auditable": true
 																									},
-																									"required": [
-																										"key"
-																									]
-																								}
+																									"objects": {
+																										"description": "A list of scope objects for additional context.",
+																										"type": "array",
+																										"items": {
+																											"description": "A scope object represents any resource that can have actions applied against invite.",
+																											"type": "object",
+																											"properties": {
+																												"key": {
+																													"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																													"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																													"readOnly": true,
+																													"x-auditable": true
+																												}
+																											},
+																											"required": [
+																												"key"
+																											]
+																										}
+																									}
+																								},
+																								"required": [
+																									"key",
+																									"objects"
+																								]
 																							}
-																						},
-																						"required": [
-																							"key",
-																							"objects"
 																						]
 																					}
 																				},
@@ -1710,6 +1776,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1723,8 +1792,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.memberships",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /memberships/{membership_id}": {
 		"operationId": "user'-s-account-memberships-membership-details",
@@ -1864,6 +1932,34 @@
 																	"maxLength": 32,
 																	"minLength": 32,
 																	"x-auditable": true
+																},
+																"legacy_flags": {
+																	"description": "Legacy account flags.",
+																	"type": "object",
+																	"properties": {
+																		"enterprise_zone_quota": {
+																			"description": "Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.",
+																			"type": "object",
+																			"properties": {
+																				"available": {
+																					"description": "Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.",
+																					"type": "integer",
+																					"example": 168
+																				},
+																				"current": {
+																					"description": "Current number of Enterprise zones.",
+																					"type": "integer",
+																					"example": 82
+																				},
+																				"maximum": {
+																					"description": "Maximum number of Enterprise zones allowed.",
+																					"type": "integer",
+																					"example": 250
+																				}
+																			}
+																		}
+																	},
+																	"readOnly": true
 																},
 																"managed_by": {
 																	"description": "Parent container details",
@@ -2352,38 +2448,43 @@
 																			"x-auditable": true
 																		},
 																		"scope": {
-																			"description": "A scope is a combination of scope objects which provides additional context.",
-																			"type": "object",
-																			"properties": {
-																				"key": {
-																					"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-																					"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																					"readOnly": true,
-																					"x-auditable": true
-																				},
-																				"objects": {
-																					"description": "A list of scope objects for additional context.",
-																					"type": "array",
-																					"items": {
-																						"description": "A scope object represents any resource that can have actions applied against invite.",
-																						"type": "object",
-																						"properties": {
-																							"key": {
-																								"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-																								"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-																								"readOnly": true,
-																								"x-auditable": true
-																							}
+																			"description": "The scope associated to the resource group",
+																			"allOf": [
+																				{
+																					"description": "A scope is a combination of scope objects which provides additional context.",
+																					"type": "object",
+																					"properties": {
+																						"key": {
+																							"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																							"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																							"readOnly": true,
+																							"x-auditable": true
 																						},
-																						"required": [
-																							"key"
-																						]
-																					}
+																						"objects": {
+																							"description": "A list of scope objects for additional context.",
+																							"type": "array",
+																							"items": {
+																								"description": "A scope object represents any resource that can have actions applied against invite.",
+																								"type": "object",
+																								"properties": {
+																									"key": {
+																										"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																										"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																										"readOnly": true,
+																										"x-auditable": true
+																									}
+																								},
+																								"required": [
+																									"key"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"key",
+																						"objects"
+																					]
 																				}
-																			},
-																			"required": [
-																				"key",
-																				"objects"
 																			]
 																		}
 																	},
@@ -2546,6 +2647,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -2558,9 +2662,9 @@
 			"Memberships Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "user.memberships",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get-legacy"
 	},
 	"GET /user/memberships/{membership_id}": {
 		"operationId": "user-memberships-get",
@@ -2700,6 +2804,34 @@
 																	"maxLength": 32,
 																	"minLength": 32,
 																	"x-auditable": true
+																},
+																"legacy_flags": {
+																	"description": "Legacy account flags.",
+																	"type": "object",
+																	"properties": {
+																		"enterprise_zone_quota": {
+																			"description": "Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.",
+																			"type": "object",
+																			"properties": {
+																				"available": {
+																					"description": "Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.",
+																					"type": "integer",
+																					"example": 168
+																				},
+																				"current": {
+																					"description": "Current number of Enterprise zones.",
+																					"type": "integer",
+																					"example": 82
+																				},
+																				"maximum": {
+																					"description": "Maximum number of Enterprise zones allowed.",
+																					"type": "integer",
+																					"example": 250
+																				}
+																			}
+																		}
+																	},
+																	"readOnly": true
 																},
 																"managed_by": {
 																	"description": "Parent container details",
@@ -3188,38 +3320,43 @@
 																			"x-auditable": true
 																		},
 																		"scope": {
-																			"description": "A scope is a combination of scope objects which provides additional context.",
-																			"type": "object",
-																			"properties": {
-																				"key": {
-																					"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-																					"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																					"readOnly": true,
-																					"x-auditable": true
-																				},
-																				"objects": {
-																					"description": "A list of scope objects for additional context.",
-																					"type": "array",
-																					"items": {
-																						"description": "A scope object represents any resource that can have actions applied against invite.",
-																						"type": "object",
-																						"properties": {
-																							"key": {
-																								"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-																								"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-																								"readOnly": true,
-																								"x-auditable": true
-																							}
+																			"description": "The scope associated to the resource group",
+																			"allOf": [
+																				{
+																					"description": "A scope is a combination of scope objects which provides additional context.",
+																					"type": "object",
+																					"properties": {
+																						"key": {
+																							"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																							"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																							"readOnly": true,
+																							"x-auditable": true
 																						},
-																						"required": [
-																							"key"
-																						]
-																					}
+																						"objects": {
+																							"description": "A list of scope objects for additional context.",
+																							"type": "array",
+																							"items": {
+																								"description": "A scope object represents any resource that can have actions applied against invite.",
+																								"type": "object",
+																								"properties": {
+																									"key": {
+																										"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																										"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																										"readOnly": true,
+																										"x-auditable": true
+																									}
+																								},
+																								"required": [
+																									"key"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"key",
+																						"objects"
+																					]
 																				}
-																			},
-																			"required": [
-																				"key",
-																				"objects"
 																			]
 																		}
 																	},
@@ -3382,6 +3519,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -3432,9 +3572,11 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"status": {
 								"description": "Whether to accept or reject this account invitation.",
+								"type": "string",
 								"example": "accepted",
 								"enum": [
 									"accepted",
@@ -3568,6 +3710,34 @@
 																	"maxLength": 32,
 																	"minLength": 32,
 																	"x-auditable": true
+																},
+																"legacy_flags": {
+																	"description": "Legacy account flags.",
+																	"type": "object",
+																	"properties": {
+																		"enterprise_zone_quota": {
+																			"description": "Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.",
+																			"type": "object",
+																			"properties": {
+																				"available": {
+																					"description": "Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.",
+																					"type": "integer",
+																					"example": 168
+																				},
+																				"current": {
+																					"description": "Current number of Enterprise zones.",
+																					"type": "integer",
+																					"example": 82
+																				},
+																				"maximum": {
+																					"description": "Maximum number of Enterprise zones allowed.",
+																					"type": "integer",
+																					"example": 250
+																				}
+																			}
+																		}
+																	},
+																	"readOnly": true
 																},
 																"managed_by": {
 																	"description": "Parent container details",
@@ -4056,38 +4226,43 @@
 																			"x-auditable": true
 																		},
 																		"scope": {
-																			"description": "A scope is a combination of scope objects which provides additional context.",
-																			"type": "object",
-																			"properties": {
-																				"key": {
-																					"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-																					"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-																					"readOnly": true,
-																					"x-auditable": true
-																				},
-																				"objects": {
-																					"description": "A list of scope objects for additional context.",
-																					"type": "array",
-																					"items": {
-																						"description": "A scope object represents any resource that can have actions applied against invite.",
-																						"type": "object",
-																						"properties": {
-																							"key": {
-																								"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-																								"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-																								"readOnly": true,
-																								"x-auditable": true
-																							}
+																			"description": "The scope associated to the resource group",
+																			"allOf": [
+																				{
+																					"description": "A scope is a combination of scope objects which provides additional context.",
+																					"type": "object",
+																					"properties": {
+																						"key": {
+																							"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																							"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																							"readOnly": true,
+																							"x-auditable": true
 																						},
-																						"required": [
-																							"key"
-																						]
-																					}
+																						"objects": {
+																							"description": "A list of scope objects for additional context.",
+																							"type": "array",
+																							"items": {
+																								"description": "A scope object represents any resource that can have actions applied against invite.",
+																								"type": "object",
+																								"properties": {
+																									"key": {
+																										"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																										"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																										"readOnly": true,
+																										"x-auditable": true
+																									}
+																								},
+																								"required": [
+																									"key"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"key",
+																						"objects"
+																					]
 																				}
-																			},
-																			"required": [
-																				"key",
-																				"objects"
 																			]
 																		}
 																	},
@@ -4250,6 +4425,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -4262,7 +4440,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.memberships",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

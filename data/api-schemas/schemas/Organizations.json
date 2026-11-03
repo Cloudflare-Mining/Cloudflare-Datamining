@@ -217,7 +217,7 @@
 			"Organizations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization",
+		"x-fern-sdk-group-name": "organizations",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "Delete this empty organization? This action cannot be undone."
 	},
@@ -1002,7 +1002,7 @@
 			"User Details Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization",
+		"x-fern-sdk-group-name": "organizations",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /organizations/{organization_id}": {
@@ -1366,7 +1366,7 @@
 			"Organizations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization",
+		"x-fern-sdk-group-name": "organizations",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /organizations/{organization_id}/accounts": {
@@ -1438,7 +1438,7 @@
 			{
 				"name": "name",
 				"in": "query",
-				"description": "(case-sensitive) Filter the list of accounts to where the name is equal to a\nparticular string.",
+				"description": "(case-sensitive) Filter the list of accounts to where the name is equal to a\nparticular string. At most one of `name`, `name.startsWith`, `name.endsWith`,\nor `name.contains` may be supplied per request.",
 				"schema": {
 					"type": "string"
 				},
@@ -1936,7 +1936,7 @@
 			"Organizations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization.account",
+		"x-fern-sdk-group-name": "organizations.accounts",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /organizations/{organization_id}/profile": {
@@ -2176,7 +2176,7 @@
 			"Organizations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization.profile",
+		"x-fern-sdk-group-name": "organizations.profile",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /organizations": {
@@ -2592,7 +2592,7 @@
 			"User Details Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization",
+		"x-fern-sdk-group-name": "organizations",
 		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /organizations/{organization_id}": {
@@ -2986,7 +2986,7 @@
 			"Organizations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization",
+		"x-fern-sdk-group-name": "organizations",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /organizations/{organization_id}/invites/{member_code}": {
@@ -3304,7 +3304,7 @@
 			"Organizations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization.invite",
+		"x-fern-sdk-group-name": "organizations.invites",
 		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /organizations/{organization_id}/profile": {
@@ -3503,7 +3503,7 @@
 			"Organizations"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization.profile",
+		"x-fern-sdk-group-name": "organizations.profile",
 		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -146,7 +146,8 @@
 												"id"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -292,7 +293,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.tokens",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/tokens": {
@@ -482,7 +482,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -947,8 +948,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.tokens",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/tokens/{token_id}": {
 		"operationId": "account-api-tokens-token-details",
@@ -1539,8 +1539,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.tokens",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/tokens/permission_groups": {
 		"operationId": "account-api-tokens-list-permission-groups",
@@ -1704,7 +1703,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1980,8 +1980,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.tokens.permission-groups",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/tokens/verify": {
 		"operationId": "account-api-tokens-verify-token",
@@ -2105,6 +2104,7 @@
 								{
 									"properties": {
 										"result": {
+											"type": "object",
 											"properties": {
 												"expires_on": {
 													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
@@ -2284,8 +2284,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.tokens",
-		"x-fern-sdk-method-name": "verify",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "verify"
 	},
 	"POST /accounts/{account_id}/tokens": {
 		"operationId": "account-api-tokens-create-token",
@@ -2963,7 +2962,8 @@
 															"readOnly": true,
 															"x-sensitive": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"title": "Create token response, with the token value"
@@ -3115,8 +3115,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.tokens",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/tokens/{token_id}": {
 		"operationId": "account-api-tokens-update-token",
@@ -3470,13 +3469,11 @@
 								}
 							},
 							{
-								"type": "object"
-							},
-							{
 								"required": [
 									"name",
 									"policies"
-								]
+								],
+								"type": "object"
 							}
 						],
 						"title": "Token defined in a request body"
@@ -4034,8 +4031,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.tokens",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/tokens/{token_id}/value": {
 		"operationId": "account-api-tokens-roll-token",
@@ -4327,7 +4323,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.tokens",
 		"x-fern-sdk-method-name": "roll",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Rolling this token will invalidate the current secret and generate a new one. Any integrations using the current secret will stop working."
 	}
 }

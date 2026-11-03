@@ -123,7 +123,8 @@
 												"id"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -246,6 +247,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -270,7 +274,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts": {
@@ -442,7 +445,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -468,6 +472,34 @@
 														"maxLength": 32,
 														"minLength": 32,
 														"x-auditable": true
+													},
+													"legacy_flags": {
+														"description": "Legacy account flags.",
+														"type": "object",
+														"properties": {
+															"enterprise_zone_quota": {
+																"description": "Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.",
+																"type": "object",
+																"properties": {
+																	"available": {
+																		"description": "Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.",
+																		"type": "integer",
+																		"example": 168
+																	},
+																	"current": {
+																		"description": "Current number of Enterprise zones.",
+																		"type": "integer",
+																		"example": 82
+																	},
+																	"maximum": {
+																		"description": "Maximum number of Enterprise zones allowed.",
+																		"type": "integer",
+																		"example": 250
+																	}
+																}
+															}
+														},
+														"readOnly": true
 													},
 													"managed_by": {
 														"description": "Parent container details",
@@ -668,6 +700,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -683,8 +718,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}": {
 		"operationId": "accounts-account-details",
@@ -825,6 +859,34 @@
 													"maxLength": 32,
 													"minLength": 32,
 													"x-auditable": true
+												},
+												"legacy_flags": {
+													"description": "Legacy account flags.",
+													"type": "object",
+													"properties": {
+														"enterprise_zone_quota": {
+															"description": "Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.",
+															"type": "object",
+															"properties": {
+																"available": {
+																	"description": "Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.",
+																	"type": "integer",
+																	"example": 168
+																},
+																"current": {
+																	"description": "Current number of Enterprise zones.",
+																	"type": "integer",
+																	"example": 82
+																},
+																"maximum": {
+																	"description": "Maximum number of Enterprise zones allowed.",
+																	"type": "integer",
+																	"example": 250
+																}
+															}
+														}
+													},
+													"readOnly": true
 												},
 												"managed_by": {
 													"description": "Parent container details",
@@ -1024,6 +1086,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1075,8 +1140,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/organizations": {
 		"operationId": "Accounts_listAccountOrganizations",
@@ -1725,10 +1789,20 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"type": {
-								"enum": [
-									"standard",
-									"enterprise"
-								]
+								"description": "the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.",
+								"example": "standard",
+								"default": "standard",
+								"allOf": [
+									{
+										"enum": [
+											"standard",
+											"enterprise"
+										]
+									}
+								],
+								"deprecated": true,
+								"x-stainless-deprecation-message": "The 'type' field should no longer be set through the API.",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"unit": {
 								"description": "Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.",
@@ -1749,7 +1823,8 @@
 							"required": [
 								"unit",
 								"standalone"
-							]
+							],
+							"type": "object"
 						},
 						"required": [
 							"name"
@@ -1873,6 +1948,34 @@
 													"maxLength": 32,
 													"minLength": 32,
 													"x-auditable": true
+												},
+												"legacy_flags": {
+													"description": "Legacy account flags.",
+													"type": "object",
+													"properties": {
+														"enterprise_zone_quota": {
+															"description": "Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.",
+															"type": "object",
+															"properties": {
+																"available": {
+																	"description": "Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.",
+																	"type": "integer",
+																	"example": 168
+																},
+																"current": {
+																	"description": "Current number of Enterprise zones.",
+																	"type": "integer",
+																	"example": 82
+																},
+																"maximum": {
+																	"description": "Maximum number of Enterprise zones allowed.",
+																	"type": "integer",
+																	"example": 250
+																}
+															}
+														}
+													},
+													"readOnly": true
 												},
 												"managed_by": {
 													"description": "Parent container details",
@@ -2072,6 +2175,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -2087,8 +2193,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/move": {
 		"operationId": "Accounts_moveAccounts",
@@ -2171,6 +2276,7 @@
 											"x-auditable": true
 										},
 										"source_organization_id": {
+											"description": "Empty string when the account did not belong to an organization before the move.",
 											"type": "string",
 											"x-auditable": true
 										}
@@ -2389,6 +2495,34 @@
 										"minLength": 32,
 										"x-auditable": true
 									},
+									"legacy_flags": {
+										"description": "Legacy account flags.",
+										"type": "object",
+										"properties": {
+											"enterprise_zone_quota": {
+												"description": "Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.",
+												"type": "object",
+												"properties": {
+													"available": {
+														"description": "Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.",
+														"type": "integer",
+														"example": 168
+													},
+													"current": {
+														"description": "Current number of Enterprise zones.",
+														"type": "integer",
+														"example": 82
+													},
+													"maximum": {
+														"description": "Maximum number of Enterprise zones allowed.",
+														"type": "integer",
+														"example": 250
+													}
+												}
+											}
+										},
+										"readOnly": true
+									},
 									"managed_by": {
 										"description": "Parent container details",
 										"type": "object",
@@ -2591,6 +2725,34 @@
 													"minLength": 32,
 													"x-auditable": true
 												},
+												"legacy_flags": {
+													"description": "Legacy account flags.",
+													"type": "object",
+													"properties": {
+														"enterprise_zone_quota": {
+															"description": "Enterprise zone quota for standard and enterprise accounts. Accounts without a quota have a maximum of 0.",
+															"type": "object",
+															"properties": {
+																"available": {
+																	"description": "Number of additional Enterprise zones available. Returns 0 if the quota is not allocated or is exhausted.",
+																	"type": "integer",
+																	"example": 168
+																},
+																"current": {
+																	"description": "Current number of Enterprise zones.",
+																	"type": "integer",
+																	"example": 82
+																},
+																"maximum": {
+																	"description": "Maximum number of Enterprise zones allowed.",
+																	"type": "integer",
+																	"example": 250
+																}
+															}
+														}
+													},
+													"readOnly": true
+												},
 												"managed_by": {
 													"description": "Parent container details",
 													"type": "object",
@@ -2789,6 +2951,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -2812,8 +2977,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/profile": {
 		"operationId": "Accounts_modifyAccountProfile",

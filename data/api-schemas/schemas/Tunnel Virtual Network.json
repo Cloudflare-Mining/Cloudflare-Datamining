@@ -1100,40 +1100,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {
-					"schema": {
-						"type": "object",
-						"properties": {
-							"comment": {
-								"description": "Optional remark describing the virtual network.",
-								"type": "string",
-								"example": "Staging VPC for data science",
-								"default": "",
-								"maxLength": 256,
-								"x-auditable": true
-							},
-							"is_default_network": {
-								"description": "If `true`, this virtual network is the default for the account.",
-								"type": "boolean",
-								"example": true,
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
-							},
-							"name": {
-								"description": "A user-friendly name for the virtual network.",
-								"type": "string",
-								"example": "us-east-1-vpc",
-								"maxLength": 256,
-								"x-auditable": true
-							}
-						}
-					}
-				}
-			}
-		},
 		"responses": {
 			"200": {
 				"description": "A virtual network response",

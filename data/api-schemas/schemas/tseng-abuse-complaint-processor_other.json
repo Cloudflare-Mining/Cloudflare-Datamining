@@ -132,6 +132,15 @@
 					]
 				},
 				"example": "active"
+			},
+			{
+				"name": "pending_notice",
+				"in": "query",
+				"description": "Also include reports in an open Notice and Takedown notice period. Combined with mitigation_status using OR, e.g. ?mitigation_status=active&pending_notice=true.",
+				"schema": {
+					"type": "boolean"
+				},
+				"example": true
 			}
 		],
 		"responses": {
@@ -186,6 +195,10 @@
 													"domain": {
 														"description": "Domain that relates to the report.",
 														"type": "string"
+													},
+													"has_pending_notice": {
+														"description": "Whether the report is in an open Notice and Takedown notice period: no mitigation is placed yet, but one will take effect when the period ends.",
+														"type": "boolean"
 													},
 													"id": {
 														"description": "Public facing ID of abuse report, aka abuse_rand.",
@@ -2140,6 +2153,10 @@
 											"description": "Domain that relates to the report.",
 											"type": "string"
 										},
+										"has_pending_notice": {
+											"description": "Whether the report is in an open Notice and Takedown notice period: no mitigation is placed yet, but one will take effect when the period ends.",
+											"type": "boolean"
+										},
 										"id": {
 											"description": "Public facing ID of abuse report, aka abuse_rand.",
 											"type": "string"
@@ -2310,6 +2327,10 @@
 										"domain": {
 											"description": "Domain that relates to the report.",
 											"type": "string"
+										},
+										"has_pending_notice": {
+											"description": "Whether the report is in an open Notice and Takedown notice period: no mitigation is placed yet, but one will take effect when the period ends.",
+											"type": "boolean"
 										},
 										"id": {
 											"description": "Public facing ID of abuse report, aka abuse_rand.",
@@ -2698,6 +2719,10 @@
 										"domain": {
 											"description": "Domain that relates to the report.",
 											"type": "string"
+										},
+										"has_pending_notice": {
+											"description": "Whether the report is in an open Notice and Takedown notice period: no mitigation is placed yet, but one will take effect when the period ends.",
+											"type": "boolean"
 										},
 										"id": {
 											"description": "Public facing ID of abuse report, aka abuse_rand.",

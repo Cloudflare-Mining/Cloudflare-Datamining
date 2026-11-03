@@ -383,6 +383,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -407,13 +410,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /user/tenants": {
 		"operationId": "User_listUserTenants",
 		"summary": "List user tenants",
-		"description": "Retrieves the legacy Tenants associated with the authenticated user. Use `GET /organizations`\nto list modern Organizations the user has access to.",
+		"description": "Lists the Cloudflare tenants in which the authenticated user has direct membership using the\nlegacy Tenant response shape. Use `GET /organizations` to list Organizations the user can\naccess, including through hierarchy, using the modern Organization response shape.",
 		"responses": {
 			"200": {
 				"description": "The request has succeeded.",
@@ -909,8 +911,7 @@
 			"User Details Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "user.tenant",
+		"x-fern-sdk-group-name": "user.tenants",
 		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /user": {
@@ -922,6 +923,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"type": "object",
 						"properties": {
 							"country": {
 								"description": "The country in which the user lives.",
@@ -1371,7 +1373,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	}
 }

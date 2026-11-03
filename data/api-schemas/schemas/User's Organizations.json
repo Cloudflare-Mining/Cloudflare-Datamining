@@ -156,6 +156,9 @@
 		"deprecated": true,
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -178,7 +181,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "user.organizations",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /user/organizations": {
@@ -391,7 +393,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -577,6 +580,9 @@
 		"deprecated": true,
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -602,8 +608,7 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "user.organizations",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /user/organizations/{organization_id}": {
 		"operationId": "user'-s-organizations-organization-details",
@@ -848,6 +853,9 @@
 		"deprecated": true,
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -869,7 +877,6 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "user.organizations",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	}
 }

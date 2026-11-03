@@ -2,7 +2,7 @@
 	"GET /tenants/{tenant_id}/accounts": {
 		"operationId": "Tenants_listAccounts",
 		"summary": "List tenant accounts",
-		"description": "Lists the Cloudflare accounts associated with this tenant using the legacy Account response\nshape. Use `GET /organizations/{organization_id}/accounts` for the modern Account response.\nUse `page_token` and `page_size` for cursor pagination, or provide `page` and `per_page`\ntogether for legacy offset pagination. Cursor pagination takes precedence when requested.",
+		"description": "Lists all Cloudflare accounts across this tenant's hierarchy using the legacy Account\nresponse shape. Use `GET /organizations/{organization_id}/accounts` to list only accounts\nimmediately attached to a specific Organization using the modern Account response shape.\nUse `page_token` and `page_size` for cursor pagination, or provide `page` and `per_page`\ntogether for legacy offset pagination. Cursor pagination takes precedence when requested.",
 		"parameters": [
 			{
 				"name": "tenant_id",
@@ -56,7 +56,7 @@
 			{
 				"name": "name",
 				"in": "query",
-				"description": "(case-sensitive) Filter the list of accounts to where the name is equal to a\nparticular string.",
+				"description": "(case-sensitive) Filter the list of accounts to where the name is equal to a\nparticular string. At most one of `name`, `name.startsWith`, `name.endsWith`,\nor `name.contains` may be supplied per request.",
 				"schema": {
 					"type": "string"
 				},
@@ -462,8 +462,7 @@
 			"Tenants"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "tenant.account",
+		"x-fern-sdk-group-name": "tenants.accounts",
 		"x-fern-sdk-method-name": "list"
 	}
 }

@@ -122,7 +122,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -214,6 +215,7 @@
 													},
 													"status": {
 														"description": "Current status of the invitation.",
+														"type": "string",
 														"example": "accepted",
 														"enum": [
 															"pending",
@@ -354,6 +356,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -373,8 +378,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.invites",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /user/invites/{invite_id}": {
 		"operationId": "user'-s-invites-invitation-details",
@@ -575,6 +579,7 @@
 												},
 												"status": {
 													"description": "Current status of the invitation.",
+													"type": "string",
 													"example": "accepted",
 													"enum": [
 														"pending",
@@ -714,6 +719,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -733,8 +741,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.invites",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /user/invites/{invite_id}": {
 		"operationId": "user'-s-invites-respond-to-invitation",
@@ -764,6 +771,7 @@
 						"properties": {
 							"status": {
 								"description": "Status of your response to the invitation (rejected or accepted).",
+								"type": "string",
 								"example": "accepted",
 								"enum": [
 									"accepted",
@@ -958,6 +966,7 @@
 												},
 												"status": {
 													"description": "Current status of the invitation.",
+													"type": "string",
 													"example": "accepted",
 													"enum": [
 														"pending",
@@ -1097,6 +1106,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1115,7 +1127,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.invites",
-		"x-fern-sdk-method-name": "respond",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "respond"
 	}
 }

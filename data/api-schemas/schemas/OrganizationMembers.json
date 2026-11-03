@@ -228,7 +228,7 @@
 			"OrganizationMembers"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization.member",
+		"x-fern-sdk-group-name": "organizations.members",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "Delete this organization membership? The member will lose access to this organization and its sub-organizations."
 	},
@@ -252,7 +252,7 @@
 			{
 				"name": "status",
 				"in": "query",
-				"description": "Filter the list of memberships by membership status.",
+				"description": "Filter the list of memberships by membership status. Defaults to `active`, `pending`, and `rejected`; pass `canceled` explicitly to include canceled memberships.",
 				"schema": {
 					"type": "array",
 					"items": {
@@ -655,7 +655,7 @@
 			"OrganizationMembers"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization.member",
+		"x-fern-sdk-group-name": "organizations.members",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /organizations/{organization_id}/members/{member_id}": {
@@ -1001,7 +1001,7 @@
 			"OrganizationMembers"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization.member",
+		"x-fern-sdk-group-name": "organizations.members",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /organizations/{organization_id}/members": {
@@ -1370,7 +1370,7 @@
 			"OrganizationMembers"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization.member",
+		"x-fern-sdk-group-name": "organizations.members",
 		"x-fern-sdk-method-name": "create"
 	},
 	"POST /organizations/{organization_id}/members:batchCreate": {
@@ -1745,7 +1745,7 @@
 			"OrganizationMembers"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organization.member.batch",
+		"x-fern-sdk-group-name": "organizations.members.batch",
 		"x-fern-sdk-method-name": "create"
 	}
 }

@@ -145,7 +145,8 @@
 												"id"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -295,7 +296,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.oauth-clients",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"DELETE /accounts/{account_id}/oauth_clients/{oauth_client_id}/rotate_secret": {
@@ -444,7 +444,8 @@
 												"id"
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -594,7 +595,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.oauth-clients",
 		"x-fern-sdk-method-name": "delete-rotated-secret",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/oauth_clients": {
@@ -741,7 +741,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1128,8 +1129,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.oauth-clients",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/oauth_clients/{oauth_client_id}": {
 		"operationId": "oauth-clients-get",
@@ -1642,8 +1642,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.oauth-clients",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /oauth/scopes": {
 		"operationId": "oauth-scopes-list",
@@ -1768,7 +1767,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1956,8 +1956,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.oauth-scopes",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"PATCH /accounts/{account_id}/oauth_clients/{oauth_client_id}": {
 		"operationId": "oauth-clients-update",
@@ -2631,8 +2630,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.oauth-clients",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	},
 	"POST /accounts/{account_id}/oauth_clients": {
 		"operationId": "oauth-clients-create",
@@ -3309,8 +3307,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.oauth-clients",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/oauth_clients/{oauth_client_id}/rotate_secret": {
 		"operationId": "oauth-clients-rotate-secret",
@@ -3608,7 +3605,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.oauth-clients",
-		"x-fern-sdk-method-name": "rotate-secret",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "rotate-secret"
 	}
 }

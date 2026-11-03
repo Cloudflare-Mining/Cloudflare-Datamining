@@ -108,7 +108,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "Are you sure you want to remove this user from the account?"
 	},
 	"GET /accounts/{account_id}/scim/v2/Users": {
@@ -413,8 +412,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/scim/v2/Users/{user_id}": {
 		"operationId": "scim-users-get",
@@ -662,8 +660,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/scim/v2/Users/{user_id}": {
 		"operationId": "scim-users-patch",
@@ -767,10 +764,27 @@
 											"x-auditable": true
 										},
 										"value": {
-											"description": "The value(s) for the operation. For `replace` without a path, this should be an object of attribute name/value pairs. For member path operations, this should be an array of member value objects.\n",
+											"description": "The value(s) for the operation. For `replace` without a path, this should be an object of attribute name/value pairs. For member path operations, this should be an array of member value objects. For `replace` with a path, this is the new value of the targeted attribute.\n",
 											"example": {
 												"active": false
-											}
+											},
+											"oneOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "boolean"
+												},
+												{
+													"type": "string"
+												}
+											]
 										}
 									},
 									"required": [
@@ -1016,8 +1030,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/scim/v2/Users": {
 		"operationId": "scim-users-create",
@@ -1363,8 +1376,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/scim/v2/Users/{user_id}": {
 		"operationId": "scim-users-put",
@@ -1719,7 +1731,6 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }
