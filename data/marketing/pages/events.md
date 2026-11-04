@@ -6,22 +6,6 @@ image: https://www.cloudflare.com/preview.png
 
 ##  Cloudflare Events 
 
-###### Cloudflare Connect 2026
-
-October 19–21 · San Francisco
-
-###### Immerse New York
-
-April 14 · New York, NY
-
-###### Connect on Tour
-
-April 15 · London, UK
-
-###### Connect on Tour
-
-July 30 · Sydney, AU
-
 ### All Scheduled Events
 
 Find Cloudflare at conferences, summits, and Immerse events around the world.
