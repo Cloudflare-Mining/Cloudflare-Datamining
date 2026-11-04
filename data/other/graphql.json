@@ -1545,6 +1545,51 @@
 		"__description": "",
 		"tokens": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountAiSearchMediaSecondsAdaptiveGroups": {
+		"__description": "Sample-weighted estimate of AI Search media seconds (audio and video transcribed by new media jobs). Logical operations are not deduplicated, so retries may be counted more than once.",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Sample-weighted estimate of media transcription events; retries are not deduplicated",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountAiSearchMediaSecondsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountAiSearchMediaSecondsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Sample-weighted estimate of media transcription events; retries are not deduplicated, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountAiSearchMediaSecondsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date of the billing event",
+		"datetime": "The date and time of the billing event",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"instanceId": "Public AI Search instance identifier",
+		"mediaType": "Media path the job ran: audio or video",
+		"namespaceId": "AI Search namespace identifier",
+		"tier": "Billing tier at the time of the event (free or paid)"
+	},
+	"AccountAiSearchMediaSecondsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiSearchMediaSecondsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiSearchMediaSecondsAdaptiveGroupsSum": {
+		"__description": "",
+		"seconds": "Sample-weighted estimate of media seconds; retries are not deduplicated"
+	},
+	"AccountAiSearchMediaSecondsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"seconds": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountAiSearchPublicEventsAdaptiveGroups": {
 		"__description": "AI Search public endpoint analytics: searches, result clicks and view-more interactions reported by the public search snippet",
 		"avg": "The average of values for a metric per dimension",
@@ -4534,7 +4579,6 @@
 		"datetimeMinute": "Request datetime, truncated to start of a minute",
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"environmentName": "The name of the script environment",
-		"name": "The name the Durable Object was created with",
 		"namespaceId": "Durable Object namespace ID",
 		"objectId": "Durable Object ID as a hex string",
 		"scriptName": "The name of the script"
@@ -11818,6 +11862,7 @@
 		"aiSearchImageProcessingTokensAdaptiveGroups": "",
 		"aiSearchIngestedItemsAdaptiveGroups": "",
 		"aiSearchIngestionTokensAdaptiveGroups": "",
+		"aiSearchMediaSecondsAdaptiveGroups": "",
 		"aiSearchPublicEventsAdaptiveGroups": "",
 		"aiSearchSemanticQueriesAdaptiveGroups": "",
 		"aiSearchStorageAdaptiveGroups": "",
@@ -12010,6 +12055,7 @@
 		"storageTraces": "",
 		"streamCMCDAdaptiveGroups": "",
 		"streamMinutesViewedAdaptiveGroups": "",
+		"streamWHEPPlaybackMetricsAdaptiveGroups": "",
 		"streamWHIPBroadcastMetricsAdaptive": "",
 		"streamWHIPBroadcastMetricsAdaptiveGroups": "",
 		"toMarkdownConversionAdaptive": "",
@@ -12476,6 +12522,80 @@
 	"AccountStreamMinutesViewedAdaptiveGroupsSum": {
 		"__description": "",
 		"minutesViewed": ""
+	},
+	"AccountStreamWHEPPlaybackMetricsAdaptiveGroups": {
+		"__description": "Aggregated WHEP playback metrics for Cloudflare Stream",
+		"avg": "Average value of each metric for the selected dimensions",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Estimated number of observations",
+		"dimensions": "List of dimensions to group by",
+		"max": "The maximum value for a metric per dimension",
+		"sum": "Total value of each metric for the selected dimensions"
+	},
+	"AccountStreamWHEPPlaybackMetricsAdaptiveGroupsAvg": {
+		"__description": "",
+		"audioJitterSeconds": "Average audio jitter in seconds",
+		"audioPacketLossRate": "Rate of expected audio packets that were lost",
+		"iceCurrentRttSeconds": "Average of the most recent ICE round trip time in seconds",
+		"iceRttSeconds": "Average ICE round trip time in seconds",
+		"rembBitsPerSecond": "Average receiver estimated maximum bitrate in bits per second",
+		"sampleInterval": "Average adaptive sampling interval",
+		"videoJitterSeconds": "Average video jitter in seconds",
+		"videoPacketLossRate": "Rate of expected video packets that were lost"
+	},
+	"AccountStreamWHEPPlaybackMetricsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated number of observations, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "Total value of each metric for the selected dimensions, with confidence intervals"
+	},
+	"AccountStreamWHEPPlaybackMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Date when the metric was observed",
+		"datetime": "Date and time when the metric was collected",
+		"datetimeFifteenMinutes": "Date and time of the observation truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Date and time of the observation truncated to five minutes",
+		"datetimeHour": "Date and time of the observation truncated to the hour",
+		"datetimeMinute": "Date and time of the observation truncated to the minute",
+		"dtlsState": "DTLS transport state",
+		"iceConnectionState": "ICE connection state",
+		"inputId": "Live input ID",
+		"peerConnectionState": "WebRTC peer connection state",
+		"sampleInterval": "ABR sample interval"
+	},
+	"AccountStreamWHEPPlaybackMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountStreamWHEPPlaybackMetricsAdaptiveGroupsMax": {
+		"__description": "",
+		"audioPacketsLost": "Most audio RTP packets lost in any single observation",
+		"iceCurrentRttSeconds": "Highest most recent ICE round trip time in seconds of any observation",
+		"videoPacketsLost": "Most video RTP packets lost in any single observation"
+	},
+	"AccountStreamWHEPPlaybackMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountStreamWHEPPlaybackMetricsAdaptiveGroupsSum": {
+		"__description": "",
+		"audioPacketsExpected": "Estimated total audio RTP packets expected",
+		"audioPacketsLost": "Estimated total audio RTP packets lost",
+		"nackPackets": "Estimated total NACK packets sent",
+		"nackRequestedPackets": "Estimated total packets requested by NACKs",
+		"observationDurationSeconds": "Estimated total observation time in seconds",
+		"pliCount": "Estimated total picture loss indications sent",
+		"videoPacketsExpected": "Estimated total video RTP packets expected",
+		"videoPacketsLost": "Estimated total video RTP packets lost"
+	},
+	"AccountStreamWHEPPlaybackMetricsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"audioPacketsExpected": "Confidence interval for the corresponding point estimate",
+		"audioPacketsLost": "Confidence interval for the corresponding point estimate",
+		"nackPackets": "Confidence interval for the corresponding point estimate",
+		"nackRequestedPackets": "Confidence interval for the corresponding point estimate",
+		"observationDurationSeconds": "Confidence interval for the corresponding point estimate",
+		"pliCount": "Confidence interval for the corresponding point estimate",
+		"videoPacketsExpected": "Confidence interval for the corresponding point estimate",
+		"videoPacketsLost": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountStreamWHIPBroadcastMetricsAdaptive": {
 		"__description": "WHIP broadcast metrics for Cloudflare Stream.",
@@ -17972,6 +18092,7 @@
 		"aiSearchImageProcessingTokensAdaptiveGroups": "Sample-weighted estimate of AI Search image processing tokens. Logical operations are not deduplicated, so retries may be counted more than once.",
 		"aiSearchIngestedItemsAdaptiveGroups": "AI Search Ingested Items Analytics",
 		"aiSearchIngestionTokensAdaptiveGroups": "Sample-weighted estimate of AI Search ingestion tokens. Logical operations are not deduplicated, so retries may be counted more than once.",
+		"aiSearchMediaSecondsAdaptiveGroups": "Sample-weighted estimate of AI Search media seconds (audio and video transcribed by new media jobs). Logical operations are not deduplicated, so retries may be counted more than once.",
 		"aiSearchPublicEventsAdaptiveGroups": "AI Search public endpoint analytics: searches, result clicks and view-more interactions reported by the public search snippet",
 		"aiSearchSemanticQueriesAdaptiveGroups": "Sample-weighted estimate of AI Search semantic queries. Logical operations are not deduplicated, so retries may be counted more than once.",
 		"aiSearchStorageAdaptiveGroups": "Sample-weighted estimate of AI Search storage byte-hours from hourly per-instance byte observations. Observations are not deduplicated, so duplicate rows may be counted more than once.",
@@ -18165,6 +18286,7 @@
 		"storageTraces": "Storage Tracing Information",
 		"streamCMCDAdaptiveGroups": "Stream CMCD data",
 		"streamMinutesViewedAdaptiveGroups": "A high-level summary of Cloudflare Stream minutes viewed.",
+		"streamWHEPPlaybackMetricsAdaptiveGroups": "Aggregated WHEP playback metrics for Cloudflare Stream",
 		"streamWHIPBroadcastMetricsAdaptive": "WHIP broadcast metrics for Cloudflare Stream.",
 		"streamWHIPBroadcastMetricsAdaptiveGroups": "Aggregated WHIP broadcast metrics for Cloudflare Stream",
 		"toMarkdownConversionAdaptive": "Markdown Conversion Metrics",
