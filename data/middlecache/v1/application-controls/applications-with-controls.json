@@ -797,6 +797,33 @@
 								"contains_payload": true,
 								"operation_group": "Chat",
 								"operation_group_id": 2126
+							},
+							{
+								"operation_name": "SendPrompt",
+								"operation_id": 10048,
+								"application_control": "Prompt",
+								"application_control_id": 2127,
+								"contains_payload": true,
+								"operation_group": "Chat",
+								"operation_group_id": 2126
+							},
+							{
+								"operation_name": "ReportViewing",
+								"operation_id": 56417,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Chat",
+								"operation_group_id": 2126
+							},
+							{
+								"operation_name": "PromptCompletion",
+								"operation_id": 10050,
+								"application_control": "Prompt",
+								"application_control_id": 2127,
+								"contains_payload": true,
+								"operation_group": "Chat",
+								"operation_group_id": 2126
 							}
 						]
 					}
