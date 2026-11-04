@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 4, 2026 [<h2>See the agents, set the terms: new visibility and control for personal agents</h2>](https://blog.cloudflare.com/personal-agents-visibility-control/)
+
+Personal AI agents have changed how users interact with the web, blurring the lines between automated and human traffic. Learn how Cloudflare gives site owners visibility and control to manage personal agent access.
+
+![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=64&h=64&f=webp&fit=cover&position=center)![Nicole Justus](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WPE05QZCEYBD5624DD07B6.01M3WPE0S25WCYVW4RR6PMRCP1.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/) and  [Nicole Justus](https://blog.cloudflare.com/author/nicole-justus/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6HZ1ZE3ZTGF9NEGGPF8SZNS.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/personal-agents-visibility-control/)
+
 November 3, 2026 [<h2>Introducing Zero Wire, a hub for investigating critical Internet vulnerabilities</h2>](https://blog.cloudflare.com/zero-wire/)
 
 Zero Wire on Cloudflare Radar pairs plain-language briefings with global attack telemetry and remediation steps. Triage critical CVEs faster and decide how to protect your infrastructure.
@@ -17,8 +27,6 @@ Zero Wire on Cloudflare Radar pairs plain-language briefings with global attack 
 ![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Daniele Molteni](https://blog.cloudflare.com/author/daniele/) and  [Celso Martinho](https://blog.cloudflare.com/author/celso/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6GJ6AY4JP65PWEN7N433797.01M6GJ6BBQ9P5FYVNPWDVKT2EY.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/zero-wire/)
 
 November 2, 2026 [<h2>How we halved DNS build delay and cut memory use by 85%</h2>](https://blog.cloudflare.com/dns-targeted-zone-builds/)
 
@@ -155,14 +163,6 @@ Clairic is a new model from Cloudflare that is a System One extraction modeI, ca
 ![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/),  [Michelle Chen](https://blog.cloudflare.com/author/michelle/), and  [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/)
-
-October 19, 2026 [<h2>Beyond the patch: Protecting your NetScaler gateway against future vulnerabilities</h2>](https://blog.cloudflare.com/protect-your-netscaler-gateway/)
-
-CVE-2026-88771 lets attackers run commands on NetScaler Gateway before anyone signs in. Patching takes time most teams don't have, so the sign-in decision has to move in front of the vulnerable code.
-
-![Grant Bourzikas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SJJRBDYVMHZKVGKTMJ08.png&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Grant Bourzikas](https://blog.cloudflare.com/author/grant/) and  [Kenny Johnson](https://blog.cloudflare.com/author/kenny/)
 
 Load more
 
