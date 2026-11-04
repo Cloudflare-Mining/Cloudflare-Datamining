@@ -160,7 +160,6 @@ await OpenFeature.setProviderAndWait(
     appId: 'your-app-id',
     accountId: 'your-account-id',
     authToken: 'your-token',
-    prefetchFlags: ['dark-mode', 'welcome-message'],
   }),
 );
 
