@@ -22,6 +22,7 @@
 	"default_branch": "main",
 	"branches": [
 		"alt/prerender-rsc-sidechannel",
+		"changeset-release/main",
 		"chonky-list",
 		"chore/bundle-zero-dep-leaves",
 		"ci/commit-version-bump",
@@ -248,6 +249,7 @@
 		"fix/css-wrapped-async-render-order",
 		"fix/dev-basepath-outside-requests",
 		"fix/dev-cold-start-threshold",
+		"fix/dev-origin-trusted-forwarded-host",
 		"fix/dev-overlay-build-error-recovery-flake",
 		"fix/drain-rejected-pages-api-body",
 		"fix/dynamic-pages-loadable",
@@ -258,6 +260,8 @@
 		"fix/i18n-config-locale-fallback",
 		"fix/i18n-domain-default-redirects",
 		"fix/i18n-rewrite-chain-parity",
+		"fix/image-source-size-limit-all-types",
+		"fix/image-source-type-from-bytes",
 		"fix/include-query-in-route-handler-isr-key",
 		"fix/init-cloudflare-no-tty-defaults",
 		"fix/init-eslint-ignore-output",
@@ -414,13 +418,14 @@
 		"t3/fetch-cache-call-tags",
 		"t3/fix-issue-4221-v3",
 		"t3/fix-issue-4302",
-		"t3/fix-issue-4533",
+		"t3/on-demand-revalidate-render-errors",
 		"t3/parallelize-hot-path-awaits",
 		"t3/prefetch-refresh-dynamic-only",
 		"t3/prefetch-revalidation-cooldown",
 		"t3/prerender-direct-not-found",
 		"t3/prerender-not-found-worker-hybrid",
 		"t3/prerender-render-errors-fatal",
+		"t3/runtime-isr-render-errors",
 		"web/benchmarks-swr-revalidate"
 	]
 }
