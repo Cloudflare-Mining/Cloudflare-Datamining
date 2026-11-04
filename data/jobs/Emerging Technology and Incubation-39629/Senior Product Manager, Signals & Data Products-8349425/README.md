@@ -3,57 +3,40 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p>Available Locations:<strong> London </strong>or<strong> Austin</strong><br><br></p>
-<p>We are looking for a Product Manager to lead <strong>Safe Change</strong> for Cloudflare’s control plane. In this role, you will define how customers preview, stage, roll out, monitor, and recover from configuration changes. You will also shape platform foundations that enable internal teams to deploy changes with higher confidence, stronger guardrails, and lower operational risk.</p>
-<p>Cloudflare’s control plane converts dashboard and API changes into global network configurations. Today’s enterprise customers expect robust change-management features: deployment previews, gradual rollouts, quick rollbacks, versioning, traffic segmentation, data residency, auditability, and verification of applied state.</p>
-<p>You will own a high-leverage product domain spanning distributed systems, reliability, developer experience, and enterprise governance. Working closely with engineering and product leaders across the entire platform. You will help turn proven deployment safety patterns into reusable platform primitives across Cloudflare.</p>
-<p>This technical, highly collaborative role requires navigating architectural tradeoffs with engineers, evaluating risk and compliance with enterprise customers, and partnering with product and go-to-market teams to drive platform adoption.</p>
-<h2>What you’ll do</h2>
-<p>As a member of a growing team of infrastructure product managers your responsibilities include:</p>
+<p><strong>Available Locations: Austin, London, or San Francisco (Hybrid)</strong></p>
+<p><strong>About the team</strong></p>
+<p>Search engines spent two decades learning what the web is worth: which pages are fresh, which sources are trusted, what people actually use. That knowledge came from watching how humans moved through the web.</p>
+<p>Agents break that loop. AI models are trained and grounded on the web, but they have little visibility into what's changed, what's authoritative, or what's been fabricated. Site owners have it worse: AI crawlers already request content anywhere from a hundred to tens of thousands of times for every visitor they send back, and most have no idea how, or whether, they show up in AI answers. Both sides of the market are flying blind.</p>
+<p>Cloudflare sits in front of around 20% of the web and sees both sides of that exchange. Our team, the Agentic Internet team, is focused on making the web readable, discoverable, callable, and payable, built on open standards so no single company owns the rails. Signals &amp; Data Products turns our network's view into products both sides can use: helping AI labs know what's fresh and trustworthy, and helping site owners see and shape how they show up in AI. Cloudflare believes in the open Internet, and we're in a position to help build the future where it thrives. Come help us make it happen! You can read more about some of our plans <a href="https://blog.cloudflare.com/the-agentic-internet/">here</a> and <a href="https://blog.cloudflare.com/agentic-web/">here</a>.&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Represent the customer, be it internal or external. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer's voice into the creation process.</li>
-	<li>Develop the product vision for your area. Ensure that your vision can work not just for your current set of customers, but for 10 or even 100 times your current set.&nbsp;</li>
-	<li>Evangelize the vision so that all stakeholders are aligned, have context and understand where we are going.</li>
-	<li>Make data-driven roadmap decisions.&nbsp; Make tough tactical prioritization decisions based off of data you collect, curate, and disseminate.&nbsp; Build trust with stakeholders by ensuring that your roadmap is understandable and sensible based on the data you present.</li>
-	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
-	<li>Author use cases and prioritize requirements. Translate observations and customer feedback into a prioritized product backlog.&nbsp; Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
-	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and stakeholders. A collaborative attitude is essential to the job.</li>
+	<li>Drive the strategy for Signals, our web intelligence feed, and shape where our data products go next</li>
+	<li>Define what makes a signal worth paying for (freshness, provenance, trust, real-world usage) using data from Cloudflare's network</li>
+	<li>Build for both sides of the market: data products for AI labs, and visibility for site owners into how AI models find, use, and cite them</li>
+	<li>Explore what comes next, from knowledge graphs to measuring how sites show up in AI answers</li>
+	<li>Deliver product specifications, prototypes, product positioning, and high-impact launches</li>
+	<li>Partner with Engineering, Data Science, Research, and GTM to ship at high velocity</li>
+	<li>Work with Partnerships and BD on data partnerships with AI labs and other large buyers</li>
+	<li>Represent the product externally with users, customers, AI labs, developers, and more</li>
 </ul>
-<h2>Examples of desirable skills, knowledge, and experience</h2>
-<p>The ideal candidate is customer-focused, data-driven, methodical and thrives in a goal-oriented and data-driven environment.&nbsp; You have a deep technical understanding of the observability space and outstanding communication and collaboration skills.&nbsp; You are able to work with a diverse group, get consensus, and drive the product forward.&nbsp; You are execution focused, you emphasize getting things done while paying attention to important details. You have a passion for building frameworks that scale massively and make it easy for all teams to get the most out of data as you.&nbsp;&nbsp;</p>
+<p><strong>What we're looking for</strong></p>
 <ul>
-	<li>4+ years of previous product management experience</li>
-	<li>Domain expertise in making deployment decisions based on data.&nbsp; You have been there, done that as either an architect or product owner for safe change or very closely related technology space</li>
-	<li>Distributed systems experience that allows you to drive the scaling strategy for deployment as our scale grows both on volume and number of internal customers supporting.</li>
-	<li>Experience presenting new products and features to customers – whether as a developer, analyst or product manager. You are enthusiastic about taking something you have helped build and sharing it with the world</li>
-	<li>Strong customer and stakeholder empathy. You must be the voice of engineering, customers, support, or ops at any given time. You must be able to channel many points of view into a strategic roadmap and deliverables that provide elegant solutions to all requirements.</li>
-	<li>Exceptional communication, presentation, organizational and analytical skills</li>
-	<li>Demonstrated ability to lead, drive consensus and deliver in a matrixed organization with multiple stakeholders</li>
-	<li>Experience working with large and complex data sets (SQL, Postgres, Prometheus, etc.).&nbsp; You are skilled at proving points with data and can quickly show others how to do so.</li>
-	<li>Experience with telemetry pipelines (Metrics/Traces) and a very good understanding of modern observability platforms&nbsp;</li>
-	<li>Ability to communicate complex technical concepts to all audiences</li>
+	<li>7+ years as a technical PM, with experience shipping data, search, ranking, or ML products</li>
+	<li>Deep data fluency: you can reason about data quality, coverage, bias, and pipelines</li>
+	<li>Experience building or selling data products or APIs (licensing, pricing, enterprise contracts) is a strong plus</li>
+	<li>A builder: you get things done, can move quickly, and prefer 'show' over 'tell'</li>
+	<li>A strong communicator who is comfortable with ambiguity</li>
+	<li>Team oriented: you'd rather get it right than be right</li>
 </ul>
-<h2>Bonus points</h2>
-<ul>
-	<li>BS/MS in a technology- or business-related field</li>
-	<li>Experience with deployment platforms, release engineering, progressive delivery, feature flags, GitOps, IaC, or incident management.</li>
-	<li>Background in networking, security, CDN, edge computing, observability, or large-scale SaaS environments.</li>
-	<li>Hands-on experience with APIs, CLIs, telemetry tools, or scripting (e.g., Python, Go, JavaScript).</li>
-	<li>Experience building platform capabilities adopted by multiple product teams.</li>
-	<li>Experience working with enterprise customers subject to strict change-management, compliance, or data residency mandates.</li>
-</ul>
-<h2>What success looks like</h2>
-<p>A successful Product Manager will establish Safe Change as an adopted, trusted platform capability across Cloudflare. First-year success includes:</p>
-<ul>
-	<li>A clear product strategy and roadmap for Safe Customer Change, aligned with internal rollout and control plane initiatives.</li>
-	<li>Shipped customer capabilities for previewing and staging rollouts, backed by measurable adoption and safety metrics.</li>
-	<li>Strong cross-functional partnerships with product and engineering teams integrating safe-change capabilities.</li>
-	<li>A clear trajectory from near-term safety tooling to core control plane features (versioning, rollback, segmentation, data residency).</li>
-	<li>Measurable reduction in operational risk, redundant tooling, and execution ambiguity across change workflows.</li>
-</ul>
-<p>&nbsp;</p>
+<p><strong>How we work</strong></p>
+<p>At Cloudflare, performance is about outcomes (what you did) and behaviors (how you did it). We value curiosity, humility, empathy, and doing the principled thing. Learn more about our values on our <a href="https://www.cloudflare.com/en-gb/careers/">Careers page</a>.</p>
+<p><strong>Why this role</strong></p>
+<p>You'll be building a new product category from a vantage point no one else has, on a fast-moving team breaking new ground. You can read about our <a href="https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/">early research here</a>.&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $179,000 - $224,000</span></li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

@@ -3,10 +3,10 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p>Location:&nbsp;Austin, TX, London, UK, New York, NY</p>
+<h3>Remote within: US, Canada, UK, Portugal<br><br>About the role</h3>
 <p>New vulnerabilities can be exploited soon after public disclosure, leaving application owners little time to patch. Cloudflare can drastically reduce this exposure through managed WAF protections, ad-hoc emergency policies, and tools that help customers identify affected applications and remediate them.</p>
-<p>As Senior Product Manager for Zero-Day Protection, your goal is to help protect more than 25% of the Internet from HTTP-exploitable vulnerabilities and attacks. You will own the strategy, roadmap, execution, and customer experience for Cloudflare’s zero-day protection products, beginning with WAF Managed Rules. The role also shapes how Cloudflare helps customers identify affected applications, deploy temporary mitigations, investigate active exploitation, and remediate vulnerable software.</p>
-<h1><span style="text-decoration: underline;">Responsibilities</span></h1>
+<p>As Senior Product Manager for Zero-Day Protection, your goal is to help protect more than 20% of the Internet from HTTP-exploitable vulnerabilities and attacks. You will own the strategy, roadmap, execution, and customer experience for Cloudflare’s zero-day protection products, beginning with WAF Managed Rules. The role also shapes how Cloudflare helps customers identify affected applications, deploy temporary mitigations, investigate active exploitation, and remediate vulnerable software.</p>
+<h1>Responsibilities</h1>
 <h2>Product strategy and roadmap</h2>
 <ul>
 	<li>Own the strategy and roadmap for WAF Managed Rules and Cloudflare’s broader zero-day protection experience.</li>
@@ -14,7 +14,7 @@
 	<li>Define how Managed Rules integrates with code scanning and exposure discovery to help customers identify applications affected by newly disclosed vulnerabilities.</li>
 	<li>Prioritize shared security primitives, telemetry, and APIs that make emergency protections easier to automate across Cloudflare’s security products.</li>
 	<li>Define workflows for creating, testing, deploying, and auditing ad-hoc emergency policies when a managed detection is not sufficient for a customer’s environment.</li>
-	<li>Partner with the Cloudflare Security Analyst team to turn threat intelligence, vulnerability research, and detection opportunities into product priorities. Analysts provide technical guidance; the PM brings customer impact and product context.</li>
+	<li>Partner with the Cloudflare Security Research team to turn threat intelligence, vulnerability research, and detection opportunities into product priorities. Security provide technical guidance; the PM brings customer impact and product context.</li>
 	<li>Partner with Security, Legal, and external researchers during coordinated disclosure processes to prepare customer protections and communications.</li>
 	<li>Discover and prioritize Enterprise operational needs with customers, Solutions Engineering, Support, and Engineering.</li>
 </ul>
@@ -26,7 +26,7 @@
 </ul>
 <h2>Operations and communications</h2>
 <ul>
-	<li>Support the Security Analyst team’s vulnerability-response work by providing product context and customer perspective</li>
+	<li>Support the Cloudflare Security Research team’s vulnerability-response work by providing product context and customer perspective</li>
 	<li>Coordinate responsible disclosure and external vulnerability communications with Security, Legal, and Communications</li>
 	<li>Write technical posts, customer guidance, and product communications for security researchers, customers, press, and non-technical audiences</li>
 	<li>Represent Cloudflare in the broader security community, at conferences, and online as a product and technical spokesperson for Managed Rules and HTTP application vulnerabilities</li>
@@ -35,11 +35,11 @@
 <ul>
 	<li>Strong product-management experience, including strategy, roadmap ownership, discovery, prioritization, and cross-functional delivery.</li>
 	<li>Technical fluency to understand HTTP applications, vulnerabilities, exploits, and detection systems.</li>
-	<li>Ability to synthesize input from security analysts, engineers, customers, and commercial teams into clear product decisions.</li>
+	<li>Ability to synthesize input from security research, engineers, customers, and commercial teams into clear product decisions.</li>
 	<li>Customer empathy and strong product judgment, especially for complex technical workflows.</li>
 	<li>Excellent written and verbal communication for technical and non-technical audiences.</li>
 	<li>Comfort operating in a fast-moving, ambiguous security environment.</li>
-	<li>Strong cross-functional leadership across Security Analysts, Engineering, Support, Customer Success, Solutions Engineering, Legal, Communications, and other product teams.</li>
+	<li>Strong cross-functional leadership across Cloudflare Security Research, Engineering, Support, Customer Success, Solutions Engineering, Legal, Communications, and other product teams.</li>
 </ul>
 <h2>Nice to have</h2>
 <ul>

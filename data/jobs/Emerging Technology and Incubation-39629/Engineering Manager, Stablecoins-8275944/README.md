@@ -3,19 +3,19 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: London or Austin</strong></p>
-<h2>About the Department</h2>
+<p><strong>Available Locations: London or Austin or SF or NYC</strong></p>
+<h3>About the Department</h3>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a hugely successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h2>About the Team</h2>
+<h3>About the Team</h3>
 <p>We build the infrastructure that makes the web <strong>Payable</strong>, powering high-volume, low-value machine-to-machine transactions using blockchain technologies and decentralized protocols. Here at Cloudflare, stablecoin payments are a core initiative developing blockchain-based settlement systems, programmable agent wallets, and cryptographic primitives to make the web <strong>payable</strong> at machine scale. As AI agents increasingly navigate, consume, and act on the web, standard payment and authorization models built for humans are breaking down. We build tools that leverage Web3 wallets and decentralized rails to give domain owners and agents secure, scalable settlement options.</p>
 <p>Building these capabilities requires solving problems across high-throughput web infrastructure, low-latency transaction processing, digital wallets, and emerging agentic payment protocols. We bridge mainstream commerce rails with decentralized smart contract environments, enabling micropayments at Internet scale to keep the web <strong>payable</strong>.</p>
 <p>We are a tight-knit group that communicates and collaborates regularly. We celebrate our achievements, support each other when we make mistakes, and hold each other and our work to a high standard.</p>
-<h2>About the role</h2>
+<h3>About the role</h3>
 <p>We are looking for an Engineering Manager to build and lead the engineering team across our stablecoin initiatives.</p>
 <p>You will be responsible for the people, execution, and engineering quality behind products that power decentralized agent transactions, such as Cloudflare’s stablecoin wallets and emerging micropayment rails that make web resources <strong>payable</strong>. You will partner closely with Product Management, cryptography experts, and engineering teams across Cloudflare to deliver current priorities and shape future opportunities. This is a management role for someone who is deeply technically credible in distributed systems, smart contracts, and cryptographic protocols. You will not be expected to write most of the code, but you should be able to understand the systems your engineers operate, challenge architectural decisions around blockchains (including transactions, RPCs, and execution + consensus clients)&nbsp; and step in when necessary.</p>
 <p>At the same time, we are looking for a manager, not a tech lead with direct reports. Your success will be measured by the quality and output of the team you build, the engineers you develop, and the systems and products they deliver.</p>
 <p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<h2>What you'll do</h2>
+<h3>What you'll do</h3>
 <ul>
 	<li>Manage, coach, and grow engineers working across blockchain architecture, stablecoin wallets, and cryptographic payment channels to ensure the web remains <strong>payable</strong> for autonomous agents.</li>
 	<li>Own execution by establishing clear priorities, creating predictable delivery, and giving engineers the context and autonomy to own meaningful areas of the product.</li>
@@ -28,7 +28,7 @@
 	<li>Own the operational health of the systems in your area, including observability, incident response, cryptographic security, and long-term reliability.</li>
 	<li>Develop technical leaders and create space for engineers to lead architecture and implementation.</li>
 </ul>
-<h2>Responsibilities</h2>
+<h3>Responsibilities</h3>
 <p>We want you to love it here. This role is a great fit for you if:</p>
 <ul>
 	<li>You have led and developed a high-performing engineering team(s) and can point to what that team shipped and how the people on it grew.</li>
@@ -39,7 +39,7 @@
 	<li>You are comfortable with ambiguity and with finding structure in areas where the opportunity is clearer than the roadmap.</li>
 	<li>You communicate clearly, give direct feedback, and can explain complex technical decisions to both engineers and non-engineers.</li>
 </ul>
-<h2>Examples of Desirable Skills, Knowledge, and Experience</h2>
+<h3>Examples of Desirable Skills, Knowledge, and Experience</h3>
 <ul>
 	<li>Strong technical grounding in blockchain architecture, smart contract environments, and cryptographic key management. Past experience building L1 or L2 blockchains is a plus.</li>
 	<li>Experience building or operating cryptocurrency infrastructure, digital wallet providers, or decentralized settlement protocols. Past experience working on consumer or enterprise cryptocurrency wallets is a plus.</li>
@@ -49,7 +49,7 @@
 	<li>Experience taking products or major capabilities from an ambiguous opportunity to a clear customer outcome.</li>
 	<li>Strong written and verbal communication.</li>
 </ul>
-<h2>Bonus Points</h2>
+<h3>Bonus Points</h3>
 <ul>
 	<li>Hands-on experience with decentralized payment protocols or blockchain frameworks (e.g., Bitcoin Lightning, Ethereum rollups).</li>
 	<li>Experience building hybrid fiat/crypto payment infrastructure, such as onramp/offramp providers or apps where cryptocurrencies are invisible to users.</li>
@@ -57,6 +57,39 @@
 	<li>Experience turning complex underlying systems into useful payment or commerce products for a broad audience.</li>
 	<li>Experience with usage-based billing, metering engines, attribution systems, or complex commercial pricing models.</li>
 	<li>Previous experience working in payments or on payments technology (fiat or crypto)</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $200,000 - $288,000</span></li>
+	<li><span data-sheets-root="1">For NYC based hires: Estimated annual salary of $190,000 - $275,000</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <h1><br><br></h1>
 <div class="content-conclusion">
