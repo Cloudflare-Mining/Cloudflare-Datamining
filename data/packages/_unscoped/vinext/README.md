@@ -137,10 +137,13 @@ files to `.cjs`) when an unambiguous default Vite config requires the ESM migrat
 `"type": "commonjs"` is never changed. Direct `vite dev` and `vite build` do not perform these
 wrapper compatibility steps.
 
-`@vinext/cloudflare deploy` options: `--preview`, `--env <name>`, `--name <name>`, `--vite-config <path>`, `--skip-build`, `--dry-run`, `--warm-cache`, `--traffic-aware-warm-cache`.
+`@vinext/cloudflare deploy` options: `--preview`, `--env <name>`, `--name <name>` (Wrangler config projects only), `--vite-config <path>`, `--skip-build`, `--dry-run`, `--warm-cache`, `--traffic-aware-warm-cache`.
 
 `vinext init` prompts for a deployment target, defaulting to Cloudflare. Agents must ask the
 user which target they want, then pass `--platform=cloudflare` or `--platform=node`.
+For Cloudflare, agents and CI must also pass `--cdn-cache`, `--data-cache`, and
+`--image-optimization`; see
+[Run init without prompts](https://vinext.dev/docs/deploying/cloudflare#run-init-without-prompts).
 
 Other options: `--port <port>` (default: 3001), `--skip-check`, `--force`.
 
