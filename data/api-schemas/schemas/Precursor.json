@@ -117,16 +117,21 @@
 											"type": "object",
 											"properties": {
 												"mode": {
-													"description": "Controls Precursor detection for the zone. `off` disables detection,\n`monitor` records detections without affecting bot scores, and `arm`\nallows detections to affect bot scores.\n",
-													"type": "string",
-													"example": "off",
-													"default": "off",
-													"enum": [
-														"off",
-														"monitor",
-														"arm"
+													"allOf": [
+														{
+															"description": "Controls Precursor detection for the zone. `off` disables detection,\n`monitor` records detections without affecting bot scores, and `arm`\nallows detections to affect bot scores.\n",
+															"type": "string",
+															"example": "off",
+															"default": "off",
+															"enum": [
+																"off",
+																"monitor",
+																"arm"
+															],
+															"x-auditable": true
+														}
 													],
-													"x-auditable": true
+													"x-fern-property-name": "precursor-mode"
 												},
 												"rules": {
 													"description": "The ordered list of Precursor rules for the zone.",
@@ -211,294 +216,109 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													]
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"mode": {
-															"description": "Controls Precursor detection for the zone. `off` disables detection,\n`monitor` records detections without affecting bot scores, and `arm`\nallows detections to affect bot scores.\n",
-															"type": "string",
-															"example": "off",
-															"default": "off",
-															"enum": [
-																"off",
-																"monitor",
-																"arm"
-															],
-															"x-auditable": true
-														},
-														"rules": {
-															"description": "The ordered list of Precursor rules for the zone.",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"description": {
-																		"description": "An informative description of the rule.",
-																		"type": "string",
-																		"example": "Show an interstitial on the login path",
-																		"default": "",
-																		"x-auditable": true
-																	},
-																	"enabled": {
-																		"description": "Whether the rule is active.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": true,
-																		"x-auditable": true
-																	},
-																	"expression": {
-																		"description": "The filter expression that determines which requests the rule matches.",
-																		"type": "string",
-																		"example": "http.request.uri.path eq \"/login\"",
-																		"maxLength": 4000,
-																		"x-auditable": true
-																	},
-																	"id": {
-																		"description": "The read-only identifier that Cloudflare assigns to the rule.",
-																		"type": "string",
-																		"example": "3a03d665bac043e3a684e0d385a4b1e2",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"show_interstitial": {
-																		"description": "Whether Precursor shows an interstitial when it takes action on a\nrequest.\n",
-																		"type": "boolean",
-																		"example": true,
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"expression",
-																	"show_interstitial"
-																],
-																"title": "Precursor Rule"
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
 															}
-														},
-														"show_interstitial": {
-															"description": "Whether Precursor shows an interstitial when it takes action on a\nrequest.\n",
-															"type": "boolean",
-															"example": true,
-															"x-auditable": true
 														}
-													},
-													"example": {
-														"mode": "arm",
-														"rules": [
-															{
-																"description": "Show an interstitial on the shop page",
-																"enabled": true,
-																"expression": "http.request.uri.path eq \"/shop\"",
-																"show_interstitial": true
-															}
-														],
-														"show_interstitial": false
-													},
-													"minProperties": 1,
-													"title": "Precursor Config"
-												}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -531,8 +351,7 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "precursor",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PUT /zones/{zone_id}/precursor": {
 		"operationId": "precursor-for-a-zone-update-config",
@@ -602,16 +421,21 @@
 						"type": "object",
 						"properties": {
 							"mode": {
-								"description": "Controls Precursor detection for the zone. `off` disables detection,\n`monitor` records detections without affecting bot scores, and `arm`\nallows detections to affect bot scores.\n",
-								"type": "string",
-								"example": "off",
-								"default": "off",
-								"enum": [
-									"off",
-									"monitor",
-									"arm"
+								"allOf": [
+									{
+										"description": "Controls Precursor detection for the zone. `off` disables detection,\n`monitor` records detections without affecting bot scores, and `arm`\nallows detections to affect bot scores.\n",
+										"type": "string",
+										"example": "off",
+										"default": "off",
+										"enum": [
+											"off",
+											"monitor",
+											"arm"
+										],
+										"x-auditable": true
+									}
 								],
-								"x-auditable": true
+								"x-fern-property-name": "precursor-mode"
 							},
 							"rules": {
 								"description": "The ordered list of Precursor rules for the zone.",
@@ -786,16 +610,21 @@
 											"type": "object",
 											"properties": {
 												"mode": {
-													"description": "Controls Precursor detection for the zone. `off` disables detection,\n`monitor` records detections without affecting bot scores, and `arm`\nallows detections to affect bot scores.\n",
-													"type": "string",
-													"example": "off",
-													"default": "off",
-													"enum": [
-														"off",
-														"monitor",
-														"arm"
+													"allOf": [
+														{
+															"description": "Controls Precursor detection for the zone. `off` disables detection,\n`monitor` records detections without affecting bot scores, and `arm`\nallows detections to affect bot scores.\n",
+															"type": "string",
+															"example": "off",
+															"default": "off",
+															"enum": [
+																"off",
+																"monitor",
+																"arm"
+															],
+															"x-auditable": true
+														}
 													],
-													"x-auditable": true
+													"x-fern-property-name": "precursor-mode"
 												},
 												"rules": {
 													"description": "The ordered list of Precursor rules for the zone.",
@@ -880,294 +709,109 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"documentation_url": {
-																		"type": "string"
-																	},
-																	"message": {
-																		"type": "string"
-																	},
-																	"source": {
-																		"type": "object",
-																		"properties": {
-																			"pointer": {
-																				"type": "string"
-																			}
-																		}
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages"
-													]
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"mode": {
-															"description": "Controls Precursor detection for the zone. `off` disables detection,\n`monitor` records detections without affecting bot scores, and `arm`\nallows detections to affect bot scores.\n",
-															"type": "string",
-															"example": "off",
-															"default": "off",
-															"enum": [
-																"off",
-																"monitor",
-																"arm"
-															],
-															"x-auditable": true
-														},
-														"rules": {
-															"description": "The ordered list of Precursor rules for the zone.",
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"description": {
-																		"description": "An informative description of the rule.",
-																		"type": "string",
-																		"example": "Show an interstitial on the login path",
-																		"default": "",
-																		"x-auditable": true
-																	},
-																	"enabled": {
-																		"description": "Whether the rule is active.",
-																		"type": "boolean",
-																		"example": true,
-																		"default": true,
-																		"x-auditable": true
-																	},
-																	"expression": {
-																		"description": "The filter expression that determines which requests the rule matches.",
-																		"type": "string",
-																		"example": "http.request.uri.path eq \"/login\"",
-																		"maxLength": 4000,
-																		"x-auditable": true
-																	},
-																	"id": {
-																		"description": "The read-only identifier that Cloudflare assigns to the rule.",
-																		"type": "string",
-																		"example": "3a03d665bac043e3a684e0d385a4b1e2",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"show_interstitial": {
-																		"description": "Whether Precursor shows an interstitial when it takes action on a\nrequest.\n",
-																		"type": "boolean",
-																		"example": true,
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"expression",
-																	"show_interstitial"
-																],
-																"title": "Precursor Rule"
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
 															}
-														},
-														"show_interstitial": {
-															"description": "Whether Precursor shows an interstitial when it takes action on a\nrequest.\n",
-															"type": "boolean",
-															"example": true,
-															"x-auditable": true
 														}
-													},
-													"example": {
-														"mode": "arm",
-														"rules": [
-															{
-																"description": "Show an interstitial on the shop page",
-																"enabled": true,
-																"expression": "http.request.uri.path eq \"/shop\"",
-																"show_interstitial": true
-															}
-														],
-														"show_interstitial": false
-													},
-													"minProperties": 1,
-													"title": "Precursor Config"
-												}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"type": "object",
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																}
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1199,7 +843,6 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "precursor",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

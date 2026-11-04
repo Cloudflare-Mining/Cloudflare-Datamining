@@ -19,7 +19,7 @@
 		],
 		"responses": {
 			"200": {
-				"description": "OHTTP Gateway was disabled for the zone, or was already disabled.",
+				"description": "OHTTP Gateway was disabled for the zone.",
 				"content": {
 					"application/json": {
 						"examples": {
@@ -27,82 +27,97 @@
 								"value": {
 									"errors": [],
 									"messages": [],
-									"result": "ohttp is inactive",
+									"result": "off",
 									"success": true
 								}
 							}
 						},
 						"schema": {
-							"description": "Standard Cloudflare API response wrapping the result of an operation.",
-							"type": "object",
-							"properties": {
-								"errors": {
-									"description": "List of errors, empty on success.",
-									"type": "array",
-									"items": {
-										"description": "Represents an error that the API returns.",
-										"type": "object",
-										"properties": {
-											"code": {
-												"description": "Numeric error code.",
-												"type": "integer",
-												"example": 1013
-											},
-											"message": {
-												"description": "Human-readable error message.",
-												"type": "string",
-												"example": "upstream failure: could not enable OHTTP"
+							"allOf": [
+								{
+									"description": "Standard Cloudflare API response wrapping the result of an operation.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "List of errors, empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an error that the API returns.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Numeric error code.",
+														"type": "integer",
+														"example": 1010
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string",
+														"example": "upstream failure: could not enable OHTTP"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
 											}
 										},
-										"required": [
-											"code",
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"description": "List of informational messages, empty on success.",
-									"type": "array",
-									"items": {
-										"description": "Represents an informational message that the API returns.",
-										"type": "object",
-										"properties": {
-											"code": {
-												"description": "Numeric message code.",
-												"type": "integer",
-												"example": 0
+										"messages": {
+											"description": "List of informational messages, empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an informational message that the API returns.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Numeric message code.",
+														"type": "integer",
+														"example": 0
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": ""
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
 											},
-											"message": {
-												"description": "Human-readable message.",
-												"type": "string",
-												"example": ""
-											}
+											"example": []
 										},
-										"required": [
-											"code",
-											"message"
-										]
+										"result": {
+											"type": "string",
+											"enum": [
+												"on",
+												"off"
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
 									},
-									"example": []
-								},
-								"result": {
-									"type": "string",
-									"enum": [
-										"ohttp is active",
-										"ohttp is inactive"
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									]
 								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"type": "boolean",
-									"example": true
+								{
+									"properties": {
+										"result": {
+											"type": "string",
+											"enum": [
+												"off"
+											]
+										}
+									},
+									"type": "object"
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -125,7 +140,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -200,7 +215,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -275,7 +290,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -350,7 +365,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -425,7 +440,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -533,7 +548,7 @@
 								"value": {
 									"errors": [],
 									"messages": [],
-									"result": "ohttp is active",
+									"result": "on",
 									"success": true
 								}
 							},
@@ -541,7 +556,7 @@
 								"value": {
 									"errors": [],
 									"messages": [],
-									"result": "ohttp is inactive",
+									"result": "off",
 									"success": true
 								}
 							}
@@ -560,7 +575,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -602,8 +617,8 @@
 								"result": {
 									"type": "string",
 									"enum": [
-										"ohttp is active",
-										"ohttp is inactive"
+										"on",
+										"off"
 									]
 								},
 								"success": {
@@ -639,7 +654,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -714,7 +729,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -789,7 +804,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -864,7 +879,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -939,7 +954,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -1021,7 +1036,7 @@
 	"PUT /zones/{zone_id}/settings/ohttp-gateway": {
 		"operationId": "ohttp-gateway-enable",
 		"summary": "Enable OHTTP Gateway",
-		"description": "Enables OHTTP Gateway for the zone. Enabling an already-enabled zone is idempotent and returns HTTP 200 status code; enabling a zone for the first time returns HTTP 201. Requires product subscription to call.",
+		"description": "Idempotently enables OHTTP Gateway for the zone. Requires product subscription to call.",
 		"parameters": [
 			{
 				"description": "The zone tag.",
@@ -1038,96 +1053,6 @@
 		],
 		"responses": {
 			"200": {
-				"description": "OHTTP Gateway was already enabled for the zone.",
-				"content": {
-					"application/json": {
-						"examples": {
-							"active": {
-								"value": {
-									"errors": [],
-									"messages": [],
-									"result": "ohttp is active",
-									"success": true
-								}
-							}
-						},
-						"schema": {
-							"description": "Standard Cloudflare API response wrapping the result of an operation.",
-							"type": "object",
-							"properties": {
-								"errors": {
-									"description": "List of errors, empty on success.",
-									"type": "array",
-									"items": {
-										"description": "Represents an error that the API returns.",
-										"type": "object",
-										"properties": {
-											"code": {
-												"description": "Numeric error code.",
-												"type": "integer",
-												"example": 1013
-											},
-											"message": {
-												"description": "Human-readable error message.",
-												"type": "string",
-												"example": "upstream failure: could not enable OHTTP"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"description": "List of informational messages, empty on success.",
-									"type": "array",
-									"items": {
-										"description": "Represents an informational message that the API returns.",
-										"type": "object",
-										"properties": {
-											"code": {
-												"description": "Numeric message code.",
-												"type": "integer",
-												"example": 0
-											},
-											"message": {
-												"description": "Human-readable message.",
-												"type": "string",
-												"example": ""
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										]
-									},
-									"example": []
-								},
-								"result": {
-									"type": "string",
-									"enum": [
-										"ohttp is active",
-										"ohttp is inactive"
-									]
-								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"type": "boolean",
-									"example": true
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							]
-						}
-					}
-				}
-			},
-			"201": {
 				"description": "OHTTP Gateway was enabled for the zone.",
 				"content": {
 					"application/json": {
@@ -1136,82 +1061,97 @@
 								"value": {
 									"errors": [],
 									"messages": [],
-									"result": "ohttp is active",
+									"result": "on",
 									"success": true
 								}
 							}
 						},
 						"schema": {
-							"description": "Standard Cloudflare API response wrapping the result of an operation.",
-							"type": "object",
-							"properties": {
-								"errors": {
-									"description": "List of errors, empty on success.",
-									"type": "array",
-									"items": {
-										"description": "Represents an error that the API returns.",
-										"type": "object",
-										"properties": {
-											"code": {
-												"description": "Numeric error code.",
-												"type": "integer",
-												"example": 1013
-											},
-											"message": {
-												"description": "Human-readable error message.",
-												"type": "string",
-												"example": "upstream failure: could not enable OHTTP"
+							"allOf": [
+								{
+									"description": "Standard Cloudflare API response wrapping the result of an operation.",
+									"type": "object",
+									"properties": {
+										"errors": {
+											"description": "List of errors, empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an error that the API returns.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Numeric error code.",
+														"type": "integer",
+														"example": 1010
+													},
+													"message": {
+														"description": "Human-readable error message.",
+														"type": "string",
+														"example": "upstream failure: could not enable OHTTP"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
 											}
 										},
-										"required": [
-											"code",
-											"message"
-										]
-									}
-								},
-								"messages": {
-									"description": "List of informational messages, empty on success.",
-									"type": "array",
-									"items": {
-										"description": "Represents an informational message that the API returns.",
-										"type": "object",
-										"properties": {
-											"code": {
-												"description": "Numeric message code.",
-												"type": "integer",
-												"example": 0
+										"messages": {
+											"description": "List of informational messages, empty on success.",
+											"type": "array",
+											"items": {
+												"description": "Represents an informational message that the API returns.",
+												"type": "object",
+												"properties": {
+													"code": {
+														"description": "Numeric message code.",
+														"type": "integer",
+														"example": 0
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"type": "string",
+														"example": ""
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												]
 											},
-											"message": {
-												"description": "Human-readable message.",
-												"type": "string",
-												"example": ""
-											}
+											"example": []
 										},
-										"required": [
-											"code",
-											"message"
-										]
+										"result": {
+											"type": "string",
+											"enum": [
+												"on",
+												"off"
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
 									},
-									"example": []
-								},
-								"result": {
-									"type": "string",
-									"enum": [
-										"ohttp is active",
-										"ohttp is inactive"
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									]
 								},
-								"success": {
-									"description": "Whether the API call was successful.",
-									"type": "boolean",
-									"example": true
+								{
+									"properties": {
+										"result": {
+											"type": "string",
+											"enum": [
+												"on"
+											]
+										}
+									},
+									"type": "object"
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
 							]
 						}
 					}
@@ -1234,7 +1174,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -1309,7 +1249,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -1384,7 +1324,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -1459,7 +1399,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",
@@ -1534,7 +1474,7 @@
 											"code": {
 												"description": "Numeric error code.",
 												"type": "integer",
-												"example": 1013
+												"example": 1010
 											},
 											"message": {
 												"description": "Human-readable error message.",

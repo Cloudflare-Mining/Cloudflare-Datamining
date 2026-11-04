@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries/{query_id}": {
 		"operationId": "delete_DeleteDomainQuery",
 		"summary": "Delete domain query",
-		"description": "Delete a saved brand protection domain query from the account_queries table. This operation will remove the query from the durable object database. Returns 404 if the query ID doesn't exist.",
+		"description": "Deletes a saved domain query. The query stops matching new domains and generating alerts, and its matches can no longer be listed. If the query does not exist in this account or was already deleted, the request fails with error code 404.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -16,8 +16,10 @@
 			{
 				"name": "query_id",
 				"in": "path",
+				"description": "ID of the domain query.",
 				"required": true,
 				"schema": {
+					"description": "ID of the domain query.",
 					"type": "string",
 					"minLength": 1
 				}
@@ -136,7 +138,7 @@
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries/{query_id}": {
 		"operationId": "delete_DeleteLogoQuery",
 		"summary": "Delete logo query",
-		"description": "Delete a saved brand protection logo query. Returns 404 if the query ID doesn't exist.",
+		"description": "Permanently deletes a saved logo query and all of its matches. If the query does not exist in this account, the request fails with error code 404.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -150,8 +152,10 @@
 			{
 				"name": "query_id",
 				"in": "path",
+				"description": "ID of the logo query.",
 				"required": true,
 				"schema": {
+					"description": "ID of the logo query.",
 					"type": "string",
 					"minLength": 1
 				}
@@ -347,8 +351,8 @@
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches": {
 		"operationId": "get_DomainMatchList",
-		"summary": "List saved query matches",
-		"description": "Get paginated list of domain matches for one or more brand protection queries. When multiple query_ids are provided (comma-separated), matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and individual dismissed state.",
+		"summary": "List domain matches",
+		"description": "Lists domains that matched one or more saved domain queries, most recently matched first by default. When you pass several comma-separated `query_id` values, matches are deduplicated by domain and each match includes a `match_details` array with per-query dismissed state. Set `include_domain_id=true` to get the `domain_id` needed to dismiss or undismiss a match.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -362,7 +366,9 @@
 			{
 				"name": "offset",
 				"in": "query",
+				"description": "Number of matches to skip, for pagination. Defaults to 0.",
 				"schema": {
+					"description": "Number of matches to skip, for pagination. Defaults to 0.",
 					"type": "string",
 					"default": "0"
 				}
@@ -370,7 +376,9 @@
 			{
 				"name": "limit",
 				"in": "query",
+				"description": "Maximum number of matches to return. Defaults to 50.",
 				"schema": {
+					"description": "Maximum number of matches to return. Defaults to 50.",
 					"type": "string",
 					"default": "50"
 				}
@@ -380,7 +388,7 @@
 				"in": "query",
 				"required": true,
 				"schema": {
-					"description": "Query ID or comma-separated list of Query IDs. When multiple IDs are provided, matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and dismissed state.",
+					"description": "ID of a domain query, or a comma-separated list of domain query IDs. When you pass several IDs, matches are deduplicated by domain and each match includes a `match_details` array with per-query metadata and dismissed state.",
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -390,7 +398,9 @@
 			{
 				"name": "include_domain_id",
 				"in": "query",
+				"description": "Set to `true` to include `domain_id` on each match. Required to dismiss or undismiss a match. Defaults to `false`.",
 				"schema": {
+					"description": "Set to `true` to include `domain_id` on each match. Required to dismiss or undismiss a match. Defaults to `false`.",
 					"type": "string",
 					"default": "false"
 				}
@@ -398,7 +408,9 @@
 			{
 				"name": "include_dismissed",
 				"in": "query",
+				"description": "Set to `false` to exclude dismissed matches. Dismissed matches are included when this is omitted or `true`.",
 				"schema": {
+					"description": "Set to `false` to exclude dismissed matches. Dismissed matches are included when this is omitted or `true`.",
 					"type": "string"
 				}
 			},
@@ -406,7 +418,7 @@
 				"name": "domain_search",
 				"in": "query",
 				"schema": {
-					"description": "Filter matches by domain name (substring match)",
+					"description": "Return only matches whose domain contains this text (case-insensitive).",
 					"type": "string"
 				}
 			},
@@ -414,7 +426,7 @@
 				"name": "orderBy",
 				"in": "query",
 				"schema": {
-					"description": "Column to sort by. Options: 'domain', 'first_seen', or 'registrar'",
+					"description": "Field to sort by: `domain`, `first_seen`, or `registrar`. Defaults to `first_seen`.",
 					"type": "string",
 					"enum": [
 						"domain",
@@ -427,7 +439,7 @@
 				"name": "order",
 				"in": "query",
 				"schema": {
-					"description": "Sort order. Options: 'asc' (ascending) or 'desc' (descending)",
+					"description": "Sort direction: `asc` or `desc`. Defaults to `desc`. For single-query requests, `asc` applies only when `orderBy` is set.",
 					"type": "string",
 					"enum": [
 						"asc",
@@ -453,9 +465,15 @@
 												"type": "boolean"
 											},
 											"domain": {
+												"description": "The matched domain name.",
 												"type": "string"
 											},
+											"domain_id": {
+												"description": "ID of the matched domain. Present only when `include_domain_id=true`. Use it with `query_id` to dismiss or undismiss the match.",
+												"type": "integer"
+											},
 											"first_seen": {
+												"description": "When the domain was matched. For multi-query requests, the most recent match time across the requested queries.",
 												"type": "string"
 											},
 											"match_details": {
@@ -468,9 +486,11 @@
 															"type": "boolean"
 														},
 														"match_id": {
+															"description": "ID of the match. Accepted by the legacy `match_ids` format.",
 															"type": "integer"
 														},
 														"query_id": {
+															"description": "ID of the domain query that produced this match.",
 															"type": "integer"
 														},
 														"query_tag": {
@@ -501,6 +521,7 @@
 												]
 											},
 											"registrar": {
+												"description": "Registrar of the matched domain, if known.",
 												"type": "string",
 												"nullable": true
 											},
@@ -529,6 +550,7 @@
 									}
 								},
 								"total": {
+									"description": "Number of matching domains available for pagination. For requests with several `query_id` values, matches are deduplicated from at most 5,000 query-domain rows, so `total` can be lower than the actual number of matches.",
 									"type": "integer",
 									"minimum": 0
 								}
@@ -563,8 +585,8 @@
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
 		"operationId": "get_GetDomainQueries",
-		"summary": "Get queries",
-		"description": "Get all saved brand protection queries for an account",
+		"summary": "List domain queries",
+		"description": "Lists the account's saved domain queries, most recently updated first. Set `id` to return a single query object instead of an array. Set `page` or `per_page` to paginate the list; the response then includes `result_info`. Without them, every query is returned.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -578,7 +600,9 @@
 			{
 				"name": "id",
 				"in": "query",
+				"description": "ID of a domain query. When set, `result` is that single query object instead of an array, and `page` and `per_page` are ignored.",
 				"schema": {
+					"description": "ID of a domain query. When set, `result` is that single query object instead of an array, and `page` and `per_page` are ignored.",
 					"type": "string"
 				}
 			},
@@ -586,7 +610,7 @@
 				"name": "page",
 				"in": "query",
 				"schema": {
-					"description": "Optional page number for paginated list requests. Defaults to 1 when only per_page is supplied. Omit page and per_page to preserve the legacy full-list response.",
+					"description": "Page number for paginated list requests. Defaults to 1 when only per_page is supplied. Omit page and per_page to return every query.",
 					"type": "integer",
 					"exclusiveMinimum": true,
 					"maximum": 1000000,
@@ -597,7 +621,7 @@
 				"name": "per_page",
 				"in": "query",
 				"schema": {
-					"description": "Optional number of queries per page for paginated list requests. Defaults to 100 when only page is supplied. Maximum 100. Omit page and per_page to preserve the legacy full-list response.",
+					"description": "Number of queries per page for paginated list requests. Defaults to 100 when only page is supplied. Maximum 100. Omit page and per_page to return every query.",
 					"type": "integer",
 					"exclusiveMinimum": true,
 					"maximum": 100,
@@ -1150,7 +1174,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/matches": {
 		"operationId": "get_LogoMatchList",
 		"summary": "List logo matches",
-		"description": "Get paginated list of logo matches for a specific brand protection logo query",
+		"description": "Lists images that matched a saved logo query, most recently matched first by default. Set `download=true` to include each matched image as base64 data.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1164,7 +1188,9 @@
 			{
 				"name": "offset",
 				"in": "query",
+				"description": "Number of matches to skip, for pagination. Defaults to 0.",
 				"schema": {
+					"description": "Number of matches to skip, for pagination. Defaults to 0.",
 					"type": "string",
 					"default": "0"
 				}
@@ -1172,7 +1198,9 @@
 			{
 				"name": "limit",
 				"in": "query",
+				"description": "Maximum number of matches to return. Defaults to 50.",
 				"schema": {
+					"description": "Maximum number of matches to return. Defaults to 50.",
 					"type": "string",
 					"default": "50"
 				}
@@ -1180,8 +1208,10 @@
 			{
 				"name": "query_id",
 				"in": "query",
+				"description": "ID of the logo query whose matches to list.",
 				"required": true,
 				"schema": {
+					"description": "ID of the logo query whose matches to list.",
 					"type": "string",
 					"minLength": 1
 				}
@@ -1189,7 +1219,9 @@
 			{
 				"name": "download",
 				"in": "query",
+				"description": "Set to `true` to include each matched image as base64 data in `image_data`, with its MIME type in `content_type`.",
 				"schema": {
+					"description": "Set to `true` to include each matched image as base64 data in `image_data`, with its MIME type in `content_type`.",
 					"type": "string"
 				}
 			},
@@ -1197,7 +1229,7 @@
 				"name": "orderBy",
 				"in": "query",
 				"schema": {
-					"description": "Column to sort by. Options: 'matchedAt', 'domain', 'similarityScore', or 'registrar'",
+					"description": "Field to sort by: `matchedAt`, `domain`, `similarityScore`, or `registrar`. Defaults to `matchedAt`.",
 					"type": "string",
 					"enum": [
 						"matchedAt",
@@ -1211,7 +1243,7 @@
 				"name": "order",
 				"in": "query",
 				"schema": {
-					"description": "Sort order. Options: 'asc' (ascending) or 'desc' (descending)",
+					"description": "Sort direction: `asc` or `desc`. Defaults to `desc`.",
 					"type": "string",
 					"enum": [
 						"asc",
@@ -1233,30 +1265,38 @@
 									"items": {
 										"properties": {
 											"content_type": {
+												"description": "MIME type of the matched image (only present when download=true)",
 												"type": "string"
 											},
 											"domain": {
+												"description": "Domain where the matching image was found, if known.",
 												"type": "string",
 												"nullable": true
 											},
 											"id": {
+												"description": "ID of the logo match.",
 												"type": "integer"
 											},
 											"image_data": {
+												"description": "Base64-encoded matched image (only present when download=true)",
 												"type": "string"
 											},
 											"matched_at": {
+												"description": "When the match was recorded.",
 												"type": "string",
 												"nullable": true
 											},
 											"query_id": {
+												"description": "ID of the logo query that produced this match.",
 												"type": "integer"
 											},
 											"registrar": {
+												"description": "Registrar of `domain`, if known.",
 												"type": "string",
 												"nullable": true
 											},
 											"similarity_score": {
+												"description": "Visual similarity between the matched image and the query logo. Higher is closer.",
 												"type": "number"
 											},
 											"url_scan_id": {
@@ -1311,8 +1351,8 @@
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
 		"operationId": "get_GetLogoQueries",
-		"summary": "Get logo queries",
-		"description": "Get all saved brand protection logo queries for an account. Optionally specify id to get a single query. Set download=true to include base64-encoded image data.",
+		"summary": "List logo queries",
+		"description": "Lists the account's saved logo queries. Set `id` to return a single query object instead of an array. Set `download=true` to include each logo image as base64 data.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1326,18 +1366,18 @@
 			{
 				"name": "id",
 				"in": "query",
-				"description": "Optional query ID to retrieve a specific logo query",
+				"description": "ID of a logo query. When set, `result` is that single query object instead of an array.",
 				"schema": {
-					"description": "Optional query ID to retrieve a specific logo query",
+					"description": "ID of a logo query. When set, `result` is that single query object instead of an array.",
 					"type": "string"
 				}
 			},
 			{
 				"name": "download",
 				"in": "query",
-				"description": "If true, include base64-encoded image data in the response",
+				"description": "Set to `true` to include each logo image as base64 data in `image_data`, with its MIME type in `content_type`.",
 				"schema": {
-					"description": "If true, include base64-encoded image data in the response",
+					"description": "Set to `true` to include each logo image as base64 data in `image_data`, with its MIME type in `content_type`.",
 					"type": "string"
 				}
 			}
@@ -1356,6 +1396,7 @@
 										"type": "string"
 									},
 									"id": {
+										"description": "ID of the logo query.",
 										"type": "integer"
 									},
 									"image_data": {
@@ -1366,12 +1407,15 @@
 										"type": "string"
 									},
 									"similarity_threshold": {
+										"description": "Minimum similarity score (0-1) required for a visual match.",
 										"type": "number"
 									},
 									"tag": {
+										"description": "Name of the logo query.",
 										"type": "string"
 									},
 									"uploaded_at": {
+										"description": "When the logo was uploaded.",
 										"type": "string",
 										"nullable": true
 									}
@@ -1885,8 +1929,8 @@
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/total-queries": {
 		"operationId": "get_TotalQueries",
-		"summary": "Get total queries",
-		"description": "Get the total number of saved brand protection queries (domain + logo) for an account",
+		"summary": "Get total query count",
+		"description": "Returns the number of saved domain and logo queries in the account. This is the count checked against the account's Brand Protection query limit.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1908,6 +1952,7 @@
 							"items": {
 								"properties": {
 									"total_queries": {
+										"description": "Number of saved domain and logo queries in the account.",
 										"type": "integer",
 										"minimum": 0
 									}
@@ -1944,7 +1989,7 @@
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries/{query_id}": {
 		"operationId": "patch_UpdateDomainQuery",
 		"summary": "Update domain query",
-		"description": "Update a saved brand protection domain query with string match patterns",
+		"description": "Replaces a saved domain query's tag and patterns. `tag` and `string_matches` are required, and the patterns you send replace the existing ones, so include every pattern you want to keep. Changing the patterns starts a new set of matches for the query: matches listed before the change are no longer returned, and only newly observed domains that match the new patterns are listed. Sending the same patterns in any order (for example, to change only `tag`) keeps the existing matches. If the new patterns are identical to a set already used in this account, such as the query's earlier patterns, matches already found for that set are listed as well. Omitting both `scan_matches` and its alias `scan` resets scanning to `false`. If both are supplied, `scan_matches` takes precedence. `search_lookback`, `min_time`, and `max_time` are ignored on update, so changing patterns does not search previously observed domains. If the query does not exist in this account, the request fails with error code 404.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1958,8 +2003,10 @@
 			{
 				"name": "query_id",
 				"in": "path",
+				"description": "ID of the domain query.",
 				"required": true,
 				"schema": {
+					"description": "ID of the domain query.",
 					"type": "string",
 					"minLength": 1
 				}
@@ -1972,23 +2019,27 @@
 						"type": "object",
 						"properties": {
 							"max_time": {
+								"description": "Not currently used. Accepted and ignored.",
 								"type": "string"
 							},
 							"min_time": {
+								"description": "Not currently used. Accepted and ignored.",
 								"type": "string"
 							},
 							"scan": {
+								"description": "Alias for `scan_matches`. If both are set, `scan_matches` takes precedence.",
 								"type": "boolean"
 							},
 							"scan_matches": {
 								"type": "boolean"
 							},
 							"search_lookback": {
-								"description": "If true, search recent domain lookback entries for matches",
+								"description": "On create, also search domains observed in the last 7 days for matches. Defaults to `true`. Ignored on update.",
 								"type": "boolean",
 								"default": true
 							},
 							"string_matches": {
+								"description": "Patterns to match against domain names, 1 to 100 per query. Each `pattern` is a brand name or keyword of up to 200 characters. Matching also catches close variants such as typos and look-alike characters; patterns are not regular expressions. On update, this list replaces the query's existing patterns.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -2007,6 +2058,7 @@
 								"minItems": 1
 							},
 							"tag": {
+								"description": "Name of the query. Must be unique among the account's domain queries.",
 								"type": "string",
 								"minLength": 1
 							}
@@ -2031,6 +2083,7 @@
 									"type": "string"
 								},
 								"query_id": {
+									"description": "ID of the created or updated domain query.",
 									"type": "integer"
 								},
 								"success": {
@@ -2068,7 +2121,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches/bulk-dismiss": {
 		"operationId": "post_BulkDismissMatches",
 		"summary": "Bulk dismiss or undismiss matches",
-		"description": "Dismiss or undismiss multiple matches in a single request. Accepts either the new format (matches: [{query_id, domain_id}]) for per-query control, or the legacy format (match_ids: [number]) which dismisses for all queries sharing each match's hash. Returns per-item success/error results.",
+		"description": "Dismisses or undismisses up to 100 domain matches in one request and returns a result for each item. Send `matches` as (`query_id`, `domain_id`) pairs to change each match for one query. The legacy `match_ids` format is still accepted, but it changes each match for every query that shares it; prefer `matches`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2087,6 +2140,7 @@
 						"type": "object",
 						"properties": {
 							"action": {
+								"description": "`dismiss` to dismiss the matches, or `undismiss` to restore them.",
 								"type": "string",
 								"enum": [
 									"dismiss",
@@ -2094,6 +2148,7 @@
 								]
 							},
 							"match_ids": {
+								"description": "Legacy format; prefer `matches`. Match IDs to update. Each ID changes the match for every query that shares it, not just one query. 1 to 100 items; duplicate IDs are rejected.",
 								"type": "array",
 								"items": {
 									"exclusiveMinimum": true,
@@ -2104,15 +2159,18 @@
 								"minItems": 1
 							},
 							"matches": {
+								"description": "Matches to update, as (`query_id`, `domain_id`) pairs. Each pair changes the match for that query only. 1 to 100 items; duplicate pairs are rejected. Send only one format. If both are supplied, `match_ids` takes precedence and `matches` is ignored.",
 								"type": "array",
 								"items": {
 									"properties": {
 										"domain_id": {
+											"description": "ID of the matched domain, as returned in `domain_id` by List domain matches with `include_domain_id=true`.",
 											"type": "integer",
 											"exclusiveMinimum": true,
 											"minimum": 0
 										},
 										"query_id": {
+											"description": "ID of the domain query.",
 											"type": "integer",
 											"exclusiveMinimum": true,
 											"minimum": 0
@@ -2155,12 +2213,14 @@
 																"type": "integer"
 															},
 															"error": {
+																"description": "Why this item failed, such as `Query not found` or `Match not found`.",
 																"type": "string"
 															},
 															"query_id": {
 																"type": "integer"
 															},
 															"success": {
+																"description": "Whether this item succeeded. Items already in the requested state succeed.",
 																"type": "boolean"
 															}
 														},
@@ -2254,8 +2314,8 @@
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
 		"operationId": "post_InsertDomainQuery",
-		"summary": "Insert query",
-		"description": "Create a new saved brand protection query with string match patterns",
+		"summary": "Create domain query",
+		"description": "Creates a saved domain query that matches domain names against your brand patterns. The tag must be unique among the account's domain queries. By default, the new query also searches domains observed in the last 7 days (see `search_lookback`). Creation fails when the account has reached its Brand Protection query limit, which counts domain and logo queries together.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2274,23 +2334,27 @@
 						"type": "object",
 						"properties": {
 							"max_time": {
+								"description": "Not currently used. Accepted and ignored.",
 								"type": "string"
 							},
 							"min_time": {
+								"description": "Not currently used. Accepted and ignored.",
 								"type": "string"
 							},
 							"scan": {
+								"description": "Alias for `scan_matches`. If both are set, `scan_matches` takes precedence.",
 								"type": "boolean"
 							},
 							"scan_matches": {
 								"type": "boolean"
 							},
 							"search_lookback": {
-								"description": "If true, search recent domain lookback entries for matches",
+								"description": "On create, also search domains observed in the last 7 days for matches. Defaults to `true`. Ignored on update.",
 								"type": "boolean",
 								"default": true
 							},
 							"string_matches": {
+								"description": "Patterns to match against domain names, 1 to 100 per query. Each `pattern` is a brand name or keyword of up to 200 characters. Matching also catches close variants such as typos and look-alike characters; patterns are not regular expressions. On update, this list replaces the query's existing patterns.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -2309,6 +2373,7 @@
 								"minItems": 1
 							},
 							"tag": {
+								"description": "Name of the query. Must be unique among the account's domain queries.",
 								"type": "string",
 								"minLength": 1
 							}
@@ -2333,6 +2398,7 @@
 									"type": "string"
 								},
 								"query_id": {
+									"description": "ID of the created or updated domain query.",
 									"type": "integer"
 								},
 								"success": {
@@ -2858,8 +2924,8 @@
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
 		"operationId": "post_InsertLogoQuery",
-		"summary": "Insert logo query",
-		"description": "Create a new saved brand protection logo query for visual similarity matching",
+		"summary": "Create logo query",
+		"description": "Uploads a logo and creates a saved logo query that finds visually similar images on scanned websites. The tag must be unique among the account's logo queries. By default, the new query also searches previously scanned images (see `search_lookback`). Creation fails when the account has reached its Brand Protection query limit, which counts domain and logo queries together.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2878,12 +2944,12 @@
 						"type": "object",
 						"properties": {
 							"image_data": {
-								"description": "Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,...') or just the base64 string.",
+								"description": "Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,...') or just the base64 string. Supported formats: PNG, JPEG, GIF, WebP, BMP, and SVG. ICO is also accepted when the data includes a `data:image/x-icon;base64,` prefix.",
 								"type": "string",
 								"minLength": 1
 							},
 							"search_lookback": {
-								"description": "If true, search historic scanned images for matches above the similarity threshold",
+								"description": "If true, also search previously scanned images for matches above the similarity threshold. Defaults to `true`.",
 								"type": "boolean",
 								"default": true
 							},
@@ -2894,7 +2960,7 @@
 								"minimum": 0
 							},
 							"tag": {
-								"description": "Unique identifier for the logo query",
+								"description": "Name of the logo query. Must be unique among the account's logo queries.",
 								"type": "string",
 								"minLength": 1
 							}
@@ -2920,6 +2986,7 @@
 									"type": "string"
 								},
 								"query_id": {
+									"description": "ID of the created logo query.",
 									"type": "integer"
 								},
 								"success": {
@@ -3006,7 +3073,7 @@
 								"minimum": 0
 							},
 							"top_k": {
-								"description": "Number of closest matches to return (1-100, default: 10)",
+								"description": "Number of closest matches to return. Defaults to 10. Accepts 1 to 100, but values above 50 are treated as 50.",
 								"type": "integer",
 								"default": 10,
 								"maximum": 100,
@@ -3106,8 +3173,8 @@
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/queries/{query_id}/matches/{domain_id}/dismiss": {
 		"operationId": "post_DismissMatch",
-		"summary": "Dismiss a match",
-		"description": "Mark a specific domain as dismissed for a given query. Dismissals are per-query — dismissing a domain in one query does not affect other queries.",
+		"summary": "Dismiss a domain match",
+		"description": "Marks a matched domain as dismissed for one domain query. Dismissals are per query: dismissing a domain in one query does not affect other queries. Get `domain_id` from List domain matches with `include_domain_id=true`. Dismissing an already dismissed match succeeds. If the query or match does not exist, the request fails with error code 404.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3121,8 +3188,10 @@
 			{
 				"name": "query_id",
 				"in": "path",
+				"description": "ID of the domain query that the match belongs to.",
 				"required": true,
 				"schema": {
+					"description": "ID of the domain query that the match belongs to.",
 					"type": "integer",
 					"exclusiveMinimum": true,
 					"minimum": 0
@@ -3131,8 +3200,10 @@
 			{
 				"name": "domain_id",
 				"in": "path",
+				"description": "ID of the matched domain, as returned in `domain_id` by List domain matches with `include_domain_id=true`.",
 				"required": true,
 				"schema": {
+					"description": "ID of the matched domain, as returned in `domain_id` by List domain matches with `include_domain_id=true`.",
 					"type": "integer",
 					"exclusiveMinimum": true,
 					"minimum": 0
@@ -3199,8 +3270,8 @@
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/queries/{query_id}/matches/{domain_id}/undismiss": {
 		"operationId": "post_UndismissMatch",
-		"summary": "Undismiss a match",
-		"description": "Remove the dismissed status from a specific domain for a given query. Undismissals are per-query — undismissing a domain in one query does not affect other queries.",
+		"summary": "Undismiss a domain match",
+		"description": "Removes the dismissed status from a matched domain for one domain query. Undismissing a domain in one query does not affect other queries. Get `domain_id` from List domain matches with `include_domain_id=true`. Undismissing a match that is not dismissed succeeds. If the query or match does not exist, the request fails with error code 404.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3214,8 +3285,10 @@
 			{
 				"name": "query_id",
 				"in": "path",
+				"description": "ID of the domain query that the match belongs to.",
 				"required": true,
 				"schema": {
+					"description": "ID of the domain query that the match belongs to.",
 					"type": "integer",
 					"exclusiveMinimum": true,
 					"minimum": 0
@@ -3224,8 +3297,10 @@
 			{
 				"name": "domain_id",
 				"in": "path",
+				"description": "ID of the matched domain, as returned in `domain_id` by List domain matches with `include_domain_id=true`.",
 				"required": true,
 				"schema": {
+					"description": "ID of the matched domain, as returned in `domain_id` by List domain matches with `include_domain_id=true`.",
 					"type": "integer",
 					"exclusiveMinimum": true,
 					"minimum": 0

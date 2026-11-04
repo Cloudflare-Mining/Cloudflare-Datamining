@@ -607,542 +607,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Defines the total number of results for the requested service.",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Defines the current page within paginated list of results.",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Defines the number of results per page of results.",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Defines the total results available without any search parameters.",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"oneOf": [
-															{
-																"description": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
-																"type": "object",
-																"allOf": [
-																	{
-																		"allOf": [
-																			{
-																				"properties": {
-																					"description": {
-																						"description": "Defines the public description of the WAF rule.",
-																						"type": "string",
-																						"example": "SQL injection prevention for SELECT statements",
-																						"readOnly": true,
-																						"x-auditable": true
-																					},
-																					"group": {
-																						"description": "Defines the rule group to which the current WAF rule belongs.",
-																						"type": "object",
-																						"properties": {
-																							"id": {
-																								"description": "Defines the unique identifier of the rule group.",
-																								"type": "string",
-																								"example": "de677e5818985db1285d0e80225f06e5",
-																								"maxLength": 32,
-																								"readOnly": true,
-																								"x-auditable": true
-																							},
-																							"name": {
-																								"description": "Defines the name of the rule group.",
-																								"type": "string",
-																								"example": "Project Honey Pot",
-																								"readOnly": true,
-																								"x-auditable": true
-																							}
-																						},
-																						"readOnly": true
-																					},
-																					"id": {
-																						"description": "Defines the unique identifier of the WAF rule.",
-																						"type": "string",
-																						"example": "f939de3be84e66e757adcdcb87908023",
-																						"maxLength": 32,
-																						"readOnly": true,
-																						"x-auditable": true
-																					},
-																					"package_id": {
-																						"description": "Defines the unique identifier of a WAF package.",
-																						"type": "string",
-																						"example": "a25a9a7e9c00afc1fb2e0245519d725b",
-																						"maxLength": 32,
-																						"readOnly": true,
-																						"x-auditable": true
-																					},
-																					"priority": {
-																						"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
-																						"type": "string",
-																						"readOnly": true,
-																						"x-auditable": true
-																					}
-																				}
-																			}
-																		]
-																	},
-																	{
-																		"properties": {
-																			"allowed_modes": {
-																				"description": "Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules.",
-																				"type": "array",
-																				"items": {
-																					"description": "Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
-																					"type": "string",
-																					"example": "on",
-																					"enum": [
-																						"on",
-																						"off"
-																					],
-																					"x-auditable": true
-																				},
-																				"example": [
-																					"on",
-																					"off"
-																				],
-																				"readOnly": true
-																			},
-																			"mode": {
-																				"description": "Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
-																				"type": "string",
-																				"example": "on",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"x-auditable": true
-																			}
-																		},
-																		"type": "object"
-																	}
-																],
-																"required": [
-																	"id",
-																	"description",
-																	"priority",
-																	"allowed_modes",
-																	"mode",
-																	"group",
-																	"package_id"
-																],
-																"title": "Anomaly detection WAF rule"
-															},
-															{
-																"description": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
-																"allOf": [
-																	{
-																		"properties": {
-																			"description": {
-																				"description": "Defines the public description of the WAF rule.",
-																				"type": "string",
-																				"example": "SQL injection prevention for SELECT statements",
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"group": {
-																				"description": "Defines the rule group to which the current WAF rule belongs.",
-																				"type": "object",
-																				"properties": {
-																					"id": {
-																						"description": "Defines the unique identifier of the rule group.",
-																						"type": "string",
-																						"example": "de677e5818985db1285d0e80225f06e5",
-																						"maxLength": 32,
-																						"readOnly": true,
-																						"x-auditable": true
-																					},
-																					"name": {
-																						"description": "Defines the name of the rule group.",
-																						"type": "string",
-																						"example": "Project Honey Pot",
-																						"readOnly": true,
-																						"x-auditable": true
-																					}
-																				},
-																				"readOnly": true
-																			},
-																			"id": {
-																				"description": "Defines the unique identifier of the WAF rule.",
-																				"type": "string",
-																				"example": "f939de3be84e66e757adcdcb87908023",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"package_id": {
-																				"description": "Defines the unique identifier of a WAF package.",
-																				"type": "string",
-																				"example": "a25a9a7e9c00afc1fb2e0245519d725b",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"priority": {
-																				"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
-																				"type": "string",
-																				"readOnly": true,
-																				"x-auditable": true
-																			}
-																		}
-																	},
-																	{
-																		"properties": {
-																			"allowed_modes": {
-																				"description": "Defines the list of possible actions of the WAF rule when it is triggered.",
-																				"type": "array",
-																				"items": {
-																					"description": "Defines the action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
-																					"type": "string",
-																					"example": "block",
-																					"enum": [
-																						"default",
-																						"disable",
-																						"simulate",
-																						"block",
-																						"challenge"
-																					],
-																					"x-auditable": true
-																				},
-																				"example": [
-																					"default",
-																					"disable",
-																					"simulate",
-																					"block",
-																					"challenge"
-																				],
-																				"readOnly": true
-																			},
-																			"default_mode": {
-																				"description": "Defines the default action/mode of a rule.",
-																				"example": "block",
-																				"enum": [
-																					"disable",
-																					"simulate",
-																					"block",
-																					"challenge"
-																				],
-																				"readOnly": true
-																			},
-																			"mode": {
-																				"description": "Defines the action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
-																				"type": "string",
-																				"example": "block",
-																				"enum": [
-																					"default",
-																					"disable",
-																					"simulate",
-																					"block",
-																					"challenge"
-																				],
-																				"x-auditable": true
-																			}
-																		},
-																		"type": "object"
-																	}
-																],
-																"required": [
-																	"id",
-																	"description",
-																	"priority",
-																	"allowed_modes",
-																	"default_mode",
-																	"mode",
-																	"group",
-																	"package_id"
-																],
-																"title": "Traditional (deny) WAF rule"
-															},
-															{
-																"description": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
-																"allOf": [
-																	{
-																		"properties": {
-																			"description": {
-																				"description": "Defines the public description of the WAF rule.",
-																				"type": "string",
-																				"example": "SQL injection prevention for SELECT statements",
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"group": {
-																				"description": "Defines the rule group to which the current WAF rule belongs.",
-																				"type": "object",
-																				"properties": {
-																					"id": {
-																						"description": "Defines the unique identifier of the rule group.",
-																						"type": "string",
-																						"example": "de677e5818985db1285d0e80225f06e5",
-																						"maxLength": 32,
-																						"readOnly": true,
-																						"x-auditable": true
-																					},
-																					"name": {
-																						"description": "Defines the name of the rule group.",
-																						"type": "string",
-																						"example": "Project Honey Pot",
-																						"readOnly": true,
-																						"x-auditable": true
-																					}
-																				},
-																				"readOnly": true
-																			},
-																			"id": {
-																				"description": "Defines the unique identifier of the WAF rule.",
-																				"type": "string",
-																				"example": "f939de3be84e66e757adcdcb87908023",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"package_id": {
-																				"description": "Defines the unique identifier of a WAF package.",
-																				"type": "string",
-																				"example": "a25a9a7e9c00afc1fb2e0245519d725b",
-																				"maxLength": 32,
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"priority": {
-																				"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
-																				"type": "string",
-																				"readOnly": true,
-																				"x-auditable": true
-																			}
-																		}
-																	},
-																	{
-																		"properties": {
-																			"allowed_modes": {
-																				"description": "Defines the available modes for the current WAF rule.",
-																				"type": "array",
-																				"items": {
-																					"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
-																					"type": "string",
-																					"example": "on",
-																					"enum": [
-																						"on",
-																						"off"
-																					],
-																					"x-auditable": true
-																				},
-																				"example": [
-																					"on",
-																					"off"
-																				],
-																				"readOnly": true
-																			},
-																			"mode": {
-																				"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
-																				"type": "string",
-																				"example": "on",
-																				"enum": [
-																					"on",
-																					"off"
-																				],
-																				"x-auditable": true
-																			}
-																		},
-																		"type": "object"
-																	}
-																],
-																"required": [
-																	"id",
-																	"description",
-																	"priority",
-																	"allowed_modes",
-																	"default_mode",
-																	"mode",
-																	"group",
-																	"package_id"
-																],
-																"title": "Traditional (allow) WAF rule"
-															}
-														]
+													"message": {
+														"type": "string"
 													}
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1327,186 +872,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"oneOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2070,534 +1516,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"properties": {
-														"result": {
-															"oneOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													},
-													"type": "object"
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
-									"properties": {
-										"result": {
-											"oneOf": [
-												{
-													"description": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
-													"type": "object",
-													"allOf": [
-														{
-															"allOf": [
-																{
-																	"properties": {
-																		"description": {
-																			"description": "Defines the public description of the WAF rule.",
-																			"type": "string",
-																			"example": "SQL injection prevention for SELECT statements",
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"group": {
-																			"description": "Defines the rule group to which the current WAF rule belongs.",
-																			"type": "object",
-																			"properties": {
-																				"id": {
-																					"description": "Defines the unique identifier of the rule group.",
-																					"type": "string",
-																					"example": "de677e5818985db1285d0e80225f06e5",
-																					"maxLength": 32,
-																					"readOnly": true,
-																					"x-auditable": true
-																				},
-																				"name": {
-																					"description": "Defines the name of the rule group.",
-																					"type": "string",
-																					"example": "Project Honey Pot",
-																					"readOnly": true,
-																					"x-auditable": true
-																				}
-																			},
-																			"readOnly": true
-																		},
-																		"id": {
-																			"description": "Defines the unique identifier of the WAF rule.",
-																			"type": "string",
-																			"example": "f939de3be84e66e757adcdcb87908023",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"package_id": {
-																			"description": "Defines the unique identifier of a WAF package.",
-																			"type": "string",
-																			"example": "a25a9a7e9c00afc1fb2e0245519d725b",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"priority": {
-																			"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
-																			"type": "string",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	}
-																}
-															]
-														},
-														{
-															"properties": {
-																"allowed_modes": {
-																	"description": "Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules.",
-																	"type": "array",
-																	"items": {
-																		"description": "Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
-																		"type": "string",
-																		"example": "on",
-																		"enum": [
-																			"on",
-																			"off"
-																		],
-																		"x-auditable": true
-																	},
-																	"example": [
-																		"on",
-																		"off"
-																	],
-																	"readOnly": true
-																},
-																"mode": {
-																	"description": "Defines the mode anomaly. When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
-																	"type": "string",
-																	"example": "on",
-																	"enum": [
-																		"on",
-																		"off"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														}
-													],
-													"required": [
-														"id",
-														"description",
-														"priority",
-														"allowed_modes",
-														"mode",
-														"group",
-														"package_id"
-													],
-													"title": "Anomaly detection WAF rule"
-												},
-												{
-													"description": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
-													"allOf": [
-														{
-															"properties": {
-																"description": {
-																	"description": "Defines the public description of the WAF rule.",
-																	"type": "string",
-																	"example": "SQL injection prevention for SELECT statements",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"group": {
-																	"description": "Defines the rule group to which the current WAF rule belongs.",
-																	"type": "object",
-																	"properties": {
-																		"id": {
-																			"description": "Defines the unique identifier of the rule group.",
-																			"type": "string",
-																			"example": "de677e5818985db1285d0e80225f06e5",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"name": {
-																			"description": "Defines the name of the rule group.",
-																			"type": "string",
-																			"example": "Project Honey Pot",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"readOnly": true
-																},
-																"id": {
-																	"description": "Defines the unique identifier of the WAF rule.",
-																	"type": "string",
-																	"example": "f939de3be84e66e757adcdcb87908023",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"package_id": {
-																	"description": "Defines the unique identifier of a WAF package.",
-																	"type": "string",
-																	"example": "a25a9a7e9c00afc1fb2e0245519d725b",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"priority": {
-																	"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
-																	"type": "string",
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															}
-														},
-														{
-															"properties": {
-																"allowed_modes": {
-																	"description": "Defines the list of possible actions of the WAF rule when it is triggered.",
-																	"type": "array",
-																	"items": {
-																		"description": "Defines the action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
-																		"type": "string",
-																		"example": "block",
-																		"enum": [
-																			"default",
-																			"disable",
-																			"simulate",
-																			"block",
-																			"challenge"
-																		],
-																		"x-auditable": true
-																	},
-																	"example": [
-																		"default",
-																		"disable",
-																		"simulate",
-																		"block",
-																		"challenge"
-																	],
-																	"readOnly": true
-																},
-																"default_mode": {
-																	"description": "Defines the default action/mode of a rule.",
-																	"example": "block",
-																	"enum": [
-																		"disable",
-																		"simulate",
-																		"block",
-																		"challenge"
-																	],
-																	"readOnly": true
-																},
-																"mode": {
-																	"description": "Defines the action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
-																	"type": "string",
-																	"example": "block",
-																	"enum": [
-																		"default",
-																		"disable",
-																		"simulate",
-																		"block",
-																		"challenge"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														}
-													],
-													"required": [
-														"id",
-														"description",
-														"priority",
-														"allowed_modes",
-														"default_mode",
-														"mode",
-														"group",
-														"package_id"
-													],
-													"title": "Traditional (deny) WAF rule"
-												},
-												{
-													"description": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
-													"allOf": [
-														{
-															"properties": {
-																"description": {
-																	"description": "Defines the public description of the WAF rule.",
-																	"type": "string",
-																	"example": "SQL injection prevention for SELECT statements",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"group": {
-																	"description": "Defines the rule group to which the current WAF rule belongs.",
-																	"type": "object",
-																	"properties": {
-																		"id": {
-																			"description": "Defines the unique identifier of the rule group.",
-																			"type": "string",
-																			"example": "de677e5818985db1285d0e80225f06e5",
-																			"maxLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"name": {
-																			"description": "Defines the name of the rule group.",
-																			"type": "string",
-																			"example": "Project Honey Pot",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"readOnly": true
-																},
-																"id": {
-																	"description": "Defines the unique identifier of the WAF rule.",
-																	"type": "string",
-																	"example": "f939de3be84e66e757adcdcb87908023",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"package_id": {
-																	"description": "Defines the unique identifier of a WAF package.",
-																	"type": "string",
-																	"example": "a25a9a7e9c00afc1fb2e0245519d725b",
-																	"maxLength": 32,
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"priority": {
-																	"description": "Defines the order in which the individual WAF rule is executed within its rule group.",
-																	"type": "string",
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															}
-														},
-														{
-															"properties": {
-																"allowed_modes": {
-																	"description": "Defines the available modes for the current WAF rule.",
-																	"type": "array",
-																	"items": {
-																		"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
-																		"type": "string",
-																		"example": "on",
-																		"enum": [
-																			"on",
-																			"off"
-																		],
-																		"x-auditable": true
-																	},
-																	"example": [
-																		"on",
-																		"off"
-																	],
-																	"readOnly": true
-																},
-																"mode": {
-																	"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
-																	"type": "string",
-																	"example": "on",
-																	"enum": [
-																		"on",
-																		"off"
-																	],
-																	"x-auditable": true
-																}
-															},
-															"type": "object"
-														}
-													],
-													"required": [
-														"id",
-														"description",
-														"priority",
-														"allowed_modes",
-														"default_mode",
-														"mode",
-														"group",
-														"package_id"
-													],
-													"title": "Traditional (allow) WAF rule"
-												}
-											]
-										}
-									},
-									"type": "object"
-								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}

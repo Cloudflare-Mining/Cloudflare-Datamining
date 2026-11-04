@@ -724,6 +724,15 @@
 				}
 			},
 			{
+				"name": "skip_dns",
+				"in": "query",
+				"description": "Skip the DNS resolution-history lookup for faster responses. Defaults\nto `false`. Set to `true` if you only need categorization data; no\nDNS resolution history is returned for any domain. Matches the\n`skip_dns` parameter on `/intel/domain`.\n",
+				"schema": {
+					"type": "boolean",
+					"default": false
+				}
+			},
+			{
 				"name": "skip_ranking",
 				"in": "query",
 				"description": "**Deprecated.** Previously controlled whether the ranking lookup\nwas skipped (defaulted to `false`, meaning ranking ran). The\nendpoint's default behavior is being flipped — ranking is now\nopt-in via `include_ranking=true` — and this parameter will be\nsilently ignored. Remove it from your callers and use\n`include_ranking` instead.\n",

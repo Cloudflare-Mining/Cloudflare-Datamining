@@ -1,16 +1,15 @@
 {
-	"GET /accounts/{account_id}/workers/observability/agents/sessions": {
-		"operationId": "agents.sessions.list",
-		"summary": "List Agent sessions",
-		"description": "Lists sessions in which the specified agent participated, ordered by most recent activity. A session is identified by gen_ai.conversation.id and includes authorized activity from every agent in that conversation during the requested time range. Agent invocation and chat spans without a conversation ID are attributed only when their trace is associated with exactly one observed conversation.",
+	"GET /accounts/{account_id}/workers/observability/agents/traces": {
+		"operationId": "agents.traces.list",
+		"summary": "List Agent Traces",
+		"description": "Lists Traces with a named Agent invocation in the window, ordered by lastActivityMs, newest first, including work without a Conversation ID. The window defaults to the last 24 hours. Summaries include the Agent names and Conversation IDs seen, authorized Trace duration, chat input/output/total tokens, models, providers, LLM/tool call counts and span-error counts within the effective window.",
 		"parameters": [
 			{
 				"name": "service",
 				"in": "query",
-				"description": "Worker service name associated with the participating agent.",
-				"required": true,
+				"description": "Only include work in which an Agent of this Worker service took part.",
 				"schema": {
-					"description": "Worker service name associated with the participating agent.",
+					"description": "Only include work in which an Agent of this Worker service took part.",
 					"type": "string",
 					"maxLength": 512,
 					"minLength": 1
@@ -19,10 +18,9 @@
 			{
 				"name": "agent",
 				"in": "query",
-				"description": "Agent name reported in gen_ai.agent.name. The request is limited to conversations in which this service and agent participated.",
-				"required": true,
+				"description": "Only include work in which an Agent with this gen_ai.agent.name took part. With service, both must match the same Agent.",
 				"schema": {
-					"description": "Agent name reported in gen_ai.agent.name. The request is limited to conversations in which this service and agent participated.",
+					"description": "Only include work in which an Agent with this gen_ai.agent.name took part. With service, both must match the same Agent.",
 					"type": "string",
 					"maxLength": 512,
 					"minLength": 1
@@ -31,10 +29,9 @@
 			{
 				"name": "from",
 				"in": "query",
-				"description": "Start of the requested time range, as Unix epoch milliseconds. Values earlier than the 7-day retention boundary are clamped.",
-				"required": true,
+				"description": "Start of the search window, as Unix epoch milliseconds. Defaults to 24 hours before to. Clamped to the 7-day retention boundary; the effective value is in result_info.from.",
 				"schema": {
-					"description": "Start of the requested time range, as Unix epoch milliseconds. Values earlier than the 7-day retention boundary are clamped.",
+					"description": "Start of the search window, as Unix epoch milliseconds. Defaults to 24 hours before to. Clamped to the 7-day retention boundary; the effective value is in result_info.from.",
 					"type": "integer",
 					"minimum": 0
 				}
@@ -42,34 +39,33 @@
 			{
 				"name": "to",
 				"in": "query",
-				"description": "End of the requested time range, as Unix epoch milliseconds. Must be later than from.",
-				"required": true,
+				"description": "End of the search window, as Unix epoch milliseconds. Defaults to now.",
 				"schema": {
-					"description": "End of the requested time range, as Unix epoch milliseconds. Must be later than from.",
+					"description": "End of the search window, as Unix epoch milliseconds. Defaults to now.",
 					"type": "integer",
 					"minimum": 0
 				}
 			},
 			{
-				"name": "cursor",
-				"in": "query",
-				"description": "Opaque cursor from result_info.cursors.after in the previous response.",
-				"schema": {
-					"description": "Opaque cursor from result_info.cursors.after in the previous response.",
-					"type": "string",
-					"maxLength": 2048,
-					"minLength": 1
-				}
-			},
-			{
 				"name": "per_page",
 				"in": "query",
-				"description": "Maximum number of items to return. Defaults to 20 and cannot exceed 100.",
+				"description": "Maximum items to return per page. Defaults to 20.",
 				"schema": {
-					"description": "Maximum number of items to return. Defaults to 20 and cannot exceed 100.",
+					"description": "Maximum items to return per page. Defaults to 20.",
 					"type": "integer",
 					"maximum": 100,
 					"minimum": 1
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque cursor from result_info.cursors.after in the previous response. Send it with the same filters; its window replaces from and to.",
+				"schema": {
+					"description": "Opaque cursor from result_info.cursors.after in the previous response. Send it with the same filters; its window replaces from and to.",
+					"type": "string",
+					"maxLength": 4096,
+					"minLength": 1
 				}
 			}
 		],
@@ -115,72 +111,160 @@
 								"result": {
 									"type": "array",
 									"items": {
-										"type": "object",
-										"properties": {
-											"conversationId": {
-												"description": "OpenTelemetry gen_ai.conversation.id value that identifies the session within the account.",
-												"type": "string"
-											},
-											"inputTokens": {
-												"description": "Sum of input tokens reported by chat spans attributed to the session. Omitted when no span reports input-token usage.",
-												"type": "number"
-											},
-											"lastActiveMs": {
-												"description": "End of the latest observed agent invocation in the session, as Unix epoch milliseconds. Sessions are ordered by this value.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"models": {
-												"description": "Distinct models reported by chat spans attributed to the session.",
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"outputTokens": {
-												"description": "Sum of output tokens reported by chat spans attributed to the session. Omitted when no span reports output-token usage.",
-												"type": "number"
-											},
-											"providers": {
-												"description": "Distinct generative AI providers reported by chat spans attributed to the session.",
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"sessionDurationMs": {
-												"description": "Elapsed time from sessionStartMs to lastActiveMs, in milliseconds.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"sessionStartMs": {
-												"description": "Start of the earliest observed agent invocation in the session, as Unix epoch milliseconds.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"status": {
-												"description": "Observed status of agent invocation and chat spans attributed to the session. error means at least one span reported an error; observed_no_error means no error was observed. This does not guarantee that the session completed successfully.",
-												"type": "string",
-												"enum": [
-													"observed_no_error",
-													"error"
+										"allOf": [
+											{
+												"type": "object",
+												"properties": {
+													"errorCount": {
+														"description": "Recorded spans with a nonempty error or ERROR status. Counts spans, not distinct messages or incidents.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"errors": {
+														"description": "Error messages encountered during the trace, if any.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"inputTokens": {
+														"description": "Input tokens reported by chat spans in the authorized Trace window; null when none report input usage. Informational, not billing data.",
+														"type": "number",
+														"minimum": 0,
+														"nullable": true
+													},
+													"llmCallCount": {
+														"description": "Recorded chat spans in the authorized Trace window.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"llmErrorCount": {
+														"description": "Recorded chat spans with a nonempty error or ERROR status.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"models": {
+														"description": "Sorted distinct response models, falling back to request models, from chat spans in the authorized Trace window.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"outputTokens": {
+														"description": "Output tokens reported by chat spans in the authorized Trace window; null when none report output usage. Informational, not billing data.",
+														"type": "number",
+														"minimum": 0,
+														"nullable": true
+													},
+													"providers": {
+														"description": "Sorted distinct GenAI providers from chat spans in the authorized Trace window.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"rootSpanName": {
+														"description": "Name of the root span that initiated the trace.",
+														"type": "string"
+													},
+													"rootTransactionName": {
+														"description": "Logical transaction name for the root span.",
+														"type": "string"
+													},
+													"services": {
+														"description": "Authorized Worker services represented in the trace.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"spans": {
+														"description": "Total number of spans in the trace.",
+														"type": "number"
+													},
+													"toolCallCount": {
+														"description": "Recorded execute_tool spans in the authorized Trace window. Custom-named approval spans are not counted.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"toolErrorCount": {
+														"description": "Recorded execute_tool spans with a nonempty error or ERROR status.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"totalTokens": {
+														"description": "Input plus output tokens; null if either direction is unreported. Does not add cache or reasoning breakdowns.",
+														"type": "number",
+														"minimum": 0,
+														"nullable": true
+													},
+													"traceDurationMs": {
+														"description": "Total duration of the trace in milliseconds.",
+														"type": "number"
+													},
+													"traceEndMs": {
+														"description": "Trace end time as a Unix epoch in milliseconds.",
+														"type": "number"
+													},
+													"traceId": {
+														"description": "Unique identifier for the distributed trace.",
+														"type": "string"
+													},
+													"traceStartMs": {
+														"description": "Trace start time as a Unix epoch in milliseconds.",
+														"type": "number"
+													}
+												},
+												"required": [
+													"traceId",
+													"spans",
+													"traceStartMs",
+													"traceEndMs",
+													"traceDurationMs",
+													"rootSpanName",
+													"rootTransactionName",
+													"services",
+													"inputTokens",
+													"outputTokens",
+													"models",
+													"providers",
+													"totalTokens",
+													"llmCallCount",
+													"toolCallCount",
+													"errorCount",
+													"llmErrorCount",
+													"toolErrorCount"
 												]
 											},
-											"traceCount": {
-												"description": "Number of distinct traces associated with the session during the requested time range.",
-												"type": "integer",
-												"minimum": 0
+											{
+												"properties": {
+													"agents": {
+														"description": "Sorted distinct gen_ai.agent.name values of authorized Agent invocations in the Trace within the effective window. Includes every Agent in the Trace, not only those matching the agent filter.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"conversationIds": {
+														"description": "Sorted distinct gen_ai.conversation.id values of authorized Agent invocations in the Trace within the effective window. Empty when none are recorded.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														}
+													},
+													"lastActivityMs": {
+														"description": "Latest start of an authorized Agent invocation in the Trace within the effective window, as Unix epoch milliseconds. The Trace list is ordered by this value, newest first.",
+														"type": "integer",
+														"minimum": 0
+													}
+												},
+												"required": [
+													"lastActivityMs",
+													"agents",
+													"conversationIds"
+												],
+												"type": "object"
 											}
-										},
-										"required": [
-											"conversationId",
-											"sessionStartMs",
-											"lastActiveMs",
-											"sessionDurationMs",
-											"traceCount",
-											"status",
-											"models",
-											"providers"
 										]
 									}
 								},
@@ -188,7 +272,7 @@
 									"type": "object",
 									"properties": {
 										"count": {
-											"description": "Number of items returned on this page.",
+											"description": "Items returned on this page. Not a total: a page can be short or empty while more results remain.",
 											"type": "integer",
 											"minimum": 0
 										},
@@ -196,7 +280,7 @@
 											"type": "object",
 											"properties": {
 												"after": {
-													"description": "Opaque cursor for the next page, or null when there are no more results.",
+													"description": "Opaque cursor for the next page. Only null means there are no more results; earlier pages can be short or empty.",
 													"type": "string",
 													"nullable": true
 												}
@@ -205,15 +289,27 @@
 												"after"
 											]
 										},
+										"from": {
+											"description": "Effective start of the time window, after defaults and retention clamping.",
+											"type": "integer",
+											"minimum": 0
+										},
 										"per_page": {
-											"description": "Maximum number of items requested for this page.",
+											"description": "Maximum items requested for this page.",
 											"type": "integer",
 											"minimum": 1
+										},
+										"to": {
+											"description": "Effective end of the time window.",
+											"type": "integer",
+											"minimum": 0
 										}
 									},
 									"required": [
-										"per_page",
 										"count",
+										"per_page",
+										"from",
+										"to",
 										"cursors"
 									]
 								},
@@ -367,6 +463,63 @@
 												"type": "string",
 												"enum": [
 													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
 												]
 											}
 										},
@@ -586,64 +739,38 @@
 			"Workers Observability Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "observability.agents.sessions",
+		"x-fern-sdk-group-name": "observability.agents.traces",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-aliases": [
 			{
-				"x-fern-sdk-group-name": "o11y.agents.sessions",
+				"x-fern-sdk-group-name": "o11y.agents.traces",
 				"x-fern-sdk-method-name": "list"
 			}
 		],
 		"x-stability": "beta"
 	},
-	"GET /accounts/{account_id}/workers/observability/agents/sessions/{conversationId}/runs": {
-		"operationId": "agents.sessions.runs.list",
-		"summary": "List Agent session runs",
-		"description": "Lists the traces associated with a session, ordered by most recent activity. The service and agent parameters must identify an agent that participated in the conversation. Results include every authorized trace containing an agent invocation in that conversation during the requested time range.",
+	"GET /accounts/{account_id}/workers/observability/agents/traces/{traceId}": {
+		"operationId": "agents.traces.get",
+		"summary": "Get an Agent Trace",
+		"description": "Returns the summary of one Trace containing named Agent activity, with the same fields as the Trace list. Searches the full 7-day retention unless from or to narrow it. List the Trace's events with /agents/traces/{traceId}/events.",
 		"parameters": [
 			{
-				"name": "conversationId",
+				"name": "traceId",
 				"in": "path",
-				"description": "OpenTelemetry gen_ai.conversation.id value that identifies the session.",
+				"description": "Trace ID: 32 hexadecimal characters, matched case-insensitively.",
 				"required": true,
 				"schema": {
-					"description": "OpenTelemetry gen_ai.conversation.id value that identifies the session.",
+					"description": "Trace ID: 32 hexadecimal characters, matched case-insensitively.",
 					"type": "string",
-					"maxLength": 512,
-					"minLength": 1
-				}
-			},
-			{
-				"name": "service",
-				"in": "query",
-				"description": "Worker service name associated with the participating agent.",
-				"required": true,
-				"schema": {
-					"description": "Worker service name associated with the participating agent.",
-					"type": "string",
-					"maxLength": 512,
-					"minLength": 1
-				}
-			},
-			{
-				"name": "agent",
-				"in": "query",
-				"description": "Agent name reported in gen_ai.agent.name. The request is limited to conversations in which this service and agent participated.",
-				"required": true,
-				"schema": {
-					"description": "Agent name reported in gen_ai.agent.name. The request is limited to conversations in which this service and agent participated.",
-					"type": "string",
-					"maxLength": 512,
-					"minLength": 1
+					"pattern": "^[0-9a-f]{32}$"
 				}
 			},
 			{
 				"name": "from",
 				"in": "query",
-				"description": "Start of the requested time range, as Unix epoch milliseconds. Values earlier than the 7-day retention boundary are clamped.",
-				"required": true,
+				"description": "Optional. Narrows the search, which by default covers the full 7-day retention, so any retained Trace ID can be fetched without a window. Start as Unix epoch milliseconds; the effective value is in result_info.from.",
 				"schema": {
-					"description": "Start of the requested time range, as Unix epoch milliseconds. Values earlier than the 7-day retention boundary are clamped.",
+					"description": "Optional. Narrows the search, which by default covers the full 7-day retention, so any retained Trace ID can be fetched without a window. Start as Unix epoch milliseconds; the effective value is in result_info.from.",
 					"type": "integer",
 					"minimum": 0
 				}
@@ -651,34 +778,11 @@
 			{
 				"name": "to",
 				"in": "query",
-				"description": "End of the requested time range, as Unix epoch milliseconds. Must be later than from.",
-				"required": true,
+				"description": "Optional. Narrows the search; end as Unix epoch milliseconds. Defaults to now.",
 				"schema": {
-					"description": "End of the requested time range, as Unix epoch milliseconds. Must be later than from.",
+					"description": "Optional. Narrows the search; end as Unix epoch milliseconds. Defaults to now.",
 					"type": "integer",
 					"minimum": 0
-				}
-			},
-			{
-				"name": "cursor",
-				"in": "query",
-				"description": "Opaque cursor from result_info.cursors.after in the previous response.",
-				"schema": {
-					"description": "Opaque cursor from result_info.cursors.after in the previous response.",
-					"type": "string",
-					"maxLength": 2048,
-					"minLength": 1
-				}
-			},
-			{
-				"name": "per_page",
-				"in": "query",
-				"description": "Maximum number of items to return. Defaults to 20 and cannot exceed 100.",
-				"schema": {
-					"description": "Maximum number of items to return. Defaults to 20 and cannot exceed 100.",
-					"type": "integer",
-					"maximum": 100,
-					"minimum": 1
 				}
 			}
 		],
@@ -722,129 +826,179 @@
 									}
 								},
 								"result": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"conversationId": {
-												"description": "OpenTelemetry gen_ai.conversation.id value that identifies the session containing the run.",
-												"type": "string"
-											},
-											"errors": {
-												"description": "Distinct errors reported by the observed spans in the trace.",
-												"type": "array",
-												"items": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errorCount": {
+													"description": "Recorded spans with a nonempty error or ERROR status. Counts spans, not distinct messages or incidents.",
+													"type": "integer",
+													"minimum": 0
+												},
+												"errors": {
+													"description": "Error messages encountered during the trace, if any.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"inputTokens": {
+													"description": "Input tokens reported by chat spans in the authorized Trace window; null when none report input usage. Informational, not billing data.",
+													"type": "number",
+													"minimum": 0,
+													"nullable": true
+												},
+												"llmCallCount": {
+													"description": "Recorded chat spans in the authorized Trace window.",
+													"type": "integer",
+													"minimum": 0
+												},
+												"llmErrorCount": {
+													"description": "Recorded chat spans with a nonempty error or ERROR status.",
+													"type": "integer",
+													"minimum": 0
+												},
+												"models": {
+													"description": "Sorted distinct response models, falling back to request models, from chat spans in the authorized Trace window.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"outputTokens": {
+													"description": "Output tokens reported by chat spans in the authorized Trace window; null when none report output usage. Informational, not billing data.",
+													"type": "number",
+													"minimum": 0,
+													"nullable": true
+												},
+												"providers": {
+													"description": "Sorted distinct GenAI providers from chat spans in the authorized Trace window.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"rootSpanName": {
+													"description": "Name of the root span that initiated the trace.",
 													"type": "string"
+												},
+												"rootTransactionName": {
+													"description": "Logical transaction name for the root span.",
+													"type": "string"
+												},
+												"services": {
+													"description": "Authorized Worker services represented in the trace.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"spans": {
+													"description": "Total number of spans in the trace.",
+													"type": "number"
+												},
+												"toolCallCount": {
+													"description": "Recorded execute_tool spans in the authorized Trace window. Custom-named approval spans are not counted.",
+													"type": "integer",
+													"minimum": 0
+												},
+												"toolErrorCount": {
+													"description": "Recorded execute_tool spans with a nonempty error or ERROR status.",
+													"type": "integer",
+													"minimum": 0
+												},
+												"totalTokens": {
+													"description": "Input plus output tokens; null if either direction is unreported. Does not add cache or reasoning breakdowns.",
+													"type": "number",
+													"minimum": 0,
+													"nullable": true
+												},
+												"traceDurationMs": {
+													"description": "Total duration of the trace in milliseconds.",
+													"type": "number"
+												},
+												"traceEndMs": {
+													"description": "Trace end time as a Unix epoch in milliseconds.",
+													"type": "number"
+												},
+												"traceId": {
+													"description": "Unique identifier for the distributed trace.",
+													"type": "string"
+												},
+												"traceStartMs": {
+													"description": "Trace start time as a Unix epoch in milliseconds.",
+													"type": "number"
 												}
 											},
-											"inputTokens": {
-												"description": "Sum of input tokens reported by chat spans attributed to the session within this trace. Omitted when none report input-token usage.",
-												"type": "number"
-											},
-											"models": {
-												"description": "Distinct models reported by chat spans attributed to the session within this trace.",
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"outputTokens": {
-												"description": "Sum of output tokens reported by chat spans attributed to the session within this trace. Omitted when none report output-token usage.",
-												"type": "number"
-											},
-											"providers": {
-												"description": "Distinct generative AI providers reported by chat spans attributed to the session within this trace.",
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"services": {
-												"description": "Distinct Worker services represented by the observed spans in the trace.",
-												"type": "array",
-												"items": {
-													"type": "string"
-												}
-											},
-											"spans": {
-												"description": "Number of observed spans in the trace during the requested time range.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"status": {
-												"description": "Observed trace status. error means at least one observed span reported an error; completed means no error was observed. This does not guarantee that the complete trace was observed.",
-												"type": "string",
-												"enum": [
-													"completed",
-													"error"
-												]
-											},
-											"traceDurationMs": {
-												"description": "Elapsed time from traceStartMs to traceEndMs, in milliseconds.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"traceEndMs": {
-												"description": "End of the latest observed span in the trace, as Unix epoch milliseconds.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"traceId": {
-												"description": "Trace identifier for the run.",
-												"type": "string"
-											},
-											"traceStartMs": {
-												"description": "Start of the earliest observed span in the trace, as Unix epoch milliseconds.",
-												"type": "integer",
-												"minimum": 0
-											}
+											"required": [
+												"traceId",
+												"spans",
+												"traceStartMs",
+												"traceEndMs",
+												"traceDurationMs",
+												"rootSpanName",
+												"rootTransactionName",
+												"services",
+												"inputTokens",
+												"outputTokens",
+												"models",
+												"providers",
+												"totalTokens",
+												"llmCallCount",
+												"toolCallCount",
+												"errorCount",
+												"llmErrorCount",
+												"toolErrorCount"
+											]
 										},
-										"required": [
-											"traceId",
-											"traceStartMs",
-											"traceEndMs",
-											"traceDurationMs",
-											"spans",
-											"services",
-											"errors",
-											"status",
-											"models",
-											"providers",
-											"conversationId"
-										]
-									}
+										{
+											"properties": {
+												"agents": {
+													"description": "Sorted distinct gen_ai.agent.name values of authorized Agent invocations in the Trace within the effective window. Includes every Agent in the Trace, not only those matching the agent filter.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"conversationIds": {
+													"description": "Sorted distinct gen_ai.conversation.id values of authorized Agent invocations in the Trace within the effective window. Empty when none are recorded.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												},
+												"lastActivityMs": {
+													"description": "Latest start of an authorized Agent invocation in the Trace within the effective window, as Unix epoch milliseconds. The Trace list is ordered by this value, newest first.",
+													"type": "integer",
+													"minimum": 0
+												}
+											},
+											"required": [
+												"lastActivityMs",
+												"agents",
+												"conversationIds"
+											],
+											"type": "object"
+										}
+									]
 								},
 								"result_info": {
 									"type": "object",
 									"properties": {
-										"count": {
-											"description": "Number of items returned on this page.",
+										"from": {
+											"description": "Effective start of the time window, after defaults and retention clamping.",
 											"type": "integer",
 											"minimum": 0
 										},
-										"cursors": {
-											"type": "object",
-											"properties": {
-												"after": {
-													"description": "Opaque cursor for the next page, or null when there are no more results.",
-													"type": "string",
-													"nullable": true
-												}
-											},
-											"required": [
-												"after"
-											]
-										},
-										"per_page": {
-											"description": "Maximum number of items requested for this page.",
+										"to": {
+											"description": "Effective end of the time window.",
 											"type": "integer",
-											"minimum": 1
+											"minimum": 0
 										}
 									},
 									"required": [
-										"per_page",
-										"count",
-										"cursors"
+										"from",
+										"to"
 									]
 								},
 								"success": {
@@ -997,6 +1151,63 @@
 												"type": "string",
 												"enum": [
 													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
 												]
 											}
 										},
@@ -1216,20 +1427,1030 @@
 			"Workers Observability Read"
 		],
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "observability.agents.sessions",
-		"x-fern-sdk-method-name": "runs",
+		"x-fern-sdk-group-name": "observability.agents.traces",
+		"x-fern-sdk-method-name": "get",
 		"x-forge-aliases": [
 			{
-				"x-fern-sdk-group-name": "o11y.agents.sessions",
-				"x-fern-sdk-method-name": "runs"
+				"x-fern-sdk-group-name": "o11y.agents.traces",
+				"x-fern-sdk-method-name": "get"
 			}
 		],
-		"x-forge-params": {
-			"conversationId": {
-				"positional": true,
-				"required": true
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/workers/observability/agents/traces/{traceId}/events": {
+		"operationId": "agents.traces.events",
+		"summary": "List Agent Trace events",
+		"description": "Returns a page of authorized canonical otel events for a Trace containing named Agent activity, using the existing events-query flow. Searches the full 7-day retention unless from or to narrow it. Events are ordered by event timestamp and ID, newest first. Continue with result_info.cursors.after; one page is not a complete span tree.",
+		"parameters": [
+			{
+				"name": "traceId",
+				"in": "path",
+				"description": "Trace ID: 32 hexadecimal characters, matched case-insensitively.",
+				"required": true,
+				"schema": {
+					"description": "Trace ID: 32 hexadecimal characters, matched case-insensitively.",
+					"type": "string",
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			},
+			{
+				"name": "from",
+				"in": "query",
+				"description": "Optional. Narrows the search, which by default covers the full 7-day retention, so any retained Trace ID can be fetched without a window. Start as Unix epoch milliseconds; the effective value is in result_info.from.",
+				"schema": {
+					"description": "Optional. Narrows the search, which by default covers the full 7-day retention, so any retained Trace ID can be fetched without a window. Start as Unix epoch milliseconds; the effective value is in result_info.from.",
+					"type": "integer",
+					"minimum": 0
+				}
+			},
+			{
+				"name": "to",
+				"in": "query",
+				"description": "Optional. Narrows the search; end as Unix epoch milliseconds. Defaults to now.",
+				"schema": {
+					"description": "Optional. Narrows the search; end as Unix epoch milliseconds. Defaults to now.",
+					"type": "integer",
+					"minimum": 0
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Maximum items to return per page. Defaults to 100.",
+				"schema": {
+					"description": "Maximum items to return per page. Defaults to 100.",
+					"type": "integer",
+					"maximum": 500,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque cursor from result_info.cursors.after in the previous response. Send it with the same filters; its window replaces from and to.",
+				"schema": {
+					"description": "Opaque cursor from result_info.cursors.after in the previous response. Send it with the same filters; its window replaces from and to.",
+					"type": "string",
+					"maxLength": 4096,
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"enum": [
+													"Successful request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"description": "A single telemetry event representing a log line, span, or metric data point emitted by a Worker.",
+										"type": "object",
+										"properties": {
+											"$containers": {
+												"description": "Cloudflare Containers event information that enriches your logs for identifying and debugging issues.",
+												"type": "object",
+												"additionalProperties": true
+											},
+											"$metadata": {
+												"description": "Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation.",
+												"type": "object",
+												"properties": {
+													"account": {
+														"description": "Cloudflare account identifier.",
+														"type": "string"
+													},
+													"cloudService": {
+														"description": "Cloudflare product that generated this event (e.g. workers, pages).",
+														"type": "string"
+													},
+													"coldStart": {
+														"type": "integer",
+														"exclusiveMinimum": true,
+														"minimum": 0
+													},
+													"cost": {
+														"description": "Estimated cost units for this invocation.",
+														"type": "integer",
+														"exclusiveMinimum": true,
+														"minimum": 0
+													},
+													"duration": {
+														"description": "Span duration in milliseconds.",
+														"type": "integer",
+														"exclusiveMinimum": true,
+														"minimum": 0
+													},
+													"endTime": {
+														"description": "Span end time as a Unix epoch in milliseconds.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"endTimeNs": {
+														"description": "Span end time as a Unix epoch in nanoseconds.",
+														"type": "string"
+													},
+													"error": {
+														"description": "Error message, present when the log represents an error.",
+														"type": "string"
+													},
+													"errorTemplate": {
+														"description": "Templatized version of the error message used for grouping similar errors.",
+														"type": "string"
+													},
+													"eventSize": {
+														"description": "Size of the stored telemetry event in bytes.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"fingerprint": {
+														"description": "Content-based fingerprint used to group similar events.",
+														"type": "string"
+													},
+													"id": {
+														"description": "Unique event ID. Use as the cursor value for offset-based pagination.",
+														"type": "string"
+													},
+													"level": {
+														"description": "Log level (e.g. log, debug, info, warn, error).",
+														"type": "string"
+													},
+													"message": {
+														"description": "Log message text.",
+														"type": "string"
+													},
+													"messageTemplate": {
+														"description": "Templatized version of the log message used for grouping similar messages.",
+														"type": "string"
+													},
+													"metricName": {
+														"description": "Metric name when the event represents a metric data point.",
+														"type": "string"
+													},
+													"origin": {
+														"description": "Origin of the event (e.g. fetch, scheduled, queue).",
+														"type": "string"
+													},
+													"parentSpanId": {
+														"description": "Span ID of the parent span in the trace hierarchy.",
+														"type": "string"
+													},
+													"provider": {
+														"description": "Infrastructure provider identifier.",
+														"type": "string"
+													},
+													"rayId": {
+														"description": "Cloudflare Ray ID from the `cf-ray` header of the request that triggered the invocation.",
+														"type": "string"
+													},
+													"region": {
+														"description": "Cloudflare data center / region that handled the request.",
+														"type": "string"
+													},
+													"requestId": {
+														"description": "Cloudflare request ID that ties all logs from a single invocation together.",
+														"type": "string"
+													},
+													"service": {
+														"description": "Worker script name that produced this event.",
+														"type": "string"
+													},
+													"spanId": {
+														"description": "Span ID for this individual unit of work within a trace.",
+														"type": "string"
+													},
+													"spanName": {
+														"description": "Human-readable name for this span.",
+														"type": "string"
+													},
+													"spanStatus": {
+														"description": "OpenTelemetry span status. Present only on spans. `unset` when the span did not set a status, including spans recorded before status was captured.",
+														"type": "string",
+														"enum": [
+															"unset",
+															"ok",
+															"error"
+														]
+													},
+													"spanStatusMessage": {
+														"description": "OpenTelemetry span status message. Present only on spans when the status is `error` and a message was set.",
+														"type": "string"
+													},
+													"stackId": {
+														"description": "Stack / deployment identifier.",
+														"type": "string"
+													},
+													"startTime": {
+														"description": "Span start time as a Unix epoch in milliseconds.",
+														"type": "integer",
+														"minimum": 0
+													},
+													"startTimeNs": {
+														"description": "Span start time as a Unix epoch in nanoseconds.",
+														"type": "string"
+													},
+													"statusCode": {
+														"description": "HTTP response status code returned by the Worker.",
+														"type": "integer",
+														"exclusiveMinimum": true,
+														"minimum": 0
+													},
+													"timestampNs": {
+														"description": "Event time as a Unix epoch in nanoseconds.",
+														"type": "string"
+													},
+													"traceDuration": {
+														"description": "Total duration of the entire trace in milliseconds.",
+														"type": "integer",
+														"exclusiveMinimum": true,
+														"minimum": 0
+													},
+													"traceId": {
+														"description": "Distributed trace ID linking spans across services.",
+														"type": "string"
+													},
+													"transactionName": {
+														"description": "Logical transaction name for this request.",
+														"type": "string"
+													},
+													"trigger": {
+														"description": "What triggered the invocation (e.g. GET /users, POST /orders, queue message).",
+														"type": "string"
+													},
+													"type": {
+														"description": "Event type classifier (e.g. cf-worker-event, cf-worker-log).",
+														"type": "string"
+													},
+													"url": {
+														"description": "Request URL that triggered the Worker invocation.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id"
+												]
+											},
+											"$workers": {
+												"description": "Cloudflare Workers event information that enriches your logs for identifying and debugging issues.",
+												"anyOf": [
+													{
+														"properties": {
+															"durableObjectId": {
+																"type": "string"
+															},
+															"entrypoint": {
+																"type": "string"
+															},
+															"event": {
+																"type": "object",
+																"additionalProperties": true
+															},
+															"eventType": {
+																"type": "string",
+																"enum": [
+																	"fetch",
+																	"scheduled",
+																	"alarm",
+																	"cron",
+																	"queue",
+																	"email",
+																	"tail",
+																	"rpc",
+																	"jsrpc",
+																	"websocket",
+																	"workflow",
+																	"unknown"
+																]
+															},
+															"executionModel": {
+																"type": "string",
+																"enum": [
+																	"durableObject",
+																	"stateless"
+																]
+															},
+															"outcome": {
+																"type": "string"
+															},
+															"preview": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"slug": {
+																		"type": "string"
+																	}
+																}
+															},
+															"requestId": {
+																"type": "string"
+															},
+															"scriptName": {
+																"type": "string"
+															},
+															"scriptVersion": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"tag": {
+																		"type": "string"
+																	}
+																}
+															},
+															"spanId": {
+																"type": "string"
+															},
+															"traceId": {
+																"type": "string"
+															},
+															"truncated": {
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"scriptName",
+															"eventType"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"cpuTimeMs": {
+																"type": "number"
+															},
+															"diagnosticsChannelEvents": {
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"channel": {
+																			"type": "string"
+																		},
+																		"message": {
+																			"type": "string"
+																		},
+																		"timestamp": {
+																			"type": "number"
+																		}
+																	},
+																	"required": [
+																		"timestamp",
+																		"channel",
+																		"message"
+																	],
+																	"type": "object"
+																}
+															},
+															"dispatchNamespace": {
+																"type": "string"
+															},
+															"durableObjectId": {
+																"type": "string"
+															},
+															"entrypoint": {
+																"type": "string"
+															},
+															"event": {
+																"type": "object",
+																"additionalProperties": true
+															},
+															"eventType": {
+																"type": "string",
+																"enum": [
+																	"fetch",
+																	"scheduled",
+																	"alarm",
+																	"cron",
+																	"queue",
+																	"email",
+																	"tail",
+																	"rpc",
+																	"jsrpc",
+																	"websocket",
+																	"workflow",
+																	"unknown"
+																]
+															},
+															"executionModel": {
+																"type": "string",
+																"enum": [
+																	"durableObject",
+																	"stateless"
+																]
+															},
+															"outcome": {
+																"type": "string"
+															},
+															"preview": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"slug": {
+																		"type": "string"
+																	}
+																}
+															},
+															"requestId": {
+																"type": "string"
+															},
+															"scriptName": {
+																"type": "string"
+															},
+															"scriptVersion": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"tag": {
+																		"type": "string"
+																	}
+																}
+															},
+															"spanId": {
+																"type": "string"
+															},
+															"traceId": {
+																"type": "string"
+															},
+															"truncated": {
+																"type": "boolean"
+															},
+															"wallTimeMs": {
+																"type": "number"
+															}
+														},
+														"required": [
+															"scriptName",
+															"outcome",
+															"eventType",
+															"wallTimeMs",
+															"cpuTimeMs"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"dataset": {
+												"description": "The dataset this event belongs to (e.g. cloudflare-workers).",
+												"type": "string"
+											},
+											"source": {
+												"description": "Raw log payload. May be a string or a structured object depending on how the log was emitted.",
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"additionalProperties": true,
+														"type": "object"
+													}
+												]
+											},
+											"timestamp": {
+												"description": "Event timestamp as a Unix epoch in milliseconds.",
+												"type": "integer",
+												"minimum": 0
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"dataset",
+											"timestamp",
+											"source",
+											"$metadata"
+										]
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"description": "Items returned on this page. Not a total: a page can be short or empty while more results remain.",
+											"type": "integer",
+											"minimum": 0
+										},
+										"cursors": {
+											"type": "object",
+											"properties": {
+												"after": {
+													"description": "Opaque cursor for the next page. Only null means there are no more results; earlier pages can be short or empty.",
+													"type": "string",
+													"nullable": true
+												}
+											},
+											"required": [
+												"after"
+											]
+										},
+										"from": {
+											"description": "Effective start of the time window, after defaults and retention clamping.",
+											"type": "integer",
+											"minimum": 0
+										},
+										"per_page": {
+											"description": "Maximum items requested for this page.",
+											"type": "integer",
+											"minimum": 1
+										},
+										"to": {
+											"description": "Effective end of the time window.",
+											"type": "integer",
+											"minimum": 0
+										}
+									},
+									"required": [
+										"count",
+										"per_page",
+										"from",
+										"to",
+										"cursors"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result",
+								"result_info"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Bad Request"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Unauthorized"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Forbidden"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Not found"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too many requests",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Too many requests"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Internal error"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"504": {
+				"description": "Gateway timeout",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string",
+												"enum": [
+													"Gateway timeout"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							]
+						}
+					}
+				}
 			}
 		},
+		"tags": [
+			"Agents"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "observability.agents.traces",
+		"x-fern-sdk-method-name": "events",
+		"x-forge-aliases": [
+			{
+				"x-fern-sdk-group-name": "o11y.agents.traces",
+				"x-fern-sdk-method-name": "events"
+			}
+		],
 		"x-stability": "beta"
 	}
 }

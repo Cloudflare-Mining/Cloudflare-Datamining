@@ -5769,6 +5769,88 @@
 														"title": "Polish WebP Conversion"
 													},
 													{
+														"description": "When the client requesting the image supports the AVIF image codec, and AVIF offers a performance advantage over the original image format, Cloudflare will serve an AVIF version of the original image.",
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"type": "boolean",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string",
+																		"example": "development_mode"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"nullable": true,
+																		"readOnly": true
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on",
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			},
+																			{
+																				"type": "object"
+																			},
+																			{
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"type": "string",
+																		"example": "avif",
+																		"enum": [
+																			"avif"
+																		]
+																	},
+																	"value": {
+																		"description": "Value of the zone setting.",
+																		"type": "string",
+																		"default": "off",
+																		"enum": [
+																			"off",
+																			"on"
+																		]
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"title": "Polish AVIF Conversion"
+													},
+													{
 														"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-).",
 														"allOf": [
 															{
@@ -11520,6 +11602,88 @@
 														}
 													],
 													"title": "Polish WebP Conversion"
+												},
+												{
+													"description": "When the client requesting the image supports the AVIF image codec, and AVIF offers a performance advantage over the original image format, Cloudflare will serve an AVIF version of the original image.",
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"type": "boolean",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string",
+																	"example": "development_mode"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
+																	"readOnly": true
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on",
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		},
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"type": "string",
+																	"example": "avif",
+																	"enum": [
+																		"avif"
+																	]
+																},
+																"value": {
+																	"description": "Value of the zone setting.",
+																	"type": "string",
+																	"default": "off",
+																	"enum": [
+																		"off",
+																		"on"
+																	]
+																}
+															},
+															"type": "object"
+														}
+													],
+													"title": "Polish AVIF Conversion"
 												},
 												{
 													"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-).",
@@ -20580,6 +20744,88 @@
 									"title": "Polish WebP Conversion"
 								},
 								{
+									"description": "When the client requesting the image supports the AVIF image codec, and AVIF offers a performance advantage over the original image format, Cloudflare will serve an AVIF version of the original image.",
+									"allOf": [
+										{
+											"properties": {
+												"editable": {
+													"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+													"type": "boolean",
+													"enum": [
+														true,
+														false
+													],
+													"readOnly": true
+												},
+												"id": {
+													"description": "Identifier of the zone setting.",
+													"type": "string",
+													"example": "development_mode"
+												},
+												"modified_on": {
+													"description": "last time this setting was modified.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"nullable": true,
+													"readOnly": true
+												},
+												"value": {
+													"description": "Current value of the zone setting.",
+													"example": "on",
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														},
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													]
+												}
+											},
+											"required": [
+												"id",
+												"value"
+											]
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "ID of the zone setting.",
+													"type": "string",
+													"example": "avif",
+													"enum": [
+														"avif"
+													]
+												},
+												"value": {
+													"description": "Value of the zone setting.",
+													"type": "string",
+													"default": "off",
+													"enum": [
+														"off",
+														"on"
+													]
+												}
+											},
+											"type": "object"
+										}
+									],
+									"title": "Polish AVIF Conversion"
+								},
+								{
 									"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-).",
 									"allOf": [
 										{
@@ -26097,6 +26343,88 @@
 														"title": "Polish WebP Conversion"
 													},
 													{
+														"description": "When the client requesting the image supports the AVIF image codec, and AVIF offers a performance advantage over the original image format, Cloudflare will serve an AVIF version of the original image.",
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"type": "boolean",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"type": "string",
+																		"example": "development_mode"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"nullable": true,
+																		"readOnly": true
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on",
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			},
+																			{
+																				"type": "object"
+																			},
+																			{
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"type": "string",
+																		"example": "avif",
+																		"enum": [
+																			"avif"
+																		]
+																	},
+																	"value": {
+																		"description": "Value of the zone setting.",
+																		"type": "string",
+																		"default": "off",
+																		"enum": [
+																			"off",
+																			"on"
+																		]
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"title": "Polish AVIF Conversion"
+													},
+													{
 														"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-).",
 														"allOf": [
 															{
@@ -27081,6 +27409,15 @@
 												"default": "",
 												"maxLength": 256,
 												"pattern": "^([a-z0-9]+(-[a-z0-9]+)*(,[a-z0-9]+(-[a-z0-9]+)*)*)?$"
+											},
+											{
+												"description": "Value of the zone setting.",
+												"type": "string",
+												"default": "off",
+												"enum": [
+													"off",
+													"on"
+												]
 											},
 											{
 												"description": "Value of the zone setting.",
@@ -32620,6 +32957,88 @@
 														}
 													],
 													"title": "Polish WebP Conversion"
+												},
+												{
+													"description": "When the client requesting the image supports the AVIF image codec, and AVIF offers a performance advantage over the original image format, Cloudflare will serve an AVIF version of the original image.",
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"type": "boolean",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string",
+																	"example": "development_mode"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"nullable": true,
+																	"readOnly": true
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on",
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		},
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		}
+																	]
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"type": "string",
+																	"example": "avif",
+																	"enum": [
+																		"avif"
+																	]
+																},
+																"value": {
+																	"description": "Value of the zone setting.",
+																	"type": "string",
+																	"default": "off",
+																	"enum": [
+																		"off",
+																		"on"
+																	]
+																}
+															},
+															"type": "object"
+														}
+													],
+													"title": "Polish AVIF Conversion"
 												},
 												{
 													"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-).",

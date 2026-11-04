@@ -1992,6 +1992,104 @@
 										"maxItems": 8,
 										"minItems": 1
 									},
+									"exclusions": {
+										"type": "object",
+										"default": {
+											"actors": [],
+											"attacker_countries": [],
+											"categories": [],
+											"cves": [],
+											"keywords": [],
+											"target_countries": [],
+											"target_industries": [],
+											"techniques": []
+										},
+										"additionalProperties": false,
+										"properties": {
+											"actors": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"attacker_countries": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"categories": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"cves": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"keywords": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 5
+											},
+											"target_countries": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"target_industries": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"techniques": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											}
+										},
+										"required": [
+											"actors",
+											"attacker_countries",
+											"target_countries",
+											"target_industries",
+											"categories",
+											"techniques",
+											"cves",
+											"keywords"
+										]
+									},
 									"indicators": {
 										"type": "array",
 										"items": {
@@ -2091,7 +2189,8 @@
 																	"contains",
 																	"startsWith",
 																	"endsWith",
-																	"find"
+																	"find",
+																	"notContains"
 																]
 															},
 															"value": {
@@ -2133,7 +2232,8 @@
 															"op": {
 																"type": "string",
 																"enum": [
-																	"in"
+																	"in",
+																	"notIn"
 																]
 															},
 															"value": {
@@ -2205,7 +2305,8 @@
 															"op": {
 																"type": "string",
 																"enum": [
-																	"in"
+																	"in",
+																	"notIn"
 																]
 															},
 															"value": {
@@ -2315,7 +2416,8 @@
 															"op": {
 																"type": "string",
 																"enum": [
-																	"in"
+																	"in",
+																	"notIn"
 																]
 															},
 															"value": {
@@ -2648,7 +2750,8 @@
 																		"contains",
 																		"startsWith",
 																		"endsWith",
-																		"find"
+																		"find",
+																		"notContains"
 																	]
 																},
 																"value": {
@@ -2690,7 +2793,8 @@
 																"op": {
 																	"type": "string",
 																	"enum": [
-																		"in"
+																		"in",
+																		"notIn"
 																	]
 																},
 																"value": {
@@ -2762,7 +2866,8 @@
 																"op": {
 																	"type": "string",
 																	"enum": [
-																		"in"
+																		"in",
+																		"notIn"
 																	]
 																},
 																"value": {
@@ -2872,7 +2977,8 @@
 																"op": {
 																	"type": "string",
 																	"enum": [
-																		"in"
+																		"in",
+																		"notIn"
 																	]
 																},
 																"value": {
@@ -3046,6 +3152,104 @@
 													"maxItems": 8,
 													"minItems": 1
 												},
+												"exclusions": {
+													"type": "object",
+													"default": {
+														"actors": [],
+														"attacker_countries": [],
+														"categories": [],
+														"cves": [],
+														"keywords": [],
+														"target_countries": [],
+														"target_industries": [],
+														"techniques": []
+													},
+													"additionalProperties": false,
+													"properties": {
+														"actors": {
+															"type": "array",
+															"items": {
+																"maxLength": 200,
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 20
+														},
+														"attacker_countries": {
+															"type": "array",
+															"items": {
+																"maxLength": 200,
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 20
+														},
+														"categories": {
+															"type": "array",
+															"items": {
+																"maxLength": 200,
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 20
+														},
+														"cves": {
+															"type": "array",
+															"items": {
+																"maxLength": 200,
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 20
+														},
+														"keywords": {
+															"type": "array",
+															"items": {
+																"maxLength": 200,
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 5
+														},
+														"target_countries": {
+															"type": "array",
+															"items": {
+																"maxLength": 200,
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 20
+														},
+														"target_industries": {
+															"type": "array",
+															"items": {
+																"maxLength": 200,
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 20
+														},
+														"techniques": {
+															"type": "array",
+															"items": {
+																"maxLength": 200,
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 20
+														}
+													},
+													"required": [
+														"actors",
+														"attacker_countries",
+														"target_countries",
+														"target_industries",
+														"categories",
+														"techniques",
+														"cves",
+														"keywords"
+													]
+												},
 												"indicators": {
 													"type": "array",
 													"items": {
@@ -3089,6 +3293,7 @@
 															"no_matching_category",
 															"invalid_keyword",
 															"branch_limit",
+															"filter_limit",
 															"indicators_not_supported",
 															"no_matching_field"
 														]
@@ -3660,6 +3865,104 @@
 										"maxItems": 8,
 										"minItems": 1
 									},
+									"exclusions": {
+										"type": "object",
+										"default": {
+											"actors": [],
+											"attacker_countries": [],
+											"categories": [],
+											"cves": [],
+											"keywords": [],
+											"target_countries": [],
+											"target_industries": [],
+											"techniques": []
+										},
+										"additionalProperties": false,
+										"properties": {
+											"actors": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"attacker_countries": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"categories": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"cves": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"keywords": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 5
+											},
+											"target_countries": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"target_industries": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											},
+											"techniques": {
+												"type": "array",
+												"items": {
+													"maxLength": 200,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 20
+											}
+										},
+										"required": [
+											"actors",
+											"attacker_countries",
+											"target_countries",
+											"target_industries",
+											"categories",
+											"techniques",
+											"cves",
+											"keywords"
+										]
+									},
 									"indicators": {
 										"type": "array",
 										"items": {
@@ -3758,7 +4061,8 @@
 																	"contains",
 																	"startsWith",
 																	"endsWith",
-																	"find"
+																	"find",
+																	"notContains"
 																]
 															},
 															"value": {
@@ -3800,7 +4104,8 @@
 															"op": {
 																"type": "string",
 																"enum": [
-																	"in"
+																	"in",
+																	"notIn"
 																]
 															},
 															"value": {
@@ -3872,7 +4177,8 @@
 															"op": {
 																"type": "string",
 																"enum": [
-																	"in"
+																	"in",
+																	"notIn"
 																]
 															},
 															"value": {
@@ -3982,7 +4288,8 @@
 															"op": {
 																"type": "string",
 																"enum": [
-																	"in"
+																	"in",
+																	"notIn"
 																]
 															},
 															"value": {

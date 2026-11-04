@@ -147,192 +147,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"id": {
-															"description": "The unique ID of the list.",
-															"type": "string",
-															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id"
-													]
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -462,93 +357,76 @@
 								},
 								{
 									"type": "object",
-									"allOf": [
-										{
-											"properties": {
-												"result": {
-													"type": "array",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
 													"items": {
 														"type": "object"
 													},
-													"nullable": true
+													"type": "array"
 												}
-											},
-											"type": "object"
+											]
 										},
-										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+										"success": {
+											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
 											]
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									]
 								}
 							]
@@ -561,206 +439,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"operation_id": {
-															"description": "The unique operation ID of the asynchronous action.",
-															"type": "string",
-															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-															"readOnly": true,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"operation_id"
-													]
-												}
-											},
-											"type": "object"
-										},
-										{
-											"type": "object",
-											"allOf": [
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														}
-													},
-													"type": "object"
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												}
-											]
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1004,271 +763,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"created_on": {
-																"description": "The RFC 3339 timestamp of when the list was created.",
-																"type": "string",
-																"example": "2020-01-01T08:00:00Z",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"description": {
-																"description": "An informative summary of the list.",
-																"type": "string",
-																"example": "This is a note",
-																"maxLength": 500,
-																"x-auditable": true
-															},
-															"id": {
-																"description": "The unique ID of the list.",
-																"type": "string",
-																"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																"maxLength": 32,
-																"minLength": 32,
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"kind": {
-																"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-																"example": "ip",
-																"enum": [
-																	"ip",
-																	"redirect",
-																	"hostname",
-																	"asn"
-																]
-															},
-															"modified_on": {
-																"description": "The RFC 3339 timestamp of when the list was last modified.",
-																"type": "string",
-																"example": "2020-01-10T14:00:00Z",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"name": {
-																"description": "An informative name for the list. Use this name in filter and rule expressions.",
-																"type": "string",
-																"example": "list1",
-																"maxLength": 50,
-																"pattern": "^[a-zA-Z0-9_]+$",
-																"x-auditable": true
-															},
-															"num_items": {
-																"description": "The number of items in the list.",
-																"type": "number",
-																"example": 10,
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"num_referencing_filters": {
-																"description": "The number of [filters](/api/resources/filters/) referencing the list.",
-																"type": "number",
-																"example": 2,
-																"readOnly": true,
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"id",
-															"name",
-															"kind",
-															"num_items",
-															"num_referencing_filters",
-															"created_on",
-															"modified_on"
-														]
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
 													}
-												}
-											},
-											"type": "object"
-										},
-										{
-											"type": "object",
-											"allOf": [
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														}
-													},
-													"type": "object"
 												},
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												}
-											]
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1506,251 +1081,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The RFC 3339 timestamp of when the list was created.",
-															"type": "string",
-															"example": "2020-01-01T08:00:00Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"description": {
-															"description": "An informative summary of the list.",
-															"type": "string",
-															"example": "This is a note",
-															"maxLength": 500,
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The unique ID of the list.",
-															"type": "string",
-															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"kind": {
-															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-															"example": "ip",
-															"enum": [
-																"ip",
-																"redirect",
-																"hostname",
-																"asn"
-															]
-														},
-														"modified_on": {
-															"description": "The RFC 3339 timestamp of when the list was last modified.",
-															"type": "string",
-															"example": "2020-01-10T14:00:00Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"name": {
-															"description": "An informative name for the list. Use this name in filter and rule expressions.",
-															"type": "string",
-															"example": "list1",
-															"maxLength": 50,
-															"pattern": "^[a-zA-Z0-9_]+$",
-															"x-auditable": true
-														},
-														"num_items": {
-															"description": "The number of items in the list.",
-															"type": "number",
-															"example": 10,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"num_referencing_filters": {
-															"description": "The number of [filters](/api/resources/filters/) referencing the list.",
-															"type": "number",
-															"example": 2,
-															"readOnly": true,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"name",
-														"kind",
-														"num_items",
-														"num_referencing_filters",
-														"created_on",
-														"modified_on"
-													]
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2290,526 +1701,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"oneOf": [
-															{
-																"allOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"ip": {
-																				"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-																				"type": "string",
-																				"example": "10.0.0.1",
-																				"x-auditable": true
-																			}
-																		},
-																		"required": [
-																			"ip"
-																		]
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"comment": {
-																				"description": "Defines an informative summary of the list item.",
-																				"type": "string",
-																				"example": "Private IP address",
-																				"x-auditable": true
-																			},
-																			"created_on": {
-																				"description": "The RFC 3339 timestamp of when the list was created.",
-																				"type": "string",
-																				"example": "2020-01-01T08:00:00Z",
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"id": {
-																				"description": "Defines the unique ID of the item in the List.",
-																				"type": "string",
-																				"example": "34b12448945f11eaa1b71c4d701ab86e",
-																				"maxLength": 32,
-																				"minLength": 32,
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"modified_on": {
-																				"description": "The RFC 3339 timestamp of when the list was last modified.",
-																				"type": "string",
-																				"example": "2020-01-10T14:00:00Z",
-																				"readOnly": true,
-																				"x-auditable": true
-																			}
-																		},
-																		"example": {
-																			"comment": "Private IP address",
-																			"created_on": "2020-01-01T08:00:00Z",
-																			"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																			"modified_on": "2020-01-10T14:00:00Z"
-																		},
-																		"required": [
-																			"id",
-																			"created_on",
-																			"modified_on"
-																		]
-																	}
-																]
-															},
-															{
-																"allOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"hostname": {
-																				"description": "Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-																				"properties": {
-																					"exclude_exact_hostname": {
-																						"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.",
-																						"type": "boolean",
-																						"example": true
-																					},
-																					"url_hostname": {
-																						"type": "string",
-																						"example": "example.com",
-																						"x-auditable": true
-																					}
-																				},
-																				"required": [
-																					"url_hostname"
-																				]
-																			}
-																		},
-																		"required": [
-																			"hostname"
-																		]
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"comment": {
-																				"description": "Defines an informative summary of the list item.",
-																				"type": "string",
-																				"example": "Private IP address",
-																				"x-auditable": true
-																			},
-																			"created_on": {
-																				"description": "The RFC 3339 timestamp of when the list was created.",
-																				"type": "string",
-																				"example": "2020-01-01T08:00:00Z",
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"id": {
-																				"description": "Defines the unique ID of the item in the List.",
-																				"type": "string",
-																				"example": "34b12448945f11eaa1b71c4d701ab86e",
-																				"maxLength": 32,
-																				"minLength": 32,
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"modified_on": {
-																				"description": "The RFC 3339 timestamp of when the list was last modified.",
-																				"type": "string",
-																				"example": "2020-01-10T14:00:00Z",
-																				"readOnly": true,
-																				"x-auditable": true
-																			}
-																		},
-																		"example": {
-																			"comment": "Private IP address",
-																			"created_on": "2020-01-01T08:00:00Z",
-																			"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																			"modified_on": "2020-01-10T14:00:00Z"
-																		},
-																		"required": [
-																			"id",
-																			"created_on",
-																			"modified_on"
-																		]
-																	}
-																]
-															},
-															{
-																"allOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"redirect": {
-																				"description": "The definition of the redirect.",
-																				"properties": {
-																					"include_subdomains": {
-																						"type": "boolean",
-																						"default": false,
-																						"x-auditable": true
-																					},
-																					"preserve_path_suffix": {
-																						"type": "boolean",
-																						"default": true,
-																						"x-auditable": true
-																					},
-																					"preserve_query_string": {
-																						"type": "boolean",
-																						"default": false,
-																						"x-auditable": true
-																					},
-																					"source_url": {
-																						"type": "string",
-																						"example": "example.com/arch",
-																						"x-auditable": true
-																					},
-																					"status_code": {
-																						"type": "integer",
-																						"default": 301,
-																						"enum": [
-																							301,
-																							302,
-																							307,
-																							308
-																						],
-																						"x-auditable": true
-																					},
-																					"subpath_matching": {
-																						"type": "boolean",
-																						"default": false,
-																						"x-auditable": true
-																					},
-																					"target_url": {
-																						"type": "string",
-																						"example": "https://archlinux.org/",
-																						"x-auditable": true
-																					}
-																				},
-																				"required": [
-																					"source_url",
-																					"target_url"
-																				]
-																			}
-																		},
-																		"required": [
-																			"redirect"
-																		]
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"comment": {
-																				"description": "Defines an informative summary of the list item.",
-																				"type": "string",
-																				"example": "Private IP address",
-																				"x-auditable": true
-																			},
-																			"created_on": {
-																				"description": "The RFC 3339 timestamp of when the list was created.",
-																				"type": "string",
-																				"example": "2020-01-01T08:00:00Z",
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"id": {
-																				"description": "Defines the unique ID of the item in the List.",
-																				"type": "string",
-																				"example": "34b12448945f11eaa1b71c4d701ab86e",
-																				"maxLength": 32,
-																				"minLength": 32,
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"modified_on": {
-																				"description": "The RFC 3339 timestamp of when the list was last modified.",
-																				"type": "string",
-																				"example": "2020-01-10T14:00:00Z",
-																				"readOnly": true,
-																				"x-auditable": true
-																			}
-																		},
-																		"example": {
-																			"comment": "Private IP address",
-																			"created_on": "2020-01-01T08:00:00Z",
-																			"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																			"modified_on": "2020-01-10T14:00:00Z"
-																		},
-																		"required": [
-																			"id",
-																			"created_on",
-																			"modified_on"
-																		]
-																	}
-																]
-															},
-															{
-																"allOf": [
-																	{
-																		"type": "object",
-																		"properties": {
-																			"asn": {
-																				"description": "Defines a non-negative 32 bit integer.",
-																				"type": "integer",
-																				"example": 5567,
-																				"x-auditable": true
-																			}
-																		},
-																		"required": [
-																			"asn"
-																		]
-																	},
-																	{
-																		"type": "object",
-																		"properties": {
-																			"comment": {
-																				"description": "Defines an informative summary of the list item.",
-																				"type": "string",
-																				"example": "Private IP address",
-																				"x-auditable": true
-																			},
-																			"created_on": {
-																				"description": "The RFC 3339 timestamp of when the list was created.",
-																				"type": "string",
-																				"example": "2020-01-01T08:00:00Z",
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"id": {
-																				"description": "Defines the unique ID of the item in the List.",
-																				"type": "string",
-																				"example": "34b12448945f11eaa1b71c4d701ab86e",
-																				"maxLength": 32,
-																				"minLength": 32,
-																				"readOnly": true,
-																				"x-auditable": true
-																			},
-																			"modified_on": {
-																				"description": "The RFC 3339 timestamp of when the list was last modified.",
-																				"type": "string",
-																				"example": "2020-01-10T14:00:00Z",
-																				"readOnly": true,
-																				"x-auditable": true
-																			}
-																		},
-																		"example": {
-																			"comment": "Private IP address",
-																			"created_on": "2020-01-01T08:00:00Z",
-																			"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																			"modified_on": "2020-01-10T14:00:00Z"
-																		},
-																		"required": [
-																			"id",
-																			"created_on",
-																			"modified_on"
-																		]
-																	}
-																]
-															}
-														]
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
 													}
 												},
-												"result_info": {
-													"type": "object",
-													"properties": {
-														"cursors": {
-															"type": "object",
-															"properties": {
-																"after": {
-																	"type": "string",
-																	"example": "yyy",
-																	"x-auditable": true
-																},
-																"before": {
-																	"type": "string",
-																	"example": "xxx",
-																	"x-auditable": true
-																}
-															}
-														}
-													}
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"type": "object"
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												}
-											]
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -3296,486 +2268,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"oneOf": [
-														{
-															"allOf": [
-																{
-																	"type": "object",
-																	"properties": {
-																		"ip": {
-																			"description": "An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.",
-																			"type": "string",
-																			"example": "10.0.0.1",
-																			"x-auditable": true
-																		}
-																	},
-																	"required": [
-																		"ip"
-																	]
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"comment": {
-																			"description": "Defines an informative summary of the list item.",
-																			"type": "string",
-																			"example": "Private IP address",
-																			"x-auditable": true
-																		},
-																		"created_on": {
-																			"description": "The RFC 3339 timestamp of when the list was created.",
-																			"type": "string",
-																			"example": "2020-01-01T08:00:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"id": {
-																			"description": "Defines the unique ID of the item in the List.",
-																			"type": "string",
-																			"example": "34b12448945f11eaa1b71c4d701ab86e",
-																			"maxLength": 32,
-																			"minLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"modified_on": {
-																			"description": "The RFC 3339 timestamp of when the list was last modified.",
-																			"type": "string",
-																			"example": "2020-01-10T14:00:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"example": {
-																		"comment": "Private IP address",
-																		"created_on": "2020-01-01T08:00:00Z",
-																		"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																		"modified_on": "2020-01-10T14:00:00Z"
-																	},
-																	"required": [
-																		"id",
-																		"created_on",
-																		"modified_on"
-																	]
-																}
-															]
-														},
-														{
-															"allOf": [
-																{
-																	"type": "object",
-																	"properties": {
-																		"hostname": {
-																			"description": "Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-																			"properties": {
-																				"exclude_exact_hostname": {
-																					"description": "Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains.",
-																					"type": "boolean",
-																					"example": true
-																				},
-																				"url_hostname": {
-																					"type": "string",
-																					"example": "example.com",
-																					"x-auditable": true
-																				}
-																			},
-																			"required": [
-																				"url_hostname"
-																			]
-																		}
-																	},
-																	"required": [
-																		"hostname"
-																	]
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"comment": {
-																			"description": "Defines an informative summary of the list item.",
-																			"type": "string",
-																			"example": "Private IP address",
-																			"x-auditable": true
-																		},
-																		"created_on": {
-																			"description": "The RFC 3339 timestamp of when the list was created.",
-																			"type": "string",
-																			"example": "2020-01-01T08:00:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"id": {
-																			"description": "Defines the unique ID of the item in the List.",
-																			"type": "string",
-																			"example": "34b12448945f11eaa1b71c4d701ab86e",
-																			"maxLength": 32,
-																			"minLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"modified_on": {
-																			"description": "The RFC 3339 timestamp of when the list was last modified.",
-																			"type": "string",
-																			"example": "2020-01-10T14:00:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"example": {
-																		"comment": "Private IP address",
-																		"created_on": "2020-01-01T08:00:00Z",
-																		"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																		"modified_on": "2020-01-10T14:00:00Z"
-																	},
-																	"required": [
-																		"id",
-																		"created_on",
-																		"modified_on"
-																	]
-																}
-															]
-														},
-														{
-															"allOf": [
-																{
-																	"type": "object",
-																	"properties": {
-																		"redirect": {
-																			"description": "The definition of the redirect.",
-																			"properties": {
-																				"include_subdomains": {
-																					"type": "boolean",
-																					"default": false,
-																					"x-auditable": true
-																				},
-																				"preserve_path_suffix": {
-																					"type": "boolean",
-																					"default": true,
-																					"x-auditable": true
-																				},
-																				"preserve_query_string": {
-																					"type": "boolean",
-																					"default": false,
-																					"x-auditable": true
-																				},
-																				"source_url": {
-																					"type": "string",
-																					"example": "example.com/arch",
-																					"x-auditable": true
-																				},
-																				"status_code": {
-																					"type": "integer",
-																					"default": 301,
-																					"enum": [
-																						301,
-																						302,
-																						307,
-																						308
-																					],
-																					"x-auditable": true
-																				},
-																				"subpath_matching": {
-																					"type": "boolean",
-																					"default": false,
-																					"x-auditable": true
-																				},
-																				"target_url": {
-																					"type": "string",
-																					"example": "https://archlinux.org/",
-																					"x-auditable": true
-																				}
-																			},
-																			"required": [
-																				"source_url",
-																				"target_url"
-																			]
-																		}
-																	},
-																	"required": [
-																		"redirect"
-																	]
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"comment": {
-																			"description": "Defines an informative summary of the list item.",
-																			"type": "string",
-																			"example": "Private IP address",
-																			"x-auditable": true
-																		},
-																		"created_on": {
-																			"description": "The RFC 3339 timestamp of when the list was created.",
-																			"type": "string",
-																			"example": "2020-01-01T08:00:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"id": {
-																			"description": "Defines the unique ID of the item in the List.",
-																			"type": "string",
-																			"example": "34b12448945f11eaa1b71c4d701ab86e",
-																			"maxLength": 32,
-																			"minLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"modified_on": {
-																			"description": "The RFC 3339 timestamp of when the list was last modified.",
-																			"type": "string",
-																			"example": "2020-01-10T14:00:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"example": {
-																		"comment": "Private IP address",
-																		"created_on": "2020-01-01T08:00:00Z",
-																		"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																		"modified_on": "2020-01-10T14:00:00Z"
-																	},
-																	"required": [
-																		"id",
-																		"created_on",
-																		"modified_on"
-																	]
-																}
-															]
-														},
-														{
-															"allOf": [
-																{
-																	"type": "object",
-																	"properties": {
-																		"asn": {
-																			"description": "Defines a non-negative 32 bit integer.",
-																			"type": "integer",
-																			"example": 5567,
-																			"x-auditable": true
-																		}
-																	},
-																	"required": [
-																		"asn"
-																	]
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"comment": {
-																			"description": "Defines an informative summary of the list item.",
-																			"type": "string",
-																			"example": "Private IP address",
-																			"x-auditable": true
-																		},
-																		"created_on": {
-																			"description": "The RFC 3339 timestamp of when the list was created.",
-																			"type": "string",
-																			"example": "2020-01-01T08:00:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"id": {
-																			"description": "Defines the unique ID of the item in the List.",
-																			"type": "string",
-																			"example": "34b12448945f11eaa1b71c4d701ab86e",
-																			"maxLength": 32,
-																			"minLength": 32,
-																			"readOnly": true,
-																			"x-auditable": true
-																		},
-																		"modified_on": {
-																			"description": "The RFC 3339 timestamp of when the list was last modified.",
-																			"type": "string",
-																			"example": "2020-01-10T14:00:00Z",
-																			"readOnly": true,
-																			"x-auditable": true
-																		}
-																	},
-																	"example": {
-																		"comment": "Private IP address",
-																		"created_on": "2020-01-01T08:00:00Z",
-																		"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																		"modified_on": "2020-01-10T14:00:00Z"
-																	},
-																	"required": [
-																		"id",
-																		"created_on",
-																		"modified_on"
-																	]
-																}
-															]
-														}
-													]
-												}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4041,281 +2614,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"oneOf": [
-														{
-															"type": "object",
-															"properties": {
-																"id": {
-																	"description": "The unique operation ID of the asynchronous action.",
-																	"type": "string",
-																	"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"status": {
-																	"description": "The current status of the asynchronous operation.",
-																	"type": "string",
-																	"example": "pending",
-																	"enum": [
-																		"pending",
-																		"running"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															},
-															"required": [
-																"id",
-																"status"
-															]
-														},
-														{
-															"type": "object",
-															"properties": {
-																"completed": {
-																	"description": "The RFC 3339 timestamp of when the operation was completed.",
-																	"type": "string",
-																	"example": "2020-01-01T08:00:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"id": {
-																	"description": "The unique operation ID of the asynchronous action.",
-																	"type": "string",
-																	"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"status": {
-																	"description": "The current status of the asynchronous operation.",
-																	"type": "string",
-																	"example": "completed",
-																	"enum": [
-																		"completed"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															},
-															"required": [
-																"id",
-																"status",
-																"completed"
-															]
-														},
-														{
-															"type": "object",
-															"properties": {
-																"completed": {
-																	"description": "The RFC 3339 timestamp of when the operation was completed.",
-																	"type": "string",
-																	"example": "2020-01-01T08:00:00Z",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"error": {
-																	"description": "A message describing the error when the status is `failed`.",
-																	"type": "string",
-																	"example": "This list is at the maximum number of items",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"id": {
-																	"description": "The unique operation ID of the asynchronous action.",
-																	"type": "string",
-																	"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-																	"readOnly": true,
-																	"x-auditable": true
-																},
-																"status": {
-																	"description": "The current status of the asynchronous operation.",
-																	"type": "string",
-																	"example": "failed",
-																	"enum": [
-																		"failed"
-																	],
-																	"readOnly": true,
-																	"x-auditable": true
-																}
-															},
-															"required": [
-																"id",
-																"status",
-																"error",
-																"completed"
-															]
-														}
-													]
-												}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4580,251 +2959,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The RFC 3339 timestamp of when the list was created.",
-															"type": "string",
-															"example": "2020-01-01T08:00:00Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"description": {
-															"description": "An informative summary of the list.",
-															"type": "string",
-															"example": "This is a note",
-															"maxLength": 500,
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The unique ID of the list.",
-															"type": "string",
-															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"kind": {
-															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-															"example": "ip",
-															"enum": [
-																"ip",
-																"redirect",
-																"hostname",
-																"asn"
-															]
-														},
-														"modified_on": {
-															"description": "The RFC 3339 timestamp of when the list was last modified.",
-															"type": "string",
-															"example": "2020-01-10T14:00:00Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"name": {
-															"description": "An informative name for the list. Use this name in filter and rule expressions.",
-															"type": "string",
-															"example": "list1",
-															"maxLength": 50,
-															"pattern": "^[a-zA-Z0-9_]+$",
-															"x-auditable": true
-														},
-														"num_items": {
-															"description": "The number of items in the list.",
-															"type": "number",
-															"example": 10,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"num_referencing_filters": {
-															"description": "The number of [filters](/api/resources/filters/) referencing the list.",
-															"type": "number",
-															"example": 2,
-															"readOnly": true,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"name",
-														"kind",
-														"num_items",
-														"num_referencing_filters",
-														"created_on",
-														"modified_on"
-													]
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -5103,93 +3318,76 @@
 								},
 								{
 									"type": "object",
-									"allOf": [
-										{
-											"properties": {
-												"result": {
-													"type": "array",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
 													"items": {
 														"type": "object"
 													},
-													"nullable": true
+													"type": "array"
 												}
-											},
-											"type": "object"
+											]
 										},
-										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+										"success": {
+											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
 											]
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									]
 								}
 							]
@@ -5202,206 +3400,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"operation_id": {
-															"description": "The unique operation ID of the asynchronous action.",
-															"type": "string",
-															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-															"readOnly": true,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"operation_id"
-													]
-												}
-											},
-											"type": "object"
-										},
-										{
-											"type": "object",
-											"allOf": [
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														}
-													},
-													"type": "object"
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												}
-											]
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -5657,251 +3736,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"created_on": {
-															"description": "The RFC 3339 timestamp of when the list was created.",
-															"type": "string",
-															"example": "2020-01-01T08:00:00Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"description": {
-															"description": "An informative summary of the list.",
-															"type": "string",
-															"example": "This is a note",
-															"maxLength": 500,
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The unique ID of the list.",
-															"type": "string",
-															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"kind": {
-															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
-															"example": "ip",
-															"enum": [
-																"ip",
-																"redirect",
-																"hostname",
-																"asn"
-															]
-														},
-														"modified_on": {
-															"description": "The RFC 3339 timestamp of when the list was last modified.",
-															"type": "string",
-															"example": "2020-01-10T14:00:00Z",
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"name": {
-															"description": "An informative name for the list. Use this name in filter and rule expressions.",
-															"type": "string",
-															"example": "list1",
-															"maxLength": 50,
-															"pattern": "^[a-zA-Z0-9_]+$",
-															"x-auditable": true
-														},
-														"num_items": {
-															"description": "The number of items in the list.",
-															"type": "number",
-															"example": 10,
-															"readOnly": true,
-															"x-auditable": true
-														},
-														"num_referencing_filters": {
-															"description": "The number of [filters](/api/resources/filters/) referencing the list.",
-															"type": "number",
-															"example": 2,
-															"readOnly": true,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"id",
-														"name",
-														"kind",
-														"num_items",
-														"num_referencing_filters",
-														"created_on",
-														"modified_on"
-													]
-												}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
-										},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"example": []
+													"message": {
+														"type": "string"
+													}
 												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
-											]
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -6180,93 +4095,76 @@
 								},
 								{
 									"type": "object",
-									"allOf": [
-										{
-											"properties": {
-												"result": {
-													"type": "array",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
 													"items": {
 														"type": "object"
 													},
-													"nullable": true
+													"type": "array"
 												}
-											},
-											"type": "object"
+											]
 										},
-										{
-											"type": "object",
-											"properties": {
-												"errors": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"messages": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {
-																"type": "object"
-															},
-															"type": "array"
-														}
-													]
-												},
-												"success": {
-													"description": "Defines whether the API call was successful.",
-													"type": "boolean",
-													"example": true,
-													"enum": [
-														true
-													]
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
+										"success": {
+											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
 											]
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									]
 								}
 							]
@@ -6279,206 +4177,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"operation_id": {
-															"description": "The unique operation ID of the asynchronous action.",
-															"type": "string",
-															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-															"readOnly": true,
-															"x-auditable": true
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"operation_id"
-													]
-												}
-											},
-											"type": "object"
-										},
-										{
-											"type": "object",
-											"allOf": [
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {
-																"type": "object"
-															},
-															"nullable": true
-														}
-													},
-													"type": "object"
+													"message": {
+														"type": "string"
+													}
 												},
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {
-																		"type": "object"
-																	},
-																	"type": "array"
-																}
-															]
-														},
-														"success": {
-															"description": "Defines whether the API call was successful.",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												}
-											]
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Defines whether the API call was successful.",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}

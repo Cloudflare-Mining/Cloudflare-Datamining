@@ -602,10 +602,15 @@
 																				}
 																			},
 																			"type": {
-																				"enum": [
-																					"standard",
-																					"enterprise"
-																				]
+																				"allOf": [
+																					{
+																						"enum": [
+																							"standard",
+																							"enterprise"
+																						]
+																					}
+																				],
+																				"readOnly": true
 																			}
 																		},
 																		"required": [
@@ -1148,10 +1153,15 @@
 																				}
 																			},
 																			"type": {
-																				"enum": [
-																					"standard",
-																					"enterprise"
-																				]
+																				"allOf": [
+																					{
+																						"enum": [
+																							"standard",
+																							"enterprise"
+																						]
+																					}
+																				],
+																				"readOnly": true
 																			}
 																		},
 																		"required": [
@@ -2022,10 +2032,15 @@
 																	}
 																},
 																"type": {
-																	"enum": [
-																		"standard",
-																		"enterprise"
-																	]
+																	"allOf": [
+																		{
+																			"enum": [
+																				"standard",
+																				"enterprise"
+																			]
+																		}
+																	],
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -2894,10 +2909,15 @@
 																	}
 																},
 																"type": {
-																	"enum": [
-																		"standard",
-																		"enterprise"
-																	]
+																	"allOf": [
+																		{
+																			"enum": [
+																				"standard",
+																				"enterprise"
+																			]
+																		}
+																	],
+																	"readOnly": true
 																}
 															},
 															"required": [
@@ -3800,10 +3820,15 @@
 																	}
 																},
 																"type": {
-																	"enum": [
-																		"standard",
-																		"enterprise"
-																	]
+																	"allOf": [
+																		{
+																			"enum": [
+																				"standard",
+																				"enterprise"
+																			]
+																		}
+																	],
+																	"readOnly": true
 																}
 															},
 															"required": [

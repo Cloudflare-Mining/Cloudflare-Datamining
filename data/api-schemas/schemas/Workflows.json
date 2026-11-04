@@ -3233,6 +3233,61 @@
 						}
 					}
 				}
+			},
+			"429": {
+				"description": "Too many lookups for instances that do not exist. Retry after the number of seconds in the Retry-After header.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -3931,6 +3986,61 @@
 			},
 			"404": {
 				"description": "Instance not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Too many lookups for instances that do not exist. Retry after the number of seconds in the Retry-After header.",
 				"content": {
 					"application/json": {
 						"schema": {

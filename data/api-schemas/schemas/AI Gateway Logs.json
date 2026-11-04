@@ -609,6 +609,11 @@
 											"cached": {
 												"type": "boolean"
 											},
+											"collect_log_payload": {
+												"description": "Whether the request and response bodies were eligible to be stored. False when the request sent `cf-aig-collect-log-payload: false`, logging was off, or the gateway does not store bodies for the request. Null for logs written before this field existed.",
+												"type": "boolean",
+												"nullable": true
+											},
 											"cost": {
 												"type": "number"
 											},
@@ -862,6 +867,11 @@
 									"properties": {
 										"cached": {
 											"type": "boolean"
+										},
+										"collect_log_payload": {
+											"description": "Whether the request and response bodies were eligible to be stored. False when the request sent `cf-aig-collect-log-payload: false`, logging was off, or the gateway does not store bodies for the request. Null for logs written before this field existed.",
+											"type": "boolean",
+											"nullable": true
 										},
 										"cost": {
 											"type": "number"

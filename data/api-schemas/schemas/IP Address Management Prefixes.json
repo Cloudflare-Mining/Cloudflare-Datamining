@@ -1252,15 +1252,38 @@
 														"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 													},
 													"approved": {
-														"description": "Approval state of the prefix (P = pending, V = active).",
+														"description": "Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.",
 														"type": "string",
 														"example": "P",
 														"x-auditable": true
 													},
 													"asn": {
-														"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+														"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 														"type": "integer",
 														"example": 13335,
+														"x-auditable": true
+													},
+													"asn_ownership_validation_state": {
+														"description": "State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.",
+														"type": "string",
+														"example": "pending",
+														"enum": [
+															"pending",
+															"valid",
+															"missing",
+															"invalid"
+														],
+														"x-auditable": true
+													},
+													"aspa_validation_state": {
+														"description": "State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.",
+														"type": "string",
+														"example": "pending",
+														"enum": [
+															"pending",
+															"valid",
+															"invalid"
+														],
 														"x-auditable": true
 													},
 													"cidr": {
@@ -1339,7 +1362,7 @@
 														"x-auditable": true
 													},
 													"ownership_validation_token": {
-														"description": "Token provided to demonstrate ownership of the prefix.",
+														"description": "Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.",
 														"type": "string",
 														"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 														"x-auditable": true
@@ -1490,15 +1513,38 @@
 																"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 															},
 															"approved": {
-																"description": "Approval state of the prefix (P = pending, V = active).",
+																"description": "Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.",
 																"type": "string",
 																"example": "P",
 																"x-auditable": true
 															},
 															"asn": {
-																"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+																"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 																"type": "integer",
 																"example": 13335,
+																"x-auditable": true
+															},
+															"asn_ownership_validation_state": {
+																"description": "State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.",
+																"type": "string",
+																"example": "pending",
+																"enum": [
+																	"pending",
+																	"valid",
+																	"missing",
+																	"invalid"
+																],
+																"x-auditable": true
+															},
+															"aspa_validation_state": {
+																"description": "State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.",
+																"type": "string",
+																"example": "pending",
+																"enum": [
+																	"pending",
+																	"valid",
+																	"invalid"
+																],
 																"x-auditable": true
 															},
 															"cidr": {
@@ -1577,7 +1623,7 @@
 																"x-auditable": true
 															},
 															"ownership_validation_token": {
-																"description": "Token provided to demonstrate ownership of the prefix.",
+																"description": "Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.",
 																"type": "string",
 																"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 																"x-auditable": true
@@ -1888,15 +1934,38 @@
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
-													"description": "Approval state of the prefix (P = pending, V = active).",
+													"description": "Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.",
 													"type": "string",
 													"example": "P",
 													"x-auditable": true
 												},
 												"asn": {
-													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+													"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 													"type": "integer",
 													"example": 13335,
+													"x-auditable": true
+												},
+												"asn_ownership_validation_state": {
+													"description": "State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.",
+													"type": "string",
+													"example": "pending",
+													"enum": [
+														"pending",
+														"valid",
+														"missing",
+														"invalid"
+													],
+													"x-auditable": true
+												},
+												"aspa_validation_state": {
+													"description": "State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.",
+													"type": "string",
+													"example": "pending",
+													"enum": [
+														"pending",
+														"valid",
+														"invalid"
+													],
 													"x-auditable": true
 												},
 												"cidr": {
@@ -1975,7 +2044,7 @@
 													"x-auditable": true
 												},
 												"ownership_validation_token": {
-													"description": "Token provided to demonstrate ownership of the prefix.",
+													"description": "Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.",
 													"type": "string",
 													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"x-auditable": true
@@ -2123,15 +2192,38 @@
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
-															"description": "Approval state of the prefix (P = pending, V = active).",
+															"description": "Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.",
 															"type": "string",
 															"example": "P",
 															"x-auditable": true
 														},
 														"asn": {
-															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+															"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 															"type": "integer",
 															"example": 13335,
+															"x-auditable": true
+														},
+														"asn_ownership_validation_state": {
+															"description": "State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.",
+															"type": "string",
+															"example": "pending",
+															"enum": [
+																"pending",
+																"valid",
+																"missing",
+																"invalid"
+															],
+															"x-auditable": true
+														},
+														"aspa_validation_state": {
+															"description": "State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.",
+															"type": "string",
+															"example": "pending",
+															"enum": [
+																"pending",
+																"valid",
+																"invalid"
+															],
 															"x-auditable": true
 														},
 														"cidr": {
@@ -2210,7 +2302,7 @@
 															"x-auditable": true
 														},
 														"ownership_validation_token": {
-															"description": "Token provided to demonstrate ownership of the prefix.",
+															"description": "Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.",
 															"type": "string",
 															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"x-auditable": true
@@ -2542,15 +2634,38 @@
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
-													"description": "Approval state of the prefix (P = pending, V = active).",
+													"description": "Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.",
 													"type": "string",
 													"example": "P",
 													"x-auditable": true
 												},
 												"asn": {
-													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+													"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 													"type": "integer",
 													"example": 13335,
+													"x-auditable": true
+												},
+												"asn_ownership_validation_state": {
+													"description": "State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.",
+													"type": "string",
+													"example": "pending",
+													"enum": [
+														"pending",
+														"valid",
+														"missing",
+														"invalid"
+													],
+													"x-auditable": true
+												},
+												"aspa_validation_state": {
+													"description": "State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.",
+													"type": "string",
+													"example": "pending",
+													"enum": [
+														"pending",
+														"valid",
+														"invalid"
+													],
 													"x-auditable": true
 												},
 												"cidr": {
@@ -2629,7 +2744,7 @@
 													"x-auditable": true
 												},
 												"ownership_validation_token": {
-													"description": "Token provided to demonstrate ownership of the prefix.",
+													"description": "Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.",
 													"type": "string",
 													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"x-auditable": true
@@ -2777,15 +2892,38 @@
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
-															"description": "Approval state of the prefix (P = pending, V = active).",
+															"description": "Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.",
 															"type": "string",
 															"example": "P",
 															"x-auditable": true
 														},
 														"asn": {
-															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+															"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 															"type": "integer",
 															"example": 13335,
+															"x-auditable": true
+														},
+														"asn_ownership_validation_state": {
+															"description": "State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.",
+															"type": "string",
+															"example": "pending",
+															"enum": [
+																"pending",
+																"valid",
+																"missing",
+																"invalid"
+															],
+															"x-auditable": true
+														},
+														"aspa_validation_state": {
+															"description": "State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.",
+															"type": "string",
+															"example": "pending",
+															"enum": [
+																"pending",
+																"valid",
+																"invalid"
+															],
 															"x-auditable": true
 														},
 														"cidr": {
@@ -2864,7 +3002,7 @@
 															"x-auditable": true
 														},
 														"ownership_validation_token": {
-															"description": "Token provided to demonstrate ownership of the prefix.",
+															"description": "Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.",
 															"type": "string",
 															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"x-auditable": true
@@ -3529,7 +3667,7 @@
 						"type": "object",
 						"properties": {
 							"asn": {
-								"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+								"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 								"type": "integer",
 								"example": 13335,
 								"x-auditable": true
@@ -3697,15 +3835,38 @@
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
-													"description": "Approval state of the prefix (P = pending, V = active).",
+													"description": "Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.",
 													"type": "string",
 													"example": "P",
 													"x-auditable": true
 												},
 												"asn": {
-													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+													"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 													"type": "integer",
 													"example": 13335,
+													"x-auditable": true
+												},
+												"asn_ownership_validation_state": {
+													"description": "State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.",
+													"type": "string",
+													"example": "pending",
+													"enum": [
+														"pending",
+														"valid",
+														"missing",
+														"invalid"
+													],
+													"x-auditable": true
+												},
+												"aspa_validation_state": {
+													"description": "State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.",
+													"type": "string",
+													"example": "pending",
+													"enum": [
+														"pending",
+														"valid",
+														"invalid"
+													],
 													"x-auditable": true
 												},
 												"cidr": {
@@ -3784,7 +3945,7 @@
 													"x-auditable": true
 												},
 												"ownership_validation_token": {
-													"description": "Token provided to demonstrate ownership of the prefix.",
+													"description": "Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.",
 													"type": "string",
 													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"x-auditable": true
@@ -3932,15 +4093,38 @@
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
-															"description": "Approval state of the prefix (P = pending, V = active).",
+															"description": "Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.",
 															"type": "string",
 															"example": "P",
 															"x-auditable": true
 														},
 														"asn": {
-															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+															"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 															"type": "integer",
 															"example": 13335,
+															"x-auditable": true
+														},
+														"asn_ownership_validation_state": {
+															"description": "State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.",
+															"type": "string",
+															"example": "pending",
+															"enum": [
+																"pending",
+																"valid",
+																"missing",
+																"invalid"
+															],
+															"x-auditable": true
+														},
+														"aspa_validation_state": {
+															"description": "State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.",
+															"type": "string",
+															"example": "pending",
+															"enum": [
+																"pending",
+																"valid",
+																"invalid"
+															],
 															"x-auditable": true
 														},
 														"cidr": {
@@ -4019,7 +4203,7 @@
 															"x-auditable": true
 														},
 														"ownership_validation_token": {
-															"description": "Token provided to demonstrate ownership of the prefix.",
+															"description": "Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.",
 															"type": "string",
 															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"x-auditable": true
@@ -4169,7 +4353,7 @@
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/validate": {
 		"operationId": "ip-address-management-prefixes-validate-prefix",
 		"summary": "Validate Prefix",
-		"description": "Triggers a new prefix validation. The checks are run asynchronously and include IRR, RPKI, and prefix ownership.",
+		"description": "Triggers a new prefix validation. The checks run asynchronously and include IRR, RPKI, prefix ownership, and, when applicable, ASN ownership and Autonomous System Provider Authorization (ASPA). Use Prefix Details to monitor the results. Approval does not advertise the prefix or activate traffic.",
 		"parameters": [
 			{
 				"name": "prefix_id",
@@ -4322,15 +4506,38 @@
 													"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 												},
 												"approved": {
-													"description": "Approval state of the prefix (P = pending, V = active).",
+													"description": "Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.",
 													"type": "string",
 													"example": "P",
 													"x-auditable": true
 												},
 												"asn": {
-													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+													"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 													"type": "integer",
 													"example": 13335,
+													"x-auditable": true
+												},
+												"asn_ownership_validation_state": {
+													"description": "State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.",
+													"type": "string",
+													"example": "pending",
+													"enum": [
+														"pending",
+														"valid",
+														"missing",
+														"invalid"
+													],
+													"x-auditable": true
+												},
+												"aspa_validation_state": {
+													"description": "State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.",
+													"type": "string",
+													"example": "pending",
+													"enum": [
+														"pending",
+														"valid",
+														"invalid"
+													],
 													"x-auditable": true
 												},
 												"cidr": {
@@ -4409,7 +4616,7 @@
 													"x-auditable": true
 												},
 												"ownership_validation_token": {
-													"description": "Token provided to demonstrate ownership of the prefix.",
+													"description": "Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.",
 													"type": "string",
 													"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 													"x-auditable": true
@@ -4557,15 +4764,38 @@
 															"x-stainless-deprecation-message": "Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix."
 														},
 														"approved": {
-															"description": "Approval state of the prefix (P = pending, V = active).",
+															"description": "Approval state of the prefix (P = pending, V = approved). Approval does not advertise the prefix or activate traffic.",
 															"type": "string",
 															"example": "P",
 															"x-auditable": true
 														},
 														"asn": {
-															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+															"description": "Autonomous System Number (ASN) the prefix will be advertised under. Use 13335 for Cloudflare's ASN, or your own ASN as an integer without the AS prefix. The IRR route and RPKI ROA must authorize this ASN.",
 															"type": "integer",
 															"example": 13335,
+															"x-auditable": true
+														},
+														"asn_ownership_validation_state": {
+															"description": "State of ASN ownership validation for a customer-owned Autonomous System Number (ASN). Returned when an ASN ownership validation result exists. Omitted when validation does not apply, such as for Cloudflare-owned ASNs. Verification is reused for prefixes with the same account and ASN. Refer to [ASN ownership validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#asn-ownership-validation) for state meanings and resolutions.",
+															"type": "string",
+															"example": "pending",
+															"enum": [
+																"pending",
+																"valid",
+																"missing",
+																"invalid"
+															],
+															"x-auditable": true
+														},
+														"aspa_validation_state": {
+															"description": "State of Autonomous System Provider Authorization (ASPA) validation for a customer-owned ASN. Returned when an ASPA validation result exists. Publishing an ASPA is optional. A published ASPA must authorize AS13335 as a provider. An invalid result blocks approval. If omitted, no ASPA validation result is available. Omission does not indicate successful validation or confirm that no ASPA exists. Refer to [ASPA validation states](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/#aspa-validation) for state meanings and resolutions, and [ASPA authorization](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/#aspa-authorization) for publication guidance.",
+															"type": "string",
+															"example": "pending",
+															"enum": [
+																"pending",
+																"valid",
+																"invalid"
+															],
 															"x-auditable": true
 														},
 														"cidr": {
@@ -4644,7 +4874,7 @@
 															"x-auditable": true
 														},
 														"ownership_validation_token": {
-															"description": "Token provided to demonstrate ownership of the prefix.",
+															"description": "Token used to verify ownership of the prefix and, when applicable, its ASN. Use the same token for both checks. Refer to the [BYOIP onboarding guide](https://developers.cloudflare.com/byoip/get-started/) for verification instructions.",
 															"type": "string",
 															"example": "1234a5b6-1234-1abc-12a3-1234a5b6789c",
 															"x-auditable": true

@@ -221,8 +221,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/slurper/jobs": {
 		"operationId": "slurper-list-jobs",
@@ -396,13 +395,18 @@
 																		"type": "string"
 																	},
 																	"jurisdiction": {
-																		"type": "string",
-																		"enum": [
-																			"default",
-																			"eu",
-																			"us",
-																			"fedramp"
-																		]
+																		"allOf": [
+																			{
+																				"type": "string",
+																				"enum": [
+																					"default",
+																					"eu",
+																					"us",
+																					"fedramp"
+																				]
+																			}
+																		],
+																		"nullable": true
 																	},
 																	"keys": {
 																		"type": "array",
@@ -443,13 +447,18 @@
 																"type": "string"
 															},
 															"jurisdiction": {
-																"type": "string",
-																"enum": [
-																	"default",
-																	"eu",
-																	"us",
-																	"fedramp"
-																]
+																"allOf": [
+																	{
+																		"type": "string",
+																		"enum": [
+																			"default",
+																			"eu",
+																			"us",
+																			"fedramp"
+																		]
+																	}
+																],
+																"nullable": true
 															},
 															"vendor": {
 																"type": "string",
@@ -542,8 +551,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}": {
 		"operationId": "slurper-get-job",
@@ -708,13 +716,18 @@
 																	"type": "string"
 																},
 																"jurisdiction": {
-																	"type": "string",
-																	"enum": [
-																		"default",
-																		"eu",
-																		"us",
-																		"fedramp"
-																	]
+																	"allOf": [
+																		{
+																			"type": "string",
+																			"enum": [
+																				"default",
+																				"eu",
+																				"us",
+																				"fedramp"
+																			]
+																		}
+																	],
+																	"nullable": true
 																},
 																"keys": {
 																	"type": "array",
@@ -755,13 +768,18 @@
 															"type": "string"
 														},
 														"jurisdiction": {
-															"type": "string",
-															"enum": [
-																"default",
-																"eu",
-																"us",
-																"fedramp"
-															]
+															"allOf": [
+																{
+																	"type": "string",
+																	"enum": [
+																		"default",
+																		"eu",
+																		"us",
+																		"fedramp"
+																	]
+																}
+															],
+															"nullable": true
 														},
 														"vendor": {
 															"type": "string",
@@ -853,8 +871,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}/logs": {
 		"operationId": "slurper-get-job-logs",
@@ -1074,8 +1091,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs.logs",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}/progress": {
 		"operationId": "slurper-get-job-progress",
@@ -1270,8 +1286,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "progress",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "progress"
 	},
 	"POST /accounts/{account_id}/slurper/jobs": {
 		"operationId": "slurper-create-job",
@@ -1412,13 +1427,18 @@
 												"type": "string"
 											},
 											"jurisdiction": {
-												"type": "string",
-												"enum": [
-													"default",
-													"eu",
-													"us",
-													"fedramp"
-												]
+												"allOf": [
+													{
+														"type": "string",
+														"enum": [
+															"default",
+															"eu",
+															"us",
+															"fedramp"
+														]
+													}
+												],
+												"nullable": true
 											},
 											"keys": {
 												"type": "array",
@@ -1470,13 +1490,18 @@
 										"type": "string"
 									},
 									"jurisdiction": {
-										"type": "string",
-										"enum": [
-											"default",
-											"eu",
-											"us",
-											"fedramp"
-										]
+										"allOf": [
+											{
+												"type": "string",
+												"enum": [
+													"default",
+													"eu",
+													"us",
+													"fedramp"
+												]
+											}
+										],
+										"nullable": true
 									},
 									"secret": {
 										"type": "object",
@@ -1717,8 +1742,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/abort": {
 		"operationId": "slurper-abort-job",
@@ -1885,7 +1909,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
 		"x-fern-sdk-method-name": "abort",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation stops a running migration job."
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/pause": {
@@ -2110,8 +2133,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "pause",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "pause"
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/resume": {
 		"operationId": "slurper-resume-job",
@@ -2277,8 +2299,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "resume",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "resume"
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/abortAll": {
 		"operationId": "slurper-abort-all-jobs",
@@ -2437,7 +2458,6 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
 		"x-fern-sdk-method-name": "abort-all",
-		"x-forge-hidden": true,
 		"x-forge-require-confirmation": "This operation stops every running migration job."
 	},
 	"PUT /accounts/{account_id}/slurper/source/connectivity-precheck": {
@@ -2572,13 +2592,18 @@
 										"type": "string"
 									},
 									"jurisdiction": {
-										"type": "string",
-										"enum": [
-											"default",
-											"eu",
-											"us",
-											"fedramp"
-										]
+										"allOf": [
+											{
+												"type": "string",
+												"enum": [
+													"default",
+													"eu",
+													"us",
+													"fedramp"
+												]
+											}
+										],
+										"nullable": true
 									},
 									"keys": {
 										"type": "array",
@@ -2777,8 +2802,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.connectivity-precheck",
-		"x-fern-sdk-method-name": "source",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "source"
 	},
 	"PUT /accounts/{account_id}/slurper/target/connectivity-precheck": {
 		"operationId": "slurper-check-target-connectivity",
@@ -2805,13 +2829,18 @@
 								"type": "string"
 							},
 							"jurisdiction": {
-								"type": "string",
-								"enum": [
-									"default",
-									"eu",
-									"us",
-									"fedramp"
-								]
+								"allOf": [
+									{
+										"type": "string",
+										"enum": [
+											"default",
+											"eu",
+											"us",
+											"fedramp"
+										]
+									}
+								],
+								"nullable": true
 							},
 							"secret": {
 								"type": "object",
@@ -2996,7 +3025,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.connectivity-precheck",
-		"x-fern-sdk-method-name": "target",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "target"
 	}
 }

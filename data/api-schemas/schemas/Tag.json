@@ -301,14 +301,18 @@
 			{
 				"name": "page",
 				"in": "query",
+				"description": "Page number (default 1). page × pageSize may not exceed 10000.",
 				"schema": {
+					"description": "Page number (default 1). page × pageSize may not exceed 10000.",
 					"type": "number"
 				}
 			},
 			{
 				"name": "pageSize",
 				"in": "query",
+				"description": "Results per page (default 100, maximum 1000; larger values are clamped).",
 				"schema": {
+					"description": "Results per page (default 100, maximum 1000; larger values are clamped).",
 					"type": "number"
 				}
 			},
@@ -403,6 +407,10 @@
 						"schema": {
 							"type": "object",
 							"properties": {
+								"failedShardCount": {
+									"description": "Number of shards that failed or timed out. Present only with partialResults.",
+									"type": "number"
+								},
 								"indicators": {
 									"type": "array",
 									"items": {
@@ -526,6 +534,10 @@
 										"totalCount",
 										"totalPages"
 									]
+								},
+								"partialResults": {
+									"description": "Present and true when one or more shards failed or timed out. Indicators from those shards may be missing from this page and from totalCount.",
+									"type": "boolean"
 								}
 							},
 							"required": [
@@ -1928,14 +1940,18 @@
 			{
 				"name": "page",
 				"in": "query",
+				"description": "Page number (default 1). page × pageSize may not exceed 10000.",
 				"schema": {
+					"description": "Page number (default 1). page × pageSize may not exceed 10000.",
 					"type": "number"
 				}
 			},
 			{
 				"name": "pageSize",
 				"in": "query",
+				"description": "Results per page (default 100, maximum 1000; larger values are clamped).",
 				"schema": {
+					"description": "Results per page (default 100, maximum 1000; larger values are clamped).",
 					"type": "number"
 				}
 			},
@@ -2030,6 +2046,10 @@
 						"schema": {
 							"type": "object",
 							"properties": {
+								"failedShardCount": {
+									"description": "Number of shards that failed or timed out. Present only with partialResults.",
+									"type": "number"
+								},
 								"indicators": {
 									"type": "array",
 									"items": {
@@ -2153,6 +2173,10 @@
 										"totalCount",
 										"totalPages"
 									]
+								},
+								"partialResults": {
+									"description": "Present and true when one or more shards failed or timed out. Indicators from those shards may be missing from this page and from totalCount.",
+									"type": "boolean"
 								}
 							},
 							"required": [
@@ -2412,7 +2436,7 @@
 				"name": "cursor",
 				"in": "query",
 				"schema": {
-					"description": "Offset cursor from a previous page.",
+					"description": "Opaque cursor from a previous page. Results are ordered by createdAt ascending. Cursors in an older format are rejected; restart without a cursor.",
 					"type": "string"
 				}
 			},
