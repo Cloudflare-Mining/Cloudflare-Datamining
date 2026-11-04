@@ -228,9 +228,10 @@
 																	"x-auditable": true
 																},
 																"healthy": {
-																	"description": "Whether the origin is reported as healthy.",
+																	"description": "If true, filter events where the origin status is healthy. If false, filter events where the origin status is unhealthy.",
 																	"type": "boolean",
 																	"example": true,
+																	"default": true,
 																	"x-auditable": true
 																},
 																"ip": {

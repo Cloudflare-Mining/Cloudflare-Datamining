@@ -4048,7 +4048,8 @@
 					"default": "053e105f4ecef8ad9ca31a8372d0c353",
 					"description": "Specifies the public ID of the K2 stream."
 				}
-			}
+			},
+			"x-fern-server-name": "stream"
 		}
 	],
 	"SERVERS /subscriptions": [
@@ -4060,7 +4061,8 @@
 					"default": "053e105f4ecef8ad9ca31a8372d0c353",
 					"description": "Specifies the public ID of the K2 stream."
 				}
-			}
+			},
+			"x-fern-server-name": "stream"
 		}
 	],
 	"SERVERS /subscriptions/{subscription_id}": [
@@ -4072,7 +4074,8 @@
 					"default": "053e105f4ecef8ad9ca31a8372d0c353",
 					"description": "Specifies the public ID of the K2 stream."
 				}
-			}
+			},
+			"x-fern-server-name": "stream"
 		}
 	],
 	"SERVERS /subscriptions/{subscription_id}/batches/{batch_id}/ack": [
@@ -4084,7 +4087,8 @@
 					"default": "053e105f4ecef8ad9ca31a8372d0c353",
 					"description": "Specifies the public ID of the K2 stream."
 				}
-			}
+			},
+			"x-fern-server-name": "stream"
 		}
 	],
 	"SERVERS /subscriptions/{subscription_id}/batches/{batch_id}/extend": [
@@ -4096,7 +4100,8 @@
 					"default": "053e105f4ecef8ad9ca31a8372d0c353",
 					"description": "Specifies the public ID of the K2 stream."
 				}
-			}
+			},
+			"x-fern-server-name": "stream"
 		}
 	],
 	"SERVERS /subscriptions/{subscription_id}/batches/{batch_id}/nack": [
@@ -4108,7 +4113,8 @@
 					"default": "053e105f4ecef8ad9ca31a8372d0c353",
 					"description": "Specifies the public ID of the K2 stream."
 				}
-			}
+			},
+			"x-fern-server-name": "stream"
 		}
 	],
 	"SERVERS /subscriptions/{subscription_id}/consume": [
@@ -4120,7 +4126,8 @@
 					"default": "053e105f4ecef8ad9ca31a8372d0c353",
 					"description": "Specifies the public ID of the K2 stream."
 				}
-			}
+			},
+			"x-fern-server-name": "stream"
 		}
 	],
 	"X-FORGE-COMMANDS /zones/{zone_id}/snippets/{snippet_name}/content": {

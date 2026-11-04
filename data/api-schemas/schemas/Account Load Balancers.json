@@ -986,18 +986,18 @@
 																			}
 																		},
 																		"random_steering": {
-																			"description": "Configures pool weights.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
+																			"description": "Configures pool weights for a rule override. An omitted default_weight inherits the load balancer's default weight.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
 																			"type": "object",
 																			"properties": {
 																				"default_weight": {
-																					"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+																					"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map. An omitted value inherits the load balancer's default weight.",
 																					"type": "number",
 																					"example": 0.2,
-																					"default": 1,
 																					"maximum": 1,
 																					"minimum": 0,
 																					"multipleOf": 0.1,
-																					"x-auditable": true
+																					"x-auditable": true,
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"pool_weights": {
 																					"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
@@ -1149,11 +1149,11 @@
 																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"priority": {
-																	"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																	"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.",
 																	"type": "integer",
-																	"default": 0,
 																	"minimum": 0,
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"terminates": {
 																	"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
@@ -2127,18 +2127,18 @@
 																		}
 																	},
 																	"random_steering": {
-																		"description": "Configures pool weights.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
+																		"description": "Configures pool weights for a rule override. An omitted default_weight inherits the load balancer's default weight.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
 																		"type": "object",
 																		"properties": {
 																			"default_weight": {
-																				"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+																				"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map. An omitted value inherits the load balancer's default weight.",
 																				"type": "number",
 																				"example": 0.2,
-																				"default": 1,
 																				"maximum": 1,
 																				"minimum": 0,
 																				"multipleOf": 0.1,
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"pool_weights": {
 																				"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
@@ -2290,11 +2290,11 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"priority": {
-																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.",
 																"type": "integer",
-																"default": 0,
 																"minimum": 0,
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"terminates": {
 																"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
@@ -2973,6 +2973,190 @@
 											"jdcloud"
 										]
 									},
+									"pool_sets": {
+										"description": "An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`region_pools` / `country_pools` / `pop_pools` / `default_pools` / `steering_policy` / `random_steering` / `fallback_pool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.",
+										"type": "array",
+										"items": {
+											"description": "One entry in a load balancer's `pool_sets`. Pool sets are evaluated in array order; the first whose `match` succeeds applies its `overrides` (or `fixed_response`), and evaluation stops there.",
+											"type": "object",
+											"properties": {
+												"disabled": {
+													"description": "Disable this specific pool set. It will no longer be evaluated.",
+													"type": "boolean",
+													"default": false,
+													"x-auditable": true
+												},
+												"fixed_response": {
+													"description": "A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation.",
+													"type": "object",
+													"properties": {
+														"content_type": {
+															"description": "The http 'Content-Type' header to include in the response.",
+															"type": "string",
+															"example": "application/json",
+															"maxLength": 32,
+															"x-auditable": true
+														},
+														"location": {
+															"description": "The http 'Location' header to include in the response.",
+															"type": "string",
+															"example": "www.example.com",
+															"maxLength": 2048,
+															"x-auditable": true
+														},
+														"message_body": {
+															"description": "Text to include as the http body.",
+															"type": "string",
+															"example": "Testing Hello",
+															"maxLength": 1024,
+															"x-auditable": true
+														},
+														"status_code": {
+															"description": "The http status code to respond with.",
+															"type": "integer",
+															"x-auditable": true
+														}
+													}
+												},
+												"match": {
+													"description": "Determines which requests a pool set applies to. Set `topology` to match by location or `default: true` to match all requests; the two are mutually exclusive. A pool set with no `match` matches all requests.",
+													"type": "object",
+													"properties": {
+														"default": {
+															"description": "When true, matches every request. Cannot be combined with `topology`.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"topology": {
+															"description": "Matches requests by location. Set any combination of `pops`, `countries`, and `regions` (at least one is required); a request matches when its value appears in any populated list (e.g. `regions: [\"WNAM\"]` with `countries: [\"US\"]` matches a request in either WNAM or the US).",
+															"type": "object",
+															"properties": {
+																"countries": {
+																	"description": "A list of ISO 3166-1 alpha-2 country codes. Matches when the request's country is in this list.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1000
+																},
+																"pops": {
+																	"description": "A list of Cloudflare PoP codes. Matches when the request's PoP is in this list.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1000
+																},
+																"regions": {
+																	"description": "A list of Cloudflare region codes (e.g. `WNAM`, `ENAM`, `WEU`). Matches when the request's region is in this list.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1000
+																}
+															},
+															"x-stainless-terraform-configurability": "computed_optional"
+														}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"name": {
+													"description": "A human-readable name for this pool set.",
+													"type": "string",
+													"example": "wnam-primary",
+													"maxLength": 200,
+													"x-auditable": true
+												},
+												"overrides": {
+													"description": "The behavior a pool set applies when its `match` succeeds. A strict subset of a rule's `overrides`: a pool set replaces the topology wholesale with a flat pool list (`pools`), so only the declarative pool-routing fields plus `fallback_pool` and `steering_policy` are settable. All fields are optional.",
+													"type": "object",
+													"properties": {
+														"fallback_pool": {
+															"description": "The pool ID to use when all other pools are detected as unhealthy.",
+															"type": "string",
+															"x-auditable": true
+														},
+														"pool_default_weight": {
+															"description": "The default weight for pools not listed in `pool_weights`. The declarative alternative to `random_steering.default_weight`; mutually exclusive with `random_steering`.",
+															"type": "number",
+															"example": 0.2,
+															"maximum": 1,
+															"minimum": 0,
+															"multipleOf": 0.1,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"pool_weights": {
+															"description": "A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to `random_steering.pool_weights`; mutually exclusive with `random_steering`.",
+															"type": "object",
+															"example": {
+																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
+															},
+															"additionalProperties": {
+																"type": "number",
+																"x-auditable": true
+															},
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"pools": {
+															"description": "A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with `fixed_response`.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"17b5962d775c646f3f9725cbc7a53df4"
+															],
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"steering_policy": {
+															"description": "Steering Policy for this load balancer.\n- `\"off\"`: Use `default_pools`.\n- `\"geo\"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.\n- `\"random\"`: Select a pool randomly.\n- `\"dynamic_latency\"`: Use round trip time to select the closest pool in default_pools (requires pool health checks).\n- `\"proximity\"`: Use the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests.\n- `\"least_outstanding_requests\"`: Select a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others.\n- `\"least_connections\"`: Select a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections.\n- `\"\"`: Will map to `\"geo\"` if you use `region_pools`/`country_pools`/`pop_pools` otherwise `\"off\"`.",
+															"type": "string",
+															"example": "dynamic_latency",
+															"default": "",
+															"enum": [
+																"off",
+																"geo",
+																"random",
+																"dynamic_latency",
+																"proximity",
+																"least_outstanding_requests",
+																"least_connections",
+																""
+															],
+															"x-auditable": true
+														}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
+												}
+											},
+											"example": {
+												"match": {
+													"topology": {
+														"regions": [
+															"WNAM"
+														]
+													}
+												},
+												"name": "wnam-primary",
+												"overrides": {
+													"fallback_pool": "9290f38c5d07c2e2f4df57b1f61d4196",
+													"pools": [
+														"17b5962d775c646f3f9725cbc7a53df4"
+													],
+													"steering_policy": "random"
+												}
+											},
+											"x-stainless-terraform-configurability": "computed_optional"
+										},
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
 									"pop_pools": {
 										"description": "Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 										"type": "object",
@@ -3258,18 +3442,18 @@
 															}
 														},
 														"random_steering": {
-															"description": "Configures pool weights.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
+															"description": "Configures pool weights for a rule override. An omitted default_weight inherits the load balancer's default weight.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
 															"type": "object",
 															"properties": {
 																"default_weight": {
-																	"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+																	"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map. An omitted value inherits the load balancer's default weight.",
 																	"type": "number",
 																	"example": 0.2,
-																	"default": 1,
 																	"maximum": 1,
 																	"minimum": 0,
 																	"multipleOf": 0.1,
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"pool_weights": {
 																	"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
@@ -3421,11 +3605,11 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"priority": {
-													"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+													"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.",
 													"type": "integer",
-													"default": 0,
 													"minimum": 0,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"terminates": {
 													"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
@@ -4251,18 +4435,18 @@
 																		}
 																	},
 																	"random_steering": {
-																		"description": "Configures pool weights.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
+																		"description": "Configures pool weights for a rule override. An omitted default_weight inherits the load balancer's default weight.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
 																		"type": "object",
 																		"properties": {
 																			"default_weight": {
-																				"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+																				"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map. An omitted value inherits the load balancer's default weight.",
 																				"type": "number",
 																				"example": 0.2,
-																				"default": 1,
 																				"maximum": 1,
 																				"minimum": 0,
 																				"multipleOf": 0.1,
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"pool_weights": {
 																				"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
@@ -4414,11 +4598,11 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"priority": {
-																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.",
 																"type": "integer",
-																"default": 0,
 																"minimum": 0,
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"terminates": {
 																"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
@@ -4807,6 +4991,190 @@
 											"jdcloud"
 										]
 									},
+									"pool_sets": {
+										"description": "An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`region_pools` / `country_pools` / `pop_pools` / `default_pools` / `steering_policy` / `random_steering` / `fallback_pool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.",
+										"type": "array",
+										"items": {
+											"description": "One entry in a load balancer's `pool_sets`. Pool sets are evaluated in array order; the first whose `match` succeeds applies its `overrides` (or `fixed_response`), and evaluation stops there.",
+											"type": "object",
+											"properties": {
+												"disabled": {
+													"description": "Disable this specific pool set. It will no longer be evaluated.",
+													"type": "boolean",
+													"default": false,
+													"x-auditable": true
+												},
+												"fixed_response": {
+													"description": "A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation.",
+													"type": "object",
+													"properties": {
+														"content_type": {
+															"description": "The http 'Content-Type' header to include in the response.",
+															"type": "string",
+															"example": "application/json",
+															"maxLength": 32,
+															"x-auditable": true
+														},
+														"location": {
+															"description": "The http 'Location' header to include in the response.",
+															"type": "string",
+															"example": "www.example.com",
+															"maxLength": 2048,
+															"x-auditable": true
+														},
+														"message_body": {
+															"description": "Text to include as the http body.",
+															"type": "string",
+															"example": "Testing Hello",
+															"maxLength": 1024,
+															"x-auditable": true
+														},
+														"status_code": {
+															"description": "The http status code to respond with.",
+															"type": "integer",
+															"x-auditable": true
+														}
+													}
+												},
+												"match": {
+													"description": "Determines which requests a pool set applies to. Set `topology` to match by location or `default: true` to match all requests; the two are mutually exclusive. A pool set with no `match` matches all requests.",
+													"type": "object",
+													"properties": {
+														"default": {
+															"description": "When true, matches every request. Cannot be combined with `topology`.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"topology": {
+															"description": "Matches requests by location. Set any combination of `pops`, `countries`, and `regions` (at least one is required); a request matches when its value appears in any populated list (e.g. `regions: [\"WNAM\"]` with `countries: [\"US\"]` matches a request in either WNAM or the US).",
+															"type": "object",
+															"properties": {
+																"countries": {
+																	"description": "A list of ISO 3166-1 alpha-2 country codes. Matches when the request's country is in this list.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1000
+																},
+																"pops": {
+																	"description": "A list of Cloudflare PoP codes. Matches when the request's PoP is in this list.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1000
+																},
+																"regions": {
+																	"description": "A list of Cloudflare region codes (e.g. `WNAM`, `ENAM`, `WEU`). Matches when the request's region is in this list.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1000
+																}
+															},
+															"x-stainless-terraform-configurability": "computed_optional"
+														}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"name": {
+													"description": "A human-readable name for this pool set.",
+													"type": "string",
+													"example": "wnam-primary",
+													"maxLength": 200,
+													"x-auditable": true
+												},
+												"overrides": {
+													"description": "The behavior a pool set applies when its `match` succeeds. A strict subset of a rule's `overrides`: a pool set replaces the topology wholesale with a flat pool list (`pools`), so only the declarative pool-routing fields plus `fallback_pool` and `steering_policy` are settable. All fields are optional.",
+													"type": "object",
+													"properties": {
+														"fallback_pool": {
+															"description": "The pool ID to use when all other pools are detected as unhealthy.",
+															"type": "string",
+															"x-auditable": true
+														},
+														"pool_default_weight": {
+															"description": "The default weight for pools not listed in `pool_weights`. The declarative alternative to `random_steering.default_weight`; mutually exclusive with `random_steering`.",
+															"type": "number",
+															"example": 0.2,
+															"maximum": 1,
+															"minimum": 0,
+															"multipleOf": 0.1,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"pool_weights": {
+															"description": "A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to `random_steering.pool_weights`; mutually exclusive with `random_steering`.",
+															"type": "object",
+															"example": {
+																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
+															},
+															"additionalProperties": {
+																"type": "number",
+																"x-auditable": true
+															},
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"pools": {
+															"description": "A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with `fixed_response`.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"17b5962d775c646f3f9725cbc7a53df4"
+															],
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"steering_policy": {
+															"description": "Steering Policy for this load balancer.\n- `\"off\"`: Use `default_pools`.\n- `\"geo\"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.\n- `\"random\"`: Select a pool randomly.\n- `\"dynamic_latency\"`: Use round trip time to select the closest pool in default_pools (requires pool health checks).\n- `\"proximity\"`: Use the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests.\n- `\"least_outstanding_requests\"`: Select a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others.\n- `\"least_connections\"`: Select a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections.\n- `\"\"`: Will map to `\"geo\"` if you use `region_pools`/`country_pools`/`pop_pools` otherwise `\"off\"`.",
+															"type": "string",
+															"example": "dynamic_latency",
+															"default": "",
+															"enum": [
+																"off",
+																"geo",
+																"random",
+																"dynamic_latency",
+																"proximity",
+																"least_outstanding_requests",
+																"least_connections",
+																""
+															],
+															"x-auditable": true
+														}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
+												}
+											},
+											"example": {
+												"match": {
+													"topology": {
+														"regions": [
+															"WNAM"
+														]
+													}
+												},
+												"name": "wnam-primary",
+												"overrides": {
+													"fallback_pool": "9290f38c5d07c2e2f4df57b1f61d4196",
+													"pools": [
+														"17b5962d775c646f3f9725cbc7a53df4"
+													],
+													"steering_policy": "random"
+												}
+											},
+											"x-stainless-terraform-configurability": "computed_optional"
+										},
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
 									"pop_pools": {
 										"description": "Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 										"type": "object",
@@ -5092,18 +5460,18 @@
 															}
 														},
 														"random_steering": {
-															"description": "Configures pool weights.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
+															"description": "Configures pool weights for a rule override. An omitted default_weight inherits the load balancer's default weight.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
 															"type": "object",
 															"properties": {
 																"default_weight": {
-																	"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+																	"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map. An omitted value inherits the load balancer's default weight.",
 																	"type": "number",
 																	"example": 0.2,
-																	"default": 1,
 																	"maximum": 1,
 																	"minimum": 0,
 																	"multipleOf": 0.1,
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"pool_weights": {
 																	"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
@@ -5255,11 +5623,11 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"priority": {
-													"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+													"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.",
 													"type": "integer",
-													"default": 0,
 													"minimum": 0,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"terminates": {
 													"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
@@ -6093,18 +6461,18 @@
 																		}
 																	},
 																	"random_steering": {
-																		"description": "Configures pool weights.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
+																		"description": "Configures pool weights for a rule override. An omitted default_weight inherits the load balancer's default weight.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
 																		"type": "object",
 																		"properties": {
 																			"default_weight": {
-																				"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+																				"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map. An omitted value inherits the load balancer's default weight.",
 																				"type": "number",
 																				"example": 0.2,
-																				"default": 1,
 																				"maximum": 1,
 																				"minimum": 0,
 																				"multipleOf": 0.1,
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"pool_weights": {
 																				"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
@@ -6256,11 +6624,11 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"priority": {
-																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.",
 																"type": "integer",
-																"default": 0,
 																"minimum": 0,
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"terminates": {
 																"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
@@ -6659,6 +7027,190 @@
 											"jdcloud"
 										]
 									},
+									"pool_sets": {
+										"description": "An optional list of pool sets, evaluated in array order with first match wins. Pool sets are independent from the standard steering fields (`region_pools` / `country_pools` / `pop_pools` / `default_pools` / `steering_policy` / `random_steering` / `fallback_pool` / `rules`). On a PATCH, an empty array (`pool_sets: []`) clears all pool sets, while omitting the field leaves existing pool sets unchanged.",
+										"type": "array",
+										"items": {
+											"description": "One entry in a load balancer's `pool_sets`. Pool sets are evaluated in array order; the first whose `match` succeeds applies its `overrides` (or `fixed_response`), and evaluation stops there.",
+											"type": "object",
+											"properties": {
+												"disabled": {
+													"description": "Disable this specific pool set. It will no longer be evaluated.",
+													"type": "boolean",
+													"default": false,
+													"x-auditable": true
+												},
+												"fixed_response": {
+													"description": "A collection of fields used to directly respond to the client instead of routing to a pool. When supplied on a rule, that rule stops further rule evaluation.",
+													"type": "object",
+													"properties": {
+														"content_type": {
+															"description": "The http 'Content-Type' header to include in the response.",
+															"type": "string",
+															"example": "application/json",
+															"maxLength": 32,
+															"x-auditable": true
+														},
+														"location": {
+															"description": "The http 'Location' header to include in the response.",
+															"type": "string",
+															"example": "www.example.com",
+															"maxLength": 2048,
+															"x-auditable": true
+														},
+														"message_body": {
+															"description": "Text to include as the http body.",
+															"type": "string",
+															"example": "Testing Hello",
+															"maxLength": 1024,
+															"x-auditable": true
+														},
+														"status_code": {
+															"description": "The http status code to respond with.",
+															"type": "integer",
+															"x-auditable": true
+														}
+													}
+												},
+												"match": {
+													"description": "Determines which requests a pool set applies to. Set `topology` to match by location or `default: true` to match all requests; the two are mutually exclusive. A pool set with no `match` matches all requests.",
+													"type": "object",
+													"properties": {
+														"default": {
+															"description": "When true, matches every request. Cannot be combined with `topology`.",
+															"type": "boolean",
+															"default": false,
+															"x-auditable": true
+														},
+														"topology": {
+															"description": "Matches requests by location. Set any combination of `pops`, `countries`, and `regions` (at least one is required); a request matches when its value appears in any populated list (e.g. `regions: [\"WNAM\"]` with `countries: [\"US\"]` matches a request in either WNAM or the US).",
+															"type": "object",
+															"properties": {
+																"countries": {
+																	"description": "A list of ISO 3166-1 alpha-2 country codes. Matches when the request's country is in this list.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1000
+																},
+																"pops": {
+																	"description": "A list of Cloudflare PoP codes. Matches when the request's PoP is in this list.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1000
+																},
+																"regions": {
+																	"description": "A list of Cloudflare region codes (e.g. `WNAM`, `ENAM`, `WEU`). Matches when the request's region is in this list.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1000
+																}
+															},
+															"x-stainless-terraform-configurability": "computed_optional"
+														}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"name": {
+													"description": "A human-readable name for this pool set.",
+													"type": "string",
+													"example": "wnam-primary",
+													"maxLength": 200,
+													"x-auditable": true
+												},
+												"overrides": {
+													"description": "The behavior a pool set applies when its `match` succeeds. A strict subset of a rule's `overrides`: a pool set replaces the topology wholesale with a flat pool list (`pools`), so only the declarative pool-routing fields plus `fallback_pool` and `steering_policy` are settable. All fields are optional.",
+													"type": "object",
+													"properties": {
+														"fallback_pool": {
+															"description": "The pool ID to use when all other pools are detected as unhealthy.",
+															"type": "string",
+															"x-auditable": true
+														},
+														"pool_default_weight": {
+															"description": "The default weight for pools not listed in `pool_weights`. The declarative alternative to `random_steering.default_weight`; mutually exclusive with `random_steering`.",
+															"type": "number",
+															"example": 0.2,
+															"maximum": 1,
+															"minimum": 0,
+															"multipleOf": 0.1,
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"pool_weights": {
+															"description": "A mapping of pool IDs to custom weights, relative to the other pools. The declarative alternative to `random_steering.pool_weights`; mutually exclusive with `random_steering`.",
+															"type": "object",
+															"example": {
+																"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+																"de90f38ced07c2e2f4df50b1f61d4194": 0.3
+															},
+															"additionalProperties": {
+																"type": "number",
+																"x-auditable": true
+															},
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"pools": {
+															"description": "A flat, ordered list of pool IDs to route the matched audience to. Replaces the resolved topology with exactly these pools. Mutually exclusive with `fixed_response`.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"17b5962d775c646f3f9725cbc7a53df4"
+															],
+															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"steering_policy": {
+															"description": "Steering Policy for this load balancer.\n- `\"off\"`: Use `default_pools`.\n- `\"geo\"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.\n- `\"random\"`: Select a pool randomly.\n- `\"dynamic_latency\"`: Use round trip time to select the closest pool in default_pools (requires pool health checks).\n- `\"proximity\"`: Use the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests.\n- `\"least_outstanding_requests\"`: Select a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others.\n- `\"least_connections\"`: Select a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections.\n- `\"\"`: Will map to `\"geo\"` if you use `region_pools`/`country_pools`/`pop_pools` otherwise `\"off\"`.",
+															"type": "string",
+															"example": "dynamic_latency",
+															"default": "",
+															"enum": [
+																"off",
+																"geo",
+																"random",
+																"dynamic_latency",
+																"proximity",
+																"least_outstanding_requests",
+																"least_connections",
+																""
+															],
+															"x-auditable": true
+														}
+													},
+													"x-stainless-terraform-configurability": "computed_optional"
+												}
+											},
+											"example": {
+												"match": {
+													"topology": {
+														"regions": [
+															"WNAM"
+														]
+													}
+												},
+												"name": "wnam-primary",
+												"overrides": {
+													"fallback_pool": "9290f38c5d07c2e2f4df57b1f61d4196",
+													"pools": [
+														"17b5962d775c646f3f9725cbc7a53df4"
+													],
+													"steering_policy": "random"
+												}
+											},
+											"x-stainless-terraform-configurability": "computed_optional"
+										},
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
 									"pop_pools": {
 										"description": "Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
 										"type": "object",
@@ -6944,18 +7496,18 @@
 															}
 														},
 														"random_steering": {
-															"description": "Configures pool weights.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
+															"description": "Configures pool weights for a rule override. An omitted default_weight inherits the load balancer's default weight.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
 															"type": "object",
 															"properties": {
 																"default_weight": {
-																	"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+																	"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map. An omitted value inherits the load balancer's default weight.",
 																	"type": "number",
 																	"example": 0.2,
-																	"default": 1,
 																	"maximum": 1,
 																	"minimum": 0,
 																	"multipleOf": 0.1,
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"pool_weights": {
 																	"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
@@ -7107,11 +7659,11 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"priority": {
-													"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+													"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.",
 													"type": "integer",
-													"default": 0,
 													"minimum": 0,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"terminates": {
 													"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
@@ -7945,18 +8497,18 @@
 																		}
 																	},
 																	"random_steering": {
-																		"description": "Configures pool weights.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
+																		"description": "Configures pool weights for a rule override. An omitted default_weight inherits the load balancer's default weight.\n- `steering_policy=\"random\"`: A random pool is selected with probability proportional to pool weights.\n- `steering_policy=\"least_outstanding_requests\"`: Use pool weights to scale each pool's outstanding requests.\n- `steering_policy=\"least_connections\"`: Use pool weights to scale each pool's open connections.",
 																		"type": "object",
 																		"properties": {
 																			"default_weight": {
-																				"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+																				"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map. An omitted value inherits the load balancer's default weight.",
 																				"type": "number",
 																				"example": 0.2,
-																				"default": 1,
 																				"maximum": 1,
 																				"minimum": 0,
 																				"multipleOf": 0.1,
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"pool_weights": {
 																				"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
@@ -8108,11 +8660,11 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"priority": {
-																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If all priorities are omitted or zero, the API assigns priorities based on the array order of the rules field.",
 																"type": "integer",
-																"default": 0,
 																"minimum": 0,
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"terminates": {
 																"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",

@@ -1,0 +1,1616 @@
+{
+	"DELETE /zones/{zone_id}/settings/ohttp-gateway": {
+		"operationId": "ohttp-gateway-disable",
+		"summary": "Disable OHTTP Gateway",
+		"description": "Idempotently disables Oblivious HTTP Gateway for the zone. Requires product subscription to call.",
+		"parameters": [
+			{
+				"description": "The zone tag.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OHTTP Gateway was disabled for the zone, or was already disabled.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"inactive": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": "ohttp is inactive",
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare API response wrapping the result of an operation.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors, empty on success.",
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages, empty on success.",
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"type": "string",
+									"enum": [
+										"ohttp is active",
+										"ohttp is inactive"
+									]
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid translated account or zone identifier.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The request is not authorized for this zone or entitlement.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "API dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "API dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"OHTTP Gateway"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ohttp-gateway.enablement",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation disables OHTTP Gateway for the zone.",
+		"x-stability": "beta"
+	},
+	"GET /zones/{zone_id}/settings/ohttp-gateway": {
+		"operationId": "ohttp-gateway-get-enablement",
+		"summary": "Get OHTTP Gateway enablement",
+		"description": "Returns the state of Oblivious HTTP enablement for the zone. Requires product subscription to call.",
+		"parameters": [
+			{
+				"description": "The zone tag.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The OHTTP Gateway enablement state for the zone.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"active": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": "ohttp is active",
+									"success": true
+								}
+							},
+							"inactive": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": "ohttp is inactive",
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare API response wrapping the result of an operation.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors, empty on success.",
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages, empty on success.",
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"type": "string",
+									"enum": [
+										"ohttp is active",
+										"ohttp is inactive"
+									]
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid translated account or zone identifier.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The request is not authorized for this zone or entitlement.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "API dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "API dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"OHTTP Gateway"
+		],
+		"x-api-token-group": [
+			"Zone Settings Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ohttp-gateway.enablement",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
+	},
+	"PUT /zones/{zone_id}/settings/ohttp-gateway": {
+		"operationId": "ohttp-gateway-enable",
+		"summary": "Enable OHTTP Gateway",
+		"description": "Enables OHTTP Gateway for the zone. Enabling an already-enabled zone is idempotent and returns HTTP 200 status code; enabling a zone for the first time returns HTTP 201. Requires product subscription to call.",
+		"parameters": [
+			{
+				"description": "The zone tag.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "OHTTP Gateway was already enabled for the zone.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"active": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": "ohttp is active",
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare API response wrapping the result of an operation.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors, empty on success.",
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages, empty on success.",
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"type": "string",
+									"enum": [
+										"ohttp is active",
+										"ohttp is inactive"
+									]
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"201": {
+				"description": "OHTTP Gateway was enabled for the zone.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"active": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": "ohttp is active",
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare API response wrapping the result of an operation.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors, empty on success.",
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages, empty on success.",
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"example": []
+								},
+								"result": {
+									"type": "string",
+									"enum": [
+										"ohttp is active",
+										"ohttp is inactive"
+									]
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid translated account or zone identifier.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The request is not authorized for this zone or entitlement.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "API dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"5XX": {
+				"description": "API dependency failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard Cloudflare API failure response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"description": "Represents an error that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric error code.",
+												"type": "integer",
+												"example": 1013
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "upstream failure: could not enable OHTTP"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"description": "Represents an informational message that the API returns.",
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Numeric message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Always null for error responses.",
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Always false for error responses.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"OHTTP Gateway"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ohttp-gateway.enablement",
+		"x-fern-sdk-method-name": "create",
+		"x-stability": "beta"
+	}
+}
