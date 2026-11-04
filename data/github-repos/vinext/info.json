@@ -22,7 +22,6 @@
 	"default_branch": "main",
 	"branches": [
 		"alt/prerender-rsc-sidechannel",
-		"changeset-release/main",
 		"chonky-list",
 		"chore/bundle-zero-dep-leaves",
 		"ci/commit-version-bump",
@@ -415,6 +414,7 @@
 		"t3/fetch-cache-call-tags",
 		"t3/fix-issue-4221-v3",
 		"t3/fix-issue-4302",
+		"t3/fix-issue-4533",
 		"t3/parallelize-hot-path-awaits",
 		"t3/prefetch-refresh-dynamic-only",
 		"t3/prefetch-revalidation-cooldown",
