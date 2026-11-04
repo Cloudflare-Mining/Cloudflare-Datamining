@@ -521,39 +521,16 @@
 												"minimum": 3600
 											},
 											"worker_binding": {
-												"oneOf": [
-													{
-														"additionalProperties": false,
-														"properties": {
-															"enabled": {
-																"description": "Indicates whether Workers bindings can produce records to the stream.",
-																"type": "boolean",
-																"enum": [
-																	false
-																]
-															}
-														},
-														"required": [
-															"enabled"
-														],
-														"type": "object"
-													},
-													{
-														"additionalProperties": false,
-														"properties": {
-															"enabled": {
-																"description": "Indicates whether Workers bindings can produce records to the stream.",
-																"type": "boolean",
-																"enum": [
-																	true
-																]
-															}
-														},
-														"required": [
-															"enabled"
-														],
-														"type": "object"
+												"type": "object",
+												"properties": {
+													"enabled": {
+														"description": "Indicates whether Workers bindings can produce records to the stream.",
+														"type": "boolean"
 													}
+												},
+												"additionalProperties": false,
+												"required": [
+													"enabled"
 												]
 											}
 										},
@@ -787,39 +764,16 @@
 											"minimum": 3600
 										},
 										"worker_binding": {
-											"oneOf": [
-												{
-													"additionalProperties": false,
-													"properties": {
-														"enabled": {
-															"description": "Indicates whether Workers bindings can produce records to the stream.",
-															"type": "boolean",
-															"enum": [
-																false
-															]
-														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
-												},
-												{
-													"additionalProperties": false,
-													"properties": {
-														"enabled": {
-															"description": "Indicates whether Workers bindings can produce records to the stream.",
-															"type": "boolean",
-															"enum": [
-																true
-															]
-														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Indicates whether Workers bindings can produce records to the stream.",
+													"type": "boolean"
 												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"enabled"
 											]
 										}
 									},
@@ -1675,39 +1629,16 @@
 								"minimum": 3600
 							},
 							"worker_binding": {
-								"oneOf": [
-									{
-										"additionalProperties": false,
-										"properties": {
-											"enabled": {
-												"description": "Indicates whether Workers bindings can produce records to the stream.",
-												"type": "boolean",
-												"enum": [
-													false
-												]
-											}
-										},
-										"required": [
-											"enabled"
-										],
-										"type": "object"
-									},
-									{
-										"additionalProperties": false,
-										"properties": {
-											"enabled": {
-												"description": "Indicates whether Workers bindings can produce records to the stream.",
-												"type": "boolean",
-												"enum": [
-													true
-												]
-											}
-										},
-										"required": [
-											"enabled"
-										],
-										"type": "object"
+								"type": "object",
+								"properties": {
+									"enabled": {
+										"description": "Indicates whether Workers bindings can produce records to the stream.",
+										"type": "boolean"
 									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"enabled"
 								]
 							}
 						},
@@ -1871,39 +1802,16 @@
 											"minimum": 3600
 										},
 										"worker_binding": {
-											"oneOf": [
-												{
-													"additionalProperties": false,
-													"properties": {
-														"enabled": {
-															"description": "Indicates whether Workers bindings can produce records to the stream.",
-															"type": "boolean",
-															"enum": [
-																false
-															]
-														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
-												},
-												{
-													"additionalProperties": false,
-													"properties": {
-														"enabled": {
-															"description": "Indicates whether Workers bindings can produce records to the stream.",
-															"type": "boolean",
-															"enum": [
-																true
-															]
-														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Indicates whether Workers bindings can produce records to the stream.",
+													"type": "boolean"
 												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"enabled"
 											]
 										}
 									},
@@ -2051,39 +1959,16 @@
 								},
 								"allOf": [
 									{
-										"oneOf": [
-											{
-												"additionalProperties": false,
-												"properties": {
-													"enabled": {
-														"description": "Indicates whether Workers bindings can produce records to the stream.",
-														"type": "boolean",
-														"enum": [
-															false
-														]
-													}
-												},
-												"required": [
-													"enabled"
-												],
-												"type": "object"
-											},
-											{
-												"additionalProperties": false,
-												"properties": {
-													"enabled": {
-														"description": "Indicates whether Workers bindings can produce records to the stream.",
-														"type": "boolean",
-														"enum": [
-															true
-														]
-													}
-												},
-												"required": [
-													"enabled"
-												],
-												"type": "object"
+										"type": "object",
+										"properties": {
+											"enabled": {
+												"description": "Indicates whether Workers bindings can produce records to the stream.",
+												"type": "boolean"
 											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"enabled"
 										]
 									}
 								]
@@ -2250,39 +2135,16 @@
 											"minimum": 3600
 										},
 										"worker_binding": {
-											"oneOf": [
-												{
-													"additionalProperties": false,
-													"properties": {
-														"enabled": {
-															"description": "Indicates whether Workers bindings can produce records to the stream.",
-															"type": "boolean",
-															"enum": [
-																false
-															]
-														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
-												},
-												{
-													"additionalProperties": false,
-													"properties": {
-														"enabled": {
-															"description": "Indicates whether Workers bindings can produce records to the stream.",
-															"type": "boolean",
-															"enum": [
-																true
-															]
-														}
-													},
-													"required": [
-														"enabled"
-													],
-													"type": "object"
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Indicates whether Workers bindings can produce records to the stream.",
+													"type": "boolean"
 												}
+											},
+											"additionalProperties": false,
+											"required": [
+												"enabled"
 											]
 										}
 									},
