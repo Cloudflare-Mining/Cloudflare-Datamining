@@ -3,43 +3,62 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong><span style="font-size: 12pt;">Available Locations:&nbsp;</span></strong><span style="font-size: 12pt;">London (UK)</span></p>
-<h2><span style="font-size: 12pt;"><strong>About the Role</strong></span></h2>
-<p>Reporting to the Vulnerability Manager, the VM &nbsp;Engineer will be responsible for identifying, analysing, and supporting the remediation of vulnerabilities across Cloudflare's Infrastructure and cloud environments.You will work closely with Engineering, Infrastructure, cloud and compliance teams to identify, triage, and drive timely and effective remediation of security vulnerabilities in line with defined SLAs. A key focus of the role will be supporting DOD IL4 and Fedramp preparation, ensuring vulnerability processes, evidence, and tooling align with regulatory and assurance requirements. You will also apply AI-driven tools and methodologies to enhance scanning efficiency, triage accuracy, and automated remediation pathways. We are looking for a proactive, detail oriented individual with the ability to manage multiple remediation activities in parallel.</p>
-<h2><span style="font-size: 12pt;"><strong>Responsibilities</strong></span></h2>
+<p>Location:&nbsp;Austin, TX, London, UK, New York, NY</p>
+<p>New vulnerabilities can be exploited soon after public disclosure, leaving application owners little time to patch. Cloudflare can drastically reduce this exposure through managed WAF protections, ad-hoc emergency policies, and tools that help customers identify affected applications and remediate them.</p>
+<p>As Senior Product Manager for Zero-Day Protection, your goal is to help protect more than 25% of the Internet from HTTP-exploitable vulnerabilities and attacks. You will own the strategy, roadmap, execution, and customer experience for Cloudflare’s zero-day protection products, beginning with WAF Managed Rules. The role also shapes how Cloudflare helps customers identify affected applications, deploy temporary mitigations, investigate active exploitation, and remediate vulnerable software.</p>
+<h1><span style="text-decoration: underline;">Responsibilities</span></h1>
+<h2>Product strategy and roadmap</h2>
 <ul>
-	<li>Conduct vulnerability scanning, and perform in-depth analysis of&nbsp; findings from scanning tools (e.g., Qualys, Nessus, Rapid7), to verify accuracy, identify systemic patterns, and filter out false positives.</li>
-	<li>Triage, validate and prioritise vulnerabilities using risk based approaches to determine real business impact, and working with engineering and compliance teams to agree remediation actions and timelines.</li>
-	<li>Develop, document, and deliver technical remediation guidance and solutions to enable application and infrastructure teams to remediate efficiently and consistently.</li>
-	<li>Support DOD IL4 and Fedramp preparation, by ensuring vulnerability management processes, evidence, reporting, and controls meet regulatory and assurance expectations.</li>
-	<li>Work closely with engineering and service teams to embed vulnerability management into delivery pipelines , operational processes and change management.&nbsp;</li>
-	<li>Leverage AI security tools and automation to streamline triage, pattern recognition, and risk prioritisation.</li>
-	<li>Establish strong relationships with engineering teams to track and report status and remediation progress</li>
-	<li>Manage and track the remediation backlog, maintaining focus on risk reduction and measurable progress.</li>
-	<li>Contribute to the continuous improvement of vulnerability management standards, procedures, and playbooks, ensuring alignment with IL4, Fedramp and other compliance requirements.</li>
+	<li>Own the strategy and roadmap for WAF Managed Rules and Cloudflare’s broader zero-day protection experience.</li>
+	<li>Partner with other product and engineering teams to help customers identify exposure, deploy mitigations, investigate attacks, and remediate vulnerable software.</li>
+	<li>Define how Managed Rules integrates with code scanning and exposure discovery to help customers identify applications affected by newly disclosed vulnerabilities.</li>
+	<li>Prioritize shared security primitives, telemetry, and APIs that make emergency protections easier to automate across Cloudflare’s security products.</li>
+	<li>Define workflows for creating, testing, deploying, and auditing ad-hoc emergency policies when a managed detection is not sufficient for a customer’s environment.</li>
+	<li>Partner with the Cloudflare Security Analyst team to turn threat intelligence, vulnerability research, and detection opportunities into product priorities. Analysts provide technical guidance; the PM brings customer impact and product context.</li>
+	<li>Partner with Security, Legal, and external researchers during coordinated disclosure processes to prepare customer protections and communications.</li>
+	<li>Discover and prioritize Enterprise operational needs with customers, Solutions Engineering, Support, and Engineering.</li>
 </ul>
-<p><span style="font-size: 12pt;"><strong>Must-Have Skills</strong></span></p>
+<h2>Customer experience</h2>
 <ul>
-	<li>Solid understanding of DoD Impact level IL4, FedRAMP, SOC-2, and PCI frameworks.</li>
-	<li>3+ years&nbsp; Vulnerability Management experience in a heavily regulated environment.</li>
-	<li>Bachelor's degree in Computer Science, Information Security, or security certifications in a related field.</li>
-	<li>Strong communication (written and verbal) and interpersonal skills, with the ability to effectively collaborate with technical and non-technical teams.</li>
-	<li>A strong understanding of CVSS (Common Vulnerability Scoring System) and how to apply risk assessment methodologies in a business context to support remediation..</li>
-	<li>Hands-on experience with vulnerability scanning platforms (e.g., Qualys, Nessus, Rapid7 InsightVM).</li>
-	<li>Strong analytical skills to identify patterns in data and distinguish between theoretical risk and actual exploitability.</li>
-	<li>Practical experience using AI-powered security tools or generative AI assistants to accelerate vulnerability triage, code analysis, or remediation guidance.</li>
+	<li>Own the end-to-end customer journey: identifying affected applications, discovering protections, deploying them safely, testing before enforcement, reviewing security events, investigating incidents, configuring exceptions and confirming remediation</li>
+	<li>Ensure customers can understand what protections they have, what events mean, and what action to take.</li>
+	<li>Establish feedback loops with Support, Customer Success, Solutions Engineering, and customers. Turn recurring friction and unmet needs into product priorities.</li>
 </ul>
-<p><span style="font-size: 12pt;"><strong>Nice-to-Have Skills</strong></span></p>
+<h2>Operations and communications</h2>
 <ul>
-	<li>Experience with scripting languages (e.g., Python) for automation.</li>
-	<li>Proficiency in using ticketing tools like JIRA for managing tickets and tasks.</li>
-	<li>Experience integrating LLMs or AI APIs into cybersecurity workflows and automation pipelines.</li>
-	<li>Hands on experience with Infrastructure pentesting tools.</li>
+	<li>Support the Security Analyst team’s vulnerability-response work by providing product context and customer perspective</li>
+	<li>Coordinate responsible disclosure and external vulnerability communications with Security, Legal, and Communications</li>
+	<li>Write technical posts, customer guidance, and product communications for security researchers, customers, press, and non-technical audiences</li>
+	<li>Represent Cloudflare in the broader security community, at conferences, and online as a product and technical spokesperson for Managed Rules and HTTP application vulnerabilities</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h2>Skills&nbsp;Required&nbsp;</h2>
+<ul>
+	<li>Strong product-management experience, including strategy, roadmap ownership, discovery, prioritization, and cross-functional delivery.</li>
+	<li>Technical fluency to understand HTTP applications, vulnerabilities, exploits, and detection systems.</li>
+	<li>Ability to synthesize input from security analysts, engineers, customers, and commercial teams into clear product decisions.</li>
+	<li>Customer empathy and strong product judgment, especially for complex technical workflows.</li>
+	<li>Excellent written and verbal communication for technical and non-technical audiences.</li>
+	<li>Comfort operating in a fast-moving, ambiguous security environment.</li>
+	<li>Strong cross-functional leadership across Security Analysts, Engineering, Support, Customer Success, Solutions Engineering, Legal, Communications, and other product teams.</li>
+</ul>
+<h2>Nice to have</h2>
+<ul>
+	<li>Security research, exploit-development, or detection-engineering experience.</li>
+	<li>Experience with WAFs, managed rules, security-rule rollout, false-positive management, application security, threat intelligence, security operations or vulnerability management.</li>
+	<li>Experience with Enterprise security operations, including APIs, automation, auditability, policy controls, logs, and SIEM integrations.</li>
+	<li>Experience with code scanning, software supply-chain security, or exposure discovery.</li>
+	<li>An established presence in the security research community, conference speaking, technical writing, or press engagement.</li>
+</ul>
+<h4>Compensation</h4>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For <strong>Lisbon </strong>based hires: Estimated annual salary of 65,000 - 80,000 EURO</li>
+	<li>For <strong>New York City </strong>based hires: Estimated annual salary of $156,000 - $216,000</li>
+</ul>
+<h4>Equity</h4>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
+<h4>Benefits</h4>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
@@ -63,7 +82,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

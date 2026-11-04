@@ -4,31 +4,37 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <h2>Available Locations</h2>
-<ul>
-	<li>New York, NY</li>
-	<li>Washington DC</li>
-</ul>
+<p>New York, NY<br>Washington, DC<br>San Francisco, CA</p>
 <h2>About the Role</h2>
-<p>Cloudflare’s engineering teams build and maintain the systems and products that power our global platform. A global platform which is within approximately 50 milliseconds of about 95% of the Internet connected population, serving on average, over 46 million HTTP requests per second.</p>
-<p>Cloudflare engineering delivers multiple products and features to production at a tremendous pace, and depends on real time load balancing and long term capacity planning to do so with high performance and efficiency. The MAPS team is responsible for highly granular and large-scale resource usage instrumentation and measurement of Cloudflare's edge platform.&nbsp; The team builds and runs data pipelines, as well as systems and libraries for measuring and collecting the data, and collaborates closely across the range of teams that build and run services on Cloudflare's global edge network to ensure consistent, complete, and correct attribution of all resource usage.</p>
-<p><strong>What are we looking for?</strong></p>
-<p>We are looking for highly motivated software engineers to join our MAPS team.&nbsp; You’ll have a strong programming background with a deep understanding and experience developing and maintaining&nbsp; distributed systems. You’ll need to be able to communicate effectively with engineers across the company to understand the behaviours of our systems and products in order to deliver tooling to meet their testing needs. You will also work closely with product managers to support our public facing synthetic testing and load testing products for enterprise customers.</p>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p>Cloudflare’s architecture is built on a homogeneous edge: every server in over 330 cities runs every service—from L4/L7 proxies (FL2, Pingora) and DNS to the Workers runtime, cache, and storage. While this design maximizes hardware utilization, it creates a difficult distributed attribution problem. Machine-level telemetry tells us how loaded a server is, but not which product, customer, or upstream service is responsible for that load.</p>
+<p><br>MAPS (Metrics and Analytics for Product Segmentation) is a newly formed team building the core instrumentation, collection, and data platform to solve this from the ground up. We are architecting a system to continuously measure CPU, network bandwidth, memory, and storage utilization across the entire global fleet without sampling—attributing resource consumption both to the underlying system service and to the specific product, account, and zone being served.</p>
+<p><br>The data MAPS produces serves two critical functions at Cloudflare:</p>
+<ol>
+	<li>Real-Time Control Plane: MAPS is the primary telemetry input for Cloudflare’s next-generation global load balancer, shifting traffic management from open-loop heuristics to closed-loop routing driven by real-time, per-service resource capacity and consumption (within seconds).</li>
+	<li>Fleet Economics &amp; Capacity Planning: MAPS provides the long-term analytical dataset in ClickHouse used to map product demand forecasts to physical hardware requirements, calculate true cost-to-serve per product, and drive multi-year infrastructure investments.</li>
+</ol>
+<h2>What You’ll Do</h2>
+<p>You will work across the full lifecycle of a greenfield, high-throughput telemetry system running on every machine at the Cloudflare edge:</p>
 <ul>
-	<li>Experience as a software engineer or similar role working on latency and efficiency sensitive server infrastructure.</li>
-	<li>Experience working with large-scale data pipelines and processing, including use of distributed column-oriented data storage and processing such as ClickHouse, BigQuery/Dremel, etc.</li>
-	<li>Strong knowledge of TCP/IP networking fundamentals and routing basics</li>
-	<li>Successful track record of collaborating with many teams concurrently to achieve goals that require alignment across a range of teams and orgs.</li>
-	<li>Track record of owning problems, goals, and outcomes - not (just) specific pieces of software.</li>
-	<li>Track record of building long-term sustainable, maintainable systems.</li>
-	<li>Ability to dive deep into technical specifics of systems and codebases, while always keeping the big picture in mind.</li>
-	<li>Experience with one or more of the following programming languages: Go, Rust, C</li>
+	<li>Host-Level Instrumentation ("Outside View"): Build and maintain low-overhead Linux daemons (netacctd, maps_collector) in Rust and C that use eBPF (cgroup_skb) and cgroup v2 accounting to measure per-service resource consumption directly from the kernel.</li>
+	<li>High-Performance Client Libraries ("Inside View"): Architect non-blocking, zero-allocation reporting SDKs in Rust and Go used by Cloudflare’s highest-throughput data-plane services to report per-request resource usage and product attribution over local Unix domain sockets.</li>
+	<li>Edge Aggregation &amp; Streaming: Build the per-machine collector daemon that ingests millions of events per second, performs bounded in-memory time-window aggregation, serves low-latency gRPC streams to the global load balancer, and flushes batch rollups to ClickHouse.</li>
+	<li>Reconciliation &amp; Correctness: Solve complex attribution problems—such as reconciling kernel-level cgroup measurements against application-reported metrics, and attributing resource usage when one multi-tenant service executes work on behalf of another.</li>
+	<li>Cross-Team Architecture: Partner directly with the engineering teams behind Cloudflare’s core proxies, runtimes, and storage engines to instrument their critical paths without degrading tail latency.</li>
+</ul>
+<h2>What We’re Looking For</h2>
+<ul>
+	<li>Strong systems programming experience in Rust, Go, or C, with a solid grasp of memory layout, concurrency, and performance-critical code paths.</li>
+	<li>Experience designing and operating latency- and resource-sensitive server infrastructure or high-throughput data pipelines at scale.</li>
+	<li>Strong fundamentals in Linux systems internals—processes, cgroups, sockets, and how the kernel accounts for compute, memory, and I/O.</li>
+	<li>Proven ability to work across organizational boundaries: reading unfamiliar codebases, aligning with other infrastructure teams, and driving complex integrations to completion.</li>
+	<li>A pragmatic approach to owning outcomes—from kernel-level data collection and wire protocols (protobuf/Cap'n Proto) all the way to the analytical tables consumers query.</li>
 </ul>
 <h2>Bonus Points</h2>
 <ul>
-	<li>Strong understanding of Linux kernel internals, especially any of: networking, scheduling, resource isolation, virtualization</li>
-	<li>Experience troubleshooting and resolving performance issues in large-scale distributed systems.</li>
-	<li>Experience with large scale configuration/deployment management.</li>
+	<li>Hands-on experience writing and verifying eBPF programs, or deep familiarity with the Linux networking stack and scheduler.</li>
+	<li>Experience designing schemas and query patterns for distributed columnar databases (particularly ClickHouse) at high ingestion rates.</li>
+	<li>Background in profiling, benchmarking, and debugging performance bottlenecks in production Linux environments (perf, PMU counters, flamegraphs).</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

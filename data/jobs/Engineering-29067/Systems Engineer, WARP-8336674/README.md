@@ -3,7 +3,12 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal</strong></p>
+<p><strong>Available Locations: </strong></p>
+<ul>
+	<li><strong>Lisbon, Portugal</strong></li>
+	<li><strong>London, UK</strong></li>
+	<li><strong>Austin, US</strong></li>
+</ul>
 <p><strong>About the role</strong></p>
 <ul>
 	<li>
@@ -32,7 +37,7 @@
 		</ul>
 	</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <h3 class="" data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
 <ul data-path-to-node="1">
 	<li>
@@ -45,7 +50,7 @@
 		<p data-path-to-node="3,0,0">This role is eligible to participate in Cloudflare's equity plan.</p>
 	</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

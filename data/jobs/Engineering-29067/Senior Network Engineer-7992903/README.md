@@ -9,7 +9,7 @@
 	<li>Atlanta, GA</li>
 	<li>Denver, CO</li>
 	<li>Seattle, WA</li>
-	<li>Toronto, CA</li>
+	<li>Toronto, ON</li>
 </ul>
 <p><strong>Applications will be accepted until December 01, 2026.</strong></p>
 <h2>About the Role</h2>

@@ -5,30 +5,26 @@
 </div>
 <p><strong>Available Locations:&nbsp; Austin or London</strong></p>
 <p><strong>About the Role</strong></p>
-<p>Cloudflare Workers, launched in 2017, has evolved from a simple functions-as-a-service offering into a powerful full-stack development platform. Workers empowers developers to build sophisticated applications, leveraging numerous frameworks, tools, and integrations. Wrangler, the CLI for Cloudflare’s developer platform, plays a critical role in this, as do the surrounding tools that developers use including AI coding agents, IDEs and framework integrations.</p>
-<p>Your mission in this role is to ensure that the “hands-on-keyboard” experience of building Workers is seamless, intuitive, and delightful — getting down to the fine-grained details that matter to developers.</p>
+<p><a href="https://workers.cloudflare.com/solutions/platforms">Workers for Platforms</a> lets anyone build their own platform on top of <a href="https://workers.cloudflare.com/">Cloudflare’s Developer Platform</a>, turning Cloudflare’s infrastructure, compute and storage primitives into a programmable foundation others can build on.</p>
+<p>As a Product Manager for Workers for Platforms, you’ll define and execute the strategy that helps developers build platform businesses on top of Cloudflare. You’ll collaborate closely with engineering, partnerships, and design to make Cloudflare’s primitives — Workers, Durable Objects, Agents, AI inference, and more — composable for any company to use as their own infrastructure.</p>
 <p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Talk directly with developers and customers big and small, every day.</li>
-	<li>Drive the strategy, roadmap, and execution for <a href="https://www.npmjs.com/package/wrangler">Wrangler CLI</a>, and the broader developer tooling ecosystem around Cloudflare Workers.</li>
-	<li>Lead initiatives from ideation through launch, ensuring ongoing enhancements based on developer feedback.</li>
-	<li>Engage closely with developer communities to understand their workflows, challenges, and tooling needs.</li>
-	<li>Collaborate closely with internal engineering teams, external framework authors, and open-source maintainers to maximize compatibility and ease-of-use with Workers.</li>
-	<li>Partner cross-functionally with Product Marketing, Developer Relations, Sales, and Customer Support teams.</li>
-	<li>Represent Cloudflare externally at conferences, community events, customer meetings, and developer-focused initiatives.</li>
+	<li>Drive the strategy and roadmap for Workers for Platforms</li>
+	<li>Work hands-on directly with some of Cloudflare’s biggest customers, every day</li>
+	<li>Define the APIs, management layers, and developer experience that make it possible for customers to extend Cloudflare’s developer platform to their own customers.</li>
+	<li>Get in the details of APIs we provide to developers, working closely with engineers</li>
+	<li>Represent Cloudflare externally</li>
 </ul>
-<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
+<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
+<p>The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment.&nbsp;</p>
+<p>You do whatever it takes to ship and solve problems for customers —&nbsp;whether that means writing code, debugging with a customer, writing docs or learning how to do something new to you. Successful PMs at Cloudflare are unafraid to roll up sleeves, get into details and ask questions.</p>
 <ul>
-	<li>
-		<ul>
-			<li>Proven experience as an EM, PM or founder. You’ve led teams to ship before and can point to impact.</li>
-			<li>Deep empathy for developers and understanding of their workflows, pain points, and how they adopt new tools and platforms. You understand what it’s like to write code that relies on services, tools and systems built by others.</li>
-			<li>Hands-on ability to write code and use AI and the Internet to learn new things fast.</li>
-			<li>Exceptional communication and collaboration skills, adept at working across diverse teams to align on goals and drive execution. You can translate between engineering domains.</li>
-			<li>Passion for design details and polish. You raise the bar for sweating the details.</li>
-			<li>External presentation skills. You can walk into a room of developers and build trust and credibility.</li>
-		</ul>
-	</li>
+	<li>You use AI effectively to move faster and learn faster.</li>
+	<li>You show rather than tell — using code examples, demos, prototypes</li>
+	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
+	<li>Strong technical abilities. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
+	<li>A desire to sweat the details and ship great developer experiences</li>
+	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
 </ul>
 <p><strong>Compensation may be adjusted depending on work location.</strong></p>
 <p><strong>Equity</strong></p>

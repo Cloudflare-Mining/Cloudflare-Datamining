@@ -4,6 +4,9 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <p><strong>Available Locations: Austin, TX</strong></p>
+<ul>
+	<li>Work onsite in the office 5 days a week (Monday–Friday)</li>
+</ul>
 <p><strong>About the role</strong></p>
 <p>The <strong>Places Team</strong> at Cloudflare is seeking an experienced and enthusiastic <strong>Workplace Operations Manager</strong> to lead and elevate the day-to-day operations of our Austin hub. In this role, you’ll be the go-to person for creating a smooth, welcoming, and highly functional workplace—partnering with global counterparts to share best practices and continuously enhance our spaces.</p>
 <p>You’ll gather feedback from employees and guests to shape how the hub evolves, contribute to future buildouts, and collaborate with teams across IT, Legal, Physical Security, EBC, and more. You're comfortable navigating fast-paced environments, solving problems on the fly, and thinking creatively about how to improve systems and experiences. With a hospitality mindset and strong communication skills, you take pride in delivering excellent service and building a space that reflects our culture and values.</p>
