@@ -113,6 +113,15 @@
 	"aig-fed-dashboard": {
 		"false": 100
 	},
+	"aig-model-aliases": {
+		"true": 100
+	},
+	"aig-new-dash-settings": {
+		"true": 100
+	},
+	"aig-provider-key-activity": {
+		"true": 100
+	},
 	"aig-send-payment-method-id": {
 		"true": 100
 	},
@@ -187,8 +196,8 @@
 		"false": 11
 	},
 	"billing-modular-checkout-orchestrator-registrar": {
-		"true": 50,
-		"false": 50
+		"true": 75,
+		"false": 25
 	},
 	"billing-modular-checkout-orchestrator-subscription": {
 		"true": 90,
@@ -286,6 +295,12 @@
 	},
 	"botbase-for-operators": {
 		"true": 100
+	},
+	"bots-ml-adaptive-intelligence-launch": {
+		"true": 100
+	},
+	"browser-flows-dashboard": {
+		"false": 100
 	},
 	"browser-rendering-live-view": {
 		"true": 100
@@ -848,6 +863,9 @@
 	"marketing-tal-test": {
 		"false": 100
 	},
+	"mesh-dns": {
+		"false": 100
+	},
 	"mesh-hostname-routing": {
 		"true": 100
 	},
@@ -896,6 +914,9 @@
 	},
 	"page-shield-rules-reporting-directives": {
 		"true": 100
+	},
+	"pages-targeted-placement": {
+		"false": 100
 	},
 	"pages-v3-build-image": {
 		"true": 100
@@ -1096,9 +1117,6 @@
 	"registrar-multi-domain-purchase": {
 		"false": 100
 	},
-	"registrar-new-registrations-checkout": {
-		"true": 100
-	},
 	"registrar-rhf-contact-form": {
 		"true": 100
 	},
@@ -1112,8 +1130,7 @@
 		"false": 100
 	},
 	"resource-tagging-ui-experiments": {
-		"false": 24,
-		"true": 77
+		"true": 100
 	},
 	"response-firewall-rules": {
 		"true": 100
@@ -1384,6 +1401,9 @@
 	},
 	"workers-builds-scm-status-gitlab": {
 		"up": 100
+	},
+	"workers-end-user-auth": {
+		"false": 100
 	},
 	"workers-for-platforms-paygo": {
 		"true": 100

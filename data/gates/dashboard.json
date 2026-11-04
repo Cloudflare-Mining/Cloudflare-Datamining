@@ -547,7 +547,7 @@
 		"enabled": true
 	},
 	"bots-ml-adaptive-intelligence-launch": {
-		"enabled": false
+		"enabled": true
 	},
 	"br-fed-dashboard": {
 		"enabled": false
@@ -559,7 +559,7 @@
 		"enabled": true
 	},
 	"browser-flows-dashboard": {
-		"enabled": false
+		"enabled": true
 	},
 	"browser-rendering-live-view": {
 		"enabled": true
@@ -671,6 +671,9 @@
 	},
 	"cloudy-insights": {
 		"enabled": true
+	},
+	"cmb-edge": {
+		"enabled": false
 	},
 	"compat-route-everywhere": {
 		"enabled": true
@@ -1359,13 +1362,6 @@
 			"experiment"
 		]
 	},
-	"dx-domain-onboarding-experiment-dns": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"dx-domains-overview-kumo": {
 		"enabled": true
 	},
@@ -1968,7 +1964,7 @@
 		"enabled": true
 	},
 	"mesh-dns": {
-		"enabled": false
+		"enabled": true
 	},
 	"mesh-hostname-routing": {
 		"enabled": true
@@ -2067,7 +2063,7 @@
 		"enabled": false
 	},
 	"pages-targeted-placement": {
-		"enabled": false
+		"enabled": true
 	},
 	"pages-v3-build-image": {
 		"enabled": true
@@ -2624,13 +2620,7 @@
 	"registrar-domain-privacy-modes": {
 		"enabled": false
 	},
-	"registrar-manage-domains-kumo": {
-		"enabled": false
-	},
 	"registrar-multi-domain-purchase": {
-		"enabled": true
-	},
-	"registrar-new-registrations-checkout": {
 		"enabled": true
 	},
 	"registrar-rhf-contact-form": {
@@ -3331,6 +3321,9 @@
 		"enabled": false
 	},
 	"workers-drag-and-drop": {
+		"enabled": true
+	},
+	"workers-end-user-auth": {
 		"enabled": true
 	},
 	"workers-for-platforms-paygo": {
