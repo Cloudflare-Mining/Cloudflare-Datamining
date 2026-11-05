@@ -3,58 +3,36 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
-<h4><strong>What you'll do</strong></h4>
-<p>We're looking for a Senior Software Engineer to join our WARP Mobile SDK team to help build the future of our mobile security SDKs.</p>
-<h4><strong>Responsibilities</strong></h4>
-<p>In this role, you will define the client architecture and public APIs for native iOS and Android SDKs, working from deep expertise in at least one of those ecosystems. You will establish foundations that are testable, well-documented, lightweight, and straightforward for customer engineering teams to integrate and operate.</p>
-<p>As a senior software engineer, you will set standards for compatibility, diagnostics, performance, and release quality across mobile platforms. You will work closely with product and engineering partners to turn a security problem into a dependable developer product, mentor native mobile engineers, and help resolve complex customer integration issues. You will be successful in this role if you combine strong native engineering judgment and a track record of carrying distributed software from design through production operation.</p>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p><strong>Available Locations: Singapore</strong></p>
+<h4>About the Role</h4>
+<p>Cloudflare is looking for a highly organized and detail-oriented Recruiting Coordinator to be a cornerstone of our hiring engine in Singapore. This isn't just about managing calendars; you'll be a key player in bringing structure to our hiring efforts, ensuring an exceptional global candidate experience, and supporting the high-quality hiring decisions that drive our mission forward.</p>
+<p>If you're someone who thrives in a collaborative, fast-paced setting, possesses a keen eye for detail, and is dedicated to delivering positive experiences, we want to hear from you. You'll work closely with recruiters, hiring managers, and interviewers, ensuring every candidate interaction truly reflects Cloudflare's best. This is a fantastic opportunity to launch or pivot into a career in Talent Acquisition, where your organizational skills and candidate-centric approach will directly influence our ability to attract top talent and shape their perception of Cloudflare.&nbsp;</p>
+<h4>Responsibilities</h4>
 <ul>
-	<li>Deep experience building production software for either<strong> iOS with Swift or Android with Kotlin</strong>, and enough familiarity with the other ecosystem to guide shared architectural decisions</li>
-	<li>Experience designing or <strong>owning customer-distributed SDKs</strong>, libraries, or similarly constrained developer-facing products</li>
-	<li>Experience with <strong>mobile platform security concepts</strong>, including app and device integrity, secure key storage, application signing, authentication, and secure communications</li>
-	<li>Familiarity with native <strong>mobile networking stacks</strong>, HTTP APIs, and the integration challenges introduced by different application architectures and networking libraries</li>
-	<li>Experience <strong>diagnosing production issues</strong> that cross application, SDK, network, and service boundaries, while designing safe diagnostics that do not expose sensitive data</li>
-	<li>Understanding of mobile package distribution, source and binary compatibility, dependency management, and reliable release practices</li>
-	<li>Experience <strong>writing technical designs and aligning decisions</strong> across product, client, backend, edge, and security teams</li>
-	<li>Experience <strong>mentoring engineers</strong> and raising a team's technical bar through design review, code review, and knowledge sharing</li>
-	<li>Empathetic, proactive, and constructive <strong>written and verbal communication skills</strong></li>
-	<li>Proven ability to operate within strict mobile performance budgets, including binary size, battery use, startup time, and main-thread overhead</li>
+	<li>Manage interview logistics across various formats (video, phone, and in-person) with precision and efficiency, ensuring a seamless experience for all participants.</li>
+	<li>Deliver an exceptional candidate experience, both virtually and in-person, demonstrating empathy and a customer/candidate-oriented approach.</li>
+	<li>Utilize applicant tracking system, scheduling tools, dashboards, and candidate trackers to ensure accuracy and maximize efficiency for Cloudflare’s Interview Experience program.</li>
+	<li>Handle sensitive and confidential information with the utmost professionalism.&nbsp;</li>
+	<li>Communicate clearly, directly, and transparently with candidates, recruiters, and internal stakeholders</li>
+	<li>Partner with Recruiters and Hiring Managers to streamline processes and contribute to cross-functional recruiting operations projects and improvements.&nbsp;</li>
+	<li>Actively identify opportunities for process enhancements and suggesting solutions, as well as supporting program initiatives where bandwidth allows.</li>
+	<li>Collaborate with and provide mutual support to team members on shared tasks and challenges.</li>
 </ul>
-<h4>Bonus Points:</h4>
+<h4>Desirable Skills, Knowledge, and Experience</h4>
 <ul>
-	<li>Familiarity with how native SDKs are consumed by cross-platform frameworks such as <strong>React Native and Flutter</strong> is a plus</li>
-	<li>Familiarity with lower-level languages like <strong>C++ or Rust for high-performance</strong>, cross-platform security modules is a plus</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Experience in a fast-paced environment where exceptional <strong>organizational skills</strong>, <strong>high-volume coordination</strong>, or extensive <strong>client/customer support</strong> were essential.</li>
+	<li>Proven ability to prioritize tasks and manage time effectively.</li>
+	<li>Maintain meticulous attention to detail, even under pressure.</li>
+	<li>Consistently meet deadlines and service standards.</li>
+	<li>A resourceful and proactive approach to identifying and resolving routine challenges independently.</li>
+	<li>Quick to learn and adapt to ambiguous or changing situations.</li>
+	<li>View mistakes as opportunities for growth.</li>
+	<li>Outstanding written and verbal communication skills.</li>
+	<li>Able to engage professionally and empathetically with diverse stakeholders.</li>
+	<li>Possess a strong collaborative spirit.</li>
+	<li>Build positive professional relationships and contribute to a supportive team environment.</li>
+	<li>A genuine passion for delivering positive experiences.</li>
+	<li>Lead with empathy and assume good intentions in all interactions.</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

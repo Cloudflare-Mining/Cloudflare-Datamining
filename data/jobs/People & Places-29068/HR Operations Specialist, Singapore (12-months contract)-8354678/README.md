@@ -15,9 +15,9 @@
 	<li><strong>Drive continuous improvement and operational excellence:</strong> Analyze employee feedback and process metrics to identify opportunities for process enhancements. Partner with regional teams to implement scalable solutions that improve the overall People Operations function across APJC.</li>
 	<li><strong>Support strategic HR initiatives and projects:</strong> Contribute to HR system implementations, vendor management, and regional programs such as annual performance and compensation cycles, benefits enrollment, and year-end Payroll preparation, making them easy to understand and navigate for our employees.</li>
 </ul>
-<p><strong><br></strong><strong>Skills/experience</strong>&nbsp;</p>
+<p><strong>Skills/experience</strong>&nbsp;</p>
 <ul>
-	<li>Relevant experience in HR operations, shared services, or similar administrative support roles.</li>
+	<li>2+ years in HR administration and comfortable handling sensitive employee information with discretion.</li>
 	<li>Highly organized with strong attention to detail, excellent problem-solving abilities, and effective time management skills.&nbsp;</li>
 	<li>Proficient in working with data and skilled in Excel or Google Sheets for analysis and reporting.</li>
 	<li>Customer-focused mindset with a genuine passion for supporting colleagues and delivering exceptional service.</li>

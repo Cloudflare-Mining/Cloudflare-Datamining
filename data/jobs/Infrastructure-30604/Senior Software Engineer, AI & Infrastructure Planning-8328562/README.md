@@ -3,31 +3,69 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>What you’ll do</strong></p>
-<p>In this role, you’ll help build and maintain Data Security products as a Software Engineer. These products empower customers to gain deep visibility into Cloud/SaaS security opportunities and into trends in their network traffic and product use. As an engineer on the team, you will focus on building new functionality into our APIs and distributed code while ensuring the performance and reliability of our services which ingest millions of data points each day. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security and network visibility challenges for our customers.</p>
-<p><strong>Technologies we use:</strong></p>
+<p><strong>Available Locations: </strong>Austin, TX | Lisbon, Portugal | London, UK</p>
+<h4><strong>About the role</strong></h4>
+<p>The Snr Software Engineer, AI &amp; Infrastructure Planning role helps Cloudflare build, deploy, and operate one of the world's largest distributed networks. You will build an auditable multi-agent system on Cloudflare’s platform to replace notebooks and email threads with agent-driven forecasts, supply plans, cost models, and workflow approvals into agent workflows that planners &amp; executives rely on for decision analysis.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Products are written in Go, Python, and Typescript.</li>
-	<li>Code runs on Kubernetes, Cloudflare Workers, AWS, GCP, Azure.</li>
-	<li>We utilize Postgres as our data store, Redis as our cache, and Kafka as our message broker.</li>
-	<li>Our frontend is written in Typescript and React.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Elasticsearch and Kibana.</li>
-	<li>For product analytics we use Clickhouse and BigQuery.&nbsp;</li>
+	<li>Collaborate closely with capacity planning, networking, and data center engineering teams to encode technical domain expertise into structured specifications, formal data contracts, and agent functional capabilities.</li>
+	<li>Architect, deploy, and maintain scalable production agents and durable workflows leveraging the Cloudflare Workers ecosystem, including Durable Objects, Workflows, D1, R2, Queues, Vectorize, Workers AI, and AI Gateway.</li>
+	<li>Translate core infrastructure planning functions—such as forecasting, supply planning, cost modeling, narrative documentation, and executive approvals—into automated&nbsp; LLM deployment or deterministic logic based agent workflows designed for critical decision-making analysis.</li>
+	<li>Implement rigorous risk tiering, formal approval checkpoints, detailed audit logs, and execution lineage to ensure safe autonomous operations.</li>
+	<li>Incorporate predictive statistical and machine learning models into agent systems, establishing robust BigQuery data pipelines, optimized access patterns, and continuous monitoring.</li>
+	<li>Author comprehensive technical specifications and Requests for Comments (RFCs), perform peer design reviews, and establish architectural standards for AI agent deployment across the organization.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience</strong></h4>
 <ul>
-	<li>3+ years of professional experience building and managing reliable and performant software systems at scale, preferably with technologies like: Go, Python, Postgres</li>
-	<li>Passion for making the digital world a more secure place</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
-	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
+	<li>Senior-level software engineering experience, with security conscious production systems you can point to (repos, releases, services you operated).</li>
+	<li>Strong TypeScript, and comfort building on serverless or edge runtimes (Cloudflare Workers preferred). HTTP APIs, async, queues, performance.</li>
+	<li>Experience with LLMs and agents: tool calling, structured output, multi-step or multi-agent orchestration, prompt and eval iteration.</li>
+	<li>Experience with durable state and workflows (Durable Objects, Cloudflare Workflows, or equivalents such as Templets updraoral or Step Functions).</li>
+	<li>Demonstrated experience in infrastructure planning: capacity planning, forecasting, networking, CDN, cloud or data center capacity, or adjacent work. We will teach you our specific systems.</li>
+	<li>Solid data skills: SQL, a cloud data warehouse (BigQuery preferred), and working knowledge of forecasting and statistical modeling (backtesting, error metrics, knowing when a model is wrong).</li>
+	<li>Clear written communication: specs, RFCs, and explanations that planners and executives can use.</li>
 </ul>
-<p><strong>Bonus</strong></p>
+<h4>Bonus Points</h4>
 <ul>
-	<li>Frontend programming experience in Typescript/Javascript</li>
-	<li>Previous experience working with third-party API integrations</li>
-	<li>Previous experience working on security products</li>
+	<li>A data science or ML background (time series, optimization, predictive modeling) and Python for scientific computing.</li>
+	<li>Experience with Hono, Zod, OpenAPI, and a modern frontend framework (Astro or React).</li>
+	<li>Experience with peering, BGP, ASN and IX data, backbone or transit planning, or colo, power, and procurement planning.</li>
+	<li>Experience with agent frameworks (LangGraph, Autogen, A2A) and knowing what to borrow and what to discard.</li>
+	<li>CI/CD and infrastructure as code (GitLab CI, Terraform).</li>
+	<li>Experience building LLM evaluation frameworks or human-review workflows.</li>
+	<li>Bias for simple, scalable designs.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Portugal-based hires: Estimated annual salary of €66,000-€91,000</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
