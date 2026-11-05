@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 5, 2026 [<h2>Agents aren't humans (but they kinda are)</h2>](https://blog.cloudflare.com/trusted-agent-delegation/)
+
+AI agents act for millions, but servers see intermediaries that strip user visibility. This post defines the problem space and introduces a collaborative approach to safely identifying, allowing, and managing this automated traffic.
+
+![Bryan Becker](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPX6Y9F64M9HHDMGBP2Q.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6HXVQ0MH26TMB3HFFHA31DK.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/trusted-agent-delegation/)
+
 November 4, 2026 [<h2>See the agents, set the terms: new visibility and control for personal agents</h2>](https://blog.cloudflare.com/personal-agents-visibility-control/)
 
 Personal AI agents have changed how users interact with the web, blurring the lines between automated and human traffic. Learn how Cloudflare gives site owners visibility and control to manage personal agent access.
@@ -17,8 +27,6 @@ Personal AI agents have changed how users interact with the web, blurring the li
 ![Marina Elmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477HVM8X1SKDG8ADKQJ9T3.png&w=64&h=64&f=webp&fit=cover&position=center)![Nicole Justus](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M3WPE05QZCEYBD5624DD07B6.01M3WPE0S25WCYVW4RR6PMRCP1.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/) and  [Nicole Justus](https://blog.cloudflare.com/author/nicole-justus/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6HZ1ZE3ZTGF9NEGGPF8SZNS.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/personal-agents-visibility-control/)
 
 November 3, 2026 [<h2>Introducing Zero Wire, a hub for investigating critical Internet vulnerabilities</h2>](https://blog.cloudflare.com/zero-wire/)
 
@@ -155,14 +163,6 @@ When our AI code reviewer's cost per run doubled, we dug into the token usage to
 ![Ryan Skidmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4736HQYPXSX6SERG1KRMXW.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Ryan Skidmore](https://blog.cloudflare.com/author/ryan-skidmore/)
-
-October 19, 2026 [<h2>Introducing Clairic, a new System One class of extraction models</h2>](https://blog.cloudflare.com/clairic-extraction-model/)
-
-Clairic is a new model from Cloudflare that is a System One extraction modeI, capable of extracting, computing, estimating, and forecasting data from unstructured inputs.
-
-![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/),  [Michelle Chen](https://blog.cloudflare.com/author/michelle/), and  [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/)
 
 Load more
 
