@@ -1060,7 +1060,22 @@
 													"type": "boolean"
 												},
 												{
-													"items": {},
+													"items": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "boolean"
+															},
+															{
+																"type": "number"
+															},
+															{
+																"type": "object"
+															}
+														]
+													},
 													"type": "array"
 												},
 												{
@@ -1120,7 +1135,22 @@
 													"type": "boolean"
 												},
 												{
-													"items": {},
+													"items": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "boolean"
+															},
+															{
+																"type": "number"
+															},
+															{
+																"type": "object"
+															}
+														]
+													},
 													"type": "array"
 												},
 												{

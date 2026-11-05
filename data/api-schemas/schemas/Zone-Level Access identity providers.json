@@ -586,7 +586,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Azure AD"
+														"title": "Zone-Level Azure AD"
 													},
 													{
 														"type": "object",
@@ -728,7 +728,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Centrify"
+														"title": "Zone-Level Centrify"
 													},
 													{
 														"type": "object",
@@ -851,7 +851,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Facebook"
+														"title": "Zone-Level Facebook"
 													},
 													{
 														"type": "object",
@@ -974,7 +974,7 @@
 																"type": "object"
 															}
 														],
-														"title": "GitHub"
+														"title": "Zone-Level GitHub"
 													},
 													{
 														"type": "object",
@@ -1097,7 +1097,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Google"
+														"title": "Zone-Level Google"
 													},
 													{
 														"type": "object",
@@ -1249,7 +1249,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Google Workspace"
+														"title": "Zone-Level Google Workspace"
 													},
 													{
 														"type": "object",
@@ -1372,7 +1372,7 @@
 																"type": "object"
 															}
 														],
-														"title": "LinkedIn"
+														"title": "Zone-Level LinkedIn"
 													},
 													{
 														"type": "object",
@@ -1529,7 +1529,7 @@
 																						]
 																					},
 																					"token_url": {
-																						"description": "The token_endpoint URL of your IdP",
+																						"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																						"type": "string",
 																						"example": "https://accounts.google.com/o/oauth2/token"
 																					}
@@ -1542,7 +1542,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Generic OAuth"
+														"title": "Zone-Level Generic OAuth"
 													},
 													{
 														"type": "object",
@@ -1676,7 +1676,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Duo"
+														"title": "Zone-Level Duo"
 													},
 													{
 														"type": "object",
@@ -1813,7 +1813,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Okta"
+														"title": "Zone-Level Okta"
 													},
 													{
 														"type": "object",
@@ -1950,7 +1950,7 @@
 																"type": "object"
 															}
 														],
-														"title": "OneLogin"
+														"title": "Zone-Level OneLogin"
 													},
 													{
 														"type": "object",
@@ -2087,7 +2087,7 @@
 																"type": "object"
 															}
 														],
-														"title": "PingOne"
+														"title": "Zone-Level PingOne"
 													},
 													{
 														"type": "object",
@@ -2265,7 +2265,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Generic SAML"
+														"title": "Zone-Level Generic SAML"
 													},
 													{
 														"type": "object",
@@ -2388,7 +2388,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Yandex"
+														"title": "Zone-Level Yandex"
 													},
 													{
 														"type": "object",
@@ -2509,7 +2509,7 @@
 																"type": "object"
 															}
 														],
-														"title": "One Time Pin"
+														"title": "Zone-Level One Time Pin"
 													},
 													{
 														"type": "object",
@@ -2635,7 +2635,7 @@
 																"type": "object"
 															}
 														],
-														"title": "Cloudflare"
+														"title": "Zone-Level Cloudflare"
 													}
 												]
 											}
@@ -3064,7 +3064,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Azure AD"
+													"title": "Zone-Level Azure AD"
 												},
 												{
 													"type": "object",
@@ -3206,7 +3206,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Centrify"
+													"title": "Zone-Level Centrify"
 												},
 												{
 													"type": "object",
@@ -3329,7 +3329,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Facebook"
+													"title": "Zone-Level Facebook"
 												},
 												{
 													"type": "object",
@@ -3452,7 +3452,7 @@
 															"type": "object"
 														}
 													],
-													"title": "GitHub"
+													"title": "Zone-Level GitHub"
 												},
 												{
 													"type": "object",
@@ -3575,7 +3575,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Google"
+													"title": "Zone-Level Google"
 												},
 												{
 													"type": "object",
@@ -3727,7 +3727,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Google Workspace"
+													"title": "Zone-Level Google Workspace"
 												},
 												{
 													"type": "object",
@@ -3850,7 +3850,7 @@
 															"type": "object"
 														}
 													],
-													"title": "LinkedIn"
+													"title": "Zone-Level LinkedIn"
 												},
 												{
 													"type": "object",
@@ -4007,7 +4007,7 @@
 																					]
 																				},
 																				"token_url": {
-																					"description": "The token_endpoint URL of your IdP",
+																					"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																					"type": "string",
 																					"example": "https://accounts.google.com/o/oauth2/token"
 																				}
@@ -4020,7 +4020,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Generic OAuth"
+													"title": "Zone-Level Generic OAuth"
 												},
 												{
 													"type": "object",
@@ -4154,7 +4154,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Duo"
+													"title": "Zone-Level Duo"
 												},
 												{
 													"type": "object",
@@ -4291,7 +4291,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Okta"
+													"title": "Zone-Level Okta"
 												},
 												{
 													"type": "object",
@@ -4428,7 +4428,7 @@
 															"type": "object"
 														}
 													],
-													"title": "OneLogin"
+													"title": "Zone-Level OneLogin"
 												},
 												{
 													"type": "object",
@@ -4565,7 +4565,7 @@
 															"type": "object"
 														}
 													],
-													"title": "PingOne"
+													"title": "Zone-Level PingOne"
 												},
 												{
 													"type": "object",
@@ -4743,7 +4743,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Generic SAML"
+													"title": "Zone-Level Generic SAML"
 												},
 												{
 													"type": "object",
@@ -4866,7 +4866,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Yandex"
+													"title": "Zone-Level Yandex"
 												},
 												{
 													"type": "object",
@@ -4992,7 +4992,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Cloudflare"
+													"title": "Zone-Level Cloudflare"
 												}
 											]
 										}
@@ -5315,7 +5315,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Azure AD"
+								"title": "Zone-Level Azure AD"
 							},
 							{
 								"type": "object",
@@ -5457,7 +5457,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Centrify"
+								"title": "Zone-Level Centrify"
 							},
 							{
 								"type": "object",
@@ -5580,7 +5580,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Facebook"
+								"title": "Zone-Level Facebook"
 							},
 							{
 								"type": "object",
@@ -5703,7 +5703,7 @@
 										"type": "object"
 									}
 								],
-								"title": "GitHub"
+								"title": "Zone-Level GitHub"
 							},
 							{
 								"type": "object",
@@ -5826,7 +5826,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Google"
+								"title": "Zone-Level Google"
 							},
 							{
 								"type": "object",
@@ -5978,7 +5978,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Google Workspace"
+								"title": "Zone-Level Google Workspace"
 							},
 							{
 								"type": "object",
@@ -6101,7 +6101,7 @@
 										"type": "object"
 									}
 								],
-								"title": "LinkedIn"
+								"title": "Zone-Level LinkedIn"
 							},
 							{
 								"type": "object",
@@ -6258,7 +6258,7 @@
 																]
 															},
 															"token_url": {
-																"description": "The token_endpoint URL of your IdP",
+																"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																"type": "string",
 																"example": "https://accounts.google.com/o/oauth2/token"
 															}
@@ -6271,7 +6271,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Generic OAuth"
+								"title": "Zone-Level Generic OAuth"
 							},
 							{
 								"type": "object",
@@ -6405,7 +6405,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Duo"
+								"title": "Zone-Level Duo"
 							},
 							{
 								"type": "object",
@@ -6542,7 +6542,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Okta"
+								"title": "Zone-Level Okta"
 							},
 							{
 								"type": "object",
@@ -6679,7 +6679,7 @@
 										"type": "object"
 									}
 								],
-								"title": "OneLogin"
+								"title": "Zone-Level OneLogin"
 							},
 							{
 								"type": "object",
@@ -6816,7 +6816,7 @@
 										"type": "object"
 									}
 								],
-								"title": "PingOne"
+								"title": "Zone-Level PingOne"
 							},
 							{
 								"type": "object",
@@ -6994,7 +6994,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Generic SAML"
+								"title": "Zone-Level Generic SAML"
 							},
 							{
 								"type": "object",
@@ -7117,7 +7117,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Yandex"
+								"title": "Zone-Level Yandex"
 							},
 							{
 								"type": "object",
@@ -7243,7 +7243,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Cloudflare"
+								"title": "Zone-Level Cloudflare"
 							}
 						]
 					}
@@ -7501,7 +7501,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Azure AD"
+													"title": "Zone-Level Azure AD"
 												},
 												{
 													"type": "object",
@@ -7643,7 +7643,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Centrify"
+													"title": "Zone-Level Centrify"
 												},
 												{
 													"type": "object",
@@ -7766,7 +7766,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Facebook"
+													"title": "Zone-Level Facebook"
 												},
 												{
 													"type": "object",
@@ -7889,7 +7889,7 @@
 															"type": "object"
 														}
 													],
-													"title": "GitHub"
+													"title": "Zone-Level GitHub"
 												},
 												{
 													"type": "object",
@@ -8012,7 +8012,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Google"
+													"title": "Zone-Level Google"
 												},
 												{
 													"type": "object",
@@ -8164,7 +8164,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Google Workspace"
+													"title": "Zone-Level Google Workspace"
 												},
 												{
 													"type": "object",
@@ -8287,7 +8287,7 @@
 															"type": "object"
 														}
 													],
-													"title": "LinkedIn"
+													"title": "Zone-Level LinkedIn"
 												},
 												{
 													"type": "object",
@@ -8444,7 +8444,7 @@
 																					]
 																				},
 																				"token_url": {
-																					"description": "The token_endpoint URL of your IdP",
+																					"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																					"type": "string",
 																					"example": "https://accounts.google.com/o/oauth2/token"
 																				}
@@ -8457,7 +8457,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Generic OAuth"
+													"title": "Zone-Level Generic OAuth"
 												},
 												{
 													"type": "object",
@@ -8591,7 +8591,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Duo"
+													"title": "Zone-Level Duo"
 												},
 												{
 													"type": "object",
@@ -8728,7 +8728,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Okta"
+													"title": "Zone-Level Okta"
 												},
 												{
 													"type": "object",
@@ -8865,7 +8865,7 @@
 															"type": "object"
 														}
 													],
-													"title": "OneLogin"
+													"title": "Zone-Level OneLogin"
 												},
 												{
 													"type": "object",
@@ -9002,7 +9002,7 @@
 															"type": "object"
 														}
 													],
-													"title": "PingOne"
+													"title": "Zone-Level PingOne"
 												},
 												{
 													"type": "object",
@@ -9180,7 +9180,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Generic SAML"
+													"title": "Zone-Level Generic SAML"
 												},
 												{
 													"type": "object",
@@ -9303,7 +9303,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Yandex"
+													"title": "Zone-Level Yandex"
 												},
 												{
 													"type": "object",
@@ -9429,7 +9429,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Cloudflare"
+													"title": "Zone-Level Cloudflare"
 												}
 											]
 										}
@@ -9764,7 +9764,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Azure AD"
+								"title": "Zone-Level Azure AD"
 							},
 							{
 								"type": "object",
@@ -9906,7 +9906,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Centrify"
+								"title": "Zone-Level Centrify"
 							},
 							{
 								"type": "object",
@@ -10029,7 +10029,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Facebook"
+								"title": "Zone-Level Facebook"
 							},
 							{
 								"type": "object",
@@ -10152,7 +10152,7 @@
 										"type": "object"
 									}
 								],
-								"title": "GitHub"
+								"title": "Zone-Level GitHub"
 							},
 							{
 								"type": "object",
@@ -10275,7 +10275,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Google"
+								"title": "Zone-Level Google"
 							},
 							{
 								"type": "object",
@@ -10427,7 +10427,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Google Workspace"
+								"title": "Zone-Level Google Workspace"
 							},
 							{
 								"type": "object",
@@ -10550,7 +10550,7 @@
 										"type": "object"
 									}
 								],
-								"title": "LinkedIn"
+								"title": "Zone-Level LinkedIn"
 							},
 							{
 								"type": "object",
@@ -10707,7 +10707,7 @@
 																]
 															},
 															"token_url": {
-																"description": "The token_endpoint URL of your IdP",
+																"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																"type": "string",
 																"example": "https://accounts.google.com/o/oauth2/token"
 															}
@@ -10720,7 +10720,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Generic OAuth"
+								"title": "Zone-Level Generic OAuth"
 							},
 							{
 								"type": "object",
@@ -10854,7 +10854,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Duo"
+								"title": "Zone-Level Duo"
 							},
 							{
 								"type": "object",
@@ -10991,7 +10991,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Okta"
+								"title": "Zone-Level Okta"
 							},
 							{
 								"type": "object",
@@ -11128,7 +11128,7 @@
 										"type": "object"
 									}
 								],
-								"title": "OneLogin"
+								"title": "Zone-Level OneLogin"
 							},
 							{
 								"type": "object",
@@ -11265,7 +11265,7 @@
 										"type": "object"
 									}
 								],
-								"title": "PingOne"
+								"title": "Zone-Level PingOne"
 							},
 							{
 								"type": "object",
@@ -11443,7 +11443,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Generic SAML"
+								"title": "Zone-Level Generic SAML"
 							},
 							{
 								"type": "object",
@@ -11566,7 +11566,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Yandex"
+								"title": "Zone-Level Yandex"
 							},
 							{
 								"type": "object",
@@ -11692,7 +11692,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Cloudflare"
+								"title": "Zone-Level Cloudflare"
 							}
 						]
 					}
@@ -11950,7 +11950,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Azure AD"
+													"title": "Zone-Level Azure AD"
 												},
 												{
 													"type": "object",
@@ -12092,7 +12092,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Centrify"
+													"title": "Zone-Level Centrify"
 												},
 												{
 													"type": "object",
@@ -12215,7 +12215,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Facebook"
+													"title": "Zone-Level Facebook"
 												},
 												{
 													"type": "object",
@@ -12338,7 +12338,7 @@
 															"type": "object"
 														}
 													],
-													"title": "GitHub"
+													"title": "Zone-Level GitHub"
 												},
 												{
 													"type": "object",
@@ -12461,7 +12461,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Google"
+													"title": "Zone-Level Google"
 												},
 												{
 													"type": "object",
@@ -12613,7 +12613,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Google Workspace"
+													"title": "Zone-Level Google Workspace"
 												},
 												{
 													"type": "object",
@@ -12736,7 +12736,7 @@
 															"type": "object"
 														}
 													],
-													"title": "LinkedIn"
+													"title": "Zone-Level LinkedIn"
 												},
 												{
 													"type": "object",
@@ -12893,7 +12893,7 @@
 																					]
 																				},
 																				"token_url": {
-																					"description": "The token_endpoint URL of your IdP",
+																					"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																					"type": "string",
 																					"example": "https://accounts.google.com/o/oauth2/token"
 																				}
@@ -12906,7 +12906,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Generic OAuth"
+													"title": "Zone-Level Generic OAuth"
 												},
 												{
 													"type": "object",
@@ -13040,7 +13040,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Duo"
+													"title": "Zone-Level Duo"
 												},
 												{
 													"type": "object",
@@ -13177,7 +13177,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Okta"
+													"title": "Zone-Level Okta"
 												},
 												{
 													"type": "object",
@@ -13314,7 +13314,7 @@
 															"type": "object"
 														}
 													],
-													"title": "OneLogin"
+													"title": "Zone-Level OneLogin"
 												},
 												{
 													"type": "object",
@@ -13451,7 +13451,7 @@
 															"type": "object"
 														}
 													],
-													"title": "PingOne"
+													"title": "Zone-Level PingOne"
 												},
 												{
 													"type": "object",
@@ -13629,7 +13629,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Generic SAML"
+													"title": "Zone-Level Generic SAML"
 												},
 												{
 													"type": "object",
@@ -13752,7 +13752,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Yandex"
+													"title": "Zone-Level Yandex"
 												},
 												{
 													"type": "object",
@@ -13878,7 +13878,7 @@
 															"type": "object"
 														}
 													],
-													"title": "Cloudflare"
+													"title": "Zone-Level Cloudflare"
 												}
 											]
 										}

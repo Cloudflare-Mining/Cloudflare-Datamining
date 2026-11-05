@@ -962,7 +962,7 @@
 	"POST /accounts/{account_id}/access/user_populations": {
 		"operationId": "access-user-populations-create-user-population",
 		"summary": "Create a user population",
-		"description": "Creates a user population in an account.",
+		"description": "Creates a user population in an account. Requires permission to update the account's Access organization.\n",
 		"parameters": [
 			{
 				"in": "path",

@@ -43235,7 +43235,7 @@
 																									"title": "SSH Connection Rules"
 																								}
 																							},
-																							"title": "Connection Rules"
+																							"title": "Infrastructure Connection Rules"
 																						},
 																						"mfa_config": {
 																							"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -84990,7 +84990,7 @@
 																			"title": "SSH Connection Rules"
 																		}
 																	},
-																	"title": "Connection Rules"
+																	"title": "Infrastructure Connection Rules"
 																},
 																"mfa_config": {
 																	"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -125391,7 +125391,7 @@
 																										"title": "SSH Connection Rules"
 																									}
 																								},
-																								"title": "Connection Rules"
+																								"title": "Infrastructure Connection Rules"
 																							},
 																							"mfa_config": {
 																								"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -165731,7 +165731,7 @@
 																								"title": "SSH Connection Rules"
 																							}
 																						},
-																						"title": "Connection Rules"
+																						"title": "Infrastructure Connection Rules"
 																					},
 																					"mfa_config": {
 																						"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -206637,7 +206637,7 @@
 																								"title": "SSH Connection Rules"
 																							}
 																						},
-																						"title": "Connection Rules"
+																						"title": "Infrastructure Connection Rules"
 																					},
 																					"mfa_config": {
 																						"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -248413,7 +248413,7 @@
 																			"title": "SSH Connection Rules"
 																		}
 																	},
-																	"title": "Connection Rules"
+																	"title": "Infrastructure Connection Rules"
 																},
 																"mfa_config": {
 																	"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -288814,7 +288814,7 @@
 																										"title": "SSH Connection Rules"
 																									}
 																								},
-																								"title": "Connection Rules"
+																								"title": "Infrastructure Connection Rules"
 																							},
 																							"mfa_config": {
 																								"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -329154,7 +329154,7 @@
 																								"title": "SSH Connection Rules"
 																							}
 																						},
-																						"title": "Connection Rules"
+																						"title": "Infrastructure Connection Rules"
 																					},
 																					"mfa_config": {
 																						"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -345497,7 +345497,7 @@
 																				"title": "SSH Connection Rules"
 																			}
 																		},
-																		"title": "Connection Rules"
+																		"title": "Infrastructure Connection Rules"
 																	},
 																	"mfa_config": {
 																		"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -350316,7 +350316,7 @@
 														"title": "SSH Connection Rules"
 													}
 												},
-												"title": "Connection Rules"
+												"title": "Infrastructure Connection Rules"
 											},
 											"mfa_config": {
 												"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -355064,7 +355064,7 @@
 																			"title": "SSH Connection Rules"
 																		}
 																	},
-																	"title": "Connection Rules"
+																	"title": "Infrastructure Connection Rules"
 																},
 																"mfa_config": {
 																	"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -360305,7 +360305,7 @@
 																			"title": "SSH Connection Rules"
 																		}
 																	},
-																	"title": "Connection Rules"
+																	"title": "Infrastructure Connection Rules"
 																},
 																"mfa_config": {
 																	"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -365190,7 +365190,7 @@
 														"title": "SSH Connection Rules"
 													}
 												},
-												"title": "Connection Rules"
+												"title": "Infrastructure Connection Rules"
 											},
 											"mfa_config": {
 												"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -369938,7 +369938,7 @@
 																			"title": "SSH Connection Rules"
 																		}
 																	},
-																	"title": "Connection Rules"
+																	"title": "Infrastructure Connection Rules"
 																},
 																"mfa_config": {
 																	"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -374921,7 +374921,7 @@
 																				"title": "SSH Connection Rules"
 																			}
 																		},
-																		"title": "Connection Rules"
+																		"title": "Infrastructure Connection Rules"
 																	},
 																	"mfa_config": {
 																		"description": "Configures multi-factor authentication (MFA) settings for infrastructure applications.",
@@ -406422,7 +406422,7 @@
 																								]
 																							},
 																							"token_url": {
-																								"description": "The token_endpoint URL of your IdP",
+																								"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																								"type": "string",
 																								"example": "https://accounts.google.com/o/oauth2/token"
 																							}
@@ -410778,7 +410778,7 @@
 																		]
 																	},
 																	"token_url": {
-																		"description": "The token_endpoint URL of your IdP",
+																		"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																		"type": "string",
 																		"example": "https://accounts.google.com/o/oauth2/token"
 																	}
@@ -415069,7 +415069,7 @@
 																							]
 																						},
 																						"token_url": {
-																							"description": "The token_endpoint URL of your IdP",
+																							"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																							"type": "string",
 																							"example": "https://accounts.google.com/o/oauth2/token"
 																						}
@@ -419810,7 +419810,7 @@
 																							]
 																						},
 																						"token_url": {
-																							"description": "The token_endpoint URL of your IdP",
+																							"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																							"type": "string",
 																							"example": "https://accounts.google.com/o/oauth2/token"
 																						}
@@ -424177,7 +424177,7 @@
 																		]
 																	},
 																	"token_url": {
-																		"description": "The token_endpoint URL of your IdP",
+																		"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																		"type": "string",
 																		"example": "https://accounts.google.com/o/oauth2/token"
 																	}
@@ -428468,7 +428468,7 @@
 																							]
 																						},
 																						"token_url": {
-																							"description": "The token_endpoint URL of your IdP",
+																							"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																							"type": "string",
 																							"example": "https://accounts.google.com/o/oauth2/token"
 																						}
@@ -463428,9 +463428,9 @@
 					"Zero Trust: Seats Write"
 				],
 				"x-fern-availability": "generally-available",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "zero-trust.seats",
-				"x-fern-sdk-method-name": "edit",
-				"x-forge-hidden": true
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/accounts/{account_id}/access/service_tokens": {
@@ -468279,7 +468279,7 @@
 			"post": {
 				"operationId": "access-user-populations-create-user-population",
 				"summary": "Create a user population",
-				"description": "Creates a user population in an account.",
+				"description": "Creates a user population in an account. Requires permission to update the account's Access organization.\n",
 				"parameters": [
 					{
 						"in": "path",
@@ -471166,7 +471166,22 @@
 															"type": "boolean"
 														},
 														{
-															"items": {},
+															"items": {
+																"oneOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "boolean"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "object"
+																	}
+																]
+															},
 															"type": "array"
 														},
 														{
@@ -471226,7 +471241,22 @@
 															"type": "boolean"
 														},
 														{
-															"items": {},
+															"items": {
+																"oneOf": [
+																	{
+																		"type": "string"
+																	},
+																	{
+																		"type": "boolean"
+																	},
+																	{
+																		"type": "number"
+																	},
+																	{
+																		"type": "object"
+																	}
+																]
+															},
 															"type": "array"
 														},
 														{
@@ -2063868,7 +2063898,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2063998,7 +2064028,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2064344,7 +2064374,7 @@
 																			"type",
 																			"domain"
 																		],
-																		"title": "Self Hosted Application"
+																		"title": "Zone-Level Self Hosted Application"
 																	}
 																],
 																"title": "Self Hosted Application",
@@ -2064431,7 +2064461,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2064561,7 +2064591,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2064886,7 +2064916,7 @@
 																								"x-auditable": true
 																							}
 																						},
-																						"title": "SAML SaaS App"
+																						"title": "Zone-Level SAML SaaS App"
 																					},
 																					{
 																						"type": "object",
@@ -2065076,7 +2065106,7 @@
 																								"x-auditable": true
 																							}
 																						},
-																						"title": "OIDC SaaS App"
+																						"title": "Zone-Level OIDC SaaS App"
 																					}
 																				]
 																			},
@@ -2065086,7 +2065116,7 @@
 																				"example": "saas"
 																			}
 																		},
-																		"title": "SaaS Application"
+																		"title": "Zone-Level SaaS Application"
 																	}
 																],
 																"title": "SaaS Application",
@@ -2065173,7 +2065203,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2065303,7 +2065333,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2065651,7 +2065681,7 @@
 																					"type",
 																					"domain"
 																				],
-																				"title": "Self Hosted Application"
+																				"title": "Zone-Level Self Hosted Application"
 																			},
 																			{
 																				"properties": {
@@ -2065750,7 +2065780,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2065880,7 +2065910,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2066228,7 +2066258,7 @@
 																					"type",
 																					"domain"
 																				],
-																				"title": "Self Hosted Application"
+																				"title": "Zone-Level Self Hosted Application"
 																			},
 																			{
 																				"properties": {
@@ -2066327,7 +2066357,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2066457,7 +2066487,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2066789,7 +2066819,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2066919,7 +2066949,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2067251,7 +2067281,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2067381,7 +2067411,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2067713,7 +2067743,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2067843,7 +2067873,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2068306,7 +2068336,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2068436,7 +2068466,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2068782,7 +2068812,7 @@
 													"type",
 													"domain"
 												],
-												"title": "Self Hosted Application"
+												"title": "Zone-Level Self Hosted Application"
 											}
 										],
 										"title": "Self Hosted Application",
@@ -2068869,7 +2068899,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2068999,7 +2069029,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2069324,7 +2069354,7 @@
 																		"x-auditable": true
 																	}
 																},
-																"title": "SAML SaaS App"
+																"title": "Zone-Level SAML SaaS App"
 															},
 															{
 																"type": "object",
@@ -2069514,7 +2069544,7 @@
 																		"x-auditable": true
 																	}
 																},
-																"title": "OIDC SaaS App"
+																"title": "Zone-Level OIDC SaaS App"
 															}
 														]
 													},
@@ -2069524,7 +2069554,7 @@
 														"example": "saas"
 													}
 												},
-												"title": "SaaS Application"
+												"title": "Zone-Level SaaS Application"
 											}
 										],
 										"title": "SaaS Application",
@@ -2069611,7 +2069641,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2069741,7 +2069771,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2070089,7 +2070119,7 @@
 															"type",
 															"domain"
 														],
-														"title": "Self Hosted Application"
+														"title": "Zone-Level Self Hosted Application"
 													},
 													{
 														"properties": {
@@ -2070188,7 +2070218,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2070318,7 +2070348,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2070666,7 +2070696,7 @@
 															"type",
 															"domain"
 														],
-														"title": "Self Hosted Application"
+														"title": "Zone-Level Self Hosted Application"
 													},
 													{
 														"properties": {
@@ -2070765,7 +2070795,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2070895,7 +2070925,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2071227,7 +2071257,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2071357,7 +2071387,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2071689,7 +2071719,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2071819,7 +2071849,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2072151,7 +2072181,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2072281,7 +2072311,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2072675,7 +2072705,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2072805,7 +2072835,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2073151,7 +2073181,7 @@
 																				"type",
 																				"domain"
 																			],
-																			"title": "Self Hosted Application"
+																			"title": "Zone-Level Self Hosted Application"
 																		}
 																	],
 																	"title": "Self Hosted Application",
@@ -2073238,7 +2073268,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2073368,7 +2073398,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2073693,7 +2073723,7 @@
 																									"x-auditable": true
 																								}
 																							},
-																							"title": "SAML SaaS App"
+																							"title": "Zone-Level SAML SaaS App"
 																						},
 																						{
 																							"type": "object",
@@ -2073883,7 +2073913,7 @@
 																									"x-auditable": true
 																								}
 																							},
-																							"title": "OIDC SaaS App"
+																							"title": "Zone-Level OIDC SaaS App"
 																						}
 																					]
 																				},
@@ -2073893,7 +2073923,7 @@
 																					"example": "saas"
 																				}
 																			},
-																			"title": "SaaS Application"
+																			"title": "Zone-Level SaaS Application"
 																		}
 																	],
 																	"title": "SaaS Application",
@@ -2073980,7 +2074010,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2074110,7 +2074140,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2074458,7 +2074488,7 @@
 																						"type",
 																						"domain"
 																					],
-																					"title": "Self Hosted Application"
+																					"title": "Zone-Level Self Hosted Application"
 																				},
 																				{
 																					"properties": {
@@ -2074557,7 +2074587,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2074687,7 +2074717,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2075035,7 +2075065,7 @@
 																						"type",
 																						"domain"
 																					],
-																					"title": "Self Hosted Application"
+																					"title": "Zone-Level Self Hosted Application"
 																				},
 																				{
 																					"properties": {
@@ -2075134,7 +2075164,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2075264,7 +2075294,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2075596,7 +2075626,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2075726,7 +2075756,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2076058,7 +2076088,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2076188,7 +2076218,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2076520,7 +2076550,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2076650,7 +2076680,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2076949,7 +2076979,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2077079,7 +2077109,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2077425,7 +2077455,7 @@
 																		"type",
 																		"domain"
 																	],
-																	"title": "Self Hosted Application"
+																	"title": "Zone-Level Self Hosted Application"
 																}
 															],
 															"title": "Self Hosted Application",
@@ -2077512,7 +2077542,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2077642,7 +2077672,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2077967,7 +2077997,7 @@
 																							"x-auditable": true
 																						}
 																					},
-																					"title": "SAML SaaS App"
+																					"title": "Zone-Level SAML SaaS App"
 																				},
 																				{
 																					"type": "object",
@@ -2078157,7 +2078187,7 @@
 																							"x-auditable": true
 																						}
 																					},
-																					"title": "OIDC SaaS App"
+																					"title": "Zone-Level OIDC SaaS App"
 																				}
 																			]
 																		},
@@ -2078167,7 +2078197,7 @@
 																			"example": "saas"
 																		}
 																	},
-																	"title": "SaaS Application"
+																	"title": "Zone-Level SaaS Application"
 																}
 															],
 															"title": "SaaS Application",
@@ -2078254,7 +2078284,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2078384,7 +2078414,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2078732,7 +2078762,7 @@
 																				"type",
 																				"domain"
 																			],
-																			"title": "Self Hosted Application"
+																			"title": "Zone-Level Self Hosted Application"
 																		},
 																		{
 																			"properties": {
@@ -2078831,7 +2078861,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2078961,7 +2078991,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2079309,7 +2079339,7 @@
 																				"type",
 																				"domain"
 																			],
-																			"title": "Self Hosted Application"
+																			"title": "Zone-Level Self Hosted Application"
 																		},
 																		{
 																			"properties": {
@@ -2079408,7 +2079438,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2079538,7 +2079568,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2079870,7 +2079900,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2080000,7 +2080030,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2080332,7 +2080362,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2080462,7 +2080492,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2080794,7 +2080824,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2080924,7 +2080954,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2081793,7 +2081823,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2081923,7 +2081953,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2082269,7 +2082299,7 @@
 																		"type",
 																		"domain"
 																	],
-																	"title": "Self Hosted Application"
+																	"title": "Zone-Level Self Hosted Application"
 																}
 															],
 															"title": "Self Hosted Application",
@@ -2082356,7 +2082386,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2082486,7 +2082516,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2082811,7 +2082841,7 @@
 																							"x-auditable": true
 																						}
 																					},
-																					"title": "SAML SaaS App"
+																					"title": "Zone-Level SAML SaaS App"
 																				},
 																				{
 																					"type": "object",
@@ -2083001,7 +2083031,7 @@
 																							"x-auditable": true
 																						}
 																					},
-																					"title": "OIDC SaaS App"
+																					"title": "Zone-Level OIDC SaaS App"
 																				}
 																			]
 																		},
@@ -2083011,7 +2083041,7 @@
 																			"example": "saas"
 																		}
 																	},
-																	"title": "SaaS Application"
+																	"title": "Zone-Level SaaS Application"
 																}
 															],
 															"title": "SaaS Application",
@@ -2083098,7 +2083128,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2083228,7 +2083258,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2083576,7 +2083606,7 @@
 																				"type",
 																				"domain"
 																			],
-																			"title": "Self Hosted Application"
+																			"title": "Zone-Level Self Hosted Application"
 																		},
 																		{
 																			"properties": {
@@ -2083675,7 +2083705,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2083805,7 +2083835,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2084153,7 +2084183,7 @@
 																				"type",
 																				"domain"
 																			],
-																			"title": "Self Hosted Application"
+																			"title": "Zone-Level Self Hosted Application"
 																		},
 																		{
 																			"properties": {
@@ -2084252,7 +2084282,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2084382,7 +2084412,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2084714,7 +2084744,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2084844,7 +2084874,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2085176,7 +2085206,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2085306,7 +2085336,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2085638,7 +2085668,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2085768,7 +2085798,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2086251,7 +2086281,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2086381,7 +2086411,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2086727,7 +2086757,7 @@
 													"type",
 													"domain"
 												],
-												"title": "Self Hosted Application"
+												"title": "Zone-Level Self Hosted Application"
 											}
 										],
 										"title": "Self Hosted Application",
@@ -2086814,7 +2086844,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2086944,7 +2086974,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2087269,7 +2087299,7 @@
 																		"x-auditable": true
 																	}
 																},
-																"title": "SAML SaaS App"
+																"title": "Zone-Level SAML SaaS App"
 															},
 															{
 																"type": "object",
@@ -2087459,7 +2087489,7 @@
 																		"x-auditable": true
 																	}
 																},
-																"title": "OIDC SaaS App"
+																"title": "Zone-Level OIDC SaaS App"
 															}
 														]
 													},
@@ -2087469,7 +2087499,7 @@
 														"example": "saas"
 													}
 												},
-												"title": "SaaS Application"
+												"title": "Zone-Level SaaS Application"
 											}
 										],
 										"title": "SaaS Application",
@@ -2087556,7 +2087586,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2087686,7 +2087716,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2088034,7 +2088064,7 @@
 															"type",
 															"domain"
 														],
-														"title": "Self Hosted Application"
+														"title": "Zone-Level Self Hosted Application"
 													},
 													{
 														"properties": {
@@ -2088133,7 +2088163,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2088263,7 +2088293,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2088611,7 +2088641,7 @@
 															"type",
 															"domain"
 														],
-														"title": "Self Hosted Application"
+														"title": "Zone-Level Self Hosted Application"
 													},
 													{
 														"properties": {
@@ -2088710,7 +2088740,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2088840,7 +2088870,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2089172,7 +2089202,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2089302,7 +2089332,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2089634,7 +2089664,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2089764,7 +2089794,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2090096,7 +2090126,7 @@
 																					"scheme",
 																					"token"
 																				],
-																				"title": "OAuth Bearer Token"
+																				"title": "Zone-Level OAuth Bearer Token"
 																			},
 																			{
 																				"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2090226,7 +2090256,7 @@
 																						"scheme",
 																						"token"
 																					],
-																					"title": "OAuth Bearer Token"
+																					"title": "Zone-Level OAuth Bearer Token"
 																				},
 																				{
 																					"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2090620,7 +2090650,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2090750,7 +2090780,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2091096,7 +2091126,7 @@
 																				"type",
 																				"domain"
 																			],
-																			"title": "Self Hosted Application"
+																			"title": "Zone-Level Self Hosted Application"
 																		}
 																	],
 																	"title": "Self Hosted Application",
@@ -2091183,7 +2091213,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2091313,7 +2091343,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2091638,7 +2091668,7 @@
 																									"x-auditable": true
 																								}
 																							},
-																							"title": "SAML SaaS App"
+																							"title": "Zone-Level SAML SaaS App"
 																						},
 																						{
 																							"type": "object",
@@ -2091828,7 +2091858,7 @@
 																									"x-auditable": true
 																								}
 																							},
-																							"title": "OIDC SaaS App"
+																							"title": "Zone-Level OIDC SaaS App"
 																						}
 																					]
 																				},
@@ -2091838,7 +2091868,7 @@
 																					"example": "saas"
 																				}
 																			},
-																			"title": "SaaS Application"
+																			"title": "Zone-Level SaaS Application"
 																		}
 																	],
 																	"title": "SaaS Application",
@@ -2091925,7 +2091955,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2092055,7 +2092085,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2092403,7 +2092433,7 @@
 																						"type",
 																						"domain"
 																					],
-																					"title": "Self Hosted Application"
+																					"title": "Zone-Level Self Hosted Application"
 																				},
 																				{
 																					"properties": {
@@ -2092502,7 +2092532,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2092632,7 +2092662,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2092980,7 +2093010,7 @@
 																						"type",
 																						"domain"
 																					],
-																					"title": "Self Hosted Application"
+																					"title": "Zone-Level Self Hosted Application"
 																				},
 																				{
 																					"properties": {
@@ -2093079,7 +2093109,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2093209,7 +2093239,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2093541,7 +2093571,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2093671,7 +2093701,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2094003,7 +2094033,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2094133,7 +2094163,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2094465,7 +2094495,7 @@
 																												"scheme",
 																												"token"
 																											],
-																											"title": "OAuth Bearer Token"
+																											"title": "Zone-Level OAuth Bearer Token"
 																										},
 																										{
 																											"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2094595,7 +2094625,7 @@
 																													"scheme",
 																													"token"
 																												],
-																												"title": "OAuth Bearer Token"
+																												"title": "Zone-Level OAuth Bearer Token"
 																											},
 																											{
 																												"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2094894,7 +2094924,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2095024,7 +2095054,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2095370,7 +2095400,7 @@
 																		"type",
 																		"domain"
 																	],
-																	"title": "Self Hosted Application"
+																	"title": "Zone-Level Self Hosted Application"
 																}
 															],
 															"title": "Self Hosted Application",
@@ -2095457,7 +2095487,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2095587,7 +2095617,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2095912,7 +2095942,7 @@
 																							"x-auditable": true
 																						}
 																					},
-																					"title": "SAML SaaS App"
+																					"title": "Zone-Level SAML SaaS App"
 																				},
 																				{
 																					"type": "object",
@@ -2096102,7 +2096132,7 @@
 																							"x-auditable": true
 																						}
 																					},
-																					"title": "OIDC SaaS App"
+																					"title": "Zone-Level OIDC SaaS App"
 																				}
 																			]
 																		},
@@ -2096112,7 +2096142,7 @@
 																			"example": "saas"
 																		}
 																	},
-																	"title": "SaaS Application"
+																	"title": "Zone-Level SaaS Application"
 																}
 															],
 															"title": "SaaS Application",
@@ -2096199,7 +2096229,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2096329,7 +2096359,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2096677,7 +2096707,7 @@
 																				"type",
 																				"domain"
 																			],
-																			"title": "Self Hosted Application"
+																			"title": "Zone-Level Self Hosted Application"
 																		},
 																		{
 																			"properties": {
@@ -2096776,7 +2096806,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2096906,7 +2096936,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2097254,7 +2097284,7 @@
 																				"type",
 																				"domain"
 																			],
-																			"title": "Self Hosted Application"
+																			"title": "Zone-Level Self Hosted Application"
 																		},
 																		{
 																			"properties": {
@@ -2097353,7 +2097383,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2097483,7 +2097513,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2097815,7 +2097845,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2097945,7 +2097975,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2098277,7 +2098307,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2098407,7 +2098437,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2098739,7 +2098769,7 @@
 																										"scheme",
 																										"token"
 																									],
-																									"title": "OAuth Bearer Token"
+																									"title": "Zone-Level OAuth Bearer Token"
 																								},
 																								{
 																									"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2098869,7 +2098899,7 @@
 																											"scheme",
 																											"token"
 																										],
-																										"title": "OAuth Bearer Token"
+																										"title": "Zone-Level OAuth Bearer Token"
 																									},
 																									{
 																										"description": "Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.",
@@ -2118488,7 +2118518,7 @@
 															"china_network",
 															"client_certificate_forwarding"
 														],
-														"title": "Hostname Settings"
+														"title": "Zone-Level Hostname Settings"
 													}
 												}
 											},
@@ -2118686,7 +2118716,7 @@
 												"china_network",
 												"client_certificate_forwarding"
 											],
-											"title": "Hostname Settings"
+											"title": "Zone-Level Hostname Settings"
 										}
 									}
 								},
@@ -2118856,7 +2118886,7 @@
 															"china_network",
 															"client_certificate_forwarding"
 														],
-														"title": "Hostname Settings"
+														"title": "Zone-Level Hostname Settings"
 													}
 												}
 											},
@@ -2133750,7 +2133780,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Azure AD"
+																"title": "Zone-Level Azure AD"
 															},
 															{
 																"type": "object",
@@ -2133892,7 +2133922,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Centrify"
+																"title": "Zone-Level Centrify"
 															},
 															{
 																"type": "object",
@@ -2134015,7 +2134045,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Facebook"
+																"title": "Zone-Level Facebook"
 															},
 															{
 																"type": "object",
@@ -2134138,7 +2134168,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "GitHub"
+																"title": "Zone-Level GitHub"
 															},
 															{
 																"type": "object",
@@ -2134261,7 +2134291,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Google"
+																"title": "Zone-Level Google"
 															},
 															{
 																"type": "object",
@@ -2134413,7 +2134443,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Google Workspace"
+																"title": "Zone-Level Google Workspace"
 															},
 															{
 																"type": "object",
@@ -2134536,7 +2134566,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "LinkedIn"
+																"title": "Zone-Level LinkedIn"
 															},
 															{
 																"type": "object",
@@ -2134693,7 +2134723,7 @@
 																								]
 																							},
 																							"token_url": {
-																								"description": "The token_endpoint URL of your IdP",
+																								"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																								"type": "string",
 																								"example": "https://accounts.google.com/o/oauth2/token"
 																							}
@@ -2134706,7 +2134736,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Generic OAuth"
+																"title": "Zone-Level Generic OAuth"
 															},
 															{
 																"type": "object",
@@ -2134840,7 +2134870,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Duo"
+																"title": "Zone-Level Duo"
 															},
 															{
 																"type": "object",
@@ -2134977,7 +2135007,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Okta"
+																"title": "Zone-Level Okta"
 															},
 															{
 																"type": "object",
@@ -2135114,7 +2135144,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "OneLogin"
+																"title": "Zone-Level OneLogin"
 															},
 															{
 																"type": "object",
@@ -2135251,7 +2135281,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "PingOne"
+																"title": "Zone-Level PingOne"
 															},
 															{
 																"type": "object",
@@ -2135429,7 +2135459,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Generic SAML"
+																"title": "Zone-Level Generic SAML"
 															},
 															{
 																"type": "object",
@@ -2135552,7 +2135582,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Yandex"
+																"title": "Zone-Level Yandex"
 															},
 															{
 																"type": "object",
@@ -2135673,7 +2135703,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "One Time Pin"
+																"title": "Zone-Level One Time Pin"
 															},
 															{
 																"type": "object",
@@ -2135799,7 +2135829,7 @@
 																		"type": "object"
 																	}
 																],
-																"title": "Cloudflare"
+																"title": "Zone-Level Cloudflare"
 															}
 														]
 													}
@@ -2136123,7 +2136153,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Azure AD"
+										"title": "Zone-Level Azure AD"
 									},
 									{
 										"type": "object",
@@ -2136265,7 +2136295,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Centrify"
+										"title": "Zone-Level Centrify"
 									},
 									{
 										"type": "object",
@@ -2136388,7 +2136418,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Facebook"
+										"title": "Zone-Level Facebook"
 									},
 									{
 										"type": "object",
@@ -2136511,7 +2136541,7 @@
 												"type": "object"
 											}
 										],
-										"title": "GitHub"
+										"title": "Zone-Level GitHub"
 									},
 									{
 										"type": "object",
@@ -2136634,7 +2136664,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Google"
+										"title": "Zone-Level Google"
 									},
 									{
 										"type": "object",
@@ -2136786,7 +2136816,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Google Workspace"
+										"title": "Zone-Level Google Workspace"
 									},
 									{
 										"type": "object",
@@ -2136909,7 +2136939,7 @@
 												"type": "object"
 											}
 										],
-										"title": "LinkedIn"
+										"title": "Zone-Level LinkedIn"
 									},
 									{
 										"type": "object",
@@ -2137066,7 +2137096,7 @@
 																		]
 																	},
 																	"token_url": {
-																		"description": "The token_endpoint URL of your IdP",
+																		"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																		"type": "string",
 																		"example": "https://accounts.google.com/o/oauth2/token"
 																	}
@@ -2137079,7 +2137109,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Generic OAuth"
+										"title": "Zone-Level Generic OAuth"
 									},
 									{
 										"type": "object",
@@ -2137213,7 +2137243,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Duo"
+										"title": "Zone-Level Duo"
 									},
 									{
 										"type": "object",
@@ -2137350,7 +2137380,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Okta"
+										"title": "Zone-Level Okta"
 									},
 									{
 										"type": "object",
@@ -2137487,7 +2137517,7 @@
 												"type": "object"
 											}
 										],
-										"title": "OneLogin"
+										"title": "Zone-Level OneLogin"
 									},
 									{
 										"type": "object",
@@ -2137624,7 +2137654,7 @@
 												"type": "object"
 											}
 										],
-										"title": "PingOne"
+										"title": "Zone-Level PingOne"
 									},
 									{
 										"type": "object",
@@ -2137802,7 +2137832,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Generic SAML"
+										"title": "Zone-Level Generic SAML"
 									},
 									{
 										"type": "object",
@@ -2137925,7 +2137955,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Yandex"
+										"title": "Zone-Level Yandex"
 									},
 									{
 										"type": "object",
@@ -2138051,7 +2138081,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Cloudflare"
+										"title": "Zone-Level Cloudflare"
 									}
 								]
 							}
@@ -2138309,7 +2138339,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Azure AD"
+															"title": "Zone-Level Azure AD"
 														},
 														{
 															"type": "object",
@@ -2138451,7 +2138481,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Centrify"
+															"title": "Zone-Level Centrify"
 														},
 														{
 															"type": "object",
@@ -2138574,7 +2138604,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Facebook"
+															"title": "Zone-Level Facebook"
 														},
 														{
 															"type": "object",
@@ -2138697,7 +2138727,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "GitHub"
+															"title": "Zone-Level GitHub"
 														},
 														{
 															"type": "object",
@@ -2138820,7 +2138850,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Google"
+															"title": "Zone-Level Google"
 														},
 														{
 															"type": "object",
@@ -2138972,7 +2139002,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Google Workspace"
+															"title": "Zone-Level Google Workspace"
 														},
 														{
 															"type": "object",
@@ -2139095,7 +2139125,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "LinkedIn"
+															"title": "Zone-Level LinkedIn"
 														},
 														{
 															"type": "object",
@@ -2139252,7 +2139282,7 @@
 																							]
 																						},
 																						"token_url": {
-																							"description": "The token_endpoint URL of your IdP",
+																							"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																							"type": "string",
 																							"example": "https://accounts.google.com/o/oauth2/token"
 																						}
@@ -2139265,7 +2139295,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Generic OAuth"
+															"title": "Zone-Level Generic OAuth"
 														},
 														{
 															"type": "object",
@@ -2139399,7 +2139429,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Duo"
+															"title": "Zone-Level Duo"
 														},
 														{
 															"type": "object",
@@ -2139536,7 +2139566,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Okta"
+															"title": "Zone-Level Okta"
 														},
 														{
 															"type": "object",
@@ -2139673,7 +2139703,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "OneLogin"
+															"title": "Zone-Level OneLogin"
 														},
 														{
 															"type": "object",
@@ -2139810,7 +2139840,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "PingOne"
+															"title": "Zone-Level PingOne"
 														},
 														{
 															"type": "object",
@@ -2139988,7 +2140018,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Generic SAML"
+															"title": "Zone-Level Generic SAML"
 														},
 														{
 															"type": "object",
@@ -2140111,7 +2140141,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Yandex"
+															"title": "Zone-Level Yandex"
 														},
 														{
 															"type": "object",
@@ -2140237,7 +2140267,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Cloudflare"
+															"title": "Zone-Level Cloudflare"
 														}
 													]
 												}
@@ -2140948,7 +2140978,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Azure AD"
+															"title": "Zone-Level Azure AD"
 														},
 														{
 															"type": "object",
@@ -2141090,7 +2141120,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Centrify"
+															"title": "Zone-Level Centrify"
 														},
 														{
 															"type": "object",
@@ -2141213,7 +2141243,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Facebook"
+															"title": "Zone-Level Facebook"
 														},
 														{
 															"type": "object",
@@ -2141336,7 +2141366,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "GitHub"
+															"title": "Zone-Level GitHub"
 														},
 														{
 															"type": "object",
@@ -2141459,7 +2141489,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Google"
+															"title": "Zone-Level Google"
 														},
 														{
 															"type": "object",
@@ -2141611,7 +2141641,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Google Workspace"
+															"title": "Zone-Level Google Workspace"
 														},
 														{
 															"type": "object",
@@ -2141734,7 +2141764,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "LinkedIn"
+															"title": "Zone-Level LinkedIn"
 														},
 														{
 															"type": "object",
@@ -2141891,7 +2141921,7 @@
 																							]
 																						},
 																						"token_url": {
-																							"description": "The token_endpoint URL of your IdP",
+																							"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																							"type": "string",
 																							"example": "https://accounts.google.com/o/oauth2/token"
 																						}
@@ -2141904,7 +2141934,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Generic OAuth"
+															"title": "Zone-Level Generic OAuth"
 														},
 														{
 															"type": "object",
@@ -2142038,7 +2142068,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Duo"
+															"title": "Zone-Level Duo"
 														},
 														{
 															"type": "object",
@@ -2142175,7 +2142205,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Okta"
+															"title": "Zone-Level Okta"
 														},
 														{
 															"type": "object",
@@ -2142312,7 +2142342,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "OneLogin"
+															"title": "Zone-Level OneLogin"
 														},
 														{
 															"type": "object",
@@ -2142449,7 +2142479,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "PingOne"
+															"title": "Zone-Level PingOne"
 														},
 														{
 															"type": "object",
@@ -2142627,7 +2142657,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Generic SAML"
+															"title": "Zone-Level Generic SAML"
 														},
 														{
 															"type": "object",
@@ -2142750,7 +2142780,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Yandex"
+															"title": "Zone-Level Yandex"
 														},
 														{
 															"type": "object",
@@ -2142876,7 +2142906,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Cloudflare"
+															"title": "Zone-Level Cloudflare"
 														}
 													]
 												}
@@ -2143211,7 +2143241,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Azure AD"
+										"title": "Zone-Level Azure AD"
 									},
 									{
 										"type": "object",
@@ -2143353,7 +2143383,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Centrify"
+										"title": "Zone-Level Centrify"
 									},
 									{
 										"type": "object",
@@ -2143476,7 +2143506,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Facebook"
+										"title": "Zone-Level Facebook"
 									},
 									{
 										"type": "object",
@@ -2143599,7 +2143629,7 @@
 												"type": "object"
 											}
 										],
-										"title": "GitHub"
+										"title": "Zone-Level GitHub"
 									},
 									{
 										"type": "object",
@@ -2143722,7 +2143752,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Google"
+										"title": "Zone-Level Google"
 									},
 									{
 										"type": "object",
@@ -2143874,7 +2143904,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Google Workspace"
+										"title": "Zone-Level Google Workspace"
 									},
 									{
 										"type": "object",
@@ -2143997,7 +2144027,7 @@
 												"type": "object"
 											}
 										],
-										"title": "LinkedIn"
+										"title": "Zone-Level LinkedIn"
 									},
 									{
 										"type": "object",
@@ -2144154,7 +2144184,7 @@
 																		]
 																	},
 																	"token_url": {
-																		"description": "The token_endpoint URL of your IdP",
+																		"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																		"type": "string",
 																		"example": "https://accounts.google.com/o/oauth2/token"
 																	}
@@ -2144167,7 +2144197,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Generic OAuth"
+										"title": "Zone-Level Generic OAuth"
 									},
 									{
 										"type": "object",
@@ -2144301,7 +2144331,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Duo"
+										"title": "Zone-Level Duo"
 									},
 									{
 										"type": "object",
@@ -2144438,7 +2144468,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Okta"
+										"title": "Zone-Level Okta"
 									},
 									{
 										"type": "object",
@@ -2144575,7 +2144605,7 @@
 												"type": "object"
 											}
 										],
-										"title": "OneLogin"
+										"title": "Zone-Level OneLogin"
 									},
 									{
 										"type": "object",
@@ -2144712,7 +2144742,7 @@
 												"type": "object"
 											}
 										],
-										"title": "PingOne"
+										"title": "Zone-Level PingOne"
 									},
 									{
 										"type": "object",
@@ -2144890,7 +2144920,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Generic SAML"
+										"title": "Zone-Level Generic SAML"
 									},
 									{
 										"type": "object",
@@ -2145013,7 +2145043,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Yandex"
+										"title": "Zone-Level Yandex"
 									},
 									{
 										"type": "object",
@@ -2145139,7 +2145169,7 @@
 												"type": "object"
 											}
 										],
-										"title": "Cloudflare"
+										"title": "Zone-Level Cloudflare"
 									}
 								]
 							}
@@ -2145397,7 +2145427,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Azure AD"
+															"title": "Zone-Level Azure AD"
 														},
 														{
 															"type": "object",
@@ -2145539,7 +2145569,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Centrify"
+															"title": "Zone-Level Centrify"
 														},
 														{
 															"type": "object",
@@ -2145662,7 +2145692,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Facebook"
+															"title": "Zone-Level Facebook"
 														},
 														{
 															"type": "object",
@@ -2145785,7 +2145815,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "GitHub"
+															"title": "Zone-Level GitHub"
 														},
 														{
 															"type": "object",
@@ -2145908,7 +2145938,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Google"
+															"title": "Zone-Level Google"
 														},
 														{
 															"type": "object",
@@ -2146060,7 +2146090,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Google Workspace"
+															"title": "Zone-Level Google Workspace"
 														},
 														{
 															"type": "object",
@@ -2146183,7 +2146213,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "LinkedIn"
+															"title": "Zone-Level LinkedIn"
 														},
 														{
 															"type": "object",
@@ -2146340,7 +2146370,7 @@
 																							]
 																						},
 																						"token_url": {
-																							"description": "The token_endpoint URL of your IdP",
+																							"description": "The token_endpoint URL of your IdP. Updates that change its origin (scheme, host, or port) require client_secret in the request. Path-only changes do not require client_secret.",
 																							"type": "string",
 																							"example": "https://accounts.google.com/o/oauth2/token"
 																						}
@@ -2146353,7 +2146383,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Generic OAuth"
+															"title": "Zone-Level Generic OAuth"
 														},
 														{
 															"type": "object",
@@ -2146487,7 +2146517,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Duo"
+															"title": "Zone-Level Duo"
 														},
 														{
 															"type": "object",
@@ -2146624,7 +2146654,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Okta"
+															"title": "Zone-Level Okta"
 														},
 														{
 															"type": "object",
@@ -2146761,7 +2146791,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "OneLogin"
+															"title": "Zone-Level OneLogin"
 														},
 														{
 															"type": "object",
@@ -2146898,7 +2146928,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "PingOne"
+															"title": "Zone-Level PingOne"
 														},
 														{
 															"type": "object",
@@ -2147076,7 +2147106,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Generic SAML"
+															"title": "Zone-Level Generic SAML"
 														},
 														{
 															"type": "object",
@@ -2147199,7 +2147229,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Yandex"
+															"title": "Zone-Level Yandex"
 														},
 														{
 															"type": "object",
@@ -2147325,7 +2147355,7 @@
 																	"type": "object"
 																}
 															],
-															"title": "Cloudflare"
+															"title": "Zone-Level Cloudflare"
 														}
 													]
 												}
