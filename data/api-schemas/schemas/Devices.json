@@ -306,6 +306,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"required": [
 																		"address"
 																	]
@@ -329,6 +330,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"required": [
 																		"host"
 																	]
@@ -539,6 +541,7 @@
 																"maxItems": 5
 															}
 														},
+														"additionalProperties": false,
 														"nullable": true,
 														"required": [
 															"enabled",
@@ -572,6 +575,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"required": [
 																		"address"
 																	]
@@ -595,6 +599,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"required": [
 																		"host"
 																	]
@@ -758,6 +763,7 @@
 																"x-auditable": true
 															}
 														},
+														"additionalProperties": false,
 														"nullable": true,
 														"required": [
 															"allowed",
@@ -1072,6 +1078,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"address"
 														]
@@ -1095,6 +1102,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"host"
 														]
@@ -1715,6 +1723,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"address"
 														]
@@ -1738,6 +1747,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"host"
 														]
@@ -3577,6 +3587,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"required": [
 																		"address"
 																	]
@@ -3600,6 +3611,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"required": [
 																		"host"
 																	]
@@ -3810,6 +3822,7 @@
 																"maxItems": 5
 															}
 														},
+														"additionalProperties": false,
 														"nullable": true,
 														"required": [
 															"enabled",
@@ -3843,6 +3856,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"required": [
 																		"address"
 																	]
@@ -3866,6 +3880,7 @@
 																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"required": [
 																		"host"
 																	]
@@ -4029,6 +4044,7 @@
 																"x-auditable": true
 															}
 														},
+														"additionalProperties": false,
 														"nullable": true,
 														"required": [
 															"allowed",
@@ -4392,6 +4408,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -4415,6 +4432,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -4625,6 +4643,7 @@
 															"maxItems": 5
 														}
 													},
+													"additionalProperties": false,
 													"nullable": true,
 													"required": [
 														"enabled",
@@ -4658,6 +4677,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -4681,6 +4701,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -4792,6 +4813,7 @@
 															"x-auditable": true
 														}
 													},
+													"additionalProperties": false,
 													"nullable": true,
 													"required": [
 														"allowed",
@@ -5199,6 +5221,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -5222,6 +5245,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -5432,6 +5456,7 @@
 															"maxItems": 5
 														}
 													},
+													"additionalProperties": false,
 													"nullable": true,
 													"required": [
 														"enabled",
@@ -5465,6 +5490,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -5488,6 +5514,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -5651,6 +5678,7 @@
 															"x-auditable": true
 														}
 													},
+													"additionalProperties": false,
 													"nullable": true,
 													"required": [
 														"allowed",
@@ -5951,6 +5979,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"address"
 														]
@@ -5974,6 +6003,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"host"
 														]
@@ -6577,6 +6607,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"address"
 														]
@@ -6600,6 +6631,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"host"
 														]
@@ -6889,6 +6921,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"address"
 														]
@@ -6912,6 +6945,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"host"
 														]
@@ -7493,6 +7527,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"address"
 														]
@@ -7516,6 +7551,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"host"
 														]
@@ -8016,6 +8052,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"address"
 											]
@@ -8039,6 +8076,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"host"
 											]
@@ -8115,6 +8153,7 @@
 										"maxItems": 5
 									}
 								},
+								"additionalProperties": false,
 								"nullable": true,
 								"required": [
 									"enabled",
@@ -8148,6 +8187,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"address"
 											]
@@ -8171,6 +8211,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"host"
 											]
@@ -8278,6 +8319,7 @@
 										"x-auditable": true
 									}
 								},
+								"additionalProperties": false,
 								"nullable": true,
 								"required": [
 									"allowed",
@@ -8514,6 +8556,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -8537,6 +8580,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -8747,6 +8791,7 @@
 															"maxItems": 5
 														}
 													},
+													"additionalProperties": false,
 													"nullable": true,
 													"required": [
 														"enabled",
@@ -8780,6 +8825,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -8803,6 +8849,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -8914,6 +8961,7 @@
 															"x-auditable": true
 														}
 													},
+													"additionalProperties": false,
 													"nullable": true,
 													"required": [
 														"allowed",
@@ -9219,6 +9267,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"address"
 											]
@@ -9242,6 +9291,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"host"
 											]
@@ -9318,6 +9368,7 @@
 										"maxItems": 5
 									}
 								},
+								"additionalProperties": false,
 								"nullable": true,
 								"required": [
 									"enabled",
@@ -9351,6 +9402,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"address"
 											]
@@ -9374,6 +9426,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"host"
 											]
@@ -9501,6 +9554,7 @@
 										"x-auditable": true
 									}
 								},
+								"additionalProperties": false,
 								"nullable": true,
 								"required": [
 									"allowed",
@@ -9771,6 +9825,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -9794,6 +9849,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -10004,6 +10060,7 @@
 															"maxItems": 5
 														}
 													},
+													"additionalProperties": false,
 													"nullable": true,
 													"required": [
 														"enabled",
@@ -10037,6 +10094,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -10060,6 +10118,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -10223,6 +10282,7 @@
 															"x-auditable": true
 														}
 													},
+													"additionalProperties": false,
 													"nullable": true,
 													"required": [
 														"allowed",
@@ -10713,20 +10773,12 @@
 								"x-auditable": true
 							},
 							"description": {
-								"allOf": [
-									{
-										"description": "A description of the policy.",
-										"type": "string",
-										"example": "Policy for test teams.",
-										"maxLength": 500,
-										"x-auditable": true
-									},
-									{
-										"default": "",
-										"type": "string",
-										"x-auditable": true
-									}
-								]
+								"description": "A description of the policy.",
+								"type": "string",
+								"example": "Policy for test teams.",
+								"default": "",
+								"maxLength": 500,
+								"x-auditable": true
 							},
 							"disable_auto_fallback": {
 								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -10801,6 +10853,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"address"
 											]
@@ -10824,6 +10877,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"host"
 											]
@@ -10900,6 +10954,7 @@
 										"maxItems": 5
 									}
 								},
+								"additionalProperties": false,
 								"nullable": true,
 								"required": [
 									"enabled",
@@ -10933,6 +10988,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"address"
 											]
@@ -10956,6 +11012,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"host"
 											]
@@ -11094,6 +11151,7 @@
 										"x-auditable": true
 									}
 								},
+								"additionalProperties": false,
 								"nullable": true,
 								"required": [
 									"allowed",
@@ -11367,6 +11425,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -11390,6 +11449,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -11600,6 +11660,7 @@
 															"maxItems": 5
 														}
 													},
+													"additionalProperties": false,
 													"nullable": true,
 													"required": [
 														"enabled",
@@ -11633,6 +11694,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -11656,6 +11718,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -11819,6 +11882,7 @@
 															"x-auditable": true
 														}
 													},
+													"additionalProperties": false,
 													"nullable": true,
 													"required": [
 														"allowed",
@@ -12502,6 +12566,7 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"address"
 									]
@@ -12525,6 +12590,7 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"host"
 									]
@@ -12687,6 +12753,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"address"
 														]
@@ -12710,6 +12777,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"host"
 														]
@@ -13236,6 +13304,7 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"address"
 									]
@@ -13259,6 +13328,7 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"host"
 									]
@@ -13421,6 +13491,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"address"
 														]
@@ -13444,6 +13515,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"host"
 														]
@@ -13612,6 +13684,7 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"address"
 									]
@@ -13635,6 +13708,7 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"host"
 									]
@@ -13797,6 +13871,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"address"
 														]
@@ -13820,6 +13895,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"host"
 														]
@@ -14324,6 +14400,7 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"address"
 									]
@@ -14347,6 +14424,7 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
+									"additionalProperties": false,
 									"required": [
 										"host"
 									]
@@ -14509,6 +14587,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"address"
 														]
@@ -14532,6 +14611,7 @@
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
+														"additionalProperties": false,
 														"required": [
 															"host"
 														]

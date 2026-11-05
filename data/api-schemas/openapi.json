@@ -836356,6 +836356,7 @@
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
+																			"additionalProperties": false,
 																			"required": [
 																				"address"
 																			]
@@ -836379,6 +836380,7 @@
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
+																			"additionalProperties": false,
 																			"required": [
 																				"host"
 																			]
@@ -836589,6 +836591,7 @@
 																		"maxItems": 5
 																	}
 																},
+																"additionalProperties": false,
 																"nullable": true,
 																"required": [
 																	"enabled",
@@ -836622,6 +836625,7 @@
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
+																			"additionalProperties": false,
 																			"required": [
 																				"address"
 																			]
@@ -836645,6 +836649,7 @@
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
+																			"additionalProperties": false,
 																			"required": [
 																				"host"
 																			]
@@ -836808,6 +836813,7 @@
 																		"x-auditable": true
 																	}
 																},
+																"additionalProperties": false,
 																"nullable": true,
 																"required": [
 																	"allowed",
@@ -837173,6 +837179,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"address"
 																		]
@@ -837196,6 +837203,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"host"
 																		]
@@ -837406,6 +837414,7 @@
 																	"maxItems": 5
 																}
 															},
+															"additionalProperties": false,
 															"nullable": true,
 															"required": [
 																"enabled",
@@ -837439,6 +837448,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"address"
 																		]
@@ -837462,6 +837472,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"host"
 																		]
@@ -837573,6 +837584,7 @@
 																	"x-auditable": true
 																}
 															},
+															"additionalProperties": false,
 															"nullable": true,
 															"required": [
 																"allowed",
@@ -837818,6 +837830,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"address"
 													]
@@ -837841,6 +837854,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"host"
 													]
@@ -837917,6 +837931,7 @@
 												"maxItems": 5
 											}
 										},
+										"additionalProperties": false,
 										"nullable": true,
 										"required": [
 											"enabled",
@@ -837950,6 +837965,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"address"
 													]
@@ -837973,6 +837989,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"host"
 													]
@@ -838080,6 +838097,7 @@
 												"x-auditable": true
 											}
 										},
+										"additionalProperties": false,
 										"nullable": true,
 										"required": [
 											"allowed",
@@ -838316,6 +838334,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"address"
 																		]
@@ -838339,6 +838358,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"host"
 																		]
@@ -838549,6 +838569,7 @@
 																	"maxItems": 5
 																}
 															},
+															"additionalProperties": false,
 															"nullable": true,
 															"required": [
 																"enabled",
@@ -838582,6 +838603,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"address"
 																		]
@@ -838605,6 +838627,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"host"
 																		]
@@ -838716,6 +838739,7 @@
 																	"x-auditable": true
 																}
 															},
+															"additionalProperties": false,
 															"nullable": true,
 															"required": [
 																"allowed",
@@ -838932,20 +838956,12 @@
 										"x-auditable": true
 									},
 									"description": {
-										"allOf": [
-											{
-												"description": "A description of the policy.",
-												"type": "string",
-												"example": "Policy for test teams.",
-												"maxLength": 500,
-												"x-auditable": true
-											},
-											{
-												"default": "",
-												"type": "string",
-												"x-auditable": true
-											}
-										]
+										"description": "A description of the policy.",
+										"type": "string",
+										"example": "Policy for test teams.",
+										"default": "",
+										"maxLength": 500,
+										"x-auditable": true
 									},
 									"disable_auto_fallback": {
 										"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
@@ -839020,6 +839036,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"address"
 													]
@@ -839043,6 +839060,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"host"
 													]
@@ -839119,6 +839137,7 @@
 												"maxItems": 5
 											}
 										},
+										"additionalProperties": false,
 										"nullable": true,
 										"required": [
 											"enabled",
@@ -839152,6 +839171,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"address"
 													]
@@ -839175,6 +839195,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"host"
 													]
@@ -839313,6 +839334,7 @@
 												"x-auditable": true
 											}
 										},
+										"additionalProperties": false,
 										"nullable": true,
 										"required": [
 											"allowed",
@@ -839586,6 +839608,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"address"
 																		]
@@ -839609,6 +839632,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"host"
 																		]
@@ -839819,6 +839843,7 @@
 																	"maxItems": 5
 																}
 															},
+															"additionalProperties": false,
 															"nullable": true,
 															"required": [
 																"enabled",
@@ -839852,6 +839877,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"address"
 																		]
@@ -839875,6 +839901,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"host"
 																		]
@@ -840038,6 +840065,7 @@
 																	"x-auditable": true
 																}
 															},
+															"additionalProperties": false,
 															"nullable": true,
 															"required": [
 																"allowed",
@@ -840472,6 +840500,7 @@
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
+																			"additionalProperties": false,
 																			"required": [
 																				"address"
 																			]
@@ -840495,6 +840524,7 @@
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
+																			"additionalProperties": false,
 																			"required": [
 																				"host"
 																			]
@@ -840705,6 +840735,7 @@
 																		"maxItems": 5
 																	}
 																},
+																"additionalProperties": false,
 																"nullable": true,
 																"required": [
 																	"enabled",
@@ -840738,6 +840769,7 @@
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
+																			"additionalProperties": false,
 																			"required": [
 																				"address"
 																			]
@@ -840761,6 +840793,7 @@
 																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
+																			"additionalProperties": false,
 																			"required": [
 																				"host"
 																			]
@@ -840924,6 +840957,7 @@
 																		"x-auditable": true
 																	}
 																},
+																"additionalProperties": false,
 																"nullable": true,
 																"required": [
 																	"allowed",
@@ -841335,6 +841369,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"address"
 																		]
@@ -841358,6 +841393,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"host"
 																		]
@@ -841568,6 +841604,7 @@
 																	"maxItems": 5
 																}
 															},
+															"additionalProperties": false,
 															"nullable": true,
 															"required": [
 																"enabled",
@@ -841601,6 +841638,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"address"
 																		]
@@ -841624,6 +841662,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"host"
 																		]
@@ -841787,6 +841826,7 @@
 																	"x-auditable": true
 																}
 															},
+															"additionalProperties": false,
 															"nullable": true,
 															"required": [
 																"allowed",
@@ -842089,6 +842129,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"address"
 													]
@@ -842112,6 +842153,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"host"
 													]
@@ -842188,6 +842230,7 @@
 												"maxItems": 5
 											}
 										},
+										"additionalProperties": false,
 										"nullable": true,
 										"required": [
 											"enabled",
@@ -842221,6 +842264,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"address"
 													]
@@ -842244,6 +842288,7 @@
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
+													"additionalProperties": false,
 													"required": [
 														"host"
 													]
@@ -842371,6 +842416,7 @@
 												"x-auditable": true
 											}
 										},
+										"additionalProperties": false,
 										"nullable": true,
 										"required": [
 											"allowed",
@@ -842641,6 +842687,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"address"
 																		]
@@ -842664,6 +842711,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"host"
 																		]
@@ -842874,6 +842922,7 @@
 																	"maxItems": 5
 																}
 															},
+															"additionalProperties": false,
 															"nullable": true,
 															"required": [
 																"enabled",
@@ -842907,6 +842956,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"address"
 																		]
@@ -842930,6 +842980,7 @@
 																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"required": [
 																			"host"
 																		]
@@ -843093,6 +843144,7 @@
 																	"x-auditable": true
 																}
 															},
+															"additionalProperties": false,
 															"nullable": true,
 															"required": [
 																"allowed",
@@ -843408,6 +843460,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -843431,6 +843484,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -843735,6 +843789,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -843758,6 +843813,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -843934,6 +843990,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"address"
 											]
@@ -843957,6 +844014,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"host"
 											]
@@ -844119,6 +844177,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -844142,6 +844201,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -845416,6 +845476,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -845439,6 +845500,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -845615,6 +845677,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"address"
 											]
@@ -845638,6 +845701,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"host"
 											]
@@ -845800,6 +845864,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -845823,6 +845888,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -846127,6 +846193,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -846150,6 +846217,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -846443,6 +846511,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -846466,6 +846535,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -846631,6 +846701,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"address"
 											]
@@ -846654,6 +846725,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"host"
 											]
@@ -846816,6 +846888,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -846839,6 +846912,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -848069,6 +848143,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -848092,6 +848167,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -848257,6 +848333,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"address"
 											]
@@ -848280,6 +848357,7 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
+											"additionalProperties": false,
 											"required": [
 												"host"
 											]
@@ -848442,6 +848520,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"address"
 																]
@@ -848465,6 +848544,7 @@
 																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
+																"additionalProperties": false,
 																"required": [
 																	"host"
 																]
@@ -860417,55 +860497,64 @@
 														"disable_for_time": {
 															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 															"type": "number",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_enabled": {
 															"description": "Controls whether the external emergency disconnect feature is enabled.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_fingerprint": {
 															"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
 															"type": "string",
 															"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_interval": {
 															"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
 															"type": "string",
 															"example": "5m",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_url": {
 															"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
 															"type": "string",
 															"example": "https://192.0.2.1/signal",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"gateway_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on TCP.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"gateway_udp_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on UDP.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"root_certificate_installation_enabled": {
 															"description": "Enable installation of cloudflare managed root certificate.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"use_zt_virtual_ip": {
 															"description": "Enable using CGNAT virtual IPv4.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													}
 												}
@@ -860716,55 +860805,64 @@
 														"disable_for_time": {
 															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 															"type": "number",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_enabled": {
 															"description": "Controls whether the external emergency disconnect feature is enabled.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_fingerprint": {
 															"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
 															"type": "string",
 															"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_interval": {
 															"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
 															"type": "string",
 															"example": "5m",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_url": {
 															"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
 															"type": "string",
 															"example": "https://192.0.2.1/signal",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"gateway_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on TCP.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"gateway_udp_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on UDP.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"root_certificate_installation_enabled": {
 															"description": "Enable installation of cloudflare managed root certificate.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"use_zt_virtual_ip": {
 															"description": "Enable using CGNAT virtual IPv4.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													}
 												}
@@ -860907,55 +861005,64 @@
 									"disable_for_time": {
 										"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 										"type": "number",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"external_emergency_signal_enabled": {
 										"description": "Controls whether the external emergency disconnect feature is enabled.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"external_emergency_signal_fingerprint": {
 										"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
 										"type": "string",
 										"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"external_emergency_signal_interval": {
 										"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
 										"type": "string",
 										"example": "5m",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"external_emergency_signal_url": {
 										"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
 										"type": "string",
 										"example": "https://192.0.2.1/signal",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"gateway_proxy_enabled": {
 										"description": "Enable gateway proxy filtering on TCP.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"gateway_udp_proxy_enabled": {
 										"description": "Enable gateway proxy filtering on UDP.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"root_certificate_installation_enabled": {
 										"description": "Enable installation of cloudflare managed root certificate.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"use_zt_virtual_ip": {
 										"description": "Enable using CGNAT virtual IPv4.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								}
 							}
@@ -861077,55 +861184,64 @@
 														"disable_for_time": {
 															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 															"type": "number",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_enabled": {
 															"description": "Controls whether the external emergency disconnect feature is enabled.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_fingerprint": {
 															"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
 															"type": "string",
 															"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_interval": {
 															"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
 															"type": "string",
 															"example": "5m",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_url": {
 															"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
 															"type": "string",
 															"example": "https://192.0.2.1/signal",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"gateway_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on TCP.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"gateway_udp_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on UDP.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"root_certificate_installation_enabled": {
 															"description": "Enable installation of cloudflare managed root certificate.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"use_zt_virtual_ip": {
 															"description": "Enable using CGNAT virtual IPv4.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													}
 												}
@@ -861271,55 +861387,64 @@
 									"disable_for_time": {
 										"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 										"type": "number",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"external_emergency_signal_enabled": {
 										"description": "Controls whether the external emergency disconnect feature is enabled.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"external_emergency_signal_fingerprint": {
 										"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
 										"type": "string",
 										"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"external_emergency_signal_interval": {
 										"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
 										"type": "string",
 										"example": "5m",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"external_emergency_signal_url": {
 										"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
 										"type": "string",
 										"example": "https://192.0.2.1/signal",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"gateway_proxy_enabled": {
 										"description": "Enable gateway proxy filtering on TCP.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"gateway_udp_proxy_enabled": {
 										"description": "Enable gateway proxy filtering on UDP.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"root_certificate_installation_enabled": {
 										"description": "Enable installation of cloudflare managed root certificate.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"use_zt_virtual_ip": {
 										"description": "Enable using CGNAT virtual IPv4.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								}
 							}
@@ -861441,55 +861566,64 @@
 														"disable_for_time": {
 															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 															"type": "number",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_enabled": {
 															"description": "Controls whether the external emergency disconnect feature is enabled.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_fingerprint": {
 															"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
 															"type": "string",
 															"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_interval": {
 															"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
 															"type": "string",
 															"example": "5m",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"external_emergency_signal_url": {
 															"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
 															"type": "string",
 															"example": "https://192.0.2.1/signal",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"gateway_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on TCP.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"gateway_udp_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on UDP.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"root_certificate_installation_enabled": {
 															"description": "Enable installation of cloudflare managed root certificate.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"use_zt_virtual_ip": {
 															"description": "Enable using CGNAT virtual IPv4.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													}
 												}
@@ -952473,14 +952607,6 @@
 																					"example": false,
 																					"x-auditable": true
 																				},
-																				"foundation_dns": {
-																					"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
-																					"type": "boolean",
-																					"example": false,
-																					"deprecated": true,
-																					"x-auditable": true,
-																					"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
-																				},
 																				"internal_dns": {
 																					"description": "Settings for this internal zone.",
 																					"type": "object",
@@ -952703,7 +952829,6 @@
 																			},
 																			"required": [
 																				"flatten_all_cnames",
-																				"foundation_dns",
 																				"multi_provider",
 																				"secondary_overrides",
 																				"soa",
@@ -952886,14 +953011,6 @@
 																							"type": "boolean",
 																							"example": false,
 																							"x-auditable": true
-																						},
-																						"foundation_dns": {
-																							"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
-																							"type": "boolean",
-																							"example": false,
-																							"deprecated": true,
-																							"x-auditable": true,
-																							"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
 																						},
 																						"internal_dns": {
 																							"description": "Settings for this internal zone.",
@@ -953117,7 +953234,6 @@
 																					},
 																					"required": [
 																						"flatten_all_cnames",
-																						"foundation_dns",
 																						"multi_provider",
 																						"secondary_overrides",
 																						"soa",
@@ -953363,14 +953479,6 @@
 																"type": "boolean",
 																"example": false,
 																"x-auditable": true
-															},
-															"foundation_dns": {
-																"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
-																"type": "boolean",
-																"example": false,
-																"deprecated": true,
-																"x-auditable": true,
-																"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
 															},
 															"internal_dns": {
 																"description": "Settings for this internal zone.",
@@ -953639,14 +953747,6 @@
 																					"example": false,
 																					"x-auditable": true
 																				},
-																				"foundation_dns": {
-																					"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
-																					"type": "boolean",
-																					"example": false,
-																					"deprecated": true,
-																					"x-auditable": true,
-																					"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
-																				},
 																				"internal_dns": {
 																					"description": "Settings for this internal zone.",
 																					"type": "object",
@@ -953869,7 +953969,6 @@
 																			},
 																			"required": [
 																				"flatten_all_cnames",
-																				"foundation_dns",
 																				"multi_provider",
 																				"secondary_overrides",
 																				"soa",
@@ -954052,14 +954151,6 @@
 																							"type": "boolean",
 																							"example": false,
 																							"x-auditable": true
-																						},
-																						"foundation_dns": {
-																							"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
-																							"type": "boolean",
-																							"example": false,
-																							"deprecated": true,
-																							"x-auditable": true,
-																							"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
 																						},
 																						"internal_dns": {
 																							"description": "Settings for this internal zone.",
@@ -954283,7 +954374,6 @@
 																					},
 																					"required": [
 																						"flatten_all_cnames",
-																						"foundation_dns",
 																						"multi_provider",
 																						"secondary_overrides",
 																						"soa",
@@ -2285363,14 +2285453,6 @@
 																			"example": false,
 																			"x-auditable": true
 																		},
-																		"foundation_dns": {
-																			"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
-																			"type": "boolean",
-																			"example": false,
-																			"deprecated": true,
-																			"x-auditable": true,
-																			"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
-																		},
 																		"internal_dns": {
 																			"description": "Settings for this internal zone.",
 																			"type": "object",
@@ -2285593,7 +2285675,6 @@
 																	},
 																	"required": [
 																		"flatten_all_cnames",
-																		"foundation_dns",
 																		"multi_provider",
 																		"secondary_overrides",
 																		"soa",
@@ -2285827,14 +2285908,6 @@
 																					"example": false,
 																					"x-auditable": true
 																				},
-																				"foundation_dns": {
-																					"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
-																					"type": "boolean",
-																					"example": false,
-																					"deprecated": true,
-																					"x-auditable": true,
-																					"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
-																				},
 																				"internal_dns": {
 																					"description": "Settings for this internal zone.",
 																					"type": "object",
@@ -2286057,7 +2286130,6 @@
 																			},
 																			"required": [
 																				"flatten_all_cnames",
-																				"foundation_dns",
 																				"multi_provider",
 																				"secondary_overrides",
 																				"soa",
@@ -2286355,14 +2286427,6 @@
 														"type": "boolean",
 														"example": false,
 														"x-auditable": true
-													},
-													"foundation_dns": {
-														"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
-														"type": "boolean",
-														"example": false,
-														"deprecated": true,
-														"x-auditable": true,
-														"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
 													},
 													"internal_dns": {
 														"description": "Settings for this internal zone.",
@@ -2286691,14 +2286755,6 @@
 																			"example": false,
 																			"x-auditable": true
 																		},
-																		"foundation_dns": {
-																			"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
-																			"type": "boolean",
-																			"example": false,
-																			"deprecated": true,
-																			"x-auditable": true,
-																			"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
-																		},
 																		"internal_dns": {
 																			"description": "Settings for this internal zone.",
 																			"type": "object",
@@ -2286921,7 +2286977,6 @@
 																	},
 																	"required": [
 																		"flatten_all_cnames",
-																		"foundation_dns",
 																		"multi_provider",
 																		"secondary_overrides",
 																		"soa",
@@ -2287155,14 +2287210,6 @@
 																					"example": false,
 																					"x-auditable": true
 																				},
-																				"foundation_dns": {
-																					"description": "Deprecated. Use nameservers.type to configure Advanced Nameservers.",
-																					"type": "boolean",
-																					"example": false,
-																					"deprecated": true,
-																					"x-auditable": true,
-																					"x-stainless-deprecation-message": "foundation_dns is deprecated. Use nameservers.type: cloudflare.advanced to turn on Advanced Nameservers and cloudflare.standard to turn it off. This field will be removed in a future API version.\n"
-																				},
 																				"internal_dns": {
 																					"description": "Settings for this internal zone.",
 																					"type": "object",
@@ -2287385,7 +2287432,6 @@
 																			},
 																			"required": [
 																				"flatten_all_cnames",
-																				"foundation_dns",
 																				"multi_provider",
 																				"secondary_overrides",
 																				"soa",
