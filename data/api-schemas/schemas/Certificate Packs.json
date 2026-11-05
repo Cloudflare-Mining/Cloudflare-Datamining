@@ -4508,7 +4508,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A certificate pack with all its properties.",
+											"description": "A newly ordered certificate pack. Certificates are not included until they are issued; get the certificate pack to retrieve them.",
 											"type": "object",
 											"properties": {
 												"certificate_authority": {
@@ -4521,182 +4521,6 @@
 														"ssl_com"
 													],
 													"x-auditable": true
-												},
-												"certificates": {
-													"description": "Array of certificates in this pack.",
-													"type": "array",
-													"items": {
-														"description": "An individual certificate within a certificate pack.",
-														"type": "object",
-														"properties": {
-															"bundle_method": {
-																"description": "Certificate bundle method.",
-																"type": "string",
-																"example": "ubiquitous",
-																"x-auditable": true
-															},
-															"expires_on": {
-																"description": "When the certificate from the authority expires.",
-																"type": "string",
-																"format": "date-time",
-																"example": "2024-01-01T00:00:00Z",
-																"x-auditable": true
-															},
-															"geo_restrictions": {
-																"description": "Specify the region where your private key can be held locally.",
-																"type": "object",
-																"properties": {
-																	"label": {
-																		"type": "string",
-																		"example": "us",
-																		"enum": [
-																			"us",
-																			"eu",
-																			"highest_security"
-																		],
-																		"x-auditable": true
-																	}
-																}
-															},
-															"hosts": {
-																"description": "Hostnames covered by this certificate.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"example.com",
-																	"*.example.com"
-																],
-																"x-auditable": true
-															},
-															"id": {
-																"description": "Certificate identifier.",
-																"type": "string",
-																"example": "7e7b8deba8538af625850b7b2530034c",
-																"x-auditable": true
-															},
-															"issuer": {
-																"description": "The certificate authority that issued the certificate.",
-																"type": "string",
-																"example": "Let's Encrypt",
-																"x-auditable": true
-															},
-															"modified_on": {
-																"description": "When the certificate was last modified.",
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00Z",
-																"x-auditable": true
-															},
-															"priority": {
-																"description": "The order/priority in which the certificate will be used.",
-																"type": "number",
-																"x-auditable": true
-															},
-															"signature": {
-																"description": "The type of hash used for the certificate.",
-																"type": "string",
-																"example": "ECDSAWithSHA256",
-																"x-auditable": true
-															},
-															"status": {
-																"description": "Certificate status.",
-																"type": "string",
-																"example": "active",
-																"x-auditable": true
-															},
-															"uploaded_on": {
-																"description": "When the certificate was uploaded to Cloudflare.",
-																"type": "string",
-																"format": "date-time",
-																"example": "2014-01-01T05:20:00Z",
-																"x-auditable": true
-															},
-															"zone_id": {
-																"description": "Identifier.",
-																"type": "string",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"x-auditable": true
-															}
-														},
-														"required": [
-															"id",
-															"hosts",
-															"status"
-														]
-													}
-												},
-												"cloudflare_branding": {
-													"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
-													"type": "boolean",
-													"example": false,
-													"x-auditable": true
-												},
-												"dcv_delegation_records": {
-													"description": "DCV Delegation records for domain validation.",
-													"type": "array",
-													"items": {
-														"description": "Certificate's required validation record.",
-														"type": "object",
-														"properties": {
-															"cname": {
-																"description": "The CNAME record hostname for DCV delegation.",
-																"type": "string",
-																"example": "_acme-challenge.example.com",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"cname_target": {
-																"description": "The CNAME record target value for DCV delegation.",
-																"type": "string",
-																"example": "dcv.cloudflare.com",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"emails": {
-																"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
-																"type": "array",
-																"items": {
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"example": [
-																	"administrator@example.com",
-																	"webmaster@example.com"
-																]
-															},
-															"http_body": {
-																"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
-																"type": "string",
-																"example": "ca3-574923932a82475cb8592200f1a2a23d"
-															},
-															"http_url": {
-																"description": "The url that will be checked during domain validation.",
-																"type": "string",
-																"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt"
-															},
-															"status": {
-																"description": "Status of the validation record.",
-																"type": "string",
-																"example": "pending",
-																"readOnly": true
-															},
-															"txt_name": {
-																"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
-																"type": "string",
-																"example": "_acme-challenge.app.example.com",
-																"x-auditable": true
-															},
-															"txt_value": {
-																"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
-																"type": "string",
-																"example": "810b7d5f01154524b961ba0cd578acc2"
-															}
-														}
-													},
-													"readOnly": true
 												},
 												"hosts": {
 													"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
@@ -4718,12 +4542,6 @@
 													"type": "string",
 													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 													"readOnly": true,
-													"x-auditable": true
-												},
-												"primary_certificate": {
-													"description": "Identifier of the primary certificate in a pack.",
-													"type": "string",
-													"example": "7e7b8deba8538af625850b7b2530034c",
 													"x-auditable": true
 												},
 												"status": {
@@ -4771,21 +4589,6 @@
 													],
 													"x-auditable": true
 												},
-												"validation_errors": {
-													"description": "Domain validation errors that have been received by the certificate authority (CA).",
-													"type": "array",
-													"items": {
-														"properties": {
-															"message": {
-																"description": "A domain validation error.",
-																"type": "string",
-																"example": "SERVFAIL looking up CAA for app.example.com",
-																"x-auditable": true
-															}
-														},
-														"type": "object"
-													}
-												},
 												"validation_method": {
 													"description": "Validation Method selected for the order.",
 													"type": "string",
@@ -4796,69 +4599,6 @@
 														"email"
 													],
 													"x-auditable": true
-												},
-												"validation_records": {
-													"description": "Certificates' validation records.",
-													"type": "array",
-													"items": {
-														"description": "Certificate's required validation record.",
-														"type": "object",
-														"properties": {
-															"cname": {
-																"description": "The CNAME record hostname for DCV delegation.",
-																"type": "string",
-																"example": "_acme-challenge.example.com",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"cname_target": {
-																"description": "The CNAME record target value for DCV delegation.",
-																"type": "string",
-																"example": "dcv.cloudflare.com",
-																"readOnly": true,
-																"x-auditable": true
-															},
-															"emails": {
-																"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
-																"type": "array",
-																"items": {
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"example": [
-																	"administrator@example.com",
-																	"webmaster@example.com"
-																]
-															},
-															"http_body": {
-																"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
-																"type": "string",
-																"example": "ca3-574923932a82475cb8592200f1a2a23d"
-															},
-															"http_url": {
-																"description": "The url that will be checked during domain validation.",
-																"type": "string",
-																"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt"
-															},
-															"status": {
-																"description": "Status of the validation record.",
-																"type": "string",
-																"example": "pending",
-																"readOnly": true
-															},
-															"txt_name": {
-																"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
-																"type": "string",
-																"example": "_acme-challenge.app.example.com",
-																"x-auditable": true
-															},
-															"txt_value": {
-																"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
-																"type": "string",
-																"example": "810b7d5f01154524b961ba0cd578acc2"
-															}
-														}
-													}
 												},
 												"validity_days": {
 													"description": "Validity Days selected for the order.",
@@ -4876,7 +4616,6 @@
 												"id",
 												"type",
 												"hosts",
-												"certificates",
 												"status"
 											]
 										}
@@ -4986,7 +4725,7 @@
 										{
 											"properties": {
 												"result": {
-													"description": "A certificate pack with all its properties.",
+													"description": "A newly ordered certificate pack. Certificates are not included until they are issued; get the certificate pack to retrieve them.",
 													"type": "object",
 													"properties": {
 														"certificate_authority": {
@@ -4999,182 +4738,6 @@
 																"ssl_com"
 															],
 															"x-auditable": true
-														},
-														"certificates": {
-															"description": "Array of certificates in this pack.",
-															"type": "array",
-															"items": {
-																"description": "An individual certificate within a certificate pack.",
-																"type": "object",
-																"properties": {
-																	"bundle_method": {
-																		"description": "Certificate bundle method.",
-																		"type": "string",
-																		"example": "ubiquitous",
-																		"x-auditable": true
-																	},
-																	"expires_on": {
-																		"description": "When the certificate from the authority expires.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2024-01-01T00:00:00Z",
-																		"x-auditable": true
-																	},
-																	"geo_restrictions": {
-																		"description": "Specify the region where your private key can be held locally.",
-																		"type": "object",
-																		"properties": {
-																			"label": {
-																				"type": "string",
-																				"example": "us",
-																				"enum": [
-																					"us",
-																					"eu",
-																					"highest_security"
-																				],
-																				"x-auditable": true
-																			}
-																		}
-																	},
-																	"hosts": {
-																		"description": "Hostnames covered by this certificate.",
-																		"type": "array",
-																		"items": {
-																			"type": "string"
-																		},
-																		"example": [
-																			"example.com",
-																			"*.example.com"
-																		],
-																		"x-auditable": true
-																	},
-																	"id": {
-																		"description": "Certificate identifier.",
-																		"type": "string",
-																		"example": "7e7b8deba8538af625850b7b2530034c",
-																		"x-auditable": true
-																	},
-																	"issuer": {
-																		"description": "The certificate authority that issued the certificate.",
-																		"type": "string",
-																		"example": "Let's Encrypt",
-																		"x-auditable": true
-																	},
-																	"modified_on": {
-																		"description": "When the certificate was last modified.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00Z",
-																		"x-auditable": true
-																	},
-																	"priority": {
-																		"description": "The order/priority in which the certificate will be used.",
-																		"type": "number",
-																		"x-auditable": true
-																	},
-																	"signature": {
-																		"description": "The type of hash used for the certificate.",
-																		"type": "string",
-																		"example": "ECDSAWithSHA256",
-																		"x-auditable": true
-																	},
-																	"status": {
-																		"description": "Certificate status.",
-																		"type": "string",
-																		"example": "active",
-																		"x-auditable": true
-																	},
-																	"uploaded_on": {
-																		"description": "When the certificate was uploaded to Cloudflare.",
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2014-01-01T05:20:00Z",
-																		"x-auditable": true
-																	},
-																	"zone_id": {
-																		"description": "Identifier.",
-																		"type": "string",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"id",
-																	"hosts",
-																	"status"
-																]
-															}
-														},
-														"cloudflare_branding": {
-															"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
-															"type": "boolean",
-															"example": false,
-															"x-auditable": true
-														},
-														"dcv_delegation_records": {
-															"description": "DCV Delegation records for domain validation.",
-															"type": "array",
-															"items": {
-																"description": "Certificate's required validation record.",
-																"type": "object",
-																"properties": {
-																	"cname": {
-																		"description": "The CNAME record hostname for DCV delegation.",
-																		"type": "string",
-																		"example": "_acme-challenge.example.com",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"cname_target": {
-																		"description": "The CNAME record target value for DCV delegation.",
-																		"type": "string",
-																		"example": "dcv.cloudflare.com",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"emails": {
-																		"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
-																		"type": "array",
-																		"items": {
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"example": [
-																			"administrator@example.com",
-																			"webmaster@example.com"
-																		]
-																	},
-																	"http_body": {
-																		"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
-																		"type": "string",
-																		"example": "ca3-574923932a82475cb8592200f1a2a23d"
-																	},
-																	"http_url": {
-																		"description": "The url that will be checked during domain validation.",
-																		"type": "string",
-																		"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt"
-																	},
-																	"status": {
-																		"description": "Status of the validation record.",
-																		"type": "string",
-																		"example": "pending",
-																		"readOnly": true
-																	},
-																	"txt_name": {
-																		"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
-																		"type": "string",
-																		"example": "_acme-challenge.app.example.com",
-																		"x-auditable": true
-																	},
-																	"txt_value": {
-																		"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
-																		"type": "string",
-																		"example": "810b7d5f01154524b961ba0cd578acc2"
-																	}
-																}
-															},
-															"readOnly": true
 														},
 														"hosts": {
 															"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
@@ -5196,12 +4759,6 @@
 															"type": "string",
 															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 															"readOnly": true,
-															"x-auditable": true
-														},
-														"primary_certificate": {
-															"description": "Identifier of the primary certificate in a pack.",
-															"type": "string",
-															"example": "7e7b8deba8538af625850b7b2530034c",
 															"x-auditable": true
 														},
 														"status": {
@@ -5249,21 +4806,6 @@
 															],
 															"x-auditable": true
 														},
-														"validation_errors": {
-															"description": "Domain validation errors that have been received by the certificate authority (CA).",
-															"type": "array",
-															"items": {
-																"properties": {
-																	"message": {
-																		"description": "A domain validation error.",
-																		"type": "string",
-																		"example": "SERVFAIL looking up CAA for app.example.com",
-																		"x-auditable": true
-																	}
-																},
-																"type": "object"
-															}
-														},
 														"validation_method": {
 															"description": "Validation Method selected for the order.",
 															"type": "string",
@@ -5274,69 +4816,6 @@
 																"email"
 															],
 															"x-auditable": true
-														},
-														"validation_records": {
-															"description": "Certificates' validation records.",
-															"type": "array",
-															"items": {
-																"description": "Certificate's required validation record.",
-																"type": "object",
-																"properties": {
-																	"cname": {
-																		"description": "The CNAME record hostname for DCV delegation.",
-																		"type": "string",
-																		"example": "_acme-challenge.example.com",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"cname_target": {
-																		"description": "The CNAME record target value for DCV delegation.",
-																		"type": "string",
-																		"example": "dcv.cloudflare.com",
-																		"readOnly": true,
-																		"x-auditable": true
-																	},
-																	"emails": {
-																		"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
-																		"type": "array",
-																		"items": {
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"example": [
-																			"administrator@example.com",
-																			"webmaster@example.com"
-																		]
-																	},
-																	"http_body": {
-																		"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
-																		"type": "string",
-																		"example": "ca3-574923932a82475cb8592200f1a2a23d"
-																	},
-																	"http_url": {
-																		"description": "The url that will be checked during domain validation.",
-																		"type": "string",
-																		"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt"
-																	},
-																	"status": {
-																		"description": "Status of the validation record.",
-																		"type": "string",
-																		"example": "pending",
-																		"readOnly": true
-																	},
-																	"txt_name": {
-																		"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
-																		"type": "string",
-																		"example": "_acme-challenge.app.example.com",
-																		"x-auditable": true
-																	},
-																	"txt_value": {
-																		"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
-																		"type": "string",
-																		"example": "810b7d5f01154524b961ba0cd578acc2"
-																	}
-																}
-															}
 														},
 														"validity_days": {
 															"description": "Validity Days selected for the order.",
@@ -5354,7 +4833,6 @@
 														"id",
 														"type",
 														"hosts",
-														"certificates",
 														"status"
 													]
 												}

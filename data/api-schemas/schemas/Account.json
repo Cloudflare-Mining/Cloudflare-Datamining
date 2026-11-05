@@ -385,6 +385,534 @@
 		"x-fern-sdk-group-name": "builds.limits",
 		"x-fern-sdk-method-name": "get"
 	},
+	"GET /accounts/{account_id}/containers/usage": {
+		"operationId": "getUsage",
+		"summary": "Get live account usage",
+		"description": "Get current live resource usage and maximum account limits for the authenticated Cloudchamber account. Usage includes active and assigned instances.",
+		"responses": {
+			"200": {
+				"description": "Returns live account usage and maximum limits.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Current live usage, maximum limits, and utilization percentages for a Cloudchamber account. Usage includes active and assigned instances and is a current snapshot, not a historical or billable metric.",
+											"type": "object",
+											"properties": {
+												"maximum": {
+													"description": "Lists account limits for the resources reported in usage.",
+													"type": "object",
+													"properties": {
+														"disk_mb": {
+															"description": "Maximum disk in MB for the account.",
+															"type": "integer"
+														},
+														"memory_mib": {
+															"description": "Maximum memory in MiB for the account.",
+															"type": "integer"
+														},
+														"vcpus": {
+															"description": "Maximum vCPU for the account.",
+															"type": "number",
+															"format": "float"
+														}
+													},
+													"required": [
+														"vcpus",
+														"memory_mib",
+														"disk_mb"
+													]
+												},
+												"usage": {
+													"description": "Lists current resource consumption for active and assigned instances.",
+													"type": "object",
+													"properties": {
+														"disk_mb": {
+															"type": "integer"
+														},
+														"instances": {
+															"type": "integer"
+														},
+														"memory_mib": {
+															"type": "integer"
+														},
+														"vcpus": {
+															"type": "number",
+															"format": "float"
+														}
+													},
+													"required": [
+														"vcpus",
+														"memory_mib",
+														"disk_mb",
+														"instances"
+													]
+												},
+												"utilization": {
+													"description": "Live resource utilization percentages. A value of 100 represents full utilization. Values can exceed 100 when usage exceeds quota. The API omits fields whose corresponding maximum is zero.",
+													"type": "object",
+													"properties": {
+														"disk_mb": {
+															"description": "Live disk usage as a percentage of maximum disk.",
+															"type": "number",
+															"format": "float"
+														},
+														"memory_mib": {
+															"description": "Live memory usage as a percentage of maximum memory.",
+															"type": "number",
+															"format": "float"
+														},
+														"vcpus": {
+															"description": "Live vCPU usage as a percentage of maximum vCPU.",
+															"type": "number",
+															"format": "float"
+														}
+													}
+												}
+											},
+											"required": [
+												"usage",
+												"maximum",
+												"utilization"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The account does not have the required capability for this operation.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "An internal error has occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Account"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "containers",
+		"x-fern-sdk-method-name": "usage"
+	},
 	"PATCH /accounts/{account_id}/ai-gateway/logging-state": {
 		"operationId": "aig-config-patch-logging-state",
 		"summary": "Migrate AI Gateway logging to Workers Observability",

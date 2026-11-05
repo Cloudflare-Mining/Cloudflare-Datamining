@@ -58,7 +58,7 @@
 	"GET /accounts/{account_id}/cni/interconnects": {
 		"operationId": "list_interconnects",
 		"summary": "List existing interconnects",
-		"description": "Lists all network interconnects configured for the account, including physical and virtual\nconnections.",
+		"description": "Lists network interconnects of a single type configured for the account. The `type` query\nparameter selects the type to list; when omitted, only `direct` interconnects are returned.",
 		"parameters": [
 			{
 				"name": "site",
@@ -72,7 +72,7 @@
 			{
 				"name": "type",
 				"in": "query",
-				"description": "If specified, only show interconnects of the given type",
+				"description": "Type of interconnect to list, such as `direct` or `gcp_partner`. Defaults to `direct`.",
 				"schema": {
 					"type": "string",
 					"nullable": true
@@ -131,13 +131,7 @@
 												"allOf": [
 													{
 														"properties": {
-															"account": {
-																"type": "string"
-															},
 															"name": {
-																"type": "string"
-															},
-															"owner": {
 																"type": "string"
 															},
 															"type": {
@@ -146,8 +140,7 @@
 														},
 														"required": [
 															"type",
-															"name",
-															"account"
+															"name"
 														],
 														"type": "object"
 													},
@@ -201,20 +194,14 @@
 														"type": "object"
 													}
 												],
-												"title": "Physical"
+												"title": "Interconnect_Physical_Body"
 											},
 											{
 												"type": "object",
 												"allOf": [
 													{
 														"properties": {
-															"account": {
-																"type": "string"
-															},
 															"name": {
-																"type": "string"
-															},
-															"owner": {
 																"type": "string"
 															},
 															"type": {
@@ -223,8 +210,7 @@
 														},
 														"required": [
 															"type",
-															"name",
-															"account"
+															"name"
 														],
 														"type": "object"
 													},
@@ -263,7 +249,7 @@
 														"type": "object"
 													}
 												],
-												"title": "GcpPartner"
+												"title": "Interconnect_GcpPartner_Body"
 											}
 										]
 									}
@@ -352,13 +338,7 @@
 									"allOf": [
 										{
 											"properties": {
-												"account": {
-													"type": "string"
-												},
 												"name": {
-													"type": "string"
-												},
-												"owner": {
 													"type": "string"
 												},
 												"type": {
@@ -367,8 +347,7 @@
 											},
 											"required": [
 												"type",
-												"name",
-												"account"
+												"name"
 											],
 											"type": "object"
 										},
@@ -422,20 +401,14 @@
 											"type": "object"
 										}
 									],
-									"title": "Physical"
+									"title": "Interconnect_Physical_Body"
 								},
 								{
 									"type": "object",
 									"allOf": [
 										{
 											"properties": {
-												"account": {
-													"type": "string"
-												},
 												"name": {
-													"type": "string"
-												},
-												"owner": {
 													"type": "string"
 												},
 												"type": {
@@ -444,8 +417,7 @@
 											},
 											"required": [
 												"type",
-												"name",
-												"account"
+												"name"
 											],
 											"type": "object"
 										},
@@ -484,7 +456,7 @@
 											"type": "object"
 										}
 									],
-									"title": "GcpPartner"
+									"title": "Interconnect_GcpPartner_Body"
 								}
 							]
 						}
@@ -862,7 +834,7 @@
 										"type": "object"
 									}
 								],
-								"title": "Physical"
+								"title": "InterconnectCreate_Physical_Body"
 							},
 							{
 								"type": "object",
@@ -914,7 +886,7 @@
 										"type": "object"
 									}
 								],
-								"title": "GcpPartner"
+								"title": "InterconnectCreate_GcpPartner_Body"
 							}
 						]
 					}
@@ -941,13 +913,7 @@
 									"allOf": [
 										{
 											"properties": {
-												"account": {
-													"type": "string"
-												},
 												"name": {
-													"type": "string"
-												},
-												"owner": {
 													"type": "string"
 												},
 												"type": {
@@ -956,8 +922,7 @@
 											},
 											"required": [
 												"type",
-												"name",
-												"account"
+												"name"
 											],
 											"type": "object"
 										},
@@ -1011,20 +976,14 @@
 											"type": "object"
 										}
 									],
-									"title": "Physical"
+									"title": "Interconnect_Physical_Body"
 								},
 								{
 									"type": "object",
 									"allOf": [
 										{
 											"properties": {
-												"account": {
-													"type": "string"
-												},
 												"name": {
-													"type": "string"
-												},
-												"owner": {
 													"type": "string"
 												},
 												"type": {
@@ -1033,8 +992,7 @@
 											},
 											"required": [
 												"type",
-												"name",
-												"account"
+												"name"
 											],
 											"type": "object"
 										},
@@ -1073,7 +1031,7 @@
 											"type": "object"
 										}
 									],
-									"title": "GcpPartner"
+									"title": "Interconnect_GcpPartner_Body"
 								}
 							]
 						}

@@ -1013,6 +1013,18 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/containers/usage": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"example": "account-123"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/email-security/analytics/monthly_report": [
 		{
 			"description": "Account identifier tag.",

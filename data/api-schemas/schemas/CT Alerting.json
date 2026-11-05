@@ -121,7 +121,7 @@
 													"type": "object",
 													"properties": {
 														"emails": {
-															"description": "Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.\n",
+															"description": "Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.\n",
 															"type": "array",
 															"items": {
 																"format": "email",
@@ -259,7 +259,7 @@
 															"type": "object",
 															"properties": {
 																"emails": {
-																	"description": "Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.\n",
+																	"description": "Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.\n",
 																	"type": "array",
 																	"items": {
 																		"format": "email",
@@ -454,7 +454,7 @@
 						"type": "object",
 						"properties": {
 							"emails": {
-								"description": "Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.\n",
+								"description": "Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.\n",
 								"type": "array",
 								"items": {
 									"format": "email",
@@ -585,7 +585,7 @@
 													"type": "object",
 													"properties": {
 														"emails": {
-															"description": "Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.\n",
+															"description": "Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.\n",
 															"type": "array",
 															"items": {
 																"format": "email",
@@ -723,7 +723,7 @@
 															"type": "object",
 															"properties": {
 																"emails": {
-																	"description": "Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma.\n",
+																	"description": "Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. Omitted from responses when no addresses are configured.\n",
 																	"type": "array",
 																	"items": {
 																		"format": "email",

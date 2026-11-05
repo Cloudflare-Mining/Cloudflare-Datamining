@@ -602,6 +602,7 @@
 																	"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																	"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																	"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																	"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																	"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																},
 																"propertyName": "type"
@@ -1569,7 +1570,8 @@
 																			"type": "string",
 																			"example": "production",
 																			"default": "production",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"name": {
 																			"description": "A JavaScript variable name for the binding.",
@@ -1970,6 +1972,29 @@
 																		"name",
 																		"type"
 																	]
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"name": {
+																			"description": "A JavaScript variable name for the binding.",
+																			"type": "string",
+																			"example": "myBinding",
+																			"x-auditable": true
+																		},
+																		"type": {
+																			"description": "The kind of resource that the binding provides.",
+																			"type": "string",
+																			"enum": [
+																				"worker_loader"
+																			],
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"type"
+																	]
 																}
 															]
 														},
@@ -2012,19 +2037,24 @@
 														"x-auditable": true
 													},
 													"compatibility_flags": {
-														"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
-														"type": "array",
-														"items": {
-															"description": "Flag that enables or disables a specific feature in the Workers runtime.",
-															"type": "string",
-															"example": "nodejs_compat",
-															"x-auditable": true
-														},
-														"example": [
-															"nodejs_compat"
-														],
-														"default": [],
-														"x-stainless-collection-type": "set"
+														"description": "Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.\n\nResponses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.\n",
+														"allOf": [
+															{
+																"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+																"type": "array",
+																"items": {
+																	"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+																	"type": "string",
+																	"example": "nodejs_compat",
+																	"x-auditable": true
+																},
+																"example": [
+																	"nodejs_compat"
+																],
+																"default": [],
+																"x-stainless-collection-type": "set"
+															}
+														]
 													},
 													"containers": {
 														"description": "List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.",
@@ -2851,7 +2881,7 @@
 														]
 													},
 													"modules": {
-														"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+														"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned\nsource map is equivalent to the uploaded file but not byte-identical.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 														"type": "array",
 														"items": {
 															"properties": {
@@ -3371,10 +3401,11 @@
 				"name": "include",
 				"in": "query",
 				"schema": {
-					"description": "Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.",
+					"description": "Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.",
 					"type": "string",
 					"enum": [
-						"modules"
+						"modules",
+						"modules,sourcemaps"
 					]
 				}
 			}
@@ -3629,6 +3660,7 @@
 																"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																"workflow": "#/components/schemas/workers_binding_kind_workflow"
 															},
 															"propertyName": "type"
@@ -4596,7 +4628,8 @@
 																		"type": "string",
 																		"example": "production",
 																		"default": "production",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"name": {
 																		"description": "A JavaScript variable name for the binding.",
@@ -4997,6 +5030,29 @@
 																	"name",
 																	"type"
 																]
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"worker_loader"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type"
+																]
 															}
 														]
 													},
@@ -5039,19 +5095,24 @@
 													"x-auditable": true
 												},
 												"compatibility_flags": {
-													"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
-													"type": "array",
-													"items": {
-														"description": "Flag that enables or disables a specific feature in the Workers runtime.",
-														"type": "string",
-														"example": "nodejs_compat",
-														"x-auditable": true
-													},
-													"example": [
-														"nodejs_compat"
-													],
-													"default": [],
-													"x-stainless-collection-type": "set"
+													"description": "Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.\n\nResponses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.\n",
+													"allOf": [
+														{
+															"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+															"type": "array",
+															"items": {
+																"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+																"type": "string",
+																"example": "nodejs_compat",
+																"x-auditable": true
+															},
+															"example": [
+																"nodejs_compat"
+															],
+															"default": [],
+															"x-stainless-collection-type": "set"
+														}
+													]
 												},
 												"containers": {
 													"description": "List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.",
@@ -5878,7 +5939,7 @@
 													]
 												},
 												"modules": {
-													"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+													"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned\nsource map is equivalent to the uploaded file but not byte-identical.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 													"type": "array",
 													"items": {
 														"properties": {
@@ -6386,10 +6447,11 @@
 				"name": "include",
 				"in": "query",
 				"schema": {
-					"description": "Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.",
+					"description": "Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the version's source maps in `modules`.",
 					"type": "string",
 					"enum": [
-						"modules"
+						"modules",
+						"modules,sourcemaps"
 					]
 				}
 			}
@@ -6644,6 +6706,7 @@
 																"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																"workflow": "#/components/schemas/workers_binding_kind_workflow"
 															},
 															"propertyName": "type"
@@ -7611,7 +7674,8 @@
 																		"type": "string",
 																		"example": "production",
 																		"default": "production",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"name": {
 																		"description": "A JavaScript variable name for the binding.",
@@ -8012,6 +8076,29 @@
 																	"name",
 																	"type"
 																]
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"worker_loader"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type"
+																]
 															}
 														]
 													},
@@ -8054,19 +8141,24 @@
 													"x-auditable": true
 												},
 												"compatibility_flags": {
-													"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
-													"type": "array",
-													"items": {
-														"description": "Flag that enables or disables a specific feature in the Workers runtime.",
-														"type": "string",
-														"example": "nodejs_compat",
-														"x-auditable": true
-													},
-													"example": [
-														"nodejs_compat"
-													],
-													"default": [],
-													"x-stainless-collection-type": "set"
+													"description": "Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.\n\nResponses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.\n",
+													"allOf": [
+														{
+															"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+															"type": "array",
+															"items": {
+																"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+																"type": "string",
+																"example": "nodejs_compat",
+																"x-auditable": true
+															},
+															"example": [
+																"nodejs_compat"
+															],
+															"default": [],
+															"x-stainless-collection-type": "set"
+														}
+													]
 												},
 												"containers": {
 													"description": "List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.",
@@ -8893,7 +8985,7 @@
 													]
 												},
 												"modules": {
-													"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+													"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned\nsource map is equivalent to the uploaded file but not byte-identical.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 													"type": "array",
 													"items": {
 														"properties": {
@@ -9566,6 +9658,7 @@
 													"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 													"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 													"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+													"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 													"workflow": "#/components/schemas/workers_binding_kind_workflow"
 												},
 												"propertyName": "type"
@@ -10533,7 +10626,8 @@
 															"type": "string",
 															"example": "production",
 															"default": "production",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
@@ -10934,6 +11028,29 @@
 														"name",
 														"type"
 													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"type": "string",
+															"example": "myBinding",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"type": "string",
+															"enum": [
+																"worker_loader"
+															],
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type"
+													]
 												}
 											]
 										},
@@ -10976,19 +11093,24 @@
 										"x-auditable": true
 									},
 									"compatibility_flags": {
-										"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
-										"type": "array",
-										"items": {
-											"description": "Flag that enables or disables a specific feature in the Workers runtime.",
-											"type": "string",
-											"example": "nodejs_compat",
-											"x-auditable": true
-										},
-										"example": [
-											"nodejs_compat"
-										],
-										"default": [],
-										"x-stainless-collection-type": "set"
+										"description": "Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.\n\nResponses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.\n",
+										"allOf": [
+											{
+												"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+												"type": "array",
+												"items": {
+													"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+													"type": "string",
+													"example": "nodejs_compat",
+													"x-auditable": true
+												},
+												"example": [
+													"nodejs_compat"
+												],
+												"default": [],
+												"x-stainless-collection-type": "set"
+											}
+										]
 									},
 									"containers": {
 										"description": "List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.",
@@ -11815,7 +11937,7 @@
 										]
 									},
 									"modules": {
-										"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+										"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned\nsource map is equivalent to the uploaded file but not byte-identical.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 										"type": "array",
 										"items": {
 											"properties": {
@@ -12309,6 +12431,7 @@
 													"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 													"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 													"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+													"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 													"workflow": "#/components/schemas/workers_binding_kind_workflow"
 												},
 												"propertyName": "type"
@@ -13276,7 +13399,8 @@
 															"type": "string",
 															"example": "production",
 															"default": "production",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
@@ -13677,6 +13801,29 @@
 														"name",
 														"type"
 													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"type": "string",
+															"example": "myBinding",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"type": "string",
+															"enum": [
+																"worker_loader"
+															],
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type"
+													]
 												}
 											]
 										},
@@ -13719,19 +13866,24 @@
 										"x-auditable": true
 									},
 									"compatibility_flags": {
-										"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
-										"type": "array",
-										"items": {
-											"description": "Flag that enables or disables a specific feature in the Workers runtime.",
-											"type": "string",
-											"example": "nodejs_compat",
-											"x-auditable": true
-										},
-										"example": [
-											"nodejs_compat"
-										],
-										"default": [],
-										"x-stainless-collection-type": "set"
+										"description": "Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.\n\nResponses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.\n",
+										"allOf": [
+											{
+												"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+												"type": "array",
+												"items": {
+													"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+													"type": "string",
+													"example": "nodejs_compat",
+													"x-auditable": true
+												},
+												"example": [
+													"nodejs_compat"
+												],
+												"default": [],
+												"x-stainless-collection-type": "set"
+											}
+										]
 									},
 									"containers": {
 										"description": "List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.",
@@ -14558,7 +14710,7 @@
 										]
 									},
 									"modules": {
-										"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+										"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned\nsource map is equivalent to the uploaded file but not byte-identical.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 										"type": "array",
 										"items": {
 											"properties": {
@@ -15142,6 +15294,7 @@
 																"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																"workflow": "#/components/schemas/workers_binding_kind_workflow"
 															},
 															"propertyName": "type"
@@ -16109,7 +16262,8 @@
 																		"type": "string",
 																		"example": "production",
 																		"default": "production",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"name": {
 																		"description": "A JavaScript variable name for the binding.",
@@ -16510,6 +16664,29 @@
 																	"name",
 																	"type"
 																]
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"worker_loader"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type"
+																]
 															}
 														]
 													},
@@ -16552,19 +16729,24 @@
 													"x-auditable": true
 												},
 												"compatibility_flags": {
-													"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
-													"type": "array",
-													"items": {
-														"description": "Flag that enables or disables a specific feature in the Workers runtime.",
-														"type": "string",
-														"example": "nodejs_compat",
-														"x-auditable": true
-													},
-													"example": [
-														"nodejs_compat"
-													],
-													"default": [],
-													"x-stainless-collection-type": "set"
+													"description": "Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.\n\nResponses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.\n",
+													"allOf": [
+														{
+															"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+															"type": "array",
+															"items": {
+																"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+																"type": "string",
+																"example": "nodejs_compat",
+																"x-auditable": true
+															},
+															"example": [
+																"nodejs_compat"
+															],
+															"default": [],
+															"x-stainless-collection-type": "set"
+														}
+													]
 												},
 												"containers": {
 													"description": "List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.",
@@ -17391,7 +17573,7 @@
 													]
 												},
 												"modules": {
-													"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+													"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned\nsource map is equivalent to the uploaded file but not byte-identical.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 													"type": "array",
 													"items": {
 														"properties": {
@@ -18239,6 +18421,7 @@
 											"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 											"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 											"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+											"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 											"workflow": "#/components/schemas/workers_binding_kind_workflow"
 										},
 										"propertyName": "type"
@@ -19206,7 +19389,8 @@
 													"type": "string",
 													"example": "production",
 													"default": "production",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "A JavaScript variable name for the binding.",
@@ -19607,6 +19791,29 @@
 												"name",
 												"type"
 											]
+										},
+										{
+											"type": "object",
+											"properties": {
+												"name": {
+													"description": "A JavaScript variable name for the binding.",
+													"type": "string",
+													"example": "myBinding",
+													"x-auditable": true
+												},
+												"type": {
+													"description": "The kind of resource that the binding provides.",
+													"type": "string",
+													"enum": [
+														"worker_loader"
+													],
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"name",
+												"type"
+											]
 										}
 									]
 								},
@@ -19649,19 +19856,24 @@
 								"x-auditable": true
 							},
 							"compatibility_flags": {
-								"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
-								"type": "array",
-								"items": {
-									"description": "Flag that enables or disables a specific feature in the Workers runtime.",
-									"type": "string",
-									"example": "nodejs_compat",
-									"x-auditable": true
-								},
-								"example": [
-									"nodejs_compat"
-								],
-								"default": [],
-								"x-stainless-collection-type": "set"
+								"description": "Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.\n\nResponses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.\n",
+								"allOf": [
+									{
+										"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+										"type": "array",
+										"items": {
+											"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+											"type": "string",
+											"example": "nodejs_compat",
+											"x-auditable": true
+										},
+										"example": [
+											"nodejs_compat"
+										],
+										"default": [],
+										"x-stainless-collection-type": "set"
+									}
+								]
 							},
 							"containers": {
 								"description": "List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.",
@@ -20488,7 +20700,7 @@
 								]
 							},
 							"modules": {
-								"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+								"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned\nsource map is equivalent to the uploaded file but not byte-identical.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -21067,6 +21279,7 @@
 																"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																"workflow": "#/components/schemas/workers_binding_kind_workflow"
 															},
 															"propertyName": "type"
@@ -22034,7 +22247,8 @@
 																		"type": "string",
 																		"example": "production",
 																		"default": "production",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"name": {
 																		"description": "A JavaScript variable name for the binding.",
@@ -22435,6 +22649,29 @@
 																	"name",
 																	"type"
 																]
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"type": "string",
+																		"example": "myBinding",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "The kind of resource that the binding provides.",
+																		"type": "string",
+																		"enum": [
+																			"worker_loader"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"name",
+																	"type"
+																]
 															}
 														]
 													},
@@ -22477,19 +22714,24 @@
 													"x-auditable": true
 												},
 												"compatibility_flags": {
-													"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
-													"type": "array",
-													"items": {
-														"description": "Flag that enables or disables a specific feature in the Workers runtime.",
-														"type": "string",
-														"example": "nodejs_compat",
-														"x-auditable": true
-													},
-													"example": [
-														"nodejs_compat"
-													],
-													"default": [],
-													"x-stainless-collection-type": "set"
+													"description": "Enables or disables specific Workers runtime features, such as upcoming features or changes outside the `compatibility_date`.\n\nResponses list only the flags this version sets explicitly and exclude behavior that `compatibility_date` enables. Responses omit the field when the list is empty, so a missing field means the version sets zero flags.\n",
+													"allOf": [
+														{
+															"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+															"type": "array",
+															"items": {
+																"description": "Flag that enables or disables a specific feature in the Workers runtime.",
+																"type": "string",
+																"example": "nodejs_compat",
+																"x-auditable": true
+															},
+															"example": [
+																"nodejs_compat"
+															],
+															"default": [],
+															"x-stainless-collection-type": "set"
+														}
+													]
 												},
 												"containers": {
 													"description": "List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.",
@@ -23316,7 +23558,7 @@
 													]
 												},
 												"modules": {
-													"description": "Code, sourcemaps, and other content used at runtime.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
+													"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a returned\nsource map is equivalent to the uploaded file but not byte-identical.\n\nThis includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and\n[`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure\n[Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be\nincluded as modules named `_headers` and `_redirects` with content type `text/plain`.\n",
 													"type": "array",
 													"items": {
 														"properties": {

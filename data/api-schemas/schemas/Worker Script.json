@@ -4407,6 +4407,7 @@
 																		"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																		"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																		"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																		"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
@@ -5374,7 +5375,8 @@
 																				"type": "string",
 																				"example": "production",
 																				"default": "production",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"name": {
 																				"description": "A JavaScript variable name for the binding.",
@@ -5767,6 +5769,29 @@
 																				"type": "string",
 																				"enum": [
 																					"vpc_network"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		]
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"type": "string",
+																				"example": "myBinding",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"type": "string",
+																				"enum": [
+																					"worker_loader"
 																				],
 																				"x-auditable": true
 																			}
@@ -5830,6 +5855,7 @@
 																		"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																		"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																		"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																		"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
@@ -6797,7 +6823,8 @@
 																				"type": "string",
 																				"example": "production",
 																				"default": "production",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"name": {
 																				"description": "A JavaScript variable name for the binding.",
@@ -7190,6 +7217,29 @@
 																				"type": "string",
 																				"enum": [
 																					"vpc_network"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		]
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"type": "string",
+																				"example": "myBinding",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"type": "string",
+																				"enum": [
+																					"worker_loader"
 																				],
 																				"x-auditable": true
 																			}
@@ -11116,6 +11166,7 @@
 															"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 															"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 															"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+															"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
@@ -12083,7 +12134,8 @@
 																	"type": "string",
 																	"example": "production",
 																	"default": "production",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"name": {
 																	"description": "A JavaScript variable name for the binding.",
@@ -12476,6 +12528,29 @@
 																	"type": "string",
 																	"enum": [
 																		"vpc_network"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"type": "string",
+																	"example": "myBinding",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"type": "string",
+																	"enum": [
+																		"worker_loader"
 																	],
 																	"x-auditable": true
 																}
@@ -12539,6 +12614,7 @@
 															"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 															"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 															"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+															"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
@@ -13506,7 +13582,8 @@
 																	"type": "string",
 																	"example": "production",
 																	"default": "production",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"name": {
 																	"description": "A JavaScript variable name for the binding.",
@@ -13899,6 +13976,29 @@
 																	"type": "string",
 																	"enum": [
 																		"vpc_network"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"type": "string",
+																	"example": "myBinding",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"type": "string",
+																	"enum": [
+																		"worker_loader"
 																	],
 																	"x-auditable": true
 																}
@@ -15409,6 +15509,7 @@
 																		"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																		"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																		"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																		"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
@@ -16376,7 +16477,8 @@
 																				"type": "string",
 																				"example": "production",
 																				"default": "production",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"name": {
 																				"description": "A JavaScript variable name for the binding.",
@@ -16769,6 +16871,29 @@
 																				"type": "string",
 																				"enum": [
 																					"vpc_network"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		]
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"type": "string",
+																				"example": "myBinding",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"type": "string",
+																				"enum": [
+																					"worker_loader"
 																				],
 																				"x-auditable": true
 																			}
@@ -16832,6 +16957,7 @@
 																		"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																		"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																		"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																		"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																		"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																	},
 																	"propertyName": "type"
@@ -17799,7 +17925,8 @@
 																				"type": "string",
 																				"example": "production",
 																				"default": "production",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"name": {
 																				"description": "A JavaScript variable name for the binding.",
@@ -18192,6 +18319,29 @@
 																				"type": "string",
 																				"enum": [
 																					"vpc_network"
+																				],
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type"
+																		]
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"type": "string",
+																				"example": "myBinding",
+																				"x-auditable": true
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"type": "string",
+																				"enum": [
+																					"worker_loader"
 																				],
 																				"x-auditable": true
 																			}
@@ -21215,6 +21365,7 @@
 															"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 															"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 															"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+															"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
@@ -22182,7 +22333,8 @@
 																	"type": "string",
 																	"example": "production",
 																	"default": "production",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"name": {
 																	"description": "A JavaScript variable name for the binding.",
@@ -22575,6 +22727,29 @@
 																	"type": "string",
 																	"enum": [
 																		"vpc_network"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"type": "string",
+																	"example": "myBinding",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"type": "string",
+																	"enum": [
+																		"worker_loader"
 																	],
 																	"x-auditable": true
 																}

@@ -649,6 +649,7 @@
 																							"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																							"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																							"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																							"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																							"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																						},
 																						"propertyName": "type"
@@ -1616,7 +1617,8 @@
 																									"type": "string",
 																									"example": "production",
 																									"default": "production",
-																									"x-auditable": true
+																									"x-auditable": true,
+																									"x-stainless-terraform-configurability": "computed_optional"
 																								},
 																								"name": {
 																									"description": "A JavaScript variable name for the binding.",
@@ -2009,6 +2011,29 @@
 																									"type": "string",
 																									"enum": [
 																										"vpc_network"
+																									],
+																									"x-auditable": true
+																								}
+																							},
+																							"required": [
+																								"name",
+																								"type"
+																							]
+																						},
+																						{
+																							"type": "object",
+																							"properties": {
+																								"name": {
+																									"description": "A JavaScript variable name for the binding.",
+																									"type": "string",
+																									"example": "myBinding",
+																									"x-auditable": true
+																								},
+																								"type": {
+																									"description": "The kind of resource that the binding provides.",
+																									"type": "string",
+																									"enum": [
+																										"worker_loader"
 																									],
 																									"x-auditable": true
 																								}
@@ -2874,7 +2899,7 @@
 															{
 																"properties": {
 																	"modules": {
-																		"description": "Code, sourcemaps, and other content used at runtime.",
+																		"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a\nreturned source map is equivalent to the uploaded file but not byte-identical.\n",
 																		"type": "array",
 																		"items": {
 																			"properties": {
@@ -3453,10 +3478,11 @@
 				"name": "include",
 				"in": "query",
 				"schema": {
-					"description": "Whether to include the `modules` property of the deployment in the response, which contains code and sourcemap content and may add several megabytes to the response size.",
+					"description": "Optional properties to include in the response. `modules` includes the `modules` property, which contains code and may add several megabytes to the response size. `modules,sourcemaps` also includes the deployment's source maps in `modules`.",
 					"type": "string",
 					"enum": [
-						"modules"
+						"modules",
+						"modules,sourcemaps"
 					]
 				}
 			}
@@ -3740,6 +3766,7 @@
 																						"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																						"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																						"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																						"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																						"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																					},
 																					"propertyName": "type"
@@ -4707,7 +4734,8 @@
 																								"type": "string",
 																								"example": "production",
 																								"default": "production",
-																								"x-auditable": true
+																								"x-auditable": true,
+																								"x-stainless-terraform-configurability": "computed_optional"
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
@@ -5100,6 +5128,29 @@
 																								"type": "string",
 																								"enum": [
 																									"vpc_network"
+																								],
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type"
+																						]
+																					},
+																					{
+																						"type": "object",
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"type": "string",
+																								"example": "myBinding",
+																								"x-auditable": true
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"type": "string",
+																								"enum": [
+																									"worker_loader"
 																								],
 																								"x-auditable": true
 																							}
@@ -5965,7 +6016,7 @@
 														{
 															"properties": {
 																"modules": {
-																	"description": "Code, sourcemaps, and other content used at runtime.",
+																	"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a\nreturned source map is equivalent to the uploaded file but not byte-identical.\n",
 																	"type": "array",
 																	"items": {
 																		"properties": {
@@ -6529,14 +6580,6 @@
 					"description": "Identifier for the Preview, which can be ID, slug, or URL-encoded name.",
 					"type": "string"
 				}
-			},
-			{
-				"name": "ignore_defaults",
-				"in": "query",
-				"schema": {
-					"description": "If true, preview defaults from the parent Worker are ignored.",
-					"type": "boolean"
-				}
 			}
 		],
 		"requestBody": {
@@ -6729,6 +6772,7 @@
 															"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 															"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 															"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+															"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
@@ -7696,7 +7740,8 @@
 																	"type": "string",
 																	"example": "production",
 																	"default": "production",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"name": {
 																	"description": "A JavaScript variable name for the binding.",
@@ -8089,6 +8134,29 @@
 																	"type": "string",
 																	"enum": [
 																		"vpc_network"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"type": "string",
+																	"example": "myBinding",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"type": "string",
+																	"enum": [
+																		"worker_loader"
 																	],
 																	"x-auditable": true
 																}
@@ -8954,7 +9022,7 @@
 							{
 								"properties": {
 									"modules": {
-										"description": "Code, sourcemaps, and other content used at runtime.",
+										"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a\nreturned source map is equivalent to the uploaded file but not byte-identical.\n",
 										"type": "array",
 										"items": {
 											"properties": {
@@ -9177,6 +9245,7 @@
 															"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 															"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 															"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+															"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
@@ -10144,7 +10213,8 @@
 																	"type": "string",
 																	"example": "production",
 																	"default": "production",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"name": {
 																	"description": "A JavaScript variable name for the binding.",
@@ -10537,6 +10607,29 @@
 																	"type": "string",
 																	"enum": [
 																		"vpc_network"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"type": "string",
+																	"example": "myBinding",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"type": "string",
+																	"enum": [
+																		"worker_loader"
 																	],
 																	"x-auditable": true
 																}
@@ -11402,7 +11495,7 @@
 							{
 								"properties": {
 									"modules": {
-										"description": "Code, sourcemaps, and other content used at runtime.",
+										"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a\nreturned source map is equivalent to the uploaded file but not byte-identical.\n",
 										"type": "array",
 										"items": {
 											"properties": {
@@ -11719,6 +11812,7 @@
 																						"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																						"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																						"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																						"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																						"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																					},
 																					"propertyName": "type"
@@ -12686,7 +12780,8 @@
 																								"type": "string",
 																								"example": "production",
 																								"default": "production",
-																								"x-auditable": true
+																								"x-auditable": true,
+																								"x-stainless-terraform-configurability": "computed_optional"
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
@@ -13079,6 +13174,29 @@
 																								"type": "string",
 																								"enum": [
 																									"vpc_network"
+																								],
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type"
+																						]
+																					},
+																					{
+																						"type": "object",
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"type": "string",
+																								"example": "myBinding",
+																								"x-auditable": true
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"type": "string",
+																								"enum": [
+																									"worker_loader"
 																								],
 																								"x-auditable": true
 																							}
@@ -13944,7 +14062,7 @@
 														{
 															"properties": {
 																"modules": {
-																	"description": "Code, sourcemaps, and other content used at runtime.",
+																	"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a\nreturned source map is equivalent to the uploaded file but not byte-identical.\n",
 																	"type": "array",
 																	"items": {
 																		"properties": {
@@ -14675,14 +14793,6 @@
 					"description": "Identifier for the Preview, which can be ID, slug, or URL-encoded name.",
 					"type": "string"
 				}
-			},
-			{
-				"name": "ignore_defaults",
-				"in": "query",
-				"schema": {
-					"description": "If true, preview defaults from the parent Worker are ignored.",
-					"type": "boolean"
-				}
 			}
 		],
 		"requestBody": {
@@ -14876,6 +14986,7 @@
 															"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 															"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 															"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+															"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
@@ -15843,7 +15954,8 @@
 																	"type": "string",
 																	"example": "production",
 																	"default": "production",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"name": {
 																	"description": "A JavaScript variable name for the binding.",
@@ -16236,6 +16348,29 @@
 																	"type": "string",
 																	"enum": [
 																		"vpc_network"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"type": "string",
+																	"example": "myBinding",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"type": "string",
+																	"enum": [
+																		"worker_loader"
 																	],
 																	"x-auditable": true
 																}
@@ -17101,7 +17236,7 @@
 							{
 								"properties": {
 									"modules": {
-										"description": "Code, sourcemaps, and other content used at runtime.",
+										"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a\nreturned source map is equivalent to the uploaded file but not byte-identical.\n",
 										"type": "array",
 										"items": {
 											"properties": {
@@ -17341,6 +17476,7 @@
 															"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 															"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 															"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+															"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 															"workflow": "#/components/schemas/workers_binding_kind_workflow"
 														},
 														"propertyName": "type"
@@ -18308,7 +18444,8 @@
 																	"type": "string",
 																	"example": "production",
 																	"default": "production",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"name": {
 																	"description": "A JavaScript variable name for the binding.",
@@ -18701,6 +18838,29 @@
 																	"type": "string",
 																	"enum": [
 																		"vpc_network"
+																	],
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"type": "string",
+																	"example": "myBinding",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"type": "string",
+																	"enum": [
+																		"worker_loader"
 																	],
 																	"x-auditable": true
 																}
@@ -19850,6 +20010,7 @@
 																						"vpc_network": "#/components/schemas/workers_binding_kind_vpc_network",
 																						"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																						"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
+																						"worker_loader": "#/components/schemas/workers_binding_kind_worker_loader",
 																						"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																					},
 																					"propertyName": "type"
@@ -20817,7 +20978,8 @@
 																								"type": "string",
 																								"example": "production",
 																								"default": "production",
-																								"x-auditable": true
+																								"x-auditable": true,
+																								"x-stainless-terraform-configurability": "computed_optional"
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
@@ -21210,6 +21372,29 @@
 																								"type": "string",
 																								"enum": [
 																									"vpc_network"
+																								],
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type"
+																						]
+																					},
+																					{
+																						"type": "object",
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"type": "string",
+																								"example": "myBinding",
+																								"x-auditable": true
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"type": "string",
+																								"enum": [
+																									"worker_loader"
 																								],
 																								"x-auditable": true
 																							}
@@ -22075,7 +22260,7 @@
 														{
 															"properties": {
 																"modules": {
-																	"description": "Code, sourcemaps, and other content used at runtime.",
+																	"description": "Code, sourcemaps, and other content used at runtime.\n\nSource maps use content type `application/source-map`. Responses include them only when requested with\n`include=modules,sourcemaps`. Workers stores the source map fields used to remap stack traces, so a\nreturned source map is equivalent to the uploaded file but not byte-identical.\n",
 																	"type": "array",
 																	"items": {
 																		"properties": {

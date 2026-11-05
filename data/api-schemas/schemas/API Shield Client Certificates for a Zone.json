@@ -552,12 +552,15 @@
 											"type": "object",
 											"properties": {
 												"hostnames": {
+													"description": "Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.",
 													"type": "array",
 													"items": {
-														"example": "api.example.com",
 														"type": "string",
+														"example": "api.example.com",
 														"x-auditable": true
-													}
+													},
+													"nullable": true,
+													"x-stainless-collection-type": "set"
 												}
 											}
 										}
@@ -2794,12 +2797,14 @@
 						"type": "object",
 						"properties": {
 							"hostnames": {
+								"description": "Unordered set of hostnames. Hostnames are stored as lowercase punycode.",
 								"type": "array",
 								"items": {
-									"example": "api.example.com",
 									"type": "string",
+									"example": "api.example.com",
 									"x-auditable": true
-								}
+								},
+								"x-stainless-collection-type": "set"
 							},
 							"mtls_certificate_id": {
 								"description": "The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the hostnames will be associated to your active Cloudflare Managed CA.",
@@ -2913,12 +2918,15 @@
 											"type": "object",
 											"properties": {
 												"hostnames": {
+													"description": "Hostnames are returned in lowercase punycode, in no particular order. Null when there are no associations.",
 													"type": "array",
 													"items": {
-														"example": "api.example.com",
 														"type": "string",
+														"example": "api.example.com",
 														"x-auditable": true
-													}
+													},
+													"nullable": true,
+													"x-stainless-collection-type": "set"
 												}
 											}
 										}

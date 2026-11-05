@@ -1763,6 +1763,20 @@
 																	"stateless"
 																]
 															},
+															"gateway": {
+																"type": "object",
+																"additionalProperties": {
+																	"nullable": true
+																},
+																"properties": {
+																	"requestId": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"requestId"
+																]
+															},
 															"outcome": {
 																"type": "string"
 															},
@@ -1878,6 +1892,20 @@
 																"enum": [
 																	"durableObject",
 																	"stateless"
+																]
+															},
+															"gateway": {
+																"type": "object",
+																"additionalProperties": {
+																	"nullable": true
+																},
+																"properties": {
+																	"requestId": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"requestId"
 																]
 															},
 															"outcome": {
