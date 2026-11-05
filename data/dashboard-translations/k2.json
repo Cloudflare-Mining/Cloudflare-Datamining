@@ -111,11 +111,19 @@
 	"k2.delete_failed": "The stream could not be deleted. Try again.",
 	"k2.edit_description": "Update retention and input settings for %{name}.",
 	"k2.metrics.load_failed": "Metrics couldn’t be loaded.",
+	"k2.metrics.duration_below_minimum": "Under a minute",
+	"k2.metrics.value_empty": "No data",
 	"k2.metrics.no_access": "Viewing metrics requires the Account Analytics Read permission. Ask an account administrator for access.",
 	"k2.metrics.input.turn_on": "Enable in settings",
 	"k2.metrics.input.binding_help": "Send records from a Worker through a binding to this stream.",
 	"k2.metrics.input.authentication_warning": "Authentication warning",
 	"k2.metrics.stream.stored_help": "Bytes the stream holds, measured about every 10 minutes. Can include up to an hour of data past retention.",
 	"k2.metrics.stream.produce_help": "Bytes per second produced, averaged over the last hour.",
-	"k2.metrics.stream.consume_help": "Bytes per second consumed by all subscriptions, averaged over the last hour. Every subscription reads every record."
+	"k2.metrics.stream.consume_help": "Bytes per second consumed by all subscriptions, averaged over the last hour. Every subscription reads every record.",
+	"k2.metrics.lag.records_help": "Records not yet committed. Records already removed by retention don’t count.",
+	"k2.metrics.lag.oldest_unread_help": "Age of the oldest record not yet committed, accurate to the minute. Once it reaches the stream’s retention, unread records start to expire.",
+	"k2.metrics.lag.oldest_unread_empty": "Nothing unread",
+	"k2.metrics.lag.trend_help": "Records behind over the last hour, every 15 minutes.",
+	"k2.metrics.lag.consumed_help": "Bytes delivered in the last hour, including redeliveries.",
+	"k2.metrics.lag.oldest_unread_expiring_help": "The oldest unread records have reached the end of retention and expire before this subscription reads them."
 }
