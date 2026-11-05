@@ -3,74 +3,41 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
-<h4><strong>About the Department</strong></h4>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4><strong>About the Role</strong></h4>
-<p>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available Locations: Lisbon, London, Austin</strong></p>
+<p><strong>About the team</strong></p>
+<p>The Zero Trust Connectivity team builds the hub that connects Cloudflare One and Zero Trust products such as Cloudflare WAN, Cloudflare One Client, Cloudflare Tunnels, Gateway and Workers VPC. Powering this hub is a set of Rust-based services operating on every one of the data-centers that Cloudflare runs. These services route all of Cloudflare One traffic end to end. By leveraging Cloudflare's incredible infrastructure and programming languages such as Rust, this critical service is safe, performant and secure.<br>As Cloudflare Zero Trust set of features evolves, this team is responsible for evolving these hub services to deliver those new capabilities while guaranteeing scalability and reliability as top priority.</p>
+<p>We are a team of engineers who obsess over building reliable services which leverage Cloudflare's unique architecture and global network footprint.</p>
+<p>You can read more about what we work on here:</p>
 <ul>
-	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
-	<li>Work with Engineering and Product teams to improve products and tools</li>
+	<li><a href="https://blog.cloudflare.com/introducing-cloudflare-one/">https://blog.cloudflare.com/introducing-cloudflare-one/</a></li>
+	<li><a href="https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework/">https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework/</a></li>
+	<li><a href="https://blog.cloudflare.com/workers-vpc-open-beta/">https://blog.cloudflare.com/workers-vpc-open-beta/</a></li>
 </ul>
-<h4>Desirable Skills, Knowledge, and Experience</h4>
+<p><strong>&nbsp;</strong></p>
+<p><strong>About the role</strong></p>
+<p>As a software engineer on the Zero Trust Connectivity team, you will contribute across a wide range of technologies and systems to deliver new solutions that connect Cloudflare One products together. You will build connectivity in a user-space service that can identify and route flows across our global network. This work requires close collaboration with other teams while leveraging powerful frameworks and libraries that power many Cloudflare products. Our technology stack includes Rust, Linux networking, Clickhouse, SaltStack, Prometheus, AI harnesses, and our own Cloudflare Workers platform. We're looking for determined, curious, empathetic engineers to join our team!</p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>Desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Fluent English speaker is a requirement</li>
-	<li>Minimum 3 years working within a Technical Support team solving various technical issues&nbsp;</li>
-	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
-	<li>Fundamental understanding how the Internet works (OSI Model)</li>
-	<li>Advanced understanding of internet protocols like TCP and UDP</li>
-	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
-	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>Packet capture analysis</li>
-	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>Experience in working as part of a team in a customer-facing role</li>
+	<li>Programming experience in Rust</li>
+	<li>Familiar with Layer 3 and Layer 4 Networking</li>
+	<li>Systems-level programming experience in Linux</li>
+	<li>Experience building large-scale, reliable, highly distributed systems</li>
+	<li>Attention to detail and ability to solve complex customer problems</li>
+	<li>Own solutions end-to-end and driving the design, development, and deployment process</li>
+	<li>Able to work across teams and level common, sustainable solutions</li>
+	<li>Creative, open-minded, collaborative problem solver</li>
+	<li>Focus on clarity in written and verbal communication</li>
+	<li>Leveraging AI coding assistants to accelerate development</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>You are familiar with Cloudflare and are actively using our platform</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>You are fluent and can troubleshoot in other languages beyond English and Spanish</li>
-</ul>
-<h4><strong>Availability and Schedule Requirements</strong></h4>
-<ul>
-	<li>Flexibility to work varying work schedules including: 8:30 AM - 5:30 PM Pacific Time Zone, Tuesday through Saturday, Sunday through Thursday, holidays, weekends, more than 5 days in a row, or additional hours on occasion.</li>
-</ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Lisbon based hires: Estimated annual salary of €66,000-83,000</span></li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
