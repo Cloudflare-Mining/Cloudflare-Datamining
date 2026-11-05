@@ -1,5 +1,43 @@
 [
 	{
+		"id": "6ed4fb83e7781cfb7803caf3ea36e708",
+		"name": "Custom Hostnames Admin",
+		"description": "Can manage custom hostnames and fallback origins.",
+		"permissions": {
+			"ssl": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "dc912779e334d409a439393f15539ed8",
+		"name": "Custom Hostnames Read",
+		"description": "Can view custom hostnames and fallback origins.",
+		"permissions": {
+			"ssl": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "d90d0f2e05ac9e80203b28f3c8f22610",
 		"name": "Account Rulesets Admin",
 		"description": "Can manage Account Rulesets.",
@@ -1741,36 +1779,6 @@
 		"id": "75ad81fe9f440497e83b7cb68b53cf26",
 		"name": "Flagship Read",
 		"description": "Grants read access to Flagship flags",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "7bfe1d92f1152a210a6a93112c740cef",
-		"name": "Flagship Write",
-		"description": "Grants read and write access to Flagship flags",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "16cb5906f918226b0ef23048cc22ab10",
-		"name": "Cloudflare One Connector Read and Monitor: cloudflared",
-		"description": "Grants read access to cloudflared connector resources including log streaming",
 		"permissions": {
 			"zone": {
 				"read": true,

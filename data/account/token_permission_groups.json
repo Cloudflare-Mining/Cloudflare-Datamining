@@ -1050,28 +1050,6 @@
 		"is_selectable": true
 	},
 	{
-		"id": "45db74139a62490b9b60eb7c4f34994b",
-		"name": "Basin Catalog Read",
-		"description": "Grants read access to Basin Catalog",
-		"scopes": [
-			"com.cloudflare.api.account",
-			"com.cloudflare.edge.r2.bucket"
-		],
-		"category": "developer_platform",
-		"is_selectable": true
-	},
-	{
-		"id": "d229766a2f7f4d299f20eaa8c9b1fde9",
-		"name": "Basin Catalog Write",
-		"description": "Grants write access to Basin Catalog",
-		"scopes": [
-			"com.cloudflare.api.account",
-			"com.cloudflare.edge.r2.bucket"
-		],
-		"category": "developer_platform",
-		"is_selectable": true
-	},
-	{
 		"id": "7cf72faf220841aabcfdfab81c43c4f6",
 		"name": "Billing Read",
 		"description": "Grants read access to billing profile, subscriptions, usage data and access to fetch invoices and entitlements",
@@ -3807,6 +3785,28 @@
 		"description": "Grants read and write access to Cloudflare Workers Observability",
 		"scopes": [
 			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform",
+		"is_selectable": true
+	},
+	{
+		"id": "45db74139a62490b9b60eb7c4f34994b",
+		"name": "Workers R2 Data Catalog Read",
+		"description": "Grants read access to Basin Catalog",
+		"scopes": [
+			"com.cloudflare.api.account",
+			"com.cloudflare.edge.r2.bucket"
+		],
+		"category": "developer_platform",
+		"is_selectable": true
+	},
+	{
+		"id": "d229766a2f7f4d299f20eaa8c9b1fde9",
+		"name": "Workers R2 Data Catalog Write",
+		"description": "Grants write access to Basin Catalog",
+		"scopes": [
+			"com.cloudflare.api.account",
+			"com.cloudflare.edge.r2.bucket"
 		],
 		"category": "developer_platform",
 		"is_selectable": true
