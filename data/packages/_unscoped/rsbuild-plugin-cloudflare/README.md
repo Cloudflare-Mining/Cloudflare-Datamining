@@ -227,6 +227,10 @@ Other differences:
   Rsbuild uses an environment's settings over the top-level ones. Set them in
   `environments.<name>` instead. The top-level `output.sourceMap`, and the
   `output.minify` setting for CSS, do apply.
+- Workers' CSS is compiled for Rsbuild's browserslist (the client's, unless
+  `output.overrideBrowserslist` is set for the Worker's environment), so that
+  it matches the client's stylesheets. The Vite plugin targets `es2024` unless
+  `build.cssTarget` is set.
 - Without `source.entry` or client environments, a client is built from
   Rsbuild's default entry (`src/index.*`) only when `index.html` exists at the
   project root, where Vite builds one whenever `index.html` exists. The default

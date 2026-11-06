@@ -1,7 +1,7 @@
 {
 	"name": "rsbuild-plugin-cloudflare",
 	"dist-tags": {
-		"latest": "0.0.3"
+		"latest": "0.0.4"
 	},
 	"versions": {
 		"0.0.0-stage": {
@@ -185,8 +185,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCICr4l4ktlV4Fv8b1Qg1jVfKGykNXR8iRlcGcXMMJW5vzAiEAosepJGfmiekM8R3G/OkLxK8h5Fw7Je+clLGbvkHmEOE="
+						"sig": "MEUCICr4l4ktlV4Fv8b1Qg1jVfKGykNXR8iRlcGcXMMJW5vzAiEAosepJGfmiekM8R3G/OkLxK8h5Fw7Je+clLGbvkHmEOE=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -196,6 +196,58 @@
 					}
 				},
 				"unpackedSize": 5267283
+			}
+		},
+		"0.0.4": {
+			"name": "rsbuild-plugin-cloudflare",
+			"version": "0.0.4",
+			"dependencies": {
+				"ws": "8.21.0",
+				"unenv": "2.0.0-rc.24",
+				"miniflare": "5.20261104.0-beta",
+				"@cloudflare/config": "0.30.2",
+				"@cloudflare/unenv-preset": "2.16.2",
+				"@cloudflare/runtime-types": "0.1.23",
+				"@cloudflare/build-output-utils": "0.9.10"
+			},
+			"devDependencies": {
+				"cf": "1.0.0-beta.17",
+				"tsdown": "0.16.3",
+				"vitest": "5.0.4",
+				"get-port": "^7.2.0",
+				"picocolors": "^1.1.1",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@rsbuild/core": "^2.3.1",
+				"@cloudflare/workers-types": "5.20261106.1",
+				"@cloudflare/workers-utils": "link:../../workers-sdk/packages/workers-utils",
+				"@cloudflare/workers-tsconfig": "link:../../workers-sdk/packages/workers-tsconfig"
+			},
+			"peerDependencies": {
+				"@rsbuild/core": "^2.2.10"
+			},
+			"dist": {
+				"shasum": "4a2efb2d3a7e3ef6d6e3c9af3c0d1e9ce286aaae",
+				"tarball": "https://registry.npmjs.org/rsbuild-plugin-cloudflare/-/rsbuild-plugin-cloudflare-0.0.4.tgz",
+				"fileCount": 20,
+				"integrity": "sha512-YIKJGwcvMJNMo922/kNCdK/P7tk+D861SG41sMl1Y/M/BnlzX3b0UMoJZcPeEV1sfDrDBLYCPaqsBPEYC5Ya1g==",
+				"signatures": [
+					{
+						"sig": "MEUCIGABPC0jVm6vyVNn9mA4akagKExN2eO96GR/Cn1cWFzYAiEA9Q0YGiZeU0tJy/FMrbguBecIq3t2nusa3Pc3MdhtgzQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCDONIbPMidlhIfTIr0CQMV3rD0ldqe5HBkCVfZVgi9wQIhAOHozbJt4Wgb7x9p60zd9J3IROlrPwSrEscYReWj/5hy"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/rsbuild-plugin-cloudflare@0.0.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 5289376
 			}
 		}
 	}
