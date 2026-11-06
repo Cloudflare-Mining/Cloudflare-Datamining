@@ -1173,6 +1173,8 @@
 				"com.cloudflare.api.account.email.domain.delete"
 			]
 		},
+		"x-fern-availability": "alpha",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-domains",
 		"x-fern-sdk-method-name": "delete"
 	},
@@ -1808,8 +1810,8 @@
 											"tombstone": {
 												"description": "Bounded reconciliation record for a completed removal. Present only when kind is tombstone.",
 												"example": {
-													"hostname": "agents.customer.com",
-													"id": "918f3a1a-04ed-4383-9cbe-df5e561d28f8",
+													"hostname": "removed.customer.com",
+													"id": "c0a527d8-2fe5-4d73-8df4-86b1eaa5cce6",
 													"modified_at": "2099-01-01T12:00:00Z",
 													"reason": "deleted"
 												},
@@ -1820,14 +1822,14 @@
 															"hostname": {
 																"description": "Canonical hostname released by the removal.",
 																"type": "string",
-																"example": "agents.customer.com",
+																"example": "removed.customer.com",
 																"maxLength": 253
 															},
 															"id": {
 																"description": "Identifier of the removed EmailDomain.",
 																"type": "string",
 																"format": "uuid",
-																"example": "918f3a1a-04ed-4383-9cbe-df5e561d28f8"
+																"example": "c0a527d8-2fe5-4d73-8df4-86b1eaa5cce6"
 															},
 															"modified_at": {
 																"description": "Time the removal completed.",
@@ -2558,6 +2560,8 @@
 				"com.cloudflare.api.account.email.domain.list"
 			]
 		},
+		"x-fern-availability": "alpha",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-domains",
 		"x-fern-sdk-method-name": "changes"
 	},
@@ -3726,6 +3730,8 @@
 				"com.cloudflare.api.account.email.domain.list"
 			]
 		},
+		"x-fern-availability": "alpha",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-domains",
 		"x-fern-sdk-method-name": "list"
 	},
@@ -5349,6 +5355,8 @@
 				"com.cloudflare.api.account.email.domain.read"
 			]
 		},
+		"x-fern-availability": "alpha",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-domains",
 		"x-fern-sdk-method-name": "get"
 	},
@@ -6769,6 +6777,8 @@
 				"com.cloudflare.api.account.email.domain.create"
 			]
 		},
+		"x-fern-availability": "alpha",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-domains",
 		"x-fern-sdk-method-name": "create"
 	},
@@ -8058,6 +8068,8 @@
 				"com.cloudflare.api.account.email.domain.update"
 			]
 		},
+		"x-fern-availability": "alpha",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-domains",
 		"x-fern-sdk-method-name": "verify"
 	}

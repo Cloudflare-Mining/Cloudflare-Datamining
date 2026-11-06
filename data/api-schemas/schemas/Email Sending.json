@@ -138,6 +138,16 @@
 													},
 													"readOnly": true
 												},
+												"recipient_mode": {
+													"description": "Which recipients the account can send to, derived from the account's Email Sending entitlement. arbitrary: any recipient. verified_only: only the account's verified destination addresses.",
+													"type": "string",
+													"example": "verified_only",
+													"enum": [
+														"arbitrary",
+														"verified_only"
+													],
+													"readOnly": true
+												},
 												"usage": {
 													"description": "The account's current daily sending usage. Null when there is no resolved quota or usage is temporarily unavailable.",
 													"type": "object",

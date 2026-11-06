@@ -241,7 +241,7 @@
 	"GET /zones/{zone_id}/firewall/payload_logging/key": {
 		"operationId": "payload-logging-keys-for-a-zone-get-the-payload-logging-key",
 		"summary": "Get the payload logging key",
-		"description": "Fetches the public key that payload logging uses to encrypt matched payloads for the zone.",
+		"description": "Fetches the public key that payload logging uses to encrypt matched payloads for the zone",
 		"parameters": [
 			{
 				"name": "zone_id",

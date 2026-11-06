@@ -1986,6 +1986,147 @@
 		"x-fern-sdk-group-name": "brand-protection",
 		"x-fern-sdk-method-name": "url-info"
 	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/url/info": {
+		"operationId": "get_BrandProtectionUrlInfo",
+		"summary": "Get URL scan information",
+		"description": "Get account-scoped URL Scanner summaries by submitted URL or scan UUID. Lookups cover scans submitted within about the last 30 days; a daily cleanup at 00:00 UTC removes older ownership records. Completed results may be served from a cache that is cleared daily, so a cached copy is kept for at most about 48 hours. The response is a v2 migration contract, not the v1 enrichment shape.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "url",
+				"in": "query",
+				"schema": {
+					"description": "An HTTP or HTTPS URL.",
+					"type": "string",
+					"format": "uri",
+					"pattern": "^https?:\\/\\/"
+				}
+			},
+			{
+				"name": "url_id",
+				"in": "query",
+				"schema": {
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "URL scan information",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"country": {
+												"type": "string"
+											},
+											"malicious": {
+												"type": "boolean"
+											},
+											"scan_success": {
+												"type": "boolean"
+											},
+											"scanned_url": {
+												"type": "string"
+											},
+											"submitted_at": {
+												"type": "string"
+											},
+											"url": {
+												"type": "string"
+											},
+											"url_id": {
+												"type": "string",
+												"format": "uuid"
+											},
+											"visibility": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"submitted_at",
+											"url",
+											"url_id"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "URL information rate limit exceeded"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "brand-protection.urls",
+		"x-fern-sdk-method-name": "get"
+	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries/{query_id}": {
 		"operationId": "patch_UpdateDomainQuery",
 		"summary": "Update domain query",
@@ -3840,6 +3981,154 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.takedown-notices",
 		"x-fern-sdk-method-name": "lookup"
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/url/submit": {
+		"operationId": "post_BrandProtectionUrlSubmit",
+		"summary": "Submit a URL for scanning",
+		"description": "Submit one unlisted URL Scanner scan. The returned URL Scanner UUID replaces the numeric v1 URL ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "url",
+				"in": "query",
+				"required": true,
+				"schema": {
+					"description": "An HTTP or HTTPS URL.",
+					"type": "string",
+					"format": "uri",
+					"pattern": "^https?:\\/\\/"
+				}
+			}
+		],
+		"responses": {
+			"201": {
+				"description": "URL scan accepted",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"skipped_urls": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"url": {
+															"type": "string"
+														},
+														"url_id": {
+															"type": "string",
+															"format": "uuid"
+														}
+													},
+													"required": [
+														"url",
+														"url_id"
+													],
+													"type": "object"
+												}
+											},
+											"submitted_urls": {
+												"type": "array",
+												"items": {
+													"properties": {
+														"url": {
+															"type": "string"
+														},
+														"url_id": {
+															"type": "string",
+															"format": "uuid"
+														}
+													},
+													"required": [
+														"url",
+														"url_id"
+													],
+													"type": "object"
+												}
+											}
+										},
+										"required": [
+											"submitted_urls",
+											"skipped_urls"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "The hostname was scanned recently"
+			},
+			"429": {
+				"description": "URL submission rate limit exceeded"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "brand-protection.urls",
+		"x-fern-sdk-method-name": "submit"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
 		"operationId": "put_LetterTemplateUpdate",

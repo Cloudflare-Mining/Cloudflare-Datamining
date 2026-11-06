@@ -142,6 +142,288 @@
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets",
 		"x-fern-sdk-method-name": "delete"
 	},
+	"DELETE /accounts/{account_id}/cloudforce-one/events/datasets/preferences": {
+		"operationId": "delete_DatasetPreferencesDelete",
+		"summary": "Remove default datasets",
+		"description": "Removes your default datasets (`scope` `user`) or the account's (`scope` `account`). After you remove your own, requests that omit `datasetId` use the account's default datasets, if set.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "scope",
+				"in": "query",
+				"required": true,
+				"schema": {
+					"description": "`user` removes your own default datasets. `account` removes the account's, and requires permission to edit the account's Cloudforce One settings.",
+					"type": "string",
+					"enum": [
+						"user",
+						"account"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the saved and effective default datasets.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"account": {
+									"description": "The account's default datasets, or null if they are not set.",
+									"type": "object",
+									"nullable": true,
+									"properties": {
+										"datasetIds": {
+											"description": "The saved dataset UUIDs.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"unresolvableDatasetIds": {
+											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"updatedAt": {
+											"description": "When the preference was last set.",
+											"type": "string",
+											"format": "date-time"
+										},
+										"updatedBy": {
+											"description": "The email address of the user who last set the preference.",
+											"type": "string",
+											"nullable": true
+										}
+									},
+									"required": [
+										"datasetIds",
+										"unresolvableDatasetIds",
+										"updatedAt",
+										"updatedBy"
+									]
+								},
+								"effective": {
+									"description": "The datasets that event searches use when `datasetId` is omitted.",
+									"type": "object",
+									"properties": {
+										"datasetIds": {
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"source": {
+											"description": "`user_preference`: your default datasets. `account_preference`: the account's default datasets. `environment`: no usable preference is set, so event searches use the Cloudforce One Threat Events dataset, and indicator and tag lists use every dataset you can read.",
+											"type": "string",
+											"enum": [
+												"user_preference",
+												"account_preference",
+												"environment"
+											]
+										}
+									},
+									"required": [
+										"source",
+										"datasetIds"
+									]
+								},
+								"user": {
+									"description": "Your default datasets, or null if you have not set them.",
+									"type": "object",
+									"nullable": true,
+									"properties": {
+										"datasetIds": {
+											"description": "The saved dataset UUIDs.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"unresolvableDatasetIds": {
+											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"updatedAt": {
+											"description": "When the preference was last set.",
+											"type": "string",
+											"format": "date-time"
+										},
+										"updatedBy": {
+											"description": "The email address of the user who last set the preference.",
+											"type": "string",
+											"nullable": true
+										}
+									},
+									"required": [
+										"datasetIds",
+										"unresolvableDatasetIds",
+										"updatedAt",
+										"updatedBy"
+									]
+								}
+							},
+							"required": [
+								"effective",
+								"user",
+								"account"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.preferences",
+		"x-fern-sdk-method-name": "delete",
+		"x-stability": "beta"
+	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset": {
 		"operationId": "get_DatasetList",
 		"summary": "List datasets",
@@ -428,6 +710,276 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets",
 		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/datasets/preferences": {
+		"operationId": "get_DatasetPreferencesRead",
+		"summary": "Get default datasets",
+		"description": "Returns your default datasets, the account's default datasets, and the datasets that event searches currently use when `datasetId` is omitted. `unresolvableDatasetIds` lists saved datasets you can no longer read.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the saved and effective default datasets.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"account": {
+									"description": "The account's default datasets, or null if they are not set.",
+									"type": "object",
+									"nullable": true,
+									"properties": {
+										"datasetIds": {
+											"description": "The saved dataset UUIDs.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"unresolvableDatasetIds": {
+											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"updatedAt": {
+											"description": "When the preference was last set.",
+											"type": "string",
+											"format": "date-time"
+										},
+										"updatedBy": {
+											"description": "The email address of the user who last set the preference.",
+											"type": "string",
+											"nullable": true
+										}
+									},
+									"required": [
+										"datasetIds",
+										"unresolvableDatasetIds",
+										"updatedAt",
+										"updatedBy"
+									]
+								},
+								"effective": {
+									"description": "The datasets that event searches use when `datasetId` is omitted.",
+									"type": "object",
+									"properties": {
+										"datasetIds": {
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"source": {
+											"description": "`user_preference`: your default datasets. `account_preference`: the account's default datasets. `environment`: no usable preference is set, so event searches use the Cloudforce One Threat Events dataset, and indicator and tag lists use every dataset you can read.",
+											"type": "string",
+											"enum": [
+												"user_preference",
+												"account_preference",
+												"environment"
+											]
+										}
+									},
+									"required": [
+										"source",
+										"datasetIds"
+									]
+								},
+								"user": {
+									"description": "Your default datasets, or null if you have not set them.",
+									"type": "object",
+									"nullable": true,
+									"properties": {
+										"datasetIds": {
+											"description": "The saved dataset UUIDs.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"unresolvableDatasetIds": {
+											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"updatedAt": {
+											"description": "When the preference was last set.",
+											"type": "string",
+											"format": "date-time"
+										},
+										"updatedBy": {
+											"description": "The email address of the user who last set the preference.",
+											"type": "string",
+											"nullable": true
+										}
+									},
+									"required": [
+										"datasetIds",
+										"unresolvableDatasetIds",
+										"updatedAt",
+										"updatedBy"
+									]
+								}
+							},
+							"required": [
+								"effective",
+								"user",
+								"account"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.preferences",
+		"x-fern-sdk-method-name": "get",
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "patch_DatasetUpdate",
@@ -840,5 +1392,307 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets",
 		"x-fern-sdk-method-name": "create"
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/events/datasets/preferences": {
+		"operationId": "put_DatasetPreferencesUpdate",
+		"summary": "Set default datasets",
+		"description": "Sets the datasets to use when a request omits `datasetId`, for you (`scope` `user`) or for the account (`scope` `account`). Your own default datasets take precedence over the account's. Every dataset must exist and be readable by the account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"datasetIds": {
+								"description": "The dataset UUIDs to use when a request omits `datasetId`: 1 to 50 datasets you can read. Duplicates are ignored.",
+								"type": "array",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"maxItems": 50,
+								"minItems": 1
+							},
+							"scope": {
+								"description": "`user` sets your own default datasets. `account` sets the default datasets for everyone in the account who has not set their own, and requires permission to edit the account's Cloudforce One settings.",
+								"type": "string",
+								"enum": [
+									"user",
+									"account"
+								]
+							}
+						},
+						"required": [
+							"scope",
+							"datasetIds"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the saved and effective default datasets.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"account": {
+									"description": "The account's default datasets, or null if they are not set.",
+									"type": "object",
+									"nullable": true,
+									"properties": {
+										"datasetIds": {
+											"description": "The saved dataset UUIDs.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"unresolvableDatasetIds": {
+											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"updatedAt": {
+											"description": "When the preference was last set.",
+											"type": "string",
+											"format": "date-time"
+										},
+										"updatedBy": {
+											"description": "The email address of the user who last set the preference.",
+											"type": "string",
+											"nullable": true
+										}
+									},
+									"required": [
+										"datasetIds",
+										"unresolvableDatasetIds",
+										"updatedAt",
+										"updatedBy"
+									]
+								},
+								"effective": {
+									"description": "The datasets that event searches use when `datasetId` is omitted.",
+									"type": "object",
+									"properties": {
+										"datasetIds": {
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"source": {
+											"description": "`user_preference`: your default datasets. `account_preference`: the account's default datasets. `environment`: no usable preference is set, so event searches use the Cloudforce One Threat Events dataset, and indicator and tag lists use every dataset you can read.",
+											"type": "string",
+											"enum": [
+												"user_preference",
+												"account_preference",
+												"environment"
+											]
+										}
+									},
+									"required": [
+										"source",
+										"datasetIds"
+									]
+								},
+								"user": {
+									"description": "Your default datasets, or null if you have not set them.",
+									"type": "object",
+									"nullable": true,
+									"properties": {
+										"datasetIds": {
+											"description": "The saved dataset UUIDs.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"unresolvableDatasetIds": {
+											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
+											"type": "array",
+											"items": {
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"updatedAt": {
+											"description": "When the preference was last set.",
+											"type": "string",
+											"format": "date-time"
+										},
+										"updatedBy": {
+											"description": "The email address of the user who last set the preference.",
+											"type": "string",
+											"nullable": true
+										}
+									},
+									"required": [
+										"datasetIds",
+										"unresolvableDatasetIds",
+										"updatedAt",
+										"updatedBy"
+									]
+								}
+							},
+							"required": [
+								"effective",
+								"user",
+								"account"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Bad Request.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Dataset"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.preferences",
+		"x-fern-sdk-method-name": "update",
+		"x-stability": "beta"
 	}
 }
