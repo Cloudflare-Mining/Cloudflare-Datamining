@@ -690,6 +690,7 @@
 	"traffic.load_balancing.session_affinity.disabled_tooltip": "Session Affinity requires your load balancer to be configured as an orange cloud (proxied).",
 	"traffic.load_balancing.session_affinity.headers": "HTTP header",
 	"traffic.load_balancing.session_affinity.headers.button.label": "Add header",
+	"traffic.load_balancing.session_affinity.headers.input_label": "Header %{index}",
 	"traffic.load_balancing.session_affinity.headers.error": "Must have between 1 - 100 characters",
 	"traffic.load_balancing.session_affinity.headers.toggle.label": "Require all headers",
 	"traffic.load_balancing.session_affinity.headers.toggle.on": "All specified HTTP headers must be present on load balancing requests to establish header-based sessions.",
