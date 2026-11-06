@@ -127,12 +127,12 @@
 													"type": "array",
 													"items": {
 														"pattern": "^[0-9a-fA-F]{32}$",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"023e105f4ecef8ad9ca31a8372d0c353"
-													],
-													"x-auditable": true
+													]
 												}
 											},
 											"required": [
@@ -423,6 +423,7 @@
 															"allOf": [
 																{
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-skip": true
 																},
 																{
@@ -439,12 +440,14 @@
 																"forbidden": {
 																	"description": "The uid of the custom page to use when a user is denied access after failing a non-identity rule.",
 																	"type": "string",
-																	"example": "699d98642c564d2e855e9661899b7252"
+																	"example": "699d98642c564d2e855e9661899b7252",
+																	"x-auditable": true
 																},
 																"identity_denied": {
 																	"description": "The uid of the custom page to use when a user is denied access.",
 																	"type": "string",
-																	"example": "699d98642c564d2e855e9661899b7252"
+																	"example": "699d98642c564d2e855e9661899b7252",
+																	"x-auditable": true
 																}
 															}
 														},
@@ -458,12 +461,12 @@
 															"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"example.com"
-															],
-															"x-auditable": true
+															]
 														},
 														"disable_end_user_app_creation": {
 															"description": "Whether creation of end user applications is disabled for this organization.",
@@ -485,17 +488,20 @@
 																"background_color": {
 																	"description": "The background color on your login page.",
 																	"type": "string",
-																	"example": "#c5ed1b"
+																	"example": "#c5ed1b",
+																	"x-auditable": true
 																},
 																"footer_text": {
 																	"description": "The text at the bottom of your login page.",
 																	"type": "string",
-																	"example": "This is an example description."
+																	"example": "This is an example description.",
+																	"x-auditable": true
 																},
 																"header_text": {
 																	"description": "The text at the top of your login page.",
 																	"type": "string",
-																	"example": "This is an example description."
+																	"example": "This is an example description.",
+																	"x-auditable": true
 																},
 																"logo_path": {
 																	"description": "The URL of the logo on your login page.",
@@ -505,7 +511,8 @@
 																"text_color": {
 																	"description": "The text color on your login page.",
 																	"type": "string",
-																	"example": "#c5ed1b"
+																	"example": "#c5ed1b",
+																	"x-auditable": true
 																}
 															}
 														},
@@ -524,7 +531,8 @@
 																			"piv_key",
 																			"ssh_fido2_key"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"example": [
 																		"totp",
@@ -535,21 +543,23 @@
 																"amr_matching_session_duration": {
 																	"description": "Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains \"mfa\". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).",
 																	"type": "string",
-																	"example": "12h"
+																	"example": "12h",
+																	"x-auditable": true
 																},
 																"required_aaguids": {
 																	"description": "Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.",
 																	"type": "string",
 																	"format": "uuid",
-																	"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a"
+																	"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
+																	"x-auditable": true
 																},
 																"session_duration": {
 																	"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
 																	"type": "string",
-																	"example": "24h"
+																	"example": "24h",
+																	"x-auditable": true
 																}
-															},
-															"x-auditable": true
+															}
 														},
 														"mfa_piv_key_requirements": {
 															"description": "Configures PIV key requirements for MFA using hardware security keys.",
@@ -563,12 +573,14 @@
 																		"never",
 																		"once",
 																		"always"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"require_fips_device": {
 																	"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
 																	"type": "boolean",
-																	"example": true
+																	"example": true,
+																	"x-auditable": true
 																},
 																"ssh_key_size": {
 																	"description": "Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.",
@@ -582,7 +594,8 @@
 																			3072,
 																			4096
 																		],
-																		"type": "integer"
+																		"type": "integer",
+																		"x-auditable": true
 																	},
 																	"example": [
 																		256,
@@ -598,7 +611,8 @@
 																			"ed25519",
 																			"rsa"
 																		],
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"example": [
 																		"ecdsa",
@@ -613,10 +627,10 @@
 																		"never",
 																		"always",
 																		"cached"
-																	]
+																	],
+																	"x-auditable": true
 																}
-															},
-															"x-auditable": true
+															}
 														},
 														"mfa_required_for_all_apps": {
 															"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
@@ -642,32 +656,35 @@
 																	"enum": [
 																		"disable",
 																		"delete"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"enabled": {
 																	"description": "Whether automatic enforcement for inactive service tokens is enabled.",
 																	"type": "boolean",
-																	"example": true
+																	"example": true,
+																	"x-auditable": true
 																},
 																"inactivity_threshold_days": {
 																	"description": "The number of days a service token must be inactive before the configured action is applied.",
 																	"type": "integer",
 																	"example": 30,
 																	"maximum": 365,
-																	"minimum": 30
+																	"minimum": 30,
+																	"x-auditable": true
 																}
 															},
 															"required": [
 																"enabled",
 																"inactivity_threshold_days",
 																"action"
-															],
-															"x-auditable": true
+															]
 														},
 														"session_duration": {
 															"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 															"type": "string",
-															"example": "24h"
+															"example": "24h",
+															"x-auditable": true
 														},
 														"strict_service_token_auth": {
 															"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
@@ -685,6 +702,7 @@
 															"allOf": [
 																{
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-skip": true
 																},
 																{
@@ -722,7 +740,8 @@
 															"description": "The account tags of organizations trusted by this organization for policy and device posture sharing.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"023e105f4ecef8ad9ca31a8372d0c353"
@@ -1000,12 +1019,14 @@
 														"client_id": {
 															"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 															"type": "string",
-															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+															"x-auditable": true
 														},
 														"created_at": {
 															"allOf": [
 																{
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-skip": true
 																},
 																{
@@ -1038,7 +1059,8 @@
 															"allOf": [
 																{
 																	"description": "The ID of the service token.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"description": "UUID.",
@@ -1053,6 +1075,7 @@
 															"allOf": [
 																{
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-skip": true
 																},
 																{
@@ -1097,16 +1120,17 @@
 															},
 															"additionalProperties": {
 																"maxLength": 256,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"maxProperties": 5,
-															"nullable": true,
-															"x-auditable": true
+															"nullable": true
 														},
 														"updated_at": {
 															"allOf": [
 																{
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-skip": true
 																},
 																{
@@ -1407,12 +1431,12 @@
 													"type": "array",
 													"items": {
 														"pattern": "^[0-9a-fA-F]{32}$",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"023e105f4ecef8ad9ca31a8372d0c353"
-													],
-													"x-auditable": true
+													]
 												}
 											},
 											"required": [
@@ -1562,6 +1586,916 @@
 		"x-fern-sdk-group-name": "zero-trust.organization.trust-settings",
 		"x-fern-sdk-method-name": "get"
 	},
+	"PATCH /accounts/{account_id}/access/organizations": {
+		"operationId": "zero-trust-organization-patch-your-zero-trust-organization",
+		"summary": "Partially update your Zero Trust organization",
+		"description": "Updates only the fields included in the request body. Omitted fields keep their current values. To clear `mfa_config` or `mfa_piv_key_requirements`, send the field as `{}`.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"allow_authenticate_via_warp": {
+								"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
+								"type": "boolean",
+								"example": "false",
+								"default": false,
+								"x-auditable": true
+							},
+							"auth_domain": {
+								"description": "The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).",
+								"type": "string",
+								"example": "test.cloudflareaccess.com",
+								"x-auditable": true
+							},
+							"auto_redirect_to_identity": {
+								"description": "When set to `true`, users skip the identity provider selection step during login.",
+								"type": "boolean",
+								"default": false,
+								"x-auditable": true
+							},
+							"custom_pages": {
+								"type": "object",
+								"properties": {
+									"forbidden": {
+										"description": "The uid of the custom page to use when a user is denied access after failing a non-identity rule.",
+										"type": "string",
+										"example": "699d98642c564d2e855e9661899b7252",
+										"x-auditable": true
+									},
+									"identity_denied": {
+										"description": "The uid of the custom page to use when a user is denied access.",
+										"type": "string",
+										"example": "699d98642c564d2e855e9661899b7252",
+										"x-auditable": true
+									}
+								}
+							},
+							"deny_unmatched_requests": {
+								"description": "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.",
+								"type": "boolean",
+								"example": "true",
+								"x-auditable": true
+							},
+							"deny_unmatched_requests_exempted_zone_names": {
+								"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
+								"type": "array",
+								"items": {
+									"type": "string",
+									"x-auditable": true
+								},
+								"example": [
+									"example.com"
+								]
+							},
+							"disable_end_user_app_creation": {
+								"description": "Whether creation of end user applications is disabled for this organization.",
+								"type": "boolean",
+								"example": false,
+								"default": false,
+								"x-auditable": true
+							},
+							"is_ui_read_only": {
+								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
+								"type": "boolean",
+								"example": "false",
+								"default": false,
+								"x-auditable": true
+							},
+							"login_design": {
+								"type": "object",
+								"properties": {
+									"background_color": {
+										"description": "The background color on your login page.",
+										"type": "string",
+										"example": "#c5ed1b",
+										"x-auditable": true
+									},
+									"footer_text": {
+										"description": "The text at the bottom of your login page.",
+										"type": "string",
+										"example": "This is an example description.",
+										"x-auditable": true
+									},
+									"header_text": {
+										"description": "The text at the top of your login page.",
+										"type": "string",
+										"example": "This is an example description.",
+										"x-auditable": true
+									},
+									"logo_path": {
+										"description": "The URL of the logo on your login page.",
+										"type": "string",
+										"example": "https://example.com/logo.png"
+									},
+									"text_color": {
+										"description": "The text color on your login page.",
+										"type": "string",
+										"example": "#c5ed1b",
+										"x-auditable": true
+									}
+								}
+							},
+							"mfa_config": {
+								"description": "Configures multi-factor authentication (MFA) settings for an organization.",
+								"type": "object",
+								"properties": {
+									"allowed_authenticators": {
+										"description": "Lists the MFA methods that users can authenticate with. The `piv_key` and `ssh_fido2_key` values are supported only for infrastructure applications.",
+										"type": "array",
+										"items": {
+											"enum": [
+												"totp",
+												"biometrics",
+												"security_key",
+												"piv_key",
+												"ssh_fido2_key"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"totp",
+											"biometrics",
+											"security_key"
+										]
+									},
+									"amr_matching_session_duration": {
+										"description": "Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains \"mfa\". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).",
+										"type": "string",
+										"example": "12h",
+										"x-auditable": true
+									},
+									"required_aaguids": {
+										"description": "Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.",
+										"type": "string",
+										"format": "uuid",
+										"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
+										"x-auditable": true
+									},
+									"session_duration": {
+										"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+										"type": "string",
+										"example": "24h",
+										"x-auditable": true
+									}
+								}
+							},
+							"mfa_piv_key_requirements": {
+								"description": "Configures PIV key requirements for MFA using hardware security keys.",
+								"type": "object",
+								"properties": {
+									"pin_policy": {
+										"description": "Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).",
+										"type": "string",
+										"example": "always",
+										"enum": [
+											"never",
+											"once",
+											"always"
+										],
+										"x-auditable": true
+									},
+									"require_fips_device": {
+										"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
+										"type": "boolean",
+										"example": true,
+										"x-auditable": true
+									},
+									"ssh_key_size": {
+										"description": "Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.",
+										"type": "array",
+										"items": {
+											"enum": [
+												256,
+												384,
+												521,
+												2048,
+												3072,
+												4096
+											],
+											"type": "integer",
+											"x-auditable": true
+										},
+										"example": [
+											256,
+											2048
+										]
+									},
+									"ssh_key_type": {
+										"description": "Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`.",
+										"type": "array",
+										"items": {
+											"enum": [
+												"ecdsa",
+												"ed25519",
+												"rsa"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"ecdsa",
+											"rsa"
+										]
+									},
+									"touch_policy": {
+										"description": "Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds).",
+										"type": "string",
+										"example": "always",
+										"enum": [
+											"never",
+											"always",
+											"cached"
+										],
+										"x-auditable": true
+									}
+								}
+							},
+							"mfa_required_for_all_apps": {
+								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
+								"type": "boolean",
+								"example": false,
+								"default": false,
+								"x-auditable": true
+							},
+							"name": {
+								"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).",
+								"type": "string",
+								"example": "Widget Corps Internal Applications",
+								"x-auditable": true
+							},
+							"service_token_inactivity": {
+								"description": "Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.",
+								"type": "object",
+								"properties": {
+									"action": {
+										"description": "The action applied to an inactive service token.",
+										"type": "string",
+										"example": "disable",
+										"enum": [
+											"disable",
+											"delete"
+										],
+										"x-auditable": true
+									},
+									"enabled": {
+										"description": "Whether automatic enforcement for inactive service tokens is enabled.",
+										"type": "boolean",
+										"example": true,
+										"x-auditable": true
+									},
+									"inactivity_threshold_days": {
+										"description": "The number of days a service token must be inactive before the configured action is applied.",
+										"type": "integer",
+										"example": 30,
+										"maximum": 365,
+										"minimum": 30,
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"enabled",
+									"inactivity_threshold_days",
+									"action"
+								]
+							},
+							"session_duration": {
+								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+								"type": "string",
+								"example": "24h",
+								"x-auditable": true
+							},
+							"strict_service_token_auth": {
+								"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
+								"type": "boolean",
+								"example": true,
+								"x-auditable": true
+							},
+							"ui_read_only_toggle_reason": {
+								"description": "A description of the reason why the UI read only field is being toggled.",
+								"type": "string",
+								"example": "Temporarily turn off the UI read only lock to make a change via the UI",
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
+							"user_seat_expiration_inactive_time": {
+								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
+								"type": "string",
+								"example": "730h",
+								"x-auditable": true
+							},
+							"warp_auth_non_browser_401": {
+								"description": "When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.",
+								"type": "boolean",
+								"example": false,
+								"default": false,
+								"x-auditable": true
+							},
+							"warp_auth_session_duration": {
+								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
+								"type": "string",
+								"example": "24h",
+								"x-auditable": true
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Partially update your Zero Trust organization response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"allow_authenticate_via_warp": {
+													"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
+													"type": "boolean",
+													"example": "false",
+													"default": false,
+													"x-auditable": true
+												},
+												"auth_domain": {
+													"description": "The unique subdomain assigned to your Zero Trust organization. If omitted on creation, a unique subdomain is auto-generated in the format `adjective-noun-hex4` (e.g. `frosty-moon-7a3b.cloudflareaccess.com`).",
+													"type": "string",
+													"example": "test.cloudflareaccess.com",
+													"x-auditable": true
+												},
+												"auto_redirect_to_identity": {
+													"description": "When set to `true`, users skip the identity provider selection step during login.",
+													"type": "boolean",
+													"default": false,
+													"x-auditable": true
+												},
+												"created_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"x-auditable": true,
+															"x-stainless-skip": true
+														},
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													]
+												},
+												"custom_pages": {
+													"type": "object",
+													"properties": {
+														"forbidden": {
+															"description": "The uid of the custom page to use when a user is denied access after failing a non-identity rule.",
+															"type": "string",
+															"example": "699d98642c564d2e855e9661899b7252",
+															"x-auditable": true
+														},
+														"identity_denied": {
+															"description": "The uid of the custom page to use when a user is denied access.",
+															"type": "string",
+															"example": "699d98642c564d2e855e9661899b7252",
+															"x-auditable": true
+														}
+													}
+												},
+												"deny_unmatched_requests": {
+													"description": "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.",
+													"type": "boolean",
+													"example": "true",
+													"x-auditable": true
+												},
+												"deny_unmatched_requests_exempted_zone_names": {
+													"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
+													"type": "array",
+													"items": {
+														"type": "string",
+														"x-auditable": true
+													},
+													"example": [
+														"example.com"
+													]
+												},
+												"disable_end_user_app_creation": {
+													"description": "Whether creation of end user applications is disabled for this organization.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true
+												},
+												"is_ui_read_only": {
+													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
+													"type": "boolean",
+													"example": "false",
+													"default": false,
+													"x-auditable": true
+												},
+												"login_design": {
+													"type": "object",
+													"properties": {
+														"background_color": {
+															"description": "The background color on your login page.",
+															"type": "string",
+															"example": "#c5ed1b",
+															"x-auditable": true
+														},
+														"footer_text": {
+															"description": "The text at the bottom of your login page.",
+															"type": "string",
+															"example": "This is an example description.",
+															"x-auditable": true
+														},
+														"header_text": {
+															"description": "The text at the top of your login page.",
+															"type": "string",
+															"example": "This is an example description.",
+															"x-auditable": true
+														},
+														"logo_path": {
+															"description": "The URL of the logo on your login page.",
+															"type": "string",
+															"example": "https://example.com/logo.png"
+														},
+														"text_color": {
+															"description": "The text color on your login page.",
+															"type": "string",
+															"example": "#c5ed1b",
+															"x-auditable": true
+														}
+													}
+												},
+												"mfa_config": {
+													"description": "Configures multi-factor authentication (MFA) settings for an organization.",
+													"type": "object",
+													"properties": {
+														"allowed_authenticators": {
+															"description": "Lists the MFA methods that users can authenticate with. The `piv_key` and `ssh_fido2_key` values are supported only for infrastructure applications.",
+															"type": "array",
+															"items": {
+																"enum": [
+																	"totp",
+																	"biometrics",
+																	"security_key",
+																	"piv_key",
+																	"ssh_fido2_key"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"totp",
+																"biometrics",
+																"security_key"
+															]
+														},
+														"amr_matching_session_duration": {
+															"description": "Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains \"mfa\". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).",
+															"type": "string",
+															"example": "12h",
+															"x-auditable": true
+														},
+														"required_aaguids": {
+															"description": "Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.",
+															"type": "string",
+															"format": "uuid",
+															"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
+															"x-auditable": true
+														},
+														"session_duration": {
+															"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+															"type": "string",
+															"example": "24h",
+															"x-auditable": true
+														}
+													}
+												},
+												"mfa_piv_key_requirements": {
+													"description": "Configures PIV key requirements for MFA using hardware security keys.",
+													"type": "object",
+													"properties": {
+														"pin_policy": {
+															"description": "Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).",
+															"type": "string",
+															"example": "always",
+															"enum": [
+																"never",
+																"once",
+																"always"
+															],
+															"x-auditable": true
+														},
+														"require_fips_device": {
+															"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														},
+														"ssh_key_size": {
+															"description": "Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.",
+															"type": "array",
+															"items": {
+																"enum": [
+																	256,
+																	384,
+																	521,
+																	2048,
+																	3072,
+																	4096
+																],
+																"type": "integer",
+																"x-auditable": true
+															},
+															"example": [
+																256,
+																2048
+															]
+														},
+														"ssh_key_type": {
+															"description": "Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`.",
+															"type": "array",
+															"items": {
+																"enum": [
+																	"ecdsa",
+																	"ed25519",
+																	"rsa"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"ecdsa",
+																"rsa"
+															]
+														},
+														"touch_policy": {
+															"description": "Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds).",
+															"type": "string",
+															"example": "always",
+															"enum": [
+																"never",
+																"always",
+																"cached"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												"mfa_required_for_all_apps": {
+													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain slug (e.g. frosty-moon-7a3b).",
+													"type": "string",
+													"example": "Widget Corps Internal Applications",
+													"x-auditable": true
+												},
+												"service_token_inactivity": {
+													"description": "Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.",
+													"type": "object",
+													"properties": {
+														"action": {
+															"description": "The action applied to an inactive service token.",
+															"type": "string",
+															"example": "disable",
+															"enum": [
+																"disable",
+																"delete"
+															],
+															"x-auditable": true
+														},
+														"enabled": {
+															"description": "Whether automatic enforcement for inactive service tokens is enabled.",
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														},
+														"inactivity_threshold_days": {
+															"description": "The number of days a service token must be inactive before the configured action is applied.",
+															"type": "integer",
+															"example": 30,
+															"maximum": 365,
+															"minimum": 30,
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled",
+														"inactivity_threshold_days",
+														"action"
+													]
+												},
+												"session_duration": {
+													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+													"type": "string",
+													"example": "24h",
+													"x-auditable": true
+												},
+												"strict_service_token_auth": {
+													"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												},
+												"ui_read_only_toggle_reason": {
+													"description": "A description of the reason why the UI read only field is being toggled.",
+													"type": "string",
+													"example": "Temporarily turn off the UI read only lock to make a change via the UI",
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"updated_at": {
+													"allOf": [
+														{
+															"type": "string",
+															"x-auditable": true,
+															"x-stainless-skip": true
+														},
+														{
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"x-auditable": true
+														}
+													]
+												},
+												"user_seat_expiration_inactive_time": {
+													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
+													"type": "string",
+													"example": "730h",
+													"x-auditable": true
+												},
+												"warp_auth_non_browser_401": {
+													"description": "When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true
+												},
+												"warp_auth_session_duration": {
+													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
+													"type": "string",
+													"example": "24h",
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Partially update your Zero Trust organization response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zero Trust organization"
+		],
+		"x-api-token-group": [
+			"Access: Organizations, Identity Providers, and Groups Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.organization",
+		"x-fern-sdk-method-name": "edit"
+	},
 	"PATCH /accounts/{account_id}/access/organizations/trust_settings": {
 		"operationId": "zero-trust-organization-update-trust-settings",
 		"summary": "Update Zero Trust organization trust settings",
@@ -1598,12 +2532,12 @@
 								"type": "array",
 								"items": {
 									"pattern": "^[0-9a-fA-F]{32}$",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"example": [
 									"023e105f4ecef8ad9ca31a8372d0c353"
-								],
-								"x-auditable": true
+								]
 							}
 						}
 					}
@@ -1720,12 +2654,12 @@
 													"type": "array",
 													"items": {
 														"pattern": "^[0-9a-fA-F]{32}$",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"023e105f4ecef8ad9ca31a8372d0c353"
-													],
-													"x-auditable": true
+													]
 												}
 											},
 											"required": [
@@ -1927,12 +2861,12 @@
 								"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
 								"type": "array",
 								"items": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"example": [
 									"example.com"
-								],
-								"x-auditable": true
+								]
 							},
 							"disable_end_user_app_creation": {
 								"description": "Whether creation of end user applications is disabled for this organization.",
@@ -1954,17 +2888,20 @@
 									"background_color": {
 										"description": "The background color on your login page.",
 										"type": "string",
-										"example": "#c5ed1b"
+										"example": "#c5ed1b",
+										"x-auditable": true
 									},
 									"footer_text": {
 										"description": "The text at the bottom of your login page.",
 										"type": "string",
-										"example": "This is an example description."
+										"example": "This is an example description.",
+										"x-auditable": true
 									},
 									"header_text": {
 										"description": "The text at the top of your login page.",
 										"type": "string",
-										"example": "This is an example description."
+										"example": "This is an example description.",
+										"x-auditable": true
 									},
 									"logo_path": {
 										"description": "The URL of the logo on your login page.",
@@ -1974,7 +2911,8 @@
 									"text_color": {
 										"description": "The text color on your login page.",
 										"type": "string",
-										"example": "#c5ed1b"
+										"example": "#c5ed1b",
+										"x-auditable": true
 									}
 								}
 							},
@@ -1993,7 +2931,8 @@
 												"piv_key",
 												"ssh_fido2_key"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"totp",
@@ -2004,21 +2943,23 @@
 									"amr_matching_session_duration": {
 										"description": "Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains \"mfa\". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).",
 										"type": "string",
-										"example": "12h"
+										"example": "12h",
+										"x-auditable": true
 									},
 									"required_aaguids": {
 										"description": "Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.",
 										"type": "string",
 										"format": "uuid",
-										"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a"
+										"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
+										"x-auditable": true
 									},
 									"session_duration": {
 										"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
 										"type": "string",
-										"example": "24h"
+										"example": "24h",
+										"x-auditable": true
 									}
-								},
-								"x-auditable": true
+								}
 							},
 							"mfa_piv_key_requirements": {
 								"description": "Configures PIV key requirements for MFA using hardware security keys.",
@@ -2032,12 +2973,14 @@
 											"never",
 											"once",
 											"always"
-										]
+										],
+										"x-auditable": true
 									},
 									"require_fips_device": {
 										"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
 										"type": "boolean",
-										"example": true
+										"example": true,
+										"x-auditable": true
 									},
 									"ssh_key_size": {
 										"description": "Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.",
@@ -2051,7 +2994,8 @@
 												3072,
 												4096
 											],
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"example": [
 											256,
@@ -2067,7 +3011,8 @@
 												"ed25519",
 												"rsa"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"ecdsa",
@@ -2082,10 +3027,10 @@
 											"never",
 											"always",
 											"cached"
-										]
+										],
+										"x-auditable": true
 									}
-								},
-								"x-auditable": true
+								}
 							},
 							"mfa_required_for_all_apps": {
 								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
@@ -2111,32 +3056,35 @@
 										"enum": [
 											"disable",
 											"delete"
-										]
+										],
+										"x-auditable": true
 									},
 									"enabled": {
 										"description": "Whether automatic enforcement for inactive service tokens is enabled.",
 										"type": "boolean",
-										"example": true
+										"example": true,
+										"x-auditable": true
 									},
 									"inactivity_threshold_days": {
 										"description": "The number of days a service token must be inactive before the configured action is applied.",
 										"type": "integer",
 										"example": 30,
 										"maximum": 365,
-										"minimum": 30
+										"minimum": 30,
+										"x-auditable": true
 									}
 								},
 								"required": [
 									"enabled",
 									"inactivity_threshold_days",
 									"action"
-								],
-								"x-auditable": true
+								]
 							},
 							"session_duration": {
 								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 								"type": "string",
-								"example": "24h"
+								"example": "24h",
+								"x-auditable": true
 							},
 							"strict_service_token_auth": {
 								"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
@@ -2300,6 +3248,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2316,12 +3265,14 @@
 														"forbidden": {
 															"description": "The uid of the custom page to use when a user is denied access after failing a non-identity rule.",
 															"type": "string",
-															"example": "699d98642c564d2e855e9661899b7252"
+															"example": "699d98642c564d2e855e9661899b7252",
+															"x-auditable": true
 														},
 														"identity_denied": {
 															"description": "The uid of the custom page to use when a user is denied access.",
 															"type": "string",
-															"example": "699d98642c564d2e855e9661899b7252"
+															"example": "699d98642c564d2e855e9661899b7252",
+															"x-auditable": true
 														}
 													}
 												},
@@ -2335,12 +3286,12 @@
 													"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
 													"type": "array",
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"example.com"
-													],
-													"x-auditable": true
+													]
 												},
 												"disable_end_user_app_creation": {
 													"description": "Whether creation of end user applications is disabled for this organization.",
@@ -2362,17 +3313,20 @@
 														"background_color": {
 															"description": "The background color on your login page.",
 															"type": "string",
-															"example": "#c5ed1b"
+															"example": "#c5ed1b",
+															"x-auditable": true
 														},
 														"footer_text": {
 															"description": "The text at the bottom of your login page.",
 															"type": "string",
-															"example": "This is an example description."
+															"example": "This is an example description.",
+															"x-auditable": true
 														},
 														"header_text": {
 															"description": "The text at the top of your login page.",
 															"type": "string",
-															"example": "This is an example description."
+															"example": "This is an example description.",
+															"x-auditable": true
 														},
 														"logo_path": {
 															"description": "The URL of the logo on your login page.",
@@ -2382,7 +3336,8 @@
 														"text_color": {
 															"description": "The text color on your login page.",
 															"type": "string",
-															"example": "#c5ed1b"
+															"example": "#c5ed1b",
+															"x-auditable": true
 														}
 													}
 												},
@@ -2401,7 +3356,8 @@
 																	"piv_key",
 																	"ssh_fido2_key"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"totp",
@@ -2412,21 +3368,23 @@
 														"amr_matching_session_duration": {
 															"description": "Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains \"mfa\". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).",
 															"type": "string",
-															"example": "12h"
+															"example": "12h",
+															"x-auditable": true
 														},
 														"required_aaguids": {
 															"description": "Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.",
 															"type": "string",
 															"format": "uuid",
-															"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a"
+															"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
+															"x-auditable": true
 														},
 														"session_duration": {
 															"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
 															"type": "string",
-															"example": "24h"
+															"example": "24h",
+															"x-auditable": true
 														}
-													},
-													"x-auditable": true
+													}
 												},
 												"mfa_piv_key_requirements": {
 													"description": "Configures PIV key requirements for MFA using hardware security keys.",
@@ -2440,12 +3398,14 @@
 																"never",
 																"once",
 																"always"
-															]
+															],
+															"x-auditable": true
 														},
 														"require_fips_device": {
 															"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
 															"type": "boolean",
-															"example": true
+															"example": true,
+															"x-auditable": true
 														},
 														"ssh_key_size": {
 															"description": "Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.",
@@ -2459,7 +3419,8 @@
 																	3072,
 																	4096
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"example": [
 																256,
@@ -2475,7 +3436,8 @@
 																	"ed25519",
 																	"rsa"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"ecdsa",
@@ -2490,10 +3452,10 @@
 																"never",
 																"always",
 																"cached"
-															]
+															],
+															"x-auditable": true
 														}
-													},
-													"x-auditable": true
+													}
 												},
 												"mfa_required_for_all_apps": {
 													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
@@ -2519,32 +3481,35 @@
 															"enum": [
 																"disable",
 																"delete"
-															]
+															],
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether automatic enforcement for inactive service tokens is enabled.",
 															"type": "boolean",
-															"example": true
+															"example": true,
+															"x-auditable": true
 														},
 														"inactivity_threshold_days": {
 															"description": "The number of days a service token must be inactive before the configured action is applied.",
 															"type": "integer",
 															"example": 30,
 															"maximum": 365,
-															"minimum": 30
+															"minimum": 30,
+															"x-auditable": true
 														}
 													},
 													"required": [
 														"enabled",
 														"inactivity_threshold_days",
 														"action"
-													],
-													"x-auditable": true
+													]
 												},
 												"session_duration": {
 													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 													"type": "string",
-													"example": "24h"
+													"example": "24h",
+													"x-auditable": true
 												},
 												"strict_service_token_auth": {
 													"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
@@ -2562,6 +3527,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2771,7 +3737,8 @@
 							"devices": {
 								"description": "When set to `true`, all devices associated with the user will be revoked.",
 								"type": "boolean",
-								"example": true
+								"example": true,
+								"x-auditable": true
 							},
 							"email": {
 								"description": "The email of the user to revoke.",
@@ -2781,12 +3748,14 @@
 							"user_uid": {
 								"description": "The uuid of the user to revoke.",
 								"type": "string",
-								"example": "699d98642c564d2e855e9661899b7252"
+								"example": "699d98642c564d2e855e9661899b7252",
+								"x-auditable": true
 							},
 							"warp_session_reauth": {
 								"description": "When set to `true`, the user will be required to re-authenticate to WARP for all Gateway policies that enforce a WARP client session duration. When `false`, the user’s WARP session will remain active",
 								"type": "boolean",
-								"example": true
+								"example": true,
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -3014,12 +3983,14 @@
 									"forbidden": {
 										"description": "The uid of the custom page to use when a user is denied access after failing a non-identity rule.",
 										"type": "string",
-										"example": "699d98642c564d2e855e9661899b7252"
+										"example": "699d98642c564d2e855e9661899b7252",
+										"x-auditable": true
 									},
 									"identity_denied": {
 										"description": "The uid of the custom page to use when a user is denied access.",
 										"type": "string",
-										"example": "699d98642c564d2e855e9661899b7252"
+										"example": "699d98642c564d2e855e9661899b7252",
+										"x-auditable": true
 									}
 								}
 							},
@@ -3033,12 +4004,12 @@
 								"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
 								"type": "array",
 								"items": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"example": [
 									"example.com"
-								],
-								"x-auditable": true
+								]
 							},
 							"disable_end_user_app_creation": {
 								"description": "Whether creation of end user applications is disabled for this organization.",
@@ -3060,17 +4031,20 @@
 									"background_color": {
 										"description": "The background color on your login page.",
 										"type": "string",
-										"example": "#c5ed1b"
+										"example": "#c5ed1b",
+										"x-auditable": true
 									},
 									"footer_text": {
 										"description": "The text at the bottom of your login page.",
 										"type": "string",
-										"example": "This is an example description."
+										"example": "This is an example description.",
+										"x-auditable": true
 									},
 									"header_text": {
 										"description": "The text at the top of your login page.",
 										"type": "string",
-										"example": "This is an example description."
+										"example": "This is an example description.",
+										"x-auditable": true
 									},
 									"logo_path": {
 										"description": "The URL of the logo on your login page.",
@@ -3080,7 +4054,8 @@
 									"text_color": {
 										"description": "The text color on your login page.",
 										"type": "string",
-										"example": "#c5ed1b"
+										"example": "#c5ed1b",
+										"x-auditable": true
 									}
 								}
 							},
@@ -3099,7 +4074,8 @@
 												"piv_key",
 												"ssh_fido2_key"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"totp",
@@ -3110,21 +4086,23 @@
 									"amr_matching_session_duration": {
 										"description": "Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains \"mfa\". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).",
 										"type": "string",
-										"example": "12h"
+										"example": "12h",
+										"x-auditable": true
 									},
 									"required_aaguids": {
 										"description": "Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.",
 										"type": "string",
 										"format": "uuid",
-										"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a"
+										"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
+										"x-auditable": true
 									},
 									"session_duration": {
 										"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
 										"type": "string",
-										"example": "24h"
+										"example": "24h",
+										"x-auditable": true
 									}
-								},
-								"x-auditable": true
+								}
 							},
 							"mfa_piv_key_requirements": {
 								"description": "Configures PIV key requirements for MFA using hardware security keys.",
@@ -3138,12 +4116,14 @@
 											"never",
 											"once",
 											"always"
-										]
+										],
+										"x-auditable": true
 									},
 									"require_fips_device": {
 										"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
 										"type": "boolean",
-										"example": true
+										"example": true,
+										"x-auditable": true
 									},
 									"ssh_key_size": {
 										"description": "Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.",
@@ -3157,7 +4137,8 @@
 												3072,
 												4096
 											],
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"example": [
 											256,
@@ -3173,7 +4154,8 @@
 												"ed25519",
 												"rsa"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"example": [
 											"ecdsa",
@@ -3188,10 +4170,10 @@
 											"never",
 											"always",
 											"cached"
-										]
+										],
+										"x-auditable": true
 									}
-								},
-								"x-auditable": true
+								}
 							},
 							"mfa_required_for_all_apps": {
 								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
@@ -3217,32 +4199,35 @@
 										"enum": [
 											"disable",
 											"delete"
-										]
+										],
+										"x-auditable": true
 									},
 									"enabled": {
 										"description": "Whether automatic enforcement for inactive service tokens is enabled.",
 										"type": "boolean",
-										"example": true
+										"example": true,
+										"x-auditable": true
 									},
 									"inactivity_threshold_days": {
 										"description": "The number of days a service token must be inactive before the configured action is applied.",
 										"type": "integer",
 										"example": 30,
 										"maximum": 365,
-										"minimum": 30
+										"minimum": 30,
+										"x-auditable": true
 									}
 								},
 								"required": [
 									"enabled",
 									"inactivity_threshold_days",
 									"action"
-								],
-								"x-auditable": true
+								]
 							},
 							"session_duration": {
 								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 								"type": "string",
-								"example": "24h"
+								"example": "24h",
+								"x-auditable": true
 							},
 							"strict_service_token_auth": {
 								"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
@@ -3406,6 +4391,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -3422,12 +4408,14 @@
 														"forbidden": {
 															"description": "The uid of the custom page to use when a user is denied access after failing a non-identity rule.",
 															"type": "string",
-															"example": "699d98642c564d2e855e9661899b7252"
+															"example": "699d98642c564d2e855e9661899b7252",
+															"x-auditable": true
 														},
 														"identity_denied": {
 															"description": "The uid of the custom page to use when a user is denied access.",
 															"type": "string",
-															"example": "699d98642c564d2e855e9661899b7252"
+															"example": "699d98642c564d2e855e9661899b7252",
+															"x-auditable": true
 														}
 													}
 												},
@@ -3441,12 +4429,12 @@
 													"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
 													"type": "array",
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"example.com"
-													],
-													"x-auditable": true
+													]
 												},
 												"disable_end_user_app_creation": {
 													"description": "Whether creation of end user applications is disabled for this organization.",
@@ -3468,17 +4456,20 @@
 														"background_color": {
 															"description": "The background color on your login page.",
 															"type": "string",
-															"example": "#c5ed1b"
+															"example": "#c5ed1b",
+															"x-auditable": true
 														},
 														"footer_text": {
 															"description": "The text at the bottom of your login page.",
 															"type": "string",
-															"example": "This is an example description."
+															"example": "This is an example description.",
+															"x-auditable": true
 														},
 														"header_text": {
 															"description": "The text at the top of your login page.",
 															"type": "string",
-															"example": "This is an example description."
+															"example": "This is an example description.",
+															"x-auditable": true
 														},
 														"logo_path": {
 															"description": "The URL of the logo on your login page.",
@@ -3488,7 +4479,8 @@
 														"text_color": {
 															"description": "The text color on your login page.",
 															"type": "string",
-															"example": "#c5ed1b"
+															"example": "#c5ed1b",
+															"x-auditable": true
 														}
 													}
 												},
@@ -3507,7 +4499,8 @@
 																	"piv_key",
 																	"ssh_fido2_key"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"totp",
@@ -3518,21 +4511,23 @@
 														"amr_matching_session_duration": {
 															"description": "Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains \"mfa\". Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).",
 															"type": "string",
-															"example": "12h"
+															"example": "12h",
+															"x-auditable": true
 														},
 														"required_aaguids": {
 															"description": "Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.",
 															"type": "string",
 															"format": "uuid",
-															"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a"
+															"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
+															"x-auditable": true
 														},
 														"session_duration": {
 															"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
 															"type": "string",
-															"example": "24h"
+															"example": "24h",
+															"x-auditable": true
 														}
-													},
-													"x-auditable": true
+													}
 												},
 												"mfa_piv_key_requirements": {
 													"description": "Configures PIV key requirements for MFA using hardware security keys.",
@@ -3546,12 +4541,14 @@
 																"never",
 																"once",
 																"always"
-															]
+															],
+															"x-auditable": true
 														},
 														"require_fips_device": {
 															"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
 															"type": "boolean",
-															"example": true
+															"example": true,
+															"x-auditable": true
 														},
 														"ssh_key_size": {
 															"description": "Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter.",
@@ -3565,7 +4562,8 @@
 																	3072,
 																	4096
 																],
-																"type": "integer"
+																"type": "integer",
+																"x-auditable": true
 															},
 															"example": [
 																256,
@@ -3581,7 +4579,8 @@
 																	"ed25519",
 																	"rsa"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"ecdsa",
@@ -3596,10 +4595,10 @@
 																"never",
 																"always",
 																"cached"
-															]
+															],
+															"x-auditable": true
 														}
-													},
-													"x-auditable": true
+													}
 												},
 												"mfa_required_for_all_apps": {
 													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
@@ -3625,32 +4624,35 @@
 															"enum": [
 																"disable",
 																"delete"
-															]
+															],
+															"x-auditable": true
 														},
 														"enabled": {
 															"description": "Whether automatic enforcement for inactive service tokens is enabled.",
 															"type": "boolean",
-															"example": true
+															"example": true,
+															"x-auditable": true
 														},
 														"inactivity_threshold_days": {
 															"description": "The number of days a service token must be inactive before the configured action is applied.",
 															"type": "integer",
 															"example": 30,
 															"maximum": 365,
-															"minimum": 30
+															"minimum": 30,
+															"x-auditable": true
 														}
 													},
 													"required": [
 														"enabled",
 														"inactivity_threshold_days",
 														"action"
-													],
-													"x-auditable": true
+													]
 												},
 												"session_duration": {
 													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 													"type": "string",
-													"example": "24h"
+													"example": "24h",
+													"x-auditable": true
 												},
 												"strict_service_token_auth": {
 													"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
@@ -3668,6 +4670,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -3985,12 +4988,14 @@
 														"client_id": {
 															"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 															"type": "string",
-															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+															"x-auditable": true
 														},
 														"created_at": {
 															"allOf": [
 																{
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-skip": true
 																},
 																{
@@ -4023,7 +5028,8 @@
 															"allOf": [
 																{
 																	"description": "The ID of the service token.",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																{
 																	"description": "UUID.",
@@ -4038,6 +5044,7 @@
 															"allOf": [
 																{
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-skip": true
 																},
 																{
@@ -4082,16 +5089,17 @@
 															},
 															"additionalProperties": {
 																"maxLength": 256,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"maxProperties": 5,
-															"nullable": true,
-															"x-auditable": true
+															"nullable": true
 														},
 														"updated_at": {
 															"allOf": [
 																{
 																	"type": "string",
+																	"x-auditable": true,
 																	"x-stainless-skip": true
 																},
 																{
@@ -4299,12 +5307,12 @@
 								"type": "array",
 								"items": {
 									"pattern": "^[0-9a-fA-F]{32}$",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"example": [
 									"023e105f4ecef8ad9ca31a8372d0c353"
-								],
-								"x-auditable": true
+								]
 							}
 						},
 						"required": [
@@ -4424,12 +5432,12 @@
 													"type": "array",
 													"items": {
 														"pattern": "^[0-9a-fA-F]{32}$",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"023e105f4ecef8ad9ca31a8372d0c353"
-													],
-													"x-auditable": true
+													]
 												}
 											},
 											"required": [

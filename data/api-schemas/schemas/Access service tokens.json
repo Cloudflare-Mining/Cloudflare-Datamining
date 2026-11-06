@@ -132,12 +132,14 @@
 												"client_id": {
 													"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 													"type": "string",
-													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+													"x-auditable": true
 												},
 												"created_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -170,7 +172,8 @@
 													"allOf": [
 														{
 															"description": "The ID of the service token.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"description": "UUID.",
@@ -185,6 +188,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -229,16 +233,17 @@
 													},
 													"additionalProperties": {
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxProperties": 5,
-													"nullable": true,
-													"x-auditable": true
+													"nullable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -585,12 +590,14 @@
 													"client_id": {
 														"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 														"type": "string",
-														"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+														"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+														"x-auditable": true
 													},
 													"created_at": {
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -623,7 +630,8 @@
 														"allOf": [
 															{
 																"description": "The ID of the service token.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "UUID.",
@@ -638,6 +646,7 @@
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -682,16 +691,17 @@
 														},
 														"additionalProperties": {
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"maxProperties": 5,
-														"nullable": true,
-														"x-auditable": true
+														"nullable": true
 													},
 													"updated_at": {
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -980,12 +990,14 @@
 												"client_id": {
 													"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 													"type": "string",
-													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+													"x-auditable": true
 												},
 												"created_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1018,7 +1030,8 @@
 													"allOf": [
 														{
 															"description": "The ID of the service token.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"description": "UUID.",
@@ -1033,6 +1046,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1077,16 +1091,17 @@
 													},
 													"additionalProperties": {
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxProperties": 5,
-													"nullable": true,
-													"x-auditable": true
+													"nullable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1305,11 +1320,11 @@
 								},
 								"additionalProperties": {
 									"maxLength": 256,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"maxProperties": 5,
-								"nullable": true,
-								"x-auditable": true
+								"nullable": true
 							}
 						},
 						"required": [
@@ -1422,7 +1437,8 @@
 												"client_id": {
 													"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 													"type": "string",
-													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+													"x-auditable": true
 												},
 												"client_secret": {
 													"description": "The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.",
@@ -1434,6 +1450,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1458,7 +1475,8 @@
 												},
 												"id": {
 													"description": "The ID of the service token.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the service token.",
@@ -1474,16 +1492,17 @@
 													},
 													"additionalProperties": {
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxProperties": 5,
-													"nullable": true,
-													"x-auditable": true
+													"nullable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1770,12 +1789,14 @@
 												"client_id": {
 													"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 													"type": "string",
-													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+													"x-auditable": true
 												},
 												"created_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1808,7 +1829,8 @@
 													"allOf": [
 														{
 															"description": "The ID of the service token.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"description": "UUID.",
@@ -1823,6 +1845,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1867,16 +1890,17 @@
 													},
 													"additionalProperties": {
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxProperties": 5,
-													"nullable": true,
-													"x-auditable": true
+													"nullable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2181,7 +2205,8 @@
 												"client_id": {
 													"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 													"type": "string",
-													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+													"x-auditable": true
 												},
 												"client_secret": {
 													"description": "The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.",
@@ -2193,6 +2218,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2217,7 +2243,8 @@
 												},
 												"id": {
 													"description": "The ID of the service token.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the service token.",
@@ -2233,16 +2260,17 @@
 													},
 													"additionalProperties": {
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxProperties": 5,
-													"nullable": true,
-													"x-auditable": true
+													"nullable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2469,11 +2497,11 @@
 								},
 								"additionalProperties": {
 									"maxLength": 256,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"maxProperties": 5,
-								"nullable": true,
-								"x-auditable": true
+								"nullable": true
 							}
 						}
 					}
@@ -2583,12 +2611,14 @@
 												"client_id": {
 													"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 													"type": "string",
-													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+													"x-auditable": true
 												},
 												"created_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2621,7 +2651,8 @@
 													"allOf": [
 														{
 															"description": "The ID of the service token.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"description": "UUID.",
@@ -2636,6 +2667,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2680,16 +2712,17 @@
 													},
 													"additionalProperties": {
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxProperties": 5,
-													"nullable": true,
-													"x-auditable": true
+													"nullable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{

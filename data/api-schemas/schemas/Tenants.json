@@ -2,7 +2,7 @@
 	"GET /tenants/{tenant_id}/accounts": {
 		"operationId": "Tenants_listAccounts",
 		"summary": "List tenant accounts",
-		"description": "Lists all Cloudflare accounts across this tenant's hierarchy using the legacy Account\nresponse shape. Use `GET /organizations/{organization_id}/accounts` to list only accounts\nimmediately attached to a specific Organization using the modern Account response shape.\nUse `page_token` and `page_size` for cursor pagination, or provide `page` and `per_page`\ntogether for legacy offset pagination. Cursor pagination takes precedence when requested.",
+		"description": "Lists all Cloudflare accounts across this tenant's hierarchy using the legacy Account\nresponse shape. Use `GET /organizations/{organization_id}/accounts` to list only accounts\nimmediately attached to a specific Organization using the modern Account response shape.\nUse `page_token` and `page_size` for cursor pagination.",
 		"parameters": [
 			{
 				"name": "tenant_id",
@@ -130,30 +130,12 @@
 			{
 				"name": "include_total",
 				"in": "query",
-				"description": "Whether to calculate and return the exact `result_info.total_size` for cursor\npagination. Defaults to true. When false, `total_size` is omitted. Legacy\n`page`/`per_page` requests always calculate `total_count`.",
+				"description": "Whether to calculate and return the exact `result_info.total_size` for cursor\npagination. Defaults to true. When false, `total_size` is omitted.",
 				"schema": {
 					"type": "boolean",
 					"default": true
 				},
 				"explode": false
-			},
-			{
-				"description": "Legacy offset page number. Must be provided with `per_page`. Values below 1 are treated as\n1. Cursor pagination takes precedence when requested.",
-				"explode": false,
-				"in": "query",
-				"name": "page",
-				"schema": {
-					"type": "integer"
-				}
-			},
-			{
-				"description": "Legacy offset page size. Must be provided with `page`. Values are clamped to the range\n1-100. Cursor pagination takes precedence when requested.",
-				"explode": false,
-				"in": "query",
-				"name": "per_page",
-				"schema": {
-					"type": "integer"
-				}
 			},
 			{
 				"description": "An opaque token returned from the last list response that when\nprovided will retrieve the next page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
@@ -268,44 +250,17 @@
 									}
 								},
 								"result_info": {
-									"anyOf": [
-										{
-											"type": "object",
-											"properties": {
-												"next_page_token": {
-													"description": "Use this opaque token in the next request to retrieve the\nnext page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
-													"type": "string"
-												},
-												"total_size": {
-													"description": "Counts the total amount of items in a list with the applied filters. The API omits next_page_token to indicate no more items in a particular list.",
-													"type": "integer"
-												}
-											}
+									"type": "object",
+									"properties": {
+										"next_page_token": {
+											"description": "Use this opaque token in the next request to retrieve the\nnext page.\n\nParameters used to filter the retrieved list must remain in subsequent\nrequests with a page token.",
+											"type": "string"
 										},
-										{
-											"type": "object",
-											"properties": {
-												"count": {
-													"type": "integer"
-												},
-												"page": {
-													"type": "integer"
-												},
-												"per_page": {
-													"type": "integer"
-												},
-												"total_count": {
-													"type": "integer"
-												}
-											},
-											"required": [
-												"count",
-												"page",
-												"per_page",
-												"total_count"
-											]
+										"total_size": {
+											"description": "Counts the total amount of items in a list with the applied filters. The API omits next_page_token to indicate no more items in a particular list.",
+											"type": "integer"
 										}
-									]
+									}
 								},
 								"success": {
 									"type": "boolean",

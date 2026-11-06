@@ -132,7 +132,8 @@
 												"client_id": {
 													"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 													"type": "string",
-													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+													"x-auditable": true
 												},
 												"created_at": {
 													"type": "string",
@@ -144,7 +145,8 @@
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"type": "string",
 													"example": "60m",
-													"default": "8760h"
+													"default": "8760h",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.",
@@ -161,7 +163,8 @@
 													"allOf": [
 														{
 															"description": "The ID of the service token.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"description": "UUID.",
@@ -201,7 +204,8 @@
 												"name": {
 													"description": "The name of the service token.",
 													"type": "string",
-													"example": "CI/CD token"
+													"example": "CI/CD token",
+													"x-auditable": true
 												},
 												"tags": {
 													"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
@@ -211,11 +215,11 @@
 													},
 													"additionalProperties": {
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxProperties": 5,
-													"nullable": true,
-													"x-auditable": true
+													"nullable": true
 												},
 												"updated_at": {
 													"type": "string",
@@ -525,7 +529,8 @@
 													"client_id": {
 														"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 														"type": "string",
-														"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+														"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+														"x-auditable": true
 													},
 													"created_at": {
 														"type": "string",
@@ -537,7 +542,8 @@
 														"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 														"type": "string",
 														"example": "60m",
-														"default": "8760h"
+														"default": "8760h",
+														"x-auditable": true
 													},
 													"enabled": {
 														"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.",
@@ -554,7 +560,8 @@
 														"allOf": [
 															{
 																"description": "The ID of the service token.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															{
 																"description": "UUID.",
@@ -594,7 +601,8 @@
 													"name": {
 														"description": "The name of the service token.",
 														"type": "string",
-														"example": "CI/CD token"
+														"example": "CI/CD token",
+														"x-auditable": true
 													},
 													"tags": {
 														"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
@@ -604,11 +612,11 @@
 														},
 														"additionalProperties": {
 															"maxLength": 256,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"maxProperties": 5,
-														"nullable": true,
-														"x-auditable": true
+														"nullable": true
 													},
 													"updated_at": {
 														"type": "string",
@@ -895,7 +903,8 @@
 												"client_id": {
 													"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 													"type": "string",
-													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+													"x-auditable": true
 												},
 												"created_at": {
 													"type": "string",
@@ -907,7 +916,8 @@
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"type": "string",
 													"example": "60m",
-													"default": "8760h"
+													"default": "8760h",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.",
@@ -924,7 +934,8 @@
 													"allOf": [
 														{
 															"description": "The ID of the service token.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"description": "UUID.",
@@ -964,7 +975,8 @@
 												"name": {
 													"description": "The name of the service token.",
 													"type": "string",
-													"example": "CI/CD token"
+													"example": "CI/CD token",
+													"x-auditable": true
 												},
 												"tags": {
 													"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
@@ -974,11 +986,11 @@
 													},
 													"additionalProperties": {
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxProperties": 5,
-													"nullable": true,
-													"x-auditable": true
+													"nullable": true
 												},
 												"updated_at": {
 													"type": "string",
@@ -1166,7 +1178,8 @@
 								"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 								"type": "string",
 								"example": "60m",
-								"default": "8760h"
+								"default": "8760h",
+								"x-auditable": true
 							},
 							"enabled": {
 								"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.",
@@ -1176,7 +1189,8 @@
 							"name": {
 								"description": "The name of the service token.",
 								"type": "string",
-								"example": "CI/CD token"
+								"example": "CI/CD token",
+								"x-auditable": true
 							},
 							"previous_client_secret_expires_at": {
 								"description": "The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.",
@@ -1193,11 +1207,11 @@
 								},
 								"additionalProperties": {
 									"maxLength": 256,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"maxProperties": 5,
-								"nullable": true,
-								"x-auditable": true
+								"nullable": true
 							}
 						},
 						"required": [
@@ -1310,7 +1324,8 @@
 												"client_id": {
 													"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 													"type": "string",
-													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+													"x-auditable": true
 												},
 												"client_secret": {
 													"description": "The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.",
@@ -1328,7 +1343,8 @@
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"type": "string",
 													"example": "60m",
-													"default": "8760h"
+													"default": "8760h",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.",
@@ -1337,12 +1353,14 @@
 												},
 												"id": {
 													"description": "The ID of the service token.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the service token.",
 													"type": "string",
-													"example": "CI/CD token"
+													"example": "CI/CD token",
+													"x-auditable": true
 												},
 												"tags": {
 													"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
@@ -1352,11 +1370,11 @@
 													},
 													"additionalProperties": {
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxProperties": 5,
-													"nullable": true,
-													"x-auditable": true
+													"nullable": true
 												},
 												"updated_at": {
 													"type": "string",
@@ -1555,7 +1573,8 @@
 								"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 								"type": "string",
 								"example": "60m",
-								"default": "8760h"
+								"default": "8760h",
+								"x-auditable": true
 							},
 							"enabled": {
 								"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.",
@@ -1565,7 +1584,8 @@
 							"name": {
 								"description": "The name of the service token.",
 								"type": "string",
-								"example": "CI/CD token"
+								"example": "CI/CD token",
+								"x-auditable": true
 							},
 							"previous_client_secret_expires_at": {
 								"description": "The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise. Rotating a service token that was reported as leaked discards the previous secret entirely, so no grace period can be set.",
@@ -1582,11 +1602,11 @@
 								},
 								"additionalProperties": {
 									"maxLength": 256,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								},
 								"maxProperties": 5,
-								"nullable": true,
-								"x-auditable": true
+								"nullable": true
 							}
 						}
 					}
@@ -1696,7 +1716,8 @@
 												"client_id": {
 													"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 													"type": "string",
-													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+													"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+													"x-auditable": true
 												},
 												"created_at": {
 													"type": "string",
@@ -1708,7 +1729,8 @@
 													"description": "The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`, or the special value `forever` for non-expiring tokens. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).",
 													"type": "string",
 													"example": "60m",
-													"default": "8760h"
+													"default": "8760h",
+													"x-auditable": true
 												},
 												"enabled": {
 													"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled. A service token reported as leaked is disabled automatically and cannot be re-enabled until its secret is rotated; attempting to do so returns a 409. Defaults to enabled when omitted on create.",
@@ -1725,7 +1747,8 @@
 													"allOf": [
 														{
 															"description": "The ID of the service token.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														{
 															"description": "UUID.",
@@ -1765,7 +1788,8 @@
 												"name": {
 													"description": "The name of the service token.",
 													"type": "string",
-													"example": "CI/CD token"
+													"example": "CI/CD token",
+													"x-auditable": true
 												},
 												"tags": {
 													"description": "Tags associated with the service token, as key-value pairs. On update, replaces all existing tags.",
@@ -1775,11 +1799,11 @@
 													},
 													"additionalProperties": {
 														"maxLength": 256,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"maxProperties": 5,
-													"nullable": true,
-													"x-auditable": true
+													"nullable": true
 												},
 												"updated_at": {
 													"type": "string",

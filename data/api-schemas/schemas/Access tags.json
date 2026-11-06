@@ -23,7 +23,8 @@
 				"schema": {
 					"description": "The name of the tag",
 					"type": "string",
-					"example": "engineers"
+					"example": "engineers",
+					"x-auditable": true
 				}
 			}
 		],
@@ -130,7 +131,8 @@
 												"name": {
 													"description": "The name of the tag",
 													"type": "string",
-													"example": "engineers"
+													"example": "engineers",
+													"x-auditable": true
 												}
 											}
 										}
@@ -458,6 +460,7 @@
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -471,12 +474,14 @@
 													"name": {
 														"description": "The name of the tag",
 														"type": "string",
-														"example": "engineers"
+														"example": "engineers",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -655,7 +660,8 @@
 				"schema": {
 					"description": "The name of the tag",
 					"type": "string",
-					"example": "engineers"
+					"example": "engineers",
+					"x-auditable": true
 				}
 			}
 		],
@@ -771,6 +777,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -784,12 +791,14 @@
 												"name": {
 													"description": "The name of the tag",
 													"type": "string",
-													"example": "engineers"
+													"example": "engineers",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -970,7 +979,8 @@
 							"name": {
 								"description": "The name of the tag",
 								"type": "string",
-								"example": "engineers"
+								"example": "engineers",
+								"x-auditable": true
 							}
 						}
 					}
@@ -1089,6 +1099,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1102,12 +1113,14 @@
 												"name": {
 													"description": "The name of the tag",
 													"type": "string",
-													"example": "engineers"
+													"example": "engineers",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1285,7 +1298,8 @@
 				"schema": {
 					"description": "The name of the tag",
 					"type": "string",
-					"example": "engineers"
+					"example": "engineers",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1300,6 +1314,7 @@
 								"allOf": [
 									{
 										"type": "string",
+										"x-auditable": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -1313,12 +1328,14 @@
 							"name": {
 								"description": "The name of the tag",
 								"type": "string",
-								"example": "engineers"
+								"example": "engineers",
+								"x-auditable": true
 							},
 							"updated_at": {
 								"allOf": [
 									{
 										"type": "string",
+										"x-auditable": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -1449,6 +1466,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1462,12 +1480,14 @@
 												"name": {
 													"description": "The name of the tag",
 													"type": "string",
-													"example": "engineers"
+													"example": "engineers",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{

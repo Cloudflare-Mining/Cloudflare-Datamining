@@ -198,13 +198,15 @@
 																	"is_current": {
 																		"description": "Indicates whether the certificate can be used for IdP configuration.",
 																		"type": "boolean",
-																		"example": true
+																		"example": true,
+																		"x-auditable": true
 																	},
 																	"not_after": {
 																		"description": "Certificate expiration date",
 																		"type": "string",
 																		"format": "date-time",
-																		"example": "2027-03-21T12:00:00Z"
+																		"example": "2027-03-21T12:00:00Z",
+																		"x-auditable": true
 																	},
 																	"public_certificate": {
 																		"description": "The public certificate in PEM format",
@@ -214,7 +216,8 @@
 																	"uid": {
 																		"description": "Unique identifier for the certificate",
 																		"type": "string",
-																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"x-auditable": true
 																	}
 																},
 																"required": [
@@ -234,7 +237,8 @@
 													"uid": {
 														"description": "Unique identifier for the certificate set",
 														"type": "string",
-														"example": "a5bb4b3f-c2d1-4e6a-8f9b-1d3e4f5a6b7c"
+														"example": "a5bb4b3f-c2d1-4e6a-8f9b-1d3e4f5a6b7c",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"description": "When the certificate set was last updated",
@@ -533,13 +537,15 @@
 																"is_current": {
 																	"description": "Indicates whether the certificate can be used for IdP configuration.",
 																	"type": "boolean",
-																	"example": true
+																	"example": true,
+																	"x-auditable": true
 																},
 																"not_after": {
 																	"description": "Certificate expiration date",
 																	"type": "string",
 																	"format": "date-time",
-																	"example": "2027-03-21T12:00:00Z"
+																	"example": "2027-03-21T12:00:00Z",
+																	"x-auditable": true
 																},
 																"public_certificate": {
 																	"description": "The public certificate in PEM format",
@@ -549,7 +555,8 @@
 																"uid": {
 																	"description": "Unique identifier for the certificate",
 																	"type": "string",
-																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -569,7 +576,8 @@
 												"uid": {
 													"description": "Unique identifier for the certificate set",
 													"type": "string",
-													"example": "a5bb4b3f-c2d1-4e6a-8f9b-1d3e4f5a6b7c"
+													"example": "a5bb4b3f-c2d1-4e6a-8f9b-1d3e4f5a6b7c",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"description": "When the certificate set was last updated",
@@ -1274,13 +1282,15 @@
 																"is_current": {
 																	"description": "Indicates whether the certificate can be used for IdP configuration.",
 																	"type": "boolean",
-																	"example": true
+																	"example": true,
+																	"x-auditable": true
 																},
 																"not_after": {
 																	"description": "Certificate expiration date",
 																	"type": "string",
 																	"format": "date-time",
-																	"example": "2027-03-21T12:00:00Z"
+																	"example": "2027-03-21T12:00:00Z",
+																	"x-auditable": true
 																},
 																"public_certificate": {
 																	"description": "The public certificate in PEM format",
@@ -1290,7 +1300,8 @@
 																"uid": {
 																	"description": "Unique identifier for the certificate",
 																	"type": "string",
-																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1310,7 +1321,8 @@
 												"uid": {
 													"description": "Unique identifier for the certificate set",
 													"type": "string",
-													"example": "a5bb4b3f-c2d1-4e6a-8f9b-1d3e4f5a6b7c"
+													"example": "a5bb4b3f-c2d1-4e6a-8f9b-1d3e4f5a6b7c",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"description": "When the certificate set was last updated",

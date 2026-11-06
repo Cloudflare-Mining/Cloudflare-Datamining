@@ -454,6 +454,7 @@
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -477,12 +478,14 @@
 														"example": "Employees",
 														"maxLength": 128,
 														"minLength": 1,
-														"pattern": "[^\\s]"
+														"pattern": "[^\\s]",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -774,6 +777,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -797,12 +801,14 @@
 													"example": "Employees",
 													"maxLength": 128,
 													"minLength": 1,
-													"pattern": "[^\\s]"
+													"pattern": "[^\\s]",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -990,7 +996,8 @@
 								"example": "Employees",
 								"maxLength": 128,
 								"minLength": 1,
-								"pattern": "[^\\s]"
+								"pattern": "[^\\s]",
+								"x-auditable": true
 							}
 						},
 						"additionalProperties": false,
@@ -1105,6 +1112,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1128,12 +1136,14 @@
 													"example": "Employees",
 													"maxLength": 128,
 													"minLength": 1,
-													"pattern": "[^\\s]"
+													"pattern": "[^\\s]",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1333,7 +1343,8 @@
 								"example": "Employees",
 								"maxLength": 128,
 								"minLength": 1,
-								"pattern": "[^\\s]"
+								"pattern": "[^\\s]",
+								"x-auditable": true
 							}
 						},
 						"additionalProperties": false,
@@ -1448,6 +1459,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1471,12 +1483,14 @@
 													"example": "Employees",
 													"maxLength": 128,
 													"minLength": 1,
-													"pattern": "[^\\s]"
+													"pattern": "[^\\s]",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{

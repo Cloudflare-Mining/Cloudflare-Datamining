@@ -134,7 +134,8 @@
 													"type": "string",
 													"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
 													"maxLength": 48,
-													"readOnly": true
+													"readOnly": true,
+													"x-auditable": true
 												}
 											}
 										}
@@ -423,7 +424,8 @@
 													"type": "string",
 													"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
 													"maxLength": 48,
-													"readOnly": true
+													"readOnly": true,
+													"x-auditable": true
 												},
 												"public_key": {
 													"description": "The public key to add to your SSH server configuration.",
@@ -745,7 +747,8 @@
 														"type": "string",
 														"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
 														"maxLength": 48,
-														"readOnly": true
+														"readOnly": true,
+														"x-auditable": true
 													},
 													"public_key": {
 														"description": "The public key to add to your SSH server configuration.",
@@ -1043,7 +1046,8 @@
 													"type": "string",
 													"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
 													"maxLength": 48,
-													"readOnly": true
+													"readOnly": true,
+													"x-auditable": true
 												},
 												"public_key": {
 													"description": "The public key to add to your SSH server configuration.",

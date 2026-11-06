@@ -1104,7 +1104,8 @@
 													},
 													"uid": {
 														"description": "The unique API identifier for the user.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"type": "string",
@@ -1437,7 +1438,8 @@
 												},
 												"uid": {
 													"description": "The unique API identifier for the user.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"type": "string",
@@ -3400,7 +3402,8 @@
 												},
 												"uid": {
 													"description": "The unique API identifier for the user.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"type": "string",
@@ -3757,7 +3760,8 @@
 												},
 												"uid": {
 													"description": "The unique API identifier for the user.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"type": "string",

@@ -463,6 +463,7 @@
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -500,6 +501,7 @@
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -519,13 +521,11 @@
 															"properties": {
 																"message": {
 																	"description": "Human-readable description of the finding.",
-																	"type": "string",
-																	"x-auditable": true
+																	"type": "string"
 																},
 																"ref": {
 																	"description": "Optional pointer to the part of the template the finding refers to.",
-																	"type": "string",
-																	"x-auditable": true
+																	"type": "string"
 																},
 																"tier": {
 																	"description": "The validation tier that produced the finding (e.g. html, liquid).",
@@ -833,6 +833,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -846,8 +847,7 @@
 												"custom_html": {
 													"description": "Custom page HTML.",
 													"type": "string",
-													"example": "<html><body><h1>Access Denied</h1></body></html>",
-													"x-auditable": true
+													"example": "<html><body><h1>Access Denied</h1></body></html>"
 												},
 												"name": {
 													"description": "Custom page name.",
@@ -876,6 +876,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1074,6 +1075,7 @@
 								"allOf": [
 									{
 										"type": "string",
+										"x-auditable": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -1087,8 +1089,7 @@
 							"custom_html": {
 								"description": "Custom page HTML.",
 								"type": "string",
-								"example": "<html><body><h1>Access Denied</h1></body></html>",
-								"x-auditable": true
+								"example": "<html><body><h1>Access Denied</h1></body></html>"
 							},
 							"name": {
 								"description": "Custom page name.",
@@ -1117,6 +1118,7 @@
 								"allOf": [
 									{
 										"type": "string",
+										"x-auditable": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -1252,6 +1254,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1289,6 +1292,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1308,13 +1312,11 @@
 														"properties": {
 															"message": {
 																"description": "Human-readable description of the finding.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"ref": {
 																"description": "Optional pointer to the part of the template the finding refers to.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"tier": {
 																"description": "The validation tier that produced the finding (e.g. html, liquid).",
@@ -1451,13 +1453,11 @@
 														"properties": {
 															"message": {
 																"description": "Human-readable description of the finding.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"ref": {
 																"description": "Optional pointer to the part of the template the finding refers to.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"tier": {
 																"description": "The validation tier that produced the finding (e.g. html, liquid).",
@@ -1496,13 +1496,11 @@
 														"properties": {
 															"message": {
 																"description": "Human-readable description of the finding.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"ref": {
 																"description": "Optional pointer to the part of the template the finding refers to.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"tier": {
 																"description": "The validation tier that produced the finding (e.g. html, liquid).",
@@ -1692,8 +1690,7 @@
 						"properties": {
 							"template": {
 								"description": "The Liquid template to validate.",
-								"type": "string",
-								"x-auditable": true
+								"type": "string"
 							},
 							"type": {
 								"description": "Custom page type.",
@@ -1831,13 +1828,11 @@
 														"properties": {
 															"message": {
 																"description": "Human-readable description of the finding.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"ref": {
 																"description": "Optional pointer to the part of the template the finding refers to.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"tier": {
 																"description": "The validation tier that produced the finding (e.g. html, liquid).",
@@ -1876,13 +1871,11 @@
 														"properties": {
 															"message": {
 																"description": "Human-readable description of the finding.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"ref": {
 																"description": "Optional pointer to the part of the template the finding refers to.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"tier": {
 																"description": "The validation tier that produced the finding (e.g. html, liquid).",
@@ -2096,6 +2089,7 @@
 								"allOf": [
 									{
 										"type": "string",
+										"x-auditable": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -2109,8 +2103,7 @@
 							"custom_html": {
 								"description": "Custom page HTML.",
 								"type": "string",
-								"example": "<html><body><h1>Access Denied</h1></body></html>",
-								"x-auditable": true
+								"example": "<html><body><h1>Access Denied</h1></body></html>"
 							},
 							"name": {
 								"description": "Custom page name.",
@@ -2139,6 +2132,7 @@
 								"allOf": [
 									{
 										"type": "string",
+										"x-auditable": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -2274,6 +2268,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2311,6 +2306,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2330,13 +2326,11 @@
 														"properties": {
 															"message": {
 																"description": "Human-readable description of the finding.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"ref": {
 																"description": "Optional pointer to the part of the template the finding refers to.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"tier": {
 																"description": "The validation tier that produced the finding (e.g. html, liquid).",
@@ -2473,13 +2467,11 @@
 														"properties": {
 															"message": {
 																"description": "Human-readable description of the finding.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"ref": {
 																"description": "Optional pointer to the part of the template the finding refers to.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"tier": {
 																"description": "The validation tier that produced the finding (e.g. html, liquid).",
@@ -2518,13 +2510,11 @@
 														"properties": {
 															"message": {
 																"description": "Human-readable description of the finding.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"ref": {
 																"description": "Optional pointer to the part of the template the finding refers to.",
-																"type": "string",
-																"x-auditable": true
+																"type": "string"
 															},
 															"tier": {
 																"description": "The validation tier that produced the finding (e.g. html, liquid).",

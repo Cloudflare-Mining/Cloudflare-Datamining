@@ -552,6 +552,7 @@
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -573,8 +574,7 @@
 																"x-auditable": true
 															}
 														],
-														"readOnly": true,
-														"x-auditable": true
+														"readOnly": true
 													},
 													"idp_id": {
 														"description": "UID of the identity provider being federated.",
@@ -864,6 +864,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -885,8 +886,7 @@
 															"x-auditable": true
 														}
 													],
-													"readOnly": true,
-													"x-auditable": true
+													"readOnly": true
 												},
 												"idp_id": {
 													"description": "UID of the identity provider being federated.",
@@ -1297,6 +1297,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1318,8 +1319,7 @@
 															"x-auditable": true
 														}
 													],
-													"readOnly": true,
-													"x-auditable": true
+													"readOnly": true
 												},
 												"idp_id": {
 													"description": "UID of the identity provider being federated.",

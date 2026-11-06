@@ -139,20 +139,17 @@
 												"percent_approved": {
 													"description": "The percentage of (processed) users approved based on policy evaluation results.",
 													"type": "integer",
-													"example": 25,
-													"x-auditable": true
+													"example": 25
 												},
 												"percent_blocked": {
 													"description": "The percentage of (processed) users blocked based on policy evaluation results.",
 													"type": "integer",
-													"example": 25,
-													"x-auditable": true
+													"example": 25
 												},
 												"percent_errored": {
 													"description": "The percentage of (processed) users errored based on policy evaluation results.",
 													"type": "integer",
-													"example": 25,
-													"x-auditable": true
+													"example": 25
 												},
 												"percent_users_processed": {
 													"description": "The percentage of users processed so far (of the entire user base).",
@@ -168,26 +165,22 @@
 														"processing",
 														"exceeded time",
 														"complete"
-													],
-													"x-auditable": true
+													]
 												},
 												"total_users": {
 													"description": "The total number of users in the user base.",
 													"type": "integer",
-													"example": 20,
-													"x-auditable": true
+													"example": 20
 												},
 												"users_approved": {
 													"description": "The number of (processed) users approved based on policy evaluation results.",
 													"type": "integer",
-													"example": 5,
-													"x-auditable": true
+													"example": 5
 												},
 												"users_blocked": {
 													"description": "The number of (processed) users blocked based on policy evaluation results.",
 													"type": "integer",
-													"example": 5,
-													"x-auditable": true
+													"example": 5
 												},
 												"users_errored": {
 													"description": "The number of (processed) users errored based on policy evaluation results.",
@@ -528,8 +521,7 @@
 															"approved",
 															"blocked",
 															"error"
-														],
-														"x-auditable": true
+														]
 													}
 												}
 											}
@@ -719,13 +711,15 @@
 																"description": "The number of approvals needed to obtain access.",
 																"type": "number",
 																"example": 1,
-																"minimum": 0
+																"minimum": 0,
+																"x-auditable": true
 															},
 															"email_addresses": {
 																"description": "A list of emails that can approve the access request.",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"test@cloudflare.com",
@@ -734,7 +728,8 @@
 															},
 															"email_list_uuid": {
 																"description": "The UUID of an re-usable email list.",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -759,7 +754,8 @@
 												"approval_required": {
 													"description": "Requires the user to request access from an administrator at the start of each session.",
 													"type": "boolean",
-													"example": true
+													"example": true,
+													"x-auditable": true
 												},
 												"connection_rules": {
 													"description": "The rules that define how users may connect to targets secured by your application.",
@@ -812,7 +808,8 @@
 												"isolation_required": {
 													"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 													"type": "boolean",
-													"example": false
+													"example": false,
+													"x-auditable": true
 												},
 												"mfa_config": {
 													"description": "Configures multi-factor authentication (MFA) settings.",
@@ -827,7 +824,8 @@
 																	"biometrics",
 																	"security_key"
 																],
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"totp",
@@ -838,31 +836,35 @@
 														"mfa_disabled": {
 															"description": "Indicates whether to disable MFA for this resource. This option is available at the application and policy level.",
 															"type": "boolean",
-															"example": false
+															"example": false,
+															"x-auditable": true
 														},
 														"session_duration": {
 															"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
 															"type": "string",
-															"example": "24h"
+															"example": "24h",
+															"x-auditable": true
 														}
-													},
-													"x-auditable": true
+													}
 												},
 												"purpose_justification_prompt": {
 													"description": "A custom message that will appear on the purpose justification screen.",
 													"type": "string",
-													"example": "Please enter a justification for entering this protected domain."
+													"example": "Please enter a justification for entering this protected domain.",
+													"x-auditable": true
 												},
 												"purpose_justification_required": {
 													"description": "Require users to enter a justification when they log in to the application.",
 													"type": "boolean",
-													"example": true
+													"example": true,
+													"x-auditable": true
 												},
 												"session_duration": {
 													"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 													"type": "string",
 													"example": "24h",
-													"nullable": true
+													"nullable": true,
+													"x-auditable": true
 												}
 											},
 											"allOf": [
@@ -878,7 +880,8 @@
 																"deny",
 																"non_identity",
 																"bypass"
-															]
+															],
+															"x-auditable": true
 														},
 														"exclude": {
 															"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
@@ -896,7 +899,8 @@
 																					"id": {
 																						"description": "The ID of a previously created Access group.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -935,17 +939,20 @@
 																					"ac_id": {
 																						"description": "The ACID of an Authentication context.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					},
 																					"id": {
 																						"description": "The ID of an Authentication context.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your Azure identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -970,7 +977,8 @@
 																					"auth_method": {
 																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																						"type": "string",
-																						"example": "mfa"
+																						"example": "mfa",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -993,12 +1001,14 @@
 																					"id": {
 																						"description": "The ID of an Azure group.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your Azure identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1040,7 +1050,8 @@
 																					"common_name": {
 																						"description": "The common name to match.",
 																						"type": "string",
-																						"example": "james@example.com"
+																						"example": "james@example.com",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1063,7 +1074,8 @@
 																					"country_code": {
 																						"description": "The country code that should be matched.",
 																						"type": "string",
-																						"example": "US"
+																						"example": "US",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1098,7 +1110,8 @@
 																					"integration_uid": {
 																						"description": "The ID of a device posture integration.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1121,7 +1134,8 @@
 																					"domain": {
 																						"description": "The email domain to match.",
 																						"type": "string",
-																						"example": "example.com"
+																						"example": "example.com",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1144,7 +1158,8 @@
 																					"id": {
 																						"description": "The ID of a previously created email list.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1168,7 +1183,8 @@
 																						"description": "The email of the user.",
 																						"type": "string",
 																						"format": "email",
-																						"example": "test@example.com"
+																						"example": "test@example.com",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1207,12 +1223,14 @@
 																					"evaluate_url": {
 																						"description": "The API endpoint containing your business logic.",
 																						"type": "string",
-																						"example": "https://eval.example.com"
+																						"example": "https://eval.example.com",
+																						"x-auditable": true
 																					},
 																					"keys_url": {
 																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
 																						"type": "string",
-																						"example": "https://eval.example.com/keys"
+																						"example": "https://eval.example.com/keys",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1236,17 +1254,20 @@
 																					"identity_provider_id": {
 																						"description": "The ID of your Github identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					},
 																					"name": {
 																						"description": "The name of the organization.",
 																						"type": "string",
-																						"example": "cloudflare"
+																						"example": "cloudflare",
+																						"x-auditable": true
 																					},
 																					"team": {
 																						"description": "The name of the team",
 																						"type": "string",
-																						"example": "api-team"
+																						"example": "api-team",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1270,12 +1291,14 @@
 																					"email": {
 																						"description": "The email of the Google Workspace group.",
 																						"type": "string",
-																						"example": "devs@cloudflare.com"
+																						"example": "devs@cloudflare.com",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your Google Workspace identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1299,7 +1322,8 @@
 																					"id": {
 																						"description": "The ID of an identity provider.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1322,7 +1346,8 @@
 																					"id": {
 																						"description": "The ID of a previously created IP list.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1345,7 +1370,8 @@
 																					"ip": {
 																						"description": "An IPv4 or IPv6 CIDR block.",
 																						"type": "string",
-																						"example": "2400:cb00:21:10a::/64"
+																						"example": "2400:cb00:21:10a::/64",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1368,12 +1394,14 @@
 																					"identity_provider_id": {
 																						"description": "The ID of your Okta identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					},
 																					"name": {
 																						"description": "The name of the Okta group.",
 																						"type": "string",
-																						"example": "devs"
+																						"example": "devs",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1397,17 +1425,20 @@
 																					"attribute_name": {
 																						"description": "The name of the SAML attribute.",
 																						"type": "string",
-																						"example": "group"
+																						"example": "group",
+																						"x-auditable": true
 																					},
 																					"attribute_value": {
 																						"description": "The SAML attribute value to look for.",
 																						"type": "string",
-																						"example": "devs@cloudflare.com"
+																						"example": "devs@cloudflare.com",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your SAML identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1432,17 +1463,20 @@
 																					"claim_name": {
 																						"description": "The name of the OIDC claim.",
 																						"type": "string",
-																						"example": "group"
+																						"example": "group",
+																						"x-auditable": true
 																					},
 																					"claim_value": {
 																						"description": "The OIDC claim value to look for.",
 																						"type": "string",
-																						"example": "devs@cloudflare.com"
+																						"example": "devs@cloudflare.com",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your OIDC identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1467,7 +1501,8 @@
 																					"token_id": {
 																						"description": "The ID of a Service Token.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1523,7 +1558,8 @@
 																					"app_uid": {
 																						"description": "The ID of an Access OIDC SaaS application",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1553,7 +1589,8 @@
 																								"high",
 																								"unscored"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"example": [
 																							"low",
@@ -1615,7 +1652,8 @@
 																					"id": {
 																						"description": "The ID of a previously created Access group.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1654,17 +1692,20 @@
 																					"ac_id": {
 																						"description": "The ACID of an Authentication context.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					},
 																					"id": {
 																						"description": "The ID of an Authentication context.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your Azure identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1689,7 +1730,8 @@
 																					"auth_method": {
 																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																						"type": "string",
-																						"example": "mfa"
+																						"example": "mfa",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1712,12 +1754,14 @@
 																					"id": {
 																						"description": "The ID of an Azure group.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your Azure identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1759,7 +1803,8 @@
 																					"common_name": {
 																						"description": "The common name to match.",
 																						"type": "string",
-																						"example": "james@example.com"
+																						"example": "james@example.com",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1782,7 +1827,8 @@
 																					"country_code": {
 																						"description": "The country code that should be matched.",
 																						"type": "string",
-																						"example": "US"
+																						"example": "US",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1817,7 +1863,8 @@
 																					"integration_uid": {
 																						"description": "The ID of a device posture integration.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1840,7 +1887,8 @@
 																					"domain": {
 																						"description": "The email domain to match.",
 																						"type": "string",
-																						"example": "example.com"
+																						"example": "example.com",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1863,7 +1911,8 @@
 																					"id": {
 																						"description": "The ID of a previously created email list.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1887,7 +1936,8 @@
 																						"description": "The email of the user.",
 																						"type": "string",
 																						"format": "email",
-																						"example": "test@example.com"
+																						"example": "test@example.com",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1926,12 +1976,14 @@
 																					"evaluate_url": {
 																						"description": "The API endpoint containing your business logic.",
 																						"type": "string",
-																						"example": "https://eval.example.com"
+																						"example": "https://eval.example.com",
+																						"x-auditable": true
 																					},
 																					"keys_url": {
 																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
 																						"type": "string",
-																						"example": "https://eval.example.com/keys"
+																						"example": "https://eval.example.com/keys",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1955,17 +2007,20 @@
 																					"identity_provider_id": {
 																						"description": "The ID of your Github identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					},
 																					"name": {
 																						"description": "The name of the organization.",
 																						"type": "string",
-																						"example": "cloudflare"
+																						"example": "cloudflare",
+																						"x-auditable": true
 																					},
 																					"team": {
 																						"description": "The name of the team",
 																						"type": "string",
-																						"example": "api-team"
+																						"example": "api-team",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -1989,12 +2044,14 @@
 																					"email": {
 																						"description": "The email of the Google Workspace group.",
 																						"type": "string",
-																						"example": "devs@cloudflare.com"
+																						"example": "devs@cloudflare.com",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your Google Workspace identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2018,7 +2075,8 @@
 																					"id": {
 																						"description": "The ID of an identity provider.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2041,7 +2099,8 @@
 																					"id": {
 																						"description": "The ID of a previously created IP list.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2064,7 +2123,8 @@
 																					"ip": {
 																						"description": "An IPv4 or IPv6 CIDR block.",
 																						"type": "string",
-																						"example": "2400:cb00:21:10a::/64"
+																						"example": "2400:cb00:21:10a::/64",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2087,12 +2147,14 @@
 																					"identity_provider_id": {
 																						"description": "The ID of your Okta identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					},
 																					"name": {
 																						"description": "The name of the Okta group.",
 																						"type": "string",
-																						"example": "devs"
+																						"example": "devs",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2116,17 +2178,20 @@
 																					"attribute_name": {
 																						"description": "The name of the SAML attribute.",
 																						"type": "string",
-																						"example": "group"
+																						"example": "group",
+																						"x-auditable": true
 																					},
 																					"attribute_value": {
 																						"description": "The SAML attribute value to look for.",
 																						"type": "string",
-																						"example": "devs@cloudflare.com"
+																						"example": "devs@cloudflare.com",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your SAML identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2151,17 +2216,20 @@
 																					"claim_name": {
 																						"description": "The name of the OIDC claim.",
 																						"type": "string",
-																						"example": "group"
+																						"example": "group",
+																						"x-auditable": true
 																					},
 																					"claim_value": {
 																						"description": "The OIDC claim value to look for.",
 																						"type": "string",
-																						"example": "devs@cloudflare.com"
+																						"example": "devs@cloudflare.com",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your OIDC identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2186,7 +2254,8 @@
 																					"token_id": {
 																						"description": "The ID of a Service Token.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2242,7 +2311,8 @@
 																					"app_uid": {
 																						"description": "The ID of an Access OIDC SaaS application",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2272,7 +2342,8 @@
 																								"high",
 																								"unscored"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"example": [
 																							"low",
@@ -2321,11 +2392,13 @@
 														"name": {
 															"description": "The name of the Access policy.",
 															"type": "string",
-															"example": "Allow devs"
+															"example": "Allow devs",
+															"x-auditable": true
 														},
 														"policy_resolution_account_id": {
 															"description": "The account ID used to resolve policy resources and identity for cross-account WARP authentication. The account must be trusted by the account that owns this policy.",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"require": {
 															"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -2343,7 +2416,8 @@
 																					"id": {
 																						"description": "The ID of a previously created Access group.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2382,17 +2456,20 @@
 																					"ac_id": {
 																						"description": "The ACID of an Authentication context.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					},
 																					"id": {
 																						"description": "The ID of an Authentication context.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your Azure identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2417,7 +2494,8 @@
 																					"auth_method": {
 																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.",
 																						"type": "string",
-																						"example": "mfa"
+																						"example": "mfa",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2440,12 +2518,14 @@
 																					"id": {
 																						"description": "The ID of an Azure group.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your Azure identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2487,7 +2567,8 @@
 																					"common_name": {
 																						"description": "The common name to match.",
 																						"type": "string",
-																						"example": "james@example.com"
+																						"example": "james@example.com",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2510,7 +2591,8 @@
 																					"country_code": {
 																						"description": "The country code that should be matched.",
 																						"type": "string",
-																						"example": "US"
+																						"example": "US",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2545,7 +2627,8 @@
 																					"integration_uid": {
 																						"description": "The ID of a device posture integration.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2568,7 +2651,8 @@
 																					"domain": {
 																						"description": "The email domain to match.",
 																						"type": "string",
-																						"example": "example.com"
+																						"example": "example.com",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2591,7 +2675,8 @@
 																					"id": {
 																						"description": "The ID of a previously created email list.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2615,7 +2700,8 @@
 																						"description": "The email of the user.",
 																						"type": "string",
 																						"format": "email",
-																						"example": "test@example.com"
+																						"example": "test@example.com",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2654,12 +2740,14 @@
 																					"evaluate_url": {
 																						"description": "The API endpoint containing your business logic.",
 																						"type": "string",
-																						"example": "https://eval.example.com"
+																						"example": "https://eval.example.com",
+																						"x-auditable": true
 																					},
 																					"keys_url": {
 																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
 																						"type": "string",
-																						"example": "https://eval.example.com/keys"
+																						"example": "https://eval.example.com/keys",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2683,17 +2771,20 @@
 																					"identity_provider_id": {
 																						"description": "The ID of your Github identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					},
 																					"name": {
 																						"description": "The name of the organization.",
 																						"type": "string",
-																						"example": "cloudflare"
+																						"example": "cloudflare",
+																						"x-auditable": true
 																					},
 																					"team": {
 																						"description": "The name of the team",
 																						"type": "string",
-																						"example": "api-team"
+																						"example": "api-team",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2717,12 +2808,14 @@
 																					"email": {
 																						"description": "The email of the Google Workspace group.",
 																						"type": "string",
-																						"example": "devs@cloudflare.com"
+																						"example": "devs@cloudflare.com",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your Google Workspace identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2746,7 +2839,8 @@
 																					"id": {
 																						"description": "The ID of an identity provider.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2769,7 +2863,8 @@
 																					"id": {
 																						"description": "The ID of a previously created IP list.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2792,7 +2887,8 @@
 																					"ip": {
 																						"description": "An IPv4 or IPv6 CIDR block.",
 																						"type": "string",
-																						"example": "2400:cb00:21:10a::/64"
+																						"example": "2400:cb00:21:10a::/64",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2815,12 +2911,14 @@
 																					"identity_provider_id": {
 																						"description": "The ID of your Okta identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					},
 																					"name": {
 																						"description": "The name of the Okta group.",
 																						"type": "string",
-																						"example": "devs"
+																						"example": "devs",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2844,17 +2942,20 @@
 																					"attribute_name": {
 																						"description": "The name of the SAML attribute.",
 																						"type": "string",
-																						"example": "group"
+																						"example": "group",
+																						"x-auditable": true
 																					},
 																					"attribute_value": {
 																						"description": "The SAML attribute value to look for.",
 																						"type": "string",
-																						"example": "devs@cloudflare.com"
+																						"example": "devs@cloudflare.com",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your SAML identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2879,17 +2980,20 @@
 																					"claim_name": {
 																						"description": "The name of the OIDC claim.",
 																						"type": "string",
-																						"example": "group"
+																						"example": "group",
+																						"x-auditable": true
 																					},
 																					"claim_value": {
 																						"description": "The OIDC claim value to look for.",
 																						"type": "string",
-																						"example": "devs@cloudflare.com"
+																						"example": "devs@cloudflare.com",
+																						"x-auditable": true
 																					},
 																					"identity_provider_id": {
 																						"description": "The ID of your OIDC identity provider.",
 																						"type": "string",
-																						"example": "ea85612a-29c8-46c2-bacb-669d65136971"
+																						"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2914,7 +3018,8 @@
 																					"token_id": {
 																						"description": "The ID of a Service Token.",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -2970,7 +3075,8 @@
 																					"app_uid": {
 																						"description": "The ID of an Access OIDC SaaS application",
 																						"type": "string",
-																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -3000,7 +3106,8 @@
 																								"high",
 																								"unscored"
 																							],
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"example": [
 																							"low",
@@ -3058,7 +3165,8 @@
 										{
 											"description": "The UUID of the reusable policy you wish to test",
 											"example": "f1a8b3c9d4e5f6789a0b1c2d3e4f5678a9b0c1d2e3f4a5b67890c1d2e3f4b5a6",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										}
 									]
 								}

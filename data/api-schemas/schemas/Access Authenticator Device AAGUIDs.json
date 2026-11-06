@@ -159,12 +159,14 @@
 														"description": "The Authenticator Attestation GUID (AAGUID) uniquely identifying a FIDO2 authenticator model",
 														"type": "string",
 														"format": "uuid",
-														"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a"
+														"example": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The human-readable name of the FIDO2 authenticator",
 														"type": "string",
-														"example": "YubiKey 5 NFC"
+														"example": "YubiKey 5 NFC",
+														"x-auditable": true
 													}
 												},
 												"required": [

@@ -119,7 +119,8 @@
 														"auth_domain": {
 															"description": "The unique subdomain assigned to your Zero Trust organization. Auto-generated if omitted on creation.",
 															"type": "string",
-															"example": "test.cloudflareaccess.com"
+															"example": "test.cloudflareaccess.com",
+															"x-auditable": true
 														},
 														"created_at": {
 															"type": "string",
@@ -137,17 +138,18 @@
 															"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"example.com"
-															],
-															"x-auditable": true
+															]
 														},
 														"is_ui_read_only": {
 															"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 															"type": "boolean",
-															"example": "false"
+															"example": "false",
+															"x-auditable": true
 														},
 														"login_design": {
 															"type": "object",
@@ -155,17 +157,20 @@
 																"background_color": {
 																	"description": "The background color on your login page.",
 																	"type": "string",
-																	"example": "#c5ed1b"
+																	"example": "#c5ed1b",
+																	"x-auditable": true
 																},
 																"footer_text": {
 																	"description": "The text at the bottom of your login page.",
 																	"type": "string",
-																	"example": "This is an example description."
+																	"example": "This is an example description.",
+																	"x-auditable": true
 																},
 																"header_text": {
 																	"description": "The text at the top of your login page.",
 																	"type": "string",
-																	"example": "This is an example description."
+																	"example": "This is an example description.",
+																	"x-auditable": true
 																},
 																"logo_path": {
 																	"description": "The URL of the logo on your login page.",
@@ -175,14 +180,16 @@
 																"text_color": {
 																	"description": "The text color on your login page.",
 																	"type": "string",
-																	"example": "#c5ed1b"
+																	"example": "#c5ed1b",
+																	"x-auditable": true
 																}
 															}
 														},
 														"name": {
 															"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain.",
 															"type": "string",
-															"example": "Widget Corps Internal Applications"
+															"example": "Widget Corps Internal Applications",
+															"x-auditable": true
 														},
 														"strict_service_token_auth": {
 															"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
@@ -205,7 +212,8 @@
 														"user_seat_expiration_inactive_time": {
 															"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 															"type": "string",
-															"example": "720h"
+															"example": "720h",
+															"x-auditable": true
 														}
 													}
 												},
@@ -396,12 +404,14 @@
 							"auth_domain": {
 								"description": "The unique subdomain assigned to your Zero Trust organization. Auto-generated if omitted on creation.",
 								"type": "string",
-								"example": "test.cloudflareaccess.com"
+								"example": "test.cloudflareaccess.com",
+								"x-auditable": true
 							},
 							"is_ui_read_only": {
 								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 								"type": "boolean",
-								"example": "false"
+								"example": "false",
+								"x-auditable": true
 							},
 							"login_design": {
 								"type": "object",
@@ -409,17 +419,20 @@
 									"background_color": {
 										"description": "The background color on your login page.",
 										"type": "string",
-										"example": "#c5ed1b"
+										"example": "#c5ed1b",
+										"x-auditable": true
 									},
 									"footer_text": {
 										"description": "The text at the bottom of your login page.",
 										"type": "string",
-										"example": "This is an example description."
+										"example": "This is an example description.",
+										"x-auditable": true
 									},
 									"header_text": {
 										"description": "The text at the top of your login page.",
 										"type": "string",
-										"example": "This is an example description."
+										"example": "This is an example description.",
+										"x-auditable": true
 									},
 									"logo_path": {
 										"description": "The URL of the logo on your login page.",
@@ -429,14 +442,16 @@
 									"text_color": {
 										"description": "The text color on your login page.",
 										"type": "string",
-										"example": "#c5ed1b"
+										"example": "#c5ed1b",
+										"x-auditable": true
 									}
 								}
 							},
 							"name": {
 								"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain.",
 								"type": "string",
-								"example": "Widget Corps Internal Applications"
+								"example": "Widget Corps Internal Applications",
+								"x-auditable": true
 							},
 							"strict_service_token_auth": {
 								"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
@@ -453,7 +468,8 @@
 							"user_seat_expiration_inactive_time": {
 								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 								"type": "string",
-								"example": "720h"
+								"example": "720h",
+								"x-auditable": true
 							}
 						}
 					}
@@ -563,7 +579,8 @@
 												"auth_domain": {
 													"description": "The unique subdomain assigned to your Zero Trust organization. Auto-generated if omitted on creation.",
 													"type": "string",
-													"example": "test.cloudflareaccess.com"
+													"example": "test.cloudflareaccess.com",
+													"x-auditable": true
 												},
 												"created_at": {
 													"type": "string",
@@ -581,17 +598,18 @@
 													"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
 													"type": "array",
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"example.com"
-													],
-													"x-auditable": true
+													]
 												},
 												"is_ui_read_only": {
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 													"type": "boolean",
-													"example": "false"
+													"example": "false",
+													"x-auditable": true
 												},
 												"login_design": {
 													"type": "object",
@@ -599,17 +617,20 @@
 														"background_color": {
 															"description": "The background color on your login page.",
 															"type": "string",
-															"example": "#c5ed1b"
+															"example": "#c5ed1b",
+															"x-auditable": true
 														},
 														"footer_text": {
 															"description": "The text at the bottom of your login page.",
 															"type": "string",
-															"example": "This is an example description."
+															"example": "This is an example description.",
+															"x-auditable": true
 														},
 														"header_text": {
 															"description": "The text at the top of your login page.",
 															"type": "string",
-															"example": "This is an example description."
+															"example": "This is an example description.",
+															"x-auditable": true
 														},
 														"logo_path": {
 															"description": "The URL of the logo on your login page.",
@@ -619,14 +640,16 @@
 														"text_color": {
 															"description": "The text color on your login page.",
 															"type": "string",
-															"example": "#c5ed1b"
+															"example": "#c5ed1b",
+															"x-auditable": true
 														}
 													}
 												},
 												"name": {
 													"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain.",
 													"type": "string",
-													"example": "Widget Corps Internal Applications"
+													"example": "Widget Corps Internal Applications",
+													"x-auditable": true
 												},
 												"strict_service_token_auth": {
 													"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
@@ -649,7 +672,8 @@
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 													"type": "string",
-													"example": "720h"
+													"example": "720h",
+													"x-auditable": true
 												}
 											}
 										}
@@ -1024,12 +1048,14 @@
 							"auth_domain": {
 								"description": "The unique subdomain assigned to your Zero Trust organization. Auto-generated if omitted on creation.",
 								"type": "string",
-								"example": "test.cloudflareaccess.com"
+								"example": "test.cloudflareaccess.com",
+								"x-auditable": true
 							},
 							"is_ui_read_only": {
 								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 								"type": "boolean",
-								"example": "false"
+								"example": "false",
+								"x-auditable": true
 							},
 							"login_design": {
 								"type": "object",
@@ -1037,17 +1063,20 @@
 									"background_color": {
 										"description": "The background color on your login page.",
 										"type": "string",
-										"example": "#c5ed1b"
+										"example": "#c5ed1b",
+										"x-auditable": true
 									},
 									"footer_text": {
 										"description": "The text at the bottom of your login page.",
 										"type": "string",
-										"example": "This is an example description."
+										"example": "This is an example description.",
+										"x-auditable": true
 									},
 									"header_text": {
 										"description": "The text at the top of your login page.",
 										"type": "string",
-										"example": "This is an example description."
+										"example": "This is an example description.",
+										"x-auditable": true
 									},
 									"logo_path": {
 										"description": "The URL of the logo on your login page.",
@@ -1057,14 +1086,16 @@
 									"text_color": {
 										"description": "The text color on your login page.",
 										"type": "string",
-										"example": "#c5ed1b"
+										"example": "#c5ed1b",
+										"x-auditable": true
 									}
 								}
 							},
 							"name": {
 								"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain.",
 								"type": "string",
-								"example": "Widget Corps Internal Applications"
+								"example": "Widget Corps Internal Applications",
+								"x-auditable": true
 							},
 							"strict_service_token_auth": {
 								"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
@@ -1081,7 +1112,8 @@
 							"user_seat_expiration_inactive_time": {
 								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 								"type": "string",
-								"example": "720h"
+								"example": "720h",
+								"x-auditable": true
 							}
 						}
 					}
@@ -1191,7 +1223,8 @@
 												"auth_domain": {
 													"description": "The unique subdomain assigned to your Zero Trust organization. Auto-generated if omitted on creation.",
 													"type": "string",
-													"example": "test.cloudflareaccess.com"
+													"example": "test.cloudflareaccess.com",
+													"x-auditable": true
 												},
 												"created_at": {
 													"type": "string",
@@ -1209,17 +1242,18 @@
 													"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
 													"type": "array",
 													"items": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"example.com"
-													],
-													"x-auditable": true
+													]
 												},
 												"is_ui_read_only": {
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
 													"type": "boolean",
-													"example": "false"
+													"example": "false",
+													"x-auditable": true
 												},
 												"login_design": {
 													"type": "object",
@@ -1227,17 +1261,20 @@
 														"background_color": {
 															"description": "The background color on your login page.",
 															"type": "string",
-															"example": "#c5ed1b"
+															"example": "#c5ed1b",
+															"x-auditable": true
 														},
 														"footer_text": {
 															"description": "The text at the bottom of your login page.",
 															"type": "string",
-															"example": "This is an example description."
+															"example": "This is an example description.",
+															"x-auditable": true
 														},
 														"header_text": {
 															"description": "The text at the top of your login page.",
 															"type": "string",
-															"example": "This is an example description."
+															"example": "This is an example description.",
+															"x-auditable": true
 														},
 														"logo_path": {
 															"description": "The URL of the logo on your login page.",
@@ -1247,14 +1284,16 @@
 														"text_color": {
 															"description": "The text color on your login page.",
 															"type": "string",
-															"example": "#c5ed1b"
+															"example": "#c5ed1b",
+															"x-auditable": true
 														}
 													}
 												},
 												"name": {
 													"description": "The name of your Zero Trust organization. When omitted on creation, defaults to the provided auth_domain; when both are omitted, defaults to the auto-generated subdomain.",
 													"type": "string",
-													"example": "Widget Corps Internal Applications"
+													"example": "Widget Corps Internal Applications",
+													"x-auditable": true
 												},
 												"strict_service_token_auth": {
 													"description": "Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.",
@@ -1277,7 +1316,8 @@
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 													"type": "string",
-													"example": "720h"
+													"example": "720h",
+													"x-auditable": true
 												}
 											}
 										}

@@ -447,6 +447,7 @@
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -465,13 +466,13 @@
 													},
 													"id": {
 														"description": "The unique identifier for the Bookmark application.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"logo_url": {
 														"description": "The image URL for the logo shown in the App Launcher dashboard.",
 														"type": "string",
-														"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
-														"x-auditable": true
+														"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"
 													},
 													"name": {
 														"description": "The name of the Bookmark application.",
@@ -483,6 +484,7 @@
 														"allOf": [
 															{
 																"type": "string",
+																"x-auditable": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -784,6 +786,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -802,13 +805,13 @@
 												},
 												"id": {
 													"description": "The unique identifier for the Bookmark application.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logo_url": {
 													"description": "The image URL for the logo shown in the App Launcher dashboard.",
 													"type": "string",
-													"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
-													"x-auditable": true
+													"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"
 												},
 												"name": {
 													"description": "The name of the Bookmark application.",
@@ -820,6 +823,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1119,6 +1123,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1137,13 +1142,13 @@
 												},
 												"id": {
 													"description": "The unique identifier for the Bookmark application.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logo_url": {
 													"description": "The image URL for the logo shown in the App Launcher dashboard.",
 													"type": "string",
-													"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
-													"x-auditable": true
+													"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"
 												},
 												"name": {
 													"description": "The name of the Bookmark application.",
@@ -1155,6 +1160,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1450,6 +1456,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1468,13 +1475,13 @@
 												},
 												"id": {
 													"description": "The unique identifier for the Bookmark application.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logo_url": {
 													"description": "The image URL for the logo shown in the App Launcher dashboard.",
 													"type": "string",
-													"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
-													"x-auditable": true
+													"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"
 												},
 												"name": {
 													"description": "The name of the Bookmark application.",
@@ -1486,6 +1493,7 @@
 													"allOf": [
 														{
 															"type": "string",
+															"x-auditable": true,
 															"x-stainless-skip": true
 														},
 														{

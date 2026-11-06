@@ -436,7 +436,8 @@
 														"items": {
 															"description": "A fully-qualified domain name (FQDN).",
 															"example": "admin.example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"created_at": {
@@ -458,12 +459,14 @@
 													},
 													"id": {
 														"description": "The ID of the application that will use this certificate.",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "The name of the certificate.",
 														"type": "string",
-														"example": "Allow devs"
+														"example": "Allow devs",
+														"x-auditable": true
 													},
 													"updated_at": {
 														"type": "string",
@@ -753,7 +756,8 @@
 													"items": {
 														"description": "A fully-qualified domain name (FQDN).",
 														"example": "admin.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"created_at": {
@@ -775,12 +779,14 @@
 												},
 												"id": {
 													"description": "The ID of the application that will use this certificate.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the certificate.",
 													"type": "string",
-													"example": "Allow devs"
+													"example": "Allow devs",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"type": "string",
@@ -1091,17 +1097,20 @@
 													"china_network": {
 														"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
 														"type": "boolean",
-														"example": false
+														"example": false,
+														"x-auditable": true
 													},
 													"client_certificate_forwarding": {
 														"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
 														"type": "boolean",
-														"example": true
+														"example": true,
+														"x-auditable": true
 													},
 													"hostname": {
 														"description": "The hostname that these settings apply to.",
 														"type": "string",
-														"example": "admin.example.com"
+														"example": "admin.example.com",
+														"x-auditable": true
 													}
 												},
 												"additionalProperties": false,
@@ -1287,7 +1296,8 @@
 								"items": {
 									"description": "A fully-qualified domain name (FQDN).",
 									"example": "admin.example.com",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"certificate": {
@@ -1298,7 +1308,8 @@
 							"name": {
 								"description": "The name of the certificate.",
 								"type": "string",
-								"example": "Allow devs"
+								"example": "Allow devs",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1415,7 +1426,8 @@
 													"items": {
 														"description": "A fully-qualified domain name (FQDN).",
 														"example": "admin.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"created_at": {
@@ -1437,12 +1449,14 @@
 												},
 												"id": {
 													"description": "The ID of the application that will use this certificate.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the certificate.",
 													"type": "string",
-													"example": "Allow devs"
+													"example": "Allow devs",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"type": "string",
@@ -1637,13 +1651,15 @@
 								"items": {
 									"description": "A fully-qualified domain name (FQDN).",
 									"example": "admin.example.com",
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"name": {
 								"description": "The name of the certificate.",
 								"type": "string",
-								"example": "Allow devs"
+								"example": "Allow devs",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1759,7 +1775,8 @@
 													"items": {
 														"description": "A fully-qualified domain name (FQDN).",
 														"example": "admin.example.com",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"created_at": {
@@ -1781,12 +1798,14 @@
 												},
 												"id": {
 													"description": "The ID of the application that will use this certificate.",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of the certificate.",
 													"type": "string",
-													"example": "Allow devs"
+													"example": "Allow devs",
+													"x-auditable": true
 												},
 												"updated_at": {
 													"type": "string",
@@ -1971,17 +1990,20 @@
 										"china_network": {
 											"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
 											"type": "boolean",
-											"example": false
+											"example": false,
+											"x-auditable": true
 										},
 										"client_certificate_forwarding": {
 											"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
 											"type": "boolean",
-											"example": true
+											"example": true,
+											"x-auditable": true
 										},
 										"hostname": {
 											"description": "The hostname that these settings apply to.",
 											"type": "string",
-											"example": "admin.example.com"
+											"example": "admin.example.com",
+											"x-auditable": true
 										}
 									},
 									"additionalProperties": false,
@@ -2141,17 +2163,20 @@
 													"china_network": {
 														"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
 														"type": "boolean",
-														"example": false
+														"example": false,
+														"x-auditable": true
 													},
 													"client_certificate_forwarding": {
 														"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
 														"type": "boolean",
-														"example": true
+														"example": true,
+														"x-auditable": true
 													},
 													"hostname": {
 														"description": "The hostname that these settings apply to.",
 														"type": "string",
-														"example": "admin.example.com"
+														"example": "admin.example.com",
+														"x-auditable": true
 													}
 												},
 												"additionalProperties": false,

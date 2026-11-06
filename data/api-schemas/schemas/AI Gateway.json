@@ -5821,7 +5821,7 @@
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/eligibility": {
 		"operationId": "aig-billing-topup-eligibility",
 		"summary": "Get top-up eligibility",
-		"description": "Determine whether an account can self-serve a credit top-up, and if not, why. The dashboard forwards the account's payment-method list in the body; the reason logic is owned here.",
+		"description": "Determine top-up eligibility. Requests without contract_version retain the legacy forwarded-method contract. Explicit contract_version: 2 opts into the gated, read-only authoritative advisory API; forwarded method metadata is not authoritative. No response authorizes a charge.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5839,8 +5839,18 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"contract_version": {
+								"type": "number",
+								"enum": [
+									2
+								]
+							},
+							"payment_method_id": {
+								"type": "string",
+								"maxLength": 255
+							},
 							"payment_methods": {
-								"description": "Account-level payment methods, forwarded by the dashboard.",
+								"description": "Account-level payment methods, forwarded by the dashboard for legacy eligibility only.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -5914,105 +5924,307 @@
 									}
 								},
 								"result": {
-									"type": "object",
-									"properties": {
-										"account_payment_method_state": {
-											"description": "Account-level payment-method state derived from the provided list.",
-											"type": "string",
-											"example": "SUPPORTED_PRESENT",
-											"enum": [
-												"NONE",
-												"UNSUPPORTED_ONLY",
-												"SUPPORTED_PRESENT",
-												"UNKNOWN"
-											]
-										},
-										"aig_customer_state": {
-											"description": "AI Gateway billing profile resolution outcome.",
-											"type": "string",
-											"example": "RESOLVED",
-											"enum": [
-												"RESOLVED",
-												"RESOLUTION_FAILED"
-											]
-										},
-										"aig_default_payment_method_state": {
-											"description": "Whether AI Gateway billing has a default payment method.",
-											"type": "string",
-											"example": "MISSING",
-											"enum": [
-												"PRESENT",
-												"MISSING"
-											]
-										},
-										"display_payment_method": {
-											"description": "Card to reference in the UI, e.g. \"use card ending 1234\".",
+									"anyOf": [
+										{
 											"type": "object",
-											"nullable": true,
 											"properties": {
-												"brand": {
+												"account_payment_method_state": {
+													"description": "Account-level payment-method state derived from the provided list.",
 													"type": "string",
-													"example": "visa"
+													"example": "SUPPORTED_PRESENT",
+													"enum": [
+														"NONE",
+														"UNSUPPORTED_ONLY",
+														"SUPPORTED_PRESENT",
+														"UNKNOWN"
+													]
 												},
-												"last4": {
+												"aig_customer_state": {
+													"description": "AI Gateway billing profile resolution outcome.",
 													"type": "string",
-													"example": "1234"
+													"example": "RESOLVED",
+													"enum": [
+														"RESOLVED",
+														"RESOLUTION_FAILED"
+													]
+												},
+												"aig_default_payment_method_state": {
+													"description": "Whether AI Gateway billing has a default payment method.",
+													"type": "string",
+													"example": "MISSING",
+													"enum": [
+														"PRESENT",
+														"MISSING"
+													]
+												},
+												"display_payment_method": {
+													"description": "Card to reference in the UI, e.g. \"use card ending 1234\".",
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"brand": {
+															"type": "string",
+															"example": "visa"
+														},
+														"last4": {
+															"type": "string",
+															"example": "1234"
+														}
+													},
+													"required": [
+														"last4"
+													]
+												},
+												"eligible": {
+													"description": "True only when reason === ELIGIBLE.",
+													"type": "boolean",
+													"example": false
+												},
+												"reason": {
+													"description": "Canonical eligibility outcome for display and support triage.",
+													"type": "string",
+													"example": "ACCOUNT_PAYMENT_METHOD_NOT_LINKED_TO_AIG",
+													"enum": [
+														"ELIGIBLE",
+														"NO_ACCOUNT_PAYMENT_METHOD",
+														"UNSUPPORTED_ACCOUNT_PAYMENT_METHOD",
+														"ACCOUNT_PAYMENT_METHOD_NOT_DEFAULT",
+														"ACCOUNT_PAYMENT_METHOD_NOT_LINKED_TO_AIG",
+														"CONTRACT_BILLING_NOT_SELF_SERVE",
+														"AIG_CUSTOMER_RESOLUTION_FAILED",
+														"PENDING_3DS_AUTHENTICATION",
+														"PAYMENT_AUTHENTICATION_FAILED"
+													]
+												},
+												"recommended_action": {
+													"description": "Machine-readable next step.",
+													"type": "string",
+													"example": "USE_EXISTING_CARD",
+													"enum": [
+														"NONE",
+														"ADD_SUPPORTED_PAYMENT_METHOD",
+														"USE_EXISTING_CARD",
+														"SET_CARD_AS_DEFAULT",
+														"CONTACT_SUPPORT",
+														"RESUME_AUTHENTICATION",
+														"RETRY"
+													]
+												},
+												"recoverable": {
+													"description": "Whether the customer can resolve this themselves (vs contact support).",
+													"type": "boolean",
+													"example": true
 												}
 											},
 											"required": [
-												"last4"
+												"eligible",
+												"reason",
+												"recoverable",
+												"recommended_action",
+												"account_payment_method_state",
+												"aig_customer_state",
+												"aig_default_payment_method_state",
+												"display_payment_method"
 											]
 										},
-										"eligible": {
-											"description": "True only when reason === ELIGIBLE.",
-											"type": "boolean",
-											"example": false
-										},
-										"reason": {
-											"description": "Canonical eligibility outcome for display and support triage.",
-											"type": "string",
-											"example": "ACCOUNT_PAYMENT_METHOD_NOT_LINKED_TO_AIG",
-											"enum": [
-												"ELIGIBLE",
-												"NO_ACCOUNT_PAYMENT_METHOD",
-												"UNSUPPORTED_ACCOUNT_PAYMENT_METHOD",
-												"ACCOUNT_PAYMENT_METHOD_NOT_DEFAULT",
-												"ACCOUNT_PAYMENT_METHOD_NOT_LINKED_TO_AIG",
-												"CONTRACT_BILLING_NOT_SELF_SERVE",
-												"AIG_CUSTOMER_RESOLUTION_FAILED",
-												"PENDING_3DS_AUTHENTICATION",
-												"PAYMENT_AUTHENTICATION_FAILED"
+										{
+											"type": "object",
+											"properties": {
+												"advisory": {
+													"type": "boolean",
+													"enum": [
+														true
+													]
+												},
+												"auto_topup": {
+													"type": "object",
+													"properties": {
+														"default_payment_method_id": {
+															"type": "string",
+															"nullable": true
+														},
+														"eligible_payment_method_ids": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"reason": {
+															"type": "string",
+															"enum": [
+																"ELIGIBLE",
+																"NO_ACCOUNT_PAYMENT_METHOD",
+																"UNSUPPORTED_ACCOUNT_PAYMENT_METHOD",
+																"ACCOUNT_PAYMENT_METHOD_NOT_DEFAULT",
+																"ACCOUNT_PAYMENT_METHOD_NOT_LINKED_TO_AIG",
+																"CONTRACT_BILLING_NOT_SELF_SERVE",
+																"ELIGIBILITY_UNAVAILABLE",
+																"INVALID_PAYMENT_METHOD_SELECTION",
+																"PAYMENT_METHOD_EXPIRED",
+																"FIRST_TOPUP_REQUIRED",
+																"AUTO_TOPUP_SETUP_REQUIRED",
+																"AUTO_TOPUP_NOT_CONFIGURED",
+																"ACCOUNT_PAYMENT_METHOD_DEFAULT_MISSING",
+																"ACCOUNT_POLICY_UNAVAILABLE"
+															]
+														},
+														"recommended_action": {
+															"type": "string",
+															"enum": [
+																"NONE",
+																"ADD_SUPPORTED_PAYMENT_METHOD",
+																"USE_EXISTING_CARD",
+																"SET_CARD_AS_DEFAULT",
+																"CONTACT_SUPPORT",
+																"RETRY",
+																"SELECT_SUPPORTED_PAYMENT_METHOD",
+																"COMPLETE_MANUAL_TOPUP",
+																"AUTHENTICATE_CARD",
+																"CONFIGURE_AUTO_TOPUP"
+															]
+														},
+														"status": {
+															"type": "string",
+															"enum": [
+																"eligible",
+																"ineligible",
+																"unavailable"
+															]
+														}
+													},
+													"required": [
+														"status",
+														"reason",
+														"recommended_action",
+														"eligible_payment_method_ids",
+														"default_payment_method_id"
+													]
+												},
+												"contract_version": {
+													"type": "number",
+													"enum": [
+														2
+													]
+												},
+												"evaluated_at": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"manual_topup": {
+													"type": "object",
+													"properties": {
+														"default_payment_method_id": {
+															"type": "string",
+															"nullable": true
+														},
+														"eligible_payment_method_ids": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"reason": {
+															"type": "string",
+															"enum": [
+																"ELIGIBLE",
+																"NO_ACCOUNT_PAYMENT_METHOD",
+																"UNSUPPORTED_ACCOUNT_PAYMENT_METHOD",
+																"ACCOUNT_PAYMENT_METHOD_NOT_DEFAULT",
+																"ACCOUNT_PAYMENT_METHOD_NOT_LINKED_TO_AIG",
+																"CONTRACT_BILLING_NOT_SELF_SERVE",
+																"ELIGIBILITY_UNAVAILABLE",
+																"INVALID_PAYMENT_METHOD_SELECTION",
+																"PAYMENT_METHOD_EXPIRED",
+																"FIRST_TOPUP_REQUIRED",
+																"AUTO_TOPUP_SETUP_REQUIRED",
+																"AUTO_TOPUP_NOT_CONFIGURED",
+																"ACCOUNT_PAYMENT_METHOD_DEFAULT_MISSING",
+																"ACCOUNT_POLICY_UNAVAILABLE"
+															]
+														},
+														"recommended_action": {
+															"type": "string",
+															"enum": [
+																"NONE",
+																"ADD_SUPPORTED_PAYMENT_METHOD",
+																"USE_EXISTING_CARD",
+																"SET_CARD_AS_DEFAULT",
+																"CONTACT_SUPPORT",
+																"RETRY",
+																"SELECT_SUPPORTED_PAYMENT_METHOD",
+																"COMPLETE_MANUAL_TOPUP",
+																"AUTHENTICATE_CARD",
+																"CONFIGURE_AUTO_TOPUP"
+															]
+														},
+														"status": {
+															"type": "string",
+															"enum": [
+																"eligible",
+																"ineligible",
+																"unavailable"
+															]
+														}
+													},
+													"required": [
+														"status",
+														"reason",
+														"recommended_action",
+														"eligible_payment_method_ids",
+														"default_payment_method_id"
+													]
+												},
+												"payment_methods": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"account_payment_method_id": {
+																"type": "string"
+															},
+															"brand": {
+																"type": "string"
+															},
+															"is_default": {
+																"type": "boolean"
+															},
+															"kind": {
+																"type": "string",
+																"enum": [
+																	"card",
+																	"wallet",
+																	"unsupported"
+																]
+															},
+															"last4": {
+																"type": "string"
+															},
+															"stripe_payment_method_id": {
+																"type": "string",
+																"nullable": true
+															},
+															"wallet_type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"account_payment_method_id",
+															"stripe_payment_method_id",
+															"kind",
+															"is_default"
+														],
+														"type": "object"
+													}
+												}
+											},
+											"required": [
+												"contract_version",
+												"evaluated_at",
+												"advisory",
+												"payment_methods",
+												"manual_topup",
+												"auto_topup"
 											]
-										},
-										"recommended_action": {
-											"description": "Machine-readable next step.",
-											"type": "string",
-											"example": "USE_EXISTING_CARD",
-											"enum": [
-												"NONE",
-												"ADD_SUPPORTED_PAYMENT_METHOD",
-												"USE_EXISTING_CARD",
-												"SET_CARD_AS_DEFAULT",
-												"CONTACT_SUPPORT",
-												"RESUME_AUTHENTICATION",
-												"RETRY"
-											]
-										},
-										"recoverable": {
-											"description": "Whether the customer can resolve this themselves (vs contact support).",
-											"type": "boolean",
-											"example": true
 										}
-									},
-									"required": [
-										"eligible",
-										"reason",
-										"recoverable",
-										"recommended_action",
-										"account_payment_method_state",
-										"aig_customer_state",
-										"aig_default_payment_method_state",
-										"display_payment_method"
 									]
 								},
 								"result_info": {
@@ -6229,6 +6441,92 @@
 			},
 			"404": {
 				"description": "Not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"action": {
+												"type": "string",
+												"enum": [
+													"contact_support",
+													"contact_bank",
+													"change_payment_method",
+													"update_payment_details",
+													"authenticate",
+													"retry_authentication",
+													"restart_card_setup",
+													"wait",
+													"retry_later"
+												]
+											},
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"no_default_card",
+													"payment_declined",
+													"issuer_declined",
+													"insufficient_funds",
+													"expired_card",
+													"incorrect_cvc",
+													"incorrect_postal_code",
+													"incorrect_address",
+													"incorrect_card_number",
+													"invalid_expiry",
+													"card_limit_exceeded",
+													"card_not_supported",
+													"currency_not_supported",
+													"prepaid_card_not_supported",
+													"authentication_required",
+													"authentication_failed",
+													"card_not_3ds_capable",
+													"card_setup_canceled",
+													"card_setup_processing",
+													"card_setup_incomplete",
+													"card_setup_not_started",
+													"payment_temporarily_unavailable"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Explicit V2 is unavailable for this account, including flag fallback.",
 				"content": {
 					"application/json": {
 						"schema": {
