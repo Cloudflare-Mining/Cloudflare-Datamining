@@ -4,33 +4,33 @@ description: Cloudflare press coverage, press releases, industry awards, and med
 image: https://www.cloudflare.com/preview.png
 ---
 
- Time 
+ TED2026 
 
-##  TIME100 AI 2025 
+##  TED2026: Matthew Prince 
 
- Meet the innovators, leaders, and thinkers reshaping our world through groundbreaking advances in artificial intelligence. Cloudflare Co-founder and CEO, Matthew Prince listed #1 on TIME's list. 
+ "How AI is breaking the Internet (and what to do about it)" 
 
-[View coverage](https://time.com/collections/time100-ai-2025/) 
+[View talk](https://www.ted.com/talks/matthew%5Fprince%5Fhow%5Fai%5Fis%5Fbreaking%5Fthe%5Finternet%5Fand%5Fwhat%5Fto%5Fdo%5Fabout%5Fit) 
 
-![Press hero image](https://cf-assets.www.cloudflare.com/v2/image/ek78in4rbp2rf01mutfmiqdo5o/press_releases-hero_image.png) 
+[ ![Press hero image](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5A1s9dRfoTUn45iheBzk4v/4e3bbe477fbbc107440f9ca81800eb81/TED2026_Matthew_Prince.png) ](https://www.ted.com/talks/matthew%5Fprince%5Fhow%5Fai%5Fis%5Fbreaking%5Fthe%5Finternet%5Fand%5Fwhat%5Fto%5Fdo%5Fabout%5Fit) 
 
 Featured in 
 
 ### Recent news
 
-[  Bloomberg Tech  OpenAI President and Cloudflare CEO on Preventing a Cyberattack October 2026 View coverage → ](https://www.youtube.com/watch?v=gWZY9sKeg7o)[  Fortune  Cloudflare Launches Tool for Businesses to Charge AI Agents with Stablecoins September 2026 View coverage → ](https://fortune.com/2026/09/30/cloudflare-tool-businesses-ai-agents-stablecoins/)[  CNBC Mad Money  In the next two years cybersecurity companies will be busier than ever, says Cloudflare CEO Matthew Prince June 2026 View coverage → ](https://drive.google.com/file/d/1UfnKvd9JPOD6ZIzRXyCow6Tn-nSTLbtI/view) 
+[  Bloomberg Tech  OpenAI President and Cloudflare CEO on Preventing a Cyberattack October 2026 View coverage ](https://www.youtube.com/watch?v=gWZY9sKeg7o)[  Fortune  Cloudflare Launches Tool for Businesses to Charge AI Agents with Stablecoins September 2026 View coverage ](https://fortune.com/2026/09/30/cloudflare-tool-businesses-ai-agents-stablecoins/)[  CNBC Mad Money  In the next two years cybersecurity companies will be busier than ever, says Cloudflare CEO Matthew Prince June 2026 View coverage ](https://drive.google.com/file/d/1UfnKvd9JPOD6ZIzRXyCow6Tn-nSTLbtI/view) 
 
 [View recent news](/press/coverage/) 
 
 ### Press releases
 
-[ Press release  Cloudflare Appoints Christian Smith as President of Revenue November 5, 2026 View release → ](/press/press-releases/2026/cloudflare-appoints-christian-smith-as-president-of-revenue/)[ Press release  Cloudflare Announces Third Quarter 2026 Financial Results November 5, 2026 View release → ](/press/press-releases/2026/cloudflare-announces-third-quarter-2026-financial-results/)[ Press release  More than 10 Million Developers Are Building on Cloudflare October 20, 2026 View release → ](https://www.cloudflare.com/press/press-releases/2026/more-than-10-million-developers-are-building-on-cloudflare/) 
+[ Press release  Cloudflare Appoints Christian Smith as President of Revenue November 5, 2026 View release ](/press/press-releases/2026/cloudflare-appoints-christian-smith-as-president-of-revenue/)[ Press release  Cloudflare Announces Third Quarter 2026 Financial Results November 5, 2026 View release ](/press/press-releases/2026/cloudflare-announces-third-quarter-2026-financial-results/)[ Press release  More than 10 Million Developers Are Building on Cloudflare October 20, 2026 View release ](https://www.cloudflare.com/press/press-releases/2026/more-than-10-million-developers-are-building-on-cloudflare/) 
 
 [View press releases](/press/press-releases/) 
 
 ### Industry and press awards
 
-[ ![Fast Company Most Innovative Companies](https://asset-proxy-staging.mrk.cfdata.org/dzlvafdwdttg/75q4MxVtxIu74Q6Sjd6yth/d2982edcafd8148fa0a50a7a3aa491ad/fast_company_2026_fixed.png)  Fast Company  2026 Most Innovative Companies #21 Overall + #1 in Media and News View award → ](https://www.fastcompany.com/91502033/cloudflare-most-innovative-companies-2026)[ ![2026 TIME America's Best Companies](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/12mRMUdYvswXuC2qnBwgNo/2fb604db885009a0661b879b5e4bbd5d/TIME_America-s_Best_Companies_2026.png)  TIME  TIME America's Best Companies 2026 View award → ](https://time.com/article/2026/07/09/americas-best-companies-2026/)[ ![Business Insider AI Power List 2026](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/6n4pMMy87FhzVOAZ7bru9P/0b953124a1ae68d7be4b366b5684534a/Business_Insider_AI_Power_List_2026.png)  Business Insider  AI Power List 2026 View award → ](https://www.businessinsider.com/ai-power-list#)[ ![Webby Awards 2026](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/6fxsm7iKAfsRDq8FA5AxBG/55d5bafdf65a7569d72078e9923272e0/Site_Badges_2026_bw_webby_nominee.webp)  Webby Awards  Webby Awards Best Responsible AI Implementation Top 5 Finalist 2026 View award → ](https://winners.webbyawards.com/2026/ai/ai-features-innovation/best-responsible-ai-implementation/372739/cloudflare-ai-crawl-control) 
+[ ![Fast Company Most Innovative Companies](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/4sQAGzlIGyKZ0BxzbiobBP/080746cf41022b7acfcc9f7cb1d6752f/Fast_Company_Most_Innovative_Companies.png)  Fast Company  Most Innovative Companies #21 Overall + #1 in Media and News 2026 View award ](https://www.fastcompany.com/91502033/cloudflare-most-innovative-companies-2026)[ ![2026 TIME America's Best Companies](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/12mRMUdYvswXuC2qnBwgNo/2fb604db885009a0661b879b5e4bbd5d/TIME_America-s_Best_Companies_2026.png)  TIME  America's Best Companies 2026 View award ](https://time.com/article/2026/07/09/americas-best-companies-2026/)[ ![Business Insider AI Power List 2026](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/6n4pMMy87FhzVOAZ7bru9P/0b953124a1ae68d7be4b366b5684534a/Business_Insider_AI_Power_List_2026.png)  Business Insider  AI Power List 2026 View award ](https://www.businessinsider.com/ai-power-list#)[ ![Webby Awards 2026](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/6fxsm7iKAfsRDq8FA5AxBG/55d5bafdf65a7569d72078e9923272e0/Site_Badges_2026_bw_webby_nominee.webp)  Webby Awards  Best Responsible AI Implementation Top 5 Finalist 2026 View award ](https://winners.webbyawards.com/2026/ai/ai-features-innovation/best-responsible-ai-implementation/372739/cloudflare-ai-crawl-control) 
 
 [View awards](/press/awards/) 
 
