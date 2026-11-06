@@ -26,6 +26,10 @@
 	"account-oauth-policy": {
 		"true": 100
 	},
+	"account-team-component": {
+		"false": 69,
+		"true": 31
+	},
 	"account-traffic-analytics": {
 		"true": 100
 	},
@@ -125,6 +129,9 @@
 	"aig-send-payment-method-id": {
 		"true": 100
 	},
+	"aig-topup-eligibility-v2": {
+		"false": 100
+	},
 	"aig-wobs-dataset": {
 		"false": 100
 	},
@@ -192,16 +199,13 @@
 		"true": 100
 	},
 	"billing-modular-checkout-orchestrator-invoices": {
-		"true": 89,
-		"false": 11
+		"true": 100
 	},
 	"billing-modular-checkout-orchestrator-registrar": {
-		"true": 91,
-		"false": 10
+		"true": 100
 	},
 	"billing-modular-checkout-orchestrator-subscription": {
-		"true": 90,
-		"false": 10
+		"true": 100
 	},
 	"billing-no-profile-payment-method-only": {
 		"true": 100
@@ -256,6 +260,10 @@
 	},
 	"billing-unified-checkout-r2": {
 		"true": 100
+	},
+	"billing-unified-checkout-realtimekit": {
+		"false": 81,
+		"true": 19
 	},
 	"billing-unified-checkout-smart-shield": {
 		"true": 100
@@ -448,9 +456,6 @@
 	},
 	"deseng-browser-run-rename": {
 		"true": 100
-	},
-	"deseng-create-application-menu": {
-		"false": 100
 	},
 	"deseng-create-architecture": {
 		"false": 100

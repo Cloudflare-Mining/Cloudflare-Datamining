@@ -30,7 +30,7 @@
 		"enabled": true
 	},
 	"account-team-component": {
-		"enabled": false
+		"enabled": true
 	},
 	"account-traffic-analytics": {
 		"enabled": true
@@ -221,6 +221,9 @@
 		"enabled": true
 	},
 	"aig-send-payment-method-id": {
+		"enabled": true
+	},
+	"aig-topup-eligibility-v2": {
 		"enabled": true
 	},
 	"aig-wobs-dataset": {
@@ -475,7 +478,7 @@
 		"enabled": true
 	},
 	"billing-unified-checkout-realtimekit": {
-		"enabled": false
+		"enabled": true
 	},
 	"billing-unified-checkout-registrar": {
 		"enabled": false
@@ -640,7 +643,7 @@
 		"enabled": false
 	},
 	"cfone-threat-events-new-layout": {
-		"enabled": false
+		"enabled": true
 	},
 	"cfone-threat-intelligence-overview": {
 		"enabled": true
@@ -1243,6 +1246,9 @@
 	"display-realtimekit-on-billable-usage": {
 		"enabled": false
 	},
+	"dns-cursor-pagination": {
+		"enabled": false
+	},
 	"dns-experience-enterprise": {
 		"enabled": true
 	},
@@ -1458,6 +1464,9 @@
 	},
 	"email-sending-account-nav": {
 		"enabled": true
+	},
+	"email-sending-all-plans": {
+		"enabled": false
 	},
 	"email-sending-scoped-suppressions": {
 		"enabled": true
@@ -2734,9 +2743,6 @@
 	"security-insights-riskrecon": {
 		"enabled": true
 	},
-	"security-legacy-navigation": {
-		"enabled": false
-	},
 	"security-overview-all-suggestions": {
 		"enabled": true
 	},
@@ -3035,6 +3041,9 @@
 	},
 	"top-level-tunnels": {
 		"enabled": true
+	},
+	"top-n-in-place-scrolling": {
+		"enabled": false
 	},
 	"total-tls": {
 		"enabled": true
