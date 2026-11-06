@@ -1,77 +1,54 @@
 ---
-title: Build the next GitHub | Cloudflare Challenge
-description: Build a new way for hundreds of thousands of agents to work on changes concurrently.
-image: https://www.cloudflare.com/preview.png
+title: "Cloudflare Artifacts - Versioned Git-compatible storage for agents"
+description: "Versioned, Git-compatible storage built for the era of agents. Create millions of repositories, fork from GitHub, and give every agent its own branch."
+url: "https://www.cloudflare.com/products/artifacts"
 ---
 
-Play Tetris
+# Artifacts
 
-Tetris ready.
+> Give your agents, developers, and automations a home for code and data. Artifacts is Git-compatible storage built for scale: create tens of millions of repos, fork from any remote, and hand off a URL to any Git client.
 
-Cloudflare Challenge/Submissions closed
+## Benefits
 
-# Build the next GitHub.
+### Git compatible
 
-Build a new way for hundreds of thousands of agents to work on changes concurrently.
+Agents know git. Every repository can act as a git repo, allowing agents to interact with Artifacts the way they know best: using the git CLI.
 
-[Explore Artifacts](https://developers.cloudflare.com/artifacts/)
+### Programmable
 
-## How it works
+Create repos, new branches, commit, diff and search. All programmatically, without waiting.
 
-We want you to build a new way for multiple agents to work on changes concurrently. Feel free to rethink repositories, branches, pull requests, worktrees, code review, and merge conflicts.
+### Tens of millions of repos
 
-**Get creative with it.**
+Create a thousand, a million or ten million repos: one for every agent, for every upstream branch, or every user. No need to plan ahead.
 
-![](/git-competition/icon-artifacts.svg)
+## Use Cases
 
-**Build your project**
+### Agent workspaces
 
-Create a new way for multiple agents to work on changes concurrently.
+Give coding agents isolated, versioned environments. Fork from a shared baseline, let the agent commit its work, then diff against the original.
 
-![](/git-competition/icon-workflows.svg)
+### Config versioning
 
-**Submit your project**
+Track configuration changes across deploys with full Git history, branching, and rollback. Every change is attributed and reversible.
 
-Send a 5 to 10 minute demo, open source code, and instructions to run it by October 14.
+### Platform-managed repos
 
-![](/git-competition/icon-code.svg)
+Build Git-backed features for your users: notebooks, IaC, generated content. No Git infrastructure to run.
 
-**Three teams advance**
+## Resources
 
-Selected teams are announced October 16\. We will fly up to two members from each team to Connect.
+- [Full Documentation](https://developers.cloudflare.com/artifacts/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
 
-[View Rules](/documents/build-next-gen-git-platform-competition-terms.pdf)
+## Related Products
 
-## What finalists get to do.
+- [K2](/products/k2.md): Durable event streams
+- [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
+- [D1](/products/d1.md): Serverless SQL
+- [Basin](/products/data-platform.md): Ingest, manage & query analytics data
 
-Every finalist team comes to Cloudflare Connect to present in San Francisco.
+---
 
-### The first-place team also wins
-
-**$25K**
-
-in Cloudflare credits, plus invitations to the VIP speaker dinner on Monday night.
-
-![](/git-competition/icon-finalist-team.svg)
-
-**Earn a finalist spot**
-
-Three finalist teams are announced October 16.
-
-![](/git-competition/icon-finalist-connect.svg)
-
-**Travel to Connect**
-
-Cloudflare covers travel and event attendance for up to two people per team.
-
-![](/git-competition/icon-finalist-present.svg)
-
-**Demo in San Francisco**
-
-Finalists demo their work at Cloudflare Connect in San Francisco.
-
-```json
-{"@context":"https://schema.org","@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com","logo":"https://www.cloudflare.com/logo.svg","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"]}
-{"@context":"https://schema.org","@type":"WebSite","name":"Cloudflare","url":"https://www.cloudflare.com","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://www.cloudflare.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
-{"@context":"https://schema.org","@type":"WebPage","name":"Build the next GitHub | Cloudflare Challenge","description":"Build a new way for hundreds of thousands of agents to work on changes concurrently.","url":"https://www.cloudflare.com/git-competition/","inLanguage":"en"}
-```
+*This is a markdown version of [https://www.cloudflare.com/products/artifacts](https://www.cloudflare.com/products/artifacts) for AI/LLM consumption.*
