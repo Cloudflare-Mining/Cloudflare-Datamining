@@ -18,13 +18,13 @@ Featured in
 
 ### Recent news
 
-[  Bloomberg Tech  OpenAI President and Cloudflare CEO on Preventing a Cyberattack October 2026 View coverage → ](https://www.youtube.com/watch?v=gWZY9sKeg7o)[  Fortune  Cloudflare Launches Tool for Businesses to Charge AI Agents with Stablecoins September 2026 View coverage → ](https://fortune.com/2026/09/30/cloudflare-tool-businesses-ai-agents-stablecoins/)[  Forbes  In the next two years cybersecurity companies will be busier than ever, says Cloudflare CEO Matthew Prince June 2026 View coverage → ](https://drive.google.com/file/d/1UfnKvd9JPOD6ZIzRXyCow6Tn-nSTLbtI/view) 
+[  Bloomberg Tech  OpenAI President and Cloudflare CEO on Preventing a Cyberattack October 2026 View coverage → ](https://www.youtube.com/watch?v=gWZY9sKeg7o)[  Fortune  Cloudflare Launches Tool for Businesses to Charge AI Agents with Stablecoins September 2026 View coverage → ](https://fortune.com/2026/09/30/cloudflare-tool-businesses-ai-agents-stablecoins/)[  CNBC Mad Money  In the next two years cybersecurity companies will be busier than ever, says Cloudflare CEO Matthew Prince June 2026 View coverage → ](https://drive.google.com/file/d/1UfnKvd9JPOD6ZIzRXyCow6Tn-nSTLbtI/view) 
 
 [View recent news](/press/coverage/) 
 
 ### Press releases
 
-[ Press release  More than 10 Million Developers Are Building on Cloudflare October 20, 2026 View release → ](https://www.cloudflare.com/press/press-releases/2026/more-than-10-million-developers-are-building-on-cloudflare/)[ Press release  Cloudflare's AI Workspace Platform Partners with Leading Applications and Deployment Teams to Make AI Productive in the Enterprise October 19, 2026 View release → ](/press/press-releases/2026/cloudflares-ai-workspace-platform-partners-with-leading-applications-and-deployment-teams-to-make-ai-productive-in-the-enterprise/)[ Press release  Cloudflare Launches Basin: A More Open and Accessible Data Platform for Developers October 1, 2026 View release → ](/press/press-releases/2026/cloudflare-launches-basin-a-more-open-and-accessible-data-platform-for-developers/) 
+[ Press release  Cloudflare Appoints Christian Smith as President of Revenue November 5, 2026 View release → ](/press/press-releases/2026/cloudflare-appoints-christian-smith-as-president-of-revenue/)[ Press release  Cloudflare Announces Third Quarter 2026 Financial Results November 5, 2026 View release → ](/press/press-releases/2026/cloudflare-announces-third-quarter-2026-financial-results/)[ Press release  More than 10 Million Developers Are Building on Cloudflare October 20, 2026 View release → ](https://www.cloudflare.com/press/press-releases/2026/more-than-10-million-developers-are-building-on-cloudflare/) 
 
 [View press releases](/press/press-releases/) 
 

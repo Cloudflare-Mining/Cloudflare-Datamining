@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 6, 2026 [<h2>The post-quantum future of web privacy</h2>](https://blog.cloudflare.com/vole-mole/)
+
+Cryptographic protocols like Privacy Pass help keep web sites safe from abuse while keeping their users private. This post looks at the quantum threat to these protocols, and some new post-quantum cryptography that may help close the gap.
+
+![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Tianyu Zhang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6PDD81NY8F4R6FG4RZ2S286.01M6PDD8JHSWE3HSFKM2421WPN.png&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/),  [Tianyu Zhang](https://blog.cloudflare.com/author/tianyu-zhang/), and  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6RNKQ9RKEJ9CKY6DGNF44RV.01M6RNKRJAQTN05BV66646AM7Z.png&w=2400&h=1350&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/vole-mole/)
+
 November 5, 2026 [<h2>Agents aren't humans (but they kinda are)</h2>](https://blog.cloudflare.com/trusted-agent-delegation/)
 
 AI agents act for millions, but servers see intermediaries that strip user visibility. This post defines the problem space and introduces a collaborative approach to safely identifying, allowing, and managing this automated traffic.
@@ -17,8 +27,6 @@ AI agents act for millions, but servers see intermediaries that strip user visib
 ![Bryan Becker](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PPX6Y9F64M9HHDMGBP2Q.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6HXVQ0MH26TMB3HFFHA31DK.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/trusted-agent-delegation/)
 
 November 4, 2026 [<h2>See the agents, set the terms: new visibility and control for personal agents</h2>](https://blog.cloudflare.com/personal-agents-visibility-control/)
 
@@ -155,14 +163,6 @@ Cloudflare is collaborating on tsrs, a Rust port of TypeScript that is up to 8x 
 ![Boshen Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5C7JZ4TPA6B0GAEA4J5ZRKH.01M5C7JZV2GMV8Y2BJ76CF88BP.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Dimitri Mitropoulos](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498DEF6RX03R0G7TNW7CR3.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christoph Nakazawa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EX98BAG8QN2EG73TZW7RKE.01M4EX98Y0AM8PEJP2VR66W6PN.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Boshen Chen](https://blog.cloudflare.com/author/boshen-chen/),  [Dimitri Mitropoulos](https://blog.cloudflare.com/author/dimitri-mitropoulos/), and  [Christoph Nakazawa](https://blog.cloudflare.com/author/christoph-nakazawa/)
-
-October 19, 2026 [<h2>Cutting our inference bill by 68% by being obsessive about optimization</h2>](https://blog.cloudflare.com/obsessive-inference-optimization/)
-
-When our AI code reviewer's cost per run doubled, we dug into the token usage to find out why. Learn how we used prompt caching and intelligent model routing to slash our inference bill by 68% while speeding up reviews.
-
-![Ryan Skidmore](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4736HQYPXSX6SERG1KRMXW.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Ryan Skidmore](https://blog.cloudflare.com/author/ryan-skidmore/)
 
 Load more
 
