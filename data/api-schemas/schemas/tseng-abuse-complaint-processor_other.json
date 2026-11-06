@@ -5067,6 +5067,38 @@
 					}
 				}
 			},
+			"409": {
+				"description": "The report-level appeal was rejected because the report already has an open,\nundecided appeal (\"An appeal is already open for this report\"), or has reached its\nper-report appeal limit (\"This report has reached its appeal limit\").",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										]
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
 			"500": {
 				"description": "Failed to request review on delayed action.",
 				"content": {

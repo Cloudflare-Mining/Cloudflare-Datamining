@@ -4906,6 +4906,92 @@
 						}
 					}
 				}
+			},
+			"503": {
+				"description": "Top-up is temporarily unavailable; no payment was initiated.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"action": {
+												"type": "string",
+												"enum": [
+													"contact_support",
+													"contact_bank",
+													"change_payment_method",
+													"update_payment_details",
+													"authenticate",
+													"retry_authentication",
+													"restart_card_setup",
+													"wait",
+													"retry_later"
+												]
+											},
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"no_default_card",
+													"payment_declined",
+													"issuer_declined",
+													"insufficient_funds",
+													"expired_card",
+													"incorrect_cvc",
+													"incorrect_postal_code",
+													"incorrect_address",
+													"incorrect_card_number",
+													"invalid_expiry",
+													"card_limit_exceeded",
+													"card_not_supported",
+													"currency_not_supported",
+													"prepaid_card_not_supported",
+													"authentication_required",
+													"authentication_failed",
+													"card_not_3ds_capable",
+													"card_setup_canceled",
+													"card_setup_processing",
+													"card_setup_incomplete",
+													"card_setup_not_started",
+													"payment_temporarily_unavailable"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -5535,6 +5621,92 @@
 			},
 			"409": {
 				"description": "Card setup is incomplete or already used, the default payment method changed, or synchronous activation disabled auto top-up.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"action": {
+												"type": "string",
+												"enum": [
+													"contact_support",
+													"contact_bank",
+													"change_payment_method",
+													"update_payment_details",
+													"authenticate",
+													"retry_authentication",
+													"restart_card_setup",
+													"wait",
+													"retry_later"
+												]
+											},
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"no_default_card",
+													"payment_declined",
+													"issuer_declined",
+													"insufficient_funds",
+													"expired_card",
+													"incorrect_cvc",
+													"incorrect_postal_code",
+													"incorrect_address",
+													"incorrect_card_number",
+													"invalid_expiry",
+													"card_limit_exceeded",
+													"card_not_supported",
+													"currency_not_supported",
+													"prepaid_card_not_supported",
+													"authentication_required",
+													"authentication_failed",
+													"card_not_3ds_capable",
+													"card_setup_canceled",
+													"card_setup_processing",
+													"card_setup_incomplete",
+													"card_setup_not_started",
+													"payment_temporarily_unavailable"
+												]
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Auto top-up setup is temporarily unavailable. Please try again later.",
 				"content": {
 					"application/json": {
 						"schema": {

@@ -528,7 +528,7 @@
 														"example": false,
 														"default": false,
 														"x-auditable": true,
-														"x-stainless-terraform-configurability": "optional"
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"dns_destination_ips_id": {
 														"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -749,7 +749,7 @@
 														"required": [
 															"mode"
 														],
-														"x-stainless-terraform-configurability": "optional"
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"name": {
 														"description": "Specify the location name.",
@@ -775,7 +775,7 @@
 															]
 														},
 														"nullable": true,
-														"x-stainless-terraform-configurability": "optional"
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"updated_at": {
 														"type": "string",
@@ -925,7 +925,7 @@
 																"example": false,
 																"default": false,
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"dns_destination_ips_id": {
 																"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -1146,7 +1146,7 @@
 																"required": [
 																	"mode"
 																],
-																"x-stainless-terraform-configurability": "optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"name": {
 																"description": "Specify the location name.",
@@ -1172,7 +1172,7 @@
 																	]
 																},
 																"nullable": true,
-																"x-stainless-terraform-configurability": "optional"
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"updated_at": {
 																"type": "string",
@@ -1423,7 +1423,7 @@
 													"example": false,
 													"default": false,
 													"x-auditable": true,
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"dns_destination_ips_id": {
 													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -1644,7 +1644,7 @@
 													"required": [
 														"mode"
 													],
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -1670,7 +1670,7 @@
 														]
 													},
 													"nullable": true,
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"updated_at": {
 													"type": "string",
@@ -1787,7 +1787,7 @@
 															"example": false,
 															"default": false,
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"dns_destination_ips_id": {
 															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -2008,7 +2008,7 @@
 															"required": [
 																"mode"
 															],
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -2034,7 +2034,7 @@
 																]
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"updated_at": {
 															"type": "string",
@@ -2197,7 +2197,7 @@
 								"example": false,
 								"default": false,
 								"x-auditable": true,
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"dns_destination_ips_id": {
 								"description": "Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.",
@@ -2374,7 +2374,7 @@
 								"required": [
 									"mode"
 								],
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "Specify the location name.",
@@ -2400,7 +2400,7 @@
 									]
 								},
 								"nullable": true,
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -2507,7 +2507,7 @@
 													"example": false,
 													"default": false,
 													"x-auditable": true,
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"dns_destination_ips_id": {
 													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -2728,7 +2728,7 @@
 													"required": [
 														"mode"
 													],
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -2754,7 +2754,7 @@
 														]
 													},
 													"nullable": true,
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"updated_at": {
 													"type": "string",
@@ -2871,7 +2871,7 @@
 															"example": false,
 															"default": false,
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"dns_destination_ips_id": {
 															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -3092,7 +3092,7 @@
 															"required": [
 																"mode"
 															],
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -3118,7 +3118,7 @@
 																]
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"updated_at": {
 															"type": "string",
@@ -3290,7 +3290,7 @@
 								"example": false,
 								"default": false,
 								"x-auditable": true,
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"dns_destination_ips_id": {
 								"description": "Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.",
@@ -3467,7 +3467,7 @@
 								"required": [
 									"mode"
 								],
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "Specify the location name.",
@@ -3493,7 +3493,7 @@
 									]
 								},
 								"nullable": true,
-								"x-stainless-terraform-configurability": "optional"
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -3600,7 +3600,7 @@
 													"example": false,
 													"default": false,
 													"x-auditable": true,
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"dns_destination_ips_id": {
 													"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -3821,7 +3821,7 @@
 													"required": [
 														"mode"
 													],
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -3847,7 +3847,7 @@
 														]
 													},
 													"nullable": true,
-													"x-stainless-terraform-configurability": "optional"
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"updated_at": {
 													"type": "string",
@@ -3964,7 +3964,7 @@
 															"example": false,
 															"default": false,
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"dns_destination_ips_id": {
 															"description": "Indicate the identifier of the pair of IPv4 addresses assigned to this location.",
@@ -4185,7 +4185,7 @@
 															"required": [
 																"mode"
 															],
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -4211,7 +4211,7 @@
 																]
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "optional"
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"updated_at": {
 															"type": "string",
