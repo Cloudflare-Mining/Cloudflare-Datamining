@@ -13507,6 +13507,8 @@
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"dispatchNamespaceName": "The name of the script's dispatch namespace",
 		"environmentName": "The name of the script environment",
+		"eventType": "How the Worker was invoked: fetch, rpc, cron, alarm, queue, email, tail, websocket (Durable Object hibernatable WebSocket event), connectTcp (TCP connection to the connect handler) or connectUdp (UDP flow to the connect handler). unknown for other invocation types and for data before this field was added.",
+		"httpResponseStatus": "HTTP status code the Worker responded with. 0 if the invocation was not an HTTP request or the Worker did not send a response.",
 		"isDispatcher": "Whether the request is from a Dispatch Worker. Non-zero if true",
 		"isPreview": "Whether this invocation is for a preview. 1 if preview, 0 if not.",
 		"previewSlug": "The name (slug) of the preview script. Requires an exact scriptName filter.",
@@ -13523,9 +13525,11 @@
 		"__description": "",
 		"cpuTime": "Maximum CPU time for one request - microseconds",
 		"duration": "Maximum duration of one request - GB*s",
+		"gcTimeUs": "Maximum garbage collection time for one Worker invocation - microseconds",
 		"memoryUsageBytes": "Maximum V8 isolate memory usage across Worker invocations - bytes",
 		"requestDuration": "Maximum Request Duration in microseconds",
 		"responseBodySize": "Maximum response body size for one request - bytes",
+		"startupCpuTimeUs": "Maximum CPU time spent starting a Worker isolate, including script parsing, for one Worker invocation - microseconds",
 		"wallTime": "Maximum wall time for one request - microseconds",
 		"wasmMemoryBytes": "Maximum WebAssembly linear memory usage across Worker invocations - bytes"
 	},
@@ -13556,6 +13560,13 @@
 		"durationP95": "Duration 95th percentile - GB*s",
 		"durationP99": "Duration 99th percentile - GB*s",
 		"durationP999": "Duration 99.9th percentile - GB*s",
+		"gcTimeUsP25": "Garbage collection time 25th percentile across Worker invocations - microseconds",
+		"gcTimeUsP50": "Garbage collection time 50th percentile across Worker invocations - microseconds",
+		"gcTimeUsP75": "Garbage collection time 75th percentile across Worker invocations - microseconds",
+		"gcTimeUsP90": "Garbage collection time 90th percentile across Worker invocations - microseconds",
+		"gcTimeUsP95": "Garbage collection time 95th percentile across Worker invocations - microseconds",
+		"gcTimeUsP99": "Garbage collection time 99th percentile across Worker invocations - microseconds",
+		"gcTimeUsP999": "Garbage collection time 99.9th percentile across Worker invocations - microseconds",
 		"memoryUsageBytesP25": "V8 isolate memory usage 25th percentile across Worker invocations - bytes",
 		"memoryUsageBytesP50": "V8 isolate memory usage 50th percentile across Worker invocations - bytes",
 		"memoryUsageBytesP75": "V8 isolate memory usage 75th percentile across Worker invocations - bytes",
@@ -13577,6 +13588,13 @@
 		"responseBodySizeP95": "Response body size 95th percentile - bytes",
 		"responseBodySizeP99": "Response body size 99th percentile - bytes",
 		"responseBodySizeP999": "Response body size 99.9th percentile - bytes",
+		"startupCpuTimeUsP25": "Isolate startup CPU time 25th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+		"startupCpuTimeUsP50": "Isolate startup CPU time 50th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+		"startupCpuTimeUsP75": "Isolate startup CPU time 75th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+		"startupCpuTimeUsP90": "Isolate startup CPU time 90th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+		"startupCpuTimeUsP95": "Isolate startup CPU time 95th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+		"startupCpuTimeUsP99": "Isolate startup CPU time 99th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+		"startupCpuTimeUsP999": "Isolate startup CPU time 99.9th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
 		"wallTimeP25": "Wall time 25th percentile - microseconds",
 		"wallTimeP50": "Wall time 50th percentile - microseconds",
 		"wallTimeP75": "Wall time 75th percentile - microseconds",
@@ -13598,9 +13616,12 @@
 		"cpuTimeUs": "Sum of cpu time in us",
 		"duration": "Sum of Duration - GB*s",
 		"errors": "Sum of Errors",
+		"fullGcCount": "Sum of full (mark-compact) garbage collections that finished during Worker invocations",
+		"gcTimeUs": "Sum of time V8 spent in garbage collection during Worker invocations, already included in cpuTimeUs - microseconds",
 		"requestDuration": "Sum of Request Duration in microseconds",
 		"requests": "Sum of Requests",
 		"responseBodySize": "Sum of Response Body Sizes",
+		"startupCpuTimeUs": "Sum of CPU time spent starting Worker isolates, including script parsing. Not included in cpuTimeUs. Each startup is counted once, on the first invocation to complete on the new isolate - microseconds",
 		"subrequests": "Sum of Subrequests",
 		"wallTime": "Sum of Wall Time"
 	},
@@ -13610,9 +13631,12 @@
 		"cpuTimeUs": "Confidence interval for the corresponding point estimate",
 		"duration": "Confidence interval for the corresponding point estimate",
 		"errors": "Confidence interval for the corresponding point estimate",
+		"fullGcCount": "Confidence interval for the corresponding point estimate",
+		"gcTimeUs": "Confidence interval for the corresponding point estimate",
 		"requestDuration": "Confidence interval for the corresponding point estimate",
 		"requests": "Confidence interval for the corresponding point estimate",
 		"responseBodySize": "Confidence interval for the corresponding point estimate",
+		"startupCpuTimeUs": "Confidence interval for the corresponding point estimate",
 		"subrequests": "Confidence interval for the corresponding point estimate",
 		"wallTime": "Confidence interval for the corresponding point estimate"
 	},
@@ -13751,10 +13775,15 @@
 	},
 	"AccountWorkersSubrequestsAdaptiveGroups": {
 		"__description": "Beta. Workers subrequests with adaptive sampling",
+		"avg": "The average value used for sample interval",
 		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountWorkersSubrequestsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
 	},
 	"AccountWorkersSubrequestsAdaptiveGroupsConfidence": {
 		"__description": "",
@@ -17537,7 +17566,8 @@
 	},
 	"ZoneWorkersZoneInvocationsAdaptiveGroupsAvg": {
 		"__description": "",
-		"avgCpuTime": "Average CPU time used per request (in microseconds)"
+		"avgCpuTime": "Average CPU time used per request (in microseconds)",
+		"sampleInterval": "Average sample interval"
 	},
 	"ZoneWorkersZoneInvocationsAdaptiveGroupsConfidence": {
 		"__description": "",
@@ -17577,9 +17607,14 @@
 	},
 	"ZoneWorkersZoneSubrequestsAdaptiveGroups": {
 		"__description": "Workers subrequests with adaptive sampling",
+		"avg": "The average value used for sample interval",
 		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
+	},
+	"ZoneWorkersZoneSubrequestsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
 	},
 	"ZoneWorkersZoneSubrequestsAdaptiveGroupsConfidence": {
 		"__description": "",

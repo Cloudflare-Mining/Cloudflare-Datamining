@@ -405611,6 +405611,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "coreJobOffset ascending",
+							"isDeprecated": false,
+							"name": "coreJobOffset_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "coreJobOffset descending",
+							"isDeprecated": false,
+							"name": "coreJobOffset_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "date ascending",
 							"isDeprecated": false,
 							"name": "date_ASC"
@@ -405635,15 +405647,15 @@
 						},
 						{
 							"deprecationReason": null,
-							"description": "logpushJobOffset ascending",
+							"description": "edgeJobOffset ascending",
 							"isDeprecated": false,
-							"name": "logpushJobOffset_ASC"
+							"name": "edgeJobOffset_ASC"
 						},
 						{
 							"deprecationReason": null,
-							"description": "logpushJobOffset descending",
+							"description": "edgeJobOffset descending",
 							"isDeprecated": false,
-							"name": "logpushJobOffset_DESC"
+							"name": "edgeJobOffset_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -405680,6 +405692,18 @@
 							"description": "sum(billableBytes) descending",
 							"isDeprecated": false,
 							"name": "sum_billableBytes_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "unbilledDataset ascending",
+							"isDeprecated": false,
+							"name": "unbilledDataset_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "unbilledDataset descending",
+							"isDeprecated": false,
+							"name": "unbilledDataset_DESC"
 						}
 					],
 					"fields": [],
@@ -703109,6 +703133,38 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "How the Worker was invoked: fetch, rpc, cron, alarm, queue, email, tail, websocket (Durable Object hibernatable WebSocket event), connectTcp (TCP connection to the connect handler) or connectUdp (UDP flow to the connect handler). unknown for other invocation types and for data before this field was added.",
+							"isDeprecated": false,
+							"name": "eventType",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "HTTP status code the Worker responded with. 0 if the invocation was not an HTTP request or the Worker did not send a response.",
+							"isDeprecated": false,
+							"name": "httpResponseStatus",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint16",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Whether the request is from a Dispatch Worker. Non-zero if true",
 							"isDeprecated": false,
 							"name": "isDispatcher",
@@ -704461,6 +704517,228 @@
 						{
 							"defaultValue": null,
 							"description": "",
+							"name": "eventType",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "eventType_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "httpResponseStatus",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "httpResponseStatus_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "httpResponseStatus_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "httpResponseStatus_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint16",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "httpResponseStatus_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "httpResponseStatus_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "httpResponseStatus_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "httpResponseStatus_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint16",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
 							"name": "isDispatcher",
 							"type": {
 								"kind": "SCALAR",
@@ -705419,6 +705697,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Maximum garbage collection time for one Worker invocation - microseconds",
+							"isDeprecated": false,
+							"name": "gcTimeUs",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Maximum V8 isolate memory usage across Worker invocations - bytes",
 							"isDeprecated": false,
 							"name": "memoryUsageBytes",
@@ -705454,6 +705748,22 @@
 							"description": "Maximum response body size for one request - bytes",
 							"isDeprecated": false,
 							"name": "responseBodySize",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Maximum CPU time spent starting a Worker isolate, including script parsing, for one Worker invocation - microseconds",
+							"isDeprecated": false,
+							"name": "startupCpuTimeUs",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -705767,6 +706077,30 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "eventType ascending",
+							"isDeprecated": false,
+							"name": "eventType_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "eventType descending",
+							"isDeprecated": false,
+							"name": "eventType_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "httpResponseStatus ascending",
+							"isDeprecated": false,
+							"name": "httpResponseStatus_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "httpResponseStatus descending",
+							"isDeprecated": false,
+							"name": "httpResponseStatus_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "isDispatcher ascending",
 							"isDeprecated": false,
 							"name": "isDispatcher_ASC"
@@ -705815,6 +706149,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "max(gcTimeUs) ascending",
+							"isDeprecated": false,
+							"name": "max_gcTimeUs_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "max(gcTimeUs) descending",
+							"isDeprecated": false,
+							"name": "max_gcTimeUs_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "max(memoryUsageBytes) ascending",
 							"isDeprecated": false,
 							"name": "max_memoryUsageBytes_ASC"
@@ -705848,6 +706194,18 @@
 							"description": "max(responseBodySize) descending",
 							"isDeprecated": false,
 							"name": "max_responseBodySize_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "max(startupCpuTimeUs) ascending",
+							"isDeprecated": false,
+							"name": "max_startupCpuTimeUs_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "max(startupCpuTimeUs) descending",
+							"isDeprecated": false,
+							"name": "max_startupCpuTimeUs_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -706127,6 +706485,90 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP25) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP25_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP25) descending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP25_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP50) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP50_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP50) descending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP50_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP75) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP75_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP75) descending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP75_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP90) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP90_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP90) descending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP90_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP95) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP95_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP95) descending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP95_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP999) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP999_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP999) descending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP999_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP99) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP99_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(gcTimeUsP99) descending",
+							"isDeprecated": false,
+							"name": "quantiles_gcTimeUsP99_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "quantiles(memoryUsageBytesP25) ascending",
 							"isDeprecated": false,
 							"name": "quantiles_memoryUsageBytesP25_ASC"
@@ -706376,6 +706818,90 @@
 							"description": "quantiles(responseBodySizeP99) descending",
 							"isDeprecated": false,
 							"name": "quantiles_responseBodySizeP99_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP25) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP25_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP25) descending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP25_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP50) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP50_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP50) descending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP50_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP75) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP75_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP75) descending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP75_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP90) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP90_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP90) descending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP90_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP95) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP95_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP95) descending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP95_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP999) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP999_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP999) descending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP999_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP99) ascending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP99_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "quantiles(startupCpuTimeUsP99) descending",
+							"isDeprecated": false,
+							"name": "quantiles_startupCpuTimeUsP99_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -706655,6 +707181,30 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(fullGcCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_fullGcCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(fullGcCount) descending",
+							"isDeprecated": false,
+							"name": "sum_fullGcCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(gcTimeUs) ascending",
+							"isDeprecated": false,
+							"name": "sum_gcTimeUs_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(gcTimeUs) descending",
+							"isDeprecated": false,
+							"name": "sum_gcTimeUs_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "sum(requestDuration) ascending",
 							"isDeprecated": false,
 							"name": "sum_requestDuration_ASC"
@@ -706688,6 +707238,18 @@
 							"description": "sum(responseBodySize) descending",
 							"isDeprecated": false,
 							"name": "sum_responseBodySize_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(startupCpuTimeUs) ascending",
+							"isDeprecated": false,
+							"name": "sum_startupCpuTimeUs_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(startupCpuTimeUs) descending",
+							"isDeprecated": false,
+							"name": "sum_startupCpuTimeUs_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -706951,6 +707513,118 @@
 							"description": "Duration 99.9th percentile - GB*s",
 							"isDeprecated": false,
 							"name": "durationP999",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Garbage collection time 25th percentile across Worker invocations - microseconds",
+							"isDeprecated": false,
+							"name": "gcTimeUsP25",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Garbage collection time 50th percentile across Worker invocations - microseconds",
+							"isDeprecated": false,
+							"name": "gcTimeUsP50",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Garbage collection time 75th percentile across Worker invocations - microseconds",
+							"isDeprecated": false,
+							"name": "gcTimeUsP75",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Garbage collection time 90th percentile across Worker invocations - microseconds",
+							"isDeprecated": false,
+							"name": "gcTimeUsP90",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Garbage collection time 95th percentile across Worker invocations - microseconds",
+							"isDeprecated": false,
+							"name": "gcTimeUsP95",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Garbage collection time 99th percentile across Worker invocations - microseconds",
+							"isDeprecated": false,
+							"name": "gcTimeUsP99",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Garbage collection time 99.9th percentile across Worker invocations - microseconds",
+							"isDeprecated": false,
+							"name": "gcTimeUsP999",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -707300,6 +707974,118 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Isolate startup CPU time 25th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+							"isDeprecated": false,
+							"name": "startupCpuTimeUsP25",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Isolate startup CPU time 50th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+							"isDeprecated": false,
+							"name": "startupCpuTimeUsP50",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Isolate startup CPU time 75th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+							"isDeprecated": false,
+							"name": "startupCpuTimeUsP75",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Isolate startup CPU time 90th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+							"isDeprecated": false,
+							"name": "startupCpuTimeUsP90",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Isolate startup CPU time 95th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+							"isDeprecated": false,
+							"name": "startupCpuTimeUsP95",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Isolate startup CPU time 99th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+							"isDeprecated": false,
+							"name": "startupCpuTimeUsP99",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Isolate startup CPU time 99.9th percentile across Worker invocations, 0 for invocations that did not report an isolate startup - microseconds",
+							"isDeprecated": false,
+							"name": "startupCpuTimeUsP999",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float32",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Wall time 25th percentile - microseconds",
 							"isDeprecated": false,
 							"name": "wallTimeP25",
@@ -707599,6 +708385,38 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "Sum of full (mark-compact) garbage collections that finished during Worker invocations",
+							"isDeprecated": false,
+							"name": "fullGcCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Sum of time V8 spent in garbage collection during Worker invocations, already included in cpuTimeUs - microseconds",
+							"isDeprecated": false,
+							"name": "gcTimeUs",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Sum of Request Duration in microseconds",
 							"isDeprecated": false,
 							"name": "requestDuration",
@@ -707634,6 +708452,22 @@
 							"description": "Sum of Response Body Sizes",
 							"isDeprecated": false,
 							"name": "responseBodySize",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Sum of CPU time spent starting Worker isolates, including script parsing. Not included in cpuTimeUs. Each startup is counted once, on the first invocation to complete on the new isolate - microseconds",
+							"isDeprecated": false,
+							"name": "startupCpuTimeUs",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -707756,6 +708590,38 @@
 							"deprecationReason": null,
 							"description": "Confidence interval for the corresponding point estimate",
 							"isDeprecated": false,
+							"name": "fullGcCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "gcTimeUs",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
 							"name": "requestDuration",
 							"type": {
 								"kind": "NON_NULL",
@@ -707789,6 +708655,22 @@
 							"description": "Confidence interval for the corresponding point estimate",
 							"isDeprecated": false,
 							"name": "responseBodySize",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "startupCpuTimeUs",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -712585,6 +713467,18 @@
 					"enumValues": [],
 					"fields": [
 						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The average value used for sample interval",
+							"isDeprecated": false,
+							"name": "avg",
+							"type": {
+								"kind": "OBJECT",
+								"name": "AccountWorkersSubrequestsAdaptiveGroupsAvg",
+								"ofType": null
+							}
+						},
+						{
 							"args": [
 								{
 									"defaultValue": null,
@@ -712656,6 +713550,33 @@
 					"interfaces": [],
 					"kind": "OBJECT",
 					"name": "AccountWorkersSubrequestsAdaptiveGroups",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Average sample interval",
+							"isDeprecated": false,
+							"name": "sampleInterval",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "AccountWorkersSubrequestsAdaptiveGroupsAvg",
 					"possibleTypes": []
 				},
 				{
@@ -714998,6 +715919,18 @@
 				{
 					"description": "",
 					"enumValues": [
+						{
+							"deprecationReason": null,
+							"description": "avg(sampleInterval) ascending",
+							"isDeprecated": false,
+							"name": "avg_sampleInterval_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(sampleInterval) descending",
+							"isDeprecated": false,
+							"name": "avg_sampleInterval_DESC"
+						},
 						{
 							"deprecationReason": null,
 							"description": "cacheStatus ascending",
@@ -920609,6 +921542,22 @@
 									"ofType": null
 								}
 							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Average sample interval",
+							"isDeprecated": false,
+							"name": "sampleInterval",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
 						}
 					],
 					"inputFields": [],
@@ -921657,6 +922606,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "avg(sampleInterval) ascending",
+							"isDeprecated": false,
+							"name": "avg_sampleInterval_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(sampleInterval) descending",
+							"isDeprecated": false,
+							"name": "avg_sampleInterval_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "constantScriptId ascending",
 							"isDeprecated": false,
 							"name": "constantScriptId_ASC"
@@ -921986,6 +922947,18 @@
 					"enumValues": [],
 					"fields": [
 						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The average value used for sample interval",
+							"isDeprecated": false,
+							"name": "avg",
+							"type": {
+								"kind": "OBJECT",
+								"name": "ZoneWorkersZoneSubrequestsAdaptiveGroupsAvg",
+								"ofType": null
+							}
+						},
+						{
 							"args": [
 								{
 									"defaultValue": null,
@@ -922045,6 +923018,33 @@
 					"interfaces": [],
 					"kind": "OBJECT",
 					"name": "ZoneWorkersZoneSubrequestsAdaptiveGroups",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Average sample interval",
+							"isDeprecated": false,
+							"name": "sampleInterval",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ZoneWorkersZoneSubrequestsAdaptiveGroupsAvg",
 					"possibleTypes": []
 				},
 				{
@@ -923297,6 +924297,18 @@
 				{
 					"description": "",
 					"enumValues": [
+						{
+							"deprecationReason": null,
+							"description": "avg(sampleInterval) ascending",
+							"isDeprecated": false,
+							"name": "avg_sampleInterval_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "avg(sampleInterval) descending",
+							"isDeprecated": false,
+							"name": "avg_sampleInterval_DESC"
+						},
 						{
 							"deprecationReason": null,
 							"description": "cacheStatus ascending",
