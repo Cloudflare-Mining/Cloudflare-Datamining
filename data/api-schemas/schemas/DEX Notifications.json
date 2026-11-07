@@ -1,0 +1,1309 @@
+{
+	"GET /accounts/{account_id}/dex/notifications": {
+		"operationId": "list-dex-notifications",
+		"summary": "List notification history",
+		"description": "Lists notification sendouts created for an account within the 31-day history retention period.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Unique Cloudflare account ID.",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier linked to an account.",
+					"type": "string",
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"description": "Page number of paginated results.",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of results per page.",
+				"schema": {
+					"type": "integer",
+					"default": 10,
+					"maximum": 50,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "search",
+				"in": "query",
+				"description": "Filters notifications by title or message.",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "from",
+				"in": "query",
+				"description": "Earliest notification creation time to include.",
+				"schema": {
+					"description": "Timestamp in ISO 8601 datetime format.",
+					"type": "string",
+					"format": "date-time",
+					"example": "2023-10-11T00:00:00Z"
+				}
+			},
+			{
+				"name": "to",
+				"in": "query",
+				"description": "Latest notification creation time to include.",
+				"schema": {
+					"description": "Timestamp in ISO 8601 datetime format.",
+					"type": "string",
+					"format": "date-time",
+					"example": "2023-10-11T00:00:00Z"
+				}
+			},
+			{
+				"name": "scope",
+				"in": "query",
+				"description": "Filters notifications by recipient scope.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"account",
+						"device"
+					]
+				}
+			},
+			{
+				"name": "status",
+				"in": "query",
+				"description": "Filters notifications by dispatch status, not device delivery outcome.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"pending",
+						"sent",
+						"failed"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Notification history response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"notifications": {
+													"description": "Notification sendouts ordered from newest to oldest.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"created_at": {
+																"description": "Time at which the notification sendout was created.",
+																"allOf": [
+																	{
+																		"description": "Timestamp in ISO 8601 datetime format.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2023-10-11T00:00:00Z"
+																	}
+																]
+															},
+															"id": {
+																"description": "Unique identifier for the notification sendout.",
+																"allOf": [
+																	{
+																		"description": "API Resource UUID tag.",
+																		"type": "string",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36
+																	}
+																]
+															},
+															"message": {
+																"description": "Plain-text notification message.",
+																"type": "string"
+															},
+															"outcome_counts": {
+																"description": "Weighted delivery outcome counts derived from sampled delivery events.",
+																"allOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"delivered": {
+																				"description": "Number of delivered outcomes.",
+																				"type": "integer",
+																				"format": "int64",
+																				"minimum": 0
+																			},
+																			"estimated": {
+																				"description": "Whether these weighted counts may be affected by equitable sampling before full-resolution storage.",
+																				"type": "boolean"
+																			},
+																			"expired": {
+																				"description": "Number of expired outcomes.",
+																				"type": "integer",
+																				"format": "int64",
+																				"minimum": 0
+																			},
+																			"failed": {
+																				"description": "Number of failed outcomes.",
+																				"type": "integer",
+																				"format": "int64",
+																				"minimum": 0
+																			}
+																		},
+																		"required": [
+																			"delivered",
+																			"failed",
+																			"expired",
+																			"estimated"
+																		]
+																	}
+																]
+															},
+															"recipient_count": {
+																"description": "Number of targeted device registrations. Omitted for account-wide notifications.",
+																"type": "integer",
+																"maximum": 100,
+																"minimum": 1
+															},
+															"scope": {
+																"description": "Whether the notification was sent account-wide or to selected device registrations.",
+																"type": "string",
+																"enum": [
+																	"account",
+																	"device"
+																]
+															},
+															"status": {
+																"description": "Dispatch status indicating whether the notification was accepted for delivery, not a device delivery outcome.",
+																"type": "string",
+																"enum": [
+																	"pending",
+																	"sent",
+																	"failed"
+																]
+															},
+															"support_url": {
+																"description": "URL supplied to recipients for additional information.",
+																"type": "string"
+															},
+															"title": {
+																"description": "Plain-text notification title.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"scope",
+															"title",
+															"message",
+															"created_at",
+															"status"
+														]
+													}
+												}
+											},
+											"required": [
+												"notifications"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Notification history failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"tags": [
+			"DEX Notifications"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.dex.notifications",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/dex/notifications/{notification_id}/outcomes": {
+		"operationId": "list-dex-notification-outcomes",
+		"summary": "List notification outcomes",
+		"description": "Lists observed device outcomes for a notification sendout. Sampling may omit outcomes; each result includes its sampling interval.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Unique Cloudflare account ID.",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier linked to an account.",
+					"type": "string",
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			},
+			{
+				"name": "notification_id",
+				"in": "path",
+				"description": "Unique identifier for the notification sendout.",
+				"required": true,
+				"schema": {
+					"description": "API Resource UUID tag.",
+					"type": "string",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of results per page.",
+				"schema": {
+					"type": "integer",
+					"default": 50,
+					"maximum": 50,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Cursor for the next page of results.",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "outcome",
+				"in": "query",
+				"description": "Filters results by outcome.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"delivered",
+						"failed",
+						"expired"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Notification outcomes response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"outcomes": {
+													"description": "Observed notification outcomes ordered from newest to oldest.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"duration_ms": {
+																"description": "Active notification duration in milliseconds. Expired outcomes report zero.",
+																"type": "integer",
+																"format": "int64",
+																"minimum": 0
+															},
+															"registration_id": {
+																"description": "Registration ID of the device that produced the outcome.",
+																"type": "string"
+															},
+															"sample_interval": {
+																"description": "Sampling interval for this event. Values above one indicate a sampled result.",
+																"type": "integer",
+																"format": "int64",
+																"minimum": 1
+															},
+															"status": {
+																"description": "Observed notification delivery status.",
+																"type": "string",
+																"enum": [
+																	"delivered",
+																	"failed",
+																	"expired"
+																]
+															},
+															"timestamp": {
+																"description": "Time when the outcome was observed.",
+																"allOf": [
+																	{
+																		"description": "Timestamp in ISO 8601 datetime format.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2023-10-11T00:00:00Z"
+																	}
+																]
+															}
+														},
+														"required": [
+															"registration_id",
+															"status",
+															"timestamp",
+															"duration_ms",
+															"sample_interval"
+														]
+													}
+												}
+											},
+											"required": [
+												"outcomes"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Notification outcomes failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"tags": [
+			"DEX Notifications"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.dex.notifications.outcomes",
+		"x-fern-sdk-method-name": "list"
+	},
+	"POST /accounts/{account_id}/dex/notifications": {
+		"operationId": "create-dex-notification",
+		"summary": "Create a notification",
+		"description": "Creates an account-wide notification or a notification for selected device registrations.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Unique Cloudflare account ID.",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier linked to an account.",
+					"type": "string",
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"message": {
+								"description": "Plain-text notification message.",
+								"type": "string",
+								"maxLength": 500,
+								"minLength": 1
+							},
+							"registration_ids": {
+								"description": "Device registration IDs to notify. Omit to send an account-wide notification.",
+								"type": "array",
+								"items": {
+									"description": "API Resource UUID tag.",
+									"type": "string",
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+									"maxLength": 36
+								},
+								"maxItems": 100
+							},
+							"support_url": {
+								"description": "URL supplied to recipients for additional information. Required when registration_ids is set.",
+								"type": "string"
+							},
+							"title": {
+								"description": "Plain-text notification title.",
+								"type": "string",
+								"maxLength": 100,
+								"minLength": 1
+							}
+						},
+						"required": [
+							"title",
+							"message"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Notification created.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"description": "Time at which the notification sendout was created.",
+													"allOf": [
+														{
+															"description": "Timestamp in ISO 8601 datetime format.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2023-10-11T00:00:00Z"
+														}
+													]
+												},
+												"id": {
+													"description": "Unique identifier for the notification sendout.",
+													"allOf": [
+														{
+															"description": "API Resource UUID tag.",
+															"type": "string",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36
+														}
+													]
+												},
+												"message": {
+													"description": "Plain-text notification message.",
+													"type": "string"
+												},
+												"outcome_counts": {
+													"description": "Weighted delivery outcome counts derived from sampled delivery events.",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"delivered": {
+																	"description": "Number of delivered outcomes.",
+																	"type": "integer",
+																	"format": "int64",
+																	"minimum": 0
+																},
+																"estimated": {
+																	"description": "Whether these weighted counts may be affected by equitable sampling before full-resolution storage.",
+																	"type": "boolean"
+																},
+																"expired": {
+																	"description": "Number of expired outcomes.",
+																	"type": "integer",
+																	"format": "int64",
+																	"minimum": 0
+																},
+																"failed": {
+																	"description": "Number of failed outcomes.",
+																	"type": "integer",
+																	"format": "int64",
+																	"minimum": 0
+																}
+															},
+															"required": [
+																"delivered",
+																"failed",
+																"expired",
+																"estimated"
+															]
+														}
+													]
+												},
+												"recipient_count": {
+													"description": "Number of targeted device registrations. Omitted for account-wide notifications.",
+													"type": "integer",
+													"maximum": 100,
+													"minimum": 1
+												},
+												"scope": {
+													"description": "Whether the notification was sent account-wide or to selected device registrations.",
+													"type": "string",
+													"enum": [
+														"account",
+														"device"
+													]
+												},
+												"status": {
+													"description": "Dispatch status indicating whether the notification was accepted for delivery, not a device delivery outcome.",
+													"type": "string",
+													"enum": [
+														"pending",
+														"sent",
+														"failed"
+													]
+												},
+												"support_url": {
+													"description": "URL supplied to recipients for additional information.",
+													"type": "string"
+												},
+												"title": {
+													"description": "Plain-text notification title.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"scope",
+												"title",
+												"message",
+												"created_at",
+												"status"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Notification creation failure response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"tags": [
+			"DEX Notifications"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.dex.notifications",
+		"x-fern-sdk-method-name": "create"
+	}
+}
