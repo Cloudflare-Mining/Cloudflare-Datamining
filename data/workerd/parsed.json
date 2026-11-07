@@ -3196,7 +3196,8 @@
 					"name": "newModuleRegistry",
 					"annotations": {
 						"compatEnableFlag": "new_module_registry",
-						"compatDisableFlag": "legacy_module_registry"
+						"compatDisableFlag": "legacy_module_registry",
+						"compatEnableDate": "2026-11-17"
 					},
 					"type": "Bool"
 				},
@@ -3538,7 +3539,8 @@
 					"name": "enableRequestSignal",
 					"annotations": {
 						"compatEnableFlag": "enable_request_signal",
-						"compatDisableFlag": "disable_request_signal"
+						"compatDisableFlag": "disable_request_signal",
+						"compatEnableDate": "2026-11-17"
 					},
 					"type": "Bool"
 				},
@@ -6163,6 +6165,11 @@
 					"name": "namedExports",
 					"annotations": {},
 					"type": "List(Text)"
+				},
+				{
+					"name": "bundled",
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
@@ -8274,6 +8281,11 @@
 					"name": "disk",
 					"annotations": {},
 					"type": "workerd/server/workerd.capnp:DiskDirectory"
+				},
+				{
+					"name": "bucket",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ClusterBucket"
 				}
 			]
 		},
@@ -8379,6 +8391,11 @@
 					"name": "unsafePublicAddress",
 					"annotations": {},
 					"type": "Bool"
+				},
+				{
+					"name": "stopTimeoutMs",
+					"annotations": {},
+					"type": "UInt32"
 				}
 			]
 		},
@@ -8489,6 +8506,16 @@
 					"name": "allowDotfiles",
 					"annotations": {},
 					"type": "Bool"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:ClusterBucket",
+			"fields": [
+				{
+					"name": "path",
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
