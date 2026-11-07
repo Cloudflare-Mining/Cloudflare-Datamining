@@ -629,7 +629,7 @@ GLOBAL NETWORK
 
 ## Cloudflare's unified global network is everywhere your users are
 
-Spanning 335 cities in 125 countries and growing, Cloudflare is within 50ms of 95% of the world's Internet-connected population.
+Spanning 340 cities in 130 countries and growing, Cloudflare is within 50ms of 95% of the world's Internet-connected population.
 
 [Learn more](https://blog.cloudflare.com/backbone2024/)
 

@@ -86,7 +86,7 @@ FEDRAMP® High Authorized
 
 ![FedRAMP-WAN-Backbone-Orange](https://www.cloudflare.com/cdn-cgi/image/format=auto/https://cf-assets.www.cloudflare.com/v2/image/n00s7r2mfp69pcbtcsshn2am7k/FedRAMP-WAN-Backbone-Orange.png)
 
-Spanning 335+ cities in 125 countries and growing, Cloudflare is within 50ms of 95% of the world's Internet-connected population.
+Spanning 340+ cities in 130 countries and growing, Cloudflare is within 50ms of 95% of the world's Internet-connected population.
 
   
 

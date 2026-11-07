@@ -56,7 +56,7 @@ Get every capability, everywhere. Our unique approach to FedRAMP authorization m
 
 ###### Global network, local reach
 
-Cloudflare's global network has points of presence in 335 cities and 125+ countries, reaching 95% of the world's Internet users within 50 ms.
+Cloudflare's global network has points of presence in 340 cities and 130+ countries, reaching 95% of the world's Internet users within 50 ms.
 
 ![icon - internet globe](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5KnFjb9UlxU3BbA2ZLMeec/85c9bb0cc0f80001275d6b13455508a5/internet-globe-tile.png)
 
