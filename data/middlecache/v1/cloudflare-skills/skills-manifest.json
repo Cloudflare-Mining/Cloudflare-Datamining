@@ -60,7 +60,7 @@
 		},
 		{
 			"name": "cloudflare",
-			"description": "Discover and choose Cloudflare products for apps, APIs, AI agents, storage, networking, and security. Use for architecture and product selection, including when the user describes a need without naming a Cloudflare product; then find the relevant skill or documentation.",
+			"description": "Discover and choose Cloudflare products for apps, APIs, AI agents, storage, networking, and security. Use for architecture and product selection, including when the user describes a need without naming a Cloudflare product; then find the relevant skill or documentation. Also use when a Cloudflare-proxied site shows a Cloudflare error page, a `52x` status, a 1xxx error code, or a Cloudflare `403`, to decide whether to fix Cloudflare configuration or the origin.",
 			"files": [
 				"SKILL.md",
 				"references/ai-gateway/README.md",
@@ -84,11 +84,6 @@
 				"references/browser-rendering/configuration.md",
 				"references/browser-rendering/gotchas.md",
 				"references/browser-rendering/patterns.md",
-				"references/c3/README.md",
-				"references/c3/api.md",
-				"references/c3/configuration.md",
-				"references/c3/gotchas.md",
-				"references/c3/patterns.md",
 				"references/containers/README.md",
 				"references/containers/api.md",
 				"references/containers/configuration.md",
@@ -200,6 +195,14 @@
 			]
 		},
 		{
+			"name": "cloudflare-app-bootstrap",
+			"description": "Get a Cloudflare Workers app to a working local request by connecting its bindings, secrets, and initial data, then verifying real application behavior. Use for app setup or onboarding after the project exists; use frameworks-on-cloudflare or cf-cli to create or configure the project, and wrangler or cf-cli for isolated commands.",
+			"files": [
+				"SKILL.md",
+				"references/skill-feedback.md"
+			]
+		},
+		{
 			"name": "cloudflare-email-service",
 			"description": "Implement or troubleshoot Cloudflare Email Sending and Email Routing integrations and their delivery configuration.",
 			"files": [
@@ -214,7 +217,7 @@
 		},
 		{
 			"name": "cloudflare-one",
-			"description": "Design, configure, troubleshoot, or review Cloudflare One Zero Trust and SASE deployments. Use cloudflare-one-migrations for migration planning from other vendors.",
+			"description": "Design, configure, troubleshoot, or review Cloudflare One Zero Trust and SASE deployments. Use cloudflare-one-migrations for migration planning from other vendors. Also use when an agent, script, crawler, or other non-browser client needs to reach a webpage or API protected by Cloudflare Access.",
 			"files": [
 				"SKILL.md",
 				"references/skill-feedback.md"
@@ -237,6 +240,14 @@
 				"references/skill-feedback.md",
 				"references/testing.md",
 				"references/workers.md"
+			]
+		},
+		{
+			"name": "frameworks-on-cloudflare",
+			"description": "Build, migrate, and deploy web-framework applications on Cloudflare Workers. Use when a framework project such as Astro, SvelteKit, React Router, TanStack Start, Nuxt, Hono, or a React or Vue SPA targets Cloudflare, or when a framework repository contains Workers deployment configuration.",
+			"files": [
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
@@ -326,6 +337,14 @@
 				"references/configuration.md",
 				"references/platform-apis.md",
 				"references/runtime-patterns.md",
+				"references/skill-feedback.md"
+			]
+		},
+		{
+			"name": "workers-development",
+			"description": "Run, inspect, and debug Cloudflare Workers during local development with cf dev, wrangler dev, or the Cloudflare Vite plugin, using Local Explorer to read and seed binding data and query local traces and logs. Also routes production debugging to Workers observability. Use for debugging requests whether or not the project uses Wrangler.",
+			"files": [
+				"SKILL.md",
 				"references/skill-feedback.md"
 			]
 		},
