@@ -8,6 +8,7 @@
 	<li>Austin, US</li>
 	<li>Lisbon, Portugal&nbsp;</li>
 	<li>London, UK&nbsp;</li>
+	<li>NYC, US&nbsp;</li>
 </ul>
 <h2>About the Role</h2>
 <p>The Egress team was formed to own a very important aspect of Cloudflare's network-as-a-service: Egress connectivity for our vast portfolio of products.</p>

@@ -3,7 +3,7 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
+<p><strong>Available Locations: </strong>Austin, TX | San Francisco, CA | Lisbon, Portugal</p>
 <p><strong>About the Department</strong><strong><br></strong></p>
 <p>Cloudflare's Enterprise Integrations Engineering Team designs, builds, and maintains integrations across the SaaS applications used throughout the organization. We're increasingly applying AI, from agentic workflows to LLM-assisted development and automated diagnostics, to build integrations faster, operate them more reliably, and reduce manual toil across the team. Our mission is to create scalable, reliable, and intelligent systems that ensure data flows securely and efficiently between platforms, and to use AI as a force multiplier for how we design, build, and support that work.</p>
 <p>Our team is highly collaborative, values continuous learning, and supports each other through shared ownership and open communication. We work closely with both technical and business teams, conduct regular retrospectives, and are actively evolving how AI tooling changes the way we plan, build, test, and troubleshoot integrations.</p>
@@ -48,6 +48,9 @@
 </ul>
 <h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Portugal-based hires: Estimated annual salary of €79,000-€109,000</span></li>
+</ul>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>
 <h3>Benefits</h3>

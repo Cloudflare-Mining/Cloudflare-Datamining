@@ -3,75 +3,28 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h1><strong>Software Engineer, AI Agents</strong></h1>
-<p><strong>Location:</strong> India, Bangalore</p>
-<h2><strong>Exp:</strong> 5 - 10yrs</h2>
-<h2><strong>Why This Role Matters</strong></h2>
-<p>At Cloudflare, we're building industrial-scale AI agents that support customers directly. This isn't research theater. Your code will power real customer interactions from day one, at global scale.</p>
-<p>Cloudflare already has the parts. You will assemble Workers, Durable Objects, KV, R2, D1, Vectorize, Workers AI, AI Gateway, and the Agent SDK into real agents customers use every day.</p>
-<h2><strong>Role Intent</strong></h2>
-<p>Ship production agents on the Cloudflare stack. Build, deploy, learn, repeat. Your code is the front door for Cloudflare customers.</p>
-<h2><strong>What You Will Do</strong></h2>
+<p><strong>Available Location: Bengaluru, India</strong></p>
+<p><strong>What You Would Do Here:</strong></p>
+<p>Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. We are looking for a passionate and detail-oriented People Operations Specialist to join our team and champion this mission within the APJC region. In this vital role, you will be the first point of contact for our employees, ensuring their journey is smooth and positive. You will be instrumental in creating a seamless experience by resolving inquiries, managing data with precision, and ensuring our People processes are efficient and effective. This is an exciting opportunity to provide exceptional support to our internal teams and contribute to building a world-class employee experience as our organization expands.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Build agents on Workers with Durable Objects for state and short term memory</li>
-	<li>Wire tools with the Agent SDK, MCP, and function calling</li>
-	<li>Use Vectorize, KV, R2, and D1 for semantic memory, cache, files, and config</li>
-	<li>Run models through Workers AI and AI Gateway; integrate third parties when needed</li>
-	<li>Create evals, guardrails, and audits. Measure, tune, re-ship fast</li>
-	<li>Build agents that summarize, propose fixes, and escalate cleanly to humans</li>
-	<li>Expose agent health and metrics in transparent dashboards. No mystery boxes</li>
-	<li>Integrate with queues and webhooks; publish events on Queues or Pub/Sub</li>
-	<li>Cut cost per case and time to first response. Prove it with data.</li>
-	<li>Take end to end ownership including on call for what you ship (with team support)</li>
-	<li>Design and maintain robust observability for distributed AI workflows, implementing structured logging and end-to-end tracing across async service boundaries to ensure visibility into agent reasoning and execution.</li>
-	<li>Architect security boundaries for agent-led operations; implementing secure credential handling, multi-layer approval gates, and fine-grained trust scoping for mutative actions.</li>
+	<li><strong>Champion key employee lifecycle process:</strong> Take ownership of end-to-end employee lifecycle processes across APJC, including onboarding, internal transfers, organizational changes, and offboarding, ensuring a smooth, consistent, and positive experience for employees throughout the APJC region.</li>
+	<li><strong>Be a subject-matter expert for employee inquiries:</strong> Provide timely, high-quality support to employee inquiries through Zendesk. Act as a trusted liaison between employees and People/Payroll teams, resolving issues efficiently with empathy and accuracy.</li>
+	<li><strong>Elevate the employee experience through cross-functional collaboration:</strong> Act as a proactive liaison between employees and specialized teams such as Payroll, Benefits, and Legal to address and resolve complex issues efficiently and effectively.</li>
+	<li><strong>Ensure data integrity and governance: </strong>Maintain and update employee records across People/Payroll systems, performing regular and ad hoc audits to guarantee 100% data accuracy and compliance with regulatory requirements.</li>
+	<li><strong>Drive continuous improvement and operational excellence:</strong> Analyze employee feedback and process metrics to identify opportunities for process enhancements. Partner with regional teams to implement scalable solutions that improve the overall People Operations function across APJC.</li>
+	<li><strong>Support strategic HR initiatives and projects:</strong> Contribute to HR system implementations, vendor management, and regional programs such as annual performance and compensation cycles, benefits enrollment, and year-end Payroll preparation, making them easy to understand and navigate for our employees.</li>
 </ul>
-<h2><strong>Must Have</strong></h2>
+<p><strong>Skills/experience</strong>&nbsp;</p>
 <ul>
-	<li>Demonstrated success shipping production systems. Repos and releases that show real work.</li>
-	<li>Strong in TypeScript or Rust on Workers. HTTP, queues, async, performance</li>
-	<li>Fluency with Durable Objects, KV or R2, and either D1 or Postgres</li>
-	<li>Hands on with model tooling. Prompt I/O, tool calling, evals, safety checks</li>
-	<li>Observability mindset. Logs, traces, metrics, redlines</li>
-	<li>Experience with a2a/multi-agent frameworks</li>
-	<li>Experience developing LLM evaluation frameworks; automated scoring systems, CI-integrated quality gates.</li>
-	<li>Bias for simple, scalable designs</li>
+	<li>5+ years in HR administration and comfortable handling sensitive employee information with discretion.</li>
+	<li>Highly organized with strong attention to detail, excellent problem-solving abilities, and effective time management skills.&nbsp;</li>
+	<li>Proficient in working with data and skilled in Excel or Google Sheets for analysis and reporting.</li>
+	<li>Customer-focused mindset with a genuine passion for supporting colleagues and delivering exceptional service.</li>
+	<li>Effective communicator, able to clearly articulate information both verbally and in writing to employees across the APJC region.</li>
+	<li>Adaptable and thrives in a fast-paced, dynamic environment, with the ability to manage shifting priorities efficiently.</li>
+	<li>Familiarity with Workday or Zendesk would be an advantage.</li>
 </ul>
-<h2><strong>Nice to Have</strong></h2>
-<ul>
-	<li>Workers AI, AI Gateway, and Vectorize in production</li>
-	<li>Salesforce or Service Cloud experience. Webhooks and case APIs</li>
-	<li>Security depth. Prompt injection protection, secrets detection, PII handling</li>
-	<li>OSS agent frameworks. Know what to borrow and what to throw away.</li>
-</ul>
-<h2><strong>How We Build</strong></h2>
-<ul>
-	<li>Align fast on what matters.</li>
-	<li>Divide and conquer. Own your piece.</li>
-	<li>Ship. Watch customers use it.</li>
-	<li>Learn and repeat.</li>
-</ul>
-<h2><strong>Why Join Cloudflare in India?</strong></h2>
-<p><strong>Impact at global scale:</strong> Your code will serve Cloudflare's customers across every region. Tens of millions of Internet properties depend on us.</p>
-<p><strong>Work on the edge:</strong> Few companies give engineers the chance to build AI directly into an edge platform that runs in 300+ cities worldwide.</p>
-<p><strong>Career growth:</strong> As one of the early engineers in our India based AI team, you'll have visibility, leadership opportunities, and a direct hand in shaping Cloudflare's AI roadmap.</p>
-<p><strong>Culture of ownership:</strong> We believe in autonomy, accountability, and trust. Engineers here own outcomes, not just tickets.</p>
-<p><strong>Learn and grow fast:</strong> Collaborate with peers across Support, Product, Security, and AI Platform teams. We encourage knowledge sharing, mentorship, and continuous learning.</p>
-<h2><strong>Interview Signal</strong></h2>
-<p>Expect to demonstrate your ability to:</p>
-<ul>
-	<li>Build a mini agent on Workers using the Agent SDK</li>
-	<li>Store session memory in Durable Objects</li>
-	<li>Add semantic recall with Vectorize</li>
-	<li>Ship behind a KV flag with traces and observability</li>
-	<li>Push to production fast and take ownership</li>
-</ul>
-<h2><strong>Team Mission</strong></h2>
-<p>The Agent Tech team owns the end to end stack for customer facing agents on Cloudflare. Everything runs at the edge.</p>
-<p><strong>Core Stack:</strong> Workers, Durable Objects, KV, R2, D1, Queues, Pub/Sub, Vectorize, Workers AI, AI Gateway, Pages, Zero Trust.</p>
-<p><strong>Principles:</strong> Ship fast. Measure truth. Simplify relentlessly. Own outcomes.</p>
-<p>&nbsp;</p>
-<p><strong>Fraud Alert:</strong>&nbsp;<em>Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @</em><a href="http://cloudflare.com/"><span class="s1"><em>cloudflare.com</em></span></a><em>&nbsp;email addresses.</em></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

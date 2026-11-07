@@ -5,85 +5,63 @@
 </div>
 <p><strong>Available Locations: </strong>Atlanta, GA; Austin, TX; Denver, CO; Seattle, WA; Washington D.C.</p>
 <p><strong>About the Role</strong></p>
-<p>This role focuses on sourcing and managing suppliers globally for Data Center Infrastructure services, including structured cabling, DC infrastructure installation, power system installation, cooling system deployment, cage/space fitout, and critical infrastructure commissioning. You will create sourcing plans for infrastructure categories and deliver these through supplier capability reviews, technical assessments, pre-qualification, onboarding, and master contract negotiations.</p>
-<p>This position requires deep technical knowledge of data center infrastructure design and build-out—you must understand power and cooling sizing calculations, cold aisle containment design principles, caging requirements, electrical distribution architectures, and the end-to-end process of a full-scale DC space/cage fitout. You will leverage this expertise to drive informed vendor discussions, evaluate technical proposals against Cloudflare's infrastructure standards, and negotiate competitive pricing that reflects true value and risk allocation.</p>
-<p>You will forge strategic partnerships with infrastructure vendors, evaluate their performance against clearly defined technical and commercial metrics, and balance the priorities of both Cloudflare and your suppliers to achieve mutually beneficial outcomes. This role complements the Global Vendor Manager, Data Center Services (focused on field services, IT asset disposal, logistics, and rack integration) by owning the infrastructure build, installation, and critical systems domain.</p>
+<p>This role focuses on sourcing and onboarding suppliers globally for Data Center services such as data center field services, IT asset disposal services, network provisioning services, logistics support, rack integration support, and service delivery of infrastructure. You will create sourcing plans for each category and quickly deliver these through supplier capability reviews, pre-qualification and onboarding, and master contract negotiations. It is critical that you identify ways to forge partnerships with new suppliers, evaluate suppliers' performance against clearly defined metrics that you will develop or improve together with internal stakeholders, and balance priorities of both Cloudflare and your suppliers to achieve mutually beneficial outcomes. You will continually monitor the effectiveness of these new partnerships and take appropriate actions to ensure ongoing competitive sustainability of our supplier markets for upcoming projects.</p>
 <p><strong>Key Job Responsibilities</strong></p>
 <p><em><strong>Strategic Sourcing &amp; Category Management</strong></em></p>
 <ul>
-	<li>Develop and execute global sourcing strategies for data center infrastructure categories: structured cabling, power systems (UPS, PDUs, generators, electrical distribution), cooling systems (CRAC, containment, airflow), cage/space fitout, fire suppression, and commissioning services</li>
-	<li>Build and maintain robust supplier portfolios across multiple geographies to support Cloudflare's rapid data center expansion</li>
-	<li>Conduct market research and supplier landscape analysis to identify qualified vendors, benchmark capabilities, and maintain competitive tension</li>
-	<li>Create category-specific sourcing plans that balance cost competitiveness, technical quality, vendor capacity, and risk mitigation</li>
-	<li>Drive supplier diversity and geographic coverage to ensure business continuity and avoid single points of failure</li>
+	<li>Develop and execute global sourcing strategies for data center services categories including data center field services, IT asset disposal, network provisioning, logistics, rack integration, and infrastructure service delivery</li>
+	<li>Build and maintain robust supplier portfolios across multiple geographies to support Cloudflare's expanding data center footprint</li>
+	<li>Conduct comprehensive market research and supplier landscape analysis to identify emerging vendors and benchmark existing supplier performance</li>
 </ul>
-<p><em><strong>Technical Vendor Assessment &amp; Qualification</strong></em></p>
+<p><em><strong>Supplier Lifecycle Management</strong></em></p>
 <ul>
-	<li>Perform technical capability reviews evaluating vendor certifications (BICSI, PE licenses, manufacturer credentials), workforce qualifications, and past project delivery</li>
-	<li>Assess vendor capacity for power and cooling sizing, load calculations, redundancy design (N+1, 2N), thermal modeling, and containment design</li>
-	<li>Lead technical due diligence including reference site visits, project portfolio reviews, and proof-of-concept evaluations</li>
-	<li>Validate vendor experience with full-scale DC cage/space fitouts from design through commissioning</li>
-	<li>Ensure vendors meet Cloudflare's technical, operational, safety, and compliance standards across all regions</li>
-</ul>
-<p><em><strong>Supplier Lifecycle &amp; Contract Management</strong></em></p>
-<ul>
-	<li>Lead end-to-end supplier onboarding from identification and technical assessment through contract execution</li>
-	<li>Negotiate master service agreements, statements of work, and pricing frameworks that deliver competitive TCO while maintaining quality</li>
-	<li>Structure contracts with clear technical specifications, acceptance criteria, performance guarantees, and remediation terms</li>
-	<li>Manage commercial relationships including pricing reviews, volume commitments, rate card negotiations, and cost optimization</li>
-	<li>Partner with Legal, Procurement, and Finance on contract governance, compliance, and risk management</li>
+	<li>Lead end-to-end supplier onboarding process from identification through contract execution</li>
+	<li>Perform supplier capability reviews, pre-qualification assessments, and due diligence to ensure vendors meet Cloudflare's technical, operational, and compliance standards</li>
+	<li>Negotiate master service agreements, statements of work, and pricing frameworks that deliver competitive total cost of ownership while maintaining service quality</li>
 </ul>
 <p><em><strong>Performance Management &amp; Governance</strong></em></p>
 <ul>
-	<li>Design and implement supplier performance scorecards measuring project delivery timelines, technical quality (workmanship, code compliance, test pass rates), safety performance, cost adherence, and warranty responsiveness</li>
+	<li>Design, implement, and continuously improve supplier performance scorecards and KPIs in collaboration with internal stakeholders</li>
 	<li>Establish regular business review cadences with strategic suppliers to monitor performance, address gaps, and drive continuous improvement</li>
-	<li>Manage supplier risk assessments including financial health monitoring, capacity planning, and business continuity planning</li>
-	<li>Drive corrective action plans when vendors underperform on technical or commercial commitments</li>
-	<li>Escalate critical performance issues and facilitate resolution between vendors and internal stakeholders</li>
+	<li>Manage supplier risk assessments and develop mitigation strategies for business continuity</li>
 </ul>
-<p><em><strong>Cross-Functional Collaboration &amp; Stakeholder Management</strong></em></p>
+<p><em><strong>Stakeholder Collaboration</strong></em></p>
 <ul>
-	<li>Partner with Infrastructure Engineering, DC Operations, Network Engineering, Power Engineering, and Facilities teams to translate technical requirements into vendor sourcing strategies</li>
-	<li>Serve as the primary point of contact for DC infrastructure procurement, ensuring clear communication between internal stakeholders and external vendors</li>
-	<li>Collaborate with Procurement, Legal, and Finance teams on contract governance, compliance, risk management, and budget tracking</li>
-	<li>Drive cross-functional alignment on supplier selection, performance escalations, contract negotiations, and category strategy</li>
-	<li>Support project delivery by ensuring vendor readiness, scope clarity, execution oversight, and issue resolution</li>
+	<li>Partner with Data Center Operations, Infrastructure Engineering, Logistics, and Procurement teams to understand requirements and translate them into sourcing strategies</li>
+	<li>Serve as the primary point of contact for data center services procurement, ensuring clear communication between internal teams and external suppliers</li>
+	<li>Drive cross-functional alignment on supplier selection, performance issues, and contract negotiations</li>
 </ul>
-<p><em><strong>Commercial Negotiation &amp; Vendor Relationship Management</strong></em></p>
+<p><em><strong>Continuous Improvement</strong></em></p>
 <ul>
-	<li>Leverage deep DC infrastructure knowledge to challenge vendor pricing based on material costs, labor rates, project complexity, and market benchmarks</li>
-	<li>Negotiate volume discounts, preferred pricing tiers, framework agreements for multi-site deployments, and performance-based incentives</li>
-	<li>Structure risk-sharing models for design-build projects, fixed-price vs. time-and-materials scopes, and contract terms that protect Cloudflare</li>
-	<li>Build strategic, long-term partnerships with key infrastructure vendors while maintaining competitive supplier markets</li>
-	<li>Identify opportunities for vendor consolidation, standardization, and total cost of ownership reduction</li>
+	<li>Monitor supplier market dynamics, pricing trends, and industry best practices to maintain competitive sourcing strategies</li>
+	<li>Identify process improvement opportunities to increase sourcing efficiency, reduce cycle times, and enhance supplier experience</li>
+	<li>Develop and maintain category playbooks, sourcing templates, and negotiation strategies</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Bachelor's degree in Electrical Engineering, Mechanical Engineering, Civil Engineering, Construction Management, or related technical field</li>
-	<li>8+ years of experience in strategic sourcing, procurement, or supplier management within data center infrastructure, construction, or critical facilities industries</li>
-	<li>Demonstrated technical knowledge of data center infrastructure including:</li>
-	<li>Power distribution systems (electrical load calculations, UPS sizing, generator capacity, PDU selection, busway vs. whip distribution)</li>
-	<li>Cooling systems (cooling load calculations, CRAC/CRAH sizing, airflow CFM requirements, containment strategies, PUE optimization)</li>
-	<li>Structured cabling design (fiber and copper topologies, cable management, pathway sizing, testing standards)</li>
-	<li>Full-scale DC cage/space fitout process (layout design, clearance requirements, raised floor, overhead ladder rack, environmental separation)</li>
-	<li>Proven experience negotiating commercial agreements and managing infrastructure supplier relationships end-to-end</li>
-	<li>Strong project management skills with the ability to manage multiple sourcing initiatives and deliver results on time</li>
-	<li>Excellent analytical and problem-solving skills with attention to technical and commercial detail</li>
-	<li>Effective communication and interpersonal skills; able to collaborate with engineers, operations teams, and vendors while influencing without direct authority</li>
-	<li>Comfortable working in a fast-paced, global environment with distributed teams and suppliers across multiple time zones</li>
-	<li>Proficiency in Google Workspace applications and familiarity with procurement, contract management, or ERP systems</li>
+	<li>Bachelor's degree in Business Administration, Supply Chain Management, Engineering, or related field</li>
+	<li>5+ years of experience in strategic sourcing, procurement, or supplier management, preferably within technology, infrastructure, or related industries</li>
+	<li>Demonstrated experience negotiating commercial agreements and managing supplier relationships end-to-end</li>
+	<li>Solid understanding of procurement processes, including sourcing, contracting, and supplier onboarding</li>
+	<li>Proven ability to develop and track supplier performance metrics and service level agreements</li>
+	<li>Strong project management skills with the ability to manage multiple priorities and deliver results on time</li>
+	<li>Excellent analytical and problem-solving skills with attention to detail</li>
+	<li>Effective communication and interpersonal skills; able to collaborate across teams and influence without direct authority</li>
+	<li>Comfortable working in a fast-paced, global environment with distributed teams and suppliers</li>
+	<li>Proficiency in Google Workspace applications and familiarity with procurement or ERP systems</li>
 </ul>
 <p><strong>Bonus points</strong></p>
 <ul>
-	<li>Master's degree in Engineering, Business Administration, Construction Management, or Supply Chain</li>
-	<li>Professional certifications such as BICSI RCDD/DCDC/OSP, CDCP/CDCE, PE license in Electrical or Mechanical Engineering, PMP, or procurement certifications (CPSM, CPM, CSCP)</li>
-	<li>7+ years of experience in strategic sourcing with direct experience managing data center infrastructure vendors (cabling, power, cooling, fitout, commissioning)</li>
-	<li>Hands-on experience in data center construction, infrastructure deployment, or commissioning—ideally as a former engineer, project manager, or technical lead who transitioned into vendor management</li>
-	<li>Deep familiarity with data center design standards: TIA-942, Uptime Institute Tier Standards, ASHRAE thermal guidelines, NFPA 70/75/76, hot/cold aisle containment strategies</li>
-	<li>Experience in hyperscale, colocation, or high-growth cloud infrastructure environments</li>
-	<li>Advanced skills in TCO modeling, cost optimization, vendor benchmarking, and financial analysis for infrastructure projects</li>
-	<li>Ability to read and interpret technical drawings including single-line electrical diagrams, mechanical P&amp;IDs, structured cabling schematics, and floor plan layouts</li>
-	<li>Familiarity with data center energy efficiency, sustainability initiatives, and renewable energy procurement</li>
+	<li>Master's degree in Business Administration, Supply Chain, or related field</li>
+	<li>Professional certification such as CPSM, CPM, CSCP, or equivalent</li>
+	<li>7+ years of experience in strategic sourcing with direct experience in data center services categories (data center field services, IT asset disposal, network provisioning, logistics, rack integration, or infrastructure service delivery)</li>
+	<li>Proven track record of developing category strategies and driving complex, multi-million-dollar sourcing initiatives from inception to completion</li>
+	<li>Deep familiarity with data center operations and the ability to evaluate technical supplier capabilities against operational requirements</li>
+	<li>Experience working in hyperscale, high-growth technology, or cloud infrastructure environments</li>
+	<li>Advanced skills in total cost of ownership (TCO) modeling, cost optimization, and financial analysis</li>
+	<li>Knowledge of international trade regulations, import/export requirements, and regional compliance standards across multiple geographies</li>
+	<li>Hands-on experience with e-procurement platforms, supplier management software, and procurement analytics tools</li>
+	<li>Experience managing supplier risk assessments, business continuity planning, or disaster recovery programs</li>
 </ul>
 <h4>Compensation</h4>
 <ul>
