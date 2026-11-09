@@ -1608,6 +1608,9 @@
 	"hyperdrive-private-networking": {
 		"enabled": true
 	},
+	"hyperdrive-startup-planetscale": {
+		"enabled": true
+	},
 	"hyperdrive-ui": {
 		"enabled": true
 	},
@@ -1990,6 +1993,9 @@
 	"metadata-authz-enabled": {
 		"enabled": false
 	},
+	"modular-checkout-blind-default-view": {
+		"enabled": false
+	},
 	"monitored-sessions-tier-1": {
 		"enabled": true
 	},
@@ -2052,6 +2058,9 @@
 	},
 	"obs-plat-workers-analytics-revamp": {
 		"enabled": true
+	},
+	"observability-sql-datasets": {
+		"enabled": false
 	},
 	"onboarding-bot-management": {
 		"enabled": true
@@ -3382,6 +3391,9 @@
 	},
 	"workers-smart-placement-v2": {
 		"enabled": true
+	},
+	"workers-vpc-certificates-ui": {
+		"enabled": false
 	},
 	"workers-vpc-dash-v1": {
 		"enabled": true
