@@ -410,7 +410,7 @@
 											"items": {
 												"anyOf": [
 													{
-														"description": "0-RTT session resumption enabled for this zone.",
+														"description": "0-RTT session resumption enabled for this zone.\nChanging this setting does not enable or disable TLS 1.3. Writing the `tls_1_3` setting also changes 0-RTT: `zrt` enables it, and `on` or `off` disables it.",
 														"allOf": [
 															{
 																"properties": {
@@ -3614,7 +3614,7 @@
 														"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 													},
 													{
-														"description": "Maximum time between two read operations from origin.",
+														"description": "Maximum time in seconds between two read operations from origin.",
 														"allOf": [
 															{
 																"properties": {
@@ -3681,7 +3681,7 @@
 																		]
 																	},
 																	"value": {
-																		"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+																		"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 																		"type": "number",
 																		"default": 125
 																	}
@@ -4955,7 +4955,7 @@
 														"title": "TLS1.2 only"
 													},
 													{
-														"description": "Enables Crypto TLS 1.3 feature for a zone.",
+														"description": "Enables Crypto TLS 1.3 feature for a zone.\nThis setting also controls 0-RTT. `zrt` enables TLS 1.3 and 0-RTT, `on` enables TLS 1.3 and disables 0-RTT, and `off` disables both.\nReads return `zrt` when TLS 1.3 and 0-RTT are both enabled, so setting `on` while 0-RTT is enabled turns 0-RTT off.",
 														"allOf": [
 															{
 																"properties": {
@@ -6162,7 +6162,7 @@
 											"type": "object",
 											"oneOf": [
 												{
-													"description": "0-RTT session resumption enabled for this zone.",
+													"description": "0-RTT session resumption enabled for this zone.\nChanging this setting does not enable or disable TLS 1.3. Writing the `tls_1_3` setting also changes 0-RTT: `zrt` enables it, and `on` or `off` disables it.",
 													"allOf": [
 														{
 															"properties": {
@@ -9449,7 +9449,7 @@
 													"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 												},
 												{
-													"description": "Maximum time between two read operations from origin.",
+													"description": "Maximum time in seconds between two read operations from origin.",
 													"allOf": [
 														{
 															"properties": {
@@ -9516,7 +9516,7 @@
 																	]
 																},
 																"value": {
-																	"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+																	"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 																	"type": "number",
 																	"default": 125
 																}
@@ -10790,7 +10790,7 @@
 													"title": "TLS1.2 only"
 												},
 												{
-													"description": "Enables Crypto TLS 1.3 feature for a zone.",
+													"description": "Enables Crypto TLS 1.3 feature for a zone.\nThis setting also controls 0-RTT. `zrt` enables TLS 1.3 and 0-RTT, `on` enables TLS 1.3 and disables 0-RTT, and `off` disables both.\nReads return `zrt` when TLS 1.3 and 0-RTT are both enabled, so setting `on` while 0-RTT is enabled turns 0-RTT off.",
 													"allOf": [
 														{
 															"properties": {
@@ -15543,7 +15543,7 @@
 						"items": {
 							"anyOf": [
 								{
-									"description": "0-RTT session resumption enabled for this zone.",
+									"description": "0-RTT session resumption enabled for this zone.\nChanging this setting does not enable or disable TLS 1.3. Writing the `tls_1_3` setting also changes 0-RTT: `zrt` enables it, and `on` or `off` disables it.",
 									"allOf": [
 										{
 											"properties": {
@@ -18747,7 +18747,7 @@
 									"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 								},
 								{
-									"description": "Maximum time between two read operations from origin.",
+									"description": "Maximum time in seconds between two read operations from origin.",
 									"allOf": [
 										{
 											"properties": {
@@ -18814,7 +18814,7 @@
 													]
 												},
 												"value": {
-													"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+													"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 													"type": "number",
 													"default": 125
 												}
@@ -20088,7 +20088,7 @@
 									"title": "TLS1.2 only"
 								},
 								{
-									"description": "Enables Crypto TLS 1.3 feature for a zone.",
+									"description": "Enables Crypto TLS 1.3 feature for a zone.\nThis setting also controls 0-RTT. `zrt` enables TLS 1.3 and 0-RTT, `on` enables TLS 1.3 and disables 0-RTT, and `off` disables both.\nReads return `zrt` when TLS 1.3 and 0-RTT are both enabled, so setting `on` while 0-RTT is enabled turns 0-RTT off.",
 									"allOf": [
 										{
 											"properties": {
@@ -20982,7 +20982,7 @@
 											"items": {
 												"anyOf": [
 													{
-														"description": "0-RTT session resumption enabled for this zone.",
+														"description": "0-RTT session resumption enabled for this zone.\nChanging this setting does not enable or disable TLS 1.3. Writing the `tls_1_3` setting also changes 0-RTT: `zrt` enables it, and `on` or `off` disables it.",
 														"allOf": [
 															{
 																"properties": {
@@ -24186,7 +24186,7 @@
 														"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 													},
 													{
-														"description": "Maximum time between two read operations from origin.",
+														"description": "Maximum time in seconds between two read operations from origin.",
 														"allOf": [
 															{
 																"properties": {
@@ -24253,7 +24253,7 @@
 																		]
 																	},
 																	"value": {
-																		"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+																		"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 																		"type": "number",
 																		"default": 125
 																	}
@@ -25527,7 +25527,7 @@
 														"title": "TLS1.2 only"
 													},
 													{
-														"description": "Enables Crypto TLS 1.3 feature for a zone.",
+														"description": "Enables Crypto TLS 1.3 feature for a zone.\nThis setting also controls 0-RTT. `zrt` enables TLS 1.3 and 0-RTT, `on` enables TLS 1.3 and disables 0-RTT, and `off` disables both.\nReads return `zrt` when TLS 1.3 and 0-RTT are both enabled, so setting `on` while 0-RTT is enabled turns 0-RTT off.",
 														"allOf": [
 															{
 																"properties": {
@@ -27128,7 +27128,7 @@
 												"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 											},
 											{
-												"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+												"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 												"type": "number",
 												"default": 125
 											},
@@ -27515,7 +27515,7 @@
 											"type": "object",
 											"oneOf": [
 												{
-													"description": "0-RTT session resumption enabled for this zone.",
+													"description": "0-RTT session resumption enabled for this zone.\nChanging this setting does not enable or disable TLS 1.3. Writing the `tls_1_3` setting also changes 0-RTT: `zrt` enables it, and `on` or `off` disables it.",
 													"allOf": [
 														{
 															"properties": {
@@ -30802,7 +30802,7 @@
 													"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 												},
 												{
-													"description": "Maximum time between two read operations from origin.",
+													"description": "Maximum time in seconds between two read operations from origin.",
 													"allOf": [
 														{
 															"properties": {
@@ -30869,7 +30869,7 @@
 																	]
 																},
 																"value": {
-																	"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+																	"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 																	"type": "number",
 																	"default": 125
 																}
@@ -32143,7 +32143,7 @@
 													"title": "TLS1.2 only"
 												},
 												{
-													"description": "Enables Crypto TLS 1.3 feature for a zone.",
+													"description": "Enables Crypto TLS 1.3 feature for a zone.\nThis setting also controls 0-RTT. `zrt` enables TLS 1.3 and 0-RTT, `on` enables TLS 1.3 and disables 0-RTT, and `off` disables both.\nReads return `zrt` when TLS 1.3 and 0-RTT are both enabled, so setting `on` while 0-RTT is enabled turns 0-RTT off.",
 													"allOf": [
 														{
 															"properties": {

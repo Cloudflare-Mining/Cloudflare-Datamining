@@ -793,6 +793,33 @@
 																		"maximum": 600,
 																		"minimum": 60
 																	},
+																	"sip": {
+																		"description": "SIP dial-in details. `null` if SIP is not enabled for the meeting.",
+																		"type": "object",
+																		"properties": {
+																			"password": {
+																				"description": "Password for SIP digest authentication. Keep it secret.",
+																				"type": "string",
+																				"readOnly": true
+																			},
+																			"sip_uri": {
+																				"description": "SIP URI to dial. Configure it in your SIP provider or PBX.",
+																				"type": "string",
+																				"readOnly": true
+																			},
+																			"username": {
+																				"description": "Username for SIP digest authentication.",
+																				"type": "string",
+																				"readOnly": true
+																			}
+																		},
+																		"nullable": true,
+																		"required": [
+																			"sip_uri",
+																			"username",
+																			"password"
+																		]
+																	},
 																	"status": {
 																		"description": "Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting.",
 																		"type": "string",

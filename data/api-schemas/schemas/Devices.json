@@ -274,6 +274,13 @@
 														"default": false,
 														"x-auditable": true
 													},
+													"enable_netbt": {
+														"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
+														"type": "boolean",
+														"example": false,
+														"default": false,
+														"x-auditable": true
+													},
 													"enabled": {
 														"description": "Whether the policy will be applied to matching devices.",
 														"type": "boolean",
@@ -887,6 +894,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "delete"
 	},
@@ -3555,6 +3563,13 @@
 														"default": false,
 														"x-auditable": true
 													},
+													"enable_netbt": {
+														"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
+														"type": "boolean",
+														"example": false,
+														"default": false,
+														"x-auditable": true
+													},
 													"enabled": {
 														"description": "Whether the policy will be applied to matching devices.",
 														"type": "boolean",
@@ -4165,6 +4180,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "list"
 	},
@@ -4371,6 +4387,13 @@
 												},
 												"enable_device_credential_authentication": {
 													"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true
+												},
+												"enable_netbt": {
+													"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 													"type": "boolean",
 													"example": false,
 													"default": false,
@@ -4709,6 +4732,18 @@
 														]
 													}
 												},
+												"lan_allow_minutes": {
+													"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
+													"type": "number",
+													"example": 30,
+													"x-auditable": true
+												},
+												"lan_allow_subnet_size": {
+													"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
+													"type": "number",
+													"example": 24,
+													"x-auditable": true
+												},
 												"policy_id": {
 													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -4933,6 +4968,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
 		"x-fern-sdk-method-name": "get"
 	},
@@ -5184,6 +5220,13 @@
 												},
 												"enable_device_credential_authentication": {
 													"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true
+												},
+												"enable_netbt": {
+													"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 													"type": "boolean",
 													"example": false,
 													"default": false,
@@ -5798,6 +5841,7 @@
 			"Devices"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "get"
 	},
@@ -8027,6 +8071,13 @@
 								"default": false,
 								"x-auditable": true
 							},
+							"enable_netbt": {
+								"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
+								"type": "boolean",
+								"example": false,
+								"default": false,
+								"x-auditable": true
+							},
 							"exclude": {
 								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
 								"type": "array",
@@ -8524,6 +8575,13 @@
 													"default": false,
 													"x-auditable": true
 												},
+												"enable_netbt": {
+													"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true
+												},
 												"enabled": {
 													"description": "Whether the policy will be applied to matching devices.",
 													"type": "boolean",
@@ -8857,6 +8915,18 @@
 														]
 													}
 												},
+												"lan_allow_minutes": {
+													"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
+													"type": "number",
+													"example": 30,
+													"x-auditable": true
+												},
+												"lan_allow_subnet_size": {
+													"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
+													"type": "number",
+													"example": 24,
+													"x-auditable": true
+												},
 												"policy_id": {
 													"type": "string",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -9084,6 +9154,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
 		"x-fern-sdk-method-name": "update"
 	},
@@ -9231,6 +9302,13 @@
 							},
 							"enable_device_credential_authentication": {
 								"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+								"type": "boolean",
+								"example": false,
+								"default": false,
+								"x-auditable": true
+							},
+							"enable_netbt": {
+								"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 								"type": "boolean",
 								"example": false,
 								"default": false,
@@ -9788,6 +9866,13 @@
 												},
 												"enable_device_credential_authentication": {
 													"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true
+												},
+												"enable_netbt": {
+													"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 													"type": "boolean",
 													"example": false,
 													"default": false,
@@ -10405,6 +10490,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "update"
 	},
@@ -10816,6 +10902,13 @@
 							},
 							"enable_device_credential_authentication": {
 								"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+								"type": "boolean",
+								"example": false,
+								"default": false,
+								"x-auditable": true
+							},
+							"enable_netbt": {
+								"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 								"type": "boolean",
 								"example": false,
 								"default": false,
@@ -11388,6 +11481,13 @@
 												},
 												"enable_device_credential_authentication": {
 													"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+													"type": "boolean",
+													"example": false,
+													"default": false,
+													"x-auditable": true
+												},
+												"enable_netbt": {
+													"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 													"type": "boolean",
 													"example": false,
 													"default": false,
@@ -12005,6 +12105,7 @@
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 		"x-fern-sdk-method-name": "create"
 	},

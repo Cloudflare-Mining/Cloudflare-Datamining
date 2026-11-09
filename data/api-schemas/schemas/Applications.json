@@ -3946,9 +3946,13 @@
 			{
 				"name": "environment",
 				"in": "query",
-				"description": "Filter by supported environment (standard, fedramp).",
+				"description": "Environment to request (standard, fedramp). The result follows the account's FedRAMP entitlement: FedRAMP-enabled accounts always receive FedRAMP applications and other accounts receive standard applications. Any other non-empty value returns 400.",
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"enum": [
+						"fedramp",
+						"standard"
+					]
 				}
 			},
 			{
@@ -4318,6 +4322,18 @@
 						"ZOOM"
 					]
 				}
+			},
+			{
+				"name": "environment",
+				"in": "query",
+				"description": "Environment to request (standard, fedramp). The result follows the account's FedRAMP entitlement: FedRAMP-enabled accounts always receive FedRAMP applications and other accounts receive standard applications. Any other non-empty value returns 400.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"fedramp",
+						"standard"
+					]
+				}
 			}
 		],
 		"responses": {
@@ -4649,6 +4665,9 @@
 					}
 				}
 			},
+			"400": {
+				"description": "Invalid environment."
+			},
 			"404": {
 				"description": "Application not found."
 			}
@@ -4709,6 +4728,18 @@
 						"SERVICENOW",
 						"SLACK",
 						"ZOOM"
+					]
+				}
+			},
+			{
+				"name": "environment",
+				"in": "query",
+				"description": "Environment to request (standard, fedramp). The result follows the account's FedRAMP entitlement: FedRAMP-enabled accounts always receive FedRAMP applications and other accounts receive standard applications. Any other non-empty value returns 400.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"fedramp",
+						"standard"
 					]
 				}
 			},
@@ -4913,6 +4944,9 @@
 					}
 				}
 			},
+			"400": {
+				"description": "Invalid environment."
+			},
 			"404": {
 				"description": "Application not found."
 			}
@@ -4987,7 +5021,7 @@
 			{
 				"name": "environment",
 				"in": "query",
-				"description": "Filter by environment.",
+				"description": "Environment to request (standard, fedramp). The result follows the account's FedRAMP entitlement: FedRAMP-enabled accounts always receive FedRAMP applications and other accounts receive standard applications. Any other non-empty value returns 400.",
 				"schema": {
 					"type": "string",
 					"enum": [
@@ -5402,6 +5436,9 @@
 						}
 					}
 				}
+			},
+			"400": {
+				"description": "Invalid environment."
 			},
 			"404": {
 				"description": "Application not found or no flows available."

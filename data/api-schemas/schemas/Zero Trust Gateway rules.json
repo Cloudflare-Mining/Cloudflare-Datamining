@@ -557,6 +557,7 @@
 														"description": "Specify the rule description.",
 														"type": "string",
 														"example": "Block bad websites based on their host name.",
+														"default": "",
 														"x-auditable": true
 													},
 													"device_posture": {
@@ -613,7 +614,7 @@
 														"required": [
 															"expires_at"
 														],
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"filters": {
 														"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1276,7 +1277,7 @@
 																"x-stainless-terraform-configurability": "optional"
 															}
 														},
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"schedule": {
 														"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1316,6 +1317,7 @@
 																"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																"type": "string",
 																"example": "America/New York",
+																"default": "",
 																"x-auditable": true
 															},
 															"tue": {
@@ -1332,7 +1334,7 @@
 															}
 														},
 														"nullable": true,
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"sharable": {
 														"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1554,6 +1556,7 @@
 																"description": "Specify the rule description.",
 																"type": "string",
 																"example": "Block bad websites based on their host name.",
+																"default": "",
 																"x-auditable": true
 															},
 															"device_posture": {
@@ -1610,7 +1613,7 @@
 																"required": [
 																	"expires_at"
 																],
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"filters": {
 																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -2273,7 +2276,7 @@
 																		"x-stainless-terraform-configurability": "optional"
 																	}
 																},
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"schedule": {
 																"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -2313,6 +2316,7 @@
 																		"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																		"type": "string",
 																		"example": "America/New York",
+																		"default": "",
 																		"x-auditable": true
 																	},
 																	"tue": {
@@ -2329,7 +2333,7 @@
 																	}
 																},
 																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"sharable": {
 																"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -2647,6 +2651,7 @@
 													"description": "Specify the rule description.",
 													"type": "string",
 													"example": "Block bad websites based on their host name.",
+													"default": "",
 													"x-auditable": true
 												},
 												"device_posture": {
@@ -2703,7 +2708,7 @@
 													"required": [
 														"expires_at"
 													],
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"filters": {
 													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -3366,7 +3371,7 @@
 															"x-stainless-terraform-configurability": "optional"
 														}
 													},
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"schedule": {
 													"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -3406,6 +3411,7 @@
 															"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 															"type": "string",
 															"example": "America/New York",
+															"default": "",
 															"x-auditable": true
 														},
 														"tue": {
@@ -3422,7 +3428,7 @@
 														}
 													},
 													"nullable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"sharable": {
 													"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -3610,6 +3616,7 @@
 															"description": "Specify the rule description.",
 															"type": "string",
 															"example": "Block bad websites based on their host name.",
+															"default": "",
 															"x-auditable": true
 														},
 														"device_posture": {
@@ -3666,7 +3673,7 @@
 															"required": [
 																"expires_at"
 															],
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"filters": {
 															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -4329,7 +4336,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"schedule": {
 															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -4369,6 +4376,7 @@
 																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																	"type": "string",
 																	"example": "America/New York",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"tue": {
@@ -4385,7 +4393,7 @@
 																}
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"sharable": {
 															"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -4721,6 +4729,7 @@
 														"description": "Specify the rule description.",
 														"type": "string",
 														"example": "Block bad websites based on their host name.",
+														"default": "",
 														"x-auditable": true
 													},
 													"device_posture": {
@@ -4777,7 +4786,7 @@
 														"required": [
 															"expires_at"
 														],
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"filters": {
 														"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -5440,7 +5449,7 @@
 																"x-stainless-terraform-configurability": "optional"
 															}
 														},
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"schedule": {
 														"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -5480,6 +5489,7 @@
 																"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																"type": "string",
 																"example": "America/New York",
+																"default": "",
 																"x-auditable": true
 															},
 															"tue": {
@@ -5496,7 +5506,7 @@
 															}
 														},
 														"nullable": true,
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"sharable": {
 														"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -5718,6 +5728,7 @@
 																"description": "Specify the rule description.",
 																"type": "string",
 																"example": "Block bad websites based on their host name.",
+																"default": "",
 																"x-auditable": true
 															},
 															"device_posture": {
@@ -5774,7 +5785,7 @@
 																"required": [
 																	"expires_at"
 																],
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"filters": {
 																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -6437,7 +6448,7 @@
 																		"x-stainless-terraform-configurability": "optional"
 																	}
 																},
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"schedule": {
 																"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -6477,6 +6488,7 @@
 																		"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																		"type": "string",
 																		"example": "America/New York",
+																		"default": "",
 																		"x-auditable": true
 																	},
 																	"tue": {
@@ -6493,7 +6505,7 @@
 																	}
 																},
 																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"sharable": {
 																"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -6686,7 +6698,7 @@
 						"items": {
 							"properties": {
 								"description": {
-									"description": "Specify the rule description.",
+									"description": "Update the rule description. If omitted, the description is unchanged. Set to an empty string to clear the description.",
 									"type": "string",
 									"example": "Block bad websites based on their host name.",
 									"x-auditable": true
@@ -6881,6 +6893,7 @@
 														"description": "Specify the rule description.",
 														"type": "string",
 														"example": "Block bad websites based on their host name.",
+														"default": "",
 														"x-auditable": true
 													},
 													"device_posture": {
@@ -6937,7 +6950,7 @@
 														"required": [
 															"expires_at"
 														],
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"filters": {
 														"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -7600,7 +7613,7 @@
 																"x-stainless-terraform-configurability": "optional"
 															}
 														},
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"schedule": {
 														"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -7640,6 +7653,7 @@
 																"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																"type": "string",
 																"example": "America/New York",
+																"default": "",
 																"x-auditable": true
 															},
 															"tue": {
@@ -7656,7 +7670,7 @@
 															}
 														},
 														"nullable": true,
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"sharable": {
 														"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -7875,6 +7889,7 @@
 																"description": "Specify the rule description.",
 																"type": "string",
 																"example": "Block bad websites based on their host name.",
+																"default": "",
 																"x-auditable": true
 															},
 															"device_posture": {
@@ -7931,7 +7946,7 @@
 																"required": [
 																	"expires_at"
 																],
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"filters": {
 																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -8594,7 +8609,7 @@
 																		"x-stainless-terraform-configurability": "optional"
 																	}
 																},
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"schedule": {
 																"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -8634,6 +8649,7 @@
 																		"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																		"type": "string",
 																		"example": "America/New York",
+																		"default": "",
 																		"x-auditable": true
 																	},
 																	"tue": {
@@ -8650,7 +8666,7 @@
 																	}
 																},
 																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"sharable": {
 																"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -8856,7 +8872,7 @@
 						"type": "object",
 						"properties": {
 							"description": {
-								"description": "Specify the rule description.",
+								"description": "Update the rule description. If omitted, the description is unchanged. Set to an empty string to clear the description.",
 								"type": "string",
 								"example": "Block bad websites based on their host name.",
 								"x-auditable": true
@@ -9006,6 +9022,7 @@
 													"description": "Specify the rule description.",
 													"type": "string",
 													"example": "Block bad websites based on their host name.",
+													"default": "",
 													"x-auditable": true
 												},
 												"device_posture": {
@@ -9062,7 +9079,7 @@
 													"required": [
 														"expires_at"
 													],
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"filters": {
 													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -9725,7 +9742,7 @@
 															"x-stainless-terraform-configurability": "optional"
 														}
 													},
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"schedule": {
 													"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -9765,6 +9782,7 @@
 															"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 															"type": "string",
 															"example": "America/New York",
+															"default": "",
 															"x-auditable": true
 														},
 														"tue": {
@@ -9781,7 +9799,7 @@
 														}
 													},
 													"nullable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"sharable": {
 													"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -9967,6 +9985,7 @@
 															"description": "Specify the rule description.",
 															"type": "string",
 															"example": "Block bad websites based on their host name.",
+															"default": "",
 															"x-auditable": true
 														},
 														"device_posture": {
@@ -10023,7 +10042,7 @@
 															"required": [
 																"expires_at"
 															],
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"filters": {
 															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -10686,7 +10705,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"schedule": {
 															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -10726,6 +10745,7 @@
 																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																	"type": "string",
 																	"example": "America/New York",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"tue": {
@@ -10742,7 +10762,7 @@
 																}
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"sharable": {
 															"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -10962,6 +10982,7 @@
 								"description": "Specify the rule description.",
 								"type": "string",
 								"example": "Block bad websites based on their host name.",
+								"default": "",
 								"x-auditable": true
 							},
 							"device_posture": {
@@ -11018,7 +11039,7 @@
 								"required": [
 									"expires_at"
 								],
-								"x-stainless-terraform-configurability": "computed_optional"
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"filters": {
 								"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -11666,7 +11687,7 @@
 										"x-stainless-terraform-configurability": "optional"
 									}
 								},
-								"x-stainless-terraform-configurability": "computed_optional"
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"schedule": {
 								"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -11706,6 +11727,7 @@
 										"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 										"type": "string",
 										"example": "America/New York",
+										"default": "",
 										"x-auditable": true
 									},
 									"tue": {
@@ -11722,7 +11744,7 @@
 									}
 								},
 								"nullable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"traffic": {
 								"description": "Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
@@ -11862,6 +11884,7 @@
 													"description": "Specify the rule description.",
 													"type": "string",
 													"example": "Block bad websites based on their host name.",
+													"default": "",
 													"x-auditable": true
 												},
 												"device_posture": {
@@ -11918,7 +11941,7 @@
 													"required": [
 														"expires_at"
 													],
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"filters": {
 													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -12581,7 +12604,7 @@
 															"x-stainless-terraform-configurability": "optional"
 														}
 													},
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"schedule": {
 													"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -12621,6 +12644,7 @@
 															"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 															"type": "string",
 															"example": "America/New York",
+															"default": "",
 															"x-auditable": true
 														},
 														"tue": {
@@ -12637,7 +12661,7 @@
 														}
 													},
 													"nullable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"sharable": {
 													"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -12826,6 +12850,7 @@
 															"description": "Specify the rule description.",
 															"type": "string",
 															"example": "Block bad websites based on their host name.",
+															"default": "",
 															"x-auditable": true
 														},
 														"device_posture": {
@@ -12882,7 +12907,7 @@
 															"required": [
 																"expires_at"
 															],
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"filters": {
 															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -13545,7 +13570,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"schedule": {
 															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -13585,6 +13610,7 @@
 																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																	"type": "string",
 																	"example": "America/New York",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"tue": {
@@ -13601,7 +13627,7 @@
 																}
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"sharable": {
 															"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -13918,6 +13944,7 @@
 													"description": "Specify the rule description.",
 													"type": "string",
 													"example": "Block bad websites based on their host name.",
+													"default": "",
 													"x-auditable": true
 												},
 												"device_posture": {
@@ -13974,7 +14001,7 @@
 													"required": [
 														"expires_at"
 													],
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"filters": {
 													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -14637,7 +14664,7 @@
 															"x-stainless-terraform-configurability": "optional"
 														}
 													},
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"schedule": {
 													"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -14677,6 +14704,7 @@
 															"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 															"type": "string",
 															"example": "America/New York",
+															"default": "",
 															"x-auditable": true
 														},
 														"tue": {
@@ -14693,7 +14721,7 @@
 														}
 													},
 													"nullable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"sharable": {
 													"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -14879,6 +14907,7 @@
 															"description": "Specify the rule description.",
 															"type": "string",
 															"example": "Block bad websites based on their host name.",
+															"default": "",
 															"x-auditable": true
 														},
 														"device_posture": {
@@ -14935,7 +14964,7 @@
 															"required": [
 																"expires_at"
 															],
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"filters": {
 															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -15598,7 +15627,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"schedule": {
 															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -15638,6 +15667,7 @@
 																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																	"type": "string",
 																	"example": "America/New York",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"tue": {
@@ -15654,7 +15684,7 @@
 																}
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"sharable": {
 															"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -15886,6 +15916,7 @@
 								"description": "Specify the rule description.",
 								"type": "string",
 								"example": "Block bad websites based on their host name.",
+								"default": "",
 								"x-auditable": true
 							},
 							"device_posture": {
@@ -15942,7 +15973,7 @@
 								"required": [
 									"expires_at"
 								],
-								"x-stainless-terraform-configurability": "computed_optional"
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"filters": {
 								"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -16590,7 +16621,7 @@
 										"x-stainless-terraform-configurability": "optional"
 									}
 								},
-								"x-stainless-terraform-configurability": "computed_optional"
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"schedule": {
 								"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -16630,6 +16661,7 @@
 										"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 										"type": "string",
 										"example": "America/New York",
+										"default": "",
 										"x-auditable": true
 									},
 									"tue": {
@@ -16646,7 +16678,7 @@
 									}
 								},
 								"nullable": true,
-								"x-stainless-terraform-configurability": "computed_optional"
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"traffic": {
 								"description": "Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
@@ -16786,6 +16818,7 @@
 													"description": "Specify the rule description.",
 													"type": "string",
 													"example": "Block bad websites based on their host name.",
+													"default": "",
 													"x-auditable": true
 												},
 												"device_posture": {
@@ -16842,7 +16875,7 @@
 													"required": [
 														"expires_at"
 													],
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"filters": {
 													"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -17505,7 +17538,7 @@
 															"x-stainless-terraform-configurability": "optional"
 														}
 													},
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"schedule": {
 													"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -17545,6 +17578,7 @@
 															"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 															"type": "string",
 															"example": "America/New York",
+															"default": "",
 															"x-auditable": true
 														},
 														"tue": {
@@ -17561,7 +17595,7 @@
 														}
 													},
 													"nullable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"sharable": {
 													"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -17749,6 +17783,7 @@
 															"description": "Specify the rule description.",
 															"type": "string",
 															"example": "Block bad websites based on their host name.",
+															"default": "",
 															"x-auditable": true
 														},
 														"device_posture": {
@@ -17805,7 +17840,7 @@
 															"required": [
 																"expires_at"
 															],
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"filters": {
 															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -18468,7 +18503,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"schedule": {
 															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -18508,6 +18543,7 @@
 																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																	"type": "string",
 																	"example": "America/New York",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"tue": {
@@ -18524,7 +18560,7 @@
 																}
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"sharable": {
 															"description": "Indicate that this rule is sharable via the Orgs API.",

@@ -3847,6 +3847,7 @@
 								"url_pattern",
 								"account",
 								"zone",
+								"domain",
 								"custom_expression"
 							]
 						}
@@ -3911,6 +3912,7 @@
 																	"url_pattern",
 																	"account",
 																	"zone",
+																	"domain",
 																	"custom_expression"
 																]
 															},
@@ -4485,6 +4487,7 @@
 															"url_pattern",
 															"account",
 															"zone",
+															"domain",
 															"custom_expression"
 														]
 													},
@@ -4612,6 +4615,7 @@
 															"url_pattern",
 															"account",
 															"zone",
+															"domain",
 															"custom_expression"
 														]
 													},
@@ -7010,7 +7014,7 @@
 													"type": "string"
 												},
 												{
-													"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+													"description": "Justification must be at least 20 characters for phishing reports and cannot exceed 5000 characters",
 													"type": "string"
 												},
 												{
@@ -7131,7 +7135,7 @@
 													"type": "string"
 												},
 												{
-													"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+													"description": "Justification must be at least 20 characters for phishing reports and cannot exceed 5000 characters",
 													"type": "string"
 												},
 												{
@@ -7564,7 +7568,7 @@
 													"type": "string"
 												},
 												{
-													"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+													"description": "Justification must be at least 20 characters for phishing reports and cannot exceed 5000 characters",
 													"type": "string"
 												},
 												{
@@ -7685,7 +7689,7 @@
 													"type": "string"
 												},
 												{
-													"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+													"description": "Justification must be at least 20 characters for phishing reports and cannot exceed 5000 characters",
 													"type": "string"
 												},
 												{
@@ -10440,7 +10444,6 @@
 																	"description": "Current sync state of the server",
 																	"type": "string",
 																	"example": "ready",
-																	"default": "waiting",
 																	"enum": [
 																		"waiting",
 																		"ready",
@@ -10535,8 +10538,7 @@
 																"server_id"
 															],
 															"type": "object"
-														},
-														"x-stainless-collection-type": "set"
+														}
 													}
 												},
 												"required": [
@@ -10789,8 +10791,7 @@
 											],
 											"type": "object"
 										},
-										"maxItems": 120,
-										"x-stainless-collection-type": "set"
+										"maxItems": 120
 									}
 								},
 								"required": [
@@ -11097,7 +11098,6 @@
 																"description": "Current sync state of the server",
 																"type": "string",
 																"example": "ready",
-																"default": "waiting",
 																"enum": [
 																	"waiting",
 																	"ready",
@@ -11192,8 +11192,7 @@
 															"server_id"
 														],
 														"type": "object"
-													},
-													"x-stainless-collection-type": "set"
+													}
 												}
 											},
 											"required": [
@@ -11820,7 +11819,6 @@
 																"description": "Current sync state of the server",
 																"type": "string",
 																"example": "ready",
-																"default": "waiting",
 																"enum": [
 																	"waiting",
 																	"ready",
@@ -11915,8 +11913,7 @@
 															"server_id"
 														],
 														"type": "object"
-													},
-													"x-stainless-collection-type": "set"
+													}
 												}
 											},
 											"required": [
@@ -12176,8 +12173,7 @@
 											],
 											"type": "object"
 										},
-										"maxItems": 120,
-										"x-stainless-collection-type": "set"
+										"maxItems": 120
 									}
 								}
 							}
@@ -12479,7 +12475,6 @@
 																"description": "Current sync state of the server",
 																"type": "string",
 																"example": "ready",
-																"default": "waiting",
 																"enum": [
 																	"waiting",
 																	"ready",
@@ -12574,8 +12569,7 @@
 															"server_id"
 														],
 														"type": "object"
-													},
-													"x-stainless-collection-type": "set"
+													}
 												}
 											},
 											"required": [
@@ -13140,7 +13134,6 @@
 														"description": "Current sync state of the server",
 														"type": "string",
 														"example": "ready",
-														"default": "waiting",
 														"enum": [
 															"waiting",
 															"ready",
@@ -13677,7 +13670,6 @@
 													"description": "Current sync state of the server",
 													"type": "string",
 													"example": "ready",
-													"default": "waiting",
 													"enum": [
 														"waiting",
 														"ready",
@@ -14099,7 +14091,6 @@
 													"description": "Current sync state of the server",
 													"type": "string",
 													"example": "ready",
-													"default": "waiting",
 													"enum": [
 														"waiting",
 														"ready",
@@ -14512,7 +14503,6 @@
 													"description": "Current sync state of the server",
 													"type": "string",
 													"example": "ready",
-													"default": "waiting",
 													"enum": [
 														"waiting",
 														"ready",
@@ -15034,7 +15024,6 @@
 													"description": "Current sync state of the server",
 													"type": "string",
 													"example": "ready",
-													"default": "waiting",
 													"enum": [
 														"waiting",
 														"ready",
@@ -542019,6 +542008,266 @@
 				"x-fern-sdk-method-name": "update"
 			}
 		},
+		"/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}/test": {
+			"post": {
+				"operationId": "aig-config-test-providers",
+				"summary": "Check stored provider credentials",
+				"description": "Checks whether stored credentials can list models through the provider implementation in AI Gateway. Requires AI Gateway content update permission. Does not run inference, check credits or inference permissions, or return provider response bodies. HTTP 401 from the model-list request is classified as invalid, as is AWS Bedrock HTTP 403 with an UnrecognizedClientException error type. Other failures are inconclusive, including other HTTP 400 or 403 responses; a 403 alone does not distinguish rejected credentials from insufficient permissions. Unsupported providers or credential formats also return an inconclusive result.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+						}
+					},
+					{
+						"name": "gateway_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Unique identifier of the AI Gateway within the account.",
+							"type": "string",
+							"example": "my-gateway",
+							"maxLength": 64,
+							"minLength": 1,
+							"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"additionalProperties": false
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Credential probe outcome; error means validity is unknown",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"httpStatus": {
+													"type": "number",
+													"nullable": true
+												},
+												"providerSlug": {
+													"type": "string"
+												},
+												"reason": {
+													"type": "string",
+													"enum": [
+														"unsupported_provider",
+														"missing_secret",
+														"provider_error",
+														"permission_denied",
+														"request_failed"
+													]
+												},
+												"status": {
+													"type": "string",
+													"enum": [
+														"valid",
+														"invalid",
+														"error"
+													]
+												}
+											},
+											"required": [
+												"status",
+												"providerSlug",
+												"httpStatus"
+											]
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									]
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Input Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number",
+														"example": 7001
+													},
+													"message": {
+														"type": "string",
+														"example": "Input Validation Error"
+													},
+													"path": {
+														"type": "array",
+														"items": {
+															"example": "body",
+															"type": "string"
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message",
+													"path"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number",
+														"example": 7002
+													},
+													"message": {
+														"type": "string",
+														"example": "Not Found"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
+					},
+					"501": {
+						"description": "Provider key testing is not available in this environment.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "number",
+														"example": 7022
+													},
+													"message": {
+														"type": "string",
+														"example": "Provider key testing is not available in this environment."
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
+					}
+				],
+				"tags": [
+					"AI Gateway Provider Configs"
+				],
+				"x-api-token-group": [
+					"Secrets Store Write"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.aig"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				},
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "ai-gateway.gateways.providers",
+				"x-fern-sdk-method-name": "test"
+			}
+		},
 		"/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes": {
 			"get": {
 				"operationId": "aig-config-list-gateway-dynamic-routes",
@@ -557608,8 +557857,8 @@
 														"type": "boolean"
 													},
 													"match_threshold": {
+														"description": "Minimum reranker relevance score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4.",
 														"type": "number",
-														"default": 0.4,
 														"maximum": 1,
 														"minimum": 0
 													},
@@ -559889,8 +560138,8 @@
 														"type": "boolean"
 													},
 													"match_threshold": {
+														"description": "Minimum reranker relevance score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4.",
 														"type": "number",
-														"default": 0.4,
 														"maximum": 1,
 														"minimum": 0
 													},
@@ -562572,8 +562821,8 @@
 														"type": "boolean"
 													},
 													"match_threshold": {
+														"description": "Minimum reranker relevance score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4.",
 														"type": "number",
-														"default": 0.4,
 														"maximum": 1,
 														"minimum": 0
 													},
@@ -563512,8 +563761,8 @@
 														"type": "boolean"
 													},
 													"match_threshold": {
+														"description": "Minimum reranker relevance score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4.",
 														"type": "number",
-														"default": 0.4,
 														"maximum": 1,
 														"minimum": 0
 													},
@@ -570879,8 +571128,8 @@
 														"type": "boolean"
 													},
 													"match_threshold": {
+														"description": "Minimum reranker relevance score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4.",
 														"type": "number",
-														"default": 0.4,
 														"maximum": 1,
 														"minimum": 0
 													},
@@ -577268,8 +577517,8 @@
 														"type": "boolean"
 													},
 													"match_threshold": {
+														"description": "Minimum reranker relevance score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4.",
 														"type": "number",
-														"default": 0.4,
 														"maximum": 1,
 														"minimum": 0
 													},
@@ -616274,6 +616523,7 @@
 										"warehouses": [
 											{
 												"bucket": "analytics-bucket",
+												"catalog_uri": "https://catalog.cloudflarestorage.com/account123/analytics-bucket",
 												"id": "550e8400-e29b-41d4-a716-446655440000",
 												"jurisdiction": "default",
 												"maintenance_config": {
@@ -616387,6 +616637,12 @@
 																		"description": "Specifies the associated R2 bucket name.",
 																		"type": "string",
 																		"example": "my-data-bucket"
+																	},
+																	"catalog_uri": {
+																		"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
+																		"type": "string",
+																		"format": "uri",
+																		"example": "https://catalog.cloudflarestorage.com/account123/my-data-bucket"
 																	},
 																	"credential_status": {
 																		"description": "Shows the credential configuration status.",
@@ -616754,6 +617010,7 @@
 									"messages": [],
 									"result": {
 										"bucket": "analytics-bucket",
+										"catalog_uri": "https://catalog.cloudflarestorage.com/account123/analytics-bucket",
 										"credential_status": "present",
 										"id": "550e8400-e29b-41d4-a716-446655440000",
 										"jurisdiction": "default",
@@ -616842,6 +617099,12 @@
 															"description": "Specifies the associated R2 bucket name.",
 															"type": "string",
 															"example": "my-data-bucket"
+														},
+														"catalog_uri": {
+															"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
+															"type": "string",
+															"format": "uri",
+															"example": "https://catalog.cloudflarestorage.com/account123/my-data-bucket"
 														},
 														"credential_status": {
 															"description": "Shows the credential configuration status.",
@@ -618389,6 +618652,7 @@
 									"errors": [],
 									"messages": [],
 									"result": {
+										"catalog_uri": "https://catalog.cloudflarestorage.com/account123/my-bucket",
 										"id": "550e8400-e29b-41d4-a716-446655440000",
 										"name": "account123_my-bucket"
 									},
@@ -618459,6 +618723,12 @@
 													"description": "Contains response from activating an R2 bucket as a catalog.",
 													"type": "object",
 													"properties": {
+														"catalog_uri": {
+															"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
+															"type": "string",
+															"format": "uri",
+															"example": "https://catalog.cloudflarestorage.com/account123/my-bucket"
+														},
 														"id": {
 															"description": "Use this to uniquely identify the activated catalog.",
 															"type": "string",
@@ -662296,7 +662566,7 @@
 									]
 								}
 							},
-							"image/jpg": {
+							"image/jpeg": {
 								"schema": {
 									"description": "JPEG binary.",
 									"type": "string"
@@ -662316,7 +662586,7 @@
 							},
 							"text/plain": {
 								"schema": {
-									"description": "Base64 encoded.",
+									"description": "Data URL of the base64-encoded screenshot, such as `data:image/png;base64,...`.",
 									"type": "string"
 								}
 							}
@@ -862214,6 +862484,13 @@
 																"default": false,
 																"x-auditable": true
 															},
+															"enable_netbt": {
+																"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
+																"type": "boolean",
+																"example": false,
+																"default": false,
+																"x-auditable": true
+															},
 															"enabled": {
 																"description": "Whether the policy will be applied to matching devices.",
 																"type": "boolean",
@@ -862824,6 +863101,7 @@
 					"Devices"
 				],
 				"x-fern-availability": "generally-available",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 				"x-fern-sdk-method-name": "list"
 			}
@@ -863032,6 +863310,13 @@
 														},
 														"enable_device_credential_authentication": {
 															"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+															"type": "boolean",
+															"example": false,
+															"default": false,
+															"x-auditable": true
+														},
+														"enable_netbt": {
+															"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 															"type": "boolean",
 															"example": false,
 															"default": false,
@@ -863370,6 +863655,18 @@
 																]
 															}
 														},
+														"lan_allow_minutes": {
+															"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
+															"type": "number",
+															"example": 30,
+															"x-auditable": true
+														},
+														"lan_allow_subnet_size": {
+															"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
+															"type": "number",
+															"example": 24,
+															"x-auditable": true
+														},
 														"policy_id": {
 															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -863594,6 +863891,7 @@
 					"Devices"
 				],
 				"x-fern-availability": "generally-available",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
 				"x-fern-sdk-method-name": "get"
 			},
@@ -863690,6 +863988,13 @@
 									},
 									"enable_device_credential_authentication": {
 										"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+										"type": "boolean",
+										"example": false,
+										"default": false,
+										"x-auditable": true
+									},
+									"enable_netbt": {
+										"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 										"type": "boolean",
 										"example": false,
 										"default": false,
@@ -864192,6 +864497,13 @@
 															"default": false,
 															"x-auditable": true
 														},
+														"enable_netbt": {
+															"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
+															"type": "boolean",
+															"example": false,
+															"default": false,
+															"x-auditable": true
+														},
 														"enabled": {
 															"description": "Whether the policy will be applied to matching devices.",
 															"type": "boolean",
@@ -864525,6 +864837,18 @@
 																]
 															}
 														},
+														"lan_allow_minutes": {
+															"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
+															"type": "number",
+															"example": 30,
+															"x-auditable": true
+														},
+														"lan_allow_subnet_size": {
+															"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
+															"type": "number",
+															"example": 24,
+															"x-auditable": true
+														},
 														"policy_id": {
 															"type": "string",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -864752,6 +865076,7 @@
 					"Zero Trust Write"
 				],
 				"x-fern-availability": "generally-available",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "zero-trust.devices.profiles.default",
 				"x-fern-sdk-method-name": "update"
 			},
@@ -864889,6 +865214,13 @@
 									},
 									"enable_device_credential_authentication": {
 										"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+										"type": "boolean",
+										"example": false,
+										"default": false,
+										"x-auditable": true
+									},
+									"enable_netbt": {
+										"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 										"type": "boolean",
 										"example": false,
 										"default": false,
@@ -865461,6 +865793,13 @@
 														},
 														"enable_device_credential_authentication": {
 															"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+															"type": "boolean",
+															"example": false,
+															"default": false,
+															"x-auditable": true
+														},
+														"enable_netbt": {
+															"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 															"type": "boolean",
 															"example": false,
 															"default": false,
@@ -866078,6 +866417,7 @@
 					"Zero Trust Write"
 				],
 				"x-fern-availability": "generally-available",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 				"x-fern-sdk-method-name": "create"
 			}
@@ -866353,6 +866693,13 @@
 															},
 															"enable_device_credential_authentication": {
 																"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+																"type": "boolean",
+																"example": false,
+																"default": false,
+																"x-auditable": true
+															},
+															"enable_netbt": {
+																"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 																"type": "boolean",
 																"example": false,
 																"default": false,
@@ -866971,6 +867318,7 @@
 					"Zero Trust Write"
 				],
 				"x-fern-availability": "generally-available",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 				"x-fern-sdk-method-name": "delete"
 			},
@@ -867222,6 +867570,13 @@
 														},
 														"enable_device_credential_authentication": {
 															"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+															"type": "boolean",
+															"example": false,
+															"default": false,
+															"x-auditable": true
+														},
+														"enable_netbt": {
+															"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 															"type": "boolean",
 															"example": false,
 															"default": false,
@@ -867836,6 +868191,7 @@
 					"Devices"
 				],
 				"x-fern-availability": "generally-available",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 				"x-fern-sdk-method-name": "get"
 			},
@@ -867983,6 +868339,13 @@
 									},
 									"enable_device_credential_authentication": {
 										"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+										"type": "boolean",
+										"example": false,
+										"default": false,
+										"x-auditable": true
+									},
+									"enable_netbt": {
+										"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 										"type": "boolean",
 										"example": false,
 										"default": false,
@@ -868540,6 +868903,13 @@
 														},
 														"enable_device_credential_authentication": {
 															"description": "Determines whether the WARP client can silently reauthenticate the user with device credentials (Microsoft Entra) instead of prompting for browser-based reauthentication.",
+															"type": "boolean",
+															"example": false,
+															"default": false,
+															"x-auditable": true
+														},
+														"enable_netbt": {
+															"description": "Determines whether NetBIOS over TCP/IP (NetBT) is enabled on the WARP tunnel interface. (Windows only). NetBT is disabled by default for security reasons.",
 															"type": "boolean",
 															"example": false,
 															"default": false,
@@ -869157,6 +869527,7 @@
 					"Zero Trust Write"
 				],
 				"x-fern-availability": "generally-available",
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "zero-trust.devices.profiles.custom",
 				"x-fern-sdk-method-name": "update"
 			}
@@ -1013359,7 +1013730,6 @@
 																		"type": "string",
 																		"format": "uuid",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																		"title": "identifier",
 																		"x-auditable": true
 																	}
 																],
@@ -1013641,7 +1014011,6 @@
 														"type": "string",
 														"format": "uuid",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-														"title": "identifier",
 														"x-auditable": true
 													}
 												],
@@ -1013859,7 +1014228,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															],
@@ -1014173,7 +1014541,6 @@
 															"type": "string",
 															"format": "uuid",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"title": "identifier",
 															"x-auditable": true
 														}
 													},
@@ -1014474,7 +1014841,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															],
@@ -1014702,7 +1015068,6 @@
 						"type": "string",
 						"format": "uuid",
 						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-						"title": "identifier",
 						"x-auditable": true
 					}
 				}
@@ -1014768,7 +1015133,6 @@
 														"type": "string",
 														"format": "uuid",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-														"title": "identifier",
 														"x-auditable": true
 													}
 												],
@@ -1014982,7 +1015346,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															],
@@ -1015422,7 +1015785,6 @@
 																		"type": "string",
 																		"format": "uuid",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																		"title": "identifier",
 																		"x-auditable": true
 																	}
 																],
@@ -1015670,7 +1016032,6 @@
 														"type": "string",
 														"format": "uuid",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-														"title": "identifier",
 														"x-auditable": true
 													}
 												],
@@ -1015853,7 +1016214,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															],
@@ -1016138,7 +1016498,6 @@
 															"type": "string",
 															"format": "uuid",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"title": "identifier",
 															"x-auditable": true
 														}
 													},
@@ -1016434,7 +1016793,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															],
@@ -1016633,7 +1016991,6 @@
 						"type": "string",
 						"format": "uuid",
 						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-						"title": "identifier",
 						"x-auditable": true
 					}
 				}
@@ -1016694,7 +1017051,6 @@
 														"type": "string",
 														"format": "uuid",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-														"title": "identifier",
 														"x-auditable": true
 													}
 												],
@@ -1016874,7 +1017230,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															],
@@ -1017087,7 +1017442,6 @@
 													"type": "string",
 													"format": "uuid",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"title": "identifier",
 													"x-auditable": true
 												}
 											},
@@ -1017214,7 +1017568,6 @@
 																		"type": "string",
 																		"format": "uuid",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																		"title": "identifier",
 																		"x-auditable": true
 																	}
 																},
@@ -1020855,7 +1021208,6 @@
 																		"type": "string",
 																		"format": "uuid",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																		"title": "identifier",
 																		"x-auditable": true
 																	}
 																],
@@ -1021208,7 +1021560,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															],
@@ -1021496,7 +1021847,6 @@
 															"type": "string",
 															"format": "uuid",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"title": "identifier",
 															"x-auditable": true
 														}
 													},
@@ -1021772,7 +1022122,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															],
@@ -1021974,7 +1022323,6 @@
 						"type": "string",
 						"format": "uuid",
 						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-						"title": "identifier",
 						"x-auditable": true
 					}
 				}
@@ -1022135,7 +1022483,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															],
@@ -1022351,7 +1022698,6 @@
 													"type": "string",
 													"format": "uuid",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"title": "identifier",
 													"x-auditable": true
 												}
 											},
@@ -1022400,7 +1022746,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															]
@@ -1022486,7 +1022831,6 @@
 																	"type": "string",
 																	"format": "uuid",
 																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"title": "identifier",
 																	"x-auditable": true
 																}
 															]
@@ -1022616,7 +1022960,6 @@
 																		"type": "string",
 																		"format": "uuid",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																		"title": "identifier",
 																		"x-auditable": true
 																	}
 																},
@@ -1022652,7 +1022995,6 @@
 																				"type": "string",
 																				"format": "uuid",
 																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																				"title": "identifier",
 																				"x-auditable": true
 																			}
 																		],
@@ -1022716,7 +1023058,6 @@
 																				"type": "string",
 																				"format": "uuid",
 																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																				"title": "identifier",
 																				"x-auditable": true
 																			}
 																		],
@@ -1022780,7 +1023121,6 @@
 																				"type": "string",
 																				"format": "uuid",
 																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																				"title": "identifier",
 																				"x-auditable": true
 																			}
 																		],
@@ -1044431,7 +1044771,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "queues.subscriptions",
-				"x-fern-sdk-method-name": "update",
+				"x-fern-sdk-method-name": "edit",
 				"x-forge-params": {
 					"enabled": {
 						"default": null
@@ -1090157,6 +1090497,7 @@
 																"description": "Specify the rule description.",
 																"type": "string",
 																"example": "Block bad websites based on their host name.",
+																"default": "",
 																"x-auditable": true
 															},
 															"device_posture": {
@@ -1090213,7 +1090554,7 @@
 																"required": [
 																	"expires_at"
 																],
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"filters": {
 																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1090876,7 +1091217,7 @@
 																		"x-stainless-terraform-configurability": "optional"
 																	}
 																},
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"schedule": {
 																"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1090916,6 +1091257,7 @@
 																		"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																		"type": "string",
 																		"example": "America/New York",
+																		"default": "",
 																		"x-auditable": true
 																	},
 																	"tue": {
@@ -1090932,7 +1091274,7 @@
 																	}
 																},
 																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"sharable": {
 																"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1091154,6 +1091496,7 @@
 																		"description": "Specify the rule description.",
 																		"type": "string",
 																		"example": "Block bad websites based on their host name.",
+																		"default": "",
 																		"x-auditable": true
 																	},
 																	"device_posture": {
@@ -1091210,7 +1091553,7 @@
 																		"required": [
 																			"expires_at"
 																		],
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"filters": {
 																		"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1091873,7 +1092216,7 @@
 																				"x-stainless-terraform-configurability": "optional"
 																			}
 																		},
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"schedule": {
 																		"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1091913,6 +1092256,7 @@
 																				"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																				"type": "string",
 																				"example": "America/New York",
+																				"default": "",
 																				"x-auditable": true
 																			},
 																			"tue": {
@@ -1091929,7 +1092273,7 @@
 																			}
 																		},
 																		"nullable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"sharable": {
 																		"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1092122,7 +1092466,7 @@
 								"items": {
 									"properties": {
 										"description": {
-											"description": "Specify the rule description.",
+											"description": "Update the rule description. If omitted, the description is unchanged. Set to an empty string to clear the description.",
 											"type": "string",
 											"example": "Block bad websites based on their host name.",
 											"x-auditable": true
@@ -1092317,6 +1092661,7 @@
 																"description": "Specify the rule description.",
 																"type": "string",
 																"example": "Block bad websites based on their host name.",
+																"default": "",
 																"x-auditable": true
 															},
 															"device_posture": {
@@ -1092373,7 +1092718,7 @@
 																"required": [
 																	"expires_at"
 																],
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"filters": {
 																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1093036,7 +1093381,7 @@
 																		"x-stainless-terraform-configurability": "optional"
 																	}
 																},
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"schedule": {
 																"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1093076,6 +1093421,7 @@
 																		"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																		"type": "string",
 																		"example": "America/New York",
+																		"default": "",
 																		"x-auditable": true
 																	},
 																	"tue": {
@@ -1093092,7 +1093438,7 @@
 																	}
 																},
 																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"sharable": {
 																"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1093311,6 +1093657,7 @@
 																		"description": "Specify the rule description.",
 																		"type": "string",
 																		"example": "Block bad websites based on their host name.",
+																		"default": "",
 																		"x-auditable": true
 																	},
 																	"device_posture": {
@@ -1093367,7 +1093714,7 @@
 																		"required": [
 																			"expires_at"
 																		],
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"filters": {
 																		"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1094030,7 +1094377,7 @@
 																				"x-stainless-terraform-configurability": "optional"
 																			}
 																		},
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"schedule": {
 																		"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1094070,6 +1094417,7 @@
 																				"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																				"type": "string",
 																				"example": "America/New York",
+																				"default": "",
 																				"x-auditable": true
 																			},
 																			"tue": {
@@ -1094086,7 +1094434,7 @@
 																			}
 																		},
 																		"nullable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"sharable": {
 																		"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1094307,6 +1094655,7 @@
 										"description": "Specify the rule description.",
 										"type": "string",
 										"example": "Block bad websites based on their host name.",
+										"default": "",
 										"x-auditable": true
 									},
 									"device_posture": {
@@ -1094363,7 +1094712,7 @@
 										"required": [
 											"expires_at"
 										],
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"filters": {
 										"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1095011,7 +1095360,7 @@
 												"x-stainless-terraform-configurability": "optional"
 											}
 										},
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"schedule": {
 										"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1095051,6 +1095400,7 @@
 												"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 												"type": "string",
 												"example": "America/New York",
+												"default": "",
 												"x-auditable": true
 											},
 											"tue": {
@@ -1095067,7 +1095417,7 @@
 											}
 										},
 										"nullable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"traffic": {
 										"description": "Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
@@ -1095207,6 +1095557,7 @@
 															"description": "Specify the rule description.",
 															"type": "string",
 															"example": "Block bad websites based on their host name.",
+															"default": "",
 															"x-auditable": true
 														},
 														"device_posture": {
@@ -1095263,7 +1095614,7 @@
 															"required": [
 																"expires_at"
 															],
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"filters": {
 															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1095926,7 +1096277,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"schedule": {
 															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1095966,6 +1096317,7 @@
 																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																	"type": "string",
 																	"example": "America/New York",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"tue": {
@@ -1095982,7 +1096334,7 @@
 																}
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"sharable": {
 															"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1096171,6 +1096523,7 @@
 																	"description": "Specify the rule description.",
 																	"type": "string",
 																	"example": "Block bad websites based on their host name.",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"device_posture": {
@@ -1096227,7 +1096580,7 @@
 																	"required": [
 																		"expires_at"
 																	],
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"filters": {
 																	"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1096890,7 +1097243,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"schedule": {
 																	"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1096930,6 +1097283,7 @@
 																			"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																			"type": "string",
 																			"example": "America/New York",
+																			"default": "",
 																			"x-auditable": true
 																		},
 																		"tue": {
@@ -1096946,7 +1097300,7 @@
 																		}
 																	},
 																	"nullable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"sharable": {
 																	"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1097572,6 +1097926,7 @@
 															"description": "Specify the rule description.",
 															"type": "string",
 															"example": "Block bad websites based on their host name.",
+															"default": "",
 															"x-auditable": true
 														},
 														"device_posture": {
@@ -1097628,7 +1097983,7 @@
 															"required": [
 																"expires_at"
 															],
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"filters": {
 															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1098291,7 +1098646,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"schedule": {
 															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1098331,6 +1098686,7 @@
 																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																	"type": "string",
 																	"example": "America/New York",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"tue": {
@@ -1098347,7 +1098703,7 @@
 																}
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"sharable": {
 															"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1098535,6 +1098891,7 @@
 																	"description": "Specify the rule description.",
 																	"type": "string",
 																	"example": "Block bad websites based on their host name.",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"device_posture": {
@@ -1098591,7 +1098948,7 @@
 																	"required": [
 																		"expires_at"
 																	],
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"filters": {
 																	"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1099254,7 +1099611,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"schedule": {
 																	"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1099294,6 +1099651,7 @@
 																			"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																			"type": "string",
 																			"example": "America/New York",
+																			"default": "",
 																			"x-auditable": true
 																		},
 																		"tue": {
@@ -1099310,7 +1099668,7 @@
 																		}
 																	},
 																	"nullable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"sharable": {
 																	"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1099514,7 +1099872,7 @@
 								"type": "object",
 								"properties": {
 									"description": {
-										"description": "Specify the rule description.",
+										"description": "Update the rule description. If omitted, the description is unchanged. Set to an empty string to clear the description.",
 										"type": "string",
 										"example": "Block bad websites based on their host name.",
 										"x-auditable": true
@@ -1099664,6 +1100022,7 @@
 															"description": "Specify the rule description.",
 															"type": "string",
 															"example": "Block bad websites based on their host name.",
+															"default": "",
 															"x-auditable": true
 														},
 														"device_posture": {
@@ -1099720,7 +1100079,7 @@
 															"required": [
 																"expires_at"
 															],
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"filters": {
 															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1100383,7 +1100742,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"schedule": {
 															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1100423,6 +1100782,7 @@
 																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																	"type": "string",
 																	"example": "America/New York",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"tue": {
@@ -1100439,7 +1100799,7 @@
 																}
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"sharable": {
 															"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1100625,6 +1100985,7 @@
 																	"description": "Specify the rule description.",
 																	"type": "string",
 																	"example": "Block bad websites based on their host name.",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"device_posture": {
@@ -1100681,7 +1101042,7 @@
 																	"required": [
 																		"expires_at"
 																	],
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"filters": {
 																	"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1101344,7 +1101705,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"schedule": {
 																	"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1101384,6 +1101745,7 @@
 																			"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																			"type": "string",
 																			"example": "America/New York",
+																			"default": "",
 																			"x-auditable": true
 																		},
 																		"tue": {
@@ -1101400,7 +1101762,7 @@
 																		}
 																	},
 																	"nullable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"sharable": {
 																	"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1101633,6 +1101995,7 @@
 										"description": "Specify the rule description.",
 										"type": "string",
 										"example": "Block bad websites based on their host name.",
+										"default": "",
 										"x-auditable": true
 									},
 									"device_posture": {
@@ -1101689,7 +1102052,7 @@
 										"required": [
 											"expires_at"
 										],
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"filters": {
 										"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1102337,7 +1102700,7 @@
 												"x-stainless-terraform-configurability": "optional"
 											}
 										},
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"schedule": {
 										"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1102377,6 +1102740,7 @@
 												"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 												"type": "string",
 												"example": "America/New York",
+												"default": "",
 												"x-auditable": true
 											},
 											"tue": {
@@ -1102393,7 +1102757,7 @@
 											}
 										},
 										"nullable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"traffic": {
 										"description": "Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.",
@@ -1102533,6 +1102897,7 @@
 															"description": "Specify the rule description.",
 															"type": "string",
 															"example": "Block bad websites based on their host name.",
+															"default": "",
 															"x-auditable": true
 														},
 														"device_posture": {
@@ -1102589,7 +1102954,7 @@
 															"required": [
 																"expires_at"
 															],
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"filters": {
 															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1103252,7 +1103617,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"schedule": {
 															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1103292,6 +1103657,7 @@
 																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																	"type": "string",
 																	"example": "America/New York",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"tue": {
@@ -1103308,7 +1103674,7 @@
 																}
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"sharable": {
 															"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1103496,6 +1103862,7 @@
 																	"description": "Specify the rule description.",
 																	"type": "string",
 																	"example": "Block bad websites based on their host name.",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"device_posture": {
@@ -1103552,7 +1103919,7 @@
 																	"required": [
 																		"expires_at"
 																	],
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"filters": {
 																	"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1104215,7 +1104582,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"schedule": {
 																	"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1104255,6 +1104622,7 @@
 																			"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																			"type": "string",
 																			"example": "America/New York",
+																			"default": "",
 																			"x-auditable": true
 																		},
 																		"tue": {
@@ -1104271,7 +1104639,7 @@
 																		}
 																	},
 																	"nullable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"sharable": {
 																	"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1104590,6 +1104958,7 @@
 															"description": "Specify the rule description.",
 															"type": "string",
 															"example": "Block bad websites based on their host name.",
+															"default": "",
 															"x-auditable": true
 														},
 														"device_posture": {
@@ -1104646,7 +1105015,7 @@
 															"required": [
 																"expires_at"
 															],
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"filters": {
 															"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1105309,7 +1105678,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"schedule": {
 															"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1105349,6 +1105718,7 @@
 																	"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																	"type": "string",
 																	"example": "America/New York",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"tue": {
@@ -1105365,7 +1105735,7 @@
 																}
 															},
 															"nullable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"sharable": {
 															"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1105551,6 +1105921,7 @@
 																	"description": "Specify the rule description.",
 																	"type": "string",
 																	"example": "Block bad websites based on their host name.",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"device_posture": {
@@ -1105607,7 +1105978,7 @@
 																	"required": [
 																		"expires_at"
 																	],
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"filters": {
 																	"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1106270,7 +1106641,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"schedule": {
 																	"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1106310,6 +1106681,7 @@
 																			"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																			"type": "string",
 																			"example": "America/New York",
+																			"default": "",
 																			"x-auditable": true
 																		},
 																		"tue": {
@@ -1106326,7 +1106698,7 @@
 																		}
 																	},
 																	"nullable": true,
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"sharable": {
 																	"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1106664,6 +1107036,7 @@
 																"description": "Specify the rule description.",
 																"type": "string",
 																"example": "Block bad websites based on their host name.",
+																"default": "",
 																"x-auditable": true
 															},
 															"device_posture": {
@@ -1106720,7 +1107093,7 @@
 																"required": [
 																	"expires_at"
 																],
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"filters": {
 																"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1107383,7 +1107756,7 @@
 																		"x-stainless-terraform-configurability": "optional"
 																	}
 																},
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"schedule": {
 																"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1107423,6 +1107796,7 @@
 																		"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																		"type": "string",
 																		"example": "America/New York",
+																		"default": "",
 																		"x-auditable": true
 																	},
 																	"tue": {
@@ -1107439,7 +1107813,7 @@
 																	}
 																},
 																"nullable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"sharable": {
 																"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1107661,6 +1108035,7 @@
 																		"description": "Specify the rule description.",
 																		"type": "string",
 																		"example": "Block bad websites based on their host name.",
+																		"default": "",
 																		"x-auditable": true
 																	},
 																	"device_posture": {
@@ -1107717,7 +1108092,7 @@
 																		"required": [
 																			"expires_at"
 																		],
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"filters": {
 																		"description": "Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.",
@@ -1108380,7 +1108755,7 @@
 																				"x-stainless-terraform-configurability": "optional"
 																			}
 																		},
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"schedule": {
 																		"description": "Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.",
@@ -1108420,6 +1108795,7 @@
 																				"description": "Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.",
 																				"type": "string",
 																				"example": "America/New York",
+																				"default": "",
 																				"x-auditable": true
 																			},
 																			"tue": {
@@ -1108436,7 +1108812,7 @@
 																			}
 																		},
 																		"nullable": true,
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"sharable": {
 																		"description": "Indicate that this rule is sharable via the Orgs API.",
@@ -1281293,7 +1281669,7 @@
 																"x-auditable": true
 															},
 															"certificates": {
-																"description": "The uploaded root CA certificate.",
+																"description": "The uploaded root CA certificate. Responses return the certificates as Cloudflare stores them, re-encoded as PEM, not byte for byte as uploaded. Each certificate block ends with a newline, base64 lines are wrapped at 64 characters, text between blocks is dropped, and a chain may be reordered. Compare certificates by their decoded content rather than as strings.",
 																"type": "string",
 																"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQEL\nBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNV\nBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIx\nNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4\nYW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwg\nJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kC\nM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZ\nCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9\nK3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1Mx\nuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcL\nypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7\nz2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQE\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7\nNDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ711\n1Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTi\ni7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG\n+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomo\nShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4\nJhqeoTewsxndhDDE\n-----END CERTIFICATE-----"
 															},
@@ -1281545,7 +1281921,7 @@
 																		"x-auditable": true
 																	},
 																	"certificates": {
-																		"description": "The uploaded root CA certificate.",
+																		"description": "The uploaded root CA certificate. Responses return the certificates as Cloudflare stores them, re-encoded as PEM, not byte for byte as uploaded. Each certificate block ends with a newline, base64 lines are wrapped at 64 characters, text between blocks is dropped, and a chain may be reordered. Compare certificates by their decoded content rather than as strings.",
 																		"type": "string",
 																		"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQEL\nBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNV\nBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIx\nNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4\nYW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwg\nJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kC\nM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZ\nCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9\nK3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1Mx\nuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcL\nypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7\nz2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQE\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7\nNDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ711\n1Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTi\ni7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG\n+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomo\nShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4\nJhqeoTewsxndhDDE\n-----END CERTIFICATE-----"
 																	},
@@ -1281825,7 +1282201,7 @@
 										"x-auditable": true
 									},
 									"certificates": {
-										"description": "The uploaded root CA certificate.",
+										"description": "The uploaded root CA certificate. Responses return the certificates as Cloudflare stores them, re-encoded as PEM, not byte for byte as uploaded. Each certificate block ends with a newline, base64 lines are wrapped at 64 characters, text between blocks is dropped, and a chain may be reordered. Compare certificates by their decoded content rather than as strings.",
 										"type": "string",
 										"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQEL\nBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNV\nBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIx\nNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4\nYW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwg\nJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kC\nM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZ\nCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9\nK3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1Mx\nuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcL\nypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7\nz2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQE\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7\nNDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ711\n1Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTi\ni7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG\n+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomo\nShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4\nJhqeoTewsxndhDDE\n-----END CERTIFICATE-----"
 									},
@@ -1281959,7 +1282335,7 @@
 																	"x-auditable": true
 																},
 																"certificates": {
-																	"description": "The uploaded root CA certificate.",
+																	"description": "The uploaded root CA certificate. Responses return the certificates as Cloudflare stores them, re-encoded as PEM, not byte for byte as uploaded. Each certificate block ends with a newline, base64 lines are wrapped at 64 characters, text between blocks is dropped, and a chain may be reordered. Compare certificates by their decoded content rather than as strings.",
 																	"type": "string",
 																	"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQEL\nBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNV\nBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIx\nNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4\nYW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwg\nJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kC\nM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZ\nCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9\nK3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1Mx\nuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcL\nypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7\nz2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQE\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7\nNDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ711\n1Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTi\ni7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG\n+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomo\nShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4\nJhqeoTewsxndhDDE\n-----END CERTIFICATE-----"
 																},
@@ -1282154,7 +1282530,7 @@
 																			"x-auditable": true
 																		},
 																		"certificates": {
-																			"description": "The uploaded root CA certificate.",
+																			"description": "The uploaded root CA certificate. Responses return the certificates as Cloudflare stores them, re-encoded as PEM, not byte for byte as uploaded. Each certificate block ends with a newline, base64 lines are wrapped at 64 characters, text between blocks is dropped, and a chain may be reordered. Compare certificates by their decoded content rather than as strings.",
 																			"type": "string",
 																			"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQEL\nBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNV\nBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIx\nNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4\nYW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwg\nJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kC\nM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZ\nCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9\nK3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1Mx\nuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcL\nypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7\nz2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQE\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7\nNDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ711\n1Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTi\ni7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG\n+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomo\nShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4\nJhqeoTewsxndhDDE\n-----END CERTIFICATE-----"
 																		},
@@ -1282520,7 +1282896,7 @@
 																	"x-auditable": true
 																},
 																"certificates": {
-																	"description": "The uploaded root CA certificate.",
+																	"description": "The uploaded root CA certificate. Responses return the certificates as Cloudflare stores them, re-encoded as PEM, not byte for byte as uploaded. Each certificate block ends with a newline, base64 lines are wrapped at 64 characters, text between blocks is dropped, and a chain may be reordered. Compare certificates by their decoded content rather than as strings.",
 																	"type": "string",
 																	"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQEL\nBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNV\nBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIx\nNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4\nYW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwg\nJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kC\nM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZ\nCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9\nK3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1Mx\nuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcL\nypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7\nz2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQE\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7\nNDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ711\n1Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTi\ni7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG\n+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomo\nShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4\nJhqeoTewsxndhDDE\n-----END CERTIFICATE-----"
 																},
@@ -1282708,7 +1283084,7 @@
 																			"x-auditable": true
 																		},
 																		"certificates": {
-																			"description": "The uploaded root CA certificate.",
+																			"description": "The uploaded root CA certificate. Responses return the certificates as Cloudflare stores them, re-encoded as PEM, not byte for byte as uploaded. Each certificate block ends with a newline, base64 lines are wrapped at 64 characters, text between blocks is dropped, and a chain may be reordered. Compare certificates by their decoded content rather than as strings.",
 																			"type": "string",
 																			"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQEL\nBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNV\nBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIx\nNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4\nYW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwg\nJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kC\nM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZ\nCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9\nK3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1Mx\nuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcL\nypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7\nz2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQE\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7\nNDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ711\n1Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTi\ni7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG\n+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomo\nShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4\nJhqeoTewsxndhDDE\n-----END CERTIFICATE-----"
 																		},
@@ -1283065,7 +1283441,7 @@
 																	"x-auditable": true
 																},
 																"certificates": {
-																	"description": "The uploaded root CA certificate.",
+																	"description": "The uploaded root CA certificate. Responses return the certificates as Cloudflare stores them, re-encoded as PEM, not byte for byte as uploaded. Each certificate block ends with a newline, base64 lines are wrapped at 64 characters, text between blocks is dropped, and a chain may be reordered. Compare certificates by their decoded content rather than as strings.",
 																	"type": "string",
 																	"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQEL\nBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNV\nBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIx\nNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4\nYW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwg\nJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kC\nM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZ\nCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9\nK3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1Mx\nuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcL\nypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7\nz2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQE\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7\nNDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ711\n1Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTi\ni7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG\n+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomo\nShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4\nJhqeoTewsxndhDDE\n-----END CERTIFICATE-----"
 																},
@@ -1283253,7 +1283629,7 @@
 																			"x-auditable": true
 																		},
 																		"certificates": {
-																			"description": "The uploaded root CA certificate.",
+																			"description": "The uploaded root CA certificate. Responses return the certificates as Cloudflare stores them, re-encoded as PEM, not byte for byte as uploaded. Each certificate block ends with a newline, base64 lines are wrapped at 64 characters, text between blocks is dropped, and a chain may be reordered. Compare certificates by their decoded content rather than as strings.",
 																			"type": "string",
 																			"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQEL\nBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNV\nBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIx\nNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgM\nDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4\nYW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwg\nJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kC\nM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZ\nCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9\nK3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1Mx\nuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcL\nypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7\nz2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQE\nAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7\nNDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ711\n1Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTi\ni7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG\n+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomo\nShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4\nJhqeoTewsxndhDDE\n-----END CERTIFICATE-----"
 																		},
@@ -1287658,9 +1288034,13 @@
 					{
 						"name": "environment",
 						"in": "query",
-						"description": "Filter by supported environment (standard, fedramp).",
+						"description": "Environment to request (standard, fedramp). The result follows the account's FedRAMP entitlement: FedRAMP-enabled accounts always receive FedRAMP applications and other accounts receive standard applications. Any other non-empty value returns 400.",
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"enum": [
+								"fedramp",
+								"standard"
+							]
 						}
 					},
 					{
@@ -1288032,6 +1288412,18 @@
 								"ZOOM"
 							]
 						}
+					},
+					{
+						"name": "environment",
+						"in": "query",
+						"description": "Environment to request (standard, fedramp). The result follows the account's FedRAMP entitlement: FedRAMP-enabled accounts always receive FedRAMP applications and other accounts receive standard applications. Any other non-empty value returns 400.",
+						"schema": {
+							"type": "string",
+							"enum": [
+								"fedramp",
+								"standard"
+							]
+						}
 					}
 				],
 				"responses": {
@@ -1288363,6 +1288755,9 @@
 							}
 						}
 					},
+					"400": {
+						"description": "Invalid environment."
+					},
 					"404": {
 						"description": "Application not found."
 					}
@@ -1288425,6 +1288820,18 @@
 								"SERVICENOW",
 								"SLACK",
 								"ZOOM"
+							]
+						}
+					},
+					{
+						"name": "environment",
+						"in": "query",
+						"description": "Environment to request (standard, fedramp). The result follows the account's FedRAMP entitlement: FedRAMP-enabled accounts always receive FedRAMP applications and other accounts receive standard applications. Any other non-empty value returns 400.",
+						"schema": {
+							"type": "string",
+							"enum": [
+								"fedramp",
+								"standard"
 							]
 						}
 					},
@@ -1288629,6 +1289036,9 @@
 							}
 						}
 					},
+					"400": {
+						"description": "Invalid environment."
+					},
 					"404": {
 						"description": "Application not found."
 					}
@@ -1288705,7 +1289115,7 @@
 					{
 						"name": "environment",
 						"in": "query",
-						"description": "Filter by environment.",
+						"description": "Environment to request (standard, fedramp). The result follows the account's FedRAMP entitlement: FedRAMP-enabled accounts always receive FedRAMP applications and other accounts receive standard applications. Any other non-empty value returns 400.",
 						"schema": {
 							"type": "string",
 							"enum": [
@@ -1289120,6 +1289530,9 @@
 								}
 							}
 						}
+					},
+					"400": {
+						"description": "Invalid environment."
 					},
 					"404": {
 						"description": "Application not found or no flows available."
@@ -1349167,6 +1349580,7 @@
 										"warehouses": [
 											{
 												"bucket": "analytics-bucket",
+												"catalog_uri": "https://catalog.cloudflarestorage.com/account123/analytics-bucket",
 												"id": "550e8400-e29b-41d4-a716-446655440000",
 												"jurisdiction": "default",
 												"maintenance_config": {
@@ -1349280,6 +1349694,12 @@
 																		"description": "Specifies the associated R2 bucket name.",
 																		"type": "string",
 																		"example": "my-data-bucket"
+																	},
+																	"catalog_uri": {
+																		"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
+																		"type": "string",
+																		"format": "uri",
+																		"example": "https://catalog.cloudflarestorage.com/account123/my-data-bucket"
 																	},
 																	"credential_status": {
 																		"description": "Shows the credential configuration status.",
@@ -1349649,6 +1350069,7 @@
 									"messages": [],
 									"result": {
 										"bucket": "analytics-bucket",
+										"catalog_uri": "https://catalog.cloudflarestorage.com/account123/analytics-bucket",
 										"credential_status": "present",
 										"id": "550e8400-e29b-41d4-a716-446655440000",
 										"jurisdiction": "default",
@@ -1349737,6 +1350158,12 @@
 															"description": "Specifies the associated R2 bucket name.",
 															"type": "string",
 															"example": "my-data-bucket"
+														},
+														"catalog_uri": {
+															"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
+															"type": "string",
+															"format": "uri",
+															"example": "https://catalog.cloudflarestorage.com/account123/my-data-bucket"
 														},
 														"credential_status": {
 															"description": "Shows the credential configuration status.",
@@ -1351294,6 +1351721,7 @@
 									"errors": [],
 									"messages": [],
 									"result": {
+										"catalog_uri": "https://catalog.cloudflarestorage.com/account123/my-bucket",
 										"id": "550e8400-e29b-41d4-a716-446655440000",
 										"name": "account123_my-bucket"
 									},
@@ -1351364,6 +1351792,12 @@
 													"description": "Contains response from activating an R2 bucket as a catalog.",
 													"type": "object",
 													"properties": {
+														"catalog_uri": {
+															"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
+															"type": "string",
+															"format": "uri",
+															"example": "https://catalog.cloudflarestorage.com/account123/my-bucket"
+														},
 														"id": {
 															"description": "Use this to uniquely identify the activated catalog.",
 															"type": "string",
@@ -1369180,6 +1369614,33 @@
 																"maximum": 600,
 																"minimum": 60
 															},
+															"sip": {
+																"description": "SIP dial-in details. `null` if SIP is not enabled for the meeting.",
+																"type": "object",
+																"properties": {
+																	"password": {
+																		"description": "Password for SIP digest authentication. Keep it secret.",
+																		"type": "string",
+																		"readOnly": true
+																	},
+																	"sip_uri": {
+																		"description": "SIP URI to dial. Configure it in your SIP provider or PBX.",
+																		"type": "string",
+																		"readOnly": true
+																	},
+																	"username": {
+																		"description": "Username for SIP digest authentication.",
+																		"type": "string",
+																		"readOnly": true
+																	}
+																},
+																"nullable": true,
+																"required": [
+																	"sip_uri",
+																	"username",
+																	"password"
+																]
+															},
 															"status": {
 																"description": "Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting.",
 																"type": "string",
@@ -1369447,6 +1369908,11 @@
 											}
 										},
 										"title": "AIConfig"
+									},
+									"enable_sip": {
+										"description": "Lets phones and SIP systems dial in to the meeting. The response includes the SIP URI and credentials in `sip`. Ignored when replacing a meeting with `PUT`.",
+										"type": "boolean",
+										"default": false
 									},
 									"live_stream_on_start": {
 										"description": "Specifies if the meeting should start getting livestreamed on start.",
@@ -1370170,6 +1370636,33 @@
 																	"default": 60,
 																	"maximum": 600,
 																	"minimum": 60
+																},
+																"sip": {
+																	"description": "SIP dial-in details. `null` if SIP is not enabled for the meeting.",
+																	"type": "object",
+																	"properties": {
+																		"password": {
+																			"description": "Password for SIP digest authentication. Keep it secret.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"sip_uri": {
+																			"description": "SIP URI to dial. Configure it in your SIP provider or PBX.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"username": {
+																			"description": "Username for SIP digest authentication.",
+																			"type": "string",
+																			"readOnly": true
+																		}
+																	},
+																	"nullable": true,
+																	"required": [
+																		"sip_uri",
+																		"username",
+																		"password"
+																	]
 																},
 																"status": {
 																	"description": "Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting.",
@@ -1371129,6 +1371622,33 @@
 																	"maximum": 600,
 																	"minimum": 60
 																},
+																"sip": {
+																	"description": "SIP dial-in details. `null` if SIP is not enabled for the meeting.",
+																	"type": "object",
+																	"properties": {
+																		"password": {
+																			"description": "Password for SIP digest authentication. Keep it secret.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"sip_uri": {
+																			"description": "SIP URI to dial. Configure it in your SIP provider or PBX.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"username": {
+																			"description": "Username for SIP digest authentication.",
+																			"type": "string",
+																			"readOnly": true
+																		}
+																	},
+																	"nullable": true,
+																	"required": [
+																		"sip_uri",
+																		"username",
+																		"password"
+																	]
+																},
 																"status": {
 																	"description": "Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting.",
 																	"type": "string",
@@ -1371920,6 +1372440,10 @@
 										},
 										"title": "AIConfig"
 									},
+									"enable_sip": {
+										"description": "Turns SIP dial-in on or off. Turning it off deletes the SIP URI and credentials; calls already in progress continue. Turning it on again creates a new SIP URI and credentials.",
+										"type": "boolean"
+									},
 									"live_stream_on_start": {
 										"description": "Specifies if the meeting should start getting livestreamed on start.",
 										"type": "boolean"
@@ -1372642,6 +1373166,33 @@
 																	"default": 60,
 																	"maximum": 600,
 																	"minimum": 60
+																},
+																"sip": {
+																	"description": "SIP dial-in details. `null` if SIP is not enabled for the meeting.",
+																	"type": "object",
+																	"properties": {
+																		"password": {
+																			"description": "Password for SIP digest authentication. Keep it secret.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"sip_uri": {
+																			"description": "SIP URI to dial. Configure it in your SIP provider or PBX.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"username": {
+																			"description": "Username for SIP digest authentication.",
+																			"type": "string",
+																			"readOnly": true
+																		}
+																	},
+																	"nullable": true,
+																	"required": [
+																		"sip_uri",
+																		"username",
+																		"password"
+																	]
 																},
 																"status": {
 																	"description": "Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting.",
@@ -1373399,6 +1373950,11 @@
 										},
 										"title": "AIConfig"
 									},
+									"enable_sip": {
+										"description": "Lets phones and SIP systems dial in to the meeting. The response includes the SIP URI and credentials in `sip`. Ignored when replacing a meeting with `PUT`.",
+										"type": "boolean",
+										"default": false
+									},
 									"live_stream_on_start": {
 										"description": "Specifies if the meeting should start getting livestreamed on start.",
 										"type": "boolean",
@@ -1374121,6 +1374677,33 @@
 																	"default": 60,
 																	"maximum": 600,
 																	"minimum": 60
+																},
+																"sip": {
+																	"description": "SIP dial-in details. `null` if SIP is not enabled for the meeting.",
+																	"type": "object",
+																	"properties": {
+																		"password": {
+																			"description": "Password for SIP digest authentication. Keep it secret.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"sip_uri": {
+																			"description": "SIP URI to dial. Configure it in your SIP provider or PBX.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"username": {
+																			"description": "Username for SIP digest authentication.",
+																			"type": "string",
+																			"readOnly": true
+																		}
+																	},
+																	"nullable": true,
+																	"required": [
+																		"sip_uri",
+																		"username",
+																		"password"
+																	]
 																},
 																"status": {
 																	"description": "Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting.",
@@ -1380641,6 +1381224,10 @@
 											"can_edit_display_name": {
 												"type": "boolean"
 											},
+											"can_edit_meeting_title": {
+												"description": "Allows renaming the meeting for the current session",
+												"type": "boolean"
+											},
 											"can_livestream": {
 												"type": "boolean"
 											},
@@ -1381308,6 +1381895,10 @@
 																			"type": "boolean"
 																		},
 																		"can_edit_display_name": {
+																			"type": "boolean"
+																		},
+																		"can_edit_meeting_title": {
+																			"description": "Allows renaming the meeting for the current session",
 																			"type": "boolean"
 																		},
 																		"can_livestream": {
@@ -1382139,6 +1382730,10 @@
 																		"can_edit_display_name": {
 																			"type": "boolean"
 																		},
+																		"can_edit_meeting_title": {
+																			"description": "Allows renaming the meeting for the current session",
+																			"type": "boolean"
+																		},
 																		"can_livestream": {
 																			"type": "boolean"
 																		},
@@ -1382967,6 +1383562,10 @@
 																		"can_edit_display_name": {
 																			"type": "boolean"
 																		},
+																		"can_edit_meeting_title": {
+																			"description": "Allows renaming the meeting for the current session",
+																			"type": "boolean"
+																		},
 																		"can_livestream": {
 																			"type": "boolean"
 																		},
@@ -1383720,6 +1384319,10 @@
 											"can_edit_display_name": {
 												"type": "boolean"
 											},
+											"can_edit_meeting_title": {
+												"description": "Allows renaming the meeting for the current session",
+												"type": "boolean"
+											},
 											"can_livestream": {
 												"type": "boolean"
 											},
@@ -1384279,6 +1384882,10 @@
 																			"type": "boolean"
 																		},
 																		"can_edit_display_name": {
+																			"type": "boolean"
+																		},
+																		"can_edit_meeting_title": {
+																			"description": "Allows renaming the meeting for the current session",
 																			"type": "boolean"
 																		},
 																		"can_livestream": {
@@ -1385057,6 +1385664,10 @@
 											"can_edit_display_name": {
 												"type": "boolean"
 											},
+											"can_edit_meeting_title": {
+												"description": "Allows renaming the meeting for the current session",
+												"type": "boolean"
+											},
 											"can_livestream": {
 												"type": "boolean"
 											},
@@ -1385724,6 +1386335,10 @@
 																			"type": "boolean"
 																		},
 																		"can_edit_display_name": {
+																			"type": "boolean"
+																		},
+																		"can_edit_meeting_title": {
+																			"description": "Allows renaming the meeting for the current session",
 																			"type": "boolean"
 																		},
 																		"can_livestream": {
@@ -1387096,6 +1387711,33 @@
 																				"default": 60,
 																				"maximum": 600,
 																				"minimum": 60
+																			},
+																			"sip": {
+																				"description": "SIP dial-in details. `null` if SIP is not enabled for the meeting.",
+																				"type": "object",
+																				"properties": {
+																					"password": {
+																						"description": "Password for SIP digest authentication. Keep it secret.",
+																						"type": "string",
+																						"readOnly": true
+																					},
+																					"sip_uri": {
+																						"description": "SIP URI to dial. Configure it in your SIP provider or PBX.",
+																						"type": "string",
+																						"readOnly": true
+																					},
+																					"username": {
+																						"description": "Username for SIP digest authentication.",
+																						"type": "string",
+																						"readOnly": true
+																					}
+																				},
+																				"nullable": true,
+																				"required": [
+																					"sip_uri",
+																					"username",
+																					"password"
+																				]
 																			},
 																			"status": {
 																				"description": "Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting.",
@@ -1396792,10 +1397434,6 @@
 										"data": {
 											"type": "object",
 											"properties": {
-												"cf_account_tag": {
-													"type": "string",
-													"nullable": true
-												},
 												"created_at": {
 													"type": "string",
 													"format": "date-time"
@@ -1396803,9 +1397441,6 @@
 												"id": {
 													"type": "string",
 													"format": "uuid"
-												},
-												"is_org_on_kv": {
-													"type": "boolean"
 												},
 												"name": {
 													"type": "string",
@@ -2363106,7 +2363741,7 @@
 															"type": "string"
 														},
 														"include_subdomains": {
-															"type": "string",
+															"type": "boolean",
 															"example": false
 														}
 													}
@@ -2363393,7 +2364028,7 @@
 															"example": "2023-01-31T15:56:36Z"
 														},
 														"include_subdomains": {
-															"type": "string",
+															"type": "boolean",
 															"example": false
 														}
 													}
@@ -2363742,7 +2364377,7 @@
 															"type": "string"
 														},
 														"include_subdomains": {
-															"type": "string",
+															"type": "boolean",
 															"example": false
 														}
 													}
@@ -2364046,7 +2364681,7 @@
 															"example": "2023-01-31T15:56:36Z"
 														},
 														"include_subdomains": {
-															"type": "string",
+															"type": "boolean",
 															"example": true
 														}
 													}
@@ -2595043,7 +2595678,7 @@
 													"items": {
 														"anyOf": [
 															{
-																"description": "0-RTT session resumption enabled for this zone.",
+																"description": "0-RTT session resumption enabled for this zone.\nChanging this setting does not enable or disable TLS 1.3. Writing the `tls_1_3` setting also changes 0-RTT: `zrt` enables it, and `on` or `off` disables it.",
 																"allOf": [
 																	{
 																		"properties": {
@@ -2598247,7 +2598882,7 @@
 																"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 															},
 															{
-																"description": "Maximum time between two read operations from origin.",
+																"description": "Maximum time in seconds between two read operations from origin.",
 																"allOf": [
 																	{
 																		"properties": {
@@ -2598314,7 +2598949,7 @@
 																				]
 																			},
 																			"value": {
-																				"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+																				"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 																				"type": "number",
 																				"default": 125
 																			}
@@ -2599588,7 +2600223,7 @@
 																"title": "TLS1.2 only"
 															},
 															{
-																"description": "Enables Crypto TLS 1.3 feature for a zone.",
+																"description": "Enables Crypto TLS 1.3 feature for a zone.\nThis setting also controls 0-RTT. `zrt` enables TLS 1.3 and 0-RTT, `on` enables TLS 1.3 and disables 0-RTT, and `off` disables both.\nReads return `zrt` when TLS 1.3 and 0-RTT are both enabled, so setting `on` while 0-RTT is enabled turns 0-RTT off.",
 																"allOf": [
 																	{
 																		"properties": {
@@ -2600724,7 +2601359,7 @@
 								"items": {
 									"anyOf": [
 										{
-											"description": "0-RTT session resumption enabled for this zone.",
+											"description": "0-RTT session resumption enabled for this zone.\nChanging this setting does not enable or disable TLS 1.3. Writing the `tls_1_3` setting also changes 0-RTT: `zrt` enables it, and `on` or `off` disables it.",
 											"allOf": [
 												{
 													"properties": {
@@ -2603928,7 +2604563,7 @@
 											"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 										},
 										{
-											"description": "Maximum time between two read operations from origin.",
+											"description": "Maximum time in seconds between two read operations from origin.",
 											"allOf": [
 												{
 													"properties": {
@@ -2603995,7 +2604630,7 @@
 															]
 														},
 														"value": {
-															"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+															"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 															"type": "number",
 															"default": 125
 														}
@@ -2605269,7 +2605904,7 @@
 											"title": "TLS1.2 only"
 										},
 										{
-											"description": "Enables Crypto TLS 1.3 feature for a zone.",
+											"description": "Enables Crypto TLS 1.3 feature for a zone.\nThis setting also controls 0-RTT. `zrt` enables TLS 1.3 and 0-RTT, `on` enables TLS 1.3 and disables 0-RTT, and `off` disables both.\nReads return `zrt` when TLS 1.3 and 0-RTT are both enabled, so setting `on` while 0-RTT is enabled turns 0-RTT off.",
 											"allOf": [
 												{
 													"properties": {
@@ -2606163,7 +2606798,7 @@
 													"items": {
 														"anyOf": [
 															{
-																"description": "0-RTT session resumption enabled for this zone.",
+																"description": "0-RTT session resumption enabled for this zone.\nChanging this setting does not enable or disable TLS 1.3. Writing the `tls_1_3` setting also changes 0-RTT: `zrt` enables it, and `on` or `off` disables it.",
 																"allOf": [
 																	{
 																		"properties": {
@@ -2609367,7 +2610002,7 @@
 																"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 															},
 															{
-																"description": "Maximum time between two read operations from origin.",
+																"description": "Maximum time in seconds between two read operations from origin.",
 																"allOf": [
 																	{
 																		"properties": {
@@ -2609434,7 +2610069,7 @@
 																				]
 																			},
 																			"value": {
-																				"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+																				"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 																				"type": "number",
 																				"default": 125
 																			}
@@ -2610708,7 +2611343,7 @@
 																"title": "TLS1.2 only"
 															},
 															{
-																"description": "Enables Crypto TLS 1.3 feature for a zone.",
+																"description": "Enables Crypto TLS 1.3 feature for a zone.\nThis setting also controls 0-RTT. `zrt` enables TLS 1.3 and 0-RTT, `on` enables TLS 1.3 and disables 0-RTT, and `off` disables both.\nReads return `zrt` when TLS 1.3 and 0-RTT are both enabled, so setting `on` while 0-RTT is enabled turns 0-RTT off.",
 																"allOf": [
 																	{
 																		"properties": {
@@ -2611916,7 +2612551,7 @@
 													"type": "object",
 													"oneOf": [
 														{
-															"description": "0-RTT session resumption enabled for this zone.",
+															"description": "0-RTT session resumption enabled for this zone.\nChanging this setting does not enable or disable TLS 1.3. Writing the `tls_1_3` setting also changes 0-RTT: `zrt` enables it, and `on` or `off` disables it.",
 															"allOf": [
 																{
 																	"properties": {
@@ -2615203,7 +2615838,7 @@
 															"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 														},
 														{
-															"description": "Maximum time between two read operations from origin.",
+															"description": "Maximum time in seconds between two read operations from origin.",
 															"allOf": [
 																{
 																	"properties": {
@@ -2615270,7 +2615905,7 @@
 																			]
 																		},
 																		"value": {
-																			"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+																			"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 																			"type": "number",
 																			"default": 125
 																		}
@@ -2616544,7 +2617179,7 @@
 															"title": "TLS1.2 only"
 														},
 														{
-															"description": "Enables Crypto TLS 1.3 feature for a zone.",
+															"description": "Enables Crypto TLS 1.3 feature for a zone.\nThis setting also controls 0-RTT. `zrt` enables TLS 1.3 and 0-RTT, `on` enables TLS 1.3 and disables 0-RTT, and `off` disables both.\nReads return `zrt` when TLS 1.3 and 0-RTT are both enabled, so setting `on` while 0-RTT is enabled turns 0-RTT off.",
 															"allOf": [
 																{
 																	"properties": {
@@ -2618140,7 +2618775,7 @@
 														"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 													},
 													{
-														"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+														"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 														"type": "number",
 														"default": 125
 													},
@@ -2618527,7 +2619162,7 @@
 													"type": "object",
 													"oneOf": [
 														{
-															"description": "0-RTT session resumption enabled for this zone.",
+															"description": "0-RTT session resumption enabled for this zone.\nChanging this setting does not enable or disable TLS 1.3. Writing the `tls_1_3` setting also changes 0-RTT: `zrt` enables it, and `on` or `off` disables it.",
 															"allOf": [
 																{
 																	"properties": {
@@ -2621814,7 +2622449,7 @@
 															"x-stainless-deprecation-message": "Privacy Pass v1 was deprecated in 2023. (Announcement - https://blog.cloudflare.com/privacy-pass-standard/) and (API deprecation details - https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2024-03-31)"
 														},
 														{
-															"description": "Maximum time between two read operations from origin.",
+															"description": "Maximum time in seconds between two read operations from origin.",
 															"allOf": [
 																{
 																	"properties": {
@@ -2621881,7 +2622516,7 @@
 																			]
 																		},
 																		"value": {
-																			"description": "Value of the zone setting.\nNotes: Value must be between 1 and 6000",
+																			"description": "Value of the zone setting, in seconds.\nNotes: Value must be between 1 and 6000",
 																			"type": "number",
 																			"default": 125
 																		}
@@ -2623155,7 +2623790,7 @@
 															"title": "TLS1.2 only"
 														},
 														{
-															"description": "Enables Crypto TLS 1.3 feature for a zone.",
+															"description": "Enables Crypto TLS 1.3 feature for a zone.\nThis setting also controls 0-RTT. `zrt` enables TLS 1.3 and 0-RTT, `on` enables TLS 1.3 and disables 0-RTT, and `off` disables both.\nReads return `zrt` when TLS 1.3 and 0-RTT are both enabled, so setting `on` while 0-RTT is enabled turns 0-RTT off.",
 															"allOf": [
 																{
 																	"properties": {

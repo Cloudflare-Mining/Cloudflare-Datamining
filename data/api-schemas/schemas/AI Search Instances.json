@@ -7731,8 +7731,8 @@
 												"type": "boolean"
 											},
 											"match_threshold": {
+												"description": "Minimum reranker relevance score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4.",
 												"type": "number",
-												"default": 0.4,
 												"maximum": 1,
 												"minimum": 0
 											},
@@ -8629,8 +8629,8 @@
 												"type": "boolean"
 											},
 											"match_threshold": {
+												"description": "Minimum reranker relevance score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4.",
 												"type": "number",
-												"default": 0.4,
 												"maximum": 1,
 												"minimum": 0
 											},
@@ -11175,8 +11175,8 @@
 												"type": "boolean"
 											},
 											"match_threshold": {
+												"description": "Minimum reranker relevance score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4.",
 												"type": "number",
-												"default": 0.4,
 												"maximum": 1,
 												"minimum": 0
 											},
@@ -12283,8 +12283,8 @@
 												"type": "boolean"
 											},
 											"match_threshold": {
+												"description": "Minimum reranker relevance score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4.",
 												"type": "number",
-												"default": 0.4,
 												"maximum": 1,
 												"minimum": 0
 											},

@@ -29,6 +29,7 @@
 								"warehouses": [
 									{
 										"bucket": "analytics-bucket",
+										"catalog_uri": "https://catalog.cloudflarestorage.com/account123/analytics-bucket",
 										"id": "550e8400-e29b-41d4-a716-446655440000",
 										"jurisdiction": "default",
 										"maintenance_config": {
@@ -142,6 +143,12 @@
 																"description": "Specifies the associated R2 bucket name.",
 																"type": "string",
 																"example": "my-data-bucket"
+															},
+															"catalog_uri": {
+																"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
+																"type": "string",
+																"format": "uri",
+																"example": "https://catalog.cloudflarestorage.com/account123/my-data-bucket"
 															},
 															"credential_status": {
 																"description": "Shows the credential configuration status.",
@@ -507,6 +514,7 @@
 							"messages": [],
 							"result": {
 								"bucket": "analytics-bucket",
+								"catalog_uri": "https://catalog.cloudflarestorage.com/account123/analytics-bucket",
 								"credential_status": "present",
 								"id": "550e8400-e29b-41d4-a716-446655440000",
 								"jurisdiction": "default",
@@ -595,6 +603,12 @@
 													"description": "Specifies the associated R2 bucket name.",
 													"type": "string",
 													"example": "my-data-bucket"
+												},
+												"catalog_uri": {
+													"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
+													"type": "string",
+													"format": "uri",
+													"example": "https://catalog.cloudflarestorage.com/account123/my-data-bucket"
 												},
 												"credential_status": {
 													"description": "Shows the credential configuration status.",
@@ -1428,6 +1442,7 @@
 							"errors": [],
 							"messages": [],
 							"result": {
+								"catalog_uri": "https://catalog.cloudflarestorage.com/account123/my-bucket",
 								"id": "550e8400-e29b-41d4-a716-446655440000",
 								"name": "account123_my-bucket"
 							},
@@ -1498,6 +1513,12 @@
 											"description": "Contains response from activating an R2 bucket as a catalog.",
 											"type": "object",
 											"properties": {
+												"catalog_uri": {
+													"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
+													"type": "string",
+													"format": "uri",
+													"example": "https://catalog.cloudflarestorage.com/account123/my-bucket"
+												},
 												"id": {
 													"description": "Use this to uniquely identify the activated catalog.",
 													"type": "string",

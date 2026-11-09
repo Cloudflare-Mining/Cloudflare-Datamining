@@ -12960,7 +12960,7 @@
 							]
 						}
 					},
-					"image/jpg": {
+					"image/jpeg": {
 						"schema": {
 							"description": "JPEG binary.",
 							"type": "string"
@@ -12980,7 +12980,7 @@
 					},
 					"text/plain": {
 						"schema": {
-							"description": "Base64 encoded.",
+							"description": "Data URL of the base64-encoded screenshot, such as `data:image/png;base64,...`.",
 							"type": "string"
 						}
 					}

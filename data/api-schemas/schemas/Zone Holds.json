@@ -144,7 +144,7 @@
 													"type": "string"
 												},
 												"include_subdomains": {
-													"type": "string",
+													"type": "boolean",
 													"example": false
 												}
 											}
@@ -431,7 +431,7 @@
 													"example": "2023-01-31T15:56:36Z"
 												},
 												"include_subdomains": {
-													"type": "string",
+													"type": "boolean",
 													"example": false
 												}
 											}
@@ -780,7 +780,7 @@
 													"type": "string"
 												},
 												"include_subdomains": {
-													"type": "string",
+													"type": "boolean",
 													"example": false
 												}
 											}
@@ -1084,7 +1084,7 @@
 													"example": "2023-01-31T15:56:36Z"
 												},
 												"include_subdomains": {
-													"type": "string",
+													"type": "boolean",
 													"example": true
 												}
 											}

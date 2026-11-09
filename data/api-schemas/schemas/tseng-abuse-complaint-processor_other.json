@@ -1648,6 +1648,7 @@
 						"url_pattern",
 						"account",
 						"zone",
+						"domain",
 						"custom_expression"
 					]
 				}
@@ -1712,6 +1713,7 @@
 															"url_pattern",
 															"account",
 															"zone",
+															"domain",
 															"custom_expression"
 														]
 													},
@@ -4651,6 +4653,7 @@
 													"url_pattern",
 													"account",
 													"zone",
+													"domain",
 													"custom_expression"
 												]
 											},
@@ -4778,6 +4781,7 @@
 													"url_pattern",
 													"account",
 													"zone",
+													"domain",
 													"custom_expression"
 												]
 											},
@@ -6387,7 +6391,7 @@
 											"type": "string"
 										},
 										{
-											"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+											"description": "Justification must be at least 20 characters for phishing reports and cannot exceed 5000 characters",
 											"type": "string"
 										},
 										{
@@ -6508,7 +6512,7 @@
 											"type": "string"
 										},
 										{
-											"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+											"description": "Justification must be at least 20 characters for phishing reports and cannot exceed 5000 characters",
 											"type": "string"
 										},
 										{
@@ -6941,7 +6945,7 @@
 											"type": "string"
 										},
 										{
-											"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+											"description": "Justification must be at least 20 characters for phishing reports and cannot exceed 5000 characters",
 											"type": "string"
 										},
 										{
@@ -7062,7 +7066,7 @@
 											"type": "string"
 										},
 										{
-											"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+											"description": "Justification must be at least 20 characters for phishing reports and cannot exceed 5000 characters",
 											"type": "string"
 										},
 										{

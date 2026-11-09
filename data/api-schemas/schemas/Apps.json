@@ -1918,10 +1918,6 @@
 								"data": {
 									"type": "object",
 									"properties": {
-										"cf_account_tag": {
-											"type": "string",
-											"nullable": true
-										},
 										"created_at": {
 											"type": "string",
 											"format": "date-time"
@@ -1929,9 +1925,6 @@
 										"id": {
 											"type": "string",
 											"format": "uuid"
-										},
-										"is_org_on_kv": {
-											"type": "boolean"
 										},
 										"name": {
 											"type": "string",
