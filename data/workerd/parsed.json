@@ -4645,6 +4645,14 @@
 						"experimental": true
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "rpcDisposeCancelsCall",
+					"annotations": {
+						"compatEnableFlag": "rpc_dispose_cancels_call",
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
