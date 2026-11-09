@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/puppeteer",
 	"dist-tags": {
-		"next": "1.5.0-rc.0",
-		"latest": "1.4.0"
+		"latest": "1.4.0",
+		"next": "2.0.0-next"
 	},
 	"versions": {
 		"0.0.0-alpha.1": {
@@ -1672,8 +1672,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQD6sF255/Q/6BsVhLtcS4glYfpicpzLRFSNJQHug9E5CgIhAL6cdrg7cMorlSdKYcj1Ns5MFASdvLvJJoaiQtczG9BQ"
+						"sig": "MEYCIQD6sF255/Q/6BsVhLtcS4glYfpicpzLRFSNJQHug9E5CgIhAL6cdrg7cMorlSdKYcj1Ns5MFASdvLvJJoaiQtczG9BQ",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -1683,6 +1683,47 @@
 					}
 				},
 				"unpackedSize": 1333436
+			}
+		},
+		"2.0.0-next": {
+			"name": "@cloudflare/puppeteer",
+			"version": "2.0.0-next",
+			"dependencies": {
+				"mitt": "3.0.1",
+				"rxjs": "7.8.2",
+				"parsel-js": "1.2.2",
+				"@types/node": "^18.17.15",
+				"devtools-protocol": "0.0.1666840",
+				"urlpattern-polyfill": "10.1.0",
+				"typed-query-selector": "^2.12.1"
+			},
+			"devDependencies": {
+				"vite": "^6.4.3",
+				"wrangler": "4.137.0",
+				"@cloudflare/workers-types": "^5.20260921.1"
+			},
+			"dist": {
+				"shasum": "1f80c2ca2aff7584ff9935bdcdd567f25b501a6c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/puppeteer/-/puppeteer-2.0.0-next.tgz",
+				"fileCount": 298,
+				"integrity": "sha512-ckGOTkupNHsWCjBnO+3miBPUqI/Ve5BGVU8q4dZpRgNi3UNBumjZGAn6RHiurbxbc2sDxI1/5WiI1yo+udE3iA==",
+				"signatures": [
+					{
+						"sig": "MEQCIDXiM0udJA0I9L1j9Ql+yVCpsKWY1F/EmwrYF+fNWhl9AiBmW8L1BQEab4KeERxm7S9D+e/r49spDHgseOzNy+6Hag==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCDJEb8sx+6v/3OmZFM2KuLjZifH2Bh2b+wVtSVfpAxlwIhAM7SIJBYOn6GTqYdMxZWCsfB7qUrO3mqUbJHvkBsp1jU"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fpuppeteer@2.0.0-next",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1483185
 			}
 		}
 	}

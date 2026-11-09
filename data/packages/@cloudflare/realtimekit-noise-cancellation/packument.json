@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-noise-cancellation",
 	"dist-tags": {
-		"latest": "0.0.0",
+		"latest": "0.1.0",
 		"staging": "0.1.0-staging.1"
 	},
 	"versions": {
@@ -84,11 +84,35 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIBzSmA+4t+NT7usmK/eSycbuo/SXccb2XNP2JvgD1myoAiB0hw7dNdYWU9f1RnmPhM6tBJCH1nbZmqCJpJgwAPHX5w=="
+						"sig": "MEQCIBzSmA+4t+NT7usmK/eSycbuo/SXccb2XNP2JvgD1myoAiB0hw7dNdYWU9f1RnmPhM6tBJCH1nbZmqCJpJgwAPHX5w==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"unpackedSize": 47342
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/realtimekit-noise-cancellation",
+			"version": "0.1.0",
+			"peerDependencies": {
+				"@cloudflare/realtimekit": "*"
+			},
+			"dist": {
+				"shasum": "57a13252be262226b1c405e72294348e2a4ac319",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-noise-cancellation/-/realtimekit-noise-cancellation-0.1.0.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-jypea3q2iWM7618YahvX6KrtWdiYgc0lRxZS5cdz6jvjGj6GY6EJKfbxpGzcvapocBv87oYGx5l4kOnoqmzFZg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDQgIHbq+O9SmW7WyaNji97fUYJzbYKxFO6uiAN0bva5gIgLh9DSTgWgieylHO/+SQk2/145/dhO8u5iFa3V9ZBzq4=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIGcejridmLICH/DvKdAubQyQYzmKFp7ngAB7qrXE+nLNAiB8Yl5/iTeIR5dLq4lupfPH+lo4nH3OeybqGYFrcBWB0w=="
+					}
+				],
+				"unpackedSize": 47332
 			}
 		}
 	}

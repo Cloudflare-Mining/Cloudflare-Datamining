@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-utils",
 	"dist-tags": {
-		"staging": "1.0.0-staging.2",
-		"latest": "1.0.0"
+		"latest": "1.1.0",
+		"staging": "1.1.0-staging.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -235,6 +235,100 @@
 					}
 				],
 				"unpackedSize": 95061
+			}
+		},
+		"1.1.0-staging.0": {
+			"name": "@cloudflare/realtimekit-utils",
+			"version": "1.1.0-staging.0",
+			"dependencies": {
+				"lodash-es": "^4.17.21"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "8.0.1",
+				"husky": "^9.1.7",
+				"is-ci": "^2.0.0",
+				"eslint": "^8.56.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"prettier": "^3.1.1",
+				"commitizen": "^4.3.1",
+				"typescript": "~5.5.4",
+				"@types/jest": "^29.5.11",
+				"@types/node": "^20.10.6",
+				"@changesets/cli": "^2.29.8",
+				"@commitlint/cli": "^20.4.1",
+				"@types/lodash-es": "^4.17.6",
+				"eslint-plugin-import": "^2.32.0",
+				"@typescript-eslint/parser": "^7.0.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"@commitlint/config-conventional": "^20.4.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "7f214f205be61e7b942c8d570034d33bd9bd8d33",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-utils/-/realtimekit-utils-1.1.0-staging.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-DDMGHV7ZJ4BkVywqpaIgZAm7gg9aO7OrL+RMIec5fqXzNvKFNjUn8QKeP4ok0o+oNTt4p8kFNuwmFTOhdIeKdg==",
+				"signatures": [
+					{
+						"sig": "MEQCIDDe/E1qrh1Ygz8LOHBR7aKgOtZ8IlLKqh6zcfUIlEAsAiBkyp8TMuiGmnZ0oCh+guEaxqYzalIgyHbzxQ+pzdyhXQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"sig": "MEQCIEb0CZqO4E0Xw+zrJ43IdoT/MLvCyNyE8CF1vixm6swDAiBD7oOYR2/JVKWHyzjUM4NnDabEzDNqZXPxDPXdiDvLkg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 95443
+			}
+		},
+		"1.1.0": {
+			"name": "@cloudflare/realtimekit-utils",
+			"version": "1.1.0",
+			"dependencies": {
+				"lodash-es": "^4.17.21"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "8.0.1",
+				"husky": "^9.1.7",
+				"is-ci": "^2.0.0",
+				"eslint": "^8.56.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"prettier": "^3.1.1",
+				"commitizen": "^4.3.1",
+				"typescript": "~5.5.4",
+				"@types/jest": "^29.5.11",
+				"@types/node": "^20.10.6",
+				"@changesets/cli": "^2.29.8",
+				"@commitlint/cli": "^20.4.1",
+				"@types/lodash-es": "^4.17.6",
+				"eslint-plugin-import": "^2.32.0",
+				"@typescript-eslint/parser": "^7.0.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"@commitlint/config-conventional": "^20.4.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "2c7fe9d733b0faa874622fff52eb4b4b511ab766",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-utils/-/realtimekit-utils-1.1.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-yu0/Wk+26Ufl2nJ/PASJLxEQqcGI4mKP2DhVgPVqIoQ4e6Vrr4W+ohy1lSAUgAhENSJPQumiDpyH6h0Bn2HcWw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDq9OdiivpDA2Z8JK9J7elL3kVo0VGvX6OoBET4nCETVAiEAu8mzinhn3d3tr9jaq9+PZ6QhQJUAkhx9yF5qREj4XHI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIEr1UuyHA5mmirLf8Utu0zHm82k1mJuidaxYjxVbcDO4AiBMAoSGTkG8xBVrsJIgngkVMhDRd7uz9CBMmLYQq0W6aA=="
+					}
+				],
+				"unpackedSize": 95433
 			}
 		}
 	}
