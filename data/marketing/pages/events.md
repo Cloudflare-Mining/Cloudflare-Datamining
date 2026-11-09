@@ -14,7 +14,9 @@ Events by region
 
 Browse upcoming Cloudflare events around the world.
 
-AmericasEMEAAPJC
+EMEA
+
+[Barcelona, ESGartner IT SymposiumNov 9–Nov 12Learn more](https://www.gartner.com/en/conferences/emea/symposium-spain)[Zurich, CHImmerse ZurichNov 17Learn more](https://fieldmarketing.www.cloudflare.com/immerse-zurich-2026)
 
 # Build without boundaries
 

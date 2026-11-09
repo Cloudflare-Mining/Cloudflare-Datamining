@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 9, 2026 [<h2>Launching the Vite Ecosystem Fund</h2>](https://blog.cloudflare.com/launching-vite-ecosystem-fund/)
+
+Cloudflare is distributing the first $301,300 of the Vite Ecosystem Fund to open source projects and maintainers. The recipients were chosen by a panel of Vite stack core team members, including maintainers not employed by Cloudflare.
+
+![Michael Dong](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EX7VKAAKSR7MZBFE5VQ9JZ.01M4EX7W0EXTB3MQ1C9BZZ5C38.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Michael Dong](https://blog.cloudflare.com/author/michael-dong/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6SMAP95G344HRNFK6NRMGZN.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/launching-vite-ecosystem-fund/)
+
 November 6, 2026 [<h2>The post-quantum future of web privacy</h2>](https://blog.cloudflare.com/vole-mole/)
 
 Cryptographic protocols like Privacy Pass help keep web sites safe from abuse while keeping their users private. This post looks at the quantum threat to these protocols, and some new post-quantum cryptography that may help close the gap.
@@ -17,8 +27,6 @@ Cryptographic protocols like Privacy Pass help keep web sites safe from abuse w
 ![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Tianyu Zhang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6PDD81NY8F4R6FG4RZ2S286.01M6PDD8JHSWE3HSFKM2421WPN.png&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/),  [Tianyu Zhang](https://blog.cloudflare.com/author/tianyu-zhang/), and  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6RNKQ9RKEJ9CKY6DGNF44RV.01M6RNKRJAQTN05BV66646AM7Z.png&w=2400&h=1350&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/vole-mole/)
 
 November 5, 2026 [<h2>Agents aren't humans (but they kinda are)</h2>](https://blog.cloudflare.com/trusted-agent-delegation/)
 
@@ -28,7 +36,7 @@ AI agents act for millions, but servers see intermediaries that strip user visib
 
 [Bryan Becker](https://blog.cloudflare.com/author/bryan-becker/)
 
-November 4, 2026 [<h2>See the agents, set the terms: new visibility and control for personal agents</h2>](https://blog.cloudflare.com/personal-agents-visibility-control/)
+November 4, 2026 [<h2>See the agents, set the terms: New visibility and control for personal agents</h2>](https://blog.cloudflare.com/personal-agents-visibility-control/)
 
 Personal AI agents have changed how users interact with the web, blurring the lines between automated and human traffic. Learn how Cloudflare gives site owners visibility and control to manage personal agent access.
 
@@ -116,7 +124,7 @@ Cloudflare's new post-quantum GeoKey Manager protects geographically fenced decr
 
 [Chetan Agrawal](https://blog.cloudflare.com/author/chetan-agrawal/),  [Arka Nayan](https://blog.cloudflare.com/author/arka-nayan/), and  [Erik Engstrom](https://blog.cloudflare.com/author/erik-engstrom/)
 
-October 22, 2026 [<h2>Localizing compliance at scale: achieving South Korea's ISMS certification</h2>](https://blog.cloudflare.com/k-isms/)
+October 22, 2026 [<h2>Localizing compliance at scale: Achieving South Korea's ISMS certification</h2>](https://blog.cloudflare.com/k-isms/)
 
 Cloudflare has achieved South Korea's ISMS certification following an audit across 80 controls. Learn how we localized user consent flows, adapted social sign-up paths at the edge, and validated our global security program.
 
@@ -155,14 +163,6 @@ Following the discovery that eight eMudhra intermediate certificates use weak ke
 ![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)![Trishna](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473JDQZAHNE7Y35PPZ0HNB.webp&w=64&h=64&f=webp&fit=cover&position=center)![Jeremy Hartman](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YJSKH239C2RVYTF2NVMJ.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/),  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/),  [Trishna](https://blog.cloudflare.com/author/trishna/), and  [Jeremy Hartman](https://blog.cloudflare.com/author/jeremy-hartman/)
-
-October 20, 2026 [<h2>Introducing tsrs: A port of TypeScript to Rust</h2>](https://blog.cloudflare.com/typescript-rust-port/)
-
-Cloudflare is collaborating on tsrs, a Rust port of TypeScript that is up to 8x faster and uses 70% less memory.
-
-![Boshen Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5C7JZ4TPA6B0GAEA4J5ZRKH.01M5C7JZV2GMV8Y2BJ76CF88BP.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Dimitri Mitropoulos](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498DEF6RX03R0G7TNW7CR3.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christoph Nakazawa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EX98BAG8QN2EG73TZW7RKE.01M4EX98Y0AM8PEJP2VR66W6PN.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Boshen Chen](https://blog.cloudflare.com/author/boshen-chen/),  [Dimitri Mitropoulos](https://blog.cloudflare.com/author/dimitri-mitropoulos/), and  [Christoph Nakazawa](https://blog.cloudflare.com/author/christoph-nakazawa/)
 
 Load more
 
