@@ -3460,6 +3460,16 @@
 		"is_selectable": true
 	},
 	{
+		"id": "c555ff8502d24839a02d9d5a2e24d01f",
+		"name": "Trust API Assessments Write",
+		"description": "Grants write access to submit Trust API assessments via the API",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "app_security",
+		"is_selectable": true
+	},
+	{
 		"id": "5d78fd7895974fd0bdbbbb079482721b",
 		"name": "Turnstile Sites Read",
 		"description": "Grants read access to Turnstile",
