@@ -5,10 +5,10 @@
 </div>
 <p><strong>Available Locations: Dubai, UAE</strong></p>
 <p><strong>About the role</strong></p>
-<p>The Inside Sales Representative (ISR) is a critical sales role responsible for driving high-volume, high-velocity net new business acquisition sales in a remote selling model within the commercial segment across EMEA. Operating as full-cycle territory owners similar to an AE, ISR manages the end-to-end sales process from self-sourcing pipeline, qualifying opportunities and closing deals in partnership with SE and Partner Organisation</p>
+<p>The Inside Sales Representative (ISR) is a critical sales role responsible for driving high-volume, high-velocity net new business acquisition sales in a remote selling model within the commercial segment across EMEA, specifically META. Operating as full-cycle territory owners similar to an AE, ISR manages the end-to-end sales process from self-sourcing pipeline, qualifying opportunities and closing deals in partnership with SE and Partner Organisation</p>
 <h4><strong>What you'll do</strong></h4>
 <ul>
-	<li><strong>Build your own pipeline:</strong> Find new business across your assigned territory through high-volume outreach by phone, email, LinkedIn and social selling, using tools like Salesforce, LinkedIn Sales Navigator, ZoomInfo and AI outreach</li>
+	<li><strong>Build your own pipeline:</strong> Find new business across your assigned territory (META) through high-volume outreach by phone, email, LinkedIn and social selling, using tools like Salesforce, LinkedIn Sales Navigator, ZoomInfo and AI outreach</li>
 	<li><strong>Run the whole sales cycle remotely:</strong> Lead discovery and qualification calls using MEDDPIC, give engaging virtual presentations and live product demos, and negotiate and close new business against an ACV quota.</li>
 	<li><strong>Explain the value of Cloudflare's platform:</strong> Connect commercial-segment customers' business and technical problems to the right Cloudflare products, such as Application Security and Performance, Zero Trust/SASE and the Developer Platform, and show the value they'd get.</li>
 	<li><strong>Work closely with other teams:</strong> Partner with Solutions Engineers on technical validation, and with the Partner Organisation to co-sell and close deals faster. Work with Marketing and BDR teammates on campaigns and events that create pipeline.</li>

@@ -17,7 +17,7 @@
 </ul>
 <p><strong>Skills/experience</strong>&nbsp;</p>
 <ul>
-	<li>5+ years in HR administration and comfortable handling sensitive employee information with discretion.</li>
+	<li>8 to 12 years in HR administration and comfortable handling sensitive employee information with discretion.</li>
 	<li>Highly organized with strong attention to detail, excellent problem-solving abilities, and effective time management skills.&nbsp;</li>
 	<li>Proficient in working with data and skilled in Excel or Google Sheets for analysis and reporting.</li>
 	<li>Customer-focused mindset with a genuine passion for supporting colleagues and delivering exceptional service.</li>
