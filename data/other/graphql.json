@@ -2886,10 +2886,16 @@
 		"users": "Unique users"
 	},
 	"AccountCf1GatewayHttpRawGroups": {
-		"__description": "CF1 Gateway HTTP analytics - raw data (max 3h query window, 4d lookback). Use cf1GatewayHttp1hGroups for longer ranges, or cf1GatewayHttp1dGroups for 10d+",
+		"__description": "CF1 Gateway HTTP analytics - adaptive raw data (max 3h query window, 4d lookback). Use cf1GatewayHttp1hGroups for longer ranges, or cf1GatewayHttp1dGroups for 10d+",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
 		"sum": "",
 		"uniq": ""
+	},
+	"AccountCf1GatewayHttpRawGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": ""
 	},
 	"AccountCf1GatewayHttpRawGroupsDimensions": {
 		"__description": "",
@@ -2943,10 +2949,27 @@
 		"sandboxBlocks": "Files blocked by Gateway sandbox",
 		"sandboxScans": "Requests submitted to Gateway sandbox detonation"
 	},
+	"AccountCf1GatewayHttpRawGroupsSumConfidence": {
+		"__description": "",
+		"antivirusRequestScans": "Confidence interval for the corresponding point estimate",
+		"antivirusResponseScans": "Confidence interval for the corresponding point estimate",
+		"avBlockedFiles": "Confidence interval for the corresponding point estimate",
+		"bodyBytesRcvd": "Confidence interval for the corresponding point estimate",
+		"bodyBytesSent": "Confidence interval for the corresponding point estimate",
+		"dlpProfileMatchesTotal": "Confidence interval for the corresponding point estimate",
+		"filesScanned": "Confidence interval for the corresponding point estimate",
+		"httpHostBytesRcvd": "Confidence interval for the corresponding point estimate",
+		"httpHostBytesSent": "Confidence interval for the corresponding point estimate",
+		"isolatedRequests": "Confidence interval for the corresponding point estimate",
+		"mcpUrlCountTotal": "Confidence interval for the corresponding point estimate",
+		"requests": "Confidence interval for the corresponding point estimate",
+		"sandboxBlocks": "Confidence interval for the corresponding point estimate",
+		"sandboxScans": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountCf1GatewayHttpRawGroupsUniq": {
 		"__description": "",
-		"mcpDistinctUsers": "Unique users with MCP activity",
-		"users": "Unique users"
+		"mcpDistinctUsers": "Distinct email values with MCP activity observed in raw rows; may undercount on sampled tiers",
+		"users": "Unique users; may undercount on sampled tiers"
 	},
 	"AccountCf1GatewayNetwork1dGroups": {
 		"__description": "CF1 Gateway Network analytics (L4 firewall events) - 1 day rollup (up to 90d window, 365d back)",
@@ -4440,6 +4463,7 @@
 	},
 	"AccountDurableObjectsPeriodicGroupsDimensions": {
 		"__description": "",
+		"actorMemoryMb": "Configured Durable Object memory limit in MB (limits.durable_object_memory_mb); 0 = unset (128MB)",
 		"coloCode": "IATA airport code for the Cloudflare datacenter where the Durable Object ran.",
 		"date": "Datetime the metrics period started, truncated to start of a day",
 		"datetime": "Datetime the metrics period started",
@@ -4477,7 +4501,7 @@
 		"__description": "",
 		"activeTime": "Sum of active time - microseconds",
 		"cpuTime": "Sum of CPU time - microseconds",
-		"duration": "Sum of Duration - GB*s",
+		"duration": "Sum of Duration - GB*s, weighted by the configured Durable Object memory limit",
 		"exceededCpuErrors": "Sum of CPU exceeded errors",
 		"exceededMemoryErrors": "Sum of memory exceeded errors",
 		"fatalInternalErrors": "Sum of fatal internal server errors",
@@ -4649,6 +4673,7 @@
 		"isLastEvent": "Is this the last event for this email?",
 		"isNDR": "Is this event related to a NDR (bounce) email?",
 		"isSpam": "Source email is spam",
+		"isVerifiedRecipient": "Whether the recipient is a verified address of the account",
 		"messageId": "The Message-ID header of the source email (if present)",
 		"sampleInterval": "ABR sample interval",
 		"sendingDomain": "Domain from which the email was sent",
@@ -4693,6 +4718,7 @@
 		"isLastEvent": "Is this the last event for this email?",
 		"isNDR": "Is this event related to a NDR (bounce) email?",
 		"isSpam": "Source email is spam",
+		"isVerifiedRecipient": "Whether the recipient is a verified address of the account",
 		"sampleInterval": "ABR sample interval",
 		"sendingDomain": "Domain from which the email was sent",
 		"spamScore": "Spam score value",
@@ -14832,6 +14858,49 @@
 		"rankCount": "Number of unique rank values",
 		"sequenceHashCount": "Number of unique sequenceHash values"
 	},
+	"ZoneApiShieldSchemaAnalyticsAdaptiveGroups": {
+		"__description": "Sampled schema validation violations. Counts estimate emitted violations, not distinct requests or violations omitted by collection limits.",
+		"avg": "",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Estimated number of emitted violations, adjusted for sampling. A request may contribute multiple violations; omitted violations are excluded.",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneApiShieldSchemaAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval of the emitted violation records"
+	},
+	"ZoneApiShieldSchemaAnalyticsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Estimated number of emitted violations, adjusted for sampling. A request may contribute multiple violations; omitted violations are excluded., with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"ZoneApiShieldSchemaAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"constraintDetail": "Specific violated constraint; may be empty when the family fully describes the violation",
+		"constraintFamily": "Family of the violated schema constraint",
+		"date": "Date of the violation",
+		"datetime": "Time of the violation, with second precision",
+		"datetimeDay": "Time of the violation, rounded down to the day",
+		"datetimeFifteenMinutes": "Time of the violation, rounded down to fifteen minutes",
+		"datetimeFiveMinutes": "Time of the violation, rounded down to five minutes",
+		"datetimeHalfOfHour": "Time of the violation, rounded down to thirty minutes",
+		"datetimeHour": "Time of the violation, rounded down to the hour",
+		"datetimeMinute": "Time of the violation, rounded down to the minute",
+		"location": "Location of the violation in the request, such as path, query, header, cookie or body",
+		"rayName": "Ray ID of the sampled request.",
+		"schemaGeneration": "Generation of the schema used for validation",
+		"schemaKind": "Kind of schema used for validation",
+		"target": "Parameter name or body path associated with the violation; shortened when targetTruncated is 1",
+		"targetTruncated": "1 if this violation's target was shortened, otherwise 0",
+		"truncatedViolationCount": "Number of supported violations omitted by the per-request limit. Repeated on every violation from the request; do not sum across records.",
+		"webAssetsOperationId": "Web Asset Operation ID"
+	},
+	"ZoneApiShieldSchemaAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneApiShieldSchemaAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneCacheReserveOperationsAdaptiveGroups": {
 		"__description": "Beta. Cache Reserve operations with adaptive sampling",
 		"avg": "The average value used for sample interval",
@@ -15298,6 +15367,7 @@
 		"isLastEvent": "Is this the last event for this email?",
 		"isNDR": "Is this event related to a NDR (bounce) email?",
 		"isSpam": "Source email is spam",
+		"isVerifiedRecipient": "Whether the recipient is a verified address of the account",
 		"messageId": "The Message-ID header of the source email (if present)",
 		"sampleInterval": "ABR sample interval",
 		"sendingDomain": "Domain from which the email was sent",
@@ -15342,6 +15412,7 @@
 		"isLastEvent": "Is this the last event for this email?",
 		"isNDR": "Is this event related to a NDR (bounce) email?",
 		"isSpam": "Source email is spam",
+		"isVerifiedRecipient": "Whether the recipient is a verified address of the account",
 		"sampleInterval": "ABR sample interval",
 		"sendingDomain": "Domain from which the email was sent",
 		"spamScore": "Spam score value",
@@ -17231,6 +17302,7 @@
 		"apiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": "",
 		"apiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroups": "",
 		"apiRequestSequencesGroups": "",
+		"apiShieldSchemaAnalyticsAdaptiveGroups": "",
 		"cacheReserveOperationsAdaptiveGroups": "",
 		"cacheReserveRequestsAdaptiveGroups": "",
 		"cacheReserveStorageAdaptiveGroups": "",
@@ -18156,7 +18228,7 @@
 		"cf1GatewayDnsRawGroups": "CF1 Gateway DNS analytics - raw data (max 3h query window). Use cf1GatewayDns1hGroups for longer ranges, or cf1GatewayDns1dGroups for 10d+",
 		"cf1GatewayHttp1dGroups": "CF1 Gateway HTTP analytics - 1 day rollup (up to 90d window, 365d back)",
 		"cf1GatewayHttp1hGroups": "CF1 Gateway HTTP analytics - 1 hour rollup (up to 31d window, 62d back)",
-		"cf1GatewayHttpRawGroups": "CF1 Gateway HTTP analytics - raw data (max 3h query window, 4d lookback). Use cf1GatewayHttp1hGroups for longer ranges, or cf1GatewayHttp1dGroups for 10d+",
+		"cf1GatewayHttpRawGroups": "CF1 Gateway HTTP analytics - adaptive raw data (max 3h query window, 4d lookback). Use cf1GatewayHttp1hGroups for longer ranges, or cf1GatewayHttp1dGroups for 10d+",
 		"cf1GatewayNetwork1dGroups": "CF1 Gateway Network analytics (L4 firewall events) - 1 day rollup (up to 90d window, 365d back)",
 		"cf1GatewayNetwork1hGroups": "CF1 Gateway Network analytics (L4 firewall events) - 1 hour rollup (up to 31d window, 62d back)",
 		"cf1GatewayNetworkRawGroups": "CF1 Gateway Network analytics (L4 firewall events) - raw data (max 3h query window, 4d lookback). Use cf1GatewayNetwork1hGroups for longer ranges, or cf1GatewayNetwork1dGroups for 10d+",
@@ -18421,6 +18493,7 @@
 		"apiGatewayMatchedSessionIDsPerEndpointAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches per endpoint",
 		"apiGatewayMatchedSessionIDsPerEndpointFlattenedAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches",
 		"apiRequestSequencesGroups": "Sequences of API endpoint operations. Sequences are learned by grouping requests by AuthID. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
+		"apiShieldSchemaAnalyticsAdaptiveGroups": "Sampled schema validation violations. Counts estimate emitted violations, not distinct requests or violations omitted by collection limits.",
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
 		"cacheReserveRequestsAdaptiveGroups": "Cache Reserve HTTP requests data with adaptive sampling",
 		"cacheReserveStorageAdaptiveGroups": "Beta. Cache Reserve storage with adaptive sampling",
