@@ -128,10 +128,6 @@ __Compute__
 | Workers  Workers for Platforms  Durable Objects  Workflows |
 | ---------------------------------------------------------- |
 
-__AI__
-| Workers AI (up to $50,000) |
-| -------------------------- |
-
 __Storage & Data__
 | Workers KV  D1  Queues  Vectorize  R2 (up to $10,000) |
 | ----------------------------------------------------- |
@@ -207,7 +203,7 @@ You can see your credit usage and remaining credits in the dashboard. Your month
 While credits cover the vast majority of our compute, storage, and Developer Platform, please keep the following specific rules in mind:
 
 * **R2 Object Storage:** Covered up to a $10,000 cap.
-* **Workers AI:** Covered up to a $2,500 cap for Tier 3, $10,000 for Tier 2, and $50,000 for Tier 1 (standard partner model pricing applies).
+* **Workers AI:** Effective Dec 1 and for all incoming startups: Workers AI is **not** covered by credits. For existing startups until Dec 1: Workers AI is covered up to a $2,500 cap for Tier 3, $10,000 for Tier 2, and $50,000 for Tier 1 (standard partner model pricing applies).
 * **AI Gateway:** _Temporarily_ not covered by credits. We are actively working to make it accessible.
 
 ###### Can I get upgraded to the new credit tiers?
