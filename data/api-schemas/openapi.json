@@ -587262,7 +587262,7 @@
 																"x-auditable": true
 															},
 															"alert_type": {
-																"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+																"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. This enum lists every alert type, not the ones a given account can create, since some types depend on entitlements or account type. To get the alert types an account can create, call `GET /accounts/{account_id}/alerting/v3/available_alerts`.",
 																"type": "string",
 																"example": "universal_ssl_event_type",
 																"enum": [
@@ -587271,7 +587271,10 @@
 																	"advanced_ddos_attack_l4_alert",
 																	"advanced_ddos_attack_l7_alert",
 																	"advanced_http_alert_error",
+																	"attack_lifecycle",
+																	"bgp_advertisement_change",
 																	"bgp_hijack_notification",
+																	"billing_budget_alert",
 																	"billing_usage_alert",
 																	"block_notification_block_removed",
 																	"block_notification_new_block",
@@ -587279,17 +587282,25 @@
 																	"bot_traffic_basic_alert",
 																	"brand_protection_alert",
 																	"brand_protection_digest",
+																	"casb_weekly_digest",
 																	"clickhouse_alert_fw_anomaly",
 																	"clickhouse_alert_fw_ent_anomaly",
+																	"closed_port_scan_alert",
 																	"cloudforce_one_request_notification",
+																	"cmd_managed_defense_notification",
 																	"cni_maintenance_notification",
+																	"containers_security_alert",
 																	"custom_analytics",
 																	"custom_bot_detection_alert",
 																	"custom_ssl_certificate_event_type",
 																	"dedicated_ssl_certificate_event_type",
 																	"device_connectivity_anomaly_alert",
+																	"dex_device_connectivity_alert",
+																	"dex_synthetic_test_availability_alert",
+																	"dex_synthetic_test_latency_alert",
 																	"dos_attack_l4",
 																	"dos_attack_l7",
+																	"executive_communications",
 																	"expiring_service_token_alert",
 																	"failing_logpush_job_disabled_alert",
 																	"fbm_auto_advertisement",
@@ -587302,13 +587313,18 @@
 																	"image_notification",
 																	"image_resizing_notification",
 																	"incident_alert",
+																	"leaked_service_token_alert",
 																	"load_balancing_health_alert",
 																	"load_balancing_pool_enablement_alert",
+																	"log_explorer_ingest_rate_limit",
+																	"log_explorer_scheduled_query_results_alert",
 																	"logo_match_alert",
+																	"magic_endpoint_healthcheck_alert",
 																	"magic_tunnel_health_check_event",
 																	"magic_wan_tunnel_health",
 																	"maintenance_event_notification",
 																	"mtls_certificate_store_certificate_expiration_type",
+																	"open_port_scan_alert",
 																	"pages_event_alert",
 																	"radar_notification",
 																	"real_origin_monitoring",
@@ -587326,6 +587342,9 @@
 																	"secondary_dns_zone_validation_warning",
 																	"security_insights_alert",
 																	"sentinel_alert",
+																	"stakeout_credential_leak_alert",
+																	"stakeout_saved_query_daily_digest_alert",
+																	"stakeout_saved_query_immediate_alert",
 																	"stream_live_notifications",
 																	"synthetic_test_latency_alert",
 																	"synthetic_test_low_availability_alert",
@@ -587334,6 +587353,9 @@
 																	"tunnel_update_event",
 																	"universal_ssl_event_type",
 																	"web_analytics_metrics_update",
+																	"workers_for_platforms_security_alert",
+																	"workers_observability_alert",
+																	"workers_observability_real_time_issue",
 																	"zone_aop_custom_certificate_expiration_type"
 																],
 																"x-auditable": true
@@ -587418,6 +587440,19 @@
 																			"type": "string",
 																			"x-auditable": true
 																		}
+																	},
+																	"check_id": {
+																		"description": "Used for configuring magic_endpoint_healthcheck_alert. Takes one or more health check IDs, each a UUID. That alert type requires check_id together with alert_trigger_preferences set to slo, a numeric alert_trigger_preferences_value, and selectors set to failures.",
+																		"type": "array",
+																		"items": {
+																			"format": "uuid",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"example": [
+																			"699d9864-2c56-4d2e-855e-9661899b7252"
+																		],
+																		"minItems": 1
 																	},
 																	"enabled": {
 																		"description": "Used for configuring load_balancing_pool_enablement_alert",
@@ -587599,6 +587634,16 @@
 																			"x-auditable": true
 																		}
 																	},
+																	"query_id": {
+																		"description": "Used for configuring stakeout_saved_query_daily_digest_alert and stakeout_saved_query_immediate_alert, which require it. Takes exactly one value, the saved query ID.",
+																		"type": "array",
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"maxItems": 1,
+																		"minItems": 1
+																	},
 																	"query_tag": {
 																		"description": "Usage depends on specific alert type",
 																		"type": "array",
@@ -587684,6 +587729,19 @@
 																		},
 																		"minItems": 1,
 																		"uniqueItems": true
+																	},
+																	"total_spend_dollars": {
+																		"description": "Used for configuring billing_budget_alert. Takes exactly one value, the budget threshold in US dollars, as a string greater than zero.",
+																		"type": "array",
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"example": [
+																			"100"
+																		],
+																		"maxItems": 1,
+																		"minItems": 1
 																	},
 																	"traffic_exclusions": {
 																		"description": "Used for configuring traffic_anomalies_alert",
@@ -587983,7 +588041,7 @@
 										"x-auditable": true
 									},
 									"alert_type": {
-										"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+										"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. This enum lists every alert type, not the ones a given account can create, since some types depend on entitlements or account type. To get the alert types an account can create, call `GET /accounts/{account_id}/alerting/v3/available_alerts`.",
 										"type": "string",
 										"example": "universal_ssl_event_type",
 										"enum": [
@@ -587992,7 +588050,10 @@
 											"advanced_ddos_attack_l4_alert",
 											"advanced_ddos_attack_l7_alert",
 											"advanced_http_alert_error",
+											"attack_lifecycle",
+											"bgp_advertisement_change",
 											"bgp_hijack_notification",
+											"billing_budget_alert",
 											"billing_usage_alert",
 											"block_notification_block_removed",
 											"block_notification_new_block",
@@ -588000,17 +588061,25 @@
 											"bot_traffic_basic_alert",
 											"brand_protection_alert",
 											"brand_protection_digest",
+											"casb_weekly_digest",
 											"clickhouse_alert_fw_anomaly",
 											"clickhouse_alert_fw_ent_anomaly",
+											"closed_port_scan_alert",
 											"cloudforce_one_request_notification",
+											"cmd_managed_defense_notification",
 											"cni_maintenance_notification",
+											"containers_security_alert",
 											"custom_analytics",
 											"custom_bot_detection_alert",
 											"custom_ssl_certificate_event_type",
 											"dedicated_ssl_certificate_event_type",
 											"device_connectivity_anomaly_alert",
+											"dex_device_connectivity_alert",
+											"dex_synthetic_test_availability_alert",
+											"dex_synthetic_test_latency_alert",
 											"dos_attack_l4",
 											"dos_attack_l7",
+											"executive_communications",
 											"expiring_service_token_alert",
 											"failing_logpush_job_disabled_alert",
 											"fbm_auto_advertisement",
@@ -588023,13 +588092,18 @@
 											"image_notification",
 											"image_resizing_notification",
 											"incident_alert",
+											"leaked_service_token_alert",
 											"load_balancing_health_alert",
 											"load_balancing_pool_enablement_alert",
+											"log_explorer_ingest_rate_limit",
+											"log_explorer_scheduled_query_results_alert",
 											"logo_match_alert",
+											"magic_endpoint_healthcheck_alert",
 											"magic_tunnel_health_check_event",
 											"magic_wan_tunnel_health",
 											"maintenance_event_notification",
 											"mtls_certificate_store_certificate_expiration_type",
+											"open_port_scan_alert",
 											"pages_event_alert",
 											"radar_notification",
 											"real_origin_monitoring",
@@ -588047,6 +588121,9 @@
 											"secondary_dns_zone_validation_warning",
 											"security_insights_alert",
 											"sentinel_alert",
+											"stakeout_credential_leak_alert",
+											"stakeout_saved_query_daily_digest_alert",
+											"stakeout_saved_query_immediate_alert",
 											"stream_live_notifications",
 											"synthetic_test_latency_alert",
 											"synthetic_test_low_availability_alert",
@@ -588055,6 +588132,9 @@
 											"tunnel_update_event",
 											"universal_ssl_event_type",
 											"web_analytics_metrics_update",
+											"workers_for_platforms_security_alert",
+											"workers_observability_alert",
+											"workers_observability_real_time_issue",
 											"zone_aop_custom_certificate_expiration_type"
 										],
 										"x-auditable": true
@@ -588132,6 +588212,19 @@
 													"type": "string",
 													"x-auditable": true
 												}
+											},
+											"check_id": {
+												"description": "Used for configuring magic_endpoint_healthcheck_alert. Takes one or more health check IDs, each a UUID. That alert type requires check_id together with alert_trigger_preferences set to slo, a numeric alert_trigger_preferences_value, and selectors set to failures.",
+												"type": "array",
+												"items": {
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												},
+												"example": [
+													"699d9864-2c56-4d2e-855e-9661899b7252"
+												],
+												"minItems": 1
 											},
 											"enabled": {
 												"description": "Used for configuring load_balancing_pool_enablement_alert",
@@ -588313,6 +588406,16 @@
 													"x-auditable": true
 												}
 											},
+											"query_id": {
+												"description": "Used for configuring stakeout_saved_query_daily_digest_alert and stakeout_saved_query_immediate_alert, which require it. Takes exactly one value, the saved query ID.",
+												"type": "array",
+												"items": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"maxItems": 1,
+												"minItems": 1
+											},
 											"query_tag": {
 												"description": "Usage depends on specific alert type",
 												"type": "array",
@@ -588398,6 +588501,19 @@
 												},
 												"minItems": 1,
 												"uniqueItems": true
+											},
+											"total_spend_dollars": {
+												"description": "Used for configuring billing_budget_alert. Takes exactly one value, the budget threshold in US dollars, as a string greater than zero.",
+												"type": "array",
+												"items": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"example": [
+													"100"
+												],
+												"maxItems": 1,
+												"minItems": 1
 											},
 											"traffic_exclusions": {
 												"description": "Used for configuring traffic_anomalies_alert",
@@ -589270,7 +589386,7 @@
 															"x-auditable": true
 														},
 														"alert_type": {
-															"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+															"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. This enum lists every alert type, not the ones a given account can create, since some types depend on entitlements or account type. To get the alert types an account can create, call `GET /accounts/{account_id}/alerting/v3/available_alerts`.",
 															"type": "string",
 															"example": "universal_ssl_event_type",
 															"enum": [
@@ -589279,7 +589395,10 @@
 																"advanced_ddos_attack_l4_alert",
 																"advanced_ddos_attack_l7_alert",
 																"advanced_http_alert_error",
+																"attack_lifecycle",
+																"bgp_advertisement_change",
 																"bgp_hijack_notification",
+																"billing_budget_alert",
 																"billing_usage_alert",
 																"block_notification_block_removed",
 																"block_notification_new_block",
@@ -589287,17 +589406,25 @@
 																"bot_traffic_basic_alert",
 																"brand_protection_alert",
 																"brand_protection_digest",
+																"casb_weekly_digest",
 																"clickhouse_alert_fw_anomaly",
 																"clickhouse_alert_fw_ent_anomaly",
+																"closed_port_scan_alert",
 																"cloudforce_one_request_notification",
+																"cmd_managed_defense_notification",
 																"cni_maintenance_notification",
+																"containers_security_alert",
 																"custom_analytics",
 																"custom_bot_detection_alert",
 																"custom_ssl_certificate_event_type",
 																"dedicated_ssl_certificate_event_type",
 																"device_connectivity_anomaly_alert",
+																"dex_device_connectivity_alert",
+																"dex_synthetic_test_availability_alert",
+																"dex_synthetic_test_latency_alert",
 																"dos_attack_l4",
 																"dos_attack_l7",
+																"executive_communications",
 																"expiring_service_token_alert",
 																"failing_logpush_job_disabled_alert",
 																"fbm_auto_advertisement",
@@ -589310,13 +589437,18 @@
 																"image_notification",
 																"image_resizing_notification",
 																"incident_alert",
+																"leaked_service_token_alert",
 																"load_balancing_health_alert",
 																"load_balancing_pool_enablement_alert",
+																"log_explorer_ingest_rate_limit",
+																"log_explorer_scheduled_query_results_alert",
 																"logo_match_alert",
+																"magic_endpoint_healthcheck_alert",
 																"magic_tunnel_health_check_event",
 																"magic_wan_tunnel_health",
 																"maintenance_event_notification",
 																"mtls_certificate_store_certificate_expiration_type",
+																"open_port_scan_alert",
 																"pages_event_alert",
 																"radar_notification",
 																"real_origin_monitoring",
@@ -589334,6 +589466,9 @@
 																"secondary_dns_zone_validation_warning",
 																"security_insights_alert",
 																"sentinel_alert",
+																"stakeout_credential_leak_alert",
+																"stakeout_saved_query_daily_digest_alert",
+																"stakeout_saved_query_immediate_alert",
 																"stream_live_notifications",
 																"synthetic_test_latency_alert",
 																"synthetic_test_low_availability_alert",
@@ -589342,6 +589477,9 @@
 																"tunnel_update_event",
 																"universal_ssl_event_type",
 																"web_analytics_metrics_update",
+																"workers_for_platforms_security_alert",
+																"workers_observability_alert",
+																"workers_observability_real_time_issue",
 																"zone_aop_custom_certificate_expiration_type"
 															],
 															"x-auditable": true
@@ -589426,6 +589564,19 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
+																},
+																"check_id": {
+																	"description": "Used for configuring magic_endpoint_healthcheck_alert. Takes one or more health check IDs, each a UUID. That alert type requires check_id together with alert_trigger_preferences set to slo, a numeric alert_trigger_preferences_value, and selectors set to failures.",
+																	"type": "array",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"699d9864-2c56-4d2e-855e-9661899b7252"
+																	],
+																	"minItems": 1
 																},
 																"enabled": {
 																	"description": "Used for configuring load_balancing_pool_enablement_alert",
@@ -589607,6 +589758,16 @@
 																		"x-auditable": true
 																	}
 																},
+																"query_id": {
+																	"description": "Used for configuring stakeout_saved_query_daily_digest_alert and stakeout_saved_query_immediate_alert, which require it. Takes exactly one value, the saved query ID.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1,
+																	"minItems": 1
+																},
 																"query_tag": {
 																	"description": "Usage depends on specific alert type",
 																	"type": "array",
@@ -589692,6 +589853,19 @@
 																	},
 																	"minItems": 1,
 																	"uniqueItems": true
+																},
+																"total_spend_dollars": {
+																	"description": "Used for configuring billing_budget_alert. Takes exactly one value, the budget threshold in US dollars, as a string greater than zero.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"100"
+																	],
+																	"maxItems": 1,
+																	"minItems": 1
 																},
 																"traffic_exclusions": {
 																	"description": "Used for configuring traffic_anomalies_alert",
@@ -589931,7 +590105,7 @@
 																	"x-auditable": true
 																},
 																"alert_type": {
-																	"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+																	"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. This enum lists every alert type, not the ones a given account can create, since some types depend on entitlements or account type. To get the alert types an account can create, call `GET /accounts/{account_id}/alerting/v3/available_alerts`.",
 																	"type": "string",
 																	"example": "universal_ssl_event_type",
 																	"enum": [
@@ -589940,7 +590114,10 @@
 																		"advanced_ddos_attack_l4_alert",
 																		"advanced_ddos_attack_l7_alert",
 																		"advanced_http_alert_error",
+																		"attack_lifecycle",
+																		"bgp_advertisement_change",
 																		"bgp_hijack_notification",
+																		"billing_budget_alert",
 																		"billing_usage_alert",
 																		"block_notification_block_removed",
 																		"block_notification_new_block",
@@ -589948,17 +590125,25 @@
 																		"bot_traffic_basic_alert",
 																		"brand_protection_alert",
 																		"brand_protection_digest",
+																		"casb_weekly_digest",
 																		"clickhouse_alert_fw_anomaly",
 																		"clickhouse_alert_fw_ent_anomaly",
+																		"closed_port_scan_alert",
 																		"cloudforce_one_request_notification",
+																		"cmd_managed_defense_notification",
 																		"cni_maintenance_notification",
+																		"containers_security_alert",
 																		"custom_analytics",
 																		"custom_bot_detection_alert",
 																		"custom_ssl_certificate_event_type",
 																		"dedicated_ssl_certificate_event_type",
 																		"device_connectivity_anomaly_alert",
+																		"dex_device_connectivity_alert",
+																		"dex_synthetic_test_availability_alert",
+																		"dex_synthetic_test_latency_alert",
 																		"dos_attack_l4",
 																		"dos_attack_l7",
+																		"executive_communications",
 																		"expiring_service_token_alert",
 																		"failing_logpush_job_disabled_alert",
 																		"fbm_auto_advertisement",
@@ -589971,13 +590156,18 @@
 																		"image_notification",
 																		"image_resizing_notification",
 																		"incident_alert",
+																		"leaked_service_token_alert",
 																		"load_balancing_health_alert",
 																		"load_balancing_pool_enablement_alert",
+																		"log_explorer_ingest_rate_limit",
+																		"log_explorer_scheduled_query_results_alert",
 																		"logo_match_alert",
+																		"magic_endpoint_healthcheck_alert",
 																		"magic_tunnel_health_check_event",
 																		"magic_wan_tunnel_health",
 																		"maintenance_event_notification",
 																		"mtls_certificate_store_certificate_expiration_type",
+																		"open_port_scan_alert",
 																		"pages_event_alert",
 																		"radar_notification",
 																		"real_origin_monitoring",
@@ -589995,6 +590185,9 @@
 																		"secondary_dns_zone_validation_warning",
 																		"security_insights_alert",
 																		"sentinel_alert",
+																		"stakeout_credential_leak_alert",
+																		"stakeout_saved_query_daily_digest_alert",
+																		"stakeout_saved_query_immediate_alert",
 																		"stream_live_notifications",
 																		"synthetic_test_latency_alert",
 																		"synthetic_test_low_availability_alert",
@@ -590003,6 +590196,9 @@
 																		"tunnel_update_event",
 																		"universal_ssl_event_type",
 																		"web_analytics_metrics_update",
+																		"workers_for_platforms_security_alert",
+																		"workers_observability_alert",
+																		"workers_observability_real_time_issue",
 																		"zone_aop_custom_certificate_expiration_type"
 																	],
 																	"x-auditable": true
@@ -590087,6 +590283,19 @@
 																				"type": "string",
 																				"x-auditable": true
 																			}
+																		},
+																		"check_id": {
+																			"description": "Used for configuring magic_endpoint_healthcheck_alert. Takes one or more health check IDs, each a UUID. That alert type requires check_id together with alert_trigger_preferences set to slo, a numeric alert_trigger_preferences_value, and selectors set to failures.",
+																			"type": "array",
+																			"items": {
+																				"format": "uuid",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"example": [
+																				"699d9864-2c56-4d2e-855e-9661899b7252"
+																			],
+																			"minItems": 1
 																		},
 																		"enabled": {
 																			"description": "Used for configuring load_balancing_pool_enablement_alert",
@@ -590268,6 +590477,16 @@
 																				"x-auditable": true
 																			}
 																		},
+																		"query_id": {
+																			"description": "Used for configuring stakeout_saved_query_daily_digest_alert and stakeout_saved_query_immediate_alert, which require it. Takes exactly one value, the saved query ID.",
+																			"type": "array",
+																			"items": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"maxItems": 1,
+																			"minItems": 1
+																		},
 																		"query_tag": {
 																			"description": "Usage depends on specific alert type",
 																			"type": "array",
@@ -590353,6 +590572,19 @@
 																			},
 																			"minItems": 1,
 																			"uniqueItems": true
+																		},
+																		"total_spend_dollars": {
+																			"description": "Used for configuring billing_budget_alert. Takes exactly one value, the budget threshold in US dollars, as a string greater than zero.",
+																			"type": "array",
+																			"items": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"example": [
+																				"100"
+																			],
+																			"maxItems": 1,
+																			"minItems": 1
 																		},
 																		"traffic_exclusions": {
 																			"description": "Used for configuring traffic_anomalies_alert",
@@ -590654,7 +590886,7 @@
 										"x-auditable": true
 									},
 									"alert_type": {
-										"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+										"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. This enum lists every alert type, not the ones a given account can create, since some types depend on entitlements or account type. To get the alert types an account can create, call `GET /accounts/{account_id}/alerting/v3/available_alerts`.",
 										"type": "string",
 										"example": "universal_ssl_event_type",
 										"enum": [
@@ -590663,7 +590895,10 @@
 											"advanced_ddos_attack_l4_alert",
 											"advanced_ddos_attack_l7_alert",
 											"advanced_http_alert_error",
+											"attack_lifecycle",
+											"bgp_advertisement_change",
 											"bgp_hijack_notification",
+											"billing_budget_alert",
 											"billing_usage_alert",
 											"block_notification_block_removed",
 											"block_notification_new_block",
@@ -590671,17 +590906,25 @@
 											"bot_traffic_basic_alert",
 											"brand_protection_alert",
 											"brand_protection_digest",
+											"casb_weekly_digest",
 											"clickhouse_alert_fw_anomaly",
 											"clickhouse_alert_fw_ent_anomaly",
+											"closed_port_scan_alert",
 											"cloudforce_one_request_notification",
+											"cmd_managed_defense_notification",
 											"cni_maintenance_notification",
+											"containers_security_alert",
 											"custom_analytics",
 											"custom_bot_detection_alert",
 											"custom_ssl_certificate_event_type",
 											"dedicated_ssl_certificate_event_type",
 											"device_connectivity_anomaly_alert",
+											"dex_device_connectivity_alert",
+											"dex_synthetic_test_availability_alert",
+											"dex_synthetic_test_latency_alert",
 											"dos_attack_l4",
 											"dos_attack_l7",
+											"executive_communications",
 											"expiring_service_token_alert",
 											"failing_logpush_job_disabled_alert",
 											"fbm_auto_advertisement",
@@ -590694,13 +590937,18 @@
 											"image_notification",
 											"image_resizing_notification",
 											"incident_alert",
+											"leaked_service_token_alert",
 											"load_balancing_health_alert",
 											"load_balancing_pool_enablement_alert",
+											"log_explorer_ingest_rate_limit",
+											"log_explorer_scheduled_query_results_alert",
 											"logo_match_alert",
+											"magic_endpoint_healthcheck_alert",
 											"magic_tunnel_health_check_event",
 											"magic_wan_tunnel_health",
 											"maintenance_event_notification",
 											"mtls_certificate_store_certificate_expiration_type",
+											"open_port_scan_alert",
 											"pages_event_alert",
 											"radar_notification",
 											"real_origin_monitoring",
@@ -590718,6 +590966,9 @@
 											"secondary_dns_zone_validation_warning",
 											"security_insights_alert",
 											"sentinel_alert",
+											"stakeout_credential_leak_alert",
+											"stakeout_saved_query_daily_digest_alert",
+											"stakeout_saved_query_immediate_alert",
 											"stream_live_notifications",
 											"synthetic_test_latency_alert",
 											"synthetic_test_low_availability_alert",
@@ -590726,6 +590977,9 @@
 											"tunnel_update_event",
 											"universal_ssl_event_type",
 											"web_analytics_metrics_update",
+											"workers_for_platforms_security_alert",
+											"workers_observability_alert",
+											"workers_observability_real_time_issue",
 											"zone_aop_custom_certificate_expiration_type"
 										],
 										"x-auditable": true
@@ -590803,6 +591057,19 @@
 													"type": "string",
 													"x-auditable": true
 												}
+											},
+											"check_id": {
+												"description": "Used for configuring magic_endpoint_healthcheck_alert. Takes one or more health check IDs, each a UUID. That alert type requires check_id together with alert_trigger_preferences set to slo, a numeric alert_trigger_preferences_value, and selectors set to failures.",
+												"type": "array",
+												"items": {
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												},
+												"example": [
+													"699d9864-2c56-4d2e-855e-9661899b7252"
+												],
+												"minItems": 1
 											},
 											"enabled": {
 												"description": "Used for configuring load_balancing_pool_enablement_alert",
@@ -590984,6 +591251,16 @@
 													"x-auditable": true
 												}
 											},
+											"query_id": {
+												"description": "Used for configuring stakeout_saved_query_daily_digest_alert and stakeout_saved_query_immediate_alert, which require it. Takes exactly one value, the saved query ID.",
+												"type": "array",
+												"items": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"maxItems": 1,
+												"minItems": 1
+											},
 											"query_tag": {
 												"description": "Usage depends on specific alert type",
 												"type": "array",
@@ -591069,6 +591346,19 @@
 												},
 												"minItems": 1,
 												"uniqueItems": true
+											},
+											"total_spend_dollars": {
+												"description": "Used for configuring billing_budget_alert. Takes exactly one value, the budget threshold in US dollars, as a string greater than zero.",
+												"type": "array",
+												"items": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"example": [
+													"100"
+												],
+												"maxItems": 1,
+												"minItems": 1
 											},
 											"traffic_exclusions": {
 												"description": "Used for configuring traffic_anomalies_alert",
@@ -823094,6 +823384,698 @@
 				"x-forge-require-confirmation": "After undeleting, Time Travel cannot restore the D1 database to a point in time at or before the undeletion."
 			}
 		},
+		"/accounts/{account_id}/d1/insights/databases": {
+			"get": {
+				"operationId": "d1-list-insights-databases",
+				"summary": "List D1 Databases by Usage",
+				"description": "List the databases in your account with the highest usage in a time window, sorted by `order_by`\nfrom highest to lowest.\n\nTotals are computed from the same data as D1 billing and the GraphQL Analytics API. They include\nevery batch in the window: queries, imports and exports, successful and failed. Totals from other\ninsights endpoints that read per-statement data can be lower than these numbers.\n\nDeleted databases are included if they had usage in the window. Databases with no usage in the\nwindow are not included.\n\nUsage is available a few minutes after a batch completes.\n\nFor more complex filtering, or other metrics, groupings or time windows, run your own SQL on the\n`events.d1Queries` dataset with `cf sql query`. For examples, see https://developers.cloudflare.com/d1/observability/find-expensive-queries/\n",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Account identifier tag.",
+							"type": "string",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"readOnly": true,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "order_by",
+						"in": "query",
+						"schema": {
+							"description": "The usage metric to sort by, from highest to lowest.",
+							"type": "string",
+							"default": "rows_read",
+							"enum": [
+								"rows_read",
+								"rows_written",
+								"queries"
+							]
+						}
+					},
+					{
+						"name": "database_name",
+						"in": "query",
+						"schema": {
+							"description": "Only count usage from databases whose name contains this value, case-insensitive. Usage recorded before 2026-10-30 has no database name and is not matched.",
+							"type": "string",
+							"maxLength": 255
+						}
+					},
+					{
+						"name": "exact",
+						"in": "query",
+						"schema": {
+							"description": "If true, `database_name` must match the full database name, case-sensitive.",
+							"type": "boolean",
+							"default": false
+						}
+					},
+					{
+						"name": "since",
+						"in": "query",
+						"schema": {
+							"description": "Start of the window (inclusive), in RFC 3339 format. Defaults to 24 hours before `until`. Must be before `until`, and at most 90 days ago. The window from `since` to `until` must be at most 31 days.",
+							"type": "string",
+							"format": "date-time",
+							"example": "2026-10-01T00:00:00Z"
+						}
+					},
+					{
+						"name": "until",
+						"in": "query",
+						"schema": {
+							"description": "End of the window (exclusive), in RFC 3339 format. Defaults to the current time.",
+							"type": "string",
+							"format": "date-time",
+							"example": "2026-10-02T00:00:00Z"
+						}
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"schema": {
+							"description": "Maximum number of databases to return. Results are not paginated, so only the top `limit` databases are returned.",
+							"type": "integer",
+							"default": 20,
+							"maximum": 1000,
+							"minimum": 1
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List D1 databases by usage response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"database_id": {
+																"description": "D1 database identifier (UUID).",
+																"type": "string",
+																"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"database_name": {
+																"description": "The database name recorded with its usage in the window. Null when no usage in the window recorded a name, for example usage before 2026-10-30.",
+																"type": "string",
+																"example": "my-database",
+																"nullable": true
+															},
+															"queries": {
+																"description": "Number of queries (read and write) in the window.",
+																"type": "integer",
+																"example": 3000
+															},
+															"rows_read": {
+																"description": "Number of rows read in the window.",
+																"type": "integer",
+																"example": 1500000
+															},
+															"rows_written": {
+																"description": "Number of rows written in the window.",
+																"type": "integer",
+																"example": 20000
+															}
+														}
+													}
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Number of databases in `result`.",
+															"type": "integer",
+															"example": 1
+														},
+														"order_by": {
+															"description": "The usage metric the results are sorted by.",
+															"type": "string",
+															"enum": [
+																"rows_read",
+																"rows_written",
+																"queries"
+															]
+														},
+														"query_window": {
+															"description": "The resolved window, in UTC. `from` is inclusive, `to` is exclusive.",
+															"type": "object",
+															"properties": {
+																"from": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2026-10-01T00:00:00Z"
+																},
+																"to": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2026-10-02T00:00:00Z"
+																}
+															}
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "List D1 databases by usage response failure",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
+					}
+				],
+				"tags": [
+					"D1"
+				],
+				"x-fern-availability": "beta",
+				"x-fern-sdk-group-name": "d1.insights",
+				"x-fern-sdk-method-name": "databases",
+				"x-forge-epilogue": "This command acts on remote D1 Databases."
+			}
+		},
+		"/accounts/{account_id}/d1/insights/queries": {
+			"get": {
+				"operationId": "d1-list-insights-queries",
+				"summary": "List Top D1 Queries",
+				"description": "List the SQL statements with the highest usage in a time window, across all databases in your\naccount or for one database, sorted by `order_by` from highest to lowest.\n\nEach item is one query text in one database. The same text run in two databases is two items.\n\nValues are estimates computed from sampled per-statement data. They include statements that\nfailed with a SQL error, and deleted databases. They do not include imports and exports, so they\ncan be lower than the totals from `GET /accounts/{account_id}/d1/insights/databases`, billing, and\nthe GraphQL Analytics API.\n\nUsage is available a few minutes after a query completes.\n\nFor more complex filtering, or other metrics, groupings or time windows, run your own SQL on the\n`events.d1Queries` dataset with `cf sql query`. For examples, see https://developers.cloudflare.com/d1/observability/find-expensive-queries/\n",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Account identifier tag.",
+							"type": "string",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"readOnly": true,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "order_by",
+						"in": "query",
+						"schema": {
+							"description": "The usage metric to sort by, from highest to lowest. `duration` sorts by `total_duration_ms`.",
+							"type": "string",
+							"default": "rows_read",
+							"enum": [
+								"rows_read",
+								"duration",
+								"executions"
+							]
+						}
+					},
+					{
+						"name": "database_id",
+						"in": "query",
+						"description": "Only return queries for this database. Defaults to all databases in the account. A database with no usage in the window, or that is not in the account, returns an empty list.",
+						"schema": {
+							"description": "D1 database identifier (UUID).",
+							"type": "string",
+							"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+							"readOnly": true,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "since",
+						"in": "query",
+						"schema": {
+							"description": "Start of the window (inclusive), in RFC 3339 format. Defaults to 24 hours before `until`. Must be before `until`, and at most 90 days ago. The window from `since` to `until` must be at most 7 days.",
+							"type": "string",
+							"format": "date-time",
+							"example": "2026-10-01T00:00:00Z"
+						}
+					},
+					{
+						"name": "until",
+						"in": "query",
+						"schema": {
+							"description": "End of the window (exclusive), in RFC 3339 format. Defaults to the current time.",
+							"type": "string",
+							"format": "date-time",
+							"example": "2026-10-02T00:00:00Z"
+						}
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"schema": {
+							"description": "Maximum number of queries to return. Results are not paginated, so only the top `limit` queries are returned.",
+							"type": "integer",
+							"default": 20,
+							"maximum": 1000,
+							"minimum": 1
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List top D1 queries response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"avg_duration_ms": {
+																"description": "Average execution time, in milliseconds: `total_duration_ms` / `executions`.",
+																"type": "number",
+																"example": 1.5
+															},
+															"database_id": {
+																"description": "D1 database identifier (UUID).",
+																"type": "string",
+																"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"executions": {
+																"description": "Estimated number of times the statement ran in the window.",
+																"type": "integer",
+																"example": 3000
+															},
+															"query": {
+																"description": "The SQL statement text, as sent to the database (at most 4096 characters).",
+																"example": "SELECT * FROM users WHERE email = ?",
+																"type": "string"
+															},
+															"rows_read": {
+																"description": "Estimated number of rows read in the window.",
+																"type": "integer",
+																"example": 1500000
+															},
+															"rows_returned": {
+																"description": "Estimated number of rows returned in the window.",
+																"type": "integer",
+																"example": 3000
+															},
+															"rows_written": {
+																"description": "Estimated number of rows written in the window.",
+																"type": "integer",
+																"example": 0
+															},
+															"total_duration_ms": {
+																"description": "Estimated total execution time in the window, in milliseconds.",
+																"type": "number",
+																"example": 4500.5
+															}
+														}
+													}
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Number of queries in `result`.",
+															"type": "integer",
+															"example": 1
+														},
+														"order_by": {
+															"description": "The usage metric the results are sorted by.",
+															"type": "string",
+															"enum": [
+																"rows_read",
+																"duration",
+																"executions"
+															]
+														},
+														"query_window": {
+															"description": "The resolved window, in UTC. `from` is inclusive, `to` is exclusive.",
+															"type": "object",
+															"properties": {
+																"from": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2026-10-01T00:00:00Z"
+																},
+																"to": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2026-10-02T00:00:00Z"
+																}
+															}
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "List top D1 queries response failure",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
+					}
+				],
+				"tags": [
+					"D1"
+				],
+				"x-fern-availability": "beta",
+				"x-fern-sdk-group-name": "d1.insights",
+				"x-fern-sdk-method-name": "queries",
+				"x-forge-epilogue": "This command acts on remote D1 Databases."
+			}
+		},
 		"/accounts/{account_id}/data-security/posture/asset_schemas": {
 			"get": {
 				"operationId": "ListAssetSchemas",
@@ -862347,7 +863329,7 @@
 								"environment:production",
 								"fleet:warehouse"
 							],
-							"maxItems": 10
+							"maxItems": 25
 						}
 					},
 					{
@@ -863397,7 +864379,7 @@
 											"maxLength": 1024,
 											"type": "string"
 										},
-										"maxProperties": 10,
+										"maxProperties": 25,
 										"x-auditable": true
 									}
 								},

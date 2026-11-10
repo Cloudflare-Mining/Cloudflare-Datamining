@@ -429,7 +429,7 @@
 														"x-auditable": true
 													},
 													"alert_type": {
-														"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+														"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. This enum lists every alert type, not the ones a given account can create, since some types depend on entitlements or account type. To get the alert types an account can create, call `GET /accounts/{account_id}/alerting/v3/available_alerts`.",
 														"type": "string",
 														"example": "universal_ssl_event_type",
 														"enum": [
@@ -438,7 +438,10 @@
 															"advanced_ddos_attack_l4_alert",
 															"advanced_ddos_attack_l7_alert",
 															"advanced_http_alert_error",
+															"attack_lifecycle",
+															"bgp_advertisement_change",
 															"bgp_hijack_notification",
+															"billing_budget_alert",
 															"billing_usage_alert",
 															"block_notification_block_removed",
 															"block_notification_new_block",
@@ -446,17 +449,25 @@
 															"bot_traffic_basic_alert",
 															"brand_protection_alert",
 															"brand_protection_digest",
+															"casb_weekly_digest",
 															"clickhouse_alert_fw_anomaly",
 															"clickhouse_alert_fw_ent_anomaly",
+															"closed_port_scan_alert",
 															"cloudforce_one_request_notification",
+															"cmd_managed_defense_notification",
 															"cni_maintenance_notification",
+															"containers_security_alert",
 															"custom_analytics",
 															"custom_bot_detection_alert",
 															"custom_ssl_certificate_event_type",
 															"dedicated_ssl_certificate_event_type",
 															"device_connectivity_anomaly_alert",
+															"dex_device_connectivity_alert",
+															"dex_synthetic_test_availability_alert",
+															"dex_synthetic_test_latency_alert",
 															"dos_attack_l4",
 															"dos_attack_l7",
+															"executive_communications",
 															"expiring_service_token_alert",
 															"failing_logpush_job_disabled_alert",
 															"fbm_auto_advertisement",
@@ -469,13 +480,18 @@
 															"image_notification",
 															"image_resizing_notification",
 															"incident_alert",
+															"leaked_service_token_alert",
 															"load_balancing_health_alert",
 															"load_balancing_pool_enablement_alert",
+															"log_explorer_ingest_rate_limit",
+															"log_explorer_scheduled_query_results_alert",
 															"logo_match_alert",
+															"magic_endpoint_healthcheck_alert",
 															"magic_tunnel_health_check_event",
 															"magic_wan_tunnel_health",
 															"maintenance_event_notification",
 															"mtls_certificate_store_certificate_expiration_type",
+															"open_port_scan_alert",
 															"pages_event_alert",
 															"radar_notification",
 															"real_origin_monitoring",
@@ -493,6 +509,9 @@
 															"secondary_dns_zone_validation_warning",
 															"security_insights_alert",
 															"sentinel_alert",
+															"stakeout_credential_leak_alert",
+															"stakeout_saved_query_daily_digest_alert",
+															"stakeout_saved_query_immediate_alert",
 															"stream_live_notifications",
 															"synthetic_test_latency_alert",
 															"synthetic_test_low_availability_alert",
@@ -501,6 +520,9 @@
 															"tunnel_update_event",
 															"universal_ssl_event_type",
 															"web_analytics_metrics_update",
+															"workers_for_platforms_security_alert",
+															"workers_observability_alert",
+															"workers_observability_real_time_issue",
 															"zone_aop_custom_certificate_expiration_type"
 														],
 														"x-auditable": true
@@ -585,6 +607,19 @@
 																	"type": "string",
 																	"x-auditable": true
 																}
+															},
+															"check_id": {
+																"description": "Used for configuring magic_endpoint_healthcheck_alert. Takes one or more health check IDs, each a UUID. That alert type requires check_id together with alert_trigger_preferences set to slo, a numeric alert_trigger_preferences_value, and selectors set to failures.",
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"example": [
+																	"699d9864-2c56-4d2e-855e-9661899b7252"
+																],
+																"minItems": 1
 															},
 															"enabled": {
 																"description": "Used for configuring load_balancing_pool_enablement_alert",
@@ -766,6 +801,16 @@
 																	"x-auditable": true
 																}
 															},
+															"query_id": {
+																"description": "Used for configuring stakeout_saved_query_daily_digest_alert and stakeout_saved_query_immediate_alert, which require it. Takes exactly one value, the saved query ID.",
+																"type": "array",
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"maxItems": 1,
+																"minItems": 1
+															},
 															"query_tag": {
 																"description": "Usage depends on specific alert type",
 																"type": "array",
@@ -851,6 +896,19 @@
 																},
 																"minItems": 1,
 																"uniqueItems": true
+															},
+															"total_spend_dollars": {
+																"description": "Used for configuring billing_budget_alert. Takes exactly one value, the budget threshold in US dollars, as a string greater than zero.",
+																"type": "array",
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"example": [
+																	"100"
+																],
+																"maxItems": 1,
+																"minItems": 1
 															},
 															"traffic_exclusions": {
 																"description": "Used for configuring traffic_anomalies_alert",
@@ -1230,7 +1288,7 @@
 													"x-auditable": true
 												},
 												"alert_type": {
-													"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+													"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. This enum lists every alert type, not the ones a given account can create, since some types depend on entitlements or account type. To get the alert types an account can create, call `GET /accounts/{account_id}/alerting/v3/available_alerts`.",
 													"type": "string",
 													"example": "universal_ssl_event_type",
 													"enum": [
@@ -1239,7 +1297,10 @@
 														"advanced_ddos_attack_l4_alert",
 														"advanced_ddos_attack_l7_alert",
 														"advanced_http_alert_error",
+														"attack_lifecycle",
+														"bgp_advertisement_change",
 														"bgp_hijack_notification",
+														"billing_budget_alert",
 														"billing_usage_alert",
 														"block_notification_block_removed",
 														"block_notification_new_block",
@@ -1247,17 +1308,25 @@
 														"bot_traffic_basic_alert",
 														"brand_protection_alert",
 														"brand_protection_digest",
+														"casb_weekly_digest",
 														"clickhouse_alert_fw_anomaly",
 														"clickhouse_alert_fw_ent_anomaly",
+														"closed_port_scan_alert",
 														"cloudforce_one_request_notification",
+														"cmd_managed_defense_notification",
 														"cni_maintenance_notification",
+														"containers_security_alert",
 														"custom_analytics",
 														"custom_bot_detection_alert",
 														"custom_ssl_certificate_event_type",
 														"dedicated_ssl_certificate_event_type",
 														"device_connectivity_anomaly_alert",
+														"dex_device_connectivity_alert",
+														"dex_synthetic_test_availability_alert",
+														"dex_synthetic_test_latency_alert",
 														"dos_attack_l4",
 														"dos_attack_l7",
+														"executive_communications",
 														"expiring_service_token_alert",
 														"failing_logpush_job_disabled_alert",
 														"fbm_auto_advertisement",
@@ -1270,13 +1339,18 @@
 														"image_notification",
 														"image_resizing_notification",
 														"incident_alert",
+														"leaked_service_token_alert",
 														"load_balancing_health_alert",
 														"load_balancing_pool_enablement_alert",
+														"log_explorer_ingest_rate_limit",
+														"log_explorer_scheduled_query_results_alert",
 														"logo_match_alert",
+														"magic_endpoint_healthcheck_alert",
 														"magic_tunnel_health_check_event",
 														"magic_wan_tunnel_health",
 														"maintenance_event_notification",
 														"mtls_certificate_store_certificate_expiration_type",
+														"open_port_scan_alert",
 														"pages_event_alert",
 														"radar_notification",
 														"real_origin_monitoring",
@@ -1294,6 +1368,9 @@
 														"secondary_dns_zone_validation_warning",
 														"security_insights_alert",
 														"sentinel_alert",
+														"stakeout_credential_leak_alert",
+														"stakeout_saved_query_daily_digest_alert",
+														"stakeout_saved_query_immediate_alert",
 														"stream_live_notifications",
 														"synthetic_test_latency_alert",
 														"synthetic_test_low_availability_alert",
@@ -1302,6 +1379,9 @@
 														"tunnel_update_event",
 														"universal_ssl_event_type",
 														"web_analytics_metrics_update",
+														"workers_for_platforms_security_alert",
+														"workers_observability_alert",
+														"workers_observability_real_time_issue",
 														"zone_aop_custom_certificate_expiration_type"
 													],
 													"x-auditable": true
@@ -1386,6 +1466,19 @@
 																"type": "string",
 																"x-auditable": true
 															}
+														},
+														"check_id": {
+															"description": "Used for configuring magic_endpoint_healthcheck_alert. Takes one or more health check IDs, each a UUID. That alert type requires check_id together with alert_trigger_preferences set to slo, a numeric alert_trigger_preferences_value, and selectors set to failures.",
+															"type": "array",
+															"items": {
+																"format": "uuid",
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"699d9864-2c56-4d2e-855e-9661899b7252"
+															],
+															"minItems": 1
 														},
 														"enabled": {
 															"description": "Used for configuring load_balancing_pool_enablement_alert",
@@ -1567,6 +1660,16 @@
 																"x-auditable": true
 															}
 														},
+														"query_id": {
+															"description": "Used for configuring stakeout_saved_query_daily_digest_alert and stakeout_saved_query_immediate_alert, which require it. Takes exactly one value, the saved query ID.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"maxItems": 1,
+															"minItems": 1
+														},
 														"query_tag": {
 															"description": "Usage depends on specific alert type",
 															"type": "array",
@@ -1652,6 +1755,19 @@
 															},
 															"minItems": 1,
 															"uniqueItems": true
+														},
+														"total_spend_dollars": {
+															"description": "Used for configuring billing_budget_alert. Takes exactly one value, the budget threshold in US dollars, as a string greater than zero.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"100"
+															],
+															"maxItems": 1,
+															"minItems": 1
 														},
 														"traffic_exclusions": {
 															"description": "Used for configuring traffic_anomalies_alert",
@@ -1891,7 +2007,7 @@
 															"x-auditable": true
 														},
 														"alert_type": {
-															"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+															"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. This enum lists every alert type, not the ones a given account can create, since some types depend on entitlements or account type. To get the alert types an account can create, call `GET /accounts/{account_id}/alerting/v3/available_alerts`.",
 															"type": "string",
 															"example": "universal_ssl_event_type",
 															"enum": [
@@ -1900,7 +2016,10 @@
 																"advanced_ddos_attack_l4_alert",
 																"advanced_ddos_attack_l7_alert",
 																"advanced_http_alert_error",
+																"attack_lifecycle",
+																"bgp_advertisement_change",
 																"bgp_hijack_notification",
+																"billing_budget_alert",
 																"billing_usage_alert",
 																"block_notification_block_removed",
 																"block_notification_new_block",
@@ -1908,17 +2027,25 @@
 																"bot_traffic_basic_alert",
 																"brand_protection_alert",
 																"brand_protection_digest",
+																"casb_weekly_digest",
 																"clickhouse_alert_fw_anomaly",
 																"clickhouse_alert_fw_ent_anomaly",
+																"closed_port_scan_alert",
 																"cloudforce_one_request_notification",
+																"cmd_managed_defense_notification",
 																"cni_maintenance_notification",
+																"containers_security_alert",
 																"custom_analytics",
 																"custom_bot_detection_alert",
 																"custom_ssl_certificate_event_type",
 																"dedicated_ssl_certificate_event_type",
 																"device_connectivity_anomaly_alert",
+																"dex_device_connectivity_alert",
+																"dex_synthetic_test_availability_alert",
+																"dex_synthetic_test_latency_alert",
 																"dos_attack_l4",
 																"dos_attack_l7",
+																"executive_communications",
 																"expiring_service_token_alert",
 																"failing_logpush_job_disabled_alert",
 																"fbm_auto_advertisement",
@@ -1931,13 +2058,18 @@
 																"image_notification",
 																"image_resizing_notification",
 																"incident_alert",
+																"leaked_service_token_alert",
 																"load_balancing_health_alert",
 																"load_balancing_pool_enablement_alert",
+																"log_explorer_ingest_rate_limit",
+																"log_explorer_scheduled_query_results_alert",
 																"logo_match_alert",
+																"magic_endpoint_healthcheck_alert",
 																"magic_tunnel_health_check_event",
 																"magic_wan_tunnel_health",
 																"maintenance_event_notification",
 																"mtls_certificate_store_certificate_expiration_type",
+																"open_port_scan_alert",
 																"pages_event_alert",
 																"radar_notification",
 																"real_origin_monitoring",
@@ -1955,6 +2087,9 @@
 																"secondary_dns_zone_validation_warning",
 																"security_insights_alert",
 																"sentinel_alert",
+																"stakeout_credential_leak_alert",
+																"stakeout_saved_query_daily_digest_alert",
+																"stakeout_saved_query_immediate_alert",
 																"stream_live_notifications",
 																"synthetic_test_latency_alert",
 																"synthetic_test_low_availability_alert",
@@ -1963,6 +2098,9 @@
 																"tunnel_update_event",
 																"universal_ssl_event_type",
 																"web_analytics_metrics_update",
+																"workers_for_platforms_security_alert",
+																"workers_observability_alert",
+																"workers_observability_real_time_issue",
 																"zone_aop_custom_certificate_expiration_type"
 															],
 															"x-auditable": true
@@ -2047,6 +2185,19 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
+																},
+																"check_id": {
+																	"description": "Used for configuring magic_endpoint_healthcheck_alert. Takes one or more health check IDs, each a UUID. That alert type requires check_id together with alert_trigger_preferences set to slo, a numeric alert_trigger_preferences_value, and selectors set to failures.",
+																	"type": "array",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"699d9864-2c56-4d2e-855e-9661899b7252"
+																	],
+																	"minItems": 1
 																},
 																"enabled": {
 																	"description": "Used for configuring load_balancing_pool_enablement_alert",
@@ -2228,6 +2379,16 @@
 																		"x-auditable": true
 																	}
 																},
+																"query_id": {
+																	"description": "Used for configuring stakeout_saved_query_daily_digest_alert and stakeout_saved_query_immediate_alert, which require it. Takes exactly one value, the saved query ID.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1,
+																	"minItems": 1
+																},
 																"query_tag": {
 																	"description": "Usage depends on specific alert type",
 																	"type": "array",
@@ -2313,6 +2474,19 @@
 																	},
 																	"minItems": 1,
 																	"uniqueItems": true
+																},
+																"total_spend_dollars": {
+																	"description": "Used for configuring billing_budget_alert. Takes exactly one value, the budget threshold in US dollars, as a string greater than zero.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"100"
+																	],
+																	"maxItems": 1,
+																	"minItems": 1
 																},
 																"traffic_exclusions": {
 																	"description": "Used for configuring traffic_anomalies_alert",
@@ -2867,7 +3041,7 @@
 								"x-auditable": true
 							},
 							"alert_type": {
-								"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+								"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. This enum lists every alert type, not the ones a given account can create, since some types depend on entitlements or account type. To get the alert types an account can create, call `GET /accounts/{account_id}/alerting/v3/available_alerts`.",
 								"type": "string",
 								"example": "universal_ssl_event_type",
 								"enum": [
@@ -2876,7 +3050,10 @@
 									"advanced_ddos_attack_l4_alert",
 									"advanced_ddos_attack_l7_alert",
 									"advanced_http_alert_error",
+									"attack_lifecycle",
+									"bgp_advertisement_change",
 									"bgp_hijack_notification",
+									"billing_budget_alert",
 									"billing_usage_alert",
 									"block_notification_block_removed",
 									"block_notification_new_block",
@@ -2884,17 +3061,25 @@
 									"bot_traffic_basic_alert",
 									"brand_protection_alert",
 									"brand_protection_digest",
+									"casb_weekly_digest",
 									"clickhouse_alert_fw_anomaly",
 									"clickhouse_alert_fw_ent_anomaly",
+									"closed_port_scan_alert",
 									"cloudforce_one_request_notification",
+									"cmd_managed_defense_notification",
 									"cni_maintenance_notification",
+									"containers_security_alert",
 									"custom_analytics",
 									"custom_bot_detection_alert",
 									"custom_ssl_certificate_event_type",
 									"dedicated_ssl_certificate_event_type",
 									"device_connectivity_anomaly_alert",
+									"dex_device_connectivity_alert",
+									"dex_synthetic_test_availability_alert",
+									"dex_synthetic_test_latency_alert",
 									"dos_attack_l4",
 									"dos_attack_l7",
+									"executive_communications",
 									"expiring_service_token_alert",
 									"failing_logpush_job_disabled_alert",
 									"fbm_auto_advertisement",
@@ -2907,13 +3092,18 @@
 									"image_notification",
 									"image_resizing_notification",
 									"incident_alert",
+									"leaked_service_token_alert",
 									"load_balancing_health_alert",
 									"load_balancing_pool_enablement_alert",
+									"log_explorer_ingest_rate_limit",
+									"log_explorer_scheduled_query_results_alert",
 									"logo_match_alert",
+									"magic_endpoint_healthcheck_alert",
 									"magic_tunnel_health_check_event",
 									"magic_wan_tunnel_health",
 									"maintenance_event_notification",
 									"mtls_certificate_store_certificate_expiration_type",
+									"open_port_scan_alert",
 									"pages_event_alert",
 									"radar_notification",
 									"real_origin_monitoring",
@@ -2931,6 +3121,9 @@
 									"secondary_dns_zone_validation_warning",
 									"security_insights_alert",
 									"sentinel_alert",
+									"stakeout_credential_leak_alert",
+									"stakeout_saved_query_daily_digest_alert",
+									"stakeout_saved_query_immediate_alert",
 									"stream_live_notifications",
 									"synthetic_test_latency_alert",
 									"synthetic_test_low_availability_alert",
@@ -2939,6 +3132,9 @@
 									"tunnel_update_event",
 									"universal_ssl_event_type",
 									"web_analytics_metrics_update",
+									"workers_for_platforms_security_alert",
+									"workers_observability_alert",
+									"workers_observability_real_time_issue",
 									"zone_aop_custom_certificate_expiration_type"
 								],
 								"x-auditable": true
@@ -3016,6 +3212,19 @@
 											"type": "string",
 											"x-auditable": true
 										}
+									},
+									"check_id": {
+										"description": "Used for configuring magic_endpoint_healthcheck_alert. Takes one or more health check IDs, each a UUID. That alert type requires check_id together with alert_trigger_preferences set to slo, a numeric alert_trigger_preferences_value, and selectors set to failures.",
+										"type": "array",
+										"items": {
+											"format": "uuid",
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"699d9864-2c56-4d2e-855e-9661899b7252"
+										],
+										"minItems": 1
 									},
 									"enabled": {
 										"description": "Used for configuring load_balancing_pool_enablement_alert",
@@ -3197,6 +3406,16 @@
 											"x-auditable": true
 										}
 									},
+									"query_id": {
+										"description": "Used for configuring stakeout_saved_query_daily_digest_alert and stakeout_saved_query_immediate_alert, which require it. Takes exactly one value, the saved query ID.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"maxItems": 1,
+										"minItems": 1
+									},
 									"query_tag": {
 										"description": "Usage depends on specific alert type",
 										"type": "array",
@@ -3282,6 +3501,19 @@
 										},
 										"minItems": 1,
 										"uniqueItems": true
+									},
+									"total_spend_dollars": {
+										"description": "Used for configuring billing_budget_alert. Takes exactly one value, the budget threshold in US dollars, as a string greater than zero.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"100"
+										],
+										"maxItems": 1,
+										"minItems": 1
 									},
 									"traffic_exclusions": {
 										"description": "Used for configuring traffic_anomalies_alert",
@@ -4240,7 +4472,7 @@
 								"x-auditable": true
 							},
 							"alert_type": {
-								"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+								"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. This enum lists every alert type, not the ones a given account can create, since some types depend on entitlements or account type. To get the alert types an account can create, call `GET /accounts/{account_id}/alerting/v3/available_alerts`.",
 								"type": "string",
 								"example": "universal_ssl_event_type",
 								"enum": [
@@ -4249,7 +4481,10 @@
 									"advanced_ddos_attack_l4_alert",
 									"advanced_ddos_attack_l7_alert",
 									"advanced_http_alert_error",
+									"attack_lifecycle",
+									"bgp_advertisement_change",
 									"bgp_hijack_notification",
+									"billing_budget_alert",
 									"billing_usage_alert",
 									"block_notification_block_removed",
 									"block_notification_new_block",
@@ -4257,17 +4492,25 @@
 									"bot_traffic_basic_alert",
 									"brand_protection_alert",
 									"brand_protection_digest",
+									"casb_weekly_digest",
 									"clickhouse_alert_fw_anomaly",
 									"clickhouse_alert_fw_ent_anomaly",
+									"closed_port_scan_alert",
 									"cloudforce_one_request_notification",
+									"cmd_managed_defense_notification",
 									"cni_maintenance_notification",
+									"containers_security_alert",
 									"custom_analytics",
 									"custom_bot_detection_alert",
 									"custom_ssl_certificate_event_type",
 									"dedicated_ssl_certificate_event_type",
 									"device_connectivity_anomaly_alert",
+									"dex_device_connectivity_alert",
+									"dex_synthetic_test_availability_alert",
+									"dex_synthetic_test_latency_alert",
 									"dos_attack_l4",
 									"dos_attack_l7",
+									"executive_communications",
 									"expiring_service_token_alert",
 									"failing_logpush_job_disabled_alert",
 									"fbm_auto_advertisement",
@@ -4280,13 +4523,18 @@
 									"image_notification",
 									"image_resizing_notification",
 									"incident_alert",
+									"leaked_service_token_alert",
 									"load_balancing_health_alert",
 									"load_balancing_pool_enablement_alert",
+									"log_explorer_ingest_rate_limit",
+									"log_explorer_scheduled_query_results_alert",
 									"logo_match_alert",
+									"magic_endpoint_healthcheck_alert",
 									"magic_tunnel_health_check_event",
 									"magic_wan_tunnel_health",
 									"maintenance_event_notification",
 									"mtls_certificate_store_certificate_expiration_type",
+									"open_port_scan_alert",
 									"pages_event_alert",
 									"radar_notification",
 									"real_origin_monitoring",
@@ -4304,6 +4552,9 @@
 									"secondary_dns_zone_validation_warning",
 									"security_insights_alert",
 									"sentinel_alert",
+									"stakeout_credential_leak_alert",
+									"stakeout_saved_query_daily_digest_alert",
+									"stakeout_saved_query_immediate_alert",
 									"stream_live_notifications",
 									"synthetic_test_latency_alert",
 									"synthetic_test_low_availability_alert",
@@ -4312,6 +4563,9 @@
 									"tunnel_update_event",
 									"universal_ssl_event_type",
 									"web_analytics_metrics_update",
+									"workers_for_platforms_security_alert",
+									"workers_observability_alert",
+									"workers_observability_real_time_issue",
 									"zone_aop_custom_certificate_expiration_type"
 								],
 								"x-auditable": true
@@ -4389,6 +4643,19 @@
 											"type": "string",
 											"x-auditable": true
 										}
+									},
+									"check_id": {
+										"description": "Used for configuring magic_endpoint_healthcheck_alert. Takes one or more health check IDs, each a UUID. That alert type requires check_id together with alert_trigger_preferences set to slo, a numeric alert_trigger_preferences_value, and selectors set to failures.",
+										"type": "array",
+										"items": {
+											"format": "uuid",
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"699d9864-2c56-4d2e-855e-9661899b7252"
+										],
+										"minItems": 1
 									},
 									"enabled": {
 										"description": "Used for configuring load_balancing_pool_enablement_alert",
@@ -4570,6 +4837,16 @@
 											"x-auditable": true
 										}
 									},
+									"query_id": {
+										"description": "Used for configuring stakeout_saved_query_daily_digest_alert and stakeout_saved_query_immediate_alert, which require it. Takes exactly one value, the saved query ID.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"maxItems": 1,
+										"minItems": 1
+									},
 									"query_tag": {
 										"description": "Usage depends on specific alert type",
 										"type": "array",
@@ -4655,6 +4932,19 @@
 										},
 										"minItems": 1,
 										"uniqueItems": true
+									},
+									"total_spend_dollars": {
+										"description": "Used for configuring billing_budget_alert. Takes exactly one value, the budget threshold in US dollars, as a string greater than zero.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"100"
+										],
+										"maxItems": 1,
+										"minItems": 1
 									},
 									"traffic_exclusions": {
 										"description": "Used for configuring traffic_anomalies_alert",

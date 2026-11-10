@@ -531,7 +531,7 @@
 						"environment:production",
 						"fleet:warehouse"
 					],
-					"maxItems": 10
+					"maxItems": 25
 				}
 			},
 			{
@@ -1410,7 +1410,7 @@
 									"maxLength": 1024,
 									"type": "string"
 								},
-								"maxProperties": 10,
+								"maxProperties": 25,
 								"x-auditable": true
 							}
 						},
