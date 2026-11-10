@@ -13192,6 +13192,1096 @@
 		"x-fern-sdk-group-name": "browser-run.quick-action",
 		"x-fern-sdk-method-name": "screenshot"
 	},
+	"POST /accounts/{account_id}/browser-rendering/script": {
+		"operationId": "brapi-post_Script",
+		"summary": "Dynamic Script - execute code and return browser session details.",
+		"description": "Acquires a browser session and runs the provided code in it. The session stays open for reuse; close it with `DELETE /devtools/browser/:sessionId` or `browser.close()`, otherwise it ends at the idle timeout.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "keep_alive",
+				"in": "query",
+				"description": "Keep-alive time in milliseconds",
+				"schema": {
+					"description": "Keep-alive time in milliseconds",
+					"type": "number",
+					"default": 60000,
+					"maximum": 1200000,
+					"minimum": 10000
+				}
+			},
+			{
+				"name": "lab",
+				"in": "query",
+				"description": "Use experimental browser.",
+				"schema": {
+					"description": "Use experimental browser.",
+					"type": "boolean",
+					"default": false
+				}
+			},
+			{
+				"name": "recording",
+				"in": "query",
+				"description": "Record the browser session. Retrieve it with `GET /recording/:session_id`.",
+				"schema": {
+					"description": "Record the browser session. Retrieve it with `GET /recording/:session_id`.",
+					"type": "boolean",
+					"default": false
+				}
+			},
+			{
+				"name": "browser",
+				"in": "query",
+				"description": "Rendering backend for this script. Set to `kitesurf` to run it on Kitesurf (beta), which supports CDP only and rejects `keep_alive`, `lab` and `recording`.",
+				"schema": {
+					"description": "Rendering backend for this script. Set to `kitesurf` to run it on Kitesurf (beta), which supports CDP only and rejects `keep_alive`, `lab` and `recording`.",
+					"type": "string",
+					"enum": [
+						"kitesurf"
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"code": {
+								"description": "Function body executed against the selected library's runner.",
+								"type": "string"
+							},
+							"library": {
+								"description": "Library the script runs with. Defaults to raw CDP when omitted.",
+								"type": "string",
+								"enum": [
+									"playwright",
+									"puppeteer"
+								]
+							},
+							"timeout": {
+								"description": "Maximum script run time in milliseconds.",
+								"type": "integer",
+								"default": 60000,
+								"maximum": 120000,
+								"minimum": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"code"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the script result as `{ success: true, result }`. Non-JSON output is returned as is. The `cf-browser-session-id` and `cf-browser-target-id` headers identify the session.",
+				"headers": {
+					"cf-browser-session-id": {
+						"description": "Browser session the script ran in.",
+						"schema": {
+							"description": "Browser session the script ran in.",
+							"type": "string"
+						}
+					},
+					"cf-browser-target-id": {
+						"description": "Page target the script ran in.",
+						"schema": {
+							"description": "Page target the script ran in.",
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"description": "The script's return value, or null when it returned nothing. Arrays nested inside arrays are also returned, but this schema does not describe them.",
+									"anyOf": [
+										{
+											"nullable": true,
+											"type": "string"
+										},
+										{
+											"nullable": true,
+											"type": "number"
+										},
+										{
+											"nullable": true,
+											"type": "boolean"
+										},
+										{
+											"additionalProperties": true,
+											"nullable": true,
+											"type": "object"
+										},
+										{
+											"items": {
+												"anyOf": [
+													{
+														"nullable": true,
+														"type": "string"
+													},
+													{
+														"nullable": true,
+														"type": "number"
+													},
+													{
+														"nullable": true,
+														"type": "boolean"
+													},
+													{
+														"additionalProperties": true,
+														"nullable": true,
+														"type": "object"
+													}
+												]
+											},
+											"nullable": true,
+											"type": "array"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					},
+					"application/octet-stream": {
+						"schema": {
+							"description": "Binary script output. A `Response` returned by the script keeps its own content type.",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request contains errors.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The new browser session has no open page to run the script in.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"408": {
+				"description": "The script exceeded its timeout. The session stays open; its headers identify it for a retry or close.",
+				"headers": {
+					"cf-browser-session-id": {
+						"description": "Browser session the script ran in.",
+						"schema": {
+							"description": "Browser session the script ran in.",
+							"type": "string"
+						}
+					},
+					"cf-browser-target-id": {
+						"description": "Page target the script ran in.",
+						"schema": {
+							"description": "Page target the script ran in.",
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"413": {
+				"description": "The script request body exceeds the 10 MiB limit.",
+				"headers": {
+					"cf-browser-session-id": {
+						"description": "Browser session the script ran in.",
+						"schema": {
+							"description": "Browser session the script ran in.",
+							"type": "string"
+						}
+					},
+					"cf-browser-target-id": {
+						"description": "Page target the script ran in.",
+						"schema": {
+							"description": "Page target the script ran in.",
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "The script threw or failed to compile. The session stays open; its headers identify it for a retry or close.",
+				"headers": {
+					"cf-browser-session-id": {
+						"description": "Browser session the script ran in.",
+						"schema": {
+							"description": "Browser session the script ran in.",
+							"type": "string"
+						}
+					},
+					"cf-browser-target-id": {
+						"description": "Page target the script ran in.",
+						"schema": {
+							"description": "Page target the script ran in.",
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"detail": {
+												"description": "Where the script failed, such as `Script location: line 2, column 4`.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"429": {
+				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
+				"headers": {
+					"Retry-After": {
+						"description": "Number of seconds to wait before retrying the request.",
+						"required": true,
+						"schema": {
+							"description": "Number of seconds to wait before retrying the request.",
+							"type": "number",
+							"example": 60
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [
+								{
+									"code": 2001,
+									"message": "Rate limit exceeded"
+								}
+							],
+							"success": false
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "The kitesurf browser failed to run the script (`browser=kitesurf` only).",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "No browser is available to run the script.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-run.script",
+		"x-fern-sdk-method-name": "create"
+	},
+	"POST /accounts/{account_id}/browser-rendering/script/{session_id}": {
+		"operationId": "brapi-post_ScriptSessionExecute",
+		"summary": "Dynamic Script - execute code in an existing browser session.",
+		"description": "Runs the provided code in an existing browser session. The session stays open; close it with `DELETE /devtools/browser/:sessionId` or `browser.close()`, otherwise it ends at the idle timeout.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "session_id",
+				"in": "path",
+				"description": "Browser session ID",
+				"required": true,
+				"schema": {
+					"description": "Browser session ID",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"code": {
+								"description": "Function body executed against the selected library's runner.",
+								"type": "string"
+							},
+							"library": {
+								"description": "Library the script runs with. Defaults to raw CDP when omitted.",
+								"type": "string",
+								"enum": [
+									"playwright",
+									"puppeteer"
+								]
+							},
+							"targetId": {
+								"description": "Page target the script attaches to. Defaults to the session's first page.",
+								"type": "string",
+								"pattern": "^[a-zA-Z0-9]+$"
+							},
+							"timeout": {
+								"description": "Maximum script run time in milliseconds.",
+								"type": "integer",
+								"default": 60000,
+								"maximum": 120000,
+								"minimum": 1
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"code"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the script result as `{ success: true, result }`. Non-JSON output is returned as is.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"description": "The script's return value, or null when it returned nothing. Arrays nested inside arrays are also returned, but this schema does not describe them.",
+									"anyOf": [
+										{
+											"nullable": true,
+											"type": "string"
+										},
+										{
+											"nullable": true,
+											"type": "number"
+										},
+										{
+											"nullable": true,
+											"type": "boolean"
+										},
+										{
+											"additionalProperties": true,
+											"nullable": true,
+											"type": "object"
+										},
+										{
+											"items": {
+												"anyOf": [
+													{
+														"nullable": true,
+														"type": "string"
+													},
+													{
+														"nullable": true,
+														"type": "number"
+													},
+													{
+														"nullable": true,
+														"type": "boolean"
+													},
+													{
+														"additionalProperties": true,
+														"nullable": true,
+														"type": "object"
+													}
+												]
+											},
+											"nullable": true,
+											"type": "array"
+										}
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					},
+					"application/octet-stream": {
+						"schema": {
+							"description": "Binary script output. A `Response` returned by the script keeps its own content type.",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request contains errors.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The browser session does not exist, or the requested targetId is not an open page in it.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"408": {
+				"description": "The script exceeded its timeout.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"410": {
+				"description": "The browser session has already been closed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"413": {
+				"description": "The script request body exceeds the 10 MiB limit.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "The script threw or failed to compile.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"detail": {
+												"description": "Where the script failed, such as `Script location: line 2, column 4`.",
+												"type": "string"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "number"
+											},
+											"message": {
+												"description": "Error message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message",
+											"code"
+										],
+										"type": "object"
+									}
+								},
+								"success": {
+									"description": "Response status.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"brapi"
+		],
+		"x-api-token-group": [
+			"Browser Rendering Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.brapi.read"
+			],
+			"type": "string"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-run.script",
+		"x-fern-sdk-method-name": "execute"
+	},
 	"POST /accounts/{account_id}/browser-rendering/snapshot": {
 		"operationId": "brapi-post_Snapshot",
 		"summary": "Get HTML content and screenshot.",

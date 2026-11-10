@@ -3409,12 +3409,6 @@
 								"type": "string",
 								"example": "IPv4 Cloudflare Source IPs",
 								"x-auditable": true
-							},
-							"network": {
-								"description": "The private IPv4 or IPv6 range defining the subnet, in CIDR notation.",
-								"type": "string",
-								"example": "100.64.0.0/12",
-								"x-auditable": true
 							}
 						}
 					}

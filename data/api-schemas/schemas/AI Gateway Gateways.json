@@ -4270,7 +4270,7 @@
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-update-gateway",
 		"summary": "Update a gateway",
-		"description": "Updates the configuration of an AI Gateway, such as its caching, rate limiting, logging, and authentication settings.",
+		"description": "Updates the configuration of an AI Gateway, such as its caching, rate limiting, spend limits, logging, and authentication settings.",
 		"parameters": [
 			{
 				"name": "account_id",

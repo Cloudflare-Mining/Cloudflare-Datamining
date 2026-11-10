@@ -121,13 +121,15 @@
 													"description": "A flag to enable the ICMP proxy for the account network.",
 													"type": "boolean",
 													"example": true,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"offramp_warp_enabled": {
 													"description": "A flag to enable WARP to WARP traffic.",
 													"type": "boolean",
 													"example": true,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											}
 										}
@@ -295,13 +297,15 @@
 								"description": "A flag to enable the ICMP proxy for the account network.",
 								"type": "boolean",
 								"example": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"offramp_warp_enabled": {
 								"description": "A flag to enable WARP to WARP traffic.",
 								"type": "boolean",
 								"example": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						}
 					}
@@ -411,13 +415,15 @@
 													"description": "A flag to enable the ICMP proxy for the account network.",
 													"type": "boolean",
 													"example": true,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"offramp_warp_enabled": {
 													"description": "A flag to enable WARP to WARP traffic.",
 													"type": "boolean",
 													"example": true,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											}
 										}

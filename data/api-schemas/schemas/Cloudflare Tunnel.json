@@ -12143,7 +12143,7 @@
 							"ha": {
 								"description": "Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.",
 								"type": "boolean",
-								"default": false
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "A user-friendly name for a tunnel.",

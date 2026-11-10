@@ -1292,6 +1292,11 @@
 											"maxLength": 128,
 											"minLength": 1
 										},
+										"outdated": {
+											"description": "Indicates that a stream or sink has a newer version than the one this pipeline uses. Update Pipeline Tables moves the pipeline to the latest versions.",
+											"type": "boolean",
+											"example": false
+										},
 										"sql": {
 											"description": "Specifies SQL for the Pipeline processing flow.",
 											"type": "string",
@@ -1356,7 +1361,8 @@
 										"modified_at",
 										"sql",
 										"status",
-										"tables"
+										"tables",
+										"outdated"
 									]
 								},
 								"success": {
@@ -1561,7 +1567,6 @@
 															"rolling_policy": {
 																"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 																"type": "object",
-																"additionalProperties": false,
 																"properties": {
 																	"file_size_bytes": {
 																		"description": "Files will be rolled after reaching this number of bytes",
@@ -1585,6 +1590,7 @@
 																		"title": "Interval Seconds"
 																	}
 																},
+																"additionalProperties": false,
 																"title": "File Rolling Policy"
 															}
 														},
@@ -1618,7 +1624,6 @@
 															"rolling_policy": {
 																"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 																"type": "object",
-																"additionalProperties": false,
 																"properties": {
 																	"file_size_bytes": {
 																		"description": "Files will be rolled after reaching this number of bytes",
@@ -1642,6 +1647,7 @@
 																		"title": "Interval Seconds"
 																	}
 																},
+																"additionalProperties": false,
 																"title": "File Rolling Policy"
 															},
 															"table_name": {
@@ -2253,7 +2259,6 @@
 														"rolling_policy": {
 															"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 															"type": "object",
-															"additionalProperties": false,
 															"properties": {
 																"file_size_bytes": {
 																	"description": "Files will be rolled after reaching this number of bytes",
@@ -2277,6 +2282,7 @@
 																	"title": "Interval Seconds"
 																}
 															},
+															"additionalProperties": false,
 															"title": "File Rolling Policy"
 														}
 													},
@@ -2310,7 +2316,6 @@
 														"rolling_policy": {
 															"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 															"type": "object",
-															"additionalProperties": false,
 															"properties": {
 																"file_size_bytes": {
 																	"description": "Files will be rolled after reaching this number of bytes",
@@ -2334,6 +2339,7 @@
 																	"title": "Interval Seconds"
 																}
 															},
+															"additionalProperties": false,
 															"title": "File Rolling Policy"
 														},
 														"table_name": {
@@ -2463,6 +2469,11 @@
 											"description": "Indicates a unique identifier for this sink.",
 											"type": "string",
 											"example": "01234567890123457689012345678901"
+										},
+										"latest": {
+											"description": "Indicates the latest version of this sink.",
+											"type": "integer",
+											"example": 2
 										},
 										"modified_at": {
 											"type": "string",
@@ -2745,11 +2756,50 @@
 												"r2_data_catalog",
 												"basin_catalog"
 											]
+										},
+										"used_by": {
+											"description": "Lists the pipelines that use this sink. Omitted when no pipeline uses it.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"href": {
+														"description": "Indicates the API URL of the pipeline.",
+														"type": "string",
+														"format": "uri"
+													},
+													"id": {
+														"description": "Indicates the unique identifier of the pipeline.",
+														"type": "string",
+														"example": "01234567890123457689012345678901"
+													},
+													"type": {
+														"description": "Indicates the type of resource using this sink.",
+														"type": "string",
+														"example": "pipeline",
+														"enum": [
+															"pipeline"
+														]
+													}
+												},
+												"required": [
+													"type",
+													"id",
+													"href"
+												],
+												"type": "object"
+											}
+										},
+										"version": {
+											"description": "Indicates the version of this sink.",
+											"type": "integer",
+											"example": 2
 										}
 									},
 									"required": [
 										"id",
 										"name",
+										"version",
+										"latest",
 										"created_at",
 										"modified_at",
 										"type"
@@ -3926,6 +3976,829 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pipelines.streams",
 		"x-fern-sdk-method-name": "get"
+	},
+	"PATCH /accounts/{account_id}/pipelines/v1/sinks/{sink_id}": {
+		"operationId": "patchV4AccountsByAccount_idPipelinesV1SinksBySink_id",
+		"summary": "Update Sink",
+		"description": "Update a Sink's credentials or rolling policy, creating a new version of the Sink. Only `credentials` and `rolling_policy` (R2) or `token` and `rolling_policy` (Basin Catalog, including Sinks created with the legacy `r2_data_catalog` type) can be changed; omitted fields keep their current values. Secrets are never returned in responses. Pipelines that use the Sink keep their current version until they are moved to the latest one with Update Pipeline Tables.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"type": "string",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "sink_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the publid ID of the sink.",
+					"type": "string",
+					"example": "0223105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"config": {
+								"description": "Defines the Sink configuration fields to change. At least one field is required; omitted fields keep their current values.",
+								"anyOf": [
+									{
+										"description": "Mutable configuration of an R2 Sink. Omitted fields keep their current values.",
+										"type": "object",
+										"properties": {
+											"credentials": {
+												"description": "R2 credentials to change. Omitted fields keep their current values.",
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"access_key_id": {
+														"description": "R2 Access Key ID",
+														"type": "string",
+														"format": "var-str",
+														"title": "Access Key ID"
+													},
+													"secret_access_key": {
+														"description": "R2 Secret Access Key",
+														"type": "string",
+														"format": "var-str",
+														"title": "Secret Access Key",
+														"x-sensitive": true
+													}
+												},
+												"title": "R2 Credentials Update"
+											},
+											"rolling_policy": {
+												"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+												"type": "object",
+												"properties": {
+													"file_size_bytes": {
+														"description": "Files will be rolled after reaching this number of bytes",
+														"type": "integer",
+														"format": "uint64",
+														"minimum": 0,
+														"title": "File Size"
+													},
+													"inactivity_seconds": {
+														"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+														"type": "integer",
+														"format": "uint64",
+														"minimum": 1,
+														"title": "Inactivity Seconds"
+													},
+													"interval_seconds": {
+														"description": "Number of seconds to wait before rolling over to a new file",
+														"type": "integer",
+														"format": "uint64",
+														"minimum": 1,
+														"title": "Interval Seconds"
+													}
+												},
+												"additionalProperties": false,
+												"title": "File Rolling Policy"
+											}
+										},
+										"additionalProperties": false,
+										"title": "R2 Sink Update"
+									},
+									{
+										"description": "Mutable configuration of a Basin Catalog Sink, including Sinks created with the legacy `r2_data_catalog` type. Omitted fields keep their current values.",
+										"type": "object",
+										"properties": {
+											"rolling_policy": {
+												"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+												"type": "object",
+												"properties": {
+													"file_size_bytes": {
+														"description": "Files will be rolled after reaching this number of bytes",
+														"type": "integer",
+														"format": "uint64",
+														"minimum": 0,
+														"title": "File Size"
+													},
+													"inactivity_seconds": {
+														"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+														"type": "integer",
+														"format": "uint64",
+														"minimum": 1,
+														"title": "Inactivity Seconds"
+													},
+													"interval_seconds": {
+														"description": "Number of seconds to wait before rolling over to a new file",
+														"type": "integer",
+														"format": "uint64",
+														"minimum": 1,
+														"title": "Interval Seconds"
+													}
+												},
+												"additionalProperties": false,
+												"title": "File Rolling Policy"
+											},
+											"token": {
+												"description": "Authentication token",
+												"type": "string",
+												"format": "var-str",
+												"example": "\"asdfkj2h34kjhkj\"",
+												"x-sensitive": true
+											}
+										},
+										"additionalProperties": false,
+										"title": "BasinCatalogSinkTableUpdate"
+									}
+								],
+								"minProperties": 1,
+								"x-fern-property-name": "sink-config"
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"config"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Indicates a successfully updated Sink.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"config": {
+											"description": "Defines the configuration of the R2 Sink.",
+											"oneOf": [
+												{
+													"description": "R2 Sink public configuration.",
+													"type": "object",
+													"properties": {
+														"account_id": {
+															"description": "Cloudflare Account ID for the bucket",
+															"type": "string",
+															"title": "Account ID"
+														},
+														"bucket": {
+															"description": "R2 Bucket to write to",
+															"type": "string",
+															"title": "Bucket"
+														},
+														"file_naming": {
+															"description": "Controls filename prefix/suffix and strategy.",
+															"type": "object",
+															"additionalProperties": false,
+															"properties": {
+																"prefix": {
+																	"description": "The prefix to use in file name. i.e prefix-<uuid>.parquet",
+																	"type": "string",
+																	"title": "Filename Prefix"
+																},
+																"strategy": {
+																	"description": "Filename generation strategy.",
+																	"type": "string",
+																	"enum": [
+																		"serial",
+																		"uuid",
+																		"uuid_v7",
+																		"ulid"
+																	],
+																	"title": "Filename Strategy"
+																},
+																"suffix": {
+																	"description": "This will overwrite the default file suffix. i.e .parquet, use with caution",
+																	"type": "string",
+																	"title": "Filename Suffix"
+																}
+															},
+															"title": "File Naming"
+														},
+														"jurisdiction": {
+															"description": "Jurisdiction this bucket is hosted in",
+															"type": "string",
+															"title": "Jurisdiction"
+														},
+														"partitioning": {
+															"description": "Data-layout partitioning for sinks.",
+															"type": "object",
+															"additionalProperties": false,
+															"properties": {
+																"time_pattern": {
+																	"description": "The pattern of the date string",
+																	"type": "string",
+																	"example": "year=%Y/month=%m/day=%d/hour=%H",
+																	"title": "Time Partition Pattern"
+																}
+															},
+															"title": "Partitioning Configuration"
+														},
+														"path": {
+															"description": "Subpath within the bucket to write to",
+															"type": "string",
+															"title": "Path"
+														},
+														"rolling_policy": {
+															"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+															"type": "object",
+															"properties": {
+																"file_size_bytes": {
+																	"description": "Files will be rolled after reaching this number of bytes",
+																	"type": "integer",
+																	"format": "uint64",
+																	"minimum": 0,
+																	"title": "File Size"
+																},
+																"inactivity_seconds": {
+																	"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																	"type": "integer",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Inactivity Seconds"
+																},
+																"interval_seconds": {
+																	"description": "Number of seconds to wait before rolling over to a new file",
+																	"type": "integer",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Interval Seconds"
+																}
+															},
+															"additionalProperties": false,
+															"title": "File Rolling Policy"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"account_id",
+														"bucket"
+													],
+													"title": "R2 Sink Public"
+												},
+												{
+													"description": "R2 Data Catalog Sink public configuration.",
+													"type": "object",
+													"properties": {
+														"account_id": {
+															"description": "Cloudflare Account ID",
+															"type": "string",
+															"format": "uri",
+															"example": "6791973bbe876d621f9e557f891e90b3"
+														},
+														"bucket": {
+															"description": "The R2 Bucket that hosts this catalog",
+															"type": "string",
+															"example": "my-bucket"
+														},
+														"namespace": {
+															"description": "Table namespace",
+															"type": "string",
+															"title": "Namespace"
+														},
+														"rolling_policy": {
+															"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+															"type": "object",
+															"properties": {
+																"file_size_bytes": {
+																	"description": "Files will be rolled after reaching this number of bytes",
+																	"type": "integer",
+																	"format": "uint64",
+																	"minimum": 0,
+																	"title": "File Size"
+																},
+																"inactivity_seconds": {
+																	"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																	"type": "integer",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Inactivity Seconds"
+																},
+																"interval_seconds": {
+																	"description": "Number of seconds to wait before rolling over to a new file",
+																	"type": "integer",
+																	"format": "uint64",
+																	"minimum": 1,
+																	"title": "Interval Seconds"
+																}
+															},
+															"additionalProperties": false,
+															"title": "File Rolling Policy"
+														},
+														"table_name": {
+															"description": "Table name",
+															"type": "string",
+															"title": "Table Name"
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"account_id",
+														"bucket",
+														"table_name"
+													],
+													"title": "R2DataCatalogSinkTablePublic"
+												}
+											]
+										},
+										"created_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"format": {
+											"description": "Defines the output data format of a sink.",
+											"discriminator": {
+												"mapping": {
+													"json": "#/components/schemas/cloudflare-pipelines_SinkJsonFormat",
+													"parquet": "#/components/schemas/cloudflare-pipelines_SinkParquetFormat"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"decimal_encoding": {
+																	"type": "string",
+																	"enum": [
+																		"number",
+																		"string",
+																		"bytes"
+																	]
+																},
+																"timestamp_format": {
+																	"type": "string",
+																	"enum": [
+																		"rfc3339",
+																		"unix_millis"
+																	]
+																},
+																"unstructured": {
+																	"type": "boolean"
+																}
+															}
+														},
+														{
+															"properties": {
+																"compression": {
+																	"description": "Specifies the compression applied to JSON sink output.",
+																	"type": "string",
+																	"default": "uncompressed",
+																	"enum": [
+																		"uncompressed",
+																		"gzip"
+																	]
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"json"
+																	]
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Json"
+												},
+												{
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"compression": {
+																	"type": "string",
+																	"enum": [
+																		"uncompressed",
+																		"snappy",
+																		"gzip",
+																		"zstd",
+																		"lz4"
+																	]
+																},
+																"row_group_bytes": {
+																	"type": "integer",
+																	"format": "int64",
+																	"minimum": 0,
+																	"nullable": true
+																}
+															}
+														},
+														{
+															"properties": {
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"parquet"
+																	]
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Parquet"
+												}
+											]
+										},
+										"id": {
+											"description": "Indicates a unique identifier for this sink.",
+											"type": "string",
+											"example": "01234567890123457689012345678901"
+										},
+										"latest": {
+											"description": "Indicates the latest version of this sink.",
+											"type": "integer",
+											"example": 2
+										},
+										"modified_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"name": {
+											"description": "Defines the name of the Sink.",
+											"type": "string",
+											"example": "my_sink",
+											"maxLength": 128,
+											"minLength": 1
+										},
+										"schema": {
+											"description": "Defines the schema of the events in the data stream.",
+											"type": "object",
+											"properties": {
+												"fields": {
+													"type": "array",
+													"items": {
+														"allOf": [
+															{
+																"discriminator": {
+																	"propertyName": "type"
+																},
+																"oneOf": [
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"int32"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"int64"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Int64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"float32"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float32",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"float64"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Float64",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"bool"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Bool",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"string"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "String",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"binary"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Binary",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"type": "object",
+																				"properties": {
+																					"unit": {
+																						"type": "string",
+																						"enum": [
+																							"second",
+																							"millisecond",
+																							"microsecond",
+																							"nanosecond"
+																						]
+																					}
+																				}
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"timestamp"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Timestamp"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"json"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"title": "Json",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"type": "object",
+																				"properties": {
+																					"fields": {
+																						"type": "array",
+																						"items": "[Circular ~.PATCH /accounts/{account_id}/pipelines/v1/sinks/{sink_id}.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]"
+																					},
+																					"name": {
+																						"type": "string",
+																						"nullable": true
+																					}
+																				},
+																				"required": [
+																					"fields"
+																				]
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"struct"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "Struct"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"type": "object",
+																				"properties": {
+																					"items": "[Circular ~.PATCH /accounts/{account_id}/pipelines/v1/sinks/{sink_id}.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]"
+																				},
+																				"required": [
+																					"items"
+																				]
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"list"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"title": "List"
+																	}
+																]
+															},
+															{
+																"properties": {
+																	"metadata_key": {
+																		"type": "string",
+																		"nullable": true
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"required": {
+																		"type": "boolean"
+																	},
+																	"sql_name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															}
+														]
+													}
+												},
+												"inferred": {
+													"type": "boolean",
+													"nullable": true
+												}
+											}
+										},
+										"type": {
+											"description": "Specifies the type of sink.",
+											"type": "string",
+											"example": "r2",
+											"enum": [
+												"r2",
+												"r2_data_catalog",
+												"basin_catalog"
+											]
+										},
+										"used_by": {
+											"description": "Lists the pipelines that use this sink. Omitted when no pipeline uses it.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"href": {
+														"description": "Indicates the API URL of the pipeline.",
+														"type": "string",
+														"format": "uri"
+													},
+													"id": {
+														"description": "Indicates the unique identifier of the pipeline.",
+														"type": "string",
+														"example": "01234567890123457689012345678901"
+													},
+													"type": {
+														"description": "Indicates the type of resource using this sink.",
+														"type": "string",
+														"example": "pipeline",
+														"enum": [
+															"pipeline"
+														]
+													}
+												},
+												"required": [
+													"type",
+													"id",
+													"href"
+												],
+												"type": "object"
+											}
+										},
+										"version": {
+											"description": "Indicates the version of this sink.",
+											"type": "integer",
+											"example": 2
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"version",
+										"latest",
+										"created_at",
+										"modified_at",
+										"type"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an error in updating a Sink. Returns 400 when the request body is malformed, has unknown fields, or has an empty `config`; 404 when the Sink does not exist; 409 when the Sink was updated concurrently; and 422 when the configuration is invalid or changes an immutable field."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pipelines.sinks",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/pipelines/v1/streams/{stream_id}": {
 		"operationId": "patchV4AccountsByAccount_idPipelinesV1StreamsByStream_id",
@@ -5214,6 +6087,183 @@
 		"x-fern-sdk-group-name": "pipelines",
 		"x-fern-sdk-method-name": "create"
 	},
+	"POST /accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}/update_tables": {
+		"operationId": "postV4AccountsByAccount_idPipelinesV1PipelinesByPipeline_idUpdateTables",
+		"summary": "Update Pipeline Tables",
+		"description": "Move a Pipeline to the latest version of every stream and sink it uses, such as after updating a Sink. A running Pipeline restarts on the latest versions from a final checkpoint; a paused or stopped Pipeline uses them once it starts.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"type": "string",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "pipeline_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the pipeline.",
+					"type": "string",
+					"example": "043e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Indicates that the Pipeline was moved to the latest table versions.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"created_at": {
+											"type": "string"
+										},
+										"failure_reason": {
+											"description": "Indicates the reason for the failure of the Pipeline.",
+											"type": "string"
+										},
+										"id": {
+											"description": "Indicates a unique identifier for this pipeline.",
+											"type": "string",
+											"example": "01234567890123457689012345678901"
+										},
+										"modified_at": {
+											"type": "string"
+										},
+										"name": {
+											"description": "Indicates the name of the Pipeline.",
+											"type": "string",
+											"example": "my_pipeline",
+											"maxLength": 128,
+											"minLength": 1
+										},
+										"outdated": {
+											"description": "Indicates that a stream or sink has a newer version than the one this pipeline uses. Update Pipeline Tables moves the pipeline to the latest versions.",
+											"type": "boolean",
+											"example": false
+										},
+										"sql": {
+											"description": "Specifies SQL for the Pipeline processing flow.",
+											"type": "string",
+											"example": "insert into sink select * from source;"
+										},
+										"status": {
+											"description": "Indicates the current status of the Pipeline.",
+											"type": "string"
+										},
+										"tables": {
+											"description": "List of streams and sinks used by this pipeline.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"id": {
+														"description": "Unique identifier for the connection (stream or sink).",
+														"type": "string",
+														"example": "1c9200d5872c018bb34e93e2cd8a438e"
+													},
+													"latest": {
+														"description": "Latest available version of the connection.",
+														"type": "integer",
+														"example": 5
+													},
+													"name": {
+														"description": "Name of the connection.",
+														"type": "string",
+														"example": "my_table",
+														"maxLength": 128,
+														"minLength": 1
+													},
+													"type": {
+														"description": "Type of the connection.",
+														"type": "string",
+														"example": "stream",
+														"enum": [
+															"stream",
+															"sink"
+														]
+													},
+													"version": {
+														"description": "Current version of the connection used by this pipeline.",
+														"type": "integer",
+														"example": 4
+													}
+												},
+												"required": [
+													"id",
+													"version",
+													"latest",
+													"type",
+													"name"
+												],
+												"type": "object"
+											}
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"created_at",
+										"modified_at",
+										"sql",
+										"status",
+										"tables",
+										"outdated"
+									]
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Indicates an error in updating the Pipeline's tables. Returns 400 when the Pipeline ID is malformed, 404 when the Pipeline does not exist, 409 when its tables changed during the update, and 422 when its SQL does not plan against the latest table versions."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"workers_pipelines_other"
+		],
+		"x-api-token-group": [
+			"Pipelines Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pipelines",
+		"x-fern-sdk-method-name": "update-tables"
+	},
 	"POST /accounts/{account_id}/pipelines/v1/sinks": {
 		"operationId": "postV4AccountsByAccount_idPipelinesV1Sinks",
 		"summary": "Create Sink",
@@ -5332,7 +6382,6 @@
 											"rolling_policy": {
 												"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 												"type": "object",
-												"additionalProperties": false,
 												"properties": {
 													"file_size_bytes": {
 														"description": "Files will be rolled after reaching this number of bytes",
@@ -5356,6 +6405,7 @@
 														"title": "Interval Seconds"
 													}
 												},
+												"additionalProperties": false,
 												"title": "File Rolling Policy"
 											}
 										},
@@ -5390,7 +6440,6 @@
 											"rolling_policy": {
 												"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 												"type": "object",
-												"additionalProperties": false,
 												"properties": {
 													"file_size_bytes": {
 														"description": "Files will be rolled after reaching this number of bytes",
@@ -5414,6 +6463,7 @@
 														"title": "Interval Seconds"
 													}
 												},
+												"additionalProperties": false,
 												"title": "File Rolling Policy"
 											},
 											"table_name": {
@@ -5937,7 +6987,6 @@
 														"rolling_policy": {
 															"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 															"type": "object",
-															"additionalProperties": false,
 															"properties": {
 																"file_size_bytes": {
 																	"description": "Files will be rolled after reaching this number of bytes",
@@ -5961,6 +7010,7 @@
 																	"title": "Interval Seconds"
 																}
 															},
+															"additionalProperties": false,
 															"title": "File Rolling Policy"
 														}
 													},
@@ -5995,7 +7045,6 @@
 														"rolling_policy": {
 															"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 															"type": "object",
-															"additionalProperties": false,
 															"properties": {
 																"file_size_bytes": {
 																	"description": "Files will be rolled after reaching this number of bytes",
@@ -6019,6 +7068,7 @@
 																	"title": "Interval Seconds"
 																}
 															},
+															"additionalProperties": false,
 															"title": "File Rolling Policy"
 														},
 														"table_name": {

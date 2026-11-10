@@ -10,38 +10,6 @@
 	},
 	"openapi": "3.0.3",
 	"paths": {
-		"/_heartbeat": {
-			"get": {
-				"operationId": "getHeartbeat",
-				"summary": "Heartbeat response",
-				"description": "Used by Kubernetes readiness and liveness probes, and CI builder by executing test/staging.sh.",
-				"responses": {
-					"200": {
-						"description": "Ok.",
-						"content": {
-							"text/plain": {
-								"schema": {
-									"type": "string"
-								}
-							}
-						}
-					},
-					"503": {
-						"description": "Service Unavailable."
-					}
-				},
-				"security": [
-					{
-						"APIToken": []
-					}
-				],
-				"tags": [
-					"health"
-				],
-				"x-fern-sdk-group-name": "dns.domainconnect",
-				"x-fern-sdk-method-name": "getHeartbeat"
-			}
-		},
 		"/accounts": {
 			"get": {
 				"operationId": "accounts-list-accounts",
@@ -549652,7 +549620,7 @@
 			"put": {
 				"operationId": "aig-config-update-gateway",
 				"summary": "Update a gateway",
-				"description": "Updates the configuration of an AI Gateway, such as its caching, rate limiting, logging, and authentication settings.",
+				"description": "Updates the configuration of an AI Gateway, such as its caching, rate limiting, spend limits, logging, and authentication settings.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -551575,6 +551543,7 @@
 							"type": "integer",
 							"example": 1,
 							"default": 1,
+							"maximum": 10000,
 							"minimum": 1
 						}
 					},
@@ -558692,6 +558661,7 @@
 						"schema": {
 							"type": "integer",
 							"default": 1,
+							"maximum": 10000,
 							"minimum": 1
 						}
 					},
@@ -559795,6 +559765,7 @@
 						"schema": {
 							"type": "integer",
 							"default": 1,
+							"maximum": 10000,
 							"minimum": 1
 						}
 					},
@@ -560994,6 +560965,7 @@
 							"type": "integer",
 							"example": 1,
 							"default": 1,
+							"maximum": 10000,
 							"minimum": 1
 						}
 					},
@@ -564462,6 +564434,7 @@
 							"type": "integer",
 							"example": 1,
 							"default": 1,
+							"maximum": 10000,
 							"minimum": 1
 						}
 					},
@@ -571984,6 +571957,7 @@
 						"schema": {
 							"type": "integer",
 							"default": 1,
+							"maximum": 10000,
 							"minimum": 1
 						}
 					},
@@ -575764,6 +575738,7 @@
 						"schema": {
 							"type": "integer",
 							"default": 1,
+							"maximum": 10000,
 							"minimum": 1
 						}
 					},
@@ -576960,6 +576935,7 @@
 						"schema": {
 							"type": "integer",
 							"default": 1,
+							"maximum": 10000,
 							"minimum": 1
 						}
 					},
@@ -663087,6 +663063,1100 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "browser-run.quick-action",
 				"x-fern-sdk-method-name": "screenshot"
+			}
+		},
+		"/accounts/{account_id}/browser-rendering/script": {
+			"post": {
+				"operationId": "brapi-post_Script",
+				"summary": "Dynamic Script - execute code and return browser session details.",
+				"description": "Acquires a browser session and runs the provided code in it. The session stays open for reuse; close it with `DELETE /devtools/browser/:sessionId` or `browser.close()`, otherwise it ends at the idle timeout.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"schema": {
+							"description": "Account ID.",
+							"type": "string"
+						}
+					},
+					{
+						"name": "keep_alive",
+						"in": "query",
+						"description": "Keep-alive time in milliseconds",
+						"schema": {
+							"description": "Keep-alive time in milliseconds",
+							"type": "number",
+							"default": 60000,
+							"maximum": 1200000,
+							"minimum": 10000
+						}
+					},
+					{
+						"name": "lab",
+						"in": "query",
+						"description": "Use experimental browser.",
+						"schema": {
+							"description": "Use experimental browser.",
+							"type": "boolean",
+							"default": false
+						}
+					},
+					{
+						"name": "recording",
+						"in": "query",
+						"description": "Record the browser session. Retrieve it with `GET /recording/:session_id`.",
+						"schema": {
+							"description": "Record the browser session. Retrieve it with `GET /recording/:session_id`.",
+							"type": "boolean",
+							"default": false
+						}
+					},
+					{
+						"name": "browser",
+						"in": "query",
+						"description": "Rendering backend for this script. Set to `kitesurf` to run it on Kitesurf (beta), which supports CDP only and rejects `keep_alive`, `lab` and `recording`.",
+						"schema": {
+							"description": "Rendering backend for this script. Set to `kitesurf` to run it on Kitesurf (beta), which supports CDP only and rejects `keep_alive`, `lab` and `recording`.",
+							"type": "string",
+							"enum": [
+								"kitesurf"
+							]
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"code": {
+										"description": "Function body executed against the selected library's runner.",
+										"type": "string"
+									},
+									"library": {
+										"description": "Library the script runs with. Defaults to raw CDP when omitted.",
+										"type": "string",
+										"enum": [
+											"playwright",
+											"puppeteer"
+										]
+									},
+									"timeout": {
+										"description": "Maximum script run time in milliseconds.",
+										"type": "integer",
+										"default": 60000,
+										"maximum": 120000,
+										"minimum": 1
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"code"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Returns the script result as `{ success: true, result }`. Non-JSON output is returned as is. The `cf-browser-session-id` and `cf-browser-target-id` headers identify the session.",
+						"headers": {
+							"cf-browser-session-id": {
+								"description": "Browser session the script ran in.",
+								"schema": {
+									"description": "Browser session the script ran in.",
+									"type": "string"
+								}
+							},
+							"cf-browser-target-id": {
+								"description": "Page target the script ran in.",
+								"schema": {
+									"description": "Page target the script ran in.",
+									"type": "string"
+								}
+							}
+						},
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"result": {
+											"description": "The script's return value, or null when it returned nothing. Arrays nested inside arrays are also returned, but this schema does not describe them.",
+											"anyOf": [
+												{
+													"nullable": true,
+													"type": "string"
+												},
+												{
+													"nullable": true,
+													"type": "number"
+												},
+												{
+													"nullable": true,
+													"type": "boolean"
+												},
+												{
+													"additionalProperties": true,
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {
+														"anyOf": [
+															{
+																"nullable": true,
+																"type": "string"
+															},
+															{
+																"nullable": true,
+																"type": "number"
+															},
+															{
+																"nullable": true,
+																"type": "boolean"
+															},
+															{
+																"additionalProperties": true,
+																"nullable": true,
+																"type": "object"
+															}
+														]
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											]
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									]
+								}
+							},
+							"application/octet-stream": {
+								"schema": {
+									"description": "Binary script output. A `Response` returned by the script keeps its own content type.",
+									"type": "string"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "The request contains errors.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The new browser session has no open page to run the script in.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"408": {
+						"description": "The script exceeded its timeout. The session stays open; its headers identify it for a retry or close.",
+						"headers": {
+							"cf-browser-session-id": {
+								"description": "Browser session the script ran in.",
+								"schema": {
+									"description": "Browser session the script ran in.",
+									"type": "string"
+								}
+							},
+							"cf-browser-target-id": {
+								"description": "Page target the script ran in.",
+								"schema": {
+									"description": "Page target the script ran in.",
+									"type": "string"
+								}
+							}
+						},
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"413": {
+						"description": "The script request body exceeds the 10 MiB limit.",
+						"headers": {
+							"cf-browser-session-id": {
+								"description": "Browser session the script ran in.",
+								"schema": {
+									"description": "Browser session the script ran in.",
+									"type": "string"
+								}
+							},
+							"cf-browser-target-id": {
+								"description": "Page target the script ran in.",
+								"schema": {
+									"description": "Page target the script ran in.",
+									"type": "string"
+								}
+							}
+						},
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "The script threw or failed to compile. The session stays open; its headers identify it for a retry or close.",
+						"headers": {
+							"cf-browser-session-id": {
+								"description": "Browser session the script ran in.",
+								"schema": {
+									"description": "Browser session the script ran in.",
+									"type": "string"
+								}
+							},
+							"cf-browser-target-id": {
+								"description": "Page target the script ran in.",
+								"schema": {
+									"description": "Page target the script ran in.",
+									"type": "string"
+								}
+							}
+						},
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"detail": {
+														"description": "Where the script failed, such as `Script location: line 2, column 4`.",
+														"type": "string"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
+						"headers": {
+							"Retry-After": {
+								"description": "Number of seconds to wait before retrying the request.",
+								"required": true,
+								"schema": {
+									"description": "Number of seconds to wait before retrying the request.",
+									"type": "number",
+									"example": 60
+								}
+							}
+						},
+						"content": {
+							"application/json": {
+								"example": {
+									"errors": [
+										{
+											"code": 2001,
+											"message": "Rate limit exceeded"
+										}
+									],
+									"success": false
+								},
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"502": {
+						"description": "The kitesurf browser failed to run the script (`browser=kitesurf` only).",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"503": {
+						"description": "No browser is available to run the script.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": [],
+						"api_token": []
+					}
+				],
+				"tags": [
+					"brapi"
+				],
+				"x-api-token-group": [
+					"Browser Rendering Write"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.brapi.read"
+					],
+					"type": "string"
+				},
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				},
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "browser-run.script",
+				"x-fern-sdk-method-name": "create"
+			}
+		},
+		"/accounts/{account_id}/browser-rendering/script/{session_id}": {
+			"post": {
+				"operationId": "brapi-post_ScriptSessionExecute",
+				"summary": "Dynamic Script - execute code in an existing browser session.",
+				"description": "Runs the provided code in an existing browser session. The session stays open; close it with `DELETE /devtools/browser/:sessionId` or `browser.close()`, otherwise it ends at the idle timeout.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"schema": {
+							"description": "Account ID.",
+							"type": "string"
+						}
+					},
+					{
+						"name": "session_id",
+						"in": "path",
+						"description": "Browser session ID",
+						"required": true,
+						"schema": {
+							"description": "Browser session ID",
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"code": {
+										"description": "Function body executed against the selected library's runner.",
+										"type": "string"
+									},
+									"library": {
+										"description": "Library the script runs with. Defaults to raw CDP when omitted.",
+										"type": "string",
+										"enum": [
+											"playwright",
+											"puppeteer"
+										]
+									},
+									"targetId": {
+										"description": "Page target the script attaches to. Defaults to the session's first page.",
+										"type": "string",
+										"pattern": "^[a-zA-Z0-9]+$"
+									},
+									"timeout": {
+										"description": "Maximum script run time in milliseconds.",
+										"type": "integer",
+										"default": 60000,
+										"maximum": 120000,
+										"minimum": 1
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"code"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Returns the script result as `{ success: true, result }`. Non-JSON output is returned as is.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"result": {
+											"description": "The script's return value, or null when it returned nothing. Arrays nested inside arrays are also returned, but this schema does not describe them.",
+											"anyOf": [
+												{
+													"nullable": true,
+													"type": "string"
+												},
+												{
+													"nullable": true,
+													"type": "number"
+												},
+												{
+													"nullable": true,
+													"type": "boolean"
+												},
+												{
+													"additionalProperties": true,
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {
+														"anyOf": [
+															{
+																"nullable": true,
+																"type": "string"
+															},
+															{
+																"nullable": true,
+																"type": "number"
+															},
+															{
+																"nullable": true,
+																"type": "boolean"
+															},
+															{
+																"additionalProperties": true,
+																"nullable": true,
+																"type": "object"
+															}
+														]
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											]
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									]
+								}
+							},
+							"application/octet-stream": {
+								"schema": {
+									"description": "Binary script output. A `Response` returned by the script keeps its own content type.",
+									"type": "string"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "The request contains errors.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The browser session does not exist, or the requested targetId is not an open page in it.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"408": {
+						"description": "The script exceeded its timeout.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"410": {
+						"description": "The browser session has already been closed.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"413": {
+						"description": "The script request body exceeds the 10 MiB limit.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "The script threw or failed to compile.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"detail": {
+														"description": "Where the script failed, such as `Script location: line 2, column 4`.",
+														"type": "string"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Internal server error.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error code.",
+														"type": "number"
+													},
+													"message": {
+														"description": "Error message.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"message",
+													"code"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Response status.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": [],
+						"api_token": []
+					}
+				],
+				"tags": [
+					"brapi"
+				],
+				"x-api-token-group": [
+					"Browser Rendering Write"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.brapi.read"
+					],
+					"type": "string"
+				},
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				},
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "browser-run.script",
+				"x-fern-sdk-method-name": "execute"
 			}
 		},
 		"/accounts/{account_id}/browser-rendering/snapshot": {
@@ -1160205,6 +1161275,7 @@
 														"minimum": 3600
 													},
 													"worker_binding": {
+														"description": "Configures whether Workers bindings can produce records to the stream.",
 														"type": "object",
 														"properties": {
 															"enabled": {
@@ -1160387,6 +1161458,7 @@
 										},
 										"allOf": [
 											{
+												"description": "Configures whether Workers bindings can produce records to the stream.",
 												"type": "object",
 												"properties": {
 													"enabled": {
@@ -1160563,6 +1161635,7 @@
 													"minimum": 3600
 												},
 												"worker_binding": {
+													"description": "Configures whether Workers bindings can produce records to the stream.",
 													"type": "object",
 													"properties": {
 														"enabled": {
@@ -1160905,6 +1161978,7 @@
 													"minimum": 3600
 												},
 												"worker_binding": {
+													"description": "Configures whether Workers bindings can produce records to the stream.",
 													"type": "object",
 													"properties": {
 														"enabled": {
@@ -1161054,6 +1162128,7 @@
 										"minimum": 3600
 									},
 									"worker_binding": {
+										"description": "Configures whether Workers bindings can produce records to the stream.",
 										"type": "object",
 										"properties": {
 											"enabled": {
@@ -1161227,6 +1162302,7 @@
 													"minimum": 3600
 												},
 												"worker_binding": {
+													"description": "Configures whether Workers bindings can produce records to the stream.",
 													"type": "object",
 													"properties": {
 														"enabled": {
@@ -1337924,6 +1339000,11 @@
 													"maxLength": 128,
 													"minLength": 1
 												},
+												"outdated": {
+													"description": "Indicates that a stream or sink has a newer version than the one this pipeline uses. Update Pipeline Tables moves the pipeline to the latest versions.",
+													"type": "boolean",
+													"example": false
+												},
 												"sql": {
 													"description": "Specifies SQL for the Pipeline processing flow.",
 													"type": "string",
@@ -1337988,7 +1339069,8 @@
 												"modified_at",
 												"sql",
 												"status",
-												"tables"
+												"tables",
+												"outdated"
 											]
 										},
 										"success": {
@@ -1338034,6 +1339116,185 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "pipelines",
 				"x-fern-sdk-method-name": "get"
+			}
+		},
+		"/accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}/update_tables": {
+			"post": {
+				"operationId": "postV4AccountsByAccount_idPipelinesV1PipelinesByPipeline_idUpdateTables",
+				"summary": "Update Pipeline Tables",
+				"description": "Move a Pipeline to the latest version of every stream and sink it uses, such as after updating a Sink. A running Pipeline restarts on the latest versions from a final checkpoint; a paused or stopped Pipeline uses them once it starts.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Specifies the public ID of the account.",
+							"type": "string",
+							"example": "0123105f4ecef8ad9ca31a8372d0c353"
+						}
+					},
+					{
+						"name": "pipeline_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Specifies the public ID of the pipeline.",
+							"type": "string",
+							"example": "043e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Indicates that the Pipeline was moved to the latest table versions.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"created_at": {
+													"type": "string"
+												},
+												"failure_reason": {
+													"description": "Indicates the reason for the failure of the Pipeline.",
+													"type": "string"
+												},
+												"id": {
+													"description": "Indicates a unique identifier for this pipeline.",
+													"type": "string",
+													"example": "01234567890123457689012345678901"
+												},
+												"modified_at": {
+													"type": "string"
+												},
+												"name": {
+													"description": "Indicates the name of the Pipeline.",
+													"type": "string",
+													"example": "my_pipeline",
+													"maxLength": 128,
+													"minLength": 1
+												},
+												"outdated": {
+													"description": "Indicates that a stream or sink has a newer version than the one this pipeline uses. Update Pipeline Tables moves the pipeline to the latest versions.",
+													"type": "boolean",
+													"example": false
+												},
+												"sql": {
+													"description": "Specifies SQL for the Pipeline processing flow.",
+													"type": "string",
+													"example": "insert into sink select * from source;"
+												},
+												"status": {
+													"description": "Indicates the current status of the Pipeline.",
+													"type": "string"
+												},
+												"tables": {
+													"description": "List of streams and sinks used by this pipeline.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"id": {
+																"description": "Unique identifier for the connection (stream or sink).",
+																"type": "string",
+																"example": "1c9200d5872c018bb34e93e2cd8a438e"
+															},
+															"latest": {
+																"description": "Latest available version of the connection.",
+																"type": "integer",
+																"example": 5
+															},
+															"name": {
+																"description": "Name of the connection.",
+																"type": "string",
+																"example": "my_table",
+																"maxLength": 128,
+																"minLength": 1
+															},
+															"type": {
+																"description": "Type of the connection.",
+																"type": "string",
+																"example": "stream",
+																"enum": [
+																	"stream",
+																	"sink"
+																]
+															},
+															"version": {
+																"description": "Current version of the connection used by this pipeline.",
+																"type": "integer",
+																"example": 4
+															}
+														},
+														"required": [
+															"id",
+															"version",
+															"latest",
+															"type",
+															"name"
+														],
+														"type": "object"
+													}
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_at",
+												"modified_at",
+												"sql",
+												"status",
+												"tables",
+												"outdated"
+											]
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "Indicates an error in updating the Pipeline's tables. Returns 400 when the Pipeline ID is malformed, 404 when the Pipeline does not exist, 409 when its tables changed during the update, and 422 when its SQL does not plan against the latest table versions."
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
+					}
+				],
+				"tags": [
+					"workers_pipelines_other"
+				],
+				"x-api-token-group": [
+					"Pipelines Write"
+				],
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": false,
+					"pro": true
+				},
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "pipelines",
+				"x-fern-sdk-method-name": "update-tables"
 			}
 		},
 		"/accounts/{account_id}/pipelines/v1/sinks": {
@@ -1338195,7 +1339456,6 @@
 																	"rolling_policy": {
 																		"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 																		"type": "object",
-																		"additionalProperties": false,
 																		"properties": {
 																			"file_size_bytes": {
 																				"description": "Files will be rolled after reaching this number of bytes",
@@ -1338219,6 +1339479,7 @@
 																				"title": "Interval Seconds"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"title": "File Rolling Policy"
 																	}
 																},
@@ -1338252,7 +1339513,6 @@
 																	"rolling_policy": {
 																		"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 																		"type": "object",
-																		"additionalProperties": false,
 																		"properties": {
 																			"file_size_bytes": {
 																				"description": "Files will be rolled after reaching this number of bytes",
@@ -1338276,6 +1339536,7 @@
 																				"title": "Interval Seconds"
 																			}
 																		},
+																		"additionalProperties": false,
 																		"title": "File Rolling Policy"
 																	},
 																	"table_name": {
@@ -1338893,7 +1340154,6 @@
 													"rolling_policy": {
 														"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 														"type": "object",
-														"additionalProperties": false,
 														"properties": {
 															"file_size_bytes": {
 																"description": "Files will be rolled after reaching this number of bytes",
@@ -1338917,6 +1340177,7 @@
 																"title": "Interval Seconds"
 															}
 														},
+														"additionalProperties": false,
 														"title": "File Rolling Policy"
 													}
 												},
@@ -1338951,7 +1340212,6 @@
 													"rolling_policy": {
 														"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 														"type": "object",
-														"additionalProperties": false,
 														"properties": {
 															"file_size_bytes": {
 																"description": "Files will be rolled after reaching this number of bytes",
@@ -1338975,6 +1340235,7 @@
 																"title": "Interval Seconds"
 															}
 														},
+														"additionalProperties": false,
 														"title": "File Rolling Policy"
 													},
 													"table_name": {
@@ -1339498,7 +1340759,6 @@
 																"rolling_policy": {
 																	"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 																	"type": "object",
-																	"additionalProperties": false,
 																	"properties": {
 																		"file_size_bytes": {
 																			"description": "Files will be rolled after reaching this number of bytes",
@@ -1339522,6 +1340782,7 @@
 																			"title": "Interval Seconds"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"title": "File Rolling Policy"
 																}
 															},
@@ -1339556,7 +1340817,6 @@
 																"rolling_policy": {
 																	"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 																	"type": "object",
-																	"additionalProperties": false,
 																	"properties": {
 																		"file_size_bytes": {
 																			"description": "Files will be rolled after reaching this number of bytes",
@@ -1339580,6 +1340840,7 @@
 																			"title": "Interval Seconds"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"title": "File Rolling Policy"
 																},
 																"table_name": {
@@ -1340245,7 +1341506,6 @@
 																"rolling_policy": {
 																	"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 																	"type": "object",
-																	"additionalProperties": false,
 																	"properties": {
 																		"file_size_bytes": {
 																			"description": "Files will be rolled after reaching this number of bytes",
@@ -1340269,6 +1341529,7 @@
 																			"title": "Interval Seconds"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"title": "File Rolling Policy"
 																}
 															},
@@ -1340302,7 +1341563,6 @@
 																"rolling_policy": {
 																	"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
 																	"type": "object",
-																	"additionalProperties": false,
 																	"properties": {
 																		"file_size_bytes": {
 																			"description": "Files will be rolled after reaching this number of bytes",
@@ -1340326,6 +1341586,7 @@
 																			"title": "Interval Seconds"
 																		}
 																	},
+																	"additionalProperties": false,
 																	"title": "File Rolling Policy"
 																},
 																"table_name": {
@@ -1340455,6 +1341716,11 @@
 													"description": "Indicates a unique identifier for this sink.",
 													"type": "string",
 													"example": "01234567890123457689012345678901"
+												},
+												"latest": {
+													"description": "Indicates the latest version of this sink.",
+													"type": "integer",
+													"example": 2
 												},
 												"modified_at": {
 													"type": "string",
@@ -1340737,11 +1342003,50 @@
 														"r2_data_catalog",
 														"basin_catalog"
 													]
+												},
+												"used_by": {
+													"description": "Lists the pipelines that use this sink. Omitted when no pipeline uses it.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"href": {
+																"description": "Indicates the API URL of the pipeline.",
+																"type": "string",
+																"format": "uri"
+															},
+															"id": {
+																"description": "Indicates the unique identifier of the pipeline.",
+																"type": "string",
+																"example": "01234567890123457689012345678901"
+															},
+															"type": {
+																"description": "Indicates the type of resource using this sink.",
+																"type": "string",
+																"example": "pipeline",
+																"enum": [
+																	"pipeline"
+																]
+															}
+														},
+														"required": [
+															"type",
+															"id",
+															"href"
+														],
+														"type": "object"
+													}
+												},
+												"version": {
+													"description": "Indicates the version of this sink.",
+													"type": "integer",
+													"example": 2
 												}
 											},
 											"required": [
 												"id",
 												"name",
+												"version",
+												"latest",
 												"created_at",
 												"modified_at",
 												"type"
@@ -1340790,6 +1342095,829 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "pipelines.sinks",
 				"x-fern-sdk-method-name": "get"
+			},
+			"patch": {
+				"operationId": "patchV4AccountsByAccount_idPipelinesV1SinksBySink_id",
+				"summary": "Update Sink",
+				"description": "Update a Sink's credentials or rolling policy, creating a new version of the Sink. Only `credentials` and `rolling_policy` (R2) or `token` and `rolling_policy` (Basin Catalog, including Sinks created with the legacy `r2_data_catalog` type) can be changed; omitted fields keep their current values. Secrets are never returned in responses. Pipelines that use the Sink keep their current version until they are moved to the latest one with Update Pipeline Tables.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Specifies the public ID of the account.",
+							"type": "string",
+							"example": "0123105f4ecef8ad9ca31a8372d0c353"
+						}
+					},
+					{
+						"name": "sink_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Specifies the publid ID of the sink.",
+							"type": "string",
+							"example": "0223105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"config": {
+										"description": "Defines the Sink configuration fields to change. At least one field is required; omitted fields keep their current values.",
+										"anyOf": [
+											{
+												"description": "Mutable configuration of an R2 Sink. Omitted fields keep their current values.",
+												"type": "object",
+												"properties": {
+													"credentials": {
+														"description": "R2 credentials to change. Omitted fields keep their current values.",
+														"type": "object",
+														"additionalProperties": false,
+														"properties": {
+															"access_key_id": {
+																"description": "R2 Access Key ID",
+																"type": "string",
+																"format": "var-str",
+																"title": "Access Key ID"
+															},
+															"secret_access_key": {
+																"description": "R2 Secret Access Key",
+																"type": "string",
+																"format": "var-str",
+																"title": "Secret Access Key",
+																"x-sensitive": true
+															}
+														},
+														"title": "R2 Credentials Update"
+													},
+													"rolling_policy": {
+														"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+														"type": "object",
+														"properties": {
+															"file_size_bytes": {
+																"description": "Files will be rolled after reaching this number of bytes",
+																"type": "integer",
+																"format": "uint64",
+																"minimum": 0,
+																"title": "File Size"
+															},
+															"inactivity_seconds": {
+																"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																"type": "integer",
+																"format": "uint64",
+																"minimum": 1,
+																"title": "Inactivity Seconds"
+															},
+															"interval_seconds": {
+																"description": "Number of seconds to wait before rolling over to a new file",
+																"type": "integer",
+																"format": "uint64",
+																"minimum": 1,
+																"title": "Interval Seconds"
+															}
+														},
+														"additionalProperties": false,
+														"title": "File Rolling Policy"
+													}
+												},
+												"additionalProperties": false,
+												"title": "R2 Sink Update"
+											},
+											{
+												"description": "Mutable configuration of a Basin Catalog Sink, including Sinks created with the legacy `r2_data_catalog` type. Omitted fields keep their current values.",
+												"type": "object",
+												"properties": {
+													"rolling_policy": {
+														"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+														"type": "object",
+														"properties": {
+															"file_size_bytes": {
+																"description": "Files will be rolled after reaching this number of bytes",
+																"type": "integer",
+																"format": "uint64",
+																"minimum": 0,
+																"title": "File Size"
+															},
+															"inactivity_seconds": {
+																"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																"type": "integer",
+																"format": "uint64",
+																"minimum": 1,
+																"title": "Inactivity Seconds"
+															},
+															"interval_seconds": {
+																"description": "Number of seconds to wait before rolling over to a new file",
+																"type": "integer",
+																"format": "uint64",
+																"minimum": 1,
+																"title": "Interval Seconds"
+															}
+														},
+														"additionalProperties": false,
+														"title": "File Rolling Policy"
+													},
+													"token": {
+														"description": "Authentication token",
+														"type": "string",
+														"format": "var-str",
+														"example": "\"asdfkj2h34kjhkj\"",
+														"x-sensitive": true
+													}
+												},
+												"additionalProperties": false,
+												"title": "BasinCatalogSinkTableUpdate"
+											}
+										],
+										"minProperties": 1,
+										"x-fern-property-name": "sink-config"
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"config"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Indicates a successfully updated Sink.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"config": {
+													"description": "Defines the configuration of the R2 Sink.",
+													"oneOf": [
+														{
+															"description": "R2 Sink public configuration.",
+															"type": "object",
+															"properties": {
+																"account_id": {
+																	"description": "Cloudflare Account ID for the bucket",
+																	"type": "string",
+																	"title": "Account ID"
+																},
+																"bucket": {
+																	"description": "R2 Bucket to write to",
+																	"type": "string",
+																	"title": "Bucket"
+																},
+																"file_naming": {
+																	"description": "Controls filename prefix/suffix and strategy.",
+																	"type": "object",
+																	"additionalProperties": false,
+																	"properties": {
+																		"prefix": {
+																			"description": "The prefix to use in file name. i.e prefix-<uuid>.parquet",
+																			"type": "string",
+																			"title": "Filename Prefix"
+																		},
+																		"strategy": {
+																			"description": "Filename generation strategy.",
+																			"type": "string",
+																			"enum": [
+																				"serial",
+																				"uuid",
+																				"uuid_v7",
+																				"ulid"
+																			],
+																			"title": "Filename Strategy"
+																		},
+																		"suffix": {
+																			"description": "This will overwrite the default file suffix. i.e .parquet, use with caution",
+																			"type": "string",
+																			"title": "Filename Suffix"
+																		}
+																	},
+																	"title": "File Naming"
+																},
+																"jurisdiction": {
+																	"description": "Jurisdiction this bucket is hosted in",
+																	"type": "string",
+																	"title": "Jurisdiction"
+																},
+																"partitioning": {
+																	"description": "Data-layout partitioning for sinks.",
+																	"type": "object",
+																	"additionalProperties": false,
+																	"properties": {
+																		"time_pattern": {
+																			"description": "The pattern of the date string",
+																			"type": "string",
+																			"example": "year=%Y/month=%m/day=%d/hour=%H",
+																			"title": "Time Partition Pattern"
+																		}
+																	},
+																	"title": "Partitioning Configuration"
+																},
+																"path": {
+																	"description": "Subpath within the bucket to write to",
+																	"type": "string",
+																	"title": "Path"
+																},
+																"rolling_policy": {
+																	"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+																	"type": "object",
+																	"properties": {
+																		"file_size_bytes": {
+																			"description": "Files will be rolled after reaching this number of bytes",
+																			"type": "integer",
+																			"format": "uint64",
+																			"minimum": 0,
+																			"title": "File Size"
+																		},
+																		"inactivity_seconds": {
+																			"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																			"type": "integer",
+																			"format": "uint64",
+																			"minimum": 1,
+																			"title": "Inactivity Seconds"
+																		},
+																		"interval_seconds": {
+																			"description": "Number of seconds to wait before rolling over to a new file",
+																			"type": "integer",
+																			"format": "uint64",
+																			"minimum": 1,
+																			"title": "Interval Seconds"
+																		}
+																	},
+																	"additionalProperties": false,
+																	"title": "File Rolling Policy"
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"account_id",
+																"bucket"
+															],
+															"title": "R2 Sink Public"
+														},
+														{
+															"description": "R2 Data Catalog Sink public configuration.",
+															"type": "object",
+															"properties": {
+																"account_id": {
+																	"description": "Cloudflare Account ID",
+																	"type": "string",
+																	"format": "uri",
+																	"example": "6791973bbe876d621f9e557f891e90b3"
+																},
+																"bucket": {
+																	"description": "The R2 Bucket that hosts this catalog",
+																	"type": "string",
+																	"example": "my-bucket"
+																},
+																"namespace": {
+																	"description": "Table namespace",
+																	"type": "string",
+																	"title": "Namespace"
+																},
+																"rolling_policy": {
+																	"description": "Rolling policy for file sinks (when & why to close a file and open a new one).",
+																	"type": "object",
+																	"properties": {
+																		"file_size_bytes": {
+																			"description": "Files will be rolled after reaching this number of bytes",
+																			"type": "integer",
+																			"format": "uint64",
+																			"minimum": 0,
+																			"title": "File Size"
+																		},
+																		"inactivity_seconds": {
+																			"description": "Number of seconds of inactivity to wait before rolling over to a new file",
+																			"type": "integer",
+																			"format": "uint64",
+																			"minimum": 1,
+																			"title": "Inactivity Seconds"
+																		},
+																		"interval_seconds": {
+																			"description": "Number of seconds to wait before rolling over to a new file",
+																			"type": "integer",
+																			"format": "uint64",
+																			"minimum": 1,
+																			"title": "Interval Seconds"
+																		}
+																	},
+																	"additionalProperties": false,
+																	"title": "File Rolling Policy"
+																},
+																"table_name": {
+																	"description": "Table name",
+																	"type": "string",
+																	"title": "Table Name"
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"account_id",
+																"bucket",
+																"table_name"
+															],
+															"title": "R2DataCatalogSinkTablePublic"
+														}
+													]
+												},
+												"created_at": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"format": {
+													"description": "Defines the output data format of a sink.",
+													"discriminator": {
+														"mapping": {
+															"json": "#/components/schemas/cloudflare-pipelines_SinkJsonFormat",
+															"parquet": "#/components/schemas/cloudflare-pipelines_SinkParquetFormat"
+														},
+														"propertyName": "type"
+													},
+													"oneOf": [
+														{
+															"allOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"decimal_encoding": {
+																			"type": "string",
+																			"enum": [
+																				"number",
+																				"string",
+																				"bytes"
+																			]
+																		},
+																		"timestamp_format": {
+																			"type": "string",
+																			"enum": [
+																				"rfc3339",
+																				"unix_millis"
+																			]
+																		},
+																		"unstructured": {
+																			"type": "boolean"
+																		}
+																	}
+																},
+																{
+																	"properties": {
+																		"compression": {
+																			"description": "Specifies the compression applied to JSON sink output.",
+																			"type": "string",
+																			"default": "uncompressed",
+																			"enum": [
+																				"uncompressed",
+																				"gzip"
+																			]
+																		},
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"json"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Json"
+														},
+														{
+															"allOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"compression": {
+																			"type": "string",
+																			"enum": [
+																				"uncompressed",
+																				"snappy",
+																				"gzip",
+																				"zstd",
+																				"lz4"
+																			]
+																		},
+																		"row_group_bytes": {
+																			"type": "integer",
+																			"format": "int64",
+																			"minimum": 0,
+																			"nullable": true
+																		}
+																	}
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"parquet"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Parquet"
+														}
+													]
+												},
+												"id": {
+													"description": "Indicates a unique identifier for this sink.",
+													"type": "string",
+													"example": "01234567890123457689012345678901"
+												},
+												"latest": {
+													"description": "Indicates the latest version of this sink.",
+													"type": "integer",
+													"example": 2
+												},
+												"modified_at": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"name": {
+													"description": "Defines the name of the Sink.",
+													"type": "string",
+													"example": "my_sink",
+													"maxLength": 128,
+													"minLength": 1
+												},
+												"schema": {
+													"description": "Defines the schema of the events in the data stream.",
+													"type": "object",
+													"properties": {
+														"fields": {
+															"type": "array",
+															"items": {
+																"allOf": [
+																	{
+																		"discriminator": {
+																			"propertyName": "type"
+																		},
+																		"oneOf": [
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"int32"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"title": "Int32",
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"int64"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"title": "Int64",
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"float32"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"title": "Float32",
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"float64"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"title": "Float64",
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"bool"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"title": "Bool",
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"string"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"title": "String",
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"binary"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"title": "Binary",
+																				"type": "object"
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"type": "object",
+																						"properties": {
+																							"unit": {
+																								"type": "string",
+																								"enum": [
+																									"second",
+																									"millisecond",
+																									"microsecond",
+																									"nanosecond"
+																								]
+																							}
+																						}
+																					},
+																					{
+																						"properties": {
+																							"type": {
+																								"type": "string",
+																								"enum": [
+																									"timestamp"
+																								]
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"title": "Timestamp"
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"json"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type"
+																				],
+																				"title": "Json",
+																				"type": "object"
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"type": "object",
+																						"properties": {
+																							"fields": {
+																								"type": "array",
+																								"items": "[Circular ~.paths./accounts/{account_id}/pipelines/v1/sinks/{sink_id}.patch.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]"
+																							},
+																							"name": {
+																								"type": "string",
+																								"nullable": true
+																							}
+																						},
+																						"required": [
+																							"fields"
+																						]
+																					},
+																					{
+																						"properties": {
+																							"type": {
+																								"type": "string",
+																								"enum": [
+																									"struct"
+																								]
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"title": "Struct"
+																			},
+																			{
+																				"allOf": [
+																					{
+																						"type": "object",
+																						"properties": {
+																							"items": "[Circular ~.paths./accounts/{account_id}/pipelines/v1/sinks/{sink_id}.patch.responses.200.content.application/json.schema.properties.result.properties.schema.properties.fields.items]"
+																						},
+																						"required": [
+																							"items"
+																						]
+																					},
+																					{
+																						"properties": {
+																							"type": {
+																								"type": "string",
+																								"enum": [
+																									"list"
+																								]
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"title": "List"
+																			}
+																		]
+																	},
+																	{
+																		"properties": {
+																			"metadata_key": {
+																				"type": "string",
+																				"nullable": true
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"required": {
+																				"type": "boolean"
+																			},
+																			"sql_name": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"name"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														},
+														"inferred": {
+															"type": "boolean",
+															"nullable": true
+														}
+													}
+												},
+												"type": {
+													"description": "Specifies the type of sink.",
+													"type": "string",
+													"example": "r2",
+													"enum": [
+														"r2",
+														"r2_data_catalog",
+														"basin_catalog"
+													]
+												},
+												"used_by": {
+													"description": "Lists the pipelines that use this sink. Omitted when no pipeline uses it.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"href": {
+																"description": "Indicates the API URL of the pipeline.",
+																"type": "string",
+																"format": "uri"
+															},
+															"id": {
+																"description": "Indicates the unique identifier of the pipeline.",
+																"type": "string",
+																"example": "01234567890123457689012345678901"
+															},
+															"type": {
+																"description": "Indicates the type of resource using this sink.",
+																"type": "string",
+																"example": "pipeline",
+																"enum": [
+																	"pipeline"
+																]
+															}
+														},
+														"required": [
+															"type",
+															"id",
+															"href"
+														],
+														"type": "object"
+													}
+												},
+												"version": {
+													"description": "Indicates the version of this sink.",
+													"type": "integer",
+													"example": 2
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"version",
+												"latest",
+												"created_at",
+												"modified_at",
+												"type"
+											]
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "Indicates an error in updating a Sink. Returns 400 when the request body is malformed, has unknown fields, or has an empty `config`; 404 when the Sink does not exist; 409 when the Sink was updated concurrently; and 422 when the configuration is invalid or changes an immutable field."
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
+					}
+				],
+				"tags": [
+					"workers_pipelines_other"
+				],
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": false,
+					"pro": true
+				},
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "pipelines.sinks",
+				"x-fern-sdk-method-name": "update"
 			}
 		},
 		"/accounts/{account_id}/pipelines/v1/streams": {
@@ -1360843,6 +1362971,9 @@
 				"x-api-token-group": [
 					"Workers R2 Storage Write"
 				],
+				"x-fern-audiences": [
+					"sdk"
+				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "r2.buckets",
 				"x-fern-sdk-method-name": "create-by-name"
@@ -1368568,7 +1370699,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "r2.buckets.sippy",
-				"x-fern-sdk-method-name": "delete",
+				"x-fern-sdk-method-name": "disable",
 				"x-forge-require-confirmation": "This disables Sippy on-demand migration for the R2 bucket. Objects already copied to R2 remain in the bucket."
 			},
 			"get": {
@@ -1369329,7 +1371460,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "r2.buckets.sippy",
-				"x-fern-sdk-method-name": "update"
+				"x-fern-sdk-method-name": "enable"
 			}
 		},
 		"/accounts/{account_id}/r2/metrics": {
@@ -1697207,7 +1699338,7 @@
 									"ha": {
 										"description": "Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.",
 										"type": "boolean",
-										"default": false
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"name": {
 										"description": "A user-friendly name for a tunnel.",
@@ -1704169,6 +1706300,13 @@
 										"description": "The name of the dispatch namespace.",
 										"type": "string",
 										"example": "my-dispatch-namespace",
+										"x-auditable": true
+									},
+									"trusted_workers": {
+										"description": "Whether the Workers in the namespace are executed in a \"trusted\" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are \"untrusted\".",
+										"type": "boolean",
+										"example": false,
+										"default": false,
 										"x-auditable": true
 									}
 								}
@@ -1736283,6 +1738421,329 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "durable-objects.namespaces",
 				"x-fern-sdk-method-name": "list"
+			}
+		},
+		"/accounts/{account_id}/workers/durable_objects/namespaces/{id}/export": {
+			"get": {
+				"operationId": "durable-objects-namespace-export",
+				"summary": "Export a Durable Object's SQLite database",
+				"description": "Downloads a SQLite-backed Durable Object's database as a zip of main.sqlite and main.sqlite-wal, as of its last write to durable storage. If the export could not read all of the object's history, it holds the last state it could read and an INCOMPLETE.txt. Select the object by ID, or by name and jurisdiction.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Identifier.",
+							"type": "string",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "ID of the namespace.",
+							"type": "string",
+							"example": "5fd1cafff895419c8bcc647fc64ab8f0"
+						}
+					},
+					{
+						"name": "durable_object_id",
+						"in": "query",
+						"description": "The Durable Object's ID. Required unless durable_object_name is given.",
+						"schema": {
+							"type": "string",
+							"minLength": 1
+						}
+					},
+					{
+						"name": "durable_object_name",
+						"in": "query",
+						"description": "The name the Durable Object's ID was derived from.",
+						"schema": {
+							"type": "string",
+							"minLength": 1
+						}
+					},
+					{
+						"name": "jurisdiction",
+						"in": "query",
+						"description": "The jurisdiction of a Durable Object selected by name.",
+						"schema": {
+							"type": "string",
+							"enum": [
+								"fedramp",
+								"eu",
+								"none"
+							]
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A zip of the Durable Object's SQLite database and WAL.",
+						"content": {
+							"application/zip": {
+								"schema": {
+									"type": "string",
+									"format": "binary"
+								}
+							}
+						}
+					},
+					"503": {
+						"description": "Too many exports in progress; retry later.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "Export failure.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_token": []
+					},
+					{
+						"api_email": [],
+						"api_key": []
+					}
+				],
+				"tags": [
+					"Durable Objects Namespace"
+				],
+				"x-api-token-group": [
+					"Workers Scripts Write",
+					"Workers Scripts Read"
+				],
+				"x-fern-audiences": [
+					"sdk"
+				],
+				"x-fern-availability": "beta",
+				"x-fern-sdk-group-name": "durable-objects.namespaces",
+				"x-fern-sdk-method-name": "export"
 			}
 		},
 		"/accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects": {
@@ -1875234,7 +1877695,7 @@
 							}
 						},
 						"content": {
-							"application/vnd.google.protobuf": {
+							"application/protobuf": {
 								"schema": {
 									"type": "string",
 									"format": "binary"
@@ -1898356,13 +1900817,15 @@
 															"description": "A flag to enable the ICMP proxy for the account network.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"offramp_warp_enabled": {
 															"description": "A flag to enable WARP to WARP traffic.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													}
 												}
@@ -1898530,13 +1900993,15 @@
 										"description": "A flag to enable the ICMP proxy for the account network.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"offramp_warp_enabled": {
 										"description": "A flag to enable WARP to WARP traffic.",
 										"type": "boolean",
 										"example": true,
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								}
 							}
@@ -1898646,13 +1901111,15 @@
 															"description": "A flag to enable the ICMP proxy for the account network.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"offramp_warp_enabled": {
 															"description": "A flag to enable WARP to WARP traffic.",
 															"type": "boolean",
 															"example": true,
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													}
 												}
@@ -1899040,6 +1901507,7 @@
 																"description": "An optional description of the hostname route.",
 																"type": "string",
 																"example": "example comment",
+																"default": "",
 																"x-auditable": true
 															},
 															"created_at": {
@@ -1899267,6 +1901735,7 @@
 																		"description": "An optional description of the hostname route.",
 																		"type": "string",
 																		"example": "example comment",
+																		"default": "",
 																		"x-auditable": true
 																	},
 																	"created_at": {
@@ -1899498,6 +1901967,7 @@
 										"description": "An optional description of the hostname route.",
 										"type": "string",
 										"example": "example comment",
+										"default": "",
 										"x-auditable": true
 									},
 									"hostname": {
@@ -1899622,6 +1902092,7 @@
 															"description": "An optional description of the hostname route.",
 															"type": "string",
 															"example": "example comment",
+															"default": "",
 															"x-auditable": true
 														},
 														"created_at": {
@@ -1899804,6 +1902275,7 @@
 																	"description": "An optional description of the hostname route.",
 																	"type": "string",
 																	"example": "example comment",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"created_at": {
@@ -1900138,6 +1902610,7 @@
 															"description": "An optional description of the hostname route.",
 															"type": "string",
 															"example": "example comment",
+															"default": "",
 															"x-auditable": true
 														},
 														"created_at": {
@@ -1900320,6 +1902793,7 @@
 																	"description": "An optional description of the hostname route.",
 																	"type": "string",
 																	"example": "example comment",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"created_at": {
@@ -1900653,6 +1903127,7 @@
 															"description": "An optional description of the hostname route.",
 															"type": "string",
 															"example": "example comment",
+															"default": "",
 															"x-auditable": true
 														},
 														"created_at": {
@@ -1900835,6 +1903310,7 @@
 																	"description": "An optional description of the hostname route.",
 																	"type": "string",
 																	"example": "example comment",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"created_at": {
@@ -1901077,6 +1903553,7 @@
 										"description": "An optional description of the hostname route.",
 										"type": "string",
 										"example": "example comment",
+										"default": "",
 										"x-auditable": true
 									},
 									"hostname": {
@@ -1901201,6 +1903678,7 @@
 															"description": "An optional description of the hostname route.",
 															"type": "string",
 															"example": "example comment",
+															"default": "",
 															"x-auditable": true
 														},
 														"created_at": {
@@ -1901383,6 +1903861,7 @@
 																	"description": "An optional description of the hostname route.",
 																	"type": "string",
 																	"example": "example comment",
+																	"default": "",
 																	"x-auditable": true
 																},
 																"created_at": {
@@ -1906100,12 +1908579,6 @@
 										"description": "A user-friendly name for the subnet.",
 										"type": "string",
 										"example": "IPv4 Cloudflare Source IPs",
-										"x-auditable": true
-									},
-									"network": {
-										"description": "The private IPv4 or IPv6 range defining the subnet, in CIDR notation.",
-										"type": "string",
-										"example": "100.64.0.0/12",
 										"x-auditable": true
 									}
 								}
@@ -2094342,7 +2096815,20 @@
 				},
 				"responses": {
 					"200": {
-						"description": "Ok."
+						"description": "Ok.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"status": {
+											"type": "string",
+											"example": "verified"
+										}
+									}
+								}
+							}
+						}
 					},
 					"400": {
 						"description": "Bad Request."
@@ -2094362,15 +2096848,16 @@
 				},
 				"security": [
 					{
-						"APIToken": []
+						"api_token": []
 					}
 				],
 				"tags": [
 					"api"
 				],
 				"x-api-token-group": [],
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "dns.domainconnect",
-				"x-fern-sdk-method-name": "postVerify"
+				"x-fern-sdk-method-name": "post-verify"
 			}
 		},
 		"/v2/{domain}/settings": {
@@ -2094436,15 +2096923,16 @@
 				},
 				"security": [
 					{
-						"APIToken": []
+						"api_token": []
 					}
 				],
 				"tags": [
 					"api"
 				],
 				"x-api-token-group": [],
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "dns.domainconnect",
-				"x-fern-sdk-method-name": "getDomainSettings"
+				"x-fern-sdk-method-name": "get-domain-settings"
 			}
 		},
 		"/v2/domainTemplates/providers/{provider}/services/{service}": {
@@ -2094511,15 +2096999,16 @@
 				},
 				"security": [
 					{
-						"APIToken": []
+						"api_token": []
 					}
 				],
 				"tags": [
 					"api"
 				],
 				"x-api-token-group": [],
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "dns.domainconnect",
-				"x-fern-sdk-method-name": "getProviderTemplate"
+				"x-fern-sdk-method-name": "get-provider-template"
 			}
 		},
 		"/v2/provconf/{provider}/{service}/{account}": {
@@ -2094643,15 +2097132,16 @@
 				},
 				"security": [
 					{
-						"APIToken": []
+						"api_token": []
 					}
 				],
 				"tags": [
 					"api"
 				],
 				"x-api-token-group": [],
+				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "dns.domainconnect",
-				"x-fern-sdk-method-name": "getProviderConfiguration"
+				"x-fern-sdk-method-name": "get-provider-configuration"
 			}
 		},
 		"/workers/builds/deploy_hooks/{deploy_hook_uuid}": {

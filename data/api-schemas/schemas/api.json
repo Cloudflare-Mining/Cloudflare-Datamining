@@ -61,15 +61,16 @@
 		},
 		"security": [
 			{
-				"APIToken": []
+				"api_token": []
 			}
 		],
 		"tags": [
 			"api"
 		],
 		"x-api-token-group": [],
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.domainconnect",
-		"x-fern-sdk-method-name": "getDomainSettings"
+		"x-fern-sdk-method-name": "get-domain-settings"
 	},
 	"GET /v2/domainTemplates/providers/{provider}/services/{service}": {
 		"operationId": "getProviderTemplate",
@@ -134,15 +135,16 @@
 		},
 		"security": [
 			{
-				"APIToken": []
+				"api_token": []
 			}
 		],
 		"tags": [
 			"api"
 		],
 		"x-api-token-group": [],
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.domainconnect",
-		"x-fern-sdk-method-name": "getProviderTemplate"
+		"x-fern-sdk-method-name": "get-provider-template"
 	},
 	"GET /v2/provconf/{provider}/{service}/{account}": {
 		"operationId": "getProviderConfiguration",
@@ -264,15 +266,16 @@
 		},
 		"security": [
 			{
-				"APIToken": []
+				"api_token": []
 			}
 		],
 		"tags": [
 			"api"
 		],
 		"x-api-token-group": [],
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.domainconnect",
-		"x-fern-sdk-method-name": "getProviderConfiguration"
+		"x-fern-sdk-method-name": "get-provider-configuration"
 	},
 	"POST /v1/verify": {
 		"operationId": "postVerify",
@@ -301,7 +304,20 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Ok."
+				"description": "Ok.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"status": {
+									"type": "string",
+									"example": "verified"
+								}
+							}
+						}
+					}
+				}
 			},
 			"400": {
 				"description": "Bad Request."
@@ -321,14 +337,15 @@
 		},
 		"security": [
 			{
-				"APIToken": []
+				"api_token": []
 			}
 		],
 		"tags": [
 			"api"
 		],
 		"x-api-token-group": [],
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.domainconnect",
-		"x-fern-sdk-method-name": "postVerify"
+		"x-fern-sdk-method-name": "post-verify"
 	}
 }

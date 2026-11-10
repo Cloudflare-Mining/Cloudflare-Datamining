@@ -502,6 +502,327 @@
 		"x-fern-sdk-group-name": "durable-objects.namespaces",
 		"x-fern-sdk-method-name": "list"
 	},
+	"GET /accounts/{account_id}/workers/durable_objects/namespaces/{id}/export": {
+		"operationId": "durable-objects-namespace-export",
+		"summary": "Export a Durable Object's SQLite database",
+		"description": "Downloads a SQLite-backed Durable Object's database as a zip of main.sqlite and main.sqlite-wal, as of its last write to durable storage. If the export could not read all of the object's history, it holds the last state it could read and an INCOMPLETE.txt. Select the object by ID, or by name and jurisdiction.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "ID of the namespace.",
+					"type": "string",
+					"example": "5fd1cafff895419c8bcc647fc64ab8f0"
+				}
+			},
+			{
+				"name": "durable_object_id",
+				"in": "query",
+				"description": "The Durable Object's ID. Required unless durable_object_name is given.",
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "durable_object_name",
+				"in": "query",
+				"description": "The name the Durable Object's ID was derived from.",
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			{
+				"name": "jurisdiction",
+				"in": "query",
+				"description": "The jurisdiction of a Durable Object selected by name.",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"fedramp",
+						"eu",
+						"none"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "A zip of the Durable Object's SQLite database and WAL.",
+				"content": {
+					"application/zip": {
+						"schema": {
+							"type": "string",
+							"format": "binary"
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Too many exports in progress; retry later.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Export failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Durable Objects Namespace"
+		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "durable-objects.namespaces",
+		"x-fern-sdk-method-name": "export"
+	},
 	"GET /accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects": {
 		"operationId": "durable-objects-namespace-list-objects",
 		"summary": "List Objects in a Durable Object namespace",
