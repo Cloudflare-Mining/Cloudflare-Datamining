@@ -2,7 +2,7 @@
 	"name": "@vinext/cloudflare",
 	"dist-tags": {
 		"beta": "1.0.0-beta.0",
-		"latest": "1.3.3"
+		"latest": "1.3.4"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1205,8 +1205,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIALgwKBCqYIezSvdVvms+0QC9is+TDyiPtr4yr+B59HpAiB9frSCNQl53GJd8fMBvS7IrXolGD8thHNcadDnKdUx8g=="
+						"sig": "MEQCIALgwKBCqYIezSvdVvms+0QC9is+TDyiPtr4yr+B59HpAiB9frSCNQl53GJd8fMBvS7IrXolGD8thHNcadDnKdUx8g==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -1216,6 +1216,56 @@
 					}
 				},
 				"unpackedSize": 463839
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.3.4": {
+			"name": "@vinext/cloudflare",
+			"version": "1.3.4",
+			"dependencies": {
+				"@cloudflare/workers-response-store": "1.1.5"
+			},
+			"devDependencies": {
+				"cf": "1.0.0-beta.29",
+				"vite": "npm:@voidzero-dev/vite-plus-core@1.5.1",
+				"vinext": "1.4.5",
+				"miniflare": "5.20260730.0-alpha",
+				"vite-plus": "1.5.1",
+				"@types/node": "^25.9.2"
+			},
+			"peerDependencies": {
+				"cf": "*",
+				"vinext": "^1.4.5",
+				"@cloudflare/vite-plugin": "*"
+			},
+			"bin": {
+				"vinext-cloudflare": "dist/cli.js",
+				"@vinext/cloudflare": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "d62edaf97de154936353ca9daba41bc27ee2cfc9",
+				"tarball": "https://registry.npmjs.org/@vinext/cloudflare/-/cloudflare-1.3.4.tgz",
+				"fileCount": 87,
+				"integrity": "sha512-dEbhVVtLtLzxe6Hs7kupoZycQoOHUAzb/Opgds60GXWuSyUVlkNzZRxpmRe/Dfm/ibUXymT8ag6swVhi6+SpeQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDEPv3sCq7j1jemk2w2+aKosT+HNNZhkVSpq7FRP7/8OQIgUqhT/qCjNdC24J5yGChS+gGPg3kDN4YQp1RzbX6Qqis=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIFHd4hWF+A2a1TBetl8UTsJQaV2UPPpSVjeh/vWNVlUFAiB5JnVlFaKR61nA+6xlMcktfX0c3SgmwGUi0d1zvQ+5hw=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@vinext%2fcloudflare@1.3.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 462010
 			},
 			"engines": {
 				"node": ">=22"

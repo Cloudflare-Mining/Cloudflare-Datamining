@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/signed-note-wasm",
 	"dist-tags": {
-		"latest": "0.3.0"
+		"latest": "0.4.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -58,8 +58,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIExu26yXogLZx1Xrz0msdVxerof6c0tY6inZESYxT2ycAiEAjmwy6ioRmKOMtCkfrEGGK5QmPorW3xpd53cb/Khp7ZU="
+						"sig": "MEUCIExu26yXogLZx1Xrz0msdVxerof6c0tY6inZESYxT2ycAiEAjmwy6ioRmKOMtCkfrEGGK5QmPorW3xpd53cb/Khp7ZU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -69,6 +69,33 @@
 					}
 				},
 				"unpackedSize": 225498
+			}
+		},
+		"0.4.0": {
+			"name": "@cloudflare/signed-note-wasm",
+			"version": "0.4.0",
+			"dist": {
+				"shasum": "1ee98c9db3d4f3ce690c1d331de9b31668a6fd53",
+				"tarball": "https://registry.npmjs.org/@cloudflare/signed-note-wasm/-/signed-note-wasm-0.4.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-TgK0wmp5KVdXpOitbcVo1ZV2MqNR1L0YcDYttBQm3k7EsT++u3iAAguj+EwbszwAcHtCM3tTKx4oGJcVmkISLQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIAV39ZfH5J3Fj33hHVHOwHlyPjowLIZ4kAveemagx/gmAiEAqMslkHS70ZwacWjRBeEFtNPvRDnyPPUXF7Zl9viMwxQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQD0+CNywXqbEFXHzuWpm+NCG/K98opp4phrZNDY2xJvRAIgQ1byEsUsFfNg2trLC9rGoT8UYlOlheITxks5ho0OHvk="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fsigned-note-wasm@0.4.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 241048
 			}
 		}
 	}
