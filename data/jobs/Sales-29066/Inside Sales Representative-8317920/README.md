@@ -3,40 +3,32 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Lisbon</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>The Statutory Manager acts as a strategic thought partner; overseeing reporting cycles, ensuring filing readiness and driving regulatory compliance for legal entities located in the Iberia region. This role requires an advanced professional who exercises independent judgment to solve unique, unprecedented accounting issues where guidelines do not exist.</p>
-<p>The successful candidate will blend exceptional technical accounting mastery with strategic process ownership, championing automation and serving as a critical cross-functional collaborator to elevate controls and scale our global financial reporting architecture.</p>
-<p>&nbsp;</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: London, the UK</strong></p>
+<p><strong>About the role</strong></p>
+<p>The Inside Sales Representative (ISR) is a critical sales role responsible for driving high-volume, high-velocity net new business acquisition sales in a remote selling model within the commercial segment across EMEA. Operating as full-cycle territory owners similar to an AE, ISR manages the end-to-end sales process from self-sourcing pipeline, qualifying opportunities and closing deals in partnership with SE and Partner Organisation</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Advanced Financial Reporting: Review and formally sign off on monthly, quarterly, and annual financial including balance sheets, profit &amp; loss statements, and cash flow reports</li>
-	<li>Strategic Compliance &amp; Audit Leadership: Act as the primary point of contact to lead external audits and resolve highly complex compliance issues that have little or no precedent to guide them. Formulate a long-term view of local regulatory trends and business implications.</li>
-	<li>Cross-functional Stakeholder Coordination: Partner cross-functionally with global legal and corporate tax units and regional business units to ensure local country filings are executed flawlessly, on time and align with broader company objectives.</li>
-	<li>Process &amp; technology improvements: Drive strategic financial system optimization (Oracle/NetSuite) to scale statutory and compliance reporting architectures and actively pioneer the adoption of new automation and technology tools (including AI and advanced data analytics).</li>
+	<li><strong>Build your own pipeline:</strong> Find new business across your assigned territory through high-volume outreach by phone, email, LinkedIn and social selling, using tools like Salesforce, LinkedIn Sales Navigator, ZoomInfo and AI outreach</li>
+	<li><strong>Run the whole sales cycle remotely:</strong> Lead discovery and qualification calls using MEDDPIC, give engaging virtual presentations and live product demos, and negotiate and close new business against an ACV quota.</li>
+	<li><strong>Explain the value of Cloudflare's platform:</strong> Connect commercial-segment customers' business and technical problems to the right Cloudflare products, such as Application Security and Performance, Zero Trust/SASE and the Developer Platform, and show the value they'd get.</li>
+	<li><strong>Work closely with other teams:</strong> Partner with Solutions Engineers on technical validation, and with the Partner Organisation to co-sell and close deals faster. Work with Marketing and BDR teammates on campaigns and events that create pipeline.</li>
+	<li><strong>Run your territory with data:</strong> Keep your Salesforce pipeline accurate and your forecasts reliable, track your activity and conversion numbers, and use what you learn to consistently meet or exceed your targets</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p>Experience: 10+ years of progressive accounting and tax compliance experience.</p>
-<p>Proven experience acting as a primary reviewer for audited statutory financial statements in a multinational corporate framework</p>
-<p>Extensive progressive accounting and tax compliance experience, with a proven track record of managing highly complex processes, driving strategic initiatives, and navigating ambiguous, precedent-setting financial scenarios.</p>
-<p>Demonstrated capability to analyze unique, significant business issues, evaluate intangibles, and independently formulate creative, effective solutions.</p>
-<p><strong>Language Proficiency: </strong>Professional fluency in English is required</p>
-<p><br><br></p>
-<p><strong>Nice-to-Have Skills</strong></p>
-<p>Relevant professional certification such as a CPA, Chartered Accountant (CA), ACCA</p>
-<p>Proficiency with Oracle and NetSuite&nbsp;</p>
-<p>Professional fluency in Spanish</p>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €52,000 - 65,000</span></li>
+	<li>1 - 3 years of experience in a sales role, preferably in SaaS or tech sales, such as:&nbsp;</li>
+	<ul>
+		<li>BDR/SDR background with strong outbound experience in a high-paced environment</li>
+		<li>SMB or Transactional sales experience with high volume, high velocity sales motion</li>
+	</ul>
+	<li>Strong track record of meeting or exceeding quota&nbsp;</li>
+	<li>Strong discovery and qualification skills using frameworks like BANT, MEDDIC&nbsp;</li>
+	<li>Excellent presentation and interpersonal communication skills (verbal and written) as well as time management skill</li>
+	<li>Experience using CRM like Salesforce, outbound/prospecting sales tools (e.g. LinkedIn Sales Navigator, ZoomInfo, Salesforce Sales Engagement Outreach etc)</li>
+	<li>Tech-savvy and technically curious - quick to learn technical products, comfortable to run live demos independently, data-driven mindset&nbsp;&nbsp;</li>
+	<li>Highly accountable and self-driven, customer-centric individuals</li>
+	<li>Multilingual abilities (depending on the coverage regions)</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -11,35 +11,31 @@
 	<li><strong>London, UK</strong></li>
 </ul>
 <p><strong>About this job</strong></p>
-<p>Cloudflare is seeking a Senior Product Counsel with deep technical curiosity and a passion for solving novel legal challenges at the intersection of law and technology. The Product Counsel team serves as strategic legal partners to product, engineering, and business teams, helping navigate complex issues across Cloudflare's diverse portfolio of security, networking, AI, and developer products used by millions of customers worldwide.</p>
-<p>This is a high-impact, high-autonomy role. You'll lead cross-functional projects, shape legal strategy for emerging technologies, and make judgment calls on questions without clear precedent. Speed matters here: our lean team moves fast, and your work directly influences products that help build a better Internet.</p>
-<p>The ideal candidate brings a mix of deep technical fluency, commercial pragmatism, and creative problem-solving. You'll draft and negotiate technology transactions that fuel the product lines you support, evaluate novel legal questions at the frontier of law and technology, and craft practical solutions that balance risk and business objectives.</p>
-<p>You'll also lead privacy-by-design reviews, document data flows for responsible AI counseling, and partner with commercial legal teams to resolve complex customer inquiries. The work is varied, the problems are hard, and the stakes are real.</p>
-<p><strong>Who You Are</strong></p>
-<p>We're looking for candidates from diverse legal backgrounds: prior experience in technology transactions, patent or copyright litigation, data privacy, or other regulatory practices that require deep technical understanding. The common thread isn't a specific practice area; it's that you're technical, collaborative, and creative. You thrive on learning how new technologies work, you're a skilled negotiator who builds trust with internal and external partners, and you understand that most problems have multiple paths to "yes."&nbsp;</p>
+<p>Cloudflare is seeking a lawyer with a passion for new technologies to join the Product Counsel team. The Product Counsel team serves as the frontline legal contact and helps solve some of the company’s thorniest issues. As a member of the team, you’ll wear many hats and lead cross-functional projects with meaningful impact. The ideal candidate brings deep enthusiasm for innovative technology and the ability to collaborate closely with product, engineering, and business teams throughout the software development and commercialization lifecycle.</p>
+<p>This role requires drafting and negotiating the technology transactions that fuel our products, such as our AI inference offerings. Through this work, you will help evaluate novel legal questions and craft practical solutions at the frontier of law and technology.</p>
+<p>As a member of the Product Counsel team, you will also support privacy-by-design reviews, document data flows for responsible AI counseling, and partner with the commercial legal team to address complex customer inquiries.</p>
 <p><strong>In this role, you will:</strong></p>
 <ul>
 	<li>Translate complex legal analysis into clear, actionable guidance for fast-moving product and engineering teams.</li>
 	<li>Proactively assess legal risks and advise product, engineering and business teams building services that reshape how information moves across the Internet—and the laws that govern it.</li>
-	<li>Serve as a legal advisor to senior business leaders on the legal implications of product strategy.</li>
-	<li>Review and architect legal frameworks for technology transactions and related agreements, such as, technology partner agreements, inbound IP licensing agreements, and marketplace arrangements for Cloudflare’s developer platform.</li>
+	<li>Review and architect legal frameworks for technology transactions related agreements, such as, technology partner agreements, inbound IP licensing agreements, and marketplace arrangements for Cloudflare’s developer platform.</li>
+	<li>Review marketing event agreements and support Cloudflare’s team with promotions and sweepstakes.</li>
 	<li>Draft terms of service, disclosures, policies, and related processes.</li>
 	<li>Apply privacy-by-design principles and partner with the privacy team on data-flow reviews, PIAs, and other privacy deliverables.</li>
+	<li>Solicit invention disclosures, support patent strategy, and protect Cloudflare’s trade secrets.</li>
 	<li>Partner with product and marketing teams on product marketing collateral and claim substantiation.</li>
 	<li>Build and refine processes that enable the Legal team to scale effectively as Cloudflare continues to expand.</li>
 	<li>Engage externally on behalf of Cloudflare in areas where you are a subject matter expert.</li>
-	<li>Review marketing event agreements and support Cloudflare’s team with promotions and sweepstakes.</li>
 </ul>
 <p><strong>Job qualifications</strong></p>
 <ul>
-	<li>JD degree with strong academic credentials and admitted to practice law in at least one U.S. jurisdiction or a UK equivalent.</li>
-	<li>7+ years of law firm and/or in-house experience, preferably with technology companies. Prior experience with Internet security and infrastructure companies is desired.</li>
+	<li>JD degree with strong academic credentials and admitted to practice law in at least one U.S. jurisdiction.</li>
+	<li>3+ years of law firm and/or in-house experience, preferably with technology companies. Prior experience with Internet security and infrastructure companies is desired.</li>
 	<li>Technical background / expertise is highly desired. While a science or technical degree is not a prerequisite for this job, a passion for technologies is.</li>
-	<li>Experience with copyright law, Internet law, and related technical areas is desired (e.g., AI Act, Data Act, net neutrality, DMCA, CFAA, web crawlers, search engines, SEO, data licensing)</li>
-	<li>Ability to provide legal advice in a way that understands and advances strategic business goals.</li>
-	<li>Strong communication skills and collaborative team player. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment.</li>
-	<li>Ability to work cross-functionally, with lawyers and non-lawyers, including senior business executives, to establish effective solutions efficiently and in an amenable manner.</li>
-	<li>Excellent organizational skills with the ability to prioritize and manage multiple complex projects; experience with Jira or other project management tools is a plus.</li>
+	<li>Experience with copyright law and Internet law is desired (e.g., AI Act, Data Act, net neutrality, DMCA, CFAA).</li>
+	<li>Strong communication skills and cooperative team player. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment.</li>
+	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish effective solutions efficiently and in an amenable manner.</li>
+	<li>Ability to organize, prioritize, and manage many tasks on complex projects. Experience with Jira or other project management solutions is desired.</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
