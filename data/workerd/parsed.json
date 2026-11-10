@@ -1309,6 +1309,11 @@
 					"name": "defaults",
 					"annotations": {},
 					"type": "workerd/src/workerd/io/bench.capnp:CaseOptions"
+				},
+				{
+					"name": "skipStartup",
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -1384,6 +1389,11 @@
 					"name": "overhead",
 					"annotations": {},
 					"type": "workerd/src/workerd/io/bench.capnp:BenchReport.Overhead"
+				},
+				{
+					"name": "startup",
+					"annotations": {},
+					"type": "Bool"
 				}
 			]
 		},
@@ -1667,6 +1677,43 @@
 					"name": "stackTrace",
 					"annotations": {},
 					"type": "workerd/src/workerd/io/cdp.capnp:Runtime.StackTrace"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.Command",
+			"fields": []
+		},
+		{
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.Command.GetHeapUsage",
+			"fields": []
+		},
+		{
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.Command.GetHeapUsage.Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.Command.GetHeapUsage.Result",
+			"fields": [
+				{
+					"name": "usedSize",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "totalSize",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "embedderHeapUsedSize",
+					"annotations": {},
+					"type": "Float64"
+				},
+				{
+					"name": "backingStorageSize",
+					"annotations": {},
+					"type": "Float64"
 				}
 			]
 		},
@@ -2653,6 +2700,13 @@
 					"name": "takeHeapSnapshot",
 					"annotations": {
 						"name": "HeapProfiler.takeHeapSnapshot"
+					},
+					"type": "workerd/src/workerd/io/cdp.capnp:Method"
+				},
+				{
+					"name": "runtimeGetHeapUsage",
+					"annotations": {
+						"name": "Runtime.getHeapUsage"
 					},
 					"type": "workerd/src/workerd/io/cdp.capnp:Method"
 				}
@@ -8402,6 +8456,11 @@
 				},
 				{
 					"name": "stopTimeoutMs",
+					"annotations": {},
+					"type": "UInt32"
+				},
+				{
+					"name": "unsafeTimeDivisor",
 					"annotations": {},
 					"type": "UInt32"
 				}
