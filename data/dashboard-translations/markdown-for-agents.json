@@ -75,7 +75,8 @@
 	"markdown-for-agents.logs.errorCodeLabel": "Failure reason",
 	"markdown-for-agents.logs.allErrorCodes": "All failure reasons",
 	"markdown-for-agents.logs.contentLimitLabel": "Content limit",
-	"markdown-for-agents.logs.allContentLimits": "All content limits",
+	"markdown-for-agents.logs.noContentLimitFilter": "No limit filter",
+	"markdown-for-agents.logs.contentLimitsSelected": "%{smart_count} content limit |||| %{smart_count} content limits",
 	"markdown-for-agents.logs.clearFilters": "Clear filters",
 	"markdown-for-agents.logs.tableLabel": "Markdown for Agents conversion logs",
 	"markdown-for-agents.logs.columns.time": "Time",
@@ -142,10 +143,10 @@
 	"markdown-for-agents.playground.metrics.reductionTooltip": "How much smaller the Markdown response is than the HTML response.",
 	"markdown-for-agents.playground.output.markdown": "Markdown",
 	"markdown-for-agents.playground.output.preview": "Preview",
-	"markdown-for-agents.playground.output.headers": "Headers",
+	"markdown-for-agents.playground.output.frontMatter": "Front matter",
+	"markdown-for-agents.playground.output.imageLink": "Image: %{name}",
 	"markdown-for-agents.playground.output.httpStatus": "HTTP %{status}",
 	"markdown-for-agents.playground.output.truncated": "Showing the first %{size} of the response. Run the command above to see the full response.",
 	"markdown-for-agents.playground.output.bodyTruncated": "The response is larger than the playground reads, so only its first %{size} were read. Token counts cover only that part, and the token reduction isn’t shown.",
-	"markdown-for-agents.playground.output.htmlTruncated": "The HTML response is larger than the playground reads, so only its first %{size} were counted and the token reduction isn’t shown.",
-	"markdown-for-agents.playground.output.headersLabel": "Response headers"
+	"markdown-for-agents.playground.output.htmlTruncated": "The HTML response is larger than the playground reads, so only its first %{size} were counted and the token reduction isn’t shown."
 }
