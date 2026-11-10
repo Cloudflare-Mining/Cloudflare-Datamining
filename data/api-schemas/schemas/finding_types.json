@@ -697,8 +697,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types": {
 		"operationId": "ListFindingTypes",
@@ -3644,8 +3643,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/data-security/posture/finding_types/validate": {
 		"operationId": "ValidateFindingType",
@@ -4510,8 +4508,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
-		"x-fern-sdk-method-name": "validate",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "validate"
 	},
 	"PUT /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}": {
 		"operationId": "UpdateFindingType",
@@ -5835,7 +5832,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
-		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "update"
 	}
 }

@@ -270,7 +270,8 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.tokens",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation deletes the build token. Builds that use it will fail to deploy."
 	},
 	"GET /accounts/{account_id}/builds/tokens": {
 		"operationId": "listBuildTokens",

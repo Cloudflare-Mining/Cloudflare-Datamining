@@ -349,7 +349,7 @@
 																	"external_script_id": {
 																		"description": "System-generated tag of the Worker. This is not the Worker name.",
 																		"type": "string",
-																		"example": "dd7160bb9cef458093557736f4b9e75b"
+																		"example": "0123456789abcdef0123456789abcdef"
 																	},
 																	"modified_on": {
 																		"type": "string",
@@ -566,6 +566,7 @@
 				}
 			},
 			{
+				"description": "UUID of the build, as returned by builds list.",
 				"in": "path",
 				"name": "build_uuid",
 				"required": true,
@@ -895,7 +896,7 @@
 														"external_script_id": {
 															"description": "System-generated tag of the Worker. This is not the Worker name.",
 															"type": "string",
-															"example": "dd7160bb9cef458093557736f4b9e75b"
+															"example": "0123456789abcdef0123456789abcdef"
 														},
 														"modified_on": {
 															"type": "string",
@@ -1176,6 +1177,7 @@
 				}
 			},
 			{
+				"description": "UUID of the build, as returned by builds list.",
 				"in": "path",
 				"name": "build_uuid",
 				"required": true,
@@ -1479,8 +1481,8 @@
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "builds.logs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "builds",
+		"x-fern-sdk-method-name": "logs"
 	},
 	"GET /accounts/{account_id}/builds/builds/latest": {
 		"operationId": "getLatestBuildsByScripts",
@@ -1504,7 +1506,7 @@
 				"schema": {
 					"description": "Comma-separated list of system-generated worker script tags (max 20).",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b,42fb14fe81df47139d3be684e4c637a6,ff7cf9a7582f4c0d90a4b95cb17d659e"
+					"example": "0123456789abcdef0123456789abcdef"
 				}
 			}
 		],
@@ -1832,7 +1834,7 @@
 																	"external_script_id": {
 																		"description": "System-generated tag of the Worker. This is not the Worker name.",
 																		"type": "string",
-																		"example": "dd7160bb9cef458093557736f4b9e75b"
+																		"example": "0123456789abcdef0123456789abcdef"
 																	},
 																	"modified_on": {
 																		"type": "string",
@@ -2050,6 +2052,7 @@
 				}
 			},
 			{
+				"description": "UUID of the build, as returned by builds list.",
 				"in": "path",
 				"name": "build_uuid",
 				"required": true,

@@ -388,7 +388,7 @@
 	"GET /accounts/{account_id}/containers/usage": {
 		"operationId": "getUsage",
 		"summary": "Get live account usage",
-		"description": "Get current live resource usage and maximum account limits for the authenticated Cloudchamber account. Usage includes active and assigned instances.",
+		"description": "Get current live resource usage and maximum limits for your account. Usage includes active and assigned instances.",
 		"responses": {
 			"200": {
 				"description": "Returns live account usage and maximum limits.",
@@ -478,7 +478,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Current live usage, maximum limits, and utilization percentages for a Cloudchamber account. Usage includes active and assigned instances and is a current snapshot, not a historical or billable metric.",
+											"description": "Current live usage, maximum limits, and utilization percentages for your account. Usage includes active and assigned instances and is a current snapshot, not a historical or billable metric.",
 											"type": "object",
 											"properties": {
 												"maximum": {

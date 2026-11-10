@@ -268,6 +268,9 @@
 		"x-api-token-group": [
 			"Workers CI Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
 		"x-fern-sdk-method-name": "delete",
@@ -529,7 +532,7 @@
 												"external_script_id": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												},
 												"modified_on": {
 													"type": "string",
@@ -787,6 +790,9 @@
 		"x-api-token-group": [
 			"Workers CI Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
 		"x-fern-sdk-method-name": "update"
@@ -856,7 +862,7 @@
 							"external_script_id": {
 								"description": "System-generated tag of the Worker. This is not the Worker name.",
 								"type": "string",
-								"example": "dd7160bb9cef458093557736f4b9e75b"
+								"example": "0123456789abcdef0123456789abcdef"
 							},
 							"path_excludes": {
 								"description": "Path patterns that must not start builds.",
@@ -1060,7 +1066,7 @@
 												"external_script_id": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												},
 												"modified_on": {
 													"type": "string",
@@ -1250,6 +1256,9 @@
 		],
 		"x-api-token-group": [
 			"Workers CI Write"
+		],
+		"x-fern-audiences": [
+			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
@@ -1723,7 +1732,7 @@
 														"external_script_id": {
 															"description": "System-generated tag of the Worker. This is not the Worker name.",
 															"type": "string",
-															"example": "dd7160bb9cef458093557736f4b9e75b"
+															"example": "0123456789abcdef0123456789abcdef"
 														},
 														"modified_on": {
 															"type": "string",
@@ -1916,9 +1925,12 @@
 		"x-api-token-group": [
 			"Workers CI Write"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "builds",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-group-name": "builds.triggers",
+		"x-fern-sdk-method-name": "create-build"
 	},
 	"POST /accounts/{account_id}/builds/triggers/{trigger_uuid}/purge_build_cache": {
 		"operationId": "purgeBuildCache",
@@ -2188,6 +2200,9 @@
 		],
 		"x-api-token-group": [
 			"Workers CI Write"
+		],
+		"x-fern-audiences": [
+			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers.cache",

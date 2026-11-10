@@ -15,18 +15,18 @@
 				}
 			},
 			{
-				"description": "Human-readable name of the worker.",
+				"description": "Name or script tag of the Worker.",
 				"in": "path",
 				"name": "script_name",
 				"required": true,
 				"schema": {
-					"description": "Human-readable name of the Worker.",
 					"type": "string",
 					"example": "my-worker"
-				}
+				},
+				"x-fern-parameter-name": "worker"
 			},
 			{
-				"description": "Deploy hook UUID",
+				"description": "UUID of the deploy hook, as returned by deploy-hooks list.",
 				"in": "path",
 				"name": "deploy_hook_uuid",
 				"required": true,
@@ -152,7 +152,7 @@
 												"external_script_id": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												},
 												"modified_on": {
 													"type": "string",
@@ -320,7 +320,8 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.deploy-hooks",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation deletes the deploy hook. Requests to its URL will no longer start builds."
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks": {
 		"operationId": "listDeployHooks",
@@ -338,15 +339,15 @@
 				}
 			},
 			{
-				"description": "Human-readable name of the worker.",
+				"description": "Name or script tag of the Worker.",
 				"in": "path",
 				"name": "script_name",
 				"required": true,
 				"schema": {
-					"description": "Human-readable name of the Worker.",
 					"type": "string",
 					"example": "my-worker"
-				}
+				},
+				"x-fern-parameter-name": "worker"
 			}
 		],
 		"responses": {
@@ -466,7 +467,7 @@
 													"external_script_id": {
 														"description": "System-generated tag of the Worker. This is not the Worker name.",
 														"type": "string",
-														"example": "dd7160bb9cef458093557736f4b9e75b"
+														"example": "0123456789abcdef0123456789abcdef"
 													},
 													"latest_build": {
 														"type": "object",
@@ -597,18 +598,18 @@
 				}
 			},
 			{
-				"description": "Human-readable name of the worker.",
+				"description": "Name or script tag of the Worker.",
 				"in": "path",
 				"name": "script_name",
 				"required": true,
 				"schema": {
-					"description": "Human-readable name of the Worker.",
 					"type": "string",
 					"example": "my-worker"
-				}
+				},
+				"x-fern-parameter-name": "worker"
 			},
 			{
-				"description": "Deploy hook UUID",
+				"description": "UUID of the deploy hook, as returned by deploy-hooks list.",
 				"in": "path",
 				"name": "deploy_hook_uuid",
 				"required": true,
@@ -734,7 +735,7 @@
 												"external_script_id": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												},
 												"modified_on": {
 													"type": "string",
@@ -921,15 +922,15 @@
 				}
 			},
 			{
-				"description": "Human-readable name of the worker.",
+				"description": "Name or script tag of the Worker.",
 				"in": "path",
 				"name": "script_name",
 				"required": true,
 				"schema": {
-					"description": "Human-readable name of the Worker.",
 					"type": "string",
 					"example": "my-worker"
-				}
+				},
+				"x-fern-parameter-name": "worker"
 			}
 		],
 		"requestBody": {
@@ -1075,7 +1076,7 @@
 												"external_script_id": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												},
 												"modified_on": {
 													"type": "string",
@@ -1385,7 +1386,7 @@
 		"description": "Trigger a build using a deploy hook. This endpoint does not require authentication - the deploy_hook_uuid acts as a secret token.",
 		"parameters": [
 			{
-				"description": "Deploy hook UUID",
+				"description": "UUID of the deploy hook, as returned by deploy-hooks list.",
 				"in": "path",
 				"name": "deploy_hook_uuid",
 				"required": true,
@@ -1665,6 +1666,9 @@
 		"tags": [
 			"Deploy Hooks"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.deploy-hooks",
 		"x-fern-sdk-method-name": "trigger"
@@ -1685,18 +1689,18 @@
 				}
 			},
 			{
-				"description": "Human-readable name of the worker.",
+				"description": "Name or script tag of the Worker.",
 				"in": "path",
 				"name": "script_name",
 				"required": true,
 				"schema": {
-					"description": "Human-readable name of the Worker.",
 					"type": "string",
 					"example": "my-worker"
-				}
+				},
+				"x-fern-parameter-name": "worker"
 			},
 			{
-				"description": "Deploy hook UUID",
+				"description": "UUID of the deploy hook, as returned by deploy-hooks list.",
 				"in": "path",
 				"name": "deploy_hook_uuid",
 				"required": true,
@@ -1850,7 +1854,7 @@
 												"external_script_id": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												},
 												"modified_on": {
 													"type": "string",

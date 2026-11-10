@@ -928,14 +928,6 @@
 													"format": "date-time",
 													"example": "2014-01-02T02:20:00Z"
 												},
-												"key": {
-													"description": "Bearer token",
-													"type": "string",
-													"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
-													"maxLength": 64,
-													"minLength": 64,
-													"x-sensitive": true
-												},
 												"modified": {
 													"description": "The date and time the item was last modified.",
 													"type": "string",
@@ -949,6 +941,19 @@
 													"default": "",
 													"x-auditable": true
 												},
+												"secret": {
+													"description": "Bearer token",
+													"type": "string",
+													"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
+													"maxLength": 64,
+													"minLength": 64,
+													"x-sensitive": true,
+													"x-stainless-naming": {
+														"terraform": {
+															"property_name": "key"
+														}
+													}
+												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a item.",
 													"type": "string",
@@ -961,7 +966,7 @@
 											"required": [
 												"uid",
 												"name",
-												"key",
+												"secret",
 												"created",
 												"modified"
 											]

@@ -15,15 +15,15 @@
 				}
 			},
 			{
-				"description": "The Worker script tag (external script ID)",
+				"description": "Script tag of the Worker.",
 				"in": "path",
 				"name": "script_tag",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
 			}
 		],
 		"responses": {
@@ -1036,7 +1036,7 @@
 	"GET /accounts/{account_id}/builds/workers/{external_script_id}/builds": {
 		"operationId": "listBuildsByScript",
 		"summary": "List builds for a Worker",
-		"description": "List paginated build records associated with a Worker tag.",
+		"description": "List paginated build records associated with a Worker.",
 		"parameters": [
 			{
 				"in": "path",
@@ -1051,12 +1051,13 @@
 			{
 				"name": "external_script_id",
 				"in": "path",
+				"description": "Script tag of the Worker.",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
 			},
 			{
 				"description": "Page number for pagination",
@@ -1401,7 +1402,7 @@
 															"external_script_id": {
 																"description": "System-generated tag of the Worker. This is not the Worker name.",
 																"type": "string",
-																"example": "dd7160bb9cef458093557736f4b9e75b"
+																"example": "0123456789abcdef0123456789abcdef"
 															},
 															"modified_on": {
 																"type": "string",
@@ -1647,7 +1648,7 @@
 				"schema": {
 					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
+					"example": "0123456789abcdef0123456789abcdef"
 				}
 			}
 		],
@@ -1799,7 +1800,7 @@
 													"external_script_id": {
 														"description": "System-generated tag of the Worker. This is not the Worker name.",
 														"type": "string",
-														"example": "dd7160bb9cef458093557736f4b9e75b"
+														"example": "0123456789abcdef0123456789abcdef"
 													},
 													"modified_on": {
 														"type": "string",
@@ -1992,6 +1993,9 @@
 			"Workers CI Write",
 			"Workers CI Read"
 		],
+		"x-fern-audiences": [
+			"sdk"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
 		"x-fern-sdk-method-name": "list"
@@ -2012,15 +2016,15 @@
 				}
 			},
 			{
-				"description": "The Worker script tag (external script ID)",
+				"description": "Script tag of the Worker.",
 				"in": "path",
 				"name": "script_tag",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
 			}
 		],
 		"responses": {
@@ -2370,7 +2374,7 @@
 												"script_tag": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												}
 											}
 										}
@@ -2553,15 +2557,15 @@
 				}
 			},
 			{
-				"description": "The Worker script tag (external script ID)",
+				"description": "Script tag of the Worker.",
 				"in": "path",
 				"name": "script_tag",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
 			},
 			{
 				"description": "Page number for pagination",
@@ -2697,7 +2701,7 @@
 													"preview_id": {
 														"description": "System-generated tag of the Worker. This is not the Worker name.",
 														"type": "string",
-														"example": "dd7160bb9cef458093557736f4b9e75b"
+														"example": "0123456789abcdef0123456789abcdef"
 													}
 												}
 											}
@@ -2820,7 +2824,7 @@
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.workers.previews",
+		"x-fern-sdk-group-name": "builds.previews",
 		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_tag}/previews/{preview_id}": {
@@ -2839,26 +2843,26 @@
 				}
 			},
 			{
-				"description": "The Worker script tag (external script ID)",
+				"description": "Script tag of the Worker.",
 				"in": "path",
 				"name": "script_tag",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
 			},
 			{
-				"description": "The script tag of the Preview, which is a Worker in its own right",
+				"description": "ID of the Preview.",
 				"in": "path",
 				"name": "preview_id",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "preview"
 			}
 		],
 		"responses": {
@@ -2971,7 +2975,7 @@
 												"preview_id": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												},
 												"settings": {
 													"description": "Build and deploy settings for a Worker script environment",
@@ -3234,7 +3238,7 @@
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.workers.previews",
+		"x-fern-sdk-group-name": "builds.previews",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_tag}/previews/{preview_id}/builds": {
@@ -3253,26 +3257,26 @@
 				}
 			},
 			{
-				"description": "The Worker script tag (external script ID)",
+				"description": "Script tag of the Worker.",
 				"in": "path",
 				"name": "script_tag",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
 			},
 			{
-				"description": "The script tag of the Preview, which is a Worker in its own right",
+				"description": "ID of the Preview.",
 				"in": "path",
 				"name": "preview_id",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "preview"
 			},
 			{
 				"description": "Page number for pagination",
@@ -3617,7 +3621,7 @@
 															"external_script_id": {
 																"description": "System-generated tag of the Worker. This is not the Worker name.",
 																"type": "string",
-																"example": "dd7160bb9cef458093557736f4b9e75b"
+																"example": "0123456789abcdef0123456789abcdef"
 															},
 															"modified_on": {
 																"type": "string",
@@ -3905,7 +3909,7 @@
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.workers.previews",
+		"x-fern-sdk-group-name": "builds.previews",
 		"x-fern-sdk-method-name": "list-builds"
 	},
 	"GET /accounts/{account_id}/workers/workers": {
@@ -6854,15 +6858,15 @@
 				}
 			},
 			{
-				"description": "The Worker script tag (external script ID)",
+				"description": "Script tag of the Worker.",
 				"in": "path",
 				"name": "script_tag",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
 			},
 			{
 				"name": "patch_existing_previews",
@@ -7424,7 +7428,7 @@
 												"script_tag": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												}
 											}
 										}
@@ -7673,26 +7677,26 @@
 				}
 			},
 			{
-				"description": "The Worker script tag (external script ID)",
+				"description": "Script tag of the Worker.",
 				"in": "path",
 				"name": "script_tag",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
 			},
 			{
-				"description": "The script tag of the Preview, which is a Worker in its own right",
+				"description": "ID of the Preview.",
 				"in": "path",
 				"name": "preview_id",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "preview"
 			}
 		],
 		"requestBody": {
@@ -7922,7 +7926,7 @@
 												"preview_id": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												},
 												"settings": {
 													"description": "Build and deploy settings for a Worker script environment",
@@ -8318,8 +8322,8 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.workers.previews",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-group-name": "builds.previews",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/workers/workers/{worker_id}": {
 		"operationId": "editWorker",
@@ -12645,7 +12649,7 @@
 							"script_tag": {
 								"description": "System-generated tag of the Worker. This is not the Worker name.",
 								"type": "string",
-								"example": "dd7160bb9cef458093557736f4b9e75b"
+								"example": "0123456789abcdef0123456789abcdef"
 							}
 						},
 						"required": [
@@ -13006,7 +13010,7 @@
 												"script_tag": {
 													"description": "System-generated tag of the Worker. This is not the Worker name.",
 													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
+													"example": "0123456789abcdef0123456789abcdef"
 												}
 											}
 										}
@@ -13304,12 +13308,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.workers",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-params": {
+			"script_tag": {
+				"description": "Script tag of the Worker.",
+				"positional": true
+			}
+		}
 	},
-	"POST /accounts/{account_id}/builds/workers/{script_tag}/migrate_to_previews": {
-		"operationId": "migrateWorkerToPreviews",
-		"summary": "Migrate worker to previews",
-		"description": "Migrate a Worker's legacy non-production trigger to Previews. The legacy build settings become the Previews base config and the legacy trigger is removed.",
+	"POST /accounts/{account_id}/builds/workers/{external_script_id}/builds": {
+		"operationId": "createBuildByScript",
+		"summary": "Start a Worker build",
+		"description": "Start a production build for a branch or commit.",
 		"parameters": [
 			{
 				"in": "path",
@@ -13322,652 +13332,15 @@
 				}
 			},
 			{
-				"description": "The Worker script tag (external script ID)",
+				"name": "external_script_id",
 				"in": "path",
-				"name": "script_tag",
+				"description": "Script tag of the Worker.",
 				"required": true,
 				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
 					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
-			}
-		],
-		"requestBody": {
-			"required": true,
-			"content": {
-				"application/json": {
-					"example": {},
-					"schema": {
-						"description": "Request body for migrating a Worker's legacy non-production trigger to Previews.",
-						"type": "object",
-						"properties": {
-							"deploy_command": {
-								"description": "Deploy command for the migrated Preview settings. Omit it to have the existing 'wrangler versions upload' command rewritten to 'wrangler preview' automatically, which fails with 400 when the existing command cannot be rewritten.",
-								"type": "string",
-								"example": "npx wrangler preview"
-							}
-						}
-					}
-				}
-			}
-		},
-		"responses": {
-			"200": {
-				"description": "Worker migrated to Previews successfully",
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "integer",
-														"example": 12000
-													},
-													"message": {
-														"type": "string",
-														"example": "Not found"
-													}
-												},
-												"required": [
-													"message"
-												]
-											}
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"type": "string"
-											}
-										},
-										"result": {
-											"oneOf": [
-												{
-													"nullable": true,
-													"type": "object"
-												},
-												{
-													"items": {
-														"type": "object"
-													},
-													"type": "array"
-												}
-											]
-										},
-										"result_info": {
-											"type": "object",
-											"properties": {
-												"count": {
-													"type": "integer",
-													"example": 25
-												},
-												"page": {
-													"type": "integer",
-													"example": 1
-												},
-												"per_page": {
-													"type": "integer",
-													"example": 50
-												},
-												"total_count": {
-													"type": "integer",
-													"example": 150
-												},
-												"total_pages": {
-													"type": "integer",
-													"example": 3
-												}
-											}
-										},
-										"success": {
-											"type": "boolean",
-											"example": true
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									]
-								},
-								{
-									"properties": {
-										"result": {
-											"description": "Worker build configuration including git repository linkage, production settings, and Preview settings",
-											"type": "object",
-											"properties": {
-												"git_repository": {
-													"description": "Git repository details linked to a Worker script build configuration",
-													"type": "object",
-													"properties": {
-														"branch": {
-															"description": "Git branch to watch for builds",
-															"type": "string",
-															"example": "main",
-															"maxLength": 256,
-															"minLength": 1
-														},
-														"grant_id": {
-															"description": "Internal grant ID for GitLab internal integrations",
-															"type": "string",
-															"nullable": true
-														},
-														"provider_account_id": {
-															"description": "Provider-specific identifier of the account or namespace that owns the repository.",
-															"type": "string",
-															"example": "cloudflare"
-														},
-														"provider_account_name": {
-															"description": "Human-readable name of the account or namespace that owns the repository.",
-															"type": "string",
-															"example": "Cloudflare"
-														},
-														"provider_type": {
-															"description": "Source control provider.",
-															"type": "string",
-															"example": "github",
-															"enum": [
-																"github",
-																"gitlab",
-																"gitlab_internal",
-																"origin"
-															]
-														},
-														"repo_id": {
-															"description": "Provider-specific repository identifier.",
-															"type": "string",
-															"example": "workers-sdk"
-														},
-														"repo_name": {
-															"description": "Human-readable repository name.",
-															"type": "string",
-															"example": "workers-sdk"
-														}
-													}
-												},
-												"previews_base_config": {
-													"description": "Build and deploy settings for a Worker script environment",
-													"type": "object",
-													"properties": {
-														"build_caching_enabled": {
-															"description": "Whether builds reuse cached dependencies and build artifacts.",
-															"type": "boolean",
-															"example": false,
-															"default": false
-														},
-														"build_command": {
-															"description": "Command to build the Worker.",
-															"type": "string",
-															"example": "npm run build"
-														},
-														"build_token_uuid": {
-															"description": "UUID of the build token used when deploying the Worker.",
-															"type": "string",
-															"format": "uuid"
-														},
-														"deploy_command": {
-															"description": "Command to deploy the Worker.",
-															"type": "string",
-															"example": "npx wrangler deploy"
-														},
-														"environment_variables": {
-															"type": "object",
-															"example": {
-																"API_KEY": {
-																	"created_on": "2023-01-01T00:00:00Z",
-																	"is_secret": true,
-																	"value": null
-																},
-																"NODE_ENV": {
-																	"created_on": "2023-01-01T00:00:00Z",
-																	"is_secret": false,
-																	"value": "production"
-																}
-															},
-															"additionalProperties": {
-																"properties": {
-																	"created_on": {
-																		"type": "string",
-																		"format": "date-time"
-																	},
-																	"is_secret": {
-																		"description": "Whether to hide the value after it is saved. Secret values remain available to builds but appear as `null` when you list variables; non-secret values remain visible.",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"value": {
-																		"description": "Value is null for secret environment variables",
-																		"type": "string",
-																		"nullable": true
-																	}
-																},
-																"required": [
-																	"is_secret",
-																	"created_on"
-																],
-																"type": "object"
-															}
-														},
-														"path_excludes": {
-															"description": "Path patterns that must not start builds.",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"*.md"
-															]
-														},
-														"path_includes": {
-															"description": "Path patterns that can start builds.",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"*"
-															],
-															"default": [
-																"*"
-															]
-														},
-														"proposed_deploy_command": {
-															"description": "Deploy command proposed for migrating this Worker to Previews. Only returned on previews_base_config, and only while the Worker still has a legacy non-production trigger to migrate. Null when the existing deploy command cannot be rewritten automatically, in which case migrate_to_previews needs an explicit deploy_command.",
-															"type": "string",
-															"example": "npx wrangler preview",
-															"nullable": true
-														},
-														"root_directory": {
-															"description": "Repository directory in which build and deploy commands run.",
-															"type": "string",
-															"example": "/"
-														}
-													}
-												},
-												"previews_enabled": {
-													"description": "Whether Previews are enabled for this Worker",
-													"type": "boolean",
-													"example": false
-												},
-												"production_settings": {
-													"description": "Build and deploy settings for a Worker script environment",
-													"type": "object",
-													"properties": {
-														"build_caching_enabled": {
-															"description": "Whether builds reuse cached dependencies and build artifacts.",
-															"type": "boolean",
-															"example": false,
-															"default": false
-														},
-														"build_command": {
-															"description": "Command to build the Worker.",
-															"type": "string",
-															"example": "npm run build"
-														},
-														"build_token_uuid": {
-															"description": "UUID of the build token used when deploying the Worker.",
-															"type": "string",
-															"format": "uuid"
-														},
-														"deploy_command": {
-															"description": "Command to deploy the Worker.",
-															"type": "string",
-															"example": "npx wrangler deploy"
-														},
-														"environment_variables": {
-															"type": "object",
-															"example": {
-																"API_KEY": {
-																	"created_on": "2023-01-01T00:00:00Z",
-																	"is_secret": true,
-																	"value": null
-																},
-																"NODE_ENV": {
-																	"created_on": "2023-01-01T00:00:00Z",
-																	"is_secret": false,
-																	"value": "production"
-																}
-															},
-															"additionalProperties": {
-																"properties": {
-																	"created_on": {
-																		"type": "string",
-																		"format": "date-time"
-																	},
-																	"is_secret": {
-																		"description": "Whether to hide the value after it is saved. Secret values remain available to builds but appear as `null` when you list variables; non-secret values remain visible.",
-																		"type": "boolean",
-																		"example": false
-																	},
-																	"value": {
-																		"description": "Value is null for secret environment variables",
-																		"type": "string",
-																		"nullable": true
-																	}
-																},
-																"required": [
-																	"is_secret",
-																	"created_on"
-																],
-																"type": "object"
-															}
-														},
-														"path_excludes": {
-															"description": "Path patterns that must not start builds.",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"*.md"
-															]
-														},
-														"path_includes": {
-															"description": "Path patterns that can start builds.",
-															"type": "array",
-															"items": {
-																"type": "string"
-															},
-															"example": [
-																"*"
-															],
-															"default": [
-																"*"
-															]
-														},
-														"proposed_deploy_command": {
-															"description": "Deploy command proposed for migrating this Worker to Previews. Only returned on previews_base_config, and only while the Worker still has a legacy non-production trigger to migrate. Null when the existing deploy command cannot be rewritten automatically, in which case migrate_to_previews needs an explicit deploy_command.",
-															"type": "string",
-															"example": "npx wrangler preview",
-															"nullable": true
-														},
-														"root_directory": {
-															"description": "Repository directory in which build and deploy commands run.",
-															"type": "string",
-															"example": "/"
-														}
-													}
-												},
-												"script_tag": {
-													"description": "System-generated tag of the Worker. This is not the Worker name.",
-													"type": "string",
-													"example": "dd7160bb9cef458093557736f4b9e75b"
-												}
-											}
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				}
-			},
-			"400": {
-				"description": "Invalid request",
-				"content": {
-					"application/json": {
-						"schema": {
-							"example": {
-								"errors": [
-									{
-										"code": 12002,
-										"message": "Invalid request body"
-									}
-								],
-								"messages": [],
-								"result": null,
-								"success": false
-							},
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "integer",
-														"example": 12000
-													},
-													"message": {
-														"type": "string",
-														"example": "Not found"
-													}
-												},
-												"required": [
-													"message"
-												]
-											}
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"type": "string"
-											},
-											"example": []
-										},
-										"result": {
-											"type": "object",
-											"nullable": true
-										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									]
-								}
-							]
-						}
-					}
-				}
-			},
-			"401": {
-				"description": "Authentication required",
-				"content": {
-					"application/json": {
-						"schema": {
-							"example": {
-								"errors": [
-									{
-										"code": 12005,
-										"message": "Missing token from authorization header"
-									}
-								],
-								"messages": [],
-								"result": null,
-								"success": false
-							},
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "integer",
-														"example": 12000
-													},
-													"message": {
-														"type": "string",
-														"example": "Not found"
-													}
-												},
-												"required": [
-													"message"
-												]
-											}
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"type": "string"
-											},
-											"example": []
-										},
-										"result": {
-											"type": "object",
-											"nullable": true
-										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									]
-								}
-							]
-						}
-					}
-				}
-			},
-			"404": {
-				"description": "Resource not found",
-				"content": {
-					"application/json": {
-						"schema": {
-							"example": {
-								"errors": [
-									{
-										"code": 12000,
-										"message": "Not found"
-									}
-								],
-								"messages": [],
-								"result": null,
-								"success": false
-							},
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "integer",
-														"example": 12000
-													},
-													"message": {
-														"type": "string",
-														"example": "Not found"
-													}
-												},
-												"required": [
-													"message"
-												]
-											}
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"type": "string"
-											},
-											"example": []
-										},
-										"result": {
-											"type": "object",
-											"nullable": true
-										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									]
-								}
-							]
-						}
-					}
-				}
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"tags": [
-			"Workers"
-		],
-		"x-api-token-group": [
-			"Workers CI Write"
-		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.workers",
-		"x-fern-sdk-method-name": "migrate-to-previews"
-	},
-	"POST /accounts/{account_id}/builds/workers/{script_tag}/previews/{preview_id}/builds": {
-		"operationId": "createPreviewBuild",
-		"summary": "Create preview build",
-		"description": "Trigger a build for a single Preview.",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account identifier.",
-					"type": "string",
-					"example": "account-123"
-				}
-			},
-			{
-				"description": "The Worker script tag (external script ID)",
-				"in": "path",
-				"name": "script_tag",
-				"required": true,
-				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
-					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
-			},
-			{
-				"description": "The script tag of the Preview, which is a Worker in its own right",
-				"in": "path",
-				"name": "preview_id",
-				"required": true,
-				"schema": {
-					"description": "System-generated tag of the Worker. This is not the Worker name.",
-					"type": "string",
-					"example": "dd7160bb9cef458093557736f4b9e75b"
-				}
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
 			}
 		],
 		"requestBody": {
@@ -14412,7 +13785,7 @@
 														"external_script_id": {
 															"description": "System-generated tag of the Worker. This is not the Worker name.",
 															"type": "string",
-															"example": "dd7160bb9cef458093557736f4b9e75b"
+															"example": "0123456789abcdef0123456789abcdef"
 														},
 														"modified_on": {
 															"type": "string",
@@ -14740,8 +14113,2409 @@
 			"Workers CI Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "workers-builds.workers.previews",
+		"x-fern-sdk-group-name": "builds",
+		"x-fern-sdk-method-name": "create"
+	},
+	"POST /accounts/{account_id}/builds/workers/{script_tag}/builds/{build_uuid}/retry": {
+		"operationId": "retryWorkerBuild",
+		"summary": "Retry a Worker build",
+		"description": "Start a new build from the branch and commit of a stopped build.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string",
+					"example": "account-123"
+				}
+			},
+			{
+				"description": "Script tag of the Worker.",
+				"in": "path",
+				"name": "script_tag",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
+			},
+			{
+				"description": "UUID of the build, as returned by builds list.",
+				"in": "path",
+				"name": "build_uuid",
+				"required": true,
+				"schema": {
+					"description": "Build UUID.",
+					"type": "string",
+					"format": "uuid"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Build created successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"type": "integer",
+													"example": 25
+												},
+												"page": {
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"type": "integer",
+													"example": 50
+												},
+												"total_count": {
+													"type": "integer",
+													"example": 150
+												},
+												"total_pages": {
+													"type": "integer",
+													"example": 3
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"build_outcome": {
+													"type": "string",
+													"allOf": [
+														{
+															"type": "string",
+															"example": "success",
+															"enum": [
+																"success",
+																"fail",
+																"skipped",
+																"cancelled",
+																"terminated"
+															]
+														}
+													],
+													"nullable": true
+												},
+												"build_trigger_metadata": {
+													"type": "object",
+													"properties": {
+														"author": {
+															"type": "string",
+															"example": "developer@cloudflare.com"
+														},
+														"branch": {
+															"description": "Git branch name.",
+															"type": "string",
+															"example": "main"
+														},
+														"build_command": {
+															"description": "Command to build the Worker.",
+															"type": "string",
+															"example": "npm run build"
+														},
+														"build_token_name": {
+															"type": "string",
+															"example": "My Build Token"
+														},
+														"build_token_uuid": {
+															"description": "UUID of the build token used when deploying the Worker.",
+															"type": "string",
+															"format": "uuid"
+														},
+														"build_trigger_source": {
+															"type": "string",
+															"example": "push",
+															"enum": [
+																"push",
+																"pull_request",
+																"manual",
+																"api"
+															]
+														},
+														"commit_hash": {
+															"description": "Git commit hash",
+															"type": "string",
+															"example": "abc123def456"
+														},
+														"commit_message": {
+															"type": "string",
+															"example": "Add new feature"
+														},
+														"deploy_command": {
+															"description": "Command to deploy the Worker.",
+															"type": "string",
+															"example": "npx wrangler deploy"
+														},
+														"environment_variables": {
+															"type": "object",
+															"additionalProperties": {
+																"type": "string"
+															}
+														},
+														"provider_account_name": {
+															"description": "Human-readable name of the account or namespace that owns the repository.",
+															"type": "string",
+															"example": "Cloudflare"
+														},
+														"provider_type": {
+															"description": "Source control provider.",
+															"type": "string",
+															"example": "github",
+															"enum": [
+																"github",
+																"gitlab",
+																"gitlab_internal",
+																"origin"
+															]
+														},
+														"repo_name": {
+															"description": "Human-readable repository name.",
+															"type": "string",
+															"example": "workers-sdk"
+														},
+														"root_directory": {
+															"description": "Repository directory in which build and deploy commands run.",
+															"type": "string",
+															"example": "/"
+														}
+													}
+												},
+												"build_uuid": {
+													"description": "Build UUID.",
+													"type": "string",
+													"format": "uuid"
+												},
+												"created_on": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"deploy_hook": {
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"deploy_hook_name": {
+															"description": "Deploy hook name (1-58 characters).",
+															"type": "string",
+															"example": "Production Deploy Hook",
+															"maxLength": 58,
+															"minLength": 1
+														}
+													}
+												},
+												"initializing_on": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"modified_on": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"preview_url": {
+													"description": "URL serving the Worker version this build deployed. Only returned by Get build by UUID, and only once the build has produced a preview artifact.",
+													"type": "string",
+													"format": "uri",
+													"example": "https://abc123-my-worker.my-subdomain.workers.dev"
+												},
+												"pull_request": {
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"closed_on": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true
+														},
+														"created_on": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"pull_request_url": {
+															"type": "string",
+															"format": "uri",
+															"example": "https://github.com/cloudflare/workers-sdk/pull/123"
+														}
+													}
+												},
+												"running_on": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"status": {
+													"type": "string",
+													"example": "running",
+													"enum": [
+														"queued",
+														"initializing",
+														"running",
+														"stopped"
+													]
+												},
+												"stopped_on": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"trigger": {
+													"description": "Trigger information without build_token_uuid",
+													"type": "object",
+													"properties": {
+														"branch_excludes": {
+															"description": "Branch patterns that must not start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": []
+														},
+														"branch_includes": {
+															"description": "Branch patterns that can start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"main"
+															]
+														},
+														"build_caching_enabled": {
+															"description": "Whether builds reuse cached dependencies and build artifacts.",
+															"type": "boolean",
+															"example": false,
+															"default": false
+														},
+														"build_command": {
+															"description": "Command to build the Worker.",
+															"type": "string",
+															"example": "npm run build"
+														},
+														"created_on": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"deleted_on": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true
+														},
+														"deploy_command": {
+															"description": "Command to deploy the Worker.",
+															"type": "string",
+															"example": "npx wrangler deploy"
+														},
+														"external_script_id": {
+															"description": "System-generated tag of the Worker. This is not the Worker name.",
+															"type": "string",
+															"example": "0123456789abcdef0123456789abcdef"
+														},
+														"modified_on": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"path_excludes": {
+															"description": "Path patterns that must not start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"*.md"
+															]
+														},
+														"path_includes": {
+															"description": "Path patterns that can start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"*"
+															],
+															"default": [
+																"*"
+															]
+														},
+														"repo_connection": {
+															"type": "object",
+															"properties": {
+																"created_on": {
+																	"type": "string",
+																	"format": "date-time"
+																},
+																"deleted_on": {
+																	"type": "string",
+																	"format": "date-time",
+																	"nullable": true
+																},
+																"modified_on": {
+																	"type": "string",
+																	"format": "date-time"
+																},
+																"provider_account_id": {
+																	"description": "Provider-specific identifier of the account or namespace that owns the repository.",
+																	"type": "string",
+																	"example": "cloudflare"
+																},
+																"provider_account_name": {
+																	"description": "Human-readable name of the account or namespace that owns the repository.",
+																	"type": "string",
+																	"example": "Cloudflare"
+																},
+																"provider_type": {
+																	"description": "Source control provider.",
+																	"type": "string",
+																	"example": "github",
+																	"enum": [
+																		"github",
+																		"gitlab",
+																		"gitlab_internal",
+																		"origin"
+																	]
+																},
+																"repo_connection_uuid": {
+																	"description": "Repository connection UUID.",
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"repo_id": {
+																	"description": "Provider-specific repository identifier.",
+																	"type": "string",
+																	"example": "workers-sdk"
+																},
+																"repo_name": {
+																	"description": "Human-readable repository name.",
+																	"type": "string",
+																	"example": "workers-sdk"
+																}
+															}
+														},
+														"root_directory": {
+															"description": "Repository directory in which build and deploy commands run.",
+															"type": "string",
+															"example": "/"
+														},
+														"trigger_name": {
+															"description": "Human-readable name of the build trigger.",
+															"type": "string",
+															"example": "Production Deploy"
+														},
+														"trigger_uuid": {
+															"description": "Trigger UUID.",
+															"type": "string",
+															"format": "uuid"
+														}
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12002,
+										"message": "Invalid request body"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12005,
+										"message": "Missing token from authorization header"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12000,
+										"message": "Not found"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Workers"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "builds",
+		"x-fern-sdk-method-name": "retry"
+	},
+	"POST /accounts/{account_id}/builds/workers/{script_tag}/migrate_to_previews": {
+		"operationId": "migrateWorkerToPreviews",
+		"summary": "Migrate worker to previews",
+		"description": "Migrate a Worker's legacy non-production trigger to Previews. The legacy build settings become the Previews base config and the legacy trigger is removed.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string",
+					"example": "account-123"
+				}
+			},
+			{
+				"description": "Script tag of the Worker.",
+				"in": "path",
+				"name": "script_tag",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"example": {},
+					"schema": {
+						"description": "Request body for migrating a Worker's legacy non-production trigger to Previews.",
+						"type": "object",
+						"properties": {
+							"deploy_command": {
+								"description": "Deploy command for the migrated Preview settings. Omit it to have the existing 'wrangler versions upload' command rewritten to 'wrangler preview' automatically, which fails with 400 when the existing command cannot be rewritten.",
+								"type": "string",
+								"example": "npx wrangler preview"
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Worker migrated to Previews successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"type": "integer",
+													"example": 25
+												},
+												"page": {
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"type": "integer",
+													"example": 50
+												},
+												"total_count": {
+													"type": "integer",
+													"example": 150
+												},
+												"total_pages": {
+													"type": "integer",
+													"example": 3
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Worker build configuration including git repository linkage, production settings, and Preview settings",
+											"type": "object",
+											"properties": {
+												"git_repository": {
+													"description": "Git repository details linked to a Worker script build configuration",
+													"type": "object",
+													"properties": {
+														"branch": {
+															"description": "Git branch to watch for builds",
+															"type": "string",
+															"example": "main",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"grant_id": {
+															"description": "Internal grant ID for GitLab internal integrations",
+															"type": "string",
+															"nullable": true
+														},
+														"provider_account_id": {
+															"description": "Provider-specific identifier of the account or namespace that owns the repository.",
+															"type": "string",
+															"example": "cloudflare"
+														},
+														"provider_account_name": {
+															"description": "Human-readable name of the account or namespace that owns the repository.",
+															"type": "string",
+															"example": "Cloudflare"
+														},
+														"provider_type": {
+															"description": "Source control provider.",
+															"type": "string",
+															"example": "github",
+															"enum": [
+																"github",
+																"gitlab",
+																"gitlab_internal",
+																"origin"
+															]
+														},
+														"repo_id": {
+															"description": "Provider-specific repository identifier.",
+															"type": "string",
+															"example": "workers-sdk"
+														},
+														"repo_name": {
+															"description": "Human-readable repository name.",
+															"type": "string",
+															"example": "workers-sdk"
+														}
+													}
+												},
+												"previews_base_config": {
+													"description": "Build and deploy settings for a Worker script environment",
+													"type": "object",
+													"properties": {
+														"build_caching_enabled": {
+															"description": "Whether builds reuse cached dependencies and build artifacts.",
+															"type": "boolean",
+															"example": false,
+															"default": false
+														},
+														"build_command": {
+															"description": "Command to build the Worker.",
+															"type": "string",
+															"example": "npm run build"
+														},
+														"build_token_uuid": {
+															"description": "UUID of the build token used when deploying the Worker.",
+															"type": "string",
+															"format": "uuid"
+														},
+														"deploy_command": {
+															"description": "Command to deploy the Worker.",
+															"type": "string",
+															"example": "npx wrangler deploy"
+														},
+														"environment_variables": {
+															"type": "object",
+															"example": {
+																"API_KEY": {
+																	"created_on": "2023-01-01T00:00:00Z",
+																	"is_secret": true,
+																	"value": null
+																},
+																"NODE_ENV": {
+																	"created_on": "2023-01-01T00:00:00Z",
+																	"is_secret": false,
+																	"value": "production"
+																}
+															},
+															"additionalProperties": {
+																"properties": {
+																	"created_on": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"is_secret": {
+																		"description": "Whether to hide the value after it is saved. Secret values remain available to builds but appear as `null` when you list variables; non-secret values remain visible.",
+																		"type": "boolean",
+																		"example": false
+																	},
+																	"value": {
+																		"description": "Value is null for secret environment variables",
+																		"type": "string",
+																		"nullable": true
+																	}
+																},
+																"required": [
+																	"is_secret",
+																	"created_on"
+																],
+																"type": "object"
+															}
+														},
+														"path_excludes": {
+															"description": "Path patterns that must not start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"*.md"
+															]
+														},
+														"path_includes": {
+															"description": "Path patterns that can start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"*"
+															],
+															"default": [
+																"*"
+															]
+														},
+														"proposed_deploy_command": {
+															"description": "Deploy command proposed for migrating this Worker to Previews. Only returned on previews_base_config, and only while the Worker still has a legacy non-production trigger to migrate. Null when the existing deploy command cannot be rewritten automatically, in which case migrate_to_previews needs an explicit deploy_command.",
+															"type": "string",
+															"example": "npx wrangler preview",
+															"nullable": true
+														},
+														"root_directory": {
+															"description": "Repository directory in which build and deploy commands run.",
+															"type": "string",
+															"example": "/"
+														}
+													}
+												},
+												"previews_enabled": {
+													"description": "Whether Previews are enabled for this Worker",
+													"type": "boolean",
+													"example": false
+												},
+												"production_settings": {
+													"description": "Build and deploy settings for a Worker script environment",
+													"type": "object",
+													"properties": {
+														"build_caching_enabled": {
+															"description": "Whether builds reuse cached dependencies and build artifacts.",
+															"type": "boolean",
+															"example": false,
+															"default": false
+														},
+														"build_command": {
+															"description": "Command to build the Worker.",
+															"type": "string",
+															"example": "npm run build"
+														},
+														"build_token_uuid": {
+															"description": "UUID of the build token used when deploying the Worker.",
+															"type": "string",
+															"format": "uuid"
+														},
+														"deploy_command": {
+															"description": "Command to deploy the Worker.",
+															"type": "string",
+															"example": "npx wrangler deploy"
+														},
+														"environment_variables": {
+															"type": "object",
+															"example": {
+																"API_KEY": {
+																	"created_on": "2023-01-01T00:00:00Z",
+																	"is_secret": true,
+																	"value": null
+																},
+																"NODE_ENV": {
+																	"created_on": "2023-01-01T00:00:00Z",
+																	"is_secret": false,
+																	"value": "production"
+																}
+															},
+															"additionalProperties": {
+																"properties": {
+																	"created_on": {
+																		"type": "string",
+																		"format": "date-time"
+																	},
+																	"is_secret": {
+																		"description": "Whether to hide the value after it is saved. Secret values remain available to builds but appear as `null` when you list variables; non-secret values remain visible.",
+																		"type": "boolean",
+																		"example": false
+																	},
+																	"value": {
+																		"description": "Value is null for secret environment variables",
+																		"type": "string",
+																		"nullable": true
+																	}
+																},
+																"required": [
+																	"is_secret",
+																	"created_on"
+																],
+																"type": "object"
+															}
+														},
+														"path_excludes": {
+															"description": "Path patterns that must not start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"*.md"
+															]
+														},
+														"path_includes": {
+															"description": "Path patterns that can start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"*"
+															],
+															"default": [
+																"*"
+															]
+														},
+														"proposed_deploy_command": {
+															"description": "Deploy command proposed for migrating this Worker to Previews. Only returned on previews_base_config, and only while the Worker still has a legacy non-production trigger to migrate. Null when the existing deploy command cannot be rewritten automatically, in which case migrate_to_previews needs an explicit deploy_command.",
+															"type": "string",
+															"example": "npx wrangler preview",
+															"nullable": true
+														},
+														"root_directory": {
+															"description": "Repository directory in which build and deploy commands run.",
+															"type": "string",
+															"example": "/"
+														}
+													}
+												},
+												"script_tag": {
+													"description": "System-generated tag of the Worker. This is not the Worker name.",
+													"type": "string",
+													"example": "0123456789abcdef0123456789abcdef"
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12002,
+										"message": "Invalid request body"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12005,
+										"message": "Missing token from authorization header"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12000,
+										"message": "Not found"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Workers"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "builds.workers",
+		"x-fern-sdk-method-name": "migrate-to-previews",
+		"x-forge-require-confirmation": "This operation switches the Worker to Previews and removes its legacy non-production trigger. It cannot be reversed."
+	},
+	"POST /accounts/{account_id}/builds/workers/{script_tag}/previews/{preview_id}/builds": {
+		"operationId": "createPreviewBuild",
+		"summary": "Create preview build",
+		"description": "Trigger a build for a single Preview.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string",
+					"example": "account-123"
+				}
+			},
+			{
+				"description": "Script tag of the Worker.",
+				"in": "path",
+				"name": "script_tag",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
+			},
+			{
+				"description": "ID of the Preview.",
+				"in": "path",
+				"name": "preview_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "preview"
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"branch": {
+								"description": "Git branch name (required if commit_hash not provided)",
+								"allOf": [
+									{
+										"description": "Git branch name.",
+										"type": "string",
+										"example": "main"
+									}
+								]
+							},
+							"commit_hash": {
+								"description": "Git commit hash (required if branch not provided)",
+								"allOf": [
+									{
+										"description": "Git commit hash",
+										"type": "string",
+										"example": "abc123def456"
+									}
+								]
+							},
+							"seed_repo": {
+								"description": "Optional repository and file overrides used to seed this build.",
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"branch": {
+												"description": "Repository branch to seed.",
+												"allOf": [
+													{
+														"description": "Git branch name.",
+														"type": "string",
+														"example": "main"
+													}
+												]
+											},
+											"files": {
+												"description": "Files to add or replace for this build. Maximum 2.",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"content": {
+															"example": "name = \"my-worker\"\nmain = \"src/index.js\"\n",
+															"type": "string"
+														},
+														"filename": {
+															"type": "string",
+															"example": "wrangler.toml"
+														},
+														"isBase64": {
+															"description": "Whether content is Base64-encoded.",
+															"type": "boolean",
+															"default": false
+														},
+														"replace": {
+															"description": "Existing text in the target file to replace with content.",
+															"type": "string"
+														}
+													},
+													"required": [
+														"filename",
+														"content"
+													]
+												},
+												"maxItems": 2
+											},
+											"owner": {
+												"description": "Repository owner or namespace.",
+												"type": "string",
+												"example": "cloudflare"
+											},
+											"path": {
+												"description": "Path within the repository to seed.",
+												"type": "string",
+												"example": "/"
+											},
+											"provider": {
+												"description": "Source control provider for the seed repository.",
+												"type": "string",
+												"enum": [
+													"github",
+													"gitlab"
+												]
+											},
+											"repository": {
+												"description": "Repository name.",
+												"type": "string",
+												"example": "workers-sdk"
+											}
+										},
+										"required": [
+											"provider",
+											"owner",
+											"repository"
+										]
+									}
+								]
+							}
+						},
+						"anyOf": [
+							{
+								"required": [
+									"commit_hash"
+								]
+							},
+							{
+								"required": [
+									"branch"
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Build created successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"oneOf": [
+												{
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												}
+											]
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"type": "integer",
+													"example": 25
+												},
+												"page": {
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"type": "integer",
+													"example": 50
+												},
+												"total_count": {
+													"type": "integer",
+													"example": 150
+												},
+												"total_pages": {
+													"type": "integer",
+													"example": 3
+												}
+											}
+										},
+										"success": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"build_outcome": {
+													"type": "string",
+													"allOf": [
+														{
+															"type": "string",
+															"example": "success",
+															"enum": [
+																"success",
+																"fail",
+																"skipped",
+																"cancelled",
+																"terminated"
+															]
+														}
+													],
+													"nullable": true
+												},
+												"build_trigger_metadata": {
+													"type": "object",
+													"properties": {
+														"author": {
+															"type": "string",
+															"example": "developer@cloudflare.com"
+														},
+														"branch": {
+															"description": "Git branch name.",
+															"type": "string",
+															"example": "main"
+														},
+														"build_command": {
+															"description": "Command to build the Worker.",
+															"type": "string",
+															"example": "npm run build"
+														},
+														"build_token_name": {
+															"type": "string",
+															"example": "My Build Token"
+														},
+														"build_token_uuid": {
+															"description": "UUID of the build token used when deploying the Worker.",
+															"type": "string",
+															"format": "uuid"
+														},
+														"build_trigger_source": {
+															"type": "string",
+															"example": "push",
+															"enum": [
+																"push",
+																"pull_request",
+																"manual",
+																"api"
+															]
+														},
+														"commit_hash": {
+															"description": "Git commit hash",
+															"type": "string",
+															"example": "abc123def456"
+														},
+														"commit_message": {
+															"type": "string",
+															"example": "Add new feature"
+														},
+														"deploy_command": {
+															"description": "Command to deploy the Worker.",
+															"type": "string",
+															"example": "npx wrangler deploy"
+														},
+														"environment_variables": {
+															"type": "object",
+															"additionalProperties": {
+																"type": "string"
+															}
+														},
+														"provider_account_name": {
+															"description": "Human-readable name of the account or namespace that owns the repository.",
+															"type": "string",
+															"example": "Cloudflare"
+														},
+														"provider_type": {
+															"description": "Source control provider.",
+															"type": "string",
+															"example": "github",
+															"enum": [
+																"github",
+																"gitlab",
+																"gitlab_internal",
+																"origin"
+															]
+														},
+														"repo_name": {
+															"description": "Human-readable repository name.",
+															"type": "string",
+															"example": "workers-sdk"
+														},
+														"root_directory": {
+															"description": "Repository directory in which build and deploy commands run.",
+															"type": "string",
+															"example": "/"
+														}
+													}
+												},
+												"build_uuid": {
+													"description": "Build UUID.",
+													"type": "string",
+													"format": "uuid"
+												},
+												"created_on": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"deploy_hook": {
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"deploy_hook_name": {
+															"description": "Deploy hook name (1-58 characters).",
+															"type": "string",
+															"example": "Production Deploy Hook",
+															"maxLength": 58,
+															"minLength": 1
+														}
+													}
+												},
+												"initializing_on": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"modified_on": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"preview_url": {
+													"description": "URL serving the Worker version this build deployed. Only returned by Get build by UUID, and only once the build has produced a preview artifact.",
+													"type": "string",
+													"format": "uri",
+													"example": "https://abc123-my-worker.my-subdomain.workers.dev"
+												},
+												"pull_request": {
+													"type": "object",
+													"nullable": true,
+													"properties": {
+														"closed_on": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true
+														},
+														"created_on": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"pull_request_url": {
+															"type": "string",
+															"format": "uri",
+															"example": "https://github.com/cloudflare/workers-sdk/pull/123"
+														}
+													}
+												},
+												"running_on": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"status": {
+													"type": "string",
+													"example": "running",
+													"enum": [
+														"queued",
+														"initializing",
+														"running",
+														"stopped"
+													]
+												},
+												"stopped_on": {
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"trigger": {
+													"description": "Trigger information without build_token_uuid",
+													"type": "object",
+													"properties": {
+														"branch_excludes": {
+															"description": "Branch patterns that must not start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": []
+														},
+														"branch_includes": {
+															"description": "Branch patterns that can start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"main"
+															]
+														},
+														"build_caching_enabled": {
+															"description": "Whether builds reuse cached dependencies and build artifacts.",
+															"type": "boolean",
+															"example": false,
+															"default": false
+														},
+														"build_command": {
+															"description": "Command to build the Worker.",
+															"type": "string",
+															"example": "npm run build"
+														},
+														"created_on": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"deleted_on": {
+															"type": "string",
+															"format": "date-time",
+															"nullable": true
+														},
+														"deploy_command": {
+															"description": "Command to deploy the Worker.",
+															"type": "string",
+															"example": "npx wrangler deploy"
+														},
+														"external_script_id": {
+															"description": "System-generated tag of the Worker. This is not the Worker name.",
+															"type": "string",
+															"example": "0123456789abcdef0123456789abcdef"
+														},
+														"modified_on": {
+															"type": "string",
+															"format": "date-time"
+														},
+														"path_excludes": {
+															"description": "Path patterns that must not start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"*.md"
+															]
+														},
+														"path_includes": {
+															"description": "Path patterns that can start builds.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"*"
+															],
+															"default": [
+																"*"
+															]
+														},
+														"repo_connection": {
+															"type": "object",
+															"properties": {
+																"created_on": {
+																	"type": "string",
+																	"format": "date-time"
+																},
+																"deleted_on": {
+																	"type": "string",
+																	"format": "date-time",
+																	"nullable": true
+																},
+																"modified_on": {
+																	"type": "string",
+																	"format": "date-time"
+																},
+																"provider_account_id": {
+																	"description": "Provider-specific identifier of the account or namespace that owns the repository.",
+																	"type": "string",
+																	"example": "cloudflare"
+																},
+																"provider_account_name": {
+																	"description": "Human-readable name of the account or namespace that owns the repository.",
+																	"type": "string",
+																	"example": "Cloudflare"
+																},
+																"provider_type": {
+																	"description": "Source control provider.",
+																	"type": "string",
+																	"example": "github",
+																	"enum": [
+																		"github",
+																		"gitlab",
+																		"gitlab_internal",
+																		"origin"
+																	]
+																},
+																"repo_connection_uuid": {
+																	"description": "Repository connection UUID.",
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"repo_id": {
+																	"description": "Provider-specific repository identifier.",
+																	"type": "string",
+																	"example": "workers-sdk"
+																},
+																"repo_name": {
+																	"description": "Human-readable repository name.",
+																	"type": "string",
+																	"example": "workers-sdk"
+																}
+															}
+														},
+														"root_directory": {
+															"description": "Repository directory in which build and deploy commands run.",
+															"type": "string",
+															"example": "/"
+														},
+														"trigger_name": {
+															"description": "Human-readable name of the build trigger.",
+															"type": "string",
+															"example": "Production Deploy"
+														},
+														"trigger_uuid": {
+															"description": "Trigger UUID.",
+															"type": "string",
+															"format": "uuid"
+														}
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12002,
+										"message": "Invalid request body"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12005,
+										"message": "Missing token from authorization header"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12000,
+										"message": "Not found"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Workers"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "builds.previews",
 		"x-fern-sdk-method-name": "create-build"
+	},
+	"POST /accounts/{account_id}/builds/workers/{script_tag}/purge_build_cache": {
+		"operationId": "purgeWorkerBuildCache",
+		"summary": "Purge a Worker's build cache",
+		"description": "Delete cached dependencies and build artifacts for a Worker's production and Preview builds.",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier.",
+					"type": "string",
+					"example": "account-123"
+				}
+			},
+			{
+				"description": "Script tag of the Worker.",
+				"in": "path",
+				"name": "script_tag",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef"
+				},
+				"x-fern-parameter-name": "worker"
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Operation successful",
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": null,
+							"success": true
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"example": 12000
+											},
+											"message": {
+												"type": "string",
+												"example": "Not found"
+											}
+										},
+										"required": [
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"oneOf": [
+										{
+											"nullable": true,
+											"type": "object"
+										},
+										{
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										}
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer",
+											"example": 25
+										},
+										"page": {
+											"type": "integer",
+											"example": 1
+										},
+										"per_page": {
+											"type": "integer",
+											"example": 50
+										},
+										"total_count": {
+											"type": "integer",
+											"example": 150
+										},
+										"total_pages": {
+											"type": "integer",
+											"example": 3
+										}
+									}
+								},
+								"success": {
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12005,
+										"message": "Missing token from authorization header"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Resource not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [
+									{
+										"code": 12000,
+										"message": "Not found"
+									}
+								],
+								"messages": [],
+								"result": null,
+								"success": false
+							},
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "integer",
+														"example": 12000
+													},
+													"message": {
+														"type": "string",
+														"example": "Not found"
+													}
+												},
+												"required": [
+													"message"
+												]
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											},
+											"example": []
+										},
+										"result": {
+											"type": "object",
+											"nullable": true
+										},
+										"success": {
+											"type": "boolean",
+											"example": false
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Workers"
+		],
+		"x-api-token-group": [
+			"Workers CI Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "builds.workers",
+		"x-fern-sdk-method-name": "purge-cache",
+		"x-forge-require-confirmation": "This operation purges the build cache for the Worker."
 	},
 	"POST /accounts/{account_id}/workers/workers": {
 		"operationId": "createWorker",

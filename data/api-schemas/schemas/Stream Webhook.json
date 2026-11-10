@@ -396,6 +396,7 @@
 													"type": "string",
 													"format": "uri",
 													"example": "https://example.com",
+													"x-fern-ignore": true,
 													"x-stainless-skip": true
 												},
 												"secret": {
@@ -582,7 +583,9 @@
 								"type": "string",
 								"format": "uri",
 								"example": "https://example.com",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-fern-ignore": true,
+								"x-stainless-skip": true
 							}
 						},
 						"anyOf": [
@@ -724,6 +727,7 @@
 													"type": "string",
 													"format": "uri",
 													"example": "https://example.com",
+													"x-fern-ignore": true,
 													"x-stainless-skip": true
 												},
 												"secret": {

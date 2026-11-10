@@ -172,6 +172,17 @@
 													"example": "my-worker",
 													"nullable": true
 												},
+												"deploy_tool": {
+													"description": "Deployment CLI detected in the selected root directory. A Wrangler config takes precedence. `cf` requires `cloudflare.config.ts` and a `cf` dependency or dev dependency in `package.json`.",
+													"type": "string",
+													"example": "cf",
+													"enum": [
+														"cf",
+														"wrangler",
+														null
+													],
+													"nullable": true
+												},
 												"env_worker_names": {
 													"type": "object",
 													"example": {
