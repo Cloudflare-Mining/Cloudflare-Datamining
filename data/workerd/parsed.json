@@ -4707,6 +4707,14 @@
 						"experimental": true
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "exposeSerializationTestClass",
+					"annotations": {
+						"compatEnableFlag": "expose_serialization_test_class",
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
