@@ -1,5 +1,149 @@
 [
 	{
+		"id": "eeff4303d9847a7262dc5d0fab703e1d",
+		"name": "Magic Firewall Admin",
+		"description": "Can create, read, update and delete Magic Firewall.",
+		"permissions": {
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "5a95624f0333be47dcd13abebc26d396",
+		"name": "Magic Firewall (Read-only)",
+		"description": "Can read Magic Firewall.",
+		"permissions": {
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "feb480ed1ecb1d05fb5bc4bf4e4fffb5",
+		"name": "Magic Transit Admin",
+		"description": "Can create, read, update and delete Magic Transit.",
+		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "10952a1cf94633910a23d9dca5eaf7a2",
+		"name": "Magic Transit (Read-only)",
+		"description": "Can read Magic Transit.",
+		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "050f3f9e5d85a5fee9a7c105ab449ee7",
+		"name": "Magic WAN Admin",
+		"description": "Can create, read, update and delete Magic WAN.",
+		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "5b51680cd159246fbffb16981c397e80",
+		"name": "Magic WAN (Read-only)",
+		"description": "Can read Magic WAN.",
+		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "72eab390700b23c595c542b16c5f8b61",
+		"name": "Magic Firewall Packet Captures Admin",
+		"description": "Can create, read, update and delete Magic Firewall Packet Captures.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "aa8b0a89a37603f35c861c9f5bca234b",
+		"name": "Magic Firewall Packet Captures (Read-only)",
+		"description": "Can read Magic Firewall Packet Captures.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "6ed4fb83e7781cfb7803caf3ea36e708",
 		"name": "Custom Hostnames Admin",
 		"description": "Can manage custom hostnames and fallback origins.",
@@ -1612,174 +1756,6 @@
 				"read": true,
 				"edit": true
 			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "b20a55db9d14fd244ae267779b212b56",
-		"name": "Security Center Read",
-		"description": "Can view Security Center insights.",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "10a15686610725f53250de59acaff655",
-		"name": "Zone Settings Admin",
-		"description": "Can manage zone settings.",
-		"permissions": {
-			"zone_settings": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "a25045a280add278953bd84aa3592575",
-		"name": "Page Rules Read",
-		"description": "Can view page rules.",
-		"permissions": {
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "035b7e809d3251cab6aa0e4e65c1247b",
-		"name": "DLS (Read-only)",
-		"description": "Grants read-only access to Data Localization Suite regions, BYOIP prefix bindings, and regional hostnames.",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "fff0bd272b70dd774ed394be6ec41345",
-		"name": "DLS Write",
-		"description": "Can create, read, update, and delete BYOIP prefix bindings and regional hostnames, and read Data Localization Suite regions.",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "9a3a4955e550da8d002f634f4daad6b3",
-		"name": "Workers Platform Metadata (Read-Only)",
-		"description": "Can view metadata, settings, and observability for all Developer Platform resources without access to secret values or stored data content.",
-		"permissions": {
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"worker": {
-				"read": true,
-				"edit": false
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"stream": {
-				"read": true,
-				"edit": false
-			},
-			"r2_bucket": {
-				"read": true,
-				"edit": false
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"image": {
-				"read": true,
-				"edit": false
-			},
-			"logs": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "aa48cb99790097ce8a1d4b8292d27506",
-		"name": "SSL/TLS Admin",
-		"description": "Can view and edit SSL/TLS certificates and configurations.",
-		"permissions": {
-			"ssl": {
-				"read": true,
-				"edit": true
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "75ad81fe9f440497e83b7cb68b53cf26",
-		"name": "Flagship Read",
-		"description": "Grants read access to Flagship flags",
-		"permissions": {
 			"zone": {
 				"read": true,
 				"edit": false
