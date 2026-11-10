@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/puppeteer",
 	"dist-tags": {
-		"latest": "1.4.0",
+		"latest": "2.0.0",
 		"next": "2.0.0-next"
 	},
 	"versions": {
@@ -1713,8 +1713,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCDJEb8sx+6v/3OmZFM2KuLjZifH2Bh2b+wVtSVfpAxlwIhAM7SIJBYOn6GTqYdMxZWCsfB7qUrO3mqUbJHvkBsp1jU"
+						"sig": "MEYCIQCDJEb8sx+6v/3OmZFM2KuLjZifH2Bh2b+wVtSVfpAxlwIhAM7SIJBYOn6GTqYdMxZWCsfB7qUrO3mqUbJHvkBsp1jU",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -1724,6 +1724,47 @@
 					}
 				},
 				"unpackedSize": 1483185
+			}
+		},
+		"2.0.0": {
+			"name": "@cloudflare/puppeteer",
+			"version": "2.0.0",
+			"dependencies": {
+				"mitt": "3.0.1",
+				"rxjs": "7.8.2",
+				"parsel-js": "1.2.2",
+				"@types/node": "^18.17.15",
+				"devtools-protocol": "0.0.1666840",
+				"urlpattern-polyfill": "10.1.0",
+				"typed-query-selector": "^2.12.1"
+			},
+			"devDependencies": {
+				"vite": "^6.4.3",
+				"wrangler": "4.137.0",
+				"@cloudflare/workers-types": "^5.20260921.1"
+			},
+			"dist": {
+				"shasum": "44d57dd301328ad6302bfa894d1d0d5cbe46b95e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/puppeteer/-/puppeteer-2.0.0.tgz",
+				"fileCount": 298,
+				"integrity": "sha512-KwcwGQiRUUJakHkXg4r/e3AxCwcg3Ic0x49bqZLShR5hh3VBrNUYzTsG3T6ZRaNQbumOQE1ZsVBj4FIGLocmIQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIEeXVb58pRv/XZV9WOtfy6M4m93u70mIACDJJ4hI9wMsAiAfhJseQJD8PlFHCOt4A/QU5/pZ7c7aOVQlqja8tElD9w==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIBKrZZjh4E1fUPxiB1X8YXSThPtmAnfRv+L4rpDylKFjAiAlsUfwYPMjuwD6JIh6EowsxONWyuWCP+efsqPkf7wYrw=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fpuppeteer@2.0.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1483175
 			}
 		}
 	}

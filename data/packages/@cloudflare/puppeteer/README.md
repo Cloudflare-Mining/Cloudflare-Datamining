@@ -1,30 +1,61 @@
 # Puppeteer for Browser Run
 
-This repo is a fork of main puppeteer project. It creates a version of
-puppeteer core specialized for use with Cloudflare [Browser Run](https://developers.cloudflare.com/browser-rendering/) (formerly Browser Rendering).
+This package is a port of [Puppeteer](https://github.com/puppeteer/puppeteer) modified to be compatible with [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Browser Run](https://developers.cloudflare.com/browser-run/).
 
-The goals of the fork are:
+The goals of the port are:
 
-- Support as much of the existing puppeteer core lib as possible.
-- Minimize the size of the library for workers developers, since library
-  space is at a premium in workers projects.
-- Make library use as seamless as possible in workers.
+- Support as much of the existing puppeteer-core library as possible.
+- Minimize the size of the library for Workers developers, since library space is at a premium in Workers projects.
+- Make library use as seamless as possible in Workers.
 
-Note that the main branch in this repo is branched off of version 22.13.1 of
-the library, to match the currently deployed version of Chromium on the
-edge.
+## Installation
+
+```shell
+npm install @cloudflare/puppeteer
+```
+
+## Configuration
+
+`@cloudflare/puppeteer` needs [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/#get-started). For a `compatibility_date` of `2026-08-04` or later, Workers enables Node.js compatibility by default. For an earlier date, you must add the `nodejs_compat` compatibility flag.
+
+Add a browser binding to your Wrangler configuration:
+
+```toml
+compatibility_date = "2026-08-04"
+browser = { binding = "MYBROWSER" }
+```
+
+If your `compatibility_date` is earlier than `2026-08-04`, also add the `nodejs_compat` flag:
+
+```toml
+compatibility_date = "2026-08-03"
+compatibility_flags = ["nodejs_compat"]
+browser = { binding = "MYBROWSER" }
+```
+
+Do not add the `no_nodejs_compat` flag. The package does not work without Node.js compatibility.
+
+### File options
+
+Options that read or write files use the [Workers virtual file system](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/). Examples are `page.screenshot({path})`, `page.pdf({path})`, and `tracing.start({path})`. These options need a `compatibility_date` of `2025-09-01` or later, or the `enable_nodejs_fs_module` flag.
+
+Write files to `/tmp`. Files in `/tmp` exist only for the current request.
+
+## TypeScript
+
+The package types use the Browser Run types of the Workers runtime, for example `BrowserRun` and `BrowserRunAcquireGuardrails`. Your project gets these types from `wrangler types` with Wrangler 4.134.0 or later, or from `@cloudflare/workers-types` 5.20260917.1 or later.
+
+If your types are older, TypeScript reports `Cannot find name 'BrowserRun'`. With `skipLibCheck`, TypeScript does not report an error, but it also does not check these types. To update the types, run:
+
+```sh
+npx wrangler types
+```
 
 ## CDP Protocol Support
 
-[Browser Run now has full CDP support](https://developers.cloudflare.com/changelog/post/2026-04-10-browser-rendering-cdp-endpoint/),
-so starting with `@cloudflare/puppeteer` version 1.1.0, the library uses the
-standard CDP (Chrome DevTools Protocol) internally to communicate with Browser
-Run.
+[Browser Run now has full CDP support](https://developers.cloudflare.com/changelog/post/2026-04-10-browser-rendering-cdp-endpoint/), so starting with `@cloudflare/puppeteer` version 1.1.0, the library uses the standard CDP (Chrome DevTools Protocol) internally to communicate with Browser Run.
 
-Everything should work the same way, but if you encounter any issues, please
-[report them](https://github.com/cloudflare/puppeteer/issues). You can also
-downgrade to a previous puppeteer version by using `compatibility_date` prior to
-`2026-03-17` or by adding the `no_websocket_standard_binary_type` flag:
+Everything should work the same way, but if you encounter any issues, please [report them](https://github.com/cloudflare/browser-run/issues). You can also downgrade to a previous puppeteer version by using `compatibility_date` prior to `2026-03-17` or by adding the `no_websocket_standard_binary_type` flag:
 
 ```toml
 compatibility_date = "2026-03-16"
@@ -32,148 +63,32 @@ compatibility_date = "2026-03-16"
 compatibility_flags = ["nodejs_compat", "no_websocket_standard_binary_type", ...]
 ```
 
-See [cloudflare/puppeteer#193](https://github.com/cloudflare/puppeteer/issues/193)
-and [cloudflare/workerd#6442](https://github.com/cloudflare/workerd/issues/6442)
-for details.
-
-More information in the [developer docs](https://developers.cloudflare.com/browser-rendering/).
-
-Original README follows...
-
-# Puppeteer
-
-[![build](https://github.com/puppeteer/puppeteer/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/puppeteer/puppeteer/actions/workflows/ci.yml)
-[![npm puppeteer package](https://img.shields.io/npm/v/puppeteer.svg)](https://npmjs.org/package/puppeteer)
-
-<img src="https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png" height="200" align="right"/>
-
-> Puppeteer is a Node.js library which provides a high-level API to control
-> Chrome or Firefox over the
-> [DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/) or [WebDriver BiDi](https://pptr.dev/webdriver-bidi).
-> Puppeteer runs in the headless (no visible UI) by default
-> but can be configured to run in a visible ("headful") browser.
-
-## [Get started](https://pptr.dev/docs) | [API](https://pptr.dev/api) | [FAQ](https://pptr.dev/faq) | [Contributing](https://pptr.dev/contributing) | [Troubleshooting](https://pptr.dev/troubleshooting)
-
-## Installation
-
-```bash npm2yarn
-npm i puppeteer # Downloads compatible Chrome during installation.
-npm i puppeteer-core # Alternatively, install as a library, without downloading Chrome.
-```
+See [cloudflare/browser-run#193](https://github.com/cloudflare/browser-run/issues/193) and [cloudflare/workerd#6442](https://github.com/cloudflare/workerd/issues/6442) for details.
 
 ## Example
 
 ```ts
-import puppeteer from 'puppeteer';
-// Or import puppeteer from 'puppeteer-core';
+import puppeteer from '@cloudflare/puppeteer';
 
-// Launch the browser and open a new blank page
-const browser = await puppeteer.launch();
-const page = await browser.newPage();
+export default {
+  async fetch(request, env): Promise<Response> {
+    const browser = await puppeteer.launch(env.MYBROWSER);
+    const page = await browser.newPage();
 
-// Navigate the page to a URL.
-await page.goto('https://developer.chrome.com/');
+    await page.goto('https://example.com');
+    const img = await page.screenshot();
 
-// Set screen size.
-await page.setViewport({width: 1080, height: 1024});
+    await browser.close();
 
-// Type into search box.
-await page.locator('.devsite-search-field').fill('automate beyond recorder');
-
-// Wait and click on first result.
-await page.locator('.devsite-result-item-link').click();
-
-// Locate the full title with a unique string.
-const textSelector = await page
-  .locator('text/Customize and automate')
-  .waitHandle();
-const fullTitle = await textSelector?.evaluate(el => el.textContent);
-
-// Print the full title.
-console.log('The title of this blog post is "%s".', fullTitle);
-
-await browser.close();
+    return new Response(img, {
+      headers: {
+        'Content-Type': 'image/png',
+      },
+    });
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-### Default runtime settings
+## Documentation
 
-**1. Uses Headless mode**
-
-By default Puppeteer launches Chrome in
-[old Headless mode](https://developer.chrome.com/articles/new-headless/).
-
-```ts
-const browser = await puppeteer.launch();
-// Equivalent to
-const browser = await puppeteer.launch({headless: true});
-```
-
-[Chrome 112 launched a new Headless mode](https://developer.chrome.com/articles/new-headless/) that might cause some differences in behavior compared to the old Headless implementation.
-In the future Puppeteer will start defaulting to new implementation.
-We recommend you try it out before the switch:
-
-```ts
-const browser = await puppeteer.launch({headless: 'new'});
-```
-
-To launch a "headful" version of Chrome, set the
-[`headless`](https://pptr.dev/api/puppeteer.browserlaunchargumentoptions) to `false`
-option when launching a browser:
-
-```ts
-const browser = await puppeteer.launch({headless: false});
-```
-
-**2. Runs a bundled version of Chrome**
-
-By default, Puppeteer downloads and uses a specific version of Chrome so its
-API is guaranteed to work out of the box. To use Puppeteer with a different
-version of Chrome or Chromium, pass in the executable's path when creating a
-`Browser` instance:
-
-```ts
-const browser = await puppeteer.launch({executablePath: '/path/to/Chrome'});
-```
-
-You can also use Puppeteer with Firefox. See
-[status of cross-browser support](https://pptr.dev/faq/#q-what-is-the-status-of-cross-browser-support) for
-more information.
-
-See
-[`this article`](https://www.howtogeek.com/202825/what%E2%80%99s-the-difference-between-chromium-and-chrome/)
-for a description of the differences between Chromium and Chrome.
-[`This article`](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/chromium_browser_vs_google_chrome.md)
-describes some differences for Linux users.
-
-**3. Creates a fresh user profile**
-
-Puppeteer creates its own browser user profile which it **cleans up on every
-run**.
-
-#### Using Docker
-
-See our [Docker guide](https://pptr.dev/guides/docker).
-
-#### Using Chrome Extensions
-
-See our [Chrome extensions guide](https://pptr.dev/guides/chrome-extensions).
-
-## Resources
-
-- [API Documentation](https://pptr.dev/api)
-- [Guides](https://pptr.dev/category/guides)
-- [Examples](https://github.com/puppeteer/puppeteer/tree/main/examples)
-- [Community list of Puppeteer resources](https://github.com/transitive-bullshit/awesome-puppeteer)
-
-## Contributing
-
-Check out our [contributing guide](https://pptr.dev/contributing) to get an
-overview of Puppeteer development.
-
-## FAQ
-
-Our [FAQ](https://pptr.dev/faq) has migrated to
-[our site](https://pptr.dev/faq).
-
-> > > > > > > main
+More information in the [Browser Run developer docs](https://developers.cloudflare.com/browser-run/).
