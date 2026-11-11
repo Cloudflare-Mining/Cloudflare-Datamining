@@ -7325,6 +7325,8 @@
 	"/^text/",
 	"/^text\\/event\\-stream(;.*)?$/i",
 	"/^th/i",
+	"/^threat-events:([1-9][0-9]*)$/",
+	"/^threat-events:[1-9][0-9]*$/",
 	"/^tiers\\[(\\d+|component\\.value)]\\.(.+)/",
 	"/^title::[^\\n]+\\n\\n?/",
 	"/^tool_[A-Za-z0-9_-]+_(.+)$/",
