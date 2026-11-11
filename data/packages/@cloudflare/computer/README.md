@@ -35,7 +35,7 @@ removed in a future release; each one names its replacement.
 | `WorkerShellBackend` and the shell command groups | `@cloudflare/computer/backends/worker-shell`, `@cloudflare/computer/shell/*` | Experimental |
 | The `codemode:container` host module | `@cloudflare/computer/modules/container` | Experimental |
 | The `codemode:browser` host module | `@cloudflare/computer/modules/browser` | Experimental |
-| Remote exec: the `codemode:exec` module, `executor()` and `ExecSandbox`, and the `remote-exec` binary and its image | `@cloudflare/computer/remote-exec`, `ghcr.io/cloudflare/computer-remote-exec` | Experimental |
+| Remote exec: the `codemode:exec` module, `executor()` and `ExecSandbox`, the `remoteExec()` Vite plugin, and the `remote-exec` binary and its image | `@cloudflare/computer/remote-exec`, `@cloudflare/computer/vite`, `ghcr.io/cloudflare/computer-remote-exec` | Experimental |
 | Codemode modules: `createCodemodeModule()`, with objects and scoped context | `@cloudflare/computer`, `@cloudflare/computer/backends/codemode` | Experimental |
 | `workspace.push()`, `workspace.pull()`, and the sync protocol between the durable object and `computerd` | `@cloudflare/computer` | Experimental |
 | The `computerd` daemon and its container image | `ghcr.io/cloudflare/computer-computerd-linux-x64` | Experimental |
@@ -380,7 +380,7 @@ your image from the image of the same version, also at
 `registry.cloudflare.com/library/computer-remote-exec`:
 
 ```dockerfile
-FROM ghcr.io/cloudflare/computer-remote-exec:0.11.0 AS remote-exec
+FROM ghcr.io/cloudflare/computer-remote-exec:0.11.1 AS remote-exec
 FROM debian:stable-slim
 COPY --from=remote-exec /usr/local/bin/remote-exec /usr/local/bin/remote-exec
 CMD ["sleep", "infinity"]
@@ -502,6 +502,19 @@ await ws.git.add({ paths: ["notes.md"] });
 await ws.git.commit({ message: "add notes" });
 ```
 
+Pass a Fetch-compatible implementation to route Git traffic through a host
+wrapper or a service binding. It covers typed calls, the shell's `git`
+command and `codemode:git`:
+
+```ts
+createGitClient({ fetch: env.GIT_SERVICE.fetch.bind(env.GIT_SERVICE) });
+```
+
+For private repositories, a host fetch wrapper can inject credentials without
+putting tokens in model-visible commands or remote URLs. The host must scope
+credentials to trusted HTTPS repositories and enforce redirect safety; see the
+[authentication example](../../docs/13_git_interface.md#host-fetch-and-authentication).
+
 The git subpath bundles `isomorphic-git` lazily and swaps its `pako`
 dependency for the Workers `node:zlib` implementation, so the default
 package graph stays free of git. There's also an argv entry point
@@ -611,8 +624,8 @@ on a computerd instance.
 | `@cloudflare/computer/assets` | `createAssets` — share a workspace file to R2 as a presigned URL. |
 | `@cloudflare/computer/artifacts` | `createArtifact` and its CLI, an optionally session-scoped wrapper over the Cloudflare Artifacts binding. |
 | `@cloudflare/computer/observe/cloudflare` | Cloudflare-runtime adapter for the observability hook. |
-| `@cloudflare/computer/vite` | `computerBundle()`: a Vite plugin that serves `computer:bundle/<dir>` imports for `WorkerBundle`. |
-| `@cloudflare/computer/vite/client` | Types for `computer:bundle/<dir>` imports. |
+| `@cloudflare/computer/vite` | `computerBundle()`: a Vite plugin that serves `computer:bundle/<dir>` imports for `WorkerBundle`. `remoteExec()` (experimental): a Vite plugin that downloads the remote-exec builds and serves them as `computer:remote-exec`. |
+| `@cloudflare/computer/vite/client` | Types for `computer:bundle/<dir>` and `computer:remote-exec` imports. |
 
 A consumer that only uses the container backend never imports the worker
 subpaths, so unused backend payloads tree-shake away. Wire types shared
@@ -667,14 +680,23 @@ const stub = ws.stub();  // crosses the Workers-RPC boundary
 
 A command can change backend files and then have its post-command pull
 fail; the result exposes `sync: { status: "pending", ... }`. Nothing
-further is required to recover it. The sync operation and its watermark
-hold the progress durably, so the next `pull()` resumes from where the
-failed one stopped and drains the rest of the fixed target.
+further is required to recover it: the next `pull()` that runs to
+completion has pulled every command that reported pending before it
+started. The fetch cursor is durable, so it resumes where the failed
+pull stopped.
 
-A deferred exec fixes that target when the command finishes, which pins
-the command's changes rather than capturing a newer target that could
-have raced ahead. Attempt counts, backoff, and exhaustion are not part
-of the API: a caller that wants to stop trying stops iterating.
+A deferred exec fixes a pull target when the command finishes. If a
+pull is already pending, the command joins it, and `pull()` keeps going
+past that older target until the command's changes are in.
+
+A pending sync remembers the container runtime that ran the command. If
+that container was replaced before the sync finished, its changes are
+gone with it, and the next `pull()` rejects with `ESYNC_LOST` instead of
+reporting a clean sync from the empty replacement. The `pull()` after
+that synchronizes the live container.
+
+Attempt counts, backoff, and exhaustion are not part of the API: a
+caller that wants to stop trying stops iterating.
 
 ### Observability
 

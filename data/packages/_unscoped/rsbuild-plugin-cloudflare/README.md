@@ -238,8 +238,8 @@ Other differences:
   bare specifier isn't recognised as it. Rsbuild doesn't use that `index.html`
   as the page's template unless `html.template` is set to it. Without a client,
   as in the Vite plugin, the client output has only the public assets (and the
-  assets that the entry Worker imports), and `assetsOnly` requires public assets
-  or a prerender Worker.
+  assets that the entry and prerender Workers import), and `assetsOnly` requires
+  public assets or a prerender Worker.
 - `devOnly` and `assetsOnly` functions are called when the config is resolved,
   to choose the Worker environments to build, rather than lazily at build time.
 - Additional modules (e.g. `.wasm` and `.txt` imports) are emitted at the root
