@@ -28,6 +28,7 @@
 	"ExperimentalFeatures": "object; Experimental features which will be either permanently added to the schema or marked for deprecation. In that case, they will be removed 3 months after the notice. Current fields: 'mcp' - If MCP traffic was detected or not.",
 	"FileInfo": "object; Information about files detected within the HTTP request.",
 	"ForensicCopyStatus": "string; Status of any associated forensic copies that may have been captured during the request.",
+	"ForwardAction": "object; The Forward policy that matched the request. worker_id is the ID of the Worker the policy sent the request to. error_code is empty if there was no error, otherwise one of internalError | workerNotFound | entrypointNotFound | workerLimitExceeded | workerException. Empty ({}) if no Forward policy matched.",
 	"HTTPHost": "string; Content of the host header in the HTTP request.",
 	"HTTPMethod": "string; HTTP request method.",
 	"HTTPStatusCode": "int; HTTP status code gateway returned to the user. Zero if nothing was returned (for example, client disconnected).",
