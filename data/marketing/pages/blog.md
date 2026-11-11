@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 11, 2026 [<h2>Choosing QuePaxa, an unusual consensus algorithm</h2>](https://blog.cloudflare.com/choosing-quepaxa/)
+
+Cloudflare is building an experimental consensus service using a never-before-deployed consensus algorithm, QuePaxa. In this post we explain how QuePaxa works and why we chose it.
+
+![João Pedro Leite](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q3HR5NWBDTW5N6DCXWKT.webp&w=64&h=64&f=webp&fit=cover&position=center)![ Bob Halley](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXJFYHRZYTBR06JDENDTQ12N.jpg&w=64&h=64&f=webp&fit=cover&position=center)![James Larisch](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9J5HQA4MAD7AN1K285E.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[João Pedro Leite](https://blog.cloudflare.com/author/joao-pedro-leite/),  [ Bob Halley](https://blog.cloudflare.com/author/bob-halley/), and  [James Larisch](https://blog.cloudflare.com/author/james-larisch/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M73MMXB6M86NA1F97GH7Q8TG.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/choosing-quepaxa/)
+
 November 9, 2026 [<h2>Launching the Vite Ecosystem Fund</h2>](https://blog.cloudflare.com/launching-vite-ecosystem-fund/)
 
 Cloudflare is distributing the first $301,300 of the Vite Ecosystem Fund to open source projects and maintainers. The recipients were chosen by a panel of Vite stack core team members, including maintainers not employed by Cloudflare.
@@ -17,8 +27,6 @@ Cloudflare is distributing the first $301,300 of the Vite Ecosystem Fund to ope
 ![Michael Dong](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M4EX7VKAAKSR7MZBFE5VQ9JZ.01M4EX7W0EXTB3MQ1C9BZZ5C38.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Michael Dong](https://blog.cloudflare.com/author/michael-dong/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M6SMAP95G344HRNFK6NRMGZN.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/launching-vite-ecosystem-fund/)
 
 November 6, 2026 [<h2>The post-quantum future of web privacy</h2>](https://blog.cloudflare.com/vole-mole/)
 
@@ -155,14 +163,6 @@ Almost 100,000 Commerce.com domains now give AI agents real shopping tools throu
 ![Jenny Lea](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYXNDF4KMCR86PP29ANNS2.01M5AYXP6FTHD6G8SRE703MNH7.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Max Brosnahan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AZ7KZVQ4CXW8ABKK47FTR8.01M5AZ7MWFZHG2Y8WMY47NR4JA.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jenny Lea](https://blog.cloudflare.com/author/jenny-lea/),  [Max Brosnahan](https://blog.cloudflare.com/author/max-brosnahan/), and  [Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/)
-
-October 20, 2026 [<h2>8 eMudhra certificates are compromised. Here's what you need to know</h2>](https://blog.cloudflare.com/emudhra-certificate-compromise/)
-
-Following the discovery that eight eMudhra intermediate certificates use weak keys, Cloudflare is deploying mitigations and releasing client updates. We explain the impact, our response, and what customers and developers should do next.
-
-![Christopher Patton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471WT491ZC11M0S5HA34X3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)![Trishna](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473JDQZAHNE7Y35PPZ0HNB.webp&w=64&h=64&f=webp&fit=cover&position=center)![Jeremy Hartman](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YJSKH239C2RVYTF2NVMJ.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/),  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/),  [Trishna](https://blog.cloudflare.com/author/trishna/), and  [Jeremy Hartman](https://blog.cloudflare.com/author/jeremy-hartman/)
 
 Load more
 
