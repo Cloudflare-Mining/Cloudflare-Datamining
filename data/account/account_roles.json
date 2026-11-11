@@ -1,5 +1,24 @@
 [
 	{
+		"id": "3e1ab2cea2f63e64dd11cc8330daebee",
+		"name": "Workers KV Storage Admin",
+		"description": "Can manage Cloudflare Workers KV Storage.",
+		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "7eb0fffce2e9f90241cda08ecfb4ca07",
 		"name": "Cloudflare Access SCIM Logs Read",
 		"description": "Can read SCIM audit logs.",
@@ -1736,21 +1755,6 @@
 		"id": "66ad305159f0c386cd55532e2074dd30",
 		"name": "IP Addressing Read",
 		"description": "Grants read-only access to IP Addressing — IP prefixes, BGP prefixes, edge service bindings, address maps, IP leases, and LOA documents.",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "f0f92691ab81efb9b815b9284a5faf2b",
-		"name": "IP Addressing Write",
-		"description": "Grants read and write access to IP Addressing — create, update, and delete IP prefixes, BGP prefixes, edge service bindings, address maps, delegations, and LOA documents.",
 		"permissions": {
 			"zone": {
 				"read": true,
