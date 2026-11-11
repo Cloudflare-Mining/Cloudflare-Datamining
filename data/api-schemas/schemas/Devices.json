@@ -630,7 +630,7 @@
 														"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\", \"device.tags\".",
 														"type": "string",
 														"example": "identity.email == \"test@cloudflare.com\"",
-														"maxLength": 500,
+														"maxLength": 10000,
 														"x-auditable": true
 													},
 													"name": {
@@ -3919,7 +3919,7 @@
 														"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\", \"device.tags\".",
 														"type": "string",
 														"example": "identity.email == \"test@cloudflare.com\"",
-														"maxLength": 500,
+														"maxLength": 10000,
 														"x-auditable": true
 													},
 													"name": {
@@ -5581,7 +5581,7 @@
 													"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\", \"device.tags\".",
 													"type": "string",
 													"example": "identity.email == \"test@cloudflare.com\"",
-													"maxLength": 500,
+													"maxLength": 10000,
 													"x-auditable": true
 												},
 												"name": {
@@ -8095,10 +8095,11 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -8112,10 +8113,11 @@
 											"type": "object",
 											"properties": {
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -8230,10 +8232,11 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -8247,10 +8250,11 @@
 											"type": "object",
 											"properties": {
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -8272,15 +8276,17 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"lan_allow_minutes": {
-								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
+								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Set to null to unset.",
 								"type": "number",
 								"example": 30,
+								"nullable": true,
 								"x-auditable": true
 							},
 							"lan_allow_subnet_size": {
-								"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
+								"description": "The size of the subnet for the local access network. Set to null to unset.",
 								"type": "number",
 								"example": 24,
+								"nullable": true,
 								"x-auditable": true
 							},
 							"register_interface_ip_with_dns": {
@@ -9337,10 +9343,11 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -9354,10 +9361,11 @@
 											"type": "object",
 											"properties": {
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -9472,10 +9480,11 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -9489,10 +9498,11 @@
 											"type": "object",
 											"properties": {
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -9514,22 +9524,24 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"lan_allow_minutes": {
-								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
+								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Set to null to unset.",
 								"type": "number",
 								"example": 30,
+								"nullable": true,
 								"x-auditable": true
 							},
 							"lan_allow_subnet_size": {
-								"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
+								"description": "The size of the subnet for the local access network. Set to null to unset.",
 								"type": "number",
 								"example": 24,
+								"nullable": true,
 								"x-auditable": true
 							},
 							"match": {
 								"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\", \"device.tags\".",
 								"type": "string",
 								"example": "identity.email == \"test@cloudflare.com\"",
-								"maxLength": 500,
+								"maxLength": 10000,
 								"x-auditable": true
 							},
 							"name": {
@@ -10227,7 +10239,7 @@
 													"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\", \"device.tags\".",
 													"type": "string",
 													"example": "identity.email == \"test@cloudflare.com\"",
-													"maxLength": 500,
+													"maxLength": 10000,
 													"x-auditable": true
 												},
 												"name": {
@@ -10938,10 +10950,11 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -10955,10 +10968,11 @@
 											"type": "object",
 											"properties": {
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -10985,6 +10999,84 @@
 								"example": true,
 								"default": false,
 								"x-auditable": true
+							},
+							"fallback_domains": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"description": {
+											"description": "A description of the fallback domain, displayed in the client UI.",
+											"type": "string",
+											"example": "Domain bypass for local development",
+											"maxLength": 100,
+											"x-auditable": true
+										},
+										"dns_server": {
+											"description": "A list of IP addresses to handle domain resolution.",
+											"type": "array",
+											"items": {
+												"description": "IPv4 or IPv6 address.",
+												"type": "string",
+												"example": "1.1.1.1",
+												"x-auditable": true
+											}
+										},
+										"suffix": {
+											"description": "The domain suffix to match when resolving locally.",
+											"type": "string",
+											"example": "example.com",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"suffix"
+									]
+								},
+								"default": [
+									{
+										"suffix": "intranet"
+									},
+									{
+										"suffix": "internal"
+									},
+									{
+										"suffix": "private"
+									},
+									{
+										"suffix": "localdomain"
+									},
+									{
+										"suffix": "domain"
+									},
+									{
+										"suffix": "lan"
+									},
+									{
+										"suffix": "home"
+									},
+									{
+										"suffix": "host"
+									},
+									{
+										"suffix": "corp"
+									},
+									{
+										"suffix": "local"
+									},
+									{
+										"suffix": "localhost"
+									},
+									{
+										"suffix": "home.arpa"
+									},
+									{
+										"suffix": "invalid"
+									},
+									{
+										"suffix": "test"
+									}
+								]
 							},
 							"global_acceleration": {
 								"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
@@ -11073,10 +11165,11 @@
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												}
@@ -11090,10 +11183,11 @@
 											"type": "object",
 											"properties": {
 												"description": {
-													"description": "A description of the Split Tunnel item, displayed in the client UI.",
+													"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 													"type": "string",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
+													"nullable": true,
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -11115,22 +11209,24 @@
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"lan_allow_minutes": {
-								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
+								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Set to null to unset.",
 								"type": "number",
 								"example": 30,
+								"nullable": true,
 								"x-auditable": true
 							},
 							"lan_allow_subnet_size": {
-								"description": "The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.",
+								"description": "The size of the subnet for the local access network. Set to null to unset.",
 								"type": "number",
 								"example": 24,
+								"nullable": true,
 								"x-auditable": true
 							},
 							"match": {
 								"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\", \"device.tags\".",
 								"type": "string",
 								"example": "identity.email == \"test@cloudflare.com\"",
-								"maxLength": 500,
+								"maxLength": 10000,
 								"x-auditable": true
 							},
 							"name": {
@@ -11842,7 +11938,7 @@
 													"description": "The wirefilter expression to match devices. Available values: \"identity.email\", \"identity.groups.id\", \"identity.groups.name\", \"identity.groups.email\", \"identity.service_token_uuid\", \"identity.saml_attributes\", \"network\", \"os.name\", \"os.version\", \"device.tags\".",
 													"type": "string",
 													"example": "identity.email == \"test@cloudflare.com\"",
-													"maxLength": 500,
+													"maxLength": 10000,
 													"x-auditable": true
 												},
 												"name": {
@@ -12659,10 +12755,11 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 											"type": "string",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
+											"nullable": true,
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
@@ -12676,10 +12773,11 @@
 									"type": "object",
 									"properties": {
 										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 											"type": "string",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
+											"nullable": true,
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
@@ -13397,10 +13495,11 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 											"type": "string",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
+											"nullable": true,
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
@@ -13414,10 +13513,11 @@
 									"type": "object",
 									"properties": {
 										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 											"type": "string",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
+											"nullable": true,
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
@@ -13777,10 +13877,11 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 											"type": "string",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
+											"nullable": true,
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
@@ -13794,10 +13895,11 @@
 									"type": "object",
 									"properties": {
 										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 											"type": "string",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
+											"nullable": true,
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
@@ -14493,10 +14595,11 @@
 											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 											"type": "string",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
+											"nullable": true,
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										}
@@ -14510,10 +14613,11 @@
 									"type": "object",
 									"properties": {
 										"description": {
-											"description": "A description of the Split Tunnel item, displayed in the client UI.",
+											"description": "A description of the Split Tunnel item, displayed in the client UI. Null is treated as an empty description.",
 											"type": "string",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
+											"nullable": true,
 											"x-auditable": true,
 											"x-stainless-terraform-configurability": "computed_optional"
 										},

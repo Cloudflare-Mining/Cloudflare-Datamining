@@ -1252,8 +1252,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dns.zone-transfers.force-axfr",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-group-name": "dns.zone-transfers",
+		"x-fern-sdk-method-name": "force-axfr"
 	},
 	"POST /zones/{zone_id}/secondary_dns/incoming": {
 		"operationId": "secondary-dns-(-secondary-zone)-create-secondary-zone-configuration",

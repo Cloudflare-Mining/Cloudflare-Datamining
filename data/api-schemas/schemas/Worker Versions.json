@@ -5567,6 +5567,12 @@
 																					"type": "integer",
 																					"example": 50,
 																					"readOnly": true
+																				},
+																				"subrequests": {
+																					"description": "The number of subrequests this Worker can make per request.",
+																					"type": "integer",
+																					"example": 1000,
+																					"readOnly": true
 																				}
 																			},
 																			"readOnly": true
@@ -10556,6 +10562,12 @@
 																							"description": "The amount of CPU time this Worker can use in milliseconds.",
 																							"type": "integer",
 																							"example": 50,
+																							"readOnly": true
+																						},
+																						"subrequests": {
+																							"description": "The number of subrequests this Worker can make per request.",
+																							"type": "integer",
+																							"example": 1000,
 																							"readOnly": true
 																						}
 																					},
@@ -17645,6 +17657,12 @@
 																							"type": "integer",
 																							"example": 50,
 																							"readOnly": true
+																						},
+																						"subrequests": {
+																							"description": "The number of subrequests this Worker can make per request.",
+																							"type": "integer",
+																							"example": 1000,
+																							"readOnly": true
 																						}
 																					},
 																					"readOnly": true
@@ -22920,6 +22938,12 @@
 																											"description": "The amount of CPU time this Worker can use in milliseconds.",
 																											"type": "integer",
 																											"example": 50,
+																											"readOnly": true
+																										},
+																										"subrequests": {
+																											"description": "The number of subrequests this Worker can make per request.",
+																											"type": "integer",
+																											"example": 1000,
 																											"readOnly": true
 																										}
 																									},

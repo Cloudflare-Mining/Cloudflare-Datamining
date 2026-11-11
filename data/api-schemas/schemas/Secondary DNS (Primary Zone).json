@@ -1238,8 +1238,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing.status",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
+		"x-fern-sdk-method-name": "status"
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing": {
 		"operationId": "secondary-dns-(-primary-zone)-create-primary-zone-configuration",

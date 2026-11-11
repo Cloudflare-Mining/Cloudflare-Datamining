@@ -197,7 +197,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}": {
 		"operationId": "get_PirGet",
 		"summary": "Get a priority intelligence requirement by ID",
-		"description": "Returns a single free-form Priority Intelligence Requirement for the authenticated account.",
+		"description": "Returns a single Priority Intelligence Requirement for the authenticated account. For a structured PIR, `resolved` has its current generated requirement and event query, which follow later topic and profile changes.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1647,6 +1647,46 @@
 		"x-fern-sdk-method-name": "get",
 		"x-stability": "beta"
 	},
+	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/topics": {
+		"operationId": "get_PirTopicList",
+		"summary": "List managed PIR topics",
+		"description": "Returns the managed topics a structured PIR can follow, with their default question, relevance criteria, suggested actors and event rules. Suggested actors the account cannot see are left out. Topics change centrally; PIRs follow a topic's defaults wherever the customer has not changed them.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Managed topics"
+			},
+			"4XX": {
+				"description": "Client error response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.topics",
+		"x-fern-sdk-method-name": "list",
+		"x-stability": "beta"
+	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}/matches": {
 		"operationId": "patch_PirMatchesTriage",
 		"summary": "Triage a priority intelligence requirement's matched events",
@@ -1822,7 +1862,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence": {
 		"operationId": "post_PirCreate",
 		"summary": "Create a priority intelligence requirement",
-		"description": "Creates a new PIR for the account. The cfone.priority_intelligence_requirement_limit entitlement sets how many PIRs can be active; drafts do not count, but the account can hold at most five times that many PIRs in total. An active PIR requires a query.",
+		"description": "Creates a new PIR for the account. The cfone.priority_intelligence_requirement_limit entitlement sets how many PIRs can be active; drafts do not count, but the account can hold at most five times that many PIRs in total. A free-form PIR has a `requirement`, and an active one requires a query. A structured PIR has a `definition` instead; its requirement and event query are generated, and the response includes them in `resolved`.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1840,6 +1880,26 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"based_on": {
+								"description": "`resolved.based_on` from the resolution the user reviewed. Required with `definition`; if the organization profile or topic has changed since, the save fails with 409 and must be resolved again.",
+								"type": "object",
+								"additionalProperties": false,
+								"properties": {
+									"profile_revision": {
+										"type": "integer",
+										"minimum": 0
+									},
+									"topic_fingerprint": {
+										"type": "string",
+										"nullable": true,
+										"pattern": "^[0-9a-f]{64}$"
+									}
+								},
+								"required": [
+									"profile_revision",
+									"topic_fingerprint"
+								]
+							},
 							"dataset_scope": {
 								"description": "`default`: every event dataset the account can read: Cloudforce One intelligence, datasets shared with the account, and the account's own datasets, such as Threat Signals. `datasets`: explicit dataset IDs. Analytics datasets are not matched. An active PIR can cover at most 50 datasets. Access is rechecked whenever the PIR is matched.",
 								"oneOf": [
@@ -1880,6 +1940,1358 @@
 										"required": [
 											"type",
 											"dataset_ids"
+										],
+										"type": "object"
+									}
+								]
+							},
+							"definition": {
+								"description": "Structured PIR answers. `managed` follows a topic from `GET /topics`; `custom` has its own question and criteria. The requirement text and event query are generated from it.",
+								"oneOf": [
+									{
+										"additionalProperties": false,
+										"properties": {
+											"additional_criteria": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"band": {
+															"type": "string",
+															"enum": [
+																"highly",
+																"somewhat",
+																"not"
+															]
+														},
+														"id": {
+															"type": "string",
+															"pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+														},
+														"text": {
+															"type": "string",
+															"maxLength": 300,
+															"minLength": 1
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"id",
+														"band",
+														"text"
+													]
+												},
+												"default": [],
+												"maxItems": 20
+											},
+											"criterion_selections": {
+												"type": "object",
+												"default": {
+													"add": [],
+													"remove": []
+												},
+												"additionalProperties": false,
+												"properties": {
+													"add": {
+														"type": "array",
+														"items": {
+															"pattern": "^[a-z0-9][a-z0-9-]{0,63}$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"remove": {
+														"type": "array",
+														"items": {
+															"pattern": "^[a-z0-9][a-z0-9-]{0,63}$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													}
+												}
+											},
+											"mode": {
+												"type": "string",
+												"enum": [
+													"managed"
+												]
+											},
+											"question": {
+												"default": {
+													"mode": "inherit"
+												},
+												"oneOf": [
+													{
+														"additionalProperties": false,
+														"properties": {
+															"mode": {
+																"type": "string",
+																"enum": [
+																	"inherit"
+																]
+															}
+														},
+														"required": [
+															"mode"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"mode": {
+																"type": "string",
+																"enum": [
+																	"replace"
+																]
+															},
+															"value": {
+																"type": "string",
+																"maxLength": 1000,
+																"minLength": 1
+															}
+														},
+														"required": [
+															"mode",
+															"value"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"schema_version": {
+												"type": "number",
+												"enum": [
+													1
+												]
+											},
+											"selections": {
+												"type": "object",
+												"properties": {
+													"actor_notes": {
+														"type": "string",
+														"maxLength": 500,
+														"minLength": 1
+													},
+													"actor_types": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"nation-state",
+																				"crime-syndicate",
+																				"criminal",
+																				"activist",
+																				"hacker",
+																				"insider-disgruntled",
+																				"insider-accidental",
+																				"spy",
+																				"terrorist",
+																				"competitor",
+																				"sensationalist"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 11
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"actors": {
+														"type": "object",
+														"default": {
+															"add": [],
+															"remove": []
+														},
+														"additionalProperties": false,
+														"properties": {
+															"add": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"remove": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															}
+														}
+													},
+													"attributed_countries": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"countries": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 50
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"cves": {
+														"type": "array",
+														"items": {
+															"pattern": "^CVE-\\d{4}-\\d{4,}$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"excluded_actors": {
+														"type": "array",
+														"items": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"key_suppliers": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"domains": {
+																					"type": "array",
+																					"items": {
+																						"maxLength": 253,
+																						"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																						"type": "string"
+																					},
+																					"default": [],
+																					"maxItems": 20
+																				},
+																				"name": {
+																					"type": "string",
+																					"maxLength": 200,
+																					"minLength": 1
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"name"
+																			]
+																		},
+																		"maxItems": 20
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"malware_tools": {
+														"type": "array",
+														"items": {
+															"maxLength": 100,
+															"minLength": 1,
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"motivations": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"personal-gain",
+																				"organizational-gain",
+																				"ideology",
+																				"dominance",
+																				"notoriety",
+																				"coercion",
+																				"revenge"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 7
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"peers": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"domains": {
+																					"type": "array",
+																					"items": {
+																						"maxLength": 253,
+																						"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																						"type": "string"
+																					},
+																					"default": [],
+																					"maxItems": 20
+																				},
+																				"name": {
+																					"type": "string",
+																					"maxLength": 200,
+																					"minLength": 1
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"name"
+																			]
+																		},
+																		"maxItems": 20
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"sectors": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"aerospace",
+																				"agriculture",
+																				"automotive",
+																				"chemical",
+																				"commercial",
+																				"communications",
+																				"construction",
+																				"defense",
+																				"education",
+																				"energy",
+																				"entertainment",
+																				"financial-services",
+																				"government-local",
+																				"government-national",
+																				"government-public-services",
+																				"government-regional",
+																				"healthcare",
+																				"hospitality-leisure",
+																				"infrastructure",
+																				"insurance",
+																				"manufacturing",
+																				"mining",
+																				"non-profit",
+																				"pharmaceuticals",
+																				"professional-services",
+																				"retail",
+																				"technology",
+																				"telecommunications",
+																				"transportation",
+																				"utilities"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 10
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"targets": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"organization",
+																				"customers",
+																				"employees",
+																				"executives",
+																				"partners",
+																				"events",
+																				"products-infrastructure"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 7
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"technique_ids": {
+														"type": "array",
+														"items": {
+															"pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"technologies": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"maxLength": 100,
+																			"minLength": 1,
+																			"type": "string"
+																		},
+																		"maxItems": 50
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													}
+												},
+												"default": {},
+												"additionalProperties": false
+											},
+											"title": {
+												"default": {
+													"mode": "inherit"
+												},
+												"oneOf": [
+													{
+														"additionalProperties": false,
+														"properties": {
+															"mode": {
+																"type": "string",
+																"enum": [
+																	"inherit"
+																]
+															}
+														},
+														"required": [
+															"mode"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"mode": {
+																"type": "string",
+																"enum": [
+																	"replace"
+																]
+															},
+															"value": {
+																"type": "string",
+																"maxLength": 200,
+																"minLength": 1
+															}
+														},
+														"required": [
+															"mode",
+															"value"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"topic_id": {
+												"type": "string",
+												"maxLength": 100,
+												"minLength": 1
+											}
+										},
+										"required": [
+											"schema_version",
+											"mode",
+											"topic_id"
+										],
+										"type": "object"
+									},
+									{
+										"additionalProperties": false,
+										"properties": {
+											"mode": {
+												"type": "string",
+												"enum": [
+													"custom"
+												]
+											},
+											"question": {
+												"type": "string",
+												"maxLength": 1000,
+												"minLength": 1
+											},
+											"relevance_criteria": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"band": {
+															"type": "string",
+															"enum": [
+																"highly",
+																"somewhat",
+																"not"
+															]
+														},
+														"id": {
+															"type": "string",
+															"pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+														},
+														"text": {
+															"type": "string",
+															"maxLength": 300,
+															"minLength": 1
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"id",
+														"band",
+														"text"
+													]
+												},
+												"maxItems": 30,
+												"minItems": 1
+											},
+											"schema_version": {
+												"type": "number",
+												"enum": [
+													1
+												]
+											},
+											"selections": {
+												"type": "object",
+												"properties": {
+													"actor_notes": {
+														"type": "string",
+														"maxLength": 500,
+														"minLength": 1
+													},
+													"actor_types": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"nation-state",
+																				"crime-syndicate",
+																				"criminal",
+																				"activist",
+																				"hacker",
+																				"insider-disgruntled",
+																				"insider-accidental",
+																				"spy",
+																				"terrorist",
+																				"competitor",
+																				"sensationalist"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 11
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"actors": {
+														"type": "object",
+														"default": {
+															"add": [],
+															"remove": []
+														},
+														"additionalProperties": false,
+														"properties": {
+															"add": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"remove": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															}
+														}
+													},
+													"attributed_countries": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"countries": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 50
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"cves": {
+														"type": "array",
+														"items": {
+															"pattern": "^CVE-\\d{4}-\\d{4,}$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"excluded_actors": {
+														"type": "array",
+														"items": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"key_suppliers": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"domains": {
+																					"type": "array",
+																					"items": {
+																						"maxLength": 253,
+																						"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																						"type": "string"
+																					},
+																					"default": [],
+																					"maxItems": 20
+																				},
+																				"name": {
+																					"type": "string",
+																					"maxLength": 200,
+																					"minLength": 1
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"name"
+																			]
+																		},
+																		"maxItems": 20
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"malware_tools": {
+														"type": "array",
+														"items": {
+															"maxLength": 100,
+															"minLength": 1,
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"motivations": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"personal-gain",
+																				"organizational-gain",
+																				"ideology",
+																				"dominance",
+																				"notoriety",
+																				"coercion",
+																				"revenge"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 7
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"peers": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"domains": {
+																					"type": "array",
+																					"items": {
+																						"maxLength": 253,
+																						"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																						"type": "string"
+																					},
+																					"default": [],
+																					"maxItems": 20
+																				},
+																				"name": {
+																					"type": "string",
+																					"maxLength": 200,
+																					"minLength": 1
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"name"
+																			]
+																		},
+																		"maxItems": 20
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"sectors": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"aerospace",
+																				"agriculture",
+																				"automotive",
+																				"chemical",
+																				"commercial",
+																				"communications",
+																				"construction",
+																				"defense",
+																				"education",
+																				"energy",
+																				"entertainment",
+																				"financial-services",
+																				"government-local",
+																				"government-national",
+																				"government-public-services",
+																				"government-regional",
+																				"healthcare",
+																				"hospitality-leisure",
+																				"infrastructure",
+																				"insurance",
+																				"manufacturing",
+																				"mining",
+																				"non-profit",
+																				"pharmaceuticals",
+																				"professional-services",
+																				"retail",
+																				"technology",
+																				"telecommunications",
+																				"transportation",
+																				"utilities"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 10
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"targets": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"organization",
+																				"customers",
+																				"employees",
+																				"executives",
+																				"partners",
+																				"events",
+																				"products-infrastructure"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 7
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"technique_ids": {
+														"type": "array",
+														"items": {
+															"pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"technologies": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"maxLength": 100,
+																			"minLength": 1,
+																			"type": "string"
+																		},
+																		"maxItems": 50
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													}
+												},
+												"default": {},
+												"additionalProperties": false
+											},
+											"title": {
+												"type": "string",
+												"maxLength": 200,
+												"minLength": 1
+											}
+										},
+										"required": [
+											"schema_version",
+											"mode",
+											"title",
+											"question",
+											"relevance_criteria"
 										],
 										"type": "object"
 									}
@@ -2503,6 +3915,7 @@
 								]
 							},
 							"requirement": {
+								"description": "Free-form requirement. Required unless `definition` is sent.",
 								"type": "string",
 								"maxLength": 4000,
 								"minLength": 1
@@ -2525,10 +3938,7 @@
 								"type": "string",
 								"default": "amber"
 							}
-						},
-						"required": [
-							"requirement"
-						]
+						}
 					}
 				}
 			}
@@ -2538,7 +3948,7 @@
 				"description": "PIR created successfully"
 			},
 			"400": {
-				"description": "Invalid PIR, such as an active PIR without a query"
+				"description": "Invalid PIR, such as an active free-form PIR without a query, or a definition with an unknown topic or a problem that blocks saving"
 			},
 			"403": {
 				"description": "Account not entitled to create PIRs"
@@ -3679,10 +5089,1416 @@
 		"x-fern-sdk-method-name": "create",
 		"x-stability": "beta"
 	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/resolve": {
+		"operationId": "post_PirResolve",
+		"summary": "Resolve structured PIR answers without saving",
+		"description": "Returns the requirement and event query that saving `definition` would generate, using the account's current organization profile and topic. `resolved.issues` lists problems that would block saving, and `resolved.notices` inputs that would be ignored. Search events with `resolved.event_plan.branches`. Send `resolved.based_on` with the save so it fails with 409 if the profile or topic changes in between. Nothing is saved, and no model is called.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"definition": {
+								"description": "Structured PIR answers. `managed` follows a topic from `GET /topics`; `custom` has its own question and criteria. The requirement text and event query are generated from it.",
+								"oneOf": [
+									{
+										"additionalProperties": false,
+										"properties": {
+											"additional_criteria": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"band": {
+															"type": "string",
+															"enum": [
+																"highly",
+																"somewhat",
+																"not"
+															]
+														},
+														"id": {
+															"type": "string",
+															"pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+														},
+														"text": {
+															"type": "string",
+															"maxLength": 300,
+															"minLength": 1
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"id",
+														"band",
+														"text"
+													]
+												},
+												"default": [],
+												"maxItems": 20
+											},
+											"criterion_selections": {
+												"type": "object",
+												"default": {
+													"add": [],
+													"remove": []
+												},
+												"additionalProperties": false,
+												"properties": {
+													"add": {
+														"type": "array",
+														"items": {
+															"pattern": "^[a-z0-9][a-z0-9-]{0,63}$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"remove": {
+														"type": "array",
+														"items": {
+															"pattern": "^[a-z0-9][a-z0-9-]{0,63}$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													}
+												}
+											},
+											"mode": {
+												"type": "string",
+												"enum": [
+													"managed"
+												]
+											},
+											"question": {
+												"default": {
+													"mode": "inherit"
+												},
+												"oneOf": [
+													{
+														"additionalProperties": false,
+														"properties": {
+															"mode": {
+																"type": "string",
+																"enum": [
+																	"inherit"
+																]
+															}
+														},
+														"required": [
+															"mode"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"mode": {
+																"type": "string",
+																"enum": [
+																	"replace"
+																]
+															},
+															"value": {
+																"type": "string",
+																"maxLength": 1000,
+																"minLength": 1
+															}
+														},
+														"required": [
+															"mode",
+															"value"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"schema_version": {
+												"type": "number",
+												"enum": [
+													1
+												]
+											},
+											"selections": {
+												"type": "object",
+												"properties": {
+													"actor_notes": {
+														"type": "string",
+														"maxLength": 500,
+														"minLength": 1
+													},
+													"actor_types": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"nation-state",
+																				"crime-syndicate",
+																				"criminal",
+																				"activist",
+																				"hacker",
+																				"insider-disgruntled",
+																				"insider-accidental",
+																				"spy",
+																				"terrorist",
+																				"competitor",
+																				"sensationalist"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 11
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"actors": {
+														"type": "object",
+														"default": {
+															"add": [],
+															"remove": []
+														},
+														"additionalProperties": false,
+														"properties": {
+															"add": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"remove": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															}
+														}
+													},
+													"attributed_countries": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"countries": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 50
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"cves": {
+														"type": "array",
+														"items": {
+															"pattern": "^CVE-\\d{4}-\\d{4,}$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"excluded_actors": {
+														"type": "array",
+														"items": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"key_suppliers": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"domains": {
+																					"type": "array",
+																					"items": {
+																						"maxLength": 253,
+																						"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																						"type": "string"
+																					},
+																					"default": [],
+																					"maxItems": 20
+																				},
+																				"name": {
+																					"type": "string",
+																					"maxLength": 200,
+																					"minLength": 1
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"name"
+																			]
+																		},
+																		"maxItems": 20
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"malware_tools": {
+														"type": "array",
+														"items": {
+															"maxLength": 100,
+															"minLength": 1,
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"motivations": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"personal-gain",
+																				"organizational-gain",
+																				"ideology",
+																				"dominance",
+																				"notoriety",
+																				"coercion",
+																				"revenge"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 7
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"peers": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"domains": {
+																					"type": "array",
+																					"items": {
+																						"maxLength": 253,
+																						"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																						"type": "string"
+																					},
+																					"default": [],
+																					"maxItems": 20
+																				},
+																				"name": {
+																					"type": "string",
+																					"maxLength": 200,
+																					"minLength": 1
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"name"
+																			]
+																		},
+																		"maxItems": 20
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"sectors": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"aerospace",
+																				"agriculture",
+																				"automotive",
+																				"chemical",
+																				"commercial",
+																				"communications",
+																				"construction",
+																				"defense",
+																				"education",
+																				"energy",
+																				"entertainment",
+																				"financial-services",
+																				"government-local",
+																				"government-national",
+																				"government-public-services",
+																				"government-regional",
+																				"healthcare",
+																				"hospitality-leisure",
+																				"infrastructure",
+																				"insurance",
+																				"manufacturing",
+																				"mining",
+																				"non-profit",
+																				"pharmaceuticals",
+																				"professional-services",
+																				"retail",
+																				"technology",
+																				"telecommunications",
+																				"transportation",
+																				"utilities"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 10
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"targets": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"organization",
+																				"customers",
+																				"employees",
+																				"executives",
+																				"partners",
+																				"events",
+																				"products-infrastructure"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 7
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"technique_ids": {
+														"type": "array",
+														"items": {
+															"pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"technologies": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"maxLength": 100,
+																			"minLength": 1,
+																			"type": "string"
+																		},
+																		"maxItems": 50
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													}
+												},
+												"default": {},
+												"additionalProperties": false
+											},
+											"title": {
+												"default": {
+													"mode": "inherit"
+												},
+												"oneOf": [
+													{
+														"additionalProperties": false,
+														"properties": {
+															"mode": {
+																"type": "string",
+																"enum": [
+																	"inherit"
+																]
+															}
+														},
+														"required": [
+															"mode"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"mode": {
+																"type": "string",
+																"enum": [
+																	"replace"
+																]
+															},
+															"value": {
+																"type": "string",
+																"maxLength": 200,
+																"minLength": 1
+															}
+														},
+														"required": [
+															"mode",
+															"value"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"topic_id": {
+												"type": "string",
+												"maxLength": 100,
+												"minLength": 1
+											}
+										},
+										"required": [
+											"schema_version",
+											"mode",
+											"topic_id"
+										],
+										"type": "object"
+									},
+									{
+										"additionalProperties": false,
+										"properties": {
+											"mode": {
+												"type": "string",
+												"enum": [
+													"custom"
+												]
+											},
+											"question": {
+												"type": "string",
+												"maxLength": 1000,
+												"minLength": 1
+											},
+											"relevance_criteria": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"band": {
+															"type": "string",
+															"enum": [
+																"highly",
+																"somewhat",
+																"not"
+															]
+														},
+														"id": {
+															"type": "string",
+															"pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+														},
+														"text": {
+															"type": "string",
+															"maxLength": 300,
+															"minLength": 1
+														}
+													},
+													"additionalProperties": false,
+													"required": [
+														"id",
+														"band",
+														"text"
+													]
+												},
+												"maxItems": 30,
+												"minItems": 1
+											},
+											"schema_version": {
+												"type": "number",
+												"enum": [
+													1
+												]
+											},
+											"selections": {
+												"type": "object",
+												"properties": {
+													"actor_notes": {
+														"type": "string",
+														"maxLength": 500,
+														"minLength": 1
+													},
+													"actor_types": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"nation-state",
+																				"crime-syndicate",
+																				"criminal",
+																				"activist",
+																				"hacker",
+																				"insider-disgruntled",
+																				"insider-accidental",
+																				"spy",
+																				"terrorist",
+																				"competitor",
+																				"sensationalist"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 11
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"actors": {
+														"type": "object",
+														"default": {
+															"add": [],
+															"remove": []
+														},
+														"additionalProperties": false,
+														"properties": {
+															"add": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"remove": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															}
+														}
+													},
+													"attributed_countries": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"countries": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 50
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"cves": {
+														"type": "array",
+														"items": {
+															"pattern": "^CVE-\\d{4}-\\d{4,}$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"excluded_actors": {
+														"type": "array",
+														"items": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"key_suppliers": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"domains": {
+																					"type": "array",
+																					"items": {
+																						"maxLength": 253,
+																						"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																						"type": "string"
+																					},
+																					"default": [],
+																					"maxItems": 20
+																				},
+																				"name": {
+																					"type": "string",
+																					"maxLength": 200,
+																					"minLength": 1
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"name"
+																			]
+																		},
+																		"maxItems": 20
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"malware_tools": {
+														"type": "array",
+														"items": {
+															"maxLength": 100,
+															"minLength": 1,
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"motivations": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"personal-gain",
+																				"organizational-gain",
+																				"ideology",
+																				"dominance",
+																				"notoriety",
+																				"coercion",
+																				"revenge"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 7
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"peers": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"properties": {
+																				"domains": {
+																					"type": "array",
+																					"items": {
+																						"maxLength": 253,
+																						"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																						"type": "string"
+																					},
+																					"default": [],
+																					"maxItems": 20
+																				},
+																				"name": {
+																					"type": "string",
+																					"maxLength": 200,
+																					"minLength": 1
+																				}
+																			},
+																			"additionalProperties": false,
+																			"required": [
+																				"name"
+																			]
+																		},
+																		"maxItems": 20
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"sectors": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"aerospace",
+																				"agriculture",
+																				"automotive",
+																				"chemical",
+																				"commercial",
+																				"communications",
+																				"construction",
+																				"defense",
+																				"education",
+																				"energy",
+																				"entertainment",
+																				"financial-services",
+																				"government-local",
+																				"government-national",
+																				"government-public-services",
+																				"government-regional",
+																				"healthcare",
+																				"hospitality-leisure",
+																				"infrastructure",
+																				"insurance",
+																				"manufacturing",
+																				"mining",
+																				"non-profit",
+																				"pharmaceuticals",
+																				"professional-services",
+																				"retail",
+																				"technology",
+																				"telecommunications",
+																				"transportation",
+																				"utilities"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 10
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"targets": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"enum": [
+																				"organization",
+																				"customers",
+																				"employees",
+																				"executives",
+																				"partners",
+																				"events",
+																				"products-infrastructure"
+																			],
+																			"type": "string"
+																		},
+																		"maxItems": 7
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"technique_ids": {
+														"type": "array",
+														"items": {
+															"pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"technologies": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"maxLength": 100,
+																			"minLength": 1,
+																			"type": "string"
+																		},
+																		"maxItems": 50
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													}
+												},
+												"default": {},
+												"additionalProperties": false
+											},
+											"title": {
+												"type": "string",
+												"maxLength": 200,
+												"minLength": 1
+											}
+										},
+										"required": [
+											"schema_version",
+											"mode",
+											"title",
+											"question",
+											"relevance_criteria"
+										],
+										"type": "object"
+									}
+								]
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"definition"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The resolved PIR and what it was based on"
+			},
+			"400": {
+				"description": "Invalid definition, or an unknown topic"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Priority Intelligence Requirements"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
+		"x-fern-sdk-method-name": "resolve",
+		"x-stability": "beta"
+	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}": {
 		"operationId": "put_PirUpdate",
 		"summary": "Update a priority intelligence requirement",
-		"description": "Updates a Priority Intelligence Requirement for the authenticated account. Changing the query increments its version; editing the requirement without saving a query marks the query stale. Activating a draft needs a free slot in the active PIR quota; setting `active` on a PIR the matcher paused resumes it without one.",
+		"description": "Updates a Priority Intelligence Requirement for the authenticated account. Changing the query increments its version; editing the requirement without saving a query marks the query stale. Activating a draft needs a free slot in the active PIR quota; setting `active` on a PIR the matcher paused resumes it without one. Updates to a structured PIR must send its `revision` and change its answers through `definition`; its requirement, title and query are generated.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3709,6 +6525,26 @@
 					"schema": {
 						"type": "object",
 						"properties": {
+							"based_on": {
+								"description": "`resolved.based_on` from the resolution the user reviewed. Required with `definition`; if the organization profile or topic has changed since, the save fails with 409 and must be resolved again.",
+								"type": "object",
+								"additionalProperties": false,
+								"properties": {
+									"profile_revision": {
+										"type": "integer",
+										"minimum": 0
+									},
+									"topic_fingerprint": {
+										"type": "string",
+										"nullable": true,
+										"pattern": "^[0-9a-f]{64}$"
+									}
+								},
+								"required": [
+									"profile_revision",
+									"topic_fingerprint"
+								]
+							},
 							"confirm_query": {
 								"description": "Write-only. `true` confirms the query still fits the requirement, clearing `query_stale` without changing the query or its version. Requires a query.",
 								"type": "boolean"
@@ -3755,6 +6591,1365 @@
 											"dataset_ids"
 										],
 										"type": "object"
+									}
+								]
+							},
+							"definition": {
+								"allOf": [
+									{
+										"description": "Structured PIR answers. `managed` follows a topic from `GET /topics`; `custom` has its own question and criteria. The requirement text and event query are generated from it.",
+										"oneOf": [
+											{
+												"additionalProperties": false,
+												"properties": {
+													"additional_criteria": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"band": {
+																	"type": "string",
+																	"enum": [
+																		"highly",
+																		"somewhat",
+																		"not"
+																	]
+																},
+																"id": {
+																	"type": "string",
+																	"pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+																},
+																"text": {
+																	"type": "string",
+																	"maxLength": 300,
+																	"minLength": 1
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"id",
+																"band",
+																"text"
+															]
+														},
+														"default": [],
+														"maxItems": 20
+													},
+													"criterion_selections": {
+														"type": "object",
+														"default": {
+															"add": [],
+															"remove": []
+														},
+														"additionalProperties": false,
+														"properties": {
+															"add": {
+																"type": "array",
+																"items": {
+																	"pattern": "^[a-z0-9][a-z0-9-]{0,63}$",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"remove": {
+																"type": "array",
+																"items": {
+																	"pattern": "^[a-z0-9][a-z0-9-]{0,63}$",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															}
+														}
+													},
+													"mode": {
+														"type": "string",
+														"enum": [
+															"managed"
+														]
+													},
+													"question": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "string",
+																		"maxLength": 1000,
+																		"minLength": 1
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"schema_version": {
+														"type": "number",
+														"enum": [
+															1
+														]
+													},
+													"selections": {
+														"type": "object",
+														"properties": {
+															"actor_notes": {
+																"type": "string",
+																"maxLength": 500,
+																"minLength": 1
+															},
+															"actor_types": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"nation-state",
+																						"crime-syndicate",
+																						"criminal",
+																						"activist",
+																						"hacker",
+																						"insider-disgruntled",
+																						"insider-accidental",
+																						"spy",
+																						"terrorist",
+																						"competitor",
+																						"sensationalist"
+																					],
+																					"type": "string"
+																				},
+																				"maxItems": 11
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"actors": {
+																"type": "object",
+																"default": {
+																	"add": [],
+																	"remove": []
+																},
+																"additionalProperties": false,
+																"properties": {
+																	"add": {
+																		"type": "array",
+																		"items": {
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"default": [],
+																		"maxItems": 50
+																	},
+																	"remove": {
+																		"type": "array",
+																		"items": {
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"default": [],
+																		"maxItems": 50
+																	}
+																}
+															},
+															"attributed_countries": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"countries": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"maxItems": 50
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"cves": {
+																"type": "array",
+																"items": {
+																	"pattern": "^CVE-\\d{4}-\\d{4,}$",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"excluded_actors": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"key_suppliers": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"type": "object",
+																					"properties": {
+																						"domains": {
+																							"type": "array",
+																							"items": {
+																								"maxLength": 253,
+																								"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																								"type": "string"
+																							},
+																							"default": [],
+																							"maxItems": 20
+																						},
+																						"name": {
+																							"type": "string",
+																							"maxLength": 200,
+																							"minLength": 1
+																						}
+																					},
+																					"additionalProperties": false,
+																					"required": [
+																						"name"
+																					]
+																				},
+																				"maxItems": 20
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"malware_tools": {
+																"type": "array",
+																"items": {
+																	"maxLength": 100,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"motivations": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"personal-gain",
+																						"organizational-gain",
+																						"ideology",
+																						"dominance",
+																						"notoriety",
+																						"coercion",
+																						"revenge"
+																					],
+																					"type": "string"
+																				},
+																				"maxItems": 7
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"peers": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"type": "object",
+																					"properties": {
+																						"domains": {
+																							"type": "array",
+																							"items": {
+																								"maxLength": 253,
+																								"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																								"type": "string"
+																							},
+																							"default": [],
+																							"maxItems": 20
+																						},
+																						"name": {
+																							"type": "string",
+																							"maxLength": 200,
+																							"minLength": 1
+																						}
+																					},
+																					"additionalProperties": false,
+																					"required": [
+																						"name"
+																					]
+																				},
+																				"maxItems": 20
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"sectors": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"aerospace",
+																						"agriculture",
+																						"automotive",
+																						"chemical",
+																						"commercial",
+																						"communications",
+																						"construction",
+																						"defense",
+																						"education",
+																						"energy",
+																						"entertainment",
+																						"financial-services",
+																						"government-local",
+																						"government-national",
+																						"government-public-services",
+																						"government-regional",
+																						"healthcare",
+																						"hospitality-leisure",
+																						"infrastructure",
+																						"insurance",
+																						"manufacturing",
+																						"mining",
+																						"non-profit",
+																						"pharmaceuticals",
+																						"professional-services",
+																						"retail",
+																						"technology",
+																						"telecommunications",
+																						"transportation",
+																						"utilities"
+																					],
+																					"type": "string"
+																				},
+																				"maxItems": 10
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"targets": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"organization",
+																						"customers",
+																						"employees",
+																						"executives",
+																						"partners",
+																						"events",
+																						"products-infrastructure"
+																					],
+																					"type": "string"
+																				},
+																				"maxItems": 7
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"technique_ids": {
+																"type": "array",
+																"items": {
+																	"pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"technologies": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"maxLength": 100,
+																					"minLength": 1,
+																					"type": "string"
+																				},
+																				"maxItems": 50
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														},
+														"default": {},
+														"additionalProperties": false
+													},
+													"title": {
+														"default": {
+															"mode": "inherit"
+														},
+														"oneOf": [
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"inherit"
+																		]
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"enum": [
+																			"replace"
+																		]
+																	},
+																	"value": {
+																		"type": "string",
+																		"maxLength": 200,
+																		"minLength": 1
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"topic_id": {
+														"type": "string",
+														"maxLength": 100,
+														"minLength": 1
+													}
+												},
+												"required": [
+													"schema_version",
+													"mode",
+													"topic_id"
+												],
+												"type": "object"
+											},
+											{
+												"additionalProperties": false,
+												"properties": {
+													"mode": {
+														"type": "string",
+														"enum": [
+															"custom"
+														]
+													},
+													"question": {
+														"type": "string",
+														"maxLength": 1000,
+														"minLength": 1
+													},
+													"relevance_criteria": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"band": {
+																	"type": "string",
+																	"enum": [
+																		"highly",
+																		"somewhat",
+																		"not"
+																	]
+																},
+																"id": {
+																	"type": "string",
+																	"pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+																},
+																"text": {
+																	"type": "string",
+																	"maxLength": 300,
+																	"minLength": 1
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"id",
+																"band",
+																"text"
+															]
+														},
+														"maxItems": 30,
+														"minItems": 1
+													},
+													"schema_version": {
+														"type": "number",
+														"enum": [
+															1
+														]
+													},
+													"selections": {
+														"type": "object",
+														"properties": {
+															"actor_notes": {
+																"type": "string",
+																"maxLength": 500,
+																"minLength": 1
+															},
+															"actor_types": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"nation-state",
+																						"crime-syndicate",
+																						"criminal",
+																						"activist",
+																						"hacker",
+																						"insider-disgruntled",
+																						"insider-accidental",
+																						"spy",
+																						"terrorist",
+																						"competitor",
+																						"sensationalist"
+																					],
+																					"type": "string"
+																				},
+																				"maxItems": 11
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"actors": {
+																"type": "object",
+																"default": {
+																	"add": [],
+																	"remove": []
+																},
+																"additionalProperties": false,
+																"properties": {
+																	"add": {
+																		"type": "array",
+																		"items": {
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"default": [],
+																		"maxItems": 50
+																	},
+																	"remove": {
+																		"type": "array",
+																		"items": {
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"default": [],
+																		"maxItems": 50
+																	}
+																}
+															},
+															"attributed_countries": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"countries": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"maxItems": 50
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"cves": {
+																"type": "array",
+																"items": {
+																	"pattern": "^CVE-\\d{4}-\\d{4,}$",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"excluded_actors": {
+																"type": "array",
+																"items": {
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"key_suppliers": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"type": "object",
+																					"properties": {
+																						"domains": {
+																							"type": "array",
+																							"items": {
+																								"maxLength": 253,
+																								"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																								"type": "string"
+																							},
+																							"default": [],
+																							"maxItems": 20
+																						},
+																						"name": {
+																							"type": "string",
+																							"maxLength": 200,
+																							"minLength": 1
+																						}
+																					},
+																					"additionalProperties": false,
+																					"required": [
+																						"name"
+																					]
+																				},
+																				"maxItems": 20
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"malware_tools": {
+																"type": "array",
+																"items": {
+																	"maxLength": 100,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"motivations": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"personal-gain",
+																						"organizational-gain",
+																						"ideology",
+																						"dominance",
+																						"notoriety",
+																						"coercion",
+																						"revenge"
+																					],
+																					"type": "string"
+																				},
+																				"maxItems": 7
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"peers": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"type": "object",
+																					"properties": {
+																						"domains": {
+																							"type": "array",
+																							"items": {
+																								"maxLength": 253,
+																								"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																								"type": "string"
+																							},
+																							"default": [],
+																							"maxItems": 20
+																						},
+																						"name": {
+																							"type": "string",
+																							"maxLength": 200,
+																							"minLength": 1
+																						}
+																					},
+																					"additionalProperties": false,
+																					"required": [
+																						"name"
+																					]
+																				},
+																				"maxItems": 20
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"sectors": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"aerospace",
+																						"agriculture",
+																						"automotive",
+																						"chemical",
+																						"commercial",
+																						"communications",
+																						"construction",
+																						"defense",
+																						"education",
+																						"energy",
+																						"entertainment",
+																						"financial-services",
+																						"government-local",
+																						"government-national",
+																						"government-public-services",
+																						"government-regional",
+																						"healthcare",
+																						"hospitality-leisure",
+																						"infrastructure",
+																						"insurance",
+																						"manufacturing",
+																						"mining",
+																						"non-profit",
+																						"pharmaceuticals",
+																						"professional-services",
+																						"retail",
+																						"technology",
+																						"telecommunications",
+																						"transportation",
+																						"utilities"
+																					],
+																					"type": "string"
+																				},
+																				"maxItems": 10
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"targets": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"enum": [
+																						"organization",
+																						"customers",
+																						"employees",
+																						"executives",
+																						"partners",
+																						"events",
+																						"products-infrastructure"
+																					],
+																					"type": "string"
+																				},
+																				"maxItems": 7
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"technique_ids": {
+																"type": "array",
+																"items": {
+																	"pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+																	"type": "string"
+																},
+																"default": [],
+																"maxItems": 50
+															},
+															"technologies": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"oneOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"inherit"
+																				]
+																			}
+																		},
+																		"required": [
+																			"mode"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"mode": {
+																				"type": "string",
+																				"enum": [
+																					"replace"
+																				]
+																			},
+																			"value": {
+																				"type": "array",
+																				"items": {
+																					"maxLength": 100,
+																					"minLength": 1,
+																					"type": "string"
+																				},
+																				"maxItems": 50
+																			}
+																		},
+																		"required": [
+																			"mode",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															}
+														},
+														"default": {},
+														"additionalProperties": false
+													},
+													"title": {
+														"type": "string",
+														"maxLength": 200,
+														"minLength": 1
+													}
+												},
+												"required": [
+													"schema_version",
+													"mode",
+													"title",
+													"question",
+													"relevance_criteria"
+												],
+												"type": "object"
+											}
+										]
+									},
+									{
+										"description": "Replaces a structured PIR's definition. Free-form PIRs cannot be converted yet."
 									}
 								]
 							},
@@ -4380,6 +8575,11 @@
 								"maxLength": 4000,
 								"minLength": 1
 							},
+							"revision": {
+								"description": "The `revision` the change is based on. Required for structured PIRs; a different stored revision returns 409.",
+								"type": "integer",
+								"minimum": 1
+							},
 							"status": {
 								"description": "`draft`: not monitored. `active`: monitored, unless `pause_reason` is set. Setting `active` on a PIR with a `pause_reason` resumes it. Moving a PIR back to `draft` and activating it again starts matching afresh with a 30-day backfill.",
 								"type": "string",
@@ -4407,7 +8607,7 @@
 				"description": "PIR updated successfully"
 			},
 			"400": {
-				"description": "Invalid update, such as activating a PIR without a query"
+				"description": "Invalid update, such as activating a free-form PIR without a query, or a definition with a problem that blocks saving"
 			},
 			"403": {
 				"description": "Account not entitled to activate PIRs"
@@ -4416,7 +8616,7 @@
 				"description": "PIR not found"
 			},
 			"409": {
-				"description": "PIR was modified concurrently"
+				"description": "PIR was modified concurrently, or `revision` is not the stored one"
 			},
 			"429": {
 				"description": "Active PIR quota exceeded"
@@ -4441,7 +8641,7 @@
 	"PUT /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/profile": {
 		"operationId": "put_PirProfilePut",
 		"summary": "Create or replace the organization profile",
-		"description": "Creates or replaces the account's organization profile: who the organization is, such as its name, brands, domains, sector, regions, key systems and suppliers. All of the account's Priority Intelligence Requirements share it. An account has at most one profile, and it does not count against the PIR quota.",
+		"description": "Creates or replaces the account's organization profile: who the organization is, such as its name, brands, domains, sector, regions, key systems and suppliers. All of the account's Priority Intelligence Requirements share it. An account has at most one profile, and it does not count against the PIR quota. Send structured `organization` facts, which structured PIRs inherit and from which the profile text is generated, or free `profile` text. `revision` must match the stored profile's, or 0 when there is none; it is required with `organization`. Free `profile` text cannot replace structured facts; delete the profile first to switch back.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4457,18 +8657,231 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"type": "object",
-						"properties": {
-							"profile": {
-								"description": "Who the organization is: its name, brands, domains, sector, regions, key systems and suppliers. Shared by all of the account's PIRs to judge how relevant intelligence is to the organization.",
-								"type": "string",
-								"maxLength": 4000,
-								"minLength": 1
+						"anyOf": [
+							{
+								"additionalProperties": false,
+								"properties": {
+									"organization": {
+										"description": "Structured organization facts. Structured PIRs inherit them, and the profile text is generated from them.",
+										"type": "object",
+										"properties": {
+											"additional_context": {
+												"type": "string",
+												"maxLength": 2000,
+												"minLength": 1
+											},
+											"facts": {
+												"type": "object",
+												"additionalProperties": false,
+												"properties": {
+													"brands": {
+														"type": "array",
+														"items": {
+															"maxLength": 100,
+															"minLength": 1,
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 20
+													},
+													"domains": {
+														"type": "array",
+														"items": {
+															"maxLength": 253,
+															"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"key_suppliers": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"domains": {
+																	"type": "array",
+																	"items": {
+																		"maxLength": 253,
+																		"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																		"type": "string"
+																	},
+																	"default": [],
+																	"maxItems": 20
+																},
+																"name": {
+																	"type": "string",
+																	"maxLength": 200,
+																	"minLength": 1
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"name"
+															]
+														},
+														"default": [],
+														"maxItems": 20
+													},
+													"operating_countries": {
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													},
+													"organization_name": {
+														"type": "string",
+														"maxLength": 200,
+														"minLength": 1
+													},
+													"peers": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"domains": {
+																	"type": "array",
+																	"items": {
+																		"maxLength": 253,
+																		"pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z][a-z0-9-]{0,62}$",
+																		"type": "string"
+																	},
+																	"default": [],
+																	"maxItems": 20
+																},
+																"name": {
+																	"type": "string",
+																	"maxLength": 200,
+																	"minLength": 1
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"name"
+															]
+														},
+														"default": [],
+														"maxItems": 20
+													},
+													"protected_targets": {
+														"type": "array",
+														"items": {
+															"enum": [
+																"organization",
+																"customers",
+																"employees",
+																"executives",
+																"partners",
+																"events",
+																"products-infrastructure"
+															],
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 7
+													},
+													"sectors": {
+														"type": "array",
+														"items": {
+															"enum": [
+																"aerospace",
+																"agriculture",
+																"automotive",
+																"chemical",
+																"commercial",
+																"communications",
+																"construction",
+																"defense",
+																"education",
+																"energy",
+																"entertainment",
+																"financial-services",
+																"government-local",
+																"government-national",
+																"government-public-services",
+																"government-regional",
+																"healthcare",
+																"hospitality-leisure",
+																"infrastructure",
+																"insurance",
+																"manufacturing",
+																"mining",
+																"non-profit",
+																"pharmaceuticals",
+																"professional-services",
+																"retail",
+																"technology",
+																"telecommunications",
+																"transportation",
+																"utilities"
+															],
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 10
+													},
+													"technologies": {
+														"type": "array",
+														"items": {
+															"maxLength": 100,
+															"minLength": 1,
+															"type": "string"
+														},
+														"default": [],
+														"maxItems": 50
+													}
+												},
+												"required": [
+													"organization_name"
+												]
+											},
+											"schema_version": {
+												"type": "number",
+												"enum": [
+													1
+												]
+											}
+										},
+										"additionalProperties": false,
+										"required": [
+											"schema_version",
+											"facts"
+										]
+									},
+									"revision": {
+										"description": "The `revision` the change is based on; 0 when the account has no profile yet.",
+										"type": "integer",
+										"minimum": 0
+									}
+								},
+								"required": [
+									"organization",
+									"revision"
+								],
+								"type": "object"
+							},
+							{
+								"additionalProperties": false,
+								"properties": {
+									"profile": {
+										"description": "Who the organization is: its name, brands, domains, sector, regions, key systems and suppliers. Shared by all of the account's PIRs to judge how relevant intelligence is to the organization.",
+										"type": "string",
+										"maxLength": 4000,
+										"minLength": 1
+									},
+									"revision": {
+										"description": "The `revision` the change is based on; 0 when the account has no profile yet.",
+										"type": "integer",
+										"minimum": 0
+									}
+								},
+								"required": [
+									"profile"
+								],
+								"type": "object"
 							}
-						},
-						"additionalProperties": false,
-						"required": [
-							"profile"
 						]
 					}
 				}
@@ -4480,6 +8893,9 @@
 			},
 			"400": {
 				"description": "Invalid profile, such as blank or longer than 4,000 characters"
+			},
+			"409": {
+				"description": "`revision` is not the stored profile's, a concurrent write won, or free text was sent for a structured profile"
 			}
 		},
 		"security": [

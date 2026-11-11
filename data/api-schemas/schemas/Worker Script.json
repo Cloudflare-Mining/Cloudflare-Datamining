@@ -2586,8 +2586,9 @@
 				"content": {
 					"application/javascript": {
 						"schema": {
+							"description": "The script of a Worker in service worker syntax.",
 							"type": "string",
-							"example": "export default {\n  async fetch(request, env, ctx) {\n    return new Response(\"Hello, world!\");\n  }\n};\n"
+							"example": "addEventListener('fetch', (event) => event.respondWith(new Response('Hello, world!')))"
 						}
 					},
 					"multipart/form-data": {
@@ -2601,6 +2602,9 @@
 						}
 					}
 				}
+			},
+			"204": {
+				"description": "The Worker has no script content, such as a Worker that only serves static assets."
 			},
 			"4XX": {
 				"description": "Download Worker response failure.",
@@ -2780,13 +2784,30 @@
 			"200": {
 				"description": "Fetch script content.",
 				"content": {
-					"string": {
+					"application/javascript": {
 						"schema": {
+							"description": "The script of a Worker in service worker syntax.",
 							"type": "string",
-							"example": "export default {\n  async fetch(request, env, ctx) {\n    return new Response(\"Hello, world!\");\n  }\n};\n"
+							"example": "addEventListener('fetch', (event) => event.respondWith(new Response('Hello, world!')))"
+						}
+					},
+					"multipart/form-data": {
+						"schema": {
+							"description": "The modules of a Worker in ES module syntax, one part per module, and any source maps. The `cf-entrypoint` response header names the main module.",
+							"type": "object",
+							"example": {
+								"worker.js": "export default {\n  async fetch(request, env, ctx) {\n    return new Response(\"Hello, world!\");\n  }\n};\n"
+							},
+							"additionalProperties": {
+								"format": "binary",
+								"type": "string"
+							}
 						}
 					}
 				}
+			},
+			"204": {
+				"description": "The Worker has no script content, such as a Worker that only serves static assets."
 			},
 			"4XX": {
 				"description": "Fetch script content failure.",

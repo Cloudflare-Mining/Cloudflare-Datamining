@@ -4059,6 +4059,22 @@
 			}
 		}
 	],
+	"SERVERS /accounts/{account_id}/zerotrust/region": [
+		{
+			"url": "https://api.cloudflare.com/client/v4"
+		},
+		{
+			"url": "https://api.staging.cloudflare.com/client/v4"
+		}
+	],
+	"SERVERS /accounts/{account_id}/zerotrust/regions": [
+		{
+			"url": "https://api.cloudflare.com/client/v4"
+		},
+		{
+			"url": "https://api.staging.cloudflare.com/client/v4"
+		}
+	],
 	"SERVERS /produce": [
 		{
 			"description": "The stream's endpoint, also returned as `endpoint` on the stream.",
