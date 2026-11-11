@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/playwright-mcp",
 	"dist-tags": {
-		"latest": "0.0.5",
+		"latest": "0.0.6",
 		"next": "0.0.6-next"
 	},
 	"versions": {
@@ -198,8 +198,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCdyoWTP4yp562dDtT97onwaUZCczVDCQpIW2QeknukmAIgfffjIu9qS+k1OSeaJ/3+XbKywQbBYZNqE69mLiPO5jo="
+						"sig": "MEUCIQCdyoWTP4yp562dDtT97onwaUZCczVDCQpIW2QeknukmAIgfffjIu9qS+k1OSeaJ/3+XbKywQbBYZNqE69mLiPO5jo=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -209,6 +209,49 @@
 					}
 				},
 				"unpackedSize": 194564
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"0.0.6": {
+			"name": "@cloudflare/playwright-mcp",
+			"version": "0.0.6",
+			"dependencies": {
+				"yaml": "^2.8.0",
+				"agents": "^0.0.109",
+				"zod-to-json-schema": "^3.24.6",
+				"@cloudflare/playwright": "^0.0.11",
+				"@modelcontextprotocol/sdk": "^1.17.0"
+			},
+			"devDependencies": {
+				"vite": "^7.3.6",
+				"wrangler": "4.137.0",
+				"typescript": "^5.8.2",
+				"@cloudflare/workers-types": "^5.20260921.1"
+			},
+			"dist": {
+				"shasum": "704cc762bba6bc05820253f240cbd30ba18cd7b2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/playwright-mcp/-/playwright-mcp-0.0.6.tgz",
+				"fileCount": 77,
+				"integrity": "sha512-J7aUqw/7Gu8yv9bh+iZ2Z1lfcebTad+66kUEfIORbZIE5kEuDjlJtgrKAMujalKS3gNsgSWiIntP/nI99W4bTw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCqjjmuxWiO0LvlHWv9iuB8vLwCzlq5GclVjvIo+anGmQIhAN2jDX0vGGgmXpzk7e2O0BUi0PDG1oXWW2znpz6B/ZTe",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQCsd9mogm1rVwpLr0ymx0p7ZiPsIyknr/fcbc0D+Y1I4gIgO1gbXVEFlBxUlR3wdPE/zoTeTj55ah50vDBJV88mU7o="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fplaywright-mcp@0.0.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 194549
 			},
 			"engines": {
 				"node": ">=18"

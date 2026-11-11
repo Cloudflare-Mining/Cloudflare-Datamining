@@ -1,10 +1,10 @@
 ## Cloudflare Playwright MCP
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/playwright-mcp/tree/main/cloudflare/example)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/browser-run/tree/main/examples/playwright-mcp-cloudflare)
 
 ### Overview
 
-This project leverages Playwright for automated browser testing and integrates with Cloudflare Workers, [Browser Rendering](https://developers.cloudflare.com/browser-rendering/) and [`@cloudflare/playwright`](https://github.com/cloudflare/playwright) for deployment.
+This project leverages Playwright for automated browser testing and integrates with Cloudflare Workers, [Browser Rendering](https://developers.cloudflare.com/browser-rendering/) and [`@cloudflare/playwright`](https://github.com/cloudflare/browser-run/tree/main/packages/playwright-cloudflare) for deployment.
 
 ### Build and Deploy
 
@@ -15,22 +15,37 @@ Follow these steps to set up and deploy the project:
 npm ci
 ```
 
-2. Build:
+2. Build the package:
 ```bash
-cd cloudflare
-npm run build
+npm run build --workspace @cloudflare/playwright-mcp
 ```
 
 3. Deploy to Cloudflare Workers:
 
 ```bash
-cd cloudflare/example
+cd examples/playwright-mcp-cloudflare
+npm ci
 npx wrangler deploy
 ```
 
+### Compatibility date
+
+This package uses `@cloudflare/playwright` 0.0.11. That version reads binary WebSocket messages from Browser Run as `ArrayBuffer`.
+
+If your Worker uses a `compatibility_date` of `2026-03-17` or later, Workers delivers binary WebSocket messages as `Blob` by default. Browser tools then time out with `browserType.connectOverCDP: Timeout 30000ms exceeded`.
+
+To prevent this, add the `no_websocket_standard_binary_type` compatibility flag:
+
+```toml
+compatibility_date = "2026-09-23"
+compatibility_flags = ["nodejs_compat", "no_websocket_standard_binary_type"]
+```
+
+The example Worker uses an earlier compatibility date, so it does not need this flag.
+
 ### Use with Cloudflare AI Playground
 
-![alt text](docs/imgs/playground-ai-screenshot.png)
+![alt text](https://github.com/cloudflare/browser-run/raw/main/examples/playwright-mcp-cloudflare/docs/imgs/playground-ai-screenshot.png)
 
 [Cloudflare playground AI](https://playground.ai.cloudflare.com/) is a great way to test MCP servers using LLM models available in Workers AI.
 
@@ -59,15 +74,15 @@ Example of a conversation:
 | **User** | And create another todo in yoda style |
 | **Assistant** | *runs browser_type tool*<br> A new todo entry "A walk, I must take" has been created in Yoda style. The page snapshot shows the updated content of the page, including the new todo entry. |
 | **User** | Take a screenshot |
-| **Assistant** | *runs browser_take_screenshot tool*<br> ![alt text](docs/imgs/todomvc-screenshot-1.png) A screenshot of the current page has been taken. The screenshot is in PNG format and is 56KB in size. |
+| **Assistant** | *runs browser_take_screenshot tool*<br> ![alt text](https://github.com/cloudflare/browser-run/raw/main/examples/playwright-mcp-cloudflare/docs/imgs/todomvc-screenshot-1.png) A screenshot of the current page has been taken. The screenshot is in PNG format and is 56KB in size. |
 | **User** | Now click the checkbox of the parrot todo entry |
 | **Assistant** | *runs browser_clickt tool*<br> The checkbox of the parrot todo entry "Polly wants a cracker" has been clicked. The page snapshot shows the updated content of the page, with the checkbox now checked. |
 | **User** | Take a screenshot |
-| **Assistant** | *runs browser_take_screenshot tool*<br> ![alt text](docs/imgs/todomvc-screenshot-2.png) A screenshot of the current page has been taken. The screenshot is in PNG format and is 58KB in size. |
+| **Assistant** | *runs browser_take_screenshot tool*<br> ![alt text](https://github.com/cloudflare/browser-run/raw/main/examples/playwright-mcp-cloudflare/docs/imgs/todomvc-screenshot-2.png) A screenshot of the current page has been taken. The screenshot is in PNG format and is 58KB in size. |
 | **User** | Remove completed todo entries |
 | **Assistant** | *runs browser_clickt tool*<br> The "Clear completed" button has been clicked. The page snapshot shows the updated content of the page, with the completed todo entry "Polly wants a cracker" removed. |
 | **User** | Take a final screenshot |
-| **Assistant** | *runs browser_take_screenshot tool*<br> ![alt text](docs/imgs/todomvc-screenshot-3.png) A final screenshot of the current page has been taken. The screenshot is in PNG format and is 50KB in size. |
+| **Assistant** | *runs browser_take_screenshot tool*<br> ![alt text](https://github.com/cloudflare/browser-run/raw/main/examples/playwright-mcp-cloudflare/docs/imgs/todomvc-screenshot-3.png) A final screenshot of the current page has been taken. The screenshot is in PNG format and is 50KB in size. |
 
 ### Use with Claude Desktop
 
@@ -96,7 +111,7 @@ This setup ensures that Claude Desktop can communicate with the Cloudflare Playw
 
 Here's an example of a session opening the TODO demo app, adding "buy lemons" and doing a screenshot, taking advantage of playwright-mcp tools and Browser Rendering:
 
-![alt text](docs/imgs/claudemcp.gif)
+![alt text](https://github.com/cloudflare/browser-run/raw/main/examples/playwright-mcp-cloudflare/docs/imgs/claudemcp.gif)
 
 ### Configure in VSCode
 
@@ -113,7 +128,18 @@ code-insiders --add-mcp '{"name":"cloudflare-playwright","type":"sse","url":"htt
 ```
 
 After installation, the Playwright MCP server will be available for use with your GitHub Copilot agent in VS Code.
-</details>
+
+### Use with Cursor
+
+By default, when `imageResponses` is set to `"auto"`, the server disables inline image responses for Cursor clients. To enable inline screenshots in Cursor, you need to override this behavior:
+
+If you're running your own Cloudflare Worker, pass `imageResponses: "allow"` when creating the MCP agent:
+
+```typescript
+export const PlaywrightMCP = createMcpAgent(env.BROWSER, {
+  imageResponses: 'allow',
+} as any);
+```
 
 ### Tool Modes
 
