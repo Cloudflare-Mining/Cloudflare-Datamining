@@ -80,6 +80,9 @@
 	"ai-auto-rag-remove-beta": {
 		"true": 100
 	},
+	"ai-auto-rag-stream-source": {
+		"false": 100
+	},
 	"ai-auto-rag-test-models": {
 		"false": 100
 	},
@@ -869,9 +872,6 @@
 	"marketing-tal-test": {
 		"false": 100
 	},
-	"mesh-dns": {
-		"false": 100
-	},
 	"mesh-hostname-routing": {
 		"true": 100
 	},
@@ -1197,7 +1197,8 @@
 		"true": 100
 	},
 	"security-precursor-analytics": {
-		"false": 100
+		"false": 76,
+		"true": 24
 	},
 	"security-precursor-monitor-mode": {
 		"true": 100
