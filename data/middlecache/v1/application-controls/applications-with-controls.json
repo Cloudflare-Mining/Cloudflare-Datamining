@@ -842,6 +842,24 @@
 						"label": "Box Platform API",
 						"items": [
 							{
+								"operation_name": "AuthorizeUser",
+								"operation_id": 701,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Authorization",
+								"operation_group_id": 176
+							},
+							{
+								"operation_name": "AuthorizeUser",
+								"operation_id": 701,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Authorization",
+								"operation_group_id": 176
+							},
+							{
 								"operation_name": "AskQuestion",
 								"operation_id": 597,
 								"application_control": null,
@@ -3272,6 +3290,15 @@
 								"operation_group_id": 176
 							},
 							{
+								"operation_name": "DownloadZipArchive",
+								"operation_id": 710,
+								"application_control": "Download",
+								"application_control_id": 206,
+								"contains_payload": true,
+								"operation_group": "Zip Downloads",
+								"operation_group_id": 140
+							},
+							{
 								"operation_name": "UploadFile",
 								"operation_id": 732,
 								"application_control": "Upload",
@@ -3360,57 +3387,12 @@
 								"contains_payload": false,
 								"operation_group": "Uploads (Chunked)",
 								"operation_group_id": 132
-							},
-							{
-								"operation_name": "AuthorizeUser",
-								"operation_id": 701,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Authorization",
-								"operation_group_id": 176
-							},
-							{
-								"operation_name": "AuthorizeUser",
-								"operation_id": 701,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Authorization",
-								"operation_group_id": 176
-							},
-							{
-								"operation_name": "DownloadZipArchive",
-								"operation_id": 710,
-								"application_control": "Download",
-								"application_control_id": 206,
-								"contains_payload": true,
-								"operation_group": "Zip Downloads",
-								"operation_group_id": 140
 							}
 						]
 					},
 					{
 						"label": "Box Web App",
 						"items": [
-							{
-								"operation_name": "DownloadFile",
-								"operation_id": 811,
-								"application_control": "Download",
-								"application_control_id": 206,
-								"contains_payload": true,
-								"operation_group": "Downloads",
-								"operation_group_id": 202
-							},
-							{
-								"operation_name": "CreateAndDownloadZipArchive",
-								"operation_id": 781,
-								"application_control": "Download",
-								"application_control_id": 206,
-								"contains_payload": true,
-								"operation_group": "Zip Downloads",
-								"operation_group_id": 195
-							},
 							{
 								"operation_name": "GetFileInformation",
 								"operation_id": 803,
@@ -3925,6 +3907,24 @@
 								"operation_group_id": 625
 							},
 							{
+								"operation_name": "DownloadFile",
+								"operation_id": 811,
+								"application_control": "Download",
+								"application_control_id": 206,
+								"contains_payload": true,
+								"operation_group": "Downloads",
+								"operation_group_id": 202
+							},
+							{
+								"operation_name": "CreateAndDownloadZipArchive",
+								"operation_id": 781,
+								"application_control": "Download",
+								"application_control_id": 206,
+								"contains_payload": true,
+								"operation_group": "Zip Downloads",
+								"operation_group_id": 195
+							},
+							{
 								"operation_name": "UploadFile",
 								"operation_id": 820,
 								"application_control": "Upload",
@@ -3953,150 +3953,6 @@
 					{
 						"label": "Dropbox API",
 						"items": [
-							{
-								"operation_name": "account_get_photo",
-								"operation_id": 47151,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "account",
-								"operation_group_id": 704
-							},
-							{
-								"operation_name": "files_alpha_upload",
-								"operation_id": 4096,
-								"application_control": "Upload",
-								"application_control_id": 708,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_download",
-								"operation_id": 4059,
-								"application_control": "Download",
-								"application_control_id": 707,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_download_zip",
-								"operation_id": 4088,
-								"application_control": "Download",
-								"application_control_id": 707,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_export",
-								"operation_id": 4015,
-								"application_control": "Download",
-								"application_control_id": 707,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_get_preview",
-								"operation_id": 4014,
-								"application_control": "Download",
-								"application_control_id": 707,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_get_thumbnail",
-								"operation_id": 4104,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_get_thumbnail_batch",
-								"operation_id": 4182,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_get_thumbnail",
-								"operation_id": 4104,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_upload",
-								"operation_id": 4007,
-								"application_control": "Upload",
-								"application_control_id": 708,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_upload_session_append",
-								"operation_id": 4050,
-								"application_control": "Upload",
-								"application_control_id": 708,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_upload_session_append_batch",
-								"operation_id": 47155,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_upload_session_append",
-								"operation_id": 4050,
-								"application_control": "Upload",
-								"application_control_id": 708,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_upload_session_finish",
-								"operation_id": 4075,
-								"application_control": "Upload",
-								"application_control_id": 708,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "files_upload_session_start",
-								"operation_id": 4110,
-								"application_control": "Upload",
-								"application_control_id": 708,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 694
-							},
-							{
-								"operation_name": "sharing_get_shared_link_file",
-								"operation_id": 4093,
-								"application_control": "Download",
-								"application_control_id": 707,
-								"contains_payload": true,
-								"operation_group": "sharing",
-								"operation_group_id": 696
-							},
 							{
 								"operation_name": "account_delete_profile_photo",
 								"operation_id": 47147,
@@ -6474,6 +6330,150 @@
 								"operation_group_id": 706
 							},
 							{
+								"operation_name": "account_get_photo",
+								"operation_id": 47151,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "account",
+								"operation_group_id": 704
+							},
+							{
+								"operation_name": "files_alpha_upload",
+								"operation_id": 4096,
+								"application_control": "Upload",
+								"application_control_id": 708,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_download",
+								"operation_id": 4059,
+								"application_control": "Download",
+								"application_control_id": 707,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_download_zip",
+								"operation_id": 4088,
+								"application_control": "Download",
+								"application_control_id": 707,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_export",
+								"operation_id": 4015,
+								"application_control": "Download",
+								"application_control_id": 707,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_get_preview",
+								"operation_id": 4014,
+								"application_control": "Download",
+								"application_control_id": 707,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_get_thumbnail",
+								"operation_id": 4104,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_get_thumbnail_batch",
+								"operation_id": 4182,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_get_thumbnail",
+								"operation_id": 4104,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_upload",
+								"operation_id": 4007,
+								"application_control": "Upload",
+								"application_control_id": 708,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_upload_session_append",
+								"operation_id": 4050,
+								"application_control": "Upload",
+								"application_control_id": 708,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_upload_session_append_batch",
+								"operation_id": 47155,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_upload_session_append",
+								"operation_id": 4050,
+								"application_control": "Upload",
+								"application_control_id": 708,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_upload_session_finish",
+								"operation_id": 4075,
+								"application_control": "Upload",
+								"application_control_id": 708,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "files_upload_session_start",
+								"operation_id": 4110,
+								"application_control": "Upload",
+								"application_control_id": 708,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 694
+							},
+							{
+								"operation_name": "sharing_get_shared_link_file",
+								"operation_id": 4093,
+								"application_control": "Download",
+								"application_control_id": 707,
+								"contains_payload": true,
+								"operation_group": "sharing",
+								"operation_group_id": 696
+							},
+							{
 								"operation_name": "files_list_folder_longpoll",
 								"operation_id": 4209,
 								"application_control": null,
@@ -6487,6 +6487,33 @@
 					{
 						"label": "Dropbox Web App",
 						"items": [
+							{
+								"operation_name": "files_upload_session_append_batch",
+								"operation_id": 3871,
+								"application_control": "Upload",
+								"application_control_id": 708,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 22
+							},
+							{
+								"operation_name": "files_put_block_returning_token",
+								"operation_id": 46884,
+								"application_control": "Upload",
+								"application_control_id": 708,
+								"contains_payload": true,
+								"operation_group": "files",
+								"operation_group_id": 22
+							},
+							{
+								"operation_name": "account_set_profile_photo",
+								"operation_id": 3918,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "account",
+								"operation_group_id": 41
+							},
 							{
 								"operation_name": "account_check_user_with_email_exists",
 								"operation_id": 82,
@@ -7350,33 +7377,6 @@
 								"contains_payload": false,
 								"operation_group": "files",
 								"operation_group_id": 22
-							},
-							{
-								"operation_name": "files_upload_session_append_batch",
-								"operation_id": 3871,
-								"application_control": "Upload",
-								"application_control_id": 708,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 22
-							},
-							{
-								"operation_name": "files_put_block_returning_token",
-								"operation_id": 46884,
-								"application_control": "Upload",
-								"application_control_id": 708,
-								"contains_payload": true,
-								"operation_group": "files",
-								"operation_group_id": 22
-							},
-							{
-								"operation_name": "account_set_profile_photo",
-								"operation_id": 3918,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "account",
-								"operation_group_id": 41
 							},
 							{
 								"operation_name": "files_download5",
@@ -8610,6 +8610,42 @@
 					{
 						"label": "ShareFile Platform API",
 						"items": [
+							{
+								"operation_name": "GetSsoInfo",
+								"operation_id": 1020,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Accounts",
+								"operation_group_id": 105
+							},
+							{
+								"operation_name": "FindSubdomain",
+								"operation_id": 1264,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Accounts",
+								"operation_group_id": 105
+							},
+							{
+								"operation_name": "CheckIfSubdomainIsRequired",
+								"operation_id": 1284,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Accounts",
+								"operation_group_id": 105
+							},
+							{
+								"operation_name": "CheckIfWebPopIsRequired",
+								"operation_id": 1041,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Accounts",
+								"operation_group_id": 105
+							},
 							{
 								"operation_name": "DeleteAccessControl",
 								"operation_id": 393,
@@ -11489,174 +11525,12 @@
 								"contains_payload": false,
 								"operation_group": "StorageCenters",
 								"operation_group_id": 108
-							},
-							{
-								"operation_name": "GetSsoInfo",
-								"operation_id": 1020,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Accounts",
-								"operation_group_id": 105
-							},
-							{
-								"operation_name": "FindSubdomain",
-								"operation_id": 1264,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Accounts",
-								"operation_group_id": 105
-							},
-							{
-								"operation_name": "CheckIfSubdomainIsRequired",
-								"operation_id": 1284,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Accounts",
-								"operation_group_id": 105
-							},
-							{
-								"operation_name": "CheckIfWebPopIsRequired",
-								"operation_id": 1041,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Accounts",
-								"operation_group_id": 105
 							}
 						]
 					},
 					{
 						"label": "ShareFile Web App",
 						"items": [
-							{
-								"operation_name": "GetBillingInfo",
-								"operation_id": 3480,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Billing",
-								"operation_group_id": 526
-							},
-							{
-								"operation_name": "GetLink",
-								"operation_id": 3478,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Integrations",
-								"operation_group_id": 524
-							},
-							{
-								"operation_name": "CreateFileLock",
-								"operation_id": 3481,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Items",
-								"operation_group_id": 527
-							},
-							{
-								"operation_name": "DiscardFileLock",
-								"operation_id": 3489,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Items",
-								"operation_group_id": 527
-							},
-							{
-								"operation_name": "GetShares",
-								"operation_id": 3482,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Items",
-								"operation_group_id": 527
-							},
-							{
-								"operation_name": "UploadFile2",
-								"operation_id": 3483,
-								"application_control": "Upload",
-								"application_control_id": 531,
-								"contains_payload": false,
-								"operation_group": "Items",
-								"operation_group_id": 527
-							},
-							{
-								"operation_name": "BulkMoveItems",
-								"operation_id": 3484,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Items",
-								"operation_group_id": 527
-							},
-							{
-								"operation_name": "GetChildren",
-								"operation_id": 3490,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Items",
-								"operation_group_id": 527
-							},
-							{
-								"operation_name": "ContentViewer",
-								"operation_id": 3485,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Items",
-								"operation_group_id": 527
-							},
-							{
-								"operation_name": "GetRecents",
-								"operation_id": 3491,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Items",
-								"operation_group_id": 527
-							},
-							{
-								"operation_name": "UploadCompleteNotification",
-								"operation_id": 3486,
-								"application_control": "Upload",
-								"application_control_id": 531,
-								"contains_payload": false,
-								"operation_group": "Notifications",
-								"operation_group_id": 528
-							},
-							{
-								"operation_name": "GetPowerTools",
-								"operation_id": 3487,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Web",
-								"operation_group_id": 529
-							},
-							{
-								"operation_name": "GetAccessRights",
-								"operation_id": 3479,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Shares",
-								"operation_group_id": 525
-							},
-							{
-								"operation_name": "GetOfficeOnlinePromotions",
-								"operation_id": 3488,
-								"application_control": null,
-								"application_control_id": null,
-								"contains_payload": false,
-								"operation_group": "Web",
-								"operation_group_id": 529
-							},
 							{
 								"operation_name": "UploadSignatureRequestPayload",
 								"operation_id": 20230,
@@ -11782,6 +11656,132 @@
 								"contains_payload": true,
 								"operation_group": "Items",
 								"operation_group_id": 527
+							},
+							{
+								"operation_name": "GetBillingInfo",
+								"operation_id": 3480,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Billing",
+								"operation_group_id": 526
+							},
+							{
+								"operation_name": "GetLink",
+								"operation_id": 3478,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Integrations",
+								"operation_group_id": 524
+							},
+							{
+								"operation_name": "CreateFileLock",
+								"operation_id": 3481,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Items",
+								"operation_group_id": 527
+							},
+							{
+								"operation_name": "DiscardFileLock",
+								"operation_id": 3489,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Items",
+								"operation_group_id": 527
+							},
+							{
+								"operation_name": "GetShares",
+								"operation_id": 3482,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Items",
+								"operation_group_id": 527
+							},
+							{
+								"operation_name": "UploadFile2",
+								"operation_id": 3483,
+								"application_control": "Upload",
+								"application_control_id": 531,
+								"contains_payload": false,
+								"operation_group": "Items",
+								"operation_group_id": 527
+							},
+							{
+								"operation_name": "BulkMoveItems",
+								"operation_id": 3484,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Items",
+								"operation_group_id": 527
+							},
+							{
+								"operation_name": "GetChildren",
+								"operation_id": 3490,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Items",
+								"operation_group_id": 527
+							},
+							{
+								"operation_name": "ContentViewer",
+								"operation_id": 3485,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Items",
+								"operation_group_id": 527
+							},
+							{
+								"operation_name": "GetRecents",
+								"operation_id": 3491,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Items",
+								"operation_group_id": 527
+							},
+							{
+								"operation_name": "UploadCompleteNotification",
+								"operation_id": 3486,
+								"application_control": "Upload",
+								"application_control_id": 531,
+								"contains_payload": false,
+								"operation_group": "Notifications",
+								"operation_group_id": 528
+							},
+							{
+								"operation_name": "GetPowerTools",
+								"operation_id": 3487,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Web",
+								"operation_group_id": 529
+							},
+							{
+								"operation_name": "GetAccessRights",
+								"operation_id": 3479,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Shares",
+								"operation_group_id": 525
+							},
+							{
+								"operation_name": "GetOfficeOnlinePromotions",
+								"operation_id": 3488,
+								"application_control": null,
+								"application_control_id": null,
+								"contains_payload": false,
+								"operation_group": "Web",
+								"operation_group_id": 529
 							},
 							{
 								"operation_name": "UploadFileToDocumentTemplate",
