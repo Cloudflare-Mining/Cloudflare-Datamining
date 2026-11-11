@@ -722,7 +722,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.dns",
-		"x-fern-sdk-method-name": "summary-v2"
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/dns/summary/cache_hit": {
 		"operationId": "radar-get-dns-summary-by-cache-hit-status",
@@ -8113,7 +8113,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.dns",
-		"x-fern-sdk-method-name": "timeseries-groups-v2"
+		"x-fern-sdk-method-name": "timeseries-groups"
 	},
 	"GET /radar/dns/timeseries_groups/cache_hit": {
 		"operationId": "radar-get-dns-timeseries-group-by-cache-hit-status",

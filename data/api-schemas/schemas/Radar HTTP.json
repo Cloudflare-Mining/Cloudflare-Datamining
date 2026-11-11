@@ -618,7 +618,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http",
-		"x-fern-sdk-method-name": "summary-v2"
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/http/summary/bot_class": {
 		"operationId": "radar-get-http-summary-by-bot-class",
@@ -6429,7 +6429,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http",
-		"x-fern-sdk-method-name": "timeseries-groups-v2"
+		"x-fern-sdk-method-name": "timeseries-groups"
 	},
 	"GET /radar/http/timeseries_groups/bot_class": {
 		"operationId": "radar-get-http-timeseries-group-by-bot-class",
@@ -13029,7 +13029,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.ases",
+		"x-fern-sdk-group-name": "radar.http.top.ases",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/ases/bot_class/{bot_class}": {
@@ -13594,7 +13594,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.ases.bot-class",
+		"x-fern-sdk-group-name": "radar.http.top.ases.bot-class",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/ases/browser_family/{browser_family}": {
@@ -14159,7 +14159,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.ases.browser-family",
+		"x-fern-sdk-group-name": "radar.http.top.ases.browser-family",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/ases/device_type/{device_type}": {
@@ -14724,7 +14724,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.ases.device-type",
+		"x-fern-sdk-group-name": "radar.http.top.ases.device-type",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/ases/http_protocol/{http_protocol}": {
@@ -15289,7 +15289,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.ases.http-protocol",
+		"x-fern-sdk-group-name": "radar.http.top.ases.http-protocol",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/ases/http_version/{http_version}": {
@@ -15854,7 +15854,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.ases.http-method",
+		"x-fern-sdk-group-name": "radar.http.top.ases.http-version",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/ases/ip_version/{ip_version}": {
@@ -16419,7 +16419,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.ases.ip-version",
+		"x-fern-sdk-group-name": "radar.http.top.ases.ip-version",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/ases/os/{os}": {
@@ -16984,7 +16984,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.ases.os",
+		"x-fern-sdk-group-name": "radar.http.top.ases.os",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/ases/tls_version/{tls_version}": {
@@ -17549,7 +17549,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.ases.tls-version",
+		"x-fern-sdk-group-name": "radar.http.top.ases.tls-version",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/browser": {
@@ -19224,7 +19224,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.locations",
+		"x-fern-sdk-group-name": "radar.http.top.locations",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/locations/bot_class/{bot_class}": {
@@ -19789,7 +19789,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.locations.bot-class",
+		"x-fern-sdk-group-name": "radar.http.top.locations.bot-class",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/locations/browser_family/{browser_family}": {
@@ -20354,7 +20354,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.locations.browser-family",
+		"x-fern-sdk-group-name": "radar.http.top.locations.browser-family",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/locations/device_type/{device_type}": {
@@ -20919,7 +20919,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.locations.device-type",
+		"x-fern-sdk-group-name": "radar.http.top.locations.device-type",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/locations/http_protocol/{http_protocol}": {
@@ -21484,7 +21484,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.locations.http-protocol",
+		"x-fern-sdk-group-name": "radar.http.top.locations.http-protocol",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/locations/http_version/{http_version}": {
@@ -22049,7 +22049,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.locations.http-method",
+		"x-fern-sdk-group-name": "radar.http.top.locations.http-version",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/locations/ip_version/{ip_version}": {
@@ -22614,7 +22614,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.locations.ip-version",
+		"x-fern-sdk-group-name": "radar.http.top.locations.ip-version",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/locations/os/{os}": {
@@ -23179,7 +23179,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.locations.os",
+		"x-fern-sdk-group-name": "radar.http.top.locations.os",
 		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/http/top/locations/tls_version/{tls_version}": {
@@ -23744,7 +23744,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.http.locations.tls-version",
+		"x-fern-sdk-group-name": "radar.http.top.locations.tls-version",
 		"x-fern-sdk-method-name": "get"
 	}
 }

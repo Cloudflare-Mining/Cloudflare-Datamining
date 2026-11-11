@@ -9041,7 +9041,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.lifecycle",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-require-confirmation": "This replaces the R2 bucket's object lifecycle rules and can schedule object deletion or abort multipart uploads."
+		"x-forge-require-confirmation": "This operation replaces all of the R2 bucket's object lifecycle rules. Rules left out of the request are removed, including the Default Multipart Abort Rule that aborts incomplete multipart uploads after 7 days, and the new rules can schedule object deletion."
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads": {
 		"operationId": "r2-put-bucket-local-uploads-configuration",

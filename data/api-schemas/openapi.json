@@ -10425,6 +10425,7 @@
 																	"items": {
 																		"properties": {
 																			"enabled": {
+																				"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																				"type": "boolean"
 																			},
 																			"name": {
@@ -10438,6 +10439,10 @@
 																				"type": "string",
 																				"example": "portal-level description"
 																			},
+																			"portal_enabled": {
+																				"description": "Availability set on this portal. Absent when the portal does not set it.",
+																				"type": "boolean"
+																			},
 																			"server_alias": {
 																				"type": "string",
 																				"example": "server-tool-alias"
@@ -10445,6 +10450,10 @@
 																			"server_description": {
 																				"type": "string",
 																				"example": "server-level description"
+																			},
+																			"server_enabled": {
+																				"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																				"type": "boolean"
 																			}
 																		},
 																		"required": [
@@ -10458,6 +10467,7 @@
 																	"items": {
 																		"properties": {
 																			"enabled": {
+																				"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																				"type": "boolean"
 																			},
 																			"name": {
@@ -10471,6 +10481,10 @@
 																				"type": "string",
 																				"example": "portal-level description"
 																			},
+																			"portal_enabled": {
+																				"description": "Availability set on this portal. Absent when the portal does not set it.",
+																				"type": "boolean"
+																			},
 																			"server_alias": {
 																				"type": "string",
 																				"example": "server-tool-alias"
@@ -10478,6 +10492,10 @@
 																			"server_description": {
 																				"type": "string",
 																				"example": "server-level description"
+																			},
+																			"server_enabled": {
+																				"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																				"type": "boolean"
 																			}
 																		},
 																		"required": [
@@ -11079,6 +11097,7 @@
 																"items": {
 																	"properties": {
 																		"enabled": {
+																			"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																			"type": "boolean"
 																		},
 																		"name": {
@@ -11092,6 +11111,10 @@
 																			"type": "string",
 																			"example": "portal-level description"
 																		},
+																		"portal_enabled": {
+																			"description": "Availability set on this portal. Absent when the portal does not set it.",
+																			"type": "boolean"
+																		},
 																		"server_alias": {
 																			"type": "string",
 																			"example": "server-tool-alias"
@@ -11099,6 +11122,10 @@
 																		"server_description": {
 																			"type": "string",
 																			"example": "server-level description"
+																		},
+																		"server_enabled": {
+																			"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -11112,6 +11139,7 @@
 																"items": {
 																	"properties": {
 																		"enabled": {
+																			"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																			"type": "boolean"
 																		},
 																		"name": {
@@ -11125,6 +11153,10 @@
 																			"type": "string",
 																			"example": "portal-level description"
 																		},
+																		"portal_enabled": {
+																			"description": "Availability set on this portal. Absent when the portal does not set it.",
+																			"type": "boolean"
+																		},
 																		"server_alias": {
 																			"type": "string",
 																			"example": "server-tool-alias"
@@ -11132,6 +11164,10 @@
 																		"server_description": {
 																			"type": "string",
 																			"example": "server-level description"
+																		},
+																		"server_enabled": {
+																			"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -11800,6 +11836,7 @@
 																"items": {
 																	"properties": {
 																		"enabled": {
+																			"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																			"type": "boolean"
 																		},
 																		"name": {
@@ -11813,6 +11850,10 @@
 																			"type": "string",
 																			"example": "portal-level description"
 																		},
+																		"portal_enabled": {
+																			"description": "Availability set on this portal. Absent when the portal does not set it.",
+																			"type": "boolean"
+																		},
 																		"server_alias": {
 																			"type": "string",
 																			"example": "server-tool-alias"
@@ -11820,6 +11861,10 @@
 																		"server_description": {
 																			"type": "string",
 																			"example": "server-level description"
+																		},
+																		"server_enabled": {
+																			"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -11833,6 +11878,7 @@
 																"items": {
 																	"properties": {
 																		"enabled": {
+																			"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																			"type": "boolean"
 																		},
 																		"name": {
@@ -11846,6 +11892,10 @@
 																			"type": "string",
 																			"example": "portal-level description"
 																		},
+																		"portal_enabled": {
+																			"description": "Availability set on this portal. Absent when the portal does not set it.",
+																			"type": "boolean"
+																		},
 																		"server_alias": {
 																			"type": "string",
 																			"example": "server-tool-alias"
@@ -11853,6 +11903,10 @@
 																		"server_description": {
 																			"type": "string",
 																			"example": "server-level description"
+																		},
+																		"server_enabled": {
+																			"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -12456,6 +12510,7 @@
 																"items": {
 																	"properties": {
 																		"enabled": {
+																			"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																			"type": "boolean"
 																		},
 																		"name": {
@@ -12469,6 +12524,10 @@
 																			"type": "string",
 																			"example": "portal-level description"
 																		},
+																		"portal_enabled": {
+																			"description": "Availability set on this portal. Absent when the portal does not set it.",
+																			"type": "boolean"
+																		},
 																		"server_alias": {
 																			"type": "string",
 																			"example": "server-tool-alias"
@@ -12476,6 +12535,10 @@
 																		"server_description": {
 																			"type": "string",
 																			"example": "server-level description"
+																		},
+																		"server_enabled": {
+																			"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -12489,6 +12552,7 @@
 																"items": {
 																	"properties": {
 																		"enabled": {
+																			"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																			"type": "boolean"
 																		},
 																		"name": {
@@ -12502,6 +12566,10 @@
 																			"type": "string",
 																			"example": "portal-level description"
 																		},
+																		"portal_enabled": {
+																			"description": "Availability set on this portal. Absent when the portal does not set it.",
+																			"type": "boolean"
+																		},
 																		"server_alias": {
 																			"type": "string",
 																			"example": "server-tool-alias"
@@ -12509,6 +12577,10 @@
 																		"server_description": {
 																			"type": "string",
 																			"example": "server-level description"
+																		},
+																		"server_enabled": {
+																			"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -621894,6 +621966,7 @@
 										"maintenance_config": {
 											"compaction": {
 												"next_eligible_at": "2026-09-01T12:00:00Z",
+												"next_eligible_reason": "scheduled",
 												"state": "enabled",
 												"target_size_mb": "128"
 											},
@@ -621902,6 +621975,7 @@
 												"max_snapshot_age": "7d",
 												"min_snapshots_to_keep": 100,
 												"next_eligible_at": "2026-09-01T12:00:00Z",
+												"next_eligible_reason": "scheduled",
 												"state": "enabled"
 											}
 										}
@@ -621988,6 +622062,18 @@
 																			"nullable": true,
 																			"readOnly": true
 																		},
+																		"next_eligible_reason": {
+																			"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																			"type": "string",
+																			"enum": [
+																				"disabled",
+																				"held_after_user_error",
+																				"running",
+																				"no_credential",
+																				"scheduled"
+																			],
+																			"readOnly": true
+																		},
 																		"state": {
 																			"description": "Specifies the state of maintenance operations.",
 																			"type": "string",
@@ -622046,6 +622132,18 @@
 																			"type": "string",
 																			"format": "date-time",
 																			"nullable": true,
+																			"readOnly": true
+																		},
+																		"next_eligible_reason": {
+																			"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																			"type": "string",
+																			"enum": [
+																				"disabled",
+																				"held_after_user_error",
+																				"running",
+																				"no_credential",
+																				"scheduled"
+																			],
 																			"readOnly": true
 																		},
 																		"state": {
@@ -622523,6 +622621,18 @@
 																	"nullable": true,
 																	"readOnly": true
 																},
+																"next_eligible_reason": {
+																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																	"type": "string",
+																	"enum": [
+																		"disabled",
+																		"held_after_user_error",
+																		"running",
+																		"no_credential",
+																		"scheduled"
+																	],
+																	"readOnly": true
+																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
 																	"type": "string",
@@ -622581,6 +622691,18 @@
 																	"type": "string",
 																	"format": "date-time",
 																	"nullable": true,
+																	"readOnly": true
+																},
+																"next_eligible_reason": {
+																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																	"type": "string",
+																	"enum": [
+																		"disabled",
+																		"held_after_user_error",
+																		"running",
+																		"no_credential",
+																		"scheduled"
+																	],
 																	"readOnly": true
 																},
 																"state": {
@@ -1359375,6 +1359497,7 @@
 										"maintenance_config": {
 											"compaction": {
 												"next_eligible_at": "2026-09-01T12:00:00Z",
+												"next_eligible_reason": "scheduled",
 												"state": "enabled",
 												"target_size_mb": "128"
 											},
@@ -1359383,6 +1359506,7 @@
 												"max_snapshot_age": "7d",
 												"min_snapshots_to_keep": 100,
 												"next_eligible_at": "2026-09-01T12:00:00Z",
+												"next_eligible_reason": "scheduled",
 												"state": "enabled"
 											}
 										}
@@ -1359469,6 +1359593,18 @@
 																			"nullable": true,
 																			"readOnly": true
 																		},
+																		"next_eligible_reason": {
+																			"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																			"type": "string",
+																			"enum": [
+																				"disabled",
+																				"held_after_user_error",
+																				"running",
+																				"no_credential",
+																				"scheduled"
+																			],
+																			"readOnly": true
+																		},
 																		"state": {
 																			"description": "Specifies the state of maintenance operations.",
 																			"type": "string",
@@ -1359527,6 +1359663,18 @@
 																			"type": "string",
 																			"format": "date-time",
 																			"nullable": true,
+																			"readOnly": true
+																		},
+																		"next_eligible_reason": {
+																			"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																			"type": "string",
+																			"enum": [
+																				"disabled",
+																				"held_after_user_error",
+																				"running",
+																				"no_credential",
+																				"scheduled"
+																			],
 																			"readOnly": true
 																		},
 																		"state": {
@@ -1360006,6 +1360154,18 @@
 																	"nullable": true,
 																	"readOnly": true
 																},
+																"next_eligible_reason": {
+																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																	"type": "string",
+																	"enum": [
+																		"disabled",
+																		"held_after_user_error",
+																		"running",
+																		"no_credential",
+																		"scheduled"
+																	],
+																	"readOnly": true
+																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
 																	"type": "string",
@@ -1360064,6 +1360224,18 @@
 																	"type": "string",
 																	"format": "date-time",
 																	"nullable": true,
+																	"readOnly": true
+																},
+																"next_eligible_reason": {
+																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																	"type": "string",
+																	"enum": [
+																		"disabled",
+																		"held_after_user_error",
+																		"running",
+																		"no_credential",
+																		"scheduled"
+																	],
 																	"readOnly": true
 																},
 																"state": {
@@ -1367624,7 +1367796,7 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "r2.buckets.lifecycle",
 				"x-fern-sdk-method-name": "update",
-				"x-forge-require-confirmation": "This replaces the R2 bucket's object lifecycle rules and can schedule object deletion or abort multipart uploads."
+				"x-forge-require-confirmation": "This operation replaces all of the R2 bucket's object lifecycle rules. Rules left out of the request are removed, including the Default Multipart Abort Rule that aborts incomplete multipart uploads after 7 days, and the new rules can schedule object deletion."
 			}
 		},
 		"/accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads": {
@@ -1739758,7 +1739930,7 @@
 			"get": {
 				"operationId": "agents.traces.list",
 				"summary": "List Agent Traces",
-				"description": "Lists Traces with a named Agent invocation in the window, ordered by lastActivityMs, newest first, including work without a Conversation ID. The window defaults to the last 24 hours. Summaries include the Agent names and Conversation IDs seen, authorized Trace duration, chat input/output/total tokens, models, providers, LLM/tool call counts and span-error counts within the effective window.",
+				"description": "Lists Traces with Agent activity in the window, newest activity first, including work without a Conversation ID. The window defaults to the last 24 hours. Each summary covers the Trace's Agent spans (invoke_agent, chat, execute_tool): the Agents and Conversation IDs seen, duration, token usage, models, providers, and LLM call, tool call and error counts.",
 				"parameters": [
 					{
 						"name": "service",
@@ -1740008,10 +1740180,53 @@
 																	"type": "string"
 																}
 															},
+															"errorCount": {
+																"description": "Agent spans that recorded an error.",
+																"type": "integer",
+																"minimum": 0
+															},
+															"errors": {
+																"description": "Distinct error messages from the Trace's Agent spans.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															},
 															"lastActivityMs": {
 																"description": "Latest start of an authorized Agent invocation in the Trace within the effective window, as Unix epoch milliseconds. The Trace list is ordered by this value, newest first.",
 																"type": "integer",
 																"minimum": 0
+															},
+															"rootSpanName": {
+																"description": "Name of the first Agent span in the Trace.",
+																"type": "string"
+															},
+															"rootTransactionName": {
+																"description": "Transaction name of the first Agent span in the Trace.",
+																"type": "string"
+															},
+															"services": {
+																"description": "Worker services with Agent activity in the Trace.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"spans": {
+																"description": "Agent spans in the Trace.",
+																"type": "number"
+															},
+															"traceDurationMs": {
+																"description": "Duration of the Trace's Agent activity, in milliseconds.",
+																"type": "number"
+															},
+															"traceEndMs": {
+																"description": "End of the Trace's Agent activity, as Unix epoch milliseconds.",
+																"type": "number"
+															},
+															"traceStartMs": {
+																"description": "Start of the Trace's Agent activity, as Unix epoch milliseconds.",
+																"type": "number"
 															}
 														},
 														"required": [
@@ -1740521,7 +1740736,7 @@
 			"get": {
 				"operationId": "agents.traces.get",
 				"summary": "Get an Agent Trace",
-				"description": "Returns the summary of one Trace containing named Agent activity, with the same fields as the Trace list. Searches the full 7-day retention unless from or to narrow it. List the Trace's events with /agents/traces/{traceId}/events.",
+				"description": "Returns the summary of one Trace with Agent activity, with the same fields as the Trace list. Searches the full 7-day retention unless from or to narrow it. List the Trace's Agent spans with /agents/traces/{traceId}/events.",
 				"parameters": [
 					{
 						"name": "traceId",
@@ -1740736,10 +1740951,53 @@
 																"type": "string"
 															}
 														},
+														"errorCount": {
+															"description": "Agent spans that recorded an error.",
+															"type": "integer",
+															"minimum": 0
+														},
+														"errors": {
+															"description": "Distinct error messages from the Trace's Agent spans.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
 														"lastActivityMs": {
 															"description": "Latest start of an authorized Agent invocation in the Trace within the effective window, as Unix epoch milliseconds. The Trace list is ordered by this value, newest first.",
 															"type": "integer",
 															"minimum": 0
+														},
+														"rootSpanName": {
+															"description": "Name of the first Agent span in the Trace.",
+															"type": "string"
+														},
+														"rootTransactionName": {
+															"description": "Transaction name of the first Agent span in the Trace.",
+															"type": "string"
+														},
+														"services": {
+															"description": "Worker services with Agent activity in the Trace.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"spans": {
+															"description": "Agent spans in the Trace.",
+															"type": "number"
+														},
+														"traceDurationMs": {
+															"description": "Duration of the Trace's Agent activity, in milliseconds.",
+															"type": "number"
+														},
+														"traceEndMs": {
+															"description": "End of the Trace's Agent activity, as Unix epoch milliseconds.",
+															"type": "number"
+														},
+														"traceStartMs": {
+															"description": "Start of the Trace's Agent activity, as Unix epoch milliseconds.",
+															"type": "number"
 														}
 													},
 													"required": [
@@ -1741222,7 +1741480,7 @@
 			"get": {
 				"operationId": "agents.traces.events",
 				"summary": "List Agent Trace events",
-				"description": "Returns a page of authorized canonical otel events for a Trace containing named Agent activity, using the existing events-query flow. Searches the full 7-day retention unless from or to narrow it. Events are ordered by event timestamp and ID, newest first. Continue with result_info.cursors.after; one page is not a complete span tree.",
+				"description": "Returns a page of a Trace's Agent spans (invoke_agent, chat, execute_tool) and their events, newest first. Trace and span IDs are the same as in the Worker's trace, and each span's parentSpanId links it into the Agent tree. Searches the full 7-day retention unless from or to narrow it. Continue with result_info.cursors.after; one page may not hold the whole tree.",
 				"parameters": [
 					{
 						"name": "traceId",
@@ -1899330,6 +1899588,166 @@
 																				"type": "object"
 																			},
 																			{
+																				"description": "A step.runner() call (managed CI): a shell command run in a container as one durable step.",
+																				"properties": {
+																					"config": {
+																						"description": "Configuration for a step (retries and timeout).",
+																						"type": "object",
+																						"properties": {
+																							"retries": {
+																								"description": "Retry policy for a step.",
+																								"type": "object",
+																								"properties": {
+																									"backoff": {
+																										"description": "Backoff strategy for step retries.",
+																										"type": "string",
+																										"enum": [
+																											"constant",
+																											"linear",
+																											"exponential"
+																										]
+																									},
+																									"delay": {
+																										"description": "Duration as milliseconds (number) or human-readable string.",
+																										"anyOf": [
+																											{
+																												"type": "number"
+																											},
+																											{
+																												"type": "string"
+																											}
+																										]
+																									},
+																									"limit": {
+																										"type": "number"
+																									}
+																								},
+																								"required": [
+																									"limit",
+																									"delay",
+																									"backoff"
+																								]
+																							},
+																							"timeout": {
+																								"description": "Duration as milliseconds (number) or human-readable string.",
+																								"anyOf": [
+																									{
+																										"type": "number"
+																									},
+																									{
+																										"type": "string"
+																									}
+																								]
+																							}
+																						},
+																						"required": [
+																							"retries",
+																							"timeout"
+																						]
+																					},
+																					"name": {
+																						"type": "string"
+																					},
+																					"options": {
+																						"description": "Statically known step.runner() options. A null field is not statically known (a non-literal value, an options object passed as a variable, or a field a spread may set).",
+																						"type": "object",
+																						"properties": {
+																							"allow_failure": {
+																								"type": "boolean",
+																								"nullable": true
+																							},
+																							"command": {
+																								"type": "string",
+																								"nullable": true
+																							},
+																							"image": {
+																								"type": "string",
+																								"nullable": true
+																							},
+																							"instance_size": {
+																								"type": "string",
+																								"nullable": true
+																							},
+																							"outputs": {
+																								"type": "array",
+																								"items": {
+																									"type": "string"
+																								}
+																							}
+																						},
+																						"required": [
+																							"image",
+																							"instance_size",
+																							"command",
+																							"outputs",
+																							"allow_failure"
+																						]
+																					},
+																					"resolves": {
+																						"type": "number"
+																					},
+																					"starts": {
+																						"type": "number"
+																					},
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"step_runner"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"name",
+																					"config",
+																					"options"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"description": "A step.dynamic() call (managed CI): runs a workflow bundle in a dynamic Worker. The steps of the child workflow are not known statically, so nodes is empty.",
+																				"properties": {
+																					"entrypoint": {
+																						"type": "string",
+																						"nullable": true
+																					},
+																					"isolation_key": {
+																						"type": "string",
+																						"nullable": true
+																					},
+																					"name": {
+																						"type": "string"
+																					},
+																					"nodes": {
+																						"description": "Child nodes (recursive).",
+																						"type": "array",
+																						"items": {
+																							"type": "object"
+																						}
+																					},
+																					"resolves": {
+																						"type": "number"
+																					},
+																					"starts": {
+																						"type": "number"
+																					},
+																					"type": {
+																						"type": "string",
+																						"enum": [
+																							"step_dynamic"
+																						]
+																					}
+																				},
+																				"required": [
+																					"type",
+																					"name",
+																					"entrypoint",
+																					"isolation_key",
+																					"nodes"
+																				],
+																				"type": "object"
+																			},
+																			{
 																				"properties": {
 																					"nodes": {
 																						"description": "Child nodes (recursive).",
@@ -1936838,7 +1937256,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.ai.timeseries-groups",
+				"x-fern-sdk-group-name": "radar.ai.bots",
 				"x-fern-sdk-method-name": "summary"
 			}
 		},
@@ -1939307,7 +1939725,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.ai.inference",
-				"x-fern-sdk-method-name": "summary-v2"
+				"x-fern-sdk-method-name": "summary"
 			}
 		},
 		"/radar/ai/inference/summary/model": {
@@ -1940545,7 +1940963,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.ai.inference",
-				"x-fern-sdk-method-name": "timeseries-groups-v2"
+				"x-fern-sdk-method-name": "timeseries-groups"
 			}
 		},
 		"/radar/ai/inference/timeseries_groups/model": {
@@ -1943886,7 +1944304,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.annotations.outages",
-				"x-fern-sdk-method-name": "get"
+				"x-fern-sdk-method-name": "list"
 			}
 		},
 		"/radar/annotations/outages/locations": {
@@ -1944639,7 +1945057,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.as112",
-				"x-fern-sdk-method-name": "summary-v2"
+				"x-fern-sdk-method-name": "summary"
 			}
 		},
 		"/radar/as112/summary/dnssec": {
@@ -1949017,7 +1949435,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.as112",
-				"x-fern-sdk-method-name": "timeseries-groups-v2"
+				"x-fern-sdk-method-name": "timeseries-groups"
 			}
 		},
 		"/radar/as112/timeseries_groups/dnssec": {
@@ -1952848,8 +1953266,8 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.as112.top",
-				"x-fern-sdk-method-name": "locations"
+				"x-fern-sdk-group-name": "radar.as112.top.locations",
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/radar/as112/top/locations/dnssec/{dnssec}": {
@@ -1953259,8 +1953677,8 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.as112.top",
-				"x-fern-sdk-method-name": "dnssec"
+				"x-fern-sdk-group-name": "radar.as112.top.locations.dnssec",
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/radar/as112/top/locations/edns/{edns}": {
@@ -1953670,8 +1954088,8 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.as112.top",
-				"x-fern-sdk-method-name": "edns"
+				"x-fern-sdk-group-name": "radar.as112.top.locations.edns",
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/radar/as112/top/locations/ip_version/{ip_version}": {
@@ -1954080,8 +1954498,8 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.as112.top",
-				"x-fern-sdk-method-name": "ip-version"
+				"x-fern-sdk-group-name": "radar.as112.top.locations.ip-version",
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/radar/attacks/layer3/summary/{dimension}": {
@@ -1954543,7 +1954961,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.attacks.layer3",
-				"x-fern-sdk-method-name": "summary-v2"
+				"x-fern-sdk-method-name": "summary"
 			}
 		},
 		"/radar/attacks/layer3/summary/bitrate": {
@@ -1958747,7 +1959165,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.attacks.layer3",
-				"x-fern-sdk-method-name": "timeseries-groups-v2"
+				"x-fern-sdk-method-name": "timeseries-groups"
 			}
 		},
 		"/radar/attacks/layer3/timeseries_groups/bitrate": {
@@ -1965102,7 +1965520,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.attacks.layer7",
-				"x-fern-sdk-method-name": "summary-v2"
+				"x-fern-sdk-method-name": "summary"
 			}
 		},
 		"/radar/attacks/layer7/summary/http_method": {
@@ -1969869,7 +1970287,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.attacks.layer7",
-				"x-fern-sdk-method-name": "timeseries-groups-v2"
+				"x-fern-sdk-method-name": "timeseries-groups"
 			}
 		},
 		"/radar/attacks/layer7/timeseries_groups/http_method": {
@@ -1983235,7 +1983653,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.bots.web-crawlers",
+				"x-fern-sdk-group-name": "radar.bots.crawlers",
 				"x-fern-sdk-method-name": "summary"
 			}
 		},
@@ -1983785,7 +1984203,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.bots.web-crawlers",
+				"x-fern-sdk-group-name": "radar.bots.crawlers",
 				"x-fern-sdk-method-name": "timeseries-groups"
 			}
 		},
@@ -1989940,7 +1990358,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.dns",
-				"x-fern-sdk-method-name": "summary-v2"
+				"x-fern-sdk-method-name": "summary"
 			}
 		},
 		"/radar/dns/summary/cache_hit": {
@@ -1997355,7 +1997773,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.dns",
-				"x-fern-sdk-method-name": "timeseries-groups-v2"
+				"x-fern-sdk-method-name": "timeseries-groups"
 			}
 		},
 		"/radar/dns/timeseries_groups/cache_hit": {
@@ -2005570,7 +2005988,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.email.routing",
-				"x-fern-sdk-method-name": "summary-v2"
+				"x-fern-sdk-method-name": "summary"
 			}
 		},
 		"/radar/email/routing/summary/arc": {
@@ -2008902,7 +2009320,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.email.routing",
-				"x-fern-sdk-method-name": "timeseries-groups-v2"
+				"x-fern-sdk-method-name": "timeseries-groups"
 			}
 		},
 		"/radar/email/routing/timeseries_groups/arc": {
@@ -2012388,7 +2012806,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.email.security",
-				"x-fern-sdk-method-name": "summary-v2"
+				"x-fern-sdk-method-name": "summary"
 			}
 		},
 		"/radar/email/security/summary/arc": {
@@ -2017050,7 +2017468,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.email.security",
-				"x-fern-sdk-method-name": "timeseries-groups-v2"
+				"x-fern-sdk-method-name": "timeseries-groups"
 			}
 		},
 		"/radar/email/security/timeseries_groups/arc": {
@@ -2024925,7 +2025343,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.entities",
+				"x-fern-sdk-group-name": "radar.entities.ips",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2026517,7 +2026935,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.http",
-				"x-fern-sdk-method-name": "summary-v2"
+				"x-fern-sdk-method-name": "summary"
 			}
 		},
 		"/radar/http/summary/bot_class": {
@@ -2032348,7 +2032766,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.http",
-				"x-fern-sdk-method-name": "timeseries-groups-v2"
+				"x-fern-sdk-method-name": "timeseries-groups"
 			}
 		},
 		"/radar/http/timeseries_groups/bot_class": {
@@ -2038970,7 +2039388,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.ases",
+				"x-fern-sdk-group-name": "radar.http.top.ases",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2039537,7 +2039955,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.ases.bot-class",
+				"x-fern-sdk-group-name": "radar.http.top.ases.bot-class",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2040104,7 +2040522,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.ases.browser-family",
+				"x-fern-sdk-group-name": "radar.http.top.ases.browser-family",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2040671,7 +2041089,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.ases.device-type",
+				"x-fern-sdk-group-name": "radar.http.top.ases.device-type",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2041238,7 +2041656,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.ases.http-protocol",
+				"x-fern-sdk-group-name": "radar.http.top.ases.http-protocol",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2041805,7 +2042223,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.ases.http-method",
+				"x-fern-sdk-group-name": "radar.http.top.ases.http-version",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2042372,7 +2042790,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.ases.ip-version",
+				"x-fern-sdk-group-name": "radar.http.top.ases.ip-version",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2042939,7 +2043357,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.ases.os",
+				"x-fern-sdk-group-name": "radar.http.top.ases.os",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2043506,7 +2043924,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.ases.tls-version",
+				"x-fern-sdk-group-name": "radar.http.top.ases.tls-version",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2045187,7 +2045605,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.locations",
+				"x-fern-sdk-group-name": "radar.http.top.locations",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2045754,7 +2046172,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.locations.bot-class",
+				"x-fern-sdk-group-name": "radar.http.top.locations.bot-class",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2046321,7 +2046739,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.locations.browser-family",
+				"x-fern-sdk-group-name": "radar.http.top.locations.browser-family",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2046888,7 +2047306,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.locations.device-type",
+				"x-fern-sdk-group-name": "radar.http.top.locations.device-type",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2047455,7 +2047873,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.locations.http-protocol",
+				"x-fern-sdk-group-name": "radar.http.top.locations.http-protocol",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2048022,7 +2048440,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.locations.http-method",
+				"x-fern-sdk-group-name": "radar.http.top.locations.http-version",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2048589,7 +2049007,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.locations.ip-version",
+				"x-fern-sdk-group-name": "radar.http.top.locations.ip-version",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2049156,7 +2049574,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.locations.os",
+				"x-fern-sdk-group-name": "radar.http.top.locations.os",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2049723,7 +2050141,7 @@
 					"pro": true
 				},
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "radar.http.locations.tls-version",
+				"x-fern-sdk-group-name": "radar.http.top.locations.tls-version",
 				"x-fern-sdk-method-name": "get"
 			}
 		},
@@ -2050182,7 +2050600,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.leaked-credentials",
-				"x-fern-sdk-method-name": "summary-v2"
+				"x-fern-sdk-method-name": "summary"
 			}
 		},
 		"/radar/leaked_credential_checks/summary/bot_class": {
@@ -2051502,7 +2051920,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.leaked-credentials",
-				"x-fern-sdk-method-name": "timeseries-groups-v2"
+				"x-fern-sdk-method-name": "timeseries-groups"
 			}
 		},
 		"/radar/leaked_credential_checks/timeseries_groups/bot_class": {
@@ -2052787,7 +2053205,7 @@
 				"x-fern-availability": "deprecated",
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "radar.netflows",
-				"x-fern-sdk-method-name": "summary",
+				"x-fern-sdk-method-name": "summary-deprecated",
 				"x-stainless-deprecation-message": "Use [Get Network Traffic Distribution By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/netflows/methods/summary_v2/) instead."
 			}
 		},
@@ -2053241,7 +2053659,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.netflows",
-				"x-fern-sdk-method-name": "summary-v2"
+				"x-fern-sdk-method-name": "summary"
 			}
 		},
 		"/radar/netflows/timeseries": {
@@ -2066144,7 +2066562,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.traffic-anomalies",
-				"x-fern-sdk-method-name": "get"
+				"x-fern-sdk-method-name": "list"
 			}
 		},
 		"/radar/traffic_anomalies/{uuid}": {
@@ -2066379,7 +2066797,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "radar.traffic-anomalies",
-				"x-fern-sdk-method-name": "get-by-id"
+				"x-fern-sdk-method-name": "get"
 			}
 		},
 		"/radar/traffic_anomalies/locations": {

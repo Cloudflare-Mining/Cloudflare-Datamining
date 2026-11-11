@@ -396,7 +396,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.traffic-anomalies",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /radar/traffic_anomalies/{uuid}": {
 		"operationId": "radar-get-traffic-anomaly-by-uuid",
@@ -629,7 +629,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.traffic-anomalies",
-		"x-fern-sdk-method-name": "get-by-id"
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/traffic_anomalies/locations": {
 		"operationId": "radar-get-traffic-anomalies-top",

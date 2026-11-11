@@ -418,7 +418,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.netflows",
-		"x-fern-sdk-method-name": "summary",
+		"x-fern-sdk-method-name": "summary-deprecated",
 		"x-stainless-deprecation-message": "Use [Get Network Traffic Distribution By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/netflows/methods/summary_v2/) instead."
 	},
 	"GET /radar/netflows/summary/{dimension}": {
@@ -870,7 +870,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.netflows",
-		"x-fern-sdk-method-name": "summary-v2"
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/netflows/timeseries": {
 		"operationId": "radar-get-netflows-timeseries",

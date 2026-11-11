@@ -5680,6 +5680,166 @@
 																		"type": "object"
 																	},
 																	{
+																		"description": "A step.runner() call (managed CI): a shell command run in a container as one durable step.",
+																		"properties": {
+																			"config": {
+																				"description": "Configuration for a step (retries and timeout).",
+																				"type": "object",
+																				"properties": {
+																					"retries": {
+																						"description": "Retry policy for a step.",
+																						"type": "object",
+																						"properties": {
+																							"backoff": {
+																								"description": "Backoff strategy for step retries.",
+																								"type": "string",
+																								"enum": [
+																									"constant",
+																									"linear",
+																									"exponential"
+																								]
+																							},
+																							"delay": {
+																								"description": "Duration as milliseconds (number) or human-readable string.",
+																								"anyOf": [
+																									{
+																										"type": "number"
+																									},
+																									{
+																										"type": "string"
+																									}
+																								]
+																							},
+																							"limit": {
+																								"type": "number"
+																							}
+																						},
+																						"required": [
+																							"limit",
+																							"delay",
+																							"backoff"
+																						]
+																					},
+																					"timeout": {
+																						"description": "Duration as milliseconds (number) or human-readable string.",
+																						"anyOf": [
+																							{
+																								"type": "number"
+																							},
+																							{
+																								"type": "string"
+																							}
+																						]
+																					}
+																				},
+																				"required": [
+																					"retries",
+																					"timeout"
+																				]
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"options": {
+																				"description": "Statically known step.runner() options. A null field is not statically known (a non-literal value, an options object passed as a variable, or a field a spread may set).",
+																				"type": "object",
+																				"properties": {
+																					"allow_failure": {
+																						"type": "boolean",
+																						"nullable": true
+																					},
+																					"command": {
+																						"type": "string",
+																						"nullable": true
+																					},
+																					"image": {
+																						"type": "string",
+																						"nullable": true
+																					},
+																					"instance_size": {
+																						"type": "string",
+																						"nullable": true
+																					},
+																					"outputs": {
+																						"type": "array",
+																						"items": {
+																							"type": "string"
+																						}
+																					}
+																				},
+																				"required": [
+																					"image",
+																					"instance_size",
+																					"command",
+																					"outputs",
+																					"allow_failure"
+																				]
+																			},
+																			"resolves": {
+																				"type": "number"
+																			},
+																			"starts": {
+																				"type": "number"
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"step_runner"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"name",
+																			"config",
+																			"options"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"description": "A step.dynamic() call (managed CI): runs a workflow bundle in a dynamic Worker. The steps of the child workflow are not known statically, so nodes is empty.",
+																		"properties": {
+																			"entrypoint": {
+																				"type": "string",
+																				"nullable": true
+																			},
+																			"isolation_key": {
+																				"type": "string",
+																				"nullable": true
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"nodes": {
+																				"description": "Child nodes (recursive).",
+																				"type": "array",
+																				"items": {
+																					"type": "object"
+																				}
+																			},
+																			"resolves": {
+																				"type": "number"
+																			},
+																			"starts": {
+																				"type": "number"
+																			},
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"step_dynamic"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"name",
+																			"entrypoint",
+																			"isolation_key",
+																			"nodes"
+																		],
+																		"type": "object"
+																	},
+																	{
 																		"properties": {
 																			"nodes": {
 																				"description": "Child nodes (recursive).",

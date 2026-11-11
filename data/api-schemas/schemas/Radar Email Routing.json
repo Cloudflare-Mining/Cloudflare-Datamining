@@ -487,7 +487,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.email.routing",
-		"x-fern-sdk-method-name": "summary-v2"
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/email/routing/summary/arc": {
 		"operationId": "radar-get-email-routing-summary-by-arc",
@@ -3805,7 +3805,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.email.routing",
-		"x-fern-sdk-method-name": "timeseries-groups-v2"
+		"x-fern-sdk-method-name": "timeseries-groups"
 	},
 	"GET /radar/email/routing/timeseries_groups/arc": {
 		"operationId": "radar-get-email-routing-timeseries-group-by-arc",

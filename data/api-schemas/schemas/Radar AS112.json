@@ -561,7 +561,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.as112",
-		"x-fern-sdk-method-name": "summary-v2"
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/as112/summary/dnssec": {
 		"operationId": "radar-get-dns-as112-timeseries-by-dnssec",
@@ -4923,7 +4923,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.as112",
-		"x-fern-sdk-method-name": "timeseries-groups-v2"
+		"x-fern-sdk-method-name": "timeseries-groups"
 	},
 	"GET /radar/as112/timeseries_groups/dnssec": {
 		"operationId": "radar-get-dns-as112-timeseries-group-by-dnssec",
@@ -8740,8 +8740,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.as112.top",
-		"x-fern-sdk-method-name": "locations"
+		"x-fern-sdk-group-name": "radar.as112.top.locations",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/as112/top/locations/dnssec/{dnssec}": {
 		"operationId": "radar-get-dns-as112-top-locations-by-dnssec",
@@ -9149,8 +9149,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.as112.top",
-		"x-fern-sdk-method-name": "dnssec"
+		"x-fern-sdk-group-name": "radar.as112.top.locations.dnssec",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/as112/top/locations/edns/{edns}": {
 		"operationId": "radar-get-dns-as112-top-locations-by-edns",
@@ -9558,8 +9558,8 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.as112.top",
-		"x-fern-sdk-method-name": "edns"
+		"x-fern-sdk-group-name": "radar.as112.top.locations.edns",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /radar/as112/top/locations/ip_version/{ip_version}": {
 		"operationId": "radar-get-dns-as112-top-locations-by-ip-version",
@@ -9966,7 +9966,7 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "radar.as112.top",
-		"x-fern-sdk-method-name": "ip-version"
+		"x-fern-sdk-group-name": "radar.as112.top.locations.ip-version",
+		"x-fern-sdk-method-name": "get"
 	}
 }

@@ -457,7 +457,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.attacks.layer3",
-		"x-fern-sdk-method-name": "summary-v2"
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/attacks/layer3/summary/bitrate": {
 		"operationId": "radar-get-attacks-layer3-summary-by-bitrate",
@@ -4643,7 +4643,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.attacks.layer3",
-		"x-fern-sdk-method-name": "timeseries-groups-v2"
+		"x-fern-sdk-method-name": "timeseries-groups"
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/bitrate": {
 		"operationId": "radar-get-attacks-layer3-timeseries-group-by-bitrate",

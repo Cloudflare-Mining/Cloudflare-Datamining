@@ -63,6 +63,7 @@
 								"maintenance_config": {
 									"compaction": {
 										"next_eligible_at": "2026-09-01T12:00:00Z",
+										"next_eligible_reason": "scheduled",
 										"state": "enabled",
 										"target_size_mb": "128"
 									},
@@ -71,6 +72,7 @@
 										"max_snapshot_age": "7d",
 										"min_snapshots_to_keep": 100,
 										"next_eligible_at": "2026-09-01T12:00:00Z",
+										"next_eligible_reason": "scheduled",
 										"state": "enabled"
 									}
 								}
@@ -157,6 +159,18 @@
 																	"nullable": true,
 																	"readOnly": true
 																},
+																"next_eligible_reason": {
+																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																	"type": "string",
+																	"enum": [
+																		"disabled",
+																		"held_after_user_error",
+																		"running",
+																		"no_credential",
+																		"scheduled"
+																	],
+																	"readOnly": true
+																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
 																	"type": "string",
@@ -215,6 +229,18 @@
 																	"type": "string",
 																	"format": "date-time",
 																	"nullable": true,
+																	"readOnly": true
+																},
+																"next_eligible_reason": {
+																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																	"type": "string",
+																	"enum": [
+																		"disabled",
+																		"held_after_user_error",
+																		"running",
+																		"no_credential",
+																		"scheduled"
+																	],
 																	"readOnly": true
 																},
 																"state": {
@@ -964,6 +990,7 @@
 								"maintenance_config": {
 									"compaction": {
 										"next_eligible_at": "2026-09-01T12:00:00Z",
+										"next_eligible_reason": "scheduled",
 										"state": "enabled",
 										"target_size_mb": "128"
 									},
@@ -972,6 +999,7 @@
 										"max_snapshot_age": "7d",
 										"min_snapshots_to_keep": 100,
 										"next_eligible_at": "2026-09-01T12:00:00Z",
+										"next_eligible_reason": "scheduled",
 										"state": "enabled"
 									}
 								}
@@ -1058,6 +1086,18 @@
 																	"nullable": true,
 																	"readOnly": true
 																},
+																"next_eligible_reason": {
+																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																	"type": "string",
+																	"enum": [
+																		"disabled",
+																		"held_after_user_error",
+																		"running",
+																		"no_credential",
+																		"scheduled"
+																	],
+																	"readOnly": true
+																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
 																	"type": "string",
@@ -1116,6 +1156,18 @@
 																	"type": "string",
 																	"format": "date-time",
 																	"nullable": true,
+																	"readOnly": true
+																},
+																"next_eligible_reason": {
+																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+																	"type": "string",
+																	"enum": [
+																		"disabled",
+																		"held_after_user_error",
+																		"running",
+																		"no_credential",
+																		"scheduled"
+																	],
 																	"readOnly": true
 																},
 																"state": {
@@ -2033,6 +2085,18 @@
 															"nullable": true,
 															"readOnly": true
 														},
+														"next_eligible_reason": {
+															"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+															"type": "string",
+															"enum": [
+																"disabled",
+																"held_after_user_error",
+																"running",
+																"no_credential",
+																"scheduled"
+															],
+															"readOnly": true
+														},
 														"state": {
 															"description": "Specifies the state of maintenance operations.",
 															"type": "string",
@@ -2091,6 +2155,18 @@
 															"type": "string",
 															"format": "date-time",
 															"nullable": true,
+															"readOnly": true
+														},
+														"next_eligible_reason": {
+															"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+															"type": "string",
+															"enum": [
+																"disabled",
+																"held_after_user_error",
+																"running",
+																"no_credential",
+																"scheduled"
+															],
 															"readOnly": true
 														},
 														"state": {
@@ -2943,6 +3019,18 @@
 															"nullable": true,
 															"readOnly": true
 														},
+														"next_eligible_reason": {
+															"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+															"type": "string",
+															"enum": [
+																"disabled",
+																"held_after_user_error",
+																"running",
+																"no_credential",
+																"scheduled"
+															],
+															"readOnly": true
+														},
 														"state": {
 															"description": "Specifies the state of maintenance operations.",
 															"type": "string",
@@ -3001,6 +3089,18 @@
 															"type": "string",
 															"format": "date-time",
 															"nullable": true,
+															"readOnly": true
+														},
+														"next_eligible_reason": {
+															"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
+															"type": "string",
+															"enum": [
+																"disabled",
+																"held_after_user_error",
+																"running",
+																"no_credential",
+																"scheduled"
+															],
 															"readOnly": true
 														},
 														"state": {

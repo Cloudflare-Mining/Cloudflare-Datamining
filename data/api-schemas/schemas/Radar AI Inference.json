@@ -420,7 +420,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ai.inference",
-		"x-fern-sdk-method-name": "summary-v2"
+		"x-fern-sdk-method-name": "summary"
 	},
 	"GET /radar/ai/inference/summary/model": {
 		"operationId": "radar-get-ai-inference-summary-by-model",
@@ -1652,7 +1652,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ai.inference",
-		"x-fern-sdk-method-name": "timeseries-groups-v2"
+		"x-fern-sdk-method-name": "timeseries-groups"
 	},
 	"GET /radar/ai/inference/timeseries_groups/model": {
 		"operationId": "radar-get-ai-inference-timeseries-group-by-model",

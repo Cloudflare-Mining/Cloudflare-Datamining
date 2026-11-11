@@ -558,6 +558,7 @@
 															"items": {
 																"properties": {
 																	"enabled": {
+																		"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																		"type": "boolean"
 																	},
 																	"name": {
@@ -571,6 +572,10 @@
 																		"type": "string",
 																		"example": "portal-level description"
 																	},
+																	"portal_enabled": {
+																		"description": "Availability set on this portal. Absent when the portal does not set it.",
+																		"type": "boolean"
+																	},
 																	"server_alias": {
 																		"type": "string",
 																		"example": "server-tool-alias"
@@ -578,6 +583,10 @@
 																	"server_description": {
 																		"type": "string",
 																		"example": "server-level description"
+																	},
+																	"server_enabled": {
+																		"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																		"type": "boolean"
 																	}
 																},
 																"required": [
@@ -591,6 +600,7 @@
 															"items": {
 																"properties": {
 																	"enabled": {
+																		"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																		"type": "boolean"
 																	},
 																	"name": {
@@ -604,6 +614,10 @@
 																		"type": "string",
 																		"example": "portal-level description"
 																	},
+																	"portal_enabled": {
+																		"description": "Availability set on this portal. Absent when the portal does not set it.",
+																		"type": "boolean"
+																	},
 																	"server_alias": {
 																		"type": "string",
 																		"example": "server-tool-alias"
@@ -611,6 +625,10 @@
 																	"server_description": {
 																		"type": "string",
 																		"example": "server-level description"
+																	},
+																	"server_enabled": {
+																		"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																		"type": "boolean"
 																	}
 																},
 																"required": [
@@ -1069,6 +1087,7 @@
 														"items": {
 															"properties": {
 																"enabled": {
+																	"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																	"type": "boolean"
 																},
 																"name": {
@@ -1082,6 +1101,10 @@
 																	"type": "string",
 																	"example": "portal-level description"
 																},
+																"portal_enabled": {
+																	"description": "Availability set on this portal. Absent when the portal does not set it.",
+																	"type": "boolean"
+																},
 																"server_alias": {
 																	"type": "string",
 																	"example": "server-tool-alias"
@@ -1089,6 +1112,10 @@
 																"server_description": {
 																	"type": "string",
 																	"example": "server-level description"
+																},
+																"server_enabled": {
+																	"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -1102,6 +1129,7 @@
 														"items": {
 															"properties": {
 																"enabled": {
+																	"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																	"type": "boolean"
 																},
 																"name": {
@@ -1115,6 +1143,10 @@
 																	"type": "string",
 																	"example": "portal-level description"
 																},
+																"portal_enabled": {
+																	"description": "Availability set on this portal. Absent when the portal does not set it.",
+																	"type": "boolean"
+																},
 																"server_alias": {
 																	"type": "string",
 																	"example": "server-tool-alias"
@@ -1122,6 +1154,10 @@
 																"server_description": {
 																	"type": "string",
 																	"example": "server-level description"
+																},
+																"server_enabled": {
+																	"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -1881,6 +1917,7 @@
 														"items": {
 															"properties": {
 																"enabled": {
+																	"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																	"type": "boolean"
 																},
 																"name": {
@@ -1894,6 +1931,10 @@
 																	"type": "string",
 																	"example": "portal-level description"
 																},
+																"portal_enabled": {
+																	"description": "Availability set on this portal. Absent when the portal does not set it.",
+																	"type": "boolean"
+																},
 																"server_alias": {
 																	"type": "string",
 																	"example": "server-tool-alias"
@@ -1901,6 +1942,10 @@
 																"server_description": {
 																	"type": "string",
 																	"example": "server-level description"
+																},
+																"server_enabled": {
+																	"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -1914,6 +1959,7 @@
 														"items": {
 															"properties": {
 																"enabled": {
+																	"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																	"type": "boolean"
 																},
 																"name": {
@@ -1927,6 +1973,10 @@
 																	"type": "string",
 																	"example": "portal-level description"
 																},
+																"portal_enabled": {
+																	"description": "Availability set on this portal. Absent when the portal does not set it.",
+																	"type": "boolean"
+																},
 																"server_alias": {
 																	"type": "string",
 																	"example": "server-tool-alias"
@@ -1934,6 +1984,10 @@
 																"server_description": {
 																	"type": "string",
 																	"example": "server-level description"
+																},
+																"server_enabled": {
+																	"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -2544,6 +2598,7 @@
 														"items": {
 															"properties": {
 																"enabled": {
+																	"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																	"type": "boolean"
 																},
 																"name": {
@@ -2557,6 +2612,10 @@
 																	"type": "string",
 																	"example": "portal-level description"
 																},
+																"portal_enabled": {
+																	"description": "Availability set on this portal. Absent when the portal does not set it.",
+																	"type": "boolean"
+																},
 																"server_alias": {
 																	"type": "string",
 																	"example": "server-tool-alias"
@@ -2564,6 +2623,10 @@
 																"server_description": {
 																	"type": "string",
 																	"example": "server-level description"
+																},
+																"server_enabled": {
+																	"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -2577,6 +2640,7 @@
 														"items": {
 															"properties": {
 																"enabled": {
+																	"description": "Effective availability of the capability: the portal-level value when set, otherwise the server-level value.",
 																	"type": "boolean"
 																},
 																"name": {
@@ -2590,6 +2654,10 @@
 																	"type": "string",
 																	"example": "portal-level description"
 																},
+																"portal_enabled": {
+																	"description": "Availability set on this portal. Absent when the portal does not set it.",
+																	"type": "boolean"
+																},
 																"server_alias": {
 																	"type": "string",
 																	"example": "server-tool-alias"
@@ -2597,6 +2665,10 @@
 																"server_description": {
 																	"type": "string",
 																	"example": "server-level description"
+																},
+																"server_enabled": {
+																	"description": "Availability set on the MCP server. Absent when the server does not set it.",
+																	"type": "boolean"
 																}
 															},
 															"required": [
