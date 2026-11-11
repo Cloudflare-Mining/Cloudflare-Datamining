@@ -192,6 +192,10 @@
 												"type": "string"
 											}
 										},
+										"mixesDatasetKinds": {
+											"description": "True when the saved datasets mix analytics and intelligence datasets, for example after a dataset's analytics setting changed. Such a preference is skipped.",
+											"type": "boolean"
+										},
 										"unresolvableDatasetIds": {
 											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
 											"type": "array",
@@ -214,6 +218,7 @@
 									"required": [
 										"datasetIds",
 										"unresolvableDatasetIds",
+										"mixesDatasetKinds",
 										"updatedAt",
 										"updatedBy"
 									]
@@ -257,6 +262,10 @@
 												"type": "string"
 											}
 										},
+										"mixesDatasetKinds": {
+											"description": "True when the saved datasets mix analytics and intelligence datasets, for example after a dataset's analytics setting changed. Such a preference is skipped.",
+											"type": "boolean"
+										},
 										"unresolvableDatasetIds": {
 											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
 											"type": "array",
@@ -279,6 +288,7 @@
 									"required": [
 										"datasetIds",
 										"unresolvableDatasetIds",
+										"mixesDatasetKinds",
 										"updatedAt",
 										"updatedBy"
 									]
@@ -748,6 +758,10 @@
 												"type": "string"
 											}
 										},
+										"mixesDatasetKinds": {
+											"description": "True when the saved datasets mix analytics and intelligence datasets, for example after a dataset's analytics setting changed. Such a preference is skipped.",
+											"type": "boolean"
+										},
 										"unresolvableDatasetIds": {
 											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
 											"type": "array",
@@ -770,6 +784,7 @@
 									"required": [
 										"datasetIds",
 										"unresolvableDatasetIds",
+										"mixesDatasetKinds",
 										"updatedAt",
 										"updatedBy"
 									]
@@ -813,6 +828,10 @@
 												"type": "string"
 											}
 										},
+										"mixesDatasetKinds": {
+											"description": "True when the saved datasets mix analytics and intelligence datasets, for example after a dataset's analytics setting changed. Such a preference is skipped.",
+											"type": "boolean"
+										},
 										"unresolvableDatasetIds": {
 											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
 											"type": "array",
@@ -835,6 +854,7 @@
 									"required": [
 										"datasetIds",
 										"unresolvableDatasetIds",
+										"mixesDatasetKinds",
 										"updatedAt",
 										"updatedBy"
 									]
@@ -1396,7 +1416,7 @@
 	"PUT /accounts/{account_id}/cloudforce-one/events/datasets/preferences": {
 		"operationId": "put_DatasetPreferencesUpdate",
 		"summary": "Set default datasets",
-		"description": "Sets the datasets to use when a request omits `datasetId`, for you (`scope` `user`) or for the account (`scope` `account`). Your own default datasets take precedence over the account's. Every dataset must exist and be readable by the account.",
+		"description": "Sets the datasets to use when a request omits `datasetId`, for you (`scope` `user`) or for the account (`scope` `account`). Your own default datasets take precedence over the account's. Every dataset must exist and be readable by the account, and the list cannot mix analytics and intelligence datasets.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1416,7 +1436,7 @@
 						"type": "object",
 						"properties": {
 							"datasetIds": {
-								"description": "The dataset UUIDs to use when a request omits `datasetId`: 1 to 50 datasets you can read. Duplicates are ignored.",
+								"description": "The dataset UUIDs to use when a request omits `datasetId`: 1 to 50 datasets you can read, either all analytics datasets or all intelligence datasets. Duplicates are ignored.",
 								"type": "array",
 								"items": {
 									"format": "uuid",
@@ -1463,6 +1483,10 @@
 												"type": "string"
 											}
 										},
+										"mixesDatasetKinds": {
+											"description": "True when the saved datasets mix analytics and intelligence datasets, for example after a dataset's analytics setting changed. Such a preference is skipped.",
+											"type": "boolean"
+										},
 										"unresolvableDatasetIds": {
 											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
 											"type": "array",
@@ -1485,6 +1509,7 @@
 									"required": [
 										"datasetIds",
 										"unresolvableDatasetIds",
+										"mixesDatasetKinds",
 										"updatedAt",
 										"updatedBy"
 									]
@@ -1528,6 +1553,10 @@
 												"type": "string"
 											}
 										},
+										"mixesDatasetKinds": {
+											"description": "True when the saved datasets mix analytics and intelligence datasets, for example after a dataset's analytics setting changed. Such a preference is skipped.",
+											"type": "boolean"
+										},
 										"unresolvableDatasetIds": {
 											"description": "Saved datasets that you can no longer read or that were deleted. While this list is not empty, the preference is skipped.",
 											"type": "array",
@@ -1550,6 +1579,7 @@
 									"required": [
 										"datasetIds",
 										"unresolvableDatasetIds",
+										"mixesDatasetKinds",
 										"updatedAt",
 										"updatedBy"
 									]

@@ -2762,6 +2762,44 @@
 																"description": "Observability settings for the Worker.",
 																"type": "object",
 																"properties": {
+																	"agents": {
+																		"description": "Agents observability settings for the Worker.",
+																		"type": "object",
+																		"nullable": true,
+																		"properties": {
+																			"destinations": {
+																				"description": "A list of destinations where Agents observability data will be exported to.",
+																				"type": "array",
+																				"items": {
+																					"type": "string"
+																				},
+																				"example": [
+																					"cloudflare"
+																				],
+																				"x-auditable": true
+																			},
+																			"enabled": {
+																				"description": "Whether Agents observability is enabled for the Worker.",
+																				"type": "boolean",
+																				"example": true,
+																				"x-auditable": true
+																			},
+																			"head_sampling_rate": {
+																				"description": "The sampling rate for Agents observability. From 0 to 1 (1 = 100%, 0.1 = 10%). Defaults to the root head_sampling_rate.",
+																				"type": "number",
+																				"example": 0.1,
+																				"nullable": true,
+																				"x-auditable": true
+																			},
+																			"persist": {
+																				"description": "Whether Agents observability data is persisted for the Worker.",
+																				"type": "boolean",
+																				"example": true,
+																				"default": true,
+																				"x-auditable": true
+																			}
+																		}
+																	},
 																	"enabled": {
 																		"description": "Whether observability is enabled for the Worker.",
 																		"type": "boolean",
@@ -3965,6 +4003,44 @@
 															"description": "Observability settings for the Worker.",
 															"type": "object",
 															"properties": {
+																"agents": {
+																	"description": "Agents observability settings for the Worker.",
+																	"type": "object",
+																	"nullable": true,
+																	"properties": {
+																		"destinations": {
+																			"description": "A list of destinations where Agents observability data will be exported to.",
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			},
+																			"example": [
+																				"cloudflare"
+																			],
+																			"x-auditable": true
+																		},
+																		"enabled": {
+																			"description": "Whether Agents observability is enabled for the Worker.",
+																			"type": "boolean",
+																			"example": true,
+																			"x-auditable": true
+																		},
+																		"head_sampling_rate": {
+																			"description": "The sampling rate for Agents observability. From 0 to 1 (1 = 100%, 0.1 = 10%). Defaults to the root head_sampling_rate.",
+																			"type": "number",
+																			"example": 0.1,
+																			"nullable": true,
+																			"x-auditable": true
+																		},
+																		"persist": {
+																			"description": "Whether Agents observability data is persisted for the Worker.",
+																			"type": "boolean",
+																			"example": true,
+																			"default": true,
+																			"x-auditable": true
+																		}
+																	}
+																},
 																"enabled": {
 																	"description": "Whether observability is enabled for the Worker.",
 																	"type": "boolean",
@@ -11222,6 +11298,44 @@
 													"description": "Observability settings for the Worker.",
 													"type": "object",
 													"properties": {
+														"agents": {
+															"description": "Agents observability settings for the Worker.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where Agents observability data will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"example": [
+																		"cloudflare"
+																	],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether Agents observability is enabled for the Worker.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for Agents observability. From 0 to 1 (1 = 100%, 0.1 = 10%). Defaults to the root head_sampling_rate.",
+																	"type": "number",
+																	"example": 0.1,
+																	"nullable": true,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether Agents observability data is persisted for the Worker.",
+																	"type": "boolean",
+																	"example": true,
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														},
 														"enabled": {
 															"description": "Whether observability is enabled for the Worker.",
 															"type": "boolean",
@@ -17091,6 +17205,44 @@
 										"description": "Observability settings for the Worker.",
 										"type": "object",
 										"properties": {
+											"agents": {
+												"description": "Agents observability settings for the Worker.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where Agents observability data will be exported to.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"cloudflare"
+														],
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether Agents observability is enabled for the Worker.",
+														"type": "boolean",
+														"example": true,
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for Agents observability. From 0 to 1 (1 = 100%, 0.1 = 10%). Defaults to the root head_sampling_rate.",
+														"type": "number",
+														"example": 0.1,
+														"nullable": true,
+														"x-auditable": true
+													},
+													"persist": {
+														"description": "Whether Agents observability data is persisted for the Worker.",
+														"type": "boolean",
+														"example": true,
+														"default": true,
+														"x-auditable": true
+													}
+												}
+											},
 											"enabled": {
 												"description": "Whether observability is enabled for the Worker.",
 												"type": "boolean",
@@ -21411,6 +21563,44 @@
 													"description": "Observability settings for the Worker.",
 													"type": "object",
 													"properties": {
+														"agents": {
+															"description": "Agents observability settings for the Worker.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where Agents observability data will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"example": [
+																		"cloudflare"
+																	],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether Agents observability is enabled for the Worker.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for Agents observability. From 0 to 1 (1 = 100%, 0.1 = 10%). Defaults to the root head_sampling_rate.",
+																	"type": "number",
+																	"example": 0.1,
+																	"nullable": true,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether Agents observability data is persisted for the Worker.",
+																	"type": "boolean",
+																	"example": true,
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														},
 														"enabled": {
 															"description": "Whether observability is enabled for the Worker.",
 															"type": "boolean",
@@ -26087,6 +26277,44 @@
 										"description": "Observability settings for the Worker.",
 										"type": "object",
 										"properties": {
+											"agents": {
+												"description": "Agents observability settings for the Worker.",
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"destinations": {
+														"description": "A list of destinations where Agents observability data will be exported to.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"cloudflare"
+														],
+														"x-auditable": true
+													},
+													"enabled": {
+														"description": "Whether Agents observability is enabled for the Worker.",
+														"type": "boolean",
+														"example": true,
+														"x-auditable": true
+													},
+													"head_sampling_rate": {
+														"description": "The sampling rate for Agents observability. From 0 to 1 (1 = 100%, 0.1 = 10%). Defaults to the root head_sampling_rate.",
+														"type": "number",
+														"example": 0.1,
+														"nullable": true,
+														"x-auditable": true
+													},
+													"persist": {
+														"description": "Whether Agents observability data is persisted for the Worker.",
+														"type": "boolean",
+														"example": true,
+														"default": true,
+														"x-auditable": true
+													}
+												}
+											},
 											"enabled": {
 												"description": "Whether observability is enabled for the Worker.",
 												"type": "boolean",
@@ -27082,6 +27310,44 @@
 																	"description": "Observability settings for the Worker.",
 																	"type": "object",
 																	"properties": {
+																		"agents": {
+																			"description": "Agents observability settings for the Worker.",
+																			"type": "object",
+																			"nullable": true,
+																			"properties": {
+																				"destinations": {
+																					"description": "A list of destinations where Agents observability data will be exported to.",
+																					"type": "array",
+																					"items": {
+																						"type": "string"
+																					},
+																					"example": [
+																						"cloudflare"
+																					],
+																					"x-auditable": true
+																				},
+																				"enabled": {
+																					"description": "Whether Agents observability is enabled for the Worker.",
+																					"type": "boolean",
+																					"example": true,
+																					"x-auditable": true
+																				},
+																				"head_sampling_rate": {
+																					"description": "The sampling rate for Agents observability. From 0 to 1 (1 = 100%, 0.1 = 10%). Defaults to the root head_sampling_rate.",
+																					"type": "number",
+																					"example": 0.1,
+																					"nullable": true,
+																					"x-auditable": true
+																				},
+																				"persist": {
+																					"description": "Whether Agents observability data is persisted for the Worker.",
+																					"type": "boolean",
+																					"example": true,
+																					"default": true,
+																					"x-auditable": true
+																				}
+																			}
+																		},
 																		"enabled": {
 																			"description": "Whether observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -28564,6 +28830,44 @@
 													"description": "Observability settings for the Worker.",
 													"type": "object",
 													"properties": {
+														"agents": {
+															"description": "Agents observability settings for the Worker.",
+															"type": "object",
+															"nullable": true,
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where Agents observability data will be exported to.",
+																	"type": "array",
+																	"items": {
+																		"type": "string"
+																	},
+																	"example": [
+																		"cloudflare"
+																	],
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether Agents observability is enabled for the Worker.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for Agents observability. From 0 to 1 (1 = 100%, 0.1 = 10%). Defaults to the root head_sampling_rate.",
+																	"type": "number",
+																	"example": 0.1,
+																	"nullable": true,
+																	"x-auditable": true
+																},
+																"persist": {
+																	"description": "Whether Agents observability data is persisted for the Worker.",
+																	"type": "boolean",
+																	"example": true,
+																	"default": true,
+																	"x-auditable": true
+																}
+															}
+														},
 														"enabled": {
 															"description": "Whether observability is enabled for the Worker.",
 															"type": "boolean",

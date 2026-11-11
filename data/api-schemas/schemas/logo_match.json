@@ -181,8 +181,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.logos",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/brand-protection/logo-matches": {
 		"operationId": "getAccountsAccountIdBrandProtectionLogoMatches",
@@ -447,8 +446,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.logo-matches",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/brand-protection/logo-matches/download": {
 		"operationId": "getAccountsAccountIdBrandProtectionLogoMatchesDownload",
@@ -713,8 +711,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.logo-matches",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/brand-protection/logos": {
 		"operationId": "getAccountsAccountIdBrandProtectionLogos",
@@ -899,8 +896,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.logos",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/brand-protection/logos/{logo_id}": {
 		"operationId": "getAccountsAccountIdBrandProtectionLogosLogoId",
@@ -1085,8 +1081,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.logos",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /signed-url": {
 		"operationId": "getSignedUrl",
@@ -1265,9 +1260,9 @@
 			"logo_match"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "signed-url",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/brand-protection/logos": {
 		"operationId": "postAccountsAccountIdBrandProtectionLogos",
@@ -1539,8 +1534,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.logos",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/brand-protection/scan-logo": {
 		"operationId": "postAccountsAccountIdBrandProtectionScanLogo",
@@ -1724,8 +1718,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.scan-logo",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/brand-protection/scan-page": {
 		"operationId": "postAccountsAccountIdBrandProtectionScanPage",
@@ -1909,7 +1902,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.scan-page",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

@@ -302,8 +302,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/brand-protection/matches": {
 		"operationId": "getAccountsAccountIdBrandProtectionMatches",
@@ -577,8 +576,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.matches",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/brand-protection/matches/download": {
 		"operationId": "getAccountsAccountIdBrandProtectionMatchesDownload",
@@ -852,8 +850,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.matches",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/brand-protection/queries": {
 		"operationId": "getAccountsAccountIdBrandProtectionQueries",
@@ -1038,8 +1035,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/brand-protection/total-queries": {
 		"operationId": "getAccountsAccountIdBrandProtectionTotalQueries",
@@ -1224,8 +1220,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.total-queries",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/brand-protection/queries": {
 		"operationId": "patchAccountsAccountIdBrandProtectionQueries",
@@ -1453,8 +1448,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/brand-protection/queries": {
 		"operationId": "postAccountsAccountIdBrandProtectionQueries",
@@ -1737,8 +1731,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/brand-protection/queries/{query_id}/matches/{domain_id}/dismiss": {
 		"operationId": "postAccountsAccountIdBrandProtectionQueriesQueryIdMatchesDomainIdDismiss",
@@ -1953,8 +1946,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "dismiss",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "dismiss"
 	},
 	"POST /accounts/{account_id}/brand-protection/queries/{query_id}/matches/{domain_id}/undismiss": {
 		"operationId": "postAccountsAccountIdBrandProtectionQueriesQueryIdMatchesDomainIdUndismiss",
@@ -2169,8 +2161,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "undismiss",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "undismiss"
 	},
 	"POST /accounts/{account_id}/brand-protection/queries/bulk": {
 		"operationId": "postAccountsAccountIdBrandProtectionQueriesBulk",
@@ -2406,8 +2397,7 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/brand-protection/search": {
 		"operationId": "postAccountsAccountIdBrandProtectionSearch",
@@ -2591,7 +2581,6 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.search",
-		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "create"
 	}
 }

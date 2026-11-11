@@ -122,111 +122,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"properties": {
-												"code": {
-													"type": "integer",
-													"example": 10433
-												},
-												"message": {
-													"type": "string",
-													"example": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
 												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"type": "object"
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -495,111 +479,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"properties": {
-												"code": {
-													"type": "integer",
-													"example": 10433
-												},
-												"message": {
-													"type": "string",
-													"example": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
 												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"type": "object"
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -791,111 +759,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"properties": {
-												"code": {
-													"type": "integer",
-													"example": 10433
-												},
-												"message": {
-													"type": "string",
-													"example": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
 												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"type": "object"
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -1151,111 +1103,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"properties": {
-												"code": {
-													"type": "integer",
-													"example": 10433
-												},
-												"message": {
-													"type": "string",
-													"example": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
 												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"type": "object"
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -1538,111 +1474,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"properties": {
-												"code": {
-													"type": "integer",
-													"example": 10433
-												},
-												"message": {
-													"type": "string",
-													"example": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
 												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"type": "object"
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}
@@ -1968,111 +1888,95 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"errors": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"messages": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"code": {
-														"type": "integer",
-														"minimum": 1000
-													},
-													"documentation_url": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													},
-													"source": {
-														"type": "object",
-														"properties": {
-															"pointer": {
-																"type": "string"
-															}
-														}
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"example": []
-										},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"type": "boolean",
-											"example": true,
-											"enum": [
-												true
-											]
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 10433,
+											"message": "request error"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
 									]
 								},
-								{
-									"properties": {
-										"errors": {
-											"type": "object",
-											"properties": {
-												"code": {
-													"type": "integer",
-													"example": 10433
-												},
-												"message": {
-													"type": "string",
-													"example": "request error"
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"source": {
+												"type": "object",
+												"properties": {
+													"pointer": {
+														"type": "string"
+													}
 												}
 											}
 										},
-										"success": {
-											"type": "boolean",
-											"example": false
-										}
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
 									},
-									"type": "object"
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
 							]
 						}
 					}

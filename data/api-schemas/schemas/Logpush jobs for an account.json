@@ -693,6 +693,7 @@
 								{
 									"dataset": "gateway_dns",
 									"destination_conf": "s3://mybucket/logs?region=us-west-2",
+									"destination_name": "s3://mybucket?region=us-west-2",
 									"enabled": false,
 									"error_message": null,
 									"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
@@ -873,6 +874,14 @@
 																"example": "s3://mybucket/logs?region=us-west-2",
 																"maxLength": 4096,
 																"x-sensitive": true
+															},
+															"destination_name": {
+																"description": "Sanitized destination descriptor with credentials removed.",
+																"type": "string",
+																"format": "uri",
+																"example": "s3://mybucket?region=us-west-2",
+																"maxLength": 4096,
+																"readOnly": true
 															},
 															"enabled": {
 																"description": "Flag that indicates if the job is enabled.",
@@ -1315,6 +1324,7 @@
 								{
 									"dataset": "gateway_dns",
 									"destination_conf": "s3://mybucket/logs?region=us-west-2",
+									"destination_name": "s3://mybucket?region=us-west-2",
 									"enabled": false,
 									"error_message": null,
 									"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
@@ -1495,6 +1505,14 @@
 																"example": "s3://mybucket/logs?region=us-west-2",
 																"maxLength": 4096,
 																"x-sensitive": true
+															},
+															"destination_name": {
+																"description": "Sanitized destination descriptor with credentials removed.",
+																"type": "string",
+																"format": "uri",
+																"example": "s3://mybucket?region=us-west-2",
+																"maxLength": 4096,
+																"readOnly": true
 															},
 															"enabled": {
 																"description": "Flag that indicates if the job is enabled.",
@@ -1947,6 +1965,7 @@
 							"result": {
 								"dataset": "gateway_dns",
 								"destination_conf": "s3://mybucket/logs?region=us-west-2",
+								"destination_name": "s3://mybucket?region=us-west-2",
 								"enabled": false,
 								"error_message": null,
 								"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
@@ -2130,6 +2149,14 @@
 															"example": "s3://mybucket/logs?region=us-west-2",
 															"maxLength": 4096,
 															"x-sensitive": true
+														},
+														"destination_name": {
+															"description": "Sanitized destination descriptor with credentials removed.",
+															"type": "string",
+															"format": "uri",
+															"example": "s3://mybucket?region=us-west-2",
+															"maxLength": 4096,
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "Flag that indicates if the job is enabled.",
@@ -2906,6 +2933,7 @@
 							"result": {
 								"dataset": "gateway_dns",
 								"destination_conf": "s3://mybucket/logs?region=us-west-2",
+								"destination_name": "s3://mybucket?region=us-west-2",
 								"enabled": false,
 								"error_message": null,
 								"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
@@ -3089,6 +3117,14 @@
 															"example": "s3://mybucket/logs?region=us-west-2",
 															"maxLength": 4096,
 															"x-sensitive": true
+														},
+														"destination_name": {
+															"description": "Sanitized destination descriptor with credentials removed.",
+															"type": "string",
+															"format": "uri",
+															"example": "s3://mybucket?region=us-west-2",
+															"maxLength": 4096,
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "Flag that indicates if the job is enabled.",
@@ -5339,6 +5375,7 @@
 							"result": {
 								"dataset": "gateway_dns",
 								"destination_conf": "s3://mybucket/logs?region=us-west-2",
+								"destination_name": "s3://mybucket?region=us-west-2",
 								"enabled": false,
 								"error_message": null,
 								"filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}",
@@ -5522,6 +5559,14 @@
 															"example": "s3://mybucket/logs?region=us-west-2",
 															"maxLength": 4096,
 															"x-sensitive": true
+														},
+														"destination_name": {
+															"description": "Sanitized destination descriptor with credentials removed.",
+															"type": "string",
+															"format": "uri",
+															"example": "s3://mybucket?region=us-west-2",
+															"maxLength": 4096,
+															"readOnly": true
 														},
 														"enabled": {
 															"description": "Flag that indicates if the job is enabled.",
