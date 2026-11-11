@@ -6,6 +6,7 @@
 <h2>Available Locations</h2>
 <ul>
 	<li>Austin, US</li>
+	<li>San Francisco, CA&nbsp;</li>
 </ul>
 <h2>About the Role</h2>
 <p>Cloudflare built its reputation helping build a better Internet, defending millions of sites, giving away SSL and DDoS mitigation when the industry charged premium prices. In an acceleratingly dangerous world, the scope of that mission has changed. We are becoming something more: critical infrastructure. Banks run their payment rails on us. Governments run public services on us. Media companies depend on us during live events. Health systems depend on us to provide care. Reliability for these customers is no longer a feature of our product. It is a mission.</p>
@@ -36,7 +37,8 @@
 <h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Minimum 5 years of hands-on experience in site reliability engineering, escalation engineering, systems engineering, or a comparable deeply technical support / operations role, with at least 2 years in customer-facing environments.</li>
-	<li>Strong foundation in networking and security:<ul>
+	<li>Strong foundation in networking and security:
+		<ul>
 			<li>TCP/IP fundamentals: OSI model, IPv4/IPv6 addressing, subnetting, routing, switching.</li>
 			<li>Core protocols: DNS, HTTP/S, TLS/SSL, SMTP, SNMP, NTP.</li>
 			<li>Routing protocols: BGP, OSPF, including path selection and route propagation.</li>
@@ -97,6 +99,22 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<h3 class="" data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<ul data-path-to-node="1">
+	<li>
+		<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,1,0">For San Francisco Bay Area based hires: Estimated annual salary of $174,000 - $240,000.</p>
+	</li>
+</ul>
+<h3 data-path-to-node="2"><strong data-path-to-node="2" data-index-in-node="0">Equity</strong></h3>
+<ul data-path-to-node="3">
+	<li>
+		<p data-path-to-node="3,0,0">This role is eligible to participate in Cloudflare's equity plan.</p>
+	</li>
+</ul>
+<h3 data-path-to-node="4">&nbsp;</h3>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

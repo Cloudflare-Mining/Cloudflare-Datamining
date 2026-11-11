@@ -3,78 +3,41 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>About the Team</h3>
-<p>The Global Resource Management team is a small, focused group of engineers dedicated to driving organization and clarity across Cloudflare's platform. We develop and maintain applications that live in the foundational platform to enable features that span all of Cloudflare’s resources. The work we do is absolutely critical to enabling Cloudflare to scale its operations efficiently, reach new customers, and maintain the reliability our users expect. Joining us means working on the core of Cloudflare's ability to operate and grow.</p>
-<h3>What You’ll Do</h3>
-<p>As a System Engineer on the Global Resource Management team, you'll be at the forefront of tackling our most challenging system architecture problems:</p>
+<p><strong>Available Locations: </strong>Lisbon</p>
+<h4><strong>About the Department</strong></h4>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h4><strong>About the role</strong></h4>
+<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Technical Support Engineer for Zero Trust </strong>to join our team. You will work with our largest and most technically sophisticated customers on a variety of technical support issues to ensure they can deploy and operate Cloudflare's Zero Trust solutions with confidence.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>
-		<p>Solve Deep, Foundational Problems: Dive into complex, cross-cutting engineering challenges that benefit all Cloudflare products by creating organized, efficient, and well-managed applications.</p>
-	</li>
-	<li>
-		<p>Architect for Organization and Clarity: Design and make core architectural decisions focused on reducing fanout and simplifying system dependencies. The objective is to make platform adoption seamless and straightforward for product engineering teams.</p>
-	</li>
-	<li>
-		<p>Build Scalable Systems: Be responsible for proposing architectures, writing detailed specifications, and implementing high-quality, maintainable code to build scalable and highly available systems.</p>
-	</li>
-	<li>
-		<p>Drive Code Quality: Actively participate in thorough code reviews, provide constructive feedback on technical specifications and designs, and ensure all implementations adhere to best practices for reliability and security.</p>
-	</li>
+	<li>Serve as a trusted technical advisor, providing advanced support for enterprise customers using Cloudflare’s Zero Trust platform, including products like Access, Gateway, Cloudflare Tunnels, Cloudflare WAN and the Cloudflare One client (formerly known as Cloudflare WARP client).</li>
+	<li>Troubleshoot and resolve complex technical issues related to identity, device security, and secure application access.</li>
+	<li>Communicating and working directly with the customers via phone, video conference (ie Zoom, Google Meet), chat and tickets in Salesforce</li>
+	<li>Work directly with customers to diagnose and remediate configuration and integration challenges with authentication protocols (e.g., SSO, SAML, OIDC) and network security settings.</li>
+	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
+	<li>Partner with Cloudflare’s Product, Engineering, and Security teams to escalate and resolve advanced customer issues.</li>
+	<li>Provide feedback based on customer interactions to drive product improvements and ensure alignment with user needs.</li>
+	<li>Assist customers in identifying and responding to security incidents, leveraging Cloudflare’s threat intelligence and security tools.</li>
 </ul>
-<h3>Skills, Knowledge, and Experience</h3>
+<h4><strong>Desirable Skills, Knowledge, and Experience</strong></h4>
 <ul>
-	<li>
-		<p>Professional Experience: 5+ years of professional experience in software development, building and operating mission-critical, high-scale distributed systems.</p>
-	</li>
-	<li>
-		<p>Programming Languages: Strong proficiency in Go (Golang) or a similar modern systems language.</p>
-	</li>
-	<li>
-		<p>Systems Design: Proven experience in designing, building, and operating scalable, highly available services at cloud-scale.</p>
-	</li>
-	<li>
-		<p>Architectural Thinking: Understanding of concepts related to organization, dependency management, and resource orchestration in a large, multi-tenant environment.</p>
-	</li>
-	<li>
-		<p>Collaboration: Experience participating in a code review process and contributing thoughtful feedback to design specifications. Comfortable working across teams to identify shared challenges and propose platform-level solutions.</p>
-	</li>
+	<li>Availability to work the weekend shift (Saturday &amp; Sunday)</li>
+	<li>You have a minimum of 3 years experience working as a Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
+	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
+	<li>Strong customer service orientation and communication skills, both written and verbal.</li>
+	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
+	<li>You have experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
+	<li>Hands-on experience with identity and access management (IdP, IAM, SCIM) systems, such as Okta, Microsoft Entra, Ping, etc. Strong knowledge of authentication protocols (SAML, OIDC)</li>
+	<li>Proficiency in networking fundamentals, including DNS, VPNs, firewalls, and traffic routing.</li>
+	<li>Experience supporting cloud platforms (AWS, Azure, GCP) and SaaS application integrations.</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers.</li>
+	<li>Bachelor’s degree in Computer Science, Information Systems, Cybersecurity, or a related field (or equivalent experience). This may also include specialized bootcamps.&nbsp;</li>
+	<li>Relevant certifications such as Cloudflare Certified Zero Trust Specialist, CISSP, or CCSP.</li>
+	<li>Experience with building projects on Cloudflare or using Cloudflare Products.</li>
 </ul>
-<h3>Bonus Skills:</h3>
-<ul>
-	<li>
-		<p>Familiarity with Cloudflare's core technologies, such as edge computing or global networking.</p>
-	</li>
-	<li>
-		<p>Experience with Infrastructure as Code (IaC) tools and related technologies.</p>
-	</li>
-</ul>
-<p>&nbsp;</p>
 <p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
 <p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
