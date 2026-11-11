@@ -1,5 +1,20 @@
 [
 	{
+		"id": "7eb0fffce2e9f90241cda08ecfb4ca07",
+		"name": "Cloudflare Access SCIM Logs Read",
+		"description": "Can read SCIM audit logs.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "eeff4303d9847a7262dc5d0fab703e1d",
 		"name": "Magic Firewall Admin",
 		"description": "Can create, read, update and delete Magic Firewall.",
@@ -1737,25 +1752,6 @@
 		"name": "IP Addressing Write",
 		"description": "Grants read and write access to IP Addressing — create, update, and delete IP prefixes, BGP prefixes, edge service bindings, address maps, delegations, and LOA documents.",
 		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "7a42d9ab1172b86d160141eae81ca5ca",
-		"name": "Page Rules Admin",
-		"description": "Can manage page rules.",
-		"permissions": {
-			"zone_settings": {
-				"read": true,
-				"edit": true
-			},
 			"zone": {
 				"read": true,
 				"edit": false
