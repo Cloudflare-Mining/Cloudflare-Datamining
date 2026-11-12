@@ -21,6 +21,9 @@
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
+		"audit-oas-native-rules",
+		"audit-oas-native-rules-v2",
+		"bot/sync-terraform-docs",
 		"codex/forge-native-combined-preview",
 		"codex/narrow-sdk-error-imports",
 		"codex/rename-groups-namespaces",
@@ -35,8 +38,8 @@
 		"forge-mcp",
 		"main",
 		"mcp-search-eval",
+		"oas-native-rules",
 		"revert-89-stevenchong/retire-surfaces-native-openapi",
-		"scaffold-redocly-plugin-generators",
 		"sk/mcp",
 		"sk/rfc-ts"
 	]
