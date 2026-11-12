@@ -13,7 +13,7 @@
 <p><span style="font-size: 18pt;"><strong>About the role</strong></span></p>
 <p>We're looking for a Senior Program Manager to own data center delivery and the sourcing work that gets each site ready to operate. You'll take projects from vendor selection and contract negotiation through construction, infrastructure deployment, commissioning, and handover to operations.</p>
 <p>This role combines technical program management with hands-on commercial execution. You'll work with engineering, construction, procurement, and operations teams to ensure facilities, equipment, and site services are ready when they're needed, with clear accountability for schedule, cost, and quality.</p>
-<h1>What you'll do</h1>
+<h2>What you'll do:</h2>
 <h2>Deliver data centers</h2>
 <ul>
 	<li>Represent Cloudflare across new builds and expansions, managing data center providers, general contractors, design consultants, commissioning agents, and compute integration partners.</li>
@@ -34,7 +34,7 @@
 	<li>Build repeatable site-readiness and delivery playbooks, including sourcing checklists, vendor qualification, milestone tracking, and handover requirements. Apply lessons from each build to the next.</li>
 	<li>Ensure deployment activities meet applicable codes, safety standards, and security requirements in partnership with the responsible technical teams.</li>
 </ul>
-<h1>What you'll bring</h1>
+<h2>What you'll bring:</h2>
 <ul>
 	<li>7+ years in technical program management, construction management, or infrastructure delivery, including at least 5 years working on data center or high-density infrastructure projects.</li>
 	<li>Direct experience managing data center providers or general contractors on behalf of an owner, including contract administration, schedule oversight, and scope changes.</li>
@@ -45,12 +45,93 @@
 	<li>Clear written and verbal communication, including the ability to explain technical delivery issues and commercial tradeoffs to senior leadership.</li>
 	<li>A bachelor's degree in engineering, construction management, architecture, business, or a related field, or equivalent practical experience.</li>
 </ul>
-<h1>Preferred experience</h1>
+<h2>Preferred experience:</h2>
 <ul>
 	<li>High-density GPU deployments and liquid cooling systems.</li>
 	<li>Fast-track or modular data center construction.</li>
 	<li>Utility coordination, security services contracting, and facilities management agreements.</li>
 	<li>PMP or an equivalent project management credential.</li>
+</ul>
+<h3 class="" data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<ul data-path-to-node="1">
+	<li>
+		<p data-path-to-node="1,0,0">Compensation may be adjusted depending on work location.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,1,0">For San Francisco Bay Area based hires:<span class=""> Estimated annual salary of $150,</span>000 - $180,000.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,2,0">For New York based hires: Estimated annual salary of $145,000 - $175,000.</p>
+	</li>
+</ul>
+<h3 data-path-to-node="2"><strong data-path-to-node="2" data-index-in-node="0">Equity</strong></h3>
+<ul data-path-to-node="3">
+	<li>
+		<p data-path-to-node="3,0,0">This role is eligible to participate in Cloudflare's equity plan.</p>
+	</li>
+</ul>
+<h3 data-path-to-node="4"><strong data-path-to-node="4" data-index-in-node="0">Benefits</strong></h3>
+<ul data-path-to-node="5">
+	<li>
+		<p data-path-to-node="5,0,0">Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+	</li>
+	<li>
+		<p data-path-to-node="5,1,0">Health &amp; Welfare Benefits</p>
+		<ul data-path-to-node="5,1,1">
+			<li>
+				<p data-path-to-node="5,1,1,0,0">Medical/Rx Insurance</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,1,1,1,0">Dental Insurance</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,1,1,2,0">Vision Insurance</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,1,1,3,0">Flexible Spending Accounts</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,1,1,4,0">Commuter Spending Accounts</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,1,1,5,0">Fertility &amp; Family Forming Benefits</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,1,1,6,0">On-demand mental health support and Employee Assistance Program</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,1,1,7,0">Global Travel Medical Insurance</p>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<p data-path-to-node="5,2,0">Financial Benefits</p>
+		<ul data-path-to-node="5,2,1">
+			<li>
+				<p data-path-to-node="5,2,1,0,0">Short and Long Term Disability Insurance</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,2,1,1,0">Life &amp; Accident Insurance</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,2,1,2,0">401(k) Retirement Savings Plan</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,2,1,3,0">Employee Stock Participation Plan</p>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<p data-path-to-node="5,3,0">Time Off</p>
+		<ul data-path-to-node="5,3,1">
+			<li>
+				<p data-path-to-node="5,3,1,0,0">Flexible paid time off covering vacation and sick leave</p>
+			</li>
+			<li>
+				<p data-path-to-node="5,3,1,1,0">Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
+			</li>
+		</ul>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

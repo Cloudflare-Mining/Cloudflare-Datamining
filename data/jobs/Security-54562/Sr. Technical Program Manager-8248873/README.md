@@ -10,6 +10,7 @@
 <p>Cloudflare is seeking a highly skilled, self-motivated Senior Technical Program Manager to lead the company’s strategic Governance, Risk, and Compliance program, initially focused on the Department of Defense Impact Level 4 (IL4) initiative.&nbsp;</p>
 <p>As a Technical Program Manager focused on Governance, Risk, and Compliance, you will define, align, and drive complex security and compliance programs that reduce risk and enable Cloudflare’s regulated business. You will manage stakeholder expectations, proactively identify risks and dependencies, and ensure the delivery of predictable, high-impact outcomes.</p>
 <p>The ideal candidate is process-oriented yet remains flexible and iterative. You excel at navigating ambiguous technical challenges, fostering collaboration across teams, and asking the insightful questions necessary to drive stakeholders toward measurable results. This position requires a professional capable of managing complex tradeoffs and coordinating teams across global time zones.</p>
+<p>Due to this position having access to controlled technology and systems, US export control laws require that applicants for this position must be US persons (including US citizens, US nationals, lawful permanent residents, refugees and asylees). Applicants may be required to pass and maintain a government-mandated background investigation as a condition of employment.</p>
 <p><strong>Key Responsibilities</strong></p>
 <ul>
 	<li>Partner with the Governance, Risk, and Compliance team as its dedicated Technical Program Manager</li>
