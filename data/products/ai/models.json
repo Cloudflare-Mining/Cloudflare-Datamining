@@ -2886,6 +2886,20 @@
 		]
 	},
 	{
+		"id": "0446c408-a932-495f-9ab6-9744760dbbe8",
+		"source": 1,
+		"name": "@cf/google/embeddinggemma-2",
+		"description": "EmbeddingGemma 2 is an open multimodal embedding model built by Google DeepMind which maps text (incl. code), images, video, and audio inputs—and combinations thereof—into a single, unified 768-dimensional vector space.",
+		"task": {
+			"id": "e8fd402c-337b-4c7a-b6f8-5f596805378b",
+			"name": "Multimodal Embeddings",
+			"description": "Multimodal embeddings represent data from different sources, like text and images, in a shared vector space, enabling semantic understanding across modalities."
+		},
+		"created_at": "2026-10-08 12:39:40.122",
+		"tags": [],
+		"properties": []
+	},
+	{
 		"id": "02c16efa-29f5-4304-8e6c-3d188889f875",
 		"source": 1,
 		"name": "@cf/qwen/qwq-32b",
