@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20261110.1"
+		"latest": "1.20261112.1"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -14074,8 +14074,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIH1XW7+CBb5DKz9dolI5KtBpab7QntHXfv4ZxWzTAtX6AiEArBmqcucxAqnxbyBm2eeWeDO9dg1B16aNyja//bn5TPA="
+						"sig": "MEUCIH1XW7+CBb5DKz9dolI5KtBpab7QntHXfv4ZxWzTAtX6AiEArBmqcucxAqnxbyBm2eeWeDO9dg1B16aNyja//bn5TPA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -14085,6 +14085,36 @@
 					}
 				},
 				"unpackedSize": 155228111
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20261112.1": {
+			"name": "@cloudflare/workerd-darwin-64",
+			"version": "1.20261112.1",
+			"dist": {
+				"shasum": "9282d6ef453b8941ded4c1a6fbba790819a3e870",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20261112.1.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-VeHFKYRITaoJScHG1quIEYEfGwrBxzPvBhaVhIv2Gf6iW2XoxQvi0HpUsYPZ69HVmBVf87XK6EF6vDmvDPsZmw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCUwLhVwNZUXKG40Wfq5Y9YceIy7sC0D8B5oU1p29pZFAIgOoCU+F/DQm3YxaBQNz3c5y6Fsh9uQaYrIAh6vGtfmJM=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIEE7ZcUYzpiVI6Shn7nGhvmX9JBLCnoPl8JDkdeh63DXAiAnCwRDPG2pnR7IUovzi3iF2uh2qtJPy3HdyGZaGvy6nw=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-64@1.20261112.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 156623199
 			},
 			"engines": {
 				"node": ">=16"
