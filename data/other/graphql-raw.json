@@ -380255,6 +380255,22 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "How the transformation was requested: url (a /cdn-cgi/image/ URL), worker_fetch (a Worker fetch() with cf.image), binding (the Images binding), or unknown (not reported, for example before this field existed)",
+							"isDeprecated": false,
+							"name": "requestSource",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "Name of the Worker script that requested the transformation through the Images binding. Empty for transformations that did not come from a binding",
 							"isDeprecated": false,
 							"name": "scriptName",
@@ -381149,6 +381165,132 @@
 						{
 							"defaultValue": null,
 							"description": "",
+							"name": "requestSource",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestSource_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestSource_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestSource_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestSource_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestSource_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestSource_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestSource_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestSource_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestSource_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "requestSource_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
 							"name": "scriptName",
 							"type": {
 								"kind": "SCALAR",
@@ -381772,6 +381914,18 @@
 							"description": "product descending",
 							"isDeprecated": false,
 							"name": "product_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "requestSource ascending",
+							"isDeprecated": false,
+							"name": "requestSource_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "requestSource descending",
+							"isDeprecated": false,
+							"name": "requestSource_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -905956,6 +906110,38 @@
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "The Browser Run error code for the failure, or 0 when there is none or the reason is internal",
+							"isDeprecated": false,
+							"name": "failureCode",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint16",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Why pre-rendering failed: render_timeout, navigation_failed, target_closed, origin_status, non_html, or internal. Empty when it succeeded",
+							"isDeprecated": false,
+							"name": "failureReason",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "The HTTP response status",
 							"isDeprecated": false,
 							"name": "httpStatus",
@@ -905965,6 +906151,54 @@
 								"ofType": {
 									"kind": "SCALAR",
 									"name": "uint16",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The browser engine that rendered the page",
+							"isDeprecated": false,
+							"name": "renderEngine",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The HTTP status the page returned while rendering, or 0",
+							"isDeprecated": false,
+							"name": "upstreamStatus",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint16",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The requested URL without its query string",
+							"isDeprecated": false,
+							"name": "url",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
 									"ofType": null
 								}
 							}
@@ -906768,6 +907002,228 @@
 						{
 							"defaultValue": null,
 							"description": "",
+							"name": "failureCode",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint16",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint16",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
 							"name": "httpStatus",
 							"type": {
 								"kind": "SCALAR",
@@ -906859,6 +907315,354 @@
 										"ofType": null
 									}
 								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint16",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint16",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
 							}
 						},
 						{
@@ -907072,6 +907876,30 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "failureCode ascending",
+							"isDeprecated": false,
+							"name": "failureCode_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "failureCode descending",
+							"isDeprecated": false,
+							"name": "failureCode_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "failureReason ascending",
+							"isDeprecated": false,
+							"name": "failureReason_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "failureReason descending",
+							"isDeprecated": false,
+							"name": "failureReason_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "httpStatus ascending",
 							"isDeprecated": false,
 							"name": "httpStatus_ASC"
@@ -907168,6 +907996,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "renderEngine ascending",
+							"isDeprecated": false,
+							"name": "renderEngine_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "renderEngine descending",
+							"isDeprecated": false,
+							"name": "renderEngine_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "sum(bytesServed) ascending",
 							"isDeprecated": false,
 							"name": "sum_bytesServed_ASC"
@@ -907177,6 +908017,102 @@
 							"description": "sum(bytesServed) descending",
 							"isDeprecated": false,
 							"name": "sum_bytesServed_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(cacheServed) ascending",
+							"isDeprecated": false,
+							"name": "sum_cacheServed_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(cacheServed) descending",
+							"isDeprecated": false,
+							"name": "sum_cacheServed_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(fallbackCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_fallbackCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(fallbackCount) descending",
+							"isDeprecated": false,
+							"name": "sum_fallbackCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(freshCacheHits) ascending",
+							"isDeprecated": false,
+							"name": "sum_freshCacheHits_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(freshCacheHits) descending",
+							"isDeprecated": false,
+							"name": "sum_freshCacheHits_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(httpErrorCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_httpErrorCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(httpErrorCount) descending",
+							"isDeprecated": false,
+							"name": "sum_httpErrorCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(noResponseCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_noResponseCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(noResponseCount) descending",
+							"isDeprecated": false,
+							"name": "sum_noResponseCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(redirectCount) ascending",
+							"isDeprecated": false,
+							"name": "sum_redirectCount_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(redirectCount) descending",
+							"isDeprecated": false,
+							"name": "sum_redirectCount_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "upstreamStatus ascending",
+							"isDeprecated": false,
+							"name": "upstreamStatus_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "upstreamStatus descending",
+							"isDeprecated": false,
+							"name": "upstreamStatus_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "url ascending",
+							"isDeprecated": false,
+							"name": "url_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "url descending",
+							"isDeprecated": false,
+							"name": "url_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -907340,6 +908276,102 @@
 									"ofType": null
 								}
 							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Estimated requests served from fresh or stale cache",
+							"isDeprecated": false,
+							"name": "cacheServed",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Estimated requests served by origin fallback",
+							"isDeprecated": false,
+							"name": "fallbackCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Estimated requests served from a fresh cache entry",
+							"isDeprecated": false,
+							"name": "freshCacheHits",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Estimated requests with a 4xx, 5xx, or no response",
+							"isDeprecated": false,
+							"name": "httpErrorCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Estimated requests with no HTTP response",
+							"isDeprecated": false,
+							"name": "noResponseCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Estimated requests returning a redirect",
+							"isDeprecated": false,
+							"name": "redirectCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
 						}
 					],
 					"inputFields": [],
@@ -907358,6 +908390,102 @@
 							"description": "Confidence interval for the corresponding point estimate",
 							"isDeprecated": false,
 							"name": "bytesServed",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "cacheServed",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "fallbackCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "freshCacheHits",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "httpErrorCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "noResponseCount",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "redirectCount",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -907666,9 +908794,41 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "The render error class",
+							"description": "The Browser Run error code for the failure, or 0 when there is none or the reason is internal",
 							"isDeprecated": false,
-							"name": "errorClass",
+							"name": "failureCode",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint16",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Why the render failed: render_timeout, navigation_failed, target_closed, origin_status, non_html, or internal. Empty on success",
+							"isDeprecated": false,
+							"name": "failureReason",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The browser engine that rendered the page",
+							"isDeprecated": false,
+							"name": "renderEngine",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -907701,6 +908861,38 @@
 							"description": "Why the render started",
 							"isDeprecated": false,
 							"name": "trigger",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The HTTP status the page returned while rendering, or 0",
+							"isDeprecated": false,
+							"name": "upstreamStatus",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint16",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The URL submitted for rendering without its query string",
+							"isDeprecated": false,
+							"name": "url",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -908242,7 +909434,103 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass",
+							"name": "failureCode",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint16",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureCode_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint16",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "failureReason",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -908252,7 +909540,7 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass_geq",
+							"name": "failureReason_geq",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -908262,7 +909550,7 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass_gt",
+							"name": "failureReason_gt",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -908272,7 +909560,7 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass_ilike",
+							"name": "failureReason_ilike",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -908282,7 +909570,7 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass_in",
+							"name": "failureReason_in",
 							"type": {
 								"kind": "LIST",
 								"name": "",
@@ -908300,7 +909588,7 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass_leq",
+							"name": "failureReason_leq",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -908310,7 +909598,7 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass_like",
+							"name": "failureReason_like",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -908320,7 +909608,7 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass_lt",
+							"name": "failureReason_lt",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -908330,7 +909618,7 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass_neq",
+							"name": "failureReason_neq",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -908340,7 +909628,7 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass_notin",
+							"name": "failureReason_notin",
 							"type": {
 								"kind": "LIST",
 								"name": "",
@@ -908358,7 +909646,133 @@
 						{
 							"defaultValue": null,
 							"description": "",
-							"name": "errorClass_notlike",
+							"name": "failureReason_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "renderEngine_notlike",
 							"type": {
 								"kind": "SCALAR",
 								"name": "string",
@@ -908570,6 +909984,228 @@
 								"name": "string",
 								"ofType": null
 							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint16",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "uint16",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "upstreamStatus_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "uint16",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_ilike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "url_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
 						}
 					],
 					"interfaces": [],
@@ -908678,15 +910314,27 @@
 						},
 						{
 							"deprecationReason": null,
-							"description": "errorClass ascending",
+							"description": "failureCode ascending",
 							"isDeprecated": false,
-							"name": "errorClass_ASC"
+							"name": "failureCode_ASC"
 						},
 						{
 							"deprecationReason": null,
-							"description": "errorClass descending",
+							"description": "failureCode descending",
 							"isDeprecated": false,
-							"name": "errorClass_DESC"
+							"name": "failureCode_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "failureReason ascending",
+							"isDeprecated": false,
+							"name": "failureReason_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "failureReason descending",
+							"isDeprecated": false,
+							"name": "failureReason_DESC"
 						},
 						{
 							"deprecationReason": null,
@@ -908774,6 +910422,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "renderEngine ascending",
+							"isDeprecated": false,
+							"name": "renderEngine_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "renderEngine descending",
+							"isDeprecated": false,
+							"name": "renderEngine_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "success ascending",
 							"isDeprecated": false,
 							"name": "success_ASC"
@@ -908810,6 +910470,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "sum(renderErrors) ascending",
+							"isDeprecated": false,
+							"name": "sum_renderErrors_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(renderErrors) descending",
+							"isDeprecated": false,
+							"name": "sum_renderErrors_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "trigger ascending",
 							"isDeprecated": false,
 							"name": "trigger_ASC"
@@ -908819,6 +910491,30 @@
 							"description": "trigger descending",
 							"isDeprecated": false,
 							"name": "trigger_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "upstreamStatus ascending",
+							"isDeprecated": false,
+							"name": "upstreamStatus_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "upstreamStatus descending",
+							"isDeprecated": false,
+							"name": "upstreamStatus_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "url ascending",
+							"isDeprecated": false,
+							"name": "url_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "url descending",
+							"isDeprecated": false,
+							"name": "url_DESC"
 						}
 					],
 					"fields": [],
@@ -908986,6 +910682,22 @@
 									"ofType": null
 								}
 							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Estimated failed render attempts",
+							"isDeprecated": false,
+							"name": "renderErrors",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
 						}
 					],
 					"inputFields": [],
@@ -909020,6 +910732,22 @@
 							"description": "Confidence interval for the corresponding point estimate",
 							"isDeprecated": false,
 							"name": "htmlBytes",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "renderErrors",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",

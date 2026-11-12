@@ -6747,6 +6747,7 @@
 		"datetimeMinute": "The date and time the transformation request was served, truncated to the minute",
 		"isBindingRequest": "1 when the transformation request originates from a Worker binding, otherwise 0",
 		"originHost": "Hostname of the origin image URL",
+		"requestSource": "How the transformation was requested: url (a /cdn-cgi/image/ URL), worker_fetch (a Worker fetch() with cf.image), binding (the Images binding), or unknown (not reported, for example before this field existed)",
 		"scriptName": "Name of the Worker script that requested the transformation through the Images binding. Empty for transformations that did not come from a binding",
 		"transformation": "Image transformation string",
 		"version": "Billing classification of the event: 0 when the account is not on unique transformation billing, 1 when the request was billable, 2 when the account is on the free tier",
@@ -17185,7 +17186,12 @@
 		"datetimeFifteenMinutes": "The date and time of the bot request truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time of the bot request truncated to five minutes",
 		"datetimeHour": "The date and time of the bot request truncated to the hour",
+		"failureCode": "The Browser Run error code for the failure, or 0 when there is none or the reason is internal",
+		"failureReason": "Why pre-rendering failed: render_timeout, navigation_failed, target_closed, origin_status, non_html, or internal. Empty when it succeeded",
 		"httpStatus": "The HTTP response status",
+		"renderEngine": "The browser engine that rendered the page",
+		"upstreamStatus": "The HTTP status the page returned while rendering, or 0",
+		"url": "The requested URL without its query string",
 		"verifiedBot": "Whether Bot Management verified the bot"
 	},
 	"ZonePreRenderBotRequestsAdaptiveGroupsFilter_InputObject": {
@@ -17206,11 +17212,23 @@
 	},
 	"ZonePreRenderBotRequestsAdaptiveGroupsSum": {
 		"__description": "",
-		"bytesServed": "Estimated bytes served to bots"
+		"bytesServed": "Estimated bytes served to bots",
+		"cacheServed": "Estimated requests served from fresh or stale cache",
+		"fallbackCount": "Estimated requests served by origin fallback",
+		"freshCacheHits": "Estimated requests served from a fresh cache entry",
+		"httpErrorCount": "Estimated requests with a 4xx, 5xx, or no response",
+		"noResponseCount": "Estimated requests with no HTTP response",
+		"redirectCount": "Estimated requests returning a redirect"
 	},
 	"ZonePreRenderBotRequestsAdaptiveGroupsSumConfidence": {
 		"__description": "",
-		"bytesServed": "Confidence interval for the corresponding point estimate"
+		"bytesServed": "Confidence interval for the corresponding point estimate",
+		"cacheServed": "Confidence interval for the corresponding point estimate",
+		"fallbackCount": "Confidence interval for the corresponding point estimate",
+		"freshCacheHits": "Confidence interval for the corresponding point estimate",
+		"httpErrorCount": "Confidence interval for the corresponding point estimate",
+		"noResponseCount": "Confidence interval for the corresponding point estimate",
+		"redirectCount": "Confidence interval for the corresponding point estimate"
 	},
 	"ZonePreRenderRenderAttemptsAdaptiveGroups": {
 		"__description": "Aggregated pre-render render attempts with adaptive sampling",
@@ -17239,9 +17257,13 @@
 		"datetimeFifteenMinutes": "The date and time of the render attempt truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time of the render attempt truncated to five minutes",
 		"datetimeHour": "The date and time of the render attempt truncated to the hour",
-		"errorClass": "The render error class",
+		"failureCode": "The Browser Run error code for the failure, or 0 when there is none or the reason is internal",
+		"failureReason": "Why the render failed: render_timeout, navigation_failed, target_closed, origin_status, non_html, or internal. Empty on success",
+		"renderEngine": "The browser engine that rendered the page",
 		"success": "Whether the render succeeded",
-		"trigger": "Why the render started"
+		"trigger": "Why the render started",
+		"upstreamStatus": "The HTTP status the page returned while rendering, or 0",
+		"url": "The URL submitted for rendering without its query string"
 	},
 	"ZonePreRenderRenderAttemptsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -17262,12 +17284,14 @@
 	"ZonePreRenderRenderAttemptsAdaptiveGroupsSum": {
 		"__description": "",
 		"browserSecondsUsed": "Estimated browser seconds used",
-		"htmlBytes": "Estimated rendered HTML bytes"
+		"htmlBytes": "Estimated rendered HTML bytes",
+		"renderErrors": "Estimated failed render attempts"
 	},
 	"ZonePreRenderRenderAttemptsAdaptiveGroupsSumConfidence": {
 		"__description": "",
 		"browserSecondsUsed": "Confidence interval for the corresponding point estimate",
-		"htmlBytes": "Confidence interval for the corresponding point estimate"
+		"htmlBytes": "Confidence interval for the corresponding point estimate",
+		"renderErrors": "Confidence interval for the corresponding point estimate"
 	},
 	"ZonePrecursorSessionsGroups": {
 		"__description": "Estimated Precursor sessions represented by Ready Aggregates events",
