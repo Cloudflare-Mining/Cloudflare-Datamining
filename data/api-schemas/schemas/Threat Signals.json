@@ -940,11 +940,20 @@
 																		"pir_id": {
 																			"type": "string",
 																			"format": "uuid"
+																		},
+																		"requirement_basis": {
+																			"description": "Beta. current: scored against the PIR's current requirement. saved: the PIR's structured definition no longer generates a valid requirement, for example because its topic was retired, so the requirement from its last save was scored instead.",
+																			"type": "string",
+																			"enum": [
+																				"current",
+																				"saved"
+																			]
 																		}
 																	},
 																	"required": [
 																		"pir_id",
-																		"band"
+																		"band",
+																		"requirement_basis"
 																	],
 																	"type": "object"
 																}
@@ -955,6 +964,17 @@
 															"pir_id",
 															"pirs"
 														]
+													},
+													"relevance_coverage": {
+														"description": "Beta. Whether relevance and severity reflect the account's current Priority Intelligence Requirements, organization profile, and the article's current content. current: they do. stale: they were scored before a change; articles fetched in the last 7 days are being rescored, older articles keep these scores. pending: not scored yet, fetched in the last 7 days. unavailable: not scored, and will not be scored automatically, because it was fetched more than 7 days ago or processing failed. Updates to managed topics can take up to a day to mark scores stale. Null when the account has no active PIRs or none of its articles has been scored yet.",
+														"type": "string",
+														"enum": [
+															"current",
+															"stale",
+															"pending",
+															"unavailable"
+														],
+														"nullable": true
 													},
 													"severity": {
 														"description": "Beta. Intrinsic article severity band, from informational to critical, independent of any organisation or Priority Intelligence Requirement. Null when the account has no active Priority Intelligence Requirements, scoring has not completed, or a historic article has not entered an automatic rescore window.",
@@ -1027,7 +1047,8 @@
 													"severity",
 													"event_id",
 													"dataset_id",
-													"relevance"
+													"relevance",
+													"relevance_coverage"
 												],
 												"type": "object"
 											}
@@ -1245,11 +1266,20 @@
 															"pir_id": {
 																"type": "string",
 																"format": "uuid"
+															},
+															"requirement_basis": {
+																"description": "Beta. current: scored against the PIR's current requirement. saved: the PIR's structured definition no longer generates a valid requirement, for example because its topic was retired, so the requirement from its last save was scored instead.",
+																"type": "string",
+																"enum": [
+																	"current",
+																	"saved"
+																]
 															}
 														},
 														"required": [
 															"pir_id",
-															"band"
+															"band",
+															"requirement_basis"
 														],
 														"type": "object"
 													}
@@ -1260,6 +1290,17 @@
 												"pir_id",
 												"pirs"
 											]
+										},
+										"relevance_coverage": {
+											"description": "Beta. Whether relevance and severity reflect the account's current Priority Intelligence Requirements, organization profile, and the article's current content. current: they do. stale: they were scored before a change; articles fetched in the last 7 days are being rescored, older articles keep these scores. pending: not scored yet, fetched in the last 7 days. unavailable: not scored, and will not be scored automatically, because it was fetched more than 7 days ago or processing failed. Updates to managed topics can take up to a day to mark scores stale. Null when the account has no active PIRs or none of its articles has been scored yet.",
+											"type": "string",
+											"enum": [
+												"current",
+												"stale",
+												"pending",
+												"unavailable"
+											],
+											"nullable": true
 										},
 										"severity": {
 											"description": "Beta. Intrinsic article severity band, from informational to critical, independent of any organisation or Priority Intelligence Requirement. Null when the account has no active Priority Intelligence Requirements, scoring has not completed, or a historic article has not entered an automatic rescore window.",
@@ -1351,7 +1392,8 @@
 										"metadata",
 										"source_count",
 										"indicator_extraction_status",
-										"relevance"
+										"relevance",
+										"relevance_coverage"
 									]
 								},
 								"success": {
@@ -1985,10 +2027,16 @@
 														"medium",
 														"low"
 													]
+												},
+												"stale_articles": {
+													"description": "Beta. How many of the articles counted in articles have stale scores, from before a change to the account's Priority Intelligence Requirements, organization profile, or the article's content. They are counted by those scores; see the article list's relevance_coverage.",
+													"type": "integer",
+													"minimum": 0
 												}
 											},
 											"required": [
-												"articles"
+												"articles",
+												"stale_articles"
 											]
 										},
 										"priorities": {
@@ -2245,10 +2293,16 @@
 												],
 												"type": "object"
 											}
+										},
+										"stale_articles": {
+											"description": "Beta. How many of the articles counted in articles have stale scores, from before a change to the account's Priority Intelligence Requirements, organization profile, or the article's content. They are counted by those scores; see the article list's relevance_coverage.",
+											"type": "integer",
+											"minimum": 0
 										}
 									},
 									"required": [
 										"articles",
+										"stale_articles",
 										"priorities"
 									]
 								},

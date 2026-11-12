@@ -420,6 +420,27 @@
 					"maxLength": 32,
 					"x-auditable": true
 				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"description": "Page number of Keyless SSL configurations, starting at 1.",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of Keyless SSL configurations per page.",
+				"schema": {
+					"type": "integer",
+					"default": 20,
+					"maximum": 1000,
+					"minimum": 1
+				}
 			}
 		],
 		"responses": {

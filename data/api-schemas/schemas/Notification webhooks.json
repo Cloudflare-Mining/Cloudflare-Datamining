@@ -1408,7 +1408,7 @@
 	"PUT /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}": {
 		"operationId": "notification-webhooks-update-a-webhook",
 		"summary": "Update a webhook",
-		"description": "Update a webhook destination.",
+		"description": "Update a webhook destination. Only `name` can be updated. `url` and `secret` are immutable; to change them, delete the webhook and create a new one.",
 		"parameters": [
 			{
 				"name": "webhook_id",
@@ -1448,22 +1448,10 @@
 								"type": "string",
 								"example": "Slack Webhook",
 								"x-auditable": true
-							},
-							"secret": {
-								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
-								"type": "string",
-								"writeOnly": true,
-								"x-sensitive": true
-							},
-							"url": {
-								"description": "The POST endpoint to call when dispatching a notification.",
-								"type": "string",
-								"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd"
 							}
 						},
 						"required": [
-							"name",
-							"url"
+							"name"
 						]
 					}
 				}

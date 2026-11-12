@@ -17,11 +17,11 @@
 				}
 			},
 			{
-				"description": "The partner integration identifier.",
 				"in": "path",
 				"name": "partner",
 				"required": true,
 				"schema": {
+					"description": "The partner integration identifier.",
 					"type": "string",
 					"enum": [
 						"riskrecon"
@@ -303,11 +303,11 @@
 				}
 			},
 			{
-				"description": "The partner integration identifier.",
 				"in": "path",
 				"name": "partner",
 				"required": true,
 				"schema": {
+					"description": "The partner integration identifier.",
 					"type": "string",
 					"enum": [
 						"riskrecon"
@@ -709,11 +709,11 @@
 				}
 			},
 			{
-				"description": "The partner integration identifier.",
 				"in": "path",
 				"name": "partner",
 				"required": true,
 				"schema": {
+					"description": "The partner integration identifier.",
 					"type": "string",
 					"enum": [
 						"riskrecon"
@@ -1158,11 +1158,11 @@
 				}
 			},
 			{
-				"description": "The partner integration identifier.",
 				"in": "path",
 				"name": "partner",
 				"required": true,
 				"schema": {
+					"description": "The partner integration identifier.",
 					"type": "string",
 					"enum": [
 						"riskrecon"
@@ -1586,7 +1586,7 @@
 	"POST /accounts/{account_id}/security-center/partners/{partner}/settings": {
 		"operationId": "update-security-center-partner-settings",
 		"summary": "Updates Partner Integration Settings",
-		"description": "Enables or disables the selected partner integration for the account. Enabling the integration for the first time also schedules an account scan for that partner.",
+		"description": "Enables or disables the selected partner integration for the account.\nEnabling the integration for the first time also schedules an account scan for that partner.\nDisabling the integration will purge all partner integration-related data, including partner insights, shadow zones, and shadow hosts.",
 		"parameters": [
 			{
 				"in": "path",
@@ -1601,11 +1601,11 @@
 				}
 			},
 			{
-				"description": "The partner integration identifier.",
 				"in": "path",
 				"name": "partner",
 				"required": true,
 				"schema": {
+					"description": "The partner integration identifier.",
 					"type": "string",
 					"enum": [
 						"riskrecon"
@@ -1621,7 +1621,7 @@
 						"type": "object",
 						"properties": {
 							"enabled": {
-								"description": "Whether the partner integration is enabled for the account.",
+								"description": "Whether the partner integration is enabled for the account.\nEnabling the integration for the first time also schedules an account scan for that partner.\nDisabling the integration will purge all partner integration-related data, including partner insights, shadow zones, and shadow hosts.",
 								"type": "boolean",
 								"example": true,
 								"x-auditable": true
@@ -1730,7 +1730,7 @@
 											"type": "object",
 											"properties": {
 												"enabled": {
-													"description": "Whether the partner integration is enabled for the account.",
+													"description": "Whether the partner integration is enabled for the account.\nEnabling the integration for the first time also schedules an account scan for that partner.\nDisabling the integration will purge all partner integration-related data, including partner insights, shadow zones, and shadow hosts.",
 													"type": "boolean",
 													"example": true,
 													"x-auditable": true

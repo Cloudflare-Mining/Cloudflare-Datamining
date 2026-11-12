@@ -572,6 +572,44 @@
 					],
 					"x-auditable": true
 				}
+			},
+			{
+				"description": "Page number, starting at 1. Defaults to 1. Ignored when offset is provided.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Number of results per page. Defaults to 50 when neither per_page nor limit is provided. Ignored when limit is provided. Values above 1000 are capped at 1000.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"maximum": 1000,
+					"minimum": 0
+				}
+			},
+			{
+				"description": "Alias for per_page. Defaults to 50 when neither per_page nor limit is provided. Takes precedence over per_page. Values above 1000 are capped at 1000.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"type": "integer",
+					"maximum": 1000,
+					"minimum": 0
+				}
+			},
+			{
+				"description": "Number of results to skip. Defaults to 0. Takes precedence over page, including when offset is 0.",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"type": "integer",
+					"minimum": 0
+				}
 			}
 		],
 		"responses": {

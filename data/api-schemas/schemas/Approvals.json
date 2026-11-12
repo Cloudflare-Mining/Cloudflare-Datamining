@@ -552,6 +552,178 @@
 											"type": "number",
 											"example": 1
 										},
+										"base_rule": {
+											"description": "Rule state captured when the approval was requested. Null for creates, when no prior state was recorded, or when the stored snapshot cannot be parsed.",
+											"anyOf": [
+												{
+													"type": "object",
+													"properties": {
+														"content": {
+															"example": "rule example { condition: true }",
+															"type": "string"
+														},
+														"created_at": {
+															"type": "number",
+															"example": 1679529600000,
+															"x-auditable": true
+														},
+														"created_by": {
+															"type": "string",
+															"example": "user@example.com",
+															"x-auditable": true
+														},
+														"description": {
+															"type": "string",
+															"example": "Detects malicious proxy workers"
+														},
+														"enabled": {
+															"description": "Whether this rule is active for dice consumers.",
+															"type": "boolean",
+															"example": true
+														},
+														"id": {
+															"type": "string",
+															"format": "uuid",
+															"example": "550e8400-e29b-41d4-a716-446655440000",
+															"x-auditable": true
+														},
+														"is_public": {
+															"description": "Whether this rule is visible to other internal accounts.",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"meta": {
+															"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"key": {
+																		"type": "string"
+																	},
+																	"type": {
+																		"type": "string",
+																		"enum": [
+																			"string",
+																			"bool",
+																			"int"
+																		]
+																	},
+																	"value": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "boolean"
+																			},
+																			{
+																				"type": "number"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"key",
+																	"value",
+																	"type"
+																]
+															}
+														},
+														"name": {
+															"type": "string",
+															"example": "block-malicious-workers",
+															"x-auditable": true
+														},
+														"namespaces": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"yara/workers"
+															],
+															"x-auditable": true
+														},
+														"path": {
+															"type": "string",
+															"example": "yara/workers",
+															"x-auditable": true
+														},
+														"pending_approval_id": {
+															"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+															"type": "number",
+															"nullable": true
+														},
+														"pending_change": {
+															"description": "Proposed update or deletion awaiting approval. The other rule fields describe the currently applied version.",
+															"type": "object",
+															"properties": {
+																"approval_id": {
+																	"type": "number",
+																	"example": 12345
+																},
+																"requested_at": {
+																	"type": "number",
+																	"example": 1679529600000
+																},
+																"requested_by": {
+																	"type": "string",
+																	"example": "user@example.com"
+																},
+																"type": {
+																	"type": "string",
+																	"example": "update",
+																	"enum": [
+																		"update",
+																		"delete"
+																	]
+																}
+															},
+															"nullable": true,
+															"required": [
+																"approval_id",
+																"type",
+																"requested_at",
+																"requested_by"
+															]
+														},
+														"structured_source": {
+															"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+															"type": "string",
+															"nullable": true
+														},
+														"updated_at": {
+															"type": "number",
+															"example": 1679529600000,
+															"x-auditable": true
+														},
+														"updated_by": {
+															"type": "string",
+															"example": "user@example.com",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"path",
+														"description",
+														"namespaces",
+														"is_public",
+														"enabled",
+														"created_at",
+														"updated_at",
+														"created_by",
+														"updated_by",
+														"pending_approval_id",
+														"pending_change"
+													]
+												}
+											],
+											"nullable": true
+										},
 										"can_review": {
 											"description": "Whether the authenticated user may approve or reject this pending change.",
 											"type": "boolean",

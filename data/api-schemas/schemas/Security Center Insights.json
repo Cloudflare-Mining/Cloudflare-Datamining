@@ -4954,7 +4954,10 @@
 												"recent_dormant_reactivation": {
 													"description": "Whether the account was recently reactivated from a dormant state (used to show the reactivation banner).",
 													"type": "boolean",
-													"example": false
+													"example": false,
+													"x-stainless-skip": [
+														"terraform"
+													]
 												},
 												"scans_enabled": {
 													"description": "Whether on-demand and scheduled scans are enabled for the account.",
@@ -8673,7 +8676,10 @@
 												"recent_dormant_reactivation": {
 													"description": "Whether the account was recently reactivated from a dormant state (used to show the reactivation banner).",
 													"type": "boolean",
-													"example": false
+													"example": false,
+													"x-stainless-skip": [
+														"terraform"
+													]
 												},
 												"scans_enabled": {
 													"description": "Whether on-demand and scheduled scans are enabled for the account.",

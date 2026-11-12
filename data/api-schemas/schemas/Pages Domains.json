@@ -308,6 +308,27 @@
 					"maxLength": 32,
 					"x-auditable": true
 				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"description": "Page number of custom domains, starting at 1.",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of custom domains per page.",
+				"schema": {
+					"type": "integer",
+					"default": 20,
+					"maximum": 25,
+					"minimum": 1
+				}
 			}
 		],
 		"responses": {

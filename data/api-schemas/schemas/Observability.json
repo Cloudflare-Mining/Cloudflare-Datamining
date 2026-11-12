@@ -747,7 +747,7 @@
 	"GET /accounts/{account_id}/observability/usage/limit": {
 		"operationId": "observability.usage_limit.get",
 		"summary": "Get usage limit status",
-		"description": "Whether Workers Observability is keeping fewer of the account's events, usually because it passed its daily limit, and what that limit is. Daily limits reset at 00:00 UTC; paid accounts are brought back in stages over the following hours.",
+		"description": "Whether Workers Observability is keeping fewer of the account's events, because it passed its daily limit or for another reason, and what that limit is. Daily limits reset at 00:00 UTC; paid accounts are brought back in stages over the following hours.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -833,7 +833,7 @@
 											]
 										},
 										"resets_at": {
-											"description": "When a limited free account is expected to start keeping events again, at the daily limit reset. Not guaranteed if the account was limited for another reason. null otherwise, including for paid accounts, which are brought back in stages.",
+											"description": "When a limited free account starts keeping events again, at the daily limit reset. null otherwise, including for paid accounts, which are brought back in stages.",
 											"type": "string",
 											"format": "date-time",
 											"example": "2026-10-30T00:00:00Z",
@@ -847,7 +847,7 @@
 											"minimum": 0
 										},
 										"status": {
-											"description": "Whether telemetry is being dropped, and why. More values may be added; treat unknown values like normal.\n- normal: every event is kept.\n- limited: the account keeps only sample_rate of its events, usually because it passed its daily limit. A free account over its limit keeps none until resets_at; a paid one keeps about 10 events a second and is brought back in stages after 00:00 UTC.\n- restricted: events are dropped for another reason. Contact support.",
+											"description": "Whether telemetry is being dropped, and why. More values may be added; treat unknown values like normal.\n- normal: every event is kept.\n- limited: the account passed its daily limit and keeps only sample_rate of its events. A free account keeps none until resets_at; a paid one keeps about 10 events a second and is brought back in stages after 00:00 UTC.\n- restricted: the account keeps only sample_rate of its events for another reason. Contact support.",
 											"type": "string",
 											"enum": [
 												"normal",
