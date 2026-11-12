@@ -1647949,6 +1647949,77 @@
 						}
 					},
 					{
+						"name": "resource_id",
+						"in": "query",
+						"description": "The ID of the resource to remove tags from.",
+						"required": true,
+						"schema": {
+							"description": "Identifies the unique resource.",
+							"type": "string",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "resource_type",
+						"in": "query",
+						"description": "The type of the resource.",
+						"required": true,
+						"schema": {
+							"description": "Identifies the type of account-level resource.",
+							"type": "string",
+							"example": "worker",
+							"enum": [
+								"access_application",
+								"access_group",
+								"access_service_token",
+								"account",
+								"account_ruleset",
+								"ai_gateway",
+								"ai_search_instance",
+								"ai_search_namespace",
+								"alerting_policy",
+								"alerting_webhook",
+								"cloudflared_tunnel",
+								"cws_deployment",
+								"cws_policy",
+								"cws_policy_set",
+								"cws_workload",
+								"d1_database",
+								"device",
+								"durable_object_namespace",
+								"gateway_list",
+								"gateway_rule",
+								"image",
+								"infrastructure_target",
+								"kv_namespace",
+								"load_balancer_monitor",
+								"load_balancer_pool",
+								"namespace_worker",
+								"pages_project",
+								"queue",
+								"r2_bucket",
+								"resource_share",
+								"stream_live_input",
+								"stream_video",
+								"vectorize_index",
+								"worker",
+								"worker_version"
+							],
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "worker_id",
+						"in": "query",
+						"description": "Worker identifier. Required for worker_version resources.",
+						"schema": {
+							"description": "Worker ID is required only for worker_version resources",
+							"type": "string",
+							"example": "3f72a691-44b3-4c11-8642-c18a88ddaa5e"
+						}
+					},
+					{
 						"description": "ETag value for optimistic concurrency control. When provided, the server will\nverify the current resource ETag matches before applying the write. Returns\n412 Precondition Failed if the resource has been modified since the ETag was\nobtained. Omit this header for unconditional writes.\n",
 						"in": "header",
 						"name": "If-Match",
@@ -1647958,147 +1648029,6 @@
 						}
 					}
 				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"description": "Request body schema for deleting tags from account-level resources. Use /zones/{zone_id}/tags for zone-level resources.",
-								"discriminator": {
-									"mapping": {
-										"access_application": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"access_group": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"access_service_token": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"account": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"account_ruleset": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"ai_gateway": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"ai_search_instance": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"ai_search_namespace": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"alerting_policy": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"alerting_webhook": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"cloudflared_tunnel": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"cws_deployment": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"cws_policy": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"cws_policy_set": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"cws_workload": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"d1_database": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"device": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"durable_object_namespace": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"gateway_list": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"gateway_rule": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"image": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"infrastructure_target": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"kv_namespace": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"load_balancer_monitor": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"load_balancer_pool": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"namespace_worker": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"pages_project": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"queue": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"r2_bucket": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"resource_share": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"stream_live_input": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"stream_video": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"vectorize_index": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"worker": "#/components/schemas/resource-tagging_delete_tags_request_account_level_base",
-										"worker_version": "#/components/schemas/resource-tagging_delete_tags_request_account_level_worker_version"
-									},
-									"propertyName": "resource_type"
-								},
-								"oneOf": [
-									{
-										"description": "Request body schema for deleting tags from worker_version resources.",
-										"type": "object",
-										"properties": {
-											"resource_id": {
-												"description": "Identifies the unique resource.",
-												"type": "string",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"x-auditable": true
-											},
-											"resource_type": {
-												"description": "Enum for worker_version resource type.",
-												"type": "string",
-												"example": "worker_version",
-												"enum": [
-													"worker_version"
-												],
-												"x-auditable": true
-											},
-											"worker_id": {
-												"description": "Worker ID is required only for worker_version resources",
-												"type": "string",
-												"example": "3f72a691-44b3-4c11-8642-c18a88ddaa5e"
-											}
-										},
-										"required": [
-											"resource_type",
-											"resource_id",
-											"worker_id"
-										]
-									},
-									{
-										"description": "Request body schema for deleting tags from account-level resources.",
-										"type": "object",
-										"properties": {
-											"resource_id": {
-												"description": "Identifies the unique resource.",
-												"type": "string",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"x-auditable": true
-											},
-											"resource_type": {
-												"description": "Enum for base account-level resource types (those with no extra required fields).",
-												"type": "string",
-												"example": "worker",
-												"enum": [
-													"access_application",
-													"access_group",
-													"access_service_token",
-													"account",
-													"account_ruleset",
-													"ai_gateway",
-													"ai_search_instance",
-													"ai_search_namespace",
-													"alerting_policy",
-													"alerting_webhook",
-													"cloudflared_tunnel",
-													"cws_deployment",
-													"cws_policy",
-													"cws_policy_set",
-													"cws_workload",
-													"d1_database",
-													"device",
-													"durable_object_namespace",
-													"gateway_list",
-													"gateway_rule",
-													"image",
-													"infrastructure_target",
-													"kv_namespace",
-													"load_balancer_monitor",
-													"load_balancer_pool",
-													"namespace_worker",
-													"pages_project",
-													"queue",
-													"r2_bucket",
-													"resource_share",
-													"stream_live_input",
-													"stream_video",
-													"vectorize_index",
-													"worker"
-												],
-												"x-auditable": true
-											}
-										},
-										"required": [
-											"resource_type",
-											"resource_id"
-										]
-									}
-								]
-							}
-						}
-					}
-				},
 				"responses": {
 					"204": {
 						"description": "Tags successfully deleted (no content)."
@@ -2699638,6 +2699568,54 @@
 						}
 					},
 					{
+						"name": "resource_id",
+						"in": "query",
+						"description": "The ID of the resource to remove tags from.",
+						"required": true,
+						"schema": {
+							"description": "Identifies the unique resource.",
+							"type": "string",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "resource_type",
+						"in": "query",
+						"description": "The type of the resource.",
+						"required": true,
+						"schema": {
+							"description": "Identifies the type of zone-level resource.",
+							"type": "string",
+							"example": "zone",
+							"enum": [
+								"access_application_policy",
+								"api_gateway_operation",
+								"custom_certificate",
+								"custom_hostname",
+								"dns_record",
+								"healthcheck",
+								"load_balancer",
+								"managed_client_certificate",
+								"worker_route",
+								"zone",
+								"zone_ruleset"
+							],
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "access_application_id",
+						"in": "query",
+						"description": "Access application ID identifier. Required for access_application_policy resources.",
+						"schema": {
+							"description": "Access application ID is required only for access_application_policy resources",
+							"type": "string",
+							"format": "uuid",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+						}
+					},
+					{
 						"description": "ETag value for optimistic concurrency control. When provided, the server will\nverify the current resource ETag matches before applying the write. Returns\n412 Precondition Failed if the resource has been modified since the ETag was\nobtained. Omit this header for unconditional writes.\n",
 						"in": "header",
 						"name": "If-Match",
@@ -2699647,100 +2699625,6 @@
 						}
 					}
 				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"description": "Request body schema for deleting tags from zone-level resources.",
-								"discriminator": {
-									"mapping": {
-										"access_application_policy": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_access_application_policy",
-										"api_gateway_operation": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_base",
-										"custom_certificate": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_base",
-										"custom_hostname": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_base",
-										"dns_record": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_base",
-										"healthcheck": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_base",
-										"load_balancer": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_base",
-										"managed_client_certificate": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_base",
-										"worker_route": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_base",
-										"zone": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_base",
-										"zone_ruleset": "#/components/schemas/resource-tagging_delete_tags_request_zone_level_base"
-									},
-									"propertyName": "resource_type"
-								},
-								"oneOf": [
-									{
-										"description": "Request body schema for deleting tags from zone-level resources. Zone ID comes from URL path.",
-										"type": "object",
-										"properties": {
-											"resource_id": {
-												"description": "Identifies the unique resource.",
-												"type": "string",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"x-auditable": true
-											},
-											"resource_type": {
-												"description": "Enum for base zone-level resource types (those with no extra required fields).",
-												"type": "string",
-												"example": "zone",
-												"enum": [
-													"api_gateway_operation",
-													"custom_certificate",
-													"custom_hostname",
-													"dns_record",
-													"healthcheck",
-													"load_balancer",
-													"managed_client_certificate",
-													"worker_route",
-													"zone",
-													"zone_ruleset"
-												],
-												"x-auditable": true
-											}
-										},
-										"required": [
-											"resource_type",
-											"resource_id"
-										]
-									},
-									{
-										"description": "Request body schema for deleting tags from access_application_policy resources.",
-										"type": "object",
-										"properties": {
-											"access_application_id": {
-												"description": "Access application ID is required only for access_application_policy resources",
-												"type": "string",
-												"format": "uuid",
-												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
-											},
-											"resource_id": {
-												"description": "Identifies the unique resource.",
-												"type": "string",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"x-auditable": true
-											},
-											"resource_type": {
-												"description": "Enum for access_application_policy resource type.",
-												"type": "string",
-												"example": "access_application_policy",
-												"enum": [
-													"access_application_policy"
-												],
-												"x-auditable": true
-											}
-										},
-										"required": [
-											"resource_type",
-											"resource_id",
-											"access_application_id"
-										]
-									}
-								]
-							}
-						}
-					}
-				},
 				"responses": {
 					"204": {
 						"description": "Tags successfully deleted (no content)."
