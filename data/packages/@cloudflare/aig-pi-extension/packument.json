@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/aig-pi-extension",
 	"dist-tags": {
-		"latest": "2026.11.9"
+		"latest": "2026.11.18"
 	},
 	"versions": {
 		"2026.9.18": {
@@ -59,11 +59,44 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIEUbv9WyHgiue1nQZnZiGBEAyTMG5Nf1DLo+4B9xAwwIAiEA300d+GfolqmkXhJS3qVXy6+NJMhRU3zkJSR80xFteaQ="
+						"sig": "MEUCIEUbv9WyHgiue1nQZnZiGBEAyTMG5Nf1DLo+4B9xAwwIAiEA300d+GfolqmkXhJS3qVXy6+NJMhRU3zkJSR80xFteaQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"unpackedSize": 4264
+			}
+		},
+		"2026.11.18": {
+			"name": "@cloudflare/aig-pi-extension",
+			"version": "2026.11.18",
+			"devDependencies": {
+				"vitest": "4.1.11",
+				"@repo/tools": "0.0.0",
+				"@repo/eslint-config": "0.0.0",
+				"@earendil-works/pi-ai": "0.84.4",
+				"@repo/typescript-config": "0.0.0",
+				"@earendil-works/pi-coding-agent": "0.84.4"
+			},
+			"peerDependencies": {
+				"@earendil-works/pi-ai": "0.84.4",
+				"@earendil-works/pi-coding-agent": "0.84.4"
+			},
+			"dist": {
+				"shasum": "71533f8b2a088f9645040537f1e5b88d91e65537",
+				"tarball": "https://registry.npmjs.org/@cloudflare/aig-pi-extension/-/aig-pi-extension-2026.11.18.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-kjCTjLBa309egUest4PwkektwnbaaQjVR7Z+dTXKPD0tRMczIbNc9pameYxetaDdow/ySV2R/jL73T2ihUuKnQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIEgHchB3xHXsEAD7Gmr7WTjsayc8R7HX4Fjb2auE0EslAiEA6eGxcFdK8vV1DYDFCtEzm8qG9TSs7bnJngHL7IB/yLU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIGC6xbbSo3HuGVpoytvmIWMBjnNAJ2paeV8MNhwiL8GPAiAHXuhgEt40nBB6eJfwFD3UIYQEB5MzIFlS0HhuNqs9sw=="
+					}
+				],
+				"unpackedSize": 4265
 			}
 		}
 	}
