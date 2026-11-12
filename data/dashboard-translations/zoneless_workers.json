@@ -1919,6 +1919,7 @@
 	"zoneless_workers.modals.delete_service.li5": "WebAssembly files",
 	"zoneless_workers.modals.delete_service_unsafely.title": "Are you sure?",
 	"zoneless_workers.modals.delete_service_unsafely.body": "<0>%{name}</0> is currently in use by other Workers. To delete safely, first go to the Workers below that reference it and remove the dependency.",
+	"zoneless_workers.modals.delete_service_unsafely.body_unlisted_references": "<0>%{name}</0> is currently in use by other Workers.",
 	"zoneless_workers.modals.delete_service_unsafely.durable_object": "The <0>Durable Object Namespace</0> <1>%{namespace}</1> implemented by this Worker is in use by these other Workers:",
 	"zoneless_workers.modals.delete_service_unsafely.and_more_durable_objects": "...and %{omitted} more <0>Durable Object Namespaces</0>",
 	"zoneless_workers.modals.delete_service_unsafely.and_more_services": "And %{omitted} more Workers",
