@@ -311,6 +311,9 @@
 	"bots-ml-adaptive-intelligence-launch": {
 		"true": 100
 	},
+	"browser-flows-dashboard": {
+		"false": 100
+	},
 	"browser-rendering-live-view": {
 		"true": 100
 	},
@@ -977,8 +980,8 @@
 		"variant-b": 100
 	},
 	"prg-domain-reg-transfer": {
-		"baseline": 99,
-		"variant-a": 1
+		"baseline": 90,
+		"variant-a": 10
 	},
 	"prg-domain-success-page-experiment": {
 		"experiment": 100
@@ -1056,6 +1059,9 @@
 	},
 	"ps-javascript-malicious-details": {
 		"true": 100
+	},
+	"pt-policies-page": {
+		"false": 100
 	},
 	"pt-unified-orgs-root-nav": {
 		"false": 100
@@ -1197,8 +1203,7 @@
 		"true": 100
 	},
 	"security-precursor-analytics": {
-		"true": 50,
-		"false": 50
+		"true": 100
 	},
 	"security-precursor-monitor-mode": {
 		"true": 100
@@ -1412,6 +1417,9 @@
 	},
 	"workers-builds-scm-status-gitlab": {
 		"up": 100
+	},
+	"workers-do-memory-tiers": {
+		"false": 100
 	},
 	"workers-for-platforms-paygo": {
 		"true": 100
