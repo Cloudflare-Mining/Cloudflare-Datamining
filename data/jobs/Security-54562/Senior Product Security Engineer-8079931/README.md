@@ -3,35 +3,35 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Location: Austin </strong>(Hybrid)</p>
-<h3><strong>About the team</strong></h3>
-<p>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack, build specialized data solutions for predictive modeling and machine learning applications, and construct systems that truly run the business.</p>
-<h3><strong>About the role</strong></h3>
-<p>We are looking for an experienced Data Engineer to join our Austin team and help scale the development of our internal data products. In this role, you will build data-driven applications that empower teams across the company, including go-to-market, engineering, and product. Because the products we build are initiated and owned by the team, you will be involved end-to-end — from shaping requirements and designing features to implementation and long-term ownership.</p>
-<p>You will work on building scalable, reliable systems that solve critical business problems, partnering closely with full-stack engineers to develop new features and operate the data pipelines and services behind our applications. Our stack spans multiple languages and technologies, including Go, Scala, and ClickHouse, and continues to evolve. Many of our products also incorporate strong AI components, giving you opportunities to build sophisticated, AI-ready data layers and work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
-<h3><strong>What you'll do</strong></h3>
+<p><strong>Available Locations:&nbsp;</strong>Austin, TX</p>
+<p><strong>About the role</strong></p>
+<p>As a Senior Product Security Engineer, you will lead security assessments and vulnerability operations for Cloudflare’s core software products. In this role, you will analyze system architecture, threat model new features, and ensure that product-related security findings are accurately triaged, routed to the correct engineering owners, and mitigated within our SLAs.</p>
+<p>On any given day, you might conduct a deep-dive security review on a new feature design, triage a complex bug bounty submission, or work directly with engineering teams to resolve vulnerabilities from different sources like bug bounties, SAST, fuzzing and penetration tests. You will also work autonomously to identify areas where our manual processes slow down. You will write code and integrate AI/LLM solutions to automate initial triage and data enrichment, building tools that help the team handle security findings at scale. In short, your work will sit at the intersection of Product Security, Vulnerability Operations, and internal AI Tooling. Ideally, you have experience in conducting academic/vulnerability research with a focus on systems security.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Design and implement core components of our data pipelines and services in Go and Scala, with a focus on scalability, performance, and long-term maintainability.</li>
-	<li>Partner closely with engineers, analysts, and product stakeholders to design solutions for strategic initiatives, business-critical data products, and agentic AI architectures.</li>
-	<li>Contribute to the evolution of our data platform architecture, improving scalability, reliability, observability, and data correctness across the stack.</li>
-	<li>Build and curate high-quality, well-modeled, and richly contextual datasets that power internal products, predictive analytics, and LLM-enabled features at company scale.</li>
-	<li>Develop a deep understanding of the company’s data ecosystem — including source systems, tooling, and data flows — and collaborate closely with the data and system engineers in Austin, Lisbon, and London to improve data ingestion, quality, and governance.</li>
-	<li>Lead by example through design reviews, knowledge sharing, and mentorship, helping raise the technical bar, data engineering practices, and AI implementation standards across the organization.</li>
+	<li><strong>Autonomously Drive AI Security Innovation:</strong> Proactively identify gaps in our current capabilities and independently architect, build, and deploy AI-driven solutions to automate code analysis, optimize triage, and scale Product Security workflows.</li>
+	<li><strong>Security Architecture &amp; Threat Modeling:</strong> Lead deep-dive security reviews and complex threat modeling sessions across distributed systems, embedding strict security requirements into product designs before development begins.</li>
+	<li><strong>Product-Focused Vulnerability Management:</strong> Own the lifecycle of product security findings. Ensure vulnerabilities are accurately triaged, mapped to the correct engineering owner, and mitigated in alignment with established SLAs.</li>
+	<li><strong>Bug Bounty Leadership:</strong> Oversee the technical triage and validation of Cloudflare’s external Bug Bounty program, prioritizing submissions based on real-world exploitability and business risk.</li>
+	<li><strong>Pentest Strategy &amp; Support:</strong> Shape the scope of internal and external penetration testing engagements, serving as the technical liaison to ensure findings are deeply understood and remediated by development teams.</li>
+	<li><strong>Strategic Influence &amp; Mentorship:</strong> Act as a force-multiplier for security across Cloudflare; mentor junior engineers, cultivate security champions within engineering organizations, and establish modern, paved-road developer guardrails.</li>
 </ul>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>B.S. or M.S. in Computer Science, Engineering, Statistics, Mathematics, or a related quantitative field, or equivalent practical experience.</li>
-	<li>5+ years of professional experience in data engineering, software engineering, or related roles, building and operating production data systems.</li>
-	<li>Strong programming expertise in Go, Python, or JVM-based languages, with experience writing high-quality, production-grade services and pipelines.</li>
-	<li>Deep knowledge of SQL and hands-on experience designing data models and working with relational, analytical, or vector databases (e.g., PostgreSQL, MySQL, ClickHouse).</li>
-	<li>Experience building scalable, reliable, and observable data pipelines, with an understanding of performance, data quality, and operational best practices.</li>
-	<li>Proven problem-solving and communication skills, with a track record of driving projects in ambiguous environments and partnering effectively with cross-functional teams.</li>
+	<li><strong>Senior-Level Product/AppSec Expertise:</strong> Extensive, battle-tested experience in Product or Application Security within large-scale distributed cloud environments or SaaS platforms.</li>
+	<li><strong>Practical AI &amp; Automation Engineering:</strong> Demonstrated ability to build production-grade automation scripts and tools . Must possess hands-on engineering experience leveraging AI/LLMs to solve operational or technical challenges.</li>
+	<li><strong>Advanced Threat Modeling &amp; Risk Analysis:</strong> Mastery of threat modeling methodologies (e.g., STRIDE) and an analytical mindset capable of translating complex theoretical risks into prioritized, actionable business context.</li>
+	<li><strong>Vulnerability Lifecycle Ownership:</strong> Proven track record of managing, routing, and driving the remediation of vulnerabilities across multi-stakeholder engineering organizations while strictly enforcing SLAs.</li>
+	<li><strong>High Influence &amp; Communication:</strong> Superb cross-functional leadership skills; the ability to confidently influence senior engineering leaders, resolve ownership ambiguity, and champion security initiatives without explicit authority.</li>
 </ul>
-<h3><strong><em>Bonus Points</em></strong></h3>
+<p><strong>Bonus points:</strong></p>
 <ul>
-	<li><em>Familiarity with container based deployments such as Docker &amp; Kubernetes.</em></li>
-	<li><em>Familiarity with Google Cloud Platform, foundational Large Language Model (LLM) orchestration frameworks, or something similar.</em></li>
+	<li><strong>Offensive Mastery:</strong> Familiarity with offensive security tooling and modern exploitation techniques used during professional penetration testing.</li>
+	<li><strong>Program Management Experience:</strong> Experience scaling crowdsourced security programs (e.g., HackerOne, Bugcrowd) or optimizing agile project management workflows within JIRA.</li>
+	<li>Experience in integrating hardware security features into production code bases</li>
 </ul>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
