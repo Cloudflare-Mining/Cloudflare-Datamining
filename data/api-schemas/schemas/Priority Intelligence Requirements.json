@@ -1650,7 +1650,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/topics": {
 		"operationId": "get_PirTopicList",
 		"summary": "List managed PIR topics",
-		"description": "Returns the managed topics a structured PIR can follow, with their default question, relevance criteria, suggested actors and event rules. Suggested actors the account cannot see are left out. Topics change centrally; PIRs follow a topic's defaults wherever the customer has not changed them.",
+		"description": "Returns the managed topics a structured PIR can follow, with their default question, relevance criteria, suggested actors and event rules. Suggested actors the account cannot see are left out. Topics change centrally; PIRs follow a topic's defaults wherever the customer has not changed them. Also returns `organization_types` for the organization profile form.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1664,7 +1664,368 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Managed topics"
+				"description": "Managed topics and organization types",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"organization_types": {
+											"description": "Shortcuts for the organization profile form, each suggesting `sectors` and `suggested_protected_targets` for the customer to confirm. A type is never saved; topics are recommended by the profile's confirmed sectors, matched against each topic's `recommended_sectors`.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"description": {
+														"type": "string"
+													},
+													"id": {
+														"type": "string"
+													},
+													"label": {
+														"type": "string"
+													},
+													"sectors": {
+														"type": "array",
+														"items": {
+															"enum": [
+																"aerospace",
+																"agriculture",
+																"automotive",
+																"chemical",
+																"commercial",
+																"communications",
+																"construction",
+																"defense",
+																"education",
+																"energy",
+																"entertainment",
+																"financial-services",
+																"government-local",
+																"government-national",
+																"government-public-services",
+																"government-regional",
+																"healthcare",
+																"hospitality-leisure",
+																"infrastructure",
+																"insurance",
+																"manufacturing",
+																"mining",
+																"non-profit",
+																"pharmaceuticals",
+																"professional-services",
+																"retail",
+																"technology",
+																"telecommunications",
+																"transportation",
+																"utilities"
+															],
+															"type": "string"
+														}
+													},
+													"suggested_protected_targets": {
+														"type": "array",
+														"items": {
+															"enum": [
+																"organization",
+																"customers",
+																"employees",
+																"executives",
+																"partners",
+																"events",
+																"products-infrastructure"
+															],
+															"type": "string"
+														}
+													}
+												},
+												"required": [
+													"id",
+													"label",
+													"description",
+													"sectors",
+													"suggested_protected_targets"
+												]
+											}
+										},
+										"topics": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"actor_types": {
+														"type": "array",
+														"items": {
+															"enum": [
+																"nation-state",
+																"crime-syndicate",
+																"criminal",
+																"activist",
+																"hacker",
+																"insider-disgruntled",
+																"insider-accidental",
+																"spy",
+																"terrorist",
+																"competitor",
+																"sensationalist"
+															],
+															"type": "string"
+														}
+													},
+													"coverage_notes": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"message": {
+																	"type": "string"
+																},
+																"source": {
+																	"type": "string",
+																	"enum": [
+																		"articles",
+																		"events"
+																	]
+																}
+															},
+															"required": [
+																"source",
+																"message"
+															],
+															"type": "object"
+														}
+													},
+													"event_rules": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"explanation": {
+																	"type": "string"
+																},
+																"id": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"explanation"
+															],
+															"type": "object"
+														}
+													},
+													"filter_revision": {
+														"type": "integer"
+													},
+													"intent_revision": {
+														"type": "integer"
+													},
+													"motivations": {
+														"type": "array",
+														"items": {
+															"enum": [
+																"personal-gain",
+																"organizational-gain",
+																"ideology",
+																"dominance",
+																"notoriety",
+																"coercion",
+																"revenge"
+															],
+															"type": "string"
+														}
+													},
+													"presentation_revision": {
+														"type": "integer"
+													},
+													"profile_context": {
+														"description": "Inherited facts this topic emphasizes: listed as Highly relevant and available to its event rules. Every PIR inherits every fact.",
+														"type": "array",
+														"items": {
+															"enum": [
+																"technologies",
+																"key_suppliers"
+															],
+															"type": "string"
+														}
+													},
+													"question_template": {
+														"description": "English question; only `{targets}` and `{regions}` are substituted.",
+														"type": "string"
+													},
+													"recommended_sectors": {
+														"type": "array",
+														"items": {
+															"enum": [
+																"aerospace",
+																"agriculture",
+																"automotive",
+																"chemical",
+																"commercial",
+																"communications",
+																"construction",
+																"defense",
+																"education",
+																"energy",
+																"entertainment",
+																"financial-services",
+																"government-local",
+																"government-national",
+																"government-public-services",
+																"government-regional",
+																"healthcare",
+																"hospitality-leisure",
+																"infrastructure",
+																"insurance",
+																"manufacturing",
+																"mining",
+																"non-profit",
+																"pharmaceuticals",
+																"professional-services",
+																"retail",
+																"technology",
+																"telecommunications",
+																"transportation",
+																"utilities"
+															],
+															"type": "string"
+														}
+													},
+													"relevance_criteria": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"band": {
+																	"type": "string",
+																	"enum": [
+																		"highly",
+																		"somewhat",
+																		"not"
+																	]
+																},
+																"default_selected": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"text": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"band",
+																"text",
+																"default_selected"
+															],
+															"type": "object"
+														}
+													},
+													"suggested_actors": {
+														"description": "Suggestions the account can see; others are left out.",
+														"type": "array",
+														"items": {
+															"properties": {
+																"alias": {
+																	"type": "string",
+																	"nullable": true
+																},
+																"default_selected": {
+																	"type": "boolean"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"alias",
+																"default_selected"
+															],
+															"type": "object"
+														}
+													},
+													"title": {
+														"type": "string"
+													},
+													"topic_id": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"topic_id",
+													"title",
+													"question_template",
+													"intent_revision",
+													"filter_revision",
+													"presentation_revision",
+													"relevance_criteria",
+													"suggested_actors",
+													"actor_types",
+													"motivations",
+													"profile_context",
+													"event_rules",
+													"recommended_sectors",
+													"coverage_notes"
+												]
+											}
+										}
+									},
+									"required": [
+										"topics",
+										"organization_types"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
 			},
 			"4XX": {
 				"description": "Client error response."
@@ -5092,7 +5453,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/resolve": {
 		"operationId": "post_PirResolve",
 		"summary": "Resolve structured PIR answers without saving",
-		"description": "Returns the requirement and event query that saving `definition` would generate, using the account's current organization profile and topic. `resolved.issues` lists problems that would block saving, and `resolved.notices` inputs that would be ignored. Search events with `resolved.event_plan.branches`. Send `resolved.based_on` with the save so it fails with 409 if the profile or topic changes in between. Nothing is saved, and no model is called.",
+		"description": "Returns the requirement and event query that saving `definition` would generate, using the account's current organization profile and topic. `resolved.issues` lists problems that would block saving, and `resolved.notices` inputs that would be ignored. Search events with `resolved.event_plan.branches`: a beta value for running searches, not a stable contract, which changes whenever a topic's event rules change. Show `resolved.event_plan.rules[].explanation` to explain matches. Send `resolved.based_on` with the save so it fails with 409 if the profile or topic changes in between. Nothing is saved, and no model is called.",
 		"parameters": [
 			{
 				"name": "account_id",

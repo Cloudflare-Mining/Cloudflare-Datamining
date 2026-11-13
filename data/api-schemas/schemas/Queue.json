@@ -1643,6 +1643,27 @@
 					"readOnly": true,
 					"x-auditable": true
 				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"description": "Page number of queues, starting at 1.",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of queues per page. Takes precedence over the legacy perPage query parameter.",
+				"schema": {
+					"type": "integer",
+					"default": 100,
+					"maximum": 500,
+					"minimum": 1
+				}
 			}
 		],
 		"responses": {

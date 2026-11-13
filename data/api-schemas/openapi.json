@@ -626047,10 +626047,15 @@
 												"type": "object",
 												"properties": {
 													"DimensionKeys": {
+														"description": "Dimension keys defined for this billable metric. Use them as\n`Key` in a `DIMENSION` `GroupBy` on the account usage endpoint.\nThey do not depend on the requested period, and a key can\nbe listed even when no usage in the period carries it. Empty when\nthe metric defines no dimensions.\n",
 														"type": "array",
 														"items": {
 															"type": "string"
-														}
+														},
+														"example": [
+															"ZONE_ID",
+															"REGION"
+														]
 													},
 													"Id": {
 														"description": "Public catalog identifier of the billable metric.",
@@ -626095,6 +626100,17 @@
 																"Name"
 															]
 														}
+													},
+													"TagKeys": {
+														"description": "Resource-tag keys observed on this metric's usage within the\nrequested period, sorted and deduplicated. Use them as `Key` in a\n`TAG` `GroupBy` or in `FilterBy.Tags` on the account usage\nendpoint. Because the list reflects recorded usage, it changes with\n`from` and `to`, and is empty when no tagged usage exists in the\nperiod or tag-key discovery is not available.\n",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"environment",
+															"team"
+														]
 													}
 												},
 												"required": [
@@ -626102,7 +626118,8 @@
 													"Name",
 													"ProductFamily",
 													"ProductCategory",
-													"DimensionKeys"
+													"DimensionKeys",
+													"TagKeys"
 												]
 											}
 										},
@@ -745892,7 +745909,7 @@
 										"type": "boolean"
 									},
 									"search_lookback": {
-										"description": "On create, also search domains observed in the last 7 days for matches. Defaults to `true`. Ignored on update.",
+										"description": "Search domains observed in the last 7 days for matches. On create, applies when `true`. On update, when edit-triggered lookback is enabled for the account, applies only when the patterns change and only to the lookback itself; the match list still refreshes independently. Edit-triggered lookback is being rolled out gradually. Defaults to `true`.",
 										"type": "boolean",
 										"default": true
 									},
@@ -746050,7 +746067,7 @@
 			"patch": {
 				"operationId": "patch_UpdateDomainQuery",
 				"summary": "Update domain query",
-				"description": "Replaces a saved domain query's tag and patterns. `tag` and `string_matches` are required, and the patterns you send replace the existing ones, so include every pattern you want to keep. Changing the patterns starts a new set of matches for the query: matches listed before the change are no longer returned, and only newly observed domains that match the new patterns are listed. Sending the same patterns in any order (for example, to change only `tag`) keeps the existing matches. If the new patterns are identical to a set already used in this account, such as the query's earlier patterns, matches already found for that set are listed as well. Omitting both `scan_matches` and its alias `scan` resets scanning to `false`. If both are supplied, `scan_matches` takes precedence. `search_lookback`, `min_time`, and `max_time` are ignored on update, so changing patterns does not search previously observed domains. If the query does not exist in this account, the request fails with error code 404.",
+				"description": "Replaces a saved domain query's tag and patterns. `tag` and `string_matches` are required, and the patterns you send replace the existing ones, so include every pattern you want to keep. Changing the patterns starts a new set of matches for the query: matches listed before the change are no longer returned, and newly observed domains that match the new patterns are listed. Sending the same patterns in any order (for example, to change only `tag`) keeps the existing matches. If the new patterns are identical to a set already used in this account, such as the query's earlier patterns, matches already found for that set are listed as well. Omitting both `scan_matches` and its alias `scan` resets scanning to `false`. If both are supplied, `scan_matches` takes precedence. When edit-triggered lookback is enabled for the account and the patterns change, the match list usually refreshes within seconds (if that refresh fails, the scheduled query sync updates it later) and, unless `search_lookback` is `false`, domains observed in the last 7 days are also searched for the new patterns. New matches from that search can take several minutes or longer to appear. Edit-triggered lookback is being rolled out gradually. `min_time` and `max_time` are ignored on update. If the query does not exist in this account, the request fails with error code 404.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -746095,7 +746112,7 @@
 										"type": "boolean"
 									},
 									"search_lookback": {
-										"description": "On create, also search domains observed in the last 7 days for matches. Defaults to `true`. Ignored on update.",
+										"description": "Search domains observed in the last 7 days for matches. On create, applies when `true`. On update, when edit-triggered lookback is enabled for the account, applies only when the patterns change and only to the lookback itself; the match list still refreshes independently. Edit-triggered lookback is being rolled out gradually. Defaults to `true`.",
 										"type": "boolean",
 										"default": true
 									},
@@ -760185,7 +760202,7 @@
 			"post": {
 				"operationId": "post_PirResolve",
 				"summary": "Resolve structured PIR answers without saving",
-				"description": "Returns the requirement and event query that saving `definition` would generate, using the account's current organization profile and topic. `resolved.issues` lists problems that would block saving, and `resolved.notices` inputs that would be ignored. Search events with `resolved.event_plan.branches`. Send `resolved.based_on` with the save so it fails with 409 if the profile or topic changes in between. Nothing is saved, and no model is called.",
+				"description": "Returns the requirement and event query that saving `definition` would generate, using the account's current organization profile and topic. `resolved.issues` lists problems that would block saving, and `resolved.notices` inputs that would be ignored. Search events with `resolved.event_plan.branches`: a beta value for running searches, not a stable contract, which changes whenever a topic's event rules change. Show `resolved.event_plan.rules[].explanation` to explain matches. Send `resolved.based_on` with the save so it fails with 409 if the profile or topic changes in between. Nothing is saved, and no model is called.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -761593,7 +761610,7 @@
 			"get": {
 				"operationId": "get_PirTopicList",
 				"summary": "List managed PIR topics",
-				"description": "Returns the managed topics a structured PIR can follow, with their default question, relevance criteria, suggested actors and event rules. Suggested actors the account cannot see are left out. Topics change centrally; PIRs follow a topic's defaults wherever the customer has not changed them.",
+				"description": "Returns the managed topics a structured PIR can follow, with their default question, relevance criteria, suggested actors and event rules. Suggested actors the account cannot see are left out. Topics change centrally; PIRs follow a topic's defaults wherever the customer has not changed them. Also returns `organization_types` for the organization profile form.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -761607,7 +761624,368 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Managed topics"
+						"description": "Managed topics and organization types",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"result": {
+											"type": "object",
+											"properties": {
+												"organization_types": {
+													"description": "Shortcuts for the organization profile form, each suggesting `sectors` and `suggested_protected_targets` for the customer to confirm. A type is never saved; topics are recommended by the profile's confirmed sectors, matched against each topic's `recommended_sectors`.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"id": {
+																"type": "string"
+															},
+															"label": {
+																"type": "string"
+															},
+															"sectors": {
+																"type": "array",
+																"items": {
+																	"enum": [
+																		"aerospace",
+																		"agriculture",
+																		"automotive",
+																		"chemical",
+																		"commercial",
+																		"communications",
+																		"construction",
+																		"defense",
+																		"education",
+																		"energy",
+																		"entertainment",
+																		"financial-services",
+																		"government-local",
+																		"government-national",
+																		"government-public-services",
+																		"government-regional",
+																		"healthcare",
+																		"hospitality-leisure",
+																		"infrastructure",
+																		"insurance",
+																		"manufacturing",
+																		"mining",
+																		"non-profit",
+																		"pharmaceuticals",
+																		"professional-services",
+																		"retail",
+																		"technology",
+																		"telecommunications",
+																		"transportation",
+																		"utilities"
+																	],
+																	"type": "string"
+																}
+															},
+															"suggested_protected_targets": {
+																"type": "array",
+																"items": {
+																	"enum": [
+																		"organization",
+																		"customers",
+																		"employees",
+																		"executives",
+																		"partners",
+																		"events",
+																		"products-infrastructure"
+																	],
+																	"type": "string"
+																}
+															}
+														},
+														"required": [
+															"id",
+															"label",
+															"description",
+															"sectors",
+															"suggested_protected_targets"
+														]
+													}
+												},
+												"topics": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"actor_types": {
+																"type": "array",
+																"items": {
+																	"enum": [
+																		"nation-state",
+																		"crime-syndicate",
+																		"criminal",
+																		"activist",
+																		"hacker",
+																		"insider-disgruntled",
+																		"insider-accidental",
+																		"spy",
+																		"terrorist",
+																		"competitor",
+																		"sensationalist"
+																	],
+																	"type": "string"
+																}
+															},
+															"coverage_notes": {
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"message": {
+																			"type": "string"
+																		},
+																		"source": {
+																			"type": "string",
+																			"enum": [
+																				"articles",
+																				"events"
+																			]
+																		}
+																	},
+																	"required": [
+																		"source",
+																		"message"
+																	],
+																	"type": "object"
+																}
+															},
+															"event_rules": {
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"explanation": {
+																			"type": "string"
+																		},
+																		"id": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"explanation"
+																	],
+																	"type": "object"
+																}
+															},
+															"filter_revision": {
+																"type": "integer"
+															},
+															"intent_revision": {
+																"type": "integer"
+															},
+															"motivations": {
+																"type": "array",
+																"items": {
+																	"enum": [
+																		"personal-gain",
+																		"organizational-gain",
+																		"ideology",
+																		"dominance",
+																		"notoriety",
+																		"coercion",
+																		"revenge"
+																	],
+																	"type": "string"
+																}
+															},
+															"presentation_revision": {
+																"type": "integer"
+															},
+															"profile_context": {
+																"description": "Inherited facts this topic emphasizes: listed as Highly relevant and available to its event rules. Every PIR inherits every fact.",
+																"type": "array",
+																"items": {
+																	"enum": [
+																		"technologies",
+																		"key_suppliers"
+																	],
+																	"type": "string"
+																}
+															},
+															"question_template": {
+																"description": "English question; only `{targets}` and `{regions}` are substituted.",
+																"type": "string"
+															},
+															"recommended_sectors": {
+																"type": "array",
+																"items": {
+																	"enum": [
+																		"aerospace",
+																		"agriculture",
+																		"automotive",
+																		"chemical",
+																		"commercial",
+																		"communications",
+																		"construction",
+																		"defense",
+																		"education",
+																		"energy",
+																		"entertainment",
+																		"financial-services",
+																		"government-local",
+																		"government-national",
+																		"government-public-services",
+																		"government-regional",
+																		"healthcare",
+																		"hospitality-leisure",
+																		"infrastructure",
+																		"insurance",
+																		"manufacturing",
+																		"mining",
+																		"non-profit",
+																		"pharmaceuticals",
+																		"professional-services",
+																		"retail",
+																		"technology",
+																		"telecommunications",
+																		"transportation",
+																		"utilities"
+																	],
+																	"type": "string"
+																}
+															},
+															"relevance_criteria": {
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"band": {
+																			"type": "string",
+																			"enum": [
+																				"highly",
+																				"somewhat",
+																				"not"
+																			]
+																		},
+																		"default_selected": {
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"type": "string"
+																		},
+																		"text": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"band",
+																		"text",
+																		"default_selected"
+																	],
+																	"type": "object"
+																}
+															},
+															"suggested_actors": {
+																"description": "Suggestions the account can see; others are left out.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"alias": {
+																			"type": "string",
+																			"nullable": true
+																		},
+																		"default_selected": {
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"name",
+																		"alias",
+																		"default_selected"
+																	],
+																	"type": "object"
+																}
+															},
+															"title": {
+																"type": "string"
+															},
+															"topic_id": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"topic_id",
+															"title",
+															"question_template",
+															"intent_revision",
+															"filter_revision",
+															"presentation_revision",
+															"relevance_criteria",
+															"suggested_actors",
+															"actor_types",
+															"motivations",
+															"profile_context",
+															"event_rules",
+															"recommended_sectors",
+															"coverage_notes"
+														]
+													}
+												}
+											},
+											"required": [
+												"topics",
+												"organization_types"
+											]
+										},
+										"success": {
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									]
+								}
+							}
+						}
 					},
 					"4XX": {
 						"description": "Client error response."
@@ -1203173,7 +1203551,8 @@
 						"schema": {
 							"type": "string",
 							"maxLength": 4096
-						}
+						},
+						"x-auditable": false
 					}
 				],
 				"responses": {
@@ -1203191,10 +1203570,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -1203217,11 +1203598,27 @@
 											},
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
+										"result_info",
 										"success",
 										"errors",
 										"messages"
@@ -1203244,10 +1203641,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -1203267,11 +1203666,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1203298,10 +1203712,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -1203321,11 +1203737,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1203352,10 +1203783,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -1203375,11 +1203808,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1203406,10 +1203854,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -1203429,11 +1203879,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1203460,7 +1203925,6 @@
 					"Logs Write",
 					"Logs Read"
 				],
-				"x-auditable": false,
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "logs",
 				"x-fern-sdk-method-name": "query-get"
@@ -1203488,7 +1203952,8 @@
 							"schema": {
 								"description": "SQL query to execute.",
 								"type": "string",
-								"format": "binary"
+								"format": "binary",
+								"x-auditable": false
 							}
 						}
 					}
@@ -1203508,10 +1203973,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -1203534,11 +1204001,27 @@
 											},
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
+										"result_info",
 										"success",
 										"errors",
 										"messages"
@@ -1203561,10 +1204044,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -1203584,11 +1204069,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1203615,10 +1204115,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -1203638,11 +1204140,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1203669,10 +1204186,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -1203692,11 +1204211,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1203723,10 +1204257,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -1203746,11 +1204282,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1203776,7 +1204327,6 @@
 					"Logs Write",
 					"Logs Read"
 				],
-				"x-auditable": false,
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "logs",
 				"x-fern-sdk-method-name": "query",
@@ -1351203,6 +1351753,27 @@
 							"maxLength": 32,
 							"readOnly": true,
 							"x-auditable": true
+						}
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Page number of queues, starting at 1.",
+						"schema": {
+							"type": "integer",
+							"default": 1,
+							"minimum": 1
+						}
+					},
+					{
+						"name": "per_page",
+						"in": "query",
+						"description": "Number of queues per page. Takes precedence over the legacy perPage query parameter.",
+						"schema": {
+							"type": "integer",
+							"default": 100,
+							"maximum": 500,
+							"minimum": 1
 						}
 					}
 				],
@@ -2406650,7 +2407221,8 @@
 						"schema": {
 							"type": "string",
 							"maxLength": 4096
-						}
+						},
+						"x-auditable": false
 					}
 				],
 				"responses": {
@@ -2406668,10 +2407240,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -2406694,11 +2407268,27 @@
 											},
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
+										"result_info",
 										"success",
 										"errors",
 										"messages"
@@ -2406721,10 +2407311,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -2406744,11 +2407336,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2406775,10 +2407382,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -2406798,11 +2407407,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2406829,10 +2407453,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -2406852,11 +2407478,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2406883,10 +2407524,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -2406906,11 +2407549,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2406937,7 +2407595,6 @@
 					"Logs Write",
 					"Logs Read"
 				],
-				"x-auditable": false,
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "logs.zone",
 				"x-fern-sdk-method-name": "query-get"
@@ -2406965,7 +2407622,8 @@
 							"schema": {
 								"description": "SQL query to execute.",
 								"type": "string",
-								"format": "binary"
+								"format": "binary",
+								"x-auditable": false
 							}
 						}
 					}
@@ -2406985,10 +2407643,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -2407011,11 +2407671,27 @@
 											},
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
+										"result_info",
 										"success",
 										"errors",
 										"messages"
@@ -2407038,10 +2407714,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -2407061,11 +2407739,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2407092,10 +2407785,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -2407115,11 +2407810,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2407146,10 +2407856,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -2407169,11 +2407881,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2407200,10 +2407927,12 @@
 												"properties": {
 													"code": {
 														"type": "integer",
-														"format": "int32"
+														"format": "int32",
+														"x-auditable": true
 													},
 													"message": {
-														"type": "string"
+														"type": "string",
+														"x-auditable": false
 													}
 												},
 												"required": [
@@ -2407223,11 +2407952,26 @@
 											"additionalProperties": true,
 											"nullable": true
 										},
+										"result_info": {
+											"description": "Metadata about the query execution.",
+											"type": "object",
+											"properties": {
+												"dataset": {
+													"description": "Dataset type name queried (e.g. `http_requests`).",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dataset"
+											]
+										},
 										"success": {
 											"type": "boolean",
 											"enum": [
 												false
-											]
+											],
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -2407253,7 +2407997,6 @@
 					"Logs Write",
 					"Logs Read"
 				],
-				"x-auditable": false,
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "logs.zone",
 				"x-fern-sdk-method-name": "query",
