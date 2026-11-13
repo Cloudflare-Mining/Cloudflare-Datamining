@@ -136,7 +136,7 @@
 	{
 		"id": "4amdYC",
 		"name": "cloud-access-security-broker-casb",
-		"title": "Cloud Access Security Broker (CASB)",
+		"title": "CASB",
 		"availability": "GA",
 		"certification": {
 			"fedramp-moderate": "yes",
@@ -155,7 +155,7 @@
 	{
 		"id": "husr7j",
 		"name": "china-network-jd-cloud",
-		"title": "China Network (JD Cloud)",
+		"title": "China Network",
 		"availability": "GA",
 		"certification": {
 			"fedramp-moderate": "no"
@@ -221,13 +221,6 @@
 		}
 	},
 	{
-		"id": "YGvwh9",
-		"name": "secrets-store",
-		"title": "Secrets Store",
-		"availability": "Beta",
-		"certification": {}
-	},
-	{
 		"id": "NdRmHE",
 		"name": "cache-reserve",
 		"title": "Cache Reserve",
@@ -249,6 +242,13 @@
 		"name": "cloudflare-trace",
 		"title": "Trace",
 		"availability": "Beta",
+		"certification": {}
+	},
+	{
+		"id": "XoTncs",
+		"name": "auditlogs",
+		"title": "Audit Logs",
+		"availability": "GA",
 		"certification": {}
 	},
 	{
@@ -278,18 +278,21 @@
 		"certification": {}
 	},
 	{
-		"id": "jNiJyW",
-		"name": "magic-cloud",
-		"title": "Magic Cloud",
-		"availability": "Beta",
-		"certification": {}
-	},
-	{
 		"id": "vq4bo3",
 		"name": "workers-analytics-engine",
 		"title": "Workers Analytics Engine",
 		"availability": "GA",
 		"certification": {}
+	},
+	{
+		"id": "xhoFgr",
+		"name": "zero-trust-infrastructure-access",
+		"title": "Access for Infrastructure",
+		"availability": "GA",
+		"certification": {
+			"fedramp-moderate": "no",
+			"fedramp-high": "pending"
+		}
 	},
 	{
 		"id": "yjbGmA",
@@ -300,6 +303,13 @@
 			"fedramp-moderate": "no",
 			"fedramp-high": "pending"
 		}
+	},
+	{
+		"id": "exi4DC",
+		"name": "time",
+		"title": "Time Services",
+		"availability": "GA",
+		"certification": {}
 	},
 	{
 		"id": "hCkLP9",
@@ -335,6 +345,16 @@
 		"certification": {}
 	},
 	{
+		"id": "yWaDMQ",
+		"name": "r2dc",
+		"title": "Basin Catalog",
+		"availability": "Beta",
+		"certification": {
+			"fedramp-moderate": "no",
+			"fedramp-high": "no"
+		}
+	},
+	{
 		"id": "jJoegf",
 		"name": "observatory",
 		"title": "Observatory",
@@ -351,7 +371,7 @@
 	{
 		"id": "mUXdjW",
 		"name": "workers-kv",
-		"title": "Workers KV",
+		"title": "KV",
 		"availability": "GA",
 		"certification": {
 			"fedramp-moderate": "yes",
@@ -387,6 +407,16 @@
 		"certification": {}
 	},
 	{
+		"id": "aqfYFC",
+		"name": "dns-filtering",
+		"title": "DNS Filtering",
+		"availability": "GA",
+		"certification": {
+			"fedramp-moderate": "yes",
+			"fedramp-high": "yes"
+		}
+	},
+	{
 		"id": "MykiGJ",
 		"name": "workflows",
 		"title": "Workflows",
@@ -409,16 +439,6 @@
 		"title": "Workers VPC",
 		"availability": "Beta",
 		"certification": {}
-	},
-	{
-		"id": "xhoFgr",
-		"name": "zero-trust-infrastructure-access",
-		"title": "Access for Infrastructure",
-		"availability": "GA",
-		"certification": {
-			"fedramp-moderate": "no",
-			"fedramp-high": "pending"
-		}
 	},
 	{
 		"id": "NUbavo",
@@ -454,13 +474,6 @@
 		"certification": {}
 	},
 	{
-		"id": "XoTncs",
-		"name": "auditlogs",
-		"title": "Audit Logs",
-		"availability": "GA",
-		"certification": {}
-	},
-	{
 		"id": "wtVEGR",
 		"name": "access",
 		"title": "Access",
@@ -478,6 +491,16 @@
 		"certification": {
 			"fedramp-moderate": "yes",
 			"fedramp-high": "yes"
+		}
+	},
+	{
+		"id": "FX9rys",
+		"name": "r2sql",
+		"title": "Basin SQL",
+		"availability": "Beta",
+		"certification": {
+			"fedramp-moderate": "no",
+			"fedramp-high": "no"
 		}
 	},
 	{
@@ -500,7 +523,7 @@
 	{
 		"id": "FsUwVw",
 		"name": "data-loss-prevention-dlp",
-		"title": "Data Loss Prevention (DLP)",
+		"title": "Data Loss Prevention",
 		"availability": "GA",
 		"certification": {
 			"fedramp-moderate": "yes",
@@ -547,6 +570,15 @@
 		}
 	},
 	{
+		"id": "E9QHNA",
+		"name": "dmarc-management",
+		"title": "DMARC Management",
+		"availability": "GA",
+		"certification": {
+			"fedramp-moderate": "yes"
+		}
+	},
+	{
 		"id": "HJhpds",
 		"name": "aegis",
 		"title": "Aegis (Dedicated CDN Egress IPs)",
@@ -569,7 +601,7 @@
 	{
 		"id": "PYUFmg",
 		"name": "r2-storage",
-		"title": "R2 Storage",
+		"title": "R2",
 		"availability": "GA",
 		"certification": {
 			"fedramp-moderate": "yes",
@@ -584,16 +616,6 @@
 		"certification": {
 			"fedramp-high": "pending",
 			"fedramp-moderate": "no"
-		}
-	},
-	{
-		"id": "FX9rys",
-		"name": "r2sql",
-		"title": "Basin SQL",
-		"availability": "Beta",
-		"certification": {
-			"fedramp-moderate": "no",
-			"fedramp-high": "no"
 		}
 	},
 	{
@@ -634,16 +656,6 @@
 		}
 	},
 	{
-		"id": "aqfYFC",
-		"name": "dns-filtering",
-		"title": "DNS Filtering",
-		"availability": "GA",
-		"certification": {
-			"fedramp-moderate": "yes",
-			"fedramp-high": "yes"
-		}
-	},
-	{
 		"id": "AuDGQX",
 		"name": "cloudflare-pages",
 		"title": "Pages",
@@ -674,6 +686,13 @@
 		}
 	},
 	{
+		"id": "7nEJGj",
+		"name": "cloudflare-pipelines",
+		"title": "Basin Pipelines",
+		"availability": "Beta",
+		"certification": {}
+	},
+	{
 		"id": "3KwtCw",
 		"name": "warp-connector",
 		"title": "Cloudflare Mesh",
@@ -700,7 +719,7 @@
 	{
 		"id": "RWfMGe",
 		"name": "browser-isolation-services",
-		"title": "Browser Isolation Services",
+		"title": "Browser Isolation",
 		"availability": "GA",
 		"certification": {
 			"fedramp-moderate": "yes",
@@ -722,15 +741,6 @@
 		"certification": {
 			"fedramp-moderate": "no",
 			"fedramp-high": "no"
-		}
-	},
-	{
-		"id": "E9QHNA",
-		"name": "dmarc-management",
-		"title": "DMARC Management",
-		"availability": "GA",
-		"certification": {
-			"fedramp-moderate": "yes"
 		}
 	},
 	{
@@ -756,19 +766,16 @@
 	{
 		"id": "hLp4ni",
 		"name": "firewall-for-ai",
-		"title": "Firewall for AI",
+		"title": "AI Security for Apps",
 		"availability": "GA",
 		"certification": {}
 	},
 	{
-		"id": "yWaDMQ",
-		"name": "r2dc",
-		"title": "Basin Catalog",
+		"id": "YGvwh9",
+		"name": "secrets-store",
+		"title": "Secrets Store",
 		"availability": "Beta",
-		"certification": {
-			"fedramp-moderate": "no",
-			"fedramp-high": "no"
-		}
+		"certification": {}
 	},
 	{
 		"id": "VgcrxJ",
@@ -803,7 +810,7 @@
 	{
 		"id": "WRq4Ap",
 		"name": "cloudchamber",
-		"title": "Containers (Cloudchamber)",
+		"title": "Containers",
 		"availability": "GA",
 		"certification": {
 			"fedramp-moderate": "no",
@@ -815,20 +822,6 @@
 		"name": "always-online",
 		"title": "Always Online",
 		"availability": "GA",
-		"certification": {}
-	},
-	{
-		"id": "exi4DC",
-		"name": "time",
-		"title": "Time",
-		"availability": "GA",
-		"certification": {}
-	},
-	{
-		"id": "7nEJGj",
-		"name": "cloudflare-pipelines",
-		"title": "Basin Pipelines",
-		"availability": "Beta",
 		"certification": {}
 	},
 	{
