@@ -1,7 +1,7 @@
 {
 	"name": "chanfana",
 	"dist-tags": {
-		"latest": "3.5.0"
+		"latest": "3.6.0"
 	},
 	"versions": {
 		"2.0.0": {
@@ -1697,8 +1697,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIE8pdO1yGBsNokiKI/HUy2zmPx+uLpuAdeh2qitjI6ocAiAsgg8nqk4p1JQTVnXkuP9wbM4Bxkldh4fd9lq3kXonQA=="
+						"sig": "MEQCIE8pdO1yGBsNokiKI/HUy2zmPx+uLpuAdeh2qitjI6ocAiAsgg8nqk4p1JQTVnXkuP9wbM4Bxkldh4fd9lq3kXonQA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -1708,6 +1708,66 @@
 					}
 				},
 				"unpackedSize": 763480
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"3.6.0": {
+			"name": "chanfana",
+			"version": "3.6.0",
+			"dependencies": {
+				"zod": "^4.6.7",
+				"js-yaml": "^5.5.0",
+				"openapi3-ts": "^4.6.2",
+				"yargs-parser": "^22.0.0",
+				"@asteasolutions/zod-to-openapi": "^9.1.0"
+			},
+			"devDependencies": {
+				"hono": "4.13.14",
+				"tsup": "9.0.0",
+				"oxfmt": "0.78.0",
+				"oxlint": "1.93.0",
+				"vitest": "^5.1.0",
+				"wrangler": "4.153.0",
+				"vitepress": "^1.6.4",
+				"pkg-pr-new": "^0.0.92",
+				"typescript": "6.0.3",
+				"@types/node": "26.6.5",
+				"itty-router": "5.0.24",
+				"vitest-openapi": "^1.0.3",
+				"@changesets/cli": "^3.0.3",
+				"oxlint-tsgolint": "7.0.2006",
+				"@cloudflare/vitest-plugin": "^1.6.1",
+				"@cloudflare/workers-types": "5.20261027.1",
+				"@vitest/coverage-istanbul": "^5.1.0",
+				"@changesets/changelog-github": "^1.0.1"
+			},
+			"bin": {
+				"chanfana": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "6798f17c5ac8223f16ce72797c76b188ca279d8f",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-3.6.0.tgz",
+				"fileCount": 61,
+				"integrity": "sha512-2V8xnbCmK7TM8gM1HP43WGB+J5qxmrDPcQUkrhTZ1UzTFblz85zz8SfHVYgSF4l4qobKHSVUmTCMRNG/ANwjhQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDM0Bw2VqbbDG+i3Dr0aoZPzIgQJxQQxj3Veutxse9YtwIhAMY38iw8NYa0QiM+An1K0iLNqft8RxiLOCwPmSj5iCng",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIE/NA/Z6/XmXDbOCzvE0JAElZo3zouTkwbzt8wDLBf8HAiBTFAArRX0WD0UG/E7N1i2yq4cw65Iy2mzidqcinMO2zg=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/chanfana@3.6.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 872458
 			},
 			"engines": {
 				"node": ">=18"
