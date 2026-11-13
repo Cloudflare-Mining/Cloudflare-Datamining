@@ -428708,7 +428708,7 @@
 																						}
 																					},
 																					"idp_public_certs": {
-																						"description": "X509 certificate to verify the signature in the SAML authentication response",
+																						"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																						"type": "array",
 																						"items": {
 																							"type": "string"
@@ -428726,6 +428726,13 @@
 																						"example": 8192,
 																						"maximum": 100000,
 																						"minimum": 512,
+																						"x-auditable": true
+																					},
+																					"metadata_url": {
+																						"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																						"type": "string",
+																						"format": "uri",
+																						"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																						"x-auditable": true
 																					},
 																					"sign_request": {
@@ -433229,7 +433236,7 @@
 																}
 															},
 															"idp_public_certs": {
-																"description": "X509 certificate to verify the signature in the SAML authentication response",
+																"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																"type": "array",
 																"items": {
 																	"type": "string"
@@ -433247,6 +433254,13 @@
 																"example": 8192,
 																"maximum": 100000,
 																"minimum": 512,
+																"x-auditable": true
+															},
+															"metadata_url": {
+																"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																"type": "string",
+																"format": "uri",
+																"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																"x-auditable": true
 															},
 															"sign_request": {
@@ -437685,7 +437699,7 @@
 																					}
 																				},
 																				"idp_public_certs": {
-																					"description": "X509 certificate to verify the signature in the SAML authentication response",
+																					"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																					"type": "array",
 																					"items": {
 																						"type": "string"
@@ -437703,6 +437717,13 @@
 																					"example": 8192,
 																					"maximum": 100000,
 																					"minimum": 512,
+																					"x-auditable": true
+																				},
+																				"metadata_url": {
+																					"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																					"type": "string",
+																					"format": "uri",
+																					"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																					"x-auditable": true
 																				},
 																				"sign_request": {
@@ -442591,7 +442612,7 @@
 																					}
 																				},
 																				"idp_public_certs": {
-																					"description": "X509 certificate to verify the signature in the SAML authentication response",
+																					"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																					"type": "array",
 																					"items": {
 																						"type": "string"
@@ -442609,6 +442630,13 @@
 																					"example": 8192,
 																					"maximum": 100000,
 																					"minimum": 512,
+																					"x-auditable": true
+																				},
+																				"metadata_url": {
+																					"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																					"type": "string",
+																					"format": "uri",
+																					"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																					"x-auditable": true
 																				},
 																				"sign_request": {
@@ -447123,7 +447151,7 @@
 																}
 															},
 															"idp_public_certs": {
-																"description": "X509 certificate to verify the signature in the SAML authentication response",
+																"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																"type": "array",
 																"items": {
 																	"type": "string"
@@ -447141,6 +447169,13 @@
 																"example": 8192,
 																"maximum": 100000,
 																"minimum": 512,
+																"x-auditable": true
+															},
+															"metadata_url": {
+																"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																"type": "string",
+																"format": "uri",
+																"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																"x-auditable": true
 															},
 															"sign_request": {
@@ -451579,7 +451614,7 @@
 																					}
 																				},
 																				"idp_public_certs": {
-																					"description": "X509 certificate to verify the signature in the SAML authentication response",
+																					"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																					"type": "array",
 																					"items": {
 																						"type": "string"
@@ -451597,6 +451632,13 @@
 																					"example": 8192,
 																					"maximum": 100000,
 																					"minimum": 512,
+																					"x-auditable": true
+																				},
+																				"metadata_url": {
+																					"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																					"type": "string",
+																					"format": "uri",
+																					"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																					"x-auditable": true
 																				},
 																				"sign_request": {
@@ -533965,6 +534007,12 @@
 														"type": "string",
 														"format": "date-time"
 													},
+													"multiprovider_enabled": {
+														"description": "Lets requests to a model use every provider that serves it. When off, a model uses only the providers it launched with, so a provider added later receives none of its traffic. A request that names providers (the cf-aig-allowed-providers header or routing.allowedProviders) can still use any of them. Model aliases (custom/) are not restricted.",
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"otel": {
 														"type": "array",
 														"items": {
@@ -535480,6 +535528,12 @@
 												"modified_at": {
 													"type": "string",
 													"format": "date-time"
+												},
+												"multiprovider_enabled": {
+													"description": "Lets requests to a model use every provider that serves it. When off, a model uses only the providers it launched with, so a provider added later receives none of its traffic. A request that names providers (the cf-aig-allowed-providers header or routing.allowedProviders) can still use any of them. Model aliases (custom/) are not restricted.",
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"otel": {
 													"type": "array",
@@ -542330,7 +542384,9 @@
 						"schema": {
 							"description": "Page number",
 							"type": "integer",
-							"example": 1
+							"example": 1,
+							"default": 1,
+							"minimum": 1
 						}
 					},
 					{
@@ -542340,7 +542396,10 @@
 						"schema": {
 							"description": "Number of routes per page",
 							"type": "integer",
-							"example": 20
+							"example": 20,
+							"default": 20,
+							"maximum": 100,
+							"minimum": 1
 						}
 					}
 				],
@@ -545659,7 +545718,9 @@
 						"schema": {
 							"description": "Page number",
 							"type": "integer",
-							"example": 1
+							"example": 1,
+							"default": 1,
+							"minimum": 1
 						}
 					},
 					{
@@ -545669,7 +545730,10 @@
 						"schema": {
 							"description": "Number of deployments per page",
 							"type": "integer",
-							"example": 20
+							"example": 20,
+							"default": 20,
+							"maximum": 100,
+							"minimum": 1
 						}
 					}
 				],
@@ -546343,7 +546407,9 @@
 						"schema": {
 							"description": "Page number",
 							"type": "integer",
-							"example": 1
+							"example": 1,
+							"default": 1,
+							"minimum": 1
 						}
 					},
 					{
@@ -546353,7 +546419,10 @@
 						"schema": {
 							"description": "Number of versions per page",
 							"type": "integer",
-							"example": 20
+							"example": 20,
+							"default": 20,
+							"maximum": 100,
+							"minimum": 1
 						}
 					}
 				],
@@ -548416,6 +548485,12 @@
 													"type": "string",
 													"format": "date-time"
 												},
+												"multiprovider_enabled": {
+													"description": "Lets requests to a model use every provider that serves it. When off, a model uses only the providers it launched with, so a provider added later receives none of its traffic. A request that names providers (the cf-aig-allowed-providers header or routing.allowedProviders) can still use any of them. Model aliases (custom/) are not restricted.",
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"otel": {
 													"type": "array",
 													"items": {
@@ -549297,6 +549372,12 @@
 												"modified_at": {
 													"type": "string",
 													"format": "date-time"
+												},
+												"multiprovider_enabled": {
+													"description": "Lets requests to a model use every provider that serves it. When off, a model uses only the providers it launched with, so a provider added later receives none of its traffic. A request that names providers (the cf-aig-allowed-providers header or routing.allowedProviders) can still use any of them. Model aliases (custom/) are not restricted.",
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"otel": {
 													"type": "array",
@@ -550854,6 +550935,12 @@
 												"modified_at": {
 													"type": "string",
 													"format": "date-time"
+												},
+												"multiprovider_enabled": {
+													"description": "Lets requests to a model use every provider that serves it. When off, a model uses only the providers it launched with, so a provider added later receives none of its traffic. A request that names providers (the cf-aig-allowed-providers header or routing.allowedProviders) can still use any of them. Model aliases (custom/) are not restricted.",
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"otel": {
 													"type": "array",
@@ -669162,7 +669249,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "builds.repos.connections",
-				"x-fern-sdk-method-name": "upsert"
+				"x-fern-sdk-method-name": "replace"
 			}
 		},
 		"/accounts/{account_id}/builds/repos/connections/{repo_connection_uuid}": {
@@ -671506,7 +671593,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "builds.triggers",
-				"x-fern-sdk-method-name": "update"
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/accounts/{account_id}/builds/triggers/{trigger_uuid}/builds": {
@@ -672787,7 +672874,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "builds.triggers.environment-variables",
-				"x-fern-sdk-method-name": "upsert"
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables/{environment_variable_key}": {
@@ -679696,7 +679783,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "builds.workers",
-				"x-fern-sdk-method-name": "update"
+				"x-fern-sdk-method-name": "edit"
 			}
 		},
 		"/accounts/{account_id}/builds/workers/{script_tag}/builds/{build_uuid}/retry": {
@@ -1149489,7 +1149576,7 @@
 				"x-fern-availability": "deprecated",
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "zero-trust.access.targets",
-				"x-fern-sdk-method-name": "bulk-delete"
+				"x-fern-sdk-method-name": "bulk-delete-deprecated"
 			},
 			"put": {
 				"operationId": "infra-targets-put-batch",
@@ -1149914,8 +1150001,8 @@
 					"Infrastructure Access Targets"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "zero-trust.access.targets.bulk",
-				"x-fern-sdk-method-name": "update",
+				"x-fern-sdk-group-name": "zero-trust.access.targets",
+				"x-fern-sdk-method-name": "bulk-create",
 				"x-stainless-skip": [
 					"terraform"
 				]
@@ -1150097,8 +1150184,8 @@
 					"Infrastructure Access Targets"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "zero-trust.access.targets.bulk",
-				"x-fern-sdk-method-name": "delete"
+				"x-fern-sdk-group-name": "zero-trust.access.targets",
+				"x-fern-sdk-method-name": "bulk-delete"
 			}
 		},
 		"/accounts/{account_id}/infrastructure/targets/batch_tags": {
@@ -1150487,8 +1150574,8 @@
 					"Infrastructure Access Targets"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "zero-trust.access.targets.bulk",
-				"x-fern-sdk-method-name": "replace-tags",
+				"x-fern-sdk-group-name": "zero-trust.access.targets",
+				"x-fern-sdk-method-name": "bulk-replace-tags",
 				"x-stainless-skip": [
 					"terraform"
 				]
@@ -1298361,6 +1298448,13 @@
 													"auth_config": {
 														"authorization_url": "https://login.microsoftonline.com/common/adminconsent",
 														"client_id": "abc123-def456",
+														"feature_overrides": [
+															{
+																"authorization_url": "https://login.microsoftonline.com/common/adminconsent?client_id=ghi789-jkl012",
+																"client_id": "ghi789-jkl012",
+																"feature": "auto_remediation"
+															}
+														],
 														"requires_pkce": false,
 														"scopes": [
 															"https://graph.microsoft.com/.default"
@@ -1298449,6 +1298543,35 @@
 																		"type": "string",
 																		"nullable": true
 																	},
+																	"feature_overrides": {
+																		"description": "Per-feature authorization overrides. When a listed feature is selected, authorize with the override's client ID and URL instead of the defaults above.",
+																		"type": "array",
+																		"items": {
+																			"description": "Authorization settings to use instead of the defaults when a feature is selected.",
+																			"type": "object",
+																			"properties": {
+																				"authorization_url": {
+																					"description": "Full OAuth authorization URL with query parameters.",
+																					"type": "string",
+																					"nullable": true
+																				},
+																				"client_id": {
+																					"description": "OAuth client ID to authorize with.",
+																					"type": "string",
+																					"nullable": true
+																				},
+																				"feature": {
+																					"description": "Feature identifier that triggers this override.",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"authorization_url",
+																				"client_id",
+																				"feature"
+																			]
+																		}
+																	},
 																	"requires_pkce": {
 																		"description": "Whether PKCE is required.",
 																		"type": "boolean"
@@ -1298471,6 +1298594,7 @@
 																"required": [
 																	"authorization_url",
 																	"client_id",
+																	"feature_overrides",
 																	"requires_pkce",
 																	"scopes",
 																	"url_placeholders"
@@ -1298888,6 +1299012,7 @@
 														"display_name": "Google Domain-Wide Delegation Service Account",
 														"id": "google_domain_wide_delegation_service_account"
 													},
+													"config": {},
 													"created": "2025-01-15T10:00:00Z",
 													"id": "019d2e6a-d995-7185-afbd-4feead9e42ec",
 													"is_paused": false,
@@ -1298963,6 +1299088,87 @@
 															"display_name"
 														]
 													},
+													"config": {
+														"description": "Vendor-specific integration configuration.",
+														"allOf": [
+															{
+																"description": "Vendor-specific integration configuration returned by the API.",
+																"type": "object",
+																"properties": {
+																	"gitlab": {
+																		"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																		"allOf": [
+																			{
+																				"description": "Selected GitLab groups and projects returned by the API.",
+																				"type": "object",
+																				"properties": {
+																					"groups": {
+																						"description": "Selected top-level GitLab groups.",
+																						"type": "array",
+																						"items": {
+																							"type": "object",
+																							"properties": {
+																								"display_name": {
+																									"description": "Human-readable GitLab resource name.",
+																									"type": "string"
+																								},
+																								"id": {
+																									"description": "GitLab resource ID as a string-encoded positive integer.",
+																									"type": "string",
+																									"pattern": "^[1-9][0-9]*$"
+																								},
+																								"path": {
+																									"description": "Full GitLab resource path.",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"display_name",
+																								"id",
+																								"path"
+																							]
+																						}
+																					},
+																					"projects": {
+																						"description": "Selected GitLab projects.",
+																						"type": "array",
+																						"items": {
+																							"type": "object",
+																							"properties": {
+																								"display_name": {
+																									"description": "Human-readable GitLab resource name.",
+																									"type": "string"
+																								},
+																								"id": {
+																									"description": "GitLab resource ID as a string-encoded positive integer.",
+																									"type": "string",
+																									"pattern": "^[1-9][0-9]*$"
+																								},
+																								"path": {
+																									"description": "Full GitLab resource path.",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"display_name",
+																								"id",
+																								"path"
+																							]
+																						}
+																					}
+																				},
+																				"required": [
+																					"groups",
+																					"projects"
+																				]
+																			}
+																		]
+																	}
+																}
+															}
+														],
+														"readOnly": true
+													},
 													"created": {
 														"description": "When the integration was created.",
 														"type": "string",
@@ -1299007,6 +1299213,7 @@
 												"required": [
 													"application",
 													"auth_method",
+													"config",
 													"created",
 													"id",
 													"is_paused",
@@ -1299091,7 +1299298,7 @@
 			"post": {
 				"operationId": "create_integration_v2",
 				"summary": "Create integration",
-				"description": "Creates a new integration for the specified application. Integration creation with OAuth is not supported by API at the moment. For other auth methods, use `GET /v2/applications/{application_id}/credential-guide` to see the required credential structure and example payloads for each vendor.",
+				"description": "Creates a new integration for the specified application. For other auth methods, use `GET /v2/applications/{application_id}/credential-guide` to see the required credential structure and example payloads for each vendor.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -1299326,6 +1299533,7 @@
 													},
 													"link": "https://example.cloudflare.com/authorize"
 												},
+												"config": {},
 												"created": "2025-01-01T00:00:00Z",
 												"credentials_expiry": "2026-01-01T00:00:00Z",
 												"dlp_profiles": [
@@ -1299451,6 +1299659,87 @@
 																"components"
 															]
 														},
+														"config": {
+															"description": "Vendor-specific integration configuration.",
+															"allOf": [
+																{
+																	"description": "Vendor-specific integration configuration returned by the API.",
+																	"type": "object",
+																	"properties": {
+																		"gitlab": {
+																			"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																			"allOf": [
+																				{
+																					"description": "Selected GitLab groups and projects returned by the API.",
+																					"type": "object",
+																					"properties": {
+																						"groups": {
+																							"description": "Selected top-level GitLab groups.",
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"display_name": {
+																										"description": "Human-readable GitLab resource name.",
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "GitLab resource ID as a string-encoded positive integer.",
+																										"type": "string",
+																										"pattern": "^[1-9][0-9]*$"
+																									},
+																									"path": {
+																										"description": "Full GitLab resource path.",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"display_name",
+																									"id",
+																									"path"
+																								]
+																							}
+																						},
+																						"projects": {
+																							"description": "Selected GitLab projects.",
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"display_name": {
+																										"description": "Human-readable GitLab resource name.",
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "GitLab resource ID as a string-encoded positive integer.",
+																										"type": "string",
+																										"pattern": "^[1-9][0-9]*$"
+																									},
+																									"path": {
+																										"description": "Full GitLab resource path.",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"display_name",
+																									"id",
+																									"path"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"groups",
+																						"projects"
+																					]
+																				}
+																			]
+																		}
+																	}
+																}
+															],
+															"readOnly": true
+														},
 														"created": {
 															"description": "When the integration was created.",
 															"type": "string",
@@ -1299527,6 +1299816,7 @@
 														"application",
 														"auth_method",
 														"authorization_link",
+														"config",
 														"created",
 														"credentials_expiry",
 														"dlp_profiles",
@@ -1299681,6 +1299971,7 @@
 													},
 													"link": "https://example.cloudflare.com/authorize"
 												},
+												"config": {},
 												"created": "2025-01-01T00:00:00Z",
 												"credentials_expiry": "2026-01-01T00:00:00Z",
 												"dlp_profiles": [
@@ -1299806,6 +1300097,87 @@
 																"components"
 															]
 														},
+														"config": {
+															"description": "Vendor-specific integration configuration.",
+															"allOf": [
+																{
+																	"description": "Vendor-specific integration configuration returned by the API.",
+																	"type": "object",
+																	"properties": {
+																		"gitlab": {
+																			"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																			"allOf": [
+																				{
+																					"description": "Selected GitLab groups and projects returned by the API.",
+																					"type": "object",
+																					"properties": {
+																						"groups": {
+																							"description": "Selected top-level GitLab groups.",
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"display_name": {
+																										"description": "Human-readable GitLab resource name.",
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "GitLab resource ID as a string-encoded positive integer.",
+																										"type": "string",
+																										"pattern": "^[1-9][0-9]*$"
+																									},
+																									"path": {
+																										"description": "Full GitLab resource path.",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"display_name",
+																									"id",
+																									"path"
+																								]
+																							}
+																						},
+																						"projects": {
+																							"description": "Selected GitLab projects.",
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"display_name": {
+																										"description": "Human-readable GitLab resource name.",
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "GitLab resource ID as a string-encoded positive integer.",
+																										"type": "string",
+																										"pattern": "^[1-9][0-9]*$"
+																									},
+																									"path": {
+																										"description": "Full GitLab resource path.",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"display_name",
+																									"id",
+																									"path"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"groups",
+																						"projects"
+																					]
+																				}
+																			]
+																		}
+																	}
+																}
+															],
+															"readOnly": true
+														},
 														"created": {
 															"description": "When the integration was created.",
 															"type": "string",
@@ -1299882,6 +1300254,7 @@
 														"application",
 														"auth_method",
 														"authorization_link",
+														"config",
 														"created",
 														"credentials_expiry",
 														"dlp_profiles",
@@ -1299934,7 +1300307,7 @@
 			"patch": {
 				"operationId": "update_integration_v2",
 				"summary": "Update integration",
-				"description": "Updates an integration's name, permissions, DLP profiles, use cases, or credentials.",
+				"description": "Updates an integration's name, permissions, DLP profiles, use cases, credentials, or GitLab resources.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -1299972,6 +1300345,16 @@
 								"UpdateFields": {
 									"summary": "Example update integration request",
 									"value": {
+										"config": {
+											"gitlab": {
+												"group_ids": [
+													"11"
+												],
+												"project_ids": [
+													"22"
+												]
+											}
+										},
 										"credentials": {
 											"admin_email": "admin@corp.com"
 										},
@@ -1299993,6 +1300376,51 @@
 								"description": "Serializer for v2 integration PATCH requests.",
 								"type": "object",
 								"properties": {
+									"config": {
+										"description": "Vendor-specific integration configuration.",
+										"allOf": [
+											{
+												"description": "Vendor-specific integration configuration accepted during updates.",
+												"type": "object",
+												"properties": {
+													"gitlab": {
+														"description": "GitLab-specific configuration. Accepted only for GitLab integrations.",
+														"allOf": [
+															{
+																"description": "Selected GitLab groups and projects.",
+																"type": "object",
+																"properties": {
+																	"group_ids": {
+																		"description": "Selected top-level GitLab group IDs as string-encoded positive integers.",
+																		"type": "array",
+																		"items": {
+																			"maxLength": 255,
+																			"minLength": 1,
+																			"pattern": "^[1-9][0-9]*$",
+																			"type": "string"
+																		},
+																		"maxItems": 10000
+																	},
+																	"project_ids": {
+																		"description": "Selected GitLab project IDs as string-encoded positive integers.",
+																		"type": "array",
+																		"items": {
+																			"maxLength": 255,
+																			"minLength": 1,
+																			"pattern": "^[1-9][0-9]*$",
+																			"type": "string"
+																		},
+																		"maxItems": 10000
+																	}
+																}
+															}
+														]
+													}
+												}
+											}
+										],
+										"x-fern-property-name": "integration_config"
+									},
 									"credentials": {
 										"description": "Partial credential fields to merge with existing.",
 										"type": "object",
@@ -1300042,6 +1300470,51 @@
 								"description": "Serializer for v2 integration PATCH requests.",
 								"type": "object",
 								"properties": {
+									"config": {
+										"description": "Vendor-specific integration configuration.",
+										"allOf": [
+											{
+												"description": "Vendor-specific integration configuration accepted during updates.",
+												"type": "object",
+												"properties": {
+													"gitlab": {
+														"description": "GitLab-specific configuration. Accepted only for GitLab integrations.",
+														"allOf": [
+															{
+																"description": "Selected GitLab groups and projects.",
+																"type": "object",
+																"properties": {
+																	"group_ids": {
+																		"description": "Selected top-level GitLab group IDs as string-encoded positive integers.",
+																		"type": "array",
+																		"items": {
+																			"maxLength": 255,
+																			"minLength": 1,
+																			"pattern": "^[1-9][0-9]*$",
+																			"type": "string"
+																		},
+																		"maxItems": 10000
+																	},
+																	"project_ids": {
+																		"description": "Selected GitLab project IDs as string-encoded positive integers.",
+																		"type": "array",
+																		"items": {
+																			"maxLength": 255,
+																			"minLength": 1,
+																			"pattern": "^[1-9][0-9]*$",
+																			"type": "string"
+																		},
+																		"maxItems": 10000
+																	}
+																}
+															}
+														]
+													}
+												}
+											}
+										],
+										"x-fern-property-name": "integration_config"
+									},
 									"credentials": {
 										"description": "Partial credential fields to merge with existing.",
 										"type": "object",
@@ -1300116,6 +1300589,7 @@
 													},
 													"link": "https://example.cloudflare.com/authorize"
 												},
+												"config": {},
 												"created": "2025-01-01T00:00:00Z",
 												"credentials_expiry": "2026-01-01T00:00:00Z",
 												"dlp_profiles": [
@@ -1300241,6 +1300715,87 @@
 																"components"
 															]
 														},
+														"config": {
+															"description": "Vendor-specific integration configuration.",
+															"allOf": [
+																{
+																	"description": "Vendor-specific integration configuration returned by the API.",
+																	"type": "object",
+																	"properties": {
+																		"gitlab": {
+																			"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																			"allOf": [
+																				{
+																					"description": "Selected GitLab groups and projects returned by the API.",
+																					"type": "object",
+																					"properties": {
+																						"groups": {
+																							"description": "Selected top-level GitLab groups.",
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"display_name": {
+																										"description": "Human-readable GitLab resource name.",
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "GitLab resource ID as a string-encoded positive integer.",
+																										"type": "string",
+																										"pattern": "^[1-9][0-9]*$"
+																									},
+																									"path": {
+																										"description": "Full GitLab resource path.",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"display_name",
+																									"id",
+																									"path"
+																								]
+																							}
+																						},
+																						"projects": {
+																							"description": "Selected GitLab projects.",
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"display_name": {
+																										"description": "Human-readable GitLab resource name.",
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "GitLab resource ID as a string-encoded positive integer.",
+																										"type": "string",
+																										"pattern": "^[1-9][0-9]*$"
+																									},
+																									"path": {
+																										"description": "Full GitLab resource path.",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"display_name",
+																									"id",
+																									"path"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"groups",
+																						"projects"
+																					]
+																				}
+																			]
+																		}
+																	}
+																}
+															],
+															"readOnly": true
+														},
 														"created": {
 															"description": "When the integration was created.",
 															"type": "string",
@@ -1300317,6 +1300872,7 @@
 														"application",
 														"auth_method",
 														"authorization_link",
+														"config",
 														"created",
 														"credentials_expiry",
 														"dlp_profiles",
@@ -1300421,6 +1300977,7 @@
 													},
 													"link": "https://example.cloudflare.com/authorize"
 												},
+												"config": {},
 												"created": "2025-01-01T00:00:00Z",
 												"credentials_expiry": "2026-01-01T00:00:00Z",
 												"dlp_profiles": [
@@ -1300546,6 +1301103,87 @@
 																"components"
 															]
 														},
+														"config": {
+															"description": "Vendor-specific integration configuration.",
+															"allOf": [
+																{
+																	"description": "Vendor-specific integration configuration returned by the API.",
+																	"type": "object",
+																	"properties": {
+																		"gitlab": {
+																			"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																			"allOf": [
+																				{
+																					"description": "Selected GitLab groups and projects returned by the API.",
+																					"type": "object",
+																					"properties": {
+																						"groups": {
+																							"description": "Selected top-level GitLab groups.",
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"display_name": {
+																										"description": "Human-readable GitLab resource name.",
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "GitLab resource ID as a string-encoded positive integer.",
+																										"type": "string",
+																										"pattern": "^[1-9][0-9]*$"
+																									},
+																									"path": {
+																										"description": "Full GitLab resource path.",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"display_name",
+																									"id",
+																									"path"
+																								]
+																							}
+																						},
+																						"projects": {
+																							"description": "Selected GitLab projects.",
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"display_name": {
+																										"description": "Human-readable GitLab resource name.",
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "GitLab resource ID as a string-encoded positive integer.",
+																										"type": "string",
+																										"pattern": "^[1-9][0-9]*$"
+																									},
+																									"path": {
+																										"description": "Full GitLab resource path.",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"display_name",
+																									"id",
+																									"path"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"groups",
+																						"projects"
+																					]
+																				}
+																			]
+																		}
+																	}
+																}
+															],
+															"readOnly": true
+														},
 														"created": {
 															"description": "When the integration was created.",
 															"type": "string",
@@ -1300622,6 +1301260,7 @@
 														"application",
 														"auth_method",
 														"authorization_link",
+														"config",
 														"created",
 														"credentials_expiry",
 														"dlp_profiles",
@@ -1300726,6 +1301365,7 @@
 													},
 													"link": "https://example.cloudflare.com/authorize"
 												},
+												"config": {},
 												"created": "2025-01-01T00:00:00Z",
 												"credentials_expiry": "2026-01-01T00:00:00Z",
 												"dlp_profiles": [
@@ -1300851,6 +1301491,87 @@
 																"components"
 															]
 														},
+														"config": {
+															"description": "Vendor-specific integration configuration.",
+															"allOf": [
+																{
+																	"description": "Vendor-specific integration configuration returned by the API.",
+																	"type": "object",
+																	"properties": {
+																		"gitlab": {
+																			"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																			"allOf": [
+																				{
+																					"description": "Selected GitLab groups and projects returned by the API.",
+																					"type": "object",
+																					"properties": {
+																						"groups": {
+																							"description": "Selected top-level GitLab groups.",
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"display_name": {
+																										"description": "Human-readable GitLab resource name.",
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "GitLab resource ID as a string-encoded positive integer.",
+																										"type": "string",
+																										"pattern": "^[1-9][0-9]*$"
+																									},
+																									"path": {
+																										"description": "Full GitLab resource path.",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"display_name",
+																									"id",
+																									"path"
+																								]
+																							}
+																						},
+																						"projects": {
+																							"description": "Selected GitLab projects.",
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"properties": {
+																									"display_name": {
+																										"description": "Human-readable GitLab resource name.",
+																										"type": "string"
+																									},
+																									"id": {
+																										"description": "GitLab resource ID as a string-encoded positive integer.",
+																										"type": "string",
+																										"pattern": "^[1-9][0-9]*$"
+																									},
+																									"path": {
+																										"description": "Full GitLab resource path.",
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"display_name",
+																									"id",
+																									"path"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"groups",
+																						"projects"
+																					]
+																				}
+																			]
+																		}
+																	}
+																}
+															],
+															"readOnly": true
+														},
 														"created": {
 															"description": "When the integration was created.",
 															"type": "string",
@@ -1300927,6 +1301648,7 @@
 														"application",
 														"auth_method",
 														"authorization_link",
+														"config",
 														"created",
 														"credentials_expiry",
 														"dlp_profiles",
@@ -1647872,6 +1648594,7 @@
 								"ai_search_namespace",
 								"alerting_policy",
 								"alerting_webhook",
+								"app_library_application",
 								"cloudflared_tunnel",
 								"cws_deployment",
 								"cws_policy",
@@ -1648339,6 +1649062,7 @@
 								"ai_search_namespace",
 								"alerting_policy",
 								"alerting_webhook",
+								"app_library_application",
 								"cloudflared_tunnel",
 								"cws_deployment",
 								"cws_policy",
@@ -1648486,6 +1649210,7 @@
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
+															"app_library_application": "#/components/schemas/resource-tagging_tagged_resource_object_app_library_application",
 															"cloudflared_tunnel": "#/components/schemas/resource-tagging_tagged_resource_object_cloudflared_tunnel",
 															"custom_certificate": "#/components/schemas/resource-tagging_tagged_resource_object_custom_certificate",
 															"custom_hostname": "#/components/schemas/resource-tagging_tagged_resource_object_custom_hostname",
@@ -1649373,6 +1650098,74 @@
 																		"name",
 																		"etag",
 																		"zone_id"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for app_library_application resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"app_library_application"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
 																	]
 																}
 															]
@@ -1652161,6 +1652954,7 @@
 										"ai_search_namespace": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"alerting_policy": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"alerting_webhook": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
+										"app_library_application": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"cloudflared_tunnel": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"cws_deployment": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
 										"cws_policy": "#/components/schemas/resource-tagging_set_tags_request_account_level_base",
@@ -1652272,6 +1653066,7 @@
 															"ai_search_namespace",
 															"alerting_policy",
 															"alerting_webhook",
+															"app_library_application",
 															"cloudflared_tunnel",
 															"cws_deployment",
 															"cws_policy",
@@ -1652437,6 +1653232,7 @@
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
+															"app_library_application": "#/components/schemas/resource-tagging_tagged_resource_object_app_library_application",
 															"cloudflared_tunnel": "#/components/schemas/resource-tagging_tagged_resource_object_cloudflared_tunnel",
 															"custom_certificate": "#/components/schemas/resource-tagging_tagged_resource_object_custom_certificate",
 															"custom_hostname": "#/components/schemas/resource-tagging_tagged_resource_object_custom_hostname",
@@ -1653324,6 +1654120,74 @@
 																		"name",
 																		"etag",
 																		"zone_id"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for app_library_application resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"app_library_application"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
 																	]
 																}
 															]
@@ -1656639,6 +1657503,7 @@
 									"alerting_policy",
 									"alerting_webhook",
 									"api_gateway_operation",
+									"app_library_application",
 									"cloudflared_tunnel",
 									"custom_certificate",
 									"custom_hostname",
@@ -1656853,6 +1657718,7 @@
 																"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 																"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 																"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
+																"app_library_application": "#/components/schemas/resource-tagging_tagged_resource_object_app_library_application",
 																"cloudflared_tunnel": "#/components/schemas/resource-tagging_tagged_resource_object_cloudflared_tunnel",
 																"custom_certificate": "#/components/schemas/resource-tagging_tagged_resource_object_custom_certificate",
 																"custom_hostname": "#/components/schemas/resource-tagging_tagged_resource_object_custom_hostname",
@@ -1657740,6 +1658606,74 @@
 																			"name",
 																			"etag",
 																			"zone_id"
+																		]
+																	}
+																]
+															},
+															{
+																"description": "Response for app_library_application resources",
+																"allOf": [
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"app_library_application"
+																				]
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"description": "Base schema for account-level resources (without type discriminator)",
+																		"type": "object",
+																		"properties": {
+																			"etag": {
+																				"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																				"type": "string",
+																				"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																				"readOnly": true
+																			},
+																			"id": {
+																				"description": "Identifies the unique resource.",
+																				"type": "string",
+																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																				"x-auditable": true
+																			},
+																			"name": {
+																				"description": "Human-readable name of the resource.",
+																				"type": "string",
+																				"example": "my-worker-script"
+																			},
+																			"tags": {
+																				"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																				"type": "object",
+																				"example": {
+																					"environment": "production",
+																					"team": "engineering"
+																				},
+																				"additionalProperties": {
+																					"maxLength": 1024,
+																					"type": "string"
+																				},
+																				"x-auditable": true
+																			},
+																			"tags_updated_at": {
+																				"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2024-01-15T10:30:00Z",
+																				"readOnly": true
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"tags",
+																			"name",
+																			"etag"
 																		]
 																	}
 																]
@@ -1660991,6 +1661925,7 @@
 								"alerting_policy",
 								"alerting_webhook",
 								"api_gateway_operation",
+								"app_library_application",
 								"cloudflared_tunnel",
 								"custom_certificate",
 								"custom_hostname",
@@ -2184893,7 +2185828,7 @@
 																						}
 																					},
 																					"idp_public_certs": {
-																						"description": "X509 certificate to verify the signature in the SAML authentication response",
+																						"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																						"type": "array",
 																						"items": {
 																							"type": "string"
@@ -2184911,6 +2185846,13 @@
 																						"example": 8192,
 																						"maximum": 100000,
 																						"minimum": 512,
+																						"x-auditable": true
+																					},
+																					"metadata_url": {
+																						"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																						"type": "string",
+																						"format": "uri",
+																						"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																						"x-auditable": true
 																					},
 																					"sign_request": {
@@ -2187419,7 +2188361,7 @@
 																}
 															},
 															"idp_public_certs": {
-																"description": "X509 certificate to verify the signature in the SAML authentication response",
+																"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																"type": "array",
 																"items": {
 																	"type": "string"
@@ -2187437,6 +2188379,13 @@
 																"example": 8192,
 																"maximum": 100000,
 																"minimum": 512,
+																"x-auditable": true
+															},
+															"metadata_url": {
+																"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																"type": "string",
+																"format": "uri",
+																"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																"x-auditable": true
 															},
 															"sign_request": {
@@ -2189751,7 +2190700,7 @@
 																					}
 																				},
 																				"idp_public_certs": {
-																					"description": "X509 certificate to verify the signature in the SAML authentication response",
+																					"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																					"type": "array",
 																					"items": {
 																						"type": "string"
@@ -2189769,6 +2190718,13 @@
 																					"example": 8192,
 																					"maximum": 100000,
 																					"minimum": 512,
+																					"x-auditable": true
+																				},
+																				"metadata_url": {
+																					"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																					"type": "string",
+																					"format": "uri",
+																					"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																					"x-auditable": true
 																				},
 																				"sign_request": {
@@ -2192536,7 +2193492,7 @@
 																					}
 																				},
 																				"idp_public_certs": {
-																					"description": "X509 certificate to verify the signature in the SAML authentication response",
+																					"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																					"type": "array",
 																					"items": {
 																						"type": "string"
@@ -2192554,6 +2193510,13 @@
 																					"example": 8192,
 																					"maximum": 100000,
 																					"minimum": 512,
+																					"x-auditable": true
+																				},
+																				"metadata_url": {
+																					"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																					"type": "string",
+																					"format": "uri",
+																					"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																					"x-auditable": true
 																				},
 																				"sign_request": {
@@ -2194945,7 +2195908,7 @@
 																}
 															},
 															"idp_public_certs": {
-																"description": "X509 certificate to verify the signature in the SAML authentication response",
+																"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																"type": "array",
 																"items": {
 																	"type": "string"
@@ -2194963,6 +2195926,13 @@
 																"example": 8192,
 																"maximum": 100000,
 																"minimum": 512,
+																"x-auditable": true
+															},
+															"metadata_url": {
+																"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																"type": "string",
+																"format": "uri",
+																"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																"x-auditable": true
 															},
 															"sign_request": {
@@ -2197277,7 +2198247,7 @@
 																					}
 																				},
 																				"idp_public_certs": {
-																					"description": "X509 certificate to verify the signature in the SAML authentication response",
+																					"description": "X509 certificate to verify the signature in the SAML authentication response. Mutually exclusive with `metadata_url`.",
 																					"type": "array",
 																					"items": {
 																						"type": "string"
@@ -2197295,6 +2198265,13 @@
 																					"example": 8192,
 																					"maximum": 100000,
 																					"minimum": 512,
+																					"x-auditable": true
+																				},
+																				"metadata_url": {
+																					"description": "HTTPS URL of the IdP's SAML metadata document from which Access reads the signing certificates used to verify SAML authentication responses. Mutually exclusive with `idp_public_certs`.",
+																					"type": "string",
+																					"format": "uri",
+																					"example": "https://idp.example.com/FederationMetadata/2007-06/FederationMetadata.xml",
 																					"x-auditable": true
 																				},
 																				"sign_request": {
@@ -2699408,6 +2700385,7 @@
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
+															"app_library_application": "#/components/schemas/resource-tagging_tagged_resource_object_app_library_application",
 															"cloudflared_tunnel": "#/components/schemas/resource-tagging_tagged_resource_object_cloudflared_tunnel",
 															"custom_certificate": "#/components/schemas/resource-tagging_tagged_resource_object_custom_certificate",
 															"custom_hostname": "#/components/schemas/resource-tagging_tagged_resource_object_custom_hostname",
@@ -2700295,6 +2701273,74 @@
 																		"name",
 																		"etag",
 																		"zone_id"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for app_library_application resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"app_library_application"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
 																	]
 																}
 															]
@@ -2703314,6 +2704360,7 @@
 															"alerting_policy": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_policy",
 															"alerting_webhook": "#/components/schemas/resource-tagging_tagged_resource_object_alerting_webhook",
 															"api_gateway_operation": "#/components/schemas/resource-tagging_tagged_resource_object_api_gateway_operation",
+															"app_library_application": "#/components/schemas/resource-tagging_tagged_resource_object_app_library_application",
 															"cloudflared_tunnel": "#/components/schemas/resource-tagging_tagged_resource_object_cloudflared_tunnel",
 															"custom_certificate": "#/components/schemas/resource-tagging_tagged_resource_object_custom_certificate",
 															"custom_hostname": "#/components/schemas/resource-tagging_tagged_resource_object_custom_hostname",
@@ -2704201,6 +2705248,74 @@
 																		"name",
 																		"etag",
 																		"zone_id"
+																	]
+																}
+															]
+														},
+														{
+															"description": "Response for app_library_application resources",
+															"allOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"app_library_application"
+																			]
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"description": "Base schema for account-level resources (without type discriminator)",
+																	"type": "object",
+																	"properties": {
+																		"etag": {
+																			"description": "ETag identifier for optimistic concurrency control. Formatted as \"v1:<hash>\" where\nthe hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map\ncanonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat\nETags as opaque strings and pass them back via the If-Match header on write operations.\n",
+																			"type": "string",
+																			"example": "v1:RBNvo1WzZ4oRRq0W9-hkng",
+																			"readOnly": true
+																		},
+																		"id": {
+																			"description": "Identifies the unique resource.",
+																			"type": "string",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"description": "Human-readable name of the resource.",
+																			"type": "string",
+																			"example": "my-worker-script"
+																		},
+																		"tags": {
+																			"description": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+																			"type": "object",
+																			"example": {
+																				"environment": "production",
+																				"team": "engineering"
+																			},
+																			"additionalProperties": {
+																				"maxLength": 1024,
+																				"type": "string"
+																			},
+																			"x-auditable": true
+																		},
+																		"tags_updated_at": {
+																			"description": "Monotonic version of the resource's tags: the timestamp assigned when the\ntags were last written. Returned by read endpoints, by 2PC prepare (the\nversion that will be assigned on commit, unless a concurrent write lands\nfirst, in which case a newer version is assigned), and by 2PC commit (the\nauthoritative committed version). Omitted for untagged resources and\ndelete commits: a deleted resource has no current version, and deletions\nare ordered by event order rather than by version.\n",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-15T10:30:00Z",
+																			"readOnly": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tags",
+																		"name",
+																		"etag"
 																	]
 																}
 															]

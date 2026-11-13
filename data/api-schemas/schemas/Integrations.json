@@ -175,6 +175,7 @@
 												"display_name": "Google Domain-Wide Delegation Service Account",
 												"id": "google_domain_wide_delegation_service_account"
 											},
+											"config": {},
 											"created": "2025-01-15T10:00:00Z",
 											"id": "019d2e6a-d995-7185-afbd-4feead9e42ec",
 											"is_paused": false,
@@ -250,6 +251,87 @@
 													"display_name"
 												]
 											},
+											"config": {
+												"description": "Vendor-specific integration configuration.",
+												"allOf": [
+													{
+														"description": "Vendor-specific integration configuration returned by the API.",
+														"type": "object",
+														"properties": {
+															"gitlab": {
+																"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																"allOf": [
+																	{
+																		"description": "Selected GitLab groups and projects returned by the API.",
+																		"type": "object",
+																		"properties": {
+																			"groups": {
+																				"description": "Selected top-level GitLab groups.",
+																				"type": "array",
+																				"items": {
+																					"type": "object",
+																					"properties": {
+																						"display_name": {
+																							"description": "Human-readable GitLab resource name.",
+																							"type": "string"
+																						},
+																						"id": {
+																							"description": "GitLab resource ID as a string-encoded positive integer.",
+																							"type": "string",
+																							"pattern": "^[1-9][0-9]*$"
+																						},
+																						"path": {
+																							"description": "Full GitLab resource path.",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"display_name",
+																						"id",
+																						"path"
+																					]
+																				}
+																			},
+																			"projects": {
+																				"description": "Selected GitLab projects.",
+																				"type": "array",
+																				"items": {
+																					"type": "object",
+																					"properties": {
+																						"display_name": {
+																							"description": "Human-readable GitLab resource name.",
+																							"type": "string"
+																						},
+																						"id": {
+																							"description": "GitLab resource ID as a string-encoded positive integer.",
+																							"type": "string",
+																							"pattern": "^[1-9][0-9]*$"
+																						},
+																						"path": {
+																							"description": "Full GitLab resource path.",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"display_name",
+																						"id",
+																						"path"
+																					]
+																				}
+																			}
+																		},
+																		"required": [
+																			"groups",
+																			"projects"
+																		]
+																	}
+																]
+															}
+														}
+													}
+												],
+												"readOnly": true
+											},
 											"created": {
 												"description": "When the integration was created.",
 												"type": "string",
@@ -294,6 +376,7 @@
 										"required": [
 											"application",
 											"auth_method",
+											"config",
 											"created",
 											"id",
 											"is_paused",
@@ -428,6 +511,7 @@
 											},
 											"link": "https://example.cloudflare.com/authorize"
 										},
+										"config": {},
 										"created": "2025-01-01T00:00:00Z",
 										"credentials_expiry": "2026-01-01T00:00:00Z",
 										"dlp_profiles": [
@@ -553,6 +637,87 @@
 														"components"
 													]
 												},
+												"config": {
+													"description": "Vendor-specific integration configuration.",
+													"allOf": [
+														{
+															"description": "Vendor-specific integration configuration returned by the API.",
+															"type": "object",
+															"properties": {
+																"gitlab": {
+																	"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																	"allOf": [
+																		{
+																			"description": "Selected GitLab groups and projects returned by the API.",
+																			"type": "object",
+																			"properties": {
+																				"groups": {
+																					"description": "Selected top-level GitLab groups.",
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"display_name": {
+																								"description": "Human-readable GitLab resource name.",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "GitLab resource ID as a string-encoded positive integer.",
+																								"type": "string",
+																								"pattern": "^[1-9][0-9]*$"
+																							},
+																							"path": {
+																								"description": "Full GitLab resource path.",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"display_name",
+																							"id",
+																							"path"
+																						]
+																					}
+																				},
+																				"projects": {
+																					"description": "Selected GitLab projects.",
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"display_name": {
+																								"description": "Human-readable GitLab resource name.",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "GitLab resource ID as a string-encoded positive integer.",
+																								"type": "string",
+																								"pattern": "^[1-9][0-9]*$"
+																							},
+																							"path": {
+																								"description": "Full GitLab resource path.",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"display_name",
+																							"id",
+																							"path"
+																						]
+																					}
+																				}
+																			},
+																			"required": [
+																				"groups",
+																				"projects"
+																			]
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"readOnly": true
+												},
 												"created": {
 													"description": "When the integration was created.",
 													"type": "string",
@@ -629,6 +794,7 @@
 												"application",
 												"auth_method",
 												"authorization_link",
+												"config",
 												"created",
 												"credentials_expiry",
 												"dlp_profiles",
@@ -681,7 +847,7 @@
 	"PATCH /accounts/{account_id}/one/integrations/{id}": {
 		"operationId": "update_integration_v2",
 		"summary": "Update integration",
-		"description": "Updates an integration's name, permissions, DLP profiles, use cases, or credentials.",
+		"description": "Updates an integration's name, permissions, DLP profiles, use cases, credentials, or GitLab resources.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -719,6 +885,16 @@
 						"UpdateFields": {
 							"summary": "Example update integration request",
 							"value": {
+								"config": {
+									"gitlab": {
+										"group_ids": [
+											"11"
+										],
+										"project_ids": [
+											"22"
+										]
+									}
+								},
 								"credentials": {
 									"admin_email": "admin@corp.com"
 								},
@@ -740,6 +916,51 @@
 						"description": "Serializer for v2 integration PATCH requests.",
 						"type": "object",
 						"properties": {
+							"config": {
+								"description": "Vendor-specific integration configuration.",
+								"allOf": [
+									{
+										"description": "Vendor-specific integration configuration accepted during updates.",
+										"type": "object",
+										"properties": {
+											"gitlab": {
+												"description": "GitLab-specific configuration. Accepted only for GitLab integrations.",
+												"allOf": [
+													{
+														"description": "Selected GitLab groups and projects.",
+														"type": "object",
+														"properties": {
+															"group_ids": {
+																"description": "Selected top-level GitLab group IDs as string-encoded positive integers.",
+																"type": "array",
+																"items": {
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"pattern": "^[1-9][0-9]*$",
+																	"type": "string"
+																},
+																"maxItems": 10000
+															},
+															"project_ids": {
+																"description": "Selected GitLab project IDs as string-encoded positive integers.",
+																"type": "array",
+																"items": {
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"pattern": "^[1-9][0-9]*$",
+																	"type": "string"
+																},
+																"maxItems": 10000
+															}
+														}
+													}
+												]
+											}
+										}
+									}
+								],
+								"x-fern-property-name": "integration_config"
+							},
 							"credentials": {
 								"description": "Partial credential fields to merge with existing.",
 								"type": "object",
@@ -789,6 +1010,51 @@
 						"description": "Serializer for v2 integration PATCH requests.",
 						"type": "object",
 						"properties": {
+							"config": {
+								"description": "Vendor-specific integration configuration.",
+								"allOf": [
+									{
+										"description": "Vendor-specific integration configuration accepted during updates.",
+										"type": "object",
+										"properties": {
+											"gitlab": {
+												"description": "GitLab-specific configuration. Accepted only for GitLab integrations.",
+												"allOf": [
+													{
+														"description": "Selected GitLab groups and projects.",
+														"type": "object",
+														"properties": {
+															"group_ids": {
+																"description": "Selected top-level GitLab group IDs as string-encoded positive integers.",
+																"type": "array",
+																"items": {
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"pattern": "^[1-9][0-9]*$",
+																	"type": "string"
+																},
+																"maxItems": 10000
+															},
+															"project_ids": {
+																"description": "Selected GitLab project IDs as string-encoded positive integers.",
+																"type": "array",
+																"items": {
+																	"maxLength": 255,
+																	"minLength": 1,
+																	"pattern": "^[1-9][0-9]*$",
+																	"type": "string"
+																},
+																"maxItems": 10000
+															}
+														}
+													}
+												]
+											}
+										}
+									}
+								],
+								"x-fern-property-name": "integration_config"
+							},
 							"credentials": {
 								"description": "Partial credential fields to merge with existing.",
 								"type": "object",
@@ -863,6 +1129,7 @@
 											},
 											"link": "https://example.cloudflare.com/authorize"
 										},
+										"config": {},
 										"created": "2025-01-01T00:00:00Z",
 										"credentials_expiry": "2026-01-01T00:00:00Z",
 										"dlp_profiles": [
@@ -988,6 +1255,87 @@
 														"components"
 													]
 												},
+												"config": {
+													"description": "Vendor-specific integration configuration.",
+													"allOf": [
+														{
+															"description": "Vendor-specific integration configuration returned by the API.",
+															"type": "object",
+															"properties": {
+																"gitlab": {
+																	"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																	"allOf": [
+																		{
+																			"description": "Selected GitLab groups and projects returned by the API.",
+																			"type": "object",
+																			"properties": {
+																				"groups": {
+																					"description": "Selected top-level GitLab groups.",
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"display_name": {
+																								"description": "Human-readable GitLab resource name.",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "GitLab resource ID as a string-encoded positive integer.",
+																								"type": "string",
+																								"pattern": "^[1-9][0-9]*$"
+																							},
+																							"path": {
+																								"description": "Full GitLab resource path.",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"display_name",
+																							"id",
+																							"path"
+																						]
+																					}
+																				},
+																				"projects": {
+																					"description": "Selected GitLab projects.",
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"display_name": {
+																								"description": "Human-readable GitLab resource name.",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "GitLab resource ID as a string-encoded positive integer.",
+																								"type": "string",
+																								"pattern": "^[1-9][0-9]*$"
+																							},
+																							"path": {
+																								"description": "Full GitLab resource path.",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"display_name",
+																							"id",
+																							"path"
+																						]
+																					}
+																				}
+																			},
+																			"required": [
+																				"groups",
+																				"projects"
+																			]
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"readOnly": true
+												},
 												"created": {
 													"description": "When the integration was created.",
 													"type": "string",
@@ -1064,6 +1412,7 @@
 												"application",
 												"auth_method",
 												"authorization_link",
+												"config",
 												"created",
 												"credentials_expiry",
 												"dlp_profiles",
@@ -1116,7 +1465,7 @@
 	"POST /accounts/{account_id}/one/integrations": {
 		"operationId": "create_integration_v2",
 		"summary": "Create integration",
-		"description": "Creates a new integration for the specified application. Integration creation with OAuth is not supported by API at the moment. For other auth methods, use `GET /v2/applications/{application_id}/credential-guide` to see the required credential structure and example payloads for each vendor.",
+		"description": "Creates a new integration for the specified application. For other auth methods, use `GET /v2/applications/{application_id}/credential-guide` to see the required credential structure and example payloads for each vendor.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1351,6 +1700,7 @@
 											},
 											"link": "https://example.cloudflare.com/authorize"
 										},
+										"config": {},
 										"created": "2025-01-01T00:00:00Z",
 										"credentials_expiry": "2026-01-01T00:00:00Z",
 										"dlp_profiles": [
@@ -1476,6 +1826,87 @@
 														"components"
 													]
 												},
+												"config": {
+													"description": "Vendor-specific integration configuration.",
+													"allOf": [
+														{
+															"description": "Vendor-specific integration configuration returned by the API.",
+															"type": "object",
+															"properties": {
+																"gitlab": {
+																	"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																	"allOf": [
+																		{
+																			"description": "Selected GitLab groups and projects returned by the API.",
+																			"type": "object",
+																			"properties": {
+																				"groups": {
+																					"description": "Selected top-level GitLab groups.",
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"display_name": {
+																								"description": "Human-readable GitLab resource name.",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "GitLab resource ID as a string-encoded positive integer.",
+																								"type": "string",
+																								"pattern": "^[1-9][0-9]*$"
+																							},
+																							"path": {
+																								"description": "Full GitLab resource path.",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"display_name",
+																							"id",
+																							"path"
+																						]
+																					}
+																				},
+																				"projects": {
+																					"description": "Selected GitLab projects.",
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"display_name": {
+																								"description": "Human-readable GitLab resource name.",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "GitLab resource ID as a string-encoded positive integer.",
+																								"type": "string",
+																								"pattern": "^[1-9][0-9]*$"
+																							},
+																							"path": {
+																								"description": "Full GitLab resource path.",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"display_name",
+																							"id",
+																							"path"
+																						]
+																					}
+																				}
+																			},
+																			"required": [
+																				"groups",
+																				"projects"
+																			]
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"readOnly": true
+												},
 												"created": {
 													"description": "When the integration was created.",
 													"type": "string",
@@ -1552,6 +1983,7 @@
 												"application",
 												"auth_method",
 												"authorization_link",
+												"config",
 												"created",
 												"credentials_expiry",
 												"dlp_profiles",
@@ -1654,6 +2086,7 @@
 											},
 											"link": "https://example.cloudflare.com/authorize"
 										},
+										"config": {},
 										"created": "2025-01-01T00:00:00Z",
 										"credentials_expiry": "2026-01-01T00:00:00Z",
 										"dlp_profiles": [
@@ -1779,6 +2212,87 @@
 														"components"
 													]
 												},
+												"config": {
+													"description": "Vendor-specific integration configuration.",
+													"allOf": [
+														{
+															"description": "Vendor-specific integration configuration returned by the API.",
+															"type": "object",
+															"properties": {
+																"gitlab": {
+																	"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																	"allOf": [
+																		{
+																			"description": "Selected GitLab groups and projects returned by the API.",
+																			"type": "object",
+																			"properties": {
+																				"groups": {
+																					"description": "Selected top-level GitLab groups.",
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"display_name": {
+																								"description": "Human-readable GitLab resource name.",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "GitLab resource ID as a string-encoded positive integer.",
+																								"type": "string",
+																								"pattern": "^[1-9][0-9]*$"
+																							},
+																							"path": {
+																								"description": "Full GitLab resource path.",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"display_name",
+																							"id",
+																							"path"
+																						]
+																					}
+																				},
+																				"projects": {
+																					"description": "Selected GitLab projects.",
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"display_name": {
+																								"description": "Human-readable GitLab resource name.",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "GitLab resource ID as a string-encoded positive integer.",
+																								"type": "string",
+																								"pattern": "^[1-9][0-9]*$"
+																							},
+																							"path": {
+																								"description": "Full GitLab resource path.",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"display_name",
+																							"id",
+																							"path"
+																						]
+																					}
+																				}
+																			},
+																			"required": [
+																				"groups",
+																				"projects"
+																			]
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"readOnly": true
+												},
 												"created": {
 													"description": "When the integration was created.",
 													"type": "string",
@@ -1855,6 +2369,7 @@
 												"application",
 												"auth_method",
 												"authorization_link",
+												"config",
 												"created",
 												"credentials_expiry",
 												"dlp_profiles",
@@ -1957,6 +2472,7 @@
 											},
 											"link": "https://example.cloudflare.com/authorize"
 										},
+										"config": {},
 										"created": "2025-01-01T00:00:00Z",
 										"credentials_expiry": "2026-01-01T00:00:00Z",
 										"dlp_profiles": [
@@ -2082,6 +2598,87 @@
 														"components"
 													]
 												},
+												"config": {
+													"description": "Vendor-specific integration configuration.",
+													"allOf": [
+														{
+															"description": "Vendor-specific integration configuration returned by the API.",
+															"type": "object",
+															"properties": {
+																"gitlab": {
+																	"description": "GitLab-specific configuration. Present only for GitLab integrations.",
+																	"allOf": [
+																		{
+																			"description": "Selected GitLab groups and projects returned by the API.",
+																			"type": "object",
+																			"properties": {
+																				"groups": {
+																					"description": "Selected top-level GitLab groups.",
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"display_name": {
+																								"description": "Human-readable GitLab resource name.",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "GitLab resource ID as a string-encoded positive integer.",
+																								"type": "string",
+																								"pattern": "^[1-9][0-9]*$"
+																							},
+																							"path": {
+																								"description": "Full GitLab resource path.",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"display_name",
+																							"id",
+																							"path"
+																						]
+																					}
+																				},
+																				"projects": {
+																					"description": "Selected GitLab projects.",
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"properties": {
+																							"display_name": {
+																								"description": "Human-readable GitLab resource name.",
+																								"type": "string"
+																							},
+																							"id": {
+																								"description": "GitLab resource ID as a string-encoded positive integer.",
+																								"type": "string",
+																								"pattern": "^[1-9][0-9]*$"
+																							},
+																							"path": {
+																								"description": "Full GitLab resource path.",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"display_name",
+																							"id",
+																							"path"
+																						]
+																					}
+																				}
+																			},
+																			"required": [
+																				"groups",
+																				"projects"
+																			]
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"readOnly": true
+												},
 												"created": {
 													"description": "When the integration was created.",
 													"type": "string",
@@ -2158,6 +2755,7 @@
 												"application",
 												"auth_method",
 												"authorization_link",
+												"config",
 												"created",
 												"credentials_expiry",
 												"dlp_profiles",

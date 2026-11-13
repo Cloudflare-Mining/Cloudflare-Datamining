@@ -5063,6 +5063,13 @@
 											"auth_config": {
 												"authorization_url": "https://login.microsoftonline.com/common/adminconsent",
 												"client_id": "abc123-def456",
+												"feature_overrides": [
+													{
+														"authorization_url": "https://login.microsoftonline.com/common/adminconsent?client_id=ghi789-jkl012",
+														"client_id": "ghi789-jkl012",
+														"feature": "auto_remediation"
+													}
+												],
 												"requires_pkce": false,
 												"scopes": [
 													"https://graph.microsoft.com/.default"
@@ -5151,6 +5158,35 @@
 																"type": "string",
 																"nullable": true
 															},
+															"feature_overrides": {
+																"description": "Per-feature authorization overrides. When a listed feature is selected, authorize with the override's client ID and URL instead of the defaults above.",
+																"type": "array",
+																"items": {
+																	"description": "Authorization settings to use instead of the defaults when a feature is selected.",
+																	"type": "object",
+																	"properties": {
+																		"authorization_url": {
+																			"description": "Full OAuth authorization URL with query parameters.",
+																			"type": "string",
+																			"nullable": true
+																		},
+																		"client_id": {
+																			"description": "OAuth client ID to authorize with.",
+																			"type": "string",
+																			"nullable": true
+																		},
+																		"feature": {
+																			"description": "Feature identifier that triggers this override.",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"authorization_url",
+																		"client_id",
+																		"feature"
+																	]
+																}
+															},
 															"requires_pkce": {
 																"description": "Whether PKCE is required.",
 																"type": "boolean"
@@ -5173,6 +5209,7 @@
 														"required": [
 															"authorization_url",
 															"client_id",
+															"feature_overrides",
 															"requires_pkce",
 															"scopes",
 															"url_placeholders"

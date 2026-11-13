@@ -459,6 +459,12 @@
 											"type": "string",
 											"format": "date-time"
 										},
+										"multiprovider_enabled": {
+											"description": "Lets requests to a model use every provider that serves it. When off, a model uses only the providers it launched with, so a provider added later receives none of its traffic. A request that names providers (the cf-aig-allowed-providers header or routing.allowedProviders) can still use any of them. Model aliases (custom/) are not restricted.",
+											"type": "boolean",
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
+										},
 										"otel": {
 											"type": "array",
 											"items": {
@@ -1354,6 +1360,12 @@
 											"modified_at": {
 												"type": "string",
 												"format": "date-time"
+											},
+											"multiprovider_enabled": {
+												"description": "Lets requests to a model use every provider that serves it. When off, a model uses only the providers it launched with, so a provider added later receives none of its traffic. A request that names providers (the cf-aig-allowed-providers header or routing.allowedProviders) can still use any of them. Model aliases (custom/) are not restricted.",
+												"type": "boolean",
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "computed_optional"
 											},
 											"otel": {
 												"type": "array",
@@ -2331,6 +2343,12 @@
 										"modified_at": {
 											"type": "string",
 											"format": "date-time"
+										},
+										"multiprovider_enabled": {
+											"description": "Lets requests to a model use every provider that serves it. When off, a model uses only the providers it launched with, so a provider added later receives none of its traffic. A request that names providers (the cf-aig-allowed-providers header or routing.allowedProviders) can still use any of them. Model aliases (custom/) are not restricted.",
+											"type": "boolean",
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"otel": {
 											"type": "array",
@@ -3885,6 +3903,12 @@
 											"type": "string",
 											"format": "date-time"
 										},
+										"multiprovider_enabled": {
+											"description": "Lets requests to a model use every provider that serves it. When off, a model uses only the providers it launched with, so a provider added later receives none of its traffic. A request that names providers (the cf-aig-allowed-providers header or routing.allowedProviders) can still use any of them. Model aliases (custom/) are not restricted.",
+											"type": "boolean",
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
+										},
 										"otel": {
 											"type": "array",
 											"items": {
@@ -5401,6 +5425,12 @@
 										"modified_at": {
 											"type": "string",
 											"format": "date-time"
+										},
+										"multiprovider_enabled": {
+											"description": "Lets requests to a model use every provider that serves it. When off, a model uses only the providers it launched with, so a provider added later receives none of its traffic. A request that names providers (the cf-aig-allowed-providers header or routing.allowedProviders) can still use any of them. Model aliases (custom/) are not restricted.",
+											"type": "boolean",
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"otel": {
 											"type": "array",

@@ -504,7 +504,9 @@
 				"schema": {
 					"description": "Page number",
 					"type": "integer",
-					"example": 1
+					"example": 1,
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
@@ -514,7 +516,10 @@
 				"schema": {
 					"description": "Number of routes per page",
 					"type": "integer",
-					"example": 20
+					"example": 20,
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
 				}
 			}
 		],
@@ -1609,7 +1614,9 @@
 				"schema": {
 					"description": "Page number",
 					"type": "integer",
-					"example": 1
+					"example": 1,
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
@@ -1619,7 +1626,10 @@
 				"schema": {
 					"description": "Number of deployments per page",
 					"type": "integer",
-					"example": 20
+					"example": 20,
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
 				}
 			}
 		],
@@ -1798,7 +1808,9 @@
 				"schema": {
 					"description": "Page number",
 					"type": "integer",
-					"example": 1
+					"example": 1,
+					"default": 1,
+					"minimum": 1
 				}
 			},
 			{
@@ -1808,7 +1820,10 @@
 				"schema": {
 					"description": "Number of versions per page",
 					"type": "integer",
-					"example": 20
+					"example": 20,
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
 				}
 			}
 		],
