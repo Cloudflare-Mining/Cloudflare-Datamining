@@ -16,7 +16,11 @@ Browse upcoming Cloudflare events around the world.
 
 EMEA
 
-[Barcelona, ESGartner IT SymposiumNov 9–Nov 12Learn more](https://www.gartner.com/en/conferences/emea/symposium-spain)[Zurich, CHImmerse ZurichNov 17Learn more](https://fieldmarketing.www.cloudflare.com/immerse-zurich-2026)
+[Zurich, CHImmerse ZurichNov 17Learn more](https://fieldmarketing.www.cloudflare.com/immerse-zurich-2026)
+
+Previous events
+
+[Barcelona, ESGartner IT SymposiumNov 9–Nov 12Learn more](https://www.gartner.com/en/conferences/emea/symposium-spain)
 
 # Build without boundaries
 

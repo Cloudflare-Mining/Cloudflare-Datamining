@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 13, 2026 [<h2>Introducing Spend Management: Spending limits and alerts for Cloudflare</h2>](https://blog.cloudflare.com/spend-management/)
+
+Spend Management adds opt-in spending caps for Cloudflare Workers and Durable Objects, and more products soon. Here is how we built the metering pipeline that turns usage into runtime decisions.
+
+![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Sid Chatterjee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XJ0J0NXPCD8TWD8F0KKP.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Brendan Irvine-Broque](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H9641F9RZN2BA8BPX7HK.JPG&w=64&h=64&f=webp&fit=cover&position=center)![Zunayed Ali](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ1X7VHNGDVK1WPDK7WS7DWR.webp&w=64&h=64&f=webp&fit=cover&position=center)![André Cruz](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FAFHK5DDQ0GQPPQ92C3B.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Celso Martinho](https://blog.cloudflare.com/author/celso/),  [Sid Chatterjee](https://blog.cloudflare.com/author/sid/),  [Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/),  [Zunayed Ali](https://blog.cloudflare.com/author/zunayed-ali/), and  [André Cruz](https://blog.cloudflare.com/author/andre-cruz/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M79507GNA08VSCSPAXM0NCC3.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/spend-management/)
+
 November 11, 2026 [<h2>Choosing QuePaxa, an unusual consensus algorithm</h2>](https://blog.cloudflare.com/choosing-quepaxa/)
 
 Cloudflare is building an experimental consensus service using a never-before-deployed consensus algorithm, QuePaxa. In this post we explain how QuePaxa works and why we chose it.
@@ -17,8 +27,6 @@ Cloudflare is building an experimental consensus service using a never-before-de
 ![João Pedro Leite](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q3HR5NWBDTW5N6DCXWKT.webp&w=64&h=64&f=webp&fit=cover&position=center)![ Bob Halley](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXJFYHRZYTBR06JDENDTQ12N.jpg&w=64&h=64&f=webp&fit=cover&position=center)![James Larisch](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9J5HQA4MAD7AN1K285E.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [João Pedro Leite](https://blog.cloudflare.com/author/joao-pedro-leite/),  [ Bob Halley](https://blog.cloudflare.com/author/bob-halley/), and  [James Larisch](https://blog.cloudflare.com/author/james-larisch/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M73MMXB6M86NA1F97GH7Q8TG.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/choosing-quepaxa/)
 
 November 9, 2026 [<h2>Launching the Vite Ecosystem Fund</h2>](https://blog.cloudflare.com/launching-vite-ecosystem-fund/)
 
@@ -155,14 +163,6 @@ Cloudflare has deployed default web application firewall (WAF) protections for n
 ![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/), and  [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/)
-
-October 21, 2026 [<h2>How Commerce.com and Cloudflare are getting storefronts ready for AI agents</h2>](https://blog.cloudflare.com/webmcp-commerce/)
-
-Almost 100,000 Commerce.com domains now give AI agents real shopping tools through WebMCP on Cloudflare. Here's how we turned it on across every store at once, while keeping each merchant in control.
-
-![Jenny Lea](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AYXNDF4KMCR86PP29ANNS2.01M5AYXP6FTHD6G8SRE703MNH7.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Max Brosnahan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5AZ7KZVQ4CXW8ABKK47FTR8.01M5AZ7MWFZHG2Y8WMY47NR4JA.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Jenny Lea](https://blog.cloudflare.com/author/jenny-lea/),  [Max Brosnahan](https://blog.cloudflare.com/author/max-brosnahan/), and  [Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/)
 
 Load more
 
