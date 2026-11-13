@@ -68,66 +68,66 @@
 	<ul data-path-to-node="5">
 		<li>
 			<div>
-				<p><span class="citation-1006 citation-1007 citation-1008 citation-end-1008">Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make lif<sup class="superscript" data-turn-source-index="1"></sup></span><span class="citation-1006 citation-1007">e a little easier and fun! The below is a description of our </span><span class="citation-1004 citation-1005 citation-1006 citation-1007 citation-end-1007">benefits for employees in the United States, and benefits may var<sup class="superscript" data-turn-source-index="2"></sup></span><span class="citation-1004 citation-1005 citation-1006 citation-end-1006">y for employees based outside the U.S<sup class="superscript" data-turn-source-index="3"></sup></span><span class="citation-1004 citation-1005 citation-end-1005">.<sup class="superscript" data-turn-source-index="4"></sup></span><span class="citation-1004 citation-end-1004"><sup class="superscript" data-turn-source-index="5"></sup></span> </p>
+				<p><span class="citation-1006 citation-1007 citation-1008 citation-end-1008">Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make lif</span><span class="citation-1006 citation-1007">e a little easier and fun! The below is a description of our </span><span class="citation-1004 citation-1005 citation-1006 citation-1007 citation-end-1007">benefits for employees in the United States, and benefits may var</span><span class="citation-1004 citation-1005 citation-1006 citation-end-1006">y for employees based outside the U.S</span><span class="citation-1004 citation-1005 citation-end-1005">.</span></p>
 			</div>
 		</li>
 		<li>
-			<div><span class="citation-1002 citation-1003 citation-end-1003">Health &amp; Welfare Benefits<sup class="superscript" data-turn-source-index="6"></sup></span><span class="citation-1002 citation-end-1002"><sup class="superscript" data-turn-source-index="7"></sup></span> </div>
+			<div><span class="citation-1002 citation-1003 citation-end-1003">Health &amp; Welfare Benefits</span></div>
 			<br>
 			<ul data-path-to-node="5,1,1">
 				<li>
-					<div><span class="citation-998 citation-999 citation-1000 citation-1001 citation-end-1001">Medical/Rx Insurance<sup class="superscript" data-turn-source-index="8"></sup></span><span class="citation-998 citation-999 citation-1000 citation-end-1000"><sup class="superscript" data-turn-source-index="9"></sup></span><span class="citation-998 citation-999 citation-end-999"><sup class="superscript" data-turn-source-index="10"></sup></span><span class="citation-998 citation-end-998"><sup class="superscript" data-turn-source-index="11"></sup></span>&nbsp;</div>
+					<div><span class="citation-998 citation-999 citation-1000 citation-1001 citation-end-1001">Medical/Rx Insurance</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-994 citation-995 citation-996 citation-997 citation-end-997">Dental Insurance<sup class="superscript" data-turn-source-index="12"></sup></span><span class="citation-994 citation-995 citation-996 citation-end-996"><sup class="superscript" data-turn-source-index="13"></sup></span><span class="citation-994 citation-995 citation-end-995"><sup class="superscript" data-turn-source-index="14"></sup></span><span class="citation-994 citation-end-994"><sup class="superscript" data-turn-source-index="15"></sup></span>&nbsp;</div>
+					<div><span class="citation-994 citation-995 citation-996 citation-997 citation-end-997">Dental Insurance</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-990 citation-991 citation-992 citation-993 citation-end-993">Vision Insurance<sup class="superscript" data-turn-source-index="16"></sup></span><span class="citation-990 citation-991 citation-992 citation-end-992"><sup class="superscript" data-turn-source-index="17"></sup></span><span class="citation-990 citation-991 citation-end-991"><sup class="superscript" data-turn-source-index="18"></sup></span><span class="citation-990 citation-end-990"><sup class="superscript" data-turn-source-index="19"></sup></span>&nbsp;</div>
+					<div><span class="citation-990 citation-991 citation-992 citation-993 citation-end-993">Vision Insurance</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-986 citation-987 citation-988 citation-989 citation-end-989">Flexible Spending Accounts<sup class="superscript" data-turn-source-index="20"></sup></span><span class="citation-986 citation-987 citation-988 citation-end-988"><sup class="superscript" data-turn-source-index="21"></sup></span><span class="citation-986 citation-987 citation-end-987"><sup class="superscript" data-turn-source-index="22"></sup></span><span class="citation-986 citation-end-986"><sup class="superscript" data-turn-source-index="23"></sup></span>&nbsp;</div>
+					<div><span class="citation-986 citation-987 citation-988 citation-989 citation-end-989">Flexible Spending Accounts</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-982 citation-983 citation-984 citation-985 citation-end-985">Commuter Spending Acc<sup class="superscript" data-turn-source-index="24"></sup></span><span class="citation-982 citation-983 citation-984 citation-end-984">ounts<sup class="superscript" data-turn-source-index="25"></sup></span><span class="citation-982 citation-983 citation-end-983"><sup class="superscript" data-turn-source-index="26"></sup></span><span class="citation-982 citation-end-982"><sup class="superscript" data-turn-source-index="27"></sup></span>&nbsp;</div>
+					<div><span class="citation-982 citation-983 citation-984 citation-985 citation-end-985">Commuter Spending Acc</span><span class="citation-982 citation-983 citation-984 citation-end-984">ounts</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-979 citation-980 citation-981 citation-end-981">Fe<sup class="superscript" data-turn-source-index="28"></sup></span><span class="citation-979 citation-980 citation-end-980">rtility &amp; Family Forming Benefits<sup class="superscript" data-turn-source-index="29"></sup></span><span class="citation-979 citation-end-979"><sup class="superscript" data-turn-source-index="30"></sup></span>&nbsp;</div>
+					<div><span class="citation-979 citation-980 citation-981 citation-end-981">Fe</span><span class="citation-979 citation-980 citation-end-980">rtility &amp; Family Forming Benefits</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-976 citation-977 citation-978 citation-end-978">On-demand mental health support and Employee Assistance Program<sup class="superscript" data-turn-source-index="31"></sup></span><span class="citation-976 citation-977 citation-end-977"><sup class="superscript" data-turn-source-index="32"></sup></span><span class="citation-976 citation-end-976"><sup class="superscript" data-turn-source-index="33"></sup></span>&nbsp;</div>
+					<div><span class="citation-976 citation-977 citation-978 citation-end-978">On-demand mental health support and Employee Assistance Program</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-973 citation-974 citation-975 citation-end-975">Global Travel<sup class="superscript" data-turn-source-index="34"></sup></span><span class="citation-973 citation-974 citation-end-974"> Medical Insurance<sup class="superscript" data-turn-source-index="35"></sup></span><span class="citation-973 citation-end-973"><sup class="superscript" data-turn-source-index="36"></sup></span> </div>
+					<div><span class="citation-973 citation-974 citation-975 citation-end-975">Global Travel</span><span class="citation-973 citation-974 citation-end-974"> Medical Insurance</span></div>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<div><span class="citation-972 citation-end-972">Financial Benefits<sup class="superscript" data-turn-source-index="37"></sup></span> </div>
+			<div><span class="citation-972 citation-end-972">Financial Benefits</span></div>
 			<br>
 			<ul data-path-to-node="5,2,1">
 				<li>
-					<div><span class="citation-971">Short and </span><span class="citation-970 citation-971 citation-end-971">Long Term Disability Insurance<sup class="superscript" data-turn-source-index="38"></sup></span><span class="citation-970 citation-end-970"><sup class="superscript" data-turn-source-index="39"></sup></span>&nbsp;</div>
+					<div><span class="citation-971">Short and </span><span class="citation-970 citation-971 citation-end-971">Long Term Disability Insurance</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-968 citation-969 citation-end-969">Life &amp; Accident Insurance<sup class="superscript" data-turn-source-index="40"></sup></span><span class="citation-968 citation-end-968"><sup class="superscript" data-turn-source-index="41"></sup></span>&nbsp;</div>
+					<div><span class="citation-968 citation-969 citation-end-969">Life &amp; Accident Insurance</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-966 citation-967 citation-end-967">401(k) Retirement Savings Plan<sup class="superscript" data-turn-source-index="42"></sup></span><span class="citation-966 citation-end-966"><sup class="superscript" data-turn-source-index="43"></sup></span>&nbsp;</div>
+					<div><span class="citation-966 citation-967 citation-end-967">401(k) Retirement Savings Plan</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-964 citation-965 citation-end-965">Employee Stock P<sup class="superscript" data-turn-source-index="44"></sup></span><span class="citation-964 citation-end-964">articipation Plan<sup class="superscript" data-turn-source-index="45"></sup></span> </div>
+					<div><span class="citation-964 citation-965 citation-end-965">Employee Stock P</span><span class="citation-964 citation-end-964">articipation Plan</span></div>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<div><span class="citation-963 citation-end-963">Time Off<sup class="superscript" data-turn-source-index="46"></sup></span> </div>
+			<div><span class="citation-963 citation-end-963">Time Off</span></div>
 			<br>
 			<ul data-path-to-node="5,3,1">
 				<li>
-					<div><span class="citation-962 citation-end-962">Flexible paid time off covering vacation and sick leave<sup class="superscript" data-turn-source-index="47"></sup></span>&nbsp;</div>
+					<div><span class="citation-962 citation-end-962">Flexible paid time off covering vacation and sick leave</span>&nbsp;</div>
 				</li>
 				<li>
-					<div><span class="citation-961 citation-end-961">Leave programs, i<sup class="superscript" data-turn-source-index="48"></sup></span>ncluding parental, pregnancy health, medical, and bereavement leave </div>
+					<div><span class="citation-961 citation-end-961">Leave programs, i</span>ncluding parental, pregnancy health, medical, and bereavement leave</div>
 				</li>
 			</ul>
 		</li>
