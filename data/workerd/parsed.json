@@ -4715,6 +4715,14 @@
 						"experimental": true
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "pythonDedicatedSnapshotKeepImportCaches",
+					"annotations": {
+						"compatEnableFlag": "python_dedicated_snapshot_keep_import_caches",
+						"compatDisableFlag": "no_python_dedicated_snapshot_keep_import_caches"
+					},
+					"type": "Bool"
 				}
 			]
 		},
