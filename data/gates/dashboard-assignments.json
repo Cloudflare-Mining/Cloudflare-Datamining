@@ -30,7 +30,7 @@
 		"true": 100
 	},
 	"account-team-component": {
-		"true": 100
+		"false": 100
 	},
 	"account-traffic-analytics": {
 		"true": 100
@@ -181,6 +181,9 @@
 	},
 	"banda-billing": {
 		"true": 100
+	},
+	"basin-catalog-object-authz": {
+		"false": 100
 	},
 	"basin-rename": {
 		"true": 100
@@ -549,6 +552,9 @@
 		"true": 100
 	},
 	"disable-preview-badge": {
+		"false": 100
+	},
+	"dns-cursor-pagination": {
 		"false": 100
 	},
 	"dns-experience-enterprise": {
@@ -957,9 +963,6 @@
 	"paygo-account-create-ui": {
 		"true": 100
 	},
-	"payload-logging-v2": {
-		"true": 100
-	},
 	"pipelines-create-ui-v2": {
 		"true": 100
 	},
@@ -1238,9 +1241,6 @@
 	"soc-alerts-in-dash-organizations-managed-defense": {
 		"false": 100
 	},
-	"spectrum-tcp-worker-origin": {
-		"false": 100
-	},
 	"spectrum-v-net-origins": {
 		"true": 100
 	},
@@ -1263,7 +1263,7 @@
 		"true": 100
 	},
 	"spend-management-policy-api-allowlist": {
-		"false": 100
+		"true": 100
 	},
 	"ssl-frh-internal-client-certificates": {
 		"false": 100
