@@ -14,13 +14,39 @@ Events by region
 
 Browse upcoming Cloudflare events around the world.
 
-EMEA
+AmericasEMEAAPJC
 
-[Zurich, CHImmerse ZurichNov 17Learn more](https://fieldmarketing.www.cloudflare.com/immerse-zurich-2026)
+San Antonio, US
 
-Previous events
+Billington Critical Infrastructure Summit
 
-[Barcelona, ESGartner IT SymposiumNov 9–Nov 12Learn more](https://www.gartner.com/en/conferences/emea/symposium-spain)
+Nov 17–18
+
+Coming soon
+
+Ottawa, CA
+
+InCyber Forum
+
+Dec 1–3
+
+Coming soon
+
+Charleston, US
+
+Eastern Defense Summit
+
+Dec 8–10
+
+Coming soon
+
+Brooklyn, US
+
+NYC Technology Forum
+
+Dec 10–12
+
+Coming soon
 
 # Build without boundaries
 

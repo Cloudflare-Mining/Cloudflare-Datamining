@@ -10,6 +10,24 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 13, 2026 [<h2>Kitesurf is now open source</h2>](https://blog.cloudflare.com/kitesurf-open-source/)
+
+Kitesurf, our experimental browser engine for AI agents, is now open source. Inspect the code, run it locally, or deploy your own instance on Cloudflare Workers.
+
+![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Rui Figueira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VN7XMZ4WCQMGQSPJ2B3Q.webp&w=64&h=64&f=webp&fit=cover&position=center)![Bernardo Pereira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8R43WABMZ0H0YV3B88GQR.01M7B8R4EP3VE1SQT22XN2A4TS.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Luís Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4768W5B20EQMM9ZD5AQMED.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Celso Martinho](https://blog.cloudflare.com/author/celso/),  [Rui Figueira](https://blog.cloudflare.com/author/rui-figueira/),  [Bernardo Pereira](https://blog.cloudflare.com/author/bernardo-pereira/), and  [Luís Duarte](https://blog.cloudflare.com/author/luis-duarte/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M53647Q1KNRABY8VM2G7.png&w=1668&h=938&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/kitesurf-open-source/)
+
+November 13, 2026 [<h2>Adapting to AI penetration testing orchestrators: The Modern Security Model</h2>](https://blog.cloudflare.com/adapting-to-ai-penetration-testing-orchestrators/)
+
+AI-orchestrated penetration testing platforms like ARTEX have become increasingly powerful tools enabling effective attacks on exposed infrastructure. Here we share Cloudflare's observations and recommended countermeasures.
+
+![Blake Darché](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VFGSFTVH9S7TKX7T5BAC.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Myles Sloan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B4ANK9EGJM4EH371S9A6BD.01M7B4ANZBQS6F8T236XB9QRRT.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Jacob Crisp](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468SZ92CTQZG9K5AR69G1E.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Cloudforce One](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F4NKW3JJWXAED2MVFY7Y.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Blake Darché](https://blog.cloudflare.com/author/blake/),  [Myles Sloan](https://blog.cloudflare.com/author/myles-sloan/),  [Jacob Crisp](https://blog.cloudflare.com/author/jacob-crisp/), and  [Cloudforce One](https://blog.cloudflare.com/author/cloudforce/)
+
 November 13, 2026 [<h2>Introducing Spend Management: Spending limits and alerts for Cloudflare</h2>](https://blog.cloudflare.com/spend-management/)
 
 Spend Management adds opt-in spending caps for Cloudflare Workers and Durable Objects, and more products soon. Here is how we built the metering pipeline that turns usage into runtime decisions.
@@ -17,8 +35,6 @@ Spend Management adds opt-in spending caps for Cloudflare Workers and Durable Ob
 ![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Sid Chatterjee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XJ0J0NXPCD8TWD8F0KKP.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Brendan Irvine-Broque](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H9641F9RZN2BA8BPX7HK.JPG&w=64&h=64&f=webp&fit=cover&position=center)![Zunayed Ali](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ1X7VHNGDVK1WPDK7WS7DWR.webp&w=64&h=64&f=webp&fit=cover&position=center)![André Cruz](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FAFHK5DDQ0GQPPQ92C3B.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Celso Martinho](https://blog.cloudflare.com/author/celso/),  [Sid Chatterjee](https://blog.cloudflare.com/author/sid/),  [Brendan Irvine-Broque](https://blog.cloudflare.com/author/brendan-irvine-broque/),  [Zunayed Ali](https://blog.cloudflare.com/author/zunayed-ali/), and  [André Cruz](https://blog.cloudflare.com/author/andre-cruz/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M79507GNA08VSCSPAXM0NCC3.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/spend-management/)
 
 November 11, 2026 [<h2>Choosing QuePaxa, an unusual consensus algorithm</h2>](https://blog.cloudflare.com/choosing-quepaxa/)
 
@@ -147,22 +163,6 @@ Cloudflare has achieved South Korea's ISMS certification following an audit acro
 ![Kabin Calan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5HNPHA836561064Z6XYVR0N.01M5HNPJ33NJ1Y1TXHWX719ZC4.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Kabin Calan](https://blog.cloudflare.com/author/kabin-calan/)
-
-October 21, 2026 [<h2>Introducing full transaction detection for Cloudflare WAF</h2>](https://blog.cloudflare.com/full-transaction-waf/)
-
-Cloudflare's web application firewall can now correlate an HTTP request with its response. Full transaction detection helps every customer find successful exploits, data exposure, and risky misconfigurations that request-only inspection can miss.
-
-![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Elie Roudninski](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5E1MFPXN6AEQCKTKF2PT9EC.01M5E1MG84X4YD6FVXXZBHBYHV.webp&w=64&h=64&f=webp&fit=cover&position=center)![Nick Downie](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSXNV3BG1DQNXK5K9FBQ.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Elie Roudninski](https://blog.cloudflare.com/author/elie-roudninski/), and  [Nick Downie](https://blog.cloudflare.com/author/nick-downie/)
-
-October 21, 2026 [<h2>Cloudflare deploys protections against php2shell vulnerability</h2>](https://blog.cloudflare.com/php-vulnerabilities-waf-protection/)
-
-Cloudflare has deployed default web application firewall (WAF) protections for newly disclosed PHP vulnerabilities before public disclosure. The rules use request and response signals to stop exploit attempts and prevent exposed data from reaching attackers.
-
-![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/), and  [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/)
 
 Load more
 
