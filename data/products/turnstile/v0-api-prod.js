@@ -1530,7 +1530,7 @@
 		function G(e, r) {
 			return e.indexOf(r) !== -1
 		}
-		var No = ["bg-bg", "da-dk", "de-de", "el-gr", "ja-jp", "ms-my", "ru-ru", "sk-sk", "sl-si", "sr-ba", "tl-ph", "uk-ua"],
+		var No = ["bg-bg", "da-dk", "de-de", "el-gr", "ja-jp", "ms-my", "ru-ru", "sk-sk", "sl-si", "sr-ba", "sw-ke", "tl-ph", "uk-ua"],
 			Po = ["ar-eg", "es-es", "cs-cz", "fa-ir", "fr-fr", "hr-hr", "hu-hu", "id-id", "it-it", "lv-lv", "nb-no", "nl-nl", "pl-pl", "pt-br", "th-th", "tr-tr", "ro-ro"],
 			ci = "https://challenges.cloudflare.com",
 			di = [ci, "https://challenges.fed.cloudflare.com", "https://challenges.cloudflare-cn.com", "https://challenges-staging.cloudflare.com"];
@@ -1576,7 +1576,7 @@
 
 		function Wo(e, r) {
 			var t = bt(e.params, !1, r),
-				n = Hr(e, "g"),
+				n = Hr(e, "b"),
 				a = n === void 0 ? "" : "h/".concat(encodeURIComponent(n), "/");
 			return "".concat(t, "/cdn-cgi/challenge-platform/").concat(a, "fr")
 		}
@@ -1706,7 +1706,7 @@
 		var sn = function(r, t, n, a, u) {
 				var l, d, f = gi(r),
 					s = bt(t.params, !1, a),
-					m = Hr(t, "g"),
+					m = Hr(t, "b"),
 					T = m === void 0 ? "" : "h/".concat(encodeURIComponent(m), "/"),
 					S = qo("".concat(s, "/cdn-cgi/challenge-platform/").concat(T, "fr/").concat(Nr(r), "/").concat(t.displayLanguage, "/").concat((d = t.params.theme) !== null && d !== void 0 ? d : t.theme, "/").concat(n));
 				if (mr(t), window.top !== window.self) {
@@ -2552,7 +2552,7 @@
 											var ee = h.widgetMap.get(i);
 											ee !== c || ee.isComplete || ee.isResetting || ee.response !== y || (!Z && we !== void 0 && we !== "" && R(we), S(ee, v, Z))
 										}, b = c.params.sitekey, N = Ln(), N === void 0 || N === "") return R("Cannot determine Turnstile's embedded location, aborting clearance redemption."), S(c, v, !1), [2];
-									F = Hr(c, "g"), z = F === void 0 ? "" : "h/".concat(encodeURIComponent(F), "/"), q = new URL(N), me = "https", We = "", se = "".concat(me, "://").concat(q.host, "/cdn-cgi/challenge-platform/").concat(z, "c/").concat(o).concat(We), fe.label = 1;
+									F = Hr(c, "b"), z = F === void 0 ? "" : "h/".concat(encodeURIComponent(F), "/"), q = new URL(N), me = "https", We = "", se = "".concat(me, "://").concat(q.host, "/cdn-cgi/challenge-platform/").concat(z, "c/").concat(o).concat(We), fe.label = 1;
 								case 1:
 									return fe.trys.push([1, 3, , 4]), [4, fetch(se, {
 										body: JSON.stringify({
@@ -2873,7 +2873,7 @@
 											appearance: o.params.appearance,
 											au: h.scriptUrl,
 											cData: o.cData,
-											ch: "7c7fee70a876",
+											ch: "f8df4d4a0cd6",
 											chlPageData: o.chlPageData,
 											cs: Vr(o),
 											event: "extraParams",
@@ -3019,7 +3019,7 @@
 					var F = N.cloneNode();
 					w(F, HTMLIFrameElement) || x("Unexpected Error: Cloned widget is not an iframe", 3348);
 					var z = fr(g),
-						q = un(o, g.params.sitekey, g.params, (y = g.rcV) !== null && y !== void 0 ? y : Le, !1, "g", c, h.scriptUrlParsed, Rn(g), z[Ke] ? z[je] : void 0);
+						q = un(o, g.params.sitekey, g.params, (y = g.rcV) !== null && y !== void 0 ? y : Le, !1, "b", c, h.scriptUrlParsed, Rn(g), z[Ke] ? z[je] : void 0);
 					F.src = q, Ni(F, g), g.iframeOrigin = pr(q), (p = N.parentNode) === null || p === void 0 || p.replaceChild(F, N), On(g, b), g.retryTimeout !== void 0 && window.clearTimeout(g.retryTimeout)
 				}
 
@@ -3193,7 +3193,7 @@
 						Sr[je] = Un, Sr[dr] = Dt, Sr[Ke] = qi, h.widgetMap.set(nr, Vn), fn(h);
 						var be = h.widgetMap.get(nr);
 						be === void 0 && x("Turnstile Initialization Error", 3606), be.chlPageData !== void 0 && be.chlPageData !== "" && Pn(), ce.style.border = "none", ce.style.overflow = "hidden";
-						var Bn = un(nr, _e, E, Le, !1, "g", ae.New, h.scriptUrlParsed, Rn(be), Sr[Ke] ? Sr[je] : void 0);
+						var Bn = un(nr, _e, E, Le, !1, "b", ae.New, h.scriptUrlParsed, Rn(be), Sr[Ke] ? Sr[je] : void 0);
 						be.iframeOrigin = pr(Bn), ce.setAttribute("src", Bn), Ni(ce, be);
 						var qn = ["cross-origin-isolated", "fullscreen", "autoplay", "keyboard-map", "gamepad", "xr-spatial-tracking"];
 						return G((z = (me = document.featurePolicy) === null || me === void 0 || (q = me.features) === null || q === void 0 ? void 0 : q.call(me)) !== null && z !== void 0 ? z : [], Ft) && qn.push(Ft), ce.setAttribute("allow", qn.join("; ")), ce.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), ce.id = Y, ce.title = "Widget containing a Cloudflare security challenge", $r.appendChild(ce), Cn(ce, be), ht(be), Hi(be, Y), le && K(le.widgetId, le.widget), se.appendChild(tr), be.widgetRenderEndTimeTsMs = $(), Y
