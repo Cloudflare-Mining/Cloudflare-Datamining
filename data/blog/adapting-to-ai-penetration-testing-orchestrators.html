@@ -1,0 +1,206 @@
+<p>Over the last month, the number of Large Language Model (LLM) penetration testing and orchestration frameworks has exploded. Just a few weeks ago, ARTEX&nbsp;— an open source agentic penetration testing system that automates&nbsp;offensive security workflows — was the only framework available.&nbsp;In just the last three days, we have seen over 50 framework families attempt to scan Cloudflare customers globally. The number of Internet Protocol (IP) addresses seen running these frameworks has grown into the thousands and continues to increase daily. The proliferation of these frameworks has significantly changed the status quo in cyber defense: defenders are struggling to keep up with the volumetric nature of these autonomously guided attacks.</p>
+<p>ARTEX was taken down&nbsp;by its creator Autumn-27 on October 8. (“The malicious exploitation of this tool runs entirely counter to its original intent,” they <a href="https://github.com/Autumn-27"><u>wrote</u>&nbsp;in Chinese.</a>)&nbsp;But in the month since, the ecosystem has exploded with new fragmented versions of it. There are now over 12,000 repositories, with several hundred unique forks containing lineage from the original repository. Additionally, hundreds of other similar agentic orchestration frameworks have been created since October 8. Daily requests of AI penetration testing (pentesting) and exploitation tools has grown by 30x since October 1. These tools have also begun chaining stolen customer credentials in some of the more complex attacks, such as lateral movement chaining throughout an environment.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////////9vb57/D08PH19PT49PP27+7w////////9vf47/Dy7/Dz8vL18vHz7+3t////////9vj38PHx8PDx8vHy8vDw7+3r////////+fr58/Tz8vLy9PPz9PLx8u/s/////////P789/j29/f2+fn4+ff29fPw////////////+/v7/fz8///+//78+vj2/////////////v7//////////////v38//////////////////////////////7+" alt="" width="715" height="715" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YQ4FFNQ966JGNH8EXJ1Q.png&amp;w=715&amp;h=715&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YQ4FFNQ966JGNH8EXJ1Q.png&amp;w=640&amp;h=640&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YQ4FFNQ966JGNH8EXJ1Q.png&amp;w=715&amp;h=715&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YQ4FFNQ966JGNH8EXJ1Q.png&amp;w=750&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YQ4FFNQ966JGNH8EXJ1Q.png&amp;w=828&amp;h=828&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YQ4FFNQ966JGNH8EXJ1Q.png&amp;w=1080&amp;h=1080&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YQ4FFNQ966JGNH8EXJ1Q.png&amp;w=1280&amp;h=1280&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YQ4FFNQ966JGNH8EXJ1Q.png&amp;w=1430&amp;h=1430&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YQ4FFNQ966JGNH8EXJ1Q.png&amp;w=1999&amp;h=1999&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="1999" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="715" class="pt-portable-image-media"></div>
+	<figcaption>Fork tree of ARTEX: 204 public repositories with their own code changes, grouped by type and sized by stars.</figcaption>
+</figure>
+<p>We expect these frameworks to continue to proliferate, and every organization should be prepared to address this threat. To counter LLM-based pentest frameworks, we recommend that all organizations adopt what we call the Modern Security Model, which has six key pillars:</p>
+<ul>
+	<li><strong>Fortify the front gate</strong>: Implement a Web Application Firewall (WAF) with advanced rules such as&nbsp;rate limits.</li>
+	<li><strong>Security station in the foyer</strong>: Anomaly detection on all web applications your customers access.</li>
+	<li><strong>Identify phony visitors</strong>: Implement Bot Defense.</li>
+	<li><strong>Remove the back door</strong>: Implement Identity-Gated Access&nbsp;for all high-risk external and internal web applications.</li>
+	<li><strong>Inspect deliveries: </strong>Enforce validated schemas and explicit security controls.</li>
+	<li><strong>Neighborhood watch</strong>: Implement Threat Intelligence to gain visibility into attacks.</li>
+</ul>
+<h2>What is an LLM penetration and exploitation orchestrator?</h2>
+<p>Open-source pentesting frameworks are able to orchestrate AI agents to carry out stages of the traditional <a href="https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html"><u>Cyber Kill Chain</u></a>&nbsp;at scale. Tools like ARTEX have the ability to quickly plug in existing Model Context Protocol (MCP)&nbsp;and connect traditional standalone pentesting tools in novel ways. Some even allow operator direction on what type of task to accomplish. These tools can map and enumerate environments, both from the inside and outside. ARTEX and its forks map assets and environments onto a graph, allowing multiple independent parallel agents to enumerate, verify, prototype, and attack at the speed of inference. These tools turn compromises into a hill-climbable problem, which agents are specifically good at.</p>
+<h3>The&nbsp;AI LLM pentesting tools that currently exist</h3>
+<p>We are currently tracking 50+ AI LLM agents. The table below shows the top five LLM penetration and exploitation orchestrators. Each is extremely popular (1k+ GitHub stars) and fully autonomous. The fully autonomous nature of these agents represents a doctrinal shift in offensive cyber capabilities:</p>
+<ul>
+	<li>Human skills are no longer the limit: A harness performs every step of the <a href="https://en.wikipedia.org/wiki/OODA_loop"><u>OODA loop</u></a>&nbsp;by observing the environment, orienting itself to prioritize valuable and/or vulnerable targets, decide on an action, and act autonomously.</li>
+	<li>Speed increase: Having multiple parallel agents working towards a goal is a large shift compared to single operator or multiple operator augmented by AI.</li>
+	<li>Scale: A single operator can target multiple organizations at the same time, greatly increasing their blast radius.</li>
+	<li>Small mistakes are easily discovered: Autonomous frameworks relentlessly and systematically test exposed services, including their configurations.</li>
+</ul>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 480px;">
+		<tbody>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p><strong>Architecture</strong></p>
+				</td>
+				<td>
+					<p><strong>Planning model</strong></p>
+				</td>
+				<td>
+					<p><strong>Built-in capabilities/execution environment</strong></p>
+				</td>
+				<td>
+					<p><strong>Post-exploitation capabilities</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>ARTEX (and forks)</strong></p>
+				</td>
+				<td>
+					<p>Planner and parallel agents</p>
+				</td>
+				<td>
+					<p>Graph of goals, leads, and findings is linked to separate asset graph of target</p>
+				</td>
+				<td>
+					<p>Directly on host or container with network/root access, can install/develop tools as needed</p>
+				</td>
+				<td>
+					<p>Nothing built-in, requires user instruction</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>LuaN1aoAgent</strong></p>
+				</td>
+				<td>
+					<p>Supervisor agent, planner agent, and generic executor agents</p>
+				</td>
+				<td>
+					<p>Three graphs, with goals/tasks/blockers, evidence/hypothesises/exploits, and target/local</p>
+				</td>
+				<td>
+					<p>Container with network/user access, can develop tools as needed and install user packages</p>
+				</td>
+				<td>
+					<p>Built-in SSH and Chisel for tunneling and attempted reconnection after disruption</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>Decepticon</strong></p>
+				</td>
+				<td>
+					<p>Orchestrator agent dispatching specialist sub-agents</p>
+				</td>
+				<td>
+					<p>Graph of objectives with prerequisites</p>
+				</td>
+				<td>
+					<p>Kali container running as root, can develop tools as needed</p>
+				</td>
+				<td>
+					<p>Dedicated post-access, Active Directory and cloud pivoting skills</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>Cairn</strong></p>
+				</td>
+				<td>
+					<p>Dispatcher orchestrating work to existing AI harnesses (Codex, Claude Code, Pi)</p>
+				</td>
+				<td>
+					<p>Graph of facts and leads; new nodes trigger dispatcher</p>
+				</td>
+				<td>
+					<p>Kali container with root access or directly on host, can develop tools as needed</p>
+				</td>
+				<td>
+					<p>Prompt guidance and Kali tools</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><strong>PentestGPT-Agent</strong></p>
+				</td>
+				<td>
+					<p>Supervisor agent and one generic executor agent</p>
+				</td>
+				<td>
+					<p>Task list with dependencies, goals, and evidence</p>
+				</td>
+				<td>
+					<p>Run on host, can develop tools as needed</p>
+				</td>
+				<td>
+					<p>Nothing built-in, requires user instruction</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>Observations from the world's largest network</h2>
+<p>As of November 12, ARTEX&nbsp;and its forks make up over 60% of currently known AI penetration testing orchestrators. The charts below help us understand how adoption of these tools has changed over the past six weeks. Since the removal of the original ARTEX repository on October 8, traffic has grown more than tenfold, and has increased more than 30x since October 1.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAANjItMjEzKS47JSo+KCU5Kh8sIhUeDwkWMzApLi8vJSw5ICg9IyM4Jh0rIRUeDwwWLy0lKywsICk2GiQ6HiA1IhsqHhUdDw4WLi0kKiwpHygyFyM2Gh4yHxknHBQbDw8SMDAnLC4qIiovGiQxGx4sHRgiGhIVDg0KNDQsMDItKC0uICYsHh8mHhgcGREODQgANzgxNDYwLTAtJSgoISAhHxgWGA8FDAQAOToyNjcxLzEsJykmIyEfHxkUGA8BDAMA" alt="" width="715" height="307" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YE0A0KYNPW4SQK13FRM8.png&amp;w=715&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YE0A0KYNPW4SQK13FRM8.png&amp;w=640&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YE0A0KYNPW4SQK13FRM8.png&amp;w=715&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YE0A0KYNPW4SQK13FRM8.png&amp;w=750&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YE0A0KYNPW4SQK13FRM8.png&amp;w=828&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YE0A0KYNPW4SQK13FRM8.png&amp;w=1080&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YE0A0KYNPW4SQK13FRM8.png&amp;w=1280&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YE0A0KYNPW4SQK13FRM8.png&amp;w=1430&amp;h=614&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YE0A0KYNPW4SQK13FRM8.png&amp;w=1999&amp;h=857&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="857" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="307" class="pt-portable-image-media"></div>
+	<figcaption>Trend in the volume of daily requests from a selected handful of AI-driven pentesting orchestrators</figcaption>
+</figure>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAOjU3NzEzLSQpHxAaCwAKAAACAAABAAEDNjQzNC8wLSQoIRAbDwALAAAAAAAAAAACMTIvMC4tLSMnJBEcEgAMAAAAAAAAAAABLjAsLi0rLCMmJBMdEwANAAAAAAAAAAACLC8qLSwqKyQmIxYeEgAOAAAAAAAAAAECLi4rLSwqKSUmIBkeDwUPAAAAAAAAAAIDMC4sLiwrKCYnHhsfCwkQAAAAAAAAAAQEMS4sLiwrKCcnHBwfCgsQAAAAAAAAAAQF" alt="" width="715" height="307" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YM0KG373ZKE0GH2R8D6H.png&amp;w=715&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YM0KG373ZKE0GH2R8D6H.png&amp;w=640&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YM0KG373ZKE0GH2R8D6H.png&amp;w=715&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YM0KG373ZKE0GH2R8D6H.png&amp;w=750&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YM0KG373ZKE0GH2R8D6H.png&amp;w=828&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YM0KG373ZKE0GH2R8D6H.png&amp;w=1080&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YM0KG373ZKE0GH2R8D6H.png&amp;w=1280&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YM0KG373ZKE0GH2R8D6H.png&amp;w=1430&amp;h=614&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YM0KG373ZKE0GH2R8D6H.png&amp;w=1999&amp;h=857&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="857" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="307" class="pt-portable-image-media"></div>
+	<figcaption>Daily trend in the number of unique IPs sending at least one request from any AI-driven pentesting orchestrator</figcaption>
+</figure>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAzMHEw7a5sZ6gspSRyqeg4cS/5tjX3eDjyLrBvq+1rZiYro2Ex5+V37235dLS3d3hyrrGwLC5rpuZsJCDyaCS4by259LS39zi18vXzsPLvbCuvaaa07Km6cnE79vc5+Pp7+ry5uLo1tHQ08jA5NLJ9+Pe/O7v9PH2////////7/Ly6+rm9/Ls///7/////////////////////P//////////////////////////////////////////////////" alt="" width="715" height="256" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YFHFRG4PFAENX95PFC1E.png&amp;w=715&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YFHFRG4PFAENX95PFC1E.png&amp;w=640&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YFHFRG4PFAENX95PFC1E.png&amp;w=715&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YFHFRG4PFAENX95PFC1E.png&amp;w=750&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YFHFRG4PFAENX95PFC1E.png&amp;w=828&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YFHFRG4PFAENX95PFC1E.png&amp;w=1080&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YFHFRG4PFAENX95PFC1E.png&amp;w=1280&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YFHFRG4PFAENX95PFC1E.png&amp;w=1430&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YFHFRG4PFAENX95PFC1E.png&amp;w=1999&amp;h=716&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="716" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="256" class="pt-portable-image-media"></div>
+	<figcaption>Detailed breakdown of the share of attributed unique IPs observed during the last three complete days. IP shares are non-exclusive as a single IP can run multiple tools.</figcaption>
+</figure>
+<p></p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAANjk4MjU1JCsrDxwdAAwKAAEAAAAAAAACMzM0LjAxICcpCBkcAAcLAAAAAAAAAAAALy4wKystHiQnBBcdAAQPAAABAAAAAAAAMC0vLCstISUoDRogAAkVAAAHAAAAAAABNDEzMS8yKSotGyElCRQbAAQQAAAIAAAFOzg6ODc4MjEyJykpGh4gDBIXBgkPCAcKQD5APjw9ODc2Ly4tIiQjFhobDxIUDw4PQkFCQD8/Ozk4MjAuJSYkGR0cERUWEhAQ" alt="" width="715" height="307" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YGZDPHN4BZBGND5TEV3E.png&amp;w=715&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YGZDPHN4BZBGND5TEV3E.png&amp;w=640&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YGZDPHN4BZBGND5TEV3E.png&amp;w=715&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YGZDPHN4BZBGND5TEV3E.png&amp;w=750&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YGZDPHN4BZBGND5TEV3E.png&amp;w=828&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YGZDPHN4BZBGND5TEV3E.png&amp;w=1080&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YGZDPHN4BZBGND5TEV3E.png&amp;w=1280&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YGZDPHN4BZBGND5TEV3E.png&amp;w=1430&amp;h=614&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B3YGZDPHN4BZBGND5TEV3E.png&amp;w=1999&amp;h=857&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="857" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="307" class="pt-portable-image-media"></div>
+	<figcaption>Daily trend in the number of unique instances of tracked AI-driven penetration testing orchestrator tools</figcaption>
+</figure>
+<p>As demonstrated above, the takedown of ARTEX on October 8 (and widespread reporting&nbsp;of it) likely caused a hydra effect, where the removal of the original repository led to a massive increase in the number of forks and modifications which can be seen in the steep acceleration of unique instances around October 8.</p>
+<h3>Identity-chained LLM exploitation</h3>
+<p>Over the last eight weeks, our Cloudforce One team has been called into multiple incident response investigations involving ARTEX and ARTEX-derived LLM exploitation frameworks. We’ve seen firsthand how exposed credentials are being chained with LLM-based exploitation frameworks to gain the upper hand over defenders.<br>We observed multiple incidents in which a threat actor gained initial access to a hyperscaler environment and pivoted directly into the customer's Cloudflare environment. Root-cause analysis revealed a common credential hygiene failure. Attackers repeatedly compromised static, non-expiring tokens running inside CI/CD pipelines, which granted broad, cross-environment access across the organization's hyperscaler infrastructure. LLM frameworks greatly expand the likelihood of a client’s API key being laterally leveraged to take over other tenant environments.</p>
+<h3>ARTEX in action</h3>
+<p>As part of one incident response&nbsp;investigation, our team observed ARTEX gaining access to a compromised account-level API token previously used for CI/CD with no IP restrictions or rate limiting. Available evidence indicated that the compromise most likely originated through a third-party hyperscaler.</p>
+<p>We observed that a large number of new Worker scripts had been created with distinct names such as artex-*, artex-pgrecon-*, artex-pgw-*, and artex-do-*. The naming of each Worker script correlated to distinct behaviors and actions it was taking, and was often postfixed by an alphanumeric identifier. We observed activity in excess of <strong>69 requests per minute</strong>&nbsp;across multiple unique parts of their Cloudflare infrastructure and 400 database dump requests in an hour. We also observed attempted persistence mechanisms and attempts to validate session tokens for other third-party applications. While we believe that much of this activity was lightly guided by the human operator, this is just one example of the speed and breadth that ARTEX and similar frameworks can achieve post-compromise.</p>
+<h2>Our recommendation: the Modern Security Model</h2>
+<p>Large Language Models increase the ability of a threat actor to rapidly iterate through the Cyber Kill Chain against a target. They do this by giving the actor the advantage of speed and validation. Each step of the Cyber Kill Chain can be validated and fed into the next stage of the attack. This level of orchestration is unparalleled and effectively vaporizes legacy cyber security models. A modern model must be used against these attacks.</p>
+<p>To help explain this model further, let’s use the metaphor of protecting a house on an estate. Each section below outlines how to defend against the threat at each step.</p>
+<h3>Fortify the front gate: implement traffic control and a WAF with advanced rules</h3>
+<p>Before anyone even sets foot on your lawn, they have to reach the perimeter fence.</p>
+<p>On an unprotected estate, an adversary can drive an endless fleet of decoy trucks straight into your driveway, completely blocking the entrance and smashing through the barriers (Layer 3/4 volumetric floods and direct IP probing).</p>
+<p>With perimeter gate security in place, all incoming traffic is routed through massive, distributed outer gates miles away from the main house. Rogue delivery trucks are filtered out to the highway, rogue utility tunnels trying to wiretap your property are severed, and only legitimate foot traffic ever reaches your home address.</p>
+<p><a href="https://developers.cloudflare.com/magic-transit"><u>Network traffic</u></a>&nbsp;<a href="https://www.cloudflare.com/products/network-firewall"><u>control</u></a>&nbsp;serves as an important role in stopping volumetric attacks.</p>
+<h3>A security station in the foyer: anomaly detection</h3>
+<p>Once visitors arrive at the main entry, they meet a strict security station at the foyer.</p>
+<p>Automated prowlers don't just kick the door; they disguise themselves. They attempt weird ways to get in the door — stuffing paper into the lock, trying variations like <code>//front-door//back-room/</code>&nbsp;to trick the mechanism into swinging open.</p>
+<p>The security guard at the door enforces clear rules:</p>
+<ul>
+	<li>You cannot knock 500 times in five seconds.</li>
+	<li>You cannot disguise your path with trickery.</li>
+	<li>You cannot attempt to roll a massive flatbed cart through the front hall to haul away the house's internal blueprints (diagnostic heap dumps). Suspicious behavior is turned away immediately.</li>
+	<li>Implement security keys and hardware based FIDO keys.</li>
+</ul>
+<p><a href="https://www.cloudflare.com/products/waf"><u>Web Application Firewall (WAF)</u></a>&nbsp;serves as a key defense mechanism in stopping application exploitation&nbsp;through rate limits and anomaly detection.</p>
+<h3>Identify phony visitors: implement Bot Defense</h3>
+<p>A sophisticated intruder rarely looks like a masked burglar; they disguise themselves as ordinary visitors. But automated agents, headless browser scrapers, and AI reconnaissance tools don't act like real people.</p>
+<p>They don't blink, their posture is unnervingly rigid, their cadence is mechanical, and their "identification" is often a sloppy imitation of a real visitor badge.</p>
+<p><a href="https://www.cloudflare.com/products/bot-management"><u>Bot Defense</u></a>&nbsp;and <a href="https://www.cloudflare.com/products/turnstile"><u>challenges</u></a>&nbsp;act&nbsp;as behavioral specialists watching the crowd through one-way glass. It flags the unnatural cadence, catches the synthetic micro-behaviors, and quietly escorts the machines off the property before they can touch a single doorknob.</p>
+<h3>Remove the back door: implement Identity-Gated Access and micro-segmentation</h3>
+<p>Many homes historically were built with side doors or a cellar hatch (internal admin panels, <code>/actuator</code>&nbsp;diagnostic endpoints, and remote gateways). Even if locked, a prowler could stand on the sidewalk, shine a flashlight on the cellar door, and start picking the lock.</p>
+<p><a href="https://www.cloudflare.com/sase"><u>Zero Trust</u></a>&nbsp;<a href="https://www.cloudflare.com/sase/products/access"><u>application access</u></a>&nbsp;does something radical: <strong>it bricks up the doorway from the outside and restricts which rooms can be entered.</strong></p>
+<p>To anyone wandering the perimeter, the cellar door does not exist. There is no lock to pick, no handle to rattle, and no light on inside. The only way in is with an escort who checks your biometric badge, confirms your device has a clean bill of health, and steps you directly into the specific room you need — leaving the rest of the house out of view.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="443" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B5RKANBCS8JY75BFT6XSYK.01M7B5RMK9TNA99QKHXHRMT9W5.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B5RKANBCS8JY75BFT6XSYK.01M7B5RMK9TNA99QKHXHRMT9W5.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B5RKANBCS8JY75BFT6XSYK.01M7B5RMK9TNA99QKHXHRMT9W5.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B5RKANBCS8JY75BFT6XSYK.01M7B5RMK9TNA99QKHXHRMT9W5.png&amp;w=750&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B5RKANBCS8JY75BFT6XSYK.01M7B5RMK9TNA99QKHXHRMT9W5.png&amp;w=828&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B5RKANBCS8JY75BFT6XSYK.01M7B5RMK9TNA99QKHXHRMT9W5.png&amp;w=1080&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B5RKANBCS8JY75BFT6XSYK.01M7B5RMK9TNA99QKHXHRMT9W5.png&amp;w=1280&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B5RKANBCS8JY75BFT6XSYK.01M7B5RMK9TNA99QKHXHRMT9W5.png&amp;w=1430&amp;h=886&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="security-model.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B5RKANBCS8JY75BFT6XSYK.01M7B5RMK9TNA99QKHXHRMT9W5.png&amp;w=4000&amp;h=2480&amp;q=100&amp;f=webp" data-lightbox-width="4000" data-lightbox-height="2480" data-lightbox-skip-prefetch="" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="443" class="pt-portable-image-media"></div>
+</figure>
+<p>For&nbsp;those who do enter, you have to ensure they cannot breach rooms next to the room they enter. <a href="https://www.cloudflare.com/learning/access-management/what-is-microsegmentation"><u>Micro-segmentation</u></a>&nbsp;is a highly effective strategy at stopping lateral movement. It limits compromised credentials from breaching production, test, and development systems.</p>
+<h3>Inspect deliveries: enforce validated schemas and explicit security controls</h3>
+<p>You receive daily supply deliveries to your estate — groceries, mail, maintenance parts. In digital terms, this is your incoming API traffic, which must be inspected and verified.</p>
+<p>Intruders often attempt to bypass controls by sending unvalidated payloads or forged delivery manifests meant for restricted internal systems.</p>
+<p>The porch protocol mandates thorough inspection and schema validation for all traffic:</p>
+<ul>
+	<li>Every incoming request must <a href="https://developers.cloudflare.com/api-shield/security/schema-validation"><u>undergo OpenAPI schema validation</u></a>&nbsp;to ensure it strictly conforms to expected definitions and structures.</li>
+	<li>Drivers and couriers must present validated mutual TLS (mTLS) certificates to establish trusted, authenticated connections.</li>
+	<li>Any request failing inspection or missing valid credentials is rejected immediately at the boundary.</li>
+	<li>Default-Deny Posture: Every positive security implementation ends with an explicit deny-all rule at the bottom of the ruleset.</li>
+</ul>
+<h3>Neighborhood watch: implement threat intelligence to gain visibility into attacks</h3>
+<p>Even with ironclad walls, an isolated property can be vulnerable if a syndicate invents a brand-new infiltration technique across town.</p>
+<p><a href="https://www.cloudflare.com/cloudforce-one/services/threat-intelligence"><u>Threat intelligence</u></a>&nbsp;acts as your warning network with neighboring estates. When a rogue actor sets up a new command-and-control safehouse down the road or begins deploying dynamic tunneling vans in your district, you receive an early dossier. Your estate updates its watchlists, recalibrates its sensors, and slams the gate shut before the actor ever turns onto your street.</p>
+<h2>How to get real-time help</h2>
+<p>ARTEX and similar LLM-based frameworks pose a significant challenge to legacy cyber defense models. Even the historical defense-in-depth model — which emphasizes a classic network DMZ — falls short in today's complex architectures. Tomorrow's attacks will only advance as orchestration tools become the new normal.</p>
+<p>Securing legacy equipment and on-premises devices requires an identity-gated approach that logically makes these devices impossible to reach on the Internet. Beyond identity, slowing or making lateral movement more noisy is the goal of micro-segmentation. This architecture emphasizes a containment-first approach to security, which is essential when users are consistently losing their keys. When combined, the elements of the Modern Security Model are the answer to this vexing problem.</p>
+<p>If you are facing an active security incident and need the Cloudforce One team on the ground to help respond to the incident or require threat intelligence support, <a href="https://www.cloudflare.com/under-attack-hotline/?cf_page=introducing-react-why-we-built-an-elite-incident-response-team"><u>please contact us immediately</u></a>. If you need help implementing the Modern Security Model outlined here, please contact our <a href="https://www.cloudflare.com/resource/contact-enterprise-sales/?utm_medium=referral&amp;utm_source=www&amp;utm_campaign=2026-q4-acq-gbl-secure-as-ge-customers-aipenetestorch&amp;utm_content=cloudflareblog"><u>Solutions Engineering team</u></a>.</p>

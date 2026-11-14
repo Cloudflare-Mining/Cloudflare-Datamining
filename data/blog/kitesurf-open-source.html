@@ -1,0 +1,88 @@
+<p>We <a href="https://blog.cloudflare.com/kitesurf"><u>introduced</u></a>&nbsp;<a href="https://kitesurf.dev"><u>Kitesurf</u></a>, our stateless browser for AI agents that runs entirely on top of Workers, in August and <a href="https://blog.cloudflare.com/kitesurf-update"><u>followed up</u></a>&nbsp;in September with WebMCP support, new APIs, and improved compatibility. On every occasion, we mentioned our commitment to open sourcing it so that developers could run their own browser engine on their own Cloudflare accounts if they want to.</p>
+<p>That promise is now real. <a href="https://github.com/cloudflare/kitesurf"><u>Kitesurf is open source on GitHub</u></a>&nbsp;under the Apache 2.0 license.&nbsp;You can read the code, run it locally, change it, and deploy your own instance to Cloudflare Workers.</p>
+<h2>A browser built for agents</h2>
+<p>Kitesurf runs entirely on Cloudflare Workers. It parses HTML, applies CSS, executes page JavaScript, and renders screenshots without a browser container. It supports the Chrome DevTools Protocol (CDP), so you can connect clients such as Puppeteer.</p>
+<p>Our main goal is to give AI agents a lightweight, efficient browser — one that can load websites, execute JavaScript, and interact with pages while using less CPU and memory than a full browser like Chromium, and scaling on demand across Cloudflare’s global Workers network.</p>
+<p>Read more about why and how we built Kitesurf in our initial <a href="https://blog.cloudflare.com/kitesurf"><u>announcement</u></a>&nbsp;and how to use it in Browser Run’s <a href="https://developers.cloudflare.com/browser-run/kitesurf"><u>developer</u></a>&nbsp;documentation.</p>
+<h2>What is inside the repository?</h2>
+<p>Kitesurf builds on Cloudflare’s Developer Platform and APIs, alongside an ecosystem of open-source Rust packages compiled to WebAssembly:</p>
+<ul>
+	<li><a href="https://github.com/DioxusLabs/blitz"><u>Blitz</u></a>&nbsp;provides HTML parsing, the DOM, layout, and painting.</li>
+	<li><a href="https://github.com/servo/stylo"><u>Stylo</u></a>&nbsp;provides CSS parsing, cascading, and computed styles.</li>
+	<li><a href="https://github.com/boa-dev/boa"><u>Boa</u></a>&nbsp;runs JavaScript inside WebAssembly (as the last resort only when we can’t run JavaScript in Dynamic Workers).</li>
+	<li><a href="https://linebender.org"><u>Linebender</u></a>&nbsp;libraries provide text layout and 2D graphics, and <a href="https://github.com/LaurenzV/krilla"><u>Krilla</u></a>&nbsp;generates PDF output.</li>
+</ul>
+<p>These projects made Kitesurf possible. They retain their respective licenses; the repository's <a href="https://github.com/cloudflare/kitesurf/blob/main/NOTICE"><u>NOTICE</u></a>&nbsp;documents third-party notices.</p>
+<p>Kitesurf has three main parts: the Engine manages browser sessions and client connections, PageScript runs the page and its JavaScript, and PageRenderer draws the result.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/v//+fr57+/v6enr7O7w8fT28PLz6urq/////f798fHy6uvt7e/y8vX48vT17ezs////////9PX27O3w7vH09Pf69ff48PDw////////+Pn68PH08vT49/v++Pr89PT0/////////f3+9fX49/n8/P///P//+Pf3////////////+vr7/P7/////////+/r6/////////////v3+/////////////fz8/////////////////////////////vz9" alt="" width="715" height="497" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M6W0SC3KNRPXW97BNF4P.png&amp;w=715&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M6W0SC3KNRPXW97BNF4P.png&amp;w=640&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M6W0SC3KNRPXW97BNF4P.png&amp;w=715&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M6W0SC3KNRPXW97BNF4P.png&amp;w=750&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M6W0SC3KNRPXW97BNF4P.png&amp;w=828&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M6W0SC3KNRPXW97BNF4P.png&amp;w=1080&amp;h=751&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M6W0SC3KNRPXW97BNF4P.png&amp;w=1280&amp;h=890&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M6W0SC3KNRPXW97BNF4P.png&amp;w=1430&amp;h=994&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M6W0SC3KNRPXW97BNF4P.png&amp;w=1430&amp;h=994&amp;q=100&amp;f=webp" data-lightbox-width="1430" data-lightbox-height="994" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="497" class="pt-portable-image-media"></div>
+</figure>
+<p>All packages, the engine, its Rust core, DOM shims, renderer, and <a href="https://github.com/cloudflare/kitesurf/tree/main/packages/kitesurf-cli"><u>Kitesurf CLI</u></a>&nbsp;live separately in folders under the repository’s <a href="https://github.com/cloudflare/kitesurf/tree/main/packages"><u>packages</u></a>&nbsp;directory where you can explore how all the pieces fit together.</p>
+<h2>Run your own Kitesurf</h2>
+<p>To run Kitesurf locally, follow the repository's <a href="https://github.com/cloudflare/kitesurf#requirements"><u>build requirements</u></a>, then clone the <a href="https://github.com/cloudflare/kitesurf"><u>repository</u></a>, install dependencies, and start the engine:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/kitesurf.git</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> kitesurf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pnpm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --frozen-lockfile</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pnpm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> dev</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>The first build compiles the Rust core and its dependencies, so give it some time. Subsequent builds reuse the build cache. Finally wrangler starts a local development server at <strong>http://127.0.0.1:8787</strong>. Open that address to try a page in Chrome DevTools, or use it programmatically.</p>
+<p>You can use <a href="https://github.com/cloudflare/kitesurf/tree/main#connect-with-puppeteer"><u>puppeteer</u></a>&nbsp;with a NodeJS script:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> puppeteer </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "puppeteer-core"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> browser</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> puppeteer.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  browserWSEndpoint: </span><span class="sk-032f62-99ffe4">"ws://127.0.0.1:8787/devtools/browser"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> page</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> browser.</span><span class="sk-6f42c1-ffc799">newPage</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> page.</span><span class="sk-6f42c1-ffc799">goto</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://example.com/"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> page.</span><span class="sk-6f42c1-ffc799">screenshot</span><span class="sk-24292e-fff">({ path: </span><span class="sk-032f62-99ffe4">"page.png"</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">finally</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> browser.</span><span class="sk-6f42c1-ffc799">disconnect</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Or you can point your AI harness at the local <a href="https://github.com/cloudflare/kitesurf/tree/main#use-chrome-devtools"><u>CDP</u></a>&nbsp;port (agents love CDP) and watch it take full control of Kitesurf.</p>
+<h2>Deploy to your Cloudflare account</h2>
+<p>When you’re done changing and testing locally, you can <a href="https://github.com/cloudflare/kitesurf#cloudflare-deployment"><u>deploy the engine to your own account</u></a>&nbsp;and use Kitesurf from there instead of the Browser Run managed APIs we provide. Note that a Workers Paid plan is required because Kitesurf uses <a href="https://developers.cloudflare.com/dynamic-workers"><u>Dynamic Workers</u></a>&nbsp;to create isolated Workers for pages.</p>
+<p>From the repository root:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">pnpm run deploy</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2>Help us make it better</h2>
+<p>As with all of our open-sourced projects, Kitesurf lives in Github and we welcome forks and <a href="https://github.com/cloudflare/kitesurf/pulls"><u>contributions</u></a>.&nbsp;However, note that Kitesurf is under heavy development and we are focusing on making the engine more compatible (check out <a href="https://kitesurf.dev/wpt"><u>Web Platform Test evolution</u></a>), more reliable, and <a href="https://kitesurf.dev/benchmarks"><u>efficient</u></a>.</p>
+<p>Start with the <a href="https://github.com/cloudflare/kitesurf/blob/main/CONTRIBUTING.md"><u>contribution guidelines</u></a>&nbsp;if you want to contribute. Open an issue with a minimal reproduction or a proposed approach, and get vouched by a maintainer before opening a pull request. Focused fixes with tests, clear evidence, and a well-defined scope are much easier to review than large rewrites or unrelated cleanup, but all contribution does not have to be code: a small page that reproduces a rendering bug, a failing automation workflow, or a clear documentation correction can help us move forward.</p>
+<h2>Stay tuned</h2>
+<p>Kitesurf is evolving quickly. Stay tuned for updates in the <a href="https://blog.cloudflare.com/tag/browser-run"><u>blog</u></a>&nbsp;and our <a href="https://developers.cloudflare.com/changelog"><u>changelog</u></a>, and keep an eye on the official <a href="https://kitesurf.dev"><u>landing page</u></a>&nbsp;for the latest on standards compatibility in <a href="https://kitesurf.dev/wpt"><u>Web Platform Tests</u></a>&nbsp;page and <a href="https://kitesurf.dev/benchmarks"><u>benchmarks</u></a>.</p>
+<p>And come chat with the team on <a href="https://discord.com/invite/cloudflaredev"><u>Discord</u></a>. We’re building a browser for agents, and we’d love your help making it better.</p>
