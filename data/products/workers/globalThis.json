@@ -340,6 +340,7 @@
 			"export_commonjs_default": "boolean",
 			"expose_draining_reader": "boolean",
 			"expose_global_message_channel": "boolean",
+			"expose_serialization_test_class": "boolean",
 			"fetch_iterable_type_support": "boolean",
 			"fetch_iterable_type_support_override_adjustment": "boolean",
 			"fetch_refuses_unknown_protocols": "boolean",
@@ -409,6 +410,7 @@
 			"require_returns_default_export": "boolean",
 			"response_redirect_url_standard": "boolean",
 			"rpc": "boolean",
+			"rpc_dispose_cancels_call": "boolean",
 			"rpc_params_dup_stubs": "boolean",
 			"rtti_api": "boolean",
 			"service_binding_extra_handlers": "boolean",
@@ -2922,76 +2924,6 @@
 	],
 	"_nodeCompat": {
 		"assert": {
-			"AssertionError": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {},
-				"stackTraceLimit": "number"
-			},
-			"deepEqual": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"deepStrictEqual": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"doesNotMatch": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"doesNotReject": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined",
-					"all": "undefined",
-					"allSettled": "undefined",
-					"any": "undefined",
-					"race": "undefined",
-					"resolve": "undefined",
-					"reject": "undefined",
-					"withResolvers": "undefined",
-					"try": "undefined"
-				}
-			},
-			"doesNotThrow": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"equal": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
 			"fail": {
 				"__proto": "function",
 				"__type": "function",
@@ -2999,25 +2931,7 @@
 				"name": "string",
 				"_prototype": {}
 			},
-			"ifError": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {
-					"length": "undefined",
-					"name": "undefined",
-					"prototype": "undefined"
-				}
-			},
-			"match": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {}
-			},
-			"notDeepEqual": {
+			"deepStrictEqual": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -3031,7 +2945,7 @@
 				"name": "string",
 				"_prototype": {}
 			},
-			"notEqual": {
+			"strictEqual": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -3045,34 +2959,28 @@
 				"name": "string",
 				"_prototype": {}
 			},
-			"ok": {
+			"partialDeepStrictEqual": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
 				"name": "string",
-				"_prototype": {},
-				"AssertionError": "function",
-				"deepEqual": "function",
-				"deepStrictEqual": "function",
-				"doesNotMatch": "function",
-				"doesNotReject": "function",
-				"doesNotThrow": "function",
-				"equal": "function",
-				"fail": "function",
-				"ifError": "function",
-				"match": "function",
-				"notDeepEqual": "function",
-				"notDeepStrictEqual": "function",
-				"notEqual": "function",
-				"notStrictEqual": "function",
-				"ok": "function",
-				"partialDeepStrictEqual": "function",
-				"rejects": "function",
-				"strict": "function",
-				"strictEqual": "function",
-				"throws": "function"
+				"_prototype": {}
 			},
-			"partialDeepStrictEqual": {
+			"match": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"doesNotMatch": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"throws": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -3098,41 +3006,302 @@
 					"try": "undefined"
 				}
 			},
-			"strict": {
-				"__proto": "function",
-				"__type": "function",
-				"length": "number",
-				"name": "string",
-				"_prototype": {},
-				"AssertionError": "function",
-				"deepEqual": "function",
-				"deepStrictEqual": "function",
-				"doesNotMatch": "function",
-				"doesNotReject": "function",
-				"doesNotThrow": "function",
-				"equal": "function",
-				"fail": "function",
-				"ifError": "function",
-				"match": "function",
-				"notDeepEqual": "function",
-				"notDeepStrictEqual": "function",
-				"notEqual": "function",
-				"notStrictEqual": "function",
-				"ok": "function",
-				"partialDeepStrictEqual": "function",
-				"rejects": "function",
-				"strict": "function",
-				"strictEqual": "function",
-				"throws": "function"
-			},
-			"strictEqual": {
+			"doesNotThrow": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
 			},
-			"throws": {
+			"doesNotReject": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined",
+					"all": "undefined",
+					"allSettled": "undefined",
+					"any": "undefined",
+					"race": "undefined",
+					"resolve": "undefined",
+					"reject": "undefined",
+					"withResolvers": "undefined",
+					"try": "undefined"
+				}
+			},
+			"ifError": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"Assert": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"fail": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"deepStrictEqual": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"notDeepStrictEqual": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"strictEqual": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"notStrictEqual": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"partialDeepStrictEqual": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"match": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"doesNotMatch": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"throws": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"rejects": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"all": "undefined",
+							"allSettled": "undefined",
+							"any": "undefined",
+							"race": "undefined",
+							"resolve": "undefined",
+							"reject": "undefined",
+							"withResolvers": "undefined",
+							"try": "undefined"
+						}
+					},
+					"doesNotThrow": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"doesNotReject": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"all": "undefined",
+							"allSettled": "undefined",
+							"any": "undefined",
+							"race": "undefined",
+							"resolve": "undefined",
+							"reject": "undefined",
+							"withResolvers": "undefined",
+							"try": "undefined"
+						}
+					},
+					"ifError": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"ok": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"equal": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"notEqual": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"deepEqual": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"notDeepEqual": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"AssertionError": "function",
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"AssertionError": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {},
+				"stackTraceLimit": "number"
+			},
+			"ok": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {},
+				"fail": "function",
+				"deepStrictEqual": "function",
+				"notDeepStrictEqual": "function",
+				"strictEqual": "function",
+				"notStrictEqual": "function",
+				"partialDeepStrictEqual": "function",
+				"match": "function",
+				"doesNotMatch": "function",
+				"throws": "function",
+				"rejects": "function",
+				"doesNotThrow": "function",
+				"doesNotReject": "function",
+				"ifError": "function",
+				"Assert": "function",
+				"AssertionError": "function",
+				"ok": "function",
+				"strict": "function",
+				"equal": "function",
+				"notEqual": "function",
+				"deepEqual": "function",
+				"notDeepEqual": "function"
+			},
+			"strict": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {},
+				"fail": "function",
+				"deepStrictEqual": "function",
+				"notDeepStrictEqual": "function",
+				"strictEqual": "function",
+				"notStrictEqual": "function",
+				"partialDeepStrictEqual": "function",
+				"match": "function",
+				"doesNotMatch": "function",
+				"throws": "function",
+				"rejects": "function",
+				"doesNotThrow": "function",
+				"doesNotReject": "function",
+				"ifError": "function",
+				"Assert": "function",
+				"AssertionError": "function",
+				"ok": "function",
+				"strict": "function",
+				"equal": "function",
+				"notEqual": "function",
+				"deepEqual": "function",
+				"notDeepEqual": "function"
+			},
+			"equal": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"notEqual": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"deepEqual": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"notDeepEqual": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
@@ -16217,7 +16386,12 @@
 				"__type": "function",
 				"length": "number",
 				"name": "string",
-				"_prototype": {}
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined",
+					"groupBy": "undefined"
+				}
 			},
 			"getSystemErrorMessage": {
 				"__proto": "function",
@@ -16288,7 +16462,13 @@
 				"__type": "function",
 				"length": "number",
 				"name": "string",
-				"_prototype": {}
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined",
+					"signal": "object",
+					"abort": "function"
+				}
 			},
 			"transferableAbortSignal": {
 				"__proto": "function",
@@ -16310,6 +16490,24 @@
 				"name": "string"
 			},
 			"isDeepStrictEqual": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"convertProcessSignalToExitCode": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"setTraceSigInt": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
