@@ -3,26 +3,47 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2><span style="font-size: 12pt;"><strong>Available locations:&nbsp;<span class="collapsed-field-text">Lisbon, Portugal or London, UK.&nbsp;</span>This role requires two days in office, it is not a fully remote role.</strong></span></h2>
-<h2>About The Team</h2>
-<p>Application Security is responsible for Cloudflare’s fast-growing security product portfolio including WAF, Page Shield, Web Asset Management and API Shield. Being part of Cloudflare means working at internet scale and we are uniquely positioned to tackle challenging problems related to being connected to more networks, websites and customers than any other provider worldwide. Working at great scale by default (to an extent not offered by most other employers in big tech) means pushing boundaries well beyond what commodity solutions like Nginx and Kafka provide out of the box. You’ll be working with custom components that have been created in an engineering-driven and pragmatic way - our code is well-tested and documented and uses modern ecosystems like Go and Rust. This gives you confidence that you will spend your time having an impact and not firefighting!</p>
-<p>You’d be joining a high-profile part of the business that can really accelerate and support your career. Cloudflare has a strong track record of growing in a thoughtful way and hires carefully so we’re confident that you will enjoy working with your colleagues here!</p>
-<h2>About You</h2>
-<p><strong>You must have at least 5 years of professional experience working hands-on as a software developer</strong>. We require proficiency with at least one of Go or Rust, plus exposure to devops tooling like but not limited to Kubernetes, Salt, Kafka or Systemd. Strong Linux / Unix fundamentals will be very helpful. You must have experience working with distributed systems at scale. Experience with cyber security is preferred but not essential.</p>
-<p>Cloudflare’s culture is busy and multifaceted, and people who succeed here are persistent, have a can-do attitude and a genuine willingness to assume good faith in others. This last quality in particular requires them to be empathetic and emotionally intelligent, so you’re someone willing to take responsibility for the culture and environment that you create around you.</p>
-<h2>What You’ll Do</h2>
+<p><strong>Available Location: </strong>Austin, Texas, US</p>
+<p><strong>Available Term: </strong>Winter (January - April 2027)&nbsp;</p>
+<h3>About the Role</h3>
+<p>The team is building AI agents for the People team that can reason, act, and coordinate without constant human input. You will contribute to this foundation and gain firsthand experience.&nbsp;We value fundamentals, curiosity, and fast learning. Join the People Innovation Lab to rapidly build and deploy internal enterprise applications and tooling for the Cloudflare People &amp; Places organization, focused on making work smarter.</p>
+<h3>What We Provide</h3>
 <ul>
-	<li>Design systems and write code following bleeding edge industry best practices and help others on the team do the same. Review RFCs, technical specifications and code.</li>
-	<li>Deploy and maintain live software-based services at scale (up to 100m requests / second, 1m customers). Take regular shifts as part of the team’s On Call rota.</li>
-	<li>Support and grow other Engineers through knowledge sharing.</li>
-	<li>Keep up to date with trends in detecting current and emerging security risks to web applications and provide input on how these impact Cloudflare’s products.</li>
-	<li>Work with Engineers and Product Managers outside your immediate team in communicating our roadmap and getting things done.</li>
+	<li>Opportunity to solve real problems with AI and code.</li>
+	<li>Mentorship, dedicated manager, regular 1:1s, and structured support.</li>
+	<li>Real sprint work with production deliverables.</li>
+	<li>Access to Cloudflare's full intern cohort (community, events, network).</li>
+	<li>A portfolio artifact: production-deployed code and a shipped product demo.</li>
 </ul>
-<h2>Benefits</h2>
-<p>Cloudflare offers a positive and stimulating place to work, where you can enjoy friendly relationships with your colleagues and the freedom to have real impact on our products and customers. While the work is demanding, the company is unusual in offering an unlimited leave policy. This is not a “race to the bottom” or proxy for reducing the amount of leave taken; leaders around the company model the behaviour of always taking the time off that they need.</p>
-<p>In addition to a competitive base salary, Cloudflare offers an equity program with stock grants on joining and regular refreshers linked to performance. And in common with other big tech companies, we offer medical and dental insurance, mental health support, a tax efficient defined contributions pension plan and life insurance.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<h3>What You'll Build &amp; Do</h3>
+<ul>
+	<li>You will build production features in a sprint-based team.</li>
+	<li>Work is guided by the IT Customer Zero team and deployed on Cloudflare infrastructure.</li>
+	<li>Strong fundamentals and fast ramp-up ability are essential.</li>
+	<li>Build and ship full-stack features, clean production code, and integrations for internal tools.</li>
+	<li>Write and review code, work in sprints (managing tickets/blockers), and coordinate with the other intern.</li>
+	<li>Effectively use AI-assisted coding tools.</li>
+	<li>Demo working products to leadership.</li>
+</ul>
+<h3>Requirements &amp; Qualifications</h3>
+<p><strong>Minimum Requirements</strong></p>
+<ul>
+	<li>Pursuing CS, Software Engineering, or related degree (or equivalent experience).</li>
+	<li>Ability to build and demonstrate a working web application.</li>
+	<li>Proficient in JavaScript/TypeScript and comfortable with one back-end language/framework.</li>
+	<li>Solid understanding of end-to-end web app functionality (HTTP, APIs, data persistence, deployment).</li>
+	<li>Experience with shared codebases such as Git and meaningful commits.</li>
+	<li>Ability to commit to a full-time (40 hours/week Monday - Friday) for a minimum 12 week internship.</li>
+	<li>In office 3-5 days a week.</li>
+</ul>
+<p><strong>Preferred Qualifications</strong></p>
+<ul>
+	<li>Familiarity with serverless/edge computing.</li>
+	<li>Experience with a modern front-end framework (React, Vue, Svelte, etc.) and/or MCPs/APIs, data modeling, or systems design (for back-end seat).</li>
+	<li>Experience using AI-assisted development tools (Cursor, Windsurf, OpenCode).</li>
+	<li>Prior sprint-based team experience.</li>
+	<li>For UI seat: Experience with design systems, Figma, or strong interaction design sense.</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

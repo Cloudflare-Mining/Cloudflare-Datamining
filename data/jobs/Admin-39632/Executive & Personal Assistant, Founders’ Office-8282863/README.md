@@ -3,69 +3,31 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, Colorado, Atlanta, Toronto, San Francisco, New York</p>
-<p><strong>About the role</strong></p>
-<p>As a Senior Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
-<h4><strong>Responsibilities</strong></h4>
-<p>As the product manager for Organization and Partner Experiences, you will be responsible for building the management plane that helps everyone, but especially enterprises and partners like resellers, MSSPs, and OEMs scale their use of Cloudflare across multiple accounts. This is a deeply collaborative role which requires a healthy blend of technical background, user experience, and business savvy. You will:</p>
+<p><strong>Executive &amp; Personal Assistant, Founders’ Office</strong></p>
+<p><strong>Location:</strong> San Francisco, CA or New York, NY (In-office / Hybrid)</p>
+<h3><strong>About the Role</strong></h3>
+<p>Cloudflare is seeking an exceptional, highly organized, and discreet <strong>Executive &amp; Personal Assistant</strong> to join our Founders’ Office support team. Based in either <strong>San Francisco</strong> or <strong>New York City</strong>, this role works in close alignment with two Senior Executive Business Partners who manage direct daily support for Cloudflare’s Co-Founders.</p>
+<p>This is a versatile, high-touch role combining executive administrative support, event coordination, personal projects, and lifestyle logistics. You will provide critical execution capacity behind the scenes—anticipating needs effortlessly, moving between business and personal requests seamlessly, and ensuring every detail is handled with precision, follow-through, and strict confidentiality.</p>
+<h3><strong>Key Responsibilities</strong></h3>
 <ul>
-	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on building the Organizations management plane at Cloudflare.&nbsp;</li>
-	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
-	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
-	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
-	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.&nbsp;</li>
+	<li><strong>Executive &amp; Founder Support:</strong> Manage executive calendar coordination, meeting logistics, priority tracking, expense reports, and backup support alongside the Senior Executive Business Partners.</li>
+	<li><strong>Travel &amp; Itinerary Planning:</strong> Coordinate domestic and international executive and personal travel, including private aviation charters, luxury lodging, ground transportation, dining arrangements, and detailed door-to-door itineraries.</li>
+	<li><strong>Events &amp; Entertaining:</strong> Plan and execute private dinners, VIP hospitality, and personal events, managing venue sourcing, guest lists, menus, invitations, and on-site vendor logistics.</li>
+	<li><strong>Personal &amp; Lifestyle Support:</strong> Coordinate day-to-day personal logistics, appointments, dining reservations, executive gifting, wellness schedules, and ad-hoc errands.</li>
+	<li><strong>Special Projects:</strong> Assist with special research, bespoke purchasing, prospective property coordination, and vendor oversight for home/office maintenance and seasonal projects.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h3><strong>What You Bring</strong></h3>
 <ul>
-	<li>6+ years of experience as a product manager, technical program manager, or equivalent delivering solutions in the cloud at scale for a technical audience&nbsp;</li>
-	<li>Customer focus. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.&nbsp;</li>
-	<li>User experience sense. You’re comfortable working with product designers to translate the requirements into an elegant user experience.&nbsp;</li>
-	<li>Enterprise sense. You’ve worked on products that are for enterprises, and know what they need to be competitive in today’s environment.&nbsp;</li>
-	<li>Strong written and verbal communication skills for both an internal and external audience as appropriate.&nbsp;</li>
+	<li><strong>Experience:</strong> 5+ years of experience supporting C-suite executives, Founders, or UHNW individuals in a combined executive and personal assistant capacity.</li>
+	<li><strong>Core Skills:</strong> Exceptional organization, eagle-eyed attention to detail, and proactive follow-through</li>
+	<li><strong>Travel &amp; Hospitality Expertise:</strong> Deep experience booking, managing, and troubleshooting travel, including private aviation charters and luxury accommodations. You offer a high-touch concierge service.</li>
+	<li><strong>Professional Demeanor:</strong> Personable, polished, and collaborative, adept at partnering seamlessly with internal teams and external vendors, holding firm boundaries, and maintaining complete confidentiality</li>
+	<li><strong>Technical Savvy:</strong> Strong working knowledge of Google Workspace (G-Suite) alongside practical adoption of AI and modern productivity workflows.</li>
 </ul>
-<h4>Bonus Points</h4>
-<ul>
-	<li>You’ve enthusiastically adopted the latest generation of agentic coding tools, and you can use them effectively to navigate a codebase, or prototype the improvements you envision for your feature area.&nbsp;</li>
-	<li>Partners - You’ve worked closely with go to market partners or resellers and understand how to build products that make them more effective</li>
-	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity. &nbsp;</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Application Deadline:</strong> December 09, 2026</p>
-<h4>Compensation</h4>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For <strong>Colorado</strong> based hires: Estimated annual salary of $156,000 - $215,000</li>
-	<li>For <strong>San Francisco / Bay Area </strong>based hires: Estimated annual salary of $179,000 - $224,000</li>
-	<li>For <strong>New York City </strong>based hires: Estimated annual salary of $156,000 - $216,000</li>
-</ul>
-<h4>Equity</h4>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h4>Benefits</h4>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<h2><strong style="font-size: 14px;">Compensation</strong></h2>
+<p>Compensation may be adjusted depending on work location and level.</p>
+<p>San Francisco Estimated Base Salary $102,000 - $140,000.</p>
+<p>New York Estimated Base Salary $97,000 - $133,000.</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

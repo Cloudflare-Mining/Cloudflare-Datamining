@@ -5,7 +5,7 @@
 </div>
 <p><strong>Available Locations: Austin, TX or New York</strong></p>
 <h2><strong>About the Role</strong></h2>
-<p>Cloudflare is looking for a bright, proactive, and detail-oriented Executive Assistant to support three leaders in our Developer GTM organization. We are looking for a dynamic and dedicated candidate who is comfortable with multi-tasking and prioritization in a fast-paced, product-first environment with close attention to detail, accuracy, and timeliness.&nbsp;</p>
+<p>Cloudflare is looking for a bright, proactive, and detail-oriented Executive Assistant to support two leaders in our Developer GTM organization. We are looking for a dynamic and dedicated candidate who is comfortable with multi-tasking and prioritization in a fast-paced, product-first environment with close attention to detail, accuracy, and timeliness.&nbsp;</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
 	<li><strong>Calendar &amp; Conflict Management:</strong> Proactively manage complex calendars with a strong understanding of business priorities. Independently resolve scheduling conflicts and anticipate meeting requests and logistical needs before they are explicitly stated.&nbsp;</li>

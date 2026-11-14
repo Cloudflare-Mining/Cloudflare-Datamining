@@ -3,26 +3,60 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h3>Available Locations</h3>
+<p><strong>Location: Austin </strong>(Hybrid)</p>
+<h3><strong>About the team</strong></h3>
+<p>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack, build specialized data solutions for predictive modeling and machine learning applications, and construct systems that truly run the business.</p>
+<h3><strong>About the role</strong></h3>
+<p>We are looking for an experienced Data Engineer to join our Austin team and help scale the development of our internal data products. In this role, you will build data-driven applications that empower teams across the company, including go-to-market, engineering, and product. Because the products we build are initiated and owned by the team, you will be involved end-to-end — from shaping requirements and designing features to implementation and long-term ownership.</p>
+<p>You will work on building scalable, reliable systems that solve critical business problems, partnering closely with full-stack engineers to develop new features and operate the data pipelines and services behind our applications. Our stack spans multiple languages and technologies, including Go, Scala, and ClickHouse, and continues to evolve. Many of our products also incorporate strong AI components, giving you opportunities to build sophisticated, AI-ready data layers and work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
+<h3><strong>What you'll do</strong></h3>
 <ul>
-	<li>Austin, US</li>
+	<li>Design and implement core components of our data pipelines and services in Go and Scala, with a focus on scalability, performance, and long-term maintainability.</li>
+	<li>Partner closely with engineers, analysts, and product stakeholders to design solutions for strategic initiatives, business-critical data products, and agentic AI architectures.</li>
+	<li>Contribute to the evolution of our data platform architecture, improving scalability, reliability, observability, and data correctness across the stack.</li>
+	<li>Build and curate high-quality, well-modeled, and richly contextual datasets that power internal products, predictive analytics, and LLM-enabled features at company scale.</li>
+	<li>Develop a deep understanding of the company’s data ecosystem — including source systems, tooling, and data flows — and collaborate closely with the data and system engineers in Austin, Lisbon, and London to improve data ingestion, quality, and governance.</li>
+	<li>Lead by example through design reviews, knowledge sharing, and mentorship, helping raise the technical bar, data engineering practices, and AI implementation standards across the organization.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Role Summary</strong></p>
-<p>Work on our edge CDN proxy services and products focussing on our customer speed improvement products, our caching systems and our connectivity to customer origins. Work hands on and in a leadership role for small groups of engineers, building products and operating services to make Cloudflare the fastest place in the world to serve content from.</p>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>At least 5 years experience as a hands-on engineer</li>
-	<li>Experience of operating high performance and large scale software systems</li>
-	<li>Experience leading teams of engineers to deliver projects</li>
-	<li>Experience of working on multiple concurrent projects with competing priorities</li>
-	<li>Detailed knowledge of HTTP and transport protocols</li>
-	<li>Working with other teams, maintaining clear lines of communication across and upwards in an organisation</li>
-	<li>Customer focussed experience - building what customers need</li>
+	<li>B.S. or M.S. in Computer Science, Engineering, Statistics, Mathematics, or a related quantitative field, or equivalent practical experience.</li>
+	<li>5+ years of professional experience in data engineering, software engineering, or related roles, building and operating production data systems.</li>
+	<li>Strong programming expertise in Go, Python, or JVM-based languages, with experience writing high-quality, production-grade services and pipelines.</li>
+	<li>Deep knowledge of SQL and hands-on experience designing data models and working with relational, analytical, or vector databases (e.g., PostgreSQL, MySQL, ClickHouse).</li>
+	<li>Experience building scalable, reliable, and observable data pipelines, with an understanding of performance, data quality, and operational best practices.</li>
+	<li>Proven problem-solving and communication skills, with a track record of driving projects in ambiguous environments and partnering effectively with cross-functional teams.</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h3><strong><em>Bonus Points</em></strong></h3>
+<ul>
+	<li><em>Familiarity with container based deployments such as Docker &amp; Kubernetes.</em></li>
+	<li><em>Familiarity with Google Cloud Platform, foundational Large Language Model (LLM) orchestration frameworks, or something similar.</em></li>
+</ul>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
