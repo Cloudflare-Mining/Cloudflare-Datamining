@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-callstats",
 	"dist-tags": {
-		"latest": "9.0.0",
+		"latest": "10.0.0",
 		"staging": "10.0.0-staging.1"
 	},
 	"versions": {
@@ -457,11 +457,63 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIEqmVSxvwYF2Lo+qN2QmnxWhYfTB+4WpTYIkWauunT2HAiBhO2LJ+BiHdwQOMc/PJUuNYzPz8oBLaxMgtsOcm+GDAQ=="
+						"sig": "MEQCIEqmVSxvwYF2Lo+qN2QmnxWhYfTB+4WpTYIkWauunT2HAiBhO2LJ+BiHdwQOMc/PJUuNYzPz8oBLaxMgtsOcm+GDAQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"unpackedSize": 239096
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"10.0.0": {
+			"name": "@cloudflare/realtimekit-callstats",
+			"version": "10.0.0",
+			"dependencies": {
+				"utf-8-validate": "^5.0.5"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"husky": "^9.1.7",
+				"is-ci": "^2.0.0",
+				"eslint": "^8.56.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"prettier": "^3.1.1",
+				"commitizen": "^4.3.1",
+				"typescript": "~5.5.4",
+				"@types/jest": "^29.5.11",
+				"@types/node": "^20.10.6",
+				"@changesets/cli": "^2.29.8",
+				"@commitlint/cli": "^20.4.1",
+				"eslint-plugin-import": "^2.32.0",
+				"jest-environment-jsdom": "^30.2.0",
+				"@typescript-eslint/parser": "^7.0.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"@commitlint/config-conventional": "^20.4.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.0"
+			},
+			"peerDependencies": {
+				"react": "*"
+			},
+			"dist": {
+				"shasum": "d4a39684056bd3b135da02f7b275bae2275eb4fd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-callstats/-/realtimekit-callstats-10.0.0.tgz",
+				"fileCount": 43,
+				"integrity": "sha512-ZR0iSQ+kuiYStx26uSvyCi3VBZLiTN+FTng1+ps6KhjwgU9c4ZNZaS0aXNyT7JhhQJ10/9RqmwTZWk7/Ec0MsA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD2F4Nh8LSR+0Vui7zJKYraSK03ELuBgG26l5LPN3pcTAIgRsuz78GCvmDe+mxZYcmv1PbI1ngdv4gzvGxr06Jx45I=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDyG+9eYVQUfGxCnsPgD7zPbXU/ihd8yogsvP6pP8P+vgIhAMR8G5hINS8ag4vWLoEwF0TZ5KClGpDbm61R+TOZfAm8"
+					}
+				],
+				"unpackedSize": 239086
 			},
 			"engines": {
 				"node": ">=10"
