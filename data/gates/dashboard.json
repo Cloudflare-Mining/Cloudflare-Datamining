@@ -79,6 +79,9 @@
 	"agent-readiness-aeo-timeseries": {
 		"enabled": true
 	},
+	"agent-readiness-aeo-visibility": {
+		"enabled": false
+	},
 	"agent-readiness-labs": {
 		"enabled": true
 	},
@@ -113,6 +116,9 @@
 		"enabled": true
 	},
 	"ai-auto-rag-disable-max-num-rules": {
+		"enabled": true
+	},
+	"ai-auto-rag-media-pipeline": {
 		"enabled": true
 	},
 	"ai-auto-rag-public-endpoint-metrics": {
@@ -218,7 +224,7 @@
 		"enabled": true
 	},
 	"aig-model-catalog-providers": {
-		"enabled": false
+		"enabled": true
 	},
 	"aig-new-dash-settings": {
 		"enabled": true
@@ -332,6 +338,9 @@
 	"authn-email-mfa-enablement-messaging": {
 		"enabled": false
 	},
+	"authn-login-connections": {
+		"enabled": false
+	},
 	"auto-save-all-discoveries": {
 		"enabled": true
 	},
@@ -358,6 +367,9 @@
 	},
 	"basin-catalog-object-authz": {
 		"enabled": true
+	},
+	"basin-fedramp": {
+		"enabled": false
 	},
 	"basin-rename": {
 		"enabled": true
@@ -639,8 +651,14 @@
 	"cfone-cloudy-threat-events-enabled": {
 		"enabled": true
 	},
+	"cfone-default-datasets": {
+		"enabled": false
+	},
 	"cfone-egress-intelligence-enabled": {
 		"enabled": true
+	},
+	"cfone-link-support-portal-abuse-to-authed-form": {
+		"enabled": false
 	},
 	"cfone-pir-filters": {
 		"enabled": true
@@ -1659,19 +1677,7 @@
 	"igloo-catalog": {
 		"enabled": true
 	},
-	"images-automation": {
-		"enabled": true
-	},
 	"images-hosted-analytics": {
-		"enabled": true
-	},
-	"images-provider-transformation": {
-		"enabled": true
-	},
-	"images-start-of-month-billing": {
-		"enabled": true
-	},
-	"images-transformations-analytics": {
 		"enabled": true
 	},
 	"images-unique-transformations-discount": {
@@ -2615,6 +2621,9 @@
 	},
 	"r2-migration-dashboard": {
 		"enabled": false
+	},
+	"r2-request-latency-metrics": {
+		"enabled": true
 	},
 	"r2-sql-studio": {
 		"enabled": false
