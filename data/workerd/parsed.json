@@ -5425,7 +5425,7 @@
 					"type": "workerd/src/workerd/jsg/rtti.capnp:FunctionType"
 				},
 				{
-					"name": "builtinModules",
+					"name": "obsolete12",
 					"annotations": {},
 					"type": "List(workerd/src/workerd/jsg/rtti.capnp:Module)"
 				},
@@ -8374,6 +8374,11 @@
 					"name": "bucket",
 					"annotations": {},
 					"type": "workerd/server/workerd.capnp:ClusterBucket"
+				},
+				{
+					"name": "assets",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:AssetsService"
 				}
 			]
 		},
@@ -8609,6 +8614,36 @@
 					"name": "path",
 					"annotations": {},
 					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:AssetsService",
+			"fields": [
+				{
+					"name": "path",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "config",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "userWorker",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				},
+				{
+					"name": "compatibilityDate",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "compatibilityFlags",
+					"annotations": {},
+					"type": "List(Text)"
 				}
 			]
 		},
@@ -9881,11 +9916,6 @@
 		"workerd/src/workerd/io/trace.capnp",
 		"workerd/src/workerd/jsg/exception-metadata.capnp",
 		"workerd/src/workerd/jsg/modules.capnp",
-		"workerd/src/workerd/jsg/resource-test.capnp",
-		"workerd/src/workerd/jsg/resource-test.capnp:builtinBundle",
-		"workerd/src/workerd/jsg/resource-test.capnp:bootstrapBundle",
-		"workerd/src/workerd/jsg/rtti-test.capnp",
-		"workerd/src/workerd/jsg/rtti-test.capnp:testBundle",
 		"workerd/src/workerd/jsg/rtti.capnp",
 		"workerd/src/workerd/server/channel-token.capnp",
 		"workerd/src/workerd/server/channel-token.capnp:ChannelToken.rpcTokenMagic",
