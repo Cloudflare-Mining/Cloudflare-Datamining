@@ -489,6 +489,25 @@
 				}
 			},
 			{
+				"name": "page",
+				"in": "query",
+				"description": "Page number of paginated results, starting at 1. Defaults to 1.",
+				"schema": {
+					"type": "integer",
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of virtual networks per page, up to 1000. Defaults to 1000.",
+				"schema": {
+					"type": "integer",
+					"maximum": 1000,
+					"minimum": 1
+				}
+			},
+			{
 				"name": "id",
 				"in": "query",
 				"schema": {

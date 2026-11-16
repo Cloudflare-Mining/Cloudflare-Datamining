@@ -10275,9 +10275,10 @@
 			"free": true,
 			"pro": true
 		},
-		"x-fern-ignore": true,
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances.batch",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This operation permanently deletes the Workflow instances."
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch/terminate": {
 		"operationId": "wor-batch-terminate-workflow-instances",

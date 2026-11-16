@@ -308,6 +308,12 @@
 																	"type": "boolean",
 																	"x-auditable": true
 																},
+																"botScoreThreshold": {
+																	"description": "Minimum bot score required to load Zaraz.",
+																	"type": "integer",
+																	"format": "int64",
+																	"x-auditable": true
+																},
 																"contextEnricher": {
 																	"description": "Details of the worker that receives and edits Zaraz Context object.",
 																	"type": "object",
@@ -1282,7 +1288,7 @@
 																								}
 																							},
 																							"component": {
-																								"description": "Tool's internal name.",
+																								"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
@@ -1325,7 +1331,8 @@
 																										"data"
 																									],
 																									"type": "object"
-																								}
+																								},
+																								"deprecated": true
 																							},
 																							"permissions": {
 																								"description": "List of permissions granted to the component.",
@@ -1483,7 +1490,7 @@
 																								}
 																							},
 																							"component": {
-																								"description": "Tool's internal name.",
+																								"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
@@ -1526,7 +1533,8 @@
 																										"data"
 																									],
 																									"type": "object"
-																								}
+																								},
+																								"deprecated": true
 																							},
 																							"permissions": {
 																								"description": "List of permissions granted to the component.",
@@ -1570,14 +1578,21 @@
 																						]
 																					},
 																					"worker": {
-																						"description": "Cloudflare worker that acts as a managed component.",
+																						"description": "Cloudflare Worker that acts as a Managed Component.",
 																						"type": "object",
 																						"properties": {
 																							"escapedWorkerName": {
+																								"description": "Name of the Worker script.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
+																							"mutableId": {
+																								"description": "Set by Cloudflare when the config is saved. Do not set or change it.",
+																								"type": "string",
+																								"readOnly": true
+																							},
 																							"workerTag": {
+																								"description": "Tag of the Worker script.",
 																								"type": "string",
 																								"x-auditable": true
 																							}
@@ -2056,6 +2071,12 @@
 																	"type": "boolean",
 																	"x-auditable": true
 																},
+																"botScoreThreshold": {
+																	"description": "Minimum bot score required to load Zaraz.",
+																	"type": "integer",
+																	"format": "int64",
+																	"x-auditable": true
+																},
 																"contextEnricher": {
 																	"description": "Details of the worker that receives and edits Zaraz Context object.",
 																	"type": "object",
@@ -3030,7 +3051,7 @@
 																								}
 																							},
 																							"component": {
-																								"description": "Tool's internal name.",
+																								"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
@@ -3073,7 +3094,8 @@
 																										"data"
 																									],
 																									"type": "object"
-																								}
+																								},
+																								"deprecated": true
 																							},
 																							"permissions": {
 																								"description": "List of permissions granted to the component.",
@@ -3231,7 +3253,7 @@
 																								}
 																							},
 																							"component": {
-																								"description": "Tool's internal name.",
+																								"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
@@ -3274,7 +3296,8 @@
 																										"data"
 																									],
 																									"type": "object"
-																								}
+																								},
+																								"deprecated": true
 																							},
 																							"permissions": {
 																								"description": "List of permissions granted to the component.",
@@ -3318,14 +3341,21 @@
 																						]
 																					},
 																					"worker": {
-																						"description": "Cloudflare worker that acts as a managed component.",
+																						"description": "Cloudflare Worker that acts as a Managed Component.",
 																						"type": "object",
 																						"properties": {
 																							"escapedWorkerName": {
+																								"description": "Name of the Worker script.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
+																							"mutableId": {
+																								"description": "Set by Cloudflare when the config is saved. Do not set or change it.",
+																								"type": "string",
+																								"readOnly": true
+																							},
 																							"workerTag": {
+																								"description": "Tag of the Worker script.",
 																								"type": "string",
 																								"x-auditable": true
 																							}
@@ -3725,6 +3755,12 @@
 												"autoInjectScript": {
 													"description": "Automatic injection of Zaraz scripts enabled.",
 													"type": "boolean",
+													"x-auditable": true
+												},
+												"botScoreThreshold": {
+													"description": "Minimum bot score required to load Zaraz.",
+													"type": "integer",
+													"format": "int64",
 													"x-auditable": true
 												},
 												"contextEnricher": {
@@ -4701,7 +4737,7 @@
 																				}
 																			},
 																			"component": {
-																				"description": "Tool's internal name.",
+																				"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																				"type": "string",
 																				"x-auditable": true
 																			},
@@ -4744,7 +4780,8 @@
 																						"data"
 																					],
 																					"type": "object"
-																				}
+																				},
+																				"deprecated": true
 																			},
 																			"permissions": {
 																				"description": "List of permissions granted to the component.",
@@ -4902,7 +4939,7 @@
 																				}
 																			},
 																			"component": {
-																				"description": "Tool's internal name.",
+																				"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																				"type": "string",
 																				"x-auditable": true
 																			},
@@ -4945,7 +4982,8 @@
 																						"data"
 																					],
 																					"type": "object"
-																				}
+																				},
+																				"deprecated": true
 																			},
 																			"permissions": {
 																				"description": "List of permissions granted to the component.",
@@ -4989,14 +5027,21 @@
 																		]
 																	},
 																	"worker": {
-																		"description": "Cloudflare worker that acts as a managed component.",
+																		"description": "Cloudflare Worker that acts as a Managed Component.",
 																		"type": "object",
 																		"properties": {
 																			"escapedWorkerName": {
+																				"description": "Name of the Worker script.",
 																				"type": "string",
 																				"x-auditable": true
 																			},
+																			"mutableId": {
+																				"description": "Set by Cloudflare when the config is saved. Do not set or change it.",
+																				"type": "string",
+																				"readOnly": true
+																			},
 																			"workerTag": {
+																				"description": "Tag of the Worker script.",
 																				"type": "string",
 																				"x-auditable": true
 																			}
@@ -5966,6 +6011,12 @@
 																					"autoInjectScript": {
 																						"description": "Automatic injection of Zaraz scripts enabled.",
 																						"type": "boolean",
+																						"x-auditable": true
+																					},
+																					"botScoreThreshold": {
+																						"description": "Minimum bot score required to load Zaraz.",
+																						"type": "integer",
+																						"format": "int64",
 																						"x-auditable": true
 																					},
 																					"contextEnricher": {
@@ -6942,7 +6993,7 @@
 																													}
 																												},
 																												"component": {
-																													"description": "Tool's internal name.",
+																													"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																													"type": "string",
 																													"x-auditable": true
 																												},
@@ -6985,7 +7036,8 @@
 																															"data"
 																														],
 																														"type": "object"
-																													}
+																													},
+																													"deprecated": true
 																												},
 																												"permissions": {
 																													"description": "List of permissions granted to the component.",
@@ -7143,7 +7195,7 @@
 																													}
 																												},
 																												"component": {
-																													"description": "Tool's internal name.",
+																													"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																													"type": "string",
 																													"x-auditable": true
 																												},
@@ -7186,7 +7238,8 @@
 																															"data"
 																														],
 																														"type": "object"
-																													}
+																													},
+																													"deprecated": true
 																												},
 																												"permissions": {
 																													"description": "List of permissions granted to the component.",
@@ -7230,14 +7283,21 @@
 																											]
 																										},
 																										"worker": {
-																											"description": "Cloudflare worker that acts as a managed component.",
+																											"description": "Cloudflare Worker that acts as a Managed Component.",
 																											"type": "object",
 																											"properties": {
 																												"escapedWorkerName": {
+																													"description": "Name of the Worker script.",
 																													"type": "string",
 																													"x-auditable": true
 																												},
+																												"mutableId": {
+																													"description": "Set by Cloudflare when the config is saved. Do not set or change it.",
+																													"type": "string",
+																													"readOnly": true
+																												},
 																												"workerTag": {
+																													"description": "Tag of the Worker script.",
 																													"type": "string",
 																													"x-auditable": true
 																												}
@@ -8166,6 +8226,12 @@
 											"autoInjectScript": {
 												"description": "Automatic injection of Zaraz scripts enabled.",
 												"type": "boolean",
+												"x-auditable": true
+											},
+											"botScoreThreshold": {
+												"description": "Minimum bot score required to load Zaraz.",
+												"type": "integer",
+												"format": "int64",
 												"x-auditable": true
 											},
 											"contextEnricher": {
@@ -9142,7 +9208,7 @@
 																			}
 																		},
 																		"component": {
-																			"description": "Tool's internal name.",
+																			"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																			"type": "string",
 																			"x-auditable": true
 																		},
@@ -9185,7 +9251,8 @@
 																					"data"
 																				],
 																				"type": "object"
-																			}
+																			},
+																			"deprecated": true
 																		},
 																		"permissions": {
 																			"description": "List of permissions granted to the component.",
@@ -9343,7 +9410,7 @@
 																			}
 																		},
 																		"component": {
-																			"description": "Tool's internal name.",
+																			"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																			"type": "string",
 																			"x-auditable": true
 																		},
@@ -9386,7 +9453,8 @@
 																					"data"
 																				],
 																				"type": "object"
-																			}
+																			},
+																			"deprecated": true
 																		},
 																		"permissions": {
 																			"description": "List of permissions granted to the component.",
@@ -9430,14 +9498,21 @@
 																	]
 																},
 																"worker": {
-																	"description": "Cloudflare worker that acts as a managed component.",
+																	"description": "Cloudflare Worker that acts as a Managed Component.",
 																	"type": "object",
 																	"properties": {
 																		"escapedWorkerName": {
+																			"description": "Name of the Worker script.",
 																			"type": "string",
 																			"x-auditable": true
 																		},
+																		"mutableId": {
+																			"description": "Set by Cloudflare when the config is saved. Do not set or change it.",
+																			"type": "string",
+																			"readOnly": true
+																		},
 																		"workerTag": {
+																			"description": "Tag of the Worker script.",
 																			"type": "string",
 																			"x-auditable": true
 																		}
@@ -9756,6 +9831,12 @@
 																"autoInjectScript": {
 																	"description": "Automatic injection of Zaraz scripts enabled.",
 																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"botScoreThreshold": {
+																	"description": "Minimum bot score required to load Zaraz.",
+																	"type": "integer",
+																	"format": "int64",
 																	"x-auditable": true
 																},
 																"contextEnricher": {
@@ -10732,7 +10813,7 @@
 																								}
 																							},
 																							"component": {
-																								"description": "Tool's internal name.",
+																								"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
@@ -10775,7 +10856,8 @@
 																										"data"
 																									],
 																									"type": "object"
-																								}
+																								},
+																								"deprecated": true
 																							},
 																							"permissions": {
 																								"description": "List of permissions granted to the component.",
@@ -10933,7 +11015,7 @@
 																								}
 																							},
 																							"component": {
-																								"description": "Tool's internal name.",
+																								"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
@@ -10976,7 +11058,8 @@
 																										"data"
 																									],
 																									"type": "object"
-																								}
+																								},
+																								"deprecated": true
 																							},
 																							"permissions": {
 																								"description": "List of permissions granted to the component.",
@@ -11020,14 +11103,21 @@
 																						]
 																					},
 																					"worker": {
-																						"description": "Cloudflare worker that acts as a managed component.",
+																						"description": "Cloudflare Worker that acts as a Managed Component.",
 																						"type": "object",
 																						"properties": {
 																							"escapedWorkerName": {
+																								"description": "Name of the Worker script.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
+																							"mutableId": {
+																								"description": "Set by Cloudflare when the config is saved. Do not set or change it.",
+																								"type": "string",
+																								"readOnly": true
+																							},
 																							"workerTag": {
+																								"description": "Tag of the Worker script.",
 																								"type": "string",
 																								"x-auditable": true
 																							}
@@ -11518,6 +11608,12 @@
 																	"type": "boolean",
 																	"x-auditable": true
 																},
+																"botScoreThreshold": {
+																	"description": "Minimum bot score required to load Zaraz.",
+																	"type": "integer",
+																	"format": "int64",
+																	"x-auditable": true
+																},
 																"contextEnricher": {
 																	"description": "Details of the worker that receives and edits Zaraz Context object.",
 																	"type": "object",
@@ -12492,7 +12588,7 @@
 																								}
 																							},
 																							"component": {
-																								"description": "Tool's internal name.",
+																								"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
@@ -12535,7 +12631,8 @@
 																										"data"
 																									],
 																									"type": "object"
-																								}
+																								},
+																								"deprecated": true
 																							},
 																							"permissions": {
 																								"description": "List of permissions granted to the component.",
@@ -12693,7 +12790,7 @@
 																								}
 																							},
 																							"component": {
-																								"description": "Tool's internal name.",
+																								"description": "Name of the Managed Component the tool runs, for example `google-analytics_v4`.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
@@ -12736,7 +12833,8 @@
 																										"data"
 																									],
 																									"type": "object"
-																								}
+																								},
+																								"deprecated": true
 																							},
 																							"permissions": {
 																								"description": "List of permissions granted to the component.",
@@ -12780,14 +12878,21 @@
 																						]
 																					},
 																					"worker": {
-																						"description": "Cloudflare worker that acts as a managed component.",
+																						"description": "Cloudflare Worker that acts as a Managed Component.",
 																						"type": "object",
 																						"properties": {
 																							"escapedWorkerName": {
+																								"description": "Name of the Worker script.",
 																								"type": "string",
 																								"x-auditable": true
 																							},
+																							"mutableId": {
+																								"description": "Set by Cloudflare when the config is saved. Do not set or change it.",
+																								"type": "string",
+																								"readOnly": true
+																							},
 																							"workerTag": {
+																								"description": "Tag of the Worker script.",
 																								"type": "string",
 																								"x-auditable": true
 																							}

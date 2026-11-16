@@ -15305,6 +15305,8 @@
 											"description": "Combined view of Transformations, Allowed Origins, and C2PA settings for a zone.\n",
 											"allOf": [
 												{
+													"description": "Zone setting fields shared by settings whose value is not an on/off string.",
+													"type": "object",
 													"properties": {
 														"editable": {
 															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
@@ -15319,7 +15321,6 @@
 														"id": {
 															"description": "Identifier of the zone setting.",
 															"type": "string",
-															"example": "development_mode",
 															"x-auditable": true
 														},
 														"modified_on": {
@@ -15329,16 +15330,6 @@
 															"example": "2014-01-01T05:20:00.12345Z",
 															"nullable": true,
 															"readOnly": true,
-															"x-auditable": true
-														},
-														"value": {
-															"description": "Current value of the zone setting.",
-															"type": "string",
-															"example": "on",
-															"enum": [
-																"on",
-																"off"
-															],
 															"x-auditable": true
 														}
 													}
@@ -33609,7 +33600,7 @@
 	"PATCH /zones/{zone_id}/settings/automatic_platform_optimization": {
 		"operationId": "zone-settings-change-automatic-platform-optimization-setting",
 		"summary": "Change Automatic Platform Optimization setting",
-		"description": "Automatic Platform Optimization (APO) for WordPress is a performance feature that serves your\nWordPress site from Cloudflare's edge network, reducing load times for visitors.\nRefer to the APO documentation for more information.\n",
+		"description": "Automatic Platform Optimization (APO) for WordPress is a performance feature that serves your\nWordPress site from Cloudflare's edge network, reducing load times for visitors.\nRefer to the APO documentation for more information.\nWhen an APO configuration already exists, fields omitted from an object `value` keep their current value, except `recheck`, which is false unless the request sends it.\n",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -33632,7 +33623,7 @@
 						"type": "object",
 						"properties": {
 							"value": {
-								"description": "Configuration for Automatic Platform Optimization (APO) for WordPress.\nSet to \"off\" to disable, or provide an object to configure APO settings.\n",
+								"description": "Configuration for Automatic Platform Optimization (APO) for WordPress.\nSet to \"off\" to disable, or provide an object to configure APO settings.\nWhen an APO configuration already exists, fields omitted from the object keep their current value.\n",
 								"oneOf": [
 									{
 										"description": "Disable Automatic Platform Optimization.",
@@ -33669,7 +33660,7 @@
 												]
 											},
 											"recheck": {
-												"description": "Whether to recheck WordPress and plugin detection.",
+												"description": "Whether to recheck WordPress and plugin detection. When an APO configuration already exists, an omitted `recheck` is false, not its stored value.",
 												"type": "boolean",
 												"example": false
 											},
@@ -33684,16 +33675,10 @@
 												"example": true
 											}
 										},
-										"required": [
-											"cf",
-											"enabled",
-											"wordpress",
-											"wp_plugin"
-										],
 										"type": "object"
 									}
 								],
-								"title": "Automatic Platform Optimization value"
+								"title": "Automatic Platform Optimization PATCH value"
 							}
 						},
 						"required": [
@@ -37017,6 +37002,8 @@
 											"description": "Combined view of Transformations, Allowed Origins, and C2PA settings for a zone.\n",
 											"allOf": [
 												{
+													"description": "Zone setting fields shared by settings whose value is not an on/off string.",
+													"type": "object",
 													"properties": {
 														"editable": {
 															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
@@ -37031,7 +37018,6 @@
 														"id": {
 															"description": "Identifier of the zone setting.",
 															"type": "string",
-															"example": "development_mode",
 															"x-auditable": true
 														},
 														"modified_on": {
@@ -37041,16 +37027,6 @@
 															"example": "2014-01-01T05:20:00.12345Z",
 															"nullable": true,
 															"readOnly": true,
-															"x-auditable": true
-														},
-														"value": {
-															"description": "Current value of the zone setting.",
-															"type": "string",
-															"example": "on",
-															"enum": [
-																"on",
-																"off"
-															],
 															"x-auditable": true
 														}
 													}

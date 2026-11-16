@@ -2703,8 +2703,8 @@
 			"Workers KV Storage Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "kv.bulk",
-		"x-fern-sdk-method-name": "delete",
+		"x-fern-sdk-group-name": "kv.keys",
+		"x-fern-sdk-method-name": "bulk-delete",
 		"x-forge-require-confirmation": "This operation deletes the specified keys and their values from the Workers KV namespace."
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get": {
@@ -3117,8 +3117,8 @@
 			"Workers KV Storage Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "kv.bulk",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "kv.keys",
+		"x-fern-sdk-method-name": "bulk-get"
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
 		"operationId": "workers-kv-namespace-rename-a-namespace",
@@ -3761,8 +3761,8 @@
 			"Workers KV Storage Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "kv.bulk",
-		"x-fern-sdk-method-name": "put"
+		"x-fern-sdk-group-name": "kv.keys",
+		"x-fern-sdk-method-name": "bulk-put"
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"operationId": "workers-kv-namespace-write-key-value-pair-with-metadata",
