@@ -4399,6 +4399,13 @@
 				"name": "string",
 				"_prototype": {}
 			},
+			"diffieHellman": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
 			"ECDH": {
 				"__proto": "function",
 				"__type": "function",
@@ -7426,70 +7433,6 @@
 							"listenerCount": "function",
 							"eventNames": "function"
 						}
-					},
-					"drop": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {
-							"_events": "object",
-							"_readableState": "object",
-							"_maxListeners": "undefined",
-							"domain": "object",
-							"_read": "function",
-							"_destroy": "function",
-							"length": "undefined",
-							"name": "undefined",
-							"prototype": "undefined",
-							"ReadableState": "undefined",
-							"_fromList": "undefined",
-							"toWeb": "undefined",
-							"fromWeb": "undefined",
-							"wrap": "function",
-							"from": "undefined",
-							"destroy": "function",
-							"_undestroy": "function",
-							"push": "function",
-							"unshift": "function",
-							"isPaused": "function",
-							"setEncoding": "function",
-							"read": "function",
-							"pipe": "function",
-							"unpipe": "function",
-							"on": "function",
-							"addListener": "function",
-							"removeListener": "function",
-							"off": "function",
-							"removeAllListeners": "function",
-							"resume": "function",
-							"pause": "function",
-							"iterator": "function",
-							"map": "function",
-							"asIndexedPairs": "function",
-							"drop": "function",
-							"filter": "function",
-							"flatMap": "function",
-							"take": "function",
-							"every": "function",
-							"forEach": "function",
-							"reduce": "function",
-							"toArray": "function",
-							"some": "function",
-							"find": "function",
-							"compose": "function",
-							"_eventsCount": "number",
-							"setMaxListeners": "function",
-							"getMaxListeners": "function",
-							"emit": "function",
-							"prependListener": "function",
-							"once": "function",
-							"prependOnceListener": "function",
-							"listeners": "function",
-							"rawListeners": "function",
-							"listenerCount": "function",
-							"eventNames": "function"
-						}
 					}
 				},
 				"fromWeb": "function",
@@ -7835,13 +7778,6 @@
 						"_prototype": {}
 					},
 					"iterator": {
-						"__proto": "function",
-						"__type": "function",
-						"length": "number",
-						"name": "string",
-						"_prototype": {}
-					},
-					"map": {
 						"__proto": "function",
 						"__type": "function",
 						"length": "number",
@@ -16516,6 +16452,21 @@
 					"length": "undefined",
 					"name": "undefined",
 					"prototype": "undefined"
+				}
+			},
+			"diff": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "number",
+					"name": "undefined",
+					"prototype": "undefined",
+					"isArray": "undefined",
+					"from": "undefined",
+					"fromAsync": "undefined",
+					"of": "undefined"
 				}
 			},
 			"_errnoException": {
