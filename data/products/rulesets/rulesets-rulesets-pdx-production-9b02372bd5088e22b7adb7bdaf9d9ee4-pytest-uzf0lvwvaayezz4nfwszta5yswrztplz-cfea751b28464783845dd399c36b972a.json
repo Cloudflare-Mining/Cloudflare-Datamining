@@ -1,0 +1,30 @@
+{
+	"description": "",
+	"id": "cfea751b28464783845dd399c36b972a",
+	"kind": "managed",
+	"last_updated": "2026-11-16T01:56:16.26609Z",
+	"name": "rulesets-pdx-production-9b02372bd5088e22b7adb7bdaf9d9ee4-pytest-uZF0LvWVAaYEZZ4Nfwszta5YSWrzTPLz",
+	"phase": "http_response_firewall_custom",
+	"rules": [
+		{
+			"action": "log",
+			"categories": [
+				"response-security"
+			],
+			"enabled": false,
+			"id": "b8398f73cba448819e95b1d11e6c3c20",
+			"last_updated": "2026-11-16T01:56:16.26609Z",
+			"ref": "managed-response-log",
+			"version": "2"
+		},
+		{
+			"action": "block",
+			"enabled": true,
+			"id": "ff030f9848634bb0b9ece685b81ca4e1",
+			"last_updated": "2026-11-16T01:56:00.529013Z",
+			"ref": "managed-response-block",
+			"version": "1"
+		}
+	],
+	"version": "2"
+}
