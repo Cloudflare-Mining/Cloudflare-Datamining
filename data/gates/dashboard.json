@@ -655,7 +655,7 @@
 		"enabled": true
 	},
 	"cfone-default-datasets": {
-		"enabled": false
+		"enabled": true
 	},
 	"cfone-egress-intelligence-enabled": {
 		"enabled": true
@@ -686,6 +686,9 @@
 	},
 	"cfsa-444-more-feedback": {
 		"enabled": true
+	},
+	"chart-library-sample-rate": {
+		"enabled": false
 	},
 	"client-certificates": {
 		"enabled": false
@@ -774,11 +777,8 @@
 	"custom-ps-alerts": {
 		"enabled": true
 	},
-	"d1-account-insights": {
+	"d1-index-recommendations": {
 		"enabled": false
-	},
-	"d1-jurisdiction-ui": {
-		"enabled": true
 	},
 	"d2c-existing-resources": {
 		"enabled": true
@@ -1129,6 +1129,9 @@
 	"deseng-safari-preload-fix": {
 		"enabled": false
 	},
+	"deseng-security-tab": {
+		"enabled": false
+	},
 	"deseng-skeleton-loading": {
 		"enabled": true
 	},
@@ -1435,9 +1438,6 @@
 			"social-auth-upfront",
 			"blue-google"
 		]
-	},
-	"dx-manage-domain-refactor": {
-		"enabled": true
 	},
 	"dx-message-inbox": {
 		"enabled": false
@@ -2680,28 +2680,10 @@
 	"reauth-gateway-modal": {
 		"enabled": false
 	},
-	"reg-whois-ownership-letter": {
-		"enabled": true
-	},
-	"registrar-action-center-v2": {
-		"enabled": true
-	},
-	"registrar-dev-app-dollar-promo": {
-		"enabled": true
-	},
 	"registrar-domain-privacy-modes": {
 		"enabled": false
 	},
 	"registrar-multi-domain-purchase": {
-		"enabled": true
-	},
-	"registrar-rhf-contact-form": {
-		"enabled": true
-	},
-	"registrar-unified-checkout-register": {
-		"enabled": true
-	},
-	"registrar-unified-checkout-transfer": {
 		"enabled": true
 	},
 	"registrar-verified-email-selector": {
@@ -2985,6 +2967,9 @@
 	"stratus-universal-nav-q2-26": {
 		"enabled": true
 	},
+	"stratus-zt-biso-native-q4-26": {
+		"enabled": false
+	},
 	"stream-ai-caption-language-pack-1": {
 		"enabled": true
 	},
@@ -3144,7 +3129,7 @@
 		"enabled": true
 	},
 	"tsf-outage-ribbon-new-datasource": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"off",
 			"dryrun",
