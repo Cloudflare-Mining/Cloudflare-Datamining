@@ -1,5 +1,103 @@
 [
 	{
+		"id": "342262b406e5ac744e8e81ff06e13c1b",
+		"name": "Cloudflare Tunnel: Admin",
+		"description": "Can view and edit Cloudflare Tunnels and cloudflared connectors.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "4dd15746abb7541056091442ce6cd494",
+		"name": "Cloudflare Tunnel: Read",
+		"description": "Can view Cloudflare Tunnels and cloudflared connectors.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "1d2764cf8d9b66087b452f79a86691ae",
+		"name": "Cloudflare Mesh: Admin",
+		"description": "Can view and edit Mesh connectors.",
+		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "fb14ae6221bb530b08f630a4d6b53d10",
+		"name": "Cloudflare Mesh: Read",
+		"description": "Can view Mesh connectors.",
+		"permissions": {
+			"teams_device": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "b014e99c1ee8a589f4ef25a6bbbbd3af",
+		"name": "Cloudflare One Networks Admin",
+		"description": "Can view and edit Cloudflare One routes, subnets, and virtual networks.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "bc2ac26fa764d64ac634d725154e30e0",
+		"name": "Cloudflare One Networks Read",
+		"description": "Can read Cloudflare One routes, subnets, and virtual networks.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "3e1ab2cea2f63e64dd11cc8330daebee",
 		"name": "Workers KV Storage Admin",
 		"description": "Can manage Cloudflare Workers KV Storage.",
@@ -1649,113 +1747,6 @@
 				"read": true,
 				"edit": true
 			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "86cfdaa6840f0350b5f94348c18a5fd9",
-		"name": "Account Abuse Protection PII (Account-Wide)",
-		"description": "Can view and edit Account Abuse Protection configurations and view PII data for all domains on an account",
-		"permissions": {
-			"fraud-detection": {
-				"read": false,
-				"edit": false,
-				"pii": true
-			},
-			"waf": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "0c8cec86f6079584f7ac3038edded5dc",
-		"name": "OAuth App Registrations Read",
-		"description": "Can view OAuth app registrations.",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "1f7c3119184b19d4fdc0c929dce0de8a",
-		"name": "OAuth App Registrations Write",
-		"description": "Can view, create, edit, and delete OAuth app registrations.",
-		"permissions": {
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "72ad54a9ac553fb6898145a6dece5a0b",
-		"name": "Zero Trust Account Lists Read",
-		"description": "Can view all Zero Trust Gateway and Access Lists.",
-		"permissions": {
-			"teams": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "e4e3b64b7a879312d3c7db1e736a8a60",
-		"name": "Zero Trust Gateway Policies Read",
-		"description": "Can view all Zero Trust Gateway Policies.",
-		"permissions": {
-			"teams": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "66ad305159f0c386cd55532e2074dd30",
-		"name": "IP Addressing Read",
-		"description": "Grants read-only access to IP Addressing — IP prefixes, BGP prefixes, edge service bindings, address maps, IP leases, and LOA documents.",
-		"permissions": {
 			"zone": {
 				"read": true,
 				"edit": false
