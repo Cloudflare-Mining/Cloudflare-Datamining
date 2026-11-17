@@ -14826,7 +14826,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
-		"x-fern-sdk-method-name": "batch",
+		"x-fern-sdk-method-name": "bulk-apply",
 		"x-forge-require-confirmation": "This operation may delete the selected allow policies and restore normal security scanning and disposition actions for matching emails.",
 		"x-stability": "beta"
 	},
@@ -16237,7 +16237,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
-		"x-fern-sdk-method-name": "batch",
+		"x-fern-sdk-method-name": "bulk-apply",
 		"x-forge-require-confirmation": "This operation may delete the selected blocked sender patterns and stop automatically blocking matching emails based on those rules.",
 		"x-stability": "beta"
 	},
@@ -17659,7 +17659,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
-		"x-fern-sdk-method-name": "batch",
+		"x-fern-sdk-method-name": "bulk-apply",
 		"x-forge-require-confirmation": "This operation may delete the selected content policies and stop evaluating emails against their patterns.",
 		"x-stability": "beta"
 	},
@@ -19839,7 +19839,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
-		"x-fern-sdk-method-name": "batch",
+		"x-fern-sdk-method-name": "bulk-apply",
 		"x-forge-require-confirmation": "This operation may permanently delete protection for the selected email domains. Emails for those domains will no longer be processed by Email Security.",
 		"x-stability": "beta"
 	},
@@ -21037,7 +21037,7 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
-		"x-fern-sdk-method-name": "batch",
+		"x-fern-sdk-method-name": "bulk-delete",
 		"x-forge-require-confirmation": "This operation deletes the selected sending domain restrictions and removes TLS enforcement for the specified domains.",
 		"x-stability": "beta"
 	},
@@ -22387,7 +22387,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
-		"x-fern-sdk-method-name": "batch",
+		"x-fern-sdk-method-name": "bulk-apply",
 		"x-forge-require-confirmation": "This operation may delete the selected trusted domain patterns and restore normal recent domain and similarity checks for matching emails.",
 		"x-stability": "beta"
 	},
@@ -23356,7 +23356,7 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
-		"x-fern-sdk-method-name": "batch",
+		"x-fern-sdk-method-name": "bulk-apply",
 		"x-forge-require-confirmation": "This operation may delete the selected URL rewrite ignore patterns and cause matching URLs to be rewritten again.",
 		"x-stability": "beta"
 	},

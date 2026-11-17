@@ -544,15 +544,6 @@
 																"type": "object",
 																"nullable": true,
 																"properties": {
-																	"destinations": {
-																		"description": "A list of destinations where Agents observability data will be exported to.",
-																		"type": "array",
-																		"items": {
-																			"type": "string"
-																		},
-																		"default": [],
-																		"x-auditable": true
-																	},
 																	"enabled": {
 																		"description": "Whether Agents observability is enabled for the Preview.",
 																		"type": "boolean",
@@ -1080,15 +1071,6 @@
 															"type": "object",
 															"nullable": true,
 															"properties": {
-																"destinations": {
-																	"description": "A list of destinations where Agents observability data will be exported to.",
-																	"type": "array",
-																	"items": {
-																		"type": "string"
-																	},
-																	"default": [],
-																	"x-auditable": true
-																},
 																"enabled": {
 																	"description": "Whether Agents observability is enabled for the Preview.",
 																	"type": "boolean",
@@ -1531,15 +1513,6 @@
 												"type": "object",
 												"nullable": true,
 												"properties": {
-													"destinations": {
-														"description": "A list of destinations where Agents observability data will be exported to.",
-														"type": "array",
-														"items": {
-															"type": "string"
-														},
-														"default": [],
-														"x-auditable": true
-													},
 													"enabled": {
 														"description": "Whether Agents observability is enabled for the Preview.",
 														"type": "boolean",
@@ -1799,15 +1772,6 @@
 												"type": "object",
 												"nullable": true,
 												"properties": {
-													"destinations": {
-														"description": "A list of destinations where Agents observability data will be exported to.",
-														"type": "array",
-														"items": {
-															"type": "string"
-														},
-														"default": [],
-														"x-auditable": true
-													},
 													"enabled": {
 														"description": "Whether Agents observability is enabled for the Preview.",
 														"type": "boolean",
@@ -2157,15 +2121,6 @@
 															"type": "object",
 															"nullable": true,
 															"properties": {
-																"destinations": {
-																	"description": "A list of destinations where Agents observability data will be exported to.",
-																	"type": "array",
-																	"items": {
-																		"type": "string"
-																	},
-																	"default": [],
-																	"x-auditable": true
-																},
 																"enabled": {
 																	"description": "Whether Agents observability is enabled for the Preview.",
 																	"type": "boolean",
@@ -2602,15 +2557,6 @@
 												"type": "object",
 												"nullable": true,
 												"properties": {
-													"destinations": {
-														"description": "A list of destinations where Agents observability data will be exported to.",
-														"type": "array",
-														"items": {
-															"type": "string"
-														},
-														"default": [],
-														"x-auditable": true
-													},
 													"enabled": {
 														"description": "Whether Agents observability is enabled for the Preview.",
 														"type": "boolean",
@@ -2963,15 +2909,6 @@
 															"type": "object",
 															"nullable": true,
 															"properties": {
-																"destinations": {
-																	"description": "A list of destinations where Agents observability data will be exported to.",
-																	"type": "array",
-																	"items": {
-																		"type": "string"
-																	},
-																	"default": [],
-																	"x-auditable": true
-																},
 																"enabled": {
 																	"description": "Whether Agents observability is enabled for the Preview.",
 																	"type": "boolean",
@@ -3417,15 +3354,6 @@
 												"type": "object",
 												"nullable": true,
 												"properties": {
-													"destinations": {
-														"description": "A list of destinations where Agents observability data will be exported to.",
-														"type": "array",
-														"items": {
-															"type": "string"
-														},
-														"default": [],
-														"x-auditable": true
-													},
 													"enabled": {
 														"description": "Whether Agents observability is enabled for the Preview.",
 														"type": "boolean",
@@ -3778,15 +3706,6 @@
 															"type": "object",
 															"nullable": true,
 															"properties": {
-																"destinations": {
-																	"description": "A list of destinations where Agents observability data will be exported to.",
-																	"type": "array",
-																	"items": {
-																		"type": "string"
-																	},
-																	"default": [],
-																	"x-auditable": true
-																},
 																"enabled": {
 																	"description": "Whether Agents observability is enabled for the Preview.",
 																	"type": "boolean",

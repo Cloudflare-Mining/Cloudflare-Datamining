@@ -516,7 +516,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/v2/requests/{project_type}/quota": {
 		"operationId": "get_RequestQuota",
 		"summary": "Get request token quota",
-		"description": "Returns the account's token quota for the current anniversary quarter: total granted, used, remaining, and the quarter/anniversary boundaries.",
+		"description": "Returns the account's token quota for the current anniversary quarter: total granted, used, remaining, and the quarter/anniversary boundaries. Also returns the annual allocation, usage, and remaining tokens for the current anniversary year; quarterly remaining controls usage.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -556,7 +556,78 @@
 		],
 		"responses": {
 			"200": {
-				"description": "Quota information"
+				"description": "Quota information",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"anniversary_date": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"annual_allocation": {
+											"type": "integer",
+											"minimum": 0
+										},
+										"annual_remaining": {
+											"description": "Informational annual allocation remaining; quarterly remaining controls usage",
+											"type": "integer",
+											"minimum": 0
+										},
+										"annual_used": {
+											"description": "Tokens used during the current account anniversary year",
+											"type": "integer",
+											"minimum": 0
+										},
+										"quarter_end": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"quarter_start": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"quota": {
+											"description": "Quarterly token allocation",
+											"type": "integer",
+											"minimum": 0
+										},
+										"remaining": {
+											"type": "integer",
+											"minimum": 0
+										},
+										"used": {
+											"type": "integer",
+											"minimum": 0
+										}
+									},
+									"required": [
+										"annual_allocation",
+										"annual_used",
+										"annual_remaining",
+										"quota",
+										"used",
+										"remaining",
+										"quarter_start",
+										"quarter_end",
+										"anniversary_date"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
 			},
 			"404": {
 				"description": "Project type does not use token billing, or account not found"

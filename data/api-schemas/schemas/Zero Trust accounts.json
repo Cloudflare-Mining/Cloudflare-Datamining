@@ -1438,6 +1438,62 @@
 																	"nullable": true,
 																	"x-stainless-terraform-configurability": "optional"
 																},
+																"regions": {
+																	"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																	"type": "object",
+																	"example": {
+																		"wnam": {
+																			"certificate": {
+																				"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																			},
+																			"tls_decrypt": {
+																				"enabled": true
+																			}
+																		}
+																	},
+																	"additionalProperties": {
+																		"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																		"type": "object",
+																		"properties": {
+																			"certificate": {
+																				"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																						"type": "string",
+																						"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																						"x-auditable": true
+																					}
+																				},
+																				"nullable": true,
+																				"required": [
+																					"id"
+																				],
+																				"x-stainless-terraform-configurability": "optional"
+																			},
+																			"tls_decrypt": {
+																				"description": "Specify whether to inspect encrypted HTTP traffic.",
+																				"type": "object",
+																				"properties": {
+																					"enabled": {
+																						"description": "Specify whether to inspect encrypted HTTP traffic.",
+																						"type": "boolean",
+																						"example": true,
+																						"x-auditable": true
+																					}
+																				},
+																				"nullable": true,
+																				"x-stainless-terraform-configurability": "optional"
+																			}
+																		},
+																		"required": [
+																			"tls_decrypt"
+																		]
+																	},
+																	"nullable": true,
+																	"x-stainless-terraform-configurability": "optional"
+																},
 																"sandbox": {
 																	"description": "Specify whether to enable the sandbox.",
 																	"type": "object",
@@ -1977,6 +2033,62 @@
 																					"nullable": true,
 																					"x-auditable": true
 																				}
+																			},
+																			"nullable": true,
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"regions": {
+																			"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																			"type": "object",
+																			"example": {
+																				"wnam": {
+																					"certificate": {
+																						"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																					},
+																					"tls_decrypt": {
+																						"enabled": true
+																					}
+																				}
+																			},
+																			"additionalProperties": {
+																				"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																				"type": "object",
+																				"properties": {
+																					"certificate": {
+																						"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																						"type": "object",
+																						"properties": {
+																							"id": {
+																								"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																								"type": "string",
+																								"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"required": [
+																							"id"
+																						],
+																						"x-stainless-terraform-configurability": "optional"
+																					},
+																					"tls_decrypt": {
+																						"description": "Specify whether to inspect encrypted HTTP traffic.",
+																						"type": "object",
+																						"properties": {
+																							"enabled": {
+																								"description": "Specify whether to inspect encrypted HTTP traffic.",
+																								"type": "boolean",
+																								"example": true,
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"x-stainless-terraform-configurability": "optional"
+																					}
+																				},
+																				"required": [
+																					"tls_decrypt"
+																				]
 																			},
 																			"nullable": true,
 																			"x-stainless-terraform-configurability": "optional"
@@ -4000,6 +4112,62 @@
 										"nullable": true,
 										"x-stainless-terraform-configurability": "optional"
 									},
+									"regions": {
+										"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+										"type": "object",
+										"example": {
+											"wnam": {
+												"certificate": {
+													"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+												},
+												"tls_decrypt": {
+													"enabled": true
+												}
+											}
+										},
+										"additionalProperties": {
+											"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+											"type": "object",
+											"properties": {
+												"certificate": {
+													"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+													"type": "object",
+													"properties": {
+														"id": {
+															"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+															"type": "string",
+															"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+															"x-auditable": true
+														}
+													},
+													"nullable": true,
+													"required": [
+														"id"
+													],
+													"x-stainless-terraform-configurability": "optional"
+												},
+												"tls_decrypt": {
+													"description": "Specify whether to inspect encrypted HTTP traffic.",
+													"type": "object",
+													"properties": {
+														"enabled": {
+															"description": "Specify whether to inspect encrypted HTTP traffic.",
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														}
+													},
+													"nullable": true,
+													"x-stainless-terraform-configurability": "optional"
+												}
+											},
+											"required": [
+												"tls_decrypt"
+											]
+										},
+										"nullable": true,
+										"x-stainless-terraform-configurability": "optional"
+									},
 									"sandbox": {
 										"description": "Specify whether to enable the sandbox.",
 										"type": "object",
@@ -4514,6 +4682,62 @@
 																			"nullable": true,
 																			"x-auditable": true
 																		}
+																	},
+																	"nullable": true,
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"regions": {
+																	"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																	"type": "object",
+																	"example": {
+																		"wnam": {
+																			"certificate": {
+																				"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																			},
+																			"tls_decrypt": {
+																				"enabled": true
+																			}
+																		}
+																	},
+																	"additionalProperties": {
+																		"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																		"type": "object",
+																		"properties": {
+																			"certificate": {
+																				"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																						"type": "string",
+																						"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																						"x-auditable": true
+																					}
+																				},
+																				"nullable": true,
+																				"required": [
+																					"id"
+																				],
+																				"x-stainless-terraform-configurability": "optional"
+																			},
+																			"tls_decrypt": {
+																				"description": "Specify whether to inspect encrypted HTTP traffic.",
+																				"type": "object",
+																				"properties": {
+																					"enabled": {
+																						"description": "Specify whether to inspect encrypted HTTP traffic.",
+																						"type": "boolean",
+																						"example": true,
+																						"x-auditable": true
+																					}
+																				},
+																				"nullable": true,
+																				"x-stainless-terraform-configurability": "optional"
+																			}
+																		},
+																		"required": [
+																			"tls_decrypt"
+																		]
 																	},
 																	"nullable": true,
 																	"x-stainless-terraform-configurability": "optional"
@@ -5057,6 +5281,62 @@
 																					"nullable": true,
 																					"x-auditable": true
 																				}
+																			},
+																			"nullable": true,
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"regions": {
+																			"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																			"type": "object",
+																			"example": {
+																				"wnam": {
+																					"certificate": {
+																						"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																					},
+																					"tls_decrypt": {
+																						"enabled": true
+																					}
+																				}
+																			},
+																			"additionalProperties": {
+																				"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																				"type": "object",
+																				"properties": {
+																					"certificate": {
+																						"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																						"type": "object",
+																						"properties": {
+																							"id": {
+																								"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																								"type": "string",
+																								"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"required": [
+																							"id"
+																						],
+																						"x-stainless-terraform-configurability": "optional"
+																					},
+																					"tls_decrypt": {
+																						"description": "Specify whether to inspect encrypted HTTP traffic.",
+																						"type": "object",
+																						"properties": {
+																							"enabled": {
+																								"description": "Specify whether to inspect encrypted HTTP traffic.",
+																								"type": "boolean",
+																								"example": true,
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"x-stainless-terraform-configurability": "optional"
+																					}
+																				},
+																				"required": [
+																					"tls_decrypt"
+																				]
 																			},
 																			"nullable": true,
 																			"x-stainless-terraform-configurability": "optional"
@@ -6368,6 +6648,62 @@
 										"nullable": true,
 										"x-stainless-terraform-configurability": "optional"
 									},
+									"regions": {
+										"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+										"type": "object",
+										"example": {
+											"wnam": {
+												"certificate": {
+													"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+												},
+												"tls_decrypt": {
+													"enabled": true
+												}
+											}
+										},
+										"additionalProperties": {
+											"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+											"type": "object",
+											"properties": {
+												"certificate": {
+													"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+													"type": "object",
+													"properties": {
+														"id": {
+															"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+															"type": "string",
+															"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+															"x-auditable": true
+														}
+													},
+													"nullable": true,
+													"required": [
+														"id"
+													],
+													"x-stainless-terraform-configurability": "optional"
+												},
+												"tls_decrypt": {
+													"description": "Specify whether to inspect encrypted HTTP traffic.",
+													"type": "object",
+													"properties": {
+														"enabled": {
+															"description": "Specify whether to inspect encrypted HTTP traffic.",
+															"type": "boolean",
+															"example": true,
+															"x-auditable": true
+														}
+													},
+													"nullable": true,
+													"x-stainless-terraform-configurability": "optional"
+												}
+											},
+											"required": [
+												"tls_decrypt"
+											]
+										},
+										"nullable": true,
+										"x-stainless-terraform-configurability": "optional"
+									},
 									"sandbox": {
 										"description": "Specify whether to enable the sandbox.",
 										"type": "object",
@@ -6882,6 +7218,62 @@
 																			"nullable": true,
 																			"x-auditable": true
 																		}
+																	},
+																	"nullable": true,
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"regions": {
+																	"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																	"type": "object",
+																	"example": {
+																		"wnam": {
+																			"certificate": {
+																				"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																			},
+																			"tls_decrypt": {
+																				"enabled": true
+																			}
+																		}
+																	},
+																	"additionalProperties": {
+																		"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																		"type": "object",
+																		"properties": {
+																			"certificate": {
+																				"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																				"type": "object",
+																				"properties": {
+																					"id": {
+																						"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																						"type": "string",
+																						"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																						"x-auditable": true
+																					}
+																				},
+																				"nullable": true,
+																				"required": [
+																					"id"
+																				],
+																				"x-stainless-terraform-configurability": "optional"
+																			},
+																			"tls_decrypt": {
+																				"description": "Specify whether to inspect encrypted HTTP traffic.",
+																				"type": "object",
+																				"properties": {
+																					"enabled": {
+																						"description": "Specify whether to inspect encrypted HTTP traffic.",
+																						"type": "boolean",
+																						"example": true,
+																						"x-auditable": true
+																					}
+																				},
+																				"nullable": true,
+																				"x-stainless-terraform-configurability": "optional"
+																			}
+																		},
+																		"required": [
+																			"tls_decrypt"
+																		]
 																	},
 																	"nullable": true,
 																	"x-stainless-terraform-configurability": "optional"
@@ -7425,6 +7817,62 @@
 																					"nullable": true,
 																					"x-auditable": true
 																				}
+																			},
+																			"nullable": true,
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"regions": {
+																			"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																			"type": "object",
+																			"example": {
+																				"wnam": {
+																					"certificate": {
+																						"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																					},
+																					"tls_decrypt": {
+																						"enabled": true
+																					}
+																				}
+																			},
+																			"additionalProperties": {
+																				"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																				"type": "object",
+																				"properties": {
+																					"certificate": {
+																						"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																						"type": "object",
+																						"properties": {
+																							"id": {
+																								"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																								"type": "string",
+																								"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"required": [
+																							"id"
+																						],
+																						"x-stainless-terraform-configurability": "optional"
+																					},
+																					"tls_decrypt": {
+																						"description": "Specify whether to inspect encrypted HTTP traffic.",
+																						"type": "object",
+																						"properties": {
+																							"enabled": {
+																								"description": "Specify whether to inspect encrypted HTTP traffic.",
+																								"type": "boolean",
+																								"example": true,
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"x-stainless-terraform-configurability": "optional"
+																					}
+																				},
+																				"required": [
+																					"tls_decrypt"
+																				]
 																			},
 																			"nullable": true,
 																			"x-stainless-terraform-configurability": "optional"

@@ -1432,7 +1432,7 @@
 	"POST /accounts/{account_id}/access/ai-controls/mcp/portals": {
 		"operationId": "mcp-portals-api-create-portals",
 		"summary": "Create a new MCP Portal",
-		"description": "Creates a new MCP portal for managing AI tool access through Cloudflare Access.",
+		"description": "Creates a new MCP portal. Each account supports up to 50 portals, including disabled portals.",
 		"parameters": [
 			{
 				"name": "account_id",

@@ -2180,7 +2180,8 @@
 						"in": "query",
 						"description": "How many abuse reports per page to list",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					},
 					{
@@ -3237,7 +3238,8 @@
 						"in": "query",
 						"description": "Number of emails per page (default 20, max 100)",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					}
 				],
@@ -3726,7 +3728,8 @@
 						"in": "query",
 						"description": "How many abuse reports per page to list",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					},
 					{
@@ -8974,7 +8977,8 @@
 						"in": "query",
 						"description": "Number of emails per page (default 20, max 100).",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					}
 				],
@@ -10612,7 +10616,7 @@
 			"post": {
 				"operationId": "mcp-portals-api-create-portals",
 				"summary": "Create a new MCP Portal",
-				"description": "Creates a new MCP portal for managing AI tool access through Cloudflare Access.",
+				"description": "Creates a new MCP portal. Each account supports up to 50 portals, including disabled portals.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -552547,6 +552551,10 @@
 														"additionalProperties": true,
 														"nullable": true,
 														"properties": {
+															"file_summary": {
+																"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+																"type": "boolean"
+															},
 															"keyword_tokenizer": {
 																"type": "string",
 																"enum": [
@@ -552919,10 +552927,14 @@
 														"type": "string"
 													},
 													"summarization": {
-														"type": "boolean"
+														"description": "Deprecated and ignored during indexing and search; changing it still re-indexes existing files on the next sync. Use indexing_options.file_summary instead.",
+														"type": "boolean",
+														"deprecated": true
 													},
 													"summarization_model": {
+														"description": "Deprecated and ignored during indexing and search; changing it still re-indexes existing files on the next sync. Use indexing_options.file_summary instead.",
 														"type": "string",
+														"deprecated": true,
 														"nullable": true
 													},
 													"sync_interval": {
@@ -552982,7 +552994,9 @@
 														"nullable": true
 													},
 													"system_prompt_index_summarization": {
+														"description": "Deprecated and has no effect. Use indexing_options.file_summary instead.",
 														"type": "string",
+														"deprecated": true,
 														"nullable": true
 													},
 													"system_prompt_rewrite_query": {
@@ -553390,6 +553404,11 @@
 										"type": "object",
 										"nullable": true,
 										"properties": {
+											"file_summary": {
+												"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+												"type": "boolean",
+												"default": false
+											},
 											"keyword_tokenizer": {
 												"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 												"type": "string",
@@ -554157,6 +554176,11 @@
 													"type": "object",
 													"nullable": true,
 													"properties": {
+														"file_summary": {
+															"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+															"type": "boolean",
+															"default": false
+														},
 														"keyword_tokenizer": {
 															"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 															"type": "string",
@@ -555275,6 +555299,11 @@
 													"type": "object",
 													"nullable": true,
 													"properties": {
+														"file_summary": {
+															"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+															"type": "boolean",
+															"default": false
+														},
 														"keyword_tokenizer": {
 															"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 															"type": "string",
@@ -556224,6 +556253,11 @@
 													"type": "object",
 													"nullable": true,
 													"properties": {
+														"file_summary": {
+															"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+															"type": "boolean",
+															"default": false
+														},
 														"keyword_tokenizer": {
 															"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 															"type": "string",
@@ -557098,6 +557132,11 @@
 										"type": "object",
 										"nullable": true,
 										"properties": {
+											"file_summary": {
+												"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+												"type": "boolean",
+												"default": false
+											},
 											"keyword_tokenizer": {
 												"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 												"type": "string",
@@ -557562,12 +557601,16 @@
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"summarization": {
+										"description": "Deprecated and ignored during indexing and search; changing it still re-indexes existing files on the next sync. Use indexing_options.file_summary instead.",
 										"type": "boolean",
 										"default": false,
+										"deprecated": true,
 										"x-auditable": true
 									},
 									"summarization_model": {
+										"description": "Deprecated and ignored during indexing and search; changing it still re-indexes existing files on the next sync. Use indexing_options.file_summary instead.",
 										"type": "string",
+										"deprecated": true,
 										"nullable": true,
 										"x-auditable": true
 									},
@@ -557632,7 +557675,9 @@
 										"x-auditable": true
 									},
 									"system_prompt_index_summarization": {
+										"description": "Deprecated and has no effect. Use indexing_options.file_summary instead.",
 										"type": "string",
+										"deprecated": true,
 										"nullable": true,
 										"x-auditable": true
 									},
@@ -557875,6 +557920,11 @@
 													"type": "object",
 													"nullable": true,
 													"properties": {
+														"file_summary": {
+															"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+															"type": "boolean",
+															"default": false
+														},
 														"keyword_tokenizer": {
 															"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 															"type": "string",
@@ -565655,6 +565705,10 @@
 														"additionalProperties": true,
 														"nullable": true,
 														"properties": {
+															"file_summary": {
+																"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+																"type": "boolean"
+															},
 															"keyword_tokenizer": {
 																"type": "string",
 																"enum": [
@@ -566027,10 +566081,14 @@
 														"type": "string"
 													},
 													"summarization": {
-														"type": "boolean"
+														"description": "Deprecated and ignored during indexing and search; changing it still re-indexes existing files on the next sync. Use indexing_options.file_summary instead.",
+														"type": "boolean",
+														"deprecated": true
 													},
 													"summarization_model": {
+														"description": "Deprecated and ignored during indexing and search; changing it still re-indexes existing files on the next sync. Use indexing_options.file_summary instead.",
 														"type": "string",
+														"deprecated": true,
 														"nullable": true
 													},
 													"sync_interval": {
@@ -566090,7 +566148,9 @@
 														"nullable": true
 													},
 													"system_prompt_index_summarization": {
+														"description": "Deprecated and has no effect. Use indexing_options.file_summary instead.",
 														"type": "string",
+														"deprecated": true,
 														"nullable": true
 													},
 													"system_prompt_rewrite_query": {
@@ -566514,6 +566574,11 @@
 										"type": "object",
 										"nullable": true,
 										"properties": {
+											"file_summary": {
+												"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+												"type": "boolean",
+												"default": false
+											},
 											"keyword_tokenizer": {
 												"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 												"type": "string",
@@ -567281,6 +567346,11 @@
 													"type": "object",
 													"nullable": true,
 													"properties": {
+														"file_summary": {
+															"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+															"type": "boolean",
+															"default": false
+														},
 														"keyword_tokenizer": {
 															"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 															"type": "string",
@@ -568429,6 +568499,11 @@
 													"type": "object",
 													"nullable": true,
 													"properties": {
+														"file_summary": {
+															"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+															"type": "boolean",
+															"default": false
+														},
 														"keyword_tokenizer": {
 															"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 															"type": "string",
@@ -569398,6 +569473,11 @@
 													"type": "object",
 													"nullable": true,
 													"properties": {
+														"file_summary": {
+															"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+															"type": "boolean",
+															"default": false
+														},
 														"keyword_tokenizer": {
 															"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 															"type": "string",
@@ -570574,6 +570654,11 @@
 										"type": "object",
 										"nullable": true,
 										"properties": {
+											"file_summary": {
+												"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+												"type": "boolean",
+												"default": false
+											},
 											"keyword_tokenizer": {
 												"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 												"type": "string",
@@ -571038,12 +571123,16 @@
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"summarization": {
+										"description": "Deprecated and ignored during indexing and search; changing it still re-indexes existing files on the next sync. Use indexing_options.file_summary instead.",
 										"type": "boolean",
 										"default": false,
+										"deprecated": true,
 										"x-auditable": true
 									},
 									"summarization_model": {
+										"description": "Deprecated and ignored during indexing and search; changing it still re-indexes existing files on the next sync. Use indexing_options.file_summary instead.",
 										"type": "string",
+										"deprecated": true,
 										"nullable": true,
 										"x-auditable": true
 									},
@@ -571108,7 +571197,9 @@
 										"x-auditable": true
 									},
 									"system_prompt_index_summarization": {
+										"description": "Deprecated and has no effect. Use indexing_options.file_summary instead.",
 										"type": "string",
+										"deprecated": true,
 										"nullable": true,
 										"x-auditable": true
 									},
@@ -571351,6 +571442,11 @@
 													"type": "object",
 													"nullable": true,
 													"properties": {
+														"file_summary": {
+															"description": "Generates a per-file summary, topics, and keywords during indexing for text files and media transcripts of at least three chunks. The summary and keywords are stored as the item's context metadata (a context you set is kept), and the topics are added to chunk context headers where they fit. Best effort: a file whose summary fails is indexed without one. The model calls are billed to your account through the instance's AI Gateway. Changing this triggers a full re-index. Defaults to false.",
+															"type": "boolean",
+															"default": false
+														},
 														"keyword_tokenizer": {
 															"description": "Tokenizer used for keyword search indexing. porter provides word-level tokenization with Porter stemming (good for natural language queries). trigram enables character-level substring matching (good for partial matches, code, identifiers). Changing this triggers a full re-index. Defaults to porter.",
 															"type": "string",
@@ -755619,7 +755715,7 @@
 			"put": {
 				"operationId": "put_PirUpdate",
 				"summary": "Update a priority intelligence requirement",
-				"description": "Updates a Priority Intelligence Requirement for the authenticated account. Changing the query increments its version; editing the requirement without saving a query marks the query stale. Activating a draft needs a free slot in the active PIR quota; setting `active` on a PIR the matcher paused resumes it without one. Updates to a structured PIR must send its `revision` and change its answers through `definition`; its requirement, title and query are generated.",
+				"description": "Updates a Priority Intelligence Requirement for the authenticated account. Changing the query increments its version; editing the requirement without saving a query marks the query stale. Activating a draft needs a free slot in the active PIR quota; setting `active` on a PIR the matcher paused resumes it without one. Updates to a structured PIR must send its `revision` and change its answers through `definition`; its requirement, title and query are generated. Sending a `definition` and `revision` for a free-form PIR converts it in place: it keeps its ID, status, labels, priority, TLP and match history, and its query, dataset scope and notifications are removed, since structured PIRs are not matched by the PIR matcher and send no notifications. A conversion must not send a `dataset_scope`.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -755716,6 +755812,7 @@
 										]
 									},
 									"definition": {
+										"description": "Replaces a structured PIR's definition, or converts a free-form PIR to a structured one in place. Requires `revision` and `based_on`.",
 										"allOf": [
 											{
 												"description": "Structured PIR answers. `managed` follows a topic from `GET /topics`; `custom` has its own question and criteria. The requirement text and event query are generated from it.",
@@ -757068,9 +757165,6 @@
 														"type": "object"
 													}
 												]
-											},
-											{
-												"description": "Replaces a structured PIR's definition. Free-form PIRs cannot be converted yet."
 											}
 										]
 									},
@@ -757697,7 +757791,7 @@
 										"minLength": 1
 									},
 									"revision": {
-										"description": "The `revision` the change is based on. Required for structured PIRs; a different stored revision returns 409.",
+										"description": "The `revision` the change is based on. Required for structured PIRs and when sending a `definition`; a different stored revision returns 409.",
 										"type": "integer",
 										"minimum": 1
 									},
@@ -766326,7 +766420,7 @@
 			"get": {
 				"operationId": "get_RequestQuota",
 				"summary": "Get request token quota",
-				"description": "Returns the account's token quota for the current anniversary quarter: total granted, used, remaining, and the quarter/anniversary boundaries.",
+				"description": "Returns the account's token quota for the current anniversary quarter: total granted, used, remaining, and the quarter/anniversary boundaries. Also returns the annual allocation, usage, and remaining tokens for the current anniversary year; quarterly remaining controls usage.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -766366,7 +766460,78 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Quota information"
+						"description": "Quota information",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"anniversary_date": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"annual_allocation": {
+													"type": "integer",
+													"minimum": 0
+												},
+												"annual_remaining": {
+													"description": "Informational annual allocation remaining; quarterly remaining controls usage",
+													"type": "integer",
+													"minimum": 0
+												},
+												"annual_used": {
+													"description": "Tokens used during the current account anniversary year",
+													"type": "integer",
+													"minimum": 0
+												},
+												"quarter_end": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"quarter_start": {
+													"type": "string",
+													"format": "date-time"
+												},
+												"quota": {
+													"description": "Quarterly token allocation",
+													"type": "integer",
+													"minimum": 0
+												},
+												"remaining": {
+													"type": "integer",
+													"minimum": 0
+												},
+												"used": {
+													"type": "integer",
+													"minimum": 0
+												}
+											},
+											"required": [
+												"annual_allocation",
+												"annual_used",
+												"annual_remaining",
+												"quota",
+												"used",
+												"remaining",
+												"quarter_start",
+												"quarter_end",
+												"anniversary_date"
+											]
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"result"
+									]
+								}
+							}
+						}
 					},
 					"404": {
 						"description": "Project type does not use token billing, or account not found"
@@ -1012151,7 +1012316,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "email-security.allow-policies",
-				"x-fern-sdk-method-name": "batch",
+				"x-fern-sdk-method-name": "bulk-apply",
 				"x-forge-require-confirmation": "This operation may delete the selected allow policies and restore normal security scanning and disposition actions for matching emails.",
 				"x-stability": "beta"
 			}
@@ -1015571,7 +1015736,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "email-security.block-senders",
-				"x-fern-sdk-method-name": "batch",
+				"x-fern-sdk-method-name": "bulk-apply",
 				"x-forge-require-confirmation": "This operation may delete the selected blocked sender patterns and stop automatically blocking matching emails based on those rules.",
 				"x-stability": "beta"
 			}
@@ -1018549,7 +1018714,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "email-security.content-policies",
-				"x-fern-sdk-method-name": "batch",
+				"x-fern-sdk-method-name": "bulk-apply",
 				"x-forge-require-confirmation": "This operation may delete the selected content policies and stop evaluating emails against their patterns.",
 				"x-stability": "beta"
 			}
@@ -1024058,7 +1024223,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "email-security.domains",
-				"x-fern-sdk-method-name": "batch",
+				"x-fern-sdk-method-name": "bulk-apply",
 				"x-forge-require-confirmation": "This operation may permanently delete protection for the selected email domains. Emails for those domains will no longer be processed by Email Security.",
 				"x-stability": "beta"
 			}
@@ -1028309,7 +1028474,7 @@
 				"x-fern-availability": "beta",
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
-				"x-fern-sdk-method-name": "batch",
+				"x-fern-sdk-method-name": "bulk-delete",
 				"x-forge-require-confirmation": "This operation deletes the selected sending domain restrictions and removes TLS enforcement for the specified domains.",
 				"x-stability": "beta"
 			}
@@ -1031607,7 +1031772,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "email-security.trusted-domains",
-				"x-fern-sdk-method-name": "batch",
+				"x-fern-sdk-method-name": "bulk-apply",
 				"x-forge-require-confirmation": "This operation may delete the selected trusted domain patterns and restore normal recent domain and similarity checks for matching emails.",
 				"x-stability": "beta"
 			}
@@ -1033894,7 +1034059,7 @@
 				],
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
-				"x-fern-sdk-method-name": "batch",
+				"x-fern-sdk-method-name": "bulk-apply",
 				"x-forge-require-confirmation": "This operation may delete the selected URL rewrite ignore patterns and cause matching URLs to be rewritten again.",
 				"x-stability": "beta"
 			}
@@ -1068347,7 +1068512,7 @@
 																"x-auditable": true
 															},
 															"region": {
-																"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+																"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 																"type": "string",
 																"example": "wnam",
 																"readOnly": true,
@@ -1068564,7 +1068729,7 @@
 																		"x-auditable": true
 																	},
 																	"region": {
-																		"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+																		"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 																		"type": "string",
 																		"example": "wnam",
 																		"readOnly": true,
@@ -1068730,6 +1068895,12 @@
 							"schema": {
 								"type": "object",
 								"properties": {
+									"region": {
+										"description": "Pin the generated certificate authority's key material to one of the account's selected Data Localization Suite regions. **Important**: This field is only settable during certificate creation. Certificates become immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.",
+										"type": "string",
+										"example": "wnam",
+										"x-auditable": true
+									},
 									"validity_period_days": {
 										"description": "Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.",
 										"type": "integer",
@@ -1068884,7 +1069055,7 @@
 															"x-auditable": true
 														},
 														"region": {
-															"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+															"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 															"type": "string",
 															"example": "wnam",
 															"readOnly": true,
@@ -1069068,7 +1069239,7 @@
 																	"x-auditable": true
 																},
 																"region": {
-																	"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+																	"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 																	"type": "string",
 																	"example": "wnam",
 																	"readOnly": true,
@@ -1069384,7 +1069555,7 @@
 															"x-auditable": true
 														},
 														"region": {
-															"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+															"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 															"type": "string",
 															"example": "wnam",
 															"readOnly": true,
@@ -1069567,7 +1069738,7 @@
 																	"x-auditable": true
 																},
 																"region": {
-																	"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+																	"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 																	"type": "string",
 																	"example": "wnam",
 																	"readOnly": true,
@@ -1069881,7 +1070052,7 @@
 															"x-auditable": true
 														},
 														"region": {
-															"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+															"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 															"type": "string",
 															"example": "wnam",
 															"readOnly": true,
@@ -1070065,7 +1070236,7 @@
 																	"x-auditable": true
 																},
 																"region": {
-																	"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+																	"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 																	"type": "string",
 																	"example": "wnam",
 																	"readOnly": true,
@@ -1070381,7 +1070552,7 @@
 															"x-auditable": true
 														},
 														"region": {
-															"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+															"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 															"type": "string",
 															"example": "wnam",
 															"readOnly": true,
@@ -1070564,7 +1070735,7 @@
 																	"x-auditable": true
 																},
 																"region": {
-																	"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+																	"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 																	"type": "string",
 																	"example": "wnam",
 																	"readOnly": true,
@@ -1070880,7 +1071051,7 @@
 															"x-auditable": true
 														},
 														"region": {
-															"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+															"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 															"type": "string",
 															"example": "wnam",
 															"readOnly": true,
@@ -1071064,7 +1071235,7 @@
 																	"x-auditable": true
 																},
 																"region": {
-																	"description": "Indicate the read-only region the certificate authority's key material is pinned to. Omitted for certificates that were created without a region.",
+																	"description": "Indicate the read-only Data Localization Suite region the certificate authority's key material is pinned to. This corresponds to one of the regions selected for the account via the account region setting (`GET`/`PUT /accounts/{account_id}/zerotrust/region`). Omitted for certificates that were created without a region.",
 																	"type": "string",
 																	"example": "wnam",
 																	"readOnly": true,
@@ -1071697,6 +1071868,62 @@
 																			"nullable": true,
 																			"x-stainless-terraform-configurability": "optional"
 																		},
+																		"regions": {
+																			"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																			"type": "object",
+																			"example": {
+																				"wnam": {
+																					"certificate": {
+																						"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																					},
+																					"tls_decrypt": {
+																						"enabled": true
+																					}
+																				}
+																			},
+																			"additionalProperties": {
+																				"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																				"type": "object",
+																				"properties": {
+																					"certificate": {
+																						"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																						"type": "object",
+																						"properties": {
+																							"id": {
+																								"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																								"type": "string",
+																								"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"required": [
+																							"id"
+																						],
+																						"x-stainless-terraform-configurability": "optional"
+																					},
+																					"tls_decrypt": {
+																						"description": "Specify whether to inspect encrypted HTTP traffic.",
+																						"type": "object",
+																						"properties": {
+																							"enabled": {
+																								"description": "Specify whether to inspect encrypted HTTP traffic.",
+																								"type": "boolean",
+																								"example": true,
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"x-stainless-terraform-configurability": "optional"
+																					}
+																				},
+																				"required": [
+																					"tls_decrypt"
+																				]
+																			},
+																			"nullable": true,
+																			"x-stainless-terraform-configurability": "optional"
+																		},
 																		"sandbox": {
 																			"description": "Specify whether to enable the sandbox.",
 																			"type": "object",
@@ -1072236,6 +1072463,62 @@
 																							"nullable": true,
 																							"x-auditable": true
 																						}
+																					},
+																					"nullable": true,
+																					"x-stainless-terraform-configurability": "optional"
+																				},
+																				"regions": {
+																					"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																					"type": "object",
+																					"example": {
+																						"wnam": {
+																							"certificate": {
+																								"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																							},
+																							"tls_decrypt": {
+																								"enabled": true
+																							}
+																						}
+																					},
+																					"additionalProperties": {
+																						"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																						"type": "object",
+																						"properties": {
+																							"certificate": {
+																								"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																								"type": "object",
+																								"properties": {
+																									"id": {
+																										"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																										"type": "string",
+																										"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																										"x-auditable": true
+																									}
+																								},
+																								"nullable": true,
+																								"required": [
+																									"id"
+																								],
+																								"x-stainless-terraform-configurability": "optional"
+																							},
+																							"tls_decrypt": {
+																								"description": "Specify whether to inspect encrypted HTTP traffic.",
+																								"type": "object",
+																								"properties": {
+																									"enabled": {
+																										"description": "Specify whether to inspect encrypted HTTP traffic.",
+																										"type": "boolean",
+																										"example": true,
+																										"x-auditable": true
+																									}
+																								},
+																								"nullable": true,
+																								"x-stainless-terraform-configurability": "optional"
+																							}
+																						},
+																						"required": [
+																							"tls_decrypt"
+																						]
 																					},
 																					"nullable": true,
 																					"x-stainless-terraform-configurability": "optional"
@@ -1072827,6 +1073110,62 @@
 												"nullable": true,
 												"x-stainless-terraform-configurability": "optional"
 											},
+											"regions": {
+												"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+												"type": "object",
+												"example": {
+													"wnam": {
+														"certificate": {
+															"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+														},
+														"tls_decrypt": {
+															"enabled": true
+														}
+													}
+												},
+												"additionalProperties": {
+													"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+													"type": "object",
+													"properties": {
+														"certificate": {
+															"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+															"type": "object",
+															"properties": {
+																"id": {
+																	"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																	"type": "string",
+																	"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																	"x-auditable": true
+																}
+															},
+															"nullable": true,
+															"required": [
+																"id"
+															],
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"tls_decrypt": {
+															"description": "Specify whether to inspect encrypted HTTP traffic.",
+															"type": "object",
+															"properties": {
+																"enabled": {
+																	"description": "Specify whether to inspect encrypted HTTP traffic.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																}
+															},
+															"nullable": true,
+															"x-stainless-terraform-configurability": "optional"
+														}
+													},
+													"required": [
+														"tls_decrypt"
+													]
+												},
+												"nullable": true,
+												"x-stainless-terraform-configurability": "optional"
+											},
 											"sandbox": {
 												"description": "Specify whether to enable the sandbox.",
 												"type": "object",
@@ -1073341,6 +1073680,62 @@
 																					"nullable": true,
 																					"x-auditable": true
 																				}
+																			},
+																			"nullable": true,
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"regions": {
+																			"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																			"type": "object",
+																			"example": {
+																				"wnam": {
+																					"certificate": {
+																						"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																					},
+																					"tls_decrypt": {
+																						"enabled": true
+																					}
+																				}
+																			},
+																			"additionalProperties": {
+																				"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																				"type": "object",
+																				"properties": {
+																					"certificate": {
+																						"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																						"type": "object",
+																						"properties": {
+																							"id": {
+																								"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																								"type": "string",
+																								"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"required": [
+																							"id"
+																						],
+																						"x-stainless-terraform-configurability": "optional"
+																					},
+																					"tls_decrypt": {
+																						"description": "Specify whether to inspect encrypted HTTP traffic.",
+																						"type": "object",
+																						"properties": {
+																							"enabled": {
+																								"description": "Specify whether to inspect encrypted HTTP traffic.",
+																								"type": "boolean",
+																								"example": true,
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"x-stainless-terraform-configurability": "optional"
+																					}
+																				},
+																				"required": [
+																					"tls_decrypt"
+																				]
 																			},
 																			"nullable": true,
 																			"x-stainless-terraform-configurability": "optional"
@@ -1073884,6 +1074279,62 @@
 																							"nullable": true,
 																							"x-auditable": true
 																						}
+																					},
+																					"nullable": true,
+																					"x-stainless-terraform-configurability": "optional"
+																				},
+																				"regions": {
+																					"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																					"type": "object",
+																					"example": {
+																						"wnam": {
+																							"certificate": {
+																								"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																							},
+																							"tls_decrypt": {
+																								"enabled": true
+																							}
+																						}
+																					},
+																					"additionalProperties": {
+																						"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																						"type": "object",
+																						"properties": {
+																							"certificate": {
+																								"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																								"type": "object",
+																								"properties": {
+																									"id": {
+																										"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																										"type": "string",
+																										"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																										"x-auditable": true
+																									}
+																								},
+																								"nullable": true,
+																								"required": [
+																									"id"
+																								],
+																								"x-stainless-terraform-configurability": "optional"
+																							},
+																							"tls_decrypt": {
+																								"description": "Specify whether to inspect encrypted HTTP traffic.",
+																								"type": "object",
+																								"properties": {
+																									"enabled": {
+																										"description": "Specify whether to inspect encrypted HTTP traffic.",
+																										"type": "boolean",
+																										"example": true,
+																										"x-auditable": true
+																									}
+																								},
+																								"nullable": true,
+																								"x-stainless-terraform-configurability": "optional"
+																							}
+																						},
+																						"required": [
+																							"tls_decrypt"
+																						]
 																					},
 																					"nullable": true,
 																					"x-stainless-terraform-configurability": "optional"
@@ -1074475,6 +1074926,62 @@
 												"nullable": true,
 												"x-stainless-terraform-configurability": "optional"
 											},
+											"regions": {
+												"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+												"type": "object",
+												"example": {
+													"wnam": {
+														"certificate": {
+															"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+														},
+														"tls_decrypt": {
+															"enabled": true
+														}
+													}
+												},
+												"additionalProperties": {
+													"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+													"type": "object",
+													"properties": {
+														"certificate": {
+															"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+															"type": "object",
+															"properties": {
+																"id": {
+																	"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																	"type": "string",
+																	"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																	"x-auditable": true
+																}
+															},
+															"nullable": true,
+															"required": [
+																"id"
+															],
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"tls_decrypt": {
+															"description": "Specify whether to inspect encrypted HTTP traffic.",
+															"type": "object",
+															"properties": {
+																"enabled": {
+																	"description": "Specify whether to inspect encrypted HTTP traffic.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																}
+															},
+															"nullable": true,
+															"x-stainless-terraform-configurability": "optional"
+														}
+													},
+													"required": [
+														"tls_decrypt"
+													]
+												},
+												"nullable": true,
+												"x-stainless-terraform-configurability": "optional"
+											},
 											"sandbox": {
 												"description": "Specify whether to enable the sandbox.",
 												"type": "object",
@@ -1074989,6 +1075496,62 @@
 																					"nullable": true,
 																					"x-auditable": true
 																				}
+																			},
+																			"nullable": true,
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"regions": {
+																			"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																			"type": "object",
+																			"example": {
+																				"wnam": {
+																					"certificate": {
+																						"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																					},
+																					"tls_decrypt": {
+																						"enabled": true
+																					}
+																				}
+																			},
+																			"additionalProperties": {
+																				"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																				"type": "object",
+																				"properties": {
+																					"certificate": {
+																						"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																						"type": "object",
+																						"properties": {
+																							"id": {
+																								"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																								"type": "string",
+																								"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"required": [
+																							"id"
+																						],
+																						"x-stainless-terraform-configurability": "optional"
+																					},
+																					"tls_decrypt": {
+																						"description": "Specify whether to inspect encrypted HTTP traffic.",
+																						"type": "object",
+																						"properties": {
+																							"enabled": {
+																								"description": "Specify whether to inspect encrypted HTTP traffic.",
+																								"type": "boolean",
+																								"example": true,
+																								"x-auditable": true
+																							}
+																						},
+																						"nullable": true,
+																						"x-stainless-terraform-configurability": "optional"
+																					}
+																				},
+																				"required": [
+																					"tls_decrypt"
+																				]
 																			},
 																			"nullable": true,
 																			"x-stainless-terraform-configurability": "optional"
@@ -1075532,6 +1076095,62 @@
 																							"nullable": true,
 																							"x-auditable": true
 																						}
+																					},
+																					"nullable": true,
+																					"x-stainless-terraform-configurability": "optional"
+																				},
+																				"regions": {
+																					"description": "Specify per-region TLS interception and certificate settings for Gateway, keyed by Data Localization Suite region key. Relies on the Zero Trust account region setting  (`GET`/`PUT /accounts/{account_id}/zerotrust/region`) - the account must select a region before Gateway applies these settings for it.",
+																					"type": "object",
+																					"example": {
+																						"wnam": {
+																							"certificate": {
+																								"id": "d1b364c5-1311-466e-a194-f0e943e0799f"
+																							},
+																							"tls_decrypt": {
+																								"enabled": true
+																							}
+																						}
+																					},
+																					"additionalProperties": {
+																						"description": "Specify the TLS interception and certificate settings Gateway applies to traffic routed through this region.",
+																						"type": "object",
+																						"properties": {
+																							"certificate": {
+																								"description": "Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.",
+																								"type": "object",
+																								"properties": {
+																									"id": {
+																										"description": "Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.",
+																										"type": "string",
+																										"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+																										"x-auditable": true
+																									}
+																								},
+																								"nullable": true,
+																								"required": [
+																									"id"
+																								],
+																								"x-stainless-terraform-configurability": "optional"
+																							},
+																							"tls_decrypt": {
+																								"description": "Specify whether to inspect encrypted HTTP traffic.",
+																								"type": "object",
+																								"properties": {
+																									"enabled": {
+																										"description": "Specify whether to inspect encrypted HTTP traffic.",
+																										"type": "boolean",
+																										"example": true,
+																										"x-auditable": true
+																									}
+																								},
+																								"nullable": true,
+																								"x-stainless-terraform-configurability": "optional"
+																							}
+																						},
+																						"required": [
+																							"tls_decrypt"
+																						]
 																					},
 																					"nullable": true,
 																					"x-stainless-terraform-configurability": "optional"
@@ -1114152,7 +1114771,7 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "hyperdrive",
-				"x-fern-sdk-method-name": "update",
+				"x-fern-sdk-method-name": "edit",
 				"x-forge-params": {
 					"mtls.sslmode": {
 						"choices": [
@@ -1196115,7 +1196734,8 @@
 						"schema": {
 							"type": "string",
 							"maxLength": 4096
-						}
+						},
+						"x-auditable": false
 					}
 				],
 				"responses": {
@@ -1196488,7 +1197108,6 @@
 					"Logs Write",
 					"Logs Read"
 				],
-				"x-auditable": false,
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "logs",
 				"x-fern-sdk-method-name": "query-get"
@@ -1707503,17 +1708122,6 @@
 																				"type": "object",
 																				"nullable": true,
 																				"properties": {
-																					"destinations": {
-																						"description": "A list of destinations where Agents observability data will be exported to.",
-																						"type": "array",
-																						"items": {
-																							"type": "string"
-																						},
-																						"example": [
-																							"cloudflare"
-																						],
-																						"x-auditable": true
-																					},
 																					"enabled": {
 																						"description": "Whether Agents observability is enabled for the Worker.",
 																						"type": "boolean",
@@ -1709037,17 +1709645,6 @@
 																			"type": "object",
 																			"nullable": true,
 																			"properties": {
-																				"destinations": {
-																					"description": "A list of destinations where Agents observability data will be exported to.",
-																					"type": "array",
-																					"items": {
-																						"type": "string"
-																					},
-																					"example": [
-																						"cloudflare"
-																					],
-																					"x-auditable": true
-																				},
 																				"enabled": {
 																					"description": "Whether Agents observability is enabled for the Worker.",
 																					"type": "boolean",
@@ -1712226,17 +1712823,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"cloudflare"
-																],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Worker.",
 																"type": "boolean",
@@ -1713259,17 +1713845,6 @@
 																					"type": "object",
 																					"nullable": true,
 																					"properties": {
-																						"destinations": {
-																							"description": "A list of destinations where Agents observability data will be exported to.",
-																							"type": "array",
-																							"items": {
-																								"type": "string"
-																							},
-																							"example": [
-																								"cloudflare"
-																							],
-																							"x-auditable": true
-																						},
 																						"enabled": {
 																							"description": "Whether Agents observability is enabled for the Worker.",
 																							"type": "boolean",
@@ -1717056,17 +1717631,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"cloudflare"
-																			],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1724206,17 +1724770,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"cloudflare"
-																			],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1728665,17 +1729218,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"cloudflare"
-																],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Worker.",
 																"type": "boolean",
@@ -1733023,17 +1733565,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"cloudflare"
-																			],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1766571,17 +1767102,6 @@
 																				"type": "object",
 																				"nullable": true,
 																				"properties": {
-																					"destinations": {
-																						"description": "A list of destinations where Agents observability data will be exported to.",
-																						"type": "array",
-																						"items": {
-																							"type": "string"
-																						},
-																						"example": [
-																							"cloudflare"
-																						],
-																						"x-auditable": true
-																					},
 																					"enabled": {
 																						"description": "Whether Agents observability is enabled for the Worker.",
 																						"type": "boolean",
@@ -1770709,17 +1771229,6 @@
 																"type": "object",
 																"nullable": true,
 																"properties": {
-																	"destinations": {
-																		"description": "A list of destinations where Agents observability data will be exported to.",
-																		"type": "array",
-																		"items": {
-																			"type": "string"
-																		},
-																		"example": [
-																			"cloudflare"
-																		],
-																		"x-auditable": true
-																	},
 																	"enabled": {
 																		"description": "Whether Agents observability is enabled for the Worker.",
 																		"type": "boolean",
@@ -1771772,17 +1772281,6 @@
 																					"type": "object",
 																					"nullable": true,
 																					"properties": {
-																						"destinations": {
-																							"description": "A list of destinations where Agents observability data will be exported to.",
-																							"type": "array",
-																							"items": {
-																								"type": "string"
-																							},
-																							"example": [
-																								"cloudflare"
-																							],
-																							"x-auditable": true
-																						},
 																						"enabled": {
 																							"description": "Whether Agents observability is enabled for the Worker.",
 																							"type": "boolean",
@@ -1773732,17 +1774230,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"cloudflare"
-																			],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1777235,17 +1777722,6 @@
 																			"type": "object",
 																			"nullable": true,
 																			"properties": {
-																				"destinations": {
-																					"description": "A list of destinations where Agents observability data will be exported to.",
-																					"type": "array",
-																					"items": {
-																						"type": "string"
-																					},
-																					"example": [
-																						"cloudflare"
-																					],
-																					"x-auditable": true
-																				},
 																				"enabled": {
 																					"description": "Whether Agents observability is enabled for the Worker.",
 																					"type": "boolean",
@@ -1777690,17 +1778166,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"cloudflare"
-																],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Worker.",
 																"type": "boolean",
@@ -1778048,17 +1778513,6 @@
 																			"type": "object",
 																			"nullable": true,
 																			"properties": {
-																				"destinations": {
-																					"description": "A list of destinations where Agents observability data will be exported to.",
-																					"type": "array",
-																					"items": {
-																						"type": "string"
-																					},
-																					"example": [
-																						"cloudflare"
-																					],
-																					"x-auditable": true
-																				},
 																				"enabled": {
 																					"description": "Whether Agents observability is enabled for the Worker.",
 																					"type": "boolean",
@@ -1785066,17 +1785520,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"cloudflare"
-																			],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1789550,17 +1789993,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"example": [
-																	"cloudflare"
-																],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Worker.",
 																"type": "boolean",
@@ -1793931,17 +1794363,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"cloudflare"
-																			],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1821646,17 +1822067,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"example": [
-																				"cloudflare"
-																			],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1822470,17 +1822880,6 @@
 																			"type": "object",
 																			"nullable": true,
 																			"properties": {
-																				"destinations": {
-																					"description": "A list of destinations where Agents observability data will be exported to.",
-																					"type": "array",
-																					"items": {
-																						"type": "string"
-																					},
-																					"example": [
-																						"cloudflare"
-																					],
-																					"x-auditable": true
-																				},
 																				"enabled": {
 																					"description": "Whether Agents observability is enabled for the Worker.",
 																					"type": "boolean",
@@ -1823019,17 +1823418,6 @@
 																		"type": "object",
 																		"nullable": true,
 																		"properties": {
-																			"destinations": {
-																				"description": "A list of destinations where Agents observability data will be exported to.",
-																				"type": "array",
-																				"items": {
-																					"type": "string"
-																				},
-																				"example": [
-																					"cloudflare"
-																				],
-																				"x-auditable": true
-																			},
 																			"enabled": {
 																				"description": "Whether Agents observability is enabled for the Worker.",
 																				"type": "boolean",
@@ -1823385,17 +1823773,6 @@
 																			"type": "object",
 																			"nullable": true,
 																			"properties": {
-																				"destinations": {
-																					"description": "A list of destinations where Agents observability data will be exported to.",
-																					"type": "array",
-																					"items": {
-																						"type": "string"
-																					},
-																					"example": [
-																						"cloudflare"
-																					],
-																					"x-auditable": true
-																				},
 																				"enabled": {
 																					"description": "Whether Agents observability is enabled for the Worker.",
 																					"type": "boolean",
@@ -1824917,15 +1825294,6 @@
 																		"type": "object",
 																		"nullable": true,
 																		"properties": {
-																			"destinations": {
-																				"description": "A list of destinations where Agents observability data will be exported to.",
-																				"type": "array",
-																				"items": {
-																					"type": "string"
-																				},
-																				"default": [],
-																				"x-auditable": true
-																			},
 																			"enabled": {
 																				"description": "Whether Agents observability is enabled for the Worker.",
 																				"type": "boolean",
@@ -1825173,15 +1825541,6 @@
 																								"type": "object",
 																								"nullable": true,
 																								"properties": {
-																									"destinations": {
-																										"description": "A list of destinations where Agents observability data will be exported to.",
-																										"type": "array",
-																										"items": {
-																											"type": "string"
-																										},
-																										"default": [],
-																										"x-auditable": true
-																									},
 																									"enabled": {
 																										"description": "Whether Agents observability is enabled for the Worker.",
 																										"type": "boolean",
@@ -1826239,15 +1826598,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"default": [],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Worker.",
 																"type": "boolean",
@@ -1826495,15 +1826845,6 @@
 																				"type": "object",
 																				"nullable": true,
 																				"properties": {
-																					"destinations": {
-																						"description": "A list of destinations where Agents observability data will be exported to.",
-																						"type": "array",
-																						"items": {
-																							"type": "string"
-																						},
-																						"default": [],
-																						"x-auditable": true
-																					},
 																					"enabled": {
 																						"description": "Whether Agents observability is enabled for the Worker.",
 																						"type": "boolean",
@@ -1827300,15 +1827641,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"default": [],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1827556,15 +1827888,6 @@
 																							"type": "object",
 																							"nullable": true,
 																							"properties": {
-																								"destinations": {
-																									"description": "A list of destinations where Agents observability data will be exported to.",
-																									"type": "array",
-																									"items": {
-																										"type": "string"
-																									},
-																									"default": [],
-																									"x-auditable": true
-																								},
 																								"enabled": {
 																									"description": "Whether Agents observability is enabled for the Worker.",
 																									"type": "boolean",
@@ -1830085,15 +1830408,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"default": [],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1830341,15 +1830655,6 @@
 																							"type": "object",
 																							"nullable": true,
 																							"properties": {
-																								"destinations": {
-																									"description": "A list of destinations where Agents observability data will be exported to.",
-																									"type": "array",
-																									"items": {
-																										"type": "string"
-																									},
-																									"default": [],
-																									"x-auditable": true
-																								},
 																								"enabled": {
 																									"description": "Whether Agents observability is enabled for the Worker.",
 																									"type": "boolean",
@@ -1831574,15 +1831879,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"default": [],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Worker.",
 																"type": "boolean",
@@ -1831830,15 +1832126,6 @@
 																				"type": "object",
 																				"nullable": true,
 																				"properties": {
-																					"destinations": {
-																						"description": "A list of destinations where Agents observability data will be exported to.",
-																						"type": "array",
-																						"items": {
-																							"type": "string"
-																						},
-																						"default": [],
-																						"x-auditable": true
-																					},
 																					"enabled": {
 																						"description": "Whether Agents observability is enabled for the Worker.",
 																						"type": "boolean",
@@ -1832542,15 +1832829,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"default": [],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Worker.",
 																"type": "boolean",
@@ -1832798,15 +1833076,6 @@
 																				"type": "object",
 																				"nullable": true,
 																				"properties": {
-																					"destinations": {
-																						"description": "A list of destinations where Agents observability data will be exported to.",
-																						"type": "array",
-																						"items": {
-																							"type": "string"
-																						},
-																						"default": [],
-																						"x-auditable": true
-																					},
 																					"enabled": {
 																						"description": "Whether Agents observability is enabled for the Worker.",
 																						"type": "boolean",
@@ -1833600,15 +1833869,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"default": [],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1833856,15 +1834116,6 @@
 																							"type": "object",
 																							"nullable": true,
 																							"properties": {
-																								"destinations": {
-																									"description": "A list of destinations where Agents observability data will be exported to.",
-																									"type": "array",
-																									"items": {
-																										"type": "string"
-																									},
-																									"default": [],
-																									"x-auditable": true
-																								},
 																								"enabled": {
 																									"description": "Whether Agents observability is enabled for the Worker.",
 																									"type": "boolean",
@@ -1835720,15 +1835971,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"default": [],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Worker.",
 																"type": "boolean",
@@ -1835976,15 +1836218,6 @@
 																				"type": "object",
 																				"nullable": true,
 																				"properties": {
-																					"destinations": {
-																						"description": "A list of destinations where Agents observability data will be exported to.",
-																						"type": "array",
-																						"items": {
-																							"type": "string"
-																						},
-																						"default": [],
-																						"x-auditable": true
-																					},
 																					"enabled": {
 																						"description": "Whether Agents observability is enabled for the Worker.",
 																						"type": "boolean",
@@ -1836781,15 +1837014,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"default": [],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Worker.",
 																			"type": "boolean",
@@ -1837037,15 +1837261,6 @@
 																							"type": "object",
 																							"nullable": true,
 																							"properties": {
-																								"destinations": {
-																									"description": "A list of destinations where Agents observability data will be exported to.",
-																									"type": "array",
-																									"items": {
-																										"type": "string"
-																									},
-																									"default": [],
-																									"x-auditable": true
-																								},
 																								"enabled": {
 																									"description": "Whether Agents observability is enabled for the Worker.",
 																									"type": "boolean",
@@ -1839097,15 +1839312,6 @@
 																		"type": "object",
 																		"nullable": true,
 																		"properties": {
-																			"destinations": {
-																				"description": "A list of destinations where Agents observability data will be exported to.",
-																				"type": "array",
-																				"items": {
-																					"type": "string"
-																				},
-																				"default": [],
-																				"x-auditable": true
-																			},
 																			"enabled": {
 																				"description": "Whether Agents observability is enabled for the Preview.",
 																				"type": "boolean",
@@ -1839548,15 +1839754,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"default": [],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Preview.",
 																"type": "boolean",
@@ -1839909,15 +1840106,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"default": [],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Preview.",
 																			"type": "boolean",
@@ -1840712,15 +1840900,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"default": [],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Preview.",
 																			"type": "boolean",
@@ -1841163,15 +1841342,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"default": [],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Preview.",
 																"type": "boolean",
@@ -1841431,15 +1841601,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"default": [],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Preview.",
 																"type": "boolean",
@@ -1841789,15 +1841950,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"default": [],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Preview.",
 																			"type": "boolean",
@@ -1842243,15 +1842395,6 @@
 														"type": "object",
 														"nullable": true,
 														"properties": {
-															"destinations": {
-																"description": "A list of destinations where Agents observability data will be exported to.",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																},
-																"default": [],
-																"x-auditable": true
-															},
 															"enabled": {
 																"description": "Whether Agents observability is enabled for the Preview.",
 																"type": "boolean",
@@ -1842604,15 +1842747,6 @@
 																	"type": "object",
 																	"nullable": true,
 																	"properties": {
-																		"destinations": {
-																			"description": "A list of destinations where Agents observability data will be exported to.",
-																			"type": "array",
-																			"items": {
-																				"type": "string"
-																			},
-																			"default": [],
-																			"x-auditable": true
-																		},
 																		"enabled": {
 																			"description": "Whether Agents observability is enabled for the Preview.",
 																			"type": "boolean",
@@ -1894055,7 +1894189,6 @@
 																"required": [
 																	"name",
 																	"start",
-																	"end",
 																	"finished",
 																	"type",
 																	"error"
@@ -2400476,7 +2400609,8 @@
 						"schema": {
 							"type": "string",
 							"maxLength": 4096
-						}
+						},
+						"x-auditable": false
 					}
 				],
 				"responses": {
@@ -2400849,7 +2400983,6 @@
 					"Logs Write",
 					"Logs Read"
 				],
-				"x-auditable": false,
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "logs.zone",
 				"x-fern-sdk-method-name": "query-get"
@@ -2636225,48 +2636358,58 @@
 										{
 											"properties": {
 												"result": {
-													"description": "Google Tag Gateway configuration for a zone.",
-													"type": "object",
-													"properties": {
-														"enabled": {
-															"description": "Enables or disables Google Tag Gateway for this zone.",
-															"type": "boolean",
-															"example": true,
-															"x-auditable": true
+													"allOf": [
+														{
+															"description": "Google Tag Gateway configuration for a zone.",
+															"type": "object",
+															"properties": {
+																"enabled": {
+																	"description": "Enables or disables Google Tag Gateway for this zone.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"endpoint": {
+																	"description": "Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics).",
+																	"type": "string",
+																	"example": "/metrics",
+																	"x-auditable": true
+																},
+																"hideOriginalIp": {
+																	"description": "Deprecated. This value is stored but has no effect on traffic. Optional in requests: if omitted, the previously stored value is kept. Responses always include it.",
+																	"type": "boolean",
+																	"example": true,
+																	"deprecated": true,
+																	"x-auditable": true
+																},
+																"measurementId": {
+																	"description": "Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX).",
+																	"type": "string",
+																	"example": "GTM-P2F3N47Q",
+																	"x-auditable": true
+																},
+																"setUpTag": {
+																	"description": "Set up the associated Google Tag on the zone automatically when enabled.",
+																	"type": "boolean",
+																	"example": true,
+																	"nullable": true,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"enabled",
+																"endpoint",
+																"measurementId"
+															],
+															"title": "Google Tag Gateway configuration"
 														},
-														"endpoint": {
-															"description": "Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics).",
-															"type": "string",
-															"example": "/metrics",
-															"x-auditable": true
-														},
-														"hideOriginalIp": {
-															"description": "Hides the original client IP address from Google when enabled.",
-															"type": "boolean",
-															"example": true,
-															"x-auditable": true
-														},
-														"measurementId": {
-															"description": "Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX).",
-															"type": "string",
-															"example": "GTM-P2F3N47Q",
-															"x-auditable": true
-														},
-														"setUpTag": {
-															"description": "Set up the associated Google Tag on the zone automatically when enabled.",
-															"type": "boolean",
-															"example": true,
-															"nullable": true,
-															"x-auditable": true
+														{
+															"required": [
+																"hideOriginalIp"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"enabled",
-														"endpoint",
-														"hideOriginalIp",
-														"measurementId"
-													],
-													"title": "Google Tag Gateway configuration"
+													]
 												}
 											},
 											"type": "object"
@@ -2636461,9 +2636604,10 @@
 										"x-auditable": true
 									},
 									"hideOriginalIp": {
-										"description": "Hides the original client IP address from Google when enabled.",
+										"description": "Deprecated. This value is stored but has no effect on traffic. Optional in requests: if omitted, the previously stored value is kept. Responses always include it.",
 										"type": "boolean",
 										"example": true,
+										"deprecated": true,
 										"x-auditable": true
 									},
 									"measurementId": {
@@ -2636483,7 +2636627,6 @@
 								"required": [
 									"enabled",
 									"endpoint",
-									"hideOriginalIp",
 									"measurementId"
 								],
 								"title": "Google Tag Gateway configuration"
@@ -2636583,48 +2636726,58 @@
 										{
 											"properties": {
 												"result": {
-													"description": "Google Tag Gateway configuration for a zone.",
-													"type": "object",
-													"properties": {
-														"enabled": {
-															"description": "Enables or disables Google Tag Gateway for this zone.",
-															"type": "boolean",
-															"example": true,
-															"x-auditable": true
+													"allOf": [
+														{
+															"description": "Google Tag Gateway configuration for a zone.",
+															"type": "object",
+															"properties": {
+																"enabled": {
+																	"description": "Enables or disables Google Tag Gateway for this zone.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"endpoint": {
+																	"description": "Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics).",
+																	"type": "string",
+																	"example": "/metrics",
+																	"x-auditable": true
+																},
+																"hideOriginalIp": {
+																	"description": "Deprecated. This value is stored but has no effect on traffic. Optional in requests: if omitted, the previously stored value is kept. Responses always include it.",
+																	"type": "boolean",
+																	"example": true,
+																	"deprecated": true,
+																	"x-auditable": true
+																},
+																"measurementId": {
+																	"description": "Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX).",
+																	"type": "string",
+																	"example": "GTM-P2F3N47Q",
+																	"x-auditable": true
+																},
+																"setUpTag": {
+																	"description": "Set up the associated Google Tag on the zone automatically when enabled.",
+																	"type": "boolean",
+																	"example": true,
+																	"nullable": true,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"enabled",
+																"endpoint",
+																"measurementId"
+															],
+															"title": "Google Tag Gateway configuration"
 														},
-														"endpoint": {
-															"description": "Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics).",
-															"type": "string",
-															"example": "/metrics",
-															"x-auditable": true
-														},
-														"hideOriginalIp": {
-															"description": "Hides the original client IP address from Google when enabled.",
-															"type": "boolean",
-															"example": true,
-															"x-auditable": true
-														},
-														"measurementId": {
-															"description": "Specify the Google Tag Manager container or measurement ID (e.g. GTM-XXXXXXX or G-XXXXXXXXXX).",
-															"type": "string",
-															"example": "GTM-P2F3N47Q",
-															"x-auditable": true
-														},
-														"setUpTag": {
-															"description": "Set up the associated Google Tag on the zone automatically when enabled.",
-															"type": "boolean",
-															"example": true,
-															"nullable": true,
-															"x-auditable": true
+														{
+															"required": [
+																"hideOriginalIp"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"enabled",
-														"endpoint",
-														"hideOriginalIp",
-														"measurementId"
-													],
-													"title": "Google Tag Gateway configuration"
+													]
 												}
 											},
 											"type": "object"

@@ -28,7 +28,8 @@
 				"in": "query",
 				"description": "How many abuse reports per page to list",
 				"schema": {
-					"type": "integer"
+					"type": "integer",
+					"minimum": 1
 				}
 			},
 			{
@@ -1081,7 +1082,8 @@
 				"in": "query",
 				"description": "Number of emails per page (default 20, max 100)",
 				"schema": {
-					"type": "integer"
+					"type": "integer",
+					"minimum": 1
 				}
 			}
 		],
@@ -1568,7 +1570,8 @@
 				"in": "query",
 				"description": "How many abuse reports per page to list",
 				"schema": {
-					"type": "integer"
+					"type": "integer",
+					"minimum": 1
 				}
 			},
 			{
@@ -4060,7 +4063,8 @@
 				"in": "query",
 				"description": "Number of emails per page (default 20, max 100).",
 				"schema": {
-					"type": "integer"
+					"type": "integer",
+					"minimum": 1
 				}
 			}
 		],
