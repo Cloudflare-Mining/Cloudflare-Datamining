@@ -39,7 +39,10 @@
 	<li>Familiarity with Google Cloud Platform or other analytics databases</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
+<p><strong>Compensation</strong></p>
+<ul>
+	<li><span data-sheets-root="1">For Lisbon based hires: Estimated annual salary of €40,000 - €54,000</span></li>
+</ul>
 <p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>

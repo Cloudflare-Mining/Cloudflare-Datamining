@@ -54,7 +54,7 @@
 <h3 data-path-to-node="6"><strong data-path-to-node="6" data-index-in-node="0">Benefits</strong></h3>
 <ul data-path-to-node="7">
 	<li>
-		<p id="p-rc_1d504e3d74e8c0aa-28" data-path-to-node="7,0,0"><span class="citation-226 citation-227 citation-end-227">Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in<sup class="superscript" data-turn-source-index="1"></sup></span><span class="citation-226 citation-end-226"> the United States, and benefits may vary for employees based outside the U.S.</span></p>
+		<p id="p-rc_1d504e3d74e8c0aa-28" data-path-to-node="7,0,0"><span class="citation-226 citation-227 citation-end-227">Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in</span><span class="citation-226 citation-end-226"> the United States, and benefits may vary for employees based outside the U.S.</span></p>
 	</li>
 	<li>
 		<p id="p-rc_1d504e3d74e8c0aa-28" data-path-to-node="7,0,0">Health &amp; Welfare Benefits</p>

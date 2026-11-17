@@ -1,0 +1,51 @@
+<div class="content-intro">
+	<h3>About Us</h3>
+	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
+	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
+</div>
+<p><strong>Available Locations:&nbsp;</strong></p>
+<ul>
+	<li>Austin, TX</li>
+	<li>San Francisco, CA</li>
+</ul>
+<p><strong>Available Term</strong></p>
+<ul>
+	<li>Winter (January - April 2027)&nbsp;</li>
+</ul>
+<p><strong>About the role</strong></p>
+<p>Cloudflare’s mission is to help build a better Internet—and our Communications team is responsible for telling that story to the world and to our own employees. Across Public Relations, Social, Internal, Visual, and Executive Communications, we support major company announcements, Innovation Weeks, internal employee platforms and news, our public social channels and executive communications.</p>
+<p>Cloudflare moves fast, and so does our work. We're looking for a builder who is just as curious about how organizations communicate as about the technology behind it. You might be studying information science, data science, HCI, digital media, journalism, cognitive science, business or information systems, or communications with a strong technical streak, or coming from a coding bootcamp or self-taught path. You'll work at the intersection of AI, automation, and employee and corporate communications, identifying opportunities to eliminate manual work, connect disconnected systems, and build tools that make our team smarter and more effective.</p>
+<p>By the end of the internship, you’ve built new tools or processes for how we can better communicate or collaborate.&nbsp;</p>
+<h4><strong>Responsibilities</strong></h4>
+<ul>
+	<li><strong>Automate the everyday:</strong> Build workflows that can save the team time—like creating a dynamic, shared visual calendar that pulls milestones automatically from multiple team trackers, auto-populating our weekly internal newsletter with top press coverage, or keeping our internal wiki (Company Hub) continuously updated with the latest stats or coverage highlights.</li>
+	<li><strong>Own a flagship AI project:</strong> Sit down with teammates across PR, Social, Design, and Internal Comms to uncover an opportunity to use AI to reimagine a time-consuming or fragmented process. Own the process from discovery through prototyping, testing, and deployment.</li>
+	<li><strong>Improve AI knowledge and retrieval:</strong> Partner with Communications and the Agentic Solutions Team to improve how internal AI tools access, organize, and retrieve information and share with employees. Help identify gaps in existing knowledge sources, improve content quality and structure, and test the accuracy and usefulness of AI-generated responses.</li>
+	<li><strong>Share what you build:</strong> Teach the team how to use the tools you build and share and learn from other interns and teams across the company. Present flagship AI project during company-wide intern presentations.</li>
+</ul>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<ul>
+	<li><strong>Technical foundation:</strong> Currently pursuing a Bachelor's or Master's degree in a field such as information science, data science, human-computer interaction, digital media, business or information systems, journalism, communications, or a related technical field.</li>
+	<li><strong>AI enthusiast:</strong> Experience building with AI tools, including LLMs, AI agents, or AI-assisted development tools.</li>
+	<li><strong>Systems thinker:</strong> Experience working with APIs, webhooks, or integrating different systems.</li>
+	<li><strong>Hands-on problem solver: </strong>You enjoy uncovering problems and figuring out how to solve them. You’re not afraid to ask for help or proactively reach out to others across the company to get answers.</li>
+	<li><strong>Availability:</strong> Ability to commit to a full-time (40 hours/week Monday - Friday) for a minimum 12 week internship, with 3-5 days in office.</li>
+	<li><strong>Understands the value of communications:</strong> Recognizes how effective communications improves engagement, connection, and alignment. You don't need a communications background, but you're interested in how technology can improve the way organizations communicate.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For San Francisco Bay Area based hires: Estimated hourly rate of $27.00/hr.</li>
+</ul>
+<div class="content-conclusion">
+	<h3>What Makes Cloudflare Special?</h3>
+	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
+	<p><a href="https://blog.cloudflare.com/protecting-free-expression-online/"><strong>Project Galileo</strong></a><span style="font-weight: 400;">: Since 2014, we've equipped more than 2,400 journalism and civil society organizations in 111 countries with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</span></p>
+	<p><strong><a href="https://www.cloudflare.com/athenian/">Athenian Project</a></strong><span style="font-weight: 400;">: In 2017, we created the Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration. Since the project, we've provided services to more than 425 local government election websites in 33 states.</span></p>
+	<p><a href="https://1.1.1.1/"><strong>1.1.1.1</strong></a><span style="font-weight: 400;">: We released</span><a href="https://1.1.1.1/"> <span style="font-weight: 400;">1.1.1.1</span></a><span style="font-weight: 400;"> to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our</span><a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver"> privacy commitment</a><span style="font-weight: 400;"> and ensure that no user data is sold to advertisers or used to target consumers.</span></p>
+	<p><span style="font-weight: 400;">Sound like something you’d like to be a part of? We’d love to hear from you!</span></p>
+	<p><span style="font-weight: 400;">Please note that applicants who progress to the offer stage of the interview process may be asked to attend an in-person interview within one of the Cloudflare Offices or Cloudflare Hubs.&nbsp; More details about this will be available at that stage of the interview process.</span></p>
+	<p><span style="font-weight: 400;">This position may require access to information protected under U.S. export control laws, including the U.S. Export Administration Regulations. Please note that any offer of employment may be conditioned on your authorization to receive software or technology controlled under these U.S. export laws without sponsorship for an export license.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare is proud to be an equal opportunity employer. &nbsp;We are committed to providing equal employment opportunity for all people and place great value in both diversity and inclusiveness. &nbsp;All qualified applicants will be considered for employment without regard to their, or any other person's, perceived or actual</span> <span style="font-weight: 400;">race, color, religion, sex, gender, gender identity, gender expression, sexual orientation, national origin, ancestry, citizenship, age, physical or mental disability, medical condition, family care status, or any other basis protected by law. </span><span style="font-weight: 400;">We are an AA/Veterans/Disabled Employer.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare provides reasonable accommodations to qualified individuals with disabilities. &nbsp;Please tell us if you require a reasonable accommodation to apply for a job. Examples of reasonable accommodations include, but are not limited to, changing the application process, providing documents in an alternate format, using a sign language interpreter, or using specialized equipment. &nbsp;If you require a reasonable accommodation to apply for a job, please contact us via e-mail at </span><span style="font-weight: 400;">hr@cloudflare.com</span><span style="font-weight: 400;"> or via mail at 101 Townsend St. San Francisco, CA 94107.</span></p>
+</div>
