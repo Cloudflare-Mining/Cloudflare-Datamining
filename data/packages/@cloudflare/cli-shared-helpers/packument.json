@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/cli-shared-helpers",
 	"dist-tags": {
-		"latest": "0.3.9"
+		"latest": "0.3.10"
 	},
 	"versions": {
 		"0.0.1": {
@@ -2325,8 +2325,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDMbpWI0ASb3c6Oc7pQdg709yHOdRVpDa/yoRGRQLtRfAIgRjZaa7x47V7q3LVvPrvw7VUfWk9gsR8UnObSfHEvPJU="
+						"sig": "MEUCIQDMbpWI0ASb3c6Oc7pQdg709yHOdRVpDa/yoRGRQLtRfAIgRjZaa7x47V7q3LVvPrvw7VUfWk9gsR8UnObSfHEvPJU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -2336,6 +2336,46 @@
 					}
 				},
 				"unpackedSize": 55909
+			}
+		},
+		"0.3.10": {
+			"name": "@cloudflare/cli-shared-helpers",
+			"version": "0.3.10",
+			"dependencies": {
+				"chalk": "5.3.0",
+				"ci-info": "4.4.0",
+				"log-update": "5.0.1",
+				"@clack/core": "1.2.0",
+				"cross-spawn": "7.0.6",
+				"@cloudflare/workers-utils": "0.54.2"
+			},
+			"devDependencies": {
+				"tsdown": "^0.15.9",
+				"@types/cross-spawn": "^6.0.2",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "345591045355df91f117b5d1744821989857580e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/cli-shared-helpers/-/cli-shared-helpers-0.3.10.tgz",
+				"fileCount": 26,
+				"integrity": "sha512-7av+aNo5V3w4ggZ77qOdc5gd/WVygnzs2tjErZnmiCFjffszIXfxyjUvP6ZoWLcx0zZObrfhb00LBSgaxpxgsg==",
+				"signatures": [
+					{
+						"sig": "MEQCIBeXHwFUTawM81bunLok04pZaHxeL8FZ7B6cXpLGSNZLAiALaX44MTebg3oeZRPmmgaCf3Lliwv9ihudukQraSr5bA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIGhEEmg9MQpb4SuKKG8xSXXvCXBDT/c7gw8deFOvqiHIAiAI2cQqrmkjt6uD3GmdO3XGdsAw6Mxx+w6yM5OQzAaIQA=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcli-shared-helpers@0.3.10",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 55910
 			}
 		}
 	}
