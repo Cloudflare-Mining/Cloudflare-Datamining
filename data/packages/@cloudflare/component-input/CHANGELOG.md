@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.0.9
+
+### Patch Changes
+
+- 968b972ca4: Move `Input`'s `type: 'text'` default from `defaultProps` into a default parameter. Accept React 18 and 19 in the `react` peer range.
+
 ## 9.0.8
 
 ### Patch Changes

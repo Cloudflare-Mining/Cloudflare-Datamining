@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.10
+
+### Patch Changes
+
+- 5b8aa87ebb: Support React 19: vendor the react-nvd3 wrapper with a callback ref instead of string refs (depending on its d3/nvd3 directly), render the tooltip through a synchronously flushed portal instead of ReactDOM.render, replace Tooltip defaultProps with default parameters, and accept React 18/19 peers. Tooltip content now renders inside the app's React tree: it reads app context (for example the timezone preference), render errors reach the app's error boundary, and it unmounts with the chart.
+
 ## 6.0.9
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.36
+
+### Patch Changes
+
+- 968b972ca4: Accept React 18 and 19 in the `react` peer range. No code change.
+
 ## 6.0.35
 
 ### Patch Changes

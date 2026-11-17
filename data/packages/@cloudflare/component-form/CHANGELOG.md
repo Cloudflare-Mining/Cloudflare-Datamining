@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.30
+
+### Patch Changes
+
+- 968b972ca4: Move the `defaultProps` of `Form` (`border`, `method`), `FormFieldset` (`border`, `layout`), `FormHeader` and `FormFooter` (`border`) into default parameters with the same values: `method` in `Form` itself, and `border` and `layout` in the Fela style rules that read them. `Form` and `FormFooter` now keep their default border when a consumer creates them with React 19's automatic JSX runtime. Accept React 18 and 19 in the `react` peer range.
+- Updated dependencies [2daabe2c0a]
+  - @cloudflare/component-listbox@3.0.29
+
 ## 6.0.29
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.1.21
+
+### Patch Changes
+
+- 6e1154f5f6: Replace react-sortable-hoc with dnd-kit for row reordering and measure virtualized rows through CellMeasurer's `registerChild` instead of `findDOMNode`, so tables with `onRowMove` work on React 19; accept React 18 and 19 in the peer ranges. Requires react-virtualized 9.22.0 or later. Pressing Escape, resizing the window or hiding the tab during a drag now cancels it without calling `onRowMove`.
+
 ## 7.1.20
 
 ### Patch Changes

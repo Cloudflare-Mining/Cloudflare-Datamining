@@ -1,5 +1,18 @@
 # Change Log
 
+## 4.2.9
+
+### Patch Changes
+
+- Updated dependencies [2daabe2c0a]
+  - @cloudflare/component-listener@5.0.30
+
+## 4.2.8
+
+### Patch Changes
+
+- ba4612f320: Measure `withAutoWidth` with `ResizeObserver` instead of `react-sizeme`, which calls the `ReactDOM.findDOMNode` API removed in React 19. Drop the `react-sizeme` dependency and accept React 18 and 19 in the peer ranges.
+
 ## 4.2.7
 
 ### Patch Changes

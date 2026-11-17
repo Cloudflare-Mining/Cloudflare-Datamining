@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.34
+
+### Patch Changes
+
+- 7f3cfdae2a: Accept React 18 and 19 in the peer ranges. Replace `defaultProps` on function components (GaugeChart, RatioChart, LinksLayer, map tooltip ItemInfo, SeriesToggleLegend) with default parameters, because the React 19 JSX runtime ignores them, and pass `show` to react-move's `Animate` explicitly.
+
 ## 8.0.33
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.7
+
+### Patch Changes
+
+- 968b972ca4: Remove `Toast.defaultProps`; `type` already defaults to `'info'` in the style rule. The `type` propType is no longer `isRequired`, so omitting it does not log a new dev warning. Accept React 18 and 19 in the `react` peer range.
+
 ## 6.0.6
 
 ### Patch Changes

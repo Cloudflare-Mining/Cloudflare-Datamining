@@ -1,5 +1,13 @@
 # Change Log
 
+## 12.0.5
+
+### Patch Changes
+
+- 968b972ca4: Move the `role: 'region'` default of `CardDrawer` and the `status: 'default'` default of `CardSection` out of `defaultProps`, so a `CardDrawer` created directly with React 19's automatic JSX runtime keeps `role="region"`. `CardDrawer` now renders through a `forwardRef` base element: passing `as` replaces that base, so no default `role` is added, and `react-is` reports a `CardDrawer` element as a forwardRef. Accept React 18 and 19 in the `react` peer range.
+- Updated dependencies [2daabe2c0a]
+  - @cloudflare/component-link@10.0.10
+
 ## 12.0.4
 
 ### Patch Changes

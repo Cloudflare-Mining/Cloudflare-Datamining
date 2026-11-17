@@ -1,5 +1,13 @@
 # Change Log
 
+## 11.1.10
+
+### Patch Changes
+
+- e5b1034ed0: Support React 18 and 19 in Table and ExpandableTable. Replace the legacy context that shared `bordered`, `loading`, `empty`, `errored`, `renderTableToDom` and `isHeader` with table descendants with a shared `TableContext` (now exported from `@cloudflare/component-table`), set expandable-table's `TableRow` default `bordered` with a default parameter, and accept React 18 and 19 in the peer ranges.
+
+  Mixed trees (component-table cells under an expandable `TableHeader`, or the reverse) now need a single installed copy of `@cloudflare/component-table`, so upgrade both packages together.
+
 ## 11.1.9
 
 ### Patch Changes
