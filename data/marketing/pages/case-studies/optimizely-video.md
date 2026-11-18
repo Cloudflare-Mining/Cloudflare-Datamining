@@ -1,73 +1,28 @@
 ---
-title: Optimizely Harnesses Cloudflare Workers to Reinvent Web Optimization
-description: Optimizely leveraged Cloudflare Workers to reinvent its leading experimentation platform.
+title: Customer Case Studies | Cloudflare
+description: Learn how companies like yours leverage Cloudflare for security, performance, and reliability.
 image: https://www.cloudflare.com/preview.png
 ---
 
-# Optimizely Harnesses Cloudflare Workers to Reinvent Web Optimization
+##  You're in good company 
 
-> #### "  We needed a way to push this kind of decision making and computation out to the edge. And Workers ultimately surfaced as the no-brainer tool of choice. " 
+#####  Learn how companies like yours are leveraging our platform. Cloudflare provides Security, Performance, and Reliability for anything connected to the Internet. 
 
-If you're looking to grow your business online, there's no substitute for running objective tests to see how your website is performing. [Optimizely](https://optimizely.com "Optimizely") is one of the world's leading experimentation platforms — with thousands of customers including global brands like IBM, HP, and Microsoft — who cumulatively deliver billions of experiences every week.
+Filter By:
 
-These tests help Optimizely's customers improve everything from their website layout, to copy, to identifying which products have the most growth potential.
+All Industries
 
-Optimizely offers a straightforward, easy way to get up and running on its platform: simply drop its Javascript snippet into your website header. This approach has helped drive Optimizely's popularity — and has served its customers well. However, it comes with tradeoffs. 
+All Regions
 
-Because the Javascript is loaded in the website's header, it has to download and execute before the page itself can render. This typically happens so quickly that users don't notice a difference. But as Optimizely's customers add more and more tests to their pages, this Javascript can take longer to load. In other words, there's a tradeoff between how many tests Optimizely's customers can run, and the potential impact on performance.
+All Use Cases
 
-**The Cloudflare Difference**
+All Products
 
-When Optimizely heard about Cloudflare's new [Workers platform](https://www.cloudflare.com/products/cloudflare-workers/ "Cloudflare Workers"), it realized there was an opportunity to develop a robust new implementation of its experimentation platform — one that would still be easy for its customers to install, but that doesn't come with the same tradeoffs in performance.
+[![Poki logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ovkLCQAKgdI3uBeO0Rvbw/42050ece62ce23ed4f19c8ddf5dba411/logo_Poki.svg)Poki uses Cloudflare's edge to run global multiplayer for 100M+ users from one data center.Learn More](/case-studies/poki)[![New Harbor logo](https://cf-assets.www.cloudflare.com/dzlvafdwdttg/7b7b2xVKVpmRVPncXFXqjd/21de77536399f341de0e5b493964b3dc/logo-new-harbor.png)New Harbor is on a mission to make cybersecurity simple. Cloudflare is how they're building it.Learn More](/case-studies/new-harbor)[![Caliente logo](https://images.ctfassets.net/slt3lc6tev37/sOvE1WhMMLneHD2Dku8VL/3f942b314949102c542b19fd3c3635ed/Grupo-Caliente-Logo.png)Mexico's leading online gambling company consolidates security, performance, and developer tools to scale for millions of users.Learn More](/case-studies/caliente)[![TAP Air Portugal logo](https://images.ctfassets.net/slt3lc6tev37/2mhFhTALgwfhv1CH6G1J0v/2f8efd687136266d4d2ca2b691f8b225/TAP-Portugal-Logo.png)TAP Air Portugal gains operational agility by adopting Cloudflare cybersecurity.Learn More](/case-studies/tap-air-portugal)[![VFS Global logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/7fMzGdLPQOmkXIL83IMYuL/fc0398f01d84bb6e2a77e99cc2d98760/VFS_Global_Logo.png)VFS Global uses Cloudflare to protect confidential applicants and government data while improving site performance around the globe.Learn More](/case-studies/vfs-global)[![ComfortDelGro logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/35a1jsxlPkyHOOWLY3HVCy/64a6c8e1e2717b079872823e0dd44764/CDG_Logo_H_RGB.png)ComfortDelGro Strengthens Digital Resilience Across Its Global Operations with CloudflareLearn More](/case-studies/comfortdelgro)[![Gusto logo](https://images.ctfassets.net/dzlvafdwdttg/1jzZ7mD168RiQ7J3bxYTxv/80710328be459666347b2d32bfc93b0f/Gusto_Logo.png)Gusto improved remote access reliability, enhanced vendor relationships and upgraded their support levels by switching to Cloudflare.Learn More](/case-studies/gusto)[![Fujitec logo](https://images.ctfassets.net/slt3lc6tev37/6eLNTSHLAgcRxjZYXmC6cK/f1bd0d70b285140bb64c1e460cde860c/fujitec-logo.jpg)Fujitec accelerates global safety and security with transitioning to Cloudflare One, eliminating VPNs and deploying zero trust in just 45 daysLearn More](/case-studies/fujitec)[![CrazyGames logo](https://images.ctfassets.net/slt3lc6tev37/2mkiv03JURdnN8HtkFVqR8/678887e7dc573b46f4cc93fd2673e019/crazygames_logo.png)CrazyGames keeps a global free-to-play gaming platform stable and fast for 50 million monthly users using Cloudflare, mitigating 25 million threats a month with a team of just 50 people.Learn More](/case-studies/crazygames)[![Hack The Box logo](https://images.ctfassets.net/slt3lc6tev37/3oWMko8boDq7nnGBF7UfBs/d199bb16612c96b281f4aca5521b3375/hack_the_box_logo.png)Hack The Box secures a global cybersecurity training platform with Cloudflare, stopping 13.37 million threats monthly while scaling to 4 million users.Learn More](/case-studies/hack-the-box)[![Olive Young logo](https://images.ctfassets.net/slt3lc6tev37/62tMdNDOpMJr0RSYUxJIt8/e9cd1beeeb399e706898337547cd1da3/OliveYoung-Logo.png)Olive Young scaled K-Beauty globally by using Cloudflare to integrate its infrastructure, leveraging AI bot defense and ultra-low latency for a faster, more secure retail experience.Learn More](/case-studies/olive-young)[![BAFTA logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/7J46Cg1yvhVCD1dYz6YT0V/925507482f4fe3fa314c1ccf40f167d1/bafta_logo.jpg)The British Academy of Film and Television Arts (BAFTA) has used Cloudflare's platform to bring their public voting system in‐house, prioritizing brand trust, security, and scalability.Learn More](/case-studies/bafta)
 
-Cloudflare Workers allows developers to leverage Cloudflare's global network — spanning over %{DataCenterCount} cities in 90 countries worldwide — to deploy and execute their own code, in the programming language of their choice. This allows developers to do everything from customizing Cloudflare's own products, to developing entirely new applications that perform complex logic at the network edge. 
+Showing 12 of 264 case studies
 
-When Optimizely's customers use this new, Workers-powered implementation of its experimentation platform, they can now concurrently run ten or even one hundred times as many tests without a noticeable impact on performance. That's because the test logic runs on the servers on Cloudflare's edge network, rather than in the user's browser. And because Cloudflare has servers within 100 milliseconds of 99% of the Internet-connected population in the developed world — those tests are blazing fast. 
-
-Want more of the technical details? Learn more from our [joint blog post](https://blog.cloudflare.com/enhancing-optimizely-with-cloudflare-workers/ "Cloudflare + Optimizely Blog Post") and Optimizely's [press release](https://www.optimizely.com/insights/blog/performance-edge/ "Optimizely Performance Edge Launch Announcement") announcing Performance Edge, powered by Cloudflare Workers.
-
-**Transcript**
-
-Claire Vo, SVP of Product: Optimizely is the world's leading experimentation platform. Our customers come to Optimizely, quite frankly, to grow their business.
-
-Whelan Boyd, Senior Product Manager: They are able to test all of their assumptions and make more decisions based on insights and data. 
-
-Claire Vo: We serve some of the largest enterprises in the world, and those enterprises have quite high standards for the scalability and performance of the products that Optimizely is bringing into their organization. 
-
-Greeshma Yellareddy, Senior Performance Engineer: We have a Javascript snippet that goes on customers' websites that executes all the experiments that they have configured, all the changes that they have configured for any of the experiments. 
-
-Lauren Pappone, Senior Software Engineer: That Javascript takes time to download, to parse, and also to execute and so customers have become increasingly performance conscious. 
-
-Claire Vo: The reason we partnered with Cloudflare is to improve the performance aspects of some of our core experimentation products.
-
-Whelan Boyd: We needed a way to push this kind of decision making and computation out to the edge. And Workers ultimately surfaced as the no-brainer tool of choice there. 
-
-Lauren Pappone: Once we started using Workers it was really fast to get up to speed. It was like, "Oh, I can just go into this playground and write Javascript which I totally know how to do — and then it just works. So that was pretty cool."
-
-Whelan Boyd: Our customers will be able to run 10x, 100x the number of experiments. And from our perspective that ultimately means they'll get more value out of it. And the business impact for our bottom line and our top line, will also start to mirror that as well. 
-
-Claire Vo: Workers has allowed us to accelerate our product velocity around performance innovation which I'm very excited about. But that's just the beginning. There's a lot that Cloudflare is doing from a technology perspective that we're really excited to partner on so that we can bring our innovation to market faster. 
-
-![Optimizely Harnesses Cloudflare Workers to Reinvent Web Optimization logo](https://images.ctfassets.net/slt3lc6tev37/4v4GHVEpu8apXgJUz8KEKX/0765bdf6580bf3979257778339d2793e/optimizelylogoresized.jpg) 
-
-Optimizely leveraged Cloudflare Workers to reinvent its leading experimentation platform.
-
- Cloudflare Products 
-* [  Workers ](https://workers.cloudflare.com/)
-
- Products Used 
-
-Workers 
-
- Details 
-
- Industry 
-
-High Technology 
-
- Region 
-
-North America 
+Load More
 
 # Build without boundaries
 
@@ -80,5 +35,5 @@ North America
 ```json
 {"@context":"https://schema.org","@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com","logo":"https://www.cloudflare.com/logo.svg","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"]}
 {"@context":"https://schema.org","@type":"WebSite","name":"Cloudflare","url":"https://www.cloudflare.com","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://www.cloudflare.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
-{"@context":"https://schema.org","@type":"WebPage","name":"Optimizely Harnesses Cloudflare Workers to Reinvent Web Optimization","description":"Optimizely leveraged Cloudflare Workers to reinvent its leading experimentation platform.","url":"https://www.cloudflare.com/case-studies/optimizely-video/","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"WebPage","name":"Customer Case Studies | Cloudflare","description":"Learn how companies like yours leverage Cloudflare for security, performance, and reliability.","url":"https://www.cloudflare.com/case-studies/","inLanguage":"en"}
 ```
