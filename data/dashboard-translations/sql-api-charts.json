@@ -1,0 +1,23 @@
+{
+	"sql-api-charts.states.missingColumnsTitle": "Data not available yet",
+	"sql-api-charts.states.queryFailedTitle": "Could not load this chart",
+	"sql-api-charts.states.invalidChart": "This chart’s query is not valid: %{reason}",
+	"sql-api-charts.states.retry": "Try again",
+	"sql-api-charts.states.noData": "No data for this time range",
+	"sql-api-charts.states.unsupportedTitle": "Chart type not supported yet",
+	"sql-api-charts.states.truncatedTooltip": "This chart hit the row limit, so later times or smaller groups may be missing. Narrow the time range or filters.",
+	"sql-api-charts.states.filtersNotAppliedTooltip": "The page filters by these columns, but this chart’s dataset does not have them, so the chart shows unfiltered data for them.",
+	"sql-api-charts.states.rawShapeTitle": "Can’t draw this result",
+	"sql-api-charts.states.rawNeedsLabel": "A top N list needs a text column to name each row and a numeric column to rank them.",
+	"sql-api-charts.editor.addTitle": "Build a custom panel",
+	"sql-api-charts.editor.editTitle": "Edit panel",
+	"sql-api-charts.editor.mode": "How to build the panel",
+	"sql-api-charts.editor.dataset": "Dataset",
+	"sql-api-charts.editor.datasetSearch": "Search datasets",
+	"sql-api-charts.editor.query": "Query",
+	"sql-api-charts.editor.shapeTimeseries": "Return a timestamp column, one or more number columns, and optionally a text column to split the lines.",
+	"sql-api-charts.editor.shapeTopN": "Uses the first text column to name each row and the first number column to rank them.",
+	"sql-api-charts.editor.runQuery": "Run query",
+	"sql-api-charts.editor.loadingDatasets": "Loading datasets…",
+	"sql-api-charts.values.noPreviousPeriod": "No data in the previous period"
+}
