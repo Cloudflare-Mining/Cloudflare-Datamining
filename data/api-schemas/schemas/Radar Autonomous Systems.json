@@ -101,6 +101,18 @@
 														"type": "integer",
 														"example": 714
 													},
+													"category": {
+														"description": "Inferred network type of the AS: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs) or `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers). `null` when the AS is not classified.",
+														"type": "string",
+														"example": "ACCESS_ISP",
+														"enum": [
+															"ACCESS_ISP",
+															"HOSTING_CLOUD_CONTENT",
+															"ORGANIZATION",
+															null
+														],
+														"nullable": true
+													},
 													"country": {
 														"type": "string",
 														"example": "GB"
@@ -136,6 +148,7 @@
 													"asn",
 													"country",
 													"countryName",
+													"category",
 													"estimatedUsers"
 												],
 												"type": "object"
@@ -274,6 +287,18 @@
 													"type": "integer",
 													"example": 714
 												},
+												"category": {
+													"description": "Inferred network type of the AS: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs) or `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers). `null` when the AS is not classified.",
+													"type": "string",
+													"example": "ACCESS_ISP",
+													"enum": [
+														"ACCESS_ISP",
+														"HOSTING_CLOUD_CONTENT",
+														"ORGANIZATION",
+														null
+													],
+													"nullable": true
+												},
 												"confidenceLevel": {
 													"type": "integer",
 													"example": 5
@@ -342,6 +367,18 @@
 																"type": "integer",
 																"example": 174
 															},
+															"category": {
+																"description": "Inferred network type of the AS: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs) or `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers). `null` when the AS is not classified.",
+																"type": "string",
+																"example": "ACCESS_ISP",
+																"enum": [
+																	"ACCESS_ISP",
+																	"HOSTING_CLOUD_CONTENT",
+																	"ORGANIZATION",
+																	null
+																],
+																"nullable": true
+															},
 															"estimatedUsers": {
 																"description": "Total estimated users.",
 																"type": "integer",
@@ -354,7 +391,8 @@
 														},
 														"required": [
 															"name",
-															"asn"
+															"asn",
+															"category"
 														],
 														"type": "object"
 													}
@@ -379,6 +417,7 @@
 												"asn",
 												"website",
 												"orgName",
+												"category",
 												"estimatedUsers"
 											]
 										}
@@ -1151,6 +1190,18 @@
 													"type": "integer",
 													"example": 714
 												},
+												"category": {
+													"description": "Inferred network type of the AS: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs) or `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers). `null` when the AS is not classified.",
+													"type": "string",
+													"example": "ACCESS_ISP",
+													"enum": [
+														"ACCESS_ISP",
+														"HOSTING_CLOUD_CONTENT",
+														"ORGANIZATION",
+														null
+													],
+													"nullable": true
+												},
 												"country": {
 													"type": "string",
 													"example": "GB"
@@ -1214,6 +1265,18 @@
 															"asn": {
 																"type": "integer"
 															},
+															"category": {
+																"description": "Inferred network type of the AS: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs) or `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers). `null` when the AS is not classified.",
+																"type": "string",
+																"example": "ACCESS_ISP",
+																"enum": [
+																	"ACCESS_ISP",
+																	"HOSTING_CLOUD_CONTENT",
+																	"ORGANIZATION",
+																	null
+																],
+																"nullable": true
+															},
 															"estimatedUsers": {
 																"description": "Total estimated users.",
 																"type": "integer",
@@ -1225,7 +1288,8 @@
 														},
 														"required": [
 															"name",
-															"asn"
+															"asn",
+															"category"
 														],
 														"type": "object"
 													}
@@ -1248,6 +1312,7 @@
 												"asn",
 												"website",
 												"orgName",
+												"category",
 												"source",
 												"estimatedUsers"
 											]

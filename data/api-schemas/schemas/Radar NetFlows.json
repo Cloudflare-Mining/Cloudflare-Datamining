@@ -437,6 +437,7 @@
 					"enum": [
 						"ADM1",
 						"AS",
+						"AS_CATEGORY",
 						"LOCATION",
 						"PRODUCT"
 					]
@@ -548,6 +549,25 @@
 						"type": "string"
 					},
 					"example": "2267056,360689"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{
@@ -947,6 +967,25 @@
 						"type": "string"
 					},
 					"example": "2023-09-01T11:41:33.782Z"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{
@@ -1370,6 +1409,7 @@
 					"enum": [
 						"ADM1",
 						"AS",
+						"AS_CATEGORY",
 						"LOCATION",
 						"PRODUCT"
 					]
@@ -1523,6 +1563,25 @@
 						"MIN0_MAX",
 						"PERCENTAGE_CHANGE"
 					]
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{
@@ -2001,6 +2060,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "format",
 				"in": "query",
 				"description": "Format in which results will be returned.",
@@ -2418,6 +2496,25 @@
 						"type": "string"
 					},
 					"example": "2267056,360689"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{

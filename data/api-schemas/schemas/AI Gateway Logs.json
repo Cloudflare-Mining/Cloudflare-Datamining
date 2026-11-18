@@ -732,6 +732,10 @@
 										},
 										"total_count": {
 											"type": "number"
+										},
+										"truncated": {
+											"description": "Present when the listing has a metadata filter. Such a listing searches at most the newest 10,000,000 logs in its date range, newest first, so set end_date to search older logs. True when part of that window was not searched yet, because the page filled, time ran out, or the log store failed partway: total_count then counts only the matches in the logs searched, plus one when the page is full, so the next page is requested. False when the whole window was searched.",
+											"type": "boolean"
 										}
 									}
 								},

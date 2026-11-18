@@ -16,6 +16,7 @@
 						"ADM1",
 						"API_TRAFFIC",
 						"AS",
+						"AS_CATEGORY",
 						"BOT_CLASS",
 						"BROWSER",
 						"BROWSER_FAMILY",
@@ -154,6 +155,25 @@
 						"type": "string"
 					},
 					"example": "API"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{
@@ -5247,6 +5267,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -5762,6 +5801,7 @@
 						"ADM1",
 						"API_TRAFFIC",
 						"AS",
+						"AS_CATEGORY",
 						"BOT_CLASS",
 						"BROWSER",
 						"BROWSER_FAMILY",
@@ -5916,6 +5956,25 @@
 						"type": "string"
 					},
 					"example": "API"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{
@@ -12591,6 +12650,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -13173,6 +13251,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "deviceType",
 				"in": "query",
 				"description": "Filters results by device type.",
@@ -13740,6 +13837,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -14304,6 +14420,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -14865,6 +15000,25 @@
 						"type": "string"
 					},
 					"example": "2267056,360689"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{
@@ -15434,6 +15588,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -15995,6 +16168,25 @@
 						"type": "string"
 					},
 					"example": "2267056,360689"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{
@@ -16568,6 +16760,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -17128,6 +17339,25 @@
 						"type": "string"
 					},
 					"example": "2267056,360689"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{
@@ -18786,6 +19016,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -19368,6 +19617,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "deviceType",
 				"in": "query",
 				"description": "Filters results by device type.",
@@ -19935,6 +20203,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -20499,6 +20786,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -21060,6 +21366,25 @@
 						"type": "string"
 					},
 					"example": "2267056,360689"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{
@@ -21629,6 +21954,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -22190,6 +22534,25 @@
 						"type": "string"
 					},
 					"example": "2267056,360689"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{
@@ -22763,6 +23126,25 @@
 				}
 			},
 			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
+				}
+			},
+			{
 				"name": "botClass",
 				"in": "query",
 				"description": "Filters results by bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -23323,6 +23705,25 @@
 						"type": "string"
 					},
 					"example": "2267056,360689"
+				}
+			},
+			{
+				"name": "asCategory",
+				"in": "query",
+				"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+				"schema": {
+					"description": "Filters results by the inferred network type of the Autonomous System: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs), `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers), or `UNCLASSIFIED` (the AS isn't classified, or the traffic couldn't be mapped to an AS). In HTTP, only supported for date ranges starting on or after 2023-05-01.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"ACCESS_ISP",
+							"HOSTING_CLOUD_CONTENT",
+							"ORGANIZATION",
+							"UNCLASSIFIED"
+						],
+						"type": "string"
+					},
+					"example": "ACCESS_ISP"
 				}
 			},
 			{

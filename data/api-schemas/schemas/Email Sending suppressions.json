@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "delete_publicDeleteSendingSuppression",
 		"summary": "Delete account Email Sending suppression",
-		"description": "Deletes the suppression, its note, and every legacy internal zone membership, allowing future delivery attempts to the address.",
+		"description": "Deletes the suppression and its note, allowing future delivery attempts to the address.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -368,7 +368,7 @@
 	"GET /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "get_publicListSendingSuppressions",
 		"summary": "List account Email Sending suppressions",
-		"description": "Lists every active Email Sending suppression owned by the account: sending-domain suppressions and account-wide suppressions (including legacy rows with internal zone memberships). Each scope is listed newest first. The order between sending-domain and account-wide suppressions is not fixed; use `scope_type` to list one scope.",
+		"description": "Lists every active Email Sending suppression owned by the account: sending-domain suppressions and account-wide suppressions. Each scope is listed newest first. The order between sending-domain and account-wide suppressions is not fixed; use `scope_type` to list one scope.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -398,7 +398,7 @@
 				"schema": {
 					"description": "Opaque pagination cursor returned as `result_info.next_cursor`. It carries the filters that produced it.",
 					"type": "string",
-					"example": "eyJ0Ijo0LCJwaCI6ImRvbWFpbiIsInAiOjEyMywiYyI6ImMzZGM1ZjBiMzRhMTRmZjhlMWIzZWMwNDg5NWUxYjIyIn0",
+					"example": "eyJ0Ijo1LCJrIjoiZXlKcFpDSTZNVEl6ZlEiLCJjIjoiYzNkYzVmMGIzNGExNGZmOGUxYjNlYzA0ODk1ZTFiMjIifQ",
 					"maxLength": 2048
 				}
 			},
@@ -605,7 +605,7 @@
 										"next_cursor": {
 											"description": "Opaque cursor for the next page. Pass it back as the `cursor` query parameter and continue until it is `null`. A bounded large-account scan may return a short intermediate page. Each scope is listed newest first; the order between the two scopes is not fixed.",
 											"type": "string",
-											"example": "eyJ0Ijo0LCJwaCI6ImRvbWFpbiIsInAiOjEyMywiYyI6ImMzZGM1ZjBiMzRhMTRmZjhlMWIzZWMwNDg5NWUxYjIyIn0",
+											"example": "eyJ0Ijo1LCJrIjoiZXlKcFpDSTZNVEl6ZlEiLCJjIjoiYzNkYzVmMGIzNGExNGZmOGUxYjNlYzA0ODk1ZTFiMjIifQ",
 											"nullable": true
 										},
 										"per_page": {
@@ -949,7 +949,7 @@
 	"PATCH /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "patch_publicUpdateSendingSuppression",
 		"summary": "Update account Email Sending suppression",
-		"description": "Updates expiry or advisory note fields without changing legacy internal zone memberships. Scope cannot be changed.",
+		"description": "Updates expiry or advisory note fields. Scope cannot be changed.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1329,7 +1329,7 @@
 	"POST /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "post_publicCreateSendingSuppression",
 		"summary": "Create account Email Sending suppression",
-		"description": "Creates a suppression for every sending domain of the account (default) or for one sending domain (`scope.type = sending_domain`). Creating an existing active suppression returns its identifier. If a legacy zone-linked account row already exists, it is promoted without changing its identifier.",
+		"description": "Creates a suppression for every sending domain of the account (default) or for one sending domain (`scope.type = sending_domain`). Creating an existing active suppression returns its identifier.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1939,7 +1939,7 @@
 														"example": "Invalid email"
 													},
 													"id": {
-														"description": "The created or promoted suppression's identifier. Present when `status` is `processed`.",
+														"description": "The created or updated suppression's identifier. Present when `status` is `processed`.",
 														"type": "string",
 														"format": "uuid",
 														"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321"
@@ -2017,7 +2017,7 @@
 											}
 										},
 										"processed": {
-											"description": "Number of items successfully created or promoted.",
+											"description": "Number of items successfully created or updated.",
 											"type": "integer",
 											"example": 2
 										},

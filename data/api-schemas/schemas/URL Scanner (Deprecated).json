@@ -3591,6 +3591,17 @@
 			},
 			"429": {
 				"description": "Scan request denied: rate limited.",
+				"headers": {
+					"Retry-After": {
+						"description": "Seconds until the account can scan again: until the next token refills when rate limited, or until the next calendar month (UTC) when the monthly scan quota is exhausted.",
+						"schema": {
+							"description": "Seconds until the account can scan again: until the next token refills when rate limited, or until the next calendar month (UTC) when the monthly scan quota is exhausted.",
+							"type": "integer",
+							"example": 10,
+							"minimum": 1
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {

@@ -2,7 +2,7 @@
 	"GET /radar/search/global": {
 		"operationId": "radar-get-search-global",
 		"summary": "Search for locations, ASes, reports, and more",
-		"description": "Searches for locations, autonomous systems, reports, bots, bot operators, certificate logs, certificate authorities, industries and verticals. Location names can be localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g., `pt-PT,pt;q=0.9,en;q=0.8`).",
+		"description": "Searches for locations, autonomous systems, reports, bots, bot operators, certificate logs, certificate authorities, industries and verticals. Location names can be localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g., `pt-PT,pt;q=0.9,en;q=0.8`). ASN, ADM1 and ADM2 results include an `entity` with details about the matched entity.",
 		"parameters": [
 			{
 				"name": "limit",
@@ -124,6 +124,107 @@
 													"code": {
 														"type": "string",
 														"example": "13335"
+													},
+													"entity": {
+														"description": "Matched entity: an AS for `asn` results, a geolocation for `adm1` and `adm2`. Null for other types.",
+														"anyOf": [
+															{
+																"nullable": true,
+																"properties": {
+																	"aka": {
+																		"description": "Alternative name of the AS.",
+																		"type": "string",
+																		"nullable": true
+																	},
+																	"asn": {
+																		"description": "AS number.",
+																		"type": "integer",
+																		"example": 714
+																	},
+																	"category": {
+																		"description": "Inferred network type of the AS: `ACCESS_ISP` (networks connecting end users, plus transit), `HOSTING_CLOUD_CONTENT` (hosting providers, clouds and CDNs) or `ORGANIZATION` (enterprises, universities, governments, banks and IXP route servers). `null` when the AS is not classified.",
+																		"type": "string",
+																		"example": "ACCESS_ISP",
+																		"enum": [
+																			"ACCESS_ISP",
+																			"HOSTING_CLOUD_CONTENT",
+																			"ORGANIZATION",
+																			null
+																		],
+																		"nullable": true
+																	},
+																	"country": {
+																		"description": "Alpha-2 code of the country or territory where the AS is registered.",
+																		"type": "string",
+																		"example": "GB",
+																		"nullable": true
+																	},
+																	"name": {
+																		"description": "AS name.",
+																		"type": "string",
+																		"example": "Apple Inc.",
+																		"nullable": true
+																	}
+																},
+																"required": [
+																	"category",
+																	"asn",
+																	"name",
+																	"aka",
+																	"country"
+																],
+																"type": "object"
+															},
+															{
+																"nullable": true,
+																"properties": {
+																	"geoId": {
+																		"description": "GeoNames ID of the geolocation.",
+																		"type": "string",
+																		"example": "2267056"
+																	},
+																	"name": {
+																		"description": "Localized name of the geolocation.",
+																		"type": "string",
+																		"example": "Lisbon"
+																	},
+																	"parent": {
+																		"description": "Parent geolocation (country for `adm1`, `adm1` for `adm2`).",
+																		"type": "object",
+																		"nullable": true,
+																		"properties": {
+																			"code": {
+																				"description": "Code of the parent: alpha-2 code for a country, subdivision code for an `adm1`.",
+																				"type": "string",
+																				"example": "PT",
+																				"nullable": true
+																			},
+																			"name": {
+																				"description": "Localized name of the parent geolocation.",
+																				"type": "string",
+																				"example": "Portugal"
+																			},
+																			"type": {
+																				"description": "Type of the parent geolocation, such as `COUNTRY` or `ADM1`.",
+																				"type": "string",
+																				"example": "COUNTRY"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"name",
+																			"type"
+																		]
+																	}
+																},
+																"required": [
+																	"geoId",
+																	"name",
+																	"parent"
+																],
+																"type": "object"
+															}
+														]
 													},
 													"name": {
 														"type": "string",
