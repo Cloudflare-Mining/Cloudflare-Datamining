@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 17, 2026 [<h2>Quad9's withdrawal from France: A canary in the coal mine</h2>](https://blog.cloudflare.com/quad9-withdrawal-from-france/)
+
+Quad9's forced withdrawal from France highlights the dangers of mandating DNS-level blocking. We explore why forcing public resolvers to act as content filters is technically flawed and threatens the open Internet.
+
+![Patrick Nemeroff](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFMW1RWSEK7TGWF6VFST.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Christiaan Smits](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493GZZWXHHZC3ZA275EAJP.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Patrick Nemeroff](https://blog.cloudflare.com/author/patrick-nemeroff/) and  [Christiaan Smits](https://blog.cloudflare.com/author/christiaan/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7NJ9YQG0JNP2HSE7YEGCHJB.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/quad9-withdrawal-from-france/)
+
 November 13, 2026 [<h2>Kitesurf is now open source</h2>](https://blog.cloudflare.com/kitesurf-open-source/)
 
 Kitesurf, our experimental browser engine for AI agents, is now open source. Inspect the code, run it locally, or deploy your own instance on Cloudflare Workers.
@@ -17,8 +27,6 @@ Kitesurf, our experimental browser engine for AI agents, is now open source. Ins
 ![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Rui Figueira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VN7XMZ4WCQMGQSPJ2B3Q.webp&w=64&h=64&f=webp&fit=cover&position=center)![Bernardo Pereira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8R43WABMZ0H0YV3B88GQR.01M7B8R4EP3VE1SQT22XN2A4TS.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Luís Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4768W5B20EQMM9ZD5AQMED.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Celso Martinho](https://blog.cloudflare.com/author/celso/),  [Rui Figueira](https://blog.cloudflare.com/author/rui-figueira/),  [Bernardo Pereira](https://blog.cloudflare.com/author/bernardo-pereira/), and  [Luís Duarte](https://blog.cloudflare.com/author/luis-duarte/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7B8M53647Q1KNRABY8VM2G7.png&w=1668&h=938&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/kitesurf-open-source/)
 
 November 13, 2026 [<h2>Adapting to AI penetration testing orchestrators: The Modern Security Model</h2>](https://blog.cloudflare.com/adapting-to-ai-penetration-testing-orchestrators/)
 
@@ -155,14 +163,6 @@ Cloudflare's new post-quantum GeoKey Manager protects geographically fenced decr
 ![Chetan Agrawal](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MYC9JA1JNK8WYQD95KD5PH.01M5MYCADDBMF9H0GV20JGXGBD.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Arka Nayan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MYDAK4W1D7DAY5XEXZNQ2F.01M5MYDB4SANWM43NZQ9G5D5EJ.png&w=64&h=64&f=webp&fit=cover&position=center)![Erik Engstrom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46709CDX8ZPPNR6D3SZS8B.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Chetan Agrawal](https://blog.cloudflare.com/author/chetan-agrawal/),  [Arka Nayan](https://blog.cloudflare.com/author/arka-nayan/), and  [Erik Engstrom](https://blog.cloudflare.com/author/erik-engstrom/)
-
-October 22, 2026 [<h2>Localizing compliance at scale: Achieving South Korea's ISMS certification</h2>](https://blog.cloudflare.com/k-isms/)
-
-Cloudflare has achieved South Korea's ISMS certification following an audit across 80 controls. Learn how we localized user consent flows, adapted social sign-up paths at the edge, and validated our global security program.
-
-![Kabin Calan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5HNPHA836561064Z6XYVR0N.01M5HNPJ33NJ1Y1TXHWX719ZC4.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Kabin Calan](https://blog.cloudflare.com/author/kabin-calan/)
 
 Load more
 

@@ -16,13 +16,7 @@ Browse upcoming Cloudflare events around the world.
 
 AmericasEMEAAPJC
 
-San Antonio, US
-
-Billington Critical Infrastructure Summit
-
-Nov 17–18
-
-Coming soon
+[San Antonio, USBillington Critical Infrastructure SummitNov 17–18Learn more](https://criticalinfrastructure.billingtoncybersummit.com/)
 
 Ottawa, CA
 

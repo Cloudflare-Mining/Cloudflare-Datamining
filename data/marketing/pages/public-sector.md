@@ -1,5 +1,5 @@
 ---
-title: Cloudflare for Public Sector | Governments &#38; Education | Cloudflare
+title: Cloudflare for Public Sector | Governments & Education | Cloudflare
 description: Cloudflare helps public sector and government organizations protect, connect, and accelerate their operations with an intelligent connectivity cloud.
 image: https://www.cloudflare.com/img/cf-social-card.png
 ---

@@ -1,5 +1,5 @@
 ---
-title: Jooble &amp; Cloudflare | Customer Story | Cloudflare
+title: Jooble & Cloudflare | Customer Story | Cloudflare
 description: Discover how Jooble partnered with Cloudflare to optimize performance for 125 million daily requests and cut server load by 50%.
 image: https://cf-assets.www.cloudflare.com/slt3lc6tev37/A1VwtEXiFOuxm6OkBfIJ5/b3e9160bb3590d9f8c40be3556a37352/jooble_meta_image.png
 ---
