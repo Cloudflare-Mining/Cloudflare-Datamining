@@ -699,7 +699,7 @@
 																		"minimum": 1
 																	},
 																	"origin_worker_id": {
-																		"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																		"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 																		"type": "string",
 																		"example": "277b7815c871434b960b60729659000a",
 																		"pattern": "^[0-9a-f]{32}$"
@@ -863,10 +863,49 @@
 																			"type": "string"
 																		}
 																	},
+																	"origin_worker_id": {
+																		"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+																		"type": "string",
+																		"example": "277b7815c871434b960b60729659000a",
+																		"pattern": "^[0-9a-f]{32}$"
+																	},
+																	"origin_worker_name": {
+																		"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+																		"type": "string",
+																		"readOnly": true
+																	},
+																	"origin_worker_status": {
+																		"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+																		"type": "string",
+																		"enum": [
+																			"available",
+																			"not_found",
+																			"unknown"
+																		],
+																		"readOnly": true
+																	},
 																	"protocol": {
 																		"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																		"type": "string",
 																		"example": "tcp/22"
+																	},
+																	"traffic_type": {
+																		"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+																		"type": "string",
+																		"default": "direct",
+																		"anyOf": [
+																			{
+																				"enum": [
+																					"direct",
+																					"worker"
+																				],
+																				"type": "string"
+																			},
+																			{
+																				"maxLength": 0,
+																				"type": "string"
+																			}
+																		]
 																	}
 																},
 																"required": [
@@ -877,6 +916,7 @@
 															}
 														]
 													},
+													"minItems": 1,
 													"type": "array"
 												}
 											]
@@ -1361,7 +1401,7 @@
 																	"minimum": 1
 																},
 																"origin_worker_id": {
-																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 																	"type": "string",
 																	"example": "277b7815c871434b960b60729659000a",
 																	"pattern": "^[0-9a-f]{32}$"
@@ -1522,10 +1562,49 @@
 																		"type": "string"
 																	}
 																},
+																"origin_worker_id": {
+																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+																	"type": "string",
+																	"example": "277b7815c871434b960b60729659000a",
+																	"pattern": "^[0-9a-f]{32}$"
+																},
+																"origin_worker_name": {
+																	"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+																	"type": "string",
+																	"readOnly": true
+																},
+																"origin_worker_status": {
+																	"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+																	"type": "string",
+																	"enum": [
+																		"available",
+																		"not_found",
+																		"unknown"
+																	],
+																	"readOnly": true
+																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																	"type": "string",
 																	"example": "tcp/22"
+																},
+																"traffic_type": {
+																	"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+																	"type": "string",
+																	"default": "direct",
+																	"anyOf": [
+																		{
+																			"enum": [
+																				"direct",
+																				"worker"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"maxLength": 0,
+																			"type": "string"
+																		}
+																	]
 																}
 															},
 															"required": [
@@ -2246,7 +2325,7 @@
 												"minimum": 1
 											},
 											"origin_worker_id": {
-												"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+												"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 												"type": "string",
 												"example": "277b7815c871434b960b60729659000a",
 												"pattern": "^[0-9a-f]{32}$"
@@ -2407,10 +2486,49 @@
 													"type": "string"
 												}
 											},
+											"origin_worker_id": {
+												"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+												"type": "string",
+												"example": "277b7815c871434b960b60729659000a",
+												"pattern": "^[0-9a-f]{32}$"
+											},
+											"origin_worker_name": {
+												"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+												"type": "string",
+												"readOnly": true
+											},
+											"origin_worker_status": {
+												"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+												"type": "string",
+												"enum": [
+													"available",
+													"not_found",
+													"unknown"
+												],
+												"readOnly": true
+											},
 											"protocol": {
 												"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 												"type": "string",
 												"example": "tcp/22"
+											},
+											"traffic_type": {
+												"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+												"type": "string",
+												"default": "direct",
+												"anyOf": [
+													{
+														"enum": [
+															"direct",
+															"worker"
+														],
+														"type": "string"
+													},
+													{
+														"maxLength": 0,
+														"type": "string"
+													}
+												]
 											}
 										},
 										"required": [
@@ -2720,7 +2838,7 @@
 																	"minimum": 1
 																},
 																"origin_worker_id": {
-																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 																	"type": "string",
 																	"example": "277b7815c871434b960b60729659000a",
 																	"pattern": "^[0-9a-f]{32}$"
@@ -2881,10 +2999,49 @@
 																		"type": "string"
 																	}
 																},
+																"origin_worker_id": {
+																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+																	"type": "string",
+																	"example": "277b7815c871434b960b60729659000a",
+																	"pattern": "^[0-9a-f]{32}$"
+																},
+																"origin_worker_name": {
+																	"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+																	"type": "string",
+																	"readOnly": true
+																},
+																"origin_worker_status": {
+																	"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+																	"type": "string",
+																	"enum": [
+																		"available",
+																		"not_found",
+																		"unknown"
+																	],
+																	"readOnly": true
+																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																	"type": "string",
 																	"example": "tcp/22"
+																},
+																"traffic_type": {
+																	"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+																	"type": "string",
+																	"default": "direct",
+																	"anyOf": [
+																		{
+																			"enum": [
+																				"direct",
+																				"worker"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"maxLength": 0,
+																			"type": "string"
+																		}
+																	]
 																}
 															},
 															"required": [
@@ -3284,7 +3441,7 @@
 												"minimum": 1
 											},
 											"origin_worker_id": {
-												"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+												"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 												"type": "string",
 												"example": "277b7815c871434b960b60729659000a",
 												"pattern": "^[0-9a-f]{32}$"
@@ -3445,10 +3602,49 @@
 													"type": "string"
 												}
 											},
+											"origin_worker_id": {
+												"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+												"type": "string",
+												"example": "277b7815c871434b960b60729659000a",
+												"pattern": "^[0-9a-f]{32}$"
+											},
+											"origin_worker_name": {
+												"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+												"type": "string",
+												"readOnly": true
+											},
+											"origin_worker_status": {
+												"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+												"type": "string",
+												"enum": [
+													"available",
+													"not_found",
+													"unknown"
+												],
+												"readOnly": true
+											},
 											"protocol": {
 												"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 												"type": "string",
 												"example": "tcp/22"
+											},
+											"traffic_type": {
+												"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+												"type": "string",
+												"default": "direct",
+												"anyOf": [
+													{
+														"enum": [
+															"direct",
+															"worker"
+														],
+														"type": "string"
+													},
+													{
+														"maxLength": 0,
+														"type": "string"
+													}
+												]
 											}
 										},
 										"required": [
@@ -3758,7 +3954,7 @@
 																	"minimum": 1
 																},
 																"origin_worker_id": {
-																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 																	"type": "string",
 																	"example": "277b7815c871434b960b60729659000a",
 																	"pattern": "^[0-9a-f]{32}$"
@@ -3919,10 +4115,49 @@
 																		"type": "string"
 																	}
 																},
+																"origin_worker_id": {
+																	"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+																	"type": "string",
+																	"example": "277b7815c871434b960b60729659000a",
+																	"pattern": "^[0-9a-f]{32}$"
+																},
+																"origin_worker_name": {
+																	"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+																	"type": "string",
+																	"readOnly": true
+																},
+																"origin_worker_status": {
+																	"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+																	"type": "string",
+																	"enum": [
+																		"available",
+																		"not_found",
+																		"unknown"
+																	],
+																	"readOnly": true
+																},
 																"protocol": {
 																	"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																	"type": "string",
 																	"example": "tcp/22"
+																},
+																"traffic_type": {
+																	"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+																	"type": "string",
+																	"default": "direct",
+																	"anyOf": [
+																		{
+																			"enum": [
+																				"direct",
+																				"worker"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"maxLength": 0,
+																			"type": "string"
+																		}
+																	]
 																}
 															},
 															"required": [

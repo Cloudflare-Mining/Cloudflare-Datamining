@@ -274,6 +274,7 @@
 				"name": "page",
 				"in": "query",
 				"schema": {
+					"description": "Page number, from 1. A high page reads every page before it again. To read further back in a listing sorted by created_at, ask for page 1 again with a created_at lt filter set to the created_at of the last log returned. Logs in the same millisecond as that log can be left out: to include them, set the filter 1 ms later and drop the logs already returned.",
 					"type": "integer",
 					"default": 1,
 					"maximum": 9007199254740991,
@@ -734,7 +735,7 @@
 											"type": "number"
 										},
 										"truncated": {
-											"description": "Present when the listing has a metadata filter. Such a listing searches at most the newest 10,000,000 logs in its date range, newest first, so set end_date to search older logs. True when part of that window was not searched yet, because the page filled, time ran out, or the log store failed partway: total_count then counts only the matches in the logs searched, plus one when the page is full, so the next page is requested. False when the whole window was searched.",
+											"description": "Present when the listing has a metadata filter or a search, sorted by created_at newest first. Such a listing searches at most the newest 10,000,000 logs in its date range, newest first, so add a created_at lt filter to search older logs. True when part of that window was not searched yet, because the page filled, time ran out, or the log store failed partway: total_count then counts only the matches in the logs searched, plus one when the page is full, so the next page is requested. False when the whole window was searched.",
 											"type": "boolean"
 										}
 									}

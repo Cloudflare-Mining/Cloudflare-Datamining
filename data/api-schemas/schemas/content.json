@@ -89,7 +89,8 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
-					"type": "integer"
+					"type": "integer",
+					"minimum": 1
 				}
 			},
 			{

@@ -14784,7 +14784,7 @@
 										"default": false
 									},
 									"updated_prompts": {
-										"description": "Server-wide prompt capability overrides.",
+										"description": "Prompt overrides. Omit to preserve, send [] to clear, or null to reset the field to absence.",
 										"type": "array",
 										"items": {
 											"properties": {
@@ -14812,10 +14812,11 @@
 												"name"
 											],
 											"type": "object"
-										}
+										},
+										"nullable": true
 									},
 									"updated_tools": {
-										"description": "Server-wide tool capability overrides.",
+										"description": "Tool overrides. Omit to preserve, send [] to clear, or null to reset the field to absence.",
 										"type": "array",
 										"items": {
 											"properties": {
@@ -14843,7 +14844,8 @@
 												"name"
 											],
 											"type": "object"
-										}
+										},
+										"nullable": true
 									}
 								}
 							}
@@ -540398,6 +540400,7 @@
 						"name": "page",
 						"in": "query",
 						"schema": {
+							"description": "Page number, from 1. A high page reads every page before it again. To read further back in a listing sorted by created_at, ask for page 1 again with a created_at lt filter set to the created_at of the last log returned. Logs in the same millisecond as that log can be left out: to include them, set the filter 1 ms later and drop the logs already returned.",
 							"type": "integer",
 							"default": 1,
 							"maximum": 9007199254740991,
@@ -540858,7 +540861,7 @@
 													"type": "number"
 												},
 												"truncated": {
-													"description": "Present when the listing has a metadata filter. Such a listing searches at most the newest 10,000,000 logs in its date range, newest first, so set end_date to search older logs. True when part of that window was not searched yet, because the page filled, time ran out, or the log store failed partway: total_count then counts only the matches in the logs searched, plus one when the page is full, so the next page is requested. False when the whole window was searched.",
+													"description": "Present when the listing has a metadata filter or a search, sorted by created_at newest first. Such a listing searches at most the newest 10,000,000 logs in its date range, newest first, so add a created_at lt filter to search older logs. True when part of that window was not searched yet, because the page filled, time ran out, or the log store failed partway: total_count then counts only the matches in the logs searched, plus one when the page is full, so the next page is requested. False when the whole window was searched.",
 													"type": "boolean"
 												}
 											}
@@ -689446,6 +689449,7 @@
 										"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 										"type": "string",
 										"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+										"x-auditable": false,
 										"x-sensitive": true
 									}
 								},
@@ -691635,6 +691639,7 @@
 										"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 										"type": "string",
 										"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+										"x-auditable": false,
 										"x-sensitive": true
 									}
 								}
@@ -696161,6 +696166,7 @@
 													"type": "string",
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
+													"x-auditable": false,
 													"x-sensitive": true
 												}
 											},
@@ -696273,6 +696279,7 @@
 															"type": "string",
 															"example": "eyJhIjoiNWFiNGU5Z...",
 															"readOnly": true,
+															"x-auditable": false,
 															"x-sensitive": true
 														}
 													},
@@ -696540,6 +696547,7 @@
 													"type": "string",
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
+													"x-auditable": false,
 													"x-sensitive": true
 												}
 											},
@@ -696652,6 +696660,7 @@
 															"type": "string",
 															"example": "eyJhIjoiNWFiNGU5Z...",
 															"readOnly": true,
+															"x-auditable": false,
 															"x-sensitive": true
 														}
 													},
@@ -831977,13 +831986,16 @@
 											{
 												"asset_classes": [
 													{
-														"asset_class": "AnthropicApiKey"
+														"asset_class": "AnthropicApiKey",
+														"origin": "system"
 													},
 													{
-														"asset_class": "AnthropicUser"
+														"asset_class": "AnthropicUser",
+														"origin": "system"
 													},
 													{
-														"asset_class": "AnthropicWorkspace"
+														"asset_class": "AnthropicWorkspace",
+														"origin": "system"
 													}
 												],
 												"vendor": "ANTHROPIC"
@@ -831991,13 +832003,16 @@
 											{
 												"asset_classes": [
 													{
-														"asset_class": "GitHubOrganization"
+														"asset_class": "GitHubOrganization",
+														"origin": "system"
 													},
 													{
-														"asset_class": "GitHubRepository"
+														"asset_class": "GitHubRepository",
+														"origin": "system"
 													},
 													{
-														"asset_class": "GitHubUser"
+														"asset_class": "GitHubUser",
+														"origin": "system"
 													}
 												],
 												"vendor": "GITHUB"
@@ -832122,10 +832137,38 @@
 																			"description": "Asset class identifier (PascalCase), e.g. AnthropicUser.",
 																			"type": "string",
 																			"example": "AnthropicUser"
+																		},
+																		"display_name": {
+																			"description": "Human-readable name. Present for `cloudflare` and `custom` asset types.",
+																			"type": "string",
+																			"example": "Custom file"
+																		},
+																		"id": {
+																			"description": "Unique identifier. Present for `cloudflare` and `custom` asset types.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "3f1c2d6e-8b4a-4f7e-9c1d-2a5b6c7d8e9f"
+																		},
+																		"origin": {
+																			"description": "Who defines the asset class: `system` for built-in asset classes, `cloudflare` for asset types provided by Cloudflare, and `custom` for the account's own asset types.",
+																			"type": "string",
+																			"example": "system",
+																			"enum": [
+																				"system",
+																				"cloudflare",
+																				"custom"
+																			]
+																		},
+																		"version": {
+																			"description": "Current version. Present for `cloudflare` and `custom` asset types.",
+																			"type": "integer",
+																			"format": "int64",
+																			"example": 3
 																		}
 																	},
 																	"required": [
-																		"asset_class"
+																		"asset_class",
+																		"origin"
 																	]
 																}
 															},
@@ -832644,6 +832687,7 @@
 										"messages": [],
 										"result": {
 											"asset_class": "AnthropicApiKey",
+											"origin": "system",
 											"schema": {
 												"type": "object",
 												"properties": {
@@ -832919,14 +832963,69 @@
 															"type": "string",
 															"example": "AnthropicApiKey"
 														},
+														"content_schema": {
+															"description": "JSON Schema subset describing the content of each asset of this type. The top level is an `object` with `properties` and an optional `required` list. Property names must be 1 to 32 letters, digits or underscores. A property may be nullable by listing `null` alongside its type.",
+															"type": "object",
+															"example": {
+																"properties": {
+																	"name": {
+																		"type": "string"
+																	},
+																	"owner_email": {
+																		"type": [
+																			"string",
+																			"null"
+																		],
+																		"format": "email"
+																	},
+																	"public": {
+																		"type": "boolean"
+																	}
+																},
+																"required": [
+																	"name",
+																	"public"
+																],
+																"type": "object"
+															},
+															"additionalProperties": true
+														},
+														"display_name": {
+															"description": "Human-readable name. Present for `cloudflare` and `custom` asset types.",
+															"type": "string",
+															"example": "Custom file"
+														},
+														"id": {
+															"description": "Unique identifier. Present for `cloudflare` and `custom` asset types.",
+															"type": "string",
+															"format": "uuid",
+															"example": "3f1c2d6e-8b4a-4f7e-9c1d-2a5b6c7d8e9f"
+														},
+														"origin": {
+															"description": "Who defines the asset class: `system` for built-in asset classes, `cloudflare` for asset types provided by Cloudflare, and `custom` for the account's own asset types.",
+															"type": "string",
+															"example": "system",
+															"enum": [
+																"system",
+																"cloudflare",
+																"custom"
+															]
+														},
 														"schema": {
 															"description": "Fields and related attributes a custom finding type may reference for this asset\nclass, as a JSON Schema. Top-level properties are `asset` and, when related\nresources exist, `associated`.",
 															"type": "object",
 															"additionalProperties": true
+														},
+														"version": {
+															"description": "Current version. Present for `cloudflare` and `custom` asset types.",
+															"type": "integer",
+															"format": "int64",
+															"example": 3
 														}
 													},
 													"required": [
 														"asset_class",
+														"origin",
 														"schema"
 													]
 												}
@@ -833485,7 +833584,8 @@
 						"in": "query",
 						"name": "per_page",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					},
 					{
@@ -834797,7 +834897,8 @@
 						"in": "query",
 						"name": "per_page",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					},
 					{
@@ -835594,7 +835695,8 @@
 						"in": "query",
 						"name": "per_page",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					},
 					{
@@ -840194,7 +840296,8 @@
 						"in": "query",
 						"name": "per_page",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					}
 				],
@@ -841520,7 +841623,8 @@
 						"in": "query",
 						"name": "per_page",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					},
 					{
@@ -844293,7 +844397,8 @@
 						"in": "query",
 						"name": "per_page",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					},
 					{
@@ -856210,7 +856315,8 @@
 						"in": "query",
 						"name": "per_page",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					}
 				],
@@ -857237,7 +857343,8 @@
 						"in": "query",
 						"name": "per_page",
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"minimum": 1
 						}
 					},
 					{
@@ -1230257,6 +1230364,320 @@
 															"description": "Platform identifier",
 															"type": "string"
 														},
+														"qdiscs": {
+															"type": "array",
+															"items": {
+																"description": "Snapshot Qdisc",
+																"type": "object",
+																"properties": {
+																	"backlog": {
+																		"description": "Bytes currently queued",
+																		"type": "number"
+																	},
+																	"bytes": {
+																		"description": "Total bytes sent",
+																		"type": "number"
+																	},
+																	"cake_stats": {
+																		"description": "Snapshot Qdisc CAKE",
+																		"type": "object",
+																		"properties": {
+																			"avg_hdr_offset": {
+																				"description": "Average offset of the network header within packets (bytes)",
+																				"type": "number"
+																			},
+																			"capacity_estimate": {
+																				"description": "Estimated link capacity (bytes per second)",
+																				"type": "number"
+																			},
+																			"max_adj_size": {
+																				"description": "Largest overhead-adjusted packet seen (bytes)",
+																				"type": "number"
+																			},
+																			"max_network_size": {
+																				"description": "Largest network-layer packet seen (bytes)",
+																				"type": "number"
+																			},
+																			"memory_limit": {
+																				"description": "Memory limit for queued packets (bytes)",
+																				"type": "number"
+																			},
+																			"memory_used": {
+																				"description": "Peak memory used by queued packets (bytes)",
+																				"type": "number"
+																			},
+																			"min_adj_size": {
+																				"description": "Smallest overhead-adjusted packet seen (bytes, 65535 until the first packet after creation or an overhead change)",
+																				"type": "number"
+																			},
+																			"min_network_size": {
+																				"description": "Smallest network-layer packet seen (bytes, 65535 until the first packet after creation or an overhead change)",
+																				"type": "number"
+																			},
+																			"options": {
+																				"description": "Snapshot Qdisc CAKE Options",
+																				"type": "object",
+																				"properties": {
+																					"ack_filter": {
+																						"description": "ACK filter mode",
+																						"type": "string"
+																					},
+																					"atm": {
+																						"description": "ATM cell compensation mode (absent when raw without ATM or PTM compensation)",
+																						"type": "string"
+																					},
+																					"autorate": {
+																						"description": "Automatic rate estimation mode (absent when disabled)",
+																						"type": "string"
+																					},
+																					"bandwidth": {
+																						"description": "Shaped rate (bytes per second, 0 when unlimited)",
+																						"type": "number"
+																					},
+																					"diffserv": {
+																						"description": "Diffserv mode",
+																						"type": "string"
+																					},
+																					"flowmode": {
+																						"description": "Flow isolation mode",
+																						"type": "string"
+																					},
+																					"fwmark": {
+																						"description": "Firewall mark mask used to select a tin",
+																						"type": "string"
+																					},
+																					"ingress": {
+																						"description": "Set when shaping in ingress mode",
+																						"type": "boolean"
+																					},
+																					"memlimit": {
+																						"description": "Configured memory limit for queued packets (bytes, absent when unset)",
+																						"type": "number"
+																					},
+																					"mpu": {
+																						"description": "Minimum packet size (bytes, absent when unset)",
+																						"type": "number"
+																					},
+																					"nat": {
+																						"description": "Set when flow isolation uses post-NAT addresses",
+																						"type": "boolean"
+																					},
+																					"overhead": {
+																						"description": "Per-packet overhead compensation (bytes)",
+																						"type": "number"
+																					},
+																					"raw": {
+																						"description": "Set when no overhead compensation is applied",
+																						"type": "boolean"
+																					},
+																					"rtt": {
+																						"description": "Expected round-trip time (microseconds)",
+																						"type": "number"
+																					},
+																					"split_gso": {
+																						"description": "Set when GSO super-packets are split",
+																						"type": "boolean"
+																					},
+																					"wash": {
+																						"description": "Set when DSCP markings are cleared on egress",
+																						"type": "boolean"
+																					}
+																				},
+																				"required": [
+																					"bandwidth",
+																					"diffserv",
+																					"flowmode",
+																					"nat",
+																					"wash",
+																					"ingress",
+																					"ack_filter",
+																					"split_gso",
+																					"rtt",
+																					"raw",
+																					"overhead",
+																					"fwmark"
+																				]
+																			},
+																			"tins": {
+																				"type": "array",
+																				"items": {
+																					"description": "Snapshot Qdisc CAKE Tin",
+																					"type": "object",
+																					"properties": {
+																						"ack_drops": {
+																							"description": "Total ACKs dropped by the ACK filter",
+																							"type": "number"
+																						},
+																						"avg_delay_us": {
+																							"description": "Average queueing delay (microseconds)",
+																							"type": "number"
+																						},
+																						"backlog_bytes": {
+																							"description": "Bytes currently queued",
+																							"type": "number"
+																						},
+																						"base_delay_us": {
+																							"description": "Minimum queueing delay (microseconds)",
+																							"type": "number"
+																						},
+																						"bulk_flows": {
+																							"description": "Current number of bulk flows",
+																							"type": "number"
+																						},
+																						"drops": {
+																							"description": "Total packets dropped",
+																							"type": "number"
+																						},
+																						"ecn_mark": {
+																							"description": "Total packets marked with ECN Congestion Experienced",
+																							"type": "number"
+																						},
+																						"flow_quantum": {
+																							"description": "Bytes each flow may send per scheduling round",
+																							"type": "number"
+																						},
+																						"interval_us": {
+																							"description": "AQM interval (microseconds)",
+																							"type": "number"
+																						},
+																						"max_pkt_len": {
+																							"description": "Largest packet seen (bytes)",
+																							"type": "number"
+																						},
+																						"peak_delay_us": {
+																							"description": "Peak queueing delay (microseconds)",
+																							"type": "number"
+																						},
+																						"sent_bytes": {
+																							"description": "Total bytes sent",
+																							"type": "number"
+																						},
+																						"sent_packets": {
+																							"description": "Total packets sent",
+																							"type": "number"
+																						},
+																						"sparse_flows": {
+																							"description": "Current number of sparse flows",
+																							"type": "number"
+																						},
+																						"target_us": {
+																							"description": "Target queueing delay (microseconds)",
+																							"type": "number"
+																						},
+																						"threshold_rate": {
+																							"description": "Rate above which the tin yields to lower-priority tins (bytes per second)",
+																							"type": "number"
+																						},
+																						"unresponsive_flows": {
+																							"description": "Current number of unresponsive flows",
+																							"type": "number"
+																						},
+																						"way_collisions": {
+																							"description": "Total flow hash collisions",
+																							"type": "number"
+																						},
+																						"way_indirect_hits": {
+																							"description": "Total flow hash lookups resolved by set-associative probing",
+																							"type": "number"
+																						},
+																						"way_misses": {
+																							"description": "Total flow hash lookups that allocated a new queue",
+																							"type": "number"
+																						}
+																					},
+																					"required": [
+																						"threshold_rate",
+																						"sent_bytes",
+																						"sent_packets",
+																						"drops",
+																						"ecn_mark",
+																						"ack_drops",
+																						"backlog_bytes",
+																						"target_us",
+																						"interval_us",
+																						"peak_delay_us",
+																						"avg_delay_us",
+																						"base_delay_us",
+																						"sparse_flows",
+																						"bulk_flows",
+																						"unresponsive_flows",
+																						"way_indirect_hits",
+																						"way_misses",
+																						"way_collisions",
+																						"max_pkt_len",
+																						"flow_quantum"
+																					]
+																				}
+																			}
+																		},
+																		"required": [
+																			"options",
+																			"memory_used",
+																			"memory_limit",
+																			"capacity_estimate",
+																			"min_network_size",
+																			"max_network_size",
+																			"min_adj_size",
+																			"max_adj_size",
+																			"avg_hdr_offset",
+																			"tins"
+																		]
+																	},
+																	"dev": {
+																		"description": "Interface the qdisc is attached to",
+																		"type": "string"
+																	},
+																	"drops": {
+																		"description": "Total packets dropped",
+																		"type": "number"
+																	},
+																	"handle": {
+																		"description": "Qdisc handle",
+																		"type": "string"
+																	},
+																	"kind": {
+																		"description": "Kind of qdisc",
+																		"type": "string"
+																	},
+																	"overlimits": {
+																		"description": "Total times the qdisc was over its limit",
+																		"type": "number"
+																	},
+																	"packets": {
+																		"description": "Total packets sent",
+																		"type": "number"
+																	},
+																	"parent": {
+																		"description": "Parent class handle (absent when root)",
+																		"type": "string"
+																	},
+																	"qlen": {
+																		"description": "Packets currently queued",
+																		"type": "number"
+																	},
+																	"requeues": {
+																		"description": "Total packets requeued",
+																		"type": "number"
+																	},
+																	"root": {
+																		"description": "Set when attached at the root of the interface",
+																		"type": "boolean"
+																	}
+																},
+																"required": [
+																	"dev",
+																	"kind",
+																	"handle",
+																	"bytes",
+																	"packets",
+																	"drops",
+																	"overlimits",
+																	"requeues",
+																	"backlog",
+																	"qlen"
+																]
+															}
+														},
 														"routes": {
 															"type": "array",
 															"items": {
@@ -1231889,6 +1232310,320 @@
 																	"platform": {
 																		"description": "Platform identifier",
 																		"type": "string"
+																	},
+																	"qdiscs": {
+																		"type": "array",
+																		"items": {
+																			"description": "Snapshot Qdisc",
+																			"type": "object",
+																			"properties": {
+																				"backlog": {
+																					"description": "Bytes currently queued",
+																					"type": "number"
+																				},
+																				"bytes": {
+																					"description": "Total bytes sent",
+																					"type": "number"
+																				},
+																				"cake_stats": {
+																					"description": "Snapshot Qdisc CAKE",
+																					"type": "object",
+																					"properties": {
+																						"avg_hdr_offset": {
+																							"description": "Average offset of the network header within packets (bytes)",
+																							"type": "number"
+																						},
+																						"capacity_estimate": {
+																							"description": "Estimated link capacity (bytes per second)",
+																							"type": "number"
+																						},
+																						"max_adj_size": {
+																							"description": "Largest overhead-adjusted packet seen (bytes)",
+																							"type": "number"
+																						},
+																						"max_network_size": {
+																							"description": "Largest network-layer packet seen (bytes)",
+																							"type": "number"
+																						},
+																						"memory_limit": {
+																							"description": "Memory limit for queued packets (bytes)",
+																							"type": "number"
+																						},
+																						"memory_used": {
+																							"description": "Peak memory used by queued packets (bytes)",
+																							"type": "number"
+																						},
+																						"min_adj_size": {
+																							"description": "Smallest overhead-adjusted packet seen (bytes, 65535 until the first packet after creation or an overhead change)",
+																							"type": "number"
+																						},
+																						"min_network_size": {
+																							"description": "Smallest network-layer packet seen (bytes, 65535 until the first packet after creation or an overhead change)",
+																							"type": "number"
+																						},
+																						"options": {
+																							"description": "Snapshot Qdisc CAKE Options",
+																							"type": "object",
+																							"properties": {
+																								"ack_filter": {
+																									"description": "ACK filter mode",
+																									"type": "string"
+																								},
+																								"atm": {
+																									"description": "ATM cell compensation mode (absent when raw without ATM or PTM compensation)",
+																									"type": "string"
+																								},
+																								"autorate": {
+																									"description": "Automatic rate estimation mode (absent when disabled)",
+																									"type": "string"
+																								},
+																								"bandwidth": {
+																									"description": "Shaped rate (bytes per second, 0 when unlimited)",
+																									"type": "number"
+																								},
+																								"diffserv": {
+																									"description": "Diffserv mode",
+																									"type": "string"
+																								},
+																								"flowmode": {
+																									"description": "Flow isolation mode",
+																									"type": "string"
+																								},
+																								"fwmark": {
+																									"description": "Firewall mark mask used to select a tin",
+																									"type": "string"
+																								},
+																								"ingress": {
+																									"description": "Set when shaping in ingress mode",
+																									"type": "boolean"
+																								},
+																								"memlimit": {
+																									"description": "Configured memory limit for queued packets (bytes, absent when unset)",
+																									"type": "number"
+																								},
+																								"mpu": {
+																									"description": "Minimum packet size (bytes, absent when unset)",
+																									"type": "number"
+																								},
+																								"nat": {
+																									"description": "Set when flow isolation uses post-NAT addresses",
+																									"type": "boolean"
+																								},
+																								"overhead": {
+																									"description": "Per-packet overhead compensation (bytes)",
+																									"type": "number"
+																								},
+																								"raw": {
+																									"description": "Set when no overhead compensation is applied",
+																									"type": "boolean"
+																								},
+																								"rtt": {
+																									"description": "Expected round-trip time (microseconds)",
+																									"type": "number"
+																								},
+																								"split_gso": {
+																									"description": "Set when GSO super-packets are split",
+																									"type": "boolean"
+																								},
+																								"wash": {
+																									"description": "Set when DSCP markings are cleared on egress",
+																									"type": "boolean"
+																								}
+																							},
+																							"required": [
+																								"bandwidth",
+																								"diffserv",
+																								"flowmode",
+																								"nat",
+																								"wash",
+																								"ingress",
+																								"ack_filter",
+																								"split_gso",
+																								"rtt",
+																								"raw",
+																								"overhead",
+																								"fwmark"
+																							]
+																						},
+																						"tins": {
+																							"type": "array",
+																							"items": {
+																								"description": "Snapshot Qdisc CAKE Tin",
+																								"type": "object",
+																								"properties": {
+																									"ack_drops": {
+																										"description": "Total ACKs dropped by the ACK filter",
+																										"type": "number"
+																									},
+																									"avg_delay_us": {
+																										"description": "Average queueing delay (microseconds)",
+																										"type": "number"
+																									},
+																									"backlog_bytes": {
+																										"description": "Bytes currently queued",
+																										"type": "number"
+																									},
+																									"base_delay_us": {
+																										"description": "Minimum queueing delay (microseconds)",
+																										"type": "number"
+																									},
+																									"bulk_flows": {
+																										"description": "Current number of bulk flows",
+																										"type": "number"
+																									},
+																									"drops": {
+																										"description": "Total packets dropped",
+																										"type": "number"
+																									},
+																									"ecn_mark": {
+																										"description": "Total packets marked with ECN Congestion Experienced",
+																										"type": "number"
+																									},
+																									"flow_quantum": {
+																										"description": "Bytes each flow may send per scheduling round",
+																										"type": "number"
+																									},
+																									"interval_us": {
+																										"description": "AQM interval (microseconds)",
+																										"type": "number"
+																									},
+																									"max_pkt_len": {
+																										"description": "Largest packet seen (bytes)",
+																										"type": "number"
+																									},
+																									"peak_delay_us": {
+																										"description": "Peak queueing delay (microseconds)",
+																										"type": "number"
+																									},
+																									"sent_bytes": {
+																										"description": "Total bytes sent",
+																										"type": "number"
+																									},
+																									"sent_packets": {
+																										"description": "Total packets sent",
+																										"type": "number"
+																									},
+																									"sparse_flows": {
+																										"description": "Current number of sparse flows",
+																										"type": "number"
+																									},
+																									"target_us": {
+																										"description": "Target queueing delay (microseconds)",
+																										"type": "number"
+																									},
+																									"threshold_rate": {
+																										"description": "Rate above which the tin yields to lower-priority tins (bytes per second)",
+																										"type": "number"
+																									},
+																									"unresponsive_flows": {
+																										"description": "Current number of unresponsive flows",
+																										"type": "number"
+																									},
+																									"way_collisions": {
+																										"description": "Total flow hash collisions",
+																										"type": "number"
+																									},
+																									"way_indirect_hits": {
+																										"description": "Total flow hash lookups resolved by set-associative probing",
+																										"type": "number"
+																									},
+																									"way_misses": {
+																										"description": "Total flow hash lookups that allocated a new queue",
+																										"type": "number"
+																									}
+																								},
+																								"required": [
+																									"threshold_rate",
+																									"sent_bytes",
+																									"sent_packets",
+																									"drops",
+																									"ecn_mark",
+																									"ack_drops",
+																									"backlog_bytes",
+																									"target_us",
+																									"interval_us",
+																									"peak_delay_us",
+																									"avg_delay_us",
+																									"base_delay_us",
+																									"sparse_flows",
+																									"bulk_flows",
+																									"unresponsive_flows",
+																									"way_indirect_hits",
+																									"way_misses",
+																									"way_collisions",
+																									"max_pkt_len",
+																									"flow_quantum"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"options",
+																						"memory_used",
+																						"memory_limit",
+																						"capacity_estimate",
+																						"min_network_size",
+																						"max_network_size",
+																						"min_adj_size",
+																						"max_adj_size",
+																						"avg_hdr_offset",
+																						"tins"
+																					]
+																				},
+																				"dev": {
+																					"description": "Interface the qdisc is attached to",
+																					"type": "string"
+																				},
+																				"drops": {
+																					"description": "Total packets dropped",
+																					"type": "number"
+																				},
+																				"handle": {
+																					"description": "Qdisc handle",
+																					"type": "string"
+																				},
+																				"kind": {
+																					"description": "Kind of qdisc",
+																					"type": "string"
+																				},
+																				"overlimits": {
+																					"description": "Total times the qdisc was over its limit",
+																					"type": "number"
+																				},
+																				"packets": {
+																					"description": "Total packets sent",
+																					"type": "number"
+																				},
+																				"parent": {
+																					"description": "Parent class handle (absent when root)",
+																					"type": "string"
+																				},
+																				"qlen": {
+																					"description": "Packets currently queued",
+																					"type": "number"
+																				},
+																				"requeues": {
+																					"description": "Total packets requeued",
+																					"type": "number"
+																				},
+																				"root": {
+																					"description": "Set when attached at the root of the interface",
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"dev",
+																				"kind",
+																				"handle",
+																				"bytes",
+																				"packets",
+																				"drops",
+																				"overlimits",
+																				"requeues",
+																				"backlog",
+																				"qlen"
+																			]
+																		}
 																	},
 																	"routes": {
 																		"type": "array",
@@ -1335754,8 +1336489,9 @@
 						"in": "query",
 						"schema": {
 							"description": "Specifies the number of pipelines per page.",
-							"type": "string",
-							"default": "25"
+							"type": "number",
+							"default": 25,
+							"minimum": 1
 						}
 					}
 				],
@@ -1337756,7 +1338492,8 @@
 						"name": "per_page",
 						"in": "query",
 						"schema": {
-							"type": "number"
+							"type": "number",
+							"minimum": 1
 						}
 					},
 					{
@@ -1338540,7 +1339277,8 @@
 						"name": "per_page",
 						"in": "query",
 						"schema": {
-							"type": "number"
+							"type": "number",
+							"minimum": 1
 						}
 					}
 				],
@@ -1342167,7 +1342905,8 @@
 						"name": "per_page",
 						"in": "query",
 						"schema": {
-							"type": "number"
+							"type": "number",
+							"minimum": 1
 						}
 					}
 				],
@@ -1669777,6 +1670516,2554 @@
 				"x-fern-sdk-method-name": "list"
 			}
 		},
+		"/accounts/{account_id}/tunnels/{tunnel_id}/hostnames": {
+			"get": {
+				"operationId": "cloudflare-tunnel-hostname-list",
+				"summary": "List tunnel hostnames",
+				"description": "Lists and filters the hostnames assigned to a tunnel.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Cloudflare account ID",
+							"type": "string",
+							"example": "699d98642c564d2e855e9661899b7252",
+							"maxLength": 32,
+							"readOnly": true,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "tunnel_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "UUID of the tunnel.",
+							"type": "string",
+							"format": "uuid",
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "hostname",
+						"in": "query",
+						"description": "If set, only list tunnel hostnames that contain this value. The filter is case-insensitive.",
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "canonical",
+						"in": "query",
+						"description": "If set, only list tunnel hostnames with the specified canonical status.",
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					{
+						"name": "is_deleted",
+						"in": "query",
+						"description": "If `true`, only return deleted tunnel hostnames. If `false` or omitted, exclude deleted tunnel hostnames.",
+						"schema": {
+							"type": "boolean",
+							"default": false
+						}
+					},
+					{
+						"name": "per_page",
+						"in": "query",
+						"description": "Number of results to display, up to 1000. The server caps larger values at 1000.",
+						"schema": {
+							"description": "Number of results to display.",
+							"type": "number",
+							"maximum": 1000,
+							"minimum": 1
+						}
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Page number to return.",
+						"schema": {
+							"description": "Page number of paginated results.",
+							"type": "number",
+							"default": 1,
+							"minimum": 1
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List tunnel hostnames response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "Tunnel hostnames on the requested page.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"canonical": {
+																"description": "Whether this is the canonical hostname for the tunnel.",
+																"type": "boolean",
+																"example": true,
+																"x-auditable": true
+															},
+															"created_at": {
+																"description": "Timestamp of when the resource was created.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2021-01-25T18:22:34.317854Z",
+																"readOnly": true
+															},
+															"hostname": {
+																"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+																"type": "string",
+																"example": "branch-office-1",
+																"maxLength": 63,
+																"minLength": 1,
+																"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "UUID of the tunnel hostname.",
+																"type": "string",
+																"format": "uuid",
+																"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+																"x-auditable": true
+															},
+															"tunnel_id": {
+																"description": "UUID of the tunnel.",
+																"type": "string",
+																"format": "uuid",
+																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"tunnel_id",
+															"hostname",
+															"canonical",
+															"created_at"
+														]
+													}
+												},
+												"result_info": {
+													"description": "Pagination metadata for the requested page of tunnel hostnames.",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"type": "number",
+																	"example": 1
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"type": "number",
+																	"example": 1
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"type": "number",
+																	"example": 20
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"type": "number",
+																	"example": 2000
+																}
+															}
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "List tunnel hostnames response failure",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													]
+												},
+												{
+													"properties": {
+														"result": {
+															"description": "Tunnel hostnames on the requested page.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"canonical": {
+																		"description": "Whether this is the canonical hostname for the tunnel.",
+																		"type": "boolean",
+																		"example": true,
+																		"x-auditable": true
+																	},
+																	"created_at": {
+																		"description": "Timestamp of when the resource was created.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2021-01-25T18:22:34.317854Z",
+																		"readOnly": true
+																	},
+																	"hostname": {
+																		"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+																		"type": "string",
+																		"example": "branch-office-1",
+																		"maxLength": 63,
+																		"minLength": 1,
+																		"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "UUID of the tunnel hostname.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+																		"x-auditable": true
+																	},
+																	"tunnel_id": {
+																		"description": "UUID of the tunnel.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"tunnel_id",
+																	"hostname",
+																	"canonical",
+																	"created_at"
+																]
+															}
+														},
+														"result_info": {
+															"description": "Pagination metadata for the requested page of tunnel hostnames.",
+															"allOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"count": {
+																			"description": "Total number of results for the requested service",
+																			"type": "number",
+																			"example": 1
+																		},
+																		"page": {
+																			"description": "Current page within paginated list of results",
+																			"type": "number",
+																			"example": 1
+																		},
+																		"per_page": {
+																			"description": "Number of results per page of results",
+																			"type": "number",
+																			"example": 20
+																		},
+																		"total_count": {
+																			"description": "Total results available without any search parameters",
+																			"type": "number",
+																			"example": 2000
+																		}
+																	}
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"example": [
+														{
+															"code": 7003,
+															"message": "No route for the URI"
+														}
+													],
+													"allOf": [
+														{
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													],
+													"minLength": 1
+												},
+												"messages": {
+													"example": [],
+													"allOf": [
+														{
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													]
+												},
+												"result": {
+													"type": "object",
+													"enum": [
+														null
+													],
+													"nullable": true
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": false,
+													"enum": [
+														false
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					},
+					{
+						"user_service_key": []
+					}
+				],
+				"tags": [
+					"Cloudflare Tunnel Hostname"
+				],
+				"x-api-token-group": [
+					"Cloudflare One Connectors Write",
+					"Cloudflare One Connectors Read",
+					"Cloudflare One Connector: cloudflared Write",
+					"Cloudflare One Connector: cloudflared Read",
+					"Cloudflare Tunnel Write",
+					"Cloudflare Tunnel Read"
+				],
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "tunnels.hostnames",
+				"x-fern-sdk-method-name": "list"
+			},
+			"post": {
+				"operationId": "cloudflare-tunnel-hostname-create",
+				"summary": "Create a tunnel hostname",
+				"description": "Assigns a hostname to a tunnel. If the tunnel has no active hostnames, the new hostname is always canonical.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Cloudflare account ID",
+							"type": "string",
+							"example": "699d98642c564d2e855e9661899b7252",
+							"maxLength": 32,
+							"readOnly": true,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "tunnel_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "UUID of the tunnel.",
+							"type": "string",
+							"format": "uuid",
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"x-auditable": true
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"canonical": {
+										"description": "Set to `true` to make the new hostname canonical, replacing any existing canonical hostname.\nIf `false` or omitted, the new hostname is canonical only if the tunnel has no active hostnames.\n",
+										"type": "boolean"
+									},
+									"hostname": {
+										"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+										"type": "string",
+										"example": "branch-office-1",
+										"maxLength": 63,
+										"minLength": 1,
+										"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"hostname"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Create tunnel hostname response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "The tunnel hostname created, retrieved, updated, or deleted by the operation.",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"canonical": {
+																	"description": "Whether this is the canonical hostname for the tunnel.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"created_at": {
+																	"description": "Timestamp of when the resource was created.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2021-01-25T18:22:34.317854Z",
+																	"readOnly": true
+																},
+																"hostname": {
+																	"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+																	"type": "string",
+																	"example": "branch-office-1",
+																	"maxLength": 63,
+																	"minLength": 1,
+																	"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "UUID of the tunnel hostname.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+																	"x-auditable": true
+																},
+																"tunnel_id": {
+																	"description": "UUID of the tunnel.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"tunnel_id",
+																"hostname",
+																"canonical",
+																"created_at"
+															]
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "Create tunnel hostname response failure",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													]
+												},
+												{
+													"properties": {
+														"result": {
+															"description": "The tunnel hostname created, retrieved, updated, or deleted by the operation.",
+															"allOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"canonical": {
+																			"description": "Whether this is the canonical hostname for the tunnel.",
+																			"type": "boolean",
+																			"example": true,
+																			"x-auditable": true
+																		},
+																		"created_at": {
+																			"description": "Timestamp of when the resource was created.",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2021-01-25T18:22:34.317854Z",
+																			"readOnly": true
+																		},
+																		"hostname": {
+																			"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+																			"type": "string",
+																			"example": "branch-office-1",
+																			"maxLength": 63,
+																			"minLength": 1,
+																			"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "UUID of the tunnel hostname.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+																			"x-auditable": true
+																		},
+																		"tunnel_id": {
+																			"description": "UUID of the tunnel.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tunnel_id",
+																		"hostname",
+																		"canonical",
+																		"created_at"
+																	]
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"example": [
+														{
+															"code": 7003,
+															"message": "No route for the URI"
+														}
+													],
+													"allOf": [
+														{
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													],
+													"minLength": 1
+												},
+												"messages": {
+													"example": [],
+													"allOf": [
+														{
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													]
+												},
+												"result": {
+													"type": "object",
+													"enum": [
+														null
+													],
+													"nullable": true
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": false,
+													"enum": [
+														false
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					},
+					{
+						"user_service_key": []
+					}
+				],
+				"tags": [
+					"Cloudflare Tunnel Hostname"
+				],
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "tunnels.hostnames",
+				"x-fern-sdk-method-name": "create"
+			}
+		},
+		"/accounts/{account_id}/tunnels/{tunnel_id}/hostnames/{hostname_id}": {
+			"delete": {
+				"operationId": "cloudflare-tunnel-hostname-delete",
+				"summary": "Delete a tunnel hostname",
+				"description": "Deletes a hostname assigned to a tunnel.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Cloudflare account ID",
+							"type": "string",
+							"example": "699d98642c564d2e855e9661899b7252",
+							"maxLength": 32,
+							"readOnly": true,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "tunnel_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "UUID of the tunnel.",
+							"type": "string",
+							"format": "uuid",
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "hostname_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "UUID of the tunnel hostname.",
+							"type": "string",
+							"format": "uuid",
+							"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+							"x-auditable": true
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete tunnel hostname response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "The tunnel hostname created, retrieved, updated, or deleted by the operation.",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"canonical": {
+																	"description": "Whether this is the canonical hostname for the tunnel.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"created_at": {
+																	"description": "Timestamp of when the resource was created.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2021-01-25T18:22:34.317854Z",
+																	"readOnly": true
+																},
+																"hostname": {
+																	"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+																	"type": "string",
+																	"example": "branch-office-1",
+																	"maxLength": 63,
+																	"minLength": 1,
+																	"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "UUID of the tunnel hostname.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+																	"x-auditable": true
+																},
+																"tunnel_id": {
+																	"description": "UUID of the tunnel.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"tunnel_id",
+																"hostname",
+																"canonical",
+																"created_at"
+															]
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "Delete tunnel hostname response failure",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													]
+												},
+												{
+													"properties": {
+														"result": {
+															"description": "The tunnel hostname created, retrieved, updated, or deleted by the operation.",
+															"allOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"canonical": {
+																			"description": "Whether this is the canonical hostname for the tunnel.",
+																			"type": "boolean",
+																			"example": true,
+																			"x-auditable": true
+																		},
+																		"created_at": {
+																			"description": "Timestamp of when the resource was created.",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2021-01-25T18:22:34.317854Z",
+																			"readOnly": true
+																		},
+																		"hostname": {
+																			"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+																			"type": "string",
+																			"example": "branch-office-1",
+																			"maxLength": 63,
+																			"minLength": 1,
+																			"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "UUID of the tunnel hostname.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+																			"x-auditable": true
+																		},
+																		"tunnel_id": {
+																			"description": "UUID of the tunnel.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tunnel_id",
+																		"hostname",
+																		"canonical",
+																		"created_at"
+																	]
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"example": [
+														{
+															"code": 7003,
+															"message": "No route for the URI"
+														}
+													],
+													"allOf": [
+														{
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													],
+													"minLength": 1
+												},
+												"messages": {
+													"example": [],
+													"allOf": [
+														{
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													]
+												},
+												"result": {
+													"type": "object",
+													"enum": [
+														null
+													],
+													"nullable": true
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": false,
+													"enum": [
+														false
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					},
+					{
+						"user_service_key": []
+					}
+				],
+				"tags": [
+					"Cloudflare Tunnel Hostname"
+				],
+				"x-api-token-group": [
+					"Cloudflare One Connectors Write",
+					"Cloudflare One Connector: cloudflared Write",
+					"Cloudflare Tunnel Write"
+				],
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "tunnels.hostnames",
+				"x-fern-sdk-method-name": "delete",
+				"x-forge-require-confirmation": "This operation permanently deletes a tunnel hostname."
+			},
+			"get": {
+				"operationId": "cloudflare-tunnel-hostname-get",
+				"summary": "Get a tunnel hostname",
+				"description": "Fetches a hostname assigned to a tunnel.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Cloudflare account ID",
+							"type": "string",
+							"example": "699d98642c564d2e855e9661899b7252",
+							"maxLength": 32,
+							"readOnly": true,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "tunnel_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "UUID of the tunnel.",
+							"type": "string",
+							"format": "uuid",
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "hostname_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "UUID of the tunnel hostname.",
+							"type": "string",
+							"format": "uuid",
+							"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+							"x-auditable": true
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get tunnel hostname response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "The tunnel hostname created, retrieved, updated, or deleted by the operation.",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"canonical": {
+																	"description": "Whether this is the canonical hostname for the tunnel.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"created_at": {
+																	"description": "Timestamp of when the resource was created.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2021-01-25T18:22:34.317854Z",
+																	"readOnly": true
+																},
+																"hostname": {
+																	"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+																	"type": "string",
+																	"example": "branch-office-1",
+																	"maxLength": 63,
+																	"minLength": 1,
+																	"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "UUID of the tunnel hostname.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+																	"x-auditable": true
+																},
+																"tunnel_id": {
+																	"description": "UUID of the tunnel.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"tunnel_id",
+																"hostname",
+																"canonical",
+																"created_at"
+															]
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "Get tunnel hostname response failure",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													]
+												},
+												{
+													"properties": {
+														"result": {
+															"description": "The tunnel hostname created, retrieved, updated, or deleted by the operation.",
+															"allOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"canonical": {
+																			"description": "Whether this is the canonical hostname for the tunnel.",
+																			"type": "boolean",
+																			"example": true,
+																			"x-auditable": true
+																		},
+																		"created_at": {
+																			"description": "Timestamp of when the resource was created.",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2021-01-25T18:22:34.317854Z",
+																			"readOnly": true
+																		},
+																		"hostname": {
+																			"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+																			"type": "string",
+																			"example": "branch-office-1",
+																			"maxLength": 63,
+																			"minLength": 1,
+																			"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "UUID of the tunnel hostname.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+																			"x-auditable": true
+																		},
+																		"tunnel_id": {
+																			"description": "UUID of the tunnel.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tunnel_id",
+																		"hostname",
+																		"canonical",
+																		"created_at"
+																	]
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"example": [
+														{
+															"code": 7003,
+															"message": "No route for the URI"
+														}
+													],
+													"allOf": [
+														{
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													],
+													"minLength": 1
+												},
+												"messages": {
+													"example": [],
+													"allOf": [
+														{
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													]
+												},
+												"result": {
+													"type": "object",
+													"enum": [
+														null
+													],
+													"nullable": true
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": false,
+													"enum": [
+														false
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					},
+					{
+						"user_service_key": []
+					}
+				],
+				"tags": [
+					"Cloudflare Tunnel Hostname"
+				],
+				"x-api-token-group": [
+					"Cloudflare One Connectors Write",
+					"Cloudflare One Connectors Read",
+					"Cloudflare One Connector: cloudflared Write",
+					"Cloudflare One Connector: cloudflared Read",
+					"Cloudflare Tunnel Write",
+					"Cloudflare Tunnel Read"
+				],
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "tunnels.hostnames",
+				"x-fern-sdk-method-name": "get"
+			},
+			"patch": {
+				"operationId": "cloudflare-tunnel-hostname-update",
+				"summary": "Update a tunnel hostname",
+				"description": "Updates the hostname value or makes it canonical. To unset a canonical hostname, make a different hostname canonical instead.",
+				"parameters": [
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Cloudflare account ID",
+							"type": "string",
+							"example": "699d98642c564d2e855e9661899b7252",
+							"maxLength": 32,
+							"readOnly": true,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "tunnel_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "UUID of the tunnel.",
+							"type": "string",
+							"format": "uuid",
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"x-auditable": true
+						}
+					},
+					{
+						"name": "hostname_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "UUID of the tunnel hostname.",
+							"type": "string",
+							"format": "uuid",
+							"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+							"x-auditable": true
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"canonical": {
+										"description": "Makes this hostname canonical. `false` is not accepted; make a different hostname canonical to unset this one.",
+										"type": "boolean",
+										"enum": [
+											true
+										]
+									},
+									"hostname": {
+										"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+										"type": "string",
+										"example": "branch-office-1",
+										"maxLength": 63,
+										"minLength": 1,
+										"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+										"x-auditable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Update tunnel hostname response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"context": {
+																"description": "Optional error-specific context.",
+																"type": "object",
+																"additionalProperties": true
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "The tunnel hostname created, retrieved, updated, or deleted by the operation.",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"canonical": {
+																	"description": "Whether this is the canonical hostname for the tunnel.",
+																	"type": "boolean",
+																	"example": true,
+																	"x-auditable": true
+																},
+																"created_at": {
+																	"description": "Timestamp of when the resource was created.",
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2021-01-25T18:22:34.317854Z",
+																	"readOnly": true
+																},
+																"hostname": {
+																	"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+																	"type": "string",
+																	"example": "branch-office-1",
+																	"maxLength": 63,
+																	"minLength": 1,
+																	"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "UUID of the tunnel hostname.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+																	"x-auditable": true
+																},
+																"tunnel_id": {
+																	"description": "UUID of the tunnel.",
+																	"type": "string",
+																	"format": "uuid",
+																	"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"tunnel_id",
+																"hostname",
+																"canonical",
+																"created_at"
+															]
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					},
+					"4XX": {
+						"description": "Update tunnel hostname response failure",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													]
+												},
+												{
+													"properties": {
+														"result": {
+															"description": "The tunnel hostname created, retrieved, updated, or deleted by the operation.",
+															"allOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"canonical": {
+																			"description": "Whether this is the canonical hostname for the tunnel.",
+																			"type": "boolean",
+																			"example": true,
+																			"x-auditable": true
+																		},
+																		"created_at": {
+																			"description": "Timestamp of when the resource was created.",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2021-01-25T18:22:34.317854Z",
+																			"readOnly": true
+																		},
+																		"hostname": {
+																			"description": "A single DNS label assigned to the tunnel. The value is normalized to lowercase and may contain only letters, digits, and internal hyphens.",
+																			"type": "string",
+																			"example": "branch-office-1",
+																			"maxLength": 63,
+																			"minLength": 1,
+																			"pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "UUID of the tunnel hostname.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "6b9e2c54-7b1a-4d2d-91ac-53ec83f8b6c8",
+																			"x-auditable": true
+																		},
+																		"tunnel_id": {
+																			"description": "UUID of the tunnel.",
+																			"type": "string",
+																			"format": "uuid",
+																			"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"tunnel_id",
+																		"hostname",
+																		"canonical",
+																		"created_at"
+																	]
+																}
+															]
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"example": [
+														{
+															"code": 7003,
+															"message": "No route for the URI"
+														}
+													],
+													"allOf": [
+														{
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													],
+													"minLength": 1
+												},
+												"messages": {
+													"example": [],
+													"allOf": [
+														{
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"context": {
+																		"description": "Optional error-specific context.",
+																		"type": "object",
+																		"additionalProperties": true
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													]
+												},
+												"result": {
+													"type": "object",
+													"enum": [
+														null
+													],
+													"nullable": true
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"type": "boolean",
+													"example": false,
+													"enum": [
+														false
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					},
+					{
+						"user_service_key": []
+					}
+				],
+				"tags": [
+					"Cloudflare Tunnel Hostname"
+				],
+				"x-fern-availability": "generally-available",
+				"x-fern-sdk-group-name": "tunnels.hostnames",
+				"x-fern-sdk-method-name": "edit"
+			}
+		},
 		"/accounts/{account_id}/urlscanner/response/{response_id}": {
 			"get": {
 				"operationId": "urlscanner-get-response-text",
@@ -1700852,6 +1704139,7 @@
 										"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 										"type": "string",
 										"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+										"x-auditable": false,
 										"x-sensitive": true
 									}
 								}
@@ -1704165,6 +1707453,7 @@
 													"type": "string",
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
+													"x-auditable": false,
 													"x-sensitive": true
 												}
 											},
@@ -1704277,6 +1707566,7 @@
 															"type": "string",
 															"example": "eyJhIjoiNWFiNGU5Z...",
 															"readOnly": true,
+															"x-auditable": false,
 															"x-sensitive": true
 														}
 													},
@@ -1714395,21 +1717685,7 @@
 													"required": [
 														"result"
 													],
-													"type": "object",
-													"x-cfLinkErrors": {
-														"10001": "Unsupported or unexpected Content Type",
-														"10002": "Unexpected internal server error",
-														"10003": "Missing required URL parameter",
-														"10004": "Malformed URL parameter",
-														"10006": "Unparseable script body",
-														"10007": "Resource not found (similar to HTTP 404)",
-														"10015": "The current account is not authorized to use workers",
-														"10018": "Attempted to update a script where the e-tag does not match",
-														"10021": "Script content failed validation checks, but was otherwise parseable",
-														"10023": "Unauthorized access attempt",
-														"10027": "Script body was too large",
-														"10075": "Requires a Workers Paid plan"
-													}
+													"type": "object"
 												}
 											]
 										},
@@ -1718159,21 +1721435,7 @@
 											"required": [
 												"result"
 											],
-											"type": "object",
-											"x-cfLinkErrors": {
-												"10001": "Unsupported or unexpected Content Type",
-												"10002": "Unexpected internal server error",
-												"10003": "Missing required URL parameter",
-												"10004": "Malformed URL parameter",
-												"10006": "Unparseable script body",
-												"10007": "Resource not found (similar to HTTP 404)",
-												"10015": "The current account is not authorized to use workers",
-												"10018": "Attempted to update a script where the e-tag does not match",
-												"10021": "Script content failed validation checks, but was otherwise parseable",
-												"10023": "Unauthorized access attempt",
-												"10027": "Script body was too large",
-												"10075": "Requires a Workers Paid plan"
-											}
+											"type": "object"
 										}
 									]
 								}
@@ -1735061,8 +1738323,7 @@
 											"maxLength": 256,
 											"minLength": 1
 										}
-									],
-									"x-version-after": "2026-10-01T00:00:00Z"
+									]
 								},
 								{
 									"allOf": [
@@ -1735072,8 +1738333,7 @@
 											"maxLength": 1024,
 											"pattern": "^[^,&]*$"
 										}
-									],
-									"x-version-before": "2026-10-01T00:00:00Z"
+									]
 								}
 							]
 						}
@@ -1735214,8 +1738474,7 @@
 														}
 													]
 												}
-											],
-											"x-version-after": "2026-10-01T00:00:00Z"
+											]
 										},
 										{
 											"allOf": [
@@ -1735317,8 +1738576,7 @@
 														}
 													]
 												}
-											],
-											"x-version-before": "2026-10-01T00:00:00Z"
+											]
 										}
 									]
 								}
@@ -1772831,21 +1776089,7 @@
 													"required": [
 														"result"
 													],
-													"type": "object",
-													"x-cfLinkErrors": {
-														"10001": "Unsupported or unexpected Content Type",
-														"10002": "Unexpected internal server error",
-														"10003": "Missing required URL parameter",
-														"10004": "Malformed URL parameter",
-														"10006": "Unparseable script body",
-														"10007": "Resource not found (similar to HTTP 404)",
-														"10015": "The current account is not authorized to use workers",
-														"10018": "Attempted to update a script where the e-tag does not match",
-														"10021": "Script content failed validation checks, but was otherwise parseable",
-														"10023": "Unauthorized access attempt",
-														"10027": "Script body was too large",
-														"10075": "Requires a Workers Paid plan"
-													}
+													"type": "object"
 												}
 											]
 										},
@@ -1774758,21 +1778002,7 @@
 											"required": [
 												"result"
 											],
-											"type": "object",
-											"x-cfLinkErrors": {
-												"10001": "Unsupported or unexpected Content Type",
-												"10002": "Unexpected internal server error",
-												"10003": "Missing required URL parameter",
-												"10004": "Malformed URL parameter",
-												"10006": "Unparseable script body",
-												"10007": "Resource not found (similar to HTTP 404)",
-												"10015": "The current account is not authorized to use workers",
-												"10018": "Attempted to update a script where the e-tag does not match",
-												"10021": "Script content failed validation checks, but was otherwise parseable",
-												"10023": "Unauthorized access attempt",
-												"10027": "Script body was too large",
-												"10075": "Requires a Workers Paid plan"
-											}
+											"type": "object"
 										}
 									]
 								}
@@ -1822595,21 +1825825,7 @@
 											"required": [
 												"result"
 											],
-											"type": "object",
-											"x-cfLinkErrors": {
-												"10001": "Unsupported or unexpected Content Type",
-												"10002": "Unexpected internal server error",
-												"10003": "Missing required URL parameter",
-												"10004": "Malformed URL parameter",
-												"10006": "Unparseable script body",
-												"10007": "Resource not found (similar to HTTP 404)",
-												"10015": "The current account is not authorized to use workers",
-												"10018": "Attempted to update a script where the e-tag does not match",
-												"10021": "Script content failed validation checks, but was otherwise parseable",
-												"10023": "Unauthorized access attempt",
-												"10027": "Script body was too large",
-												"10075": "Requires a Workers Paid plan"
-											}
+											"type": "object"
 										}
 									]
 								}
@@ -1909395,7 +1912611,7 @@
 				],
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "network.subnets.initial-resolved-ip",
-				"x-fern-sdk-method-name": "edit"
+				"x-fern-sdk-method-name": "replace"
 			}
 		},
 		"/accounts/{account_id}/zerotrust/subnets/warp": {
@@ -2086274,8 +2089490,8 @@
 					"Load Balancing: Monitors and Pools Write"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "user.load-balancers.pools.edit.pools",
-				"x-fern-sdk-method-name": "pools"
+				"x-fern-sdk-group-name": "user.load-balancers.pools",
+				"x-fern-sdk-method-name": "bulk-edit"
 			},
 			"post": {
 				"operationId": "load-balancer-pools-create-pool",
@@ -2088868,8 +2092084,8 @@
 					"Load Balancing: Monitors and Pools Write"
 				],
 				"x-fern-availability": "generally-available",
-				"x-fern-sdk-group-name": "user.load-balancers.pools.edit.pools",
-				"x-fern-sdk-method-name": "pool"
+				"x-fern-sdk-group-name": "user.load-balancers.pools",
+				"x-fern-sdk-method-name": "edit"
 			},
 			"put": {
 				"operationId": "load-balancer-pools-update-pool",
@@ -2274596,8 +2277812,8 @@
 						}
 					},
 					{
-						"name": "name",
 						"in": "query",
+						"name": "name",
 						"schema": {
 							"description": "Exact value of the DNS record name. This is a convenience alias for `name.exact`.\n",
 							"type": "string",
@@ -2274605,8 +2277821,8 @@
 						}
 					},
 					{
-						"name": "name.exact",
 						"in": "query",
+						"name": "name.exact",
 						"schema": {
 							"description": "Exact value of the DNS record name. Name filters are case-insensitive.\n",
 							"type": "string",
@@ -2274614,8 +2277830,8 @@
 						}
 					},
 					{
-						"name": "name.contains",
 						"in": "query",
+						"name": "name.contains",
 						"schema": {
 							"description": "Substring of the DNS record name. Name filters are case-insensitive.\n",
 							"type": "string",
@@ -2274623,8 +2277839,8 @@
 						}
 					},
 					{
-						"name": "name.startswith",
 						"in": "query",
+						"name": "name.startswith",
 						"schema": {
 							"description": "Prefix of the DNS record name. Name filters are case-insensitive.\n",
 							"type": "string",
@@ -2274632,8 +2277848,8 @@
 						}
 					},
 					{
-						"name": "name.endswith",
 						"in": "query",
+						"name": "name.endswith",
 						"schema": {
 							"description": "Suffix of the DNS record name. Name filters are case-insensitive.\n",
 							"type": "string",
@@ -2274641,8 +2277857,8 @@
 						}
 					},
 					{
-						"name": "type",
 						"in": "query",
+						"name": "type",
 						"schema": {
 							"description": "Record type.",
 							"type": "string",
@@ -2274674,8 +2277890,8 @@
 						}
 					},
 					{
-						"name": "content",
 						"in": "query",
+						"name": "content",
 						"schema": {
 							"description": "Exact value of the DNS record content. This is a convenience alias for `content.exact`.\n",
 							"type": "string",
@@ -2274683,8 +2277899,8 @@
 						}
 					},
 					{
-						"name": "content.exact",
 						"in": "query",
+						"name": "content.exact",
 						"schema": {
 							"description": "Exact value of the DNS record content. Content filters are case-insensitive.\n",
 							"type": "string",
@@ -2274692,8 +2277908,8 @@
 						}
 					},
 					{
-						"name": "content.contains",
 						"in": "query",
+						"name": "content.contains",
 						"schema": {
 							"description": "Substring of the DNS record content. Content filters are case-insensitive.\n",
 							"type": "string",
@@ -2274701,8 +2277917,8 @@
 						}
 					},
 					{
-						"name": "content.startswith",
 						"in": "query",
+						"name": "content.startswith",
 						"schema": {
 							"description": "Prefix of the DNS record content. Content filters are case-insensitive.\n",
 							"type": "string",
@@ -2274710,8 +2277926,8 @@
 						}
 					},
 					{
-						"name": "content.endswith",
 						"in": "query",
+						"name": "content.endswith",
 						"schema": {
 							"description": "Suffix of the DNS record content. Content filters are case-insensitive.\n",
 							"type": "string",
@@ -2274719,8 +2277935,8 @@
 						}
 					},
 					{
-						"name": "proxied",
 						"in": "query",
+						"name": "proxied",
 						"schema": {
 							"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 							"type": "boolean",
@@ -2274730,8 +2277946,8 @@
 						}
 					},
 					{
-						"name": "match",
 						"in": "query",
+						"name": "match",
 						"schema": {
 							"description": "Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.\n",
 							"type": "string",
@@ -2274744,8 +2277960,8 @@
 						}
 					},
 					{
-						"name": "comment",
 						"in": "query",
+						"name": "comment",
 						"schema": {
 							"description": "Exact value of the DNS record comment. This is a convenience alias for `comment.exact`.\n",
 							"type": "string",
@@ -2274753,24 +2277969,24 @@
 						}
 					},
 					{
-						"name": "comment.present",
 						"in": "query",
+						"name": "comment.present",
 						"schema": {
 							"description": "If this parameter is present, only records *with* a comment are returned.\n",
 							"type": "string"
 						}
 					},
 					{
-						"name": "comment.absent",
 						"in": "query",
+						"name": "comment.absent",
 						"schema": {
 							"description": "If this parameter is present, only records *without* a comment are returned.\n",
 							"type": "string"
 						}
 					},
 					{
-						"name": "comment.exact",
 						"in": "query",
+						"name": "comment.exact",
 						"schema": {
 							"description": "Exact value of the DNS record comment. Comment filters are case-insensitive.\n",
 							"type": "string",
@@ -2274778,8 +2277994,8 @@
 						}
 					},
 					{
-						"name": "comment.contains",
 						"in": "query",
+						"name": "comment.contains",
 						"schema": {
 							"description": "Substring of the DNS record comment. Comment filters are case-insensitive.\n",
 							"type": "string",
@@ -2274787,8 +2278003,8 @@
 						}
 					},
 					{
-						"name": "comment.startswith",
 						"in": "query",
+						"name": "comment.startswith",
 						"schema": {
 							"description": "Prefix of the DNS record comment. Comment filters are case-insensitive.\n",
 							"type": "string",
@@ -2274796,8 +2278012,8 @@
 						}
 					},
 					{
-						"name": "comment.endswith",
 						"in": "query",
+						"name": "comment.endswith",
 						"schema": {
 							"description": "Suffix of the DNS record comment. Comment filters are case-insensitive.\n",
 							"type": "string",
@@ -2274805,8 +2278021,8 @@
 						}
 					},
 					{
-						"name": "tag",
 						"in": "query",
+						"name": "tag",
 						"schema": {
 							"description": "Condition on the DNS record tag.\n\nParameter values can be of the form `<tag-name>:<tag-value>` to search for an exact `name:value` pair, or just `<tag-name>` to search for records with a specific tag name regardless of its value.\n\nThis is a convenience shorthand for the more powerful `tag.<predicate>` parameters.\nExamples:\n- `tag=important` is equivalent to `tag.present=important`\n- `tag=team:DNS` is equivalent to `tag.exact=team:DNS`\n",
 							"type": "string",
@@ -2274814,8 +2278030,8 @@
 						}
 					},
 					{
-						"name": "tag.present",
 						"in": "query",
+						"name": "tag.present",
 						"schema": {
 							"description": "Name of a tag which must be present on the DNS record. Tag filters are case-insensitive.\n",
 							"type": "string",
@@ -2274823,8 +2278039,8 @@
 						}
 					},
 					{
-						"name": "tag.absent",
 						"in": "query",
+						"name": "tag.absent",
 						"schema": {
 							"description": "Name of a tag which must *not* be present on the DNS record. Tag filters are case-insensitive.\n",
 							"type": "string",
@@ -2274832,8 +2278048,8 @@
 						}
 					},
 					{
-						"name": "tag.exact",
 						"in": "query",
+						"name": "tag.exact",
 						"schema": {
 							"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value is `<tag-value>`. Tag filters are case-insensitive.\n",
 							"type": "string",
@@ -2274841,8 +2278057,8 @@
 						}
 					},
 					{
-						"name": "tag.contains",
 						"in": "query",
+						"name": "tag.contains",
 						"schema": {
 							"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value contains `<tag-value>`. Tag filters are case-insensitive.\n",
 							"type": "string",
@@ -2274850,8 +2278066,8 @@
 						}
 					},
 					{
-						"name": "tag.startswith",
 						"in": "query",
+						"name": "tag.startswith",
 						"schema": {
 							"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value starts with `<tag-value>`. Tag filters are case-insensitive.\n",
 							"type": "string",
@@ -2274859,8 +2278075,8 @@
 						}
 					},
 					{
-						"name": "tag.endswith",
 						"in": "query",
+						"name": "tag.endswith",
 						"schema": {
 							"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value ends with `<tag-value>`. Tag filters are case-insensitive.\n",
 							"type": "string",
@@ -2274868,8 +2278084,8 @@
 						}
 					},
 					{
-						"name": "search",
 						"in": "query",
+						"name": "search",
 						"schema": {
 							"description": "Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.\n",
 							"type": "string",
@@ -2274877,10 +2278093,10 @@
 						}
 					},
 					{
-						"name": "tag_match",
 						"in": "query",
+						"name": "tag_match",
 						"schema": {
-							"description": "Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.\n",
+							"description": "Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags. The legacy `tag-match` parameter is an alias for this parameter.\n",
 							"type": "string",
 							"example": "any",
 							"default": "all",
@@ -2274952,8 +2278168,8 @@
 						}
 					},
 					{
-						"name": "shadowed_by_name",
 						"in": "query",
+						"name": "shadowed_by_name",
 						"schema": {
 							"description": "Filters the response to records at or below the specified NS delegation name. NS, DS, and NSEC records at the delegation name are excluded because they are not shadowed by that delegation. Those record types are included only when they exist below the delegation. The value must be a non-apex subdomain of the zone. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).\n",
 							"type": "string",
@@ -2274961,8 +2278177,8 @@
 						}
 					},
 					{
-						"name": "shadowing_name",
 						"in": "query",
+						"name": "shadowing_name",
 						"schema": {
 							"description": "Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).\n",
 							"type": "string",
@@ -2319493,14 +2322709,14 @@
 				},
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "dns.records",
-				"x-fern-sdk-method-name": "batch"
+				"x-fern-sdk-method-name": "bulk-apply"
 			}
 		},
 		"/zones/{zone_id}/dns_records/export": {
 			"get": {
 				"operationId": "dns-records-for-a-zone-export-dns-records",
 				"summary": "Export DNS Records",
-				"description": "You can export your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint.\n\nSee [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.",
+				"description": "Export your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint. Use the same record filters as the List DNS Records endpoint to export only matching stored records.\n\nBy default, the SOA record (stored or generated) and assigned apex NS records, where applicable, are included regardless of filters. Secondary zones must have a stored SOA record to export in this mode. Set `include_generated_records=false` to export only matching stored records, without adding the SOA/nameserver section or requiring secondary zones to have an SOA record. Matching stored SOA and NS records are still exported. This may produce a partial zone rather than a complete zone. Workers-managed records are never exported.\n\nThe export returns at most 5,000,000 matching stored records, in addition to any automatically included SOA and assigned apex NS records. It is not paginated and does not support `page`, `per_page`, `order`, `direction`, `cursor`, or `prev_cursor`.\n\n`include_shadow_metadata=true` is required when using `shadowed_by_name`; it does not add shadow metadata to the BIND output.\n\nSee [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.\n",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -2319512,6 +2322728,339 @@
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"x-auditable": true
+						}
+					},
+					{
+						"name": "include_generated_records",
+						"in": "query",
+						"schema": {
+							"description": "Whether to add the SOA and assigned apex NS records independently of the record filters. Set to `false` to export only matching stored records. Matching stored SOA and NS records are still exported.\n",
+							"type": "boolean",
+							"example": false,
+							"default": true
+						}
+					},
+					{
+						"in": "query",
+						"name": "name",
+						"schema": {
+							"description": "Exact value of the DNS record name. This is a convenience alias for `name.exact`.\n",
+							"type": "string",
+							"example": "www.example.com"
+						}
+					},
+					{
+						"in": "query",
+						"name": "name.exact",
+						"schema": {
+							"description": "Exact value of the DNS record name. Name filters are case-insensitive.\n",
+							"type": "string",
+							"example": "www.example.com"
+						}
+					},
+					{
+						"in": "query",
+						"name": "name.contains",
+						"schema": {
+							"description": "Substring of the DNS record name. Name filters are case-insensitive.\n",
+							"type": "string",
+							"example": "w.example."
+						}
+					},
+					{
+						"in": "query",
+						"name": "name.startswith",
+						"schema": {
+							"description": "Prefix of the DNS record name. Name filters are case-insensitive.\n",
+							"type": "string",
+							"example": "www.example"
+						}
+					},
+					{
+						"in": "query",
+						"name": "name.endswith",
+						"schema": {
+							"description": "Suffix of the DNS record name. Name filters are case-insensitive.\n",
+							"type": "string",
+							"example": ".example.com"
+						}
+					},
+					{
+						"in": "query",
+						"name": "type",
+						"schema": {
+							"description": "Record type.",
+							"type": "string",
+							"example": "A",
+							"enum": [
+								"A",
+								"AAAA",
+								"CAA",
+								"CERT",
+								"CNAME",
+								"DNSKEY",
+								"DS",
+								"HTTPS",
+								"LOC",
+								"MX",
+								"NAPTR",
+								"NS",
+								"OPENPGPKEY",
+								"PTR",
+								"SMIMEA",
+								"SRV",
+								"SSHFP",
+								"SVCB",
+								"TLSA",
+								"TXT",
+								"URI"
+							],
+							"x-auditable": true
+						}
+					},
+					{
+						"in": "query",
+						"name": "content",
+						"schema": {
+							"description": "Exact value of the DNS record content. This is a convenience alias for `content.exact`.\n",
+							"type": "string",
+							"example": "127.0.0.1"
+						}
+					},
+					{
+						"in": "query",
+						"name": "content.exact",
+						"schema": {
+							"description": "Exact value of the DNS record content. Content filters are case-insensitive.\n",
+							"type": "string",
+							"example": "127.0.0.1"
+						}
+					},
+					{
+						"in": "query",
+						"name": "content.contains",
+						"schema": {
+							"description": "Substring of the DNS record content. Content filters are case-insensitive.\n",
+							"type": "string",
+							"example": "7.0.0."
+						}
+					},
+					{
+						"in": "query",
+						"name": "content.startswith",
+						"schema": {
+							"description": "Prefix of the DNS record content. Content filters are case-insensitive.\n",
+							"type": "string",
+							"example": "127.0."
+						}
+					},
+					{
+						"in": "query",
+						"name": "content.endswith",
+						"schema": {
+							"description": "Suffix of the DNS record content. Content filters are case-insensitive.\n",
+							"type": "string",
+							"example": ".0.1"
+						}
+					},
+					{
+						"in": "query",
+						"name": "proxied",
+						"schema": {
+							"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
+							"type": "boolean",
+							"example": true,
+							"default": false,
+							"x-auditable": true
+						}
+					},
+					{
+						"in": "query",
+						"name": "match",
+						"schema": {
+							"description": "Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.\n",
+							"type": "string",
+							"example": "any",
+							"default": "all",
+							"enum": [
+								"any",
+								"all"
+							]
+						}
+					},
+					{
+						"in": "query",
+						"name": "comment",
+						"schema": {
+							"description": "Exact value of the DNS record comment. This is a convenience alias for `comment.exact`.\n",
+							"type": "string",
+							"example": "Hello, world"
+						}
+					},
+					{
+						"in": "query",
+						"name": "comment.present",
+						"schema": {
+							"description": "If this parameter is present, only records *with* a comment are returned.\n",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "comment.absent",
+						"schema": {
+							"description": "If this parameter is present, only records *without* a comment are returned.\n",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "comment.exact",
+						"schema": {
+							"description": "Exact value of the DNS record comment. Comment filters are case-insensitive.\n",
+							"type": "string",
+							"example": "Hello, world"
+						}
+					},
+					{
+						"in": "query",
+						"name": "comment.contains",
+						"schema": {
+							"description": "Substring of the DNS record comment. Comment filters are case-insensitive.\n",
+							"type": "string",
+							"example": "ello, worl"
+						}
+					},
+					{
+						"in": "query",
+						"name": "comment.startswith",
+						"schema": {
+							"description": "Prefix of the DNS record comment. Comment filters are case-insensitive.\n",
+							"type": "string",
+							"example": "Hello, w"
+						}
+					},
+					{
+						"in": "query",
+						"name": "comment.endswith",
+						"schema": {
+							"description": "Suffix of the DNS record comment. Comment filters are case-insensitive.\n",
+							"type": "string",
+							"example": "o, world"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tag",
+						"schema": {
+							"description": "Condition on the DNS record tag.\n\nParameter values can be of the form `<tag-name>:<tag-value>` to search for an exact `name:value` pair, or just `<tag-name>` to search for records with a specific tag name regardless of its value.\n\nThis is a convenience shorthand for the more powerful `tag.<predicate>` parameters.\nExamples:\n- `tag=important` is equivalent to `tag.present=important`\n- `tag=team:DNS` is equivalent to `tag.exact=team:DNS`\n",
+							"type": "string",
+							"example": "team:DNS"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tag.present",
+						"schema": {
+							"description": "Name of a tag which must be present on the DNS record. Tag filters are case-insensitive.\n",
+							"type": "string",
+							"example": "important"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tag.absent",
+						"schema": {
+							"description": "Name of a tag which must *not* be present on the DNS record. Tag filters are case-insensitive.\n",
+							"type": "string",
+							"example": "important"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tag.exact",
+						"schema": {
+							"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value is `<tag-value>`. Tag filters are case-insensitive.\n",
+							"type": "string",
+							"example": "greeting:Hello, world"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tag.contains",
+						"schema": {
+							"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value contains `<tag-value>`. Tag filters are case-insensitive.\n",
+							"type": "string",
+							"example": "greeting:ello, worl"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tag.startswith",
+						"schema": {
+							"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value starts with `<tag-value>`. Tag filters are case-insensitive.\n",
+							"type": "string",
+							"example": "greeting:Hello, w"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tag.endswith",
+						"schema": {
+							"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value ends with `<tag-value>`. Tag filters are case-insensitive.\n",
+							"type": "string",
+							"example": "greeting:o, world"
+						}
+					},
+					{
+						"in": "query",
+						"name": "search",
+						"schema": {
+							"description": "Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.\n",
+							"type": "string",
+							"example": "www.cloudflare.com"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tag_match",
+						"schema": {
+							"description": "Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags. The legacy `tag-match` parameter is an alias for this parameter.\n",
+							"type": "string",
+							"example": "any",
+							"default": "all",
+							"enum": [
+								"any",
+								"all"
+							]
+						}
+					},
+					{
+						"name": "include_shadow_metadata",
+						"in": "query",
+						"schema": {
+							"description": "Set to `true` to enable the `shadowed_by_name` filter. This does not add shadow metadata to the BIND output.\n",
+							"type": "boolean",
+							"example": true,
+							"default": false
+						}
+					},
+					{
+						"in": "query",
+						"name": "shadowed_by_name",
+						"schema": {
+							"description": "Filters the response to records at or below the specified NS delegation name. NS, DS, and NSEC records at the delegation name are excluded because they are not shadowed by that delegation. Those record types are included only when they exist below the delegation. The value must be a non-apex subdomain of the zone. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).\n",
+							"type": "string",
+							"example": "sub.example.com"
+						}
+					},
+					{
+						"in": "query",
+						"name": "shadowing_name",
+						"schema": {
+							"description": "Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).\n",
+							"type": "string",
+							"example": "www.sub.example.com"
 						}
 					}
 				],
@@ -2634690,7 +2638239,7 @@
 			"patch": {
 				"operationId": "zone-settings-change-automatic-platform-optimization-setting",
 				"summary": "Change Automatic Platform Optimization setting",
-				"description": "Automatic Platform Optimization (APO) for WordPress is a performance feature that serves your\nWordPress site from Cloudflare's edge network, reducing load times for visitors.\nRefer to the APO documentation for more information.\nWhen an APO configuration already exists, fields omitted from an object `value` keep their current value, except `recheck`, which is false unless the request sends it.\n",
+				"description": "Automatic Platform Optimization (APO) for WordPress is a performance feature that serves your\nWordPress site from Cloudflare's edge network, reducing load times for visitors.\nRefer to the APO documentation for more information.\nWhen an APO configuration already exists, fields omitted from an object `value` keep their current value, except `recheck`, which is false unless the request sends it. Setting `value` to `\"off\"` disables APO but keeps the detected zone/site/plugin facts.\nOn the first write for a zone (no existing configuration) an object `value` must include `enabled`, `cf`, `wordpress` and `wp_plugin`; otherwise the request fails with error 1023. `\"off\"` is a no-op when no configuration exists.\n",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -2634713,10 +2638262,10 @@
 								"type": "object",
 								"properties": {
 									"value": {
-										"description": "Configuration for Automatic Platform Optimization (APO) for WordPress.\nSet to \"off\" to disable, or provide an object to configure APO settings.\nWhen an APO configuration already exists, fields omitted from the object keep their current value.\n",
+										"description": "Configuration for Automatic Platform Optimization (APO) for WordPress.\nSet to \"off\" to disable, or provide an object to configure APO settings.\nWhen an APO configuration already exists, fields omitted from the object keep their current value, and \"off\" disables APO without erasing the detected zone/site/plugin facts.\nOn the first write for a zone (no existing configuration) an object must include `enabled`, `cf`, `wordpress` and `wp_plugin`; otherwise the request fails with error 1023 and no configuration is created. Setting \"off\" when no configuration exists is a no-op.\n",
 										"oneOf": [
 											{
-												"description": "Disable Automatic Platform Optimization.",
+												"description": "Disable Automatic Platform Optimization. On a zone with no APO configuration this is a no-op.",
 												"enum": [
 													"off"
 												],
@@ -2673109,7 +2676658,7 @@
 																				"minimum": 1
 																			},
 																			"origin_worker_id": {
-																				"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																				"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 																				"type": "string",
 																				"example": "277b7815c871434b960b60729659000a",
 																				"pattern": "^[0-9a-f]{32}$"
@@ -2673273,10 +2676822,49 @@
 																					"type": "string"
 																				}
 																			},
+																			"origin_worker_id": {
+																				"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+																				"type": "string",
+																				"example": "277b7815c871434b960b60729659000a",
+																				"pattern": "^[0-9a-f]{32}$"
+																			},
+																			"origin_worker_name": {
+																				"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+																				"type": "string",
+																				"readOnly": true
+																			},
+																			"origin_worker_status": {
+																				"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+																				"type": "string",
+																				"enum": [
+																					"available",
+																					"not_found",
+																					"unknown"
+																				],
+																				"readOnly": true
+																			},
 																			"protocol": {
 																				"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																				"type": "string",
 																				"example": "tcp/22"
+																			},
+																			"traffic_type": {
+																				"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+																				"type": "string",
+																				"default": "direct",
+																				"anyOf": [
+																					{
+																						"enum": [
+																							"direct",
+																							"worker"
+																						],
+																						"type": "string"
+																					},
+																					{
+																						"maxLength": 0,
+																						"type": "string"
+																					}
+																				]
 																			}
 																		},
 																		"required": [
@@ -2673287,6 +2676875,7 @@
 																	}
 																]
 															},
+															"minItems": 1,
 															"type": "array"
 														}
 													]
@@ -2673660,7 +2677249,7 @@
 														"minimum": 1
 													},
 													"origin_worker_id": {
-														"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+														"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 														"type": "string",
 														"example": "277b7815c871434b960b60729659000a",
 														"pattern": "^[0-9a-f]{32}$"
@@ -2673821,10 +2677410,49 @@
 															"type": "string"
 														}
 													},
+													"origin_worker_id": {
+														"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+														"type": "string",
+														"example": "277b7815c871434b960b60729659000a",
+														"pattern": "^[0-9a-f]{32}$"
+													},
+													"origin_worker_name": {
+														"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+														"type": "string",
+														"readOnly": true
+													},
+													"origin_worker_status": {
+														"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+														"type": "string",
+														"enum": [
+															"available",
+															"not_found",
+															"unknown"
+														],
+														"readOnly": true
+													},
 													"protocol": {
 														"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 														"type": "string",
 														"example": "tcp/22"
+													},
+													"traffic_type": {
+														"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+														"type": "string",
+														"default": "direct",
+														"anyOf": [
+															{
+																"enum": [
+																	"direct",
+																	"worker"
+																],
+																"type": "string"
+															},
+															{
+																"maxLength": 0,
+																"type": "string"
+															}
+														]
 													}
 												},
 												"required": [
@@ -2674134,7 +2677762,7 @@
 																			"minimum": 1
 																		},
 																		"origin_worker_id": {
-																			"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																			"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 																			"type": "string",
 																			"example": "277b7815c871434b960b60729659000a",
 																			"pattern": "^[0-9a-f]{32}$"
@@ -2674295,10 +2677923,49 @@
 																				"type": "string"
 																			}
 																		},
+																		"origin_worker_id": {
+																			"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+																			"type": "string",
+																			"example": "277b7815c871434b960b60729659000a",
+																			"pattern": "^[0-9a-f]{32}$"
+																		},
+																		"origin_worker_name": {
+																			"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"origin_worker_status": {
+																			"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+																			"type": "string",
+																			"enum": [
+																				"available",
+																				"not_found",
+																				"unknown"
+																			],
+																			"readOnly": true
+																		},
 																		"protocol": {
 																			"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																			"type": "string",
 																			"example": "tcp/22"
+																		},
+																		"traffic_type": {
+																			"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+																			"type": "string",
+																			"default": "direct",
+																			"anyOf": [
+																				{
+																					"enum": [
+																						"direct",
+																						"worker"
+																					],
+																					"type": "string"
+																				},
+																				{
+																					"maxLength": 0,
+																					"type": "string"
+																				}
+																			]
 																		}
 																	},
 																	"required": [
@@ -2675085,7 +2678752,7 @@
 																			"minimum": 1
 																		},
 																		"origin_worker_id": {
-																			"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																			"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 																			"type": "string",
 																			"example": "277b7815c871434b960b60729659000a",
 																			"pattern": "^[0-9a-f]{32}$"
@@ -2675246,10 +2678913,49 @@
 																				"type": "string"
 																			}
 																		},
+																		"origin_worker_id": {
+																			"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+																			"type": "string",
+																			"example": "277b7815c871434b960b60729659000a",
+																			"pattern": "^[0-9a-f]{32}$"
+																		},
+																		"origin_worker_name": {
+																			"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"origin_worker_status": {
+																			"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+																			"type": "string",
+																			"enum": [
+																				"available",
+																				"not_found",
+																				"unknown"
+																			],
+																			"readOnly": true
+																		},
 																		"protocol": {
 																			"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																			"type": "string",
 																			"example": "tcp/22"
+																		},
+																		"traffic_type": {
+																			"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+																			"type": "string",
+																			"default": "direct",
+																			"anyOf": [
+																				{
+																					"enum": [
+																						"direct",
+																						"worker"
+																					],
+																					"type": "string"
+																				},
+																				{
+																					"maxLength": 0,
+																					"type": "string"
+																				}
+																			]
 																		}
 																	},
 																	"required": [
@@ -2675650,7 +2679356,7 @@
 														"minimum": 1
 													},
 													"origin_worker_id": {
-														"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+														"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 														"type": "string",
 														"example": "277b7815c871434b960b60729659000a",
 														"pattern": "^[0-9a-f]{32}$"
@@ -2675811,10 +2679517,49 @@
 															"type": "string"
 														}
 													},
+													"origin_worker_id": {
+														"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+														"type": "string",
+														"example": "277b7815c871434b960b60729659000a",
+														"pattern": "^[0-9a-f]{32}$"
+													},
+													"origin_worker_name": {
+														"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+														"type": "string",
+														"readOnly": true
+													},
+													"origin_worker_status": {
+														"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+														"type": "string",
+														"enum": [
+															"available",
+															"not_found",
+															"unknown"
+														],
+														"readOnly": true
+													},
 													"protocol": {
 														"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 														"type": "string",
 														"example": "tcp/22"
+													},
+													"traffic_type": {
+														"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+														"type": "string",
+														"default": "direct",
+														"anyOf": [
+															{
+																"enum": [
+																	"direct",
+																	"worker"
+																],
+																"type": "string"
+															},
+															{
+																"maxLength": 0,
+																"type": "string"
+															}
+														]
 													}
 												},
 												"required": [
@@ -2676124,7 +2679869,7 @@
 																			"minimum": 1
 																		},
 																		"origin_worker_id": {
-																			"description": "Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. tls may only be \"off\" or \"flexible\".",
+																			"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
 																			"type": "string",
 																			"example": "277b7815c871434b960b60729659000a",
 																			"pattern": "^[0-9a-f]{32}$"
@@ -2676285,10 +2680030,49 @@
 																				"type": "string"
 																			}
 																		},
+																		"origin_worker_id": {
+																			"description": "Optional Worker script tag (worker ID) to use as the application's origin. Requires traffic_type \"worker\"; mutually exclusive with origin_direct, origin_dns, origin_port, proxy_protocol, and argo_smart_routing. For TCP applications, tls may be \"off\" or \"flexible\"; UDP applications require tls \"off\".",
+																			"type": "string",
+																			"example": "277b7815c871434b960b60729659000a",
+																			"pattern": "^[0-9a-f]{32}$"
+																		},
+																		"origin_worker_name": {
+																			"description": "Name of the Worker origin. Omitted when the Worker is not found or its name cannot be resolved.",
+																			"type": "string",
+																			"readOnly": true
+																		},
+																		"origin_worker_status": {
+																			"description": "Lookup status of the Worker origin. Unknown indicates that its name could not be resolved. Only returned for Worker origins.",
+																			"type": "string",
+																			"enum": [
+																				"available",
+																				"not_found",
+																				"unknown"
+																			],
+																			"readOnly": true
+																		},
 																		"protocol": {
 																			"description": "The port configuration at Cloudflare's edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 																			"type": "string",
 																			"example": "tcp/22"
+																		},
+																		"traffic_type": {
+																			"description": "Determines how traffic is sent to the origin. If absent or empty, defaults to \"direct\". Direct mode uses origin_direct. Worker mode requires origin_worker_id, TCP or UDP with a single port, and CNAME DNS; origin_worker_id and origin_direct are mutually exclusive. A PAYG zone may have at most one Worker application per transport (one TCP and one UDP); creating another for the same transport, or converting another application to Worker while that quota is full, is rejected with error code 11034 and HTTP status 400.",
+																			"type": "string",
+																			"default": "direct",
+																			"anyOf": [
+																				{
+																					"enum": [
+																						"direct",
+																						"worker"
+																					],
+																					"type": "string"
+																				},
+																				{
+																					"maxLength": 0,
+																					"type": "string"
+																				}
+																			]
 																		}
 																	},
 																	"required": [

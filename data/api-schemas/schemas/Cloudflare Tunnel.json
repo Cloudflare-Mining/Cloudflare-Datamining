@@ -4855,6 +4855,7 @@
 											"type": "string",
 											"example": "eyJhIjoiNWFiNGU5Z...",
 											"readOnly": true,
+											"x-auditable": false,
 											"x-sensitive": true
 										}
 									},
@@ -4967,6 +4968,7 @@
 													"type": "string",
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
+													"x-auditable": false,
 													"x-sensitive": true
 												}
 											},
@@ -9276,6 +9278,7 @@
 											"type": "string",
 											"example": "eyJhIjoiNWFiNGU5Z...",
 											"readOnly": true,
+											"x-auditable": false,
 											"x-sensitive": true
 										}
 									},
@@ -9388,6 +9391,7 @@
 													"type": "string",
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
+													"x-auditable": false,
 													"x-sensitive": true
 												}
 											},
@@ -9568,6 +9572,7 @@
 								"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 								"type": "string",
 								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+								"x-auditable": false,
 								"x-sensitive": true
 							}
 						}
@@ -10311,6 +10316,7 @@
 								"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 								"type": "string",
 								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+								"x-auditable": false,
 								"x-sensitive": true
 							}
 						}
@@ -11015,6 +11021,7 @@
 								"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 								"type": "string",
 								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+								"x-auditable": false,
 								"x-sensitive": true
 							}
 						},
@@ -11871,6 +11878,7 @@
 											"type": "string",
 											"example": "eyJhIjoiNWFiNGU5Z...",
 											"readOnly": true,
+											"x-auditable": false,
 											"x-sensitive": true
 										}
 									},
@@ -11983,6 +11991,7 @@
 													"type": "string",
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
+													"x-auditable": false,
 													"x-sensitive": true
 												}
 											},

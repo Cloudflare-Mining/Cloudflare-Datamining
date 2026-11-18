@@ -2028,7 +2028,7 @@
 								"default": false
 							},
 							"updated_prompts": {
-								"description": "Server-wide prompt capability overrides.",
+								"description": "Prompt overrides. Omit to preserve, send [] to clear, or null to reset the field to absence.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -2056,10 +2056,11 @@
 										"name"
 									],
 									"type": "object"
-								}
+								},
+								"nullable": true
 							},
 							"updated_tools": {
-								"description": "Server-wide tool capability overrides.",
+								"description": "Tool overrides. Omit to preserve, send [] to clear, or null to reset the field to absence.",
 								"type": "array",
 								"items": {
 									"properties": {
@@ -2087,7 +2088,8 @@
 										"name"
 									],
 									"type": "object"
-								}
+								},
+								"nullable": true
 							}
 						}
 					}

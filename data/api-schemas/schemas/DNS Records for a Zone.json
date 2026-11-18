@@ -238,8 +238,8 @@
 				}
 			},
 			{
-				"name": "name",
 				"in": "query",
+				"name": "name",
 				"schema": {
 					"description": "Exact value of the DNS record name. This is a convenience alias for `name.exact`.\n",
 					"type": "string",
@@ -247,8 +247,8 @@
 				}
 			},
 			{
-				"name": "name.exact",
 				"in": "query",
+				"name": "name.exact",
 				"schema": {
 					"description": "Exact value of the DNS record name. Name filters are case-insensitive.\n",
 					"type": "string",
@@ -256,8 +256,8 @@
 				}
 			},
 			{
-				"name": "name.contains",
 				"in": "query",
+				"name": "name.contains",
 				"schema": {
 					"description": "Substring of the DNS record name. Name filters are case-insensitive.\n",
 					"type": "string",
@@ -265,8 +265,8 @@
 				}
 			},
 			{
-				"name": "name.startswith",
 				"in": "query",
+				"name": "name.startswith",
 				"schema": {
 					"description": "Prefix of the DNS record name. Name filters are case-insensitive.\n",
 					"type": "string",
@@ -274,8 +274,8 @@
 				}
 			},
 			{
-				"name": "name.endswith",
 				"in": "query",
+				"name": "name.endswith",
 				"schema": {
 					"description": "Suffix of the DNS record name. Name filters are case-insensitive.\n",
 					"type": "string",
@@ -283,8 +283,8 @@
 				}
 			},
 			{
-				"name": "type",
 				"in": "query",
+				"name": "type",
 				"schema": {
 					"description": "Record type.",
 					"type": "string",
@@ -316,8 +316,8 @@
 				}
 			},
 			{
-				"name": "content",
 				"in": "query",
+				"name": "content",
 				"schema": {
 					"description": "Exact value of the DNS record content. This is a convenience alias for `content.exact`.\n",
 					"type": "string",
@@ -325,8 +325,8 @@
 				}
 			},
 			{
-				"name": "content.exact",
 				"in": "query",
+				"name": "content.exact",
 				"schema": {
 					"description": "Exact value of the DNS record content. Content filters are case-insensitive.\n",
 					"type": "string",
@@ -334,8 +334,8 @@
 				}
 			},
 			{
-				"name": "content.contains",
 				"in": "query",
+				"name": "content.contains",
 				"schema": {
 					"description": "Substring of the DNS record content. Content filters are case-insensitive.\n",
 					"type": "string",
@@ -343,8 +343,8 @@
 				}
 			},
 			{
-				"name": "content.startswith",
 				"in": "query",
+				"name": "content.startswith",
 				"schema": {
 					"description": "Prefix of the DNS record content. Content filters are case-insensitive.\n",
 					"type": "string",
@@ -352,8 +352,8 @@
 				}
 			},
 			{
-				"name": "content.endswith",
 				"in": "query",
+				"name": "content.endswith",
 				"schema": {
 					"description": "Suffix of the DNS record content. Content filters are case-insensitive.\n",
 					"type": "string",
@@ -361,8 +361,8 @@
 				}
 			},
 			{
-				"name": "proxied",
 				"in": "query",
+				"name": "proxied",
 				"schema": {
 					"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
 					"type": "boolean",
@@ -372,8 +372,8 @@
 				}
 			},
 			{
-				"name": "match",
 				"in": "query",
+				"name": "match",
 				"schema": {
 					"description": "Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.\n",
 					"type": "string",
@@ -386,8 +386,8 @@
 				}
 			},
 			{
-				"name": "comment",
 				"in": "query",
+				"name": "comment",
 				"schema": {
 					"description": "Exact value of the DNS record comment. This is a convenience alias for `comment.exact`.\n",
 					"type": "string",
@@ -395,24 +395,24 @@
 				}
 			},
 			{
-				"name": "comment.present",
 				"in": "query",
+				"name": "comment.present",
 				"schema": {
 					"description": "If this parameter is present, only records *with* a comment are returned.\n",
 					"type": "string"
 				}
 			},
 			{
-				"name": "comment.absent",
 				"in": "query",
+				"name": "comment.absent",
 				"schema": {
 					"description": "If this parameter is present, only records *without* a comment are returned.\n",
 					"type": "string"
 				}
 			},
 			{
-				"name": "comment.exact",
 				"in": "query",
+				"name": "comment.exact",
 				"schema": {
 					"description": "Exact value of the DNS record comment. Comment filters are case-insensitive.\n",
 					"type": "string",
@@ -420,8 +420,8 @@
 				}
 			},
 			{
-				"name": "comment.contains",
 				"in": "query",
+				"name": "comment.contains",
 				"schema": {
 					"description": "Substring of the DNS record comment. Comment filters are case-insensitive.\n",
 					"type": "string",
@@ -429,8 +429,8 @@
 				}
 			},
 			{
-				"name": "comment.startswith",
 				"in": "query",
+				"name": "comment.startswith",
 				"schema": {
 					"description": "Prefix of the DNS record comment. Comment filters are case-insensitive.\n",
 					"type": "string",
@@ -438,8 +438,8 @@
 				}
 			},
 			{
-				"name": "comment.endswith",
 				"in": "query",
+				"name": "comment.endswith",
 				"schema": {
 					"description": "Suffix of the DNS record comment. Comment filters are case-insensitive.\n",
 					"type": "string",
@@ -447,8 +447,8 @@
 				}
 			},
 			{
-				"name": "tag",
 				"in": "query",
+				"name": "tag",
 				"schema": {
 					"description": "Condition on the DNS record tag.\n\nParameter values can be of the form `<tag-name>:<tag-value>` to search for an exact `name:value` pair, or just `<tag-name>` to search for records with a specific tag name regardless of its value.\n\nThis is a convenience shorthand for the more powerful `tag.<predicate>` parameters.\nExamples:\n- `tag=important` is equivalent to `tag.present=important`\n- `tag=team:DNS` is equivalent to `tag.exact=team:DNS`\n",
 					"type": "string",
@@ -456,8 +456,8 @@
 				}
 			},
 			{
-				"name": "tag.present",
 				"in": "query",
+				"name": "tag.present",
 				"schema": {
 					"description": "Name of a tag which must be present on the DNS record. Tag filters are case-insensitive.\n",
 					"type": "string",
@@ -465,8 +465,8 @@
 				}
 			},
 			{
-				"name": "tag.absent",
 				"in": "query",
+				"name": "tag.absent",
 				"schema": {
 					"description": "Name of a tag which must *not* be present on the DNS record. Tag filters are case-insensitive.\n",
 					"type": "string",
@@ -474,8 +474,8 @@
 				}
 			},
 			{
-				"name": "tag.exact",
 				"in": "query",
+				"name": "tag.exact",
 				"schema": {
 					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value is `<tag-value>`. Tag filters are case-insensitive.\n",
 					"type": "string",
@@ -483,8 +483,8 @@
 				}
 			},
 			{
-				"name": "tag.contains",
 				"in": "query",
+				"name": "tag.contains",
 				"schema": {
 					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value contains `<tag-value>`. Tag filters are case-insensitive.\n",
 					"type": "string",
@@ -492,8 +492,8 @@
 				}
 			},
 			{
-				"name": "tag.startswith",
 				"in": "query",
+				"name": "tag.startswith",
 				"schema": {
 					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value starts with `<tag-value>`. Tag filters are case-insensitive.\n",
 					"type": "string",
@@ -501,8 +501,8 @@
 				}
 			},
 			{
-				"name": "tag.endswith",
 				"in": "query",
+				"name": "tag.endswith",
 				"schema": {
 					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value ends with `<tag-value>`. Tag filters are case-insensitive.\n",
 					"type": "string",
@@ -510,8 +510,8 @@
 				}
 			},
 			{
-				"name": "search",
 				"in": "query",
+				"name": "search",
 				"schema": {
 					"description": "Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.\n",
 					"type": "string",
@@ -519,10 +519,10 @@
 				}
 			},
 			{
-				"name": "tag_match",
 				"in": "query",
+				"name": "tag_match",
 				"schema": {
-					"description": "Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.\n",
+					"description": "Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags. The legacy `tag-match` parameter is an alias for this parameter.\n",
 					"type": "string",
 					"example": "any",
 					"default": "all",
@@ -594,8 +594,8 @@
 				}
 			},
 			{
-				"name": "shadowed_by_name",
 				"in": "query",
+				"name": "shadowed_by_name",
 				"schema": {
 					"description": "Filters the response to records at or below the specified NS delegation name. NS, DS, and NSEC records at the delegation name are excluded because they are not shadowed by that delegation. Those record types are included only when they exist below the delegation. The value must be a non-apex subdomain of the zone. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).\n",
 					"type": "string",
@@ -603,8 +603,8 @@
 				}
 			},
 			{
-				"name": "shadowing_name",
 				"in": "query",
+				"name": "shadowing_name",
 				"schema": {
 					"description": "Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).\n",
 					"type": "string",
@@ -6948,7 +6948,7 @@
 	"GET /zones/{zone_id}/dns_records/export": {
 		"operationId": "dns-records-for-a-zone-export-dns-records",
 		"summary": "Export DNS Records",
-		"description": "You can export your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint.\n\nSee [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.",
+		"description": "Export your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint. Use the same record filters as the List DNS Records endpoint to export only matching stored records.\n\nBy default, the SOA record (stored or generated) and assigned apex NS records, where applicable, are included regardless of filters. Secondary zones must have a stored SOA record to export in this mode. Set `include_generated_records=false` to export only matching stored records, without adding the SOA/nameserver section or requiring secondary zones to have an SOA record. Matching stored SOA and NS records are still exported. This may produce a partial zone rather than a complete zone. Workers-managed records are never exported.\n\nThe export returns at most 5,000,000 matching stored records, in addition to any automatically included SOA and assigned apex NS records. It is not paginated and does not support `page`, `per_page`, `order`, `direction`, `cursor`, or `prev_cursor`.\n\n`include_shadow_metadata=true` is required when using `shadowed_by_name`; it does not add shadow metadata to the BIND output.\n\nSee [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.\n",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -6960,6 +6960,339 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"x-auditable": true
+				}
+			},
+			{
+				"name": "include_generated_records",
+				"in": "query",
+				"schema": {
+					"description": "Whether to add the SOA and assigned apex NS records independently of the record filters. Set to `false` to export only matching stored records. Matching stored SOA and NS records are still exported.\n",
+					"type": "boolean",
+					"example": false,
+					"default": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Exact value of the DNS record name. This is a convenience alias for `name.exact`.\n",
+					"type": "string",
+					"example": "www.example.com"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.exact",
+				"schema": {
+					"description": "Exact value of the DNS record name. Name filters are case-insensitive.\n",
+					"type": "string",
+					"example": "www.example.com"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.contains",
+				"schema": {
+					"description": "Substring of the DNS record name. Name filters are case-insensitive.\n",
+					"type": "string",
+					"example": "w.example."
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.startswith",
+				"schema": {
+					"description": "Prefix of the DNS record name. Name filters are case-insensitive.\n",
+					"type": "string",
+					"example": "www.example"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name.endswith",
+				"schema": {
+					"description": "Suffix of the DNS record name. Name filters are case-insensitive.\n",
+					"type": "string",
+					"example": ".example.com"
+				}
+			},
+			{
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"description": "Record type.",
+					"type": "string",
+					"example": "A",
+					"enum": [
+						"A",
+						"AAAA",
+						"CAA",
+						"CERT",
+						"CNAME",
+						"DNSKEY",
+						"DS",
+						"HTTPS",
+						"LOC",
+						"MX",
+						"NAPTR",
+						"NS",
+						"OPENPGPKEY",
+						"PTR",
+						"SMIMEA",
+						"SRV",
+						"SSHFP",
+						"SVCB",
+						"TLSA",
+						"TXT",
+						"URI"
+					],
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "content",
+				"schema": {
+					"description": "Exact value of the DNS record content. This is a convenience alias for `content.exact`.\n",
+					"type": "string",
+					"example": "127.0.0.1"
+				}
+			},
+			{
+				"in": "query",
+				"name": "content.exact",
+				"schema": {
+					"description": "Exact value of the DNS record content. Content filters are case-insensitive.\n",
+					"type": "string",
+					"example": "127.0.0.1"
+				}
+			},
+			{
+				"in": "query",
+				"name": "content.contains",
+				"schema": {
+					"description": "Substring of the DNS record content. Content filters are case-insensitive.\n",
+					"type": "string",
+					"example": "7.0.0."
+				}
+			},
+			{
+				"in": "query",
+				"name": "content.startswith",
+				"schema": {
+					"description": "Prefix of the DNS record content. Content filters are case-insensitive.\n",
+					"type": "string",
+					"example": "127.0."
+				}
+			},
+			{
+				"in": "query",
+				"name": "content.endswith",
+				"schema": {
+					"description": "Suffix of the DNS record content. Content filters are case-insensitive.\n",
+					"type": "string",
+					"example": ".0.1"
+				}
+			},
+			{
+				"in": "query",
+				"name": "proxied",
+				"schema": {
+					"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
+					"type": "boolean",
+					"example": true,
+					"default": false,
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "match",
+				"schema": {
+					"description": "Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.\n",
+					"type": "string",
+					"example": "any",
+					"default": "all",
+					"enum": [
+						"any",
+						"all"
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment",
+				"schema": {
+					"description": "Exact value of the DNS record comment. This is a convenience alias for `comment.exact`.\n",
+					"type": "string",
+					"example": "Hello, world"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment.present",
+				"schema": {
+					"description": "If this parameter is present, only records *with* a comment are returned.\n",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment.absent",
+				"schema": {
+					"description": "If this parameter is present, only records *without* a comment are returned.\n",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment.exact",
+				"schema": {
+					"description": "Exact value of the DNS record comment. Comment filters are case-insensitive.\n",
+					"type": "string",
+					"example": "Hello, world"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment.contains",
+				"schema": {
+					"description": "Substring of the DNS record comment. Comment filters are case-insensitive.\n",
+					"type": "string",
+					"example": "ello, worl"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment.startswith",
+				"schema": {
+					"description": "Prefix of the DNS record comment. Comment filters are case-insensitive.\n",
+					"type": "string",
+					"example": "Hello, w"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment.endswith",
+				"schema": {
+					"description": "Suffix of the DNS record comment. Comment filters are case-insensitive.\n",
+					"type": "string",
+					"example": "o, world"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag",
+				"schema": {
+					"description": "Condition on the DNS record tag.\n\nParameter values can be of the form `<tag-name>:<tag-value>` to search for an exact `name:value` pair, or just `<tag-name>` to search for records with a specific tag name regardless of its value.\n\nThis is a convenience shorthand for the more powerful `tag.<predicate>` parameters.\nExamples:\n- `tag=important` is equivalent to `tag.present=important`\n- `tag=team:DNS` is equivalent to `tag.exact=team:DNS`\n",
+					"type": "string",
+					"example": "team:DNS"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.present",
+				"schema": {
+					"description": "Name of a tag which must be present on the DNS record. Tag filters are case-insensitive.\n",
+					"type": "string",
+					"example": "important"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.absent",
+				"schema": {
+					"description": "Name of a tag which must *not* be present on the DNS record. Tag filters are case-insensitive.\n",
+					"type": "string",
+					"example": "important"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.exact",
+				"schema": {
+					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value is `<tag-value>`. Tag filters are case-insensitive.\n",
+					"type": "string",
+					"example": "greeting:Hello, world"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.contains",
+				"schema": {
+					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value contains `<tag-value>`. Tag filters are case-insensitive.\n",
+					"type": "string",
+					"example": "greeting:ello, worl"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.startswith",
+				"schema": {
+					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value starts with `<tag-value>`. Tag filters are case-insensitive.\n",
+					"type": "string",
+					"example": "greeting:Hello, w"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.endswith",
+				"schema": {
+					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value ends with `<tag-value>`. Tag filters are case-insensitive.\n",
+					"type": "string",
+					"example": "greeting:o, world"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.\n",
+					"type": "string",
+					"example": "www.cloudflare.com"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag_match",
+				"schema": {
+					"description": "Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags. The legacy `tag-match` parameter is an alias for this parameter.\n",
+					"type": "string",
+					"example": "any",
+					"default": "all",
+					"enum": [
+						"any",
+						"all"
+					]
+				}
+			},
+			{
+				"name": "include_shadow_metadata",
+				"in": "query",
+				"schema": {
+					"description": "Set to `true` to enable the `shadowed_by_name` filter. This does not add shadow metadata to the BIND output.\n",
+					"type": "boolean",
+					"example": true,
+					"default": false
+				}
+			},
+			{
+				"in": "query",
+				"name": "shadowed_by_name",
+				"schema": {
+					"description": "Filters the response to records at or below the specified NS delegation name. NS, DS, and NSEC records at the delegation name are excluded because they are not shadowed by that delegation. Those record types are included only when they exist below the delegation. The value must be a non-apex subdomain of the zone. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).\n",
+					"type": "string",
+					"example": "sub.example.com"
+				}
+			},
+			{
+				"in": "query",
+				"name": "shadowing_name",
+				"schema": {
+					"description": "Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).\n",
+					"type": "string",
+					"example": "www.sub.example.com"
 				}
 			}
 		],
@@ -42624,7 +42957,7 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "batch"
+		"x-fern-sdk-method-name": "bulk-apply"
 	},
 	"POST /zones/{zone_id}/dns_records/import": {
 		"operationId": "dns-records-for-a-zone-import-dns-records",

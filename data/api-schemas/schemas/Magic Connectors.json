@@ -5181,6 +5181,320 @@
 													"description": "Platform identifier",
 													"type": "string"
 												},
+												"qdiscs": {
+													"type": "array",
+													"items": {
+														"description": "Snapshot Qdisc",
+														"type": "object",
+														"properties": {
+															"backlog": {
+																"description": "Bytes currently queued",
+																"type": "number"
+															},
+															"bytes": {
+																"description": "Total bytes sent",
+																"type": "number"
+															},
+															"cake_stats": {
+																"description": "Snapshot Qdisc CAKE",
+																"type": "object",
+																"properties": {
+																	"avg_hdr_offset": {
+																		"description": "Average offset of the network header within packets (bytes)",
+																		"type": "number"
+																	},
+																	"capacity_estimate": {
+																		"description": "Estimated link capacity (bytes per second)",
+																		"type": "number"
+																	},
+																	"max_adj_size": {
+																		"description": "Largest overhead-adjusted packet seen (bytes)",
+																		"type": "number"
+																	},
+																	"max_network_size": {
+																		"description": "Largest network-layer packet seen (bytes)",
+																		"type": "number"
+																	},
+																	"memory_limit": {
+																		"description": "Memory limit for queued packets (bytes)",
+																		"type": "number"
+																	},
+																	"memory_used": {
+																		"description": "Peak memory used by queued packets (bytes)",
+																		"type": "number"
+																	},
+																	"min_adj_size": {
+																		"description": "Smallest overhead-adjusted packet seen (bytes, 65535 until the first packet after creation or an overhead change)",
+																		"type": "number"
+																	},
+																	"min_network_size": {
+																		"description": "Smallest network-layer packet seen (bytes, 65535 until the first packet after creation or an overhead change)",
+																		"type": "number"
+																	},
+																	"options": {
+																		"description": "Snapshot Qdisc CAKE Options",
+																		"type": "object",
+																		"properties": {
+																			"ack_filter": {
+																				"description": "ACK filter mode",
+																				"type": "string"
+																			},
+																			"atm": {
+																				"description": "ATM cell compensation mode (absent when raw without ATM or PTM compensation)",
+																				"type": "string"
+																			},
+																			"autorate": {
+																				"description": "Automatic rate estimation mode (absent when disabled)",
+																				"type": "string"
+																			},
+																			"bandwidth": {
+																				"description": "Shaped rate (bytes per second, 0 when unlimited)",
+																				"type": "number"
+																			},
+																			"diffserv": {
+																				"description": "Diffserv mode",
+																				"type": "string"
+																			},
+																			"flowmode": {
+																				"description": "Flow isolation mode",
+																				"type": "string"
+																			},
+																			"fwmark": {
+																				"description": "Firewall mark mask used to select a tin",
+																				"type": "string"
+																			},
+																			"ingress": {
+																				"description": "Set when shaping in ingress mode",
+																				"type": "boolean"
+																			},
+																			"memlimit": {
+																				"description": "Configured memory limit for queued packets (bytes, absent when unset)",
+																				"type": "number"
+																			},
+																			"mpu": {
+																				"description": "Minimum packet size (bytes, absent when unset)",
+																				"type": "number"
+																			},
+																			"nat": {
+																				"description": "Set when flow isolation uses post-NAT addresses",
+																				"type": "boolean"
+																			},
+																			"overhead": {
+																				"description": "Per-packet overhead compensation (bytes)",
+																				"type": "number"
+																			},
+																			"raw": {
+																				"description": "Set when no overhead compensation is applied",
+																				"type": "boolean"
+																			},
+																			"rtt": {
+																				"description": "Expected round-trip time (microseconds)",
+																				"type": "number"
+																			},
+																			"split_gso": {
+																				"description": "Set when GSO super-packets are split",
+																				"type": "boolean"
+																			},
+																			"wash": {
+																				"description": "Set when DSCP markings are cleared on egress",
+																				"type": "boolean"
+																			}
+																		},
+																		"required": [
+																			"bandwidth",
+																			"diffserv",
+																			"flowmode",
+																			"nat",
+																			"wash",
+																			"ingress",
+																			"ack_filter",
+																			"split_gso",
+																			"rtt",
+																			"raw",
+																			"overhead",
+																			"fwmark"
+																		]
+																	},
+																	"tins": {
+																		"type": "array",
+																		"items": {
+																			"description": "Snapshot Qdisc CAKE Tin",
+																			"type": "object",
+																			"properties": {
+																				"ack_drops": {
+																					"description": "Total ACKs dropped by the ACK filter",
+																					"type": "number"
+																				},
+																				"avg_delay_us": {
+																					"description": "Average queueing delay (microseconds)",
+																					"type": "number"
+																				},
+																				"backlog_bytes": {
+																					"description": "Bytes currently queued",
+																					"type": "number"
+																				},
+																				"base_delay_us": {
+																					"description": "Minimum queueing delay (microseconds)",
+																					"type": "number"
+																				},
+																				"bulk_flows": {
+																					"description": "Current number of bulk flows",
+																					"type": "number"
+																				},
+																				"drops": {
+																					"description": "Total packets dropped",
+																					"type": "number"
+																				},
+																				"ecn_mark": {
+																					"description": "Total packets marked with ECN Congestion Experienced",
+																					"type": "number"
+																				},
+																				"flow_quantum": {
+																					"description": "Bytes each flow may send per scheduling round",
+																					"type": "number"
+																				},
+																				"interval_us": {
+																					"description": "AQM interval (microseconds)",
+																					"type": "number"
+																				},
+																				"max_pkt_len": {
+																					"description": "Largest packet seen (bytes)",
+																					"type": "number"
+																				},
+																				"peak_delay_us": {
+																					"description": "Peak queueing delay (microseconds)",
+																					"type": "number"
+																				},
+																				"sent_bytes": {
+																					"description": "Total bytes sent",
+																					"type": "number"
+																				},
+																				"sent_packets": {
+																					"description": "Total packets sent",
+																					"type": "number"
+																				},
+																				"sparse_flows": {
+																					"description": "Current number of sparse flows",
+																					"type": "number"
+																				},
+																				"target_us": {
+																					"description": "Target queueing delay (microseconds)",
+																					"type": "number"
+																				},
+																				"threshold_rate": {
+																					"description": "Rate above which the tin yields to lower-priority tins (bytes per second)",
+																					"type": "number"
+																				},
+																				"unresponsive_flows": {
+																					"description": "Current number of unresponsive flows",
+																					"type": "number"
+																				},
+																				"way_collisions": {
+																					"description": "Total flow hash collisions",
+																					"type": "number"
+																				},
+																				"way_indirect_hits": {
+																					"description": "Total flow hash lookups resolved by set-associative probing",
+																					"type": "number"
+																				},
+																				"way_misses": {
+																					"description": "Total flow hash lookups that allocated a new queue",
+																					"type": "number"
+																				}
+																			},
+																			"required": [
+																				"threshold_rate",
+																				"sent_bytes",
+																				"sent_packets",
+																				"drops",
+																				"ecn_mark",
+																				"ack_drops",
+																				"backlog_bytes",
+																				"target_us",
+																				"interval_us",
+																				"peak_delay_us",
+																				"avg_delay_us",
+																				"base_delay_us",
+																				"sparse_flows",
+																				"bulk_flows",
+																				"unresponsive_flows",
+																				"way_indirect_hits",
+																				"way_misses",
+																				"way_collisions",
+																				"max_pkt_len",
+																				"flow_quantum"
+																			]
+																		}
+																	}
+																},
+																"required": [
+																	"options",
+																	"memory_used",
+																	"memory_limit",
+																	"capacity_estimate",
+																	"min_network_size",
+																	"max_network_size",
+																	"min_adj_size",
+																	"max_adj_size",
+																	"avg_hdr_offset",
+																	"tins"
+																]
+															},
+															"dev": {
+																"description": "Interface the qdisc is attached to",
+																"type": "string"
+															},
+															"drops": {
+																"description": "Total packets dropped",
+																"type": "number"
+															},
+															"handle": {
+																"description": "Qdisc handle",
+																"type": "string"
+															},
+															"kind": {
+																"description": "Kind of qdisc",
+																"type": "string"
+															},
+															"overlimits": {
+																"description": "Total times the qdisc was over its limit",
+																"type": "number"
+															},
+															"packets": {
+																"description": "Total packets sent",
+																"type": "number"
+															},
+															"parent": {
+																"description": "Parent class handle (absent when root)",
+																"type": "string"
+															},
+															"qlen": {
+																"description": "Packets currently queued",
+																"type": "number"
+															},
+															"requeues": {
+																"description": "Total packets requeued",
+																"type": "number"
+															},
+															"root": {
+																"description": "Set when attached at the root of the interface",
+																"type": "boolean"
+															}
+														},
+														"required": [
+															"dev",
+															"kind",
+															"handle",
+															"bytes",
+															"packets",
+															"drops",
+															"overlimits",
+															"requeues",
+															"backlog",
+															"qlen"
+														]
+													}
+												},
 												"routes": {
 													"type": "array",
 													"items": {
@@ -6811,6 +7125,320 @@
 															"platform": {
 																"description": "Platform identifier",
 																"type": "string"
+															},
+															"qdiscs": {
+																"type": "array",
+																"items": {
+																	"description": "Snapshot Qdisc",
+																	"type": "object",
+																	"properties": {
+																		"backlog": {
+																			"description": "Bytes currently queued",
+																			"type": "number"
+																		},
+																		"bytes": {
+																			"description": "Total bytes sent",
+																			"type": "number"
+																		},
+																		"cake_stats": {
+																			"description": "Snapshot Qdisc CAKE",
+																			"type": "object",
+																			"properties": {
+																				"avg_hdr_offset": {
+																					"description": "Average offset of the network header within packets (bytes)",
+																					"type": "number"
+																				},
+																				"capacity_estimate": {
+																					"description": "Estimated link capacity (bytes per second)",
+																					"type": "number"
+																				},
+																				"max_adj_size": {
+																					"description": "Largest overhead-adjusted packet seen (bytes)",
+																					"type": "number"
+																				},
+																				"max_network_size": {
+																					"description": "Largest network-layer packet seen (bytes)",
+																					"type": "number"
+																				},
+																				"memory_limit": {
+																					"description": "Memory limit for queued packets (bytes)",
+																					"type": "number"
+																				},
+																				"memory_used": {
+																					"description": "Peak memory used by queued packets (bytes)",
+																					"type": "number"
+																				},
+																				"min_adj_size": {
+																					"description": "Smallest overhead-adjusted packet seen (bytes, 65535 until the first packet after creation or an overhead change)",
+																					"type": "number"
+																				},
+																				"min_network_size": {
+																					"description": "Smallest network-layer packet seen (bytes, 65535 until the first packet after creation or an overhead change)",
+																					"type": "number"
+																				},
+																				"options": {
+																					"description": "Snapshot Qdisc CAKE Options",
+																					"type": "object",
+																					"properties": {
+																						"ack_filter": {
+																							"description": "ACK filter mode",
+																							"type": "string"
+																						},
+																						"atm": {
+																							"description": "ATM cell compensation mode (absent when raw without ATM or PTM compensation)",
+																							"type": "string"
+																						},
+																						"autorate": {
+																							"description": "Automatic rate estimation mode (absent when disabled)",
+																							"type": "string"
+																						},
+																						"bandwidth": {
+																							"description": "Shaped rate (bytes per second, 0 when unlimited)",
+																							"type": "number"
+																						},
+																						"diffserv": {
+																							"description": "Diffserv mode",
+																							"type": "string"
+																						},
+																						"flowmode": {
+																							"description": "Flow isolation mode",
+																							"type": "string"
+																						},
+																						"fwmark": {
+																							"description": "Firewall mark mask used to select a tin",
+																							"type": "string"
+																						},
+																						"ingress": {
+																							"description": "Set when shaping in ingress mode",
+																							"type": "boolean"
+																						},
+																						"memlimit": {
+																							"description": "Configured memory limit for queued packets (bytes, absent when unset)",
+																							"type": "number"
+																						},
+																						"mpu": {
+																							"description": "Minimum packet size (bytes, absent when unset)",
+																							"type": "number"
+																						},
+																						"nat": {
+																							"description": "Set when flow isolation uses post-NAT addresses",
+																							"type": "boolean"
+																						},
+																						"overhead": {
+																							"description": "Per-packet overhead compensation (bytes)",
+																							"type": "number"
+																						},
+																						"raw": {
+																							"description": "Set when no overhead compensation is applied",
+																							"type": "boolean"
+																						},
+																						"rtt": {
+																							"description": "Expected round-trip time (microseconds)",
+																							"type": "number"
+																						},
+																						"split_gso": {
+																							"description": "Set when GSO super-packets are split",
+																							"type": "boolean"
+																						},
+																						"wash": {
+																							"description": "Set when DSCP markings are cleared on egress",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"bandwidth",
+																						"diffserv",
+																						"flowmode",
+																						"nat",
+																						"wash",
+																						"ingress",
+																						"ack_filter",
+																						"split_gso",
+																						"rtt",
+																						"raw",
+																						"overhead",
+																						"fwmark"
+																					]
+																				},
+																				"tins": {
+																					"type": "array",
+																					"items": {
+																						"description": "Snapshot Qdisc CAKE Tin",
+																						"type": "object",
+																						"properties": {
+																							"ack_drops": {
+																								"description": "Total ACKs dropped by the ACK filter",
+																								"type": "number"
+																							},
+																							"avg_delay_us": {
+																								"description": "Average queueing delay (microseconds)",
+																								"type": "number"
+																							},
+																							"backlog_bytes": {
+																								"description": "Bytes currently queued",
+																								"type": "number"
+																							},
+																							"base_delay_us": {
+																								"description": "Minimum queueing delay (microseconds)",
+																								"type": "number"
+																							},
+																							"bulk_flows": {
+																								"description": "Current number of bulk flows",
+																								"type": "number"
+																							},
+																							"drops": {
+																								"description": "Total packets dropped",
+																								"type": "number"
+																							},
+																							"ecn_mark": {
+																								"description": "Total packets marked with ECN Congestion Experienced",
+																								"type": "number"
+																							},
+																							"flow_quantum": {
+																								"description": "Bytes each flow may send per scheduling round",
+																								"type": "number"
+																							},
+																							"interval_us": {
+																								"description": "AQM interval (microseconds)",
+																								"type": "number"
+																							},
+																							"max_pkt_len": {
+																								"description": "Largest packet seen (bytes)",
+																								"type": "number"
+																							},
+																							"peak_delay_us": {
+																								"description": "Peak queueing delay (microseconds)",
+																								"type": "number"
+																							},
+																							"sent_bytes": {
+																								"description": "Total bytes sent",
+																								"type": "number"
+																							},
+																							"sent_packets": {
+																								"description": "Total packets sent",
+																								"type": "number"
+																							},
+																							"sparse_flows": {
+																								"description": "Current number of sparse flows",
+																								"type": "number"
+																							},
+																							"target_us": {
+																								"description": "Target queueing delay (microseconds)",
+																								"type": "number"
+																							},
+																							"threshold_rate": {
+																								"description": "Rate above which the tin yields to lower-priority tins (bytes per second)",
+																								"type": "number"
+																							},
+																							"unresponsive_flows": {
+																								"description": "Current number of unresponsive flows",
+																								"type": "number"
+																							},
+																							"way_collisions": {
+																								"description": "Total flow hash collisions",
+																								"type": "number"
+																							},
+																							"way_indirect_hits": {
+																								"description": "Total flow hash lookups resolved by set-associative probing",
+																								"type": "number"
+																							},
+																							"way_misses": {
+																								"description": "Total flow hash lookups that allocated a new queue",
+																								"type": "number"
+																							}
+																						},
+																						"required": [
+																							"threshold_rate",
+																							"sent_bytes",
+																							"sent_packets",
+																							"drops",
+																							"ecn_mark",
+																							"ack_drops",
+																							"backlog_bytes",
+																							"target_us",
+																							"interval_us",
+																							"peak_delay_us",
+																							"avg_delay_us",
+																							"base_delay_us",
+																							"sparse_flows",
+																							"bulk_flows",
+																							"unresponsive_flows",
+																							"way_indirect_hits",
+																							"way_misses",
+																							"way_collisions",
+																							"max_pkt_len",
+																							"flow_quantum"
+																						]
+																					}
+																				}
+																			},
+																			"required": [
+																				"options",
+																				"memory_used",
+																				"memory_limit",
+																				"capacity_estimate",
+																				"min_network_size",
+																				"max_network_size",
+																				"min_adj_size",
+																				"max_adj_size",
+																				"avg_hdr_offset",
+																				"tins"
+																			]
+																		},
+																		"dev": {
+																			"description": "Interface the qdisc is attached to",
+																			"type": "string"
+																		},
+																		"drops": {
+																			"description": "Total packets dropped",
+																			"type": "number"
+																		},
+																		"handle": {
+																			"description": "Qdisc handle",
+																			"type": "string"
+																		},
+																		"kind": {
+																			"description": "Kind of qdisc",
+																			"type": "string"
+																		},
+																		"overlimits": {
+																			"description": "Total times the qdisc was over its limit",
+																			"type": "number"
+																		},
+																		"packets": {
+																			"description": "Total packets sent",
+																			"type": "number"
+																		},
+																		"parent": {
+																			"description": "Parent class handle (absent when root)",
+																			"type": "string"
+																		},
+																		"qlen": {
+																			"description": "Packets currently queued",
+																			"type": "number"
+																		},
+																		"requeues": {
+																			"description": "Total packets requeued",
+																			"type": "number"
+																		},
+																		"root": {
+																			"description": "Set when attached at the root of the interface",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"dev",
+																		"kind",
+																		"handle",
+																		"bytes",
+																		"packets",
+																		"drops",
+																		"overlimits",
+																		"requeues",
+																		"backlog",
+																		"qlen"
+																	]
+																}
 															},
 															"routes": {
 																"type": "array",

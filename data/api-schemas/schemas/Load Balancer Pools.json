@@ -2547,8 +2547,8 @@
 			"Load Balancing: Monitors and Pools Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "user.load-balancers.pools.edit.pools",
-		"x-fern-sdk-method-name": "pools"
+		"x-fern-sdk-group-name": "user.load-balancers.pools",
+		"x-fern-sdk-method-name": "bulk-edit"
 	},
 	"PATCH /user/load_balancers/pools/{pool_id}": {
 		"operationId": "load-balancer-pools-patch-pool",
@@ -3448,8 +3448,8 @@
 			"Load Balancing: Monitors and Pools Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "user.load-balancers.pools.edit.pools",
-		"x-fern-sdk-method-name": "pool"
+		"x-fern-sdk-group-name": "user.load-balancers.pools",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /user/load_balancers/pools": {
 		"operationId": "load-balancer-pools-create-pool",
