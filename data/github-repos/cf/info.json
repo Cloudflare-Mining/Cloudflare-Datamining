@@ -22,15 +22,13 @@
 	"default_branch": "main",
 	"branches": [
 		"WC-5985-preview-secret-transforms",
+		"automation/update-forge",
 		"bdixon/factory",
 		"changeset-release/main",
 		"cjol/metadata-body-description",
 		"codex/cross-account-service-bindings",
 		"codex/fix-204-shared-registry",
-		"codex/fix-dry-run-input",
-		"codex/issue-471-excluded-account",
-		"codex/issue-509-large-d1-migrations",
-		"codex/issue-606-variant-descriptions",
+		"codex/nullable-object-array-flags",
 		"codex/update-workers-sdk-packages",
 		"codex/vouch-ry",
 		"codex/workers-oidc-local-dev",
@@ -59,7 +57,6 @@
 		"factory/issue-587-a0ac7583",
 		"factory/issue-606-ab8a3ea7",
 		"factory/issue-621-4195e64f",
-		"factory/issue-655-a5ec23a9",
 		"investigate/issue-20",
 		"investigate/issue-99",
 		"irvinebroque/do-deferred-defaults",
@@ -67,7 +64,6 @@
 		"penalosa/regression-testing",
 		"penalosa/rust-generator",
 		"remove-x-forge-globals",
-		"renovate/forge",
 		"stevenchong/retire-surfaces-direct-api-schemas"
 	]
 }
