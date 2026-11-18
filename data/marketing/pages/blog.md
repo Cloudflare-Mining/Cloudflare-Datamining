@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 18, 2026 [<h2>How Cloudflare WAF helps protect against Java4Shell (CVE-2026-114938)</h2>](https://blog.cloudflare.com/java4shell-waf-protection/)
+
+Java4Shell is a critical memory-corruption flaw in OpenJDK's Base64 decoder that can lead to remote code execution. Cloudflare has released six WAF managed rules for paid plans that logs matching requests by default. Patch your Java runtimes now.
+
+![Denzil Correa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B6V73R1DF1YQBSAN5YFJ.png&w=64&h=64&f=webp&fit=cover&position=center)![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Georgie Yoxall](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HTH4Y5JB9BR4J2PDNJZG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Denzil Correa](https://blog.cloudflare.com/author/denzil-correa/),  [Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Georgie Yoxall](https://blog.cloudflare.com/author/georgie/), and  [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7QEX0WPTPFDDEE77HAVYYGB.01M7QEX1A784VKSE3C9SPC0P30.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/java4shell-waf-protection/)
+
 November 17, 2026 [<h2>Quad9's withdrawal from France: A canary in the coal mine</h2>](https://blog.cloudflare.com/quad9-withdrawal-from-france/)
 
 Quad9's forced withdrawal from France highlights the dangers of mandating DNS-level blocking. We explore why forcing public resolvers to act as content filters is technically flawed and threatens the open Internet.
@@ -17,8 +27,6 @@ Quad9's forced withdrawal from France highlights the dangers of mandating DNS-le
 ![Patrick Nemeroff](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFMW1RWSEK7TGWF6VFST.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Christiaan Smits](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493GZZWXHHZC3ZA275EAJP.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Patrick Nemeroff](https://blog.cloudflare.com/author/patrick-nemeroff/) and  [Christiaan Smits](https://blog.cloudflare.com/author/christiaan/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7NJ9YQG0JNP2HSE7YEGCHJB.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/quad9-withdrawal-from-france/)
 
 November 13, 2026 [<h2>Kitesurf is now open source</h2>](https://blog.cloudflare.com/kitesurf-open-source/)
 
@@ -155,14 +163,6 @@ Naive byte-range caching can waste gigabytes of origin bandwidth on small reques
 ![Matthew Gumport](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MRN7JAQQFSHSNAJAM1QNS7.01M5MRN86CH33YX9T3KVKHYEAR.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matthew Gumport](https://blog.cloudflare.com/author/matthew-gumport/)
-
-October 23, 2026 [<h2>Bringing post-quantum cryptography to geographically fenced key management</h2>](https://blog.cloudflare.com/post-quantum-geo-key-manager/)
-
-Cloudflare's new post-quantum GeoKey Manager protects geographically fenced decryption keys from harvest now, decrypt later attacks. Learn how we redesigned our cryptography stack to support strict data sovereignty in a post-quantum world.
-
-![Chetan Agrawal](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MYC9JA1JNK8WYQD95KD5PH.01M5MYCADDBMF9H0GV20JGXGBD.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Arka Nayan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MYDAK4W1D7DAY5XEXZNQ2F.01M5MYDB4SANWM43NZQ9G5D5EJ.png&w=64&h=64&f=webp&fit=cover&position=center)![Erik Engstrom](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46709CDX8ZPPNR6D3SZS8B.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Chetan Agrawal](https://blog.cloudflare.com/author/chetan-agrawal/),  [Arka Nayan](https://blog.cloudflare.com/author/arka-nayan/), and  [Erik Engstrom](https://blog.cloudflare.com/author/erik-engstrom/)
 
 Load more
 
