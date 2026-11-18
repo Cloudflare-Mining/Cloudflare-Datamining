@@ -36,6 +36,16 @@
 				"unit_price": 5
 			},
 			{
+				"name": "ohttp_gateway_enabled",
+				"default": 0,
+				"unit_price": 0
+			},
+			{
+				"name": "ohttp_gateway_requests",
+				"default": 0,
+				"unit_price": 0
+			},
+			{
 				"name": "page_rules",
 				"default": 3,
 				"unit_price": 1
@@ -55,6 +65,16 @@
 		"currency": "USD",
 		"frequency": "monthly",
 		"components": [
+			{
+				"name": "ohttp_gateway_enabled",
+				"default": 0,
+				"unit_price": 0
+			},
+			{
+				"name": "ohttp_gateway_requests",
+				"default": 0,
+				"unit_price": 0
+			},
 			{
 				"name": "page_rules",
 				"default": 30,
@@ -81,6 +101,16 @@
 		"frequency": "monthly",
 		"components": [
 			{
+				"name": "ohttp_gateway_enabled",
+				"default": 0,
+				"unit_price": 0
+			},
+			{
+				"name": "ohttp_gateway_requests",
+				"default": 0,
+				"unit_price": 0
+			},
+			{
 				"name": "page_rules",
 				"default": 50,
 				"unit_price": 1
@@ -105,6 +135,16 @@
 		"currency": "USD",
 		"frequency": "monthly",
 		"components": [
+			{
+				"name": "ohttp_gateway_enabled",
+				"default": 0,
+				"unit_price": 0
+			},
+			{
+				"name": "ohttp_gateway_requests",
+				"default": 0,
+				"unit_price": 0
+			},
 			{
 				"name": "page_rules",
 				"default": 20,
@@ -132,6 +172,16 @@
 		"components": [
 			{
 				"name": "max_ratelimit_rules_per_ruleset",
+				"default": 0,
+				"unit_price": 0
+			},
+			{
+				"name": "ohttp_gateway_enabled",
+				"default": 0,
+				"unit_price": 0
+			},
+			{
+				"name": "ohttp_gateway_requests",
 				"default": 0,
 				"unit_price": 0
 			},
