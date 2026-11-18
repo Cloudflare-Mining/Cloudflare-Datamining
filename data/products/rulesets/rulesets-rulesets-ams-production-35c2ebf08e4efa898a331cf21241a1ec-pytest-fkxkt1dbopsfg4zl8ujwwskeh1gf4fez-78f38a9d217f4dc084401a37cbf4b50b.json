@@ -1,0 +1,30 @@
+{
+	"description": "",
+	"id": "78f38a9d217f4dc084401a37cbf4b50b",
+	"kind": "managed",
+	"last_updated": "2026-11-18T11:30:02.24664Z",
+	"name": "rulesets-ams-production-35c2ebf08e4efa898a331cf21241a1ec-pytest-FkXkt1DBoPSFg4ZL8UjwWSkeh1Gf4fEz",
+	"phase": "http_response_firewall_custom",
+	"rules": [
+		{
+			"action": "log",
+			"categories": [
+				"response-security"
+			],
+			"enabled": true,
+			"id": "89ae7c6a4d4b48ed9d2042941f5b23a2",
+			"last_updated": "2026-11-18T11:30:02.24664Z",
+			"ref": "managed-response-log",
+			"version": "1"
+		},
+		{
+			"action": "block",
+			"enabled": true,
+			"id": "8a1d77a93a144be3bb701aab037363e3",
+			"last_updated": "2026-11-18T11:30:02.24664Z",
+			"ref": "managed-response-block",
+			"version": "1"
+		}
+	],
+	"version": "1"
+}
