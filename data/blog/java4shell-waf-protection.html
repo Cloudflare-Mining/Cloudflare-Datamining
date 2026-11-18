@@ -1,0 +1,162 @@
+<p>On November 17, 2026, the security research company Calif disclosed <a href="https://calif.io/java4shell"><u>Java4Shell (CVE-2026-114938)</u></a>, a memory-corruption vulnerability in the Base64 decoder of OpenJDK, the most widely used Java runtime. Under the Common Vulnerability Scoring System (CVSS) 4.0, it scores 9.2 out of 10 (Critical). The flaw affects Java. OpenJDK published a <a href="https://openjdk.org/groups/vulnerability/advisories/2026-11-17"><u>security advisory</u></a> and Oracle released patched builds in its <a href="https://www.oracle.com/security-alerts/cspunov2026.html"><u>November 2026 Critical Patch Update</u></a> the same day, at 21:00 UTC.</p>
+<p>The vulnerability lets a remote attacker with no credentials send malformed Base64 data to a Java application and overwrite memory next to the decoded output. Calif turned that overwrite into a leak of heap memory, similar to <a href="https://www.heartbleed.com"><u>Heartbleed</u></a>, and into remote code execution. Calif demonstrated pre-authentication remote code execution against Keycloak, Atlassian Jira, Atlassian Confluence, JFrog Artifactory, Jenkins and PingFederate in their default configurations, and post-authentication remote code execution against Apache Kafka, Apache Solr, Elasticsearch, Gerrit, and Spinnaker.</p>
+<p>Cloudflare has released a new set of rules in the Cloudflare Managed Ruleset designed to detect malformed Base64 input patterns associated with this vulnerability. The rules are available on Pro, Business and Enterprise plans and are enabled by default with the Log action because malformed input and some benign application-specific token formats can resemble exploitation attempts. Blocking by default could therefore disrupt legitimate traffic. Customers can review matching requests in Security Events now and change the rules action to Block once they confirm it does not affect legitimate traffic.&nbsp;</p>
+<p>The WAF is an additional layer of defense, not a replacement for the patch. Java4Shell can be reached through paths a WAF does not see, like outbound TLS responses, and the only complete fix is to update the Java runtime. Our analysts continue to monitor attack activity and will update the rules as new techniques and variations appear. You can track rule changes in the <a href="https://developers.cloudflare.com/waf/change-log/changelog"><u>WAF changelog</u></a> and get more information on how the vulnerability develops on the dedicated <a href="https://radar.cloudflare.com/zero-wire/java4shell"><u>Cloudflare Zero Wire briefing</u></a>.</p>
+<p>We have seen no indication so far that Java4Shell was exploited on Cloudflare infrastructure.</p>
+<h2>What we know about the vulnerability</h2>
+<p>Base64 is a common way to represent binary data as text. Java applications decode Base64 when they process authentication headers, tokens, file uploads and many network messages. To decode it faster, OpenJDK replaces frequently used code with specialized machine code, called intrinsics. On supported x86-64 processors, the Base64 intrinsic uses AVX-512 instructions to process 64 bytes at a time.</p>
+<p>The bug sits in the handwritten assembly that handles the final characters of the input. When the tail of the input contains padding characters (=) in a position where valid Base64 never places them, the routine calculates a negative output length. That invalid length turns into a full 64-byte write. For a 65-character input, made of 64 characters followed by a single =, OpenJDK allocates a 50-byte output array and then writes 62 bytes past its end.</p>
+<p>Java eventually rejects the input as invalid and throws an exception. By then, the neighboring memory has already been overwritten. An application's own input validation does not help, because the corruption happens inside the decoder before the application can reject the data.</p>
+<p>The simplest trigger is 64 A characters followed by =. On OpenJDK 17, the trigger needs 128 characters followed by =, because the threshold for the fast code path is higher.</p>
+<p>Exploitation is not point-and-shoot. The overwritten bytes are mostly fixed values, and the attacker controls only where the write lands. To build a working exploit, Calif arranged the Java heap so that the overflow enlarged neighboring arrays, which gave them first a way to read heap memory and then a way to write chosen bytes. Each target application requires its own exploit chain. Calif reported developing its first working local exploit in about three hours with the help of AI agents, so we expect other attackers to build exploit chains quickly.</p>
+<h3>Who is affected</h3>
+<p>Java4Shell affects a system only when all the following conditions are true:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 868px;">
+		<colgroup>
+			<col style="width: 139px;">
+			<col style="width: 729px;">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Condition</strong></p>
+				</td>
+				<td>
+					<p><strong>Details</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Java runtime</p>
+				</td>
+				<td>
+					<p>OpenJDK 17.0.6 or newer, including distributions built from OpenJDK: Amazon Corretto, Eclipse Temurin, Microsoft Build of OpenJDK, Azul Zulu, BellSoft Liberica, SAP SapMachine, Red Hat OpenJDK, Oracle OpenJDK, Oracle Java SE and Oracle GraalVM for JDK. <br><br>Check <a href="https://www.oracle.com/security-alerts/cspunov2026.html"><u>Oracle's advisory</u></a> for the exact list of affected Oracle builds.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Processor</p>
+				</td>
+				<td>
+					<p>x86-64 with AVX-512 VBMI support, such as Intel Xeon Ice Lake, Sapphire Rapids, Emerald Rapids and Granite Rapids, or AMD EPYC and Ryzen Zen 4 or newer. ARM64 processors are not affected.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Input</p>
+				</td>
+				<td>
+					<p>The application decodes attacker-controlled Base64 data with the standard Java decoder.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Many applications bundle their own Java runtime, and container images ship with a fixed Java Development Kit (JDK). Upgrading the system Java package does not update those copies, and it does not replace a Java virtual machine (JVM) that is already running. Every updated service needs a restart.</p>
+<h2>Mitigate if you cannot patch right away</h2>
+<p>If you cannot update immediately, Calif documents two JVM startup flags that remove the vulnerable code path:</p>
+<ul>
+	<li><code>-XX:-UseBASE64Intrinsics</code> disables hardware-accelerated Base64 encoding and decoding.</li>
+	<li><code>-XX:UseAVX=2</code> disables AVX-512. Apply this flag only on x86-64 hosts. OpenJDK on ARM does not recognize it and will fail to start.<br></li>
+</ul>
+<p>Both flags require a restart and may reduce performance for workloads that decode large amounts of Base64. They buy time while you patch. They do not replace the update.</p>
+<h2>Protect your infrastructure while you patch</h2>
+<p>Patching every Java runtime takes time, especially when JDKs are bundled inside applications and container images. Cloudflare WAF can reduce your exposure while you patch. A new managed rule, available on paid plans and enabled in Log mode by default, detects the malformed Base64 input that triggers Java4Shell. For Business and Enterprise customers, <a href="https://developers.cloudflare.com/waf/detections/attack-score"><u>WAF attack score</u></a> adds a machine learning layer that scores each request for remote code execution payloads, which helps catch variations and bypass attempts that signature-based rules can miss.</p>
+<h3>New managed rules</h3>
+<p>Protection for paid plans has been released as part of the Cloudflare Managed Ruleset (Ruleset ID efb7b8c949ac4650a09736fc376e9aee). The rule is enabled by default with the Log action, because blocking by default could cause false positives on legitimate Base64 traffic. To review its matches, go to Security &gt; Security Analytics &gt; Events and filter by the rule ID. If the matches are not legitimate traffic, change the rule action to Block: go to Security &gt; Settings, edit the Cloudflare Managed Ruleset, search for CVE-2026-114938 and set the rule action to Block. Alternatively, you can follow the link to <a href="https://radar.cloudflare.com/zero-wire/java4shell#cloudflare-coverage"><u>review your configuration on the Zero Wire</u></a> briefing.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 666px;">
+		<colgroup>
+			<col style="width: 333px;">
+			<col style="width: 333px;">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Rule description</strong></p>
+				</td>
+				<td>
+					<p><strong>Rule ID</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Java4Shell - Malformed Base64 Header - CVE-2026-114938</p>
+				</td>
+				<td>
+					<p>5de9b20a45ea45d3841919ab4d718bf4</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Java4Shell - Malformed Base64 Query Value - CVE-2026-114938</p>
+				</td>
+				<td>
+					<p>46bb4172813e471ea62d31c02337b51d</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Java4Shell - Malformed Base64 Body Value - CVE-2026-114938</p>
+				</td>
+				<td>
+					<p>d4dc3f71f1bc44a0811ae570e5e5836c</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Java4Shell - Malformed Base64 Path Segment - CVE-2026-114938</p>
+				</td>
+				<td>
+					<p>0dceaf0684b54fd0b085fcfb6fd6f152</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Java4Shell - Malformed Base64url JWT Component - CVE-2026-114938</p>
+				</td>
+				<td>
+					<p>0ddd0eb664a040779f2f19065a25d991</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Java4Shell - Malformed Base64 WebAuthn Value - CVE-2026-114938</p>
+				</td>
+				<td>
+					<p>4fce1ea79a614c07a27348d167d74ebb</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>We are working on a rule for the Cloudflare Free Managed Ruleset and will update this post when it is available.</p>
+<p>A WAF can block the exploit when the malformed Base64 arrives in an HTTP request that passes through Cloudflare. It cannot block every path to the vulnerable decoder, including:</p>
+<ul>
+	<li><strong>Encoded or nested data.</strong> The Base64 value may be wrapped inside another encoding or compressed format that the application unpacks before decoding.</li>
+	<li><strong>Non-HTTP protocols.</strong> Some affected products, such as the Apache Kafka broker, accept traffic over their own protocols.</li>
+	<li><strong>Outbound connections.</strong> Calif also shared a client-side exploit: a Java program that opens a TLS connection to a malicious server can be compromised, even if it exposes no service of its own.</li>
+	<li><strong>Traffic that bypasses Cloudflare.</strong> This includes internal traffic between services.</li>
+</ul>
+<h3>Adding defense-in-depth with WAF attack score</h3>
+<p>While the managed rule is the primary way to block malformed Base64 triggers at the edge, <a href="https://developers.cloudflare.com/waf/detections/attack-score"><u>Cloudflare WAF Attack Score</u></a> (and specifically its remote code execution sub-score cf.waf.score.rce available on Enterprise plans) can offer an additional, complementary layer of protection.</p>
+<p>Because CVE-2026-114938 (Java4Shell) is a binary heap-corruption vulnerability, an attacker rarely achieves full, reliable remote code execution with a single 65-byte (or 129-byte) trigger string alone. On the wire, that initial trigger looks like an opaque, malformed Base64 string containing heap-corruption bytes rather than traditional web-layer injection syntax. As a result, machine learning models trained on application-layer injection patterns will not flag the raw Base64 trigger in isolation.</p>
+<p>Instead, turning a bounded JVM heap overflow into remote code execution over HTTP almost always requires a multi-stage or multi-parameter exploit chain, which creates more fingerprints that WAF Attack Score can inspect and flag, including:</p>
+<ul>
+	<li>Heap Grooming and Triggering: To corrupt a predictable adjacent object on the JVM heap (such as a String or byte[] length header), attackers often send repetitive parameters or headers alongside the malformed Base64 payload to shape memory layout before triggering the out-of-bounds write.</li>
+	<li>Second-Stage Payloads: Once heap corruption gives the attacker control over execution flow or object references, the exploit still needs commands, scripts, or Java gadgets to run. If an exploit chain pairs the initial heap-corruption trigger with a second-stage payload such as shell execution primitives (/bin/sh -c, cmd.exe, reverse-shell strings) or Java class-loading gadgets (java.lang.Runtime, ProcessBuilder, serialized object streams) tucked into another header, query parameter, or request body, cf.waf.score.rce can detect and score that secondary payload as malicious.</li>
+	<li>Post-Exploitation Activity: Even if an initial heap-read or corruption request slips past edge filters, subsequent HTTP requests attempting to interact with an in-memory webshell or pass OS commands to the compromised JVM remain directly visible to WAF Attack Score.</li>
+</ul>
+<h2>Deploy protections and patch</h2>
+<p>Because sophisticated in-memory exploits can still execute raw shellcode or manipulate bytecode without ever sending plaintext shell commands over HTTP, WAF Attack Score should be used alongside explicit Base64 rules and JVM patching.</p>
+<p>You can find more information on how to deploy Managed rules and attack score in <a href="https://developers.cloudflare.com/waf/get-started"><u>our WAF guide</u></a>, but in a nutshell:</p>
+<p>1. Set the CVE-2026-114938 rule in the Cloudflare Managed Ruleset (Pro plan and above) to Block. It is enabled in Log mode by default, so review its matches in Security Events first. Use the links on the Cloudflare Zero Wire page to review your rules status.</p>
+<p>2. Layer <a href="https://developers.cloudflare.com/waf/get-started/#2-create-custom-rule-based-on-waf-attack-score"><u>Attack Score</u></a> to get ML-based remote code execution (RCE) detection: create a custom rule blocking or challenging requests with a low RCE attack score (for example, cf.waf.score.rce le 20 on Enterprise plans, or cf.waf.score.class eq "attack" on Business plans) to catch multi-stage exploit chains and post-exploitation command traffic.</p>
+<p>3. Remediate at runtime: Upgrade to patched OpenJDK builds (or set -XX:+UnlockDiagnosticVMOptions -XX:-UseBASE64Intrinsics as a temporary workaround) to eliminate the vulnerable AVX-512 code path entirely. Follow the <a href="https://openjdk.org/groups/vulnerability/advisories/2026-11-17"><u>OpenJDK advisory</u></a> and <a href="https://www.oracle.com/security-alerts/cspunov2026.html"><u>Oracle's Critical Patch Update</u></a> and install your Java vendor's fixed release as soon as possible. For a prompt you can give an AI agent to inventory your Java runtimes, see the <a href="https://radar.cloudflare.com/zero-wire/java4shell"><u>Java4Shell page on Cloudflare Zero Wire</u></a>.&nbsp;</p>
+<h2>Impact on Cloudflare infrastructure</h2>
+<p>Cloudflare also runs Java, so when <a href="https://calif.io/java4shell"><u>Java4Shell</u></a> was disclosed we checked our own systems. The vulnerability can only be triggered in specific hardware configurations, namely a x86-64 processor that supports AVX-512 VBMI, so a system is exposed only when both are true. Our investigation found that the majority of our Java workloads are not scheduled on vulnerable systems; we took immediate action to protect the remainder.</p>
+<p>About an hour after the patches were published, we began rolling out a JVM startup option that turns off the accelerated Base64 routine containing the bug on all Java workloads, so decoding falls back to the standard implementation. To be safe, we are rolling out our patched configuration to all machines, regardless of hardware as a precaution. We have seen no indication so far that Java4Shell was exploited on Cloudflare infrastructure.</p>
+<h2>Update every Java runtime now</h2>
+<p>Java4Shell turns a performance optimization in the Java runtime into a path to remote code execution, and with technical details now public, we expect exploit attempts to follow quickly. The fix is to update every Java runtime and restart the services that use it. While you patch, review the new managed rule's matches and switch it to Block if you are on a paid plan and use attack score to catch remote code execution payloads that signatures may miss.&nbsp;</p>
+<p>Our WAF analysts will continue to update protections as new techniques emerge. Follow the <a href="https://developers.cloudflare.com/waf/change-log/changelog"><u>WAF changelog</u></a> for rule updates and the <a href="https://radar.cloudflare.com/zero-wire/java4shell"><u>Java4Shell page on Cloudflare Zero Wire</u></a> for the latest on this vulnerability.</p>
