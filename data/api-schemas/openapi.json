@@ -523997,47 +523997,66 @@
 											"type": "object",
 											"properties": {
 												"balance": {
-													"type": "number"
+													"description": "Credit balance in US cents. Can be fractional, because usage is deducted in fractions of a cent, and is negative when usage overdraws it.",
+													"type": "number",
+													"example": 1250.5
 												},
 												"first_topup_success": {
+													"description": "Whether the account completed its first top-up. Auto top-up can be set up only after it.",
 													"type": "boolean"
 												},
 												"has_default_payment_method": {
+													"description": "Whether AI Gateway billing has a default payment method for the account.",
 													"type": "boolean"
 												},
 												"payment_method": {
+													"description": "The default payment method's card. Null when there is no default, it isn't a card, or it couldn't be read.",
 													"type": "object",
 													"nullable": true,
 													"properties": {
 														"brand": {
-															"type": "string"
+															"description": "Card brand, such as `visa`.",
+															"type": "string",
+															"example": "visa"
 														},
 														"last4": {
-															"type": "string"
+															"description": "Last 4 digits of the card.",
+															"type": "string",
+															"example": "4242"
 														}
 													}
 												},
 												"topup_config": {
+													"description": "Auto top-up configuration, as GET /topup/config returns it.",
 													"type": "object",
 													"properties": {
 														"amount": {
+															"description": "Amount in cents that each auto top-up adds. 0 when auto top-up is off.",
 															"type": "number",
+															"example": 5000,
 															"nullable": true
 														},
 														"disabledReason": {
+															"description": "Why auto top-up was stopped. Present only once it stopped.",
 															"type": "string",
+															"example": "Payment failed after multiple retries",
 															"nullable": true
 														},
 														"error": {
+															"description": "Message from the failure that stopped auto top-up. Present only once it stopped.",
 															"type": "string",
 															"nullable": true
 														},
 														"lastFailedAt": {
+															"description": "When auto top-up was stopped, as a Unix timestamp in milliseconds. Present only once it stopped.",
 															"type": "number",
+															"example": 1700000000000,
 															"nullable": true
 														},
 														"threshold": {
+															"description": "Balance threshold in cents that triggers an auto top-up. 0 when auto top-up is off.",
 															"type": "number",
+															"example": 500,
 															"nullable": true
 														}
 													},
@@ -524469,54 +524488,76 @@
 											"type": "object",
 											"properties": {
 												"invoices": {
+													"description": "Top-up invoices matching `type`, up to 100.",
 													"type": "array",
 													"items": {
 														"properties": {
 															"amount_due": {
-																"type": "number"
+																"description": "Amount due, in US cents.",
+																"type": "number",
+																"example": 5000
 															},
 															"amount_paid": {
-																"type": "number"
+																"description": "Amount paid, in US cents.",
+																"type": "number",
+																"example": 5000
 															},
 															"amount_remaining": {
-																"type": "number"
+																"description": "Amount still owed, in US cents.",
+																"type": "number",
+																"example": 0
 															},
 															"attempt_count": {
+																"description": "Number of payment attempts.",
 																"type": "number"
 															},
 															"attempted": {
+																"description": "Whether payment was attempted.",
 																"type": "boolean"
 															},
 															"auto_advance": {
+																"description": "Whether the invoice is finalized and collected without an explicit action. False for top-up invoices, which are charged when the top-up is made.",
 																"type": "boolean",
 																"nullable": true
 															},
 															"created": {
-																"type": "number"
+																"description": "When the invoice was created, as a Unix timestamp in seconds.",
+																"type": "number",
+																"example": 1700000000
 															},
 															"created_by": {
+																"description": "What created the invoice. Always `AI_GATEWAY`.",
 																"type": "string"
 															},
 															"currency": {
-																"type": "string"
+																"description": "Lowercase ISO 4217 currency code.",
+																"type": "string",
+																"example": "usd"
 															},
 															"description": {
+																"description": "Invoice description.",
 																"type": "string",
 																"nullable": true
 															},
 															"id": {
+																"description": "Invoice number, as printed on the invoice, rather than an identifier. Null until the invoice is finalized.",
 																"type": "string",
 																"nullable": true
 															},
 															"invoice_origin": {
-																"type": "string"
+																"description": "How the top-up was made: `auto` or `manual`.",
+																"type": "string",
+																"example": "manual"
 															},
 															"invoice_pdf": {
+																"description": "URL of the invoice PDF. Null until the invoice is finalized.",
 																"type": "string",
 																"nullable": true
 															},
 															"status": {
+																"description": "Invoice status: `draft`, `open`, `paid`, `uncollectible`, or `void`.",
 																"type": "string",
+																"example": "paid",
 																"nullable": true
 															}
 														},
@@ -524530,18 +524571,23 @@
 													}
 												},
 												"pagination": {
+													"description": "Pagination details. Results come in a single page.",
 													"type": "object",
 													"properties": {
 														"has_more": {
+															"description": "Whether more invoices match than returned.",
 															"type": "boolean"
 														},
 														"page": {
+															"description": "Page number. Always 1.",
 															"type": "number"
 														},
 														"per_page": {
+															"description": "Page size.",
 															"type": "number"
 														},
 														"total_count": {
+															"description": "Number of matching invoices.",
 															"type": "number"
 														}
 													},
@@ -524957,42 +525003,62 @@
 											"type": "object",
 											"properties": {
 												"amount_due": {
-													"type": "number"
+													"description": "Amount due, in US cents.",
+													"type": "number",
+													"example": 1250
 												},
 												"amount_paid": {
-													"type": "number"
+													"description": "Amount paid, in US cents.",
+													"type": "number",
+													"example": 0
 												},
 												"amount_remaining": {
-													"type": "number"
+													"description": "Amount still owed, in US cents.",
+													"type": "number",
+													"example": 1250
 												},
 												"currency": {
-													"type": "string"
+													"description": "Lowercase ISO 4217 currency code.",
+													"type": "string",
+													"example": "usd"
 												},
 												"id": {
+													"description": "Invoice number, as printed on the invoice, rather than an identifier. Empty until the invoice is finalized.",
 													"type": "string"
 												},
 												"invoice_lines": {
+													"description": "Invoice line items.",
 													"type": "array",
 													"items": {
 														"properties": {
 															"amount": {
-																"type": "number"
+																"description": "Line item amount, in US cents.",
+																"type": "number",
+																"example": 1250
 															},
 															"currency": {
-																"type": "string"
+																"description": "Lowercase ISO 4217 currency code.",
+																"type": "string",
+																"example": "usd"
 															},
 															"description": {
+																"description": "Line item description.",
 																"type": "string",
 																"nullable": true
 															},
 															"period": {
+																"description": "Period the line item covers.",
 																"type": "object",
 																"properties": {
 																	"end": {
-																		"type": "number"
+																		"description": "End of the period, as a Unix timestamp in seconds.",
+																		"type": "number",
+																		"example": 1702592000
 																	},
 																	"start": {
-																		"type": "number"
+																		"description": "Start of the period, as a Unix timestamp in seconds.",
+																		"type": "number",
+																		"example": 1700000000
 																	}
 																},
 																"required": [
@@ -525001,22 +525067,29 @@
 																]
 															},
 															"pretax_credit_amounts": {
+																"description": "Credits applied to the line item before tax.",
 																"type": "array",
 																"items": {
 																	"properties": {
 																		"amount": {
-																			"type": "number"
+																			"description": "Credit applied, in US cents.",
+																			"type": "number",
+																			"example": 500
 																		},
 																		"credit_balance_transaction": {
+																			"description": "Credit balance transaction identifier, when `type` is `credit_balance_transaction`.",
 																			"type": "string",
 																			"nullable": true
 																		},
 																		"discount": {
+																			"description": "Discount identifier, when `type` is `discount`.",
 																			"type": "string",
 																			"nullable": true
 																		},
 																		"type": {
-																			"type": "string"
+																			"description": "Credit type: `credit_balance_transaction` or `discount`.",
+																			"type": "string",
+																			"example": "credit_balance_transaction"
 																		}
 																	},
 																	"required": [
@@ -525027,9 +525100,11 @@
 																}
 															},
 															"pricing": {
+																"description": "Line item pricing.",
 																"type": "object",
 																"properties": {
 																	"unit_amount_decimal": {
+																		"description": "Unit price in US cents, as a decimal string.",
 																		"type": "string",
 																		"nullable": true
 																	}
@@ -525039,6 +525114,7 @@
 																]
 															},
 															"quantity": {
+																"description": "Quantity billed.",
 																"type": "number"
 															}
 														},
@@ -525054,13 +525130,19 @@
 													}
 												},
 												"period_end": {
-													"type": "number"
+													"description": "End of the billing period, as a Unix timestamp in seconds.",
+													"type": "number",
+													"example": 1702592000
 												},
 												"period_start": {
-													"type": "number"
+													"description": "Start of the billing period, as a Unix timestamp in seconds.",
+													"type": "number",
+													"example": 1700000000
 												},
 												"status": {
+													"description": "Invoice status.",
 													"type": "string",
+													"example": "draft",
 													"enum": [
 														"draft",
 														"open",
@@ -525782,6 +525864,7 @@
 						}
 					}
 				},
+				"deprecated": true,
 				"security": [
 					{
 						"api_token": []
@@ -525876,18 +525959,25 @@
 											"type": "object",
 											"properties": {
 												"config": {
+													"description": "Spending limit configuration.",
 													"type": "object",
 													"properties": {
 														"amount": {
+															"description": "Spending limit amount in cents.",
 															"type": "number",
+															"example": 10000,
 															"nullable": true
 														},
 														"duration": {
+															"description": "Window the limit applies to: `daily`, `weekly`, or `monthly`.",
 															"type": "string",
+															"example": "monthly",
 															"nullable": true
 														},
 														"strategy": {
+															"description": "Window type: `fixed` or `sliding`.",
 															"type": "string",
+															"example": "fixed",
 															"nullable": true
 														}
 													},
@@ -525898,6 +525988,7 @@
 													]
 												},
 												"enabled": {
+													"description": "Whether a spending limit is enforced for the account.",
 													"type": "boolean"
 												}
 											},
@@ -526208,6 +526299,7 @@
 						}
 					}
 				},
+				"deprecated": true,
 				"security": [
 					{
 						"api_token": []
@@ -527700,8 +527792,8 @@
 			},
 			"get": {
 				"operationId": "aig-billing-get-topup-config",
-				"summary": "Get auto top-up configuration",
-				"description": "Retrieve the current auto top-up threshold, amount, and any error state.",
+				"summary": "Get auto top-up configuration (deprecated)",
+				"description": "Deprecated: use `auto_topup` from GET /topup/eligibility. Retrieve the current auto top-up threshold, amount, and any error state.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -527761,23 +527853,32 @@
 											"type": "object",
 											"properties": {
 												"amount": {
+													"description": "Amount in cents that each auto top-up adds. 0 when auto top-up is off.",
 													"type": "number",
+													"example": 5000,
 													"nullable": true
 												},
 												"disabledReason": {
+													"description": "Why auto top-up was stopped. Present only once it stopped.",
 													"type": "string",
+													"example": "Payment failed after multiple retries",
 													"nullable": true
 												},
 												"error": {
+													"description": "Message from the failure that stopped auto top-up. Present only once it stopped.",
 													"type": "string",
 													"nullable": true
 												},
 												"lastFailedAt": {
+													"description": "When auto top-up was stopped, as a Unix timestamp in milliseconds. Present only once it stopped.",
 													"type": "number",
+													"example": 1700000000000,
 													"nullable": true
 												},
 												"threshold": {
+													"description": "Balance threshold in cents that triggers an auto top-up. 0 when auto top-up is off.",
 													"type": "number",
+													"example": 500,
 													"nullable": true
 												}
 											},
@@ -528088,6 +528189,7 @@
 						}
 					}
 				},
+				"deprecated": true,
 				"security": [
 					{
 						"api_token": []
@@ -528115,7 +528217,7 @@
 					"free": true,
 					"pro": true
 				},
-				"x-fern-availability": "generally-available",
+				"x-fern-availability": "deprecated",
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "ai-gateway.billing.topup.config",
 				"x-fern-sdk-method-name": "get"
@@ -528274,10 +528376,14 @@
 													"additionalProperties": false,
 													"properties": {
 														"amount": {
-															"type": "number"
+															"description": "Auto top-up amount in cents from the request.",
+															"type": "number",
+															"example": 5000
 														},
 														"threshold": {
-															"type": "number"
+															"description": "Balance threshold in cents from the request.",
+															"type": "number",
+															"example": 500
 														}
 													},
 													"required": [
@@ -528290,16 +528396,21 @@
 													"additionalProperties": false,
 													"properties": {
 														"amount": {
-															"type": "number"
+															"description": "Auto top-up amount in cents from the request.",
+															"type": "number",
+															"example": 5000
 														},
 														"status": {
+															"description": "Auto top-up is saved.",
 															"type": "string",
 															"enum": [
 																"configured"
 															]
 														},
 														"threshold": {
-															"type": "number"
+															"description": "Balance threshold in cents from the request.",
+															"type": "number",
+															"example": 500
 														}
 													},
 													"required": [
@@ -528313,22 +528424,30 @@
 													"additionalProperties": false,
 													"properties": {
 														"amount": {
-															"type": "number"
+															"description": "Auto top-up amount in cents from the request.",
+															"type": "number",
+															"example": 5000
 														},
 														"client_secret": {
+															"description": "Client secret used to complete card authentication.",
 															"type": "string"
 														},
 														"setup_intent_id": {
-															"type": "string"
+															"description": "Card setup identifier to send back as `setup_intent_id` once authenticated.",
+															"type": "string",
+															"example": "seti_123"
 														},
 														"status": {
+															"description": "The card must be authenticated with `client_secret` before auto top-up is saved. Then send the request again with `setup_intent_id`.",
 															"type": "string",
 															"enum": [
 																"requires_action"
 															]
 														},
 														"threshold": {
-															"type": "number"
+															"description": "Balance threshold in cents from the request.",
+															"type": "number",
+															"example": 500
 														}
 													},
 													"required": [
@@ -528935,8 +529054,8 @@
 		"/accounts/{account_id}/ai-gateway/billing/topup/eligibility": {
 			"get": {
 				"operationId": "aig-billing-get-topup-eligibility",
-				"summary": "Get top-up eligibility (version 2)",
-				"description": "Read-only top-up eligibility, contract version 2: the account's payment methods and whether each can pay for a top-up, whether a manual top-up is available and its limits, and the auto top-up state. Advisory: every top-up checks again. Answers 409 while version 2 is unavailable for the account.",
+				"summary": "Get top-up eligibility",
+				"description": "Reports whether the account can top up: its payment methods and whether each can pay for a top-up, whether a manual top-up is available and its limits, and the auto top-up state. Advisory only: every top-up checks again. Answers 409 while this endpoint isn't available for the account yet.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -528996,22 +529115,29 @@
 											"type": "object",
 											"properties": {
 												"auto_topup": {
+													"description": "Auto top-up state.",
 													"type": "object",
 													"additionalProperties": false,
 													"properties": {
 														"can_configure": {
+															"description": "Whether auto top-up can be set up or changed now.",
 															"type": "boolean"
 														},
 														"config": {
+															"description": "Configured threshold and amount. Null unless `state` is `active` or `needs_confirmation`.",
 															"type": "object",
 															"additionalProperties": false,
 															"nullable": true,
 															"properties": {
 																"amount_cents": {
-																	"type": "integer"
+																	"description": "Amount in cents that each auto top-up adds.",
+																	"type": "integer",
+																	"example": 5000
 																},
 																"threshold_cents": {
-																	"type": "integer"
+																	"description": "Balance threshold in cents that triggers an auto top-up.",
+																	"type": "integer",
+																	"example": 500
 																}
 															},
 															"required": [
@@ -529020,17 +529146,24 @@
 															]
 														},
 														"limits": {
+															"description": "Allowed auto top-up values.",
 															"type": "object",
 															"additionalProperties": false,
 															"properties": {
 																"amount_max_cents": {
-																	"type": "integer"
+																	"description": "Maximum auto top-up amount in cents.",
+																	"type": "integer",
+																	"example": 100000
 																},
 																"amount_min_cents": {
-																	"type": "integer"
+																	"description": "Minimum auto top-up amount in cents.",
+																	"type": "integer",
+																	"example": 1000
 																},
 																"threshold_min_cents": {
-																	"type": "integer"
+																	"description": "Minimum threshold in cents.",
+																	"type": "integer",
+																	"example": 500
 																}
 															},
 															"required": [
@@ -529040,11 +529173,15 @@
 															]
 														},
 														"payment_method_id": {
+															"description": "Payment method auto top-up charges or, once stopped, the one it stopped on. Null when there is none to name.",
 															"type": "string",
+															"example": "pm_123",
 															"nullable": true
 														},
 														"state": {
+															"description": "`first_topup_required`: auto top-up can be set up after the first manual top-up. `not_configured`: auto top-up is off. `active`: auto top-up is on. `needs_confirmation`: auto top-up is on, but its card has to be confirmed or replaced. `stopped`: auto top-up was turned off; `stopped_reason` says why, when known.",
 															"type": "string",
+															"example": "active",
 															"enum": [
 																"first_topup_required",
 																"not_configured",
@@ -529054,7 +529191,9 @@
 															]
 														},
 														"stopped_reason": {
+															"description": "Why auto top-up stopped. Present only when `state` is `stopped` and the reason is known.",
 															"type": "string",
+															"example": "payment_declined",
 															"enum": [
 																"payment_method_removed",
 																"payment_method_changed",
@@ -529075,41 +529214,56 @@
 													]
 												},
 												"contract_version": {
+													"description": "Response contract version. Always `2`.",
 													"type": "number",
+													"example": 2,
 													"enum": [
 														2
 													]
 												},
 												"evaluated_at": {
+													"description": "When eligibility was evaluated, as an ISO 8601 timestamp.",
 													"type": "string",
-													"format": "date-time"
+													"format": "date-time",
+													"example": "2026-11-18T12:00:00Z"
 												},
 												"manual_topup": {
+													"description": "Manual top-up availability.",
 													"type": "object",
 													"additionalProperties": false,
 													"properties": {
 														"available": {
+															"description": "Whether a manual top-up can be made now. True only when `status` is `ready`.",
 															"type": "boolean"
 														},
 														"default_payment_method_id": {
+															"description": "Payment method to preselect: the default when it can pay, otherwise the first that can. Null when none can.",
 															"type": "string",
+															"example": "pm_123",
 															"nullable": true
 														},
 														"limits": {
+															"description": "Allowed manual top-up amounts.",
 															"type": "object",
 															"additionalProperties": false,
 															"properties": {
 																"currency": {
+																	"description": "Currency of the amounts. Always `USD`.",
 																	"type": "string",
+																	"example": "USD",
 																	"enum": [
 																		"USD"
 																	]
 																},
 																"max_cents": {
-																	"type": "integer"
+																	"description": "Maximum top-up amount in cents.",
+																	"type": "integer",
+																	"example": 100000
 																},
 																"min_cents": {
-																	"type": "integer"
+																	"description": "Minimum top-up amount in cents.",
+																	"type": "integer",
+																	"example": 1000
 																}
 															},
 															"required": [
@@ -529126,30 +529280,44 @@
 													]
 												},
 												"payment_methods": {
+													"description": "The account's payment methods, and whether each can pay for a top-up.",
 													"type": "array",
 													"items": {
 														"additionalProperties": false,
 														"properties": {
 															"brand": {
-																"type": "string"
+																"description": "Card brand. Present for cards.",
+																"type": "string",
+																"example": "visa"
 															},
 															"exp_month": {
-																"type": "integer"
+																"description": "Expiration month, 1 to 12. Present for cards.",
+																"type": "integer",
+																"example": 12
 															},
 															"exp_year": {
-																"type": "integer"
+																"description": "Four-digit expiration year. Present for cards.",
+																"type": "integer",
+																"example": 2030
 															},
 															"id": {
-																"type": "string"
+																"description": "Payment method identifier.",
+																"type": "string",
+																"example": "pm_123"
 															},
 															"is_default": {
+																"description": "Whether this is the account's default payment method.",
 																"type": "boolean"
 															},
 															"last4": {
-																"type": "string"
+																"description": "Last 4 digits. Present for cards.",
+																"type": "string",
+																"example": "4242"
 															},
 															"type": {
+																"description": "Payment method type.",
 																"type": "string",
+																"example": "card",
 																"enum": [
 																	"card",
 																	"apple_pay",
@@ -529160,7 +529328,9 @@
 																]
 															},
 															"unusable_reason": {
+																"description": "Why this payment method can't pay for a top-up. Present only when `usable` is false.",
 																"type": "string",
+																"example": "expired_card",
 																"enum": [
 																	"payment_method_not_supported",
 																	"expired_card",
@@ -529169,6 +529339,7 @@
 																]
 															},
 															"usable": {
+																"description": "Whether this payment method can pay for a top-up.",
 																"type": "boolean"
 															}
 														},
@@ -529182,7 +529353,9 @@
 													}
 												},
 												"reason": {
+													"description": "What prevents a manual top-up, or `NONE`. `CONTRACT_BILLING`: the account is billed by contract. `ACCOUNT_RESTRICTED`: the account is restricted. `ELIGIBILITY_UNAVAILABLE`: eligibility could not be determined. `NO_ELIGIBLE_PAYMENT_METHOD`: no payment method can pay for a top-up. `DAILY_LIMIT_REACHED`: the account reached its daily top-up limit.",
 													"type": "string",
+													"example": "NONE",
 													"enum": [
 														"NONE",
 														"CONTRACT_BILLING",
@@ -529193,7 +529366,9 @@
 													]
 												},
 												"status": {
+													"description": "`ready` when a manual top-up is available, `blocked` when `reason` prevents one, or `unavailable` when eligibility could not be determined and the request can be retried.",
 													"type": "string",
+													"example": "ready",
 													"enum": [
 														"ready",
 														"blocked",
@@ -529514,7 +529689,7 @@
 						}
 					},
 					"409": {
-						"description": "Version 2 is unavailable for this account, including flag fallback.",
+						"description": "This endpoint isn't available for the account yet.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -529601,7 +529776,7 @@
 						}
 					},
 					"500": {
-						"description": "Internal error, including an auto top-up config that could not be read. The body carries only the generic message.",
+						"description": "Eligibility couldn't be read, for example because the auto top-up configuration couldn't be read.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -529710,14 +529885,15 @@
 					"free": true,
 					"pro": true
 				},
+				"x-fern-availability": "beta",
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "ai-gateway.billing.topup",
 				"x-fern-sdk-method-name": "get-eligibility"
 			},
 			"post": {
 				"operationId": "aig-billing-topup-eligibility",
-				"summary": "Get top-up eligibility",
-				"description": "Returns legacy top-up eligibility from forwarded payment methods. Version 2 is read with GET; a body naming contract_version is rejected. No response authorizes a charge.",
+				"summary": "Check top-up eligibility (deprecated)",
+				"description": "Deprecated: use GET /topup/eligibility, which reads the account's payment methods itself. This endpoint keeps working while that one answers 409 for the account. Reports whether the account can make a manual top-up, given the payment methods in the request body. Advisory only: every top-up checks again.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -529736,11 +529912,11 @@
 								"type": "object",
 								"properties": {
 									"contract_version": {
-										"description": "Not accepted: version 2 is read with GET. Any value answers 400.",
+										"description": "Not accepted: any value answers 400. Read the current eligibility with GET /topup/eligibility.",
 										"type": "integer"
 									},
 									"payment_methods": {
-										"description": "Account-level payment methods, forwarded by the dashboard for legacy eligibility only.",
+										"description": "The account's payment methods. Omit it, or send an empty list, when there are none.",
 										"type": "array",
 										"items": {
 											"properties": {
@@ -529851,10 +530027,12 @@
 													"nullable": true,
 													"properties": {
 														"brand": {
+															"description": "Card brand, when known.",
 															"type": "string",
 															"example": "visa"
 														},
 														"last4": {
+															"description": "Last 4 digits of the card.",
 															"type": "string",
 															"example": "1234"
 														}
@@ -530217,6 +530395,7 @@
 						}
 					}
 				},
+				"deprecated": true,
 				"security": [
 					{
 						"api_token": []
@@ -530239,7 +530418,7 @@
 					"free": true,
 					"pro": true
 				},
-				"x-fern-availability": "generally-available",
+				"x-fern-availability": "deprecated",
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "ai-gateway.billing.topup",
 				"x-fern-sdk-method-name": "eligibility"
@@ -530248,8 +530427,8 @@
 		"/accounts/{account_id}/ai-gateway/billing/topup/limits": {
 			"get": {
 				"operationId": "aig-billing-get-topup-limits",
-				"summary": "Get account top-up limits",
-				"description": "Retrieve the minimum and maximum allowed top-up amounts (in cents) for this account.",
+				"summary": "Get account top-up limits (deprecated)",
+				"description": "Deprecated: use `manual_topup.limits` from GET /topup/eligibility. Retrieve the minimum and maximum allowed top-up amounts (in cents) for this account.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -530314,7 +530493,9 @@
 													"example": "USD"
 												},
 												"max_cents": {
-													"type": "integer"
+													"description": "Maximum allowed top-up amount in cents.",
+													"type": "integer",
+													"example": 100000
 												},
 												"min_cents": {
 													"description": "Minimum allowed top-up amount in cents.",
@@ -530630,6 +530811,7 @@
 						}
 					}
 				},
+				"deprecated": true,
 				"security": [
 					{
 						"api_token": []
@@ -530657,7 +530839,7 @@
 					"free": true,
 					"pro": true
 				},
-				"x-fern-availability": "generally-available",
+				"x-fern-availability": "deprecated",
 				"x-fern-ignore": true,
 				"x-fern-sdk-group-name": "ai-gateway.billing.topup",
 				"x-fern-sdk-method-name": "limits"
@@ -530748,10 +530930,14 @@
 											"type": "object",
 											"properties": {
 												"payment_intent_id": {
-													"type": "string"
+													"description": "Top-up identifier from the request.",
+													"type": "string",
+													"example": "in_1abc"
 												},
 												"status": {
+													"description": "`completed` once the top-up payment is processed and its credits are added to the balance, `pending` until then.",
 													"type": "string",
+													"example": "completed",
 													"enum": [
 														"completed",
 														"pending"
@@ -531198,6 +531384,7 @@
 											"type": "object",
 											"properties": {
 												"history": {
+													"description": "Usage cost per window of `value_grouping_window`.",
 													"type": "array",
 													"items": {
 														"properties": {
@@ -531206,13 +531393,18 @@
 																"type": "number"
 															},
 															"end_time": {
-																"type": "number"
+																"description": "End of the window (exclusive), as a Unix timestamp in seconds.",
+																"type": "number",
+																"example": 1700086400
 															},
 															"id": {
+																"description": "Usage summary identifier.",
 																"type": "string"
 															},
 															"start_time": {
-																"type": "number"
+																"description": "Start of the window, as a Unix timestamp in seconds.",
+																"type": "number",
+																"example": 1700000000
 															}
 														},
 														"required": [
@@ -534508,6 +534700,12 @@
 														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 														"x-auditable": true
 													},
+													"internal_id": {
+														"description": "Identifier of the AI Gateway that never changes and is never reused, even after the gateway is deleted. Accepted in place of the gateway ID in any gateway path.",
+														"type": "string",
+														"format": "uuid",
+														"x-stainless-terraform-configurability": "computed"
+													},
 													"is_default": {
 														"type": "boolean",
 														"x-auditable": true
@@ -534840,6 +535038,7 @@
 												},
 												"required": [
 													"id",
+													"internal_id",
 													"rate_limiting_interval",
 													"rate_limiting_limit",
 													"collect_logs",
@@ -536036,6 +536235,12 @@
 													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 													"x-auditable": true
 												},
+												"internal_id": {
+													"description": "Identifier of the AI Gateway that never changes and is never reused, even after the gateway is deleted. Accepted in place of the gateway ID in any gateway path.",
+													"type": "string",
+													"format": "uuid",
+													"x-stainless-terraform-configurability": "computed"
+												},
 												"is_default": {
 													"type": "boolean",
 													"x-auditable": true
@@ -536368,6 +536573,7 @@
 											},
 											"required": [
 												"id",
+												"internal_id",
 												"rate_limiting_interval",
 												"rate_limiting_limit",
 												"collect_logs",
@@ -548997,6 +549203,12 @@
 													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 													"x-auditable": true
 												},
+												"internal_id": {
+													"description": "Identifier of the AI Gateway that never changes and is never reused, even after the gateway is deleted. Accepted in place of the gateway ID in any gateway path.",
+													"type": "string",
+													"format": "uuid",
+													"x-stainless-terraform-configurability": "computed"
+												},
 												"is_default": {
 													"type": "boolean",
 													"x-auditable": true
@@ -549329,6 +549541,7 @@
 											},
 											"required": [
 												"id",
+												"internal_id",
 												"rate_limiting_interval",
 												"rate_limiting_limit",
 												"collect_logs",
@@ -549885,6 +550098,12 @@
 													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 													"x-auditable": true
 												},
+												"internal_id": {
+													"description": "Identifier of the AI Gateway that never changes and is never reused, even after the gateway is deleted. Accepted in place of the gateway ID in any gateway path.",
+													"type": "string",
+													"format": "uuid",
+													"x-stainless-terraform-configurability": "computed"
+												},
 												"is_default": {
 													"type": "boolean",
 													"x-auditable": true
@@ -550217,6 +550436,7 @@
 											},
 											"required": [
 												"id",
+												"internal_id",
 												"rate_limiting_interval",
 												"rate_limiting_limit",
 												"collect_logs",
@@ -551454,6 +551674,12 @@
 													"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 													"x-auditable": true
 												},
+												"internal_id": {
+													"description": "Identifier of the AI Gateway that never changes and is never reused, even after the gateway is deleted. Accepted in place of the gateway ID in any gateway path.",
+													"type": "string",
+													"format": "uuid",
+													"x-stainless-terraform-configurability": "computed"
+												},
 												"is_default": {
 													"type": "boolean",
 													"x-auditable": true
@@ -551786,6 +552012,7 @@
 											},
 											"required": [
 												"id",
+												"internal_id",
 												"rate_limiting_interval",
 												"rate_limiting_limit",
 												"collect_logs",
@@ -699937,7 +700164,7 @@
 						"name": "search",
 						"in": "query",
 						"schema": {
-							"description": "JSON-encoded. Structured search as a JSON array of {field, op, value} objects, AND'd together. Max 10 conditions per request. `in` and `notIn` take an array of up to 100 values. Exclusions: `not` drops events without a value for the field; `notIn` and `notContains` keep them. On intelligence datasets, a `notIn` list containing `\"unknown\"` also drops them; analytics datasets treat `\"unknown\"` as a literal value.",
+							"description": "JSON-encoded. Structured search as a JSON array of {field, op, value} objects, AND'd together. Max 10 conditions per request. `in` and `notIn` take an array of up to 100 values. `containsAny` takes an array of up to 50 strings and matches when the field contains any of them; it is not supported for `indicator`, `date`, `killChain`, or `hasChildren`. Exclusions: `not` drops events without a value for the field; `notIn` and `notContains` keep them. On intelligence datasets, a `notIn` list containing `\"unknown\"` also drops them; analytics datasets treat `\"unknown\"` as a literal value.",
 							"type": "array",
 							"items": {
 								"anyOf": [
@@ -700032,6 +700259,51 @@
 													"type": "string"
 												},
 												"maxItems": 100,
+												"minItems": 1
+											}
+										},
+										"required": [
+											"field",
+											"op",
+											"value"
+										],
+										"type": "object"
+									},
+									{
+										"additionalProperties": false,
+										"properties": {
+											"field": {
+												"type": "string",
+												"enum": [
+													"attacker",
+													"attackerCountry",
+													"category",
+													"createdAt",
+													"event",
+													"indicatorType",
+													"mitreAttack",
+													"mitreCapec",
+													"tags",
+													"targetCountry",
+													"targetIndustry",
+													"tlp",
+													"uuid"
+												]
+											},
+											"op": {
+												"type": "string",
+												"enum": [
+													"containsAny"
+												]
+											},
+											"value": {
+												"type": "array",
+												"items": {
+													"maxLength": 512,
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 50,
 												"minItems": 1
 											}
 										},
@@ -700370,6 +700642,51 @@
 														"type": "string"
 													},
 													"maxItems": 100,
+													"minItems": 1
+												}
+											},
+											"required": [
+												"field",
+												"op",
+												"value"
+											],
+											"type": "object"
+										},
+										{
+											"additionalProperties": false,
+											"properties": {
+												"field": {
+													"type": "string",
+													"enum": [
+														"attacker",
+														"attackerCountry",
+														"category",
+														"createdAt",
+														"event",
+														"indicatorType",
+														"mitreAttack",
+														"mitreCapec",
+														"tags",
+														"targetCountry",
+														"targetIndustry",
+														"tlp",
+														"uuid"
+													]
+												},
+												"op": {
+													"type": "string",
+													"enum": [
+														"containsAny"
+													]
+												},
+												"value": {
+													"type": "array",
+													"items": {
+														"maxLength": 512,
+														"minLength": 1,
+														"type": "string"
+													},
+													"maxItems": 50,
 													"minItems": 1
 												}
 											},
@@ -701006,7 +701323,7 @@
 										"example": 100
 									},
 									"search": {
-										"description": "Structured search as a JSON array of {field, op, value} objects, AND'd together. Max 10 conditions per request. `in` and `notIn` take an array of up to 100 values. Exclusions: `not` drops events without a value for the field; `notIn` and `notContains` keep them. On intelligence datasets, a `notIn` list containing `\"unknown\"` also drops them; analytics datasets treat `\"unknown\"` as a literal value.",
+										"description": "Structured search as a JSON array of {field, op, value} objects, AND'd together. Max 10 conditions per request. `in` and `notIn` take an array of up to 100 values. `containsAny` takes an array of up to 50 strings and matches when the field contains any of them; it is not supported for `indicator`, `date`, `killChain`, or `hasChildren`. Exclusions: `not` drops events without a value for the field; `notIn` and `notContains` keep them. On intelligence datasets, a `notIn` list containing `\"unknown\"` also drops them; analytics datasets treat `\"unknown\"` as a literal value.",
 										"type": "array",
 										"items": {
 											"anyOf": [
@@ -701101,6 +701418,51 @@
 																"type": "string"
 															},
 															"maxItems": 100,
+															"minItems": 1
+														}
+													},
+													"required": [
+														"field",
+														"op",
+														"value"
+													],
+													"type": "object"
+												},
+												{
+													"additionalProperties": false,
+													"properties": {
+														"field": {
+															"type": "string",
+															"enum": [
+																"attacker",
+																"attackerCountry",
+																"category",
+																"createdAt",
+																"event",
+																"indicatorType",
+																"mitreAttack",
+																"mitreCapec",
+																"tags",
+																"targetCountry",
+																"targetIndustry",
+																"tlp",
+																"uuid"
+															]
+														},
+														"op": {
+															"type": "string",
+															"enum": [
+																"containsAny"
+															]
+														},
+														"value": {
+															"type": "array",
+															"items": {
+																"maxLength": 512,
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 50,
 															"minItems": 1
 														}
 													},
@@ -701435,6 +701797,51 @@
 																	"type": "string"
 																},
 																"maxItems": 100,
+																"minItems": 1
+															}
+														},
+														"required": [
+															"field",
+															"op",
+															"value"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"field": {
+																"type": "string",
+																"enum": [
+																	"attacker",
+																	"attackerCountry",
+																	"category",
+																	"createdAt",
+																	"event",
+																	"indicatorType",
+																	"mitreAttack",
+																	"mitreCapec",
+																	"tags",
+																	"targetCountry",
+																	"targetIndustry",
+																	"tlp",
+																	"uuid"
+																]
+															},
+															"op": {
+																"type": "string",
+																"enum": [
+																	"containsAny"
+																]
+															},
+															"value": {
+																"type": "array",
+																"items": {
+																	"maxLength": 512,
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"maxItems": 50,
 																"minItems": 1
 															}
 														},
@@ -755327,6 +755734,51 @@
 																	"field": {
 																		"type": "string",
 																		"enum": [
+																			"attacker",
+																			"attackerCountry",
+																			"category",
+																			"createdAt",
+																			"event",
+																			"indicatorType",
+																			"mitreAttack",
+																			"mitreCapec",
+																			"tags",
+																			"targetCountry",
+																			"targetIndustry",
+																			"tlp",
+																			"uuid"
+																		]
+																	},
+																	"op": {
+																		"type": "string",
+																		"enum": [
+																			"containsAny"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"maxLength": 512,
+																			"minLength": 1,
+																			"type": "string"
+																		},
+																		"maxItems": 50,
+																		"minItems": 1
+																	}
+																},
+																"required": [
+																	"field",
+																	"op",
+																	"value"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"field": {
+																		"type": "string",
+																		"enum": [
 																			"killChain"
 																		]
 																	},
@@ -757557,6 +758009,51 @@
 																	"field": {
 																		"type": "string",
 																		"enum": [
+																			"attacker",
+																			"attackerCountry",
+																			"category",
+																			"createdAt",
+																			"event",
+																			"indicatorType",
+																			"mitreAttack",
+																			"mitreCapec",
+																			"tags",
+																			"targetCountry",
+																			"targetIndustry",
+																			"tlp",
+																			"uuid"
+																		]
+																	},
+																	"op": {
+																		"type": "string",
+																		"enum": [
+																			"containsAny"
+																		]
+																	},
+																	"value": {
+																		"type": "array",
+																		"items": {
+																			"maxLength": 512,
+																			"minLength": 1,
+																			"type": "string"
+																		},
+																		"maxItems": 50,
+																		"minItems": 1
+																	}
+																},
+																"required": [
+																	"field",
+																	"op",
+																	"value"
+																],
+																"type": "object"
+															},
+															{
+																"additionalProperties": false,
+																"properties": {
+																	"field": {
+																		"type": "string",
+																		"enum": [
 																			"killChain"
 																		]
 																	},
@@ -758893,6 +759390,51 @@
 																				"type": "string"
 																			},
 																			"maxItems": 100,
+																			"minItems": 1
+																		}
+																	},
+																	"required": [
+																		"field",
+																		"op",
+																		"value"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"field": {
+																			"type": "string",
+																			"enum": [
+																				"attacker",
+																				"attackerCountry",
+																				"category",
+																				"createdAt",
+																				"event",
+																				"indicatorType",
+																				"mitreAttack",
+																				"mitreCapec",
+																				"tags",
+																				"targetCountry",
+																				"targetIndustry",
+																				"tlp",
+																				"uuid"
+																			]
+																		},
+																		"op": {
+																			"type": "string",
+																			"enum": [
+																				"containsAny"
+																			]
+																		},
+																		"value": {
+																			"type": "array",
+																			"items": {
+																				"maxLength": 512,
+																				"minLength": 1,
+																				"type": "string"
+																			},
+																			"maxItems": 50,
 																			"minItems": 1
 																		}
 																	},
@@ -762365,7 +762907,7 @@
 			"get": {
 				"operationId": "get_PirTopicList",
 				"summary": "List managed PIR topics",
-				"description": "Returns the managed topics a structured PIR can follow, with their default question, relevance criteria, suggested actors and event rules. Suggested actors the account cannot see are left out. Topics change centrally; PIRs follow a topic's defaults wherever the customer has not changed them. Also returns `organization_types` for the organization profile form.",
+				"description": "Returns the managed topics a structured PIR can follow, with their family, default question, relevance criteria, suggested actors and event rules. Suggested actors the account cannot see are left out. Topics change centrally; PIRs follow a topic's defaults wherever the customer has not changed them. Also returns `topic_families`, the picker's groups in display order, and `organization_types` for the organization profile form.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -762494,6 +763036,26 @@
 														]
 													}
 												},
+												"topic_families": {
+													"description": "Groups for `topics`, in display order. Each topic names one in `family`.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string"
+															},
+															"label": {
+																"description": "English heading for the group.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"label"
+														]
+													}
+												},
 												"topics": {
 													"type": "array",
 													"items": {
@@ -762557,6 +763119,10 @@
 																	],
 																	"type": "object"
 																}
+															},
+															"family": {
+																"description": "The `topic_families` entry this topic is listed under. New families can be added, so treat an unknown value as ungrouped.",
+																"type": "string"
 															},
 															"filter_revision": {
 																"type": "integer"
@@ -762704,6 +763270,7 @@
 														"required": [
 															"topic_id",
 															"title",
+															"family",
 															"question_template",
 															"intent_revision",
 															"filter_revision",
@@ -762722,6 +763289,7 @@
 											},
 											"required": [
 												"topics",
+												"topic_families",
 												"organization_types"
 											]
 										},
@@ -771355,6 +771923,10 @@
 																"type": "string",
 																"nullable": true
 															},
+															"tagging_enabled": {
+																"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards.",
+																"type": "boolean"
+															},
 															"title": {
 																"type": "string",
 																"nullable": true
@@ -771381,7 +771953,8 @@
 															"last_polled_at",
 															"poll_interval_s",
 															"status",
-															"subscribed_at"
+															"subscribed_at",
+															"tagging_enabled"
 														],
 														"type": "object"
 													}
@@ -771624,6 +772197,11 @@
 										"maximum": 86400,
 										"minimum": 60
 									},
+									"tagging_enabled": {
+										"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards. Default false.",
+										"type": "boolean",
+										"default": false
+									},
 									"title": {
 										"description": "Override the feed's title. Null clears it; omit to keep existing or derived value.",
 										"type": "string",
@@ -771764,6 +772342,10 @@
 													"type": "string",
 													"nullable": true
 												},
+												"tagging_enabled": {
+													"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards.",
+													"type": "boolean"
+												},
 												"title": {
 													"type": "string",
 													"nullable": true
@@ -771790,7 +772372,8 @@
 												"last_polled_at",
 												"poll_interval_s",
 												"status",
-												"subscribed_at"
+												"subscribed_at",
+												"tagging_enabled"
 											]
 										},
 										"success": {
@@ -772344,6 +772927,10 @@
 													"type": "string",
 													"nullable": true
 												},
+												"tagging_enabled": {
+													"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards.",
+													"type": "boolean"
+												},
 												"title": {
 													"type": "string",
 													"nullable": true
@@ -772370,7 +772957,8 @@
 												"last_polled_at",
 												"poll_interval_s",
 												"status",
-												"subscribed_at"
+												"subscribed_at",
+												"tagging_enabled"
 											]
 										},
 										"success": {
@@ -772470,6 +773058,10 @@
 										"type": "integer",
 										"maximum": 86400,
 										"minimum": 60
+									},
+									"tagging_enabled": {
+										"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards. Omit to keep current value.",
+										"type": "boolean"
 									},
 									"title": {
 										"description": "Override the feed's title. Null clears it; omit to keep existing or derived value.",
@@ -772605,6 +773197,10 @@
 													"type": "string",
 													"nullable": true
 												},
+												"tagging_enabled": {
+													"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards.",
+													"type": "boolean"
+												},
 												"title": {
 													"type": "string",
 													"nullable": true
@@ -772631,7 +773227,8 @@
 												"last_polled_at",
 												"poll_interval_s",
 												"status",
-												"subscribed_at"
+												"subscribed_at",
+												"tagging_enabled"
 											]
 										},
 										"success": {

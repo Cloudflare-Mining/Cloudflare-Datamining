@@ -317,6 +317,10 @@
 											"type": "string",
 											"nullable": true
 										},
+										"tagging_enabled": {
+											"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards.",
+											"type": "boolean"
+										},
 										"title": {
 											"type": "string",
 											"nullable": true
@@ -343,7 +347,8 @@
 										"last_polled_at",
 										"poll_interval_s",
 										"status",
-										"subscribed_at"
+										"subscribed_at",
+										"tagging_enabled"
 									]
 								},
 								"success": {
@@ -2682,6 +2687,10 @@
 														"type": "string",
 														"nullable": true
 													},
+													"tagging_enabled": {
+														"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards.",
+														"type": "boolean"
+													},
 													"title": {
 														"type": "string",
 														"nullable": true
@@ -2708,7 +2717,8 @@
 													"last_polled_at",
 													"poll_interval_s",
 													"status",
-													"subscribed_at"
+													"subscribed_at",
+													"tagging_enabled"
 												],
 												"type": "object"
 											}
@@ -4583,6 +4593,10 @@
 								"maximum": 86400,
 								"minimum": 60
 							},
+							"tagging_enabled": {
+								"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards. Omit to keep current value.",
+								"type": "boolean"
+							},
 							"title": {
 								"description": "Override the feed's title. Null clears it; omit to keep existing or derived value.",
 								"type": "string",
@@ -4717,6 +4731,10 @@
 											"type": "string",
 											"nullable": true
 										},
+										"tagging_enabled": {
+											"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards.",
+											"type": "boolean"
+										},
 										"title": {
 											"type": "string",
 											"nullable": true
@@ -4743,7 +4761,8 @@
 										"last_polled_at",
 										"poll_interval_s",
 										"status",
-										"subscribed_at"
+										"subscribed_at",
+										"tagging_enabled"
 									]
 								},
 								"success": {
@@ -6331,6 +6350,11 @@
 								"maximum": 86400,
 								"minimum": 60
 							},
+							"tagging_enabled": {
+								"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards. Default false.",
+								"type": "boolean",
+								"default": false
+							},
 							"title": {
 								"description": "Override the feed's title. Null clears it; omit to keep existing or derived value.",
 								"type": "string",
@@ -6471,6 +6495,10 @@
 											"type": "string",
 											"nullable": true
 										},
+										"tagging_enabled": {
+											"description": "When enabled, new articles from this feed are tagged automatically by AI. Changes apply to articles processed afterwards.",
+											"type": "boolean"
+										},
 										"title": {
 											"type": "string",
 											"nullable": true
@@ -6497,7 +6525,8 @@
 										"last_polled_at",
 										"poll_interval_s",
 										"status",
-										"subscribed_at"
+										"subscribed_at",
+										"tagging_enabled"
 									]
 								},
 								"success": {

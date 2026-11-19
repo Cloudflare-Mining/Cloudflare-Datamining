@@ -416,6 +416,12 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"x-auditable": true
 										},
+										"internal_id": {
+											"description": "Identifier of the AI Gateway that never changes and is never reused, even after the gateway is deleted. Accepted in place of the gateway ID in any gateway path.",
+											"type": "string",
+											"format": "uuid",
+											"x-stainless-terraform-configurability": "computed"
+										},
 										"is_default": {
 											"type": "boolean",
 											"x-auditable": true
@@ -748,6 +754,7 @@
 									},
 									"required": [
 										"id",
+										"internal_id",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"collect_logs",
@@ -1318,6 +1325,12 @@
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"x-auditable": true
 											},
+											"internal_id": {
+												"description": "Identifier of the AI Gateway that never changes and is never reused, even after the gateway is deleted. Accepted in place of the gateway ID in any gateway path.",
+												"type": "string",
+												"format": "uuid",
+												"x-stainless-terraform-configurability": "computed"
+											},
 											"is_default": {
 												"type": "boolean",
 												"x-auditable": true
@@ -1650,6 +1663,7 @@
 										},
 										"required": [
 											"id",
+											"internal_id",
 											"rate_limiting_interval",
 											"rate_limiting_limit",
 											"collect_logs",
@@ -2301,6 +2315,12 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"x-auditable": true
 										},
+										"internal_id": {
+											"description": "Identifier of the AI Gateway that never changes and is never reused, even after the gateway is deleted. Accepted in place of the gateway ID in any gateway path.",
+											"type": "string",
+											"format": "uuid",
+											"x-stainless-terraform-configurability": "computed"
+										},
 										"is_default": {
 											"type": "boolean",
 											"x-auditable": true
@@ -2633,6 +2653,7 @@
 									},
 									"required": [
 										"id",
+										"internal_id",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"collect_logs",
@@ -3866,6 +3887,12 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"x-auditable": true
 										},
+										"internal_id": {
+											"description": "Identifier of the AI Gateway that never changes and is never reused, even after the gateway is deleted. Accepted in place of the gateway ID in any gateway path.",
+											"type": "string",
+											"format": "uuid",
+											"x-stainless-terraform-configurability": "computed"
+										},
 										"is_default": {
 											"type": "boolean",
 											"x-auditable": true
@@ -4198,6 +4225,7 @@
 									},
 									"required": [
 										"id",
+										"internal_id",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"collect_logs",
@@ -5395,6 +5423,12 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"x-auditable": true
 										},
+										"internal_id": {
+											"description": "Identifier of the AI Gateway that never changes and is never reused, even after the gateway is deleted. Accepted in place of the gateway ID in any gateway path.",
+											"type": "string",
+											"format": "uuid",
+											"x-stainless-terraform-configurability": "computed"
+										},
 										"is_default": {
 											"type": "boolean",
 											"x-auditable": true
@@ -5727,6 +5761,7 @@
 									},
 									"required": [
 										"id",
+										"internal_id",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"collect_logs",
