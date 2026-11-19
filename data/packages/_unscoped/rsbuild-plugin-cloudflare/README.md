@@ -245,6 +245,8 @@ Other differences:
 - Additional modules (e.g. `.wasm` and `.txt` imports) are emitted at the root
   of the Worker's output directory, with hashed names, rather than in `assets/`.
 - SWC lowers `using` declarations in the Worker build, which Vite keeps.
+- The Build Output's root `config.json` names `rsbuild-plugin-cloudflare` as its
+  `producer`, where the Vite plugin names `@cloudflare/vite-plugin`.
 - No "Debug" URL is printed, but `/__debug` works.
 - Miniflare's message about updating the compatibility date mentions
   `@cloudflare/vite-plugin`.

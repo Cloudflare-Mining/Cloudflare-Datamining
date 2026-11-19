@@ -2,7 +2,8 @@
 	"name": "@cloudflare/build-output-utils",
 	"dist-tags": {
 		"latest": "0.9.14",
-		"rc": "1.0.0-rc.1"
+		"rc": "1.0.0-rc.2",
+		"beta": "1.0.0-rc.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1486,8 +1487,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIBXSVaiNt02NErhKb4hlcjXS88mAajmjHIuR5N+y+2rMAiEAqXr9PcLq0M62CjlQ7/9cqRBANOOqtJTw6vr9FsN4eT8="
+						"sig": "MEUCIBXSVaiNt02NErhKb4hlcjXS88mAajmjHIuR5N+y+2rMAiEAqXr9PcLq0M62CjlQ7/9cqRBANOOqtJTw6vr9FsN4eT8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -1497,6 +1498,44 @@
 					}
 				},
 				"unpackedSize": 37109
+			}
+		},
+		"1.0.0-rc.2": {
+			"name": "@cloudflare/build-output-utils",
+			"version": "1.0.0-rc.2",
+			"dependencies": {
+				"@cloudflare/config": "1.0.0-rc.2"
+			},
+			"devDependencies": {
+				"tsdown": "0.22.14",
+				"vitest": "5.0.4",
+				"typescript": "5.8.3",
+				"@cloudflare/workers-types": "^5.20261118.1",
+				"@cloudflare/workers-utils": "0.55.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"shasum": "2338673a51ac1aefd6039d3af148890c94856949",
+				"tarball": "https://registry.npmjs.org/@cloudflare/build-output-utils/-/build-output-utils-1.0.0-rc.2.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-Zsb0038d2RucgLTj7eyYsErtIY+H7Gdz+hAImZmR+x0pKm0fMpBRMkGPZ26g0rukHl+1A6AnX3BcUf9mXPl7+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIDoSYFv8IXiOpZhecfLX06o9bfpWgOq4jrK14fXw8YmQAiEAkb17dUjnHuSeeSs89uEi8ScjfNkz0nqr21FYSNym5H8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"sig": "MEUCIEf6SOnN7haV2h7vAfnN+v0CMMxRYpB8vOVes3/iOREsAiEAhoUSpa8FY2T+0+DNrSTmJLir6cfJHiWLpWXQ6eUBPk4=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fbuild-output-utils@1.0.0-rc.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 36147
 			}
 		}
 	}
