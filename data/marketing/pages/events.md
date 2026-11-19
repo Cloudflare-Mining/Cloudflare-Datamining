@@ -16,8 +16,6 @@ Browse upcoming Cloudflare events around the world.
 
 AmericasEMEAAPJC
 
-[San Antonio, USBillington Critical Infrastructure SummitNov 17–18Learn more](https://criticalinfrastructure.billingtoncybersummit.com/)
-
 Ottawa, CA
 
 InCyber Forum
@@ -41,6 +39,10 @@ NYC Technology Forum
 Dec 10–12
 
 Coming soon
+
+Previous events
+
+[San Antonio, USBillington Critical Infrastructure SummitNov 17–18Learn more](https://criticalinfrastructure.billingtoncybersummit.com/)
 
 # Build without boundaries
 

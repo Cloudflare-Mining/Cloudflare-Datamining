@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 18, 2026 [<h2>An updated Clairic and Clairic-flash are now open-weight, from the new Workers AI Superintelligence team</h2>](https://blog.cloudflare.com/open-clairic/)
+
+Add your teaser here. It should complement the headline, not repeat it. Teaser cannot be longer than 240 characters. The Blog Review Gem will suggest an excerpt. Clairic graduates from preview, while Clairic-flash joins the repertoire on Workers AI. We're doing an open-weight release for both extraction models.
+
+![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/),  [Michelle Chen](https://blog.cloudflare.com/author/michelle/), and  [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7R8CJQT5KFR9NBMZB2FTDQ3.01M7R8CK3P86K910EXDKQFBE6N.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/open-clairic/)
+
 November 18, 2026 [<h2>How Cloudflare WAF helps protect against Java4Shell (CVE-2026-114938)</h2>](https://blog.cloudflare.com/java4shell-waf-protection/)
 
 Java4Shell is a critical memory-corruption flaw in OpenJDK's Base64 decoder that can lead to remote code execution. Cloudflare has released six WAF managed rules for paid plans that logs matching requests by default. Patch your Java runtimes now.
@@ -17,8 +27,6 @@ Java4Shell is a critical memory-corruption flaw in OpenJDK's Base64 decoder that
 ![Denzil Correa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B6V73R1DF1YQBSAN5YFJ.png&w=64&h=64&f=webp&fit=cover&position=center)![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Georgie Yoxall](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HTH4Y5JB9BR4J2PDNJZG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Denzil Correa](https://blog.cloudflare.com/author/denzil-correa/),  [Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Georgie Yoxall](https://blog.cloudflare.com/author/georgie/), and  [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7QEX0WPTPFDDEE77HAVYYGB.01M7QEX1A784VKSE3C9SPC0P30.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/java4shell-waf-protection/)
 
 November 17, 2026 [<h2>Quad9's withdrawal from France: A canary in the coal mine</h2>](https://blog.cloudflare.com/quad9-withdrawal-from-france/)
 
@@ -155,14 +163,6 @@ A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that e
 ![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/) and  [Michelle Chen](https://blog.cloudflare.com/author/michelle/)
-
-October 23, 2026 [<h2>Origin Range Requests: Serving large files without range-request tuning</h2>](https://blog.cloudflare.com/origin-range-requests/)
-
-Naive byte-range caching can waste gigabytes of origin bandwidth on small requests. We rebuilt our cache architecture in Pingora to coordinate partial fetches automatically, cutting R2 p99 latency in half.
-
-![Matthew Gumport](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M5MRN7JAQQFSHSNAJAM1QNS7.01M5MRN86CH33YX9T3KVKHYEAR.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Matthew Gumport](https://blog.cloudflare.com/author/matthew-gumport/)
 
 Load more
 
