@@ -330,6 +330,39 @@
 		]
 	},
 	{
+		"id": "d27e5c9c-9bbb-41b7-9ef9-6beceeeb07ef",
+		"source": 1,
+		"name": "@cf/cloudflare/clairic-flash",
+		"description": "Clairic is a System One-style model that can extract, compute, estimate, and forecast values from inputs. It is strongly typed and outputs confidence scores and probabilities against its outputs. This model is in early research preview from the Cloudflare Workers AI team.",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"created_at": "2026-10-29 20:16:58.443",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "context_window",
+				"value": "65536"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.1,
+						"currency": "USD"
+					}
+				]
+			},
+			{
+				"property_id": "vision",
+				"value": "true"
+			}
+		]
+	},
+	{
 		"id": "cc80437b-9a8d-4f1a-9c77-9aaf0d226922",
 		"source": 1,
 		"name": "@cf/meta/llama-guard-3-8b",
