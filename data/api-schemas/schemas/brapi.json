@@ -438,20 +438,99 @@
 												"additionalProperties": false,
 												"properties": {
 													"html": {
-														"description": "HTML content of the crawled URL.",
-														"type": "string"
+														"description": "HTML content of the crawled URL. Null if unreadable.",
+														"type": "string",
+														"nullable": true
 													},
 													"json": {
-														"description": "JSON of the content of the crawled URL.",
-														"type": "object",
-														"additionalProperties": {
-															"nullable": true,
-															"type": "object"
-														}
+														"description": "JSON of the content of the crawled URL, or the raw text if it is not an object or array. Null if unreadable.",
+														"anyOf": [
+															{
+																"additionalProperties": {
+																	"anyOf": [
+																		{
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		{
+																			"nullable": true,
+																			"type": "number"
+																		},
+																		{
+																			"nullable": true,
+																			"type": "boolean"
+																		},
+																		{
+																			"items": {
+																				"allOf": [
+																					"[Circular ~.GET /accounts/{account_id}/browser-rendering/crawl/{job_id}.responses.200.content.application/json.schema.properties.result.properties.records.items.properties.json.anyOf.0.additionalProperties]"
+																				]
+																			},
+																			"nullable": true,
+																			"type": "array"
+																		},
+																		{
+																			"additionalProperties": {
+																				"allOf": [
+																					"[Circular ~.GET /accounts/{account_id}/browser-rendering/crawl/{job_id}.responses.200.content.application/json.schema.properties.result.properties.records.items.properties.json.anyOf.0.additionalProperties]"
+																				]
+																			},
+																			"nullable": true,
+																			"type": "object"
+																		}
+																	]
+																},
+																"nullable": true,
+																"type": "object"
+															},
+															{
+																"items": {
+																	"anyOf": [
+																		{
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		{
+																			"nullable": true,
+																			"type": "number"
+																		},
+																		{
+																			"nullable": true,
+																			"type": "boolean"
+																		},
+																		{
+																			"items": {
+																				"allOf": [
+																					"[Circular ~.GET /accounts/{account_id}/browser-rendering/crawl/{job_id}.responses.200.content.application/json.schema.properties.result.properties.records.items.properties.json.anyOf.1.items]"
+																				]
+																			},
+																			"nullable": true,
+																			"type": "array"
+																		},
+																		{
+																			"additionalProperties": {
+																				"allOf": [
+																					"[Circular ~.GET /accounts/{account_id}/browser-rendering/crawl/{job_id}.responses.200.content.application/json.schema.properties.result.properties.records.items.properties.json.anyOf.1.items]"
+																				]
+																			},
+																			"nullable": true,
+																			"type": "object"
+																		}
+																	]
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															{
+																"nullable": true,
+																"type": "string"
+															}
+														]
 													},
 													"markdown": {
-														"description": "Markdown of the content of the crawled URL.",
-														"type": "string"
+														"description": "Markdown of the content of the crawled URL. Null if unreadable.",
+														"type": "string",
+														"nullable": true
 													},
 													"metadata": {
 														"description": "Absent for urls that never reached a fetch.",
@@ -14284,8 +14363,8 @@
 	},
 	"POST /accounts/{account_id}/browser-rendering/snapshot": {
 		"operationId": "brapi-post_Snapshot",
-		"summary": "Get HTML content and screenshot.",
-		"description": "Returns the page's HTML content and screenshot. Control page loading with `gotoOptions` and `waitFor*` options. Customize screenshots with `viewport`, `fullPage`, `clip` and others.",
+		"summary": "Capture multiple page formats.",
+		"description": "Capture at least two formats from one prepared page: HTML, screenshot, Markdown, accessibility tree, PDF, links, scrape, or JSON. Defaults to HTML and screenshot. Format-specific options use the same fields as standalone actions. Scrape requires elements. An origin 304 returns HTTP 200 with an empty result and meta.status 304, without captures or AI work, and is not cached. JSON snapshots share one actionTimeout budget across navigation, captures, retries, and AI (default 60 seconds, maximum 120 seconds). Other snapshots retain existing timeout behavior. Formats use a fixed capture order, not array order; a live page may change between captures. Any format failure fails the request.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -14643,8 +14722,47 @@
 									"type": "object"
 								}
 							},
+							"custom_ai": {
+								"description": "Optional list of custom AI models to use for the request. The models will be tried in the order provided, and in case a model returns an error, the next one will be used as fallback.",
+								"type": "array",
+								"items": {
+									"properties": {
+										"authorization": {
+											"description": "Authorization token for the AI model: `Bearer <token>`. Not needed for workers-ai models.",
+											"type": "string"
+										},
+										"model": {
+											"description": "AI model to use for the request. Must be formed as `<provider>/<model_name>`, e.g. `workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast`.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"model"
+									],
+									"type": "object"
+								}
+							},
+							"elements": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"selector": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"selector"
+									],
+									"type": "object"
+								},
+								"minItems": 1
+							},
 							"emulateMediaType": {
 								"type": "string"
+							},
+							"excludeExternalLinks": {
+								"type": "boolean",
+								"default": false
 							},
 							"formats": {
 								"type": "array",
@@ -14653,7 +14771,11 @@
 										"content",
 										"screenshot",
 										"markdown",
-										"accessibilityTree"
+										"accessibilityTree",
+										"pdf",
+										"links",
+										"scrape",
+										"json"
 									],
 									"type": "string"
 								},
@@ -14745,6 +14867,165 @@
 								"type": "string",
 								"example": "<h1>Hello World!</h1>",
 								"minLength": 1
+							},
+							"interestingOnly": {
+								"type": "boolean"
+							},
+							"pdfOptions": {
+								"description": "Check [options](https://pptr.dev/api/puppeteer.pdfoptions).",
+								"type": "object",
+								"default": {},
+								"additionalProperties": false,
+								"properties": {
+									"displayHeaderFooter": {
+										"description": "Whether to show the header and footer.",
+										"type": "boolean",
+										"default": false
+									},
+									"footerTemplate": {
+										"description": "HTML template for the print footer.",
+										"type": "string"
+									},
+									"format": {
+										"description": "Paper format. Takes priority over width and height if set.",
+										"type": "string",
+										"default": "letter",
+										"enum": [
+											"letter",
+											"legal",
+											"tabloid",
+											"ledger",
+											"a0",
+											"a1",
+											"a2",
+											"a3",
+											"a4",
+											"a5",
+											"a6"
+										]
+									},
+									"headerTemplate": {
+										"description": "HTML template for the print header.",
+										"type": "string"
+									},
+									"height": {
+										"description": "Sets the height of paper. Can be a number or string with unit.",
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "number"
+											}
+										]
+									},
+									"landscape": {
+										"description": "Whether to print in landscape orientation.",
+										"type": "boolean",
+										"default": false
+									},
+									"margin": {
+										"description": "Set the PDF margins. Useful when setting header and footer.",
+										"type": "object",
+										"properties": {
+											"bottom": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"left": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"right": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											},
+											"top": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													}
+												]
+											}
+										}
+									},
+									"omitBackground": {
+										"description": "Hides default white background and allows generating pdfs with transparency.",
+										"type": "boolean",
+										"default": false
+									},
+									"outline": {
+										"description": "Generate document outline.",
+										"type": "boolean",
+										"default": false
+									},
+									"pageRanges": {
+										"description": "Paper ranges to print, e.g. '1-5, 8, 11-13'.",
+										"type": "string"
+									},
+									"preferCSSPageSize": {
+										"description": "Give CSS @page size priority over other size declarations.",
+										"type": "boolean",
+										"default": false
+									},
+									"printBackground": {
+										"description": "Set to true to print background graphics.",
+										"type": "boolean",
+										"default": false
+									},
+									"scale": {
+										"description": "Scales the rendering of the web page. Amount must be between 0.1 and 2.",
+										"type": "number",
+										"default": 1,
+										"maximum": 2,
+										"minimum": 0.1
+									},
+									"tagged": {
+										"description": "Generate tagged (accessible) PDF.",
+										"type": "boolean",
+										"default": true
+									},
+									"timeout": {
+										"description": "Timeout in milliseconds.",
+										"type": "number",
+										"default": 30000
+									},
+									"width": {
+										"description": "Sets the width of paper. Can be a number or string with unit.",
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "number"
+											}
+										]
+									}
+								}
+							},
+							"prompt": {
+								"type": "string"
 							},
 							"rejectRequestPattern": {
 								"description": "Block undesired requests that match the provided regex patterns, eg. '/^.*\\.(css)'.",
@@ -14869,6 +15150,26 @@
 									]
 								}
 							},
+							"response_format": {
+								"type": "object",
+								"properties": {
+									"json_schema": {
+										"description": "Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/",
+										"type": "object",
+										"additionalProperties": true,
+										"nullable": true
+									},
+									"type": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"type"
+								]
+							},
+							"root": {
+								"type": "string"
+							},
 							"screenshotOptions": {
 								"type": "object",
 								"default": {},
@@ -14943,6 +15244,12 @@
 									}
 								}
 							},
+							"scrollPage": {
+								"type": "boolean"
+							},
+							"selector": {
+								"type": "string"
+							},
 							"setExtraHTTPHeaders": {
 								"type": "object",
 								"additionalProperties": {
@@ -14993,6 +15300,10 @@
 									"width",
 									"height"
 								]
+							},
+							"visibleLinksOnly": {
+								"type": "boolean",
+								"default": false
 							},
 							"waitForSelector": {
 								"description": "Wait for the selector to appear in page. Check [options](https://pptr.dev/api/puppeteer.page.waitforselector).",
@@ -15288,9 +15599,104 @@
 											"description": "HTML content.",
 											"type": "string"
 										},
+										"json": {
+											"description": "Data extracted from the page HTML by the requested prompt.",
+											"anyOf": [
+												{
+													"additionalProperties": true,
+													"nullable": true,
+													"type": "object"
+												},
+												{
+													"items": {
+														"nullable": true,
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												}
+											]
+										},
+										"links": {
+											"description": "Links found on the page.",
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
 										"markdown": {
 											"description": "Markdown content. Prefixed with YAML frontmatter (e.g. `title`) when the page provides that metadata.",
 											"type": "string"
+										},
+										"pdf": {
+											"description": "Base64 encoded PDF.",
+											"type": "string"
+										},
+										"scrape": {
+											"description": "Elements matched by the requested selectors.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"results": {
+														"type": "array",
+														"items": {
+															"properties": {
+																"attributes": {
+																	"type": "array",
+																	"items": {
+																		"properties": {
+																			"name": {
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																},
+																"height": {
+																	"type": "number"
+																},
+																"html": {
+																	"type": "string"
+																},
+																"left": {
+																	"type": "number"
+																},
+																"text": {
+																	"type": "string"
+																},
+																"top": {
+																	"type": "number"
+																},
+																"width": {
+																	"type": "number"
+																}
+															},
+															"required": [
+																"attributes",
+																"html",
+																"left",
+																"top"
+															],
+															"type": "object"
+														}
+													},
+													"selector": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"selector",
+													"results"
+												],
+												"type": "object"
+											}
 										},
 										"screenshot": {
 											"description": "Base64 encoded image.",

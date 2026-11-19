@@ -223,7 +223,7 @@
 	"GET /zones/{zone_id}/dns_records": {
 		"operationId": "dns-records-for-a-zone-list-dns-records",
 		"summary": "List DNS Records",
-		"description": "List, search, sort, and filter a zones' DNS records.",
+		"description": "List, search, sort, and filter a zone's DNS records. Requests with `cursor` or `prev_cursor` use cursor pagination. Otherwise, the endpoint uses offset pagination. To start cursor pagination, set `cursor` to an empty value, then pass `result_info.cursor` from the previous response to request the next page. Cursor-paginated responses do not include `page`, `total_count`, or `total_pages`. Cursor tokens are opaque and can vary in length. Pass them back unchanged and do not assume a fixed length.\n",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -533,12 +533,31 @@
 				}
 			},
 			{
+				"allowEmptyValue": true,
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"description": "Opaque token for cursor pagination, obtained from `result_info.cursor` of the previous response. An empty value starts cursor pagination. Mutually exclusive with `page` and `prev_cursor`.\n",
+					"type": "string",
+					"maxLength": 4096
+				}
+			},
+			{
+				"in": "query",
+				"name": "prev_cursor",
+				"schema": {
+					"description": "Opaque token for requesting the previous page in cursor pagination, obtained from `result_info.prev_cursor` of the previous response. Mutually exclusive with `page` and `cursor`.\n",
+					"type": "string",
+					"maxLength": 4096,
+					"minLength": 1
+				}
+			},
+			{
 				"name": "page",
 				"in": "query",
 				"schema": {
-					"description": "Page number of paginated results.",
+					"description": "Page number for offset pagination.",
 					"type": "number",
-					"default": 1,
 					"minimum": 1
 				}
 			},
@@ -3620,6 +3639,19 @@
 													"comment",
 													"tags"
 												]
+											}
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"cursor": {
+													"description": "Opaque token for the next page. Omitted on the last page.",
+													"type": "string"
+												},
+												"prev_cursor": {
+													"description": "Opaque token for the previous page. Omitted on the first page.",
+													"type": "string"
+												}
 											}
 										}
 									},

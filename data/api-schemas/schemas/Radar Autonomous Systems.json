@@ -252,6 +252,16 @@
 				}
 			},
 			{
+				"name": "includeConfidenceLevel",
+				"in": "query",
+				"description": "Include the traffic data confidence level in the response. Set to `false` to skip it and get a faster response.",
+				"schema": {
+					"description": "Include the traffic data confidence level in the response. Set to `false` to skip it and get a faster response.",
+					"type": "boolean",
+					"default": true
+				}
+			},
+			{
 				"name": "format",
 				"in": "query",
 				"description": "Format in which results will be returned.",
@@ -300,6 +310,7 @@
 													"nullable": true
 												},
 												"confidenceLevel": {
+													"description": "Omitted when `includeConfidenceLevel` is `false`.",
 													"type": "integer",
 													"example": 5
 												},
@@ -411,7 +422,6 @@
 												"name",
 												"country",
 												"countryName",
-												"confidenceLevel",
 												"related",
 												"source",
 												"asn",
