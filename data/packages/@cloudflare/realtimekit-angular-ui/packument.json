@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
-		"latest": "2.1.0",
-		"staging": "2.1.0-staging.6"
+		"staging": "2.1.1-staging.1",
+		"latest": "2.1.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -3385,8 +3385,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIC1d7Rv63hMJDhCwBfJIB8umMs/D8aDDW3Ll/4hkH05TAiEA2ZmMBixz8L2xB2mgwiGo+Twoaea6Mztb+IWqmXarzV4="
+						"sig": "MEUCIC1d7Rv63hMJDhCwBfJIB8umMs/D8aDDW3Ll/4hkH05TAiEA2ZmMBixz8L2xB2mgwiGo+Twoaea6Mztb+IWqmXarzV4=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -3396,6 +3396,41 @@
 					}
 				},
 				"unpackedSize": 1705919
+			}
+		},
+		"2.1.1-staging.1": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "2.1.1-staging.1",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "2.1.1-staging.1"
+			},
+			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "e353d8f27d93cf71db272029bfd9b0d562bd1439",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-2.1.1-staging.1.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-XlAGU/kEVlUOhrpTfWMkiB0JSrDxGJVzcSPtiw1AR1hjcZw0Ec2QsXGj/XmleQVIRVp0tJdvf9nqzObb7vY3Tw==",
+				"signatures": [
+					{
+						"sig": "MEUCIEzjuWrxDdAgFdtTzHUPcDiCYppfMN5Ei7xMlQy1G1eXAiEA4bTlgV/fQmXOexOIMs7gys0vzSYQbLnR4p67XWubJsY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCICFw8xP9uARnQ8NZf2dmseX11G3QT8lEEGlqABK/y00xAiA+L6POqOjOdv7v/hW81FmUW/51XLu3QrWZGeuwUf0XgA=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-angular-ui@2.1.1-staging.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1707081
 			}
 		}
 	}
