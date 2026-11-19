@@ -5553,7 +5553,9 @@
 		"internalDnsViewId": "The DNS internal view identifier that was sent to the internal DNS service",
 		"internalDnsZoneId": "The DNS zone identifier returned by the internal DNS service",
 		"locationId": "The uuid identifying the customer Location used when resolving",
+		"matchedApplicationId": "<small>DEPRECATED (Use matchedApplicationIds):</small> ID of the matched application when exactly one application matched, otherwise 0",
 		"matchedApplicationIds": "IDs of the applications that matched the DNS query",
+		"matchedApplicationName": "<small>DEPRECATED (Use matchedApplicationNames):</small> JSON-encoded list of the names of the applications that matched the DNS query; empty if none",
 		"matchedApplicationNames": "Names of the applications that matched the DNS query",
 		"policyId": "ID of the policy/rule that was applied, if any",
 		"policyName": "Name of the policy that was applied, if any",
@@ -5705,7 +5707,9 @@
 		"internalDnsZoneId": "The DNS zone identifier returned by the internal DNS service",
 		"locationId": "The uuid identifying the customer Location used when resolving",
 		"locationName": "The name identifying the customer Location used when resolving",
+		"matchedApplicationId": "<small>DEPRECATED (Use matchedApplicationIds):</small> ID of the matched application when exactly one application matched, otherwise 0",
 		"matchedApplicationIds": "IDs of the applications that matched the DNS query",
+		"matchedApplicationName": "<small>DEPRECATED (Use matchedApplicationNames):</small> JSON-encoded list of the names of the applications that matched the DNS query; empty if none",
 		"matchedApplicationNames": "Names of the applications that matched the DNS query",
 		"matchedIndicatorFeedIds": "Json array of indicator feed IDs for this query that matched rule",
 		"matchedIndicatorFeedNames": "List of indicator feed names for this query",
@@ -7313,6 +7317,36 @@
 		"billableBytes": "Confidence interval for the corresponding point estimate",
 		"totalBytes": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountLogpushExternalUsageAdaptiveGroups": {
+		"__description": "Account-wide billable usage for successfully delivered customer-owned Logpush jobs with a non-Cloudflare destination (all destinations other than R2 and Pipelines)",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of billable Logpush bytes"
+	},
+	"AccountLogpushExternalUsageAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of billable Logpush bytes, with confidence intervals"
+	},
+	"AccountLogpushExternalUsageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Delivery date",
+		"datetime": "Delivery time"
+	},
+	"AccountLogpushExternalUsageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountLogpushExternalUsageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountLogpushExternalUsageAdaptiveGroupsSum": {
+		"__description": "",
+		"billableBytes": "Uncompressed bytes successfully delivered by customer-owned Logpush jobs"
+	},
+	"AccountLogpushExternalUsageAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"billableBytes": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountLogpushHealthAdaptiveGroups": {
 		"__description": "Beta. Logpush job health metrics",
 		"avg": "",
@@ -7371,6 +7405,36 @@
 		"bytesCompressed": "Confidence interval for the corresponding point estimate",
 		"records": "Confidence interval for the corresponding point estimate",
 		"uploads": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountLogpushInternalUsageAdaptiveGroups": {
+		"__description": "Account-wide billable usage for successfully delivered customer-owned Logpush jobs with a Cloudflare destination (R2 or Pipelines)",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of billable Logpush bytes"
+	},
+	"AccountLogpushInternalUsageAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of billable Logpush bytes, with confidence intervals"
+	},
+	"AccountLogpushInternalUsageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Delivery date",
+		"datetime": "Delivery time"
+	},
+	"AccountLogpushInternalUsageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountLogpushInternalUsageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountLogpushInternalUsageAdaptiveGroupsSum": {
+		"__description": "",
+		"billableBytes": "Uncompressed bytes successfully delivered by customer-owned Logpush jobs"
+	},
+	"AccountLogpushInternalUsageAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"billableBytes": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountLogpushTransformersAdaptiveGroups": {
 		"__description": "Beta. Logpush transformer health metrics",
@@ -9697,6 +9761,74 @@
 	"AccountNelReportsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountNetworkQualityClients1mGroups": {
+		"__description": "Beta. Network Quality API usage and unique clients from authorized client requests (i.e. requests carrying an authorization token issued on behalf of the account), aggregated per minute without sampling",
+		"count": "Number of authorized requests",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension",
+		"uniq": "The number of unique values for a metric per dimension"
+	},
+	"AccountNetworkQualityClients1mGroupsDimensions": {
+		"__description": "",
+		"coloCode": "The airport code of the Cloudflare datacenter that served this request",
+		"date": "The date of the request",
+		"datetime": "The date and time of the request, truncated to the minute",
+		"datetimeFifteenMinutes": "The date and time of the request, truncated to a multiple of 15 minutes",
+		"datetimeFiveMinutes": "The date and time of the request, truncated to a multiple of 5 minutes",
+		"datetimeHour": "The date and time of the request, truncated to the hour",
+		"datetimeMinute": "The date and time of the request, truncated to the minute",
+		"hasPayload": "1 when the request transfers a payload, 0 otherwise",
+		"transferDirection": "The direction of the payload byte transfer from Cloudflare's point of view (e.g. 'ingress', 'egress', or 'unknown')"
+	},
+	"AccountNetworkQualityClients1mGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountNetworkQualityClients1mGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountNetworkQualityClients1mGroupsSum": {
+		"__description": "",
+		"requestedBytes": "Total number of payload bytes requested using the 'bytes' query parameter (0 when omitted)",
+		"transferredBytes": "Total number of payload bytes transferred"
+	},
+	"AccountNetworkQualityClients1mGroupsUniq": {
+		"__description": "",
+		"eyeballs": "Approximate number of unique clients (eyeball IDs)"
+	},
+	"AccountNetworkQualityUsage1mGroups": {
+		"__description": "Beta. Network Quality API usage and unique tokens from authorized client requests (i.e. requests carrying an authorization token issued on behalf of the account), aggregated per minute without sampling",
+		"count": "Number of authorized requests",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension",
+		"uniq": "The number of unique values for a metric per dimension"
+	},
+	"AccountNetworkQualityUsage1mGroupsDimensions": {
+		"__description": "",
+		"coloCode": "The airport code of the Cloudflare datacenter that served this request",
+		"date": "The date of the request",
+		"datetime": "The date and time of the request, truncated to the minute",
+		"datetimeFifteenMinutes": "The date and time of the request, truncated to a multiple of 15 minutes",
+		"datetimeFiveMinutes": "The date and time of the request, truncated to a multiple of 5 minutes",
+		"datetimeHour": "The date and time of the request, truncated to the hour",
+		"datetimeMinute": "The date and time of the request, truncated to the minute",
+		"hasPayload": "1 when the request transfers a payload, 0 otherwise",
+		"transferDirection": "The direction of the payload byte transfer from Cloudflare's point of view (e.g. 'ingress', 'egress', or 'unknown')"
+	},
+	"AccountNetworkQualityUsage1mGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountNetworkQualityUsage1mGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountNetworkQualityUsage1mGroupsSum": {
+		"__description": "",
+		"requestedBytes": "Total number of payload bytes requested using the 'bytes' query parameter (0 when omitted)",
+		"transferredBytes": "Total number of payload bytes transferred"
+	},
+	"AccountNetworkQualityUsage1mGroupsUniq": {
+		"__description": "",
+		"tokens": "Approximate number of unique authorization tokens (JWT IDs)"
+	},
 	"AccountNetworkQualityUsageAdaptiveGroups": {
 		"__description": "Beta. Network Quality API usage from authorized client requests (i.e. requests carrying an authorization token issued on behalf of the account), with adaptive sampling",
 		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
@@ -11163,6 +11295,7 @@
 		"__description": "Beta. R2 operations with adaptive sampling",
 		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountR2OperationsAdaptiveGroupsConfidence": {
@@ -11192,6 +11325,16 @@
 	},
 	"AccountR2OperationsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountR2OperationsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"responseTimeMsP25": "Time in milliseconds from when R2 started handling the request until it began sending response headers, weighted by the adaptive sample interval; -1 when no request in the group has a valid measurement (25th percentile)",
+		"responseTimeMsP50": "Time in milliseconds from when R2 started handling the request until it began sending response headers, weighted by the adaptive sample interval; -1 when no request in the group has a valid measurement (50th percentile)",
+		"responseTimeMsP75": "Time in milliseconds from when R2 started handling the request until it began sending response headers, weighted by the adaptive sample interval; -1 when no request in the group has a valid measurement (75th percentile)",
+		"responseTimeMsP90": "Time in milliseconds from when R2 started handling the request until it began sending response headers, weighted by the adaptive sample interval; -1 when no request in the group has a valid measurement (90th percentile)",
+		"responseTimeMsP95": "Time in milliseconds from when R2 started handling the request until it began sending response headers, weighted by the adaptive sample interval; -1 when no request in the group has a valid measurement (95th percentile)",
+		"responseTimeMsP99": "Time in milliseconds from when R2 started handling the request until it began sending response headers, weighted by the adaptive sample interval; -1 when no request in the group has a valid measurement (99th percentile)",
+		"responseTimeMsP999": "Time in milliseconds from when R2 started handling the request until it began sending response headers, weighted by the adaptive sample interval; -1 when no request in the group has a valid measurement (99.9th percentile)"
 	},
 	"AccountR2OperationsAdaptiveGroupsSum": {
 		"__description": "",
@@ -11993,7 +12136,9 @@
 		"liveInputEventsAdaptive": "",
 		"liveInputEventsAdaptiveGroups": "",
 		"logExplorerIngestionAdaptiveGroups": "",
+		"logpushExternalUsageAdaptiveGroups": "",
 		"logpushHealthAdaptiveGroups": "",
+		"logpushInternalUsageAdaptiveGroups": "",
 		"logpushTransformersAdaptiveGroups": "",
 		"logpushTransformersSuccessfulUsageAdaptiveGroups": "",
 		"logpushUsageAdaptiveGroups": "",
@@ -12034,6 +12179,8 @@
 		"mnmFlowDataAdaptiveGroups": "",
 		"monetizationGatewayAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
+		"networkQualityClients1mGroups": "",
+		"networkQualityUsage1mGroups": "",
 		"networkQualityUsageAdaptiveGroups": "",
 		"ohttpMetricsAdaptive": "",
 		"ohttpMetricsAdaptiveGroups": "",
@@ -12097,6 +12244,7 @@
 		"videoBufferEventsAdaptiveGroups": "",
 		"videoPlaybackEventsAdaptiveGroups": "",
 		"videoQualityEventsAdaptiveGroups": "",
+		"warpClientLogEventsGroups": "",
 		"warpDeviceAdaptiveGroups": "",
 		"webSearchRequestsAdaptiveGroups": "",
 		"workerPlacementAdaptiveGroups": "",
@@ -13178,12 +13326,56 @@
 	"AccountVideoQualityEventsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountWarpClientLogEventsGroups": {
+		"__description": "Cloudflare One Client log events.",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Number of client log events",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountWarpClientLogEventsGroupsConfidence": {
+		"__description": "",
+		"count": "Number of client log events, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountWarpClientLogEventsGroupsDimensions": {
+		"__description": "",
+		"authorizationType": "uninstall_authorization event: credential used, account or device. Empty for other event types",
+		"authorized": "uninstall_authorization event: 1 if the credential was accepted, 0 if rejected. 0 for other event types",
+		"clientVersion": "Client version",
+		"date": "The date the event was received",
+		"datetime": "The date and time the event was received",
+		"datetimeHour": "The date and time the event was received truncated to the hour",
+		"deviceId": "Physical Device ID",
+		"deviceName": "Device name. Requires the com.cloudflare.team.device.read permission; otherwise returned as the literal \"REDACTED\"",
+		"event": "Event type, e.g. uninstall_authorization",
+		"level": "Severity: info or warning",
+		"occurredAt": "The date and time the event occurred, as reported by the client",
+		"os": "Device operating system",
+		"osVersion": "Device operating system version",
+		"registrationId": "Registration ID",
+		"serialNumber": "Device serial number. Requires the com.cloudflare.team.device.read permission; otherwise returned as the literal \"REDACTED\"",
+		"sessionId": "Session ID.",
+		"userEmail": "User email address. Requires the com.cloudflare.team.device.read permission; otherwise returned as the literal \"REDACTED\"",
+		"userId": "User ID"
+	},
+	"AccountWarpClientLogEventsGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWarpClientLogEventsGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountWarpDeviceAdaptiveGroups": {
 		"__description": "Beta. Warp device health events with adaptive sampling",
+		"avg": "",
 		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"count": "Number of device health events, which usually occur at 2m intervals per device",
 		"dimensions": "List of dimensions to group by",
+		"max": "The maximum value for a metric per dimension",
 		"uniq": ""
+	},
+	"AccountWarpDeviceAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
 	},
 	"AccountWarpDeviceAdaptiveGroupsConfidence": {
 		"__description": "",
@@ -13192,9 +13384,16 @@
 	},
 	"AccountWarpDeviceAdaptiveGroupsDimensions": {
 		"__description": "",
+		"alwaysOn": "Whether the WARP client is configured as always on",
+		"batteryCharging": "Whether the device battery is charging",
+		"batteryCycles": "Device battery charge cycle count",
+		"batteryPct": "Device battery charge percentage",
 		"clientPlatform": "Device's OS",
 		"clientVersion": "Device's Warp version",
 		"colo": "Device's connected colo",
+		"connectionType": "Device network connection type",
+		"cpuPct": "Device CPU utilization percentage",
+		"cpuPctByAppJson": "JSON-encoded list of top applications by CPU utilization",
 		"date": "The date of the device log",
 		"datetime": "The date and time of the device log",
 		"datetimeFifteenMinutes": "The date and time of the device log truncated to fifteen minutes",
@@ -13204,18 +13403,76 @@
 		"datetimeMinute": "The date and time of the device log truncated to the minute",
 		"datetimeTenMinute": "The date and time of the device log truncated to every ten minutes",
 		"deviceId": "Device ID",
+		"deviceRegistration": "Device registration ID",
+		"diskReadBps": "Device disk read throughput in bytes per second",
+		"diskUsagePct": "Device disk utilization percentage",
+		"diskWriteBps": "Device disk write throughput in bytes per second",
+		"dohSubdomain": "DNS over HTTPS subdomain configured on the device",
+		"estimatedLossPct": "Estimated network packet loss percentage reported by the WARP client",
+		"firewallEnabled": "Whether the device firewall is enabled",
+		"handshakeLatencyMs": "WARP tunnel handshake latency in milliseconds",
+		"ispIPv4Address": "Public IPv4 address reported for the device's ISP connection",
+		"ispIPv4Asn": "Autonomous system number for the device's IPv4 ISP connection",
+		"ispIPv4Aso": "Autonomous system organization for the device's IPv4 ISP connection",
+		"ispIPv4Country": "Country code for the device's IPv4 ISP connection",
+		"ispIPv4State": "State or region code for the device's IPv4 ISP connection",
+		"ispIPv6Address": "Public IPv6 address reported for the device's ISP connection",
+		"ispIPv6Asn": "Autonomous system number for the device's IPv6 ISP connection",
+		"ispIPv6Aso": "Autonomous system organization for the device's IPv6 ISP connection",
+		"ispIPv6Country": "Country code for the device's IPv6 ISP connection",
+		"ispIPv6State": "State or region code for the device's IPv6 ISP connection",
 		"mode": "Device's Warp mode",
-		"status": "Device connection status"
+		"networkRcvdBps": "Device network receive throughput in bytes per second",
+		"networkSentBps": "Device network transmit throughput in bytes per second",
+		"networkSsid": "Wi-Fi network SSID reported by the device",
+		"policyId": "WARP device settings policy ID",
+		"ramAvailableKb": "Available device memory in kilobytes",
+		"ramUsedPct": "Device memory utilization percentage",
+		"ramUsedPctByAppJson": "JSON-encoded list of top applications by memory utilization",
+		"status": "Device connection status",
+		"switchLocked": "Whether the WARP client connection switch is locked",
+		"tunnelDownstreamBytesLost": "Bytes lost during the downstream tunnel statistics window",
+		"tunnelDownstreamBytesRecvd": "Bytes received during the downstream tunnel statistics window",
+		"tunnelDownstreamBytesRetrans": "Bytes retransmitted during the downstream tunnel statistics window",
+		"tunnelDownstreamBytesSent": "Bytes sent during the downstream tunnel statistics window",
+		"tunnelDownstreamMinRttUs": "Minimum downstream tunnel round-trip time in microseconds",
+		"tunnelDownstreamPacketsLost": "Packets lost during the downstream tunnel statistics window",
+		"tunnelDownstreamPacketsRecvd": "Packets received during the downstream tunnel statistics window",
+		"tunnelDownstreamPacketsRetrans": "Packets retransmitted during the downstream tunnel statistics window",
+		"tunnelDownstreamPacketsSent": "Packets sent during the downstream tunnel statistics window",
+		"tunnelDownstreamRttUs": "Downstream tunnel round-trip time in microseconds",
+		"tunnelDownstreamRttVarUs": "Downstream tunnel round-trip time variance in microseconds",
+		"tunnelDownstreamStatsWindowMs": "Downstream tunnel statistics window in milliseconds",
+		"tunnelType": "WARP tunnel protocol",
+		"tunnelUpstreamBytesLost": "Bytes lost during the upstream tunnel statistics window",
+		"tunnelUpstreamBytesRecvd": "Bytes received during the upstream tunnel statistics window",
+		"tunnelUpstreamBytesRetrans": "Bytes retransmitted during the upstream tunnel statistics window",
+		"tunnelUpstreamBytesSent": "Bytes sent during the upstream tunnel statistics window",
+		"tunnelUpstreamMinRttUs": "Minimum upstream tunnel round-trip time in microseconds",
+		"tunnelUpstreamPacketsLost": "Packets lost during the upstream tunnel statistics window",
+		"tunnelUpstreamPacketsRecvd": "Packets received during the upstream tunnel statistics window",
+		"tunnelUpstreamPacketsRetrans": "Packets retransmitted during the upstream tunnel statistics window",
+		"tunnelUpstreamPacketsSent": "Packets sent during the upstream tunnel statistics window",
+		"tunnelUpstreamRttUs": "Upstream tunnel round-trip time in microseconds",
+		"tunnelUpstreamRttVarUs": "Upstream tunnel round-trip time variance in microseconds",
+		"tunnelUpstreamStatsWindowMs": "Upstream tunnel statistics window in milliseconds",
+		"version": "Device state event schema version",
+		"wifiStrengthDbm": "Wi-Fi signal strength in dBm"
 	},
 	"AccountWarpDeviceAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
+	},
+	"AccountWarpDeviceAdaptiveGroupsMax": {
+		"__description": "",
+		"timestamp": "Latest device health event timestamp"
 	},
 	"AccountWarpDeviceAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
 	"AccountWarpDeviceAdaptiveGroupsUniq": {
 		"__description": "",
-		"deviceIds": "Approximate count of unique deviceIds"
+		"deviceIds": "Approximate count of unique deviceIds",
+		"deviceIdsExact": "Exact count of unique deviceIds"
 	},
 	"AccountWebSearchRequestsAdaptiveGroups": {
 		"__description": "Web Search Requests Analytics",
@@ -18327,7 +18584,9 @@
 		"liveInputEventsAdaptive": "Live input events with adaptive sampling",
 		"liveInputEventsAdaptiveGroups": "Aggregated live input events with adaptive sampling",
 		"logExplorerIngestionAdaptiveGroups": "Ingestion metrics for Log Explorer",
+		"logpushExternalUsageAdaptiveGroups": "Account-wide billable usage for successfully delivered customer-owned Logpush jobs with a non-Cloudflare destination (all destinations other than R2 and Pipelines)",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
+		"logpushInternalUsageAdaptiveGroups": "Account-wide billable usage for successfully delivered customer-owned Logpush jobs with a Cloudflare destination (R2 or Pipelines)",
 		"logpushTransformersAdaptiveGroups": "Beta. Logpush transformer health metrics",
 		"logpushTransformersSuccessfulUsageAdaptiveGroups": "Account-wide billable usage for successful invocations of Logpush transformers across all job scopes",
 		"logpushUsageAdaptiveGroups": "Account-wide billable usage for successfully delivered customer-owned Logpush jobs",
@@ -18368,6 +18627,8 @@
 		"mnmFlowDataAdaptiveGroups": "Flow data collected through Magic Network Monitoring",
 		"monetizationGatewayAdaptiveGroups": "Monetization Gateway payment outcomes with adaptive sampling",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
+		"networkQualityClients1mGroups": "Beta. Network Quality API usage and unique clients from authorized client requests (i.e. requests carrying an authorization token issued on behalf of the account), aggregated per minute without sampling",
+		"networkQualityUsage1mGroups": "Beta. Network Quality API usage and unique tokens from authorized client requests (i.e. requests carrying an authorization token issued on behalf of the account), aggregated per minute without sampling",
 		"networkQualityUsageAdaptiveGroups": "Beta. Network Quality API usage from authorized client requests (i.e. requests carrying an authorization token issued on behalf of the account), with adaptive sampling",
 		"ohttpMetricsAdaptive": "oHTTP request metrics with adaptive sampling",
 		"ohttpMetricsAdaptiveGroups": "Aggregated oHTTP request metrics with adaptive sampling",
@@ -18432,6 +18693,7 @@
 		"videoBufferEventsAdaptiveGroups": "Beta. Aggregated video streaming buffer event metrics with adaptive sampling",
 		"videoPlaybackEventsAdaptiveGroups": "Beta. Aggregated video streaming playback event metrics with adaptive sampling",
 		"videoQualityEventsAdaptiveGroups": "Beta. Aggregated video streaming quality change event metrics with adaptive sampling",
+		"warpClientLogEventsGroups": "Cloudflare One Client log events.",
 		"warpDeviceAdaptiveGroups": "Beta. Warp device health events with adaptive sampling",
 		"webSearchRequestsAdaptiveGroups": "Web Search Requests Analytics",
 		"workerPlacementAdaptiveGroups": "Worker placement metrics",
