@@ -3,65 +3,34 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2><span style="font-size: 12pt;">Available Locations: </span><span style="font-size: 10pt;"><strong>Austin, US</strong></span></h2>
-<p><span style="font-size: 10pt;"><strong>Job Title: Senior Oracle Fusion Engineer</strong></span></p>
-<h2><span style="font-size: 12pt;">About the Role</span></h2>
-<p>The Senior Oracle Fusion Engineer will serve as the top individual contributor responsible for the technical architecture and development of complex custom solutions, extensions, and reports within the Oracle Fusion Cloud ERP environment. This expert-level role is crucial for creating and maintaining high-performance, scalable solutions that support high-volume transactional processes, especially within Supply Chain Execution and Finance</p>
-<h2>Responsibilities</h2>
+<p><strong>Available Location - </strong>Bengaluru (Hybrid)</p>
+<p><strong>Job Title - </strong>Systems Engineer&nbsp;</p>
+<p><strong>Role Summary</strong></p>
+<p>We are looking for a systems engineer who has experience building Real time audio/video on Apple platforms. You will be building and learning with the team, systems and applications, for realtime communications, and for calls and agentic solutions.</p>
+<p><strong>Role Responsibilities :</strong></p>
 <ul>
-	<li><strong>Senior Design Leadership:</strong> Lead the end-to-end design lifecycle for major enterprise enhancements, providing technical oversight and mentorship to engineering teams to ensure solutions are robust, scalable, and aligned with business requirements.</li>
-	<li><strong>Advanced Development Execution:</strong> Own the hands-on development of critical, high-impact technical modules, prioritizing clean, maintainable, and high-performance code across the Oracle Fusion environment.</li>
-	<li><strong>Custom Development:</strong> Personally drive the design and development of the most complex and sensitive technical solutions (Extensions, Complex Interfaces, Customizations) using core Fusion development tools: <strong>BI Publisher, Groovy scripting, APEX, VBCS, ATP or PaaS extensions.</strong></li>
-	<li><strong>Deep Dive Resolution:</strong> Serve as the <strong>final escalation point for P1/P2 operational incidents</strong>, providing rapid root cause analysis and implementing permanent, preventative technical resolutions across system code or configuration.</li>
-	<li><strong>Integration Design:</strong> Lead performance tuning initiatives for critical ESS batch jobs and high-volume transactional interfaces partnering with OIC/OPA Developer.</li>
-	<li><strong>Technical Standards:</strong> Establish technical standards, coding best practices, and quality gates for all development work performed by the technical team.</li>
+	<li>Build and Maintain Realtime SDKs for iOS, including building end to end systems that involve the Cloudflare Developer Platform.</li>
+	<li>Owner of build systems, CI, test platforms and end to end delivery of solutions for WebRTC based realtime audio/video systems.</li>
+	<li>Always have an ear to customer complaints, and responsibility of catering to users across geographies feedback channels</li>
+	<li>Learning with the team, and building across platforms, owning responsibilities of cross functional systems.</li>
 </ul>
-<h2>Role Requirements</h2>
-<h2>Must-Have Skills</h2>
+<p><strong>Role Requirements :</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>10+ years of progressively responsible experience in ERP functional and technical roles.</li>
-	<li>6+ years of hands-on, deep implementation, and technology support experience with <strong>Oracle Fusion ERP/GTM and EPM</strong>.</li>
-	<li><strong>Mandatory:</strong> Proven history of designing, building, or architecting complex technical solutions within the Fusion framework using tools like <strong>AI Agent Studio, BI Publisher, Groovy scripting, APEX, VBCS, ATP or PaaS extensions.</strong></li>
-	<li>Deep understanding of integration technology, including proven experience designing robust interfaces using <strong>OIC</strong> for shop floor and warehouse systems.</li>
-	<li>Experience establishing technical standards and governing system changes in a live production environment.</li>
+	<li>4-7 years of experience building and maintaining realtime systems with iOS</li>
+	<li>Expertise of having built Realtime applications that involve chat, and audio/video streaming.</li>
+	<li>Expertise in solving complex customer problems arising from various iOS devices, that involve Video streaming, Audio device and related problems</li>
+	<li>Strong practical understanding of iOS audio/video pipelines (AVFoundation, CallKit)</li>
+	<li>Exposure to debugging full stack applications that involve Node backend, and architecting features that are end to end.</li>
+	<li>Expertise with telemetry and logging with exposure to various cloud systems such as Grafana, Kibana, Sentry and the kind</li>
+	<li>Having exposure to all kinds of CPU/ Memory limitations while building large scale high CPU footprint iOS applications while rendering high resolution video</li>
 </ul>
-<h2>Nice-to-Have Skills</h2>
+<p><strong>Nice-to-Have Skills :</strong></p>
 <ul>
-	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
-	<li>Hands-on experience with other Oracle PaaS tools.</li>
-	<li>Experience setting up/using CI/CD tools like FlexDeploy</li>
-	<li>Third-party supporting software experience like Avalara, Kyriba, Zip, etc.</li>
-	<li>Exposure to the Data Center Infrastructure industry.</li>
-	<li>Relevant professional product/functional certifications (e.g., Oracle Cloud certifications)</li>
-	<li>Working knowledge of AI Agent Studio for Oracle Fusion Cloud Applications.</li>
-</ul>
-<p>&nbsp;</p>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p>Financial Benefits</p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p>Time Off</p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Cross-Platform &amp; Mobile Ecosystem: Experience with Kotlin Multiplatform (KMP / KMM)</li>
+	<li>In-depth knowledge of the WebRTC stack, comfortable with debugging ObjC++ code.</li>
+	<li>Nice to have experience building applications on React</li>
+	<li>Building backend applications with TypeScript or Javascript</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

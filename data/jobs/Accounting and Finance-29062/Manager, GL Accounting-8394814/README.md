@@ -3,61 +3,33 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations</strong></p>
+<p><span style="font-size: 10pt;"><strong>Available Locations: </strong>IN Bengaluru</span></p>
+<p><span style="font-size: 10pt;"><strong>About the role</strong></span></p>
+<p><span style="font-size: 10pt;">The Manager, GL Accounting - India, is a vital leadership role responsible for the <strong>day-to-day execution, supervision, and efficiency</strong> of the GL Accounting Team based in India. </span><span style="font-size: 10pt;">This is a critical operational role where you will directly influence the <strong>quality, speed, and accuracy</strong> of our core accounting processes. You will serve as the primary on-the-ground manager, ensuring the India-based team maintains <strong>high performance (SLAs)</strong>, resolves issues efficiently, and provides necessary support to our core operational close processes. </span><span style="font-size: 10pt;">Working closely with the US-based Director, Managers and Supervisors, you will translate global process standards into effective local practice, supervise weekly and month-end closing tasks, and ensure the team is prepared to support ongoing global projects and process improvement initiatives.</span></p>
+<h2><span style="font-size: 10pt;"><strong>What you'll do: Execution, Support, and Quality Control</strong></span></h2>
 <ul>
-	<li>Singapore</li>
+	<li><span style="font-size: 10pt;"><strong>Workforce Management &amp; Team Leadership:</strong> Provide direct supervision and mentorship to the India-based GL operations teams, fostering a culture of high performance, accountability, and continuous improvement within the contracted workforce model.</span></li>
+	<li><span style="font-size: 10pt;"><strong>Month-End Close Execution:</strong> Scale the team to achieve full, autonomous ownership of month-end close accounting processes (e.g. cash, accruals, foreign payroll).</span></li>
+	<li><span style="font-size: 10pt;"><strong>Post-Close Execution &amp; Analysis:&nbsp;</strong>Own post-close execution, including timely balance sheet reconciliations and variance (flux) analysis.</span></li>
+	<li><span style="font-size: 10pt;"><strong>Process Improvement &amp; Project Support:</strong> Partner with the US-based team to support ongoing finance transformation projects (including the ERP implementation) and process improvement initiatives.</span></li>
+	<li><span style="font-size: 10pt;"><strong>Compliance &amp; Control Execution:</strong> Ensure the local team adheres strictly to the defined internal controls, maintaining effective documentation and evidence to support robust <strong>SOX compliance</strong> and external audit requirements.</span></li>
 </ul>
-<p><strong>About the Role</strong></p>
-<p>We are hiring for a Senior Talent Acquisition Business Partner<strong> </strong>to join our APAC team. In this role, you will act as a talent advisor and go-to-market specialist, driving the expansion of hiring across the region. You will operate autonomously, utilizing your deep market expertise, AI-driven strategies, and extensive network to hire top-tier talent for Cloudflare across the region.</p>
-<p><strong>Responsibilities</strong></p>
+<p><span style="font-size: 10pt;"><strong>Examples of desirable skills, knowledge and experience</strong></span></p>
 <ul>
-	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong> Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams</li>
-	<li><strong>Proactive Pipeline &amp; Passive Candidate Outreach:</strong> Draw upon an extensive network using a variety of sourcing channels and industry contacts to build proactive pipeline strategies for a variety of roles</li>
-	<li><strong>Stakeholder Management &amp; Advising:</strong> Build and maintain solid relationships with executive leadership and cross-functional stakeholders, including Finance, HRBPs and compensation teams.</li>
-	<li><strong>AI-Agent Integration &amp; Process Optimization:</strong> Partner with internal automated AI agents and generative tools to eliminate legacy manual tasks, optimize administrative outreach workflows at scale, and synthesize complex market data to inform regional talent strategies.</li>
-	<li><strong>Data Utilization &amp; Analytics:</strong> Leverage foundational data layers and recruitment analytics to inform talent strategies, actively analyzing metrics such as time-to-hire and source efficiency to drive optimal operational decisions.<br><br></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Technical Expertise:</strong> Public accounting audit experience in a managerial role required; Big 4 firm strongly preferred.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Certification:</strong> <strong>CPA, or international equivalent, is required.</strong></span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Experience:</strong> 10+ years of progressive experience in an accounting or auditing role is required.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Problem Solving:</strong> Demonstrated ability to make sound decisions and manage multiple high-priority deliverables and work streams simultaneously in a fast-paced environment.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Team Leadership &amp; Communication:</strong> Exceptional leadership skills with the ability to manage performance, train junior staff, and communicate complex issues clearly across different cultures and time zones.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Detail Orientation:</strong> Strong attention to detail and problem-solving skills, with a track record of proactively identifying and resolving operational bottlenecks.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Project Management:</strong> Proven ability to organize, &amp; manage projects from inception to completion that require coordinated efforts across multiple functional areas (Accounting, FP&amp;A, Treasury, Operations).</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Communication:</strong> Excellent verbal and written communication skills; must be comfortable connecting and communicating with individuals at all levels of the organization.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Control Environment:</strong> Strong knowledge of <strong>SOX requirements</strong>, including the ability to assess, develop, and implement internal controls.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Mindset:</strong> Proactive and creative approach, strong analytical skills, and ability to navigate ambiguous situations, bringing options and providing clear recommendations.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Education:</strong> Bachelor’s Degree in accounting or related field.</span></li>
+	<li style="font-size: 10pt;"><span style="font-size: 10pt;">&nbsp; &nbsp; &nbsp; <strong>Systems Proficiency:</strong> Proficient in Word, Excel, Alteryx, OpenCode, and PowerPoint.</span></li>
 </ul>
-<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
-<ul>
-	<li><strong>Strategic Problem Solving:</strong> Ability to operate two "plays" ahead, anticipating potential bottlenecks before they materialize, and resolving complex organizational issues with high autonomy.</li>
-	<li><strong>Negotiation &amp; Closing Skills:</strong> Effective negotiation capabilities to secure top-tier candidates, driven by a deep understanding of Cloudflare's unique value propositions.</li>
-	<li><strong>AI &amp; Ecosystem Proficiency:</strong> Demonstrated capability to leverage automated workflows, AI-powered sourcing environments, and LLMs for complex boolean logic, market mapping, and productivity multiplication.</li>
-	<li><strong>Candidate Experience Focus:</strong> Strong organizational skills to eliminate operational friction, ensuring clear communication and proactive engagement throughout the interview lifecycle.</li>
-	<li><strong>Communication &amp; Feedback:</strong> Exceptional written and verbal communication skills with the ability to influence and advise senior stakeholders across the region.</li>
-	<li><strong>Adaptability &amp; Self-Direction:</strong> Comfort thriving in ever-changing environments, taking complete responsibility for outcomes while seamlessly navigating an evolving technological and organizational landscape.</li>
-</ul>
-<h3><strong>Compensation</strong></h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<h3><strong>Equity</strong></h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3><strong>Benefits</strong></h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3><strong>Health &amp; Welfare Benefits</strong></h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3><strong>Financial Benefits</strong></h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3><strong>Time Off</strong></h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p><br><br></p>
-<h3><br><br></h3>
-<h3><br><br></h3>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

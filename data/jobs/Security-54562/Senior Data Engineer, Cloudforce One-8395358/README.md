@@ -24,7 +24,7 @@
 </ul>
 <h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>5+ years of experience designing, building, and operating scalable production data pipelines.</li>
+	<li>7+ years of experience designing, building, and operating scalable production data pipelines.</li>
 	<li>Proven experience building analytical data stores and data marts, including data modeling, partitioning, and schema evolution.</li>
 	<li>Strong Python for data engineering, including testing and maintainable, well-structured code.</li>
 	<li>Strong SQL, including window functions, query optimization, and performance tuning on large datasets.</li>

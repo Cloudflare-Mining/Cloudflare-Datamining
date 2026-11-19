@@ -3,49 +3,61 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal or Austin, US&nbsp;</strong></p>
-<p><strong>About the role</strong></p>
-<p>Cloudflare is scaling one of the largest global networks on the Internet, and capacity planning is what keeps that growth ahead of demand. As an Infrastructure Network &amp; Supply Planner on our Infrastructure Capacity Planning team you'll build the products, tools, and AI agents that turn growth and demand forecasts into scalable, execution-ready infrastructure expansions, ensuring the right capacity is in the right place, at the right time and cost, in the shortest time possible.</p>
-<p>You'll design and ship internal products — forecasting models, planning systems, dashboards, and automated workflows — that make end-to-end infrastructure readiness faster, cheaper, and more reliable at global scale</p>
-<p>You'll refine and create new AI agents to model demand into supply, network, and capacity scenarios and surface risks early, producing force multipliers that let planners see the whole system and act quickly — shifting time from reactive task-processing to proactive strategy, and scaling impact. You'll partner across planning, operations, procurement, logistics, engineering, and finance to keep Cloudflare's global deployments moving smoothly.</p>
-<h4><strong>What you'll do</strong></h4>
-<p>I<strong>nfrastructure Capacity &amp; Expansion Planning</strong></p>
+<p><strong>Available Locations</strong>: Lisbon or London or NYC or Austin&nbsp;</p>
+<p><strong>About the Department</strong></p>
+<p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the developer platform that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to. The Workers team is split into several groups. The Data Primitives group is focused on how we bring state to the edge.</p>
+<p><strong>About the Team</strong></p>
+<p>The Data Primitives Group enables developers to build with data and asynchronous tasks, taking their applications beyond simple request manipulation to complete, globally delivered applications. We build and operate <a href="https://developers.cloudflare.com/d1/">Cloudflare D1</a>, our managed SQLite database; <a href="https://developers.cloudflare.com/queues/">Queues</a>, our messaging primitive; and <a href="https://developers.cloudflare.com/workers/learning/how-kv-works/">Workers KV</a>, a global low-latency key-value data store. We also design and build new services to address critical customer application integration requirements.</p>
+<h3>What you'll do</h3>
+<p>In this role, you'll join one of our top-notch engineering teams (D1, Queues or Workers KV) that keep our services and customers’ applications running smoothly at global scale while implementing new features, ensuring reliability, and improving performance.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write or review a design document that outlines how you plan to solve a specific problem, modify how your service processes and stores data, or fix a bug in how our user experience renders. You will use your experience to mentor and guide other engineers as they begin their careers. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust, and C++.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Translate demand forecasts into infrastructure capacity plans that support business growth, aligning hardware deployments with performance, cost, and timeline targets.</li>
-	<li>Ensure infrastructure readiness across space, power, connectivity, and hardware availability, identifying capacity constraints early and coordinating mitigation.&nbsp;</li>
-</ul>
-<p><strong>Deployment Planning &amp; Execution Coordination</strong></p>
-<ul>
-	<li>Build quarterly and weekly deployment plans that are realistic, balanced, and optimized for execution efficiency across operations, logistics, integration partners, and engineering teams.</li>
-	<li>Track progress, resolve blockers, and maintain deployment momentum across the global fleet.</li>
-</ul>
-<p><strong>Supply, Inventory &amp; Lifecycle Readiness</strong></p>
-<ul>
-	<li>Partner with Procurement and Data Center teams to ensure hardware and resources are available at the right time and locations, and manage inventory to balance availability, cost efficiency, and operational risk.</li>
-	<li>Support hardware refresh and asset lifecycle planning, and align infrastructure investments with budget and growth plans alongside Finance.</li>
-</ul>
-<p><strong>AI-First Products, Automation &amp; Continuous Improvement</strong></p>
-<ul>
-	<li>Design, build, and ship internal products — forecasting models, dashboards, planning systems, and automated workflows — using AI/agentic tooling to structure messy data, run scenario analyses, and improve planning accuracy.</li>
-	<li>Identify high-leverage opportunities to automate repetitive work, introduce new tools and methodologies, and continuously improve how planning and deployment operate at scale.</li>
-</ul>
-<p><strong>Cross-Functional Collaboration</strong></p>
-<ul>
-	<li>Act as a central layer across planning, operations, engineering, logistics, procurement, and finance to keep Cloudflare's global deployments moving smoothly.</li>
-</ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<ul>
-	<li>Experience in capacity planning, infrastructure planning, production/operations planning, supply planning, or a related technical planning role.</li>
-	<li>Strong analytical and problem-solving skills, with experience across complex operational systems and managing multiple priorities in fast-paced environments.</li>
-	<li>Hands-on experience building tools, automation, or internal products</li>
-	<li>Fluency with AI tools in daily work, and a genuine appetite to use and create AI/agentic tooling to scale decision-making and eliminate manual toil.</li>
-	<li>Excellent communication and stakeholder-management skills.</li>
+	<li>5+ years of experience with (and love for) distributed systems and data</li>
+	<li>Willing and eager to share knowledge, and mentor</li>
+	<li>Great oral and written communications skills, especially concisely documenting complex conceptsSolid understanding of TypeScript and Go, including asynchronous programming in both</li>
+	<li>Strong systems level programming skillsUnderstanding of security issues and responsibilities</li>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)Solid Linux experience</li>
+	<li>Fluent in analyses of data sets such as logs</li>
+	<li>Designing and building APIs</li>
+	<li>A desire for continuous learning and improvement</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €36,000-50,000.&nbsp;</span></li>
+	<li><span data-sheets-root="1">For Lisbon based hires: Estimated annual salary of <span class="rQesXe MPyX">€66</span>,000 - <span class="rQesXe MPyX">€83,000</span></span></li>
+	<li><span data-sheets-root="1">For NYC based hires: Estimated annual salary of $185,000 - $231,000</span></li>
 </ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<h1>&nbsp;</h1>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -3,47 +3,60 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Open to any of the listed location(s):</strong></p>
+<h4>Available Locations: <strong>London, New York City, Denver, Lisbon, Seattle, or Austin</strong></h4>
+<h3>About the Role</h3>
+<p>Millions of websites, applications, APIs, and AI agents run on Cloudflare, and the traffic we handle for them produces a lot of data. Some customers want to debug applications and investigate security events in Cloudflare. Others want that data in a stack they already trust, such as Splunk, Datadog, Grafana, or their own data lake. Many want both.</p>
+<p>We're hiring one Senior Product Manager for each of two areas. You apply once, and we'll work out together which role fits you best.</p>
+<p><strong>Observability Platform</strong> brings logs, traces, analytics, alerts, and dashboards together in one place, so customers can see what's happening and why. Today most observability ends with a notification, and the customer does the rest. We want a platform that understands the problem, takes action where it can, and asks before doing anything risky.</p>
+<p><strong>Telemetry Export</strong> delivers Cloudflare's data to the tools customers choose. Logpush handles most of that delivery today, and Workers Observability sends logs and traces over the OpenTelemetry Protocol (OTLP). Customers want OTLP for the rest of Cloudflare's data, metrics pushed to their own tools, and a way to send us telemetry from workloads that run elsewhere.</p>
+<p><strong>Your mission is to make reliability and security something customers rarely have to worry about, with the data they need in Cloudflare or in the tools they already use.</strong></p>
+<h3>What You'll Do</h3>
 <ul>
-	<li>Florida: Miami (MIA), Tampa (TPA)</li>
-	<li>Georgia: Atlanta (ATL)</li>
-	<li>North Carolina: Charlotte (CLT), Raleigh (RDU)</li>
-	<li>Tennessee: Nashville (BNA)</li>
+	<li>Talk with customers every day and deeply understand their needs. They include developers building on Cloudflare, security teams who feed our logs into a SIEM, and platform teams who run OpenTelemetry pipelines.</li>
+	<li>Own the strategy, roadmap, and execution for your area, and make hard trade-offs between speed, retention, reliability, and cost.</li>
+	<li>Build on open standards like OpenTelemetry, W3C Trace Context, and SQL so teams can keep using the tools they already have.</li>
+	<li>Own the business, including pricing, packaging, and revenue. Measure progress by adoption and reliability.</li>
 </ul>
-<h3><strong>About the Department</strong></h3>
-<p>Partner Account Managers, Account Executives, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
-<h3><strong>What you'll do</strong></h3>
-<p>We are looking for a seasoned channel sales professional to help us build out the channel organization in the Southeast and MidAtlantic regions.</p>
-<p>In this role, you’ll identify and operationalize varied types of partner organizations to help expand Cloudflare’s sales team reach within an assigned territory. You will build a regional partner business plan with quantified goals and milestones to achieve partner sourced revenue metrics to meet all quarterly sales requirements.</p>
-<p>As a Partner Account Manager, you will work with a strategic group of partners in your territory and build a plan to drive alignment, enablement and pipeline generation efforts. &nbsp; You will work with partner stakeholders to drive sales enablement and coordinate technical training of Cloudflare’s solutions, work with respective field teams on demand gen initiatives and campaigns, as well as working with direct sales on various Channel oriented opps.</p>
-<p>&nbsp;</p>
-<p><strong>Additional responsibilities will include:</strong></p>
+<h3>In <strong>Observability Platform</strong>, you'll also:</h3>
 <ul>
-	<li>Lead business planning and execution with partners and internal sales teams (e.g., QBRs, health checks, annual planning).</li>
-	<li>Conduct joint partner territory planning with aligned sales segments.</li>
-	<li>Deliver internal partner training to direct sales teams to foster collaborative selling.</li>
-	<li>Drive pipeline creation and revenue through creative joint GTM activity with our channel and direct sales teams.</li>
-	<li>Build product and sales competency within core regional and national partners, influencing their GTM strategies to maximize partner-sourced pipeline.</li>
-	<li>Leverage data analytics and AI tooling to optimize and scale partner growth.</li>
+	<li>Bring every Cloudflare product into one observability experience, so customers can follow a problem from one product to the next without switching tools.</li>
+	<li>Move beyond notifications to workflows that investigate, roll back, or fix problems, with guardrails customers control.</li>
+	<li>Give people and their agents the context they need to act safely, including how services connect and depend on each other.</li>
+	<li>Own the experience end to end, from first setup to the middle of an incident or an audit.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3>In <strong>Telemetry Export</strong>, you'll also:</h3>
 <ul>
-	<li>5+ years in Software/SaaS/Security Sales &amp; Channel management.</li>
-	<li>3+ years of proven success developing and scaling a partner ecosystem (VARs, SIs, MSPs/MSSPs) within a SaaS model.</li>
-	<li>Understanding of cloud infrastructure ecosystem and cloud security is highly preferred.</li>
-	<li>Direct experience in onboarding and enabling resellers/SI's.</li>
-	<li>Experience working in a start-up environment.</li>
-	<li>Ability to travel 30-50% of the time within the assigned territory.</li>
-	<li>Technical competence strongly preferred.</li>
+	<li>Bring Logpush, Workers Logpush, and the OpenTelemetry destinations in Workers Observability together as one product, and keep existing integrations working.</li>
+	<li>Ship metrics export and extend OTLP delivery to more of our datasets. Own the intake path for telemetry from outside Cloudflare; Observability Platform will store and query it.</li>
+	<li>Make delivery something customers can trust, so they can see whether their data arrived, get a useful alert when it didn't, and know how to recover.</li>
+	<li>Help customers filter and transform data before it's sent, so they export only what they need.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>This role is eligible to earn incentive compensation under Cloudflare's Sales Compensation Plan.&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h3>Who You Are</h3>
+<ul>
+	<li>You've shipped products people depend on, as a PM, engineer, engineering manager, SRE, or founder, and you can point to what changed because of your work.</li>
+	<li>You move fast and own outcomes. You find the most important problem, get the team behind it, ship, and measure.</li>
+	<li>You are a builder at heart. You love getting to a deep understanding of customer needs, and shipping things that help them accomplish their goals. You are passionate about the Observability industry and want to be on the forefront of innovating what it can turn into.</li>
+	<li>You understand how telemetry systems fail, whether that's a delivery pipeline under backpressure or a query that scans far more data than it needs, and you can explain the reliability and cost trade-offs to engineers and to customers.</li>
+	<li>AI is already central to how you work. You use it to prototype ideas and dig through data, and you have a view on how agents will produce telemetry and act on it.</li>
+</ul>
+<h3>Examples of Desirable Skills, Knowledge, and Experience</h3>
+<ul>
+	<li>You've relied on observability yourself, on call during an outage or in a security investigation, and you know where today's tools fall short.</li>
+	<li>You've run or built on telemetry pipelines such as the OpenTelemetry Collector, Vector, Fluent Bit, or Kafka, or you've ingested someone else's data at scale at a vendor.</li>
+	<li>You notice friction, like a confusing error message or a query that takes too many steps, and you fix it.</li>
+	<li>You've priced a usage-based product, and you know what happens when existing customers start paying for something that used to be included.</li>
+	<li>You're comfortable with enterprise customers, whether you're talking about compliance with a security team or OTLP with a platform engineer.</li>
+	<li>You write clearly enough to get teams across Cloudflare to agree on a plan, and you can translate between what customers need and what engineering builds.</li>
+</ul>
+<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For <strong>Colorado</strong> based hires: Estimated annual salary of $156,000 - $195,000</li>
+	<li>For <strong>San Francisco / Bay Area </strong>based hires: Estimated annual salary of $179,000 - $224,000</li>
+	<li>For <strong>New York City/Seattle </strong>based hires: Estimated annual salary of $172,000 - $215,000</li>
+	<li>For <strong>Lisbon</strong> based hires: Estimated annual salary of €68,000 to €85,000</li>
+</ul>
+<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>

@@ -24,7 +24,7 @@
 	<li>Strong expertise troubleshooting macOS hardware, software, and enterprise OS configurations.</li>
 	<li>Working knowledge of Windows OS and basic Linux desktop administration or CLI troubleshooting.</li>
 	<li>Practical administrative experience with Google Workspace (User management, Shared Drives, Groups, Admin Console).</li>
-	<li>Willingness and availability to work fully onsite 5 days a week and participate in a scheduled on-call rotation for after-hours support.</li>
+	<li>Availability to work fully onsite 5 days a week and participate in a scheduled on-call rotation for after-hours support.</li>
 	<li>Readiness to utilize internal AI tools and assistants to streamline ticketing, troubleshooting, and technical documentation.</li>
 	<li>Strong written and verbal communication skills with a customer-first approach to technical support and leading new-hire orientations.</li>
 	<li>Application requires a current resume/CV detailing relevant IT workplace support experience.</li>
