@@ -4,9 +4,9 @@ description: Welcome to Cloudflare - Powering the next generation of application
 image: https://www.cloudflare.com/preview.png
 ---
 
-##  Everything we learned from powering 20% of the Internet—yours by default 
+## Everything we learned from powering 20% of the Internet—yours by default
 
-#####  One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure. 
+##### One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure.
 
 # Build without boundaries
 

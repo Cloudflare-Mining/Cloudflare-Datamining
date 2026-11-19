@@ -4,7 +4,7 @@ description: Build on the infrastructure that powers 20% of the Internet.
 image: https://www.cloudflare.com/preview.png
 ---
 
-##  under-attack — Cloudflare 
+## under-attack — Cloudflare
 
 # Build without boundaries
 

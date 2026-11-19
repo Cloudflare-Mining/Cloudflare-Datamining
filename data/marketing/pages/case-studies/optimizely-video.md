@@ -4,9 +4,9 @@ description: Learn how companies like yours leverage Cloudflare for security, pe
 image: https://www.cloudflare.com/preview.png
 ---
 
-##  You're in good company 
+## You're in good company
 
-#####  Learn how companies like yours are leveraging our platform. Cloudflare provides Security, Performance, and Reliability for anything connected to the Internet. 
+##### Learn how companies like yours are leveraging our platform. Cloudflare provides Security, Performance, and Reliability for anything connected to the Internet.
 
 Filter By:
 

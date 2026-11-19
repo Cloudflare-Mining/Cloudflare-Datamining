@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 19, 2026 [<h2>Internet traffic and attacks during the 2026 U.S. midterm elections</h2>](https://blog.cloudflare.com/internet-traffic-2026-us-election/)
+
+On November 3, 2026 U.S. voters headed to the polls. Here's what Cloudflare data across more than 1,400 protected sites tells us about Election Day Internet traffic and cyberattacks.
+
+![Patrick Day](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TYR5VCZ5TE2F5PZ2Z1X5.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jocelyn Woolbright](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DTBM9W30TE9JQBMJ2CAY.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Carlos Azevedo](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P71QFJNEB7Q75HGQCYZP.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Patrick Day](https://blog.cloudflare.com/author/patrick-day/),  [Jocelyn Woolbright](https://blog.cloudflare.com/author/jocelyn/), and  [Carlos Azevedo](https://blog.cloudflare.com/author/carlos/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7R61QF048WWQ6F9XZ3TXEG9.01M7R61R40AS8MPD7CDPFJVBQG.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/internet-traffic-2026-us-election/)
+
 November 18, 2026 [<h2>An updated Clairic and Clairic-flash are now open-weight, from the new Workers AI Superintelligence team</h2>](https://blog.cloudflare.com/open-clairic/)
 
 Clairic graduates from preview, while Clairic-flash joins the repertoire on Workers AI. We're doing an open-weight release for both extraction models.
@@ -17,8 +27,6 @@ Clairic graduates from preview, while Clairic-flash joins the repertoire on Work
 ![Alex Reneau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKWJ94JZDRJM354AYKYXG.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/),  [Michelle Chen](https://blog.cloudflare.com/author/michelle/), and  [Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7R8CJQT5KFR9NBMZB2FTDQ3.01M7R8CK3P86K910EXDKQFBE6N.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/open-clairic/)
 
 November 18, 2026 [<h2>How Cloudflare WAF helps protect against Java4Shell (CVE-2026-114938)</h2>](https://blog.cloudflare.com/java4shell-waf-protection/)
 
@@ -156,14 +164,6 @@ An examination of global Internet disruptions observed by Cloudflare Radar durin
 
 [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
 
-October 26, 2026 [<h2>Cross-request KV cache exposure in the GLM-5.3 Workers AI model, and our remediation with SGLang</h2>](https://blog.cloudflare.com/kv-cache-exposure-remediation/)
-
-A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that exposed KV cache pages across requests. Here is how we addressed the issue.
-
-![Kevin Flansburg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452TM72EKFE8RQCD3JMXND.png&w=64&h=64&f=webp&fit=cover&position=center)![Michelle Chen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R95PPSQQ82Z92P51M550.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Kevin Flansburg](https://blog.cloudflare.com/author/kevin-flansburg/) and  [Michelle Chen](https://blog.cloudflare.com/author/michelle/)
-
 Load more
 
 Search is temporarily unavailable.
@@ -229,5 +229,5 @@ English
 LightDark
 
 ```json
-{"@context":"https://schema.org","@type":"WebSite","name":"Cloudflare Blog","url":"https://blog.cloudflare.com"}
+{"@context":"https://schema.org","@type":"WebSite","@id":"https://blog.cloudflare.com/#website","name":"Cloudflare Blog","url":"https://blog.cloudflare.com"}
 ```
