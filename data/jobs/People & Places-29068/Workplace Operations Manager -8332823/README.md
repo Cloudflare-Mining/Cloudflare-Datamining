@@ -7,36 +7,35 @@
 <ul>
 	<li>Work onsite in the office 5 days a week (Monday–Friday)</li>
 </ul>
-<p><strong>About the role</strong></p>
-<p>The <strong>Places Team</strong> at Cloudflare is seeking an experienced and enthusiastic <strong>Workplace Operations Manager</strong> to lead and elevate the day-to-day operations of our Austin hub. In this role, you’ll be the go-to person for creating a smooth, welcoming, and highly functional workplace—partnering with global counterparts to share best practices and continuously enhance our spaces.</p>
-<p>You’ll gather feedback from employees and guests to shape how the hub evolves, contribute to future buildouts, and collaborate with teams across IT, Legal, Physical Security, EBC, and more. You're comfortable navigating fast-paced environments, solving problems on the fly, and thinking creatively about how to improve systems and experiences. With a hospitality mindset and strong communication skills, you take pride in delivering excellent service and building a space that reflects our culture and values.</p>
-<p>This role reports to the <strong>Regional Manager, Workplace Operations</strong>.</p>
-<p><strong>Responsibilities</strong></p>
+<h2><strong>About the Role</strong></h2>
+<p>The <strong>Places Team</strong> at Cloudflare is seeking a skilled, operationally rigorous <strong>Workplace Operations Manager</strong> to lead daily onsite workplace operations for our Austin hub. In this role, you will serve as the hands-on operational site lead and brand ambassador, driving workplace standards, executing regional directives, and delivering a consistent, high-touch employee and guest experience.</p>
+<p>Reporting directly to the <strong>Regional Workplace Operations Manager – NAMER</strong>, you will be the operational anchor on the ground, translating regional strategy into efficient site execution. You will partner with regional leadership, cross-functional partners (IT, Physical Security, People Operations, Legal, and Executive Briefing Centers), and local service partners to maintain a highly functional workplace for our distributed team. Balancing local site ownership with regional alignment, you bring practical expertise in facilities coordination, vendor oversight, and day-to-day budget tracking, combined with a hospitality mindset that reflects Cloudflare’s values and culture.</p>
+<h2><strong>Responsibilities</strong></h2>
 <ul>
-	<li><strong><em>Workplace Experience:</em></strong> Ensure our hub is a functional, inspiring space that reflects our culture and supports hybrid work. Act as the first point of contact for employee workplace needs, solving issues quickly and thoughtfully.</li>
-	<li><strong><em>Stay Connected Across Channels:</em></strong><strong> </strong>Maintain clear, responsive communication with the local team across platforms like chat, email, and in-person touchpoints—ensuring everyone stays informed, supported, and aligned on workplace updates and needs.</li>
-	<li><strong><em>Track and Report Workplace Metrics: </em></strong>Monitor key data points such as space utilization, occupancy, and service ticket volume to support data-driven decision-making and long-term planning.</li>
-	<li><strong><em>Support Workplace Programs: </em></strong>Help drive local implementation of global workplace programs—from our food program (think snack stocking, team lunches, and special food moments) and sustainability initiatives to employee engagement efforts.</li>
-	<li><strong><em>Support Internal Events &amp; Experiences:</em></strong> Plan and execute a range of onsite events—including team onsites, in-person weeks, executive briefings, customer meetings, and cultural moments—both independently and in collaboration with the Global Events &amp; Experiences team, ensuring each gathering is seamless, engaging, and reflective of our culture.</li>
-	<li><strong><em>Safety &amp; Compliance:</em></strong><strong> </strong>Partner with Security and Legal teams to maintain a safe and compliant workplace. Support emergency preparedness efforts, safety drills, and incident response protocols.</li>
-	<li><strong><em>Scale Smartly</em></strong><strong>: </strong>As the hub grows, help onboard new team members, support hiring needs for workplace roles, and participate in long-term workplace planning.</li>
-	<li><strong><em>Support the Regional Places Team:</em></strong> Assist with administrative tasks such as responding to tickets, managing emails and inquiries, and providing holiday coverage to ensure seamless team operations across regions.</li>
-	<li><strong><em>Lead Onsite Operations:</em></strong> Own the day-to-day management of the workplace—from front desk services, greeting guests/employees/visiting employees, and mail handling to office supplies, swag, deliveries, and space readiness. You’ll make sure everything flows, looks great, and feels seamless for employees and visitors alike.</li>
-	<li><strong><em>Be the go-to for Vendors and Places Team:</em></strong><strong> </strong>Liaise with building management, building security, and external vendors (cleaning crews, caterers, property managers, etc.) to keep our operations running efficiently. Oversee vendor performance and contracts, lead RFPs when needed, and track workplace budgets responsibly.</li>
-	<li><strong><em>Create a World-Class Environment:</em></strong> Champion an inspiring, inclusive, and vibrant office culture. Plan and execute engaging onsite events, team celebrations, catering, and daily amenities that make coming into the office exciting, productive, and memorable for our team.</li>
+	<li><strong>Lead Onsite Hub Operations &amp; Space Readiness:</strong> Oversee day-to-day workplace operations across the Austin hub—directing front-of-house services, shipping and receiving, routine building maintenance, and space readiness to ensure a welcoming, functional, and organized environment.</li>
+	<li><strong>Vendor Coordination &amp; Service Quality:</strong> Oversee local vendor performance and daily service delivery across janitorial, culinary/catering, and maintenance partners. Monitor vendor compliance against regional SLAs, run local service reviews, and provide operational feedback to NAMER leadership for contract renewals and scope updates.</li>
+	<li><strong>Site Budget Tracking &amp; Expense Management:</strong> Monitor and track the local operating expense (OpEx) budget in partnership with the Regional Manager. Review and reconcile local invoices, track monthly workplace spend, forecast site needs, and flag operational cost efficiencies.</li>
+	<li><strong>Local Workplace Experience &amp; Engagement:</strong> Champion workplace culture onsite by implementing regional programs and organizing high-touch local initiatives that support hybrid collaboration, community engagement, and day-to-day employee satisfaction.</li>
+	<li><strong>Site Communications &amp; Escalation:</strong> Serve as the primary local operational contact for Austin site leadership, cross-functional teams, and employees regarding facility updates, workplace protocols, and building announcements. Escalate site-level risks or operational roadblocks to NAMER leadership in a timely manner.</li>
+	<li><strong>Workplace Metrics &amp; Space Insights:</strong> Track, analyze, and report site-level operational data—including daily occupancy, badge swipes, space utilization trends, and ticket resolution times—to inform regional space planning and workplace decisions.</li>
+	<li><strong>Amenities:</strong> Manage day-to-day workplace food and beverage operations, including lunch catering, micro-kitchen restocks, health and wellness amenities.</li>
+	<li><strong>Internal Events &amp; Onsite Logistics:</strong> Manage logistical planning and day-of execution for onsite gatherings, executive visits, team offsites, and cultural celebrations, partnering closely with the Global Events &amp; Experiences team and local organizers.</li>
+	<li><strong>Safety, Compliance &amp; Preparedness:</strong> Serve as the onsite coordinator for facility safety and compliance. In partnership with Global Physical Security and building property management, facilitate local emergency response procedures, coordinate site safety team volunteers, lead routine drills, and maintain emergency readiness.</li>
+	<li><strong>Team Leadership &amp; Site Support:</strong> Supervise, coach, and mentor local workplace operations team members and contractors. Serve as the local operational partner for regional real estate and design teams for various hub related reconfigurations, refreshes, or buildout projects.</li>
+	<li><strong>NAMER Regional Collaboration:</strong> Participate actively in regional operations syncs, sharing local operational insights, supporting peer site coverage across NAMER, and ensuring consistent policy rollouts across the region.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h2><strong>Requirements</strong></h2>
 <ul>
-	<li>Have 5+ years of experience leading workplace operations teams, ideally in a fast-paced, high-growth environment, including 3+ years of people management experience.</li>
-	<li>Are people-first and service-minded, with a friendly, professional presence that makes everyone feel welcome</li>
-	<li>Know how to juggle vendors, projects, and priorities—and still sweat the small stuff</li>
-	<li>Bring sharp budget management skills and make thoughtful, cost-effective decisions</li>
-	<li>Communicate clearly and confidently across all levels and time zones using Google Workspace</li>
-	<li>Are highly organized, detail-oriented, and proactive—you spot what needs doing before anyone else does</li>
-	<li>Thrive in fast-moving environments, stay calm under pressure, and love finding creative solutions</li>
-	<li>Have experience collaborating cross-functionally with teams like IT, Security, People Ops, and more</li>
-	<li>Bring a hospitality mindset and a passion for building inspiring, functional spaces where people love to work</li>
-	<li>Work onsite in the office 5 days a week (Monday–Friday).</li>
+	<li><strong>5–6+ years of progressive workplace or facilities operations experience</strong>, preferably within a high-growth tech company or dynamic corporate setting.</li>
+	<li><strong>3+ years of direct people management experience</strong>, with demonstrated success in coaching, supervising, and developing onsite workplace team members.</li>
+	<li><strong>Hands-on vendor management experience</strong>, including monitoring day-to-day service deliverables, tracking SLA compliance, and collaborating with external facility providers.</li>
+	<li><strong>Operational financial discipline</strong>, with practical experience tracking local budgets, reviewing vendor invoices, and monitoring site operational expenses (OpEx).</li>
+	<li><strong>Familiarity with workplace tools &amp; data</strong>, including integrated workplace management systems (IWMS), ticketing systems (e.g., Jira, Zendesk), visitor management platforms, and Google Workspace.</li>
+	<li><strong>Strong cross-functional collaboration skills</strong>, with a track record of partnering effectively with local and remote teams including, but not limited to: IT, People Ops, Real Estate, and Physical Security.</li>
+	<li><strong>Working knowledge of facility safety standards</strong>, including OSHA/EHS basics, local emergency response protocols, and building code considerations.</li>
+	<li><strong>Clear verbal and written communication skills</strong>, with the confidence to communicate operational updates to local leaders and collaborate smoothly with regional managers.</li>
+	<li><strong>Hospitality mindset &amp; practical problem-solving</strong>, balancing high operational standards with a genuine dedication to delivering a supportive, employee-centric workplace.</li>
+	<li><strong>Onsite presence:</strong> Required to be onsite full-time, 5 days per week at our Austin hub.</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

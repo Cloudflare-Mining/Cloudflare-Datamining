@@ -8,10 +8,8 @@
 	<li>Atlanta, US</li>
 	<li>Austin, US</li>
 	<li>Denver, US</li>
-	<li>Seattle, US</li>
-	<li>Washington DC, US</li>
 </ul>
-<p><strong>Applications will be accepted until October 28, 2026.</strong></p>
+<p><strong>Applications will be accepted until December 28, 2026.</strong></p>
 <h2><strong>About the Role</strong></h2>
 <p>This is a hands-on software engineering role on the Cloudflare One Appliance team. You will shape and build the Linux-based edge runtime and distributed control plane that connect customer sites to Cloudflare.<br><br>As a Senior Systems Engineer, you will work across low-level systems, distributed services, and API design while providing technical leadership for major initiatives.<br><br>Our architecture follows a “light branch, heavy cloud” philosophy: policy and intelligence belong in Cloudflare’s network unless locality is required for correctness, survivability, performance, or user experience. You will use strong technical judgment to decide what belongs to the appliance and what belongs in the Cloudflare's network, building systems that are secure, observable, resilient to partial failures, and safe to operate across a large fleet carrying customer-critical traffic.</p>
 <h2><strong>Responsibilities</strong></h2>
@@ -50,7 +48,6 @@
 <h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For New York City, Washington, Washington D.C. based hires: Estimated annual salary of $185,000 - $254,000</li>
 	<li>For Colorado based hires: Estimated annual salary of $156,000 - $215,000</li>
 </ul>
 <h3>Equity</h3>

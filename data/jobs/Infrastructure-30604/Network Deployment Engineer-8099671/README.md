@@ -8,7 +8,6 @@
 	<li>Atlanta, US</li>
 	<li>Austin, US</li>
 	<li>Denver, US</li>
-	<li>New York, US</li>
 </ul>
 <p><strong>Applications will be accepted until November 01, 2026.</strong></p>
 <p><strong>Role summary&nbsp;</strong></p>
@@ -55,7 +54,7 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For Colorado based hires: Estimated annual salary of $114,000 - $157,000</li>
-	<li>For New York City, Washington, Washington D.C. based hires: Estimated annual salary of $126,000 - $173,000.</li>
+	<li>For Washington D.C. based hires: Estimated annual salary of $126,000 - $173,000.</li>
 </ul>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare's equity plan.</p>
