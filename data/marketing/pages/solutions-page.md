@@ -4,9 +4,9 @@ description: Discover Cloudflare solutions for AI, frontends, workflows, platfor
 image: https://www.cloudflare.com/preview.png
 ---
 
-##  Cloudflare Solutions 
+## Cloudflare Solutions
 
-#####  Explore solution blueprints tailored to the workloads you are building on Cloudflare. 
+##### Explore solution blueprints tailored to the workloads you are building on Cloudflare.
 
 # Build without boundaries
 

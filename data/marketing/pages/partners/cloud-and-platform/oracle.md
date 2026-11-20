@@ -4,17 +4,17 @@ description: Cloudflare and Oracle help teams reduce transfer costs, improve per
 image: https://www.cloudflare.com/preview.png
 ---
 
- Cloud and Platform Partner 
+Cloud and Platform Partner 
 
-##  Cloudflare + Oracle Cloud Infrastructure 
+## Cloudflare + Oracle Cloud Infrastructure
 
-#####  Build secure, high-performance application and AI experiences across hybrid and multicloud deployments with Cloudflare and Oracle Cloud Infrastructure (OCI). 
+##### Build secure, high-performance application and AI experiences across hybrid and multicloud deployments with Cloudflare and Oracle Cloud Infrastructure (OCI).
 
 [  Contact Partner Team ](/partners/) 
 
 ![A joint path to lower cost, faster delivery, and stronger resilience video preview](https://videodelivery.net/a02fc1fc8a02cbb90715d7a0dc6055e4/thumbnails/thumbnail.jpg?time=13s) 
 
-####  A joint path to lower cost, faster delivery, and stronger resilience 
+#### A joint path to lower cost, faster delivery, and stronger resilience
 
 Cloudflare and Oracle work together to simplify multicloud operations while keeping performance and security consistent. Joint customers can use Cloudflare with OCI Object Storage to reduce transfer costs, route traffic over trusted network interconnections, and protect Internet-facing services with enterprise-grade controls. 
 

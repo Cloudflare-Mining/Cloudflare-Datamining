@@ -4,9 +4,9 @@ description: Learn about Cloudflare's FedRAMP High authorization and our innovat
 image: https://www.cloudflare.com/preview.png
 ---
 
-##  Cloudflare is FedRAMP High Authorized 
+## Cloudflare is FedRAMP High Authorized
 
-#####  Adopting modern technologies is essential for delivering better digital services, strengthening security, and achieving cost-cutting efficiencies. 
+##### Adopting modern technologies is essential for delivering better digital services, strengthening security, and achieving cost-cutting efficiencies.
 
 [  Our innovative approach ](https://www.cloudflare.com/lp/fed-efficiency-ebook/) 
 
@@ -40,7 +40,7 @@ Gain visibility into real-time attack traffic with a world-class research team f
 
 ![Cloudflare FedRamp Locations](https://cf-assets.www.cloudflare.com/v2/image/n00s7r2mfp69pcbtcsshn2am7k/FedRAMP-WAN-Backbone-Orange.png) 
 
-####  Learn more about Cloudflare for Federal Government 
+#### Learn more about Cloudflare for Federal Government
 
 [  Talk to an expert ](https://www.cloudflare.com/resource/contact-enterprise-sales/) 
 
