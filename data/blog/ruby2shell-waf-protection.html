@@ -1,0 +1,154 @@
+<p>On November 19, 2026, the Ruby team disclosed ruby2shell (<a href="https://github.com/ruby/ruby/security/advisories/GHSA-34m4-m9fh-gqp5"><u>CVE-2026-132825</u></a>), a heap buffer overflow in the way Ruby changes the case of strings. Ruby rates the flaw Critical and says it is aware of proofs of concept that achieve remote code execution in some scenarios. Fixes shipped in <a href="https://www.ruby-lang.org/en/news/2026/11/18/multiple-vulnerabilities-in-regexp-and-string"><u>Ruby 3.3.14, 3.4.13, and 4.0.10</u></a>.</p>
+<p>The reach is wide. Veria Labs reports that Ruby on Rails and classic-style Sinatra applications reach the bug in their default configuration, before any authentication. Self-hosted products that bundle Ruby, including GitLab, GitHub Enterprise Server, Mastodon, OpenProject, Discourse and Chatwoot, shipped an affected Ruby in their latest release at the time of disclosure.</p>
+<p>Cloudflare WAF blocks ruby2shell for all customers, including those on the Free plan. We have added two rules to both the Cloudflare Free Managed Ruleset and the Cloudflare Managed Ruleset, with Block as the default action: one for ruby2shell and one for GHSA-87fm-7w84-j2px, a related integer overflow in Ruby string case conversion fixed in the same releases.</p>
+<p>The WAF is a compensating control, not a replacement for patching. Exploits can reach the bug through paths a WAF does not see, and the only complete fix is to upgrade Ruby. Our team continues to monitor attack traffic and will update the rules as new techniques appear. You can track rule changes in the <a href="https://developers.cloudflare.com/waf/change-log/changelog"><u>WAF changelog</u></a>&nbsp;and get the latest on the vulnerability in the <a href="https://radar.cloudflare.com/zero-wire/ruby2shell"><u>Cloudflare Zero Wire briefing</u></a>.</p>
+<p>Cloudflare has patched its own systems that use Ruby, and we have found no indication of compromise.</p>
+<h2>What we know about ruby2shell</h2>
+<p>Ruby strings carry an encoding, and Ruby still supports many legacy single-byte encodings, such as ISO-8859-1 (Latin-1) and Windows-1252, alongside UTF-8. In a single-byte encoding each character takes one byte, so changing the case of a string usually produces output of the same length.</p>
+<p>The German sharp s (ß) breaks that assumption. Its uppercase form is two characters, SS. In 14 ISO-8859 and Windows-125x encodings, Ruby writes those two bytes but checks for room for only one. According to Veria Labs, a string with 21 sharp s characters overflows the output buffer by one byte. The methods that reach the bug are <code>upcase</code>, <code>swapcase</code>, <code>downcase(:fold)</code>&nbsp;and <code>casecmp?</code>. UTF-8 strings take a different code path and are not affected.</p>
+<p>A one-byte overflow can look harmless. In a memory-corruption exploit, though, a single byte written past the end of a heap buffer can be enough to corrupt an adjacent object or allocator metadata. Ruby says it is aware of proofs of concept that turn this flaw into code execution, and Veria Labs says it will publish its own proof of concept about a week after disclosure. We expect scanning to start soon after.</p>
+<h3>Why default Rails and Sinatra apps are exposed</h3>
+<p>HTML forms can only send GET and POST requests. To simulate PUT, PATCH, or DELETE, many web frameworks accept a <code>_method</code>&nbsp;parameter in a POST request. Rack, the interface most Ruby web frameworks build on, implements this in its MethodOverride middleware, which converts the value of <code>_method</code>&nbsp;to uppercase. Rails includes this middleware by default, and classic-style Sinatra applications enable it. An attacker can send a multipart POST request whose <code>_method</code>&nbsp;part declares a legacy character set and contains a run of sharp s characters. The framework upcases the value while it is still routing the request, before any application code or authentication check runs.</p>
+<p>Veria Labs reports that other frameworks and plain Rack applications are not exposed by default. Application code that changes the case of strings received in a legacy encoding may still be affected, wherever the string comes from.</p>
+<h3>Who is affected</h3>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Condition</strong></p>
+				</td>
+				<td>
+					<p><strong>Details</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ruby version</p>
+				</td>
+				<td>
+					<p>Ruby 3.3.13 and earlier, 3.4.0 through 3.4.12, and 4.0.0 through 4.0.9. Veria Labs reports the bug has been present since Ruby 2.4.0. Ruby 3.2 and earlier have reached end of life and will not receive the fix.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Framework</p>
+				</td>
+				<td>
+					<p>Rails and classic-style Sinatra in their default configuration. Any other code that changes the case of attacker-controlled strings in a legacy single-byte encoding.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bundled software</p>
+				</td>
+				<td>
+					<p>As of November 19, 2026, Veria Labs lists GitLab 19.6.0, GitHub Enterprise Server 3.22.5, Mastodon 4.7.5, OpenProject 17.9.7, Discourse 2026.10.1 and Chatwoot 4.20.0 as bundling an affected Ruby in their latest release. Discourse moved its Docker base image to Ruby 4.0.10 on November 19, so rebuilding a Docker install picks up the fix.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Distribution packages can backport fixes without changing the Ruby version number, so check the full package version against your distribution's advisory.</p>
+<h3>Six more Ruby flaws in the same release</h3>
+<p>Ruby 3.3.14, 3.4.13, and 4.0.10 also fix <a href="https://www.ruby-lang.org/en/news/2026/11/18/multiple-vulnerabilities-in-regexp-and-string"><u>six other memory safety flaws</u></a>, and Ruby says several of them can lead to code execution. One, GHSA-87fm-7w84-j2px, is an integer overflow in the same string case conversion code, and our second WAF rule covers it. The other five are in Ruby's regular expression engine. Most of them require the application to compile or match a regular expression pattern supplied by the attacker. That is uncommon in web applications, but it does happen in search features, filtering rules and admin tools.</p>
+<h2>How Cloudflare WAF protects you</h2>
+<p>Upgrading every Ruby runtime takes time, especially when Ruby is bundled inside self-hosted products and container images. Cloudflare WAF reduces your exposure while you patch.</p>
+<h3>New managed rules, on for every customer</h3>
+<p>Both rules are part of the Cloudflare Free Managed Ruleset and the Cloudflare Managed Ruleset (Ruleset ID efb7b8c949ac4650a09736fc376e9aee), with Block as the default action.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 384px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Rule description</strong></p>
+				</td>
+				<td>
+					<p><strong>Rule ID</strong></p>
+				</td>
+				<td>
+					<p><strong>Ruleset</strong></p>
+				</td>
+				<td>
+					<p><strong>Default action</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ruby - Heap Overflow - CVE:CVE-2026-132825</p>
+				</td>
+				<td>
+					<p>7328f23691e44b07892ebd25b19210f1</p>
+				</td>
+				<td>
+					<p>Cloudflare Free Managed Ruleset (Free plan)</p>
+				</td>
+				<td>
+					<p>Block</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ruby - Heap Overflow - CVE:CVE-2026-132825</p>
+				</td>
+				<td>
+					<p>1afa543a1ed84893b01df04c34402c88</p>
+				</td>
+				<td>
+					<p>Cloudflare Managed Ruleset (Pro, Business and Enterprise plans)</p>
+				</td>
+				<td>
+					<p>Block</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ruby - Integer Overflow - GHSA-87fm-7w84-j2px</p>
+				</td>
+				<td>
+					<p>8660e37e86444f9f9267ba22e9855f05</p>
+				</td>
+				<td>
+					<p>Cloudflare Free Managed Ruleset (Free plan)</p>
+				</td>
+				<td>
+					<p>Block</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ruby - Integer Overflow - GHSA-87fm-7w84-j2px</p>
+				</td>
+				<td>
+					<p>6defac6a52334542adf4a162daf25922</p>
+				</td>
+				<td>
+					<p>Cloudflare Managed Ruleset (Pro, Business and Enterprise plans)</p>
+				</td>
+				<td>
+					<p>Block</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>On the Free plan, the Cloudflare Free Managed Ruleset runs automatically, so there is nothing to turn on. On paid plans, the rules are active wherever the Cloudflare Managed Ruleset is deployed. Because paid plans give you more control over how rulesets are deployed, the Cloudflare Managed Ruleset may not be active on every zone. We recommend checking its status to confirm that it is running. You can use the links in the <a href="https://radar.cloudflare.com/zero-wire/ruby2shell#cloudflare-coverage"><u>Zero Wire briefing</u></a>&nbsp;to go straight to the rules in your dashboard.</p>
+<h3>What the WAF cannot see</h3>
+<p>A WAF can block an exploit when the malicious input arrives in an HTTP request that passes through Cloudflare. It cannot block every path to the vulnerable code:</p>
+<ul>
+	<li><strong>Traffic that bypasses Cloudflare.</strong>&nbsp;Requests sent directly to your origin IP address, and traffic between internal services, never reach the WAF. Configure your origin to accept traffic only from Cloudflare, for example with <a href="https://developers.cloudflare.com/tunnel"><u>Cloudflare Tunnel</u></a>&nbsp;or <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull"><u>Authenticated Origin Pulls</u></a>.</li>
+	<li><strong>Other entry points into the same code.</strong>&nbsp;Ruby code that changes the case of strings from email, file imports, message queues or background jobs can reach ruby2shell without an HTTP request.</li>
+</ul>
+<h3>Adding defense in depth with WAF attack score</h3>
+<p>Memory corruption is usually only the first step. To run commands, an attacker still has to deliver a second-stage payload, such as shell commands or a reverse shell, and then interact with the compromised server. <a href="https://developers.cloudflare.com/waf/detections/attack-score"><u>WAF attack score</u></a>&nbsp;uses machine learning to score each request for remote code execution payloads, which helps catch exploit variations and post-exploitation traffic that signature-based rules can miss. Create a custom rule that blocks or challenges requests with <code>cf.waf.score.rce le 20</code>&nbsp;on Enterprise plans, or <code>cf.waf.score.class eq "attack"</code>&nbsp;on Business plans.</p>
+<h2>Impact on Cloudflare infrastructure</h2>
+<p>Cloudflare has patched its systems that use Ruby against ruby2shell. We have found no indication of compromise and continue to monitor.</p>
+<h2>Patch now</h2>
+<p>ruby2shell turns a one-byte miscalculation in string case conversion into a pre-authentication path to code execution in default Rails and Sinatra apps. With a public proof of concept expected within days, the window to patch is short. Here is what to do:</p>
+<ol>
+	<li><strong>Check your WAF coverage.</strong>&nbsp;On the Free plan, the ruby2shell rules are already blocking. On paid plans, confirm the Cloudflare Managed Ruleset is deployed and the rules have not been overridden.</li>
+	<li><strong>Upgrade Ruby</strong>&nbsp;to 3.3.14, 3.4.13 or 4.0.10 and restart every Ruby process, including background workers. Rebuild container images. Move applications on Ruby 3.2 or earlier to a supported series.</li>
+	<li><strong>Update self-hosted products</strong>&nbsp;that bundle Ruby, such as GitLab, GitHub Enterprise Server, Mastodon, OpenProject and Chatwoot, as each vendor releases a fix. Rebuild Discourse Docker installs now.</li>
+	<li><strong>Inventory your runtimes.</strong>&nbsp;The <a href="https://radar.cloudflare.com/zero-wire/ruby2shell"><u>Zero Wire briefing</u></a>&nbsp;includes a prompt you can give an AI agent to find every affected Ruby runtime in your infrastructure.</li>
+</ol>
+<p>Our WAF analysts will keep updating protections as new techniques appear. Follow the <a href="https://developers.cloudflare.com/waf/change-log/changelog"><u>WAF changelog</u></a>&nbsp;for rule updates.</p>

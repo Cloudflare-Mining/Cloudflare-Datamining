@@ -1,0 +1,259 @@
+<p>On November 19, 2026, the security research company depthfirst disclosed <a href="https://depthfirst.com/research/phpaftershell"><u>phpAfterShell (CVE-2026-126714)</u></a>, a vulnerability in PHP's default file-based session handler that can lead to remote code execution. Under the Common Vulnerability Scoring System (CVSS) 4.0, it scores 9.2 out of 10 (Critical). The PHP project fixed it the same day in versions 8.2.36, 8.3.37, 8.4.28, 8.5.13, and 8.6.0. These releases fix 16 other security vulnerabilities, six of them also rated critical.</p>
+<p>Cloudflare’s <a href="https://developers.cloudflare.com/waf"><u>web application firewall (WAF)</u></a>&nbsp;blocks known phpAfterShell attack patterns, including for customers on the Free plan. The protection comes from a PHP remote code execution rule we first deployed in October 2026 for the php2shell vulnerabilities. That rule already detected part of the phpAfterShell attack pattern before the vulnerability was disclosed, and on November 19 we updated its detection logic to cover phpAfterShell. The rule is part of both the Cloudflare Free Managed Ruleset and the Cloudflare Managed Ruleset, is enabled by default, and its default action is Block.</p>
+<p>In the same WAF release, we added three new rules to the Cloudflare Managed Ruleset for paid plans: one for a request smuggling flaw in PHP-FPM (CVE-2026-129289), and two for flaws in PHP's SOAP extension (CVE-2026-15353 and CVE-2026-129506) that PHP fixed in the same releases. These rules are enabled by default with the Log action, because the request patterns they look for can also appear in legitimate traffic, and blocking by default could disrupt it. Customers can review matching requests in Security Events now and change the action to Block once they confirm the rules do not affect legitimate traffic.</p>
+<p>The WAF is an additional layer of defense, not a replacement for the patch. Several of the critical flaws depend on server configuration or can be reached through paths a WAF does not see, and the only complete fix is to upgrade PHP and restart every worker. Our analysts continue to monitor attack activity and will update the rules as new techniques and variations appear. You can track rule changes in the <a href="https://developers.cloudflare.com/waf/change-log/changelog"><u>WAF changelog</u></a>&nbsp;and follow how the vulnerabilities develop in the dedicated <a href="https://radar.cloudflare.com/zero-wire/php-november-2026-security-release-phpaftershell"><u>Cloudflare Zero Wire briefing</u></a>.</p>
+<p>There appears to be no indication so far that these vulnerabilities have been exploited. As of November 19, 2026, none of the 17 vulnerabilities was listed in CISA's <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog"><u>Known Exploited Vulnerabilities catalog</u></a>, and no source we reviewed reports exploitation in the wild.</p>
+<h2>What we know about phpAfterShell</h2>
+<p>PHP stores session data in files by default. When an application calls session_start(), PHP reads the session file and deserializes its content into the $_SESSION array. When the request ends, PHP writes the updated session back to the same file.</p>
+<p>phpAfterShell is triggered when that write is interrupted. The session file can then hold the beginning of the new session data followed by the end of the old one. On the next request, session_start() deserializes this mixed content. If an attacker controlled the old data, PHP can end up deserializing objects of the attacker's choice.</p>
+<p>An attacker trying to exploit the flaw is likely to first search for a way to place controlled data in the session. PHP's <a href="https://github.com/php/php-src/security/advisories/GHSA-fm2m-fjf5-v3cp"><u>advisory</u></a>&nbsp;names two:</p>
+<ul>
+	<li><strong>Session upload progress</strong>, a PHP feature that writes information about a running file upload into the session. A remote client can use it to shape the stored data.</li>
+	<li><strong>Applications that store large user-controlled strings in the session</strong>.</li>
+</ul>
+<p>According to PHP, code execution also requires an interruption at a useful point in the write and a suitable deserialization gadget chain in the application. depthfirst reports that it reached code execution without an application gadget by chaining a second, undisclosed memory-corruption bug in a PHP-native class. The sources we reviewed do not establish whether that second bug is fixed in the November 19 releases.</p>
+<p>depthfirst says it discovered and reported phpAfterShell. The CVE record credits Leo Lin and Asahi as reporters.</p>
+<h3>The other critical flaws</h3>
+<p>The same releases fix six more critical vulnerabilities. Each one needs a specific configuration to be exploitable:</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 384px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>CVE</strong></p>
+				</td>
+				<td>
+					<p><strong>Component</strong></p>
+				</td>
+				<td>
+					<p><strong>Impact</strong></p>
+				</td>
+				<td>
+					<p><strong>Conditions</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-129289</p>
+				</td>
+				<td>
+					<p>PHP-FPM</p>
+				</td>
+				<td>
+					<p>An unauthenticated attacker can smuggle a second FastCGI request into PHP-FPM and run PHP code as the worker.</p>
+				</td>
+				<td>
+					<p>A front end that reuses backend FastCGI connections (nginx with fastcgi_keep_conn on, Apache mod_proxy_fcgi with enablereuse=on, or HAProxy), an application path that opens php://input without reading it to the end, and the path of an existing PHP script.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-115560</p>
+				</td>
+				<td>
+					<p>Session serializer</p>
+				</td>
+				<td>
+					<p>Object injection through a mismatch between session serializers. First covered in our php2shell briefing, now fixed.</p>
+				</td>
+				<td>
+					<p>Session upload progress enabled. PHP widened the scope: applications, pools or command-line jobs that use different serializers and share a session store are affected.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-129496</p>
+				</td>
+				<td>
+					<p>Timezone cache</p>
+				</td>
+				<td>
+					<p>Use-after-free that can crash a fresh worker and possibly run code. PHP demonstrated code execution locally with known memory addresses.</p>
+				</td>
+				<td>
+					<p>Non-thread-safe builds where a startup diagnostic has been written to a PHP error log file.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-129481</p>
+				</td>
+				<td>
+					<p>Session shutdown</p>
+				</td>
+				<td>
+					<p>Use-after-free, described by PHP as an incomplete fix for CVE-2026-109619. No code execution demonstrated.</p>
+				</td>
+				<td>
+					<p>PHP 8.3 and later.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-129474</p>
+				</td>
+				<td>
+					<p>Fatal error backtraces</p>
+				</td>
+				<td>
+					<p>Use-after-free in magic method backtraces.</p>
+				</td>
+				<td>
+					<p>PHP 8.5 and later, where fatal error backtraces are enabled by default. Setting zend.exception_ignore_args=1, the php.ini-production default, blocks the demonstrated attack.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-129182</p>
+				</td>
+				<td>
+					<p>Fatal error backtraces</p>
+				</td>
+				<td>
+					<p>Use-after-free. No code execution demonstrated.</p>
+				</td>
+				<td>
+					<p>PHP 8.5, specific path-level settings, and an Apache per-directory configuration or front end that produces an early diagnostic.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Who is affected</h3>
+<p>The vulnerable versions are PHP 8.2 before 8.2.36, 8.3 before 8.3.37, 8.4 before 8.4.28, 8.5 before 8.5.13, and the 8.6.0 release candidates. Whether a deployment is exposed depends on the conditions of each flaw.</p>
+<p>PHP 8.1 and earlier are end-of-life. depthfirst says the official 7.4, 8.0 and 8.1 end-of-life mitigation branches are not affected by phpAfterShell, but PHP says CVE-2026-129289 was introduced in PHP 5.6.0 and that releases older than 8.2 may also be affected by CVE-2026-115560.</p>
+<p>Linux distributions often backport fixes without changing the PHP version number. Check the full package version against your distribution's advisory.</p>
+<h2>How Cloudflare WAF protects you</h2>
+<p>PHP runs a large share of the web, often inside content management systems, plugins, and container images that teams do not update directly. Patching every PHP runtime takes time. Cloudflare WAF reduces your exposure while you patch.</p>
+<h3>phpAfterShell: protection on every plan</h3>
+<p>We released the original PHP remote code execution rules in an emergency release on October 21, 2026, after the php2shell vulnerabilities (CVE-2026-109618 and CVE-2026-109619) were disclosed. We extended them to CVE-2026-115560 on October 23 and refined them several times in the following weeks, based in part on reports from security researchers who took part in a <a href="https://blog.cloudflare.com/php-ctf"><u>PHP Capture the Flag (CTF) challenge</u></a>.</p>
+<p>phpAfterShell shares an attack technique with php2shell: an attacker plants serialized PHP data in session storage and waits for PHP to deserialize it. Because of that overlap, the existing rule already matched part of the phpAfterShell attack pattern before disclosure. On November 19, we updated the rule's detection logic to cover phpAfterShell and added CVE-2026-126714 to its description.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 384px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Rule description</strong></p>
+				</td>
+				<td>
+					<p><strong>Rule ID</strong></p>
+				</td>
+				<td>
+					<p><strong>Ruleset</strong></p>
+				</td>
+				<td>
+					<p><strong>Default action</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560, CVE-2026-126714) #6</p>
+				</td>
+				<td>
+					<p>19373a83abb840e18ab3ce5a7975ce1b</p>
+				</td>
+				<td>
+					<p>Cloudflare Free Managed Ruleset (Free plan)</p>
+				</td>
+				<td>
+					<p>Block</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560, CVE-2026-126714) #6</p>
+				</td>
+				<td>
+					<p>4148ae686fdb4d01be673fab9d9c073d</p>
+				</td>
+				<td>
+					<p>Cloudflare Managed Ruleset (Pro, Business and Enterprise plans)</p>
+				</td>
+				<td>
+					<p>Block</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Free plan customers do not need to take any action. On paid plans, the rule is active wherever the Cloudflare Managed Ruleset is deployed. You can use the <a href="https://radar.cloudflare.com/zero-wire/php-november-2026-security-release-phpaftershell#cloudflare-coverage"><u>links in the Zero Wire briefing</u></a>&nbsp;to go straight to the rules in your dashboard.</p>
+<h3>New rules for PHP-FPM and SOAP flaws</h3>
+<p>The three new rules are part of the Cloudflare Managed Ruleset (Ruleset ID efb7b8c949ac4650a09736fc376e9aee) and are available on Pro, Business and Enterprise plans.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 288px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Rule description</strong></p>
+				</td>
+				<td>
+					<p><strong>Rule ID</strong></p>
+				</td>
+				<td>
+					<p><strong>Default action</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PHP-FPM - CVE:CVE-2026-129289</p>
+				</td>
+				<td>
+					<p>8ef1c34a424b4ccfa6f6fe186c6f42b2</p>
+				</td>
+				<td>
+					<p>Log</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PHP SOAP - CVE:CVE-2026-15353</p>
+				</td>
+				<td>
+					<p>5c5a9d6397e44837a3214b5ba54028d4</p>
+				</td>
+				<td>
+					<p>Log</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>PHP SOAP - CVE:CVE-2026-129506</p>
+				</td>
+				<td>
+					<p>00a23de67a684876ba67c5d44521b819</p>
+				</td>
+				<td>
+					<p>Log</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>To review their matches, go to Security &gt; Analytics &gt; Events and filter by rule ID. If the matches are not legitimate traffic, change the rule action to Block: go to Security &gt; Settings, edit the Cloudflare Managed Ruleset, search for the CVE identifier and set the rule action to Block, or you can refer to the <a href="https://radar.cloudflare.com/zero-wire/php-november-2026-security-release-phpaftershell#cloudflare-coverage"><u>links in the Zero Wire briefing</u></a>&nbsp;to go straight to the rules configuration.</p>
+<h3>What the WAF cannot see</h3>
+<p>A WAF can block an exploit when the malicious data arrives in an HTTP request that passes through Cloudflare. It cannot block every path to these vulnerabilities, including:</p>
+<ul>
+	<li><strong>The deserialization step.</strong>&nbsp;phpAfterShell's final step happens inside PHP, when it reads a corrupted session file. The WAF can block the requests that plant the payload, not the read itself.</li>
+	<li><strong>Session data from other sources.</strong>&nbsp;If an application copies user-controlled data into the session from a database, a queue or an upstream API, that data may never cross the WAF in a recognizable form.</li>
+	<li><strong>Flaws triggered by server state.</strong>&nbsp;CVE-2026-129496, CVE-2026-129481, CVE-2026-129474 and CVE-2026-129182 depend on error logs, diagnostics and worker lifecycle. They do not have dedicated WAF rules, and the patch and the configuration changes below are the way to address them.</li>
+	<li><strong>Traffic that bypasses Cloudflare.</strong>&nbsp;This includes internal traffic between services and PHP-FPM listeners exposed directly to a network.</li>
+</ul>
+<h3>Adding defense in depth with WAF attack score</h3>
+<p><a href="https://developers.cloudflare.com/waf/detections/attack-score"><u>WAF attack score</u></a>&nbsp;adds a machine learning layer that scores each request for attack payloads. It is available on Business plans (cf.waf.score.class) and, with a dedicated remote code execution sub-score (cf.waf.score.rce) along with an overall score (cf.waf.score), on Enterprise plans.</p>
+<p>Attack score complements the managed rules. It will not recognize every serialized object or smuggled FastCGI record on its own, but a working exploit chain usually needs more than one request, and the later stages carry payloads the model is trained to score:</p>
+<ul>
+	<li><strong>Second-stage payloads.</strong>&nbsp;Once an attacker can run code, they still need to send commands: shell execution primitives (/bin/sh -c, system(), passthru()), PHP code evaluation (eval(), assert()) or reverse-shell strings in headers, query parameters or request bodies.</li>
+	<li><strong>Webshell traffic.</strong>&nbsp;Attackers often drop a small PHP webshell after the initial compromise. Requests that pass operating system commands to that webshell remain visible to attack score.</li>
+</ul>
+<h2>Deploy protections and patch</h2>
+<p>You can find more information on how to deploy managed rules and attack score in <a href="https://developers.cloudflare.com/waf/get-started"><u>our WAF guide</u></a>. In short:</p>
+<ol>
+	<li><strong>Check that phpAfterShell protection is active.</strong>&nbsp;On the Free plan, no action is needed. On paid plans, make sure the Cloudflare Managed Ruleset is deployed and that the PHP Remote Code Execution Attack #6 rule is set to Block.</li>
+	<li><strong>Review the new rules and switch them to Block.</strong>&nbsp;The CVE-2026-129289, CVE-2026-15353 and CVE-2026-129506 rules are in Log mode by default. Review their matches in Security Events, then change their action to Block.</li>
+	<li><strong>Layer <a href="https://developers.cloudflare.com/waf/get-started/#2-create-custom-rule-based-on-waf-attack-score"><u>attack score</u></a>.</strong>&nbsp;Create a custom rule that blocks or challenges requests with a low remote code execution score, for example cf.waf.score.rce le 20 on Enterprise plans, or cf.waf.score.class eq "attack" on Business plans.</li>
+	<li><strong>Upgrade PHP.</strong>&nbsp;Move to 8.2.36, 8.3.37, 8.4.28, 8.5.13 or 8.6.0. Rebuild container images and restart the PHP-FPM master or Apache so every worker loads the new binary, then verify the version that serves web requests. After upgrading, check that no php.ini, FPM pool or virtual host still sets session.upload_progress.enabled=1, because an explicit setting overrides the new default.</li>
+	<li><strong>Apply interim mitigations if you cannot upgrade right away.</strong>&nbsp;Set session.upload_progress.enabled=0 and limit the untrusted data you store in sessions. Turn off FastCGI connection reuse. On PHP 8.5, set fatal_error_backtraces=0. Fix configuration errors that produce PHP startup warnings, or send PHP errors to syslog instead of a file. Keep PHP-FPM listeners off untrusted networks. These steps reduce exposure; they do not fix the flaws.</li>
+</ol>
+<p>For a prompt you can give an AI agent to inventory your PHP deployments and check each one against all seven critical CVEs, see the <a href="https://radar.cloudflare.com/zero-wire/php-november-2026-security-release-phpaftershell"><u>phpAfterShell page on Cloudflare Zero Wire</u></a>.</p>
+<h2>Update every PHP runtime now</h2>
+<p>phpAfterShell turns an interrupted file write in PHP's default session handler into a path to code execution, and it arrived in the same release as six other critical flaws. With technical details now public, we expect exploit attempts to follow. Cloudflare WAF blocks known phpAfterShell attack patterns for every customer, including the Free plan, and paid plans have new rules for the PHP-FPM and SOAP flaws. The fix is still to upgrade PHP and restart the services that use it.</p>
