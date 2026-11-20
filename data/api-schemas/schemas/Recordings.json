@@ -338,7 +338,7 @@
 																		"example": "us-east-1"
 																	},
 																	"secret": {
-																		"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+																		"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 																		"type": "string",
 																		"writeOnly": true,
 																		"x-sensitive": true
@@ -378,9 +378,31 @@
 																			"region": {
 																				"minLength": 1
 																			},
+																			"secret": {
+																				"minLength": 1
+																			},
 																			"type": {
 																				"enum": [
-																					"aws",
+																					"aws"
+																				]
+																			}
+																		},
+																		"required": [
+																			"access_key",
+																			"secret",
+																			"region"
+																		]
+																	},
+																	{
+																		"properties": {
+																			"access_key": {
+																				"minLength": 1
+																			},
+																			"region": {
+																				"minLength": 1
+																			},
+																			"type": {
+																				"enum": [
 																					"azure",
 																					"digitalocean"
 																				]
@@ -599,7 +621,7 @@
 																						"example": "us-east-1"
 																					},
 																					"secret": {
-																						"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+																						"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 																						"type": "string",
 																						"writeOnly": true,
 																						"x-sensitive": true
@@ -639,9 +661,31 @@
 																							"region": {
 																								"minLength": 1
 																							},
+																							"secret": {
+																								"minLength": 1
+																							},
 																							"type": {
 																								"enum": [
-																									"aws",
+																									"aws"
+																								]
+																							}
+																						},
+																						"required": [
+																							"access_key",
+																							"secret",
+																							"region"
+																						]
+																					},
+																					{
+																						"properties": {
+																							"access_key": {
+																								"minLength": 1
+																							},
+																							"region": {
+																								"minLength": 1
+																							},
+																							"type": {
+																								"enum": [
 																									"azure",
 																									"digitalocean"
 																								]
@@ -1271,7 +1315,7 @@
 																	"example": "us-east-1"
 																},
 																"secret": {
-																	"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+																	"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 																	"type": "string",
 																	"writeOnly": true,
 																	"x-sensitive": true
@@ -1311,9 +1355,31 @@
 																		"region": {
 																			"minLength": 1
 																		},
+																		"secret": {
+																			"minLength": 1
+																		},
 																		"type": {
 																			"enum": [
-																				"aws",
+																				"aws"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"secret",
+																		"region"
+																	]
+																},
+																{
+																	"properties": {
+																		"access_key": {
+																			"minLength": 1
+																		},
+																		"region": {
+																			"minLength": 1
+																		},
+																		"type": {
+																			"enum": [
 																				"azure",
 																				"digitalocean"
 																			]
@@ -1996,7 +2062,7 @@
 										"example": "us-east-1"
 									},
 									"secret": {
-										"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+										"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 										"type": "string",
 										"writeOnly": true,
 										"x-sensitive": true
@@ -2036,9 +2102,31 @@
 											"region": {
 												"minLength": 1
 											},
+											"secret": {
+												"minLength": 1
+											},
 											"type": {
 												"enum": [
-													"aws",
+													"aws"
+												]
+											}
+										},
+										"required": [
+											"access_key",
+											"secret",
+											"region"
+										]
+									},
+									{
+										"properties": {
+											"access_key": {
+												"minLength": 1
+											},
+											"region": {
+												"minLength": 1
+											},
+											"type": {
+												"enum": [
 													"azure",
 													"digitalocean"
 												]
@@ -2449,7 +2537,7 @@
 																	"example": "us-east-1"
 																},
 																"secret": {
-																	"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+																	"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 																	"type": "string",
 																	"writeOnly": true,
 																	"x-sensitive": true
@@ -2489,9 +2577,31 @@
 																		"region": {
 																			"minLength": 1
 																		},
+																		"secret": {
+																			"minLength": 1
+																		},
 																		"type": {
 																			"enum": [
-																				"aws",
+																				"aws"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"secret",
+																		"region"
+																	]
+																},
+																{
+																	"properties": {
+																		"access_key": {
+																			"minLength": 1
+																		},
+																		"region": {
+																			"minLength": 1
+																		},
+																		"type": {
+																			"enum": [
 																				"azure",
 																				"digitalocean"
 																			]
@@ -3037,7 +3147,7 @@
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}": {
 		"operationId": "pause_resume_stop_recording",
 		"summary": "Pause/Resume/Stop recording",
-		"description": "Pause/Resume/Stop a given recording ID.",
+		"description": "Pause/Resume/Stop a given recording ID.\n\n**Note:** A recording can stay paused for a maximum of 12 hours. After that, it automatically resumes and finishes.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3350,7 +3460,7 @@
 																	"example": "us-east-1"
 																},
 																"secret": {
-																	"description": "Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable.",
+																	"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 																	"type": "string",
 																	"writeOnly": true,
 																	"x-sensitive": true
@@ -3390,9 +3500,31 @@
 																		"region": {
 																			"minLength": 1
 																		},
+																		"secret": {
+																			"minLength": 1
+																		},
 																		"type": {
 																			"enum": [
-																				"aws",
+																				"aws"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"secret",
+																		"region"
+																	]
+																},
+																{
+																	"properties": {
+																		"access_key": {
+																			"minLength": 1
+																		},
+																		"region": {
+																			"minLength": 1
+																		},
+																		"type": {
+																			"enum": [
 																				"azure",
 																				"digitalocean"
 																			]

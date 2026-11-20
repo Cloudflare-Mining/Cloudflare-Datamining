@@ -699,6 +699,7 @@
 								"type": "string",
 								"example": "abc123",
 								"writeOnly": true,
+								"x-auditable": false,
 								"x-fern-property-name": "api-token",
 								"x-sensitive": true
 							},
@@ -922,6 +923,7 @@
 								"type": "string",
 								"example": "abc123",
 								"writeOnly": true,
+								"x-auditable": false,
 								"x-fern-property-name": "api-token",
 								"x-sensitive": true
 							},

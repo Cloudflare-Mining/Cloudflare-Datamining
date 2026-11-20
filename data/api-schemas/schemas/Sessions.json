@@ -159,7 +159,8 @@
 													},
 													"ended_at": {
 														"description": "timestamp when session ended",
-														"type": "string"
+														"type": "string",
+														"nullable": true
 													},
 													"id": {
 														"description": "ID of the session",
@@ -437,7 +438,8 @@
 										},
 										"ended_at": {
 											"description": "timestamp when session ended",
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"id": {
 											"description": "ID of the session",
@@ -1754,7 +1756,7 @@
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript": {
 		"operationId": "GetSessionTranscript",
 		"summary": "Fetch the complete transcript for a session",
-		"description": "Returns a URL to download the transcript for the session ID in CSV format.",
+		"description": "Returns a URL to download the transcript for the session ID in the requested format.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1815,7 +1817,7 @@
 								"data": {
 									"type": "object",
 									"properties": {
-										"sessionId": {
+										"session_id": {
 											"type": "string"
 										},
 										"transcript_download_url": {
@@ -1828,7 +1830,7 @@
 										}
 									},
 									"required": [
-										"sessionId",
+										"session_id",
 										"transcript_download_url",
 										"transcript_download_url_expiry"
 									]

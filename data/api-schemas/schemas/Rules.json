@@ -88,7 +88,8 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules",
-		"x-fern-sdk-method-name": "deleteAll"
+		"x-fern-sdk-method-name": "delete-all",
+		"x-forge-require-confirmation": "Are you sure you want to delete all rules in this account?"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/rules/{id}": {
 		"operationId": "cloudforce-one-delete-rule",
@@ -2838,8 +2839,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email.schema",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/tree": {
 		"operationId": "cloudforce-one-get-rule-tree",
@@ -4811,8 +4811,7 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email.approvals",
-		"x-fern-sdk-method-name": "resubmit",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "resubmit"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/structured/validate": {
 		"operationId": "cloudforce-one-validate-email-rule",
@@ -7683,7 +7682,6 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email.approvals",
-		"x-fern-sdk-method-name": "replace",
-		"x-forge-hidden": true
+		"x-fern-sdk-method-name": "replace"
 	}
 }

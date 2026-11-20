@@ -26,7 +26,7 @@
 									"data": {
 										"associated_id": "6bf2b8be-04dd-4191-b602-1128921a306b",
 										"created_at": "2022-01-12T14:21:34.398Z",
-										"ended_at": "null",
+										"ended_at": null,
 										"id": "813432c7-3c5a-45e2-9acf-eef7061c7584",
 										"live_participants": 1,
 										"max_concurrent_participants": 2,
@@ -63,7 +63,8 @@
 										},
 										"ended_at": {
 											"description": "timestamp when session ended",
-											"type": "string"
+											"type": "string",
+											"nullable": true
 										},
 										"id": {
 											"description": "ID of the session",
@@ -265,7 +266,7 @@
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick": {
 		"operationId": "KickPartcipants",
 		"summary": "Kick participants from an active session",
-		"description": "Kicks one or more participants from an active session using user ID or custom participant ID.",
+		"description": "Kicks one or more participants from an active session using their participant IDs. Every connection of each participant is removed from the session.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -305,14 +306,8 @@
 					"schema": {
 						"type": "object",
 						"properties": {
-							"custom_participant_ids": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								},
-								"minItems": 1
-							},
 							"participant_ids": {
+								"description": "IDs of the participants to kick, as returned when the participants were added to the meeting.",
 								"type": "array",
 								"items": {
 									"format": "uuid",
@@ -321,22 +316,13 @@
 								"minItems": 1
 							}
 						},
-						"anyOf": [
-							{
-								"required": [
-									"participant_ids"
-								]
-							},
-							{
-								"required": [
-									"custom_participant_ids"
-								]
-							}
+						"required": [
+							"participant_ids"
 						]
 					}
 				}
 			},
-			"description": "Request body for kicking participants from an active session. At least one of `participant_ids` or `custom_participant_ids` must contain a value.",
+			"description": "Request body for kicking participants from an active session.",
 			"required": true
 		},
 		"responses": {
@@ -344,6 +330,17 @@
 				"description": "Kick participants success response",
 				"content": {
 					"application/json": {
+						"example": {
+							"data": {
+								"action": "kick",
+								"participants": [
+									{
+										"id": "005f4e0c-4d08-4d4e-a391-a76be75cd296"
+									}
+								]
+							},
+							"success": true
+						},
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -351,42 +348,26 @@
 									"type": "object",
 									"properties": {
 										"action": {
-											"type": "string"
+											"type": "string",
+											"enum": [
+												"kick"
+											]
 										},
 										"participants": {
+											"description": "Participants the kick was requested for.",
 											"type": "array",
 											"items": {
 												"type": "object",
 												"properties": {
-													"created_at": {
-														"type": "string"
-													},
-													"email": {
-														"description": "Email of the session participant.",
-														"type": "string"
-													},
 													"id": {
-														"description": "ID of the session participant",
-														"type": "string"
-													},
-													"name": {
-														"description": "Name of the session participant.",
-														"type": "string"
-													},
-													"picture": {
-														"description": "A URL pointing to a picture of the participant.",
-														"type": "string"
-													},
-													"updated_at": {
+														"description": "ID of the participant",
 														"type": "string"
 													}
 												},
 												"required": [
-													"id",
-													"created_at",
-													"updated_at"
+													"id"
 												],
-												"title": "SessionParticipant"
+												"title": "ActionParticipant"
 											}
 										}
 									}
@@ -399,17 +380,377 @@
 					}
 				}
 			},
-			"404": {
-				"description": "No participant found for the given `participant_id` or `custom_participant_id`",
+			"400": {
+				"description": "The meeting ID is not a valid UUID, or `participant_ids` is missing, empty or contains an invalid UUID.",
 				"content": {
 					"application/json": {
 						"examples": {
-							"participantNotFound": {
-								"summary": "Participant Not Found",
+							"invalidMeetingId": {
+								"summary": "Meeting ID is not a valid UUID",
+								"value": {
+									"error": {
+										"code": 400,
+										"details": [
+											{
+												"code": "invalid_format",
+												"field": "meeting_id",
+												"location": "path",
+												"message": "Invalid GUID"
+											}
+										],
+										"message": "Request validation failed"
+									},
+									"success": false
+								}
+							},
+							"invalidParticipantId": {
+								"summary": "participant_ids contains an invalid UUID",
+								"value": {
+									"error": {
+										"code": 400,
+										"details": [
+											{
+												"code": "invalid_format",
+												"field": "participant_ids.0",
+												"location": "body",
+												"message": "Invalid GUID"
+											}
+										],
+										"message": "Request validation failed"
+									},
+									"success": false
+								}
+							},
+							"missingParticipantIds": {
+								"summary": "participant_ids missing or empty",
+								"value": {
+									"error": {
+										"code": 400,
+										"details": [
+											{
+												"code": "custom",
+												"field": "",
+												"location": "body",
+												"message": "participant_ids or custom_participant_ids is required"
+											}
+										],
+										"message": "Request validation failed"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "The app does not exist in the account.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"appNotFound": {
+								"summary": "App not found",
+								"value": {
+									"error": {
+										"code": 401,
+										"message": "app not found"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The meeting does not exist in the app, or the meeting has no active session.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"activeSessionNotFound": {
+								"summary": "No active session",
 								"value": {
 									"error": {
 										"code": 404,
-										"message": "No user found with id 813432c7-3c5a-45e2-9acf-eef7061c7584"
+										"message": "No active session found for meeting id: 6bf2b8be-04dd-4191-b602-1128921a306b"
+									},
+									"success": false
+								}
+							},
+							"meetingNotFound": {
+								"summary": "Meeting not found",
+								"value": {
+									"error": {
+										"code": 404,
+										"message": "Meeting 6bf2b8be-04dd-4191-b602-1128921a306b not found for organization 4f6c1a8e-2b39-4f6b-9c2d-7a1e5b3c9d10"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "The action could not be applied to the active session, for example because its room no longer exists.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"internalError": {
+								"summary": "Internal server error",
+								"value": {
+									"error": {
+										"code": 500,
+										"message": "Internal Server Error"
 									},
 									"success": false
 								}
@@ -525,7 +866,7 @@
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick-all": {
 		"operationId": "KickAllParticipants",
 		"summary": "Kick all participants",
-		"description": "Kicks all participants from an active session for the given meeting ID.",
+		"description": "Kicks all participants from an active session for the given meeting ID and ends the session. Participants in connected breakout rooms are kicked as well.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -564,6 +905,13 @@
 				"description": "Kick all participants from a meeting",
 				"content": {
 					"application/json": {
+						"example": {
+							"data": {
+								"action": "kick-all",
+								"kicked_participants_count": 3
+							},
+							"success": true
+						},
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -571,9 +919,13 @@
 									"type": "object",
 									"properties": {
 										"action": {
-											"type": "string"
+											"type": "string",
+											"enum": [
+												"kick-all"
+											]
 										},
 										"kicked_participants_count": {
+											"description": "Number of connections (peers) that were in the session when it was ended.",
 											"type": "number"
 										}
 									}
@@ -586,10 +938,346 @@
 					}
 				}
 			},
-			"4XX": {
-				"description": "Failure response",
+			"400": {
+				"description": "The meeting ID is not a valid UUID.",
 				"content": {
 					"application/json": {
+						"examples": {
+							"invalidMeetingId": {
+								"summary": "Meeting ID is not a valid UUID",
+								"value": {
+									"error": {
+										"code": 400,
+										"details": [
+											{
+												"code": "invalid_format",
+												"field": "meeting_id",
+												"location": "path",
+												"message": "Invalid GUID"
+											}
+										],
+										"message": "Request validation failed"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "The app does not exist in the account.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"appNotFound": {
+								"summary": "App not found",
+								"value": {
+									"error": {
+										"code": 401,
+										"message": "app not found"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The meeting does not exist in the app, or the meeting has no active session.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"activeSessionNotFound": {
+								"summary": "No active session",
+								"value": {
+									"error": {
+										"code": 404,
+										"message": "No active session found for meeting id: 6bf2b8be-04dd-4191-b602-1128921a306b"
+									},
+									"success": false
+								}
+							},
+							"meetingNotFound": {
+								"summary": "Meeting not found",
+								"value": {
+									"error": {
+										"code": 404,
+										"message": "Meeting 6bf2b8be-04dd-4191-b602-1128921a306b not found for organization 4f6c1a8e-2b39-4f6b-9c2d-7a1e5b3c9d10"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "The action could not be applied to the active session, for example because its room no longer exists.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"internalError": {
+								"summary": "Internal server error",
+								"value": {
+									"error": {
+										"code": 500,
+										"message": "Internal Server Error"
+									},
+									"success": false
+								}
+							}
+						},
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -701,7 +1389,7 @@
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute": {
 		"operationId": "MuteParticipants",
 		"summary": "Mute participants of an active session",
-		"description": "Mutes one or more participants from an active session using user ID or custom participant ID.",
+		"description": "Mutes the microphone of one or more participants of an active session using their participant IDs.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -741,14 +1429,8 @@
 					"schema": {
 						"type": "object",
 						"properties": {
-							"custom_participant_ids": {
-								"type": "array",
-								"items": {
-									"type": "string"
-								},
-								"minItems": 1
-							},
 							"participant_ids": {
+								"description": "IDs of the participants to mute, as returned when the participants were added to the meeting.",
 								"type": "array",
 								"items": {
 									"type": "string"
@@ -756,22 +1438,13 @@
 								"minItems": 1
 							}
 						},
-						"anyOf": [
-							{
-								"required": [
-									"participant_ids"
-								]
-							},
-							{
-								"required": [
-									"custom_participant_ids"
-								]
-							}
+						"required": [
+							"participant_ids"
 						]
 					}
 				}
 			},
-			"description": "Request body for muting participants in an active session. At least one of `participant_ids` or `custom_participant_ids` must contain a value.",
+			"description": "Request body for muting participants in an active session.",
 			"required": true
 		},
 		"responses": {
@@ -779,6 +1452,17 @@
 				"description": "Mute one or more participants of a meeting",
 				"content": {
 					"application/json": {
+						"example": {
+							"data": {
+								"action": "mute",
+								"participants": [
+									{
+										"id": "005f4e0c-4d08-4d4e-a391-a76be75cd296"
+									}
+								]
+							},
+							"success": true
+						},
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -786,42 +1470,26 @@
 									"type": "object",
 									"properties": {
 										"action": {
-											"type": "string"
+											"type": "string",
+											"enum": [
+												"mute"
+											]
 										},
 										"participants": {
+											"description": "Participants the mute was requested for.",
 											"type": "array",
 											"items": {
 												"type": "object",
 												"properties": {
-													"created_at": {
-														"type": "string"
-													},
-													"email": {
-														"description": "Email of the session participant.",
-														"type": "string"
-													},
 													"id": {
-														"description": "ID of the session participant",
-														"type": "string"
-													},
-													"name": {
-														"description": "Name of the session participant.",
-														"type": "string"
-													},
-													"picture": {
-														"description": "A URL pointing to a picture of the participant.",
-														"type": "string"
-													},
-													"updated_at": {
+														"description": "ID of the participant",
 														"type": "string"
 													}
 												},
 												"required": [
-													"id",
-													"created_at",
-													"updated_at"
+													"id"
 												],
-												"title": "SessionParticipant"
+												"title": "ActionParticipant"
 											}
 										}
 									}
@@ -834,10 +1502,374 @@
 					}
 				}
 			},
-			"4XX": {
-				"description": "Failure response",
+			"400": {
+				"description": "The meeting ID is not a valid UUID, or `participant_ids` is missing, empty or not an array of strings.",
 				"content": {
 					"application/json": {
+						"examples": {
+							"invalidMeetingId": {
+								"summary": "Meeting ID is not a valid UUID",
+								"value": {
+									"error": {
+										"code": 400,
+										"details": [
+											{
+												"code": "invalid_format",
+												"field": "meeting_id",
+												"location": "path",
+												"message": "Invalid GUID"
+											}
+										],
+										"message": "Request validation failed"
+									},
+									"success": false
+								}
+							},
+							"invalidParticipantIds": {
+								"summary": "participant_ids is not an array",
+								"value": {
+									"error": {
+										"code": 400,
+										"details": [
+											{
+												"code": "invalid_type",
+												"field": "participant_ids",
+												"location": "body",
+												"message": "Invalid input: expected array, received string"
+											}
+										],
+										"message": "Request validation failed"
+									},
+									"success": false
+								}
+							},
+							"missingParticipantIds": {
+								"summary": "participant_ids missing or empty",
+								"value": {
+									"error": {
+										"code": 400,
+										"message": "participant_ids is required"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "The app does not exist in the account.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"appNotFound": {
+								"summary": "App not found",
+								"value": {
+									"error": {
+										"code": 401,
+										"message": "app not found"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The meeting does not exist in the app, or the meeting has no active session.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"activeSessionNotFound": {
+								"summary": "No active session",
+								"value": {
+									"error": {
+										"code": 404,
+										"message": "No active session found for meeting id: 6bf2b8be-04dd-4191-b602-1128921a306b"
+									},
+									"success": false
+								}
+							},
+							"meetingNotFound": {
+								"summary": "Meeting not found",
+								"value": {
+									"error": {
+										"code": 404,
+										"message": "Meeting 6bf2b8be-04dd-4191-b602-1128921a306b not found for organization 4f6c1a8e-2b39-4f6b-9c2d-7a1e5b3c9d10"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "The action could not be applied to the active session, for example because its room no longer exists.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"internalError": {
+								"summary": "Internal server error",
+								"value": {
+									"error": {
+										"code": 500,
+										"message": "Internal Server Error"
+									},
+									"success": false
+								}
+							}
+						},
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -948,7 +1980,7 @@
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute-all": {
 		"operationId": "MuteAllParticipants",
 		"summary": "Mute all participants",
-		"description": "Mutes all participants of an active session for the given meeting ID.",
+		"description": "Mutes the microphone of all participants of an active session for the given meeting ID.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -989,22 +2021,29 @@
 						"type": "object",
 						"properties": {
 							"allow_unmute": {
-								"description": "if false, participants won't be able to unmute themselves after they are muted",
+								"description": "This field is ignored. Muted participants can unmute themselves if their preset allows them to produce audio.",
 								"type": "boolean",
-								"default": false
+								"default": false,
+								"deprecated": true
 							}
 						}
 					}
 				}
 			},
-			"description": "Request body for muting all participants in an active session.",
-			"required": true
+			"description": "Request body for muting all participants in an active session."
 		},
 		"responses": {
 			"200": {
 				"description": "Mute all participants of a meeting",
 				"content": {
 					"application/json": {
+						"example": {
+							"data": {
+								"action": "mute-all",
+								"muted_participants_count": 2
+							},
+							"success": true
+						},
 						"schema": {
 							"type": "object",
 							"properties": {
@@ -1012,9 +2051,13 @@
 									"type": "object",
 									"properties": {
 										"action": {
-											"type": "string"
+											"type": "string",
+											"enum": [
+												"mute-all"
+											]
 										},
 										"muted_participants_count": {
+											"description": "Number of connections (peers) whose microphone was unmuted and has been muted by this request.",
 											"type": "number"
 										}
 									}
@@ -1027,10 +2070,364 @@
 					}
 				}
 			},
-			"4XX": {
-				"description": "Failure response",
+			"400": {
+				"description": "The meeting ID is not a valid UUID, or `allow_unmute` is not a boolean.",
 				"content": {
 					"application/json": {
+						"examples": {
+							"invalidAllowUnmute": {
+								"summary": "allow_unmute is not a boolean",
+								"value": {
+									"error": {
+										"code": 400,
+										"details": [
+											{
+												"code": "invalid_type",
+												"field": "allow_unmute",
+												"location": "body",
+												"message": "Invalid input: expected boolean, received string"
+											}
+										],
+										"message": "Request validation failed"
+									},
+									"success": false
+								}
+							},
+							"invalidMeetingId": {
+								"summary": "Meeting ID is not a valid UUID",
+								"value": {
+									"error": {
+										"code": 400,
+										"details": [
+											{
+												"code": "invalid_format",
+												"field": "meeting_id",
+												"location": "path",
+												"message": "Invalid GUID"
+											}
+										],
+										"message": "Request validation failed"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "The app does not exist in the account.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"appNotFound": {
+								"summary": "App not found",
+								"value": {
+									"error": {
+										"code": 401,
+										"message": "app not found"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The meeting does not exist in the app, or the meeting has no active session.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"activeSessionNotFound": {
+								"summary": "No active session",
+								"value": {
+									"error": {
+										"code": 404,
+										"message": "No active session found for meeting id: 6bf2b8be-04dd-4191-b602-1128921a306b"
+									},
+									"success": false
+								}
+							},
+							"meetingNotFound": {
+								"summary": "Meeting not found",
+								"value": {
+									"error": {
+										"code": 404,
+										"message": "Meeting 6bf2b8be-04dd-4191-b602-1128921a306b not found for organization 4f6c1a8e-2b39-4f6b-9c2d-7a1e5b3c9d10"
+									},
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "object",
+									"properties": {
+										"code": {
+											"description": "HTTP status code of the error.",
+											"type": "number"
+										},
+										"details": {
+											"description": "Additional context about the error, when available. Validation errors return a list of issues; other errors may return an object with error-specific fields.",
+											"oneOf": [
+												{
+													"description": "Request validation issues.",
+													"items": {
+														"description": "A single request validation failure.",
+														"type": "object",
+														"properties": {
+															"code": {
+																"description": "Machine-readable validation error code.",
+																"type": "string"
+															},
+															"field": {
+																"description": "Name of the field that failed validation.",
+																"type": "string"
+															},
+															"location": {
+																"description": "Part of the request that failed validation.",
+																"type": "string",
+																"enum": [
+																	"path",
+																	"query",
+																	"body"
+																]
+															},
+															"message": {
+																"description": "Human-readable description of the validation failure.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"location",
+															"field",
+															"code",
+															"message"
+														]
+													},
+													"type": "array"
+												},
+												{
+													"additionalProperties": true,
+													"description": "Error-specific context.",
+													"type": "object"
+												}
+											]
+										},
+										"message": {
+											"description": "Error message describing what went wrong.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Stable machine-readable reason for the error, when available.",
+											"type": "string",
+											"example": "participant_token_expired"
+										}
+									},
+									"required": [
+										"code",
+										"message"
+									]
+								},
+								"success": {
+									"description": "Success status of the request.",
+									"type": "boolean",
+									"default": false
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "The action could not be applied to the active session, for example because its room no longer exists.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"internalError": {
+								"summary": "Internal server error",
+								"value": {
+									"error": {
+										"code": 500,
+										"message": "Internal Server Error"
+									},
+									"success": false
+								}
+							}
+						},
 						"schema": {
 							"type": "object",
 							"properties": {

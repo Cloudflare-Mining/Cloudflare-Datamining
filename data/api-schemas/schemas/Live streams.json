@@ -451,7 +451,8 @@
 				"in": "query",
 				"description": "Number of results per page.",
 				"schema": {
-					"type": "integer"
+					"type": "integer",
+					"minimum": 1
 				}
 			},
 			{
@@ -816,7 +817,8 @@
 				"in": "query",
 				"description": "Number of results per page.",
 				"schema": {
-					"type": "integer"
+					"type": "integer",
+					"minimum": 1
 				}
 			},
 			{
@@ -2071,7 +2073,8 @@
 				"in": "query",
 				"description": "Number of results per page.",
 				"schema": {
-					"type": "integer"
+					"type": "integer",
+					"minimum": 1
 				}
 			},
 			{
@@ -2488,7 +2491,8 @@
 				"in": "query",
 				"description": "Number of results per page.",
 				"schema": {
-					"type": "number"
+					"type": "number",
+					"minimum": 1
 				}
 			},
 			{
