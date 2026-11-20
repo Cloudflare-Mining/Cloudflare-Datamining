@@ -1,8 +1,7 @@
 {
 	"name": "@cloudflare/redocly-plugin-forge",
 	"dist-tags": {
-		"latest": "0.0.0",
-		"bootstrap": "0.0.0"
+		"latest": "0.1.0"
 	},
 	"versions": {
 		"0.0.0-stage": {
@@ -22,25 +21,47 @@
 				"unpackedSize": 354
 			}
 		},
-		"0.0.0": {
+		"0.1.0": {
 			"name": "@cloudflare/redocly-plugin-forge",
-			"version": "0.0.0",
+			"version": "0.1.0",
+			"dependencies": {
+				"lodash-es": "4.18.1",
+				"ajv-formats": "3.0.1",
+				"@redocly/ajv": "8.18.3"
+			},
+			"devDependencies": {
+				"vitest": "5.1.0",
+				"publint": "0.3.16",
+				"typescript": "5.9.3",
+				"@types/node": "25.3.5",
+				"@types/lodash-es": "4.17.12",
+				"@redocly/openapi-core": "2.77.0"
+			},
+			"peerDependencies": {
+				"@redocly/openapi-core": "^2.0.0"
+			},
 			"dist": {
-				"shasum": "258fd99a5499726c81c567ee66f55945d398b937",
-				"tarball": "https://registry.npmjs.org/@cloudflare/redocly-plugin-forge/-/redocly-plugin-forge-0.0.0.tgz",
-				"fileCount": 545,
-				"integrity": "sha512-awzIBmdLO+qtYbk1lpm+Ub01w6fqe/v7EcZvyvyhLUMUh015+3QVwbXlWveUbzATaNK5qU0uC+tH0ZpwGnzm0g==",
+				"shasum": "3d0d978a5ec7c170424d35b1ec8911b5f335b1ea",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redocly-plugin-forge/-/redocly-plugin-forge-0.1.0.tgz",
+				"fileCount": 61,
+				"integrity": "sha512-lUeOhBN0FSL197vMasKPGnvFXMFLZShvhowczjOUeOfu7zV+FR0CpvIrz5UbXBglw2N8vmUiAxvFFS5C8v8q5Q==",
 				"signatures": [
 					{
-						"sig": "MEUCIFwnKp8CCrlFj6OZhZp22QEyJGYllDkhi7yhb9FXSogAAiEAmAdb6TTPOU+RHiP+9rAVBdAnkZ1SnFnhEI7Q7a7sgYM=",
+						"sig": "MEUCIQD/5pwx9wQNNJBvA+aZLR/DQnhOF+BaT4JNVHSFTfnsFgIgKg+ahW6aCoiNF89XalPqNYU1is0ItBH6bKC3Sj4gjyI=",
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCID7W/sdb9ixA9hu22Y2px1ZbAHaAo2wkM7P1WfQ1lMNlAiAgweTvSD80pbhq9nDFm6Jbvh8CgKfXcnTaWqbKMQc/rg=="
+						"sig": "MEUCIQCVWVzhqUw7TXB3bhDwO4qQ3fdSa/KlGtVudCNsAuQ6qgIgWYwWmV1Ac+FKSXZe1eBOPZRvpbgOY7AwLZFEzWngBCs="
 					}
 				],
-				"unpackedSize": 1399585
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fredocly-plugin-forge@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 139424
 			}
 		}
 	}
