@@ -1,4 +1,7 @@
 ---
+agent:
+  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
+  search: "https://blog.cloudflare.com/.well-known/search?q={query}"
 description: Technical deep dives, product updates, and insights from the teams that are helping to build a better Internet.
 title: Cloudflare Blog
 image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY31N4V.png
@@ -10,6 +13,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 20, 2026 [<h2>How Cloudflare WAF helps protect against phpAfterShell and other critical PHP flaws</h2>](https://blog.cloudflare.com/phpaftershell-waf-protection/)
+
+phpAfterShell is a critical flaw in PHP's default session handler that can lead to code execution. Cloudflare WAF blocks it for all customers, including Free plans, and adds new rules for other PHP flaws fixed in the same release.
+
+![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christian Larsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7X867D0A461PT7HM0R8J2Q8.01M7X86K8702V09Y1GYPQWC8V0.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/), and  [Christian Larsen](https://blog.cloudflare.com/author/christian-larsen/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7X76DTFTZ4PHVTH5XWJ37KT.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/phpaftershell-waf-protection/)
+
 November 20, 2026 [<h2>nginx2root: Five new nginx vulnerabilities, and how Cloudflare protects origins from the worst of them</h2>](https://blog.cloudflare.com/nginx2root/)
 
 Five memory corruption bugs in nginx, called nginx2root, can let an unauthenticated attacker run code on a server. Here's how they work, and why origins behind Cloudflare's proxy are shielded from the most serious of these bugs.
@@ -17,8 +30,6 @@ Five memory corruption bugs in nginx, called nginx2root, can let an unauthentica
 ![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)![Richard Boulton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPC6H4PY51ETZPAGBKZ9.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Dan Jones](https://blog.cloudflare.com/author/dan-jones/),  [Richard Boulton](https://blog.cloudflare.com/author/richard/), and  [Daniele Molteni](https://blog.cloudflare.com/author/daniele/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6N9XSHCT1GMC5KHVYE692.01M7V6NAA3FDH1YV1552W4P5P7.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/nginx2root/)
 
 November 19, 2026 [<h2>Internet traffic and attacks during the 2026 U.S. midterm elections</h2>](https://blog.cloudflare.com/internet-traffic-2026-us-election/)
 
@@ -155,14 +166,6 @@ Cloudflare mitigated over 8,200 DDoS attacks per hour in Q3 2026 as attackers sh
 ![Cloudforce One](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F4NKW3JJWXAED2MVFY7Y.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Cloudforce One](https://blog.cloudflare.com/author/cloudforce/)
-
-October 27, 2026 [<h2>Introducing the Cloudflare PHP Capture the Flag challenge</h2>](https://blog.cloudflare.com/php-ctf/)
-
-We are launching a PHP Capture the Flag challenge integrated with our Bug Bounty program to test our WAF protections. Security researchers are invited to bypass our defenses and capture the flag to help make the Internet safer.
-
-![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Sven Sauleau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HRDMNZR42T04V7Y1R5XY.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Celso Martinho](https://blog.cloudflare.com/author/celso/),  [Sven Sauleau](https://blog.cloudflare.com/author/sven/), and  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/)
 
 Load more
 
