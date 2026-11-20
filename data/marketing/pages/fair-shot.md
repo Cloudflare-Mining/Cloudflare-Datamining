@@ -4,9 +4,9 @@ description: Cloudflare's Project Fair Shot provides Waiting Room to help govern
 image: https://www.cloudflare.com/preview.png
 ---
 
-## Project Fair Shot
+##  Project Fair Shot 
 
-##### Cloudflare's Project Fair Shot provides help governments, hospitals, and pharmacies distribute COVID-19 vaccines fairly and efficiently. Our Waiting Room feature allows organizations to manage high demand for resources, such as vaccine registration sites, by queuing individuals and allocating access. 
+#####  Cloudflare's Project Fair Shot provides help governments, hospitals, and pharmacies distribute COVID-19 vaccines fairly and efficiently. Our Waiting Room feature allows organizations to manage high demand for resources, such as vaccine registration sites, by queuing individuals and allocating access. 
 
 ### Benefits of Project Fair Shot
 

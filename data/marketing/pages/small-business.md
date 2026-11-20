@@ -4,9 +4,9 @@ description: Protect and accelerate your small business with Cloudflare's integr
 image: https://www.cloudflare.com/preview.png
 ---
 
-## Launch confidently and stay protected
+##  Launch confidently and stay protected 
 
-##### Cloudflare helps small businesses secure, accelerate, and build their online presence with ease. You can defend against cyber threats, optimize web performance, host your websites, and grow your business with confidence. Our platform provides a comprehensive suite of tools to help you succeed online.
+#####  Cloudflare helps small businesses secure, accelerate, and build their online presence with ease. You can defend against cyber threats, optimize web performance, host your websites, and grow your business with confidence. Our platform provides a comprehensive suite of tools to help you succeed online. 
 
 [  Start for free ](https://dash.cloudflare.com/sign-up) [  Download our security guide ](https://cfl.re/security-guide-for-small-and-medium-enterprises) 
 

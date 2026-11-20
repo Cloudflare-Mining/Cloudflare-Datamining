@@ -4,7 +4,7 @@ description: Build on the infrastructure that powers 20% of the Internet.
 image: https://www.cloudflare.com/preview.png
 ---
 
-## resources-app-innovation-report — Cloudflare
+##  resources-app-innovation-report — Cloudflare 
 
 # Build without boundaries
 

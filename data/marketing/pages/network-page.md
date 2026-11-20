@@ -4,9 +4,9 @@ description: Exceptional performance, security and reliability for the modern en
 image: https://www.cloudflare.com/preview.png
 ---
 
-## Cloudflare Global Network
+##  Cloudflare Global Network 
 
-##### One of the world's largest networks — running every service in every data center for unmatched performance, security, and reliability.
+#####  One of the world's largest networks — running every service in every data center for unmatched performance, security, and reliability. 
 
 # Build without boundaries
 

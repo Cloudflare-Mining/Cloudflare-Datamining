@@ -4,9 +4,9 @@ description: Resources on cyber security, web performance, and how the Internet 
 image: https://www.cloudflare.com/preview.png
 ---
 
-## Learning Center
+##  Learning Center 
 
-##### Resources on cyber security and how the Internet works.
+#####  Resources on cyber security and how the Internet works. 
 
 #####  Learn about DDoS attacks 
 

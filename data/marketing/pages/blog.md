@@ -10,6 +10,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 20, 2026 [<h2>nginx2root: Five new nginx vulnerabilities, and how Cloudflare protects origins from the worst of them</h2>](https://blog.cloudflare.com/nginx2root/)
+
+Five memory corruption bugs in nginx, called nginx2root, can let an unauthenticated attacker run code on a server. Here's how they work, and why origins behind Cloudflare's proxy are shielded from the most serious of these bugs.
+
+![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)![Richard Boulton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPC6H4PY51ETZPAGBKZ9.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Dan Jones](https://blog.cloudflare.com/author/dan-jones/),  [Richard Boulton](https://blog.cloudflare.com/author/richard/), and  [Daniele Molteni](https://blog.cloudflare.com/author/daniele/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6N9XSHCT1GMC5KHVYE692.01M7V6NAA3FDH1YV1552W4P5P7.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/nginx2root/)
+
 November 19, 2026 [<h2>Internet traffic and attacks during the 2026 U.S. midterm elections</h2>](https://blog.cloudflare.com/internet-traffic-2026-us-election/)
 
 On November 3, 2026 U.S. voters headed to the polls. Here's what Cloudflare data across more than 1,400 protected sites tells us about Election Day Internet traffic and cyberattacks.
@@ -17,8 +27,6 @@ On November 3, 2026 U.S. voters headed to the polls. Here's what Cloudflare data
 ![Patrick Day](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TYR5VCZ5TE2F5PZ2Z1X5.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jocelyn Woolbright](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DTBM9W30TE9JQBMJ2CAY.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Carlos Azevedo](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P71QFJNEB7Q75HGQCYZP.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Patrick Day](https://blog.cloudflare.com/author/patrick-day/),  [Jocelyn Woolbright](https://blog.cloudflare.com/author/jocelyn/), and  [Carlos Azevedo](https://blog.cloudflare.com/author/carlos/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7R61QF048WWQ6F9XZ3TXEG9.01M7R61R40AS8MPD7CDPFJVBQG.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/internet-traffic-2026-us-election/)
 
 November 18, 2026 [<h2>An updated Clairic and Clairic-flash are now open-weight, from the new Workers AI Superintelligence team</h2>](https://blog.cloudflare.com/open-clairic/)
 
@@ -155,14 +163,6 @@ We are launching a PHP Capture the Flag challenge integrated with our Bug Bounty
 ![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Sven Sauleau](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HRDMNZR42T04V7Y1R5XY.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NPTFNWGMZXQMX2WDPGJS.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Celso Martinho](https://blog.cloudflare.com/author/celso/),  [Sven Sauleau](https://blog.cloudflare.com/author/sven/), and  [Dan Jones](https://blog.cloudflare.com/author/dan-jones/)
-
-October 27, 2026 [<h2>What took the Internet offline in Q3 2026</h2>](https://blog.cloudflare.com/q3-2026-internet-disruption-summary/)
-
-An examination of global Internet disruptions observed by Cloudflare Radar during the third quarter of 2026. This review analyzes how power failures, natural disasters, and government shutdowns impacted network connectivity and traffic.
-
-![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
 
 Load more
 
