@@ -351,6 +351,9 @@
 		"enabled": false
 	},
 	"authn-login-connections": {
+		"enabled": true
+	},
+	"authn-login-connections-remove": {
 		"enabled": false
 	},
 	"auto-save-all-discoveries": {
@@ -2051,7 +2054,7 @@
 		"enabled": false
 	},
 	"modular-checkout-blind-default-view": {
-		"enabled": false
+		"enabled": true
 	},
 	"monitored-sessions-tier-1": {
 		"enabled": true
@@ -3485,8 +3488,11 @@
 	"zaraz-adobe": {
 		"enabled": true
 	},
-	"zero-wire-in-dash": {
+	"zaraz-rum-managed-component": {
 		"enabled": false
+	},
+	"zero-wire-in-dash": {
+		"enabled": true
 	},
 	"zone-analytics-dns-cta": {
 		"enabled": true,
