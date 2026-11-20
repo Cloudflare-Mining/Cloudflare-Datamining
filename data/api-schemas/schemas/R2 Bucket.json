@@ -575,6 +575,221 @@
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-require-confirmation": "This removes the R2 bucket's CORS policy. Browser requests that depend on these cross-origin permissions may fail."
 	},
+	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/custom_domains/{domain}": {
+		"operationId": "r2-delete-custom-domain-legacy",
+		"summary": "Remove Custom Domain From Bucket (Deprecated)",
+		"description": "Disconnects a custom domain from an R2 bucket and removes its configuration. Unlike the replacement endpoint, it does not reset whether the domain is enabled, so attaching the same domain to this bucket again restores its previous state: a domain that was enabled before removal is enabled again immediately. It succeeds when the account has no such domain, and fails with 409 when the domain is attached to a different bucket.\n\nDeprecated: use [Remove Custom Domain From Bucket](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/subresources/domains/subresources/custom/methods/delete/) (`DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}`) instead. This endpoint will be removed.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID that owns the R2 resource.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"type": "string",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "domain",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the custom domain.",
+					"type": "string",
+					"example": "example-domain/custom-domain.com",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"eu",
+						"us",
+						"fedramp",
+						"fedramp-high"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete Custom Domain response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"domain": {
+													"description": "Name of the custom domain.",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"example": {
+												"domain": "prefix.example-domain.com"
+											},
+											"required": [
+												"domain"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete Custom Domain response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-api-token-group": [
+			"Workers R2 Storage Write"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
+		"x-fern-sdk-method-name": "delete-legacy",
+		"x-forge-require-confirmation": "This disconnects the custom domain from the R2 bucket. Access through other enabled domains remains available."
+	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"operationId": "r2-delete-custom-domain",
 		"summary": "Remove Custom Domain From Bucket",
@@ -2746,6 +2961,297 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.cors",
 		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/custom_domains": {
+		"operationId": "r2-list-custom-domains-legacy",
+		"summary": "List Custom Domains of Bucket (Deprecated)",
+		"description": "Gets a list of all custom domains registered with an existing R2 bucket. Unlike the replacement endpoint, the response does not say whether each domain is enabled.\n\nDeprecated: use [List Custom Domains of Bucket](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/subresources/domains/subresources/custom/methods/list/) (`GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom`) instead. This endpoint will be removed.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID that owns the R2 resource.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"type": "string",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"eu",
+						"us",
+						"fedramp",
+						"fedramp-high"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List Custom Domains response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"domains": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"ciphers": {
+																"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"x-auditable": true
+															},
+															"domain": {
+																"description": "Domain name of the custom domain.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"minTLS": {
+																"description": "Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.",
+																"type": "string",
+																"enum": [
+																	"1.0",
+																	"1.1",
+																	"1.2",
+																	"1.3"
+																],
+																"x-auditable": true
+															},
+															"status": {
+																"type": "object",
+																"properties": {
+																	"ownership": {
+																		"description": "Ownership status of the domain.",
+																		"type": "string",
+																		"enum": [
+																			"pending",
+																			"active",
+																			"deactivated",
+																			"blocked",
+																			"error",
+																			"unknown"
+																		],
+																		"x-auditable": true
+																	},
+																	"ssl": {
+																		"description": "SSL certificate status.",
+																		"type": "string",
+																		"enum": [
+																			"initializing",
+																			"pending",
+																			"active",
+																			"deactivated",
+																			"error",
+																			"unknown"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"ssl",
+																	"ownership"
+																]
+															},
+															"zoneId": {
+																"description": "Zone ID of the custom domain.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"zoneName": {
+																"description": "Zone that the custom domain resides in.",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"domain",
+															"status"
+														],
+														"type": "object"
+													}
+												}
+											},
+											"example": {
+												"domains": [
+													{
+														"domain": "prefix.example-domain.one.com",
+														"status": {
+															"ownership": "active",
+															"ssl": "active"
+														},
+														"zoneId": "36ca64a6d92827b8a6b90be344bb1bfd",
+														"zoneName": "example-domain.one.com"
+													}
+												]
+											},
+											"required": [
+												"domains"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List Custom Domains response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.read"
+			]
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
+		"x-fern-sdk-method-name": "list-legacy"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom": {
 		"operationId": "r2-list-custom-domains",
@@ -6097,6 +6603,241 @@
 		"x-fern-sdk-group-name": "r2.buckets",
 		"x-fern-sdk-method-name": "create"
 	},
+	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/custom_domains": {
+		"operationId": "r2-add-custom-domain-legacy",
+		"summary": "Attach Custom Domain To Bucket (Deprecated)",
+		"description": "Registers a new custom domain for an existing R2 bucket. This endpoint does not change whether the domain is enabled; enable it with [Configure Custom Domain Settings](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/subresources/domains/subresources/custom/methods/update/). A domain that was enabled on this bucket and then removed with the deprecated remove endpoint is enabled again as soon as it is attached.\n\nDeprecated: use [Attach Custom Domain To Bucket](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/subresources/domains/subresources/custom/methods/create/) (`POST /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom`) instead. This endpoint will be removed.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID that owns the R2 resource.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "bucket_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"type": "string",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Jurisdiction where objects in this bucket are guaranteed to be stored.",
+				"in": "header",
+				"name": "cf-r2-jurisdiction",
+				"schema": {
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"eu",
+						"us",
+						"fedramp",
+						"fedramp-high"
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"domain": {
+								"description": "Name of the custom domain to be added.",
+								"type": "string",
+								"x-auditable": true
+							},
+							"zoneId": {
+								"description": "Zone ID of the custom domain.",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"example": {
+							"domain": "prefix.example-domain.com",
+							"zoneId": "36ca64a6d92827b8a6b90be344bb1bfd"
+						},
+						"required": [
+							"domain",
+							"zoneId"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Add Custom Domain response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"domain": {
+													"description": "Name of the custom domain.",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"example": {
+												"domain": "prefix.example-domain.com"
+											},
+											"required": [
+												"domain"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Add Custom Domain response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.write"
+			]
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
+		"x-fern-sdk-method-name": "create-legacy"
+	},
 	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom": {
 		"operationId": "r2-add-custom-domain",
 		"summary": "Attach Custom Domain To Bucket",
@@ -7084,7 +7825,7 @@
 	"POST /accounts/{account_id}/r2/temp-access-credentials": {
 		"operationId": "r2-create-temp-access-credentials",
 		"summary": "Create Temporary Access Credentials",
-		"description": "Creates temporary access credentials on a bucket that can be optionally scoped to prefixes or objects.",
+		"description": "Creates temporary access credentials on a bucket that can be optionally scoped to prefixes or objects. The credentials grant either a permission level or an explicit list of S3 actions.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7102,9 +7843,64 @@
 			"required": true,
 			"content": {
 				"application/json": {
+					"examples": {
+						"permission": {
+							"summary": "Read and write objects under a prefix",
+							"value": {
+								"bucket": "example-bucket",
+								"parentAccessKeyId": "example-access-key-id",
+								"permission": "object-read-write",
+								"prefixes": [
+									"example-prefix/"
+								],
+								"ttlSeconds": 3600
+							}
+						},
+						"read-without-list": {
+							"summary": "Read objects without listing them",
+							"value": {
+								"actions": [
+									"GetObject",
+									"HeadObject"
+								],
+								"bucket": "example-bucket",
+								"parentAccessKeyId": "example-access-key-id",
+								"ttlSeconds": 3600
+							}
+						}
+					},
 					"schema": {
 						"type": "object",
 						"properties": {
+							"actions": {
+								"description": "S3 actions allowed on the credentials; requests for any other action are denied. For example, `[\"GetObject\", \"HeadObject\"]` allows reading objects without listing them. Exactly one of `permission` or `actions` must be provided. The parent token must have Object Read & Write permission if any action writes, and Object Read otherwise.",
+								"type": "array",
+								"items": {
+									"enum": [
+										"HeadBucket",
+										"HeadObject",
+										"GetObject",
+										"GetBucketLocation",
+										"ListObjectsV1",
+										"ListObjectsV2",
+										"ListMultipartUploads",
+										"ListParts",
+										"PutObject",
+										"DeleteObject",
+										"DeleteObjects",
+										"DeleteObjectsByPrefix",
+										"CopyObject",
+										"CreateMultipartUpload",
+										"UploadPart",
+										"UploadPartCopy",
+										"AbortMultipartUpload",
+										"CompleteMultipartUpload"
+									],
+									"type": "string"
+								},
+								"minItems": 1,
+								"x-auditable": true
+							},
 							"bucket": {
 								"description": "Name of the R2 bucket.",
 								"type": "string",
@@ -7123,7 +7919,7 @@
 								"type": "string"
 							},
 							"permission": {
-								"description": "Permissions allowed on the credentials.",
+								"description": "Permissions allowed on the credentials. Exactly one of `permission` or `actions` must be provided.",
 								"type": "string",
 								"enum": [
 									"admin-read-write",
@@ -7164,7 +7960,6 @@
 						},
 						"required": [
 							"bucket",
-							"permission",
 							"ttlSeconds",
 							"parentAccessKeyId"
 						]
