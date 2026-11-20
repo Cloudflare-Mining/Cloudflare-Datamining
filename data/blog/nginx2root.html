@@ -1,0 +1,493 @@
+<p>On November 18, 2026, F5 and nginx.org disclosed ten vulnerabilities in nginx. Five of them, detailed by the Xint research team and published under the name <strong>nginx2root</strong>, are memory corruption flaws that an unauthenticated attacker can use to crash an nginx worker or, per Xint's research, run commands on the server. Xint also found a Linux kernel bug that turns that foothold into root on the host, including from inside a Docker container. Other teams found the two HTTP/2 bugs independently: F5 also credits Rapid7, Wiz Research and Ikotas Labs for CVE-2026-123007, and Metnir, Wiz Research, and Palo Alto Networks Unit 42 for CVE-2026-123633.</p>
+<p>nginx is an HTTP web server that also serves as reverse proxy, content cache, load balancer, TCP/UDP proxy server, and mail proxy server. nginx runs a large share of the world's web servers, so this is a patch-now event. But if your nginx server is reachable only through Cloudflare's proxy, attackers cannot reach the vulnerable code paths for the most serious of these bugs, giving you protection while you update your servers.</p>
+<p>Here is where Cloudflare stands, what that protection covers, where it stops, and how the bugs work.</p>
+<h2>The short version</h2>
+<ul>
+	<li><strong>Cloudflare's edge is not affected.</strong>&nbsp;Much of the proxy that handles customer traffic at our edge now runs on FL2, written in Rust. We reviewed the parts still built on our heavily modified nginx fork against all five bugs before disclosure, and an update closing the related code paths finished rolling out globally before the vulnerabilities were published. The same releases fix five other nginx CVEs, including CVE-2026-118899, an infinite loop while reading a request body over TLS 1.3.</li>
+	<li><strong>Origins behind Cloudflare's HTTP proxy are shielded from the HTTP/2 and HTTP/3 attacks.</strong>&nbsp;For proxied hostnames, Cloudflare terminates every client HTTP/2 and HTTP/3 connection at our edge and opens a separate connection to your origin. The attacker's frames never reach your nginx.</li>
+	<li><strong>The resolver and mail proxy vulnerabilities depend on specific configuration.</strong>&nbsp;Many configurations of nginx will not be vulnerable, but the safest way to be sure is to update your install or disable features.</li>
+	<li><strong>You should still patch.</strong>&nbsp;Update to nginx 1.30.7 or 1.31.9 (or your vendor's fixed build) and restart. Some configurations, covered below, are not protected by the proxy.</li>
+</ul>
+<h2>What was disclosed</h2>
+<p>nginx2root is five independent bugs. Each one works on its own and each one needs a different configuration.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 384px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>CVE</strong></p>
+				</td>
+				<td>
+					<p><strong>Bug class</strong></p>
+				</td>
+				<td>
+					<p><strong>Affected configuration</strong></p>
+				</td>
+				<td>
+					<p><strong>First affected release</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-123007</p>
+				</td>
+				<td>
+					<p>Integer overflow leading to out-of-bounds heap read/write</p>
+				</td>
+				<td>
+					<p>HTTP/2 enabled</p>
+				</td>
+				<td>
+					<p>1.9.5 (2015)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-123633</p>
+				</td>
+				<td>
+					<p>Use-after-free</p>
+				</td>
+				<td>
+					<p>HTTP/2 with <code>proxy_pass</code>&nbsp;to a backend, worker low on <code>worker_connections</code></p>
+				</td>
+				<td>
+					<p>1.19.7</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-121810</p>
+				</td>
+				<td>
+					<p>Use-after-free</p>
+				</td>
+				<td>
+					<p>HTTP/3 (QUIC) with <code>proxy_pass</code>&nbsp;to a backend</p>
+				</td>
+				<td>
+					<p>1.25.0</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-123634</p>
+				</td>
+				<td>
+					<p>Use-after-free</p>
+				</td>
+				<td>
+					<p><code>resolver</code>&nbsp;+ <code>proxy_pass</code>&nbsp;with variables + a subrequest (<code>mirror</code>&nbsp;or SSI)</p>
+				</td>
+				<td>
+					<p>0.6.18</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-113425</p>
+				</td>
+				<td>
+					<p>Use-after-free</p>
+				</td>
+				<td>
+					<p>Mail proxy with <code>proxy on</code>&nbsp;and <code>auth_http</code></p>
+				</td>
+				<td>
+					<p>0.5.33</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>F5 rates each one High (CVSS 3.1: 8.1) and Critical (CVSS 4.0: 9.2), and notes that code execution requires disabling or bypassing <a href="https://en.wikipedia.org/wiki/Address_space_layout_randomization"><u>ASLR</u></a>&nbsp;(Address Space Layout Randomization). For CVE-2026-123007, Xint's write-up shows how it leaked memory addresses to do exactly that.</p>
+<p>CVE-2026-123007 is the one to worry about most. It only needs HTTP/2 turned on, which is commonly enabled on TLS deployments, and it has been in every nginx release since HTTP/2 support shipped in 1.9.5. Xint ran the exploit over the public Internet against servers on AWS, GCP and Azure. Xint searched Shodan on November 10, before the disclosure, and found 56.7 million hosts matching <code>product:nginx</code>. Of the 11.94 million that reported a version, 98.9% fell in the affected range. As of November 19, Censys's <a href="https://nginx2root.censys.com"><u>nginx2root exposure tracker</u></a>&nbsp;counts about 8.8 million services running a potentially affected version with HTTP/2 enabled. Version strings don't prove a host is vulnerable, since distributions backport fixes, but the exposure is large.</p>
+<p>The same nginx releases also fix five other bugs. The most serious, CVE-2026-118899, is an infinite loop when reading a request body over TLS 1.3 that lets an unauthenticated attacker stall a worker, in nginx 1.13.0 and later.</p>
+<p>The Linux kernel bug is the sixth part of nginx2root. Xint found a use-after-free in the kernel's SCTP send path, present since Linux 4.15 (2018): while a send operation waits, its SCTP association can be moved to another socket, and the waiting send can then free it. An attacker who already runs code as the nginx worker can use it to gain root on the host, and Xint did this from an nginx running inside a Docker container. Many distributions load the SCTP module automatically the first time a program opens an SCTP socket, so hosts that never use SCTP can still be exposed. As of November 18, no kernel fix was available and Xint was withholding the details until there is one.</p>
+<p>As of November 19, none of the five nginx2root CVEs is in CISA's Known Exploited Vulnerabilities catalog, and we have not seen reports of exploitation in the wild. Xint and Wiz&nbsp;Research have not released their exploits. Rapid7 has published a proof of concept, which it describes as suitable only for demonstrating the attack against a freshly started local container. Fake 'exploits' are also circulating on GitHub.</p>
+<h2>Why Cloudflare's proxy protects your origin</h2>
+<p>nginx2root's most dangerous bugs live in how nginx parses and manages HTTP/2 and HTTP/3 connections. To trigger them, an attacker has to send a carefully ordered stream of protocol frames directly to the nginx process: billions of <code>WINDOW_UPDATE</code>&nbsp;frames, a SETTINGS frame that holds response data back, PING frames that fill the send buffers, partial HEADERS frames, <code>RST_STREAM</code>&nbsp;at exactly the right moment.</p>
+<p>When your DNS record is proxied through Cloudflare, that connection ends at our edge.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/////fr77uvs5uPk6ufp8e7w8e7v6ufn/////vv87uvs5ePk6ujq8vHz8vDy6+jo//////7+7+3u5uXn6+vu9PX39fT17uvq////////8/Lz6ert7vH0+Pr9+fn68u/v////////+fr77/L19Pj7/f///v//9/b1////////////9vv++v///////////Pz8/////////////P///////////////////////////////v//////////////////" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6PBMMASJ99J87WNTE9952.01M7V6PC208D1TXDQ4BTCAJDD5.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6PBMMASJ99J87WNTE9952.01M7V6PC208D1TXDQ4BTCAJDD5.png&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6PBMMASJ99J87WNTE9952.01M7V6PC208D1TXDQ4BTCAJDD5.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6PBMMASJ99J87WNTE9952.01M7V6PC208D1TXDQ4BTCAJDD5.png&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6PBMMASJ99J87WNTE9952.01M7V6PC208D1TXDQ4BTCAJDD5.png&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6PBMMASJ99J87WNTE9952.01M7V6PC208D1TXDQ4BTCAJDD5.png&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6PBMMASJ99J87WNTE9952.01M7V6PC208D1TXDQ4BTCAJDD5.png&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6PBMMASJ99J87WNTE9952.01M7V6PC208D1TXDQ4BTCAJDD5.png&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7V6PBMMASJ99J87WNTE9952.01M7V6PC208D1TXDQ4BTCAJDD5.png&amp;w=1600&amp;h=761&amp;q=100&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="761" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media"></div>
+</figure>
+<p>Cloudflare reads the client's HTTP request, applies your security and caching rules, and then makes its own request to your origin over a connection Cloudflare controls. The flow-control frames, pings, settings, and stream resets that the attacker sends are consumed by our edge. They are not forwarded. Your nginx only ever sees the requests Cloudflare chooses to send, framed the way Cloudflare frames them. This also holds when Cloudflare connects to your origin over HTTP/2: Cloudflare runs its own flow control on that connection and sends <code>WINDOW_UPDATE</code>&nbsp;and <code>RST_STREAM</code>&nbsp;frames only as its own traffic needs, so a client can't make it relay the billions of <code>WINDOW_UPDATE</code>&nbsp;frames the attack requires.</p>
+<p>Rapid7 makes the same point in its analysis of CVE-2026-123007: if the HTTP/2 connection is proxied, the attacker's frames "will likely not be retransmitted" in a way that allows exploitation. This breaks each of the HTTP/2 and HTTP/3 attacks.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 288px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>CVE</strong></p>
+				</td>
+				<td>
+					<p><strong>What the attacker needs</strong></p>
+				</td>
+				<td>
+					<p><strong>Behind Cloudflare's HTTP proxy</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-123007</p>
+				</td>
+				<td>
+					<p>Direct control over HTTP/2 <code>WINDOW_UPDATE</code>, <code>SETTINGS</code>, <code>PING</code>&nbsp;and <code>RST_STREAM</code>&nbsp;on one connection to nginx</p>
+				</td>
+				<td>
+					<p>Protected. Control frames terminate at Cloudflare's edge.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-123633</p>
+				</td>
+				<td>
+					<p>The first part of a HEADERS frame on a direct HTTP/2 connection, plus the ability to exhaust nginx connection slots and reset the TCP connection</p>
+				</td>
+				<td>
+					<p>Protected. The client's HTTP/2 connection terminates at Cloudflare.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-121810</p>
+				</td>
+				<td>
+					<p>A direct QUIC/HTTP/3 connection to nginx</p>
+				</td>
+				<td>
+					<p>Protected. HTTP/3 terminates at Cloudflare's edge. We do not communicate to origins over HTTP/3</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-123634</p>
+				</td>
+				<td>
+					<p>A request and its mirror or SSI subrequest waiting on the same DNS lookup, and the main request ending while the answer is processed. In Xint's exploit, nginx's resolver had to reach the attacker's DNS server.</p>
+				</td>
+				<td>
+					<p>Not fully protected. Depends on how your config builds <code>proxy_pass</code>. Patch.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-113425</p>
+				</td>
+				<td>
+					<p>A direct IMAP/POP3/SMTP connection to the nginx mail proxy</p>
+				</td>
+				<td>
+					<p>Not protected. Cloudflare's HTTP proxy does not carry mail traffic.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>There is one condition to be protected by Cloudflare here: <strong>your origin must not be reachable directly.</strong>&nbsp;If an attacker can find your origin's IP and connect to it directly (TCP 443 or 80 for HTTP/2, UDP 443 for HTTP/3, or the mail ports), Cloudflare isn't in the path and the protection doesn't apply. You should ensure that your origin servers can only be accessed through Cloudflare’s proxies, using one of the following approaches:</p>
+<ul>
+	<li><strong><a href="https://developers.cloudflare.com/tunnel"><u>Cloudflare Tunnel</u></a>.</strong>&nbsp;Your origin makes an outbound-only connection to Cloudflare and exposes no inbound ports.</li>
+	<li><strong>Firewall to Cloudflare IP ranges.</strong>&nbsp;Accept inbound HTTP/HTTPS only from <a href="https://www.cloudflare.com/ips"><u>Cloudflare's published IP ranges</u></a>. This must be done using an IP firewall, not based on configuration in your nginx server.</li>
+	<li><strong><a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull"><u>Authenticated Origin Pulls</u></a>&nbsp;(mTLS).</strong>&nbsp;Your origin rejects any TLS connection that doesn't present Cloudflare's client certificate.</li>
+</ul>
+<p>Xint's own exposure check makes the same point: "If a CDN or reverse proxy sits in front of nginx, the test only reaches the proxy, so also run&nbsp;it directly against the nginx server."</p>
+<h3>Where the protection does not apply</h3>
+<p>There are several situations in which Cloudflare’s HTTP proxy does not provide protection.</p>
+<ul>
+	<li><strong>Spectrum TCP/UDP applications.</strong>&nbsp;For these configurations, traffic from the Internet is passed unmodified through to your origin. If your origin is running nginx, patch or disable the affected features.</li>
+	<li><strong>nginx mail proxy.</strong>&nbsp;Cloudflare's HTTP proxy does not carry IMAP, POP3 or SMTP. Restrict mail listeners to trusted networks until patched.</li>
+	<li><strong>CVE-2026-123634 (resolver).</strong>&nbsp;This depends on how your configuration builds the <code>proxy_pass</code>&nbsp;target from the request, combined with a carefully timed cancellation of an HTTP request. Passing your traffic through Cloudflare’s proxy makes it harder to exploit this, but does not provide full protection. Update regardless.</li>
+	<li><strong>DNS-only (grey-cloud), internal or non-proxied nginx.</strong>&nbsp;Any nginx server an attacker can reach without going through Cloudflare, including internal services behind a compromised host, needs to be patched.</li>
+</ul>
+<p><strong>Cloudflare’s WAF rules are not relevant to these vulnerabilities.</strong>&nbsp;These are protocol-level bugs. Because Cloudflare’s proxy handles parsing the HTTP protocol messages, and creates new messages to fetch information from origin servers, origins behind Cloudflare's HTTP proxy are protected from the HTTP/2 and HTTP/3 bugs without needing a rule. We have therefore not released a managed rule. The protection comes from connection termination, not from pattern matching.</p>
+<h2>What to do now</h2>
+<ol>
+	<li><strong>Find every nginx server.</strong>&nbsp;Include nginx Plus, distribution packages, container images and appliances. Run <code>nginx -V</code>&nbsp;and <code>nginx -T</code>&nbsp;on each and note HTTP/2, HTTP/3/QUIC listeners, <code>proxy_pass</code>&nbsp;with variables plus SSI or <code>mirror</code>, and any <code>mail</code>&nbsp;block.</li>
+	<li><strong>Patch.</strong>&nbsp;Update nginx Open Source to 1.30.7 or 1.31.9, nginx Plus to 37.0.8.1 or 37.3.0.1, or your distribution's fixed package. F5 lists nginx Plus R34 to R36 as affected with no fixed build, so move those to a fixed 37.x release. Then <strong>restart</strong>&nbsp;nginx or complete a binary upgrade. A config reload does not replace the running binary.</li>
+	<li><strong>Check backport versions carefully.</strong>&nbsp;Distributions often patch without changing the version <code>nginx -v</code>&nbsp;reports. Compare the full package version against your distribution's advisory.</li>
+	<li><strong>Make sure your origin is only reachable through Cloudflare.</strong>&nbsp;Use Tunnel, IP allowlisting or Authenticated Origin Pulls.</li>
+	<li><strong>If you can't patch yet, disable what you don't need.</strong>&nbsp;<code>http2 off;</code>&nbsp;(nginx 1.25.1 and later; on older versions, remove <code>http2</code>&nbsp;from the <code>listen</code>&nbsp;directive)&nbsp;blocks CVE-2026-123007 and CVE-2026-123633. Removing QUIC listeners and setting <code>http3 off;</code>&nbsp;blocks CVE-2026-121810. Point <code>proxy_pass</code>&nbsp;at fixed upstream groups for CVE-2026-123634. Don't rely on <code>mirror_request_body</code>&nbsp;alone: Xint's tested setup set it to <code>off</code>, and the default <code>on</code>&nbsp;stopped that exploit, but SSI and other subrequests can still reach the bug. Bind mail listeners to trusted networks for CVE-2026-113425. Restart so old connections close.</li>
+	<li><strong>Block SCTP if you don't use it.</strong>&nbsp;Add <code>install sctp /bin/false</code>&nbsp;to a file in <code>/etc/modprobe.d/</code>&nbsp;to stop the kernel module from loading. This doesn't unload an already-loaded module or disable SCTP built into the kernel. When your distribution ships a kernel update for the SCTP bug, install it and reboot. Blocking the module is a stopgap until then.</li>
+</ol>
+<p>The Cloudflare Radar <a href="https://radar.cloudflare.com/zero-wire/nginx2root"><u>Zero Wire entry for nginx2root</u></a>&nbsp;has the full checklist, a prompt you can give an agent to run a read-only assessment of your fleet, and links to every vendor advisory.</p>
+<h2>Technical deep dive</h2>
+<p>Let’s dig into the details of the five bugs by looking through the code. We’re looking at nginx 1.31.8 (commit 140aa94) which was the most recent code published before the fixes, and comparing this to the fixes in 1.31.9 (which were also included in release 1.30.7 on the stable branch).</p>
+<p>A note on methodology: we based our analysis on the public advisories, and to verify our reading of the code, we built the public 1.31.8 and 1.31.9 releases with AddressSanitizer and ran tests for four of the five bugs (flow control, HTTP/2 use-after-free, resolver and mail proxy). Each one faults on 1.31.8 and runs clean on 1.31.9. We did not reproduce the HTTP/3 bug; that section is based on the fix commit and the published analysis.</p>
+<h3>One pattern, in four places</h3>
+<p>Four of the five bugs are use-after-free bugs. This is a common issue with programs that manually manage memory without language support: one part of the code frees an object that another part is still using.</p>
+<p>nginx is event driven. A handler runs, calls other code, and that code returns to the handler. Three of the bugs occur when the called code tears down the connection or request the handler is working on. In the fourth, a second connection still holds a pointer to the object.</p>
+<ul>
+	<li><strong>CVE-2026-123633 and CVE-2026-121810.</strong>&nbsp;A request needs a connection slot to reach its upstream. nginx is low on slots, so it closes an idle connection to free one. The connection it chooses is the one the request belongs to.</li>
+	<li><strong>CVE-2026-123634.</strong>&nbsp;A resolver callback ends a request. Cleanup of that request frees a second resolver context that the resolver is about to call next.</li>
+	<li><strong>CVE-2026-113425.</strong>&nbsp;When a write to a mail client fails, the client connection is closed while the connection to the authentication service still points at its session.</li>
+</ul>
+<p>F5 rates all four as potential code execution if address space layout randomization (ASLR) is disabled or bypassed, and in its tests Xint reports code execution with the privileges of the nginx worker.</p>
+<p>The fifth bug, CVE-2026-123007, is of a different kind: an accounting error that becomes a length error. </p>
+<h3>CVE-2026-123007: two flow-control pieces that each look correct</h3>
+<p>HTTP/2 flow control limits the amount of response data a server may send. nginx tracks a send window for each stream and one for the connection, <code>h2c-&gt;send_window</code>. The client enlarges a window with a WINDOW_UPDATE frame, and the protocol caps every window at 2^31 − 1.</p>
+<p>nginx enforces that cap when a WINDOW_UPDATE arrives (ngx_http_v2_state_window_update()):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>if (window &gt; NGX_HTTP_V2_MAX_WINDOW - h2c-&gt;send_window) {</span></span>
+<span class="line"><span>&nbsp; &nbsp;/* logs "client violated connection flow control" */</span></span>
+<span class="line"><span>&nbsp; &nbsp;return ngx_http_v2_connection_error(h2c, NGX_HTTP_V2_FLOW_CTRL_ERROR);</span></span>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>On its own, this check is correct. But the connection window also grows in a second place. When nginx queues DATA frames for a stream, it subtracts their length from the window. If the stream is canceled before those frames go out, <code>ngx_http_v2_filter_cleanup()</code>&nbsp;takes them off the queue and returns the credit:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>h2c-&gt;send_window += window;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Nothing caps this line. As the fix commit describes, if the client enlarges the connection window after the frames are queued and before the stream is terminated, the refund pushes the window past 2^31 − 1.</p>
+<p>From that point the first check no longer works. <code>h2c-&gt;send_window</code>&nbsp;is an unsigned <code>size_t</code>, so <code>NGX_HTTP_V2_MAX_WINDOW - h2c-&gt;send_window</code>&nbsp;wraps around to a very large number and every subsequent WINDOW_UPDATE is accepted. The client can then raise the window as far as it wants.</p>
+<p>The window is unsigned, but the code that sizes DATA frames compares it as a signed value (<code>ngx_http_v2_send_chain()</code>):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>if (limit == 0 || limit &gt; (off_t) h2c-&gt;send_window) {</span></span>
+<span class="line"><span>&nbsp; &nbsp;limit = h2c-&gt;send_window;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span>if ((off_t) frame_size &gt; limit) {</span></span>
+<span class="line"><span>&nbsp; &nbsp;frame_size = (size_t) limit;</span></span>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>After the window passes 2^63, it is negative as an <code>off_t</code>. The frame size becomes the window value itself, a number between 2^63 and 2^64, and nginx builds a buffer whose <code>last</code>&nbsp;pointer lies before its <code>pos</code>&nbsp;pointer.</p>
+<p>Over TLS, that buffer reaches a <code>memcpy()</code>&nbsp;in <code>ngx_ssl_send_chain()</code>&nbsp;with that length. Our TLS test stops at that point under AddressSanitizer. Xint's write-up explains how, with the window pushed close to 2^64, this turns into a controlled out-of-bounds write and an address leak, and Xint, Rapid7, and Wiz each report code execution from it. This post goes no further than the fault.</p>
+<p>Over cleartext HTTP/2, the same invalid buffer follows a different output path. Our cleartext test also faults under AddressSanitizer on 1.31.8 and runs clean on 1.31.9. The public write-ups address the TLS case.</p>
+<h4>How much traffic the known attacks require</h4>
+<p>The biggest step a WINDOW_UPDATE can take is 2^31 − 1, and a WINDOW_UPDATE frame is 13 bytes. Bringing a 64-bit window near its top therefore requires about 2^33 frames: roughly 8.6 billion frames, or about 112 GB (104 GiB).</p>
+<p>Rapid7, which published a proof of concept, gives the same figure and adds that nginx limits control-frame traffic relative to other traffic on the connection, so its run also sends about 15 GiB of other request traffic. Its total comes to approximately 128 GB of HTTP/2 data: about two minutes on a 10 Gbit/s link and about seventeen minutes at 1 Gbit/s. Rapid7 estimates the WINDOW_UPDATE traffic needed to reach 2^63 at about 2^32 frames, or 52 GiB, half of the 104 GiB figure. It also notes that these figures describe its route and are not a proven minimum.</p>
+<p>For defenders, this is the useful fact about the bug. At this volume, the known attacks are hard to hide: nginx receives tens of gigabytes from a single client over one long-lived connection and sends little back, much more than the requests in the access log account for.</p>
+<h4>Why it was difficult to find</h4>
+<p>The refund line has existed in nginx since HTTP/2 support arrived in 1.9.5 in 2015. Two things made it difficult to notice.</p>
+<p>First, each piece looks correct on its own. The check on WINDOW_UPDATE is the right check. The refund is the right refund. The bug is that the check relies on an assumption the refund does not preserve.</p>
+<p>Second, testing that waits for a crash is very unlikely to reach it, because a crash requires tens of gigabytes of input. The bad state itself can be reached with very little traffic: Censys published a cleartext test that reaches what it calls the corrupted flow-control state with a 5.69 MB capture. A test that asserts "the send window never exceeds its protocol maximum" after every frame would flag the bad state as soon as a test sequence got there. A test that waits for memory corruption would not.</p>
+<h4>The fix</h4>
+<p>The fix (6 lines added) introduces a counter, <code>h2c-&gt;send_queued</code>, for DATA that is queued but not yet sent. The WINDOW_UPDATE check now includes those bytes in the window:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>if (window &gt; NGX_HTTP_V2_MAX_WINDOW - h2c-&gt;send_window - h2c-&gt;send_queued) {</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>From the client's perspective, queued frames still count toward the window, so the client can no longer refill credit that nginx is about to refund. On a fixed version the attempt is rejected with a flow-control error.</p>
+<h3>CVE-2026-123633: where two protections interact</h3>
+<p>An nginx worker has a fixed number of connection slots (<code>worker_connections</code>), which the client and upstream connections share. Since 1.19.2, when free slots run low (1/16 of the total or fewer), <code>ngx_get_connection()</code>&nbsp;calls <code>ngx_drain_connections()</code>, which closes connections marked "reusable": connections with nothing in progress, such as idle keep-alive connections.</p>
+<p>This works only if a reusable connection truly has nothing in progress. For HTTP/2 that was not always the case. Two commits landed on the same day in February 2021 and were released together in 1.19.7:</p>
+<ul>
+	<li>"HTTP/2: fixed reusing connections with active requests" fixed a case in which a cleartext HTTP/2 connection could remain reusable while it had a request.</li>
+	<li>"HTTP/2: reuse of connections with incomplete frames" registered a connection as reusable while it waits for the remainder of a partly received frame, so that a client cannot hold slots with partial frames.</li>
+</ul>
+<p>The second change is the relevant one here. As the fix commit explains, if the remainder of that frame is a HEADERS frame, a stream is created, but the reusable status was not reset until the connection next went idle. The connection then has a request and remains in the reusable queue.</p>
+<p>If that request is proxied, nginx requests a slot for the upstream connection. If slots are short, the drain runs inside that call and can choose this same connection. The drain instructs the connection to close and nginx attempts to send GOAWAY. If that send fails, nginx frees the connection and every stream on it. Control then goes back to the upstream code, which continues to use the request it was called for.</p>
+<p>Each change made sense on its own. The interaction between them was subtle and stayed unnoticed until this year. F5's advisory credits Albert Ebb of Metnir, Nir Ohfeld at Wiz Research, Xint.io and memN0ps of Palo Alto Networks Unit 42; nginx.org's changelog credits Albert of Vexera AI.</p>
+<h4>The fix</h4>
+<p>Two lines added: <code>ngx_http_v2_create_stream()</code>&nbsp;now calls <code>ngx_reusable_connection(h2c-&gt;connection, 0)</code>. A connection that has a stream is never reusable, regardless of the state it was in before.</p>
+<h3>CVE-2026-121810: the same idea, in QUIC</h3>
+<p>According to the fix commit and Xint's analysis, the HTTP/3 bug reaches the same result by a different route.</p>
+<p>In nginx's QUIC code, each QUIC connection uses one connection slot and each stream uses another. A QUIC connection may be drained only when every stream remaining in its tree can be cancelled, and nginx determines this by walking the connection's tree of streams.</p>
+<p><code>ngx_quic_create_stream()</code>&nbsp;removes the QUIC connection from the reusable queue and then requests a slot for the new stream. Before the fix, the new stream was added to the tree only after that. If the slot request triggered a drain that closed another, idle stream of the same QUIC connection, the code handling the closed stream walked the tree, did not find the stream being created, concluded the connection was idle, and made it reusable again. A later drain, for example when the new request connects to its upstream, could then close the QUIC connection while that request was running.</p>
+<p>F5's advisory states that exploitation "also depends on conditions beyond the attacker's control". Xint writes that the bug "is triggered by a slightly different mechanism" from the HTTP/2 one.</p>
+<h4>The fix</h4>
+<p>Four lines added: the stream goes into the tree before the slot is requested, and is taken out again on the error paths.</p>
+<h3>CVE-2026-123634: freeing the next item of a list during the walk</h3>
+<p>When <code>proxy_pass</code>&nbsp;contains a variable, nginx resolves the host name while handling the request. If a lookup for the same name is already in progress, the new request waits on the same resolver node. When the answer arrives, nginx detaches the list of waiting contexts and calls each in turn:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>next = rn-&gt;waiting;</span></span>
+<span class="line"><span>rn-&gt;waiting = NULL;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>while (next) {</span></span>
+<span class="line"><span>&nbsp; &nbsp;ctx = next;</span></span>
+<span class="line"><span>&nbsp; &nbsp;...</span></span>
+<span class="line"><span>&nbsp; &nbsp;next = ctx-&gt;next;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>&nbsp; &nbsp;ctx-&gt;handler(ctx);</span></span>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>The loop stores <code>next</code>&nbsp;before the handler call, so a handler may free its own context. The trouble starts when a handler frees a different context in the same list. This happens when two contexts belong to one request, as with a request and its <code>mirror</code>&nbsp;subrequest resolving the same name (the case Xint tested; F5 also lists SSI subrequests). If the first handler ends the request, the request's cleanup calls <code>ngx_resolve_name_done()</code>&nbsp;for the second context. That function searches the node's waiting list for the context, does not find it because the list has been detached, and frees the context regardless. The loop then advances to the freed context. </p>
+<p>Usually nginx logs this. On vulnerable versions, when the search fails, it writes</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>could not cancel &lt;name&gt; resolving</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>to the error log at alert level. This line is worth searching for. It is not proof either way: the fix commit notes that one variant, while following a CNAME, produced no alert.</p>
+<h4>The fix</h4>
+<p>A context cancelled while it sits in a detached list is no longer freed immediately. Its handler is swapped for one that frees it when the loop gets to it (31 lines added). The fix also downgrades the alert to a debug message, so the line above shows up at alert level only on unpatched versions.</p>
+<h3>CVE-2026-113425: two connections, one session</h3>
+<p>With <code>auth_http</code>, the mail proxy asks an HTTP service to verify each login. During the wait, it holds two connections for one session: the client connection and the connection to the authentication service. The second points at the session and uses the memory pool of the client connection.</p>
+<p>Before the fix, the reply the protocol handler had prepared for the client remained queued while the authentication request was in progress, and the client's write handler was still <code>ngx_mail_send()</code>. If that handler ran and the write failed because the client had reset the connection, it closed the client connection and destroyed the session. The authentication connection still pointed at the session, and the next event on that connection used freed memory.</p>
+<p>Xint describes two conditions for this: the client's write event must already be registered (for example, because the client stopped reading replies), and the login command and the reset must be handled in the same pass of the event loop. Valid credentials are not needed, because this happens before the login is checked.</p>
+<h4>The fix</h4>
+<p>Two added lines discard the queued reply when the authentication request begins. The same release contains three further commits that block client writes while the proxy waits for the authentication response, while it connects to the upstream and reads its greeting, and while it resolves an SMTP client's address and name.</p>
+<h3>What the fixes share</h3>
+<p>The five fixes each involve minor corrections to the code. They add between 2 and 31 lines each, and the mail proxy fix came with three further commits. There is no design change needed. Each fix restores an invariant that the rest of the code already depended on:</p>
+<ul>
+	<li>a send window never goes above the protocol maximum</li>
+	<li>a connection with a request in progress is never reusable</li>
+	<li>an object that other code is about to use is not freed out from under it</li>
+</ul>
+<p>In every case, one code path failed to keep a rule that the rest of the code relied on, and the fix makes that path keep it. As code is modified over time, it is very easy for these kinds of rules to become broken.</p>
+<h3>What to watch for</h3>
+<p>Attempts to exploit this will typically trigger some characteristic log messages. Three of these messages&nbsp;(the two at <code>info</code>&nbsp;and the one at <code>warn</code>) fall below nginx's default <code>error_log</code>&nbsp;level of <code>error</code>&nbsp;and appear only if a lower level is set. The <code>alert</code>&nbsp;messages are logged by default.</p>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Bug</strong></p>
+				</td>
+				<td>
+					<p><strong>Log messages or other signals</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-123007</p>
+				</td>
+				<td>
+					<p>A single long-lived HTTP/2 connection on which nginx receives tens of gigabytes from a client and sends little back, much more than its logged requests account for. On fixed versions a rejected attempt logs <code>client violated connection flow control: received WINDOW_UPDATE frame with window increment ... not allowed for window ...</code>&nbsp;(level <code>info</code>; older versions have the same message for ordinary violations). <code>http2 flood detected</code>&nbsp;(level <code>info</code>) on such a connection can be a failed attempt, but nginx also logs that message for several other limits.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-123633, CVE-2026-121810</p>
+				</td>
+				<td>
+					<p><code>worker process &lt;pid&gt; exited on signal 11</code>&nbsp;(level <code>alert</code>) on servers that accept HTTP/2 or HTTP/3 and proxy to an upstream, along with <code>worker_connections are not enough, reusing connections</code>&nbsp;(level <code>warn</code>). A use-after-free does not always crash.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-123634</p>
+				</td>
+				<td>
+					<p><code>could not cancel &lt;name&gt; resolving</code>&nbsp;(level <code>alert</code>, unpatched versions only). The absence of this message does not rule the bug out.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>CVE-2026-113425</p>
+				</td>
+				<td>
+					<p>Worker crashes in a mail proxy using <code>auth_http</code>, with client connections reset during login.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>All five</p>
+				</td>
+				<td>
+					<p>Unexpected programs launched by an nginx worker process, for example from an <code>auditd</code>&nbsp;rule on <code>execve</code>&nbsp;for the worker's user. Xint recommends this check, and it is the strongest sign of a successful attack.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>Timeline</h2>
+<div class="emdash-table-wrapper">
+	<table class="emdash-table" style="min-width: 192px;">
+		<tbody>
+			<tr>
+				<td>
+					<p><strong>Date (UTC)</strong></p>
+				</td>
+				<td>
+					<p><strong>Event</strong></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Oct 11, 2026</p>
+				</td>
+				<td>
+					<p>Xint discovers the vulnerabilities</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Oct 16, 2026</p>
+				</td>
+				<td>
+					<p>Reported to F5 via HackerOne</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Oct 27, 2026</p>
+				</td>
+				<td>
+					<p>Reports delivered to the nginx development team</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Nov 10, 2026</p>
+				</td>
+				<td>
+					<p>Xint completes patch validation</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Nov 18, 2026</p>
+				</td>
+				<td>
+					<p>Public disclosure; nginx 1.30.7 and 1.31.9 released</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>The bugs will keep coming</h2>
+<p>CVE-2026-123007 sat in nginx for more than ten years. The SCTP bug has been in the Linux kernel since 2018. Xint says one of its researchers found CVE-2026-123007 by hand and an automated Xint scan found the other four nginx bugs. Several other teams found the two HTTP/2 bugs independently. Meanwhile, nginx's advisory list has gone from two entries in 2025 to 36 so far this year. AI-assisted research is finding bugs in heavily reviewed code faster than before, and more disclosures like this one are coming.</p>
+<p>That's a large part of why it's worth putting Cloudflare in front of your origin. A protocol bug in your web server becomes much less of a risk when the attacker can't speak that protocol to your server directly. Our edge is not affected, and the HTTP/2 and HTTP/3 attacks against your nginx end at our network. Patch anyway, lock down your origin so Cloudflare is the only way in, and use the <a href="https://radar.cloudflare.com/zero-wire/nginx2root"><u>Radar Zero Wire page</u></a>&nbsp;to check your fleet.</p>
+<h2>Sources</h2>
+<ul>
+	<li><a href="https://radar.cloudflare.com/zero-wire/nginx2root"><u>Cloudflare Radar Zero Wire: nginx2root</u></a></li>
+	<li><a href="https://nginx2root.com"><u>nginx2root.com</u></a></li>
+	<li><a href="https://xint.io/blog/nginx2root-remote-code-execution"><u>Xint: NGINX2Root technical write-up</u></a></li>
+	<li><a href="https://my.f5.com/manage/s/article/K000164058"><u>F5 advisory index K000164058</u></a></li>
+	<li><a href="https://nginx.org/en/security_advisories.html"><u>nginx security advisories</u></a></li>
+	<li><a href="https://www.rapid7.com/blog/post/ve-cve-2026-123007-critical-nginx-http-2-integer-underflow-leads-to-rce-fixed"><u>Rapid7: CVE-2026-123007 analysis and proof of concept</u></a></li>
+	<li><a href="https://censys.com/blog/nginx2root-simple-test"><u>Censys: nginx2root simple test</u></a></li>
+	<li><a href="https://www.wiz.io/blog/nginx-http2-rce-vulnerabilities"><u>Wiz: nginx HTTP/2 RCE vulnerabilities</u></a></li>
+	<li><a href="https://nginx2root.censys.com"><u>Censys: nginx2root exposure tracker</u></a></li>
+</ul>
+<h6></h6>
+<p></p>
