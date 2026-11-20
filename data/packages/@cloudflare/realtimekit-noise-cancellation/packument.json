@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-noise-cancellation",
 	"dist-tags": {
-		"latest": "0.1.0",
-		"staging": "0.1.0-staging.1"
+		"latest": "0.1.1",
+		"staging": "0.1.1-staging.0"
 	},
 	"versions": {
 		"0.0.0-stage": {
@@ -108,11 +108,59 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIGcejridmLICH/DvKdAubQyQYzmKFp7ngAB7qrXE+nLNAiB8Yl5/iTeIR5dLq4lupfPH+lo4nH3OeybqGYFrcBWB0w=="
+						"sig": "MEQCIGcejridmLICH/DvKdAubQyQYzmKFp7ngAB7qrXE+nLNAiB8Yl5/iTeIR5dLq4lupfPH+lo4nH3OeybqGYFrcBWB0w==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"unpackedSize": 47332
+			}
+		},
+		"0.1.1-staging.0": {
+			"name": "@cloudflare/realtimekit-noise-cancellation",
+			"version": "0.1.1-staging.0",
+			"peerDependencies": {
+				"@cloudflare/realtimekit": "*"
+			},
+			"dist": {
+				"shasum": "53316b4521b0102e3e847d5b229bc6e807391c2d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-noise-cancellation/-/realtimekit-noise-cancellation-0.1.1-staging.0.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-ysCKHNXqlTceenBQmQQuHnwqC0H+WOtwPg8VlmcdAmTd8xkNMZ6LVrfYhf+VrN0USEomyK79iN2/YabCmY2myQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDOWWk1PJV86HOTiHWXId5xMpflsRU2Pxk9DrOCzMmwNwIgZtuK/rGRER/QBg+ewvW55ZVzJpTSKE/Y0HnjlvrgHhA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"sig": "MEQCIFh76yJzkVGpUi+vVagnKLaSub8YZBUaVXIRvl+aTg0BAiBpc7RZ7TGvm7ROnykbdBnhDF4ZmZtCeoH/ujfIzoHcfA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 47531
+			}
+		},
+		"0.1.1": {
+			"name": "@cloudflare/realtimekit-noise-cancellation",
+			"version": "0.1.1",
+			"peerDependencies": {
+				"@cloudflare/realtimekit": "*"
+			},
+			"dist": {
+				"shasum": "1e138cc088d8ee69936b18345023dfa2e97cb2d3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-noise-cancellation/-/realtimekit-noise-cancellation-0.1.1.tgz",
+				"fileCount": 25,
+				"integrity": "sha512-//RK9lxPyQhZJQIeOdH/J7URzCczNNX6aZ85yk8F1O/yJNOyHPgtEImejfTXBHQ6keWpwXJ2GEYiEUVHzlMVoQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCzRbu/ju+6BpwtEbkNqiQQsvPJk+RSnEi6qbxtpH1QywIgAm4GhAOIaWpVHR5kAS7KCRW/8B/1l3kobJu/9LLFyHg=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIG2ME/X3DF3bfxMPtSZGUtSeae5TCsRifb6AORPwV9NAAiBXRRG9/0lSIb/b3KTFKEhBWGaaZqGoISE6Tgg6YLpapQ=="
+					}
+				],
+				"unpackedSize": 47521
 			}
 		}
 	}

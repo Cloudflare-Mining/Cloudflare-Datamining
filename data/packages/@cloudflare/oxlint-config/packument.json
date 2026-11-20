@@ -1,0 +1,91 @@
+{
+	"name": "@cloudflare/oxlint-config",
+	"dist-tags": {
+		"latest": "0.1.0"
+	},
+	"versions": {
+		"0.0.0-stage": {
+			"name": "@cloudflare/oxlint-config",
+			"version": "0.0.0-stage",
+			"dist": {
+				"shasum": "9bbccd3282967961c9fe47084431bb5dd08021ad",
+				"tarball": "https://registry.npmjs.org/@cloudflare/oxlint-config/-/oxlint-config-0.0.0-stage.tgz",
+				"fileCount": 2,
+				"integrity": "sha512-v2VBymS2s/XjbgCaMbW0Wcz3g7BHyjlOz/UGYp2Vi1gEVxIaMasDoIRSKE6Voxi79Vo6fzsmrYMEkEB0BR5CwQ==",
+				"signatures": [
+					{
+						"sig": "MEUCICxAJ6Nrn5BBNz/oOLC5E8jQr/GXf3V2yNFPooBHljP6AiEAwWLPSm9FPTu6IrU8G1TL9OyRlJ2+1lOpdYMk5Vma9Z8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 347
+			}
+		},
+		"0.0.0": {
+			"name": "@cloudflare/oxlint-config",
+			"version": "0.0.0",
+			"dist": {
+				"shasum": "edf5f4fefafe73f778ce4f50d19c44d9daed7c0b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/oxlint-config/-/oxlint-config-0.0.0.tgz",
+				"fileCount": 1,
+				"integrity": "sha512-1Us0NoieHBTxXWGGnbpLax0zQ2d0WAPTYgC3am1K27+AuhX7w2tUbssRbXgEDglLNDvQu/g6iH7u88shvMqLOQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDBsL9YIyFLIFvlSeqEy1bb/7PH2wfebbuMWIgrPc3NDwIgSjwls5yY87ejLG9J568J1h18yOsZ8nb7tLYrzMuaAAc=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"sig": "MEUCIQCS0PdpAdhutcJ26iihVmHBDJnnwO/bLZA1xfrGtzLfmwIgQbfALfEK07gg502IWycXVy8DoUC1qO0GLAUuMCW3ydc=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 459
+			},
+			"engines": {
+				"node": "^22.18.0 || >=24.0.0"
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/oxlint-config",
+			"version": "0.1.0",
+			"dependencies": {
+				"@nkzw/oxlint-config": "3.0.0"
+			},
+			"devDependencies": {
+				"tsrs": "^0.25.0-ts7.1.0-beta",
+				"oxlint": "^1.94.0",
+				"vite-plus": "^1.7.0"
+			},
+			"peerDependencies": {
+				"tsrs": ">=0.25.0-ts7.1.0-beta",
+				"oxlint": "^1.94.0"
+			},
+			"dist": {
+				"shasum": "7ce3a8e250afc8852d98acfa11f423f785f1c1d7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/oxlint-config/-/oxlint-config-0.1.0.tgz",
+				"fileCount": 6,
+				"integrity": "sha512-ZIajMHdEImUjtKZEHbpddrXsnNBpQT7Gy1MZg2lOL3ketdmWYpNWtZghkkKAlhgi2R8z/HATZyas4OOpMy6TIQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQChpL5SIj97FBiMyc+rYXQ5tIPJ3ULl1VJpXqU8moAH6gIhAKM6c7Z7Lvnz0mxgJ4gFtBgX2QGNHUQERgmvzCHgqLnL",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDWvXHx9PU9n6MmEhJI6y2bN+LsMN8pICUxu48EhygsFAIhAINWhX5WKWB8KT9uif6ppcz+68mTQ9tNW53Avv/hOoTJ"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2foxlint-config@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 22172
+			},
+			"engines": {
+				"node": "^22.18.0 || >=24.0.0"
+			}
+		}
+	}
+}

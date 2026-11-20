@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.1.22
+
+### Patch Changes
+
+- 52fc8cb8be: Keep keyboard focus on the moved row after Move up or Move down. When the move was made from a focused button, the moved row's Move button for that direction has focus afterwards or, once the row reaches the first or last slot and that button is disabled, the row's other Move button does. Before, focus went to the page when the row reached the first or last slot (rows keyed by `getRowId`) or after every move (rows with an `id` and no `getRowId`), and rows with neither kept focus in the old slot, so the next press moved a different row.
+
 ## 7.1.21
 
 ### Patch Changes

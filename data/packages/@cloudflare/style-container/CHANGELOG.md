@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.8
+
+### Patch Changes
+
+- 9225510bad: Infer the `innerRef` type of `createStyledComponent`/`createComponent` over a `forwardRef` component whose `ref` prop is typed `LegacyRef`, as `@types/react` 18.2.61 through 18.3.x type it. Previously this resolved to `Ref<never>` and rejected every ref. Types only; the emitted JavaScript is unchanged.
+
 ## 8.0.7
 
 ### Patch Changes
