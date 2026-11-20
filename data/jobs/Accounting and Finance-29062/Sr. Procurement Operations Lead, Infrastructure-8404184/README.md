@@ -3,40 +3,74 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2><strong>Available Locations</strong></h2>
+<p><strong>Available Locations:&nbsp;</strong></p>
+<p style="padding-left: 40px;"><strong>Austin, TX</strong></p>
+<p><strong>About the Role</strong></p>
+<p>We are seeking a Sr. Procurement Operations Lead, Infrastructure to support the end-to-end procurement lifecycle for infrastructure hardware across our global environment. This individual will partner closely with Capacity Planning, Infrastructure Engineering, Portfolio Management, Accounts Payable, Fixed Assets, Finance, Logistics, and Strategic Sourcing teams to ensure critical hardware is procured, tracked, received, and managed efficiently.</p>
+<p>This role combines operational excellence with continuous improvement. The ideal candidate thrives in a fast-paced environment, enjoys solving complex business challenges, and is passionate about improving processes through automation, data analysis, and technology-driven solutions.</p>
+<p><strong>What You'll Do</strong></p>
+<p><strong>Procurement Operations &amp; PO Management</strong></p>
 <ul>
-	<li>San Francisco, CA</li>
-	<li>New York, NY</li>
+	<li>Manage the end-to-end lifecycle of hardware procurement requests from intake through receipt.</li>
+	<li>Create, review, and maintain purchase requisitions and purchase orders in enterprise procurement systems with a high degree of accuracy.</li>
+	<li>Monitor open purchase orders and proactively manage changes, delays, cancellations, and supplier communications.</li>
+	<li>Partner with Infrastructure teams to ensure timely procurement of data center and hardware assets.</li>
+	<li>Coordinate with suppliers to obtain quotations, order confirmations, shipment updates, and delivery timelines.</li>
+	<li>Ensure procurement activities align with company policies, controls, and approval requirements.</li>
 </ul>
-<h2><strong>About the Team</strong></h2>
-<p>The Strategy organization operates as a high-velocity engine at the intersection of business, technology, and go-to-market execution, driving enterprise growth, global expansion, market innovation, and strategic execution. Our multi-disciplinary team spans seven core strategic pillars: Network &amp; Infrastructure Strategy, Industry Solutions, Strategic Partnerships, International Expansion, Executive Customer Engagements, Corporate Development &amp; M&amp;A, and the new business model of the Internet. As primary connective tissue across the enterprise, we collaborate closely with Sales, Product &amp; Engineering, Finance, Legal, and Policy to translate corporate vision into measurable, real-world execution.</p>
-<h2><strong>About the Role</strong></h2>
-<p>We are seeking an exceptionally sharp, technically fluent <strong>Chief of Staff</strong> to serve as a key surrogate and strategic partner to our Chief Strategy Officer (CSO). In this role, you will act as a trusted extension of the CSO. You will regularly represent her authority in critical meetings, interface directly with technical leaders and key customers, craft high-impact strategic content, and drive operational alignment. You will ensure that departmental goals are prioritized, investments are optimized, and that teams are well aligned to deliver results. The ideal candidate is naturally curious, possesses deep technical product fluency, and brings the sharp business acumen required to step into the room on the CSO’s behalf at a moment's notice.</p>
-<h2><strong>Responsibilities</strong></h2>
+<p><strong>Data Center Services &amp; Overall Support</strong></p>
 <ul>
-	<li><strong>Executive Representation:</strong> Act as a high-leverage surrogate for the CSO, attending key meetings and customer discussions on her behalf when she requires added executive coverage.</li>
-	<li><strong>Strategic Advisory:</strong> Partner closely with the CSO as a strategic sounding board, leveraging data and sharp business instincts to simplify complex problems and keep executive focus on high-impact priorities.</li>
-	<li><strong>Executive Communications &amp; Writing:</strong> Translate high-level strategic vision, enterprise narratives, and complex technical data into executive and client-ready slide decks and comprehensive prep materials for high-stakes meetings. Draft strategic documents, internal communications, and executive social media posts on behalf of the CSO to drive thought leadership.</li>
-	<li><strong>Enterprise Storytelling &amp; Cadence:</strong> Help articulate the Strategy org’s impact internally across Cloudflare and externally in high-profile industry forums, while leading strategy retrospectives and All-Hands presentations.</li>
-	<li><strong>Drive &amp; Orchestrate Strategy-Led Initiatives:</strong> Help move complex, high-impact projects forward across the Strategy org. Monitor progress and timelines, follow up on critical action items across teams, and prepare executive updates to ensure alignment and execution.</li>
-	<li><strong>Technical &amp; Product Collaboration:</strong> Partner closely with Engineering, Product Management, Sales, and Marketing teams to understand our core product suite, navigate technical dependencies, and align cross-functional execution.</li>
+	<li>Manage end-to-end purchase requisition and purchase order (PO) lifecycles for the Data Center Services organization, ensuring accurate PO creation, timely approvals, and ongoing maintenance (change orders, renewals, and closures).</li>
+	<li>Partner with Accounts Payable and Data Center Services stakeholders to investigate and resolve invoice holds, PO mismatches, billing discrepancies, and payment issues.</li>
+	<li>Serve as the dedicated Procurement Operations point of contact for the Data Center Services team, providing day-to-day operational support, resolving workflow bottlenecks, and ensuring compliance with procurement policies.</li>
 </ul>
-<h2><strong>Desirable Skills, Knowledge, and Experience</strong></h2>
+<p><strong>Infrastructure and Asset Management</strong></p>
 <ul>
-	<li><strong>Relevant Experience:</strong> 10+ years of combined experience across Investment Banking or Management Consulting and Big Tech, holding roles such as Technical Assistant, Product Manager, Business Development, Chief of Staff or similar.</li>
-	<li><strong>Technical Aptitude &amp; Product Fluency:</strong> Deep technical foundation with the ability to quickly grasp and translate complex technical concepts and products, effectively collaborating with engineering and technical product leaders.</li>
-	<li><strong>Master-Level Communication &amp; Writing Skills:</strong> Exceptional written and verbal skills; proven ability to write across multiple formats.</li>
-	<li><strong>Executive Presence &amp; Surrogate Authority:</strong> Proven track record of stepping into high-stakes meetings on behalf of executives, building instant credibility with C-suite stakeholders, enterprise customers, and board members.</li>
-	<li><strong>Intellectual Curiosity &amp; Analytical Mindset:</strong> Naturally curious problem solver who thrives on unraveling ambiguous technical and business challenges, distilling them into clear choices and actionable plans.</li>
-	<li><strong>AI Fluency &amp; Innovation:</strong> AI-native mindset with a genuine enthusiasm for leveraging AI tools, agentic workflows, and automation to streamline executive operations and drive team efficiency.&nbsp;</li>
-	<li><strong>Willingness to Travel:</strong> Ability and willingness to travel <strong>30–50%</strong> for customer meetings, industry conferences, and regional team syncs.</li>
+	<li>Partner with Capacity Planning teams to support forecasting and hardware demand planning activities.</li>
+	<li>Collaborate with Fixed Assets teams to ensure accurate capitalization and asset tracking.</li>
+	<li>Maintain visibility into hardware inventory levels, deployment status, and lifecycle management activities.</li>
+	<li>Support inventory reconciliation efforts and asset audits as required.</li>
+	<li>Track advanced shipment notifications and coordinate receiving activities across multiple locations.</li>
+	<li>Ensure hardware receipts are accurately recorded within the ERP system to enable invoice processing and asset management.</li>
 </ul>
-<h2><strong>Compensation</strong></h2>
+<p><strong>Supplier Management &amp; Onboarding</strong></p>
+<ul>
+	<li>Initiate supplier onboarding requests and partner with supplier enablement teams to ensure timely, frictionless activation of new vendors.</li>
+	<li>Maintain supplier information, assist with vendor-related issue resolution, and guide stakeholders through the onboarding workflow.</li>
+	<li>Support supplier performance reviews through reporting and operational metrics.</li>
+	<li>Partner with Accounts Payable to resolve invoice discrepancies and payment-related inquiries.</li>
+</ul>
+<p><strong>Process Improvement and Innovation</strong></p>
+<ul>
+	<li>Identify opportunities to simplify and improve procurement and infrastructure workflows.</li>
+	<li>Leverage data, reporting, and technology to reduce manual effort and improve operational efficiency.</li>
+	<li>Partner with internal technology teams to evaluate automation opportunities across procurement processes.</li>
+	<li>Develop dashboards, reporting, and insights that improve decision-making and operational visibility.</li>
+	<li>Support implementation of new tools, systems, and digital solutions that enhance the procurement experience.</li>
+	<li>Document processes and create scalable operating procedures that support organizational growth.</li>
+</ul>
+<p><strong>What You'll Bring</strong></p>
+<ul>
+	<li>Three to seven years of experience in procurement, supply chain, operations, infrastructure procurement, or hardware purchasing.</li>
+	<li>Experience creating and managing purchase orders within Oracle and Coupa platforms.</li>
+	<li>Strong understanding of hardware procurement, data center operations, inventory management, receiving processes, and supplier onboarding.</li>
+	<li>Experience working with cross-functional stakeholders across Finance, Infrastructure, Operations, and Procurement.</li>
+	<li>Strong analytical and problem-solving capabilities.</li>
+	<li>Experience leveraging automation, workflow technologies, analytics, or emerging technologies to improve business processes.</li>
+	<li>Excellent communication and stakeholder management skills.</li>
+	<li>Experience building reports, dashboards, or workflow automations.</li>
+	<li>Ability to manage multiple priorities while maintaining attention to detail.</li>
+</ul>
+<h2><strong>Preferred Qualifications</strong></h2>
+<ul>
+	<li>Experience supporting data center infrastructure procurement.</li>
+	<li>Experience with Oracle, Coupa, and Zip.</li>
+	<li>Experience with inventory management, fixed asset accounting, and capitalization processes.</li>
+	<li>Understanding of infrastructure hardware categories including servers, networking equipment, storage, and related technology assets.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $221,000- $304,000</span></li>
-	<li><span data-sheets-root="1">For New York City based hires: Estimated annual salary of $211,000 - $290,000</span></li>
-</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

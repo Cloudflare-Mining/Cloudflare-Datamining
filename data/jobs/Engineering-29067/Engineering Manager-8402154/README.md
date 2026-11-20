@@ -3,65 +3,87 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations:&nbsp;</strong></p>
+<p>About the department</p>
+<p>Cloudflare's Engineering team builds and runs the software that handles a large share of the Internet's requests. We also build the internal tools and platforms that software depends on. Teams own large areas with real impact and work autonomously within them, whether their customers are external or other Cloudflare engineers.</p>
+<p>About the team</p>
+<p>Developer Productivity builds the internal tools and platforms Cloudflare engineers use to take code from commit to production. We own developer infrastructure (CI/CD, build systems), developer insights and ADLC metrics, AI-assisted development, and Cloudflare-on-Cloudflare dogfooding.</p>
+<p>We're responsible for AI-assisted development across all of Cloudflare engineering, and adoption has grown 4 to 6 times over in the last year. We also own the tooling behind Cloudflare's Engineering Codex, the standards every engineering team is expected to meet.</p>
+<p>About the role</p>
+<p>This is a front-line engineering manager role leading a team of 6+ engineers in Bengaluru. The team's initial focus will be on two areas:</p>
 <ul>
-	<li><strong>Austin, TX</strong></li>
-	<li><strong>San Francisco, CA</strong></li>
+	<li>
+		<p><strong>AI tools for engineers.</strong> Agents, agentic systems, MCP servers, evals, and context engineering that change how Cloudflare engineers write, review, and ship code.</p>
+	</li>
+	<li>
+		<p><strong>Engineering standards and the tooling that enforces them.</strong> Continuing to transform our Engineering standards into automated guardrails, paved paths, and feedback engineers can act on, instead of checklists and manual review.</p>
+	</li>
 </ul>
-<p><strong>About the Team</strong></p>
-<p>The Business Operations team sits within the CFO organization and is responsible for core company KPI reporting, incubating new analytics capabilities, and leading or facilitating cross-functional initiatives to design and operationalize high-impact programs. We are looking for an individual with strong analytical horsepower to join the team to provide decision-making support to Cloudflare’s strategic initiatives. The ideal candidate is passionate about problem solving and insight discovery, as well as is excited about rolling the sleeves to prototype MVPs and building high quality processes and tooling that scale with our rapid growth.</p>
-<p><strong>What you'll do&nbsp;</strong></p>
+<p>You'll own the product direction for both areas. There are no dedicated product managers on the team. Our users are Cloudflare engineers, and our engineers work as product engineers who talk to users, watch how tools get used, and help decide what to build next. You'll lead that work, deciding what to build and why, and making sure it gets adopted and solves real problems.</p>
+<p>You don't need to write code every day, but you should be able to review a design, debug a broken pipeline, or prototype an agent when the team needs it.</p>
+<p>We move fast. AI tooling changes month to month, so a six-month plan is stale in six weeks. We ship small, put it in front of engineers early, and change course based on what we hear. We'd rather ship a rough version this week and improve it next week than spend a month polishing a design doc. We add process only when it solves a real problem.</p>
+<p>You'll partner closely with engineering managers and principal engineers in the US, UK, and Europe, and work with teams across Cloudflare's global organization. The team starts in Bengaluru. As it grows, it may include engineers in other regions.</p>
+<p>What you'll do</p>
 <ul>
-	<li>Work on complex problems: identify root causes of the challenge and/or underlying business drivers, execute in-depth analyses to translate data into meaningful insights and/or repeatable gadgets or processes&nbsp;</li>
-	<li>Lead projects through the full cycle: from initial scoping, solution design, code execution, QA and to operationalization and enablement&nbsp;&nbsp;</li>
-	<li>Leverage latest AI technologies incl. Cloudflare OS, Developer Platform, emerging best practices to illustrate what can be possible in how we work</li>
-	<li>Synthesize audience relevant findings from the data to achieve alignments and support strategic decision making&nbsp;</li>
-	<li>Assess financial impact of new initiatives, identify approaches to risk mitigation, create forecast model on new metrics as needed&nbsp;</li>
-	<li>Work closely with Data Engineer and Data Science Team to track core KPIs, create visibility on new initiatives and its impact, and to streamline reporting processes as the projects mature&nbsp;</li>
-	<li>Provide ad-hoc analytical support to Finance &amp; Executive Leadership</li>
+	<li>
+		<p>Hire, onboard, and grow your team. Coach engineers to think like product engineers, run career conversations, give direct feedback, and handle performance.</p>
+	</li>
+	<li>
+		<p>Own the product roadmap. Spend time with the engineers who use your tools, decide which problems matter most, and say no to the rest.</p>
+	</li>
+	<li>
+		<p>Keep the team shipping. Release in small increments, get feedback from users quickly, and cut process that slows the team down without adding value.</p>
+	</li>
+	<li>
+		<p>Deliver in both focus areas: agents, MCP servers, and evals the rest of engineering relies on, and Codex standards turned into CI/CD checks, templates, and policy-as-code, with remediation and exception workflows to match.</p>
+	</li>
+	<li>
+		<p>Measure whether the work is landing: tool adoption, Codex compliance, and what engineers actually think of the experience.</p>
+	</li>
+	<li>
+		<p>Own operations for the platforms your team runs, including on-call and incident response.</p>
+	</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>What we're looking for</p>
 <ul>
-	<li>5+ years of Business Operations, Consulting, Investment Banking or&nbsp; Strategic Finance experience</li>
-	<li>Bachelor's degree, Data Science master or MBA a plus&nbsp;&nbsp;</li>
-	<li><strong>Strategic thinker with strong business acumen</strong>: ability to zoom in with good attention to detail while still keeping the big picture in mind; excel at translating data into actionable insights or programs&nbsp;</li>
-	<li><strong>Clear, concise and proactive communicator</strong>: ability to synthesize complex data or business problems into actionable information to drive results</li>
-	<li><strong>Have a strong modeling foundation: </strong>high proficiency in building thoughtful, complex and auditable business model and present the outcome in an easy-to-understand format</li>
-	<li><strong>Versatility</strong>: Results-oriented, self-starter, thrive in a fast-paced, high-growth environment; high proficiency in SQL or AI assisted coding required</li>
-	<li>Advanced/ working proficiency with English mandatory both written and verbal</li>
+	<li>
+		<p>3+ years managing software engineers, including hiring, onboarding, and developing people.</p>
+	</li>
+	<li>
+		<p>8+ years of total software engineering experience, with enough recent hands-on work to hold your own in code and design reviews.</p>
+	</li>
+	<li>
+		<p>Hands-on experience with AI in engineering organizations, such as building agents, running agentic systems in production, or governing how a company uses AI. This is not a model-training or ML research role.</p>
+	</li>
+	<li>
+		<p>Experience building or running developer tools, internal platforms, or CI/CD systems.</p>
+	</li>
+	<li>
+		<p>Product and user thinking. You've owned a roadmap, with or without a PM, and you can point to decisions you made because of what users told you or how they actually used what you built.</p>
+	</li>
+	<li>
+		<p>A bias to action. You've led teams that shipped often and changed direction when the evidence called for it, while still delivering on commitments.</p>
+	</li>
+	<li>
+		<p>Clear judgment and clear writing. You make sound trade-offs and explain the "why" as well as the "how". Much of your work with partners will happen asynchronously across time zones.</p>
+	</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p>Bonus points</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $130,000 - $179,000</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>
+		<p>You've built MCP servers or LLM evals, or worked on context engineering for agents.</p>
+	</li>
+	<li>
+		<p>Experience with policy-as-code or compliance automation.</p>
+	</li>
+	<li>
+		<p>Experience measuring developer productivity, using frameworks such as DORA or SPACE, or developer surveys.</p>
+	</li>
+	<li>
+		<p>You've built a team from scratch or started an engineering presence in a new location.</p>
+	</li>
+	<li>
+		<p>Familiarity with TypeScript, Go, or Kubernetes-based systems.</p>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

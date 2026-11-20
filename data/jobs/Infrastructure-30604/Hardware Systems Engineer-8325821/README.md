@@ -3,16 +3,16 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
+<p><strong>Available Locations: </strong>Austin, TX</p>
 <p><strong>About The Department</strong></p>
 <p>Cloudflare’s Infrastructure group is responsible for building our global network. Our Hardware Engineering team helps research, develop, test, and deploy new equipment enabling 20% of the world’s internet traffic to be served smoothly. Deployed across 330 cities in 120+ countries, the hardware we select helps improve the security, reliability, and performance of the Internet.</p>
 <p><strong>About The Role</strong></p>
-<p>We need to make thoughtful infrastructure choices affecting a significant portion of the Internet. Hardware we work with includes servers and components, as well as PDUs and network hardware. As a Hardware Systems Engineer, you will work with colleagues on the Engineering teams, Product and Performance teams, and Hardware Sourcing teams to design, qualify and maintain Cloudflare’s worldwide fleet of servers</p>
+<p>We need to make thoughtful infrastructure choices affecting a significant portion of the Internet. Hardware we work with includes servers and components, as well as PDUs and network hardware. As a Hardware Systems Engineer, you will work with colleagues on the Engineering teams, Product and Performance Optimization teams, and Hardware Sourcing teams to design, qualify and maintain Cloudflare’s worldwide fleet of servers</p>
 <p><strong>What You'll Do</strong></p>
 <ul>
-	<li>Support and assist in the end to end server product qualification from concept to deployment, ensuring hardware designs (electrical, thermal and mechanical) are optimized for seamless, large-scale implementation by the Infrastructure Operations team.</li>
-	<li>Support and assist gathering product requirements for next generation of servers, and work with silicon vendors to assess performance and select the components (CPU, memory, disk, NIC, GPUs etc)&nbsp;</li>
+	<li>Collaborate with product teams at Cloudflare to gather product requirements for next generation of servers, and work with silicon vendors to assess performance and select the components (CPU, memory, disk, NIC, GPUs etc)&nbsp;</li>
 	<li>Collaborate closely with strategy, sourcing, and capacity planning teams to steer server infrastructure initiatives in alignment with Cloudflare’s business goals</li>
+	<li>Execute the end to end server product qualification from concept to deployment, ensuring hardware designs (electrical, thermal and mechanical) are optimized for seamless, large-scale implementation by the Infrastructure Operations team.</li>
 	<li>Collaborate with the Site Reliability Engineering team to onboard and integrate the next generation of servers into provisioning tools and fleet management tools.</li>
 	<li>Collaborate with performance team and software teams to optimize software performance on the hardware</li>
 	<li>Collaborate with cross-functional teams to deploy firmware updates, triage hardware problem reports, resolve hardware issues, maintain automation tools.&nbsp;</li>
@@ -21,26 +21,27 @@
 <p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
 <ul>
 	<li>Bachelor’s degree in Computer Engineering, Electrical Engineering, or Computer Science</li>
-	<li>Foundational knowledge or internship/academic experience with compute design engineering, validation, performance benchmarking, debugging, and deployment used in the data center</li>
+	<li>Extensive experience with compute design engineering, validation, performance benchmarking, debugging, and deployment used in the data center</li>
+	<li>Knowledge of CPU architectures, preferably both x86 and ARM</li>
+	<li>Knowledge and experience with server hardware including motherboard designs, CPU architecture, memory &amp; storage technology</li>
+	<li>Knowledge of performance benchmarking ; Previous experience in testing, measuring, and/or simulating hardware performance and an understanding of no-stone-left-unturned experimentation</li>
+	<li>Knowledge of bash, python and basic Linux task automation</li>
+	<li>Knowledge of Redfish, IPMI and server remote management protocols, and experience with firmware updates</li>
 	<li>Curiosity and desire to learn about the Cloudflare hardware and products used by 20% of all web sites</li>
 	<li>Desire to learn how a diverse server fleet is managed at scale with tools such as traffic management, capacity planning and failover mechanisms</li>
 	<li>Desire to learn the tools Cloudflare uses to maintain and monitor our hardware</li>
-	<li>Harness AI tools and automation to fundamentally accelerate the qualification lifecycle, driving exponential efficiency gains and quality standards.</li>
-	<li>Possess the organizational skills and interest to manage cross-functional technical projects, ensuring architectural designs seamlessly align with delivery schedules.</li>
-	<li>Thrive as a deeply self-motivated engineer in ambiguous environments, demonstrating a strong bias for action and the ability to drive initiatives forward without close supervision.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Master’s degree in Computer Engineering, Electrical Engineering, or Computer Science</li>
-	<li>Knowledge and experience with server hardware including motherboard designs, chassis designs, thermal designs, as well as CPU, memory &amp; storage technology</li>
-	<li>Knowledge of bash, python and basic Linux task automation</li>
-	<li>Knowledge of Redfish, IPMI and server remote management protocols, and experience with firmware updates</li>
-	<li>Knowledge or experience of performance optimization based on hardware / software codesign</li>
-	<li>Knowledge and experience of debugging server hardware faults and the ability to engage with our sourcing team and vendors to improve quality</li>
+	<li>Master’s degree in Computer Engineering, Electrical Engineering, or Compute Science</li>
+	<li>Experience of performance optimization based on hardware / software codesign</li>
+	<li>Experience of kernel development, compiler optimization, or driver development.</li>
 	<li>Experience of working with external vendors on server hardware qualification.</li>
 	<li>Experience of observability and monitoring tools such as Prometheus and Grafana, as well as the ability to observe trends over time</li>
 	<li>Experience with software development tools and processes such as Git, TeamCity and Jira</li>
 	<li>Experience in a hyperscale cloud infrastructure role also valuable</li>
+	<li>Knowledge of debugging server hardware faults and the ability to engage with our sourcing team and vendors to improve quality</li>
+	<li>Knowledge of XPU/accelerator architectures is a plus</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
