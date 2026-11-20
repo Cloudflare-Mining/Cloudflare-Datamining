@@ -4739,6 +4739,14 @@
 						"compatDisableFlag": "fetch_invalid_response_legacy_error"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "connectHandlerImmediateTls",
+					"annotations": {
+						"compatEnableFlag": "connect_handler_immediate_tls",
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
@@ -8395,6 +8403,11 @@
 					"name": "assets",
 					"annotations": {},
 					"type": "workerd/server/workerd.capnp:AssetsService"
+				},
+				{
+					"name": "cache",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:CacheDirectory"
 				}
 			]
 		},
@@ -8514,6 +8527,16 @@
 			]
 		},
 		{
+			"name": "workerd/server/workerd.capnp:TracingOptions",
+			"fields": [
+				{
+					"name": "otlp",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:ServiceDesignator"
+				}
+			]
+		},
+		{
 			"name": "workerd/server/workerd.capnp:Config",
 			"fields": [
 				{
@@ -8555,6 +8578,11 @@
 					"name": "cluster",
 					"annotations": {},
 					"type": "workerd/server/workerd.capnp:ClusterConfig"
+				},
+				{
+					"name": "tracing",
+					"annotations": {},
+					"type": "workerd/server/workerd.capnp:TracingOptions"
 				}
 			]
 		},
@@ -8630,6 +8658,16 @@
 					"name": "path",
 					"annotations": {},
 					"type": "Text"
+				},
+				{
+					"name": "localDisk",
+					"annotations": {},
+					"type": "Text"
+				},
+				{
+					"name": "minPartSize",
+					"annotations": {},
+					"type": "UInt64"
 				}
 			]
 		},
@@ -8660,6 +8698,16 @@
 					"name": "compatibilityFlags",
 					"annotations": {},
 					"type": "List(Text)"
+				}
+			]
+		},
+		{
+			"name": "workerd/server/workerd.capnp:CacheDirectory",
+			"fields": [
+				{
+					"name": "path",
+					"annotations": {},
+					"type": "Text"
 				}
 			]
 		},
