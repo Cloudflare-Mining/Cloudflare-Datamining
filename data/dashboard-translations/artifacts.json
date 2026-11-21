@@ -24,7 +24,7 @@
 	"artifacts.namespaces.loaded_limit": "Showing up to %{limit} loaded namespaces.",
 	"artifacts.namespaces.loaded_limit_filtered": "Showing up to %{limit} loaded namespaces; filtering applies to loaded rows.",
 	"artifacts.usage.operations": "Operations",
-	"artifacts.usage.operations_tooltip": "Billable pull, push, create, fork, and delete operations in the current billing period.",
+	"artifacts.usage.operations_tooltip": "Billable operations in the current billing period. Pulls, pushes, creates, forks, and deletes each count as 1 operation. Reads are billed at a 100:1 ratio and token operations at a 5:1 ratio.",
 	"artifacts.usage.storage": "Storage",
 	"artifacts.usage.storage_tooltip": "Current size of all repositories. Storage is billed in GB-months, averaged over the billing period.",
 	"artifacts.usage.storage_truncated_tooltip": "Total storage is not shown for accounts with more than %{limit} repositories.",
