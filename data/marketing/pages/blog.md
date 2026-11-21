@@ -13,15 +13,23 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 20, 2026 [<h2>How Cloudflare WAF protects against ruby2shell (CVE-2026-132825)</h2>](https://blog.cloudflare.com/ruby2shell-waf-protection/)
+
+ruby2shell lets attackers corrupt memory in default Rails and Sinatra apps without logging in. Cloudflare WAF blocks it for every customer, including Free plans. Upgrade Ruby now, and use the WAF to cover the gap.
+
+![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Pawel Klimek](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JGHK4HRCMZEXEFY9S1C8.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Denzil Correa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B6V73R1DF1YQBSAN5YFJ.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Pawel Klimek](https://blog.cloudflare.com/author/pawel/), and  [Denzil Correa](https://blog.cloudflare.com/author/denzil-correa/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7X91CB1DQF7DRZ96WG5VETW.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/ruby2shell-waf-protection/)
+
 November 20, 2026 [<h2>How Cloudflare WAF helps protect against phpAfterShell and other critical PHP flaws</h2>](https://blog.cloudflare.com/phpaftershell-waf-protection/)
 
 phpAfterShell is a critical flaw in PHP's default session handler that can lead to code execution. Cloudflare WAF blocks it for all customers, including Free plans, and adds new rules for other PHP flaws fixed in the same release.
 
-![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christian Larsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7X867D0A461PT7HM0R8J2Q8.01M7X86K8702V09Y1GYPQWC8V0.png&w=64&h=64&f=webp&fit=cover&position=center)
+![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kuber Nandwani](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXRZS93GCE4CXP81WJ1TX25Y.webp&w=64&h=64&f=webp&fit=cover&position=center)![Christian Larsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XCVJDHM9YZ1H0GZ1F0928D.01M7XCVK1DCSM9CV1WZ5MVWVN2.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Kuber Nandwani](https://blog.cloudflare.com/author/kuber-nandwani/), and  [Christian Larsen](https://blog.cloudflare.com/author/christian-larsen/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7X76DTFTZ4PHVTH5XWJ37KT.png&w=1200&h=675&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/phpaftershell-waf-protection/)
 
 November 20, 2026 [<h2>nginx2root: Five new nginx vulnerabilities, and how Cloudflare protects origins from the worst of them</h2>](https://blog.cloudflare.com/nginx2root/)
 
@@ -158,14 +166,6 @@ Public traffic to private origins, with WAF, bot management, caching, and Worker
 ![Enrique Somoza](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY0CFW3DJ9J69XDCMWR1NNSG.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Enrique Somoza](https://blog.cloudflare.com/author/enrique-somoza/)
-
-October 29, 2026 [<h2>Cloudflare DDoS Threat Report 2026 Q3: More swarms, fewer giants</h2>](https://blog.cloudflare.com/ddos-threat-report-2026-q3/)
-
-Cloudflare mitigated over 8,200 DDoS attacks per hour in Q3 2026 as attackers shifted to shorter, high-frequency strikes. Explore the latest threat data, including the collapse of CLDAP vectors and the impact of recent botnet takedowns.
-
-![Cloudforce One](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F4NKW3JJWXAED2MVFY7Y.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Cloudforce One](https://blog.cloudflare.com/author/cloudforce/)
 
 Load more
 

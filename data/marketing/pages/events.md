@@ -40,10 +40,6 @@ Dec 10–12
 
 Coming soon
 
-Previous events
-
-[San Antonio, USBillington Critical Infrastructure SummitNov 17–18Learn more](https://criticalinfrastructure.billingtoncybersummit.com/)
-
 # Build without boundaries
 
  Join thousands of developers who've eliminated infrastructure complexity and deployed globally with Cloudflare. Start building for free — no credit card required. 
