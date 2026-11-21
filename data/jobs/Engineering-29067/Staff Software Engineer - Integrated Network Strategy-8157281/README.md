@@ -4,12 +4,12 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <h4>Available Locations: Austin, New York, San Francisco,</h4>
-<h4>About the Department</h4>
+<h2>About the Department</h2>
 <p>Integrated Network Strategy is where Cloudflare's foundational infrastructure planning, network design, and capacity roadmaps are shaped. We own the systems and processes that enable our global network to scale across 337+ cities in 125+ countries while maintaining industry-leading performance and reliability. We design the architectural standards, capacity methodologies, and hardware evolution strategies that keep Cloudflare's network ahead of exponential growth. Rather than being constrained by the structures which make Cloudflare a massively successful business, we leverage our edge and network to solve infrastructure problems at massive scale and efficiency—something nearly impossible for any other organization.</p>
-<h4>What you'll do</h4>
+<h2>What you'll do</h2>
 <p>We are looking for a Staff Engineer to join our team and lead the design, evolution, and operational excellence of our global network infrastructure. You will own the foundational decisions about how our network grows: from capacity planning methodologies and hardware evolution strategies to architectural standards that inform infrastructure teams across the organization. You will work with a team of passionate, talented engineers and architects that are building the systems powering the internet's most critical infrastructure. You will play an active part in shaping the network architecture, strategies, and long-term roadmaps that will keep Cloudflare ahead of unprecedented scale. You will make sure our company hits our ambitious infrastructure and operational goals. You will change what's possible for internet infrastructure.</p>
 <p>If you've designed backbone and edge networks from the ground up, automated BGP policy and traffic engineering at hyperscale, driven network planning and sourcing to balance performance, redundancy, and cost, and led teams through major architectural shifts - this is the role for you. You bring a deep understanding of modern routing protocols (BGP, ISIS, RSVP-TE), software-defined forwarding, and the tradeoffs between automation, standardization, and operational flexibility. You excel at building extensible frameworks that allow teams to solve tomorrow's problems without rewiring today's foundation. You have a track record of taking on greenfield problems and turning them into repeatable systems and processes. Most importantly, you have the respect of infrastructure teams because you combine technical depth with strategic thinking and the ability to influence without authority.</p>
-<h4>Examples of desirable skills, knowledge and experience</h4>
+<h2>Examples of desirable skills, knowledge and experience</h2>
 <p>Note: it is not required that you have all of these! Teams have varying needs, focuses, and deep expertise areas.</p>
 <ul>
 	<li>10+ years designing, operating, or planning large-scale network infrastructure at hyperscale (or equivalent)</li>
@@ -28,7 +28,7 @@
 	<li>Experience mentoring junior engineers or leading teams through major architectural transitions</li>
 	<li>Comfortable working in a matrix environment with multiple stakeholders (product, operations, procurement, finance) and driving alignment</li>
 </ul>
-<h4>Bonus Points</h4>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Experience at a hyperscaler or large infrastructure platform (Meta, Google, Netflix, Amazon, Microsoft, etc.)</li>
 	<li>Background designing and implementing network automation frameworks</li>

@@ -3,44 +3,49 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong></p>
+<h2>Available Locations</h2>
 <ul>
-	<li>United States: Austin, TX; Washington, DC; San Francisco, CA; New York City</li>
-	<li>United Kingdom: London</li>
+	<li>Michigan</li>
 </ul>
-<p><strong>About the team</strong></p>
-<p>Cloudflare’s mission is to help build a better internet and the Threat Application Services (TAS) team lives at the core of that effort. The team builds the automated services and systems that transform Cloudflare’s massive network telemetry into actionable intelligence. We empower customers with products to combat advanced threats, enabling them to query, investigate, and automatically mitigate attacks using Cloudflare’s unique visibility into global threat actor activity.</p>
-<p>At a high level, the Threat Application Services team is the engineering engine within Cloudforce One. We are responsible for the end-to-end lifecycle of threat intelligence data, from ingestion and enrichment to exposing high-fidelity indicators through the Threat Events platform and high-performance APIs. Our work ensures that threat intelligence is not just a report, but a scalable, real-time defensive layer across the Cloudflare stack.</p>
-<p><strong>About the Role</strong></p>
-<p>This role is for the Senior Engineering Manager of the Threat Application Services team within Cloudforce One’s Engineering organization. You will lead a team of high-performing engineers dedicated to building and scaling the Cloudforce One Threat Events platform, our external Threat Intel APIs, and the backend systems that integrate Indicators of Compromise (IOCs) directly into products like WAF and Gateway for automated mitigation. You will also lead hiring efforts to expand our engineering capabilities as we build the next generation of agentic threat intelligence tools.</p>
-<p><strong>What you'll do</strong></p>
-<p>You will be responsible for the architectural direction and operational excellence of the services owned by your team, ensuring our intelligence platforms meet the latency and reliability requirements of Enterprise security operations. You will also drive the professional development of your direct reports and collaborate with product managers and security researchers to turn complex threat data into intuitive, automated customer experiences.</p>
-<p>You thrive in a fast-paced environment where software engineering meets security research. You have experience delivering scalable distributed systems, managing complex data pipelines, and leading teams through the transition from "getting things done" to building world-class, reliable products.</p>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<p><strong>Desirable skills and experience</strong></p>
+<h2>About the Role</h2>
+<p>We are seeking an experienced and strategic Senior Majors Account Executive to join our Enterprise/Field Sales team. In this pivotal role, you will help lead Cloudflare’s strategic customer engagements, securing and expanding platform partnerships across key accounts. The ideal candidate brings strong sales leadership, a deep understanding of enterprise architecture (business, data, applications, technology), and the ability to articulate how Cloudflare integrates into modern cloud operating models.</p>
+<p>As a Senior Majors Account Executive, you will position Cloudflare’s Developer Platform, Application Security, SASE/Zero Trust Services, and Network and Content Delivery offerings against incumbents. You will drive predictable sales performance, foster healthy pipeline growth, and deliver on revenue objectives. You will act as a trusted advisor, educating customers and partners on Cloudflare’s evolving product ecosystem and security capabilities. This role involves leveraging executive sponsorship programs, partnering with senior leaders (including CIOs, CISOs, and CTOs), and collaborating with cross-functional teams to navigate and successfully close complex customer opportunities.</p>
+<h2>Responsibilities</h2>
 <ul>
-	<li>Experience with AI-assisted development and agentic AI workflows.</li>
-	<li>Prior experience building high-performance APIs or platforms for threat intelligence, security operations, or large-scale data analytics.</li>
-	<li>8+ years of Software Development experience, with a focus on Go, JavaScript, or distributed systems.</li>
-	<li>Led high-performing engineering teams for over 8 years, responsible for architectural direction and operational excellence of large-scale distributed security platforms (e.g., Threat Intel APIs, automated mitigation systems). Proven ability to manage technical debt, drive professional development through strong mentorship, and excel at planning and execution to deliver predictable, world-class products in a high-growth environment.</li>
-	<li>Proven experience leading engineering teams and managing technical debt in a high-growth environment.</li>
-	<li>Understanding of the Cyber Kill Chain and how to automate the ingestion and distribution of IOCs (IPs, domains, hashes, JA3/4 fingerprints).</li>
-	<li>Experience with edge computing (e.g., Workers), SQL-at-the-edge (D1/SQLite), and building systems that scale to handle trillions of signals.</li>
-	<li>Excel at planning and execution to deliver predictable, reliable features for security teams.</li>
-	<li>Strong mentorship and coaching skills to support the career growth of engineers in a specialized security engineering domain.</li>
+	<li><strong>Strategic Revenue Leadership:</strong> Develop and execute account plans to meet and exceed revenue goals by structuring enterprise-grade platform partnerships within key accounts.</li>
+	<li><strong>Predictable Pipeline &amp; Forecasting:</strong> Maintain accurate sales forecasting and proactive pipeline management, sharing insights to support broader sales strategy.</li>
+	<li><strong>Enterprise Architecture Alignment:</strong> Demonstrate a strong understanding of customer Enterprise Architecture across business, data, applications, and technology pillars, connecting Cloudflare solutions directly to customer business outcomes.</li>
+	<li><strong>Executive &amp; C-Suite Engagement:</strong> Manage complex customer engagements across multiple business units, building strong relationships with executive sponsors and C-level stakeholders.</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Partner effectively with cross-functional teams—including Product Managers and executive leadership—to advance strategic deals and resolve operational friction.</li>
+	<li><strong>Digital Transformation Guidance:</strong> Serve as a key advisor on digital transformation, helping customers navigate market shifts and position Cloudflare as a core strategic partner.</li>
+	<li><strong>Clear Communication &amp; Feedback:</strong> Connect insights across global departments to deliver clear messaging, provide constructive feedback, and support continuous team growth.</li>
+	<li><strong>Long-Term Strategic Vision:</strong> Make balanced decisions aligned with long-term organizational value, building trust through open communication and knowledge sharing.</li>
+	<li><strong>Goal Setting &amp; Operational Efficiency:</strong> Partner with teams to set clear metrics, address operational roadblocks, and improve cross-departmental workflows.</li>
+	<li><strong>Collaborative Problem Solving:</strong> Proactively identify customer and internal needs, fostering positive change and contributing to continuous team improvement.</li>
+	<li><strong>Inclusive Leadership:</strong> Champion diverse perspectives to solve complex business challenges and support a supportive, forward-thinking team environment.</li>
 </ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>For Washington, DC based hires: Estimated annual salary of $220,000 - $303,000</li>
-	<li>For New York City based hires: Estimated annual salary of $220,000 - $303,000</li>
-	<li>For San Francisco, CA based hires: Estimated annual salary of $230,000 - $317,000</li>
+	<li>Demonstrated track record of success in B2B enterprise sales, closing multi-year, complex technology agreements demonstrating a track record of consistently exceeding quota and closing transformative platform deals.</li>
+	<li>Deep understanding of enterprise cloud platforms, network security, and modern IT architecture.</li>
+	<li>Proven capability to align solutions with customer Enterprise Architecture (Business, Data, Applications, Technology) and enterprise business models mapping Cloudflare solutions to complex business models and modern cloud operating environments.</li>
+	<li>Experience engaging with executive stakeholders and managing executive sponsorship initiatives.</li>
+	<li>Strong collaborative skills with experience working alongside cross-functional leadership teams.</li>
+	<li>Familiarity with digital transformation trends and the ability to translate market insights into customer solutions.</li>
+	<li>Strong presentation, negotiation, and written communication skills across technical and business audiences.</li>
+	<li>Thoughtful decision-making approach focused on sustainable, long-term business success.</li>
+	<li>Experience setting clear performance indicators and facilitating cross-team alignment.</li>
+	<li>Proficiency with enterprise sales tools and methodologies (e.g., Salesforce, Tableau, MEDDPICC, or similar frameworks).</li>
+	<li>Relevant professional experience in technology sales or enterprise consulting; advanced degrees or continuous technical learning are welcomed.</li>
+	<li>Willingness to travel as needed to foster strong customer and internal team relationships.</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h2>Compensation</h2>
+<p>Compensation may be adjusted depending on work location.&nbsp;This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -51,14 +56,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
