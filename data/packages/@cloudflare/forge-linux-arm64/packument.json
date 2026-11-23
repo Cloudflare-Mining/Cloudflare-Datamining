@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/forge-linux-arm64",
 	"dist-tags": {
-		"latest": "0.2.0",
-		"bootstrap": "0.0.0"
+		"bootstrap": "0.0.0",
+		"latest": "0.3.0"
 	},
 	"versions": {
 		"0.0.0-stage": {
@@ -57,8 +57,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDj3ftpJiHab2JEBiGj1N9haLICZqiii0vVxC6m6C8logIhAJEYDdXkXs4wkxZySV1RGn2f4gwOcq+swcedPrjr39Ke"
+						"sig": "MEYCIQDj3ftpJiHab2JEBiGj1N9haLICZqiii0vVxC6m6C8logIhAJEYDdXkXs4wkxZySV1RGn2f4gwOcq+swcedPrjr39Ke",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -68,6 +68,33 @@
 					}
 				},
 				"unpackedSize": 9847721
+			}
+		},
+		"0.3.0": {
+			"name": "@cloudflare/forge-linux-arm64",
+			"version": "0.3.0",
+			"dist": {
+				"shasum": "4c361643b99b8f0ec44595a19264bb75c1365bd2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/forge-linux-arm64/-/forge-linux-arm64-0.3.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-IVfOLdZwj1/jCJ3EtVXEMfiOfStfNOh38PicMXKzmnT5pes2PHMpFSD9Td3XVNXIEZWEFgRSZJxez+JujgTXww==",
+				"signatures": [
+					{
+						"sig": "MEQCICg/Ymur5wsR18uvSrfDVkU3azzcipckO6tX71244BDuAiAzScpbDF5BUIWc13EEgK3HXS45PCeAgb3PCiToZjnhIQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIHJc2rlmn0jgkRZ0KrSiYozvzG3auR75lUWuXKGrgpaoAiEAmVDZCpMkBQDB0mw78F9tKOmw57+4GT8ZERFBY5Zbbkc="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fforge-linux-arm64@0.3.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 9782185
 			}
 		}
 	}

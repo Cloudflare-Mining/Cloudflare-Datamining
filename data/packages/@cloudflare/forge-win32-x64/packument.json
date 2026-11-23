@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/forge-win32-x64",
 	"dist-tags": {
-		"latest": "0.2.0",
-		"bootstrap": "0.0.0"
+		"bootstrap": "0.0.0",
+		"latest": "0.3.0"
 	},
 	"versions": {
 		"0.0.0-stage": {
@@ -57,8 +57,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCNUXUg5lAdWQEp1Wc0oZEBnPHljXtTdHUAyJqinRAGLQIhAIuweyDuVw1FjLHkKMf/ZJBni2wKdcwgqt72Z97eG5xl"
+						"sig": "MEYCIQCNUXUg5lAdWQEp1Wc0oZEBnPHljXtTdHUAyJqinRAGLQIhAIuweyDuVw1FjLHkKMf/ZJBni2wKdcwgqt72Z97eG5xl",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -68,6 +68,33 @@
 					}
 				},
 				"unpackedSize": 12733363
+			}
+		},
+		"0.3.0": {
+			"name": "@cloudflare/forge-win32-x64",
+			"version": "0.3.0",
+			"dist": {
+				"shasum": "c9ef080eef8d9b3e0e184c6e4faadd863f87a491",
+				"tarball": "https://registry.npmjs.org/@cloudflare/forge-win32-x64/-/forge-win32-x64-0.3.0.tgz",
+				"fileCount": 4,
+				"integrity": "sha512-8x0jNunYzwUmo7FwwYeGoEv1K8+4CM6z3gV2/2MMsdmEDZRdztt8Ux50YfHNMv2w3rVglpZEP3Hw9iorTkVB6A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDVkFNgBfhLGCuUWP+v2/0vdQV/t9g99dhnwXQl/jXNdQIhAM3VZAlsDoOfew72t/+ZG8okPmpS54FRxbqJYFysaIJY",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIDOzidCQy1pTpW3z8GBc+tYITnIflSmhQB1zcq7fFNQWAiAs5Kgoz4BnQ7vsuUMCy0pgXIFMEIZTVAwzfzx837RlDQ=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fforge-win32-x64@0.3.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 12693427
 			}
 		}
 	}

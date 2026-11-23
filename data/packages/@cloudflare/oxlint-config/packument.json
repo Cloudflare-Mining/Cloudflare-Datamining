@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/oxlint-config",
 	"dist-tags": {
-		"latest": "0.1.0"
+		"latest": "0.2.0"
 	},
 	"versions": {
 		"0.0.0-stage": {
@@ -71,8 +71,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDWvXHx9PU9n6MmEhJI6y2bN+LsMN8pICUxu48EhygsFAIhAINWhX5WKWB8KT9uif6ppcz+68mTQ9tNW53Avv/hOoTJ"
+						"sig": "MEYCIQDWvXHx9PU9n6MmEhJI6y2bN+LsMN8pICUxu48EhygsFAIhAINWhX5WKWB8KT9uif6ppcz+68mTQ9tNW53Avv/hOoTJ",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -82,6 +82,50 @@
 					}
 				},
 				"unpackedSize": 22172
+			},
+			"engines": {
+				"node": "^22.18.0 || >=24.0.0"
+			}
+		},
+		"0.2.0": {
+			"name": "@cloudflare/oxlint-config",
+			"version": "0.2.0",
+			"dependencies": {
+				"@nkzw/oxlint-config": "4.1.0"
+			},
+			"devDependencies": {
+				"tsrs": "^7.1.0-beta.tsrs3",
+				"oxlint": "^1.94.0",
+				"vite-plus": "^1.7.0",
+				"eslint-plugin-perfectionist": "^5.14.0"
+			},
+			"peerDependencies": {
+				"tsrs": ">=7.1.0-beta.tsrs2",
+				"oxlint": "^1.94.0",
+				"vite-plus": ">=1.7.0"
+			},
+			"dist": {
+				"shasum": "0ef06656b763dd149ebe3cc40256227765402084",
+				"tarball": "https://registry.npmjs.org/@cloudflare/oxlint-config/-/oxlint-config-0.2.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-HENc8yIzCuIPvUyQbX47UKv2kgA26iZt1XRsrlQXayJG6cWmBNlnHXfPy7oNCghqWpTBcbFRdGwsHd1Ahe3zhw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDeYxRRK9ZQbdrITGT0A2/5bLp8d3AFPr0+MV0t1pi1PQIgDTxCBnPcDLuyPT3utAIqpCtkceE5Ys/m8zv6RSINnjQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIDav5MFCikQrRQMeBiyu9B95snORN41efohHTgZdaGKeAiAvbj5fj4n+n+5YDKQRodfV/gIBuusdGBp0U1l7Avlh1w=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2foxlint-config@0.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 24052
 			},
 			"engines": {
 				"node": "^22.18.0 || >=24.0.0"
