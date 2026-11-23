@@ -13,6 +13,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 23, 2026 [<h2>Probing DNS at Cloudflare</h2>](https://blog.cloudflare.com/probing-dns-at-cloudflare/)
+
+At Cloudflare we've built tools to enable teams to extend our internal testing framework and build test tooling for networking protocols. This is the story of how this was used for DNS.
+
+![Doug Aaser](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNBNMGMRZQB3P0SXRNYF2X.01M7XNBNY9Q3WAYZPCNY5Z68PJ.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Doug Aaser](https://blog.cloudflare.com/author/doug-aaser/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSAD6F3PP947NHEMWKBFV.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/probing-dns-at-cloudflare/)
+
 November 20, 2026 [<h2>How Cloudflare WAF protects against ruby2shell (CVE-2026-132825)</h2>](https://blog.cloudflare.com/ruby2shell-waf-protection/)
 
 ruby2shell lets attackers corrupt memory in default Rails and Sinatra apps without logging in. Cloudflare WAF blocks it for every customer, including Free plans. Upgrade Ruby now, and use the WAF to cover the gap.
@@ -20,8 +30,6 @@ ruby2shell lets attackers corrupt memory in default Rails and Sinatra apps witho
 ![Daniele Molteni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464793D50Z8QJQK451PK2A.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Pawel Klimek](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JGHK4HRCMZEXEFY9S1C8.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Denzil Correa](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48B6V73R1DF1YQBSAN5YFJ.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Daniele Molteni](https://blog.cloudflare.com/author/daniele/),  [Pawel Klimek](https://blog.cloudflare.com/author/pawel/), and  [Denzil Correa](https://blog.cloudflare.com/author/denzil-correa/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7X91CB1DQF7DRZ96WG5VETW.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/ruby2shell-waf-protection/)
 
 November 20, 2026 [<h2>How Cloudflare WAF helps protect against phpAfterShell and other critical PHP flaws</h2>](https://blog.cloudflare.com/phpaftershell-waf-protection/)
 
@@ -158,14 +166,6 @@ Four, just four: that's the key to break into any unpatched connection on the In
 ![Maxime Guerreiro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FG4DN12FTWVE3SWJY7WF.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Rupert Carr](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WZZ1214FNVNSGC0MBC58.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Miguel de Moura](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469GP192YFYYEYAD222W8R.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Maxime Guerreiro](https://blog.cloudflare.com/author/maxime/),  [Rupert Carr](https://blog.cloudflare.com/author/rupert-carr/),  [Miguel de Moura](https://blog.cloudflare.com/author/miguel/), and  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
-
-October 30, 2026 [<h2>Cloudflare services for private origins is now generally available</h2>](https://blog.cloudflare.com/private-origins-public-to-private/)
-
-Public traffic to private origins, with WAF, bot management, caching, and Workers, is now available to every customer with Cloudflare One connectivity.
-
-![Enrique Somoza](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KY0CFW3DJ9J69XDCMWR1NNSG.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Enrique Somoza](https://blog.cloudflare.com/author/enrique-somoza/)
 
 Load more
 
