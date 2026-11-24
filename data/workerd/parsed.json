@@ -4720,7 +4720,11 @@
 					"name": "pythonDedicatedSnapshotKeepImportCaches",
 					"annotations": {
 						"compatEnableFlag": "python_dedicated_snapshot_keep_import_caches",
-						"compatDisableFlag": "no_python_dedicated_snapshot_keep_import_caches"
+						"compatDisableFlag": "no_python_dedicated_snapshot_keep_import_caches",
+						"impliedByAfterDate": {
+							"name": "pythonWorkers",
+							"date": "2026-12-10"
+						}
 					},
 					"type": "Bool"
 				},
@@ -8583,6 +8587,11 @@
 					"name": "tracing",
 					"annotations": {},
 					"type": "workerd/server/workerd.capnp:TracingOptions"
+				},
+				{
+					"name": "shutdownDelayMs",
+					"annotations": {},
+					"type": "UInt32"
 				}
 			]
 		},
