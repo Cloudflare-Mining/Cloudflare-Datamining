@@ -3,36 +3,37 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Singapore</strong></p>
-<h4>About the Role</h4>
-<p>Cloudflare is looking for a highly organized and detail-oriented Recruiting Coordinator to be a cornerstone of our hiring engine in Singapore. This isn't just about managing calendars; you'll be a key player in bringing structure to our hiring efforts, ensuring an exceptional global candidate experience, and supporting the high-quality hiring decisions that drive our mission forward.</p>
-<p>If you're someone who thrives in a collaborative, fast-paced setting, possesses a keen eye for detail, and is dedicated to delivering positive experiences, we want to hear from you. You'll work closely with recruiters, hiring managers, and interviewers, ensuring every candidate interaction truly reflects Cloudflare's best. This is a fantastic opportunity to launch or pivot into a career in Talent Acquisition, where your organizational skills and candidate-centric approach will directly influence our ability to attract top talent and shape their perception of Cloudflare.&nbsp;</p>
-<h4>Responsibilities</h4>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare is looking for an enthusiastic B2B Enterprise marketing manager, who is dynamic, creative, and analytical. The individual has a track record of delivering creative and smashing programs that generate new prospects and grow the marketing revenue pipeline. This person will be dedicated to growing our businesses in ANZ across enterprise and public sector accounts.&nbsp;</p>
+<p>You will support the creation, launch, and execution of campaigns that span a variety of channels - email, social, and webinars as well as supporting end-to-end execution of our in-person and virtual events, either direct or with our partners. You have a natural inclination to measure the effectiveness of marketing activities, strong project management skills, and the ability to think strategically and orchestrate many moving parts. You must have strong working knowledge and expertise in demand generation marketing funnel and lead flows. The right candidate will have the ability to work cross-functionally with all teams in-region, across APAC and in headquarters in San Francisco. This is a regional role based in Sydney or Melbourne, Australia. Market experience and expertise is required for this role.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Manage interview logistics across various formats (video, phone, and in-person) with precision and efficiency, ensuring a seamless experience for all participants.</li>
-	<li>Deliver an exceptional candidate experience, both virtually and in-person, demonstrating empathy and a customer/candidate-oriented approach.</li>
-	<li>Utilize applicant tracking system, scheduling tools, dashboards, and candidate trackers to ensure accuracy and maximize efficiency for Cloudflare’s Interview Experience program.</li>
-	<li>Handle sensitive and confidential information with the utmost professionalism.&nbsp;</li>
-	<li>Communicate clearly, directly, and transparently with candidates, recruiters, and internal stakeholders</li>
-	<li>Partner with Recruiters and Hiring Managers to streamline processes and contribute to cross-functional recruiting operations projects and improvements.&nbsp;</li>
-	<li>Actively identify opportunities for process enhancements and suggesting solutions, as well as supporting program initiatives where bandwidth allows.</li>
-	<li>Collaborate with and provide mutual support to team members on shared tasks and challenges.</li>
+	<li>Report into the Head of Marketing APAC, based in Singapore</li>
+	<li>As the ANZ Enterprise marketing manager, you will plan, promote, and execute field marketing initiatives across the region that capture mindshare, drive prospects into customers and support Cloudflare customers on their journey to build and secure on Cloudflare.</li>
+	<li>You will be accountable for online, trade shows, conferences, executive dinners, workshops, developing communities, and the full range of regional marketing tactics and execution for Australia across enterprise &amp; public sector.</li>
+	<li>Manage campaigns from strategic planning and execution to evaluation, ensuring smooth project management throughout. Oversee timelines, track ROI, and implement data-driven optimisations to continuously improve performance and communicate campaign results to key stakeholders.</li>
+	<li>Work in cross-functional teams and collaborate closely with global &amp; regional demand centre teams, the partner team, BDR, product marketing, sales, marketing operations, sales ops and others in the development, execution and measurement of high-impact integrated marketing campaigns (global or regional) that are optimised and relevant across the marketing mix - online, offline, ABM, communities and more.</li>
+	<li>Align marketing initiatives to directly support sales objectives, focusing on full lead lifecycle and funnel management, from lead generation to opportunity progression and customer loyalty and expansion.</li>
+	<li>Assess campaign performance using SFDC and Tableau reporting, evaluate ROI, and provide data-driven recommendations for improvement.</li>
 </ul>
-<h4>Desirable Skills, Knowledge, and Experience</h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience in a fast-paced environment where exceptional <strong>organizational skills</strong>, <strong>high-volume coordination</strong>, or extensive <strong>client/customer support</strong> were essential.</li>
-	<li>Proven ability to prioritize tasks and manage time effectively.</li>
-	<li>Maintain meticulous attention to detail, even under pressure.</li>
-	<li>Consistently meet deadlines and service standards.</li>
-	<li>A resourceful and proactive approach to identifying and resolving routine challenges independently.</li>
-	<li>Quick to learn and adapt to ambiguous or changing situations.</li>
-	<li>View mistakes as opportunities for growth.</li>
-	<li>Outstanding written and verbal communication skills.</li>
-	<li>Able to engage professionally and empathetically with diverse stakeholders.</li>
-	<li>Possess a strong collaborative spirit.</li>
-	<li>Build positive professional relationships and contribute to a supportive team environment.</li>
-	<li>A genuine passion for delivering positive experiences.</li>
-	<li>Lead with empathy and assume good intentions in all interactions.</li>
+	<li>5 to 8 years proven experience in B2B marketing (enterprise software, cybersecurity, SaaS, regional marketing and/or info security experience a plus)</li>
+	<li>BA/BS in Marketing, Business, Economics, or other quantitative field</li>
+	<li>On the digital side, you will be supporting our digital teams to help with execution and optimisation of online marketing campaigns across multiple channels (e.g. email, webinars, social media, etc.).&nbsp;</li>
+	<li>Excellent channel experience working with partner marketing, distribution, resellers and systems integrators.&nbsp;</li>
+	<li>In addition, you must have experience in planning, budgeting and managing trade shows, events, and conferences from start to finish</li>
+	<li>Have proven track record of launching successful online and offline marketing campaigns and driving qualified leads in the funnel</li>
+	<li>Strong project management/organisational skills and the ability to successfully manage multiple initiatives at once</li>
+	<li>Strong interpersonal skills, collaborative, and the ability to coordinate across multiple departments in different time zones</li>
+	<li>Results oriented with experience using qualitative and quantitative metrics with a focus on revenue, conversion, sales and other marketing goals</li>
+	<li>Analytically inclined, exceptional organisational skills, with rigorous attention to detail</li>
+	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines</li>
+	<li>Having a strong sense of curiosity and passion for learning</li>
+	<li>Exhibit strong stakeholders’ management and communication skills</li>
+	<li>Hands-on experience with Salesforce, Marketo, and Tableau, will be an advantage.</li>
+	<li>Previous experience in a high growth company in the SaaS, security, or network space, combined with knowledge of how the Internet works is a plus</li>
+	<li>An established player in the business and marketing community with a strong business network which included media, marketing agencies, events organisers, social media platforms amongst others.&nbsp;&nbsp;</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>

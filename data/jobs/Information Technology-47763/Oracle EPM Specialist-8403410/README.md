@@ -3,51 +3,40 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<h2>Role Summary</h2>
-<p>Cloudflare MCP Server Portals give organizations a secure, centralized way to connect AI agents to internal and third-party tools. As a Senior Systems Engineer on the MCP Portals team, you will lead the design, delivery, and operation of distributed systems that authenticate users, manage OAuth credentials and sessions, enforce Zero Trust policies, and proxy MCP traffic across Cloudflare's global network. You will own complex projects across service boundaries, make architectural tradeoffs for your area, and help other engineers deliver reliable, secure changes. You will work closely with engineers and product managers across Access, Gateway, and Developer Platform teams as the protocol and product evolve. We are looking for a hands-on engineer who can bring clarity to ambiguous systems problems and take responsibility for outcomes in production.</p>
-<h4>&nbsp;</h4>
-<h2>Role Responsibilities</h2>
+<p>&nbsp;</p>
+<p><strong>Available Location:</strong> Austin, TX</p>
+<p><strong>Job Title:</strong> <strong>Senior </strong><strong>Oracle EPM Specialist</strong></p>
+<p><strong>Role Summary</strong> This critical role is responsible for ensuring smooth financial operations throughout the close cycles by maintaining the stability, security, and high performance of Oracle GL and Oracle EPM environments. The EPM Specialist will absorb knowledge transfer from implementation partners and serve as the primary operational lead for Financial Consolidation and Close - FCCS, Account Reconciliation - ARCS, and Enterprise Data Management - EDMCS. A core aspect of the job involves collaborating cross-functionally with IT and business teams to understand downstream system impacts, manage critical system handshakes, and oversee regular maintenance. Partnering closely with Financial Systems leadership, you will help translate the strategic roadmap into reality.&nbsp;</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Lead the design, implementation, and operation of globally distributed services that connect MCP clients to authorized upstream MCP servers.</li>
-	<li>Own complex features and service improvements from problem definition and design through implementation, rollout, observability, and production support.</li>
-	<li>Shape technical decisions for MCP Portals, including service boundaries, security controls, compatibility, and tradeoffs among reliability, latency, and resource use.</li>
-	<li>Evolve our implementation as the MCP specification changes, planning safe migrations for existing customers and integrations.</li>
-	<li>Design and review authentication and authorization flows involving Cloudflare Access, OAuth, identity, credential handling, and delegated access to upstream services.</li>
-	<li>Improve the reliability and scalability of multi-tenant systems built on the Cloudflare Developer Platform, using production data to identify and prioritize work.</li>
-	<li>Strengthen observability through structured logs, metrics, traces, dashboards, and actionable alerts; participate in production support and incident response.</li>
-	<li>Lead investigations of complex customer issues across services and teams, identify root causes, and drive fixes that prevent recurrence.</li>
-	<li>Review designs and code, mentor engineers, and raise the quality of testing, deployment, and operational practices on the team.</li>
-	<li>Partner with product, security, and engineering teams to turn customer needs and emerging standards into maintainable product capabilities.</li>
+	<li><strong>Cross-Functional System Execution:</strong> Work closely with finance, IT, and cross-functional teams to implement roadmap initiatives and evaluate downstream impacts.</li>
+	<li><strong>Troubleshooting &amp; Resolution:</strong> Investigate and resolve data load, mapping, validation, and calculation issues. Track and resolve recurring or critical issues through Oracle Service Requests</li>
+	<li><strong>Financial Module Ownership:</strong> Define and own the functional configuration roadmap for key financial modules, including General Ledger<strong>.</strong></li>
+	<li><strong>Compliance and System Configuration:</strong> Directly design and configure Oracle Fusion to ensure enforcement of critical financial compliance standards (e.g., ASC 606/IFRS 15, SOX).</li>
+	<li><strong>Data Integration Management:</strong> Administer Data Exchange pipelines, import/export definitions, and update EDM subscriptions to keep metadata aligned. Manage calculation rules, consolidations, and cash flow mappings.</li>
+	<li><strong>Maintenance &amp; Patching:</strong> Review release notes and perform patch regression testing on monthly EPM patches, promoting updates safely across DEV, TEST, and PROD pods.</li>
+	<li><strong>System Support &amp; Operations:</strong> Manage and monitor user access control, including assigning predefined and application roles. Provide functional support during close cycles, assisting users with application navigation, workflows, and Smart View queries.</li>
+	<li><strong>Solution Architecture &amp; Development:</strong> Partner with leadership to design, build, and optimize scalable EPM data models and solutions. Translate business requirements into technical architecture and execute complex development work across FCCS, ARCS, PCMCS and EDMCS.</li>
 </ul>
-<h4>&nbsp;</h4>
-<h2>Role Requirements</h2>
-<h3>Must Have Skills</h3>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <ul>
-	<li>6+ years of experience building and operating distributed systems, backend services, network services, or infrastructure products in production.</li>
-	<li>Demonstrated ownership of complex production services or projects, including architecture, implementation, rollout, and operational outcomes.</li>
-	<li>Strong programming skills in TypeScript, JavaScript, Go, Rust, C++, or another language used to build production services.</li>
-	<li>Deep understanding of HTTP, APIs, proxies, streaming connections, and distributed-systems failure modes.</li>
-	<li>Experience with authentication and authorization technologies such as OAuth 2.0, OpenID Connect, JWTs, PKCE, or policy-based access control.</li>
-	<li>Experience designing or operating security-sensitive systems, with sound judgment about identity, authorization, credential handling, concurrency, and state management.</li>
-	<li>Ability to diagnose difficult production issues using logs, metrics, traces, error reporting, and customer-provided evidence, then drive durable fixes.</li>
-	<li>Experience making backward-compatible changes to live systems and managing the risks of deployment and migration.</li>
-	<li>Clear written and verbal communication skills, with the ability to explain technical tradeoffs, influence decisions across teams, and mentor other engineers.</li>
+	<li><strong>Active Oracle Cloud EPM Certification(s)</strong> (e.g., Financial Consolidation and Close (FCCS), Account Reconciliation (ARCS), Enterprise Data Management (EDMCS), Profitability and Cost Management (PCMCS) or EPM Data Integration).</li>
+	<li>Strong experience managing and supporting Oracle EPM applications, specifically FCCS, ARCS, PCMCS, and EDMCS.</li>
+	<li>Proven ability to manage daily operations, including integrations, consolidations, and reconciliations.</li>
+	<li>Exceptional troubleshooting skills, specifically regarding Smart View installations, connection settings, and resolving setup conflicts.</li>
+	<li>Experience managing user security, access roles, and maintaining compliance governance.</li>
+	<li>Ability to perform monthly/quarterly close operations and execute environment health checks.</li>
+	<li>Exceptional communication skills with the ability to partner effectively with cross-functional IT and business teams to evaluate inbound and outbound data flows and build architectural solutions.</li>
 </ul>
-<p>Applicants should provide a resume or CV describing relevant engineering, technical leadership, and operational experience.</p>
-<h3>Nice to Have Skills</h3>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Experience with the Model Context Protocol&nbsp;</li>
-	<li>Familiarity with the Cloudflare Developer Platform or other serverless edge-computing platforms.</li>
-	<li>Experience building gateways, forward proxies, identity systems, developer platforms, or Zero Trust and data loss prevention products.</li>
+	<li>Familiarity with Oracle Integration Cloud (OIC).</li>
+	<li>Familiarity or experience with Oracle Tax Reporting (TRCS), as future roadmap capabilities may expand into this area.</li>
+	<li>Experience with Risk Control Matrix (RCM) functionality to monitor Segregation of Duties (SOD) controls between ERP and EPM systems.</li>
+	<li>Prior experience with other Finance Planning tools (e.g., PBCS, Adaptive Planning, Planful, Pigment, SAP, IBM, OneStream, etc is a plus).</li>
+	<li>Conceptual understanding of Generative AI, Large Language Models (LLMs), or Agentic AI frameworks</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €66,000-91,000&nbsp;</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

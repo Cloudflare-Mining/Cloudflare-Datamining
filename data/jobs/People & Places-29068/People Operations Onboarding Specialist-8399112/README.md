@@ -3,46 +3,62 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
-<h2>Role Summary</h2>
-<p>Cloudflare MCP Server Portals give organizations a secure, centralized way to connect AI agents to internal and third-party tools. As a Systems Engineer on the MCP Portals team, you will build and operate the distributed systems that authenticate users, manage OAuth credentials and sessions, enforce Zero Trust policies, and proxy MCP traffic across Cloudflare's global network. You will own scoped projects from design through rollout and production support, working with engineers and product managers across Access, Gateway, and Developer Platform teams. We are looking for an engineer who can make sound technical decisions, work through ambiguous systems problems, and take responsibility for the services they build.</p>
-<h2>Role Responsibilities</h2>
+<p><strong>Available Locations: </strong></p>
 <ul>
-	<li>Design, implement, and operate distributed services that connect MCP clients to authorized upstream MCP servers.</li>
-	<li>Own scoped features and service improvements through design, implementation, testing, rollout, observability, and production follow-up.</li>
-	<li>Evolve our implementation as the MCP specification changes while maintaining compatibility for existing customers and integrations.</li>
-	<li>Build secure authentication and authorization flows involving Cloudflare Access, OAuth, identity, and delegated access to upstream services.</li>
-	<li>Improve the reliability, scalability, latency, and resource efficiency of multi-tenant systems built on the Cloudflare Developer Platform.</li>
-	<li>Use structured logs, metrics, traces, dashboards, and alerts to understand service behavior; participate in production support and incident response.</li>
-	<li>Investigate customer issues across multiple services, distinguishing product defects from upstream failures, policy configuration, and infrastructure dependencies.</li>
-	<li>Collaborate with product, security, and engineering partners to turn customer needs and emerging standards into maintainable product capabilities.</li>
+	<li><strong>Austin, TX</strong></li>
+	<li><strong>London, UK</strong></li>
 </ul>
-<h2>Role Requirements</h2>
-<h3>Must Have Skills</h3>
+<p><strong>Work arrangement:</strong> Hybrid&nbsp;</p>
+<p><strong>Engagement:</strong> 9 month contract</p>
+<p><strong>Hours:</strong> Full-time</p>
+<p><strong>Reports to:</strong> Global Onboarding Program Manager, Austin, TX</p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare is building a consistent, welcoming onboarding experience for new hires around the world. We're hiring two Onboarding Specialists one in the Austin, TX and one in London, England. You'll run the day-to-day work of getting new hires ready, welcomed, and set up for success.</p>
+<p>You'll be the main contact for new hires, hiring managers, and recruiters from offer acceptance through the first weeks. You'll partner with IT, recruiting, learning and development, and Workplace teams, and you'll report to the Global Onboarding Program Manager.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>4+ years of experience building and operating distributed systems, backend services, network services, or infrastructure products in production.</li>
-	<li>Strong programming skills in TypeScript, JavaScript, Go, Rust, C++, or another language used to build production services.</li>
-	<li>Experience independently delivering changes to a production service, including testing, deployment, monitoring, and follow-up.</li>
-	<li>A solid understanding of HTTP, APIs, proxies, streaming connections, and common distributed-systems failure modes.</li>
-	<li>Experience debugging production systems using logs, metrics, traces, error reporting, and customer-provided evidence.</li>
-	<li>Ability to reason carefully about security boundaries, credential handling, concurrency, state management, and backward-compatible deployments.</li>
-	<li>Clear written and verbal communication skills, including the ability to explain technical tradeoffs and coordinate work across team boundaries.</li>
+	<li><strong>Manage start dates.</strong> Track upcoming starts, handle start date changes, and work with recruiters and hiring managers to keep timelines on track.</li>
+	<li><strong>Own the preboarding process.</strong> Complete and follow up on every step between offer acceptance and Day 1, so each new hire arrives ready.</li>
+	<li><strong>Facilitate orientation.</strong> Lead regional new hire orientation sessions, in person and virtually.</li>
+	<li><strong>Manage orientation facilitators.</strong> Schedule, prepare, and support the colleagues who present at orientation. Handle changes and keep sessions running smoothly.</li>
+	<li><strong>Provide onboarding support.</strong> Answer new hire and manager questions, resolve common issues through our ticketing system, and escalate when needed.</li>
+	<li><strong>Communicate with new hires.</strong> Send timely, clear, and friendly messages that tell new hires what to expect before and during their first days.</li>
+	<li><strong>Maintain and create onboarding content.</strong> Keep orientation materials, guides, and resources accurate and up to date.</li>
+	<li><strong>Support new hires in Workday.</strong> Manage new hire data in Workday. Help new hires complete their tasks and training, and fix issues as they come up.</li>
+	<li><strong>Support right to work and work authorization.</strong> Verify new hires' employment eligibility, including the US I-9 and UK Right to Work processes, and our internal work authorization programs. Follow up on outstanding documents, and keep records accurate and confidential.</li>
+	<li><strong>Improve how we work.</strong> Spot recurring problems, build simple tools and templates, and improve documentation to make onboarding smoother and more scalable.</li>
 </ul>
-<p>Applicants should provide a resume or CV describing relevant engineering and operational experience.</p>
-<h3>Nice to Have Skills</h3>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Experience with authentication and authorization technologies such as OAuth 2.0, OpenID Connect, JWTs, PKCE, or policy-based access control.</li>
-	<li>Experience with the Model Context Protocol</li>
-	<li>Familiarity with the Cloudflare Developer Platform or other serverless edge-computing platforms.</li>
-	<li>Experience building gateways, forward proxies, identity systems, developer platforms, or Zero Trust and data loss prevention products.</li>
+	<li>2+ years in HR operations, onboarding, recruiting coordination, learning and development coordination, or a similar role</li>
+	<li>Excellent written and verbal communication, with a professional, warm, and clear tone</li>
+	<li>Confident presenter and facilitator, with experience leading live sessions for groups, in person and virtually</li>
+	<li>Experience coordinating or managing volunteers, speakers, or facilitators and keeping a schedule on track</li>
+	<li>Experience working across teams, such as IT, recruiting, L&amp;D, and Workplace</li>
+	<li>The ability to anticipate needs and fix problems before they become escalations</li>
+	<li>Attention to detail, and the ability to work efficiently without sacrificing accuracy</li>
+	<li>Ability to manage many cases and events at once</li>
+	<li>A process improvement mindset, with experience developing tools and improving documentation and knowledge-base articles</li>
+	<li>Discretion and good judgment with confidential employee information</li>
+	<li>Self-direction, with the ability to prioritize and manage your own work</li>
+	<li>Ability to work independently and know when to escalate</li>
+	<li>Hands-on experience with an HRIS (Workday preferred), a ticketing tool (Zendesk preferred), and virtual meeting platforms [e.g., Zoom, Google Meet]</li>
+	<li>Experience with Google Workspace and with GChat or similar tools</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<h3><span style="font-size: 10pt;"><strong>Nice to have</strong></span></h3>
 <ul>
-	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €54,000-75,000&nbsp;</span></li>
+	<li>Experience with automation or AI tools to streamline workflows</li>
+	<li>Experience with global or multi-country onboarding</li>
+	<li>Experience creating training or onboarding content</li>
+	<li>Basic IT troubleshooting knowledge (SSO/MFA, device setup, access requests)</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><span style="font-size: 10pt;"><strong>Schedule</strong></span></p>
+<p>The Austin role works core hours in the Central time zone and partners with a Specialist in London. Some flexibility is needed to cover orientation sessions and handoffs across regions. London only: This role may occasionally support coverage for APJC, which may require some early or late hours.</p>
+<p><span style="font-size: 10pt;"><strong>Benefits</strong></span></p>
+<ul>
+	<li>For US: Full time contractors are eligible for Medical insurance only after 90 days of employment</li>
+	<li>For EMEA: Full time contractors are eligible for full benefits on their first day of hire</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
