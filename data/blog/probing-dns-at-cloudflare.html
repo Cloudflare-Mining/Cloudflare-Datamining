@@ -1,0 +1,168 @@
+<p>Imagine this: you’ve just pushed a release. All the unit tests passed and your dashboards are green. You sit back to relax but then suddenly your phone starts blowing up: prod is broken.</p>
+<p>This is something the Cloudflare DNS team has experienced firsthand. In one&nbsp;rollout of the service that publishes DNS records to our edge, a scheduling bug let some record changes sit unpublished for hours. The service stayed up and was healthy, but new hostnames were slow to resolve and certificates couldn't be issued until the bug was squashed.</p>
+<p>DNS failures are hard to catch because they are slow, spread across the network, and partial in where they cause impact. We needed to figure out a way to test DNS the way customers experience it: constantly, from every data center, and against production.</p>
+<p>For us, the answer was to extend Flamingo, the end-to-end testing framework we were already using&nbsp;to run hundreds of&nbsp;millions of tests a day against Cloudflare's edge. This post covers how Flamingo's modular design lets us add DNS support, how we measure propagation, and how those measurements now decide whether a release goes ahead or gets rolled back.</p>
+<h2>A little background</h2>
+<p>At Cloudflare we’re obsessed with improving performance and safety for our customers. It’s crucial that our code is tested constantly, both at scale and against the real Cloudflare edge that our users operate in.&nbsp;That’s one reason why we created a tool called Flamingo: to measure the behavior of our production environments and make sure that code in lower-tier environments behaves as expected.</p>
+<p>We’ve <a href="https://blog.cloudflare.com/20-percent-internet-upgrade/#step-2-testing-and-automated-rollouts"><u>already written</u></a>&nbsp;a little about how this tool has been used in the upgrades to our CDN stack. However, this is only a small portion of how we use Flamingo internally. One of the features of Flamingo is its modular architecture that enables teams to extend the capabilities of the tool to speak other networking protocols. In our case, we wanted to use these modular capabilities to test DNS.</p>
+<h2>What is Flamingo?</h2>
+<p>Testing is hard. Testing at&nbsp;scale, when you have a widely distributed system,&nbsp;is even harder. There are many complex pathways that requests take and multiple systems that each network request must traverse before making its way to the origin. Unit testing alone is not nearly enough for this. We need to run constant automated testing against real systems and measure the outcomes of those requests to make informed decisions on the health of a service.</p>
+<p>Enter Flamingo. Originally built around complex multi-step HTTP testing, its capabilities and scope have increased substantially over the years. Flamingo is built from the ground up with Cloudflare’s infrastructure in mind. We built a control plane and scheduler that let teams target specific environments, data centers, or percentages of metals. We needed to integrate with custom reporting, metrics, and analytics tooling. Additionally, it needed to be a tool with predictable performance and run well on bare-metal servers in resource-constrained environments.</p>
+<h3>Being delightful</h3>
+<p>When we’re building internal tooling like this, we strive to create a delightful developer experience. Internal tooling should be as easy as possible to use, but also powerful enough to handle over 80% of all use cases. And in order for a new edge acceptance test framework to be successful, it needs to be built in such a way that it forces teams to follow common guidelines and build reusable scripts in an environment that is stable, scalable, and manages&nbsp;complexity.</p>
+<p>One thing that is not delightful is debugging a test. If you allow a user to write tests in a traditional programming language, when their test fails they then both need to debug the upstream system being tested <strong>and </strong>the test itself. This is why we built Flamingo to use a custom domain-specific language (DSL) consisting of a simple setup-request-response format.</p>
+<p>For example, let’s imagine that we want to make sure we are redirecting all unencrypted traffic to its encrypted counterpart.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>TEST test-redirect</span></span>
+<span class="line"><span>SET $hostname www.cloudflare.com</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>GET "http://$(hostname)/"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ASSERT STATUS IS 301</span></span>
+<span class="line"><span>ASSERT HEADER Location IS "https://$(hostname)/"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Here we can see the power of the DSL. In five lines of code, we have a script that can run anywhere on Cloudflare’s edge and scale to thousands of requests per minute. We can take the data produced from the millions of data points generated from this and turn those into a graph defining how our service is actually performing in the real world.</p>
+<p>Taking the setup-request-response test format from above and modifying it slightly allows us to use Flamingo for more than just HTTP testing. Instead of the middle step being a request, we can now look at it as an <strong>action</strong>. Now we’ve changed our system from something that makes HTTP requests into something that can perform any action for which we’d like to measure the outcome.</p>
+<p>In Flamingo we call these <strong>modules</strong>&nbsp;and have put immense effort into making them as easy as possible for anyone to write. Flamingo is written in Rust, due to its consistent performance characteristics and strong type system. The type system in particular lends itself to this modularity, by allowing us to use strongly-typed enumerations for input and output in the Flamingo action runner:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>pub enum Action {</span></span>
+<span class="line"><span>  Query {</span></span>
+<span class="line"><span>    method: String,</span></span>
+<span class="line"><span>    url: Expression,</span></span>
+<span class="line"><span>    parameters: Vec&lt;http::QueryParameters&gt;,</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>  DnsQuery {</span></span>
+<span class="line"><span>    query_name: Expression,</span></span>
+<span class="line"><span>    query_type: Expression,</span></span>
+<span class="line"><span>    parameters: Vec&lt;dns::DnsQueryParameters&gt;,</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pub enum ActionOutput {</span></span>
+<span class="line"><span>  Http(http::FetchResponse),</span></span>
+<span class="line"><span>  Dns(dns::QueryResponse),</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pub type ActionHandlerFunction = Arc&lt;</span></span>
+<span class="line"><span>  dyn Fn(</span></span>
+<span class="line"><span>      Action,</span></span>
+<span class="line"><span>      Arc&lt;Ctx&gt;,</span></span>
+<span class="line"><span>      InterpreterConfig,</span></span>
+<span class="line"><span>    )</span></span>
+<span class="line"><span>      -&gt; BoxFuture&lt;'static, Result&lt;ActionOutput&gt;&gt;</span></span>
+<span class="line"><span>    + Send</span></span>
+<span class="line"><span>    + Sync</span></span>
+<span class="line"><span>    + 'static,</span></span>
+<span class="line"><span>&gt;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pub type ActionHandlerLUT = Arc&lt;</span></span>
+<span class="line"><span>  dyn Fn(&amp;Action) -&gt; ActionHandlerFunction</span></span>
+<span class="line"><span>    + Send</span></span>
+<span class="line"><span>    + Sync</span></span>
+<span class="line"><span>    + 'static,</span></span>
+<span class="line"><span>&gt;;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>What we’ve done here is decouple the logic for performing an action (in this case an HTTP request) into a dynamically dispatched function that we can then call independently of other actions. This leaves things like test scheduling and resource management as higher-level operations that someone implementing a module doesn’t need to worry about. All the author needs to focus on is the logic.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>pub async fn query(</span></span>
+<span class="line"><span>  action: Action,</span></span>
+<span class="line"><span>  ctx: Arc&lt;Ctx&gt;,</span></span>
+<span class="line"><span>  cfg: InterpreterConfig,</span></span>
+<span class="line"><span>) -&gt; Result&lt;ActionOutput&gt; {</span></span>
+<span class="line"><span>  let Action::Query {</span></span>
+<span class="line"><span>    method,</span></span>
+<span class="line"><span>    url,</span></span>
+<span class="line"><span>    parameters,</span></span>
+<span class="line"><span>  } = action</span></span>
+<span class="line"><span>  else {</span></span>
+<span class="line"><span>    bail!("Invalid action for module-http::query: {action:?}");</span></span>
+<span class="line"><span>  };</span></span>
+<span class="line"><span>  ...</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>pub async fn execute_module&lt;F&gt;(</span></span>
+<span class="line"><span>  ctx: Arc&lt;Ctx&gt;,</span></span>
+<span class="line"><span>  cfg: &amp;InterpreterConfig,</span></span>
+<span class="line"><span>  handler_lut: F,</span></span>
+<span class="line"><span>) -&gt; Result&lt;ActionOutput&gt;</span></span>
+<span class="line"><span>where</span></span>
+<span class="line"><span>  F: (Fn(&amp;Action) -&gt; ActionHandlerFunction),</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span>  let func = handler_lut(action);</span></span>
+<span class="line"><span>  let action_out = (func)(action.clone(), ctx.clone(), cfg.clone()).await?;</span></span>
+<span class="line"><span>  ...</span></span>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h3>Using Flamingo to probe DNS</h3>
+<p>The adage says that when issues arise, <a href="https://isitdns.com"><u>it's always DNS</u></a>. Like many jokes, there is always a kernel of truth behind it. DNS is an incredibly important piece of the Internet, and since it relies on a complex network of interconnected sources of truth, it can become easy for a single misstep to cause a storm of failures.</p>
+<p>DNS can be a particularly finicky system due to its hierarchical nature. When you change a DNS record for a Cloudflare zone, for example, said record needs to be propagated to the authoritative servers such that the updated record becomes widely available. To reduce latency, records are stored in physically closer caches. These records have a time to live (TTL) associated with them that tells the local DNS cache how long before it needs to refetch that record from the authoritative server. Any delays will impact time-sensitive operations like certificate issuance and traffic failover.</p>
+<p>We’ve already mentioned that we built Flamingo for extensibility. One of the first and most impactful modules in use today was built specifically for this use case. Our team was able to add code that extended Flamingo such that instead of sending HTTP requests, we send DNS queries. By doing so we got everything else for free. No need for the DNS team to worry about managing a new probing service. No need for them to have to integrate with our reporting pipelines. It all just worked.</p>
+<p>To probe DNS, we measure how quickly customer record changes propagate to authoritative nameservers and the public resolver (1.1.1.1). The test continuously updates a TXT record with a timestamp and queries three authoritative nameserver IPs and 1.1.1.1 from every data center, asserting freshness within 90s (authoritative) and 600s (resolver).</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>TEST test-propagation-delay-direct-108-162-193-62</span></span>
+<span class="line"><span>MOD dns</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>SET $hostname "some.probe.domain"</span></span>
+<span class="line"><span>SET $authNs 108.162.193.62:53 # amir.ns.cloudflare.com</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>QUERY $hostname TXT</span></span>
+<span class="line"><span>TARGET $authNs</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ASSERT DNS.RCODE IS NOERROR</span></span>
+<span class="line"><span>ASSERT DNS.FLAGS CONTAINS AA</span></span>
+<span class="line"><span>ASSERT DNS.ANSWERS[0] GT SUBTRACT(TIMESTAMP(), "90")</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2>Catching bugs (SLO and steady)</h2>
+<p>To ensure that our many systems are operating within expectations, we define what are called service-level objectives (SLOs) for observing things like availability or latency. SLOs are a percentage of some metric that is used as a target. Additionally, SLOs are measured through service-level indicators (SLIs) which are the actual series of measurements focused on the end-to-end experience that a user has when interacting with a system.</p>
+<p>By constantly sending synthetic Flamingo traffic through our production systems, we can begin to then use that information to build a picture of what our actual end users are experiencing — and provide that data for our SLOs. When that synthetic traffic encounters issues then we can be pretty confident that Cloudflare customers are also hitting issues and triage accordingly.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAPTk5PTs7PD09Oj09OTs7NTU1Li0tJiUlLCcnKygoKCoqJioqJCcnISEhHBoaFhQUGQ4OFQ4OCA0NAAcHAAAAAAAAAAAAAAAAIxwcHRgYCQ4OAAAAAAAAAAAAAAAABQEBQD09Ozk5LzAwICUlGR4eHR4eIyEhJSMjWlhYVlRUSktLP0FBOjw8Ozs7PDs7Ojk5a2pqZ2ZmXF1dUVNTTE5OTExMS0pKSEdHcXBwbWxsYmJiV1lZUlRUUlJSUVBQTUxM" alt="" width="715" height="480" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSC59C7M1FA4GD6FYRX57.png&amp;w=715&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSC59C7M1FA4GD6FYRX57.png&amp;w=640&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSC59C7M1FA4GD6FYRX57.png&amp;w=715&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSC59C7M1FA4GD6FYRX57.png&amp;w=750&amp;h=503&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSC59C7M1FA4GD6FYRX57.png&amp;w=828&amp;h=556&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSC59C7M1FA4GD6FYRX57.png&amp;w=1080&amp;h=725&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSC59C7M1FA4GD6FYRX57.png&amp;w=1280&amp;h=859&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSC59C7M1FA4GD6FYRX57.png&amp;w=1430&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSC59C7M1FA4GD6FYRX57.png&amp;w=1205&amp;h=809&amp;q=100&amp;f=webp" data-lightbox-width="1205" data-lightbox-height="809" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="480" class="pt-portable-image-media"></div>
+	<figcaption>SLI showing DNS probes that successfully completed below the required threshold as a function of time.</figcaption>
+</figure>
+<p>Once we have this information, it allows us to make informed decisions when releasing a service. SLOs operate in terms of error budgets and burn rates. An error budget is the percentage of downtime that a service is willing to tolerate while the burn rate is the rate of change in that budget at any given time. This allows for an automated system to understand the severity of an issue. For example, burning 10% of your error budget over a three-day period might be some long running issue that, while not urgent, is affecting customers and needs to be dealt with. But if you were to burn 10% of your error budget within an hour, that means an incident is occurring and customer impact will be substantial if not fixed immediately.</p>
+<p>Using these numbers, we can look at our SLOs while deploying and make informed decisions on the health of a service. Based on that information, we can tell our releasing systems to either promote a change or roll it back.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAANlk8MU41JC4iGAAHGQAFIBwUIB8UGQAFO2VDNlg7JzUlFwAFFwAGHyYZICkaGQwJQW9JO2JAKjspGAAGFwELIC8eITIgGhcPRHJMPWVDLT4rHAANGgsSIjMjJDckHR0VQ25KPWFCLz0tIgAWIRMaJzMmJzYnIR4bQGJFO1Y/MDguKA0eKBggLDApKzEoJRwfPFRAOUs7MTIuLBUjLRskMCsqLispKBkiOk09N0U5MS8uLhglLxwmMSkqLygpKRgj" alt="" width="715" height="248" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS55JRS38HHC0MQ3GJF0F.png&amp;w=715&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS55JRS38HHC0MQ3GJF0F.png&amp;w=640&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS55JRS38HHC0MQ3GJF0F.png&amp;w=715&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS55JRS38HHC0MQ3GJF0F.png&amp;w=750&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS55JRS38HHC0MQ3GJF0F.png&amp;w=828&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS55JRS38HHC0MQ3GJF0F.png&amp;w=1080&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS55JRS38HHC0MQ3GJF0F.png&amp;w=1280&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS55JRS38HHC0MQ3GJF0F.png&amp;w=1430&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="img2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS55JRS38HHC0MQ3GJF0F.png&amp;w=2950&amp;h=1024&amp;q=100&amp;f=webp" data-lightbox-width="2950" data-lightbox-height="1024" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="248" class="pt-portable-image-media"></div>
+</figure>
+<h2>The road ahead</h2>
+<p>By moving DNS monitoring to Flamingo, we’ve created a system that can proactively detect DNS issues before they have the chance to spread to the rest of Cloudflare’s edge. If Flamingo detects a spike in propagation latency in a specific canary data center, we can automatically halt the rollout of a new software version before it impacts the rest of the Internet.</p>
+<p>DNS is just the start for extending Flamingo. We currently have modules for testing TCP, UDP, WebSockets, and several more. Having a tool for quickly testing and monitoring services has enabled teams to deploy large changes safely without the need for a human to keep a constant watch.</p>
+<p>If this kind of reliability engineering interests you, check out our <a href="https://cloudflare.com/careers"><u>careers page</u></a>&nbsp;for open roles.</p>
+<figure class="emdash-image pt-portable-image">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="230" loading="eager" decoding="async" aria-hidden="true"><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS8J8Z5D7AF2TXXD5KQK8.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS8J8Z5D7AF2TXXD5KQK8.png&amp;w=640&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS8J8Z5D7AF2TXXD5KQK8.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS8J8Z5D7AF2TXXD5KQK8.png&amp;w=750&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS8J8Z5D7AF2TXXD5KQK8.png&amp;w=828&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS8J8Z5D7AF2TXXD5KQK8.png&amp;w=1080&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS8J8Z5D7AF2TXXD5KQK8.png&amp;w=1280&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS8J8Z5D7AF2TXXD5KQK8.png&amp;w=1430&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNS8J8Z5D7AF2TXXD5KQK8.png&amp;w=1999&amp;h=644&amp;q=100&amp;f=webp" data-lightbox-width="1999" data-lightbox-height="644" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="230" class="pt-portable-image-media"></div>
+</figure>
+<p></p>
