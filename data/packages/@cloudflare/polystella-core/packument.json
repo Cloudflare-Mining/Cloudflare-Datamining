@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/polystella-core",
 	"dist-tags": {
-		"latest": "0.6.0"
+		"latest": "0.7.0"
 	},
 	"versions": {
 		"0.0.0-stage": {
@@ -123,8 +123,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIC0STOnR3JaJZn8TUh1VJeOwqu6mcXqbYguZW1w7a/yLAiEAtkPMh5RceFE7KLXKF7+ueMJnraskW2WtZOEkwixgji0="
+						"sig": "MEUCIC0STOnR3JaJZn8TUh1VJeOwqu6mcXqbYguZW1w7a/yLAiEAtkPMh5RceFE7KLXKF7+ueMJnraskW2WtZOEkwixgji0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -134,6 +134,54 @@
 					}
 				},
 				"unpackedSize": 680574
+			}
+		},
+		"0.7.0": {
+			"name": "@cloudflare/polystella-core",
+			"version": "0.7.0",
+			"dependencies": {
+				"yaml": "^2.9.1",
+				"s3mini": "^0.9.4",
+				"p-retry": "^8.0.0",
+				"unified": "^11.0.5",
+				"picomatch": "^4.0.7",
+				"smol-toml": "^1.9.1",
+				"remark-gfm": "^4.0.1",
+				"remark-mdx": "^3.1.1",
+				"@types/mdast": "^4.0.4",
+				"remark-parse": "^11.0.0",
+				"intl-messageformat": "^12.2.0",
+				"remark-frontmatter": "^5.0.0",
+				"@formatjs/icu-messageformat-parser": "^3.5.23"
+			},
+			"devDependencies": {
+				"vitest": "^4.1.9",
+				"typescript": "^6.0.3",
+				"@types/node": "^26.6.6",
+				"@types/picomatch": "^4.0.0"
+			},
+			"dist": {
+				"shasum": "23b52b53b9049aef1046aabea9788e4e56832b78",
+				"tarball": "https://registry.npmjs.org/@cloudflare/polystella-core/-/polystella-core-0.7.0.tgz",
+				"fileCount": 254,
+				"integrity": "sha512-Ijy2zCTOHlTxNk3X2p2ISvJusErifmcBaRMGlShcfCpXJEAXk/dFgTmdZgG4vJpAoQyyJQTXWfA+WGlLZSlXow==",
+				"signatures": [
+					{
+						"sig": "MEQCIFr6A7Zqv5SEDubxEdB8p7OjHp13wXE/11dOTV2i0oUtAiA7SkJ3KIBsypMXM8WEUJfHbFyW3bVJ8zJROUGvqlyrNg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQCxw5rrVkZ+gavCWxrBE2xDOHACIVWGswjHn5tIDJabggIgT0ZAUAo5BIa97xmoBpb7KqA79Fr0sdKK7Bh1n/6LSp4="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fpolystella-core@0.7.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 848578
 			}
 		}
 	}

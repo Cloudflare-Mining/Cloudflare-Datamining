@@ -1,5 +1,110 @@
 # @cloudflare/polystella-emdash
 
+## 0.4.0
+
+### Minor Changes
+
+- [#70](https://github.com/cloudflare/polystella/pull/70) [`af5bf77`](https://github.com/cloudflare/polystella/commit/af5bf77417169c3f21e8abb0fa324b685af6bb4e) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - `translateSegments` accepts an opt-in `concurrency` (default 1) that sends several batches at once; the first failure aborts the batches still in flight. EmDash content translation now sends up to 3 batches of an entry at once, so long entries translate faster. The Astro build keeps one batch at a time per file, since it already translates several files in parallel.
+
+  A reply cut off at the output token limit (`finish_reason: "length"` from Workers AI, `stop_reason: "max_tokens"` from Anthropic) now fails with "model ran out of output tokens", naming the model and limit, instead of an "unexpected response shape" or missing-segment error. EmDash shows this message to editors.
+
+- [#77](https://github.com/cloudflare/polystella/pull/77) [`9640535`](https://github.com/cloudflare/polystella/commit/9640535b064a7cb0e986a0cc8f3902bf675d7c88) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - UI-string catalogs can use standard ICU MessageFormat. Set `catalog: { messageSyntax: "icu" }` in `polystella.config.mjs` to write placeholders as `{name}` and plurals as `{count, plural, one {# item} other {# items}}` instead of the default `{{name}}` syntax. This fits catalogs from inlang's ICU MessageFormat plugin.
+
+  `check-ui`, `translate-ui`, the build's drift checks, `Astro.locals.t`, `getTranslations()`, `useTranslations()` and `catalogAstro()` follow the setting. Single-brace placeholders get the same missing/spurious checks, plural-category checks and translation retries as `{{name}}`. A default-locale string that isn't valid ICU (such as inlang markup) is reported by `check-ui` and never sent to the model by `translate-ui`, which lists it as a failure. The standalone `formatMessage()` and the core validators take the syntax as an optional argument, defaulting to `"polystella"`.
+
+  The EmDash plugin takes the same block as a new `catalog` option (`catalog: { ignoreKeys, messageSyntax }`), since it can't read `polystella.config.mjs`. Ignored keys are left out of the Catalog tab, validation and generation, and JSON export keeps them as they are. An ignored array value no longer fails validation. `messageSyntax` applies to override validation, catalog generation, the Catalog tab's placeholder hint and the runtime `t()`. A nested JSON export now keeps an override for a key that only the default-locale file has; it used to drop it.
+
+  `check-ui` now fails with exit 1 when the default-locale catalog file is missing, as `sync-ui --check` already did. The build's drift check still skips it.
+
+- [#68](https://github.com/cloudflare/polystella/pull/68) [`ef72d2d`](https://github.com/cloudflare/polystella/commit/ef72d2d6477cfe5121a2f3745a05240d40f6ebb7) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Translate custom Portable Text blocks. A new `blockFields` option maps a block `_type` to the text paths to translate (`"headline"`, `"cta.label"`, `"cards[].title"`, `"tags[]"`, or a nested Portable Text array such as `"columns[].content"`). Unlisted blocks and fields are still copied unchanged, so existing sites behave as before. Placeholder tokens are checked in block text like any other field, invalid content errors now name the exact location (`body[3].columns[0].content[1]`), and the debug view labels custom block segments.
+
+  The batch tab's **View live** link is hidden when a collection has no URL pattern, instead of guessing `/{collection}/{slug}`, and the catalog tab's placeholder hint no longer nests a button inside a button.
+
+- [#67](https://github.com/cloudflare/polystella/pull/67) [`b38709e`](https://github.com/cloudflare/polystella/commit/b38709e55ace1700cd347c45fd3f260709647b6c) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - New **Batch translation** admin tab: translate a whole collection, or entries you pick from a searchable list, into one or more target locales. Missing locales are created as drafts. Existing translations are skipped unless you turn on **Update existing translations**, which saves with EmDash's `_rev` token so an entry edited during the run is skipped instead of overwritten. The run happens in the browser, three translations at a time, with a result for each entry and locale, a **Stop** button, and **Retry failed**.
+
+  Optional server jobs on Cloudflare Queues: set `batchQueueBinding` and export `handlePolystellaBatchQueue` from `@cloudflare/polystella-emdash/queue` as the Worker's `queue` handler. The tab then offers **Run in: Server queue**, which keeps going after the tab closes, creates only missing translations (as drafts, with the source slug), and lists recent jobs with progress, failures, **Cancel**, and **Retry failed**. The plugin declares two new storage collections, `batch_jobs` and `batch_results`.
+
+  Locale pickers in the Batch tab and the content-editor panel start empty and have **Select all** and **Clear all**. The Batch tab adds **Select untranslated** for selected entries. On a source entry, the editor panel now creates drafts for several locales in one go.
+
+  Administrators can set **Max output tokens** in the Translation settings tab; empty uses `provider.maxTokens` or `8192`.
+
+  Content translation now covers text inside Portable Text tables.
+
+  **Publish translations immediately** in the Batch tab publishes each translation right after it is saved, in the browser and on the server queue. Browser results link to each translation.
+
+  Entries translated by PolyStella are now flagged as AI-translated. Themes read the flag with `getEnrichedEntry` and `getEnrichedCollection` from the new `@cloudflare/polystella-emdash/content` export: same arguments and result as EmDash's getters, plus `entry.polystella.aiTranslated`, `aiTranslatedAt`, and `aiTranslationModel`. The plugin declares a new storage collection, `ai_translations`. Flag reads use EmDash's object cache (per entry, and per page for collections) and are cleared whenever a flag is saved.
+
+  Browser batch runs open in their own tab, which shows the plan, waits for **Start translating**, and warns that it must stay open. Result rows link to **Edit**, **View live**, or **Preview draft** in a new tab, for browser runs and server jobs (**Show results**). Finished or cancelled server jobs can be removed from the list, one at a time or with **Clear finished jobs**.
+
+  Server batch jobs older than 30 days are deleted automatically when the jobs list loads, and a result that arrives after its job was removed is dropped. When a translation saves but its AI-translated flag doesn't, the editor panel and batch result rows show a warning instead of only logging it.
+
+  Whole-collection queue jobs are listed by the queue, 100 entries at a time, instead of inside the start request. Listing stops at 5,000 translations and the job card says so. PolyStella fingerprints each field it writes. When a person changes one, the editor panel shows **Edited since AI translation** with **Keep AI flag** and **Remove AI flag**; the flag stays until then, unless the new Translation setting removes it automatically after every save and publish. The plugin now declares the read-only `content:revisions:read` capability for this.
+
+- [#70](https://github.com/cloudflare/polystella/pull/70) [`525ba5d`](https://github.com/cloudflare/polystella/commit/525ba5d4b8f18b61102ffa176fa1f26b6185a015) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - EmDash `blocks` fields can now be enabled and translated. List each block type's text fields in `blockFields`, keyed by the block type slug (for example `hero: ["heading", "body", "link_label"]`). Unlisted block types and fields, `_version`, `_key`, URLs and media are copied unchanged, and EmDash's own Portable Text block defaults don't apply inside `blocks` fields.
+
+- [#78](https://github.com/cloudflare/polystella/pull/78) [`874680d`](https://github.com/cloudflare/polystella/commit/874680d91096d066586a73eba9572fe4900287ce) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - On EmDash 1.6 and later, the content-editor panel puts translations into the open form instead of saving and reloading. Unsaved changes are kept, and editors are asked to review the translation. If a selected field changes during translation, the form is left as it was and the panel asks to translate again. A read-only editor sends nothing. Each translated field is marked AI-written when a save first changes it. EmDash before 1.6 keeps the save-and-reload behaviour.
+
+  In collections with SEO, the panel also translates the SEO title and meta description. EmDash saves SEO text at once, so on published and scheduled entries this is off unless an Administrator turns on **Translate the SEO title and meta description of published and scheduled entries** in Translation settings.
+
+  On EmDash 1.5 and later, the PolyStella section is hidden on collections that aren't enabled in plugin settings.
+
+- [#70](https://github.com/cloudflare/polystella/pull/70) [`c4ad723`](https://github.com/cloudflare/polystella/commit/c4ad723a5a833183da16abb6542b8717c9605170) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Long entries no longer fail with "cannot translate more than 30000 characters at once". Content translation now splits an entry into parts of up to 30,000 characters and 500 segments and translates one part per request: the editor panel and browser batch runner send the parts one after another, and queued batch jobs translate one part per queue message, keeping finished parts in plugin storage until the entry is created. An entry can hold up to 500,000 characters and 5,000 segments. If the source entry changes between parts, the translation stops with "The source entry changed while it was being translated."
+
+- [#70](https://github.com/cloudflare/polystella/pull/70) [`1be63c8`](https://github.com/cloudflare/polystella/commit/1be63c8005492ed936aacc7eee2bfee058dcdb33) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - EmDash's own Portable Text block types are now translated without configuration: image `alt`, `caption` and `title`, gallery image alt text and captions, video and embed captions, button labels, pull quotes, iframe titles, and the rich text inside `columns` and `cover` blocks. Before, they were copied in the source language unless listed in `blockFields`. A `blockFields` entry for one of these types replaces its default, and an empty list (`image: []`) keeps the old behaviour for that type. `code`, `htmlBlock` and `file` blocks are never translated.
+
+- [#70](https://github.com/cloudflare/polystella/pull/70) [`48f949e`](https://github.com/cloudflare/polystella/commit/48f949eb29dfeab5208df9ddb5649c8f23e45859) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Translations that contain same-page links (`#…`) now come with a notice asking the editor to review them by hand. EmDash gives headings no ids, so each site builds its own, often from the heading text, and a translated heading can get a different anchor than the copied link. The content-editor panel shows the notice instead of reloading, and batch results record it on each created entry. `TranslateContentResponse` gains an optional `notice`.
+
+- [#72](https://github.com/cloudflare/polystella/pull/72) [`914e09b`](https://github.com/cloudflare/polystella/commit/914e09b426f6a2bc5d5abd45522a9a22c79c41b6) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Large glossaries now work. Each translation request carries only the `doNotTranslate` terms and `preferredTranslations` whose source term appears in its text or document context (case-insensitive, at word boundaries); style rules and notes are always sent. A 35K-character glossary drops from about 9K tokens per request to the style rules plus a few matched terms. Cache keys are unchanged.
+
+  - `glossary.matchInflections` (Astro and the catalog CLI) and `glossaryMatchInflections` (EmDash) let any letters follow a term, so `Worker` also matches "Workers". Default off.
+  - `provider.maxPromptTokens` (default 8000) caps a whole prompt. A batch over it is split; a single segment over it fails with `PromptTooLargeError` ("prompt for segment … is about N tokens, over maxPromptTokens").
+  - EmDash no longer caps the effective glossary at 10,000 characters, which blocked both translation and saving Translation settings for sites with large code-defined glossaries. Only the administrator-typed glossary text keeps its 10,000-character cap; `glossaryDefaults` get a 1,000,000-character sanity bound.
+  - Debug traces show how many glossary terms each batch sent.
+  - Core exports `selectGlossaryForText`, `buildBatchPrompt`, `estimatePromptTokens`, `DEFAULT_MAX_PROMPT_TOKENS` and `PromptTooLargeError`; `TranslateBatchAttemptEvent` gains `glossary` stats.
+
+- [#70](https://github.com/cloudflare/polystella/pull/70) [`c996787`](https://github.com/cloudflare/polystella/commit/c99678710c2cdf43e06e6874a1b1da910b3fcdf4) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Inline markup is now protected during translation. A `Segment` can set `markup: "html"` or `"markdown"`; `translateSegments` swaps its tags (and Markdown links, images, emphasis, code spans and escapes) for `{{ps_N}}` placeholders before the model call and puts them back afterwards, so URLs never reach the model. A reply that loses, repeats, reorders or empties a placeholder is resent once with the problem explained, then fails with `InlineMarkupError` ("model changed inline markup") instead of saving broken links or tags.
+
+  The Markdown adapter opts `.md` body segments in, so Astro `.md` translations get the same protection; MDX keeps its existing inline JSX placeholders. Cache keys are unchanged.
+
+  `@cloudflare/polystella-core/adapters` adds `splitMarkdownText(source)`, which cuts one Markdown string into the same body segments as the Markdown adapter and splices translations back, without frontmatter or MDX support (about 45 KB gzipped instead of about 140 KB). Core is now marked `"sideEffects": false`, so bundlers drop the adapters a Worker doesn't import.
+
+  EmDash protects inline tags such as `<gradient>…</gradient>` in every translated string, and `blockFields` paths can be `{ path, format: "markdown" }` to translate a Markdown string one paragraph, heading or list item at a time.
+
+- [#76](https://github.com/cloudflare/polystella/pull/76) [`ff7629f`](https://github.com/cloudflare/polystella/commit/ff7629fc371084b33645b3b7cb568e6aa4600eb0) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Reasoning models' thinking can be turned on or off per locale, next to the locale's model. An entry in EmDash `models.defaults`, or in the `translate-ui` CLI's `provider.model` (`kind: "workers-ai"`), can be `{ model, enable_thinking }`:
+
+  ```js
+  defaults: {
+    default: { model: MODEL, enable_thinking: false },
+    "ja-JP": { model: MODEL, enable_thinking: true },
+  },
+  ```
+
+  It applies while the locale uses that model; a model an administrator picks instead keeps its own params. `enable_thinking: true | false` in `models.params` (EmDash), `provider.params` (CLI, new) or the Workers AI translators' `params` (core) sets it for every locale. PolyStella sends it as `chat_template_kwargs.enable_thinking`, the only form Workers AI reads; it silently ignores a top-level `enable_thinking`, so that key used to have no effect. A non-boolean value, or also setting it in `chat_template_kwargs`, is rejected.
+
+  Core exports the `ModelChoice` and `ModelChoiceSpec` types, `resolveModelChoice`, and from `providers/workers-ai` `workersAIParamsProblem` and `workersAIParamsForLocale`. `resolveModelId` accepts a `ModelChoiceSpec`.
+
+- [#73](https://github.com/cloudflare/polystella/pull/73) [`7d79462`](https://github.com/cloudflare/polystella/commit/7d79462cf6564a8c70c425feb6f670b8c09202cd) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Workers AI requests can now be tuned and measured.
+
+  - `models.params` (EmDash) sets extra Workers AI input per allowed model, such as `{ chat_template_kwargs: { enable_thinking: false } }` to turn off GLM-4.7-flash's reasoning. Keys PolyStella sets (`messages`, `prompt`, `max_tokens`, `max_completion_tokens`, `stream`) are rejected. Core's Workers AI translators take the same `params`.
+  - `provider.timeoutMs` (EmDash, default 200,000) stops waiting for a reply, under Workers AI's own ~236 s timeout, and fails with "The translation model timed out". Core's Workers AI translators take `timeoutMs` and throw the retriable `ProviderTimeoutError`. HTTP requests are aborted; with the binding, PolyStella stops waiting while the upstream call may finish.
+  - Each attempt in the debug trace, and the server log entry of a failed reply, shows the finish reason, input, output and reasoning tokens, and the reasoning text size. `Translator.translate` takes an optional `onResponse` callback for this, and `TranslateBatchAttemptEvent` gains `providerResponse`.
+  - Fixed: `glossaryMatchInflections` was dropped when EmDash options were serialized, so it never reached the server.
+
+### Patch Changes
+
+- [#70](https://github.com/cloudflare/polystella/pull/70) [`76e79ca`](https://github.com/cloudflare/polystella/commit/76e79cac8c7f5a06be49549cfaf94bc347224b58) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Tested with EmDash 1.5.0 and `@emdash-cms/admin` 1.5.0 (which ships Kumo 2.15.0). The supported range stays `^1.3.1`. EmDash 1.5's co-editing mode is off by default and not yet tested with PolyStella.
+
+- [#77](https://github.com/cloudflare/polystella/pull/77) [`fa3c785`](https://github.com/cloudflare/polystella/commit/fa3c78579d5510bc723bea42f1df48d74ac50b4e) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Tested with EmDash 1.6.0 and `@emdash-cms/admin` 1.6.0 (which ships Kumo 2.19.0). The supported range stays `^1.3.1`. EmDash 1.6.0 changes no block converters or block types, so the fields PolyStella translates inside blocks are the same.
+
+- [#70](https://github.com/cloudflare/polystella/pull/70) [`95f256c`](https://github.com/cloudflare/polystella/commit/95f256c32244277954659cf00041475cc6f760b9) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Server batch jobs now report `status: "finished"` once every queued translation has a result, instead of staying `running`. A translation that was already running when its job was cancelled still saves, and its result row now says "Finished after the job was cancelled." The browser runner explains that **Stop** lets translations that already started finish, which can take minutes with a slow model. The editor panel rechecks the AI-translated flag when the tab regains focus and again shortly after a save, so a flag cleared by a save hook no longer needs a reload to disappear.
+
+- [#70](https://github.com/cloudflare/polystella/pull/70) [`f1a58b1`](https://github.com/cloudflare/polystella/commit/f1a58b1172c2c76cb03359bfcf358557ca1f2046) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Translation failures now log the raw error under their Diagnostic ID, in the server log only: the full message (including the provider response preview), any error code, and the cause chain. Editors still see only the short, safe message. Workers AI "unexpected response shape" errors now start their preview with the first choice's `finish_reason` and the size of each reply field, such as `reasoning_content`, so a long reasoning field no longer hides them.
+
+- [#72](https://github.com/cloudflare/polystella/pull/72) [`7633d18`](https://github.com/cloudflare/polystella/commit/7633d184f8bed6219a5fcb145943b2e79ce24ccf) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - A one-segment batch whose reply has no `@@<id>@@` marker line is now accepted as that segment's translation instead of failing with "no segment markers"; inline-markup placeholders are still checked afterwards. EmDash shows Workers AI timeouts (`AiError` "3046: Request timeout") as "The translation model timed out (Workers AI error 3046). Try again, or translate fewer fields at once or pick a faster model." instead of the generic failure.
+
+- Updated dependencies [[`af5bf77`](https://github.com/cloudflare/polystella/commit/af5bf77417169c3f21e8abb0fa324b685af6bb4e), [`e73169a`](https://github.com/cloudflare/polystella/commit/e73169a96f9e155b2365dc3af078ee355cb3f4a5), [`9640535`](https://github.com/cloudflare/polystella/commit/9640535b064a7cb0e986a0cc8f3902bf675d7c88), [`6c71933`](https://github.com/cloudflare/polystella/commit/6c71933a3bbb8af80df3ac393fd319833301d51f), [`f1a58b1`](https://github.com/cloudflare/polystella/commit/f1a58b1172c2c76cb03359bfcf358557ca1f2046), [`914e09b`](https://github.com/cloudflare/polystella/commit/914e09b426f6a2bc5d5abd45522a9a22c79c41b6), [`c996787`](https://github.com/cloudflare/polystella/commit/c99678710c2cdf43e06e6874a1b1da910b3fcdf4), [`7633d18`](https://github.com/cloudflare/polystella/commit/7633d184f8bed6219a5fcb145943b2e79ce24ccf), [`ff7629f`](https://github.com/cloudflare/polystella/commit/ff7629fc371084b33645b3b7cb568e6aa4600eb0), [`7d79462`](https://github.com/cloudflare/polystella/commit/7d79462cf6564a8c70c425feb6f670b8c09202cd)]:
+  - @cloudflare/polystella-core@0.7.0
+
 ## 0.3.0
 
 ### Minor Changes

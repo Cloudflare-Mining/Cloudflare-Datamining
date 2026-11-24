@@ -1,5 +1,46 @@
 # @cloudflare/polystella-astro
 
+## 0.7.0
+
+### Minor Changes
+
+- [#77](https://github.com/cloudflare/polystella/pull/77) [`e73169a`](https://github.com/cloudflare/polystella/commit/e73169a96f9e155b2365dc3af078ee355cb3f4a5) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - UI-string catalogs can skip entries that are not messages. List regex strings in `catalog.ignoreKeys` in `polystella.config.mjs`, for example `catalog: { ignoreKeys: ["\\$schema"] }` for the `$schema` key in inlang / Paraglide message files. Each pattern must match the whole dotted key, and a matched group skips its whole subtree.
+
+  `sync-ui`, `check-ui`, `translate-ui`, the build's drift check and `catalogAstro()` skip ignored entries: they are never synced, checked or sent to the model, and they may hold any value, such as an inlang variant-message array. Ignored entries already in a locale file are kept as they are. A top-level `$schema` from the default-locale file is copied into locale files that lack it. An invalid pattern fails at config load.
+
+  The option is read only from `polystella.config.mjs`. `polystella()` accepts a `catalog` key so a shared config object still validates, and warns when an inline value differs from the file. `sync-ui` and `translate-ui --sync-only` now load `polystella.config.mjs` when it exists. A catalog array value that is not ignored still fails, and the error now suggests `catalog.ignoreKeys`. The catalog commands now report an unreadable catalog file (invalid JSON, an array value) with exit code 1 instead of crashing, and `polystella.config.mjs` falls back to Astro's Vite loader when Node cannot import it, the same way `astro.config.mjs` does.
+
+- [#77](https://github.com/cloudflare/polystella/pull/77) [`9640535`](https://github.com/cloudflare/polystella/commit/9640535b064a7cb0e986a0cc8f3902bf675d7c88) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - UI-string catalogs can use standard ICU MessageFormat. Set `catalog: { messageSyntax: "icu" }` in `polystella.config.mjs` to write placeholders as `{name}` and plurals as `{count, plural, one {# item} other {# items}}` instead of the default `{{name}}` syntax. This fits catalogs from inlang's ICU MessageFormat plugin.
+
+  `check-ui`, `translate-ui`, the build's drift checks, `Astro.locals.t`, `getTranslations()`, `useTranslations()` and `catalogAstro()` follow the setting. Single-brace placeholders get the same missing/spurious checks, plural-category checks and translation retries as `{{name}}`. A default-locale string that isn't valid ICU (such as inlang markup) is reported by `check-ui` and never sent to the model by `translate-ui`, which lists it as a failure. The standalone `formatMessage()` and the core validators take the syntax as an optional argument, defaulting to `"polystella"`.
+
+  The EmDash plugin takes the same block as a new `catalog` option (`catalog: { ignoreKeys, messageSyntax }`), since it can't read `polystella.config.mjs`. Ignored keys are left out of the Catalog tab, validation and generation, and JSON export keeps them as they are. An ignored array value no longer fails validation. `messageSyntax` applies to override validation, catalog generation, the Catalog tab's placeholder hint and the runtime `t()`. A nested JSON export now keeps an override for a key that only the default-locale file has; it used to drop it.
+
+  `check-ui` now fails with exit 1 when the default-locale catalog file is missing, as `sync-ui --check` already did. The build's drift check still skips it.
+
+- [#72](https://github.com/cloudflare/polystella/pull/72) [`914e09b`](https://github.com/cloudflare/polystella/commit/914e09b426f6a2bc5d5abd45522a9a22c79c41b6) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Large glossaries now work. Each translation request carries only the `doNotTranslate` terms and `preferredTranslations` whose source term appears in its text or document context (case-insensitive, at word boundaries); style rules and notes are always sent. A 35K-character glossary drops from about 9K tokens per request to the style rules plus a few matched terms. Cache keys are unchanged.
+
+  - `glossary.matchInflections` (Astro and the catalog CLI) and `glossaryMatchInflections` (EmDash) let any letters follow a term, so `Worker` also matches "Workers". Default off.
+  - `provider.maxPromptTokens` (default 8000) caps a whole prompt. A batch over it is split; a single segment over it fails with `PromptTooLargeError` ("prompt for segment … is about N tokens, over maxPromptTokens").
+  - EmDash no longer caps the effective glossary at 10,000 characters, which blocked both translation and saving Translation settings for sites with large code-defined glossaries. Only the administrator-typed glossary text keeps its 10,000-character cap; `glossaryDefaults` get a 1,000,000-character sanity bound.
+  - Debug traces show how many glossary terms each batch sent.
+  - Core exports `selectGlossaryForText`, `buildBatchPrompt`, `estimatePromptTokens`, `DEFAULT_MAX_PROMPT_TOKENS` and `PromptTooLargeError`; `TranslateBatchAttemptEvent` gains `glossary` stats.
+
+### Patch Changes
+
+- [#74](https://github.com/cloudflare/polystella/pull/74) [`6c71933`](https://github.com/cloudflare/polystella/commit/6c71933a3bbb8af80df3ac393fd319833301d51f) Thanks [@dependabot](https://github.com/apps/dependabot)! - Update runtime dependencies: `satteri` 0.11, `acorn`, `picomatch`, `yaml`, and `intl-messageformat` with its ICU parser.
+
+- [#70](https://github.com/cloudflare/polystella/pull/70) [`c996787`](https://github.com/cloudflare/polystella/commit/c99678710c2cdf43e06e6874a1b1da910b3fcdf4) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Inline markup is now protected during translation. A `Segment` can set `markup: "html"` or `"markdown"`; `translateSegments` swaps its tags (and Markdown links, images, emphasis, code spans and escapes) for `{{ps_N}}` placeholders before the model call and puts them back afterwards, so URLs never reach the model. A reply that loses, repeats, reorders or empties a placeholder is resent once with the problem explained, then fails with `InlineMarkupError` ("model changed inline markup") instead of saving broken links or tags.
+
+  The Markdown adapter opts `.md` body segments in, so Astro `.md` translations get the same protection; MDX keeps its existing inline JSX placeholders. Cache keys are unchanged.
+
+  `@cloudflare/polystella-core/adapters` adds `splitMarkdownText(source)`, which cuts one Markdown string into the same body segments as the Markdown adapter and splices translations back, without frontmatter or MDX support (about 45 KB gzipped instead of about 140 KB). Core is now marked `"sideEffects": false`, so bundlers drop the adapters a Worker doesn't import.
+
+  EmDash protects inline tags such as `<gradient>…</gradient>` in every translated string, and `blockFields` paths can be `{ path, format: "markdown" }` to translate a Markdown string one paragraph, heading or list item at a time.
+
+- Updated dependencies [[`af5bf77`](https://github.com/cloudflare/polystella/commit/af5bf77417169c3f21e8abb0fa324b685af6bb4e), [`e73169a`](https://github.com/cloudflare/polystella/commit/e73169a96f9e155b2365dc3af078ee355cb3f4a5), [`9640535`](https://github.com/cloudflare/polystella/commit/9640535b064a7cb0e986a0cc8f3902bf675d7c88), [`6c71933`](https://github.com/cloudflare/polystella/commit/6c71933a3bbb8af80df3ac393fd319833301d51f), [`f1a58b1`](https://github.com/cloudflare/polystella/commit/f1a58b1172c2c76cb03359bfcf358557ca1f2046), [`914e09b`](https://github.com/cloudflare/polystella/commit/914e09b426f6a2bc5d5abd45522a9a22c79c41b6), [`c996787`](https://github.com/cloudflare/polystella/commit/c99678710c2cdf43e06e6874a1b1da910b3fcdf4), [`7633d18`](https://github.com/cloudflare/polystella/commit/7633d184f8bed6219a5fcb145943b2e79ce24ccf), [`ff7629f`](https://github.com/cloudflare/polystella/commit/ff7629fc371084b33645b3b7cb568e6aa4600eb0), [`7d79462`](https://github.com/cloudflare/polystella/commit/7d79462cf6564a8c70c425feb6f670b8c09202cd)]:
+  - @cloudflare/polystella-core@0.7.0
+
 ## 0.6.0
 
 ### Minor Changes

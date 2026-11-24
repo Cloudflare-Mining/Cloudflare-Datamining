@@ -248,5 +248,9 @@ Other differences:
 - The Build Output's root `config.json` names `rsbuild-plugin-cloudflare` as its
   `producer`, where the Vite plugin names `@cloudflare/vite-plugin`.
 - No "Debug" URL is printed, but `/__debug` works.
+- With `X_LOCAL_EXPLORER_USE_VITE_ALLOWED_HOSTS=true`, the `/cdn-cgi/`
+  endpoints (including Local Explorer's) also trust Rsbuild's
+  `server.allowedHosts`, in dev and preview, where the Vite plugin trusts
+  `server.allowedHosts` in dev and `preview.allowedHosts` in preview.
 - Miniflare's message about updating the compatibility date mentions
   `@cloudflare/vite-plugin`.

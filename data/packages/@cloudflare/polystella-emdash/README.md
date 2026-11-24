@@ -48,6 +48,11 @@ export default defineConfig({
 glossary source forms. Remote sources load one `{locale}` YAML object
 per configured locale and do not require `projectRoot`.
 
+Each translation request carries only the glossary terms its text uses, plus
+the style rules and notes, so code-defined glossaries can be large (up to
+1,000,000 characters per locale). `glossaryMatchInflections: true` lets any
+letters follow a term, so `Worker` also matches "Workers".
+
 Keep `polystellaEmdashAstro()` after `emdash()`. It binds `Astro.locals.t` and
 `Astro.locals.lhref`, overlays enabled EmDash overrides, and falls back to the
 deployed dictionaries when storage is unavailable. Configure the named Workers
@@ -86,6 +91,11 @@ server-side, and never include credentials, authorization headers, account IDs,
 or raw provider HTTP envelopes. Successful content traces survive the existing
 editor reload in browser session storage for one view.
 
+Whether or not debug mode is on, every failure writes its diagnostic ID to the
+server log with the full error message, its code and cause chain, and for an
+unusable model reply the finish reason and reply field sizes. Editors see only a
+short, safe message and the same ID.
+
 The native admin registers one **PolyStella** page with **Catalog**,
 **Collections**, **Translation settings**, and **Translation sandbox** tabs.
 These controls use EmDash's Kumo design system; no generated plugin settings
@@ -107,12 +117,72 @@ stored policy fails closed. Translation also checks the live collection schema
 non-translatable. Settings saves are conditional on the loaded revision; a
 concurrent save by another Administrator is rejected instead of overwritten.
 
-The panel translates selected `string`, `text`, and Portable Text fields in an
-existing target-locale draft. The private route rereads selected values through
-its `content:read` capability, while the panel updates with EmDash's `_rev` token
-and reloads after success. Unsaved browser changes are not translated and are
-lost after confirmation. A save refused by another editor's edit lock names the
-lock holder.
+The panel translates selected `string`, `text`, Portable Text and `blocks` fields in an
+existing target-locale draft. The private route rereads the source values
+through its `content:read` capability. On EmDash 1.6 and later, the panel puts
+the translation into the open form through `editorDraft`, keeping other unsaved
+changes, and the editor is asked to review it. A patch is refused if a selected
+field changed during translation, and nothing is sent from a read-only editor. The
+entry is marked AI-translated when it is saved. In collections with SEO, the
+panel also translates the SEO title and meta description; on published and scheduled entries
+only when an Administrator allows it in **Translation settings**, because EmDash
+saves SEO text at once. On older EmDash, the panel saves with EmDash's `_rev`
+token and reloads; unsaved changes are lost after confirmation, and a save
+refused by another editor's edit lock names the lock holder.
+
+Same-page links (`#…`) are copied unchanged. EmDash gives headings no ids, so
+sites build their own, often from the heading text, and a translated heading can
+get a different anchor. The panel and batch results list these links for review.
+
+Long entries are translated in parts of up to 30,000 characters and 500 text
+segments, one request per part, so each request stays short. The panel shows
+which part is running; queued batch jobs translate one part per queue message.
+An entry can hold up to 500,000 characters and 5,000 segments. If the source
+entry changes between parts, the translation stops and asks to start again.
+
+Portable Text paragraphs, headings, lists and tables are always translated.
+EmDash's own block types (`image`, `gallery`, `video`, `button`, `buttons`,
+`columns`, `cover`, `pullquote`, `embed`, `iframe`) are translated by default;
+`code`, `htmlBlock` and `file` never are. Other custom blocks are copied
+unchanged unless the `blockFields` option lists their text paths by block
+`_type`. An entry for an EmDash type replaces its default, and `[]` turns it off:
+
+```js
+polystellaEmdash({
+  // ...
+  blockFields: {
+    "marketing.hero": ["headline", "cta.label", "banners[].title"],
+    "marketing.columns": ["columns[].content"],
+  },
+});
+```
+
+Mark a Markdown string with `{ path: "answer", format: "markdown" }`. It is
+translated one paragraph, heading or list item at a time, with links, emphasis
+and code replaced by placeholders, so URLs never reach the model. Inline tags
+such as `<gradient>` are protected the same way in every string. A reply that
+loses or reorders a placeholder is resent once, then fails.
+
+For [`blocks` fields](https://docs.emdashcms.com/guides/blocks/), list each
+block type's text fields the same way, keyed by the block type slug, such as
+`hero: ["heading", "body", "link_label"]`. Unlisted block types and fields,
+including `_version`, `_key`, URLs and media, are copied unchanged. EmDash's own
+block-type defaults don't apply inside `blocks` fields.
+
+| Path                | Translates                                        |
+| :------------------ | :------------------------------------------------ |
+| `headline`          | A string property                                 |
+| `cta.label`         | A property of a nested object                     |
+| `banners[].title`   | That property on every item of a list             |
+| `tags[]`            | Every string in a list                            |
+| `columns[].content` | A nested Portable Text array, walked like a field |
+
+A path a block doesn't have, or whose value is neither text nor an array, is
+skipped silently, so one list can cover several stored shapes of the same block
+type. An array at the end of a path without `[]` is read as Portable Text and
+must be valid; otherwise the request fails and names the location, such as
+`body[3].columns[0].content[1]`.
+List only copy, never URLs, IDs, icons or media references.
 
 On a source-locale entry, the panel instead creates a missing locale: it
 translates the selected fields, creates the draft as the signed-in user through
@@ -120,8 +190,8 @@ EmDash's content API (copying the source entry and slug, like EmDash's
 **Create translation** button), and opens it. Locales that already have an
 entry are not offered.
 
-Content translation displays named percentage stages while loading the saved
-entry, translating fields, and saving the patch.
+Content translation displays named percentage stages while loading the entry,
+translating fields, and filling the form or saving.
 
 ## Translation Sandbox
 
@@ -186,8 +256,8 @@ const t = await Astro.locals.buildCatalogTranslator(locale);
 
 ## EmDash Limitations
 
-- Panels use the latest saved entry, not unsaved form state.
-- EmDash shows the PolyStella section on every collection because panel
-  visibility cannot be resolved asynchronously. On collections not enabled in
-  plugin settings, the panel says so and links Administrators to the
-  Collections tab.
+- Before EmDash 1.6, the panel saves the translation and reloads, so unsaved
+  changes are lost.
+- Before EmDash 1.5, the PolyStella section shows on every collection. On
+  collections not enabled in plugin settings, the panel says so and links
+  Administrators to the Collections tab.
