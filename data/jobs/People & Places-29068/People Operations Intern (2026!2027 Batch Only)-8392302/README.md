@@ -3,54 +3,62 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong></p>
+<p><strong><span style="font-size: 12pt;"><sup>Job Location - Bengaluru, India</sup></span></strong></p>
+<p><strong><span style="font-size: 12pt;"><sup>Work Mode - Hybrid (3 Days WFO)</sup></span></strong></p>
+<p><strong><span style="font-size: 12pt;"><sup>Internship Duration - 6 Months starting Jan 2027</sup></span></strong></p>
+<p><strong><span style="font-size: 12pt;"><sup>About the Role :</sup></span></strong></p>
+<p><span style="font-size: 12pt;"><sup>We are looking for ambitious, tech-forward HR interns to join our People Operations team for a 6-month intensive apprenticeship. This is not a typical administrative internship—it is a fast-paced, high-impact, end-to-end People Operations role designed for high-potential talent. During your tenure, you will work directly on critical People Operations functions, HR business partnering initiatives, and high-impact cross-functional projects. If you are extremely data-fluent, comfortable with ambiguity, and eager to leverage modern HR technology and AI to solve business challenges, this role is built for you.</sup></span></p>
+<p><span style="font-size: 12pt;"><strong><sup>Key Responsibilities :</sup></strong></span></p>
+<p><span style="font-size: 12pt;"><sup>As a People Operations/HRBP Intern, you will gain hands-on ownership across the employee lifecycle, including but not limited to:</sup></span></p>
 <ul>
-	<li><strong>Lisbon, Portugal</strong></li>
-	<li><strong>London, UK</strong></li>
-	<li><strong>Austin, US</strong></li>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>Employee Experience &amp; Engagement: Assist in designing and executing employee engagement programs, pulse surveys, feedback loops, and culture-building initiatives to drive retention and satisfaction.</sup></span></p>
+	</li>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>Compliance &amp; Labor Code Audits: Participate in internal HR compliance audits, statutory labor code alignments, and document verification processes to ensure seamless operational governance.</sup></span></p>
+	</li>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>Payroll &amp; Benefits Management: Support monthly payroll processing workflows, leave &amp; attendance reconciliations, vendor coordination, and employee benefits administration.</sup></span></p>
+	</li>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>Onboarding &amp; Exit Management: Own end-to-end joining logistics, orientation sessions, documentation, exit interviews, and offboarding workflows to deliver a memorable employee journey.</sup></span></p>
+	</li>
 </ul>
-<p><strong>About the role</strong></p>
+<p><strong><span style="font-size: 12pt;"><sup>Skill Requirements &amp; Qualifications :</sup></span></strong></p>
+<p><span style="font-size: 12pt;"><sup>Academic &amp; Eligibility Background</sup></span></p>
 <ul>
-	<li>
-		<p>As a Systems engineer in the WARP team you will join a team that works on the backend system that allows our customers to manage their devices via our Zero Trust Network solution.&nbsp; <br>In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our WARP and Zero Trust product, such as Device Posture, Orchestration and Notification.</p>
-		<p>We are looking for engineers that are versatile and eager to contribute to the technical direction of the product, with a focus on growth, scalability and high-availability.<br>You will collaborate with your team on the planning, priority, deadlines and deliverables of solutions to our customers requirements.</p>
-		<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-		<ul>
-			<li>At least 3 years of professional software engineering experience</li>
-			<li>Experience managing high available systems with disaster recovery support.</li>
-			<li>Experience in at least of the following languages: Go, Rust</li>
-			<li>Experience in Typescript</li>
-			<li>Experience designing and integrating RESTful APIs at scale</li>
-			<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
-			<li>Knowledge on distributed NoSQL databases</li>
-			<li>Excellent debugging experience and optimization skills</li>
-			<li>Experience with Kubernetes</li>
-		</ul>
-		<p><strong>Responsibilities</strong></p>
-		<ul>
-			<li>Design, develop, test, deploy, maintain, and enhance large scale software solutions.</li>
-			<li>Own features end-to-end and contribute to the team projects and objectives</li>
-			<li>Collaborate with a distributed team of engineers through code reviews, design discussions and knowledge sharing.</li>
-			<li>Contribute to the team roadmap by identifying engineering opportunities and improvements for the success of the team and product.</li>
-			<li>Collaborate with other Zero Trust teams on goals, outcomes, and timelines.</li>
-			<li>Help the team meet project priorities, deadlines, and deliverables.</li>
-		</ul>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>Currently pursuing a full-time MBA (4th Semester) with a focus on HR / General Management.</sup></span></p>
+	</li>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>NAPS Eligibility: As per the National Apprenticeship Promotion Scheme (NAPS), candidates with prior full-time experience or an active PF/UAN account are in-eligible to apply.</sup></span></p>
+	</li>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>Prior internship experience in similar field will be an added advantage</sup></span></p>
 	</li>
 </ul>
-<p>&nbsp;</p>
-<h3 class="" data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
-<ul data-path-to-node="1">
-	<li>
-		<p data-path-to-node="1,0,0">For Portugal based hires: Estimated annual salary is between €54,000 - €75,000.</p>
+<p><span style="font-size: 12pt;"><sup>Core Soft Skills</sup></span></p>
+<ul>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>Interpersonal Excellence: Exceptional emotional intelligence, empathy, and the ability to build trust quickly across cross-functional teams.</sup></span></p>
+	</li>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>Communication Skills: Outstanding verbal and written communication skills with strong presentation capabilities.</sup></span></p>
+	</li>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>Problem-Solving Ability: High learning agility, critical thinking, and the drive to work independently on open-ended problems.</sup></span></p>
 	</li>
 </ul>
-<h3 class="" data-path-to-node="2"><strong data-path-to-node="2" data-index-in-node="0">Equity</strong></h3>
-<ul data-path-to-node="3">
-	<li>
-		<p data-path-to-node="3,0,0">This role is eligible to participate in Cloudflare's equity plan.</p>
+<p><strong><span style="font-size: 12pt;"><sup>Technical &amp; Functional Skills :</sup></span></strong></p>
+<ul>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>AI &amp; HR Tech Literacy: Hands-on usage of AI tools (e.g., Gemini, ChatGPT, AI prompt engineering, automation tools) and familiarity with any HR software/HRIS platforms.</sup></span></p>
+	</li>
+	<li style="font-size: 12pt;">
+		<p><span style="font-size: 12pt;"><sup>Data Fluency: Strong proficiency in MS Excel / Google Sheets, data visualization, basic metrics analysis, and data-driven decision-making.</sup></span></p>
 	</li>
 </ul>
-<p>&nbsp;</p>
+<p><br><br></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

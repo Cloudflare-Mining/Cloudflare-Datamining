@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/8142261?gh_jid=8142261",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/8397865?gh_jid=8397865",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,24 +10,26 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3523802,
+	"internal_job_id": 3624300,
 	"location": {
-		"name": "Lisbon, Portugal"
+		"name": "Hybrid"
 	},
 	"metadata": [
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4100 - Infrastructure Engineering",
+			"value": "4710 - Cloudforce One",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, TX",
-				"Lisbon, Portugal",
-				"London, UK"
+				"Austin, US",
+				"London, UK",
+				"New York, NY",
+				"San Francisco, CA",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -35,23 +37,24 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Engineering"
+				"Engineering",
+				"Security"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 8142261,
-	"updated_at": "2026-11-19T09:54:57-05:00",
+	"id": 8397865,
+	"updated_at": "2026-11-23T08:11:36-05:00",
 	"requisition_id": null,
-	"title": "Systems Engineer, Network Automation",
+	"title": "Senior Software Engineer (Threat Intelligence), Cloudforce One",
 	"company_name": "Cloudflare",
-	"first_published": "2026-08-21T11:30:49-04:00",
+	"first_published": "2026-11-23T08:11:36-05:00",
 	"language": "en",
 	"application_deadline": null,
 	"departments": [
 		{
-			"id": 29067,
-			"name": "Engineering",
+			"id": 54562,
+			"name": "Security",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -72,11 +75,25 @@
 			"parent_id": 74843
 		},
 		{
-			"id": 63782,
-			"name": "Lisbon, Portugal",
-			"location": "Lisboa, Lisboa, Portugal",
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
 			"child_ids": [],
-			"parent_id": 74843
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
 		}
 	],
 	"ai_disclaimer": null,

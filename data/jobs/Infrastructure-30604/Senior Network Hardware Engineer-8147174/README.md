@@ -3,36 +3,54 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Location:&nbsp;</strong>Austin, TX</p>
+<p><strong>Applications will be accepted until November 01, 2026.</strong></p>
+<p><strong>Job Title&nbsp;</strong></p>
+<p>Network Hardware Engineer&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Role Summary</strong></p>
+<p>As a pivotal technical contributor within the Network Hardware Engineering (NetHW) team, you will drive the selection and qualification process for network devices used in Cloudflare's Global Network. The NetHW team manages the New Product Introduction (NPI) process for all network devices. Our responsibilities also include the evaluation and qualification of new production network operating system images and versions. Furthermore, we provide essential support by reproducing bugs to assist Operations with TAC cases and testing new features and major configuration updates.</p>
+<p><strong>Role Responsibilities</strong></p>
+<p>You will be involved in every stage of the New Product Introduction (NPI) process, including requirements gathering, device selection, Device Validation Testing (DVT), Production Validation Testing (PVT), and Operational Acceptance. Furthermore, you will be responsible for creating and automating test plans that align with both operational needs and hardware limitations, as well as driving efforts to improve testing efficiency.</p>
+<p>Network Hardware Systems Engineering Responsibilities:</p>
 <ul>
-	<li>Austin, US</li>
+	<li><strong>Product Lifecycle Management:</strong> Lead the introduction of new network hardware systems, including detailed engineering validation in lab environments</li>
+	<li><strong>Qualification &amp; Validation:</strong> Gather requirements, contribute to network architecture, and execute hardware design and product validation</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Partner with Network Engineering &amp; Operations, Datacenter Engineering &amp; Operations, and other operational teams to make network hardware decisions</li>
+	<li><strong>Automation &amp; Performance Testing:</strong> Develop tools and automation to effectively evaluate network hardware performance</li>
+	<li><strong>Operational Support:</strong> Assist operational engineers by troubleshooting, reproducing, and resolving network hardware issues</li>
+	<li><strong>Communication:</strong> Document and share results and updates via blog/wiki posts, ticketing systems, and internal presentations</li>
 </ul>
-<h2>About the Role</h2>
-<p>We are hiring for a&nbsp;<strong>Senior Talent Acquisition Business Partner&nbsp;</strong>to join our Americas (AMER) team. In this role, you will act as a true talent advisor and go-to-market specialist, driving the expansion of hiring across the region. You will operate autonomously, utilizing your deep market expertise, AI-driven strategies, and extensive network to hire top-tier talent for Cloudflare.</p>
-<h2>Responsibilities</h2>
+<p>&nbsp;</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong>&nbsp;Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams, functioning similarly to how a salesperson puts together a go-to-market plan.</li>
-	<li><strong>Proactive Pipeline &amp; Passive Candidate Outreach:</strong> Draw upon an extensive network of industry contacts to build proactive pipeline strategies for a variety of roles.</li>
-	<li><strong>Stakeholder Management &amp; Advising:</strong> Build and maintain solid relationships with AMER leadership and cross-functional stakeholders, including Finance, HRBPs, and compensation teams.</li>
-	<li><strong>AI-Agent Integration &amp; Process Optimization:</strong>&nbsp;Partner with internal automated AI agents and generative tools to eliminate legacy manual tasks, optimize administrative outreach workflows at scale, and synthesize complex market data to inform regional talent strategies.</li>
-	<li><strong>Data Utilization &amp; Analytics:</strong>&nbsp;Leverage foundational data layers and recruitment analytics to inform talent strategies, actively analyzing metrics such as time-to-hire and source efficiency to drive optimal operational decisions.</li>
-	<li><strong>Employer Branding &amp; Market Awareness:</strong> Lead and execute strategic employer branding initiatives tailored to the AMER market to elevate Cloudflare's profile as a top destination for talent.</li>
+	<li>BS, MS, or PhD in Computer Engineering, Electrical Engineering, Computer Science, or equivalent practical experience</li>
+	<li>Proven ability to conduct thorough evaluation and experimentation, including testing, measurement, and/or simulation of hardware performance</li>
+	<li>Extensive experience with networking hardware architecture, validation, performance benchmarking, debugging, and deployment</li>
+	<li>Deep knowledge of network engineering and protocols used in data center switching and routing as well as Internet routing</li>
+	<li>Track record of driving engineering projects from idea to experiment to implementation</li>
+	<li>Demonstrated success in working with OEM/ODMs and technology vendors</li>
+	<li>Professional-level proficiency in Python or similar programming and/or scripting languages</li>
+	<li>Familiarity with various coding agents and other AI tools and technologies</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p>&nbsp;</p>
+<p><strong>NIce-to-Have Skills</strong></p>
 <ul>
-	<li><strong>Strategic Problem Solving:</strong>&nbsp;Ability to operate two "plays" ahead, anticipating potential bottlenecks before they materialize, and resolving complex organizational issues with high autonomy.</li>
-	<li><strong>Negotiation &amp; Closing Skills:</strong>&nbsp;Effective negotiation capabilities to secure top-tier candidates, driven by a deep understanding of Cloudflare's unique value proposition.</li>
-	<li><strong>AI &amp; Ecosystem Proficiency:</strong>&nbsp;Demonstrated capability to leverage automated workflows, AI-powered sourcing environments, and LLMs for complex boolean logic, market mapping, and productivity multiplication.</li>
-	<li><strong>Candidate Experience Focus:</strong>&nbsp;Strong organizational skills to eliminate operational friction, ensuring clear communication and proactive engagement throughout the interview lifecycle.</li>
-	<li><strong>Communication &amp; Feedback:</strong>&nbsp;Exceptional written and verbal communication skills with the ability to influence and advise senior stakeholders across the Americas region.</li>
-	<li><strong>Adaptability &amp; Self-Direction:</strong>&nbsp;Comfort thriving in ever-changing environments, taking complete responsibility for outcomes while seamlessly navigating an evolving technological and organizational landscape.</li>
+	<li>Adept at automating traffic generation equipment (Spirent/Ixia) and test cases</li>
+	<li>In-depth hardware knowledge of platforms (ASICs, TCAMs, Packet-Pipelines, etc)</li>
+	<li>Experience with Optical Line Systems and troubleshooting transceiver issues</li>
+	<li>Familiarity with different network operating systems such as Junos, IOS-XR, EOS, SONiC,&nbsp; and ArcOS</li>
+	<li>Experience with white-box network switches and open source projects</li>
+	<li>Proficient in using observability and monitoring tools like Prometheus and Grafana, with the ability to analyze and observe trends over time.</li>
+	<li>Hands-on experience with configuring and validating RoCEv2 (RDMA over Converged Ethernet) fabrics, specifically implementing Priority Flow Control (PFC) and Explicit Congestion Notification (ECN) on network devices.</li>
 </ul>
-<h2>Compensation</h2>
+<p>&nbsp;</p>
 <h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p>This role is eligible to participate in Cloudflare's equity plan.</p>
 <h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -43,14 +61,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3>Financial Benefits</h3>
+<p>Financial Benefits</p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3>Time Off</h3>
+<p>Time Off</p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -3,69 +3,82 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong></p>
-<p>Lisbon, Portugal</p>
-<p>London, UK</p>
-<p>Austin, US&nbsp;&nbsp;</p>
-<p><strong>About the Department</strong></p>
-<p>Cloudflare's Network Engineering Team builds and runs the infrastructure that runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world's largest networks with data centers in 190 cities worldwide and a couple of large specialized data centers for internal needs.</p>
-<p><strong>About the role</strong></p>
-<p>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network automation engineers who are building software solutions to improve network resilience and reduce engineering operational toil.</p>
-<p>You will work on a range of tools, infrastructure and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable and scalable solutions. Leverage AI tools and automated assistants to streamline daily workflows.</p>
-<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
+<p><strong>Available Locations:</strong></p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>3+ years of proven experience in developing software components for network automation.</li>
-	<li>Understanding of software development principles, design patterns, and various programming languages (like python and golang)</li>
-	<li>Proficient with modern Unix/Linux operating systems/distributions</li>
-	<li>Experience in MySQL, Postgres, Clickhouse&nbsp; (or equivalent SQL language)</li>
-	<li>Experience with CI/CD, containers and/or virtualization</li>
-	<li>Experience with Observability systems like prometheus, grafana (or equivalents)</li>
-	<li>Demonstrated experience working alongside AI assistants or automated tools to augment task execution and project delivery</li>
+	<li>United States: Austin, TX;&nbsp;San Francisco, CA;&nbsp;New York City;&nbsp;Washington D.C.</li>
+	<li>United Kingdom: London</li>
 </ul>
-<p><strong>Bonus Points:</strong></p>
+<p><strong>About the Role</strong></p>
+<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
+<p>As a Software Engineer on this team, you will own the entire software development lifecycle—from design and architecture to deployment and monitoring—for systems that serve both threat disruption and legal response efforts. You will be responsible for translating complex legal and security requirements into robust, scalable, and high-performance applications that have a direct impact on making the internet better, safer, and more powerful every day.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</li>
-	<li>Experience building and maintaining large distributed systems</li>
-	<li>Experience managing internal and/or external customer requirements and expectations</li>
+	<li>While the majority of our services are now written in Golang and TypeScript, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgresSQL. We also pride ourselves in dogfooding our own products and services so you will be extensively working with Cloudflare’s developer platform as well. We are looking for great engineers regardless of experience with any of these specific technologies.</li>
+	<li>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</li>
+	<li>Design, build, run, and scale distributed tools and services that support both cyber threat disruption and platform abuse efforts.</li>
+	<li>Develop critical data pipelines and services to collect, analyze, and expose threat intelligence data for Cloudforce One analysts and Cloudflare customers, helping to identify Tactics, Techniques, and Procedures (TTPs) and Indicators of Compromise (IOCs).</li>
+	<li>Collaborate closely with Threat Intelligence, Trust &amp; Safety, Legal, and Product teams to understand goals and translate complex technical requirements into elegant, scalable solutions.</li>
+	<li>Improve system design and architecture to ensure stability, performance, and maintainability of both internal and customer-facing compliance and security services.</li>
+	<li>Analyze, communicate, and help prioritize complex technical concepts across teams.</li>
+	<li>Ongoing monitoring and maintenance of production services, including participation in on-call rotations.</li>
+	<li>Mentor and guide other developers in the team, helping to build collective technical expertise and promote best practices for writing well-tested, modular, and reusable code.</li>
+</ul>
+<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
+<ul>
+	<li>Experience with AI-assisted development and agentic AI workflows</li>
+	<li>At least 5 years of experience building large-scale software applications, preferably distributed systems</li>
+	<li>At least 3 years of experience working with Threat Intelligence or in support of a Threat Intelligence platform</li>
+	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL</li>
+	<li>Prior experience writing production ready code in Go and/or Typescript</li>
+	<li>Familiarity with Rust</li>
+	<li>Excellent debugging and optimization skills</li>
+	<li>Expertise in writing well tested code</li>
+	<li>Interest in opportunities to be a technical mentor for teammates</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Deep understanding of DNS, TLS/SSL and HTTP</li>
+	<li>Expertise in web security issues and industry standards for access control</li>
+	<li>Experience with Kafka</li>
+	<li>Experience building web applications using React</li>
+	<li>Experience with Kubernetes</li>
+	<li>Experience with Redis</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Portugal based hires: Estimated annual salary of €54,000 - €75,000</span></li>
+	<li>For San Francisco based hires: Estimated annual salary of $194,000 - $266,000</li>
+	<li>For New York City based hires: Estimated annual salary of $185,000 - $254,000</li>
+	<li>For Washington D.C. based hires: Estimated annual salary of $185,000 - $254,000</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</li>
-	<li>Health &amp; Welfare Benefits</li>
-	<ul>
-		<li>Medical/Rx Insurance</li>
-		<li>Dental Insurance</li>
-		<li>Vision Insurance</li>
-		<li>Flexible Spending Accounts</li>
-		<li>Commuter Spending Accounts</li>
-		<li>Fertility &amp; Family Forming Benefits</li>
-		<li>On-demand mental health support and Employee Assistance Program</li>
-		<li>Global Travel Medical Insurance</li>
-	</ul>
-	<li>Financial Benefits</li>
-	<ul>
-		<li>Short and Long Term Disability Insurance</li>
-		<li>Life &amp; Accident Insurance</li>
-		<li>401(k) Retirement Savings Plan</li>
-		<li>Employee Stock Participation Plan</li>
-	</ul>
-	<li>Time Off</li>
-	<ul>
-		<li>Flexible paid time off covering vacation and sick leave</li>
-		<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-	</ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p></p>
-<p>&nbsp;</p>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
