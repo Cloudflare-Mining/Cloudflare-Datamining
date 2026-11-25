@@ -26,8 +26,6 @@
 </ul>
 <h2><strong style="font-size: 14px;">Compensation</strong></h2>
 <p>Compensation may be adjusted depending on work location and level.</p>
-<p>San Francisco Estimated Base Salary $102,000 - $140,000.</p>
-<p>New York Estimated Base Salary $97,000 - $133,000.</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
