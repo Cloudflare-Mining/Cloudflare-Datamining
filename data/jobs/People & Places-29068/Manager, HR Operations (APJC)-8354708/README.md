@@ -4,15 +4,15 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <p><span style="font-size: 12pt;"><strong>Available Locations: <span class="il">Singapore</span></strong></span></p>
-<p><span style="font-size: 12pt;"><strong>What You Would Do Here:</strong></span></p>
-<p>At Cloudflare, our mission is to empower our people to do their best work. We're looking for a motivated and detail-oriented <strong>People Operations Manager </strong>to join our growing team. In this manager role, you'll play a crucial part in supporting our rapidly expanding organization by ensuring the seamless and efficient experience for our employees, from inquiry resolution to accurate data management, and auditing of critical People and Payroll processes within the APJC region.</p>
+<p><strong>What You Would Do Here:</strong></p>
+<p>At Cloudflare, our mission is to empower our people to do their best work. We're looking for a motivated and detail-oriented <strong>People Experience Manager</strong> to join our growing team. In this entry-level management role, you'll play a crucial part in supporting our rapidly expanding organization by ensuring the seamless and efficient experience for our employees, from inquiry resolution to accurate data management, and auditing of critical People and Payroll processes within your region.</p>
 <p>You'll be instrumental in <strong>guiding and developing a team</strong> focused on delivering world-class employee inquiry support. This includes acting as an <strong>escalation point for more complex matters</strong> involving People and Payroll questions, and ensuring that all transactions meet minimum standards, keeping our people systems auditable, clean, and up-to-date. A key focus will be on <strong>providing high-quality customer support to our internal clients and stakeholders</strong>, ensuring their needs are met with efficiency and accuracy. As we scale, you'll also have exciting opportunities to <strong>contribute to the design and improvement of our existing processes</strong>, aligning our operations across multiple regions.</p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 	<li>Lead HR Service Delivery: Guide and develop a team focused on providing world-class employee inquiry support, serving as an escalation point for complex People and Payroll matters.</li>
 	<li>Ensure Data Integrity &amp; Compliance: Oversee HR transactions to ensure they meet minimum standards, maintaining auditable, clean, and up-to-date people systems.</li>
 	<li>Drive Operational Excellence: Partner with regional senior management and stakeholders to address their specific HR operational needs with high responsiveness and accuracy.</li>
-	<li>Manage Payroll Operations: Oversee monthly payroll inputs, ensuring accuracy and timely submission.</li>
+	<li>Manage Payroll Operations: Oversee monthly payroll checks for your assigned region, ensuring accuracy and timely submission.</li>
 	<li>Uphold Compliance Standards: Manage adherence to SOX Control &amp; Compliance, ensuring all Standard Operating Procedure (SOP) requirements are meticulously followed and documented.</li>
 	<li>Optimize HR Processes: Contribute to the design, tracking, and implementation of improvements for HR business processes, translating operational needs into technical requirements.</li>
 	<li>Facilitate Regional Approvals: Manage the regional offer approval process, ensuring strict compliance with internal guidelines.</li>
@@ -21,16 +21,16 @@
 </ul>
 <h3><strong>What You'll Bring:</strong></h3>
 <ul>
-	<li>Experience: 3+ years of leadership experience in People Operations, HR Service Delivery, or Payroll.</li>
-	<li>HR Systems &amp; AI Tools Expertise: Familiarity with HR systems such as Workday and Zendesk, as well as experience leveraging AI-driven HR tools and automated ticket/inquiry triage solutions. Experience with Core HR, Talent, and Compensation modules is a plus.</li>
-	<li>Process Improvement &amp; Automation Mindset: Proven ability to support and contribute to projects aimed at enhancing operational efficiency, including leveraging AI-assisted workflows to optimize service delivery.</li>
+	<li>Experience: 3-5+ years of leadership experience in People Operations, HR Service Delivery, or Payroll, preferably within the APJC region.</li>
+	<li>HR Systems Expertise: Familiarity with HR systems such as Workday and Zendesk. Experience with Core HR, Talent, and Compensation modules is a plus.</li>
+	<li>Process Improvement Mindset: Proven ability to support and contribute to projects aimed at enhancing operational efficiency and service delivery.</li>
 	<li>Attention to Detail &amp; Accuracy: Highly detailed and process-oriented with a strong commitment to accuracy in all HR transactions and data management.</li>
 	<li>Compliance Knowledge: Foundational knowledge of APJC countries' employment law and a clear understanding of operating within these regulatory environments.</li>
 	<li>Customer Focus: A strong customer service orientation and a dedication to delivering a positive internal client and employee experience.</li>
 	<li>Communication Skills: Excellent oral and written communication skills, with the ability to clearly present information and respond to cross-regional and cross-functional inquiries.</li>
 	<li>Prioritization &amp; Execution: Adept at prioritizing tasks, executing effectively, and providing clear status reports as needed.</li>
 	<li>Organizational &amp; Problem-Solving Skills: Strong organizational, problem-solving, and time management abilities.</li>
-	<li>Adaptability &amp; Technical Aptitude: Highly adaptable in a global, fast-paced environment with a willingness to adopt AI-assisted data analysis and reporting tools to streamline APJC operations.</li>
+	<li>Adaptability: Highly adaptable in a global, fast-paced environment with a proven ability to oversee payroll changes and reports for the APJC region.</li>
 </ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
