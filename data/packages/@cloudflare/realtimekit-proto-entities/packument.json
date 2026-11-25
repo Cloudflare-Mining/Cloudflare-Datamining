@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-proto-entities",
 	"dist-tags": {
-		"latest": "2.115.1"
+		"latest": "2.116.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -229,11 +229,54 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDXC7VrWdvWB+Ez/j21TBjTmOXldGUiM9ZA4w3ilxSEcQIgG+Pp2mAc/f4JsR7gnbWim1sUcTIivDdsBR/M6P5JFbg="
+						"sig": "MEUCIQDXC7VrWdvWB+Ez/j21TBjTmOXldGUiM9ZA4w3ilxSEcQIgG+Pp2mAc/f4JsR7gnbWim1sUcTIivDdsBR/M6P5JFbg=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"unpackedSize": 1252679
+			}
+		},
+		"2.116.0": {
+			"name": "@cloudflare/realtimekit-proto-entities",
+			"version": "2.116.0",
+			"dependencies": {
+				"@grpc/grpc-js": "^1.10.1"
+			},
+			"devDependencies": {
+				"rimraf": "^3.0.2",
+				"copyfiles": "^2.4.1",
+				"protolint": "0.57.0",
+				"typescript": "^4.6.3",
+				"@types/node": "^20.11.20",
+				"semantic-release": "^20.1.0",
+				"@protobuf-ts/plugin": "^2.7.0",
+				"@protobuf-ts/protoc": "2.7.0",
+				"fix-esm-import-path": "^1.3.1",
+				"@semantic-release/npm": "^9.0.1",
+				"@semantic-release/exec": "^6.0.3",
+				"@semantic-release/gitlab": "^13.0.0",
+				"@semantic-release/commit-analyzer": "^9.0.2",
+				"@semantic-release/release-notes-generator": "^10.0.3"
+			},
+			"peerDependencies": {
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "ae83322cfe648a276cdbf758352517453d08e676",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-proto-entities/-/realtimekit-proto-entities-2.116.0.tgz",
+				"fileCount": 157,
+				"integrity": "sha512-lul39gPpxqDyFIxGfy3XwUOWeq0gsnykqv5l+QU8ZeQE09FTJnmh0a9wqC1VtdUmt/oa0z6cm8lUtKLC0eZzkQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIFdIiYaBxCFfnaiBDmcJQq+GKFjn83Zv07QRMXtX5lv3AiEA5YWIlVqM5+74JSQ2dYy+C7fN7v1rLF6kMIcO8AfLDTI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIGoulLc3uAPn4DM77b4IYkD8eHcUJXmHaDp/wKfN0SZEAiEAkDB1QO3Vd+T7JBg+TGaE/zZPJnNpprLDZ8ijnBmj4VI="
+					}
+				],
+				"unpackedSize": 1253875
 			}
 		}
 	}
