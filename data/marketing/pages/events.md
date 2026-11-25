@@ -16,29 +16,7 @@ Browse upcoming Cloudflare events around the world.
 
 AmericasEMEAAPJC
 
-Ottawa, CA
-
-InCyber Forum
-
-Dec 1–3
-
-Coming soon
-
-Charleston, US
-
-Eastern Defense Summit
-
-Dec 8–10
-
-Coming soon
-
-Brooklyn, US
-
-NYC Technology Forum
-
-Dec 10–12
-
-Coming soon
+[Ottawa, CAInCyber ForumDec 1–3Learn more](https://canada.forum-incyber.com/registration%5F2026%5Fen/)[Charleston, USEastern Defense SummitDec 8–10Learn more](https://charlestondca.org/page/events%5F2026%5Feastern%5Fdefense%5Fsummit&sa=D&source=editors&ust=1795553896176297&usg=AOvVaw0xBO-3ZTMUZVD5Mhf7khi3)[Brooklyn, USNYC Technology ForumDec 10–12Learn more](https://events.govtech.com/New-York-City-Technology-Forum)
 
 # Build without boundaries
 

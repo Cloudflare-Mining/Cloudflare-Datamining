@@ -81,8 +81,8 @@ Related Case Studies
 
 Related Products
 
-- [CDN](https://www.cloudflare.com/application-services/products/cdn/)
-- [Web Application Firewall (WAF)](https://www.cloudflare.com/application-services/products/waf/)
+- [CDN](https://www.cloudflare.com/products/cdn/)
+- [Web Application Firewall (WAF)](https://www.cloudflare.com/products/waf/)
 - [R2](https://www.cloudflare.com/developer-platform/products/r2/)
 
 Key Results
