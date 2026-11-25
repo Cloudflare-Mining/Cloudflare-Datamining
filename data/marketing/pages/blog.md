@@ -1,7 +1,9 @@
 ---
 agent:
-  instructions: "This site offers a search API that returns relevant content across the entire site. Use the search endpoint to find information instead of crawling individual pages."
-  search: "https://blog.cloudflare.com/.well-known/search?q={query}"
+  instructions: "Use this search API to find relevant content across this site with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+  endpoint: "https://blog.cloudflare.com/.well-known/search?q={query}"
+  method: "GET"
+  documentation: "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/"
 description: Technical deep dives, product updates, and insights from the teams that are helping to build a better Internet.
 title: Cloudflare Blog
 image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY31N4V.png
@@ -13,6 +15,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Cloudflare home](https://blog.cloudflare.com/)
 
+November 25, 2026 [<h2>Introducing Search for Agents</h2>](https://blog.cloudflare.com/search-for-agents/)
+
+Flip one toggle to make your site searchable by AI agents — complete with automatic content indexing, a discoverable search API, and native HTTP QUERY support.
+
+![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Gabriel Massadas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJT71CZ6R57ZBVBWK0TT.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Nelson Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49P72CGQX08FQC903Q0E4F.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Celso Martinho](https://blog.cloudflare.com/author/celso/),  [Gabriel Massadas](https://blog.cloudflare.com/author/gabriel-massadas/), and  [Nelson Duarte](https://blog.cloudflare.com/author/nelson-duarte/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M87EH6J3AHBJGMX9NR8JGR2V.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/search-for-agents/)
+
 November 23, 2026 [<h2>Probing DNS at Cloudflare</h2>](https://blog.cloudflare.com/probing-dns-at-cloudflare/)
 
 At Cloudflare we've built tools to enable teams to extend our internal testing framework and build test tooling for networking protocols. This is the story of how this was used for DNS.
@@ -20,8 +32,6 @@ At Cloudflare we've built tools to enable teams to extend our internal testing f
 ![Doug Aaser](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNBNMGMRZQB3P0SXRNYF2X.01M7XNBNY9Q3WAYZPCNY5Z68PJ.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Doug Aaser](https://blog.cloudflare.com/author/doug-aaser/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M7XNSAD6F3PP947NHEMWKBFV.png&w=1999&h=1125&f=webp&fit=cover&position=center)![]()](https://blog.cloudflare.com/probing-dns-at-cloudflare/)
 
 November 20, 2026 [<h2>How Cloudflare WAF protects against ruby2shell (CVE-2026-132825)</h2>](https://blog.cloudflare.com/ruby2shell-waf-protection/)
 
@@ -109,7 +119,7 @@ Cloudflare is building an experimental consensus service using a never-before-de
 
 ![João Pedro Leite](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q3HR5NWBDTW5N6DCXWKT.webp&w=64&h=64&f=webp&fit=cover&position=center)![ Bob Halley](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KXJFYHRZYTBR06JDENDTQ12N.jpg&w=64&h=64&f=webp&fit=cover&position=center)![James Larisch](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9J5HQA4MAD7AN1K285E.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
-[João Pedro Leite](https://blog.cloudflare.com/author/joao-pedro-leite/),  [ Bob Halley](https://blog.cloudflare.com/author/bob-halley/), and  [James Larisch](https://blog.cloudflare.com/author/james-larisch/)
+[João Pedro Leite](https://blog.cloudflare.com/author/joao-pedro-leite/),  [Bob Halley](https://blog.cloudflare.com/author/bob-halley/), and  [James Larisch](https://blog.cloudflare.com/author/james-larisch/)
 
 November 9, 2026 [<h2>Launching the Vite Ecosystem Fund</h2>](https://blog.cloudflare.com/launching-vite-ecosystem-fund/)
 
@@ -159,21 +169,13 @@ Zone setting changes used to rebuild entire DNS zones, even ones with tens of mi
 
 [Alex Fattouche](https://blog.cloudflare.com/author/alex-fattouche/)
 
-October 30, 2026 [<h2>4 real? Tracking exploitation and patching of eMudhra's weak keys</h2>](https://blog.cloudflare.com/emudhra-patching/)
-
-Four, just four: that's the key to break into any unpatched connection on the Internet that is using eMudhra certificates. Here's how we quickly patched Cloudflare, what evidence we can see of attempted exploitation, and how much of the rest of the Internet remains exposed.
-
-![Maxime Guerreiro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FG4DN12FTWVE3SWJY7WF.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Rupert Carr](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WZZ1214FNVNSGC0MBC58.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Miguel de Moura](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469GP192YFYYEYAD222W8R.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Bas Westerbaan](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N3BWJ6WS6790KRRJ4RWD.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Maxime Guerreiro](https://blog.cloudflare.com/author/maxime/),  [Rupert Carr](https://blog.cloudflare.com/author/rupert-carr/),  [Miguel de Moura](https://blog.cloudflare.com/author/miguel/), and  [Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
-
 Load more
 
 Search is temporarily unavailable.
 
 [Login opens in a new tab](https://dash.cloudflare.com/login) [Dashboard opens in a new tab](https://dash.cloudflare.com) [Contact Sales opens in a new tab](https://www.cloudflare.com/resource/contact-enterprise-sales/) [Start Building opens in a new tab](https://dash.cloudflare.com/sign-up)
 
-[opens in a new tab](https://x.com/cloudflare) [ opens in a new tab](https://www.linkedin.com/company/cloudflare-inc-) [ opens in a new tab](https://blog.cloudflare.com/rss/)
+[opens in a new tab](https://x.com/cloudflare) [opens in a new tab](https://www.linkedin.com/company/cloudflare-inc-) [opens in a new tab](https://blog.cloudflare.com/rss/)
 
 <details>
 
