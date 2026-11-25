@@ -1,5 +1,12 @@
 # @cloudflare/polystella-astro
 
+## 0.7.1
+
+### Patch Changes
+
+- Updated dependencies [[`aa0d4f6`](https://github.com/cloudflare/polystella/commit/aa0d4f66d0048dae53feda3e6e0e70608cd7f1cf)]:
+  - @cloudflare/polystella-core@0.8.0
+
 ## 0.7.0
 
 ### Minor Changes

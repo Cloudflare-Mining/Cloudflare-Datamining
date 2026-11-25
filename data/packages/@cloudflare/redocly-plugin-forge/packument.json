@@ -1,0 +1,111 @@
+{
+	"name": "@cloudflare/redocly-plugin-forge",
+	"dist-tags": {
+		"latest": "0.2.0"
+	},
+	"versions": {
+		"0.0.0-stage": {
+			"name": "@cloudflare/redocly-plugin-forge",
+			"version": "0.0.0-stage",
+			"dist": {
+				"shasum": "06523f5c113dd986a601e6d40079f94af6d485d2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redocly-plugin-forge/-/redocly-plugin-forge-0.0.0-stage.tgz",
+				"fileCount": 2,
+				"integrity": "sha512-nwVAb9vxokVuydMLH1CjEjkSwpriDqITyH8+mpnElaX0bsqisvmE+MP8q5ER+ePlJiCI7P9zbKDtFHcJqa2snw==",
+				"signatures": [
+					{
+						"sig": "MEQCIGWNQUzh2TrNwN8Bjbb9Jk1TVQGPZwfu/DGAG++L0NJMAiAmcLKpG7RFDbMCdWX1T1pJX4jClQa/N0IHMCwO4lNuOQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 354
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/redocly-plugin-forge",
+			"version": "0.1.0",
+			"dependencies": {
+				"lodash-es": "4.18.1",
+				"ajv-formats": "3.0.1",
+				"@redocly/ajv": "8.18.3"
+			},
+			"devDependencies": {
+				"vitest": "5.1.0",
+				"publint": "0.3.16",
+				"typescript": "5.9.3",
+				"@types/node": "25.3.5",
+				"@types/lodash-es": "4.17.12",
+				"@redocly/openapi-core": "2.77.0"
+			},
+			"peerDependencies": {
+				"@redocly/openapi-core": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "3d0d978a5ec7c170424d35b1ec8911b5f335b1ea",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redocly-plugin-forge/-/redocly-plugin-forge-0.1.0.tgz",
+				"fileCount": 61,
+				"integrity": "sha512-lUeOhBN0FSL197vMasKPGnvFXMFLZShvhowczjOUeOfu7zV+FR0CpvIrz5UbXBglw2N8vmUiAxvFFS5C8v8q5Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD/5pwx9wQNNJBvA+aZLR/DQnhOF+BaT4JNVHSFTfnsFgIgKg+ahW6aCoiNF89XalPqNYU1is0ItBH6bKC3Sj4gjyI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"sig": "MEUCIQCVWVzhqUw7TXB3bhDwO4qQ3fdSa/KlGtVudCNsAuQ6qgIgWYwWmV1Ac+FKSXZe1eBOPZRvpbgOY7AwLZFEzWngBCs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fredocly-plugin-forge@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 139424
+			}
+		},
+		"0.2.0": {
+			"name": "@cloudflare/redocly-plugin-forge",
+			"version": "0.2.0",
+			"dependencies": {
+				"lodash-es": "4.18.1",
+				"ajv-formats": "3.0.1",
+				"@redocly/ajv": "8.18.3"
+			},
+			"devDependencies": {
+				"vitest": "5.1.0",
+				"publint": "0.3.16",
+				"typescript": "5.9.3",
+				"@types/node": "25.3.5",
+				"@types/lodash-es": "4.17.12",
+				"@redocly/openapi-core": "2.77.0"
+			},
+			"peerDependencies": {
+				"@redocly/openapi-core": "^2.0.0"
+			},
+			"dist": {
+				"shasum": "759965b02385083f0726ac7725f951fc3222e595",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redocly-plugin-forge/-/redocly-plugin-forge-0.2.0.tgz",
+				"fileCount": 63,
+				"integrity": "sha512-ilQopAYl61ZI40GTA57+W7E4TR0T0BPEduB5Ke8WlnCbGmV9kdQqtZvZLD8Dqm+Jeme8AW1Xc5f7HpF4on51bg==",
+				"signatures": [
+					{
+						"sig": "MEUCIEgw1aa551IGzryBAeqIqIN4NgCA0kTi7BdglcpOQ9bKAiEA1yCtLOKeDrKpw5FTZYAXHRHrzlia5nqY6V9gO6T2KWU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIF9hyN9+jlIDOgSg6dJm8+PrLMRGaPjMg0BbbVjrXJdIAiA6yzJl7s7XPcrex8tQtooFaQXc3C/HvPCOLXAIsT/v6g=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fredocly-plugin-forge@0.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 150854
+			}
+		}
+	}
+}

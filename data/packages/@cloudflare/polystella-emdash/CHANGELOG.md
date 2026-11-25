@@ -1,5 +1,34 @@
 # @cloudflare/polystella-emdash
 
+## 0.5.0
+
+### Minor Changes
+
+- [#89](https://github.com/cloudflare/polystella/pull/89) [`aa0d4f6`](https://github.com/cloudflare/polystella/commit/aa0d4f66d0048dae53feda3e6e0e70608cd7f1cf) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - The EmDash admin now has a PolyStella sidebar group with Settings (Translation settings, Collections and Sandbox tabs, chosen with `?tab=`), Catalog and Batch translation pages; the old `/` address opens Settings. Code-defined instructions and glossaries open read-only in a new window, and every link that opens a new window shows an icon. Collections show as two columns with a link to each content type, catalog keys drop their group prefix, and the editor panel's SEO note is collapsed.
+
+  Batch run pages label locales with `localeTags`, counts read "1 entry" and "1 batch", debug traces show the extra Workers AI input each request sends (such as thinking settings), and Collections warns when a ticked repeater subfield looks like a link or ID. Core exports `workersAIRequestParams`.
+
+- [#89](https://github.com/cloudflare/polystella/pull/89) [`6ea1e11`](https://github.com/cloudflare/polystella/commit/6ea1e11353b9fd0582dcd1f22418601d0aefed15) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Thinking control for translation models. In the Translation settings tab, a locale that overrides its model gets a **Thinking** choice: no override, off, or one of the efforts the model lists in the Workers AI catalog. Picking an effort turns the code's thinking-off switch back on for that model. Locales on the code-default model show the thinking set by `models.defaults` or `models.params`. The new `models.reasoningInput` option tells PolyStella exactly what to send for a model whose catalog entry is missing or wrong.
+
+- [#89](https://github.com/cloudflare/polystella/pull/89) [`6ea1e11`](https://github.com/cloudflare/polystella/commit/6ea1e11353b9fd0582dcd1f22418601d0aefed15) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Repeater fields can be translated. The Collections tab lists each repeater's `string`, `text`, and `image` subfields. All start ticked except links, IDs and author names (such as `url`, `slug` or `author_name`); only ticked subfields are translated (images get their alt text and caption), and every other subfield is copied from the source row. Collection policies gain an optional `subFields` map.
+
+  The Batch tab now starts on **Selected entries**, shows the run button above and below the entry list, and lists only source-locale entries. Server jobs record the entries they were started for and show **Show entries** on their card; whole-collection jobs say so.
+
+  Locales across the admin are shown by name and code, for example "French (fr)", in the browser's language. The name follows `localeTags`, so `es-la` mapped to `es-419` reads as Latin American Spanish. Selects show their option label when closed.
+
+### Patch Changes
+
+- [#89](https://github.com/cloudflare/polystella/pull/89) [`3c4a646`](https://github.com/cloudflare/polystella/commit/3c4a646b86df5284ffcafa05b9f7d0eda3822329) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Admin layout: Collections and per-language Translation settings are closed-by-default cards in two columns, opened from their top-right control (turning a collection on opens it). The Sandbox splits into settings, source and output cards. The Catalog page lists groups alphabetically on the left and shows the chosen group on the right. Batch translation puts its options beside the entry list, and for a whole collection shows its entry counts and how many entries each locale is missing.
+
+- [#89](https://github.com/cloudflare/polystella/pull/89) [`19d0e46`](https://github.com/cloudflare/polystella/commit/19d0e469187eaca9b892a9446e5c490d297fed22) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Admin polish: every ⓘ now opens on click as well as hover. The code-defined instructions and glossary page can append to or replace the code text and save. Side-by-side cards share a height, the Sandbox's character count and Translate button sit on the right, language cards show "Code default" with the model in a tooltip, and new-window icons stay on the same line as their link text.
+
+- [#89](https://github.com/cloudflare/polystella/pull/89) [`0d4d982`](https://github.com/cloudflare/polystella/commit/0d4d982f5b4e1e383e81a00b851b04bd0c2397d8) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - The editor panel and Batch tab pick locales from a multi-select dropdown instead of a long checkbox list. The Catalog tab stays fast while typing or toggling an override: a group's keys load only while it is open, and an edit re-renders only its own row.
+
+- [#90](https://github.com/cloudflare/polystella/pull/90) [`9b70f77`](https://github.com/cloudflare/polystella/commit/9b70f775719cb3d5dbb12d0b321190e43dafca25) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - The whole-collection summary formats every count the same way ("1,200 published"), and a language card's overridden model name is cut short with an ellipsis instead of wrapping.
+
+- Updated dependencies [[`aa0d4f6`](https://github.com/cloudflare/polystella/commit/aa0d4f66d0048dae53feda3e6e0e70608cd7f1cf)]:
+  - @cloudflare/polystella-core@0.8.0
+
 ## 0.4.0
 
 ### Minor Changes

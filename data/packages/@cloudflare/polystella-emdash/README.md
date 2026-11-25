@@ -96,8 +96,9 @@ server log with the full error message, its code and cause chain, and for an
 unusable model reply the finish reason and reply field sizes. Editors see only a
 short, safe message and the same ID.
 
-The native admin registers one **PolyStella** page with **Catalog**,
-**Collections**, **Translation settings**, and **Translation sandbox** tabs.
+The native admin adds a **PolyStella** sidebar group with **Settings**
+(**Translation settings**, **Collections**, and **Sandbox** tabs), **Catalog**,
+and **Batch translation** pages.
 These controls use EmDash's Kumo design system; no generated plugin settings
 page is registered. Translation settings and catalog controls list target
 locales only; the code-defined default locale remains the source.
@@ -108,7 +109,7 @@ This package also installs `polystella check-ui`, `polystella sync-ui`, and
 ## Content Translation
 
 The native editor panel appears for Editors and Administrators. The PolyStella
-**Collections** tab lets an Administrator enable project collections and choose
+**Collections** tab in Settings lets an Administrator enable project collections and choose
 translatable fields. The source locale is always the code-defined
 `catalogs.defaultLocale` and cannot be changed in plugin settings. No collection
 is enabled until an Administrator saves a valid policy. Missing or malformed
@@ -117,7 +118,7 @@ stored policy fails closed. Translation also checks the live collection schema
 non-translatable. Settings saves are conditional on the loaded revision; a
 concurrent save by another Administrator is rejected instead of overwritten.
 
-The panel translates selected `string`, `text`, Portable Text and `blocks` fields in an
+The panel translates selected `string`, `text`, Portable Text, `blocks` and repeater fields in an
 existing target-locale draft. The private route rereads the source values
 through its `content:read` capability. On EmDash 1.6 and later, the panel puts
 the translation into the open form through `editorDraft`, keeping other unsaved
@@ -260,4 +261,4 @@ const t = await Astro.locals.buildCatalogTranslator(locale);
   changes are lost.
 - Before EmDash 1.5, the PolyStella section shows on every collection. On
   collections not enabled in plugin settings, the panel says so and links
-  Administrators to the Collections tab.
+  Administrators to Settings, on the Collections tab.
