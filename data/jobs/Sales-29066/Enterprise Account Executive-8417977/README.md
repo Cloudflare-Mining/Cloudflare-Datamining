@@ -3,46 +3,65 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available locations:&nbsp;</strong></p>
+<h2>Available Locations</h2>
 <ul>
-	<li>Austin, TX</li>
-	<li>San Francisco, CA<strong><br></strong></li>
+	<li>Minneapolis, MN</li>
 </ul>
-<p><strong>Available Term</strong></p>
+<h2>About the Role</h2>
+<p>We are seeking an experienced and strategic Enterprise Account Executive to own a dedicated territory of named Fortune 500 and Global 2000 accounts across our Michigan territory. You will lead complex, multi-year platform deals across Cloudflare’s SASE/Zero Trust, Application Security, Developer Platform, and Network/CDN portfolio—helping CIOs, CISOs, and CTOs consolidate legacy point products onto one global intelligent network.</p>
+<h2>Responsibilities</h2>
 <ul>
-	<li>Winter (January - April 2027)&nbsp;</li>
+	<li><strong>Own Regional Enterprise Accounts:</strong> Build and execute multi-threaded account plans to acquire new logos and expand strategic enterprise agreements across large, complex organizations.</li>
+	<li><strong>Strategic Revenue Leadership:</strong> Develop and execute account plans to meet and exceed revenue goals by structuring enterprise-grade platform partnerships within key accounts.</li>
+	<li><strong>Sell Platform Consolidation to the C-Suite:</strong> Partner with CIOs, CISOs, and VP-level architecture leaders to displace incumbent firewall, VPN, MPLS, and CDN vendors with Cloudflare’s unified connectivity cloud.</li>
+	<li><strong>Run Disciplined Deal Execution:</strong> Manage accurate forecasting and pipeline progression using MEDDPICC (or comparable enterprise frameworks), leveraging executive sponsors, Solutions Engineers, and channel/GSI partners.</li>
+	<li><strong>Shape Product &amp; Field Strategy:</strong> Feed customer architecture requirements directly back to Product Management and leadership to accelerate enterprise adoption.</li>
 </ul>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare's HR/AI Transformation team makes HR work simpler and more effective. We redesign how work gets done, build internal tools (including AI tools), and run learning programs that help people adopt new ways of working.&nbsp;</p>
-<p>As our intern working on programs and processes, you'll help run those learning programs, keep our projects on track, and turn people's challenges into clear problem statements and process maps. You'll work directly with the head of AI Transformation &amp; People Strategy, alongside HR leaders, process owners and engineers. This internship starts in January 2027 and is designed for a current student who is highly organized, writes clearly and is curious about how AI can improve the way people work.</p>
-<p><strong>Responsibilities<br></strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>Plan and run our learning programs, including scheduling sessions, coordinating speakers and materials, and sending announcements and follow-ups.</li>
-	<li>Maintain a single, up-to-date view of all team projects, and follow up with project owners to keep work moving.</li>
-	<li>Write short, clear status updates for team leaders and stakeholders.</li>
-	<li>Meet with people across the HR function to understand their challenges, and summarize what you learn in clear problem statements.</li>
-	<li>Document how key processes work today, and help prepare workshops to redesign them.</li>
-	<li>Own one project from start to finish, with a named sponsor and a clean handoff at the end of your internship.</li>
+	<li>8+ years of B2B enterprise technology sales experience with a verified track record of consistently exceeding $1.5M+ annual quota on complex, multi-year software, cloud, or cybersecurity deals.</li>
+	<li>Deep understanding of enterprise cloud platforms, network security, and modern IT architecture.</li>
+	<li>Proven capability to align solutions with customer Enterprise Architecture (Business, Data, Applications, Technology) and enterprise business models mapping Cloudflare solutions to complex business models and modern cloud operating environments.</li>
+	<li>Proven ability to navigate multi-stakeholder buying committees (Security, Networking, Infrastructure, AppDev, and Procurement) and close seven-figure agreements.</li>
+	<li>Experience co-selling alongside strategic channel partners, VARs, and global systems integrators.</li>
+	<li>Willingness to travel regionally within the Michigan territory to build executive customer relationships.</li>
+	<li>Proficiency with enterprise sales tools and methodologies (e.g., Salesforce, Tableau, MEDDPICC, or similar frameworks).</li>
+	<li>Relevant professional experience in technology sales or enterprise consulting; advanced degrees or continuous technical learning are welcomed.</li>
+	<li>Willingness to travel as needed to foster strong customer and internal team relationships.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h2>Compensation</h2>
+<p>Compensation may be adjusted depending on work location.&nbsp;</p>
 <ul>
-	<li>Currently enrolled in a program studying business or similar.</li>
-	<li>Experience planning and managing projects or programs.</li>
-	<li>Strong written communication, including the ability to turn a messy conversation into a clear, simple summary.</li>
-	<li>Strong organization and follow-through across many people, details and deadlines.</li>
-	<li>Confidence working with senior leaders and reaching out to people you haven't met.</li>
-	<li>Hands-on experience using AI tools in your work or studies.</li>
-	<li>Ability to commit to a full-time (40 hours/week Monday - Friday) for a minimum 12 week internship.</li>
-	<li>In office 3-5 days a week.</li>
+	<li>Estimated annual salary of $350,000- $380,000 (base/variable) with uncapped commissions.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<h3>Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
-	<li>Background in consulting, operations, HR or process improvement.</li>
-	<li>Experience with process mapping, user research or workshop facilitation.</li>
-	<li>Familiarity with capacity planning and project tracking tools such as Jira, Asana or Smartsheet.</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
-<p>For San Francisco Bay Area based hires: Estimated hourly rate of $27.00/hr.</p>
+<h3>Financial Benefits</h3>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<h3>Time Off</h3>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

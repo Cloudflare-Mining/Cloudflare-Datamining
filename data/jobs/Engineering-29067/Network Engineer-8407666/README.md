@@ -3,62 +3,36 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong><span style="font-size: 12pt;"><sup>Job Location - Bengaluru, India</sup></span></strong></p>
-<p><strong><span style="font-size: 12pt;"><sup>Work Mode - Hybrid (3 Days WFO)</sup></span></strong></p>
-<p><strong><span style="font-size: 12pt;"><sup>Internship Duration - 6 Months starting Jan 2027</sup></span></strong></p>
-<p><strong><span style="font-size: 12pt;"><sup>About the Role :</sup></span></strong></p>
-<p><span style="font-size: 12pt;"><sup>We are looking for ambitious, tech-forward HR interns to join our People Operations team for a 6-month intensive apprenticeship. This is not a typical administrative internship—it is a fast-paced, high-impact, end-to-end People Operations role designed for high-potential talent. During your tenure, you will work directly on critical People Operations functions, HR business partnering initiatives, and high-impact cross-functional projects. If you are extremely data-fluent, comfortable with ambiguity, and eager to leverage modern HR technology and AI to solve business challenges, this role is built for you.</sup></span></p>
-<p><span style="font-size: 12pt;"><strong><sup>Key Responsibilities :</sup></strong></span></p>
-<p><span style="font-size: 12pt;"><sup>As a People Operations/HRBP Intern, you will gain hands-on ownership across the employee lifecycle, including but not limited to:</sup></span></p>
+<h4>Available Location: Austin</h4>
+<h2>About the role</h2>
+<p>This is a foundational role at the heart of Cloudflare's Infrastructure Strategy team. As a Network Engineer, you will be instrumental in growing and managing our network. You need to be highly motivated, self driven. You will love to nerd out on how RFC 2549 makes RFC 1149 better. You’ll understand how to troubleshoot the entire stack, both from a network perspective all the way through applications. Working through 5 different problems at once is something you strive for, while holding the mission to help make the Internet Better.&nbsp;</p>
+<h2>About the team</h2>
+<p>We solve problems, and plan to be ahead of future ones. We work with engineering, capacity planning, network strategy, supply chain, and operations to grow Cloudflare's data center and PoP footprint. With colocation providers, hardware suppliers, and delivery partners worldwide, we turn infrastructure requirements into deployments that come online faster, cost less, and work the first time. We help fix customer problems and design the network to be ready for the unknown.</p>
+<h2>What you'll do&nbsp;</h2>
+<p>In this role, you will:</p>
 <ul>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>Employee Experience &amp; Engagement: Assist in designing and executing employee engagement programs, pulse surveys, feedback loops, and culture-building initiatives to drive retention and satisfaction.</sup></span></p>
-	</li>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>Compliance &amp; Labor Code Audits: Participate in internal HR compliance audits, statutory labor code alignments, and document verification processes to ensure seamless operational governance.</sup></span></p>
-	</li>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>Payroll &amp; Benefits Management: Support monthly payroll processing workflows, leave &amp; attendance reconciliations, vendor coordination, and employee benefits administration.</sup></span></p>
-	</li>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>Onboarding &amp; Exit Management: Own end-to-end joining logistics, orientation sessions, documentation, exit interviews, and offboarding workflows to deliver a memorable employee journey.</sup></span></p>
-	</li>
+	<li><strong>Data-Driven Analysis &amp; Planning: </strong>Analyze network traffic, performance data, and market trends to model capacity needs, justify expansion projects, and prioritize partnership opportunities. Your analysis will directly influence where and how we expand our network.&nbsp;</li>
+	<li><strong>Interconnection &amp; Traffic Engineering: </strong>Work with partners and internal teams to establish and expand private network interconnects, Internet exchange connections, and transit capacity. Investigate routing inefficiencies, improve local traffic delivery, and coordinate BGP policy changes that improve performance, resilience, and network efficiency.</li>
+	<li><strong>Project Execution: </strong>Coordinate the end-to-end deployment lifecycle for new Points of Presence (PoPs). Expansion projects and planning.&nbsp;</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Serve as a key liaison between our external partners and internal teams, including Network Engineering, Capacity Planning, Data Center Strategy, and Infrastructure Operations, to ensure seamless project execution and alignment.</li>
+	<li><strong>Troubleshooting &amp; Operational Reliability:</strong> Investigate connectivity, latency, packet loss, routing, hardware, and site availability issues. Understand how customers and Cloudflare products use the network, coordinate remediation with the appropriate teams, and verify connectivity and serving health after changes.</li>
+	<li><strong>Process &amp; Tooling Improvement:</strong> Contribute to the systems, tools, and processes that power our team. You will help build a scalable machine for tracking our partnership pipeline, managing projects, and reporting on our impact.</li>
 </ul>
-<p><strong><span style="font-size: 12pt;"><sup>Skill Requirements &amp; Qualifications :</sup></span></strong></p>
-<p><span style="font-size: 12pt;"><sup>Academic &amp; Eligibility Background</sup></span></p>
+<p><strong>Solve Problems: Understand how customers use our products and solve issues that might arise.&nbsp;</strong><strong>Technical Curiosity: Be always curious, following new hardware developments and how they would fit in our network.&nbsp;</strong></p>
+<h2>Desirable skills, knowledge and experience&nbsp;</h2>
 <ul>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>Currently pursuing a full-time MBA (4th Semester) with a focus on HR / General Management.</sup></span></p>
-	</li>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>NAPS Eligibility: As per the National Apprenticeship Promotion Scheme (NAPS), candidates with prior full-time experience or an active PF/UAN account are in-eligible to apply.</sup></span></p>
-	</li>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>Prior internship experience in similar field will be an added advantage</sup></span></p>
-	</li>
+	<li><strong>Networking Fundamentals</strong>: Practical experience with BGP, IPv4/IPv6, Ethernet, LACP, and optical connectivity. Comfortable using Linux, routing tables, interface counters, packet captures, and network telemetry to investigate problems across physical connectivity, routing, transport, and applications.</li>
+	<li><strong>Exceptional Communication: </strong>strong written and verbal communication skills, with the ability to articulate technical concepts clearly to technical and non-technical stakeholders.</li>
+	<li><strong>AI-Native Mindset:</strong> Hands-on experience using AI assistants and agentic tools in daily work to accelerate research, analyze network data, troubleshoot issues, and build automation. You proactively identify repetitive workflows that AI can improve, validate results against technical evidence, and share effective approaches with the team.</li>
+	<li><strong>Collaborative Influence: </strong>You are a natural collaborator with a proven ability to earn buy-in and align cross-functional teams toward a common goal, even without direct authority.</li>
+	<li><strong>Proactive Ownership:</strong> A self-starting mindset with a strong sense of ownership and the persistence to drive complex projects to completion. You are organized, detail-oriented, and thrive on turning chaos into a well-oiled process.</li>
+	<li><strong>Analytical Aptitude:</strong> Strong analytical and problem-solving abilities, with experience using data to inform decisions and build a business case.</li>
+	<li><strong>Systems Thinking: </strong>Ability to translate real-world network and data center requirements into clear technical specifications, accurate infrastructure records, and reliable operational workflows</li>
 </ul>
-<p><span style="font-size: 12pt;"><sup>Core Soft Skills</sup></span></p>
+<h2>Bonus&nbsp;</h2>
 <ul>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>Interpersonal Excellence: Exceptional emotional intelligence, empathy, and the ability to build trust quickly across cross-functional teams.</sup></span></p>
-	</li>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>Communication Skills: Outstanding verbal and written communication skills with strong presentation capabilities.</sup></span></p>
-	</li>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>Problem-Solving Ability: High learning agility, critical thinking, and the drive to work independently on open-ended problems.</sup></span></p>
-	</li>
+	<li><strong>Cloudflare Workers and systems integration: </strong>Experience building and deploying internal tools and API integrations on Cloudflare Workers using TypeScript, with familiarity with services such as D1, R2, and Durable Objects. Comfortable integrating REST APIs, troubleshooting authentication and permissions, and building reliable workflows across systems. Familiarity with Git, automated testing, and CI/CD for maintaining and deploying these tools.</li>
 </ul>
-<p><strong><span style="font-size: 12pt;"><sup>Technical &amp; Functional Skills :</sup></span></strong></p>
-<ul>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>AI &amp; HR Tech Literacy: Hands-on usage of AI tools (e.g., Gemini, ChatGPT, AI prompt engineering, automation tools) and familiarity with any HR software/HRIS platforms.</sup></span></p>
-	</li>
-	<li style="font-size: 12pt;">
-		<p><span style="font-size: 12pt;"><sup>Data Fluency: Strong proficiency in MS Excel / Google Sheets, data visualization, basic metrics analysis, and data-driven decision-making.</sup></span></p>
-	</li>
-</ul>
-<p><br><br></p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

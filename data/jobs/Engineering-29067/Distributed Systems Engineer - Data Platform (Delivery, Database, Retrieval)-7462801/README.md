@@ -4,17 +4,14 @@
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
 <h3>Available Locations</h3>
-<p></p>
 <ul>
-	<li>Atlanta, US</li>
 	<li>Austin, US</li>
 	<li>Denver, US</li>
 	<li>New York, US</li>
 	<li>San Francisco, US</li>
-	<li>Seattle, US</li>
-	<li>Washington DC, US</li>
 	<li>London, UK</li>
 	<li>Lisbon, Portugal</li>
+	<li>Toronto, Canada</li>
 </ul>
 <p><strong>Applications will be accepted until February 16, 2027</strong></p>
 <h2>About the Role</h2>

@@ -3,37 +3,38 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations:&nbsp; </strong>Austin, TX</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare’s mission is to help build a better Internet - one that is more secure, faster, and more reliable for every organization on the planet. The Secure Access Service Edge (SASE) and Zero Trust market represents one of the most transformative growth opportunities in enterprise technology, reshaping how businesses connect, protect, and empower their global workforce.</p>
-<p>To lead this next chapter, Cloudflare has created the Cloudflare One (CF1) Speedboat - a dedicated, cross-functional organization designed to operate with the focus, agility, and autonomy of a startup, backed by the global scale and infrastructure of Cloudflare.</p>
-<p>We are seeking a visionary, entrepreneurial executive to serve as the Vice President, CF1 GTM. In this role, you will own and scale a high-growth global business, define the GTM strategy, and build a multi-billion-dollar business in one of the most dynamic markets of the decade. This is an extraordinary opportunity to lead a “company within a company,” shaping the future of how enterprises secure and connect to the Internet.</p>
-<p><strong>Key Responsibilities</strong></p>
+<h2>Available Locations</h2>
 <ul>
-	<li><strong>Own and Scale the Business:</strong> Act as the general manager of Cloudflare One business unit, with full accountability for global GTM strategy, execution, and P&amp;L performance.</li>
-	<li><strong>Define the Market Strategy:</strong> Craft and execute a bold, differentiated strategy to establish Cloudflare as the world’s leading SASE and Zero Trust platform. Align product innovation, ecosystem partnerships, and field execution behind a unified vision.</li>
-	<li><strong>Build a World-Class Leadership Team:</strong> Recruit, develop, and lead a global organization across sales, solution engineering, success, operations, and GTM strategy - fostering a culture of speed, accountability, and innovation.</li>
-	<li><strong>Drive Operational Excellence:</strong> Establish and manage a high-velocity operating cadence, including forecasting, pipeline management, QBRs, and executive-level reporting grounded in data-driven insights.</li>
-	<li><strong>Champion the Partner-First Motion:</strong> Drive growth through deep collaboration with Cloudflare’s partner ecosystem - enabling global systems integrators, MSPs, and channel partners to scale Cloudflare One’s reach and impact.</li>
-	<li><strong>Be the Voice of the Field:</strong> Serve as the bridge between the market and the business. Translate customer and partner feedback into actionable insights for Product and Engineering to accelerate innovation and adoption.</li>
-	<li><strong>Lead the AI Security Motion</strong>: Own Cloudflare's GTM for AI-native enterprises - from Digital Native AI companies building on Cloudflare infrastructure to large enterprises securing AI workloads. Drive adoption of AI Gateway, Zero Trust for AI model access, and DLP for prompt-level data protection as the entry motion into this segment.</li>
-	<li><strong>Evangelize the Vision:</strong> Represent Cloudflare One as an executive spokesperson with customers, partners, industry analysts, and at major events. Position Cloudflare as the thought leader shaping the future of Zero Trust and network security..</li>
+	<li>Nashville, Tennessee</li>
 </ul>
-<p><strong>Qualifications &amp; Experience</strong></p>
+<h2>About the Role</h2>
+<p>We are seeking an experienced and strategic Enterprise Account Executive to own a dedicated territory of named Fortune 500 and Global 2000 accounts across our Michigan territory. You will lead complex, multi-year platform deals across Cloudflare’s SASE/Zero Trust, Application Security, Developer Platform, and Network/CDN portfolio—helping CIOs, CISOs, and CTOs consolidate legacy point products onto one global intelligent network.</p>
+<h2>Responsibilities</h2>
 <ul>
-	<li><strong>Enterprise Builder:</strong> 15+ years leading large-scale enterprise SaaS or cybersecurity businesses, ideally with prior GM or P&amp;L ownership experience.</li>
-	<li><strong>Strategic Visionary:</strong> Deep understanding of cybersecurity, networking, and cloud ecosystems - including SASE, Zero Trust, SD-WAN, and network security.</li>
-	<li><strong>Partner-First Leader:</strong> Proven record of building and scaling partner-led GTM models and ecosystem-driven growth strategies.</li>
-	<li><strong>Competitive Depth: </strong>Track record of winning against entrenched security incumbents in enterprise accounts, with specific fluency in the SASE competitive landscape.</li>
-	<li><strong>AI Market Fluency</strong>: Working understanding of how enterprises are deploying AI infrastructure and the security, connectivity, and observability requirements that it creates.</li>
-	<li><strong>Operational Excellence: </strong>Demonstrated ability to design and execute rigorous operating frameworks that drive sustained, measurable growth.</li>
-	<li><strong>Inspirational Leadership:</strong> Known for building high-performance global teams and cultivating cultures of excellence, collaboration, and inclusion.</li>
-	<li><strong>Executive Presence:</strong> Exceptional communication and storytelling skills; comfortable engaging with customers, analysts, boards, and global audiences.</li>
+	<li><strong>Own Regional Enterprise Accounts:</strong> Build and execute multi-threaded account plans to acquire new logos and expand strategic enterprise agreements across large, complex organizations.</li>
+	<li><strong>Strategic Revenue Leadership:</strong> Develop and execute account plans to meet and exceed revenue goals by structuring enterprise-grade platform partnerships within key accounts.</li>
+	<li><strong>Sell Platform Consolidation to the C-Suite:</strong> Partner with CIOs, CISOs, and VP-level architecture leaders to displace incumbent firewall, VPN, MPLS, and CDN vendors with Cloudflare’s unified connectivity cloud.</li>
+	<li><strong>Run Disciplined Deal Execution:</strong> Manage accurate forecasting and pipeline progression using MEDDPICC (or comparable enterprise frameworks), leveraging executive sponsors, Solutions Engineers, and channel/GSI partners.</li>
+	<li><strong>Shape Product &amp; Field Strategy:</strong> Feed customer architecture requirements directly back to Product Management and leadership to accelerate enterprise adoption.</li>
 </ul>
-<p><strong>Why This Role</strong></p>
-<p>This is not a traditional GTM leadership role - it’s an opportunity to scale a generational business inside one of the world’s most innovative technology companies. The Vice President, CF1 GTM will define how enterprises secure, connect, and operate in the modern Internet era - and in doing so, shape the next chapter of Cloudflare’s growth story.</p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
+<ul>
+	<li>8+ years of B2B enterprise technology sales experience with a verified track record of consistently exceeding $1.5M+ annual quota on complex, multi-year software, cloud, or cybersecurity deals.</li>
+	<li>Deep understanding of enterprise cloud platforms, network security, and modern IT architecture.</li>
+	<li>Proven capability to align solutions with customer Enterprise Architecture (Business, Data, Applications, Technology) and enterprise business models mapping Cloudflare solutions to complex business models and modern cloud operating environments.</li>
+	<li>Proven ability to navigate multi-stakeholder buying committees (Security, Networking, Infrastructure, AppDev, and Procurement) and close seven-figure agreements.</li>
+	<li>Experience co-selling alongside strategic channel partners, VARs, and global systems integrators.</li>
+	<li>Willingness to travel regionally within the Michigan territory to build executive customer relationships.</li>
+	<li>Proficiency with enterprise sales tools and methodologies (e.g., Salesforce, Tableau, MEDDPICC, or similar frameworks).</li>
+	<li>Relevant professional experience in technology sales or enterprise consulting; advanced degrees or continuous technical learning are welcomed.</li>
+	<li>Willingness to travel as needed to foster strong customer and internal team relationships.</li>
+</ul>
 <h2>Compensation</h2>
-<p>Compensation may be adjusted depending on work location.</p>
+<p>Compensation may be adjusted depending on work location.&nbsp;</p>
+<ul>
+	<li>Estimated annual salary of $340,000- $360,000 (base/variable) with uncapped commissions.</li>
+</ul>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <h3>Benefits</h3>
@@ -61,7 +62,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
