@@ -62,6 +62,9 @@
 	"agent-readiness-aeo-timeseries": {
 		"true": 100
 	},
+	"agent-readiness-diagnostics-v2": {
+		"false": 100
+	},
 	"agent-readiness-labs": {
 		"true": 100
 	},
@@ -134,6 +137,9 @@
 	"aig-new-dash-settings": {
 		"true": 100
 	},
+	"aig-policy-alerts": {
+		"false": 100
+	},
 	"aig-provider-key-activity": {
 		"true": 100
 	},
@@ -141,7 +147,7 @@
 		"true": 100
 	},
 	"aig-topup-eligibility-v2": {
-		"false": 100
+		"true": 100
 	},
 	"aig-wobs-dataset": {
 		"false": 100
@@ -195,9 +201,12 @@
 		"true": 100
 	},
 	"basin-catalog-object-authz": {
-		"false": 100
+		"true": 100
 	},
 	"basin-rename": {
+		"true": 100
+	},
+	"basin-sparrow-events": {
 		"true": 100
 	},
 	"billing-apple-pay-gate": {
@@ -431,6 +440,9 @@
 	"custom-ps-alerts": {
 		"true": 100
 	},
+	"d1-index-recommendations": {
+		"true": 100
+	},
 	"dash-delivery-gated-chunk-demo": {
 		"false": 100
 	},
@@ -644,18 +656,19 @@
 		"true": 100
 	},
 	"email-routing-account-destination-addresses": {
-		"false": 75,
-		"true": 25
+		"true": 100
 	},
 	"email-routing-subdomains": {
 		"false": 100
 	},
 	"email-routing-workers-migration": {
-		"true": 25,
-		"false": 76
+		"true": 100
 	},
 	"email-sending-account-nav": {
 		"false": 100
+	},
+	"email-sending-all-plans": {
+		"true": 100
 	},
 	"email-sending-scoped-suppressions": {
 		"true": 100
@@ -717,6 +730,9 @@
 	"iam-legal-signup-korea-oct-2025": {
 		"true": 100
 	},
+	"iam-shared-reauthentication": {
+		"true": 100
+	},
 	"igloo-catalog": {
 		"true": 100
 	},
@@ -730,7 +746,7 @@
 		"false": 100
 	},
 	"k2-metrics-ui": {
-		"false": 100
+		"true": 100
 	},
 	"k2-ui": {
 		"true": 100
@@ -739,8 +755,7 @@
 		"true": 100
 	},
 	"kumo-client-side-rules-form": {
-		"false": 73,
-		"true": 27
+		"true": 100
 	},
 	"kumo-ify": {
 		"false": 100
@@ -765,6 +780,9 @@
 		"true": 100
 	},
 	"lb-custom-rules-changes": {
+		"true": 100
+	},
+	"lb-health-events-graphql": {
 		"true": 100
 	},
 	"lee-tools-chart-generation": {
@@ -887,11 +905,14 @@
 	"marketing-tal-test": {
 		"false": 100
 	},
+	"media-upgrade-plan": {
+		"false": 100
+	},
 	"mesh-hostname-routing": {
 		"true": 100
 	},
 	"modular-checkout-blind-default-view": {
-		"false": 100
+		"true": 100
 	},
 	"monitored-sessions-tier-1": {
 		"true": 100
@@ -929,9 +950,6 @@
 	},
 	"oauth-management-ui": {
 		"true": 100
-	},
-	"obs-plat-workers-analytics-revamp": {
-		"false": 100
 	},
 	"onboarding-bot-management": {
 		"true": 100
@@ -992,10 +1010,7 @@
 		"variant-b": 100
 	},
 	"prg-domain-reg-transfer": {
-		"variant-a": 19,
-		"baseline": 41,
-		"variant-b": 20,
-		"variant-c": 21
+		"variant-b": 100
 	},
 	"prg-domain-success-page-experiment": {
 		"experiment": 100
@@ -1140,9 +1155,6 @@
 	},
 	"realtimekit-dashboard-redirect": {
 		"false": 100
-	},
-	"registrar-multi-domain-purchase": {
-		"true": 100
 	},
 	"resource-tagging-billing-tags-ui": {
 		"false": 100
@@ -1443,6 +1455,9 @@
 	},
 	"workflows-ci": {
 		"false": 100
+	},
+	"zaraz-rum-managed-component": {
+		"true": 100
 	},
 	"zone-analytics-dns-cta": {
 		"variant-b": 100

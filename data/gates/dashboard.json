@@ -85,6 +85,9 @@
 	"agent-readiness-aeo-visibility": {
 		"enabled": false
 	},
+	"agent-readiness-diagnostics-v2": {
+		"enabled": true
+	},
 	"agent-readiness-labs": {
 		"enabled": true
 	},
@@ -131,6 +134,9 @@
 		"enabled": false
 	},
 	"ai-auto-rag-remove-beta": {
+		"enabled": true
+	},
+	"ai-auto-rag-search-for-agents-banner": {
 		"enabled": true
 	},
 	"ai-auto-rag-stream-source": {
@@ -229,6 +235,9 @@
 	"aig-force-authenticated-gateways": {
 		"enabled": true
 	},
+	"aig-gateway-scoped-tokens": {
+		"enabled": true
+	},
 	"aig-model-aliases": {
 		"enabled": true
 	},
@@ -239,6 +248,9 @@
 		"enabled": true
 	},
 	"aig-policies": {
+		"enabled": true
+	},
+	"aig-policy-alerts": {
 		"enabled": true
 	},
 	"aig-provider-key-activity": {
@@ -390,7 +402,7 @@
 		"enabled": true
 	},
 	"basin-sparrow-events": {
-		"enabled": false
+		"enabled": true
 	},
 	"billable-usage-in-product-overviews": {
 		"enabled": true
@@ -706,7 +718,7 @@
 		"enabled": true
 	},
 	"chart-library-sample-rate": {
-		"enabled": false
+		"enabled": true
 	},
 	"client-certificates": {
 		"enabled": false
@@ -796,7 +808,7 @@
 		"enabled": true
 	},
 	"d1-index-recommendations": {
-		"enabled": false
+		"enabled": true
 	},
 	"d2c-existing-resources": {
 		"enabled": true
@@ -1071,6 +1083,9 @@
 	},
 	"deseng-domains": {
 		"enabled": false
+	},
+	"deseng-domains-plans-comparison": {
+		"enabled": true
 	},
 	"deseng-domains-tab": {
 		"enabled": true
@@ -1374,6 +1389,14 @@
 	"durable-object-deployments-tab": {
 		"enabled": true
 	},
+	"durable-objects-empty-state": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"guide",
+			"explainer"
+		]
+	},
 	"durable-objects-filter-metrics-by-name-id": {
 		"enabled": true
 	},
@@ -1523,7 +1546,7 @@
 		"enabled": true
 	},
 	"email-sending-all-plans": {
-		"enabled": false
+		"enabled": true
 	},
 	"email-sending-scoped-suppressions": {
 		"enabled": true
@@ -1702,12 +1725,9 @@
 		"enabled": false
 	},
 	"iam-shared-reauthentication": {
-		"enabled": false
-	},
-	"igloo-catalog": {
 		"enabled": true
 	},
-	"images-hosted-analytics": {
+	"igloo-catalog": {
 		"enabled": true
 	},
 	"images-unique-transformations-discount": {
@@ -1824,7 +1844,7 @@
 		"enabled": true
 	},
 	"lb-health-events-graphql": {
-		"enabled": false
+		"enabled": true
 	},
 	"lb-select-zone-at-account-level": {
 		"enabled": false
@@ -2041,6 +2061,9 @@
 	"marketing-tal-test": {
 		"enabled": true
 	},
+	"media-upgrade-plan": {
+		"enabled": true
+	},
 	"mesh": {
 		"enabled": true
 	},
@@ -2134,6 +2157,9 @@
 	"opaque-staging-experiment": {
 		"enabled": false
 	},
+	"operation-schema-analytics": {
+		"enabled": true
+	},
 	"origin-analytics": {
 		"enabled": true
 	},
@@ -2151,9 +2177,6 @@
 	},
 	"pages-kumo": {
 		"enabled": false
-	},
-	"pages-targeted-placement": {
-		"enabled": true
 	},
 	"pages-v3-build-image": {
 		"enabled": true
@@ -2625,6 +2648,9 @@
 	"r2-bandwidth-by-location": {
 		"enabled": true
 	},
+	"r2-bandwidth-limit": {
+		"enabled": false
+	},
 	"r2-bandwidth-metrics": {
 		"enabled": true
 	},
@@ -2710,8 +2736,8 @@
 	"registrar-domain-privacy-modes": {
 		"enabled": false
 	},
-	"registrar-multi-domain-purchase": {
-		"enabled": true
+	"registrar-manage-domains-redesign": {
+		"enabled": false
 	},
 	"registrar-verified-email-selector": {
 		"enabled": false
@@ -2876,6 +2902,9 @@
 			"variant-image"
 		]
 	},
+	"signals-opt-in": {
+		"enabled": false
+	},
 	"signup-form-background-illustration": {
 		"enabled": false,
 		"branches": [
@@ -2914,6 +2943,9 @@
 		"enabled": true
 	},
 	"spectrum-tcp-worker-origin": {
+		"enabled": true
+	},
+	"spectrum-udp-worker-origin": {
 		"enabled": true
 	},
 	"spectrum-v-net-origins": {
@@ -3125,6 +3157,16 @@
 	},
 	"tsf-chat-queue-position": {
 		"enabled": true
+	},
+	"tsf-chat-wait-estimate": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"biz5-ent5",
+			"biz5-ent10",
+			"biz10-ent15",
+			"biz15-ent20"
+		]
 	},
 	"tsf-deflection-help-on-expand": {
 		"enabled": true
@@ -3453,7 +3495,7 @@
 		"enabled": true
 	},
 	"workers-vpc-certificates-ui": {
-		"enabled": false
+		"enabled": true
 	},
 	"workers-vpc-dash-v1": {
 		"enabled": true
@@ -3489,7 +3531,7 @@
 		"enabled": true
 	},
 	"zaraz-rum-managed-component": {
-		"enabled": false
+		"enabled": true
 	},
 	"zero-wire-in-dash": {
 		"enabled": true
