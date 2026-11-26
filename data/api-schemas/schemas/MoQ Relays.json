@@ -270,6 +270,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.moq.relays",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.moq.relays",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Deleting this relay revokes every token issued for it, so publishers and subscribers can no longer connect. This cannot be undone.",
 		"x-stability": "beta"
 	},
@@ -542,6 +545,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.moq.relays.tokens",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.moq.relays.tokens",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Revoking this token blocks new connections that present it. Sessions already connected with it stay up.",
 		"x-stability": "beta"
 	},
@@ -827,6 +833,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.moq.relays",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.moq.relays",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/moq/relays/{relay_id}": {
@@ -1167,6 +1176,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.moq.relays",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.moq.relays",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/moq/relays/{relay_id}/tokens": {
@@ -1312,6 +1324,7 @@
 																					"description": "The signed JWT. Present ONLY in create / auto-create responses (shown\nonce); never returned by list, never stored.\n",
 																					"type": "string",
 																					"example": "eyJhbGciOiJFZDI1NTE5...",
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			},
@@ -1538,6 +1551,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.moq.relays.tokens",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.moq.relays.tokens",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/moq/relays": {
@@ -1733,6 +1749,7 @@
 																					"description": "The signed JWT. Present ONLY in create / auto-create responses (shown\nonce); never returned by list, never stored.\n",
 																					"type": "string",
 																					"example": "eyJhbGciOiJFZDI1NTE5...",
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			},
@@ -2033,6 +2050,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.moq.relays",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.moq.relays",
+		"x-forge-method-name": "create",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/moq/relays/{relay_id}/tokens": {
@@ -2220,6 +2240,7 @@
 																					"description": "The signed JWT. Present ONLY in create / auto-create responses (shown\nonce); never returned by list, never stored.\n",
 																					"type": "string",
 																					"example": "eyJhbGciOiJFZDI1NTE5...",
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			},
@@ -2502,6 +2523,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.moq.relays.tokens",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.moq.relays.tokens",
+		"x-forge-method-name": "create",
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/moq/relays/{relay_id}": {
@@ -2577,7 +2601,8 @@
 										}
 									}
 								],
-								"x-fern-property-name": "relay-config"
+								"x-fern-property-name": "relay-config",
+								"x-forge-property-name": "relay-config"
 							},
 							"name": {
 								"type": "string"
@@ -2897,6 +2922,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.moq.relays",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.moq.relays",
+		"x-forge-method-name": "update",
 		"x-stability": "beta"
 	}
 }

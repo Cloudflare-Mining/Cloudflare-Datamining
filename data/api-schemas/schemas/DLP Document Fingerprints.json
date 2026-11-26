@@ -155,7 +155,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.document-fingerprints",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.document-fingerprints",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/document_fingerprints": {
 		"operationId": "dlp-document-fingerprints-read-all",
@@ -470,7 +476,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.document-fingerprints",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.document-fingerprints",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
 		"operationId": "dlp-document-fingerprints-read",
@@ -791,7 +804,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.document-fingerprints",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.document-fingerprints",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/dlp/document_fingerprints": {
 		"operationId": "dlp-document-fingerprints-create",
@@ -1130,7 +1150,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.document-fingerprints",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.document-fingerprints",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
 		"operationId": "dlp-document-fingerprints-update",
@@ -1476,7 +1502,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.document-fingerprints",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.document-fingerprints",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/dlp/document_fingerprints/{document_fingerprint_id}": {
 		"operationId": "dlp-document-fingerprints-upload",
@@ -1815,6 +1847,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.document-fingerprints",
-		"x-fern-sdk-method-name": "upload"
+		"x-fern-sdk-method-name": "upload",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.document-fingerprints",
+		"x-forge-method-name": "upload",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

@@ -221,6 +221,9 @@
 			"Metrics Export"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -230,9 +233,21 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.metrics-export",
-				"x-fern-sdk-method-name": "list"
+				"x-fern-sdk-method-name": "list",
+				"x-forge-group-name": "o11y.metrics-export",
+				"x-forge-method-name": "list"
 			}
-		]
+		],
+		"x-forge-group-name": "observability.metrics-export",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/workers/observability/metricsexport": {
 		"operationId": "metricsExport.upsert",
@@ -584,6 +599,7 @@
 			"Metrics Export"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-ignore": true,
@@ -592,8 +608,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.metrics-export",
-				"x-fern-sdk-method-name": "upsert"
+				"x-fern-sdk-method-name": "upsert",
+				"x-forge-group-name": "o11y.metrics-export",
+				"x-forge-method-name": "upsert"
 			}
-		]
+		],
+		"x-forge-group-name": "observability.metrics-export",
+		"x-forge-method-name": "upsert",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	}
 }

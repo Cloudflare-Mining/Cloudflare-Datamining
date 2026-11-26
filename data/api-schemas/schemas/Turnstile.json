@@ -194,7 +194,10 @@
 													"description": "Secret key for this widget.",
 													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-													"x-sensitive": true
+													"x-auditable": false,
+													"x-forge-sensitive": true,
+													"x-sensitive": true,
+													"x-stainless-terraform-use-state-for-unknown": true
 												},
 												"sitekey": {
 													"description": "Unique identifier for a Turnstile widget.",
@@ -331,12 +334,80 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "turnstile.widgets",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"challenge-widgets.write",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/challenges/widgets": {
 		"operationId": "accounts-turnstile-widgets-list",
 		"summary": "List Turnstile Widgets",
 		"description": "Lists Turnstile widgets for an account.",
+		"parameters": [
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"description": "Page number of paginated results.",
+					"type": "number",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"description": "Number of items per page.",
+					"type": "number",
+					"default": 25,
+					"maximum": 1000,
+					"minimum": 5
+				}
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"schema": {
+					"description": "Field to order widgets by.",
+					"type": "string",
+					"example": "id",
+					"enum": [
+						"id",
+						"sitekey",
+						"name",
+						"created_on",
+						"modified_on"
+					]
+				}
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"schema": {
+					"description": "Direction to order widgets.",
+					"type": "string",
+					"example": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			},
+			{
+				"name": "filter",
+				"in": "query",
+				"description": "Filter widgets by field. The `name` field uses case-insensitive\nsubstring matching; `sitekey` uses exact matching.\nFormat: `field:value`\n\nSupported fields:\n- `name` - Filter by widget name (e.g., `filter=name:login-form`)\n- `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)\n\nReturns 400 Bad Request if the field is unsupported or format is invalid.\nAn empty filter value returns all results.\n",
+				"schema": {
+					"type": "string",
+					"example": "name:my-widget"
+				}
+			}
+		],
 		"responses": {
 			"200": {
 				"description": "List Turnstile Widgets",
@@ -699,7 +770,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "turnstile.widgets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"challenge-widgets.read",
+			"challenge-widgets.write",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/challenges/widgets/{sitekey}": {
 		"operationId": "accounts-turnstile-widget-get",
@@ -896,7 +976,10 @@
 													"description": "Secret key for this widget.",
 													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-													"x-sensitive": true
+													"x-auditable": false,
+													"x-forge-sensitive": true,
+													"x-sensitive": true,
+													"x-stainless-terraform-use-state-for-unknown": true
 												},
 												"sitekey": {
 													"description": "Unique identifier for a Turnstile widget.",
@@ -1035,7 +1118,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "turnstile.widgets",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"challenge-widgets.read",
+			"challenge-widgets.write",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/challenges/widgets": {
 		"operationId": "accounts-turnstile-widget-create",
@@ -1101,7 +1193,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "widget-mode"
+								"x-fern-property-name": "widget-mode",
+								"x-forge-property-name": "widget-mode"
 							},
 							"name": {
 								"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
@@ -1364,7 +1457,10 @@
 													"description": "Secret key for this widget.",
 													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-													"x-sensitive": true
+													"x-auditable": false,
+													"x-forge-sensitive": true,
+													"x-sensitive": true,
+													"x-stainless-terraform-use-state-for-unknown": true
 												},
 												"sitekey": {
 													"description": "Unique identifier for a Turnstile widget.",
@@ -1502,6 +1598,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "turnstile.widgets",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"challenge-widgets.write",
+			"account-settings.write"
+		],
 		"x-forge-params": {
 			"mode": {
 				"description": "Widget mode"
@@ -1721,7 +1824,10 @@
 													"description": "Secret key for this widget.",
 													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-													"x-sensitive": true
+													"x-auditable": false,
+													"x-forge-sensitive": true,
+													"x-sensitive": true,
+													"x-stainless-terraform-use-state-for-unknown": true
 												},
 												"sitekey": {
 													"description": "Unique identifier for a Turnstile widget.",
@@ -1858,7 +1964,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
-		"x-fern-sdk-method-name": "rotate-secret"
+		"x-fern-sdk-method-name": "rotate-secret",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "turnstile.widgets",
+		"x-forge-method-name": "rotate-secret",
+		"x-forge-oauth-scopes": [
+			"challenge-widgets.write",
+			"account-settings.write"
+		]
 	},
 	"PUT /accounts/{account_id}/challenges/widgets/{sitekey}": {
 		"operationId": "accounts-turnstile-widget-update",
@@ -1924,7 +2037,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "widget-mode"
+								"x-fern-property-name": "widget-mode",
+								"x-forge-property-name": "widget-mode"
 							},
 							"name": {
 								"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
@@ -1938,16 +2052,6 @@
 								"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
 								"type": "boolean",
 								"example": false,
-								"x-auditable": true
-							},
-							"region": {
-								"description": "Region where this widget can be used. This cannot be changed after creation.\n",
-								"type": "string",
-								"default": "world",
-								"enum": [
-									"world",
-									"china"
-								],
 								"x-auditable": true
 							}
 						},
@@ -2151,7 +2255,10 @@
 													"description": "Secret key for this widget.",
 													"type": "string",
 													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-													"x-sensitive": true
+													"x-auditable": false,
+													"x-forge-sensitive": true,
+													"x-sensitive": true,
+													"x-stainless-terraform-use-state-for-unknown": true
 												},
 												"sitekey": {
 													"description": "Unique identifier for a Turnstile widget.",
@@ -2289,6 +2396,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "turnstile.widgets",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "turnstile.widgets",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"challenge-widgets.write",
+			"account-settings.write"
+		],
 		"x-forge-params": {
 			"mode": {
 				"description": "Widget mode"

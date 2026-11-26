@@ -274,6 +274,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.triggers",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the build trigger and cancels its unfinished builds."
 	},
 	"PATCH /accounts/{account_id}/builds/triggers/{trigger_uuid}": {
@@ -795,7 +801,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.triggers",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	},
 	"POST /accounts/{account_id}/builds/triggers": {
 		"operationId": "createTrigger",
@@ -1262,7 +1274,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.triggers",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	},
 	"POST /accounts/{account_id}/builds/triggers/{trigger_uuid}/builds": {
 		"operationId": "createManualBuild",
@@ -1930,7 +1948,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
-		"x-fern-sdk-method-name": "create-build"
+		"x-fern-sdk-method-name": "create-build",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.triggers",
+		"x-forge-method-name": "create-build",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	},
 	"POST /accounts/{account_id}/builds/triggers/{trigger_uuid}/purge_build_cache": {
 		"operationId": "purgeBuildCache",
@@ -2207,6 +2231,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers.cache",
 		"x-fern-sdk-method-name": "purge",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.triggers.cache",
+		"x-forge-method-name": "purge",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		],
 		"x-forge-require-confirmation": "This operation purges the build cache for a Workers Builds trigger."
 	}
 }

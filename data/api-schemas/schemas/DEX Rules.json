@@ -272,7 +272,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.rules",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-dex.write"
+		]
 	},
 	"GET /accounts/{account_id}/dex/rules": {
 		"operationId": "list-dex-rules",
@@ -754,7 +760,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/rules/{rule_id}": {
 		"operationId": "get-dex-rule",
@@ -1146,7 +1161,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"PATCH /accounts/{account_id}/dex/rules/{rule_id}": {
 		"operationId": "update-dex-rule",
@@ -1560,7 +1584,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.rules",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams-dex.write"
+		]
 	},
 	"POST /accounts/{account_id}/dex/rules": {
 		"operationId": "create-dex-rule",
@@ -1966,6 +1996,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.rules",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-dex.write"
+		]
 	}
 }

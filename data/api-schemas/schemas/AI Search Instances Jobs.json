@@ -273,6 +273,13 @@
 		"tags": [
 			"AI Search Instances Jobs"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -287,7 +294,18 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.jobs",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
 		"operationId": "ai-search-instance-get-job",
@@ -477,6 +495,13 @@
 		"tags": [
 			"AI Search Instances Jobs"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -491,7 +516,18 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.jobs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}/logs": {
 		"operationId": "ai-search-instance-list-job-logs",
@@ -762,6 +798,13 @@
 		"tags": [
 			"AI Search Instances Jobs"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -776,7 +819,18 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
-		"x-fern-sdk-method-name": "logs"
+		"x-fern-sdk-method-name": "logs",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.jobs",
+		"x-forge-method-name": "logs",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs": {
 		"operationId": "ai-search-namespace-instance-list-jobs",
@@ -797,7 +851,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -1064,6 +1119,13 @@
 		"tags": [
 			"AI Search Instances Jobs"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -1078,6 +1140,16 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.jobs",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -1107,7 +1179,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "job_id",
@@ -1288,6 +1361,13 @@
 		"tags": [
 			"AI Search Instances Jobs"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -1302,6 +1382,16 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.jobs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -1334,7 +1424,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "job_id",
@@ -1596,6 +1687,13 @@
 		"tags": [
 			"AI Search Instances Jobs"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -1610,6 +1708,16 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "logs",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.jobs",
+		"x-forge-method-name": "logs",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -1871,6 +1979,10 @@
 		"tags": [
 			"AI Search Instances Jobs"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -1886,7 +1998,15 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "cancel",
-		"x-forge-require-confirmation": "This operation cancels the running indexing job."
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.jobs",
+		"x-forge-method-name": "cancel",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-require-confirmation": "This operation cancels the running indexing job.",
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs/{job_id}": {
 		"operationId": "ai-search-namespace-instance-change-job-status",
@@ -1907,7 +2027,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "job_id",
@@ -2148,6 +2269,10 @@
 		"tags": [
 			"AI Search Instances Jobs"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -2162,6 +2287,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "cancel",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.jobs",
+		"x-forge-method-name": "cancel",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"action": {
 				"default": "cancel",
@@ -2497,6 +2629,10 @@
 		"tags": [
 			"AI Search Instances Jobs"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -2511,7 +2647,15 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-search.jobs",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.jobs",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs": {
 		"operationId": "ai-search-namespace-instance-create-job",
@@ -2532,7 +2676,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -2842,6 +2987,10 @@
 		"tags": [
 			"AI Search Instances Jobs"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -2856,6 +3005,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.jobs",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.jobs",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"description": {
 				"description": "Optional description for the indexing job."

@@ -70,7 +70,10 @@
 		"x-api-token-group": [],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.domainconnect",
-		"x-fern-sdk-method-name": "get-domain-settings"
+		"x-fern-sdk-method-name": "get-domain-settings",
+		"x-forge-group-name": "dns.domainconnect",
+		"x-forge-method-name": "get-domain-settings",
+		"x-forge-skip": true
 	},
 	"GET /v2/domainTemplates/providers/{provider}/services/{service}": {
 		"operationId": "getProviderTemplate",
@@ -144,7 +147,10 @@
 		"x-api-token-group": [],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.domainconnect",
-		"x-fern-sdk-method-name": "get-provider-template"
+		"x-fern-sdk-method-name": "get-provider-template",
+		"x-forge-group-name": "dns.domainconnect",
+		"x-forge-method-name": "get-provider-template",
+		"x-forge-skip": true
 	},
 	"GET /v2/provconf/{provider}/{service}/{account}": {
 		"operationId": "getProviderConfiguration",
@@ -275,7 +281,10 @@
 		"x-api-token-group": [],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.domainconnect",
-		"x-fern-sdk-method-name": "get-provider-configuration"
+		"x-fern-sdk-method-name": "get-provider-configuration",
+		"x-forge-group-name": "dns.domainconnect",
+		"x-forge-method-name": "get-provider-configuration",
+		"x-forge-skip": true
 	},
 	"POST /v1/verify": {
 		"operationId": "postVerify",
@@ -346,6 +355,9 @@
 		"x-api-token-group": [],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.domainconnect",
-		"x-fern-sdk-method-name": "post-verify"
+		"x-fern-sdk-method-name": "post-verify",
+		"x-forge-group-name": "dns.domainconnect",
+		"x-forge-method-name": "post-verify",
+		"x-forge-skip": true
 	}
 }

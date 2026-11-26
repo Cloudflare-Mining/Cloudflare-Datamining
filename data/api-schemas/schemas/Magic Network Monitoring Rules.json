@@ -87,7 +87,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -125,7 +127,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -262,314 +265,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"automatic_advertisement": {
-															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
-															"type": "boolean",
-															"example": "false",
-															"nullable": true,
-															"x-auditable": true
-														},
-														"bandwidth_threshold": {
-															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-															"type": "number",
-															"example": 1000,
-															"minimum": 1,
-															"x-auditable": true
-														},
-														"duration": {
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
-															"type": "string",
-															"example": "300s",
-															"default": "1m",
-															"enum": [
-																"1m",
-																"5m",
-																"10m",
-																"15m",
-																"20m",
-																"30m",
-																"45m",
-																"60m"
-															],
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The id of the rule. Must be unique.",
-															"type": "string",
-															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
-															"type": "string",
-															"example": "my_rule_1",
-															"x-auditable": true
-														},
-														"packet_threshold": {
-															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-															"type": "number",
-															"example": 10000,
-															"minimum": 1,
-															"x-auditable": true
-														},
-														"prefix_match": {
-															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
-															"type": "string",
-															"example": "exact",
-															"enum": [
-																"exact",
-																"subnet",
-																"supernet"
-															],
-															"nullable": true,
-															"x-auditable": true
-														},
-														"prefixes": {
-															"type": "array",
-															"items": {
-																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
-																"type": "string",
-																"example": "203.0.113.1/32",
-																"x-auditable": true
-															}
-														},
-														"type": {
-															"description": "MNM rule type.",
-															"type": "string",
-															"example": "zscore",
-															"enum": [
-																"threshold",
-																"zscore",
-																"advanced_ddos"
-															],
-															"x-auditable": true
-														},
-														"zscore_sensitivity": {
-															"description": "Level of sensitivity set for zscore rules.",
-															"type": "string",
-															"example": "high",
-															"enum": [
-																"low",
-																"medium",
-																"high"
-															],
-															"nullable": true,
-															"x-auditable": true
-														},
-														"zscore_target": {
-															"description": "Target of the zscore rule analysis.",
-															"type": "string",
-															"example": "bits",
-															"enum": [
-																"bits",
-																"packets"
-															],
-															"nullable": true,
-															"x-auditable": true
-														}
-													},
-													"nullable": true,
-													"required": [
-														"id",
-														"name",
-														"prefixes",
-														"automatic_advertisement",
-														"type"
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -577,6 +353,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -591,7 +370,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-network-monitoring.rules",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-network-monitoring.rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"fbm.admin"
+		]
 	},
 	"GET /accounts/{account_id}/mnm/rules": {
 		"operationId": "magic-network-monitoring-rules-list-rules",
@@ -670,7 +454,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -698,7 +484,9 @@
 											"properties": {
 												"result": {
 													"type": "array",
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true
 												},
 												"result_info": {
@@ -726,7 +514,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -854,7 +643,8 @@
 											},
 											"nullable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -866,335 +656,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"automatic_advertisement": {
-																"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
-																"type": "boolean",
-																"example": "false",
-																"nullable": true,
-																"x-auditable": true
-															},
-															"bandwidth_threshold": {
-																"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-																"type": "number",
-																"example": 1000,
-																"minimum": 1,
-																"x-auditable": true
-															},
-															"duration": {
-																"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
-																"type": "string",
-																"example": "300s",
-																"default": "1m",
-																"enum": [
-																	"1m",
-																	"5m",
-																	"10m",
-																	"15m",
-																	"20m",
-																	"30m",
-																	"45m",
-																	"60m"
-																],
-																"x-auditable": true
-															},
-															"id": {
-																"description": "The id of the rule. Must be unique.",
-																"type": "string",
-																"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-																"x-auditable": true
-															},
-															"name": {
-																"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
-																"type": "string",
-																"example": "my_rule_1",
-																"x-auditable": true
-															},
-															"packet_threshold": {
-																"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-																"type": "number",
-																"example": 10000,
-																"minimum": 1,
-																"x-auditable": true
-															},
-															"prefix_match": {
-																"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
-																"type": "string",
-																"example": "exact",
-																"enum": [
-																	"exact",
-																	"subnet",
-																	"supernet"
-																],
-																"nullable": true,
-																"x-auditable": true
-															},
-															"prefixes": {
-																"type": "array",
-																"items": {
-																	"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
-																	"type": "string",
-																	"example": "203.0.113.1/32",
-																	"x-auditable": true
-																}
-															},
-															"type": {
-																"description": "MNM rule type.",
-																"type": "string",
-																"example": "zscore",
-																"enum": [
-																	"threshold",
-																	"zscore",
-																	"advanced_ddos"
-																],
-																"x-auditable": true
-															},
-															"zscore_sensitivity": {
-																"description": "Level of sensitivity set for zscore rules.",
-																"type": "string",
-																"example": "high",
-																"enum": [
-																	"low",
-																	"medium",
-																	"high"
-																],
-																"nullable": true,
-																"x-auditable": true
-															},
-															"zscore_target": {
-																"description": "Target of the zscore rule analysis.",
-																"type": "string",
-																"example": "bits",
-																"enum": [
-																	"bits",
-																	"packets"
-																],
-																"nullable": true,
-																"x-auditable": true
-															}
-														},
-														"nullable": true,
-														"required": [
-															"id",
-															"name",
-															"prefixes",
-															"automatic_advertisement",
-															"type"
-														]
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"nullable": true
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1202,6 +744,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1218,7 +763,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-network-monitoring.rules",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-network-monitoring.rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"fbm.read",
+			"fbm.write",
+			"fbm.admin"
+		]
 	},
 	"GET /accounts/{account_id}/mnm/rules/{rule_id}": {
 		"operationId": "magic-network-monitoring-rules-get-rule",
@@ -1308,7 +860,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -1346,7 +900,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1483,314 +1038,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"automatic_advertisement": {
-															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
-															"type": "boolean",
-															"example": "false",
-															"nullable": true,
-															"x-auditable": true
-														},
-														"bandwidth_threshold": {
-															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-															"type": "number",
-															"example": 1000,
-															"minimum": 1,
-															"x-auditable": true
-														},
-														"duration": {
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
-															"type": "string",
-															"example": "300s",
-															"default": "1m",
-															"enum": [
-																"1m",
-																"5m",
-																"10m",
-																"15m",
-																"20m",
-																"30m",
-																"45m",
-																"60m"
-															],
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The id of the rule. Must be unique.",
-															"type": "string",
-															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
-															"type": "string",
-															"example": "my_rule_1",
-															"x-auditable": true
-														},
-														"packet_threshold": {
-															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-															"type": "number",
-															"example": 10000,
-															"minimum": 1,
-															"x-auditable": true
-														},
-														"prefix_match": {
-															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
-															"type": "string",
-															"example": "exact",
-															"enum": [
-																"exact",
-																"subnet",
-																"supernet"
-															],
-															"nullable": true,
-															"x-auditable": true
-														},
-														"prefixes": {
-															"type": "array",
-															"items": {
-																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
-																"type": "string",
-																"example": "203.0.113.1/32",
-																"x-auditable": true
-															}
-														},
-														"type": {
-															"description": "MNM rule type.",
-															"type": "string",
-															"example": "zscore",
-															"enum": [
-																"threshold",
-																"zscore",
-																"advanced_ddos"
-															],
-															"x-auditable": true
-														},
-														"zscore_sensitivity": {
-															"description": "Level of sensitivity set for zscore rules.",
-															"type": "string",
-															"example": "high",
-															"enum": [
-																"low",
-																"medium",
-																"high"
-															],
-															"nullable": true,
-															"x-auditable": true
-														},
-														"zscore_target": {
-															"description": "Target of the zscore rule analysis.",
-															"type": "string",
-															"example": "bits",
-															"enum": [
-																"bits",
-																"packets"
-															],
-															"nullable": true,
-															"x-auditable": true
-														}
-													},
-													"nullable": true,
-													"required": [
-														"id",
-														"name",
-														"prefixes",
-														"automatic_advertisement",
-														"type"
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -1798,6 +1126,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -1814,7 +1145,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-network-monitoring.rules",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-network-monitoring.rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"fbm.read",
+			"fbm.write",
+			"fbm.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/mnm/rules/{rule_id}": {
 		"operationId": "magic-network-monitoring-rules-update-rule",
@@ -2022,7 +1360,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2060,7 +1400,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2197,314 +1538,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"automatic_advertisement": {
-															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
-															"type": "boolean",
-															"example": "false",
-															"nullable": true,
-															"x-auditable": true
-														},
-														"bandwidth_threshold": {
-															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-															"type": "number",
-															"example": 1000,
-															"minimum": 1,
-															"x-auditable": true
-														},
-														"duration": {
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
-															"type": "string",
-															"example": "300s",
-															"default": "1m",
-															"enum": [
-																"1m",
-																"5m",
-																"10m",
-																"15m",
-																"20m",
-																"30m",
-																"45m",
-																"60m"
-															],
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The id of the rule. Must be unique.",
-															"type": "string",
-															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
-															"type": "string",
-															"example": "my_rule_1",
-															"x-auditable": true
-														},
-														"packet_threshold": {
-															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-															"type": "number",
-															"example": 10000,
-															"minimum": 1,
-															"x-auditable": true
-														},
-														"prefix_match": {
-															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
-															"type": "string",
-															"example": "exact",
-															"enum": [
-																"exact",
-																"subnet",
-																"supernet"
-															],
-															"nullable": true,
-															"x-auditable": true
-														},
-														"prefixes": {
-															"type": "array",
-															"items": {
-																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
-																"type": "string",
-																"example": "203.0.113.1/32",
-																"x-auditable": true
-															}
-														},
-														"type": {
-															"description": "MNM rule type.",
-															"type": "string",
-															"example": "zscore",
-															"enum": [
-																"threshold",
-																"zscore",
-																"advanced_ddos"
-															],
-															"x-auditable": true
-														},
-														"zscore_sensitivity": {
-															"description": "Level of sensitivity set for zscore rules.",
-															"type": "string",
-															"example": "high",
-															"enum": [
-																"low",
-																"medium",
-																"high"
-															],
-															"nullable": true,
-															"x-auditable": true
-														},
-														"zscore_target": {
-															"description": "Target of the zscore rule analysis.",
-															"type": "string",
-															"example": "bits",
-															"enum": [
-																"bits",
-																"packets"
-															],
-															"nullable": true,
-															"x-auditable": true
-														}
-													},
-													"nullable": true,
-													"required": [
-														"id",
-														"name",
-														"prefixes",
-														"automatic_advertisement",
-														"type"
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2512,6 +1626,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2527,7 +1644,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-network-monitoring.rules",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-network-monitoring.rules",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"fbm.write",
+			"fbm.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/mnm/rules/{rule_id}/advertisement": {
 		"operationId": "magic-network-monitoring-rules-update-advertisement-for-rule",
@@ -2617,7 +1740,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -2655,7 +1780,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2690,212 +1816,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"automatic_advertisement": {
-															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
-															"type": "boolean",
-															"example": "false",
-															"nullable": true,
-															"x-auditable": true
-														}
-													},
-													"nullable": true,
-													"required": [
-														"automatic_advertisement"
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -2903,6 +1904,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -2918,7 +1922,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-network-monitoring.rules.advertisements",
 		"x-fern-sdk-method-name": "edit",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-network-monitoring.rules.advertisements",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"fbm.write",
+			"fbm.admin"
+		]
 	},
 	"POST /accounts/{account_id}/mnm/rules": {
 		"operationId": "magic-network-monitoring-rules-create-rules",
@@ -3115,7 +2125,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -3153,7 +2165,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3290,314 +2303,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"automatic_advertisement": {
-															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
-															"type": "boolean",
-															"example": "false",
-															"nullable": true,
-															"x-auditable": true
-														},
-														"bandwidth_threshold": {
-															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-															"type": "number",
-															"example": 1000,
-															"minimum": 1,
-															"x-auditable": true
-														},
-														"duration": {
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
-															"type": "string",
-															"example": "300s",
-															"default": "1m",
-															"enum": [
-																"1m",
-																"5m",
-																"10m",
-																"15m",
-																"20m",
-																"30m",
-																"45m",
-																"60m"
-															],
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The id of the rule. Must be unique.",
-															"type": "string",
-															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
-															"type": "string",
-															"example": "my_rule_1",
-															"x-auditable": true
-														},
-														"packet_threshold": {
-															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-															"type": "number",
-															"example": 10000,
-															"minimum": 1,
-															"x-auditable": true
-														},
-														"prefix_match": {
-															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
-															"type": "string",
-															"example": "exact",
-															"enum": [
-																"exact",
-																"subnet",
-																"supernet"
-															],
-															"nullable": true,
-															"x-auditable": true
-														},
-														"prefixes": {
-															"type": "array",
-															"items": {
-																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
-																"type": "string",
-																"example": "203.0.113.1/32",
-																"x-auditable": true
-															}
-														},
-														"type": {
-															"description": "MNM rule type.",
-															"type": "string",
-															"example": "zscore",
-															"enum": [
-																"threshold",
-																"zscore",
-																"advanced_ddos"
-															],
-															"x-auditable": true
-														},
-														"zscore_sensitivity": {
-															"description": "Level of sensitivity set for zscore rules.",
-															"type": "string",
-															"example": "high",
-															"enum": [
-																"low",
-																"medium",
-																"high"
-															],
-															"nullable": true,
-															"x-auditable": true
-														},
-														"zscore_target": {
-															"description": "Target of the zscore rule analysis.",
-															"type": "string",
-															"example": "bits",
-															"enum": [
-																"bits",
-																"packets"
-															],
-															"nullable": true,
-															"x-auditable": true
-														}
-													},
-													"nullable": true,
-													"required": [
-														"id",
-														"name",
-														"prefixes",
-														"automatic_advertisement",
-														"type"
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -3605,6 +2391,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -3619,7 +2408,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-network-monitoring.rules",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-network-monitoring.rules",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"fbm.admin"
+		]
 	},
 	"POST /accounts/{account_id}/mnm/rules/bulk": {
 		"operationId": "magic-network-monitoring-rules-create-rules-bulk",
@@ -3821,7 +2615,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -3849,7 +2645,9 @@
 											"properties": {
 												"result": {
 													"type": "array",
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true
 												},
 												"result_info": {
@@ -3877,7 +2675,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4005,7 +2804,8 @@
 											},
 											"nullable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4017,335 +2817,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"automatic_advertisement": {
-																"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
-																"type": "boolean",
-																"example": "false",
-																"nullable": true,
-																"x-auditable": true
-															},
-															"bandwidth_threshold": {
-																"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-																"type": "number",
-																"example": 1000,
-																"minimum": 1,
-																"x-auditable": true
-															},
-															"duration": {
-																"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
-																"type": "string",
-																"example": "300s",
-																"default": "1m",
-																"enum": [
-																	"1m",
-																	"5m",
-																	"10m",
-																	"15m",
-																	"20m",
-																	"30m",
-																	"45m",
-																	"60m"
-																],
-																"x-auditable": true
-															},
-															"id": {
-																"description": "The id of the rule. Must be unique.",
-																"type": "string",
-																"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-																"x-auditable": true
-															},
-															"name": {
-																"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
-																"type": "string",
-																"example": "my_rule_1",
-																"x-auditable": true
-															},
-															"packet_threshold": {
-																"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-																"type": "number",
-																"example": 10000,
-																"minimum": 1,
-																"x-auditable": true
-															},
-															"prefix_match": {
-																"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
-																"type": "string",
-																"example": "exact",
-																"enum": [
-																	"exact",
-																	"subnet",
-																	"supernet"
-																],
-																"nullable": true,
-																"x-auditable": true
-															},
-															"prefixes": {
-																"type": "array",
-																"items": {
-																	"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
-																	"type": "string",
-																	"example": "203.0.113.1/32",
-																	"x-auditable": true
-																}
-															},
-															"type": {
-																"description": "MNM rule type.",
-																"type": "string",
-																"example": "zscore",
-																"enum": [
-																	"threshold",
-																	"zscore",
-																	"advanced_ddos"
-																],
-																"x-auditable": true
-															},
-															"zscore_sensitivity": {
-																"description": "Level of sensitivity set for zscore rules.",
-																"type": "string",
-																"example": "high",
-																"enum": [
-																	"low",
-																	"medium",
-																	"high"
-																],
-																"nullable": true,
-																"x-auditable": true
-															},
-															"zscore_target": {
-																"description": "Target of the zscore rule analysis.",
-																"type": "string",
-																"example": "bits",
-																"enum": [
-																	"bits",
-																	"packets"
-																],
-																"nullable": true,
-																"x-auditable": true
-															}
-														},
-														"nullable": true,
-														"required": [
-															"id",
-															"name",
-															"prefixes",
-															"automatic_advertisement",
-															"type"
-														]
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"nullable": true
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -4353,6 +2905,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -4367,7 +2922,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-network-monitoring.rules.bulk",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-network-monitoring.rules.bulk",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"fbm.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/mnm/rules": {
 		"operationId": "magic-network-monitoring-rules-update-rules",
@@ -4564,7 +3124,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -4602,7 +3164,8 @@
 														}
 													]
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4739,314 +3302,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"automatic_advertisement": {
-															"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
-															"type": "boolean",
-															"example": "false",
-															"nullable": true,
-															"x-auditable": true
-														},
-														"bandwidth_threshold": {
-															"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-															"type": "number",
-															"example": 1000,
-															"minimum": 1,
-															"x-auditable": true
-														},
-														"duration": {
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
-															"type": "string",
-															"example": "300s",
-															"default": "1m",
-															"enum": [
-																"1m",
-																"5m",
-																"10m",
-																"15m",
-																"20m",
-																"30m",
-																"45m",
-																"60m"
-															],
-															"x-auditable": true
-														},
-														"id": {
-															"description": "The id of the rule. Must be unique.",
-															"type": "string",
-															"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-															"x-auditable": true
-														},
-														"name": {
-															"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
-															"type": "string",
-															"example": "my_rule_1",
-															"x-auditable": true
-														},
-														"packet_threshold": {
-															"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-															"type": "number",
-															"example": 10000,
-															"minimum": 1,
-															"x-auditable": true
-														},
-														"prefix_match": {
-															"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
-															"type": "string",
-															"example": "exact",
-															"enum": [
-																"exact",
-																"subnet",
-																"supernet"
-															],
-															"nullable": true,
-															"x-auditable": true
-														},
-														"prefixes": {
-															"type": "array",
-															"items": {
-																"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
-																"type": "string",
-																"example": "203.0.113.1/32",
-																"x-auditable": true
-															}
-														},
-														"type": {
-															"description": "MNM rule type.",
-															"type": "string",
-															"example": "zscore",
-															"enum": [
-																"threshold",
-																"zscore",
-																"advanced_ddos"
-															],
-															"x-auditable": true
-														},
-														"zscore_sensitivity": {
-															"description": "Level of sensitivity set for zscore rules.",
-															"type": "string",
-															"example": "high",
-															"enum": [
-																"low",
-																"medium",
-																"high"
-															],
-															"nullable": true,
-															"x-auditable": true
-														},
-														"zscore_target": {
-															"description": "Target of the zscore rule analysis.",
-															"type": "string",
-															"example": "bits",
-															"enum": [
-																"bits",
-																"packets"
-															],
-															"nullable": true,
-															"x-auditable": true
-														}
-													},
-													"nullable": true,
-													"required": [
-														"id",
-														"name",
-														"prefixes",
-														"automatic_advertisement",
-														"type"
-													]
-												}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -5054,6 +3390,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -5069,7 +3408,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-network-monitoring.rules",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-network-monitoring.rules",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"fbm.write",
+			"fbm.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/mnm/rules/bulk": {
 		"operationId": "magic-network-monitoring-rules-update-rules-bulk",
@@ -5271,7 +3616,9 @@
 															"type": "object"
 														},
 														{
-															"items": {},
+															"items": {
+																"type": "object"
+															},
 															"type": "array"
 														},
 														{
@@ -5299,7 +3646,9 @@
 											"properties": {
 												"result": {
 													"type": "array",
-													"items": {},
+													"items": {
+														"type": "object"
+													},
 													"nullable": true
 												},
 												"result_info": {
@@ -5327,7 +3676,8 @@
 														}
 													}
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -5455,7 +3805,8 @@
 											},
 											"nullable": true
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -5467,335 +3818,87 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
 									"allOf": [
 										{
-											"type": "object",
-											"allOf": [
-												{
-													"type": "object",
-													"properties": {
-														"errors": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"messages": {
-															"type": "array",
-															"items": {
-																"properties": {
-																	"code": {
-																		"type": "integer",
-																		"minimum": 1000
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"example": []
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"type": "boolean",
-															"example": true,
-															"enum": [
-																true
-															]
-														}
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													]
-												},
-												{
-													"properties": {
-														"result": {
-															"type": "array",
-															"items": {},
-															"nullable": true
-														},
-														"result_info": {
-															"type": "object",
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"type": "number",
-																	"example": 1
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"type": "number",
-																	"example": 1
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"type": "number",
-																	"example": 20
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"type": "number",
-																	"example": 2000
-																}
-															}
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											]
-										},
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
 										{
-											"properties": {
-												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"automatic_advertisement": {
-																"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
-																"type": "boolean",
-																"example": "false",
-																"nullable": true,
-																"x-auditable": true
-															},
-															"bandwidth_threshold": {
-																"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-																"type": "number",
-																"example": 1000,
-																"minimum": 1,
-																"x-auditable": true
-															},
-															"duration": {
-																"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"].",
-																"type": "string",
-																"example": "300s",
-																"default": "1m",
-																"enum": [
-																	"1m",
-																	"5m",
-																	"10m",
-																	"15m",
-																	"20m",
-																	"30m",
-																	"45m",
-																	"60m"
-																],
-																"x-auditable": true
-															},
-															"id": {
-																"description": "The id of the rule. Must be unique.",
-																"type": "string",
-																"example": "2890e6fa406311ed9b5a23f70f6fb8cf",
-																"x-auditable": true
-															},
-															"name": {
-																"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
-																"type": "string",
-																"example": "my_rule_1",
-																"x-auditable": true
-															},
-															"packet_threshold": {
-																"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
-																"type": "number",
-																"example": 10000,
-																"minimum": 1,
-																"x-auditable": true
-															},
-															"prefix_match": {
-																"description": "Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.",
-																"type": "string",
-																"example": "exact",
-																"enum": [
-																	"exact",
-																	"subnet",
-																	"supernet"
-																],
-																"nullable": true,
-																"x-auditable": true
-															},
-															"prefixes": {
-																"type": "array",
-																"items": {
-																	"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
-																	"type": "string",
-																	"example": "203.0.113.1/32",
-																	"x-auditable": true
-																}
-															},
-															"type": {
-																"description": "MNM rule type.",
-																"type": "string",
-																"example": "zscore",
-																"enum": [
-																	"threshold",
-																	"zscore",
-																	"advanced_ddos"
-																],
-																"x-auditable": true
-															},
-															"zscore_sensitivity": {
-																"description": "Level of sensitivity set for zscore rules.",
-																"type": "string",
-																"example": "high",
-																"enum": [
-																	"low",
-																	"medium",
-																	"high"
-																],
-																"nullable": true,
-																"x-auditable": true
-															},
-															"zscore_target": {
-																"description": "Target of the zscore rule analysis.",
-																"type": "string",
-																"example": "bits",
-																"enum": [
-																	"bits",
-																	"packets"
-																],
-																"nullable": true,
-																"x-auditable": true
-															}
-														},
-														"nullable": true,
-														"required": [
-															"id",
-															"name",
-															"prefixes",
-															"automatic_advertisement",
-															"type"
-														]
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
 													},
-													"nullable": true
-												}
-											}
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
 										}
 									]
 								},
-								{
+								"result": {
 									"type": "object",
-									"properties": {
-										"errors": {
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"example": [],
-											"allOf": [
-												{
-													"type": "array",
-													"items": {
-														"properties": {
-															"code": {
-																"type": "integer",
-																"minimum": 1000
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"example": []
-												}
-											]
-										},
-										"result": {
-											"type": "object",
-											"enum": [
-												null
-											],
-											"nullable": true
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"type": "boolean",
-											"example": false,
-											"enum": [
-												false
-											]
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
 									]
 								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -5803,6 +3906,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
@@ -5818,6 +3924,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-network-monitoring.rules.bulk",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-network-monitoring.rules.bulk",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"fbm.write",
+			"fbm.admin"
+		]
 	}
 }

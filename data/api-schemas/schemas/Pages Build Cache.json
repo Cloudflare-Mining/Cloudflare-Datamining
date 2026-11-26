@@ -267,6 +267,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.build-cache",
 		"x-fern-sdk-method-name": "purge",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.build-cache",
+		"x-forge-method-name": "purge",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		],
 		"x-forge-require-confirmation": "This operation purges the build cache for a Pages project."
 	}
 }

@@ -260,6 +260,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.versions",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.versions",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete the Worker version."
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}/versions": {
@@ -538,6 +545,7 @@
 															"jwt": {
 																"description": "Token provided upon successful upload of all files from a registered manifest.",
 																"type": "string",
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -1486,6 +1494,7 @@
 																					"type": "string",
 																					"example": "My secret.",
 																					"writeOnly": true,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"type": {
@@ -1779,12 +1788,14 @@
 																					"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																					"type": "string",
 																					"writeOnly": true,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"key_jwk": {
 																					"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																					"type": "object",
 																					"writeOnly": true,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"name": {
@@ -3399,7 +3410,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.versions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.versions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}": {
 		"operationId": "getWorkerVersion",
@@ -3635,6 +3658,7 @@
 														"jwt": {
 															"description": "Token provided upon successful upload of all files from a registered manifest.",
 															"type": "string",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -4583,6 +4607,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -4876,12 +4901,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -6493,7 +6520,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.versions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.versions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}/versions/latest": {
 		"operationId": "getLatestWorkerVersion",
@@ -6720,6 +6759,7 @@
 														"jwt": {
 															"description": "Token provided upon successful upload of all files from a registered manifest.",
 															"type": "string",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -7668,6 +7708,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -7961,12 +8002,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -9566,6 +9609,15 @@
 			"Versions"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -9573,7 +9625,20 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workers.versions.latest",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.versions.latest",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/workers/workers/{worker_id}/versions/latest": {
 		"operationId": "patchLatestWorkerVersion",
@@ -9711,6 +9776,7 @@
 											"jwt": {
 												"description": "Token provided upon successful upload of all files from a registered manifest.",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										}
@@ -10659,6 +10725,7 @@
 																	"type": "string",
 																	"example": "My secret.",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"type": {
@@ -10952,12 +11019,14 @@
 																	"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"key_jwk": {
 																	"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																	"type": "object",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"name": {
@@ -12523,6 +12592,7 @@
 											"jwt": {
 												"description": "Token provided upon successful upload of all files from a registered manifest.",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										}
@@ -13471,6 +13541,7 @@
 																	"type": "string",
 																	"example": "My secret.",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"type": {
@@ -13764,12 +13835,14 @@
 																	"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"key_jwk": {
 																	"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																	"type": "object",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"name": {
@@ -15425,6 +15498,7 @@
 														"jwt": {
 															"description": "Token provided upon successful upload of all files from a registered manifest.",
 															"type": "string",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -16373,6 +16447,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -16666,12 +16741,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -18454,7 +18531,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.versions.latest",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.versions.latest",
+		"x-forge-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/workers/workers/{worker_id}/versions": {
 		"operationId": "createWorkerVersion",
@@ -18591,6 +18671,7 @@
 									"jwt": {
 										"description": "Token provided upon successful upload of all files from a registered manifest.",
 										"type": "string",
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									}
 								}
@@ -19539,6 +19620,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -19832,12 +19914,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -21488,6 +21572,7 @@
 														"jwt": {
 															"description": "Token provided upon successful upload of all files from a registered manifest.",
 															"type": "string",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -22436,6 +22521,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -22729,12 +22815,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -24517,6 +24605,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.versions",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.versions",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	}
 }

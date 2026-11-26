@@ -385,6 +385,7 @@
 																		}
 																	},
 																	"readOnly": true,
+																	"x-forge-skip": true,
 																	"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
 																	"x-stainless-skip": true
 																}
@@ -574,6 +575,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.config",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.config",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.write",
+			"teams-connectors.write",
+			"argotunnel.write"
+		],
 		"x-forge-require-confirmation": "This operation resets the tunnel configuration, removing ingress rules and origin request settings."
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations": {
@@ -960,6 +969,7 @@
 																}
 															},
 															"readOnly": true,
+															"x-forge-skip": true,
 															"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
 															"x-stainless-skip": true
 														}
@@ -1133,6 +1143,9 @@
 			"Cloudflare Tunnel Configuration"
 		],
 		"x-api-token-group": [
+			"Connectivity Directory Read",
+			"Connectivity Directory Bind",
+			"Connectivity Directory Admin",
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: cloudflared Write",
@@ -1142,7 +1155,21 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.config",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.config",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.read",
+			"teams-connectors.read",
+			"connectivity-directory.read",
+			"argotunnel.read",
+			"connectivity-directory.bind",
+			"teams-connector-cloudflared.write",
+			"connectivity-directory.admin",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
 		"operationId": "cloudflare-tunnel-configuration-get-warp-connector-configuration",
@@ -1531,7 +1558,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.configurations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes.configurations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-connector-warp.read",
+			"teams-connector-warp.write",
+			"teams-connectors.read",
+			"teams-connectors.write"
+		]
 	},
 	"PUT /accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations": {
 		"operationId": "cloudflare-tunnel-configuration-put-configuration",
@@ -1819,13 +1855,15 @@
 													}
 												},
 												"readOnly": true,
+												"x-forge-skip": true,
 												"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
 												"x-stainless-skip": true
 											}
 										}
 									}
 								],
-								"x-fern-property-name": "tunnel-config"
+								"x-fern-property-name": "tunnel-config",
+								"x-forge-property-name": "tunnel-config"
 							}
 						}
 					}
@@ -2185,6 +2223,7 @@
 																}
 															},
 															"readOnly": true,
+															"x-forge-skip": true,
 															"x-stainless-deprecation-message": "This field is ignored by cloudflared since version 2023.10.0.",
 															"x-stainless-skip": true
 														}
@@ -2364,7 +2403,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.config",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.config",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.write",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"PUT /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
 		"operationId": "cloudflare-tunnel-configuration-update-warp-connector-configuration",
@@ -2473,7 +2520,8 @@
 										"type": "object"
 									}
 								],
-								"x-fern-property-name": "mesh-config"
+								"x-fern-property-name": "mesh-config",
+								"x-forge-property-name": "mesh-config"
 							},
 							"ha_mode": {
 								"description": "High-availability mode for the Mesh node. `none` means HA is enabled but no provider is configured yet (newly created nodes default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
@@ -2849,6 +2897,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.configurations",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes.configurations",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams-connector-warp.write",
+			"teams-connectors.write"
+		]
 	}
 }

@@ -272,6 +272,9 @@
 			"Access Bookmark applications (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Individual Access App Admin",
+			"Access: Apps Write",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write"
 		],
 		"x-cfDeprecation": {
@@ -282,7 +285,15 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "zero-trust.access.bookmarks",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "zero-trust.access.bookmarks",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"access-app.write",
+			"access.write",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/bookmarks": {
 		"operationId": "access-bookmark-applications-(-deprecated)-list-bookmark-applications",
@@ -448,6 +459,7 @@
 															{
 																"type": "string",
 																"x-auditable": true,
+																"x-forge-skip": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -485,6 +497,7 @@
 															{
 																"type": "string",
 																"x-auditable": true,
+																"x-forge-skip": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -634,7 +647,14 @@
 			"Access Bookmark applications (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Individual Access App Read",
+			"Individual Access App Admin",
+			"Access: Apps Write",
+			"Access: Apps Revoke",
+			"Access: Apps Read",
 			"Access: Apps and Policies Revoke",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
 		],
@@ -646,7 +666,20 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "zero-trust.access.bookmarks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "zero-trust.access.bookmarks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"access-app.read",
+			"access-app.revoke",
+			"access.revoke",
+			"access.read",
+			"access-app.write",
+			"access.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/bookmarks/{bookmark_id}": {
 		"operationId": "access-bookmark-applications-(-deprecated)-get-a-bookmark-application",
@@ -787,6 +820,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -824,6 +858,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -972,6 +1007,12 @@
 			"Access Bookmark applications (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Individual Access App Read",
+			"Individual Access App Admin",
+			"Access: Apps Write",
+			"Access: Apps Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
 		],
@@ -983,7 +1024,18 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "zero-trust.access.bookmarks",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "zero-trust.access.bookmarks",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"access-app.read",
+			"access.read",
+			"access-app.write",
+			"access.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/access/bookmarks/{bookmark_id}": {
 		"operationId": "access-bookmark-applications-(-deprecated)-create-a-bookmark-application",
@@ -1124,6 +1176,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1161,6 +1214,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1316,7 +1370,10 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "zero-trust.access.bookmarks",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "zero-trust.access.bookmarks",
+		"x-forge-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/access/bookmarks/{bookmark_id}": {
 		"operationId": "access-bookmark-applications-(-deprecated)-update-a-bookmark-application",
@@ -1457,6 +1514,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1494,6 +1552,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1642,6 +1701,9 @@
 			"Access Bookmark applications (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Individual Access App Admin",
+			"Access: Apps Write",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write"
 		],
 		"x-cfDeprecation": {
@@ -1652,6 +1714,14 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "zero-trust.access.bookmarks",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "zero-trust.access.bookmarks",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"access-app.write",
+			"access.write",
+			"teams.write"
+		]
 	}
 }

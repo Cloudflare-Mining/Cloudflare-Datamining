@@ -63,7 +63,252 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.settings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.settings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
+	},
+	"GET /accounts/{account_id}/networkquality/settings": {
+		"operationId": "network-quality-get-settings",
+		"summary": "Get account Network Quality Test settings",
+		"description": "Returns Network Quality Test settings for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account identifier.",
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Current settings",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [],
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [],
+									"maxItems": 0
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"enabled": {
+											"type": "boolean",
+											"example": true
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"example": "2026-01-01T00:00:00Z"
+										}
+									},
+									"required": [
+										"enabled"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Account is not entitled to Network Quality Test",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [],
+									"maxItems": 0
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Account access could not be verified",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [],
+									"maxItems": 0
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Settings"
+		],
+		"x-api-token-group": [
+			"Network Quality Read",
+			"Network Quality Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.networkquality.read"
+			]
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "network-quality.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "network-quality.settings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cfspeed.read",
+			"cfspeed.write"
+		],
+		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/cni/settings": {
 		"operationId": "update_settings",
@@ -145,6 +390,330 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.settings",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.settings",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
+	},
+	"PUT /accounts/{account_id}/networkquality/settings": {
+		"operationId": "network-quality-update-settings",
+		"summary": "Update account Network Quality Test settings",
+		"description": "Updates Network Quality Test settings for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account identifier.",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account identifier.",
+					"type": "string",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[0-9a-f]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"enabled": {
+								"type": "boolean",
+								"example": true
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"enabled"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Updated settings",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [],
+									"maxItems": 0
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [],
+									"maxItems": 0
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"enabled": {
+											"type": "boolean",
+											"example": true
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time",
+											"example": "2026-01-01T00:00:00Z"
+										}
+									},
+									"required": [
+										"enabled"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [],
+									"maxItems": 0
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Account is not entitled to Network Quality Test",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [],
+									"maxItems": 0
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Account access could not be verified",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [],
+									"maxItems": 0
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Settings"
+		],
+		"x-api-token-group": [
+			"Network Quality Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.networkquality.update"
+			]
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "network-quality.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "network-quality.settings",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cfspeed.write"
+		],
+		"x-stability": "beta"
 	}
 }

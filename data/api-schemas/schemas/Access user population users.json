@@ -170,7 +170,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.user-populations.users",
+		"x-forge-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/access/user_populations/{user_population_id}/users": {
 		"operationId": "access-user-populations-list-users",
@@ -601,7 +604,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.user-populations.users",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/access/user_populations/{user_population_id}/users/{user_id}": {
 		"operationId": "access-user-populations-get-user",
@@ -984,7 +990,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.user-populations.users",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/access/user_populations/{user_population_id}/users/{user_id}": {
 		"operationId": "access-user-populations-update-user",
@@ -1506,7 +1515,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.user-populations.users",
+		"x-forge-method-name": "update"
 	},
 	"POST /accounts/{account_id}/access/user_populations/{user_population_id}/users": {
 		"operationId": "access-user-populations-create-user",
@@ -2059,7 +2071,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.user-populations.users",
+		"x-forge-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/access/user_populations/{user_population_id}/users/{user_id}": {
 		"operationId": "access-user-populations-replace-user",
@@ -2621,6 +2636,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.user-populations.users",
-		"x-fern-sdk-method-name": "replace"
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.user-populations.users",
+		"x-forge-method-name": "replace"
 	}
 }

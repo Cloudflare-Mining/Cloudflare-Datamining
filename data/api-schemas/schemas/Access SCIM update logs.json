@@ -564,6 +564,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.logs.scim.updates",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.logs.scim.updates",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"access-scim-log.read",
+			"teams.read",
+			"teams.write"
+		]
 	}
 }

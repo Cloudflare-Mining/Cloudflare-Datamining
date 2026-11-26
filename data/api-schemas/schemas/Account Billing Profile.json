@@ -139,7 +139,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "billing.profiles",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-group-name": "billing.profiles",
+		"x-forge-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/billing/profile": {
 		"operationId": "account-billing-profile-get-billing-profile",
@@ -565,7 +567,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "billing.profiles",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "billing.profiles",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/billing/profile": {
 		"operationId": "account-billing-profile-update-billing-email",
@@ -1014,7 +1019,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "billing.profiles",
-		"x-fern-sdk-method-name": "update-email"
+		"x-fern-sdk-method-name": "update-email",
+		"x-forge-group-name": "billing.profiles",
+		"x-forge-method-name": "update-email"
 	},
 	"POST /accounts/{account_id}/billing/profile": {
 		"operationId": "account-billing-profile-create-billing-profile",
@@ -1541,7 +1548,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "billing.profiles",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-group-name": "billing.profiles",
+		"x-forge-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/billing/profile": {
 		"operationId": "account-billing-profile-update-billing-profile",
@@ -2068,6 +2077,8 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "billing.profiles",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-group-name": "billing.profiles",
+		"x-forge-method-name": "update"
 	}
 }

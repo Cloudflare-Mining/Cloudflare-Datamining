@@ -304,7 +304,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.pacfiles",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/pacfiles": {
 		"operationId": "zero-trust-gateway-pacfiles-list",
@@ -807,7 +813,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.pacfiles",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
 		"operationId": "zero-trust-gateway-pacfiles-details",
@@ -1215,7 +1228,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.pacfiles",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/gateway/pacfiles": {
 		"operationId": "zero-trust-gateway-pacfiles-create-pacfile",
@@ -1652,7 +1672,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.pacfiles",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
 		"operationId": "zero-trust-gateway-pacfiles-update",
@@ -2094,6 +2120,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.pacfiles",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

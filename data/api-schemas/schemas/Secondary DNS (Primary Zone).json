@@ -383,7 +383,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.outgoing",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"dns.write",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/secondary_dns/outgoing": {
 		"operationId": "secondary-dns-(-primary-zone)-primary-zone-configuration-details",
@@ -861,7 +869,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.outgoing",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"dns.read",
+			"zone.write",
+			"dns.write",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/secondary_dns/outgoing/status": {
 		"operationId": "secondary-dns-(-primary-zone)-get-outgoing-zone-transfer-status",
@@ -1239,7 +1257,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
-		"x-fern-sdk-method-name": "status"
+		"x-fern-sdk-method-name": "status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.outgoing",
+		"x-forge-method-name": "status",
+		"x-forge-oauth-scopes": [
+			"dns.read",
+			"zone.write",
+			"dns.write",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing": {
 		"operationId": "secondary-dns-(-primary-zone)-create-primary-zone-configuration",
@@ -1758,7 +1786,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.outgoing",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"dns.write",
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing/disable": {
 		"operationId": "secondary-dns-(-primary-zone)-disable-outgoing-zone-transfers",
@@ -2135,6 +2171,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
 		"x-fern-sdk-method-name": "disable",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.outgoing",
+		"x-forge-method-name": "disable",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"dns.write",
+			"zone-settings.write"
+		],
 		"x-forge-require-confirmation": "This operation turns off outgoing zone transfers for the primary zone, which means secondary zones will stop receiving updates."
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing/enable": {
@@ -2511,7 +2555,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
-		"x-fern-sdk-method-name": "enable"
+		"x-fern-sdk-method-name": "enable",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.outgoing",
+		"x-forge-method-name": "enable",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"dns.write",
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing/force_notify": {
 		"operationId": "secondary-dns-(-primary-zone)-force-dns-notify",
@@ -2887,7 +2939,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
-		"x-fern-sdk-method-name": "force-notify"
+		"x-fern-sdk-method-name": "force-notify",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.outgoing",
+		"x-forge-method-name": "force-notify",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"dns.write",
+			"zone-settings.write"
+		]
 	},
 	"PUT /zones/{zone_id}/secondary_dns/outgoing": {
 		"operationId": "secondary-dns-(-primary-zone)-update-primary-zone-configuration",
@@ -3406,6 +3466,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.outgoing",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"dns.write",
+			"zone-settings.write"
+		]
 	}
 }

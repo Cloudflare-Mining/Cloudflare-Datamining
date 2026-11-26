@@ -778,6 +778,9 @@
 			"Agents"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -787,8 +790,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.agents.traces",
-				"x-fern-sdk-method-name": "list"
+				"x-fern-sdk-method-name": "list",
+				"x-forge-group-name": "o11y.agents.traces",
+				"x-forge-method-name": "list"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.agents.traces",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		],
 		"x-stability": "beta"
 	},
@@ -1509,6 +1524,9 @@
 			"Agents"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -1518,8 +1536,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.agents.traces",
-				"x-fern-sdk-method-name": "get"
+				"x-fern-sdk-method-name": "get",
+				"x-forge-group-name": "o11y.agents.traces",
+				"x-forge-method-name": "get"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.agents.traces",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		],
 		"x-stability": "beta"
 	},
@@ -1851,9 +1881,7 @@
 															},
 															"gateway": {
 																"type": "object",
-																"additionalProperties": {
-																	"nullable": true
-																},
+																"additionalProperties": true,
 																"properties": {
 																	"requestId": {
 																		"type": "string"
@@ -1982,9 +2010,7 @@
 															},
 															"gateway": {
 																"type": "object",
-																"additionalProperties": {
-																	"nullable": true
-																},
+																"additionalProperties": true,
 																"properties": {
 																	"requestId": {
 																		"type": "string"
@@ -2553,6 +2579,9 @@
 			"Agents"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -2562,8 +2591,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.agents.traces",
-				"x-fern-sdk-method-name": "events"
+				"x-fern-sdk-method-name": "events",
+				"x-forge-group-name": "o11y.agents.traces",
+				"x-forge-method-name": "events"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.agents.traces",
+		"x-forge-method-name": "events",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		],
 		"x-stability": "beta"
 	}

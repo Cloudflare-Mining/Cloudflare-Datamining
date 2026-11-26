@@ -294,7 +294,13 @@
 																		"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 																		"type": "string",
 																		"writeOnly": true,
+																		"x-auditable": false,
+																		"x-forge-sensitive": true,
 																		"x-sensitive": true
+																	},
+																	"account_id": {
+																		"description": "Cloudflare account ID, a 32-character hexadecimal string. Required for `cloudflare` storage.",
+																		"type": "string"
 																	},
 																	"auth_method": {
 																		"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -316,6 +322,8 @@
 																		"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
 																		"type": "string",
 																		"writeOnly": true,
+																		"x-auditable": false,
+																		"x-forge-sensitive": true,
 																		"x-sensitive": true
 																	},
 																	"path": {
@@ -330,6 +338,8 @@
 																		"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
 																		"type": "string",
 																		"writeOnly": true,
+																		"x-auditable": false,
+																		"x-forge-sensitive": true,
 																		"x-sensitive": true
 																	},
 																	"region": {
@@ -341,6 +351,8 @@
 																		"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 																		"type": "string",
 																		"writeOnly": true,
+																		"x-auditable": false,
+																		"x-forge-sensitive": true,
 																		"x-sensitive": true
 																	},
 																	"type": {
@@ -351,7 +363,8 @@
 																			"azure",
 																			"digitalocean",
 																			"gcs",
-																			"sftp"
+																			"sftp",
+																			"cloudflare"
 																		]
 																	},
 																	"username": {
@@ -461,6 +474,21 @@
 																			"host",
 																			"port"
 																		]
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"type": "string",
+																				"enum": [
+																					"cloudflare"
+																				]
+																			}
+																		},
+																		"required": [
+																			"access_key",
+																			"account_id"
+																		],
+																		"type": "object"
 																	}
 																],
 																"required": [
@@ -577,7 +605,13 @@
 																						"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 																						"type": "string",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
+																					},
+																					"account_id": {
+																						"description": "Cloudflare account ID, a 32-character hexadecimal string. Required for `cloudflare` storage.",
+																						"type": "string"
 																					},
 																					"auth_method": {
 																						"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -599,6 +633,8 @@
 																						"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
 																						"type": "string",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					},
 																					"path": {
@@ -613,6 +649,8 @@
 																						"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
 																						"type": "string",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					},
 																					"region": {
@@ -624,6 +662,8 @@
 																						"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 																						"type": "string",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					},
 																					"type": {
@@ -634,7 +674,8 @@
 																							"azure",
 																							"digitalocean",
 																							"gcs",
-																							"sftp"
+																							"sftp",
+																							"cloudflare"
 																						]
 																					},
 																					"username": {
@@ -744,6 +785,21 @@
 																							"host",
 																							"port"
 																						]
+																					},
+																					{
+																						"properties": {
+																							"type": {
+																								"type": "string",
+																								"enum": [
+																									"cloudflare"
+																								]
+																							}
+																						},
+																						"required": [
+																							"access_key",
+																							"account_id"
+																						],
+																						"type": "object"
 																					}
 																				],
 																				"required": [
@@ -844,7 +900,8 @@
 																			"password": {
 																				"description": "Password for SIP digest authentication. Keep it secret.",
 																				"type": "string",
-																				"readOnly": true
+																				"readOnly": true,
+																				"x-auditable": false
 																			},
 																			"sip_uri": {
 																				"description": "SIP URI to dial. Configure it in your SIP provider or PBX.",
@@ -1015,12 +1072,21 @@
 			"Recordings"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.recordings",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.recordings",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}": {
 		"operationId": "get_one_recording",
@@ -1271,7 +1337,13 @@
 																	"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
+																},
+																"account_id": {
+																	"description": "Cloudflare account ID, a 32-character hexadecimal string. Required for `cloudflare` storage.",
+																	"type": "string"
 																},
 																"auth_method": {
 																	"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -1293,6 +1365,8 @@
 																	"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"path": {
@@ -1307,6 +1381,8 @@
 																	"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"region": {
@@ -1318,6 +1394,8 @@
 																	"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"type": {
@@ -1328,7 +1406,8 @@
 																		"azure",
 																		"digitalocean",
 																		"gcs",
-																		"sftp"
+																		"sftp",
+																		"cloudflare"
 																	]
 																},
 																"username": {
@@ -1438,6 +1517,21 @@
 																		"host",
 																		"port"
 																	]
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"cloudflare"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"account_id"
+																	],
+																	"type": "object"
 																}
 															],
 															"required": [
@@ -1563,12 +1657,21 @@
 			"Recordings"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.recordings",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.recordings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/recordings/active-recording/{meeting_id}": {
@@ -1846,12 +1949,21 @@
 			"Recordings"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.recordings.active",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.recordings.active",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/recordings": {
 		"operationId": "start_recording",
@@ -2018,7 +2130,13 @@
 										"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 										"type": "string",
 										"writeOnly": true,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
+									},
+									"account_id": {
+										"description": "Cloudflare account ID, a 32-character hexadecimal string. Required for `cloudflare` storage.",
+										"type": "string"
 									},
 									"auth_method": {
 										"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -2040,6 +2158,8 @@
 										"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
 										"type": "string",
 										"writeOnly": true,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"path": {
@@ -2054,6 +2174,8 @@
 										"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
 										"type": "string",
 										"writeOnly": true,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"region": {
@@ -2065,6 +2187,8 @@
 										"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 										"type": "string",
 										"writeOnly": true,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"type": {
@@ -2075,7 +2199,8 @@
 											"azure",
 											"digitalocean",
 											"gcs",
-											"sftp"
+											"sftp",
+											"cloudflare"
 										]
 									},
 									"username": {
@@ -2185,6 +2310,21 @@
 											"host",
 											"port"
 										]
+									},
+									{
+										"properties": {
+											"type": {
+												"type": "string",
+												"enum": [
+													"cloudflare"
+												]
+											}
+										},
+										"required": [
+											"access_key",
+											"account_id"
+										],
+										"type": "object"
 									}
 								],
 								"required": [
@@ -2493,7 +2633,13 @@
 																	"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
+																},
+																"account_id": {
+																	"description": "Cloudflare account ID, a 32-character hexadecimal string. Required for `cloudflare` storage.",
+																	"type": "string"
 																},
 																"auth_method": {
 																	"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -2515,6 +2661,8 @@
 																	"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"path": {
@@ -2529,6 +2677,8 @@
 																	"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"region": {
@@ -2540,6 +2690,8 @@
 																	"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"type": {
@@ -2550,7 +2702,8 @@
 																		"azure",
 																		"digitalocean",
 																		"gcs",
-																		"sftp"
+																		"sftp",
+																		"cloudflare"
 																	]
 																},
 																"username": {
@@ -2660,6 +2813,21 @@
 																		"host",
 																		"port"
 																	]
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"cloudflare"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"account_id"
+																	],
+																	"type": "object"
 																}
 															],
 															"required": [
@@ -2791,6 +2959,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.recordings",
 		"x-fern-sdk-method-name": "start",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.recordings",
+		"x-forge-method-name": "start",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/recordings/track": {
@@ -3142,7 +3317,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.recordings.tracks",
-		"x-fern-sdk-method-name": "start"
+		"x-fern-sdk-method-name": "start",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.recordings.tracks",
+		"x-forge-method-name": "start",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}": {
 		"operationId": "pause_resume_stop_recording",
@@ -3416,7 +3598,13 @@
 																	"description": "Access key of the storage medium. Access key is not required for the `gcs` storage media type.\n\nNote that this field is not readable by clients, only writeable.",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
+																},
+																"account_id": {
+																	"description": "Cloudflare account ID, a 32-character hexadecimal string. Required for `cloudflare` storage.",
+																	"type": "string"
 																},
 																"auth_method": {
 																	"description": "Authentication method used for \"sftp\" type storage medium\n",
@@ -3438,6 +3626,8 @@
 																	"description": "SSH destination server password for SFTP type storage medium when auth_method is \"PASSWORD\". If auth_method is \"KEY\", this specifies the password for the ssh private key.",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"path": {
@@ -3452,6 +3642,8 @@
 																	"description": "Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is \"KEY\"",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"region": {
@@ -3463,6 +3655,8 @@
 																	"description": "Secret key of the storage medium. Required for `aws` storage. Similar to `access_key`, it is only writeable by clients, not readable.",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-auditable": false,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"type": {
@@ -3473,7 +3667,8 @@
 																		"azure",
 																		"digitalocean",
 																		"gcs",
-																		"sftp"
+																		"sftp",
+																		"cloudflare"
 																	]
 																},
 																"username": {
@@ -3583,6 +3778,21 @@
 																		"host",
 																		"port"
 																	]
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string",
+																			"enum": [
+																				"cloudflare"
+																			]
+																		}
+																	},
+																	"required": [
+																		"access_key",
+																		"account_id"
+																	],
+																	"type": "object"
 																}
 															],
 															"required": [
@@ -3714,6 +3924,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.recordings",
 		"x-fern-sdk-method-name": "control",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.recordings",
+		"x-forge-method-name": "control",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-stability": "beta"
 	}
 }

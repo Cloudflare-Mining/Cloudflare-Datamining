@@ -247,6 +247,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "agent-memory",
 		"x-fern-sdk-method-name": "delete-namespace",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "agent-memory",
+		"x-forge-method-name": "delete-namespace",
 		"x-forge-require-confirmation": "This operation deletes the namespace along with all memory profiles, memories, and sessions it contains."
 	},
 	"GET /accounts/{account_id}/agent-memory/namespaces": {
@@ -580,7 +583,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "agent-memory",
-		"x-fern-sdk-method-name": "list-namespaces"
+		"x-fern-sdk-method-name": "list-namespaces",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "agent-memory",
+		"x-forge-method-name": "list-namespaces"
 	},
 	"GET /accounts/{account_id}/agent-memory/namespaces/{namespace_name}": {
 		"operationId": "agent-memory-namespace-get",
@@ -858,7 +864,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "agent-memory",
-		"x-fern-sdk-method-name": "get-namespace"
+		"x-fern-sdk-method-name": "get-namespace",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "agent-memory",
+		"x-forge-method-name": "get-namespace"
 	},
 	"POST /accounts/{account_id}/agent-memory/namespaces": {
 		"operationId": "agent-memory-namespace-create",
@@ -1144,6 +1153,9 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "agent-memory",
-		"x-fern-sdk-method-name": "create-namespace"
+		"x-fern-sdk-method-name": "create-namespace",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "agent-memory",
+		"x-forge-method-name": "create-namespace"
 	}
 }

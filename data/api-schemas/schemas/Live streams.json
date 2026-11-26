@@ -214,12 +214,21 @@
 			"LivestreamAnalytics"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.analytics.livestreams.daily",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.analytics.livestreams.daily",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/overall": {
 		"operationId": "get-livestream-analytics-complete",
@@ -425,12 +434,21 @@
 			"LivestreamAnalytics"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.analytics.livestreams",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.analytics.livestreams",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams": {
 		"operationId": "fetch_all_livestreams",
@@ -604,6 +622,8 @@
 											"stream_key": {
 												"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
 												"type": "string",
+												"x-auditable": false,
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											},
 											"updated_at": {
@@ -770,12 +790,21 @@
 			"Live streams"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.livestreams",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.livestreams",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}": {
 		"operationId": "get-v2-livestream-session-livestream-id",
@@ -940,6 +969,8 @@
 												"stream_key": {
 													"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
 													"type": "string",
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												},
 												"updated_at": {
@@ -1183,12 +1214,21 @@
 			"Live streams"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.livestreams",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.livestreams",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/active-livestream-session": {
 		"operationId": "get-v2-active-livestream-session-details",
@@ -1329,6 +1369,8 @@
 												"stream_key": {
 													"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
 													"type": "string",
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												},
 												"updated_at": {
@@ -1544,12 +1586,21 @@
 			"Live streams"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.livestreams.sessions",
-		"x-fern-sdk-method-name": "list-active"
+		"x-fern-sdk-method-name": "list-active",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.livestreams.sessions",
+		"x-forge-method-name": "list-active",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/sessions/{livestream-session-id}": {
 		"operationId": "get-v2-livestreams-livestream-session-id",
@@ -1799,12 +1850,21 @@
 			"Live streams"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.livestreams.sessions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.livestreams.sessions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream": {
 		"operationId": "get-v2-meetings-meetingId-active-livestream",
@@ -1908,6 +1968,8 @@
 										"stream_key": {
 											"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
 											"type": "string",
+											"x-auditable": false,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										},
 										"updated_at": {
@@ -2048,12 +2110,21 @@
 			"Live streams"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.meetings.livestream",
-		"x-fern-sdk-method-name": "list-active"
+		"x-fern-sdk-method-name": "list-active",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.meetings.livestream",
+		"x-forge-method-name": "list-active",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestream": {
 		"operationId": "livestream-session-details",
@@ -2204,6 +2275,8 @@
 														"stream_key": {
 															"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
 															"type": "string",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"updated_at": {
@@ -2452,12 +2525,21 @@
 			"Live streams"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.meetings.livestream",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.meetings.livestream",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/livestream-sessions": {
 		"operationId": "get-v2-livestreamsession-session-meetingId-active-livestream",
@@ -2770,12 +2852,21 @@
 			"Live streams"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.sessions.livestreams",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.sessions.livestreams",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop": {
 		"operationId": "stop_livestreaming",
@@ -2937,6 +3028,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.livestreams",
 		"x-fern-sdk-method-name": "stop",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.livestreams",
+		"x-forge-method-name": "stop",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-forge-require-confirmation": "This operation stops the active livestream. Viewers lose the broadcast immediately."
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestreams": {
@@ -3056,6 +3154,8 @@
 										"stream_key": {
 											"description": "Unique key for accessing each livestream. Empty if the livestream is disabled.",
 											"type": "string",
+											"x-auditable": false,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										}
 									},
@@ -3190,6 +3290,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.livestreams",
-		"x-fern-sdk-method-name": "start"
+		"x-fern-sdk-method-name": "start",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.livestreams",
+		"x-forge-method-name": "start",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	}
 }

@@ -67,7 +67,8 @@
 			"WAF overrides"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write"
+			"Zone Settings Write",
+			"Workers Routes Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -78,7 +79,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.overrides",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.overrides",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-routes.write",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/firewall/waf/overrides": {
 		"operationId": "waf-overrides-list-waf-overrides",
@@ -156,8 +165,14 @@
 			"WAF overrides"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -168,7 +183,21 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.overrides",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.overrides",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/firewall/waf/overrides/{overrides_id}": {
 		"operationId": "waf-overrides-get-a-waf-override",
@@ -238,8 +267,14 @@
 			"WAF overrides"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -250,7 +285,21 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.overrides",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.overrides",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/firewall/waf/overrides": {
 		"operationId": "waf-overrides-create-a-waf-override",
@@ -332,7 +381,8 @@
 			"WAF overrides"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write"
+			"Zone Settings Write",
+			"Workers Routes Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -343,7 +393,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.overrides",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.overrides",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-routes.write",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/firewall/waf/overrides/{overrides_id}": {
 		"operationId": "waf-overrides-update-waf-override",
@@ -531,7 +589,8 @@
 			"WAF overrides"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write"
+			"Zone Settings Write",
+			"Workers Routes Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": false,
@@ -542,6 +601,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.overrides",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.overrides",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-routes.write",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	}
 }

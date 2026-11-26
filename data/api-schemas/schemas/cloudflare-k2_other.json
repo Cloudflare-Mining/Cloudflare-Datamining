@@ -109,7 +109,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -119,7 +119,10 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.streams",
+		"x-forge-method-name": "delete"
 	},
 	"DELETE /subscriptions/{subscription_id}": {
 		"operationId": "deleteK2SubscriptionsBySubscription_id",
@@ -341,7 +344,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -352,7 +355,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "k2.data.consume.subscriptions",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.data.consume.subscriptions",
+		"x-forge-method-name": "delete",
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/k2/streams": {
 		"operationId": "getV4AccountsByAccount_idK2Streams",
@@ -604,7 +611,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -614,7 +621,10 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.streams",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/k2/streams/{stream_id}": {
 		"operationId": "getV4AccountsByAccount_idK2StreamsByStream_id",
@@ -823,7 +833,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -833,7 +843,10 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.streams",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/k2/streams/{stream_id}/subscriptions": {
 		"operationId": "getV4AccountsByAccount_idK2StreamsByStream_idSubscriptions",
@@ -1012,7 +1025,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1022,7 +1035,10 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams.subscriptions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.streams.subscriptions",
+		"x-forge-method-name": "list"
 	},
 	"GET /subscriptions": {
 		"operationId": "getK2Subscriptions",
@@ -1275,7 +1291,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1286,7 +1302,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "k2.data.consume.subscriptions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.data.consume.subscriptions",
+		"x-forge-method-name": "list",
+		"x-forge-skip": true
 	},
 	"GET /subscriptions/{subscription_id}": {
 		"operationId": "getK2SubscriptionsBySubscription_id",
@@ -1538,7 +1558,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1549,7 +1569,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "k2.data.consume.subscriptions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.data.consume.subscriptions",
+		"x-forge-method-name": "get",
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/k2/streams/{stream_id}": {
 		"operationId": "patchV4AccountsByAccount_idK2StreamsByStream_id",
@@ -1863,7 +1887,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1873,7 +1897,10 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.streams",
+		"x-forge-method-name": "update"
 	},
 	"POST /accounts/{account_id}/k2/streams": {
 		"operationId": "postV4AccountsByAccount_idK2Streams",
@@ -2198,7 +2225,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2208,7 +2235,10 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "k2.streams",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.streams",
+		"x-forge-method-name": "create"
 	},
 	"POST /produce": {
 		"operationId": "postK2Produce",
@@ -2376,7 +2406,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2387,7 +2417,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "k2.data.produce",
-		"x-fern-sdk-method-name": "records"
+		"x-fern-sdk-method-name": "records",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.data.produce",
+		"x-forge-method-name": "records",
+		"x-forge-skip": true
 	},
 	"POST /subscriptions": {
 		"operationId": "postK2Subscriptions",
@@ -2636,7 +2670,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2647,7 +2681,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "k2.data.consume.subscriptions",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.data.consume.subscriptions",
+		"x-forge-method-name": "create",
+		"x-forge-skip": true
 	},
 	"POST /subscriptions/{subscription_id}/batches/{batch_id}/ack": {
 		"operationId": "postK2SubscriptionsBySubscription_idBatchesByBatch_idAck",
@@ -2892,7 +2930,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2903,7 +2941,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "k2.data.consume.batches",
-		"x-fern-sdk-method-name": "ack"
+		"x-fern-sdk-method-name": "ack",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.data.consume.batches",
+		"x-forge-method-name": "ack",
+		"x-forge-skip": true
 	},
 	"POST /subscriptions/{subscription_id}/batches/{batch_id}/extend": {
 		"operationId": "postK2SubscriptionsBySubscription_idBatchesByBatch_idExtend",
@@ -3158,7 +3200,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3169,7 +3211,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "k2.data.consume.batches",
-		"x-fern-sdk-method-name": "extend"
+		"x-fern-sdk-method-name": "extend",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.data.consume.batches",
+		"x-forge-method-name": "extend",
+		"x-forge-skip": true
 	},
 	"POST /subscriptions/{subscription_id}/batches/{batch_id}/nack": {
 		"operationId": "postK2SubscriptionsBySubscription_idBatchesByBatch_idNack",
@@ -3414,7 +3460,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3425,7 +3471,11 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "k2.data.consume.batches",
-		"x-fern-sdk-method-name": "nack"
+		"x-fern-sdk-method-name": "nack",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.data.consume.batches",
+		"x-forge-method-name": "nack",
+		"x-forge-skip": true
 	},
 	"POST /subscriptions/{subscription_id}/consume": {
 		"operationId": "postK2SubscriptionsBySubscription_idConsume",
@@ -3716,7 +3766,7 @@
 			}
 		],
 		"tags": [
-			"workers_k2_other"
+			"cloudflare-k2_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3727,6 +3777,10 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "k2.data.consume",
-		"x-fern-sdk-method-name": "records"
+		"x-fern-sdk-method-name": "records",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "k2.data.consume",
+		"x-forge-method-name": "records",
+		"x-forge-skip": true
 	}
 }

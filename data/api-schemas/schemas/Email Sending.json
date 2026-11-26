@@ -200,11 +200,10 @@
 		"tags": [
 			"Email Sending"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.read"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -213,7 +212,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.limits",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.limits",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	},
 	"GET /accounts/{account_id}/email/sending/messages/{message_id}": {
 		"operationId": "email-sending-get-email-message",
@@ -399,11 +405,10 @@
 		"tags": [
 			"Email Sending"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.read"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -412,7 +417,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	},
 	"GET /accounts/{account_id}/email/sending/reputation": {
 		"operationId": "email-sending-get-reputation",
@@ -739,11 +751,10 @@
 		"tags": [
 			"Email Sending"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.read"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -752,7 +763,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.reputation",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.reputation",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	},
 	"POST /accounts/{account_id}/email/sending/send": {
 		"operationId": "email-sending-account-send-builder",
@@ -1738,11 +1756,9 @@
 		"tags": [
 			"Email Sending"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.create"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1751,7 +1767,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending",
-		"x-fern-sdk-method-name": "send"
+		"x-fern-sdk-method-name": "send",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending",
+		"x-forge-method-name": "send",
+		"x-forge-oauth-scopes": [
+			"email-sending.write"
+		]
 	},
 	"POST /accounts/{account_id}/email/sending/send_raw": {
 		"operationId": "email-sending-account-send-raw-message",
@@ -2280,11 +2302,9 @@
 		"tags": [
 			"Email Sending"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.create"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2293,6 +2313,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending",
-		"x-fern-sdk-method-name": "send-raw"
+		"x-fern-sdk-method-name": "send-raw",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending",
+		"x-forge-method-name": "send-raw",
+		"x-forge-oauth-scopes": [
+			"email-sending.write"
+		]
 	}
 }

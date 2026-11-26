@@ -273,12 +273,19 @@
 			"Zone-Level Access groups"
 		],
 		"x-api-token-group": [
+			"Access: Groups Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-groups",
-		"x-fern-sdk-method-name": "delete"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-group.write",
+			"access-acct.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/access/groups": {
 		"operationId": "zone-level-access-groups-list-access-groups",
@@ -2851,13 +2858,25 @@
 			"Zone-Level Access groups"
 		],
 		"x-api-token-group": [
+			"Access: Groups Write",
+			"Access: Groups Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-groups",
-		"x-fern-sdk-method-name": "list"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-group.read",
+			"access-group.write",
+			"access-acct.read",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/access/groups/{group_id}": {
 		"operationId": "zone-level-access-groups-get-an-access-group",
@@ -5404,13 +5423,25 @@
 			"Zone-Level Access groups"
 		],
 		"x-api-token-group": [
+			"Access: Groups Write",
+			"Access: Groups Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-groups",
-		"x-fern-sdk-method-name": "get"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-group.read",
+			"access-group.write",
+			"access-acct.read",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/access/groups": {
 		"operationId": "zone-level-access-groups-create-an-access-group",
@@ -10220,12 +10251,19 @@
 			"Zone-Level Access groups"
 		],
 		"x-api-token-group": [
+			"Access: Groups Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-groups",
-		"x-fern-sdk-method-name": "create"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-group.write",
+			"access-acct.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/access/groups/{group_id}": {
 		"operationId": "zone-level-access-groups-update-an-access-group",
@@ -15047,11 +15085,18 @@
 			"Zone-Level Access groups"
 		],
 		"x-api-token-group": [
+			"Access: Groups Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-groups",
-		"x-fern-sdk-method-name": "update"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-group.write",
+			"access-acct.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	}
 }

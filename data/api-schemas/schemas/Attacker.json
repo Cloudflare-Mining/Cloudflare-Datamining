@@ -113,6 +113,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.attackers",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.attackers",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	}
 }

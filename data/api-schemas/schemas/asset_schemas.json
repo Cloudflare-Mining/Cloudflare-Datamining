@@ -711,12 +711,23 @@
 			"asset_schemas"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.asset-schemas",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.asset-schemas",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/data-security/posture/asset_schemas/{asset_class}": {
 		"operationId": "GetAssetSchema",
@@ -1554,11 +1565,22 @@
 			"asset_schemas"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.asset-schemas",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.asset-schemas",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	}
 }

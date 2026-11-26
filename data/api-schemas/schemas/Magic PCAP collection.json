@@ -238,7 +238,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.pcaps.ownership",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.pcaps.ownership",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"pcaps-api.write"
+		]
 	},
 	"GET /accounts/{account_id}/pcaps": {
 		"operationId": "magic-pcap-collection-list-packet-capture-requests",
@@ -839,7 +844,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.pcaps",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.pcaps",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"pcaps-api.read",
+			"pcaps-api.write"
+		]
 	},
 	"GET /accounts/{account_id}/pcaps/{pcap_id}": {
 		"operationId": "magic-pcap-collection-get-pcap-request",
@@ -1427,7 +1438,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.pcaps",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.pcaps",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"pcaps-api.read",
+			"pcaps-api.write"
+		]
 	},
 	"GET /accounts/{account_id}/pcaps/{pcap_id}/download": {
 		"operationId": "magic-pcap-collection-download-simple-pcap",
@@ -1672,7 +1689,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.pcaps.download",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.pcaps.download",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"pcaps-api.read",
+			"pcaps-api.write"
+		]
 	},
 	"GET /accounts/{account_id}/pcaps/ownership": {
 		"operationId": "magic-pcap-collection-list-pca-ps-bucket-ownership",
@@ -2087,7 +2110,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.pcaps.ownership",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.pcaps.ownership",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"pcaps-api.read",
+			"pcaps-api.write"
+		]
 	},
 	"POST /accounts/{account_id}/pcaps": {
 		"operationId": "magic-pcap-collection-create-pcap-request",
@@ -2864,7 +2893,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.pcaps",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.pcaps",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"pcaps-api.write"
+		]
 	},
 	"POST /accounts/{account_id}/pcaps/ownership": {
 		"operationId": "magic-pcap-collection-add-buckets-for-full-packet-captures",
@@ -3252,7 +3286,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.pcaps.ownership",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.pcaps.ownership",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"pcaps-api.write"
+		]
 	},
 	"POST /accounts/{account_id}/pcaps/ownership/validate": {
 		"operationId": "magic-pcap-collection-validate-buckets-for-full-packet-captures",
@@ -3646,7 +3685,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.pcaps.ownership",
 		"x-fern-sdk-method-name": "validate",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.pcaps.ownership",
+		"x-forge-method-name": "validate",
+		"x-forge-oauth-scopes": [
+			"pcaps-api.write"
+		]
 	},
 	"PUT /accounts/{account_id}/pcaps/{pcap_id}/stop": {
 		"operationId": "magic-pcap-collection-stop-full-pcap",
@@ -3887,7 +3931,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.pcaps",
 		"x-fern-sdk-method-name": "stop",
-		"x-forge-hidden": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.pcaps",
+		"x-forge-method-name": "stop",
+		"x-forge-oauth-scopes": [
+			"pcaps-api.write"
+		],
 		"x-forge-require-confirmation": "This operation halts an in-progress full packet capture. Any unsaved capture data will be lost."
 	}
 }

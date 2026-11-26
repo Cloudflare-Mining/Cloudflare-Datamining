@@ -517,6 +517,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ohttp-gateway.enablement",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ohttp-gateway.enablement",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "This operation disables OHTTP Gateway for the zone.",
 		"x-stability": "beta"
 	},
@@ -1031,6 +1034,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ohttp-gateway.enablement",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ohttp-gateway.enablement",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"PUT /zones/{zone_id}/settings/ohttp-gateway": {
@@ -1551,6 +1557,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ohttp-gateway.enablement",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ohttp-gateway.enablement",
+		"x-forge-method-name": "create",
 		"x-stability": "beta"
 	}
 }

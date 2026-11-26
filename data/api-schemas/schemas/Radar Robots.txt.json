@@ -343,7 +343,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.robots-txt.top",
-		"x-fern-sdk-method-name": "domain-categories"
+		"x-fern-sdk-method-name": "domain-categories",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.robots-txt.top",
+		"x-forge-method-name": "domain-categories",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/robots_txt/top/user_agents/directive": {
 		"operationId": "radar-get-robots-txt-top-user-agents-by-directive",
@@ -726,6 +733,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.robots-txt.top.user-agents",
-		"x-fern-sdk-method-name": "directive"
+		"x-fern-sdk-method-name": "directive",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.robots-txt.top.user-agents",
+		"x-forge-method-name": "directive",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	}
 }

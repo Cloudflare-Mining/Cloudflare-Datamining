@@ -277,7 +277,10 @@
 			"ppu_configuration"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.operator",
-		"x-fern-sdk-method-name": "get-configuration"
+		"x-fern-sdk-method-name": "get-configuration",
+		"x-forge-group-name": "pay-per-use.operator",
+		"x-forge-method-name": "get-configuration",
+		"x-stability": "beta"
 	},
 	"GET /zones/{zone_id}/pay-per-use/can_be_enabled": {
 		"operationId": "pay-per-crawl.getPPUZoneCanBeEnabled",
@@ -523,7 +526,10 @@
 			"ppu_configuration"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.zones",
-		"x-fern-sdk-method-name": "get-can-be-enabled"
+		"x-fern-sdk-method-name": "get-can-be-enabled",
+		"x-forge-group-name": "pay-per-use.zones",
+		"x-forge-method-name": "get-can-be-enabled",
+		"x-stability": "beta"
 	},
 	"GET /zones/{zone_id}/pay-per-use/configuration": {
 		"operationId": "pay-per-crawl.getPPUZoneConfiguration",
@@ -776,7 +782,10 @@
 			"ppu_configuration"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.zones",
-		"x-fern-sdk-method-name": "get-configuration"
+		"x-fern-sdk-method-name": "get-configuration",
+		"x-forge-group-name": "pay-per-use.zones",
+		"x-forge-method-name": "get-configuration",
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/pay-per-use/operator/configuration": {
 		"operationId": "pay-per-crawl.patchPPUOperatorConfiguration",
@@ -1164,7 +1173,10 @@
 			"ppu_configuration"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.operator",
-		"x-fern-sdk-method-name": "update-configuration"
+		"x-fern-sdk-method-name": "update-configuration",
+		"x-forge-group-name": "pay-per-use.operator",
+		"x-forge-method-name": "update-configuration",
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/pay-per-use/zones_can_be_enabled": {
 		"operationId": "pay-per-crawl.setPPUZonesCanBeEnabled",
@@ -1449,7 +1461,10 @@
 			"ppu_configuration"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.zones",
-		"x-fern-sdk-method-name": "set-can-be-enabled"
+		"x-fern-sdk-method-name": "set-can-be-enabled",
+		"x-forge-group-name": "pay-per-use.zones",
+		"x-forge-method-name": "set-can-be-enabled",
+		"x-stability": "beta"
 	},
 	"PATCH /zones/{zone_id}/pay-per-use/configuration": {
 		"operationId": "pay-per-crawl.patchPPUZoneConfiguration",
@@ -1832,7 +1847,10 @@
 			"ppu_configuration"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.zones",
-		"x-fern-sdk-method-name": "update-configuration"
+		"x-fern-sdk-method-name": "update-configuration",
+		"x-forge-group-name": "pay-per-use.zones",
+		"x-forge-method-name": "update-configuration",
+		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/pay-per-use/operator/configuration": {
 		"operationId": "pay-per-crawl.putPPUOperatorConfiguration",
@@ -2180,6 +2198,9 @@
 			"ppu_configuration"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.operator",
-		"x-fern-sdk-method-name": "set-configuration"
+		"x-fern-sdk-method-name": "set-configuration",
+		"x-forge-group-name": "pay-per-use.operator",
+		"x-forge-method-name": "set-configuration",
+		"x-stability": "beta"
 	}
 }

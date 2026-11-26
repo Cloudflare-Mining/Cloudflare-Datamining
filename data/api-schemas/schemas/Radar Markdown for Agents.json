@@ -360,7 +360,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ai.markdown-for-agents",
-		"x-fern-sdk-method-name": "summary"
+		"x-fern-sdk-method-name": "summary",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.ai.markdown-for-agents",
+		"x-forge-method-name": "summary",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/ai/markdown_for_agents/timeseries": {
 		"operationId": "radar-get-ai-markdown-for-agents-timeseries",
@@ -758,6 +765,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.ai.markdown-for-agents",
-		"x-fern-sdk-method-name": "timeseries"
+		"x-fern-sdk-method-name": "timeseries",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.ai.markdown-for-agents",
+		"x-forge-method-name": "timeseries",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	}
 }

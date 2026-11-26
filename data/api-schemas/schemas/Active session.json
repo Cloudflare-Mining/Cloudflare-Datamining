@@ -256,12 +256,21 @@
 			"Active session"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.meetings.active",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.meetings.active",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick": {
 		"operationId": "KickPartcipants",
@@ -861,7 +870,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.meetings.active",
-		"x-fern-sdk-method-name": "kick"
+		"x-fern-sdk-method-name": "kick",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.meetings.active",
+		"x-forge-method-name": "kick",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick-all": {
 		"operationId": "KickAllParticipants",
@@ -1384,6 +1400,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.meetings.active",
 		"x-fern-sdk-method-name": "kick-all",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.meetings.active",
+		"x-forge-method-name": "kick-all",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-forge-require-confirmation": "This operation disconnects every active participant immediately."
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute": {
@@ -1975,7 +1998,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.meetings.active",
-		"x-fern-sdk-method-name": "mute"
+		"x-fern-sdk-method-name": "mute",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.meetings.active",
+		"x-forge-method-name": "mute",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute-all": {
 		"operationId": "MuteAllParticipants",
@@ -2533,7 +2563,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.meetings.active",
-		"x-fern-sdk-method-name": "mute-all"
+		"x-fern-sdk-method-name": "mute-all",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.meetings.active",
+		"x-forge-method-name": "mute-all",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll": {
 		"operationId": "CreatePoll",
@@ -2727,6 +2764,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.meetings.active.polls",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.meetings.active.polls",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	}
 }

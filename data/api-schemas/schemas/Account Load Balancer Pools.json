@@ -245,7 +245,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.pools",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.pools",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"GET /accounts/{account_id}/load_balancers/pools": {
 		"operationId": "account-load-balancer-pools-list-pools",
@@ -850,7 +856,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.pools",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.pools",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.read",
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"GET /accounts/{account_id}/load_balancers/pools/{pool_id}": {
 		"operationId": "account-load-balancer-pools-pool-details",
@@ -1433,7 +1446,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.pools",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.pools",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.read",
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"GET /accounts/{account_id}/load_balancers/pools/{pool_id}/health": {
 		"operationId": "account-load-balancer-pools-pool-health-details",
@@ -1751,7 +1771,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.pools.health",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.pools.health",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.read",
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"GET /accounts/{account_id}/load_balancers/pools/{pool_id}/references": {
 		"operationId": "account-load-balancer-pools-list-pool-references",
@@ -2012,7 +2039,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.pools.references",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.pools.references",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.read",
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/load_balancers/pools": {
 		"operationId": "account-load-balancer-pools-patch-pools",
@@ -2628,7 +2662,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.pools",
-		"x-fern-sdk-method-name": "bulk-edit"
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.pools",
+		"x-forge-method-name": "bulk-edit",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/load_balancers/pools/{pool_id}": {
 		"operationId": "account-load-balancer-pools-patch-pool",
@@ -3542,7 +3582,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.pools",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.pools",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"POST /accounts/{account_id}/load_balancers/pools": {
 		"operationId": "account-load-balancer-pools-create-pool",
@@ -4443,7 +4489,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.pools",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.pools",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"POST /accounts/{account_id}/load_balancers/pools/{pool_id}/preview": {
 		"operationId": "account-load-balancer-pools-preview-pool",
@@ -4842,7 +4894,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.pools.health",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.pools.health",
+		"x-forge-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/load_balancers/pools/{pool_id}": {
 		"operationId": "account-load-balancer-pools-update-pool",
@@ -5760,6 +5815,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.pools",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.pools",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.write"
+		]
 	}
 }

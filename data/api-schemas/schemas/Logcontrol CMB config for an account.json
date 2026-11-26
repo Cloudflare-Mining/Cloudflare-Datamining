@@ -252,6 +252,7 @@
 			"Logcontrol CMB config for an account"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -262,6 +263,13 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "logs.control.cmb.config",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "logs.control.cmb.config",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"account-logs.write",
+			"observability.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the CMB config."
 	},
 	"GET /accounts/{account_id}/logs/control/cmb/config": {
@@ -540,6 +548,8 @@
 			"Logcontrol CMB config for an account"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Logs Write",
 			"Logs Read"
 		],
@@ -551,7 +561,16 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "logs.control.cmb.config",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "logs.control.cmb.config",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-logs.read",
+			"observability.read",
+			"account-logs.write",
+			"observability.write"
+		]
 	},
 	"POST /accounts/{account_id}/logs/control/cmb/config": {
 		"operationId": "post-accounts-account_id-logs-control-cmb-config",
@@ -856,6 +875,7 @@
 			"Logcontrol CMB config for an account"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -865,6 +885,13 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "logs.control.cmb.config",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "logs.control.cmb.config",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"account-logs.write",
+			"observability.write"
+		]
 	}
 }

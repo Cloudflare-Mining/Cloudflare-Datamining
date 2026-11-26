@@ -491,6 +491,9 @@
 			"Usage"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -500,8 +503,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y",
-				"x-fern-sdk-method-name": "usage"
+				"x-fern-sdk-method-name": "usage",
+				"x-forge-group-name": "o11y",
+				"x-forge-method-name": "usage"
 			}
-		]
+		],
+		"x-forge-group-name": "observability",
+		"x-forge-method-name": "usage",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
+		],
+		"x-forge-skip": true
 	}
 }

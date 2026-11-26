@@ -172,6 +172,8 @@
 			"AI Gateway Custom Domains"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -188,6 +190,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.custom-domains",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-domains",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This deletes the custom domain and its custom hostname. Requests to this hostname will stop reaching the gateway."
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/custom-domains": {
@@ -394,6 +404,9 @@
 			"AI Gateway Custom Domains"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -410,7 +423,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.custom-domains",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-domains",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/custom-domains/{hostname}": {
 		"operationId": "aig-config-fetch-custom-domain",
@@ -585,6 +608,9 @@
 			"AI Gateway Custom Domains"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -601,7 +627,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.custom-domains",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-domains",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/custom-domains": {
 		"operationId": "aig-config-create-custom-domain",
@@ -790,6 +826,8 @@
 			"AI Gateway Custom Domains"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -805,6 +843,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.custom-domains",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-domains",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	}
 }

@@ -408,7 +408,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.advertisement-status",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.advertisement-status",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ip-prefix-bgp-on-demand.read",
+			"ip-prefix-bgp-on-demand.write",
+			"ip-prefix.read",
+			"ip-prefix.write",
+			"magic-transit.read",
+			"magic-transit.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/status": {
 		"operationId": "ip-address-management-dynamic-advertisement-update-prefix-dynamic-advertisement-status",
@@ -837,6 +848,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.advertisement-status",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.advertisement-status",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"ip-prefix-bgp-on-demand.write",
+			"ip-prefix.write",
+			"magic-transit.write"
+		]
 	}
 }

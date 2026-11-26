@@ -584,7 +584,19 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.versions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.versions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/versions/{version_id}": {
 		"operationId": "worker-versions-get-version-detail",
@@ -1753,6 +1765,7 @@
 																						"type": "string",
 																						"example": "My secret.",
 																						"writeOnly": true,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					},
 																					"type": {
@@ -2046,12 +2059,14 @@
 																						"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																						"type": "string",
 																						"writeOnly": true,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					},
 																					"key_jwk": {
 																						"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																						"type": "object",
 																						"writeOnly": true,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					},
 																					"name": {
@@ -3195,6 +3210,7 @@
 																								"type": "string",
 																								"example": "My secret.",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"type": {
@@ -3488,12 +3504,14 @@
 																								"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																								"type": "string",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"key_jwk": {
 																								"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																								"type": "object",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"name": {
@@ -4642,6 +4660,7 @@
 																								"type": "string",
 																								"example": "My secret.",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"type": {
@@ -4935,12 +4954,14 @@
 																								"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																								"type": "string",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"key_jwk": {
 																								"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																								"type": "object",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"name": {
@@ -6749,6 +6770,7 @@
 																								"type": "string",
 																								"example": "My secret.",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"type": {
@@ -7042,12 +7064,14 @@
 																								"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																								"type": "string",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"key_jwk": {
 																								"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																								"type": "object",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"name": {
@@ -8191,6 +8215,7 @@
 																										"type": "string",
 																										"example": "My secret.",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"type": {
@@ -8484,12 +8509,14 @@
 																										"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																										"type": "string",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"key_jwk": {
 																										"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																										"type": "object",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"name": {
@@ -9638,6 +9665,7 @@
 																										"type": "string",
 																										"example": "My secret.",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"type": {
@@ -9931,12 +9959,14 @@
 																										"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																										"type": "string",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"key_jwk": {
 																										"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																										"type": "object",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"name": {
@@ -10754,7 +10784,19 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.versions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.versions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/versions": {
 		"operationId": "worker-versions-upload-version",
@@ -11802,6 +11844,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -12095,12 +12138,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -13843,6 +13888,7 @@
 																								"type": "string",
 																								"example": "My secret.",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"type": {
@@ -14136,12 +14182,14 @@
 																								"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																								"type": "string",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"key_jwk": {
 																								"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																								"type": "object",
 																								"writeOnly": true,
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							},
 																							"name": {
@@ -15285,6 +15333,7 @@
 																										"type": "string",
 																										"example": "My secret.",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"type": {
@@ -15578,12 +15627,14 @@
 																										"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																										"type": "string",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"key_jwk": {
 																										"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																										"type": "object",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"name": {
@@ -16732,6 +16783,7 @@
 																										"type": "string",
 																										"example": "My secret.",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"type": {
@@ -17025,12 +17077,14 @@
 																										"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																										"type": "string",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"key_jwk": {
 																										"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																										"type": "object",
 																										"writeOnly": true,
+																										"x-forge-sensitive": true,
 																										"x-sensitive": true
 																									},
 																									"name": {
@@ -19125,6 +19179,7 @@
 																												"type": "string",
 																												"example": "My secret.",
 																												"writeOnly": true,
+																												"x-forge-sensitive": true,
 																												"x-sensitive": true
 																											},
 																											"type": {
@@ -19418,12 +19473,14 @@
 																												"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																												"type": "string",
 																												"writeOnly": true,
+																												"x-forge-sensitive": true,
 																												"x-sensitive": true
 																											},
 																											"key_jwk": {
 																												"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																												"type": "object",
 																												"writeOnly": true,
+																												"x-forge-sensitive": true,
 																												"x-sensitive": true
 																											},
 																											"name": {
@@ -20567,6 +20624,7 @@
 																														"type": "string",
 																														"example": "My secret.",
 																														"writeOnly": true,
+																														"x-forge-sensitive": true,
 																														"x-sensitive": true
 																													},
 																													"type": {
@@ -20860,12 +20918,14 @@
 																														"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																														"type": "string",
 																														"writeOnly": true,
+																														"x-forge-sensitive": true,
 																														"x-sensitive": true
 																													},
 																													"key_jwk": {
 																														"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																														"type": "object",
 																														"writeOnly": true,
+																														"x-forge-sensitive": true,
 																														"x-sensitive": true
 																													},
 																													"name": {
@@ -22014,6 +22074,7 @@
 																														"type": "string",
 																														"example": "My secret.",
 																														"writeOnly": true,
+																														"x-forge-sensitive": true,
 																														"x-sensitive": true
 																													},
 																													"type": {
@@ -22307,12 +22368,14 @@
 																														"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																														"type": "string",
 																														"writeOnly": true,
+																														"x-forge-sensitive": true,
 																														"x-sensitive": true
 																													},
 																													"key_jwk": {
 																														"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																														"type": "object",
 																														"writeOnly": true,
+																														"x-forge-sensitive": true,
 																														"x-sensitive": true
 																													},
 																													"name": {
@@ -23578,6 +23641,14 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.versions",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.versions",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	}
 }

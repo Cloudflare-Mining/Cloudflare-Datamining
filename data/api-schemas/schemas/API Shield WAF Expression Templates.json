@@ -286,6 +286,13 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "api-security.expression-template.fallthrough",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "api-security.expression-template.fallthrough",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
 		"x-stainless-deprecation-message": "Use the cf.api_gateway.fallthrough_detected field in custom rule for a more customized logic check."
 	}
 }

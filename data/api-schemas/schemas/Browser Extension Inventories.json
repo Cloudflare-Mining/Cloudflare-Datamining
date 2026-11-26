@@ -439,7 +439,11 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "browser-extension.inventories",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-extension.inventories",
+		"x-forge-method-name": "list",
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/browser-extension/config/inventories/{registration_id}": {
 		"operationId": "accounts-browser-extension-inventories-get",
@@ -895,6 +899,10 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "browser-extension.inventories",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-extension.inventories",
+		"x-forge-method-name": "get",
+		"x-forge-skip": true
 	}
 }

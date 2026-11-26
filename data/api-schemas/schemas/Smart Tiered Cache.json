@@ -302,7 +302,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.settings.smart-tiered-cache",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
 		"operationId": "smart-tiered-cache-get-smart-tiered-cache-setting",
@@ -637,7 +644,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.settings.smart-tiered-cache",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zone.read",
+			"zone.write",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
 		"operationId": "smart-tiered-cache-patch-smart-tiered-cache-setting",
@@ -997,7 +1013,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.settings.smart-tiered-cache",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
 		"operationId": "smart-tiered-cache-create-smart-tiered-cache-setting",
@@ -1357,6 +1380,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.settings.smart-tiered-cache",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.settings.smart-tiered-cache",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"zone-settings.write"
+		]
 	}
 }

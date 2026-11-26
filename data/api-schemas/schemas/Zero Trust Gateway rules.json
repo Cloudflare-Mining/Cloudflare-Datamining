@@ -302,9 +302,18 @@
 		"tags": [
 			"Zero Trust Gateway rules"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/rules": {
 		"operationId": "zero-trust-gateway-rules-list-zero-trust-gateway-rules",
@@ -576,7 +585,7 @@
 														"x-auditable": true
 													},
 													"expiration": {
-														"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+														"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 														"type": "object",
 														"properties": {
 															"duration": {
@@ -602,7 +611,7 @@
 																		"example": "2014-01-01T05:20:00.12345Z"
 																	},
 																	{
-																		"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																		"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																		"example": "2014-01-01T05:20:20Z",
 																		"type": "string",
 																		"x-auditable": true
@@ -1575,7 +1584,7 @@
 																"x-auditable": true
 															},
 															"expiration": {
-																"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+																"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 																"type": "object",
 																"properties": {
 																	"duration": {
@@ -1601,7 +1610,7 @@
 																				"example": "2014-01-01T05:20:00.12345Z"
 																			},
 																			{
-																				"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																				"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																				"example": "2014-01-01T05:20:20Z",
 																				"type": "string",
 																				"x-auditable": true
@@ -2496,9 +2505,20 @@
 		"tags": [
 			"Zero Trust Gateway rules"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"operationId": "zero-trust-gateway-rules-zero-trust-gateway-rule-details",
@@ -2670,7 +2690,7 @@
 													"x-auditable": true
 												},
 												"expiration": {
-													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 													"type": "object",
 													"properties": {
 														"duration": {
@@ -2696,7 +2716,7 @@
 																	"example": "2014-01-01T05:20:00.12345Z"
 																},
 																{
-																	"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																	"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																	"example": "2014-01-01T05:20:20Z",
 																	"type": "string",
 																	"x-auditable": true
@@ -3635,7 +3655,7 @@
 															"x-auditable": true
 														},
 														"expiration": {
-															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 															"type": "object",
 															"properties": {
 																"duration": {
@@ -3661,7 +3681,7 @@
 																			"example": "2014-01-01T05:20:00.12345Z"
 																		},
 																		{
-																			"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																			"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																			"example": "2014-01-01T05:20:20Z",
 																			"type": "string",
 																			"x-auditable": true
@@ -4555,9 +4575,20 @@
 		"tags": [
 			"Zero Trust Gateway rules"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/rules/tenant": {
 		"operationId": "zero-trust-gateway-rules-list-zero-trust-gateway-rules-tenant",
@@ -4748,7 +4779,7 @@
 														"x-auditable": true
 													},
 													"expiration": {
-														"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+														"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 														"type": "object",
 														"properties": {
 															"duration": {
@@ -4774,7 +4805,7 @@
 																		"example": "2014-01-01T05:20:00.12345Z"
 																	},
 																	{
-																		"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																		"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																		"example": "2014-01-01T05:20:20Z",
 																		"type": "string",
 																		"x-auditable": true
@@ -5747,7 +5778,7 @@
 																"x-auditable": true
 															},
 															"expiration": {
-																"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+																"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 																"type": "object",
 																"properties": {
 																	"duration": {
@@ -5773,7 +5804,7 @@
 																				"example": "2014-01-01T05:20:00.12345Z"
 																			},
 																			{
-																				"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																				"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																				"example": "2014-01-01T05:20:20Z",
 																				"type": "string",
 																				"x-auditable": true
@@ -6668,9 +6699,20 @@
 		"tags": [
 			"Zero Trust Gateway rules"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "list-tenant"
+		"x-fern-sdk-method-name": "list-tenant",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.rules",
+		"x-forge-method-name": "list-tenant",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/gateway/rules": {
 		"operationId": "zero-trust-gateway-rules-patch-multiple-zero-trust-gateway-rules",
@@ -6912,7 +6954,7 @@
 														"x-auditable": true
 													},
 													"expiration": {
-														"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+														"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 														"type": "object",
 														"properties": {
 															"duration": {
@@ -6938,7 +6980,7 @@
 																		"example": "2014-01-01T05:20:00.12345Z"
 																	},
 																	{
-																		"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																		"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																		"example": "2014-01-01T05:20:20Z",
 																		"type": "string",
 																		"x-auditable": true
@@ -7908,7 +7950,7 @@
 																"x-auditable": true
 															},
 															"expiration": {
-																"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+																"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 																"type": "object",
 																"properties": {
 																	"duration": {
@@ -7934,7 +7976,7 @@
 																				"example": "2014-01-01T05:20:00.12345Z"
 																			},
 																			{
-																				"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																				"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																				"example": "2014-01-01T05:20:20Z",
 																				"type": "string",
 																				"x-auditable": true
@@ -8829,10 +8871,20 @@
 		"tags": [
 			"Zero Trust Gateway rules"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "bulk-edit"
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.rules",
+		"x-forge-method-name": "bulk-edit",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"operationId": "zero-trust-gateway-rules-patch-zero-trust-gateway-rule",
@@ -9041,7 +9093,7 @@
 													"x-auditable": true
 												},
 												"expiration": {
-													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 													"type": "object",
 													"properties": {
 														"duration": {
@@ -9067,7 +9119,7 @@
 																	"example": "2014-01-01T05:20:00.12345Z"
 																},
 																{
-																	"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																	"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																	"example": "2014-01-01T05:20:20Z",
 																	"type": "string",
 																	"x-auditable": true
@@ -10004,7 +10056,7 @@
 															"x-auditable": true
 														},
 														"expiration": {
-															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 															"type": "object",
 															"properties": {
 																"duration": {
@@ -10030,7 +10082,7 @@
 																			"example": "2014-01-01T05:20:00.12345Z"
 																		},
 																		{
-																			"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																			"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																			"example": "2014-01-01T05:20:20Z",
 																			"type": "string",
 																			"x-auditable": true
@@ -10924,10 +10976,20 @@
 		"tags": [
 			"Zero Trust Gateway rules"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.rules",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/gateway/rules": {
 		"operationId": "zero-trust-gateway-rules-create-zero-trust-gateway-rule",
@@ -11001,7 +11063,7 @@
 								"x-auditable": true
 							},
 							"expiration": {
-								"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+								"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 								"type": "object",
 								"properties": {
 									"duration": {
@@ -11027,7 +11089,7 @@
 												"example": "2014-01-01T05:20:00.12345Z"
 											},
 											{
-												"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+												"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 												"example": "2014-01-01T05:20:20Z",
 												"type": "string",
 												"x-auditable": true
@@ -11903,7 +11965,7 @@
 													"x-auditable": true
 												},
 												"expiration": {
-													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 													"type": "object",
 													"properties": {
 														"duration": {
@@ -11929,7 +11991,7 @@
 																	"example": "2014-01-01T05:20:00.12345Z"
 																},
 																{
-																	"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																	"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																	"example": "2014-01-01T05:20:20Z",
 																	"type": "string",
 																	"x-auditable": true
@@ -12869,7 +12931,7 @@
 															"x-auditable": true
 														},
 														"expiration": {
-															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 															"type": "object",
 															"properties": {
 																"duration": {
@@ -12895,7 +12957,7 @@
 																			"example": "2014-01-01T05:20:00.12345Z"
 																		},
 																		{
-																			"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																			"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																			"example": "2014-01-01T05:20:20Z",
 																			"type": "string",
 																			"x-auditable": true
@@ -13789,14 +13851,23 @@
 		"tags": [
 			"Zero Trust Gateway rules"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.rules",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/gateway/rules/{rule_id}/reset_expiration": {
 		"operationId": "zero-trust-gateway-rules-reset-expiration-zero-trust-gateway-rule",
 		"summary": "Reset the expiration of a Zero Trust Gateway Rule",
-		"description": "Resets the expiration of a Zero Trust Gateway Rule if its duration elapsed and it has a default duration. The Zero Trust Gateway Rule must have values  for both `expiration.expires_at` and `expiration.duration`.",
+		"description": "Resets the expiration of a Zero Trust Gateway Rule if its duration elapsed and it has a default duration. The Zero Trust Gateway Rule must have values for both `expiration.expires_at` and `expiration.duration`.",
 		"parameters": [
 			{
 				"name": "rule_id",
@@ -13963,7 +14034,7 @@
 													"x-auditable": true
 												},
 												"expiration": {
-													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 													"type": "object",
 													"properties": {
 														"duration": {
@@ -13989,7 +14060,7 @@
 																	"example": "2014-01-01T05:20:00.12345Z"
 																},
 																{
-																	"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																	"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																	"example": "2014-01-01T05:20:20Z",
 																	"type": "string",
 																	"x-auditable": true
@@ -14926,7 +14997,7 @@
 															"x-auditable": true
 														},
 														"expiration": {
-															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 															"type": "object",
 															"properties": {
 																"duration": {
@@ -14952,7 +15023,7 @@
 																			"example": "2014-01-01T05:20:00.12345Z"
 																		},
 																		{
-																			"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																			"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																			"example": "2014-01-01T05:20:20Z",
 																			"type": "string",
 																			"x-auditable": true
@@ -15846,9 +15917,18 @@
 		"tags": [
 			"Zero Trust Gateway rules"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "reset-expiration"
+		"x-fern-sdk-method-name": "reset-expiration",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.rules",
+		"x-forge-method-name": "reset-expiration",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"operationId": "zero-trust-gateway-rules-update-zero-trust-gateway-rule",
@@ -15935,7 +16015,7 @@
 								"x-auditable": true
 							},
 							"expiration": {
-								"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+								"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 								"type": "object",
 								"properties": {
 									"duration": {
@@ -15961,7 +16041,7 @@
 												"example": "2014-01-01T05:20:00.12345Z"
 											},
 											{
-												"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+												"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 												"example": "2014-01-01T05:20:20Z",
 												"type": "string",
 												"x-auditable": true
@@ -16837,7 +16917,7 @@
 													"x-auditable": true
 												},
 												"expiration": {
-													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+													"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 													"type": "object",
 													"properties": {
 														"duration": {
@@ -16863,7 +16943,7 @@
 																	"example": "2014-01-01T05:20:00.12345Z"
 																},
 																{
-																	"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																	"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																	"example": "2014-01-01T05:20:20Z",
 																	"type": "string",
 																	"x-auditable": true
@@ -17802,7 +17882,7 @@
 															"x-auditable": true
 														},
 														"expiration": {
-															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.",
+															"description": "Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This does not apply to HTTP or network policies. Settable only for `dns` rules.",
 															"type": "object",
 															"properties": {
 																"duration": {
@@ -17828,7 +17908,7 @@
 																			"example": "2014-01-01T05:20:00.12345Z"
 																		},
 																		{
-																			"description": "Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.",
+																			"description": "Show the timestamp when the policy expires and stops applying. The value must follow RFC 3339 and include a UTC offset. The system accepts non-zero offsets but converts them to the equivalent UTC+00:00 value and returns timestamps with a trailing Z. Expiration policies ignore client timezones and expire globally at the specified expires_at time.",
 																			"example": "2014-01-01T05:20:20Z",
 																			"type": "string",
 																			"x-auditable": true
@@ -18722,8 +18802,17 @@
 		"tags": [
 			"Zero Trust Gateway rules"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.rules",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

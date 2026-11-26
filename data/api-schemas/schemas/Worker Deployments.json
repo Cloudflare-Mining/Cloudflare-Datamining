@@ -264,6 +264,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.deployments",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.deployments",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete the Worker deployment."
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/deployments": {
@@ -556,7 +563,9 @@
 																	}
 																],
 																"writeOnly": true,
-																"x-auditable": true
+																"x-auditable": true,
+																"x-fern-property-name": "durable-objects-code-update",
+																"x-forge-property-name": "durable-objects-code-update"
 															},
 															"created_on": {
 																"type": "string",
@@ -785,7 +794,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.deployments",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.deployments",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}": {
 		"operationId": "worker-deployments-get-deployment",
@@ -1003,7 +1024,9 @@
 														}
 													],
 													"writeOnly": true,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-fern-property-name": "durable-objects-code-update",
+													"x-forge-property-name": "durable-objects-code-update"
 												},
 												"created_on": {
 													"type": "string",
@@ -1226,7 +1249,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.deployments",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.deployments",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/deployments": {
 		"operationId": "worker-deployments-create-deployment",
@@ -1264,7 +1299,8 @@
 				"schema": {
 					"type": "boolean"
 				},
-				"x-fern-parameter-name": "bypass-deployment-checks"
+				"x-fern-parameter-name": "bypass-deployment-checks",
+				"x-forge-parameter-name": "bypass-deployment-checks"
 			}
 		],
 		"requestBody": {
@@ -1356,7 +1392,9 @@
 									}
 								],
 								"writeOnly": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-fern-property-name": "durable-objects-code-update",
+								"x-forge-property-name": "durable-objects-code-update"
 							},
 							"created_on": {
 								"type": "string",
@@ -1606,7 +1644,9 @@
 														}
 													],
 													"writeOnly": true,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-fern-property-name": "durable-objects-code-update",
+													"x-forge-property-name": "durable-objects-code-update"
 												},
 												"created_on": {
 													"type": "string",
@@ -1823,6 +1863,22 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.deployments",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.deployments",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
+		"x-forge-params": {
+			"code_update_strategy.max_delay": {
+				"description": "Maximum number of seconds, up to 86400, that an active Durable Object can keep running its current code before it resets and adopts the new code. Only valid with `deferred`. When omitted, the default maximum delay applies."
+			},
+			"code_update_strategy.mode": {
+				"description": "How to apply Durable Object code updates. `immediate` resets active objects and applies the new code right away. `deferred` lets active objects keep running their current code until they hibernate or the maximum delay passes."
+			}
+		}
 	}
 }

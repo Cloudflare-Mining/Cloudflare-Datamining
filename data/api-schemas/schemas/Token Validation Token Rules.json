@@ -242,6 +242,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.rules",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the token validation rule from the zone."
 	},
 	"GET /zones/{zone_id}/token_validation/rules": {
@@ -845,7 +852,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		]
 	},
 	"GET /zones/{zone_id}/token_validation/rules/{rule_id}": {
 		"operationId": "token-validation-rules-get",
@@ -1253,7 +1269,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/token_validation/rules/{rule_id}": {
 		"operationId": "token-validation-rules-edit",
@@ -1837,7 +1862,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.rules",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.rules",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/token_validation/rules/bulk": {
 		"operationId": "token-validation-rules-bulk-edit",
@@ -2482,7 +2514,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.rules",
-		"x-fern-sdk-method-name": "bulk-edit"
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.rules",
+		"x-forge-method-name": "bulk-edit",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	},
 	"POST /zones/{zone_id}/token_validation/rules": {
 		"operationId": "token-validation-rules-create",
@@ -3023,7 +3062,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.rules",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	},
 	"POST /zones/{zone_id}/token_validation/rules/bulk": {
 		"operationId": "token-validation-rules-bulk-create",
@@ -3605,7 +3651,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.rules",
-		"x-fern-sdk-method-name": "bulk-create"
+		"x-fern-sdk-method-name": "bulk-create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.rules",
+		"x-forge-method-name": "bulk-create",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	},
 	"POST /zones/{zone_id}/token_validation/rules/preview": {
 		"operationId": "token-validation-rules-preview",
@@ -4232,6 +4285,16 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.token-validation.rules",
-		"x-fern-sdk-method-name": "preview"
+		"x-fern-sdk-method-name": "preview",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.rules",
+		"x-forge-method-name": "preview",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true
 	}
 }

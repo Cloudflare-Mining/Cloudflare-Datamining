@@ -159,6 +159,8 @@
 			"AI Gateway Custom Provider Costs"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -176,7 +178,16 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.custom-providers.costs",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-require-confirmation": "This permanently deletes the pricing rule. Cost calculations for the matched model will no longer use its prices."
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-providers.costs",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-require-confirmation": "This permanently deletes the pricing rule. Cost calculations for the matched model will no longer use its prices.",
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/custom-providers/costs": {
 		"operationId": "aig-config-list-account-provider-cost",
@@ -227,7 +238,8 @@
 					"type": "string",
 					"format": "uuid"
 				},
-				"x-fern-parameter-name": "custom-provider-id"
+				"x-fern-parameter-name": "custom-provider-id",
+				"x-forge-parameter-name": "custom-provider-id"
 			},
 			{
 				"name": "model_rule",
@@ -397,6 +409,9 @@
 			"AI Gateway Custom Provider Costs"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -414,7 +429,18 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.custom-providers.costs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-providers.costs",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
 		"operationId": "aig-config-fetch-account-provider-cost",
@@ -576,6 +602,9 @@
 			"AI Gateway Custom Provider Costs"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -593,7 +622,18 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.custom-providers.costs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-providers.costs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/custom-providers/costs/{id}": {
 		"operationId": "aig-config-update-account-provider-cost",
@@ -879,6 +919,8 @@
 			"AI Gateway Custom Provider Costs"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -895,7 +937,16 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.custom-providers.costs",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-providers.costs",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/custom-providers/costs": {
 		"operationId": "aig-config-create-account-provider-cost",
@@ -922,7 +973,8 @@
 								"description": "ID of the custom provider that the pricing rule applies to.",
 								"type": "string",
 								"format": "uuid",
-								"x-fern-property-name": "custom-provider-id"
+								"x-fern-property-name": "custom-provider-id",
+								"x-forge-property-name": "custom-provider-id"
 							},
 							"cost_in": {
 								"type": "number"
@@ -1143,6 +1195,8 @@
 			"AI Gateway Custom Provider Costs"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -1159,6 +1213,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.custom-providers.costs",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-providers.costs",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	}
 }

@@ -135,7 +135,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships/{rel_uuid}": {
 		"operationId": "delete_TagRelationshipDelete",
@@ -260,7 +266,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.relationships",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags.relationships",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/tags/{tag_uuid}/indicators": {
 		"operationId": "get_DatasetTagIndicatorsList",
@@ -679,7 +691,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.dataset-tags",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cloudforce-one.stakeout.dataset-tags",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
 		"operationId": "get_TagList",
@@ -1356,7 +1376,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
 		"operationId": "get_TagDetail",
@@ -1898,7 +1925,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/indicators": {
 		"operationId": "get_TagIndicatorsList",
@@ -2316,7 +2350,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.indicators",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags.indicators",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships": {
 		"operationId": "get_TagRelationshipsList",
@@ -2619,7 +2660,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.relationships",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags.relationships",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories/actors": {
 		"operationId": "get_TaggedActorList",
@@ -3277,7 +3325,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.actors",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags.actors",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
 		"operationId": "patch_TagUpdate",
@@ -4310,7 +4365,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships/{rel_uuid}": {
 		"operationId": "patch_TagRelationshipUpdate",
@@ -4502,7 +4563,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.relationships",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags.relationships",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/relationships": {
 		"operationId": "post_TagRelationshipCreate",
@@ -4660,7 +4727,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags.relationships",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags.relationships",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/create": {
 		"operationId": "post_TagCreate",
@@ -5688,6 +5762,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.tags",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.tags",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	}
 }

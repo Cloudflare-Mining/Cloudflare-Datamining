@@ -288,6 +288,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.recommendations",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ssl.recommendations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.read",
+			"zone-settings.read",
+			"ssl-and-certificates.write",
+			"zone-settings.write"
+		],
 		"x-stainless-deprecation-message": "SSL/TLS Recommender has been decommissioned in favor of Automatic SSL/TLS"
 	}
 }

@@ -54,7 +54,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.cnis",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.cnis",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/cni/cnis": {
 		"operationId": "list_cnis",
@@ -268,7 +275,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.cnis",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.cnis",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/cni/cnis/{cni}": {
 		"operationId": "get_cni",
@@ -440,7 +456,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.cnis",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.cnis",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"POST /accounts/{account_id}/cni/cnis": {
 		"operationId": "create_cni",
@@ -682,7 +707,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.cnis",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.cnis",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"PUT /accounts/{account_id}/cni/cnis/{cni}": {
 		"operationId": "update_cni",
@@ -968,6 +1000,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.cnis",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.cnis",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	}
 }

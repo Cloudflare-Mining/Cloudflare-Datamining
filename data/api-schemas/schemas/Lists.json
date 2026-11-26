@@ -256,6 +256,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"account-rule-lists.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the custom list and every item it contains."
 	},
 	"DELETE /accounts/{account_id}/rules/lists/{list_id}/items": {
@@ -548,6 +554,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists.items",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"account-rule-lists.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the selected items from the custom list."
 	},
 	"GET /accounts/{account_id}/rules/lists": {
@@ -872,7 +884,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"account-rule-lists.read",
+			"account-rule-lists.write"
+		]
 	},
 	"GET /accounts/{account_id}/rules/lists/{list_id}": {
 		"operationId": "lists-get-a-list",
@@ -1189,7 +1208,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-rule-lists.read",
+			"account-rule-lists.write"
+		]
 	},
 	"GET /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-get-list-items",
@@ -1810,7 +1836,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists.items",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"account-rule-lists.read",
+			"account-rule-lists.write"
+		]
 	},
 	"GET /accounts/{account_id}/rules/lists/{list_id}/items/{item_id}": {
 		"operationId": "lists-get-a-list-item",
@@ -2377,7 +2410,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists.items",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-rule-lists.read",
+			"account-rule-lists.write"
+		]
 	},
 	"GET /accounts/{account_id}/rules/lists/bulk_operations/{operation_id}": {
 		"operationId": "lists-get-bulk-operation-status",
@@ -2723,7 +2763,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.bulk-operations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists.bulk-operations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-rule-lists.read",
+			"account-rule-lists.write"
+		]
 	},
 	"POST /accounts/{account_id}/rules/lists": {
 		"operationId": "lists-create-a-list",
@@ -3067,7 +3114,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"account-rule-lists.write"
+		]
 	},
 	"POST /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-create-list-items",
@@ -3508,7 +3561,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists.items",
+		"x-forge-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/rules/lists/{list_id}": {
 		"operationId": "lists-update-a-list",
@@ -3844,7 +3900,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"account-rule-lists.write"
+		]
 	},
 	"PUT /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"operationId": "lists-update-all-list-items",
@@ -4285,6 +4347,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rules.lists.items",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rules.lists.items",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"account-rule-lists.write"
+		]
 	}
 }

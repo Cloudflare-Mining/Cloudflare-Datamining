@@ -370,14 +370,29 @@
 			"Zone-Level Zero Trust organization"
 		],
 		"x-api-token-group": [
+			"Access: Organizations Write",
+			"Access: Organizations Revoke",
+			"Access: Organizations Read",
 			"Access: Organizations, Identity Providers, and Groups Revoke",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-organizations",
-		"x-fern-sdk-method-name": "get"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-org.read",
+			"access-acct.revoke",
+			"access-org.revoke",
+			"access-org.write",
+			"access-acct.read",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/access/organizations": {
 		"operationId": "zone-level-zero-trust-organization-create-your-zero-trust-organization",
@@ -812,12 +827,19 @@
 			"Zone-Level Zero Trust organization"
 		],
 		"x-api-token-group": [
+			"Access: Organizations Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-organizations",
-		"x-fern-sdk-method-name": "create"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-org.write",
+			"access-acct.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/access/organizations/revoke_user": {
 		"operationId": "zone-level-zero-trust-organization-revoke-all-access-tokens-for-a-user",
@@ -1015,13 +1037,20 @@
 			"Zone-Level Zero Trust organization"
 		],
 		"x-api-token-group": [
+			"Access: Organizations Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-organizations",
-		"x-fern-sdk-method-name": "revoke-user-create",
-		"x-forge-require-confirmation": "This operation revokes all access tokens for a user, affecting their access to all applications within the zone."
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-org.write",
+			"access-acct.write",
+			"teams.write"
+		],
+		"x-forge-require-confirmation": "This operation revokes all access tokens for a user, affecting their access to all applications within the zone.",
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/access/organizations": {
 		"operationId": "zone-level-zero-trust-organization-update-your-zero-trust-organization",
@@ -1456,11 +1485,18 @@
 			"Zone-Level Zero Trust organization"
 		],
 		"x-api-token-group": [
+			"Access: Organizations Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-organizations",
-		"x-fern-sdk-method-name": "update"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-org.write",
+			"access-acct.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	}
 }

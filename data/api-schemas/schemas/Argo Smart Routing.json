@@ -229,6 +229,9 @@
 			"Argo Smart Routing"
 		],
 		"x-api-token-group": [
+			"Zone Security Insights Partner Assets Read",
+			"Zone Security Center Insights Write",
+			"Zone Security Center Insights Read",
 			"Trust and Safety Write",
 			"Trust and Safety Read",
 			"Zone Read",
@@ -246,7 +249,18 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "argo.smart-routing",
-		"x-fern-sdk-method-name": "count-zones-enabled-for-account"
+		"x-fern-sdk-method-name": "count-zones-enabled-for-account",
+		"x-forge-group-name": "argo.smart-routing",
+		"x-forge-method-name": "count-zones-enabled-for-account",
+		"x-forge-oauth-scopes": [
+			"zone-security-center-partner-assets.read",
+			"zone.read",
+			"trust-and-safety.read",
+			"zone-security-center-insights.read",
+			"trust-and-safety.write",
+			"zone.write",
+			"zone-security-center-insights.write"
+		]
 	},
 	"GET /user/argo/count_zones_enabled": {
 		"operationId": "argo-smart-routing-get-count-zones-enabled-for-user",
@@ -463,6 +477,9 @@
 			"Argo Smart Routing"
 		],
 		"x-api-token-group": [
+			"Zone Security Insights Partner Assets Read",
+			"Zone Security Center Insights Write",
+			"Zone Security Center Insights Read",
 			"Trust and Safety Write",
 			"Trust and Safety Read",
 			"Zone Read",
@@ -480,7 +497,18 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "argo.smart-routing",
-		"x-fern-sdk-method-name": "count-zones-enabled-for-user"
+		"x-fern-sdk-method-name": "count-zones-enabled-for-user",
+		"x-forge-group-name": "argo.smart-routing",
+		"x-forge-method-name": "count-zones-enabled-for-user",
+		"x-forge-oauth-scopes": [
+			"zone-security-center-partner-assets.read",
+			"zone.read",
+			"trust-and-safety.read",
+			"zone-security-center-insights.read",
+			"trust-and-safety.write",
+			"zone.write",
+			"zone-security-center-insights.write"
+		]
 	},
 	"GET /zones/{zone_id}/argo/smart_routing": {
 		"operationId": "argo-smart-routing-get-argo-smart-routing-setting",
@@ -714,8 +742,14 @@
 			"Argo Smart Routing"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -730,7 +764,20 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "argo.smart-routing",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "argo.smart-routing",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/argo/smart_routing": {
 		"operationId": "argo-smart-routing-patch-argo-smart-routing-setting",
@@ -990,7 +1037,8 @@
 			"Argo Smart Routing"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write"
+			"Zone Settings Write",
+			"Workers Routes Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1006,6 +1054,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "argo.smart-routing",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "argo.smart-routing",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-routes.write",
+			"zone-settings.write"
+		]
 	}
 }

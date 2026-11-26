@@ -511,7 +511,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf-interconnects",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.cf-interconnects",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}": {
 		"operationId": "magic-interconnects-list-interconnect-details",
@@ -1034,7 +1043,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf-interconnects",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.cf-interconnects",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"PUT /accounts/{account_id}/magic/cf_interconnects": {
 		"operationId": "magic-interconnects-update-multiple-interconnects",
@@ -1563,7 +1581,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf-interconnects",
-		"x-fern-sdk-method-name": "bulk-update"
+		"x-fern-sdk-method-name": "bulk-update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.cf-interconnects",
+		"x-forge-method-name": "bulk-update",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"PUT /accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}": {
 		"operationId": "magic-interconnects-update-interconnect",
@@ -2290,6 +2315,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf-interconnects",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.cf-interconnects",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	}
 }

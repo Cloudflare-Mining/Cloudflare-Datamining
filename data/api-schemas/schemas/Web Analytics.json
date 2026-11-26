@@ -250,7 +250,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.site-info",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.site-info",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}": {
 		"operationId": "web-analytics-delete-rule",
@@ -510,7 +515,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.rules",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.rules",
+		"x-forge-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/rum/site_info/{site_id}": {
 		"operationId": "web-analytics-get-site",
@@ -870,7 +877,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.site-info",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.site-info",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-settings.read"
+		]
 	},
 	"GET /accounts/{account_id}/rum/site_info/list": {
 		"operationId": "web-analytics-list-sites",
@@ -1283,7 +1295,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.site-info",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.site-info",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"account-settings.read"
+		]
 	},
 	"GET /accounts/{account_id}/rum/site_info/site_tag/list": {
 		"operationId": "web-analytics-list-site-tags",
@@ -1532,7 +1549,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.site-info",
 		"x-fern-sdk-method-name": "list-site-tags",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.site-info",
+		"x-forge-method-name": "list-site-tags",
+		"x-forge-oauth-scopes": [
+			"account-settings.read"
+		]
 	},
 	"GET /accounts/{account_id}/rum/site_info/validate/{hostname}": {
 		"operationId": "web-analytics-validate-site-hostname",
@@ -1778,7 +1800,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.site-info",
 		"x-fern-sdk-method-name": "validate-hostname",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.site-info",
+		"x-forge-method-name": "validate-hostname",
+		"x-forge-oauth-scopes": [
+			"account-settings.read"
+		]
 	},
 	"GET /accounts/{account_id}/rum/site_info/zone_tag/list": {
 		"operationId": "web-analytics-list-zone-tags",
@@ -2018,7 +2045,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.site-info",
 		"x-fern-sdk-method-name": "list-zone-tags",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.site-info",
+		"x-forge-method-name": "list-zone-tags",
+		"x-forge-oauth-scopes": [
+			"account-settings.read"
+		]
 	},
 	"GET /accounts/{account_id}/rum/v2/{ruleset_id}/rules": {
 		"operationId": "web-analytics-list-rules",
@@ -2343,7 +2375,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.rules",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.rules",
+		"x-forge-method-name": "list"
 	},
 	"GET /zones/{zone_id}/settings/rum": {
 		"operationId": "web-analytics-get-rum-status",
@@ -2582,8 +2616,14 @@
 			"Web Analytics"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2593,7 +2633,20 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.rum",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.rum",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/settings/rum": {
 		"operationId": "web-analytics-toggle-rum",
@@ -2849,7 +2902,8 @@
 			"Web Analytics"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write"
+			"Zone Settings Write",
+			"Workers Routes Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2859,7 +2913,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.rum",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.rum",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-routes.write",
+			"zone-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/rum/site_info": {
 		"operationId": "web-analytics-create-site",
@@ -3237,7 +3298,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.site-info",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.site-info",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/rum/v2/{ruleset_id}/rule": {
 		"operationId": "web-analytics-create-rule",
@@ -3562,7 +3628,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.rules",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.rules",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/rum/v2/{ruleset_id}/rules": {
 		"operationId": "web-analytics-modify-rules",
@@ -3948,7 +4016,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.rules",
 		"x-fern-sdk-method-name": "bulk-create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.rules",
+		"x-forge-method-name": "bulk-create",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		]
 	},
 	"PUT /accounts/{account_id}/rum/site_info/{site_id}": {
 		"operationId": "web-analytics-update-site",
@@ -4349,7 +4422,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.site-info",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.site-info",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		]
 	},
 	"PUT /accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}": {
 		"operationId": "web-analytics-update-rule",
@@ -4685,6 +4763,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "rum.rules",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "rum.rules",
+		"x-forge-method-name": "update"
 	}
 }

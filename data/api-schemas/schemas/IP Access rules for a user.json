@@ -259,6 +259,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.firewall.access-rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"account-firewall-access-rules.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the user-level IP Access Rule and affects every zone owned by the user."
 	},
 	"GET /user/firewall/access_rules/rules": {
@@ -282,7 +288,8 @@
 					],
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "access-rule-mode"
+				"x-fern-parameter-name": "access-rule-mode",
+				"x-forge-parameter-name": "access-rule-mode"
 			},
 			{
 				"name": "configuration.target",
@@ -345,7 +352,8 @@
 				"schema": {
 					"description": "Defines the maximum number of results requested.",
 					"type": "number",
-					"example": 20
+					"example": 20,
+					"minimum": 1
 				}
 			},
 			{
@@ -667,7 +675,8 @@
 																"x-auditable": true
 															}
 														],
-														"x-fern-property-name": "access-rule-mode"
+														"x-fern-property-name": "access-rule-mode",
+														"x-forge-property-name": "access-rule-mode"
 													},
 													"modified_on": {
 														"description": "The timestamp of when the rule was last modified.",
@@ -813,7 +822,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.firewall.access-rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"account-firewall-access-rules.read",
+			"account-firewall-access-rules.write"
+		]
 	},
 	"GET /user/firewall/access_rules/rules/{rule_id}": {
 		"operationId": "ip-access-rules-for-a-user-get-an-ip-access-rule",
@@ -1101,7 +1117,8 @@
 															"x-auditable": true
 														}
 													],
-													"x-fern-property-name": "access-rule-mode"
+													"x-fern-property-name": "access-rule-mode",
+													"x-forge-property-name": "access-rule-mode"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
@@ -1246,7 +1263,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.firewall.access-rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-firewall-access-rules.read",
+			"account-firewall-access-rules.write"
+		]
 	},
 	"PATCH /user/firewall/access_rules/rules/{rule_id}": {
 		"operationId": "ip-access-rules-for-a-user-update-an-ip-access-rule",
@@ -1288,7 +1312,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "access-rule-mode"
+								"x-fern-property-name": "access-rule-mode",
+								"x-forge-property-name": "access-rule-mode"
 							},
 							"notes": {
 								"description": "An informative summary of the rule, typically used as a reminder or explanation.",
@@ -1570,7 +1595,8 @@
 															"x-auditable": true
 														}
 													],
-													"x-fern-property-name": "access-rule-mode"
+													"x-fern-property-name": "access-rule-mode",
+													"x-forge-property-name": "access-rule-mode"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
@@ -1714,7 +1740,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.firewall.access-rules",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"account-firewall-access-rules.write"
+		]
 	},
 	"POST /user/firewall/access_rules/rules": {
 		"operationId": "ip-access-rules-for-a-user-create-an-ip-access-rule",
@@ -1845,7 +1877,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "access-rule-mode"
+								"x-fern-property-name": "access-rule-mode",
+								"x-forge-property-name": "access-rule-mode"
 							},
 							"notes": {
 								"default": "",
@@ -2136,7 +2169,8 @@
 															"x-auditable": true
 														}
 													],
-													"x-fern-property-name": "access-rule-mode"
+													"x-fern-property-name": "access-rule-mode",
+													"x-forge-property-name": "access-rule-mode"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
@@ -2280,6 +2314,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.firewall.access-rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.firewall.access-rules",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"account-firewall-access-rules.write"
+		]
 	}
 }

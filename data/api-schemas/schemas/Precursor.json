@@ -131,7 +131,8 @@
 															"x-auditable": true
 														}
 													],
-													"x-fern-property-name": "precursor-mode"
+													"x-fern-property-name": "precursor-mode",
+													"x-forge-property-name": "precursor-mode"
 												},
 												"rules": {
 													"description": "The ordered list of Precursor rules for the zone.",
@@ -337,12 +338,10 @@
 		"tags": [
 			"Precursor"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.zone.precursor.update",
-				"com.cloudflare.api.account.zone.precursor.read"
-			]
-		},
+		"x-api-token-group": [
+			"Precursor Write",
+			"Precursor Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -351,7 +350,14 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "precursor",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "precursor",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"precursor.read",
+			"precursor.write"
+		]
 	},
 	"PUT /zones/{zone_id}/precursor": {
 		"operationId": "precursor-for-a-zone-update-config",
@@ -435,7 +441,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "precursor-mode"
+								"x-fern-property-name": "precursor-mode",
+								"x-forge-property-name": "precursor-mode"
 							},
 							"rules": {
 								"description": "The ordered list of Precursor rules for the zone.",
@@ -624,7 +631,8 @@
 															"x-auditable": true
 														}
 													],
-													"x-fern-property-name": "precursor-mode"
+													"x-fern-property-name": "precursor-mode",
+													"x-forge-property-name": "precursor-mode"
 												},
 												"rules": {
 													"description": "The ordered list of Precursor rules for the zone.",
@@ -830,11 +838,9 @@
 		"tags": [
 			"Precursor"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.zone.precursor.update"
-			]
-		},
+		"x-api-token-group": [
+			"Precursor Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -843,6 +849,12 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "precursor",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "precursor",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"precursor.write"
+		]
 	}
 }

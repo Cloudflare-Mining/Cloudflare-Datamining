@@ -626,11 +626,29 @@
 			"AI Audit"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-fern-sdk-group-name": "ai-audit.robots",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "ai-audit.robots",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/ai-audit/robots/bulk": {
 		"operationId": "ai-audit-bulk-get-robots",
@@ -1348,10 +1366,28 @@
 			"AI Audit"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-fern-sdk-group-name": "ai-audit.robots",
-		"x-fern-sdk-method-name": "bulk-get"
+		"x-fern-sdk-method-name": "bulk-get",
+		"x-forge-group-name": "ai-audit.robots",
+		"x-forge-method-name": "bulk-get",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	}
 }

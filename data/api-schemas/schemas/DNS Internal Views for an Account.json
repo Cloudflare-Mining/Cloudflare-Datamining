@@ -217,8 +217,14 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dns.settings.account.views",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-group-name": "dns.views",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.views",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"dns-view.write"
+		]
 	},
 	"GET /accounts/{account_id}/dns_settings/views": {
 		"operationId": "dns-views-for-an-account-list-internal-dns-views",
@@ -927,8 +933,15 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dns.settings.account.views",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-group-name": "dns.views",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.views",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"dns-view.read",
+			"dns-view.write"
+		]
 	},
 	"GET /accounts/{account_id}/dns_settings/views/{view_id}": {
 		"operationId": "dns-views-for-an-account-get-internal-dns-view",
@@ -1447,8 +1460,15 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dns.settings.account.views",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-group-name": "dns.views",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.views",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"dns-view.read",
+			"dns-view.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/dns_settings/views/{view_id}": {
 		"operationId": "dns-views-for-an-account-update-internal-dns-view",
@@ -2020,8 +2040,14 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dns.settings.account.views",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-group-name": "dns.views",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.views",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"dns-view.write"
+		]
 	},
 	"POST /accounts/{account_id}/dns_settings/views": {
 		"operationId": "dns-views-for-an-account-create-internal-dns-views",
@@ -2585,7 +2611,13 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dns.settings.account.views",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-group-name": "dns.views",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.views",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"dns-view.write"
+		]
 	}
 }

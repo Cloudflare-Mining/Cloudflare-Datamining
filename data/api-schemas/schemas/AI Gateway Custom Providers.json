@@ -58,6 +58,7 @@
 											"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
 											"type": "string",
 											"maxLength": 8192,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										},
 										"id": {
@@ -162,6 +163,8 @@
 			"AI Gateway Custom Providers"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -178,6 +181,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.custom-providers",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-providers",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This permanently deletes the custom provider and all of its pricing rules. Gateway requests that use `custom-{slug}` for this provider will stop routing."
 	},
 	"GET /accounts/{account_id}/ai-gateway/custom-providers": {
@@ -273,6 +284,7 @@
 												"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
 												"type": "string",
 												"maxLength": 8192,
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											},
 											"id": {
@@ -378,6 +390,9 @@
 			"AI Gateway Custom Providers"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -394,7 +409,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.custom-providers",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-providers",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
 		"operationId": "aig-config-fetch-account-provider",
@@ -455,6 +480,7 @@
 											"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
 											"type": "string",
 											"maxLength": 8192,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										},
 										"id": {
@@ -559,6 +585,9 @@
 			"AI Gateway Custom Providers"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -575,7 +604,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.custom-providers",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-providers",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/custom-providers/{id}": {
 		"operationId": "aig-config-update-account-provider",
@@ -627,6 +666,7 @@
 								"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
 								"type": "string",
 								"maxLength": 8192,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							},
 							"js_example": {
@@ -688,6 +728,7 @@
 											"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
 											"type": "string",
 											"maxLength": 8192,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										},
 										"id": {
@@ -839,6 +880,8 @@
 			"AI Gateway Custom Providers"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -855,6 +898,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.custom-providers",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-providers",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
 		"x-forge-params": {
 			"beta": {
 				"hidden": true
@@ -917,6 +968,7 @@
 								"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
 								"type": "string",
 								"maxLength": 8192,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							},
 							"js_example": {
@@ -980,6 +1032,7 @@
 											"description": "JSON object of extra HTTP headers that AI Gateway sends to the provider. Values can contain credentials.",
 											"type": "string",
 											"maxLength": 8192,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										},
 										"id": {
@@ -1092,6 +1145,8 @@
 			"AI Gateway Custom Providers"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -1108,6 +1163,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.custom-providers",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.custom-providers",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
 		"x-forge-params": {
 			"beta": {
 				"hidden": true

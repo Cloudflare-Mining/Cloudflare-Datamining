@@ -290,7 +290,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "spectrum.apps",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "spectrum.apps",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/spectrum/apps": {
 		"operationId": "spectrum-applications-list-spectrum-applications",
@@ -583,6 +589,19 @@
 																				]
 																			}
 																		}
+																	},
+																	"edge_alpn_protocols": {
+																		"description": "ALPN protocol IDs the edge offers on client TLS connections, in preference order, for example `[\"h2\"]` for gRPC or `[\"postgresql\"]` for PostgreSQL direct TLS. When set, clients that offer none of these protocols, or no ALPN at all, are disconnected. Empty means no ALPN.\nNotes: Requires tls \"flexible\", \"full\" or \"strict\", and is not available with traffic_type \"ftp\". IDs are case-sensitive and unique, each 1 to 255 bytes; the list encodes to at most 65535 bytes, counting each ID plus one length byte.",
+																		"type": "array",
+																		"items": {
+																			"maxLength": 255,
+																			"minLength": 1,
+																			"type": "string"
+																		},
+																		"example": [
+																			"h2"
+																		],
+																		"uniqueItems": true
 																	},
 																	"edge_ips": {
 																		"description": "The anycast edge IP configuration for the hostname of this application.",
@@ -1061,7 +1080,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "spectrum.apps",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "spectrum.apps",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/spectrum/apps/{app_id}": {
 		"operationId": "spectrum-applications-get-spectrum-application-configuration",
@@ -1285,6 +1311,19 @@
 																			]
 																		}
 																	}
+																},
+																"edge_alpn_protocols": {
+																	"description": "ALPN protocol IDs the edge offers on client TLS connections, in preference order, for example `[\"h2\"]` for gRPC or `[\"postgresql\"]` for PostgreSQL direct TLS. When set, clients that offer none of these protocols, or no ALPN at all, are disconnected. Empty means no ALPN.\nNotes: Requires tls \"flexible\", \"full\" or \"strict\", and is not available with traffic_type \"ftp\". IDs are case-sensitive and unique, each 1 to 255 bytes; the list encodes to at most 65535 bytes, counting each ID plus one length byte.",
+																	"type": "array",
+																	"items": {
+																		"maxLength": 255,
+																		"minLength": 1,
+																		"type": "string"
+																	},
+																	"example": [
+																		"h2"
+																	],
+																	"uniqueItems": true
 																},
 																"edge_ips": {
 																	"description": "The anycast edge IP configuration for the hostname of this application.",
@@ -1757,7 +1796,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "spectrum.apps",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "spectrum.apps",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/spectrum/protocols": {
 		"operationId": "spectrum-applications-list-spectrum-application-protocols",
@@ -2096,7 +2142,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "spectrum.protocols",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "spectrum.protocols",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/spectrum/apps": {
 		"operationId": "spectrum-applications-create-spectrum-application-using-a-name-for-the-origin",
@@ -2209,6 +2262,19 @@
 														]
 													}
 												}
+											},
+											"edge_alpn_protocols": {
+												"description": "ALPN protocol IDs the edge offers on client TLS connections, in preference order, for example `[\"h2\"]` for gRPC or `[\"postgresql\"]` for PostgreSQL direct TLS. When set, clients that offer none of these protocols, or no ALPN at all, are disconnected. Empty means no ALPN.\nNotes: Requires tls \"flexible\", \"full\" or \"strict\", and is not available with traffic_type \"ftp\". IDs are case-sensitive and unique, each 1 to 255 bytes; the list encodes to at most 65535 bytes, counting each ID plus one length byte.",
+												"type": "array",
+												"items": {
+													"maxLength": 255,
+													"minLength": 1,
+													"type": "string"
+												},
+												"example": [
+													"h2"
+												],
+												"uniqueItems": true
 											},
 											"edge_ips": {
 												"description": "The anycast edge IP configuration for the hostname of this application.",
@@ -2723,6 +2789,19 @@
 																		}
 																	}
 																},
+																"edge_alpn_protocols": {
+																	"description": "ALPN protocol IDs the edge offers on client TLS connections, in preference order, for example `[\"h2\"]` for gRPC or `[\"postgresql\"]` for PostgreSQL direct TLS. When set, clients that offer none of these protocols, or no ALPN at all, are disconnected. Empty means no ALPN.\nNotes: Requires tls \"flexible\", \"full\" or \"strict\", and is not available with traffic_type \"ftp\". IDs are case-sensitive and unique, each 1 to 255 bytes; the list encodes to at most 65535 bytes, counting each ID plus one length byte.",
+																	"type": "array",
+																	"items": {
+																		"maxLength": 255,
+																		"minLength": 1,
+																		"type": "string"
+																	},
+																	"example": [
+																		"h2"
+																	],
+																	"uniqueItems": true
+																},
 																"edge_ips": {
 																	"description": "The anycast edge IP configuration for the hostname of this application.",
 																	"default": {
@@ -3193,7 +3272,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "spectrum.apps",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "spectrum.apps",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		]
 	},
 	"PUT /zones/{zone_id}/spectrum/apps/{app_id}": {
 		"operationId": "spectrum-applications-update-spectrum-application-configuration-using-a-name-for-the-origin",
@@ -3325,6 +3410,19 @@
 														]
 													}
 												}
+											},
+											"edge_alpn_protocols": {
+												"description": "ALPN protocol IDs the edge offers on client TLS connections, in preference order, for example `[\"h2\"]` for gRPC or `[\"postgresql\"]` for PostgreSQL direct TLS. When set, clients that offer none of these protocols, or no ALPN at all, are disconnected. Empty means no ALPN.\nNotes: Requires tls \"flexible\", \"full\" or \"strict\", and is not available with traffic_type \"ftp\". IDs are case-sensitive and unique, each 1 to 255 bytes; the list encodes to at most 65535 bytes, counting each ID plus one length byte.",
+												"type": "array",
+												"items": {
+													"maxLength": 255,
+													"minLength": 1,
+													"type": "string"
+												},
+												"example": [
+													"h2"
+												],
+												"uniqueItems": true
 											},
 											"edge_ips": {
 												"description": "The anycast edge IP configuration for the hostname of this application.",
@@ -3839,6 +3937,19 @@
 																		}
 																	}
 																},
+																"edge_alpn_protocols": {
+																	"description": "ALPN protocol IDs the edge offers on client TLS connections, in preference order, for example `[\"h2\"]` for gRPC or `[\"postgresql\"]` for PostgreSQL direct TLS. When set, clients that offer none of these protocols, or no ALPN at all, are disconnected. Empty means no ALPN.\nNotes: Requires tls \"flexible\", \"full\" or \"strict\", and is not available with traffic_type \"ftp\". IDs are case-sensitive and unique, each 1 to 255 bytes; the list encodes to at most 65535 bytes, counting each ID plus one length byte.",
+																	"type": "array",
+																	"items": {
+																		"maxLength": 255,
+																		"minLength": 1,
+																		"type": "string"
+																	},
+																	"example": [
+																		"h2"
+																	],
+																	"uniqueItems": true
+																},
 																"edge_ips": {
 																	"description": "The anycast edge IP configuration for the hostname of this application.",
 																	"default": {
@@ -4309,6 +4420,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "spectrum.apps",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "spectrum.apps",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		]
 	}
 }

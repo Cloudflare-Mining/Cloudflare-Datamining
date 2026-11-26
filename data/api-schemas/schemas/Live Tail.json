@@ -637,17 +637,19 @@
 			"Live Tail"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "observability.telemetry",
 		"x-fern-sdk-method-name": "live-tail",
-		"x-forge-aliases": [
-			{
-				"x-fern-sdk-group-name": "o11y.telemetry",
-				"x-fern-sdk-method-name": "live-tail"
-			}
-		]
+		"x-forge-group-name": "observability.telemetry",
+		"x-forge-method-name": "live-tail",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/workers/observability/telemetry/live-tail/heartbeat": {
 		"operationId": "telemetry.live-tail.heartbeat.get",
@@ -847,16 +849,18 @@
 			"Live Tail"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "observability.telemetry",
 		"x-fern-sdk-method-name": "heartbeat",
-		"x-forge-aliases": [
-			{
-				"x-fern-sdk-group-name": "o11y.telemetry",
-				"x-fern-sdk-method-name": "heartbeat"
-			}
-		]
+		"x-forge-group-name": "observability.telemetry",
+		"x-forge-method-name": "heartbeat",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	}
 }

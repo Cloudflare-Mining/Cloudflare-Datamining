@@ -364,8 +364,15 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.zone-custom-pages",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"custom-pages.read",
+			"custom-pages.write",
+			"zone-settings.read",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/custom_pages/{identifier}": {
 		"operationId": "custom-pages-for-a-zone-get-a-custom-page",
@@ -616,8 +623,15 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.zone-custom-pages",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"custom-pages.read",
+			"custom-pages.write",
+			"zone-settings.read",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/custom_pages/preview_tokens": {
 		"operationId": "custom-pages-for-a-zone-create-preview-token",
@@ -773,7 +787,8 @@
 												"cep_jwt": {
 													"description": "A signed JWT token used to authenticate the preview request.",
 													"type": "string",
-													"example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ6b25lIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9lcnJvci5odG1sIiwiZW5kcG9pbnQiOiJibG9jazp3YWYiLCJleHAiOjE3MTYyMzkwMjJ9.example"
+													"example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ6b25lIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9lcnJvci5odG1sIiwiZW5kcG9pbnQiOiJibG9jazp3YWYiLCJleHAiOjE3MTYyMzkwMjJ9.example",
+													"x-auditable": false
 												}
 											},
 											"required": [
@@ -932,8 +947,15 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.zone-custom-pages.preview-tokens",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"custom-pages.read",
+			"custom-pages.write",
+			"zone-settings.read",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/custom_pages/{identifier}": {
 		"operationId": "custom-pages-for-a-zone-update-a-custom-page",
@@ -1312,7 +1334,12 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.zone-custom-pages",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"custom-pages.write",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	}
 }

@@ -305,12 +305,21 @@
 			"Notification Silences"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.silences",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.silences",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the notification silence."
 	},
 	"GET /accounts/{account_id}/alerting/v3/silences": {
@@ -665,6 +674,8 @@
 			"Notification Silences"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Zero Trust: PII Read",
 			"Notifications Write",
 			"Notifications Read",
@@ -673,7 +684,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.silences",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.silences",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"notifications.read",
+			"notifications.write",
+			"teams-pii.read",
+			"observability.read",
+			"account-settings.read",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/silences/{silence_id}": {
 		"operationId": "notification-silences-get-silence",
@@ -1033,6 +1056,8 @@
 			"Notification Silences"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Zero Trust: PII Read",
 			"Notifications Write",
 			"Notifications Read",
@@ -1041,7 +1066,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.silences",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.silences",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"notifications.read",
+			"notifications.write",
+			"teams-pii.read",
+			"observability.read",
+			"account-settings.read",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/alerting/v3/silences": {
 		"operationId": "notification-silences-create-silences",
@@ -1374,12 +1411,21 @@
 			"Notification Silences"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.silences",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.silences",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"PUT /accounts/{account_id}/alerting/v3/silences": {
 		"operationId": "notification-silences-update-silences",
@@ -1767,11 +1813,20 @@
 			"Notification Silences"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.silences",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.silences",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		]
 	}
 }

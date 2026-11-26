@@ -1,0 +1,1274 @@
+{
+	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/model_aliases/{id}": {
+		"operationId": "aig-config-delete-model-alias",
+		"summary": "Delete a model alias",
+		"description": "Deletes a model alias from a gateway.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+				}
+			},
+			{
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "my-gateway"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "c8c1b6f0-2f4a-4a3e-9f1a-3d6f1e2b7c90"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the deleted model alias",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"additionalProperties": false,
+									"properties": {
+										"created_at": {
+											"type": "integer"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"models": {
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"model": {
+														"type": "string",
+														"maxLength": 256,
+														"minLength": 1
+													},
+													"providers": {
+														"type": "array",
+														"items": {
+															"maxLength": 64,
+															"minLength": 1,
+															"pattern": "^[a-z0-9-]+$",
+															"type": "string"
+														},
+														"maxItems": 64,
+														"minItems": 1
+													}
+												},
+												"required": [
+													"model"
+												],
+												"type": "object"
+											},
+											"maxItems": 50,
+											"minItems": 1
+										},
+										"name": {
+											"type": "string",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+										},
+										"routing": {
+											"type": "object",
+											"additionalProperties": false,
+											"nullable": true,
+											"properties": {
+												"algorithm": {
+													"type": "string",
+													"enum": [
+														"preferred",
+														"smart"
+													]
+												},
+												"mode": {
+													"type": "string",
+													"enum": [
+														"cost",
+														"best"
+													]
+												}
+											}
+										},
+										"updated_at": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"name",
+										"models",
+										"id",
+										"gateway_id",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway Model Aliases"
+		],
+		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"AI Gateway Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.model-aliases",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.model-aliases",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/model_aliases": {
+		"operationId": "aig-config-list-model-aliases",
+		"summary": "List model aliases",
+		"description": "Lists the model aliases configured on a gateway, sorted by name.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+				}
+			},
+			{
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "my-gateway"
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"type": "integer",
+					"default": 100,
+					"maximum": 100,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List of model aliases",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "array",
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"created_at": {
+												"type": "integer"
+											},
+											"gateway_id": {
+												"type": "string"
+											},
+											"id": {
+												"type": "string"
+											},
+											"models": {
+												"type": "array",
+												"items": {
+													"additionalProperties": false,
+													"properties": {
+														"model": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"providers": {
+															"type": "array",
+															"items": {
+																"maxLength": 64,
+																"minLength": 1,
+																"pattern": "^[a-z0-9-]+$",
+																"type": "string"
+															},
+															"maxItems": 64,
+															"minItems": 1
+														}
+													},
+													"required": [
+														"model"
+													],
+													"type": "object"
+												},
+												"maxItems": 50,
+												"minItems": 1
+											},
+											"name": {
+												"type": "string",
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+											},
+											"routing": {
+												"type": "object",
+												"additionalProperties": false,
+												"nullable": true,
+												"properties": {
+													"algorithm": {
+														"type": "string",
+														"enum": [
+															"preferred",
+															"smart"
+														]
+													},
+													"mode": {
+														"type": "string",
+														"enum": [
+															"cost",
+															"best"
+														]
+													}
+												}
+											},
+											"updated_at": {
+												"type": "integer"
+											}
+										},
+										"required": [
+											"name",
+											"models",
+											"id",
+											"gateway_id",
+											"created_at",
+											"updated_at"
+										],
+										"type": "object"
+									}
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"count",
+										"page",
+										"per_page",
+										"total_count"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"result_info"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway Model Aliases"
+		],
+		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.model-aliases",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.model-aliases",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
+	},
+	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/model_aliases/{id}": {
+		"operationId": "aig-config-get-model-alias",
+		"summary": "Get a model alias",
+		"description": "Retrieves a model alias configured on a gateway.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+				}
+			},
+			{
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "my-gateway"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "c8c1b6f0-2f4a-4a3e-9f1a-3d6f1e2b7c90"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Returns the model alias",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"additionalProperties": false,
+									"properties": {
+										"created_at": {
+											"type": "integer"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"models": {
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"model": {
+														"type": "string",
+														"maxLength": 256,
+														"minLength": 1
+													},
+													"providers": {
+														"type": "array",
+														"items": {
+															"maxLength": 64,
+															"minLength": 1,
+															"pattern": "^[a-z0-9-]+$",
+															"type": "string"
+														},
+														"maxItems": 64,
+														"minItems": 1
+													}
+												},
+												"required": [
+													"model"
+												],
+												"type": "object"
+											},
+											"maxItems": 50,
+											"minItems": 1
+										},
+										"name": {
+											"type": "string",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+										},
+										"routing": {
+											"type": "object",
+											"additionalProperties": false,
+											"nullable": true,
+											"properties": {
+												"algorithm": {
+													"type": "string",
+													"enum": [
+														"preferred",
+														"smart"
+													]
+												},
+												"mode": {
+													"type": "string",
+													"enum": [
+														"cost",
+														"best"
+													]
+												}
+											}
+										},
+										"updated_at": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"name",
+										"models",
+										"id",
+										"gateway_id",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway Model Aliases"
+		],
+		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"AI Gateway Write",
+			"AI Gateway Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.model-aliases",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.model-aliases",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
+	},
+	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/model_aliases": {
+		"operationId": "aig-config-create-model-alias",
+		"summary": "Create a model alias",
+		"description": "Creates a model alias on a gateway: a named, ordered list of catalog models, each optionally restricted to providers. Requests address it as `custom/<name>`.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+				}
+			},
+			{
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "my-gateway"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"models": {
+								"type": "array",
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"model": {
+											"type": "string",
+											"maxLength": 256,
+											"minLength": 1
+										},
+										"providers": {
+											"type": "array",
+											"items": {
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-z0-9-]+$",
+												"type": "string"
+											},
+											"maxItems": 64,
+											"minItems": 1
+										}
+									},
+									"required": [
+										"model"
+									],
+									"type": "object"
+								},
+								"maxItems": 50,
+								"minItems": 1
+							},
+							"name": {
+								"type": "string",
+								"maxLength": 64,
+								"minLength": 1,
+								"pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+							},
+							"routing": {
+								"type": "object",
+								"additionalProperties": false,
+								"nullable": true,
+								"properties": {
+									"algorithm": {
+										"type": "string",
+										"enum": [
+											"preferred",
+											"smart"
+										]
+									},
+									"mode": {
+										"type": "string",
+										"enum": [
+											"cost",
+											"best"
+										]
+									}
+								}
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"models"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the created model alias",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"additionalProperties": false,
+									"properties": {
+										"created_at": {
+											"type": "integer"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"models": {
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"model": {
+														"type": "string",
+														"maxLength": 256,
+														"minLength": 1
+													},
+													"providers": {
+														"type": "array",
+														"items": {
+															"maxLength": 64,
+															"minLength": 1,
+															"pattern": "^[a-z0-9-]+$",
+															"type": "string"
+														},
+														"maxItems": 64,
+														"minItems": 1
+													}
+												},
+												"required": [
+													"model"
+												],
+												"type": "object"
+											},
+											"maxItems": 50,
+											"minItems": 1
+										},
+										"name": {
+											"type": "string",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+										},
+										"routing": {
+											"type": "object",
+											"additionalProperties": false,
+											"nullable": true,
+											"properties": {
+												"algorithm": {
+													"type": "string",
+													"enum": [
+														"preferred",
+														"smart"
+													]
+												},
+												"mode": {
+													"type": "string",
+													"enum": [
+														"cost",
+														"best"
+													]
+												}
+											}
+										},
+										"updated_at": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"name",
+										"models",
+										"id",
+										"gateway_id",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway Model Aliases"
+		],
+		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"AI Gateway Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.model-aliases",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.model-aliases",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
+	},
+	"PUT /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/model_aliases/{id}": {
+		"operationId": "aig-config-update-model-alias",
+		"summary": "Update a model alias",
+		"description": "Replaces a model alias. Omitting `routing` clears any previously stored routing options.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "3ebbcb006d4d46d7bb6a8c7f14676cb0"
+				}
+			},
+			{
+				"name": "gateway_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "my-gateway"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "c8c1b6f0-2f4a-4a3e-9f1a-3d6f1e2b7c90"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"models": {
+								"type": "array",
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"model": {
+											"type": "string",
+											"maxLength": 256,
+											"minLength": 1
+										},
+										"providers": {
+											"type": "array",
+											"items": {
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-z0-9-]+$",
+												"type": "string"
+											},
+											"maxItems": 64,
+											"minItems": 1
+										}
+									},
+									"required": [
+										"model"
+									],
+									"type": "object"
+								},
+								"maxItems": 50,
+								"minItems": 1
+							},
+							"name": {
+								"type": "string",
+								"maxLength": 64,
+								"minLength": 1,
+								"pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+							},
+							"routing": {
+								"type": "object",
+								"additionalProperties": false,
+								"nullable": true,
+								"properties": {
+									"algorithm": {
+										"type": "string",
+										"enum": [
+											"preferred",
+											"smart"
+										]
+									},
+									"mode": {
+										"type": "string",
+										"enum": [
+											"cost",
+											"best"
+										]
+									}
+								}
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"name",
+							"models"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Returns the updated model alias",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"additionalProperties": false,
+									"properties": {
+										"created_at": {
+											"type": "integer"
+										},
+										"gateway_id": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"models": {
+											"type": "array",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"model": {
+														"type": "string",
+														"maxLength": 256,
+														"minLength": 1
+													},
+													"providers": {
+														"type": "array",
+														"items": {
+															"maxLength": 64,
+															"minLength": 1,
+															"pattern": "^[a-z0-9-]+$",
+															"type": "string"
+														},
+														"maxItems": 64,
+														"minItems": 1
+													}
+												},
+												"required": [
+													"model"
+												],
+												"type": "object"
+											},
+											"maxItems": 50,
+											"minItems": 1
+										},
+										"name": {
+											"type": "string",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+										},
+										"routing": {
+											"type": "object",
+											"additionalProperties": false,
+											"nullable": true,
+											"properties": {
+												"algorithm": {
+													"type": "string",
+													"enum": [
+														"preferred",
+														"smart"
+													]
+												},
+												"mode": {
+													"type": "string",
+													"enum": [
+														"cost",
+														"best"
+													]
+												}
+											}
+										},
+										"updated_at": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"name",
+										"models",
+										"id",
+										"gateway_id",
+										"created_at",
+										"updated_at"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad Request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"AI Gateway Model Aliases"
+		],
+		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"AI Gateway Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.aig"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-gateway.model-aliases",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.model-aliases",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
+	}
+}

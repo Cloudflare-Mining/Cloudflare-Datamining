@@ -49,7 +49,8 @@
 					"maximum": 1000,
 					"minimum": 1
 				},
-				"example": 100
+				"example": 100,
+				"x-auditable": true
 			},
 			{
 				"name": "parent",
@@ -58,7 +59,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "bronze"
+				"example": "bronze",
+				"x-auditable": true
 			},
 			{
 				"name": "return_uuids",
@@ -68,7 +70,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"example": true
+				"example": true,
+				"x-auditable": true
 			},
 			{
 				"name": "return_details",
@@ -78,7 +81,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"example": true
+				"example": true,
+				"x-auditable": true
 			}
 		],
 		"responses": {
@@ -212,13 +216,15 @@
 																"description": "Indicates the creation timestamp in ISO 8601 format.",
 																"type": "string",
 																"format": "date-time",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"namespace": {
 																"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"bronze",
@@ -230,13 +236,15 @@
 															"namespace_uuid": {
 																"description": "Contains the UUID that persists across renames.",
 																"type": "string",
-																"format": "uuid"
+																"format": "uuid",
+																"x-auditable": true
 															},
 															"updated_at": {
 																"description": "Shows the last update timestamp in ISO 8601 format. Null if never updated.",
 																"type": "string",
 																"format": "date-time",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -251,7 +259,8 @@
 													"type": "array",
 													"items": {
 														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"0199b999-6869-7383-bb1f-d30e059d5326",
@@ -266,7 +275,8 @@
 														"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
 														"type": "array",
 														"items": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"example": [
 															"bronze",
@@ -504,12 +514,21 @@
 			"Namespace Management"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog.namespaces",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog.namespaces",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		]
 	},
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces": {
 		"operationId": "list-namespaces",
@@ -561,7 +580,8 @@
 					"maximum": 1000,
 					"minimum": 1
 				},
-				"example": 100
+				"example": 100,
+				"x-auditable": true
 			},
 			{
 				"name": "parent",
@@ -570,7 +590,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"example": "bronze"
+				"example": "bronze",
+				"x-auditable": true
 			},
 			{
 				"name": "return_uuids",
@@ -580,7 +601,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"example": true
+				"example": true,
+				"x-auditable": true
 			},
 			{
 				"name": "return_details",
@@ -590,7 +612,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"example": true
+				"example": true,
+				"x-auditable": true
 			}
 		],
 		"responses": {
@@ -724,13 +747,15 @@
 																"description": "Indicates the creation timestamp in ISO 8601 format.",
 																"type": "string",
 																"format": "date-time",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"namespace": {
 																"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"bronze",
@@ -742,13 +767,15 @@
 															"namespace_uuid": {
 																"description": "Contains the UUID that persists across renames.",
 																"type": "string",
-																"format": "uuid"
+																"format": "uuid",
+																"x-auditable": true
 															},
 															"updated_at": {
 																"description": "Shows the last update timestamp in ISO 8601 format. Null if never updated.",
 																"type": "string",
 																"format": "date-time",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -763,7 +790,8 @@
 													"type": "array",
 													"items": {
 														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"0199b999-6869-7383-bb1f-d30e059d5326",
@@ -778,7 +806,8 @@
 														"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
 														"type": "array",
 														"items": {
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"example": [
 															"bronze",
@@ -1017,12 +1046,21 @@
 			"Namespace Management"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.namespaces",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2-data-catalog.namespaces",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		],
 		"x-stainless-deprecation-message": "Use `GET /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces` instead."
 	}
 }

@@ -1,4 +1,253 @@
 {
+	"GET /feedback/diagnosis": {
+		"operationId": "feedback-diagnosis",
+		"summary": "Get the project feedback prompt",
+		"description": "Returns the Cloudflare team's whole-project feedback prompt. An agent follows `instructions` to review how the user's project uses Cloudflare and write a report on what got in the way, shows the user the full report, and sends it with `POST /feedback/send` once the user approves.",
+		"responses": {
+			"200": {
+				"description": "The project feedback prompt.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "The error or message code.",
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "A link to documentation about the error.",
+														"type": "string"
+													},
+													"message": {
+														"description": "A short description.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "The error or message code.",
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"description": "A link to documentation about the error.",
+														"type": "string"
+													},
+													"message": {
+														"description": "A short description.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											}
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"instructions": {
+													"description": "The prompt for the agent, in Markdown.",
+													"type": "string"
+												},
+												"prompt_version": {
+													"description": "Version of the prompt in `instructions`.",
+													"type": "string",
+													"example": "2026-11-24T00:00:00Z"
+												},
+												"schema_version": {
+													"description": "Version of this response format.",
+													"type": "integer",
+													"enum": [
+														1
+													]
+												},
+												"submit": {
+													"description": "How to send the finished report.",
+													"type": "object",
+													"properties": {
+														"method": {
+															"description": "The HTTP method for sending the report.",
+															"type": "string",
+															"example": "POST"
+														},
+														"notes": {
+															"description": "Rules for sending, such as asking the user first.",
+															"type": "string"
+														},
+														"path": {
+															"description": "The path to send the report to.",
+															"type": "string",
+															"example": "/client/v4/feedback/send"
+														},
+														"schema_version": {
+															"description": "The `schema_version` to send with the report.",
+															"type": "integer",
+															"example": 1
+														},
+														"type": {
+															"description": "The feedback `type` to send with the report.",
+															"type": "string",
+															"example": "friction"
+														}
+													},
+													"required": [
+														"method",
+														"path",
+														"schema_version",
+														"type",
+														"notes"
+													]
+												}
+											},
+											"required": [
+												"schema_version",
+												"prompt_version",
+												"instructions",
+												"submit"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Prompt not returned.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "The error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "A link to documentation about the error.",
+												"type": "string"
+											},
+											"message": {
+												"description": "A short description.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"description": "The error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"documentation_url": {
+												"description": "A link to documentation about the error.",
+												"type": "string"
+											},
+											"message": {
+												"description": "A short description.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"description": "Always null on failure.",
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Feedback"
+		],
+		"x-fern-sdk-group-name": "feedback",
+		"x-fern-sdk-method-name": "diagnose",
+		"x-forge-group-name": "feedback",
+		"x-forge-method-name": "diagnose"
+	},
 	"GET /zones/{zone_id}/bot_management/feedback": {
 		"operationId": "bot-management-zone-feedback-list",
 		"summary": "List zone feedback reports",
@@ -304,7 +553,519 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "bot-management.feedback",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "bot-management.feedback",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"bot-management-feedback.read",
+			"bot-management-feedback.write",
+			"bot-management.read",
+			"bot-management.write"
+		]
+	},
+	"POST /feedback/send": {
+		"operationId": "feedback-send",
+		"summary": "Send feedback",
+		"description": "Report a problem with Cloudflare products, the cf CLI, or the Cloudflare MCP server and its tools to the Cloudflare team. While you work, keep track of what went wrong: failed calls, errors, wrong or confusing results, missing commands or tools. Send feedback near the end of the task if it hit a Cloudflare problem: several failed attempts, an error that looks like a Cloudflare bug, or a workaround you had to find. Also send feedback at the user's request. Skip it if the task went fine or the problem was in the user's own code. Send at most once per task; never send to test the endpoint or to log progress. Describe what was attempted, what was expected and what happened. Leave out secrets, API tokens, personal data, account or zone IDs and full conversations. After a successful submission, if you are an agent, tell the user at the next natural break, such as the end of the current turn, that you sent feedback to Cloudflare. Include the `submission_id`.",
+		"parameters": [
+			{
+				"name": "User-Agent",
+				"in": "header",
+				"description": "Identifies the client. Must start with `cf-cli/<version>` or `cloudflare-mcp`.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "cf-cli/1.4.0"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"example": {
+						"message": "The deploy output does not say which account it used.",
+						"product": "workers",
+						"schema_version": 1,
+						"submission_id": "6f1c2b8e-3d4a-4f5b-9c6d-7e8f9a0b1c2d",
+						"type": "friction"
+					},
+					"schema": {
+						"type": "object",
+						"properties": {
+							"actual": {
+								"description": "What happened instead.",
+								"type": "string"
+							},
+							"agent": {
+								"description": "A report from a coding agent, sent with `cf feedback --input-json` or the MCP server.",
+								"type": "object",
+								"properties": {
+									"commands": {
+										"description": "Commands the agent ran.",
+										"type": "array",
+										"items": {
+											"properties": {
+												"command": {
+													"description": "The command path.",
+													"type": "string"
+												},
+												"duration_ms": {
+													"description": "How long it ran, in milliseconds.",
+													"type": "integer",
+													"minimum": 0
+												},
+												"exit_code": {
+													"description": "The exit code.",
+													"type": "integer"
+												},
+												"flags": {
+													"description": "The flag names used.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													},
+													"maxItems": 50
+												}
+											},
+											"required": [
+												"command"
+											],
+											"type": "object"
+										},
+										"maxItems": 50
+									},
+									"docs_urls": {
+										"description": "Documentation the agent read.",
+										"type": "array",
+										"items": {
+											"maxLength": 2048,
+											"type": "string"
+										},
+										"maxItems": 10
+									},
+									"errors": {
+										"description": "Errors the agent hit.",
+										"type": "array",
+										"items": {
+											"properties": {
+												"code": {
+													"description": "The error code, such as a Cloudflare API error code.",
+													"type": "string",
+													"maxLength": 64
+												},
+												"command": {
+													"description": "The command that failed.",
+													"type": "string"
+												},
+												"message": {
+													"description": "The error message.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"message"
+											],
+											"type": "object"
+										},
+										"maxItems": 20
+									},
+									"model": {
+										"description": "The model the agent used.",
+										"type": "string"
+									},
+									"name": {
+										"description": "The agent's name, such as `claude-code`.",
+										"type": "string",
+										"maxLength": 40
+									},
+									"repro_steps": {
+										"description": "Steps to reproduce the problem.",
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 30
+									},
+									"stats": {
+										"description": "Counts for the task.",
+										"type": "object",
+										"properties": {
+											"duration_ms": {
+												"description": "How long the task took, in milliseconds.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"retries": {
+												"description": "Retries made.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"tool_calls": {
+												"description": "Tool calls made.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"turns": {
+												"description": "Conversation turns.",
+												"type": "integer",
+												"minimum": 0
+											}
+										}
+									},
+									"version": {
+										"description": "The agent's version.",
+										"type": "string",
+										"maxLength": 64
+									}
+								}
+							},
+							"attempted": {
+								"description": "What was tried.",
+								"type": "string"
+							},
+							"client": {
+								"description": "Context the cf CLI attaches: its version and mode, the platform, the detected agent and the last command.",
+								"type": "object",
+								"properties": {
+									"agent_detected": {
+										"description": "The coding agent the CLI detected, such as `claude-code`.",
+										"type": "string",
+										"maxLength": 40
+									},
+									"agent_model_detected": {
+										"description": "The model the CLI detected.",
+										"type": "string"
+									},
+									"arch": {
+										"description": "The CPU architecture.",
+										"type": "string",
+										"maxLength": 16
+									},
+									"cli_delegated": {
+										"description": "Whether the command was delegated to another tool.",
+										"type": "boolean"
+									},
+									"cli_mode": {
+										"description": "How the CLI was run.",
+										"type": "string",
+										"enum": [
+											"ci",
+											"interactive",
+											"non-interactive"
+										]
+									},
+									"cli_version": {
+										"description": "The cf CLI version.",
+										"type": "string"
+									},
+									"error": {
+										"description": "The error the CLI reported, if any.",
+										"type": "object",
+										"properties": {
+											"message": {
+												"description": "The error message.",
+												"type": "string"
+											},
+											"stack": {
+												"description": "The stack trace.",
+												"type": "string"
+											},
+											"telemetry_message": {
+												"description": "The error message as recorded by telemetry.",
+												"type": "string"
+											}
+										}
+									},
+									"is_ci": {
+										"description": "Whether the CLI ran in CI.",
+										"type": "boolean"
+									},
+									"is_interactive": {
+										"description": "Whether the CLI ran in an interactive terminal.",
+										"type": "boolean"
+									},
+									"last_command": {
+										"description": "The last cf command run before the feedback.",
+										"type": "object",
+										"properties": {
+											"args_used": {
+												"description": "The flag names used, without values.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"maxItems": 50
+											},
+											"command": {
+												"description": "The command path, such as `workers deploy`.",
+												"type": "string"
+											},
+											"error_codes": {
+												"description": "Cloudflare API error codes returned.",
+												"type": "array",
+												"items": {
+													"type": "integer"
+												},
+												"maxItems": 20
+											},
+											"error_type": {
+												"description": "The kind of error, if any.",
+												"type": "string",
+												"maxLength": 64
+											},
+											"exit_code": {
+												"description": "The command's exit code.",
+												"type": "integer"
+											},
+											"http_status": {
+												"description": "The HTTP status of the failed API call, if any.",
+												"type": "integer",
+												"maximum": 599,
+												"minimum": 100
+											},
+											"outcome": {
+												"description": "How the command ended.",
+												"type": "string",
+												"enum": [
+													"success",
+													"error",
+													"cancelled"
+												]
+											}
+										}
+									},
+									"node_major": {
+										"description": "The Node.js major version.",
+										"type": "integer",
+										"maximum": 999,
+										"minimum": 0
+									},
+									"os": {
+										"description": "The operating system.",
+										"type": "string",
+										"maxLength": 32
+									},
+									"os_release": {
+										"description": "The operating system release.",
+										"type": "string",
+										"maxLength": 64
+									},
+									"package_manager": {
+										"description": "The package manager that installed the CLI.",
+										"type": "string",
+										"enum": [
+											"npm",
+											"pnpm",
+											"yarn",
+											"bun",
+											"unknown"
+										]
+									},
+									"telemetry_enabled": {
+										"description": "Whether CLI telemetry was on.",
+										"type": "boolean"
+									}
+								}
+							},
+							"command": {
+								"description": "The cf command it is about, such as `workers deploy`.",
+								"type": "string",
+								"example": "workers deploy"
+							},
+							"expected": {
+								"description": "What was expected to happen.",
+								"type": "string"
+							},
+							"fields": {
+								"description": "Any other details as string values, keyed by lowercase names such as `region`.",
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								},
+								"maxProperties": 32
+							},
+							"impact": {
+								"description": "How much it got in the way.",
+								"type": "string",
+								"enum": [
+									"blocked",
+									"worked_around",
+									"friction",
+									"none"
+								]
+							},
+							"message": {
+								"description": "The feedback, in the user's or agent's words.",
+								"type": "string"
+							},
+							"product": {
+								"description": "The Cloudflare product it is about, such as `workers` or `r2`.",
+								"type": "string",
+								"example": "workers",
+								"maxLength": 64
+							},
+							"rating": {
+								"description": "An overall rating from 1 to 5.",
+								"type": "integer",
+								"maximum": 5,
+								"minimum": 1
+							},
+							"schema_version": {
+								"description": "Version of this request format.",
+								"type": "integer",
+								"enum": [
+									1
+								]
+							},
+							"sent_at": {
+								"description": "When the client sent the feedback.",
+								"type": "string",
+								"format": "date-time"
+							},
+							"sentiment": {
+								"description": "The overall sentiment.",
+								"type": "string",
+								"enum": [
+									"positive",
+									"neutral",
+									"negative"
+								]
+							},
+							"submission_id": {
+								"description": "A UUID chosen by the client. Retrying with the same ID does not store the feedback twice.",
+								"type": "string",
+								"format": "uuid"
+							},
+							"suggestion": {
+								"description": "What would have helped.",
+								"type": "string"
+							},
+							"task": {
+								"description": "What the user was trying to do.",
+								"type": "string"
+							},
+							"type": {
+								"description": "What kind of feedback this is.",
+								"type": "string",
+								"enum": [
+									"bug",
+									"friction",
+									"feature",
+									"docs",
+									"praise",
+									"other"
+								]
+							}
+						},
+						"required": [
+							"schema_version",
+							"submission_id"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"202": {
+				"description": "Feedback accepted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"ignored": {
+									"description": "Fields that were not stored as sent.",
+									"type": "array",
+									"items": {
+										"properties": {
+											"path": {
+												"description": "The field, as a schema path.",
+												"type": "string"
+											},
+											"reason": {
+												"description": "Why the field was not stored as sent.",
+												"type": "string",
+												"enum": [
+													"invalid",
+													"moved",
+													"truncated",
+													"dropped"
+												]
+											}
+										},
+										"required": [
+											"path",
+											"reason"
+										],
+										"type": "object"
+									}
+								},
+								"notices": {
+									"description": "Something the client should tell the user, such as a credential having been redacted.",
+									"type": "array",
+									"items": {
+										"enum": [
+											"credential_redacted"
+										],
+										"type": "string"
+									}
+								},
+								"status": {
+									"description": "The feedback was stored.",
+									"type": "string",
+									"enum": [
+										"accepted"
+									]
+								},
+								"submission_id": {
+									"description": "The ID to share with the user.",
+									"type": "string",
+									"format": "uuid"
+								}
+							},
+							"required": [
+								"status",
+								"submission_id"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Feedback refused.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"description": "A short error code, such as `rate_limited` or `invalid_json`.",
+									"type": "string",
+									"example": "rate_limited"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Feedback"
+		],
+		"x-fern-sdk-group-name": "feedback",
+		"x-fern-sdk-method-name": "send",
+		"x-forge-group-name": "feedback",
+		"x-forge-method-name": "send"
 	},
 	"POST /zones/{zone_id}/bot_management/feedback": {
 		"operationId": "bot-management-zone-feedback-create",
@@ -639,6 +1400,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "bot-management.feedback",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "bot-management.feedback",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"bot-management-feedback.read",
+			"bot-management-feedback.write",
+			"bot-management.read",
+			"bot-management.write"
+		]
 	}
 }

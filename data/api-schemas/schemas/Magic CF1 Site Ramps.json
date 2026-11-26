@@ -413,7 +413,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf1-sites.ramps",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.cf1-sites.ramps",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps": {
 		"operationId": "magic-cf1-sites-list-cf1-site-ramps",
@@ -822,7 +829,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf1-sites.ramps",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.cf1-sites.ramps",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}": {
 		"operationId": "magic-cf1-sites-get-cf1-site-ramp",
@@ -1240,7 +1256,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf1-sites.ramps",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.cf1-sites.ramps",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"POST /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps": {
 		"operationId": "magic-cf1-sites-create-cf1-site-ramps",
@@ -1686,6 +1711,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.cf1-sites.ramps",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.cf1-sites.ramps",
+		"x-forge-method-name": "create"
 	}
 }

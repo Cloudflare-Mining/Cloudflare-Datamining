@@ -462,6 +462,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.flags",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"flagship.write"
+		],
 		"x-forge-require-confirmation": "Delete this feature flag? After the deletion propagates, evaluation requests can no longer resolve it. This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags": {
@@ -1558,7 +1564,14 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.flags",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"flagship.read",
+			"flagship.write"
+		]
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
 		"operationId": "flagship_get_flag",
@@ -2621,7 +2634,14 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.flags",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"flagship.read",
+			"flagship.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
 		"operationId": "flagship_patch_flag",
@@ -3730,7 +3750,13 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
-		"x-fern-sdk-method-name": "patch"
+		"x-fern-sdk-method-name": "patch",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.flags",
+		"x-forge-method-name": "patch",
+		"x-forge-oauth-scopes": [
+			"flagship.write"
+		]
 	},
 	"POST /accounts/{account_id}/flagship/apps/{app_id}/flags": {
 		"operationId": "flagship_create_flag",
@@ -5393,7 +5419,13 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.flags",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"flagship.write"
+		]
 	},
 	"PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
 		"operationId": "flagship_update_flag",
@@ -7066,6 +7098,12 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.flags",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"flagship.write"
+		]
 	}
 }

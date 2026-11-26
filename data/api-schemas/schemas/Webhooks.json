@@ -219,6 +219,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.webhooks",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.webhooks",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-forge-require-confirmation": "This operation deletes the webhook. Event delivery to it will stop.",
 		"x-stability": "beta"
 	},
@@ -377,12 +384,21 @@
 			"Webhooks"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.webhooks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.webhooks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"operationId": "getWebhook",
@@ -598,12 +614,21 @@
 			"Webhooks"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.webhooks",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.webhooks",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks/all": {
@@ -776,12 +801,21 @@
 			"Webhooks"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.webhooks.events",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.webhooks.events",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"operationId": "editWebhook",
@@ -1070,6 +1104,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.webhooks",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.webhooks",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/webhooks": {
@@ -1343,7 +1384,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.webhooks",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.webhooks",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"operationId": "replaceWebhook",
@@ -1656,6 +1704,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.webhooks",
 		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.webhooks",
+		"x-forge-method-name": "replace",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-stability": "beta"
 	}
 }

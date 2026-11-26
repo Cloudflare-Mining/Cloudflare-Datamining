@@ -22,7 +22,8 @@
 					"type": "string"
 				},
 				"example": "my-namespace",
-				"x-fern-parameter-name": "namespace"
+				"x-fern-parameter-name": "namespace",
+				"x-forge-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -253,7 +254,8 @@
 																			"url": {
 																				"type": "string",
 																				"maxLength": 20971520,
-																				"minLength": 1
+																				"minLength": 1,
+																				"x-auditable": false
 																			}
 																		},
 																		"required": [
@@ -413,7 +415,8 @@
 																						"url": {
 																							"type": "string",
 																							"maxLength": 20971520,
-																							"minLength": 1
+																							"minLength": 1,
+																							"x-auditable": false
 																						}
 																					},
 																					"required": [
@@ -916,6 +919,10 @@
 		"tags": [
 			"AI Search Account Search"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -930,6 +937,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "multi-chat-completions",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search",
+		"x-forge-method-name": "multi-chat-completions",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"name": {
 				"default": "default",
@@ -960,7 +974,8 @@
 					"type": "string"
 				},
 				"example": "my-namespace",
-				"x-fern-parameter-name": "namespace"
+				"x-fern-parameter-name": "namespace",
+				"x-forge-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -1192,7 +1207,8 @@
 																			"url": {
 																				"type": "string",
 																				"maxLength": 20971520,
-																				"minLength": 1
+																				"minLength": 1,
+																				"x-auditable": false
 																			}
 																		},
 																		"required": [
@@ -1685,6 +1701,10 @@
 		"tags": [
 			"AI Search Account Search"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -1699,6 +1719,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "multi-search",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search",
+		"x-forge-method-name": "multi-search",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"name": {
 				"default": "default",

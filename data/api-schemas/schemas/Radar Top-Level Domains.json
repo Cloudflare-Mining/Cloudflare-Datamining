@@ -198,7 +198,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tlds",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.tlds",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/tlds/{tld}": {
 		"operationId": "radar-get-tld-details",
@@ -330,7 +337,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tlds",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.tlds",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/tlds/performance/summary/{dimension}": {
 		"operationId": "radar-get-tlds-performance-summary",
@@ -770,7 +784,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tlds.performance",
-		"x-fern-sdk-method-name": "summary"
+		"x-fern-sdk-method-name": "summary",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.tlds.performance",
+		"x-forge-method-name": "summary",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/tlds/performance/timeseries_groups/{dimension}": {
 		"operationId": "radar-get-tlds-performance-timeseries-groups",
@@ -1264,6 +1285,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tlds.performance",
-		"x-fern-sdk-method-name": "timeseries-groups"
+		"x-fern-sdk-method-name": "timeseries-groups",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.tlds.performance",
+		"x-forge-method-name": "timeseries-groups",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	}
 }

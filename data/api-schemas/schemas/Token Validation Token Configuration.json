@@ -263,6 +263,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.configurations",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.configurations",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the token validation configuration. The request is rejected if rules, operations, or JWT authentication identifiers still reference it."
 	},
 	"GET /zones/{zone_id}/token_validation/config": {
@@ -961,7 +968,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.configurations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.configurations",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		]
 	},
 	"GET /zones/{zone_id}/token_validation/config/{config_id}": {
 		"operationId": "token-validation-config-get",
@@ -1593,7 +1609,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.configurations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.configurations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/token_validation/config/{config_id}": {
 		"operationId": "token-validation-config-edit",
@@ -1948,7 +1973,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.configurations",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.configurations",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/token_validation/config/{config_id}/credentials": {
 		"operationId": "token-validation-config-credentials-edit",
@@ -2753,7 +2785,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.configurations.credentials",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.configurations.credentials",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	},
 	"POST /zones/{zone_id}/token_validation/config": {
 		"operationId": "token-validation-config-create",
@@ -3726,7 +3765,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.configurations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.configurations",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	},
 	"PUT /zones/{zone_id}/token_validation/config/{config_id}/credentials": {
 		"operationId": "token-validation-config-credentials-update",
@@ -4532,6 +4578,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "api-security.token-validation.configurations.credentials",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "api-security.token-validation.configurations.credentials",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	}
 }

@@ -292,7 +292,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.apps",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.apps",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/apps": {
 		"operationId": "magic-account-apps-list-apps",
@@ -656,7 +663,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.apps",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.apps",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/magic/apps/{account_app_id}": {
 		"operationId": "magic-account-apps-patch-app",
@@ -1049,7 +1065,11 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "magic-transit.apps",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.apps",
+		"x-forge-method-name": "edit",
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/magic/apps": {
 		"operationId": "magic-account-apps-add-app",
@@ -1423,7 +1443,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.apps",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.apps",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"PUT /accounts/{account_id}/magic/apps/{account_app_id}": {
 		"operationId": "magic-account-apps-update-app",
@@ -1819,6 +1846,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.apps",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.apps",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	}
 }

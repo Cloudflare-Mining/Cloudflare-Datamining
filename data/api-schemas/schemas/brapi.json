@@ -225,7 +225,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.crawl",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.crawl",
+		"x-forge-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}": {
 		"operationId": "brapi-delete_DevtoolsBrowserDelete",
@@ -305,7 +308,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.browser",
+		"x-forge-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/browser-rendering/crawl/{job_id}": {
 		"operationId": "brapi-get_CrawlResult",
@@ -780,8 +786,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -797,7 +806,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.crawl",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.crawl",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json": {
 		"operationId": "brapi-get_DevtoolsJson",
@@ -977,8 +995,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -994,7 +1015,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.json",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.json",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/activate/{target_id}": {
 		"operationId": "brapi-get_DevtoolsJsonActivate",
@@ -1183,8 +1213,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1200,7 +1233,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
-		"x-fern-sdk-method-name": "activate"
+		"x-fern-sdk-method-name": "activate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.browser.targets",
+		"x-forge-method-name": "activate",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/close/{target_id}": {
 		"operationId": "brapi-get_DevtoolsJsonClose",
@@ -1389,8 +1431,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1406,7 +1451,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
-		"x-fern-sdk-method-name": "close"
+		"x-fern-sdk-method-name": "close",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.browser.targets",
+		"x-forge-method-name": "close",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list": {
 		"operationId": "brapi-get_DevtoolsJsonList",
@@ -1586,8 +1640,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1603,7 +1660,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.browser.targets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list/{target_id}": {
 		"operationId": "brapi-get_DevtoolsJsonTarget",
@@ -1818,8 +1884,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1835,7 +1904,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.browser.targets",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/protocol": {
 		"operationId": "brapi-get_DevtoolsJsonProtocol",
@@ -2048,8 +2126,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2065,7 +2146,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "protocol"
+		"x-fern-sdk-method-name": "protocol",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.browser",
+		"x-forge-method-name": "protocol",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/version": {
 		"operationId": "brapi-get_DevtoolsJsonVersion",
@@ -2229,8 +2319,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2246,7 +2339,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "version"
+		"x-fern-sdk-method-name": "version",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.browser",
+		"x-forge-method-name": "version",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/session": {
 		"operationId": "brapi-get_DevtoolsSessionList",
@@ -2365,8 +2467,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2382,7 +2487,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.session",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.session",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/devtools/session/{session_id}": {
 		"operationId": "brapi-get_DevtoolsSessionDetails",
@@ -2488,8 +2602,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2505,7 +2622,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.session",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.session",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/recording/{session_id}": {
 		"operationId": "brapi-get_Recording",
@@ -2737,8 +2863,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2754,7 +2883,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.recording",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.recording",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/browser-rendering/recording/{session_id}/network": {
 		"operationId": "brapi-get_RecordingNetwork",
@@ -2908,8 +3046,11 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write",
-			"Browser Rendering Read"
+			"Browser Run Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write",
+			"Browser Run Read"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -2925,7 +3066,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.recording.network",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.recording.network",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.read",
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/accessibilityTree": {
 		"operationId": "brapi-post_AccessibilityTree",
@@ -3003,7 +3153,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -3019,7 +3170,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -3155,11 +3307,14 @@
 									"password": {
 										"type": "string",
 										"minLength": 1,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"username": {
 										"type": "string",
-										"minLength": 1
+										"minLength": 1,
+										"x-auditable": false
 									}
 								},
 								"required": [
@@ -3274,7 +3429,8 @@
 											"type": "string"
 										},
 										"value": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										}
 									},
 									"required": [
@@ -3293,7 +3449,8 @@
 								"default": {},
 								"properties": {
 									"referer": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": false
 									},
 									"referrerPolicy": {
 										"type": "string"
@@ -3503,7 +3660,8 @@
 							"setExtraHTTPHeaders": {
 								"type": "object",
 								"additionalProperties": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": false
 								}
 							},
 							"setJavaScriptEnabled": {
@@ -3513,7 +3671,8 @@
 								"description": "URL to navigate to, eg. `https://example.com`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/"
+								"example": "https://example.com/",
+								"x-auditable": false
 							},
 							"userAgent": {
 								"type": "string",
@@ -4056,7 +4215,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -4072,7 +4233,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "accessibility-tree"
+		"x-fern-sdk-method-name": "accessibility-tree",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.quick-action",
+		"x-forge-method-name": "accessibility-tree",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/content": {
 		"operationId": "brapi-post_Content",
@@ -4150,7 +4319,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -4166,7 +4336,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -4302,11 +4473,14 @@
 									"password": {
 										"type": "string",
 										"minLength": 1,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"username": {
 										"type": "string",
-										"minLength": 1
+										"minLength": 1,
+										"x-auditable": false
 									}
 								},
 								"required": [
@@ -4421,7 +4595,8 @@
 											"type": "string"
 										},
 										"value": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										}
 									},
 									"required": [
@@ -4440,7 +4615,8 @@
 								"default": {},
 								"properties": {
 									"referer": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": false
 									},
 									"referrerPolicy": {
 										"type": "string"
@@ -4644,7 +4820,8 @@
 							"setExtraHTTPHeaders": {
 								"type": "object",
 								"additionalProperties": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": false
 								}
 							},
 							"setJavaScriptEnabled": {
@@ -4654,7 +4831,8 @@
 								"description": "URL to navigate to, eg. `https://example.com`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/"
+								"example": "https://example.com/",
+								"x-auditable": false
 							},
 							"userAgent": {
 								"type": "string",
@@ -5069,7 +5247,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -5085,7 +5265,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "content"
+		"x-fern-sdk-method-name": "content",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.quick-action",
+		"x-forge-method-name": "content",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/crawl": {
 		"operationId": "brapi-post_Crawl",
@@ -5153,7 +5341,8 @@
 												},
 												"url": {
 													"type": "string",
-													"format": "uri"
+													"format": "uri",
+													"x-auditable": false
 												}
 											},
 											"type": "object"
@@ -5169,7 +5358,8 @@
 												},
 												"url": {
 													"type": "string",
-													"format": "uri"
+													"format": "uri",
+													"x-auditable": false
 												}
 											},
 											"type": "object"
@@ -5305,11 +5495,14 @@
 											"password": {
 												"type": "string",
 												"minLength": 1,
+												"x-auditable": false,
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											},
 											"username": {
 												"type": "string",
-												"minLength": 1
+												"minLength": 1,
+												"x-auditable": false
 											}
 										},
 										"required": [
@@ -5449,7 +5642,8 @@
 													"type": "string"
 												},
 												"value": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": false
 												}
 											},
 											"required": [
@@ -5537,7 +5731,8 @@
 										"default": {},
 										"properties": {
 											"referer": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": false
 											},
 											"referrerPolicy": {
 												"type": "string"
@@ -5850,7 +6045,8 @@
 									"setExtraHTTPHeaders": {
 										"type": "object",
 										"additionalProperties": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										}
 									},
 									"setJavaScriptEnabled": {
@@ -6395,7 +6591,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -6411,7 +6609,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.crawl",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.crawl",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/devtools/browser": {
 		"operationId": "brapi-post_DevtoolsAcquire",
@@ -6601,7 +6807,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -6617,7 +6825,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.browser",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/live_view": {
 		"operationId": "brapi-post_DevtoolsLiveView",
@@ -6684,7 +6900,8 @@
 									"tab",
 									"full"
 								],
-								"x-fern-property-name": "view-mode"
+								"x-fern-property-name": "view-mode",
+								"x-forge-property-name": "view-mode"
 							},
 							"targetId": {
 								"description": "Target ID (page) to connect to. If omitted, auto-resolves to the first active page.",
@@ -6891,7 +7108,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -6907,7 +7126,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.live-view",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.browser.live-view",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/json": {
 		"operationId": "brapi-post_Json",
@@ -6985,7 +7212,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -7001,7 +7229,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -7137,11 +7366,14 @@
 									"password": {
 										"type": "string",
 										"minLength": 1,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"username": {
 										"type": "string",
-										"minLength": 1
+										"minLength": 1,
+										"x-auditable": false
 									}
 								},
 								"required": [
@@ -7256,7 +7488,8 @@
 											"type": "string"
 										},
 										"value": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										}
 									},
 									"required": [
@@ -7295,7 +7528,8 @@
 								"default": {},
 								"properties": {
 									"referer": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": false
 									},
 									"referrerPolicy": {
 										"type": "string"
@@ -7519,7 +7753,8 @@
 							"setExtraHTTPHeaders": {
 								"type": "object",
 								"additionalProperties": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": false
 								}
 							},
 							"setJavaScriptEnabled": {
@@ -7529,7 +7764,8 @@
 								"description": "URL to navigate to, eg. `https://example.com`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/"
+								"example": "https://example.com/",
+								"x-auditable": false
 							},
 							"userAgent": {
 								"type": "string",
@@ -7952,7 +8188,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -7968,7 +8206,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "json"
+		"x-fern-sdk-method-name": "json",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.quick-action",
+		"x-forge-method-name": "json",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/links": {
 		"operationId": "brapi-post_Links",
@@ -8046,7 +8292,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -8062,7 +8309,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -8198,11 +8446,14 @@
 									"password": {
 										"type": "string",
 										"minLength": 1,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"username": {
 										"type": "string",
-										"minLength": 1
+										"minLength": 1,
+										"x-auditable": false
 									}
 								},
 								"required": [
@@ -8317,7 +8568,8 @@
 											"type": "string"
 										},
 										"value": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										}
 									},
 									"required": [
@@ -8340,7 +8592,8 @@
 								"default": {},
 								"properties": {
 									"referer": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": false
 									},
 									"referrerPolicy": {
 										"type": "string"
@@ -8544,7 +8797,8 @@
 							"setExtraHTTPHeaders": {
 								"type": "object",
 								"additionalProperties": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": false
 								}
 							},
 							"setJavaScriptEnabled": {
@@ -8554,7 +8808,8 @@
 								"description": "URL to navigate to, eg. `https://example.com`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/"
+								"example": "https://example.com/",
+								"x-auditable": false
 							},
 							"userAgent": {
 								"type": "string",
@@ -8976,7 +9231,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -8992,7 +9249,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "links"
+		"x-fern-sdk-method-name": "links",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.quick-action",
+		"x-forge-method-name": "links",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/markdown": {
 		"operationId": "brapi-post_Markdown",
@@ -9070,7 +9335,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -9086,7 +9352,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -9222,11 +9489,14 @@
 									"password": {
 										"type": "string",
 										"minLength": 1,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"username": {
 										"type": "string",
-										"minLength": 1
+										"minLength": 1,
+										"x-auditable": false
 									}
 								},
 								"required": [
@@ -9341,7 +9611,8 @@
 											"type": "string"
 										},
 										"value": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										}
 									},
 									"required": [
@@ -9360,7 +9631,8 @@
 								"default": {},
 								"properties": {
 									"referer": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": false
 									},
 									"referrerPolicy": {
 										"type": "string"
@@ -9564,7 +9836,8 @@
 							"setExtraHTTPHeaders": {
 								"type": "object",
 								"additionalProperties": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": false
 								}
 							},
 							"setJavaScriptEnabled": {
@@ -9574,7 +9847,8 @@
 								"description": "URL to navigate to, eg. `https://example.com`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/"
+								"example": "https://example.com/",
+								"x-auditable": false
 							},
 							"userAgent": {
 								"type": "string",
@@ -9989,7 +10263,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -10005,7 +10281,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "markdown"
+		"x-fern-sdk-method-name": "markdown",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.quick-action",
+		"x-forge-method-name": "markdown",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/pdf": {
 		"operationId": "brapi-post_Pdf",
@@ -10083,7 +10367,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -10099,7 +10384,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -10235,11 +10521,14 @@
 									"password": {
 										"type": "string",
 										"minLength": 1,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"username": {
 										"type": "string",
-										"minLength": 1
+										"minLength": 1,
+										"x-auditable": false
 									}
 								},
 								"required": [
@@ -10354,7 +10643,8 @@
 											"type": "string"
 										},
 										"value": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										}
 									},
 									"required": [
@@ -10373,7 +10663,8 @@
 								"default": {},
 								"properties": {
 									"referer": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": false
 									},
 									"referrerPolicy": {
 										"type": "string"
@@ -10730,7 +11021,8 @@
 							"setExtraHTTPHeaders": {
 								"type": "object",
 								"additionalProperties": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": false
 								}
 							},
 							"setJavaScriptEnabled": {
@@ -10740,7 +11032,8 @@
 								"description": "URL to navigate to, eg. `https://example.com`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/"
+								"example": "https://example.com/",
+								"x-auditable": false
 							},
 							"userAgent": {
 								"type": "string",
@@ -11069,7 +11362,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -11085,7 +11380,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "pdf"
+		"x-fern-sdk-method-name": "pdf",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.quick-action",
+		"x-forge-method-name": "pdf",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/scrape": {
 		"operationId": "brapi-post_Scrape",
@@ -11168,7 +11471,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -11184,7 +11488,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -11320,11 +11625,14 @@
 									"password": {
 										"type": "string",
 										"minLength": 1,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"username": {
 										"type": "string",
-										"minLength": 1
+										"minLength": 1,
+										"x-auditable": false
 									}
 								},
 								"required": [
@@ -11439,7 +11747,8 @@
 											"type": "string"
 										},
 										"value": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										}
 									},
 									"required": [
@@ -11473,7 +11782,8 @@
 								"default": {},
 								"properties": {
 									"referer": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": false
 									},
 									"referrerPolicy": {
 										"type": "string"
@@ -11677,7 +11987,8 @@
 							"setExtraHTTPHeaders": {
 								"type": "object",
 								"additionalProperties": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": false
 								}
 							},
 							"setJavaScriptEnabled": {
@@ -11687,7 +11998,8 @@
 								"description": "URL to navigate to, eg. `https://example.com`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/"
+								"example": "https://example.com/",
+								"x-auditable": false
 							},
 							"userAgent": {
 								"type": "string",
@@ -12176,7 +12488,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -12192,7 +12506,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "scrape"
+		"x-fern-sdk-method-name": "scrape",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.quick-action",
+		"x-forge-method-name": "scrape",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/screenshot": {
 		"operationId": "brapi-post_Screenshot",
@@ -12270,7 +12592,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -12286,7 +12609,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -12422,11 +12746,14 @@
 									"password": {
 										"type": "string",
 										"minLength": 1,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"username": {
 										"type": "string",
-										"minLength": 1
+										"minLength": 1,
+										"x-auditable": false
 									}
 								},
 								"required": [
@@ -12541,7 +12868,8 @@
 											"type": "string"
 										},
 										"value": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										}
 									},
 									"required": [
@@ -12560,7 +12888,8 @@
 								"default": {},
 								"properties": {
 									"referer": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": false
 									},
 									"referrerPolicy": {
 										"type": "string"
@@ -12862,7 +13191,8 @@
 							"setExtraHTTPHeaders": {
 								"type": "object",
 								"additionalProperties": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": false
 								}
 							},
 							"setJavaScriptEnabled": {
@@ -12872,7 +13202,8 @@
 								"description": "URL to navigate to, eg. `https://example.com`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/"
+								"example": "https://example.com/",
+								"x-auditable": false
 							},
 							"userAgent": {
 								"type": "string",
@@ -13253,7 +13584,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -13269,7 +13602,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "screenshot"
+		"x-fern-sdk-method-name": "screenshot",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.quick-action",
+		"x-forge-method-name": "screenshot",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/script": {
 		"operationId": "brapi-post_Script",
@@ -13370,6 +13711,14 @@
 			"200": {
 				"description": "Returns the script result as `{ success: true, result }`. Non-JSON output is returned as is. The `cf-browser-session-id` and `cf-browser-target-id` headers identify the session.",
 				"headers": {
+					"cf-browser-script-library": {
+						"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+						"required": true,
+						"schema": {
+							"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+							"type": "string"
+						}
+					},
 					"cf-browser-session-id": {
 						"description": "Browser session the script ran in.",
 						"schema": {
@@ -13539,6 +13888,14 @@
 			"408": {
 				"description": "The script exceeded its timeout. The session stays open; its headers identify it for a retry or close.",
 				"headers": {
+					"cf-browser-script-library": {
+						"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+						"required": true,
+						"schema": {
+							"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+							"type": "string"
+						}
+					},
 					"cf-browser-session-id": {
 						"description": "Browser session the script ran in.",
 						"schema": {
@@ -13647,8 +14004,16 @@
 				}
 			},
 			"422": {
-				"description": "The script threw or failed to compile. The session stays open; its headers identify it for a retry or close.",
+				"description": "The script threw, failed to compile, or returned a `Response` with a JSON content type whose body is not valid JSON. The session stays open; its headers identify it for a retry or close.",
 				"headers": {
+					"cf-browser-script-library": {
+						"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+						"required": true,
+						"schema": {
+							"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+							"type": "string"
+						}
+					},
 					"cf-browser-session-id": {
 						"description": "Browser session the script ran in.",
 						"schema": {
@@ -13893,7 +14258,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -13909,7 +14276,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.script",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.script",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/script/{session_id}": {
 		"operationId": "brapi-post_ScriptSessionExecute",
@@ -13981,6 +14356,16 @@
 		"responses": {
 			"200": {
 				"description": "Returns the script result as `{ success: true, result }`. Non-JSON output is returned as is.",
+				"headers": {
+					"cf-browser-script-library": {
+						"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+						"required": true,
+						"schema": {
+							"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+							"type": "string"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -14134,6 +14519,16 @@
 			},
 			"408": {
 				"description": "The script exceeded its timeout.",
+				"headers": {
+					"cf-browser-script-library": {
+						"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+						"required": true,
+						"schema": {
+							"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+							"type": "string"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -14250,7 +14645,17 @@
 				}
 			},
 			"422": {
-				"description": "The script threw or failed to compile.",
+				"description": "The script threw, failed to compile, or returned a `Response` with a JSON content type whose body is not valid JSON.",
+				"headers": {
+					"cf-browser-script-library": {
+						"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+						"required": true,
+						"schema": {
+							"description": "Library the script ran with: the `@cloudflare/playwright` or `@cloudflare/puppeteer` npm package and its version (`<package>@<version>`), or `cdp` when no `library` was set.",
+							"type": "string"
+						}
+					}
+				},
 				"content": {
 					"application/json": {
 						"schema": {
@@ -14343,7 +14748,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -14359,7 +14766,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.script",
-		"x-fern-sdk-method-name": "execute"
+		"x-fern-sdk-method-name": "execute",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.script",
+		"x-forge-method-name": "execute",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/browser-rendering/snapshot": {
 		"operationId": "brapi-post_Snapshot",
@@ -14441,7 +14856,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -14457,7 +14873,8 @@
 										},
 										"url": {
 											"type": "string",
-											"format": "uri"
+											"format": "uri",
+											"x-auditable": false
 										}
 									},
 									"type": "object"
@@ -14593,11 +15010,14 @@
 									"password": {
 										"type": "string",
 										"minLength": 1,
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"username": {
 										"type": "string",
-										"minLength": 1
+										"minLength": 1,
+										"x-auditable": false
 									}
 								},
 								"required": [
@@ -14712,7 +15132,8 @@
 											"type": "string"
 										},
 										"value": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										}
 									},
 									"required": [
@@ -14790,7 +15211,8 @@
 								"default": {},
 								"properties": {
 									"referer": {
-										"type": "string"
+										"type": "string",
+										"x-auditable": false
 									},
 									"referrerPolicy": {
 										"type": "string"
@@ -15253,7 +15675,8 @@
 							"setExtraHTTPHeaders": {
 								"type": "object",
 								"additionalProperties": {
-									"type": "string"
+									"type": "string",
+									"x-auditable": false
 								}
 							},
 							"setJavaScriptEnabled": {
@@ -15263,7 +15686,8 @@
 								"description": "URL to navigate to, eg. `https://example.com`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/"
+								"example": "https://example.com/",
+								"x-auditable": false
 							},
 							"userAgent": {
 								"type": "string",
@@ -15905,7 +16329,9 @@
 			"brapi"
 		],
 		"x-api-token-group": [
-			"Browser Rendering Write"
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
+			"Browser Run Write"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -15921,7 +16347,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.quick-action",
-		"x-fern-sdk-method-name": "snapshot"
+		"x-fern-sdk-method-name": "snapshot",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.quick-action",
+		"x-forge-method-name": "snapshot",
+		"x-forge-oauth-scopes": [
+			"browser-rendering.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"PUT /accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/new": {
 		"operationId": "brapi-put_DevtoolsJsonNew",
@@ -16119,6 +16553,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "browser-run.devtools.browser.targets",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-run.devtools.browser.targets",
+		"x-forge-method-name": "create"
 	}
 }

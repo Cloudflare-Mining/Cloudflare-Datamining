@@ -392,6 +392,7 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "beta",
@@ -400,8 +401,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues.automations",
-				"x-fern-sdk-method-name": "delete"
+				"x-fern-sdk-method-name": "delete",
+				"x-forge-group-name": "o11y.issues.automations",
+				"x-forge-method-name": "delete"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues.automations",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		],
 		"x-forge-require-confirmation": "This operation deletes the issue automation."
 	},
@@ -723,6 +733,7 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "beta",
@@ -731,8 +742,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues",
-				"x-fern-sdk-method-name": "ungroup"
+				"x-fern-sdk-method-name": "ungroup",
+				"x-forge-group-name": "o11y.issues",
+				"x-forge-method-name": "ungroup"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues",
+		"x-forge-method-name": "ungroup",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		],
 		"x-forge-params": {
 			"groupId": {
@@ -1249,6 +1269,7 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "beta",
@@ -1257,8 +1278,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues",
-				"x-fern-sdk-method-name": "remove"
+				"x-fern-sdk-method-name": "remove",
+				"x-forge-group-name": "o11y.issues",
+				"x-forge-method-name": "remove"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues",
+		"x-forge-method-name": "remove",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		],
 		"x-forge-params": {
 			"groupId": {
@@ -1859,6 +1889,9 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -1868,8 +1901,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues",
-				"x-fern-sdk-method-name": "list"
+				"x-fern-sdk-method-name": "list",
+				"x-forge-group-name": "o11y.issues",
+				"x-forge-method-name": "list"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/observability/issues/{issueId}": {
@@ -2362,6 +2407,9 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -2371,8 +2419,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues",
-				"x-fern-sdk-method-name": "get"
+				"x-fern-sdk-method-name": "get",
+				"x-forge-group-name": "o11y.issues",
+				"x-forge-method-name": "get"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/observability/issues/{issueId}/occurrences": {
@@ -3171,6 +3231,9 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -3180,8 +3243,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues",
-				"x-fern-sdk-method-name": "occurrences"
+				"x-fern-sdk-method-name": "occurrences",
+				"x-forge-group-name": "o11y.issues",
+				"x-forge-method-name": "occurrences"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues",
+		"x-forge-method-name": "occurrences",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		],
 		"x-forge-params": {
 			"issueId": {
@@ -3586,6 +3661,9 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -3595,8 +3673,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues.automations",
-				"x-fern-sdk-method-name": "list"
+				"x-fern-sdk-method-name": "list",
+				"x-forge-group-name": "o11y.issues.automations",
+				"x-forge-method-name": "list"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues.automations",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/observability/issues/automations/{automationId}": {
@@ -3992,6 +4082,9 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -4001,8 +4094,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues.automations",
-				"x-fern-sdk-method-name": "get"
+				"x-fern-sdk-method-name": "get",
+				"x-forge-group-name": "o11y.issues.automations",
+				"x-forge-method-name": "get"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues.automations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/observability/issues/summary": {
@@ -4331,6 +4436,9 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -4340,8 +4448,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues",
-				"x-fern-sdk-method-name": "summary"
+				"x-fern-sdk-method-name": "summary",
+				"x-forge-group-name": "o11y.issues",
+				"x-forge-method-name": "summary"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues",
+		"x-forge-method-name": "summary",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/observability/issues/{issueId}": {
@@ -4811,6 +4931,7 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "beta",
@@ -4819,8 +4940,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues",
-				"x-fern-sdk-method-name": "update"
+				"x-fern-sdk-method-name": "update",
+				"x-forge-group-name": "o11y.issues",
+				"x-forge-method-name": "update"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/observability/issues/{issueId}/notification-runs": {
@@ -5297,6 +5427,7 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "beta",
@@ -5305,8 +5436,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues",
-				"x-fern-sdk-method-name": "notify"
+				"x-fern-sdk-method-name": "notify",
+				"x-forge-group-name": "o11y.issues",
+				"x-forge-method-name": "notify"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues",
+		"x-forge-method-name": "notify",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		],
 		"x-forge-params": {
 			"issueId": {
@@ -5742,6 +5882,7 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "beta",
@@ -5750,8 +5891,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues.automations",
-				"x-fern-sdk-method-name": "create"
+				"x-fern-sdk-method-name": "create",
+				"x-forge-group-name": "o11y.issues.automations",
+				"x-forge-method-name": "create"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues.automations",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/observability/issues/groups": {
@@ -6271,6 +6421,7 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "beta",
@@ -6279,8 +6430,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues",
-				"x-fern-sdk-method-name": "group"
+				"x-fern-sdk-method-name": "group",
+				"x-forge-group-name": "o11y.issues",
+				"x-forge-method-name": "group"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues",
+		"x-forge-method-name": "group",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/observability/issues/groups/{groupId}/members": {
@@ -6805,6 +6965,7 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "beta",
@@ -6813,8 +6974,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues",
-				"x-fern-sdk-method-name": "add"
+				"x-fern-sdk-method-name": "add",
+				"x-forge-group-name": "o11y.issues",
+				"x-forge-method-name": "add"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues",
+		"x-forge-method-name": "add",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		],
 		"x-forge-params": {
 			"groupId": {
@@ -7260,6 +7430,7 @@
 			"Issues"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "beta",
@@ -7268,8 +7439,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.issues.automations",
-				"x-fern-sdk-method-name": "update"
+				"x-fern-sdk-method-name": "update",
+				"x-forge-group-name": "o11y.issues.automations",
+				"x-forge-method-name": "update"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "observability.issues.automations",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		]
 	}
 }

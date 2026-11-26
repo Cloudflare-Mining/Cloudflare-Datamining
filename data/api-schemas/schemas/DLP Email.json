@@ -363,7 +363,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.email.rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/email/account_mapping": {
 		"operationId": "dlp-email-scanner-get-account-mapping",
@@ -665,7 +671,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.email.account-mapping",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.email.account-mapping",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/email/rules": {
 		"operationId": "dlp-email-scanner-list-all-rules",
@@ -1026,7 +1039,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.email.rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/email/rules/{rule_id}": {
 		"operationId": "dlp-email-scanner-get-rule",
@@ -1393,7 +1413,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.email.rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/dlp/email/rules": {
 		"operationId": "dlp-email-scanner-update-rule-priorities",
@@ -1775,7 +1802,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
-		"x-fern-sdk-method-name": "bulk-edit"
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.email.rules",
+		"x-forge-method-name": "bulk-edit",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/dlp/email/account_mapping": {
 		"operationId": "dlp-email-scanner-create-account-mapping",
@@ -2131,7 +2164,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.email.account-mapping",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.email.account-mapping",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/dlp/email/rules": {
 		"operationId": "dlp-email-scanner-create-rule",
@@ -2583,7 +2622,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.email.rules",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/dlp/email/rules/{rule_id}": {
 		"operationId": "dlp-email-scanner-update-rule",
@@ -3044,6 +3089,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.email.rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.email.rules",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

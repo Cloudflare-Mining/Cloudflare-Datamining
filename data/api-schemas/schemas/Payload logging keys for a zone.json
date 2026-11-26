@@ -235,8 +235,9 @@
 			"pro": false
 		},
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "firewall.zone-payload-logging",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-ignore": true,
+		"x-forge-availability": "beta",
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/firewall/payload_logging/key": {
 		"operationId": "payload-logging-keys-for-a-zone-get-the-payload-logging-key",
@@ -474,8 +475,9 @@
 			"pro": false
 		},
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "firewall.zone-payload-logging",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "beta",
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/firewall/payload_logging/key": {
 		"operationId": "payload-logging-keys-for-a-zone-set-the-payload-logging-key",
@@ -735,7 +737,8 @@
 			"pro": false
 		},
 		"x-fern-availability": "beta",
-		"x-fern-sdk-group-name": "firewall.zone-payload-logging",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-ignore": true,
+		"x-forge-availability": "beta",
+		"x-forge-skip": true
 	}
 }

@@ -271,6 +271,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.tokens",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.tokens",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the build token. Builds that use it will fail to deploy."
 	},
 	"GET /accounts/{account_id}/builds/tokens": {
@@ -537,12 +543,21 @@
 			"Build Tokens"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.tokens",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.tokens",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"POST /accounts/{account_id}/builds/tokens": {
 		"operationId": "createBuildToken",
@@ -792,6 +807,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.tokens",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.tokens",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	}
 }

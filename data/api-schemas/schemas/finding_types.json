@@ -693,11 +693,19 @@
 			"finding_types"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.finding-types",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types": {
 		"operationId": "ListFindingTypes",
@@ -1496,12 +1504,23 @@
 			"finding_types"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.finding-types",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}": {
 		"operationId": "GetFindingType",
@@ -1983,12 +2002,23 @@
 			"finding_types"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.finding-types",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}/remediation_types": {
 		"operationId": "GetRemediationTypesForFindingType",
@@ -2385,12 +2415,23 @@
 			"finding_types"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types.remediation-types",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.finding-types.remediation-types",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/finding_types": {
 		"operationId": "CreateFindingType",
@@ -3641,11 +3682,19 @@
 			"finding_types"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.finding-types",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/finding_types/validate": {
 		"operationId": "ValidateFindingType",
@@ -4506,11 +4555,19 @@
 			"finding_types"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
-		"x-fern-sdk-method-name": "validate"
+		"x-fern-sdk-method-name": "validate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.finding-types",
+		"x-forge-method-name": "validate",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}": {
 		"operationId": "UpdateFindingType",
@@ -5830,10 +5887,18 @@
 			"finding_types"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.finding-types",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.finding-types",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	}
 }

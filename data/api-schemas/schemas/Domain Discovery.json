@@ -28,7 +28,8 @@
 					"minLength": 1
 				},
 				"example": "coffee shop",
-				"x-fern-parameter-name": "query"
+				"x-fern-parameter-name": "query",
+				"x-forge-parameter-name": "query"
 			},
 			{
 				"name": "extensions",
@@ -638,7 +639,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "search"
+		"x-fern-sdk-method-name": "search",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar-sandbox.registrations",
+		"x-forge-method-name": "search"
 	},
 	"GET /accounts/{account_id}/registrar/domain-search": {
 		"operationId": "registrar-domain-discovery-search",
@@ -669,7 +673,8 @@
 					"minLength": 1
 				},
 				"example": "coffee shop",
-				"x-fern-parameter-name": "query"
+				"x-fern-parameter-name": "query",
+				"x-forge-parameter-name": "query"
 			},
 			{
 				"name": "extensions",
@@ -1279,7 +1284,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "search"
+		"x-fern-sdk-method-name": "search",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "search"
 	},
 	"POST /accounts/{account_id}/registrar-sandbox/domain-check": {
 		"operationId": "sandbox-registrar-domain-discovery-check",
@@ -1943,6 +1951,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
 		"x-fern-sdk-method-name": "check",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar-sandbox.registrations",
+		"x-forge-method-name": "check",
 		"x-forge-params": {
 			"domains": {
 				"positional": true
@@ -2611,6 +2622,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
 		"x-fern-sdk-method-name": "check",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "check",
 		"x-forge-params": {
 			"domains": {
 				"positional": true
@@ -3559,6 +3573,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "transfer-check"
+		"x-fern-sdk-method-name": "transfer-check",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "transfer-check"
 	}
 }

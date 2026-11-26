@@ -419,7 +419,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tcp-resets-timeouts",
-		"x-fern-sdk-method-name": "summary"
+		"x-fern-sdk-method-name": "summary",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.tcp-resets-timeouts",
+		"x-forge-method-name": "summary",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/tcp_resets_timeouts/timeseries_groups": {
 		"operationId": "radar-get-tcp-resets-timeouts-timeseries-group",
@@ -892,6 +899,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.tcp-resets-timeouts",
-		"x-fern-sdk-method-name": "timeseries-groups"
+		"x-fern-sdk-method-name": "timeseries-groups",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.tcp-resets-timeouts",
+		"x-forge-method-name": "timeseries-groups",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	}
 }

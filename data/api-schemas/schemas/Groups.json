@@ -95,7 +95,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members/{member_id}": {
 		"operationId": "delete_GroupMemberDelete",
@@ -202,7 +208,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups.members",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.datasets.access.groups.members",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups": {
 		"operationId": "get_GroupList",
@@ -318,7 +330,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
 		"operationId": "get_GroupRead",
@@ -475,7 +494,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members": {
 		"operationId": "get_GroupMemberList",
@@ -597,7 +623,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups.members",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.datasets.access.groups.members",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/-/groups": {
 		"operationId": "post_GroupCreate",
@@ -733,7 +766,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members": {
 		"operationId": "post_GroupMemberCreate",
@@ -769,7 +809,8 @@
 							"accountId": {
 								"type": "string",
 								"example": "123",
-								"x-fern-property-name": "accountId_body"
+								"x-fern-property-name": "accountId_body",
+								"x-forge-property-name": "accountId_body"
 							},
 							"accountTag": {
 								"type": "string",
@@ -872,7 +913,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups.members",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.datasets.access.groups.members",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
 		"operationId": "put_GroupUpdate",
@@ -1016,6 +1064,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.datasets.access.groups",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	}
 }

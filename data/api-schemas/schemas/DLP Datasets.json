@@ -155,7 +155,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.datasets",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.datasets",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/datasets": {
 		"operationId": "dlp-datasets-read-all",
@@ -540,7 +546,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.datasets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.datasets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/datasets/{dataset_id}": {
 		"operationId": "dlp-datasets-read",
@@ -931,7 +944,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.datasets",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.datasets",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets": {
 		"operationId": "dlp-datasets-create",
@@ -1382,7 +1402,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.datasets",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.datasets",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload": {
 		"operationId": "dlp-datasets-create-version",
@@ -1707,7 +1733,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.datasets",
-		"x-fern-sdk-method-name": "prepare-upload"
+		"x-fern-sdk-method-name": "prepare-upload",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.datasets",
+		"x-forge-method-name": "prepare-upload",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload/{version}": {
 		"operationId": "dlp-datasets-upload-version",
@@ -1739,7 +1771,8 @@
 					"type": "integer",
 					"format": "int64"
 				},
-				"x-fern-parameter-name": "dataset-version"
+				"x-fern-parameter-name": "dataset-version",
+				"x-forge-parameter-name": "dataset-version"
 			}
 		],
 		"requestBody": {
@@ -2119,7 +2152,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.datasets",
-		"x-fern-sdk-method-name": "upload"
+		"x-fern-sdk-method-name": "upload",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.datasets",
+		"x-forge-method-name": "upload",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}": {
 		"operationId": "dlp-datasets-define-columns",
@@ -2151,7 +2190,8 @@
 					"type": "integer",
 					"format": "int64"
 				},
-				"x-fern-parameter-name": "dataset-version"
+				"x-fern-parameter-name": "dataset-version",
+				"x-forge-parameter-name": "dataset-version"
 			}
 		],
 		"requestBody": {
@@ -2485,7 +2525,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.datasets",
-		"x-fern-sdk-method-name": "define-columns"
+		"x-fern-sdk-method-name": "define-columns",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.datasets",
+		"x-forge-method-name": "define-columns",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/versions/{version}/entries/{entry_id}": {
 		"operationId": "dlp-datasets-upload-dataset-column",
@@ -2517,7 +2564,8 @@
 					"type": "integer",
 					"format": "int64"
 				},
-				"x-fern-parameter-name": "dataset-version"
+				"x-fern-parameter-name": "dataset-version",
+				"x-forge-parameter-name": "dataset-version"
 			},
 			{
 				"name": "entry_id",
@@ -2808,7 +2856,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.datasets",
-		"x-fern-sdk-method-name": "upload-column"
+		"x-fern-sdk-method-name": "upload-column",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.datasets",
+		"x-forge-method-name": "upload-column",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /accounts/{account_id}/dlp/datasets/{dataset_id}": {
 		"operationId": "dlp-datasets-update",
@@ -3225,6 +3280,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.datasets",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.datasets",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

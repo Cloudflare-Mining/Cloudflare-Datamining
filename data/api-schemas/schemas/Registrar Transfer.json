@@ -504,7 +504,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "get-transfer-status"
+		"x-fern-sdk-method-name": "get-transfer-status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "get-transfer-status"
 	},
 	"POST /accounts/{account_id}/registrar/registrations/{domain_name}/transfer-in": {
 		"operationId": "registrar-domain-transfer-in-create",
@@ -1491,6 +1494,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "transfer-in"
+		"x-fern-sdk-method-name": "transfer-in",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "transfer-in"
 	}
 }

@@ -255,6 +255,7 @@
 			"Vectorize Beta (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfDeprecation": {
@@ -271,9 +272,18 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "vectorize.deprecated-indexes",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "vectorize.deprecated-indexes",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
-		}
+		},
+		"x-sunset": "2030-01-01T00:00:00Z"
 	},
 	"GET /accounts/{account_id}/vectorize/indexes": {
 		"operationId": "vectorize-(-deprecated)-list-vectorize-indexes",
@@ -579,6 +589,7 @@
 			"Vectorize Beta (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
@@ -596,9 +607,19 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "vectorize.deprecated-indexes",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "vectorize.deprecated-indexes",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
-		}
+		},
+		"x-sunset": "2030-01-01T00:00:00Z"
 	},
 	"GET /accounts/{account_id}/vectorize/indexes/{index_name}": {
 		"operationId": "vectorize-(-deprecated)-get-vectorize-index",
@@ -934,6 +955,7 @@
 			"Vectorize Beta (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
@@ -951,9 +973,19 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "vectorize.deprecated-indexes",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "vectorize.deprecated-indexes",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
-		}
+		},
+		"x-sunset": "2030-01-01T00:00:00Z"
 	},
 	"POST /accounts/{account_id}/vectorize/indexes": {
 		"operationId": "vectorize-(-deprecated)-create-vectorize-index",
@@ -1037,7 +1069,8 @@
 										]
 									}
 								],
-								"x-fern-property-name": "index-config"
+								"x-fern-property-name": "index-config",
+								"x-forge-property-name": "index-config"
 							},
 							"description": {
 								"description": "Specifies the description of the index.",
@@ -1364,6 +1397,7 @@
 			"Vectorize Beta (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfDeprecation": {
@@ -1380,9 +1414,18 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "vectorize.deprecated-indexes",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "vectorize.deprecated-indexes",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
-		}
+		},
+		"x-sunset": "2030-01-01T00:00:00Z"
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/delete-by-ids": {
 		"operationId": "vectorize-(-deprecated)-delete-vectors-by-id",
@@ -1684,6 +1727,7 @@
 			"Vectorize Beta (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfDeprecation": {
@@ -1695,9 +1739,18 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "vectorize.deprecated-indexes.delete-by.ids",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "vectorize.deprecated-indexes.delete-by.ids",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
-		}
+		},
+		"x-sunset": "2030-01-01T00:00:00Z"
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/get-by-ids": {
 		"operationId": "vectorize-(-deprecated)-get-vectors-by-id",
@@ -2012,6 +2065,7 @@
 			"Vectorize Beta (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
@@ -2024,9 +2078,19 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "vectorize.deprecated-indexes.get-by.ids",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "vectorize.deprecated-indexes.get-by.ids",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
-		}
+		},
+		"x-sunset": "2030-01-01T00:00:00Z"
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/insert": {
 		"operationId": "vectorize-(-deprecated)-insert-vector",
@@ -2315,6 +2379,7 @@
 			"Vectorize Beta (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfDeprecation": {
@@ -2331,9 +2396,18 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "vectorize.deprecated-indexes.insert",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "vectorize.deprecated-indexes.insert",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
-		}
+		},
+		"x-sunset": "2030-01-01T00:00:00Z"
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/query": {
 		"operationId": "vectorize-(-deprecated)-query-vector",
@@ -2680,6 +2754,7 @@
 			"Vectorize Beta (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
@@ -2697,9 +2772,19 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "vectorize.deprecated-indexes.query",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "vectorize.deprecated-indexes.query",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
-		}
+		},
+		"x-sunset": "2030-01-01T00:00:00Z"
 	},
 	"POST /accounts/{account_id}/vectorize/indexes/{index_name}/upsert": {
 		"operationId": "vectorize-(-deprecated)-upsert-vector",
@@ -2988,6 +3073,7 @@
 			"Vectorize Beta (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfDeprecation": {
@@ -2999,9 +3085,18 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "vectorize.deprecated-indexes.upsert",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "vectorize.deprecated-indexes.upsert",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
-		}
+		},
+		"x-sunset": "2030-01-01T00:00:00Z"
 	},
 	"PUT /accounts/{account_id}/vectorize/indexes/{index_name}": {
 		"operationId": "vectorize-(-deprecated)-update-vectorize-index",
@@ -3358,6 +3453,7 @@
 			"Vectorize Beta (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfDeprecation": {
@@ -3374,8 +3470,17 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "vectorize.deprecated-indexes",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "vectorize.deprecated-indexes",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
-		}
+		},
+		"x-sunset": "2030-01-01T00:00:00Z"
 	}
 }

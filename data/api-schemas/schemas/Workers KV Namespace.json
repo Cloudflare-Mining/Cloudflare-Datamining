@@ -221,6 +221,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.namespaces",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.namespaces",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the selected Workers KV namespace and all of its key-value pairs."
 	},
 	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk": {
@@ -507,7 +513,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "kv.bulk-deprecated",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "kv.bulk-deprecated",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.write"
+		],
+		"x-forge-skip": true
 	},
 	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"operationId": "workers-kv-namespace-delete-key-value-pair",
@@ -742,6 +755,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.keys",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the selected key-value pair from the Workers KV namespace."
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces": {
@@ -1078,12 +1097,21 @@
 			"Workers KV Namespace"
 		],
 		"x-api-token-group": [
+			"Workers KV Storage Metadata Read",
 			"Workers KV Storage Write",
 			"Workers KV Storage Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.namespaces",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.namespaces",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.metadata_read",
+			"workers-kv-storage.read",
+			"workers-kv-storage.write"
+		]
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
 		"operationId": "workers-kv-namespace-get-a-namespace",
@@ -1347,12 +1375,21 @@
 			"Workers KV Namespace"
 		],
 		"x-api-token-group": [
+			"Workers KV Storage Metadata Read",
 			"Workers KV Storage Write",
 			"Workers KV Storage Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.namespaces",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.namespaces",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.metadata_read",
+			"workers-kv-storage.read",
+			"workers-kv-storage.write"
+		]
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/keys": {
 		"operationId": "workers-kv-namespace-list-a-namespace'-s-keys",
@@ -1683,7 +1720,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.keys",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.read",
+			"workers-kv-storage.write"
+		]
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/metadata/{key_name}": {
 		"operationId": "workers-kv-namespace-read-the-metadata-for-a-key",
@@ -1949,7 +1993,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.metadata",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.metadata",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.read",
+			"workers-kv-storage.write"
+		]
 	},
 	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"operationId": "workers-kv-namespace-read-key-value-pair",
@@ -2123,7 +2174,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.keys",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.read",
+			"workers-kv-storage.write"
+		]
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces": {
 		"operationId": "workers-kv-namespace-create-a-namespace",
@@ -2169,7 +2227,8 @@
 								"enum": [
 									"instant"
 								],
-								"x-fern-property-name": "namespaceMode"
+								"x-fern-property-name": "namespaceMode",
+								"x-forge-property-name": "namespaceMode"
 							},
 							"title": {
 								"description": "Human-readable string name for a Workers KV namespace.",
@@ -2420,7 +2479,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.namespaces",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.namespaces",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.write"
+		]
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/delete": {
 		"operationId": "workers-kv-namespace-delete-multiple-key-value-pairs",
@@ -2705,6 +2770,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
 		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.keys",
+		"x-forge-method-name": "bulk-delete",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the specified keys and their values from the Workers KV namespace."
 	},
 	"POST /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk/get": {
@@ -3118,7 +3189,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
-		"x-fern-sdk-method-name": "bulk-get"
+		"x-fern-sdk-method-name": "bulk-get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.keys",
+		"x-forge-method-name": "bulk-get",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.read",
+			"workers-kv-storage.write"
+		]
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
 		"operationId": "workers-kv-namespace-rename-a-namespace",
@@ -3411,7 +3489,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.namespaces",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.namespaces",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.write"
+		]
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk": {
 		"operationId": "workers-kv-namespace-write-multiple-key-value-pairs",
@@ -3762,7 +3846,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
-		"x-fern-sdk-method-name": "bulk-put"
+		"x-fern-sdk-method-name": "bulk-put",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.keys",
+		"x-forge-method-name": "bulk-put",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.write"
+		]
 	},
 	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"operationId": "workers-kv-namespace-write-key-value-pair-with-metadata",
@@ -4102,6 +4192,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "kv.keys",
-		"x-fern-sdk-method-name": "put"
+		"x-fern-sdk-method-name": "put",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "kv.keys",
+		"x-forge-method-name": "put",
+		"x-forge-oauth-scopes": [
+			"workers-kv-storage.write"
+		]
 	}
 }

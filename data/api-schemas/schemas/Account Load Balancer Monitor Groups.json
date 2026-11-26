@@ -388,9 +388,18 @@
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.monitor-groups",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups": {
 		"operationId": "account-load-balancer-monitor-groups-list-monitor-groups",
@@ -713,9 +722,20 @@
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.monitor-groups",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.read",
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
 		"operationId": "account-load-balancer-monitor-groups-monitor-group-details",
@@ -1015,9 +1035,20 @@
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.monitor-groups",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.read",
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}/references": {
 		"operationId": "account-load-balancer-monitor-groups-list-monitor-group-references",
@@ -1266,9 +1297,20 @@
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups.references",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.monitor-groups.references",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.read",
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
 		"operationId": "account-load-balancer-monitor-groups-patch-monitor-group",
@@ -1755,9 +1797,18 @@
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.monitor-groups",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"POST /accounts/{account_id}/load_balancers/monitor_groups": {
 		"operationId": "account-load-balancer-monitor-groups-create-monitor-group",
@@ -2234,9 +2285,18 @@
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.monitor-groups",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"PUT /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
 		"operationId": "account-load-balancer-monitor-groups-update-monitor-group",
@@ -2723,8 +2783,17 @@
 		"tags": [
 			"Account Load Balancer Monitor Groups"
 		],
+		"x-api-token-group": [
+			"Load Balancing: Monitors and Pools Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.monitor-groups",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.write"
+		]
 	}
 }

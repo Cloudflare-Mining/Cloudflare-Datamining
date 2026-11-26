@@ -412,7 +412,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "spectrum.analytics.zones.report",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "spectrum.analytics.zones.report",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /zones/{zone_id}/spectrum/analytics/aggregate/current": {
 		"operationId": "spectrum-aggregate-analytics-get-current-aggregated-analytics",
@@ -728,12 +734,21 @@
 			"Spectrum Analytics"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Analytics Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "spectrum.analytics.aggregates.currents",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "spectrum.analytics.aggregates.currents",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"analytics.read",
+			"observability.read",
+			"observability.write"
+		]
 	},
 	"GET /zones/{zone_id}/spectrum/analytics/events/bytime": {
 		"operationId": "spectrum-analytics-(-by-time)-get-analytics-by-time",
@@ -1317,12 +1332,21 @@
 			"Spectrum Analytics"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Analytics Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "spectrum.analytics.events.bytimes",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "spectrum.analytics.events.bytimes",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"analytics.read",
+			"observability.read",
+			"observability.write"
+		]
 	},
 	"GET /zones/{zone_id}/spectrum/analytics/events/summary": {
 		"operationId": "spectrum-analytics-(-summary)-get-analytics-summary",
@@ -1886,11 +1910,20 @@
 			"Spectrum Analytics"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Analytics Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "spectrum.analytics.events.summaries",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "spectrum.analytics.events.summaries",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"analytics.read",
+			"observability.read",
+			"observability.write"
+		]
 	}
 }

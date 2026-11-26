@@ -263,7 +263,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.entries.predefined",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.entries.predefined",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/dlp/entries/predefined": {
 		"operationId": "dlp-entries-create-predefined-entry",
@@ -652,6 +659,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.entries.predefined",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.entries.predefined",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	}
 }

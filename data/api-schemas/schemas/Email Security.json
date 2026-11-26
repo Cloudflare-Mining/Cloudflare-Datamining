@@ -251,6 +251,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.bulk-actions",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.bulk-actions",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "This operation permanently deletes the completed, cancelled, or failed bulk action job from all list and detail endpoints.",
 		"x-stability": "beta"
 	},
@@ -562,7 +565,8 @@
 																	"type": "string",
 																	"deprecated": true,
 																	"readOnly": true,
-																	"x-stainless-deprecation-message": "Use `completed_at` instead."
+																	"x-stainless-deprecation-message": "Use `completed_at` instead.",
+																	"x-sunset": "2026-11-01T00:00:00Z"
 																},
 																"operation": {
 																	"description": "Type of action performed.",
@@ -602,7 +606,8 @@
 															]
 														},
 														"deprecated": true,
-														"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
+														"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"alert_id": {
 														"type": "string",
@@ -763,7 +768,8 @@
 														},
 														"deprecated": true,
 														"nullable": true,
-														"x-stainless-deprecation-message": "Use the `findings` field from GET /investigate/{investigate_id}/detections instead."
+														"x-stainless-deprecation-message": "Use the `findings` field from GET /investigate/{investigate_id}/detections instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"from": {
 														"type": "string",
@@ -929,7 +935,8 @@
 														"type": "string",
 														"deprecated": true,
 														"readOnly": true,
-														"x-stainless-deprecation-message": "Use `scanned_at` instead."
+														"x-stainless-deprecation-message": "Use `scanned_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"validation": {
 														"oneOf": [
@@ -1038,7 +1045,8 @@
 													"type": "integer",
 													"deprecated": true,
 													"minimum": 0,
-													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"per_page": {
 													"description": "Number of items per page.",
@@ -1055,7 +1063,8 @@
 													"type": "integer",
 													"deprecated": true,
 													"minimum": 0,
-													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												}
 											},
 											"required": [
@@ -1200,7 +1209,8 @@
 													"type": "integer",
 													"deprecated": true,
 													"minimum": 0,
-													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"per_page": {
 													"description": "Number of items per page.",
@@ -1217,7 +1227,8 @@
 													"type": "integer",
 													"deprecated": true,
 													"minimum": 0,
-													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												}
 											},
 											"required": [
@@ -1371,6 +1382,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}": {
@@ -1488,7 +1506,8 @@
 																"type": "string",
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `completed_at` instead."
+																"x-stainless-deprecation-message": "Use `completed_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"operation": {
 																"description": "Type of action performed.",
@@ -1528,7 +1547,8 @@
 														]
 													},
 													"deprecated": true,
-													"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
+													"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"alert_id": {
 													"type": "string",
@@ -1689,7 +1709,8 @@
 													},
 													"deprecated": true,
 													"nullable": true,
-													"x-stainless-deprecation-message": "Use the `findings` field from GET /investigate/{investigate_id}/detections instead."
+													"x-stainless-deprecation-message": "Use the `findings` field from GET /investigate/{investigate_id}/detections instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"from": {
 													"type": "string",
@@ -1855,7 +1876,8 @@
 													"type": "string",
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `scanned_at` instead."
+													"x-stainless-deprecation-message": "Use `scanned_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"validation": {
 													"oneOf": [
@@ -2089,6 +2111,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/action_log": {
@@ -2465,6 +2494,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.action-log",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate.action-log",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/detections": {
@@ -3028,6 +3064,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.detections",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate.detections",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/preview": {
@@ -3281,6 +3324,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.preview",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate.preview",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/raw": {
@@ -3534,6 +3584,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.raw",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate.raw",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/trace": {
@@ -3660,7 +3717,8 @@
 																		"type": "string",
 																		"deprecated": true,
 																		"readOnly": true,
-																		"x-stainless-deprecation-message": "Use `logged_at` instead."
+																		"x-stainless-deprecation-message": "Use `logged_at` instead.",
+																		"x-sunset": "2026-11-01T00:00:00Z"
 																	}
 																}
 															},
@@ -3698,7 +3756,8 @@
 																		"type": "string",
 																		"deprecated": true,
 																		"readOnly": true,
-																		"x-stainless-deprecation-message": "Use `logged_at` instead."
+																		"x-stainless-deprecation-message": "Use `logged_at` instead.",
+																		"x-sunset": "2026-11-01T00:00:00Z"
 																	}
 																}
 															},
@@ -3860,6 +3919,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.trace",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate.trace",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk": {
@@ -4138,7 +4204,8 @@
 																"type": "boolean",
 																"default": false,
 																"deprecated": true,
-																"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
+																"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"alert_id": {
 																"description": "Alert ID of the detection to filter by.",
@@ -4327,7 +4394,8 @@
 													"type": "integer",
 													"deprecated": true,
 													"minimum": 0,
-													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"per_page": {
 													"description": "Number of items per page.",
@@ -4344,7 +4412,8 @@
 													"type": "integer",
 													"deprecated": true,
 													"minimum": 0,
-													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												}
 											},
 											"required": [
@@ -4498,6 +4567,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.bulk-actions",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.bulk-actions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}": {
@@ -4725,7 +4801,8 @@
 															"type": "boolean",
 															"default": false,
 															"deprecated": true,
-															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
+															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"alert_id": {
 															"description": "Alert ID of the detection to filter by.",
@@ -5039,6 +5116,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.bulk-actions",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.bulk-actions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages": {
@@ -5303,7 +5387,8 @@
 																			"type": "string",
 																			"deprecated": true,
 																			"readOnly": true,
-																			"x-stainless-deprecation-message": "Use `completed_at` instead."
+																			"x-stainless-deprecation-message": "Use `completed_at` instead.",
+																			"x-sunset": "2026-11-01T00:00:00Z"
 																		},
 																		"operation": {
 																			"description": "Type of action performed.",
@@ -5343,7 +5428,8 @@
 																	]
 																},
 																"deprecated": true,
-																"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
+																"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"alert_id": {
 																"type": "string",
@@ -5504,7 +5590,8 @@
 																},
 																"deprecated": true,
 																"nullable": true,
-																"x-stainless-deprecation-message": "Use the `findings` field from GET /investigate/{investigate_id}/detections instead."
+																"x-stainless-deprecation-message": "Use the `findings` field from GET /investigate/{investigate_id}/detections instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"from": {
 																"type": "string",
@@ -5670,7 +5757,8 @@
 																"type": "string",
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `scanned_at` instead."
+																"x-stainless-deprecation-message": "Use `scanned_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"validation": {
 																"oneOf": [
@@ -5827,7 +5915,8 @@
 													"type": "integer",
 													"deprecated": true,
 													"minimum": 0,
-													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"per_page": {
 													"description": "Number of items per page.",
@@ -5844,7 +5933,8 @@
 													"type": "integer",
 													"deprecated": true,
 													"minimum": 0,
-													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												}
 											},
 											"required": [
@@ -5998,6 +6088,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.bulk-actions.messages",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.bulk-actions.messages",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/phishguard/reports": {
@@ -6259,7 +6356,8 @@
 																"format": "date-time",
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `occurred_at` instead."
+																"x-stainless-deprecation-message": "Use `occurred_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															}
 														},
 														"required": [
@@ -6300,7 +6398,8 @@
 														"format": "date-time",
 														"deprecated": true,
 														"readOnly": true,
-														"x-stainless-deprecation-message": "Use `created_at` instead."
+														"x-stainless-deprecation-message": "Use `created_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"updated_at": {
 														"type": "string",
@@ -6463,6 +6562,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.phishguard.reports",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.phishguard.reports",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/submissions": {
@@ -6894,7 +7000,8 @@
 														"type": "string",
 														"deprecated": true,
 														"readOnly": true,
-														"x-stainless-deprecation-message": "Use `requested_at` instead."
+														"x-stainless-deprecation-message": "Use `requested_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"status": {
 														"description": "Processing status of the submission.",
@@ -7060,10 +7167,20 @@
 		"tags": [
 			"Email Security"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.submissions",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.submissions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{investigate_id}/move": {
@@ -7111,7 +7228,8 @@
 								],
 								"deprecated": true,
 								"nullable": true,
-								"x-stainless-deprecation-message": "This field is nonfunctional."
+								"x-stainless-deprecation-message": "This field is nonfunctional.",
+								"x-sunset": "2026-12-01T00:00:00Z"
 							}
 						},
 						"required": [
@@ -7228,7 +7346,8 @@
 														"type": "string",
 														"format": "date-time",
 														"deprecated": true,
-														"x-stainless-deprecation-message": "Use `completed_at` instead."
+														"x-stainless-deprecation-message": "Use `completed_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"destination": {
 														"description": "Destination folder for the message.",
@@ -7239,7 +7358,8 @@
 														"description": "Number of items moved. End of life: November 1, 2026.",
 														"type": "integer",
 														"deprecated": true,
-														"x-stainless-deprecation-message": "This field is deprecated."
+														"x-stainless-deprecation-message": "This field is deprecated.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"message_id": {
 														"description": "Message identifier.",
@@ -7415,6 +7535,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.investigate.move",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate.move",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{investigate_id}/reclassify": {
@@ -7696,6 +7823,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.investigate.reclassify",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "email-security.investigate.reclassify",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/bulk": {
@@ -7761,7 +7895,8 @@
 								],
 								"deprecated": true,
 								"nullable": true,
-								"x-stainless-deprecation-message": "This field is nonfunctional."
+								"x-stainless-deprecation-message": "This field is nonfunctional.",
+								"x-sunset": "2026-12-01T00:00:00Z"
 							},
 							"search_params": {
 								"type": "object",
@@ -7771,7 +7906,8 @@
 										"type": "boolean",
 										"default": false,
 										"deprecated": true,
-										"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
+										"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"alert_id": {
 										"description": "Alert ID of the detection to filter by.",
@@ -8131,7 +8267,8 @@
 															"type": "boolean",
 															"default": false,
 															"deprecated": true,
-															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
+															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"alert_id": {
 															"description": "Alert ID of the detection to filter by.",
@@ -8444,6 +8581,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.bulk-actions",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.bulk-actions",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel": {
@@ -8671,7 +8814,8 @@
 															"type": "boolean",
 															"default": false,
 															"deprecated": true,
-															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
+															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"alert_id": {
 															"description": "Alert ID of the detection to filter by.",
@@ -8984,6 +9128,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.bulk-actions",
 		"x-fern-sdk-method-name": "cancel",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.bulk-actions",
+		"x-forge-method-name": "cancel",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/move": {
@@ -9031,7 +9181,8 @@
 								],
 								"deprecated": true,
 								"nullable": true,
-								"x-stainless-deprecation-message": "This field is nonfunctional."
+								"x-stainless-deprecation-message": "This field is nonfunctional.",
+								"x-sunset": "2026-12-01T00:00:00Z"
 							},
 							"ids": {
 								"description": "List of message IDs to move.",
@@ -9055,7 +9206,8 @@
 								},
 								"deprecated": true,
 								"x-auditable": true,
-								"x-stainless-deprecation-message": "Use `ids` instead."
+								"x-stainless-deprecation-message": "Use `ids` instead.",
+								"x-sunset": "2026-11-01T00:00:00Z"
 							}
 						},
 						"required": [
@@ -9173,7 +9325,8 @@
 														"type": "string",
 														"format": "date-time",
 														"deprecated": true,
-														"x-stainless-deprecation-message": "Use `completed_at` instead."
+														"x-stainless-deprecation-message": "Use `completed_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"destination": {
 														"description": "Destination folder for the message.",
@@ -9184,7 +9337,8 @@
 														"description": "Number of items moved. End of life: November 1, 2026.",
 														"type": "integer",
 														"deprecated": true,
-														"x-stainless-deprecation-message": "This field is deprecated."
+														"x-stainless-deprecation-message": "This field is deprecated.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"message_id": {
 														"description": "Message identifier.",
@@ -9359,6 +9513,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate",
 		"x-fern-sdk-method-name": "move",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate",
+		"x-forge-method-name": "move",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/preview": {
@@ -9631,6 +9791,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.preview",
 		"x-fern-sdk-method-name": "generate",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate.preview",
+		"x-forge-method-name": "generate",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/release": {
@@ -9794,7 +9960,8 @@
 															}
 														],
 														"deprecated": true,
-														"x-stainless-deprecation-message": "Use `id` instead."
+														"x-stainless-deprecation-message": "Use `id` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"undelivered": {
 														"type": "array",
@@ -9952,6 +10119,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate",
 		"x-fern-sdk-method-name": "release",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.investigate",
+		"x-forge-method-name": "release",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/submissions": {
@@ -10351,6 +10524,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.submissions",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.submissions",
+		"x-forge-method-name": "create",
 		"x-stability": "beta"
 	}
 }

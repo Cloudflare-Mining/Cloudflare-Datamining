@@ -368,7 +368,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield.cache-reserve-clear",
-		"x-fern-sdk-method-name": "status"
+		"x-fern-sdk-method-name": "status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "smart-shield.cache-reserve-clear",
+		"x-forge-method-name": "status",
+		"x-forge-oauth-scopes": [
+			"zone.read",
+			"zone.write",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/smart_shield/cache_reserve_clear": {
 		"operationId": "smart-shield-settings-start-cache-reserve-clear",
@@ -725,6 +734,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield.cache-reserve-clear",
 		"x-fern-sdk-method-name": "clear",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "smart-shield.cache-reserve-clear",
+		"x-forge-method-name": "clear",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"zone-settings.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently clears Cache Reserve for this zone and cannot be undone."
 	}
 }

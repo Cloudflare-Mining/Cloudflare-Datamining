@@ -522,10 +522,20 @@
 			"Access authentication logs"
 		],
 		"x-api-token-group": [
-			"Access: Audit Logs Read"
+			"Access: Audit Logs Read",
+			"Zero Trust Read",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.logs.access-requests",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.logs.access-requests",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"access-audit-log.read",
+			"teams.read",
+			"teams.write"
+		]
 	}
 }

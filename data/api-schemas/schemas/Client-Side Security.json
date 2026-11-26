@@ -151,6 +151,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.policies",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.policies",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes the content security rule from the zone."
 	},
 	"GET /zones/{zone_id}/page_shield": {
@@ -414,7 +422,18 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.settings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.settings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"domain-page-shield.read",
+			"page-shield.read",
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/page_shield/connections": {
 		"operationId": "page-shield-list-connections",
@@ -891,7 +910,18 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.connections",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.connections",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"domain-page-shield.read",
+			"page-shield.read",
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/page_shield/connections/{connection_id}": {
 		"operationId": "page-shield-get-connection",
@@ -1224,7 +1254,18 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.connections",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.connections",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"domain-page-shield.read",
+			"page-shield.read",
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/page_shield/cookies": {
 		"operationId": "page-shield-list-cookies",
@@ -1736,7 +1777,18 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.cookies",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.cookies",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"domain-page-shield.read",
+			"page-shield.read",
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/page_shield/cookies/{cookie_id}": {
 		"operationId": "page-shield-get-cookie",
@@ -2071,7 +2123,18 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.cookies",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.cookies",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"domain-page-shield.read",
+			"page-shield.read",
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/page_shield/policies": {
 		"operationId": "page-shield-list-policies",
@@ -2416,7 +2479,18 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.policies",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.policies",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"domain-page-shield.read",
+			"page-shield.read",
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"operationId": "page-shield-get-policy",
@@ -2735,7 +2809,18 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.policies",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.policies",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"domain-page-shield.read",
+			"page-shield.read",
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/page_shield/scripts": {
 		"operationId": "page-shield-list-scripts",
@@ -3290,7 +3375,18 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.scripts",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.scripts",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"domain-page-shield.read",
+			"page-shield.read",
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/page_shield/scripts/{script_id}": {
 		"operationId": "page-shield-get-script",
@@ -3784,7 +3880,18 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.scripts",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.scripts",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"domain-page-shield.read",
+			"page-shield.read",
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/page_shield/policies": {
 		"operationId": "page-shield-create-policy",
@@ -4141,7 +4248,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.policies",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.policies",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.write"
+		]
 	},
 	"PUT /zones/{zone_id}/page_shield": {
 		"operationId": "page-shield-update-settings",
@@ -4442,7 +4557,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.settings",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.settings",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.write"
+		]
 	},
 	"PUT /zones/{zone_id}/page_shield/policies/{policy_id}": {
 		"operationId": "page-shield-update-policy",
@@ -4805,6 +4928,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "client-side-security.policies",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "client-side-security.policies",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"domain-page.shield",
+			"page.shield",
+			"zone-settings.write"
+		]
 	}
 }

@@ -271,6 +271,17 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.tail",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.tail",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete the Worker tail session."
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/tails": {
@@ -580,7 +591,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.tail",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.tail",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/tails": {
 		"operationId": "worker-tail-logs-start-tail",
@@ -885,6 +907,17 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.tail",
-		"x-fern-sdk-method-name": "start"
+		"x-fern-sdk-method-name": "start",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.tail",
+		"x-forge-method-name": "start",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	}
 }

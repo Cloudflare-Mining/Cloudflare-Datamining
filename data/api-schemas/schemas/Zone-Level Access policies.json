@@ -285,13 +285,22 @@
 			"Zone-Level Access policies"
 		],
 		"x-api-token-group": [
+			"Individual Access Policy Admin",
+			"Access: Policies Write",
 			"Access: Apps and Policies Write",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-apps.policies",
-		"x-fern-sdk-method-name": "delete"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"zone-access.write",
+			"access-policy.write",
+			"access.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}/policies": {
 		"operationId": "zone-level-access-policies-list-access-policies",
@@ -2970,15 +2979,31 @@
 			"Zone-Level Access policies"
 		],
 		"x-api-token-group": [
+			"Individual Access Policy Read",
+			"Individual Access Policy Admin",
+			"Access: Policies Write",
+			"Access: Policies Read",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-apps.policies",
-		"x-fern-sdk-method-name": "list"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"zone-access.read",
+			"access-policy.read",
+			"zone-access.write",
+			"access.read",
+			"access-policy.write",
+			"access.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}": {
 		"operationId": "zone-level-access-policies-get-an-access-policy",
@@ -5631,15 +5656,31 @@
 			"Zone-Level Access policies"
 		],
 		"x-api-token-group": [
+			"Individual Access Policy Read",
+			"Individual Access Policy Admin",
+			"Access: Policies Write",
+			"Access: Policies Read",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-apps.policies",
-		"x-fern-sdk-method-name": "get"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"zone-access.read",
+			"access-policy.read",
+			"zone-access.write",
+			"access.read",
+			"access-policy.write",
+			"access.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/access/apps/{app_id}/policies": {
 		"operationId": "zone-level-access-policies-create-an-access-policy",
@@ -10650,13 +10691,22 @@
 			"Zone-Level Access policies"
 		],
 		"x-api-token-group": [
+			"Individual Access Policy Admin",
+			"Access: Policies Write",
 			"Access: Apps and Policies Write",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-apps.policies",
-		"x-fern-sdk-method-name": "create"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"zone-access.write",
+			"access-policy.write",
+			"access.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/access/apps/{app_id}/policies/{policy_id}": {
 		"operationId": "zone-level-access-policies-update-an-access-policy",
@@ -15679,12 +15729,21 @@
 			"Zone-Level Access policies"
 		],
 		"x-api-token-group": [
+			"Individual Access Policy Admin",
+			"Access: Policies Write",
 			"Access: Apps and Policies Write",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-apps.policies",
-		"x-fern-sdk-method-name": "update"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"zone-access.write",
+			"access-policy.write",
+			"access.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	}
 }

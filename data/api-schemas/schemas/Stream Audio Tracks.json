@@ -273,6 +273,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.audio-tracks",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.audio-tracks",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		],
 		"x-forge-require-confirmation": "Permanently delete this audio track?"
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/audio": {
@@ -572,12 +578,23 @@
 			"Stream Audio Tracks"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
+			"AI Search Index Engine",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.audio-tracks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.audio-tracks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write",
+			"ai-search.index"
+		]
 	},
 	"PATCH /accounts/{account_id}/stream/{identifier}/audio/{audio_identifier}": {
 		"operationId": "edit-audio-tracks",
@@ -907,7 +924,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.audio-tracks",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.audio-tracks",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		]
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/audio/copy": {
 		"operationId": "add-audio-track",
@@ -957,7 +980,7 @@
 								"type": "string",
 								"format": "uri",
 								"example": "https://www.examplestorage.com/audio_file.mp3",
-								"x-auditable": true
+								"x-auditable": false
 							}
 						},
 						"required": [
@@ -1226,6 +1249,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.audio-tracks",
-		"x-fern-sdk-method-name": "copy"
+		"x-fern-sdk-method-name": "copy",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.audio-tracks",
+		"x-forge-method-name": "copy"
 	}
 }

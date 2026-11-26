@@ -142,13 +142,15 @@
 															"bucket": {
 																"description": "Specifies the associated R2 bucket name.",
 																"type": "string",
-																"example": "my-data-bucket"
+																"example": "my-data-bucket",
+																"x-auditable": true
 															},
 															"catalog_uri": {
 																"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
 																"type": "string",
 																"format": "uri",
-																"example": "https://catalog.cloudflarestorage.com/account123/my-data-bucket"
+																"example": "https://catalog.cloudflarestorage.com/account123/my-data-bucket",
+																"x-auditable": true
 															},
 															"credential_status": {
 																"description": "Shows the credential configuration status.",
@@ -161,7 +163,8 @@
 																		"enum": [
 																			"present",
 																			"absent"
-																		]
+																		],
+																		"x-auditable": true
 																	}
 																],
 																"nullable": true
@@ -170,12 +173,14 @@
 																"description": "Use this to uniquely identify the catalog.",
 																"type": "string",
 																"format": "uuid",
-																"example": "550e8400-e29b-41d4-a716-446655440000"
+																"example": "550e8400-e29b-41d4-a716-446655440000",
+																"x-auditable": true
 															},
 															"jurisdiction": {
 																"description": "Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.",
 																"type": "string",
-																"example": "default"
+																"example": "default",
+																"x-auditable": true
 															},
 															"maintenance_config": {
 																"description": "Configures maintenance for the catalog.",
@@ -196,7 +201,8 @@
 																						"enum": [
 																							"enabled",
 																							"disabled"
-																						]
+																						],
+																						"x-auditable": true
 																					},
 																					"target_size_mb": {
 																						"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -207,7 +213,8 @@
 																							"128",
 																							"256",
 																							"512"
-																						]
+																						],
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -219,7 +226,8 @@
 																				"description": "Scheduling interval between normal table maintenance runs.",
 																				"type": "string",
 																				"example": "1h",
-																				"pattern": "^\\d+(d|h|m|s)$"
+																				"pattern": "^\\d+(d|h|m|s)$",
+																				"x-auditable": true
 																			},
 																			"snapshot_expiration": {
 																				"description": "Configures snapshot expiration settings.",
@@ -229,14 +237,16 @@
 																						"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\nDefaults to \"7d\".\n",
 																						"type": "string",
 																						"example": "7d",
-																						"pattern": "^\\d+(d|h|m|s)$"
+																						"pattern": "^\\d+(d|h|m|s)$",
+																						"x-auditable": true
 																					},
 																					"min_snapshots_to_keep": {
 																						"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
 																						"type": "integer",
 																						"format": "int64",
 																						"example": 100,
-																						"minimum": 1
+																						"minimum": 1,
+																						"x-auditable": true
 																					},
 																					"state": {
 																						"description": "Specifies the state of maintenance operations.",
@@ -245,7 +255,8 @@
 																						"enum": [
 																							"enabled",
 																							"disabled"
-																						]
+																						],
+																						"x-auditable": true
 																					}
 																				},
 																				"required": [
@@ -262,7 +273,8 @@
 															"name": {
 																"description": "Specifies the catalog name (generated from account and bucket name).",
 																"type": "string",
-																"example": "account123_my-bucket"
+																"example": "account123_my-bucket",
+																"x-auditable": true
 															},
 															"status": {
 																"description": "Indicates the status of the catalog.",
@@ -271,7 +283,8 @@
 																"enum": [
 																	"active",
 																	"inactive"
-																]
+																],
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -465,12 +478,21 @@
 			"Basin Catalog Management"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		]
 	},
 	"GET /accounts/{account_id}/basin-catalog/{bucket_name}": {
 		"operationId": "basin-get-catalog-details",
@@ -602,13 +624,15 @@
 												"bucket": {
 													"description": "Specifies the associated R2 bucket name.",
 													"type": "string",
-													"example": "my-data-bucket"
+													"example": "my-data-bucket",
+													"x-auditable": true
 												},
 												"catalog_uri": {
 													"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
 													"type": "string",
 													"format": "uri",
-													"example": "https://catalog.cloudflarestorage.com/account123/my-data-bucket"
+													"example": "https://catalog.cloudflarestorage.com/account123/my-data-bucket",
+													"x-auditable": true
 												},
 												"credential_status": {
 													"description": "Shows the credential configuration status.",
@@ -621,7 +645,8 @@
 															"enum": [
 																"present",
 																"absent"
-															]
+															],
+															"x-auditable": true
 														}
 													],
 													"nullable": true
@@ -630,12 +655,14 @@
 													"description": "Use this to uniquely identify the catalog.",
 													"type": "string",
 													"format": "uuid",
-													"example": "550e8400-e29b-41d4-a716-446655440000"
+													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"x-auditable": true
 												},
 												"jurisdiction": {
 													"description": "Specifies the data-locality jurisdiction of the catalog. The first enable sets it, and it cannot change. Currently always `default`.",
 													"type": "string",
-													"example": "default"
+													"example": "default",
+													"x-auditable": true
 												},
 												"maintenance_config": {
 													"description": "Configures maintenance for the catalog.",
@@ -656,7 +683,8 @@
 																			"enum": [
 																				"enabled",
 																				"disabled"
-																			]
+																			],
+																			"x-auditable": true
 																		},
 																		"target_size_mb": {
 																			"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -667,7 +695,8 @@
 																				"128",
 																				"256",
 																				"512"
-																			]
+																			],
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -679,7 +708,8 @@
 																	"description": "Scheduling interval between normal table maintenance runs.",
 																	"type": "string",
 																	"example": "1h",
-																	"pattern": "^\\d+(d|h|m|s)$"
+																	"pattern": "^\\d+(d|h|m|s)$",
+																	"x-auditable": true
 																},
 																"snapshot_expiration": {
 																	"description": "Configures snapshot expiration settings.",
@@ -689,14 +719,16 @@
 																			"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\nDefaults to \"7d\".\n",
 																			"type": "string",
 																			"example": "7d",
-																			"pattern": "^\\d+(d|h|m|s)$"
+																			"pattern": "^\\d+(d|h|m|s)$",
+																			"x-auditable": true
 																		},
 																		"min_snapshots_to_keep": {
 																			"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
 																			"type": "integer",
 																			"format": "int64",
 																			"example": 100,
-																			"minimum": 1
+																			"minimum": 1,
+																			"x-auditable": true
 																		},
 																		"state": {
 																			"description": "Specifies the state of maintenance operations.",
@@ -705,7 +737,8 @@
 																			"enum": [
 																				"enabled",
 																				"disabled"
-																			]
+																			],
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -722,7 +755,8 @@
 												"name": {
 													"description": "Specifies the catalog name (generated from account and bucket name).",
 													"type": "string",
-													"example": "account123_my-bucket"
+													"example": "account123_my-bucket",
+													"x-auditable": true
 												},
 												"status": {
 													"description": "Indicates the status of the catalog.",
@@ -731,7 +765,8 @@
 													"enum": [
 														"active",
 														"inactive"
-													]
+													],
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -958,12 +993,21 @@
 			"Basin Catalog Management"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		]
 	},
 	"POST /accounts/{account_id}/basin-catalog/{bucket_name}/delete": {
 		"operationId": "basin-delete-catalog",
@@ -1002,7 +1046,9 @@
 					"type": "boolean",
 					"default": false
 				},
-				"x-fern-parameter-name": "cascade"
+				"x-auditable": true,
+				"x-fern-parameter-name": "cascade",
+				"x-forge-parameter-name": "cascade"
 			}
 		],
 		"responses": {
@@ -1115,6 +1161,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"r2-catalog.write"
+		],
 		"x-forge-require-confirmation": "This removes catalog metadata. R2 bucket objects are retained."
 	},
 	"POST /accounts/{account_id}/basin-catalog/{bucket_name}/disable": {
@@ -1367,6 +1419,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog",
 		"x-fern-sdk-method-name": "disable",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog",
+		"x-forge-method-name": "disable",
+		"x-forge-oauth-scopes": [
+			"r2-catalog.write"
+		],
 		"x-forge-require-confirmation": "This operation turns off the data catalog for the bucket. Existing namespace or table state remains, but writes stop."
 	},
 	"POST /accounts/{account_id}/basin-catalog/{bucket_name}/enable": {
@@ -1421,6 +1479,7 @@
 										"description": "Provides the Cloudflare API token for accessing R2.",
 										"type": "string",
 										"example": "your-cloudflare-api-token-here",
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									}
 								},
@@ -1517,18 +1576,21 @@
 													"description": "Specifies the Iceberg REST catalog URI that clients use to connect to the catalog.",
 													"type": "string",
 													"format": "uri",
-													"example": "https://catalog.cloudflarestorage.com/account123/my-bucket"
+													"example": "https://catalog.cloudflarestorage.com/account123/my-bucket",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Use this to uniquely identify the activated catalog.",
 													"type": "string",
 													"format": "uuid",
-													"example": "550e8400-e29b-41d4-a716-446655440000"
+													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Specifies the name of the activated catalog.",
 													"type": "string",
-													"example": "account123_my-bucket"
+													"example": "account123_my-bucket",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1796,6 +1858,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog",
-		"x-fern-sdk-method-name": "enable"
+		"x-fern-sdk-method-name": "enable",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog",
+		"x-forge-method-name": "enable",
+		"x-forge-oauth-scopes": [
+			"r2-catalog.write"
+		]
 	}
 }

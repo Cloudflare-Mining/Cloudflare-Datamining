@@ -62,16 +62,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -83,18 +73,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -168,7 +146,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.tags",
-		"x-fern-sdk-method-name": "remove"
+		"x-fern-sdk-method-name": "remove",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles.tags",
+		"x-forge-method-name": "remove",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}": {
 		"operationId": "rssFeedDelete",
@@ -223,16 +207,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -244,18 +218,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -386,6 +348,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.feeds",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-forge-require-confirmation": "This unsubscribes the account from the feed and permanently deletes its stored articles, including their extracted indicators, tags, and skill outputs."
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
@@ -440,16 +408,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -461,18 +419,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -556,6 +502,91 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Access forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_skills_disabled"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
 				"description": "Client error response."
 			}
@@ -574,6 +605,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.skills",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-forge-require-confirmation": "This permanently deletes the custom skill, removes it from every feed it is assigned to, and deletes the outputs it stored on articles."
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles": {
@@ -614,9 +651,17 @@
 				"name": "feed_id",
 				"in": "query",
 				"schema": {
-					"description": "Feed UUID filter. Omit to include articles from every account feed.",
-					"type": "string",
-					"format": "uuid"
+					"description": "Repeatable feed UUID filter. An article matches any selected feed. Omit to include articles from every account feed.",
+					"type": "array",
+					"items": {
+						"format": "uuid",
+						"type": "string"
+					},
+					"example": [
+						"550e8400-e29b-41d4-a716-446655440000"
+					],
+					"maxItems": 90,
+					"minItems": 1
 				}
 			},
 			{
@@ -754,8 +799,34 @@
 				"name": "feed_category",
 				"in": "query",
 				"schema": {
-					"description": "Exact feed-category filter after trimming. Omit to include every category.",
+					"description": "Exact match on a feed's legacy free-form category after trimming. Omit to include every category; to filter by the categories shown on feeds, use feed_category_id.",
 					"type": "string"
+				}
+			},
+			{
+				"name": "feed_category_id",
+				"in": "query",
+				"schema": {
+					"description": "Repeatable feed category UUID filter, using the ids from the feed categories list. An article matches when its feed has any selected category; feeds without a category never match.",
+					"type": "array",
+					"items": {
+						"enum": [
+							"b12a0fd6-f7b9-5393-9ef3-f888d506c550",
+							"d5b70eaa-626f-5761-b55b-6d9590df49fb",
+							"3b572d2b-890d-5286-9433-f18c85079030",
+							"17f90d3b-37d3-5241-8ad4-7d6abbc2006c",
+							"c68f28e9-7e8f-5d4b-853b-f3076893a9ee",
+							"bb0e4a94-38ab-5c14-80a7-28cee9f4b139",
+							"b1ef66d9-a73c-58dc-b269-22d34dfd11f4",
+							"ab02a976-0a20-5c76-a553-7f6325afacfe"
+						],
+						"type": "string"
+					},
+					"example": [
+						"b12a0fd6-f7b9-5393-9ef3-f888d506c550"
+					],
+					"maxItems": 8,
+					"minItems": 1
 				}
 			},
 			{
@@ -1115,7 +1186,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}": {
 		"operationId": "rssArticleGet",
@@ -1435,7 +1513,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/content": {
 		"operationId": "rssArticleContentGet",
@@ -1507,7 +1592,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
-		"x-fern-sdk-method-name": "get-content"
+		"x-fern-sdk-method-name": "get-content",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles",
+		"x-forge-method-name": "get-content",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills": {
 		"operationId": "rssArticleCustomSkillsList",
@@ -1562,16 +1654,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -1583,18 +1665,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -1685,6 +1755,91 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Access forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_skills_disabled"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
 				"description": "Client error response."
 			}
@@ -1703,7 +1858,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles.skills",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/output": {
 		"operationId": "rssArticleSkillOutputGet",
@@ -1767,16 +1929,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -1788,18 +1940,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -1922,6 +2062,91 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Access forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_skills_disabled"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
 				"description": "Client error response."
 			}
@@ -1940,7 +2165,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
-		"x-fern-sdk-method-name": "get-output"
+		"x-fern-sdk-method-name": "get-output",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles.skills",
+		"x-forge-method-name": "get-output",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/relevance/aggregate": {
 		"operationId": "rssArticleRelevanceAggregate",
@@ -2126,6 +2358,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
 		"x-fern-sdk-method-name": "aggregate-relevance",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles",
+		"x-forge-method-name": "aggregate-relevance",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/severity/aggregate": {
@@ -2346,6 +2585,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
 		"x-fern-sdk-method-name": "aggregate-severity",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles",
+		"x-forge-method-name": "aggregate-severity",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/categories": {
@@ -2452,7 +2698,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.categories",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.categories",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds": {
 		"operationId": "rssFeedList",
@@ -2575,16 +2828,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -2596,18 +2839,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -2774,16 +3005,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -2795,18 +3016,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -2822,16 +3031,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -2843,18 +3042,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -2901,7 +3088,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.feeds",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/raw": {
 		"operationId": "rssFeedRawGet",
@@ -2972,7 +3166,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "get-raw"
+		"x-fern-sdk-method-name": "get-raw",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.feeds",
+		"x-forge-method-name": "get-raw",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills": {
 		"operationId": "rssFeedSkillsGet",
@@ -3027,16 +3228,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -3048,18 +3239,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -3177,7 +3356,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds.skills",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.feeds.skills",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/indicators": {
 		"operationId": "rssArticleIndicatorList",
@@ -3416,7 +3602,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.indicators",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.indicators",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/search": {
 		"operationId": "searchThreatSignals",
@@ -3464,9 +3657,17 @@
 				"name": "feed_id",
 				"in": "query",
 				"schema": {
-					"description": "Optional feed UUID that restricts results to articles from that feed.",
-					"type": "string",
-					"format": "uuid"
+					"description": "Optional repeatable feed UUID filter, up to 40 feeds. Results come only from articles in the selected feeds.",
+					"type": "array",
+					"items": {
+						"format": "uuid",
+						"type": "string"
+					},
+					"example": [
+						"550e8400-e29b-41d4-a716-446655440000"
+					],
+					"maxItems": 40,
+					"minItems": 1
 				}
 			}
 		],
@@ -3580,7 +3781,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals",
-		"x-fern-sdk-method-name": "search"
+		"x-fern-sdk-method-name": "search",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals",
+		"x-forge-method-name": "search",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills": {
 		"operationId": "rssSkillList",
@@ -3646,16 +3854,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -3667,18 +3865,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -3813,7 +3999,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.skills",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillGet",
@@ -3867,16 +4060,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -3888,18 +4071,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -3983,6 +4154,91 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Access forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_skills_disabled"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
 				"description": "Client error response."
 			}
@@ -4001,7 +4257,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.skills",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories": {
 		"operationId": "rssSkillTagCategoriesGet",
@@ -4107,7 +4370,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills.tag-categories",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.skills.tag-categories",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles": {
 		"operationId": "rssArticleBulkMarkRead",
@@ -4181,16 +4451,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -4202,18 +4462,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -4267,7 +4515,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
-		"x-fern-sdk-method-name": "bulk-mark-read"
+		"x-fern-sdk-method-name": "bulk-mark-read",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles",
+		"x-forge-method-name": "bulk-mark-read",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}": {
 		"operationId": "rssArticleMarkRead",
@@ -4530,7 +4784,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
-		"x-fern-sdk-method-name": "mark-read"
+		"x-fern-sdk-method-name": "mark-read",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles",
+		"x-forge-method-name": "mark-read",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}": {
 		"operationId": "rssFeedUpdate",
@@ -4637,16 +4897,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -4658,18 +4908,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -4799,12 +5037,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.feeds",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}": {
 		"operationId": "rssSkillUpdate",
 		"summary": "Update Threat Signals skill",
-		"description": "Updates a Custom Skill. Managed Default Skills cannot be updated. Free Threat Signals accounts cannot update Custom Skills.",
+		"description": "Updates a Custom Skill. Managed Default Skills cannot be updated. Free Threat Signals accounts cannot update Custom Skills. Activating an inactive skill (`is_active` true) returns 403 with `errors[0].reason` `threat_signals_skill_limit` when the account is at its active Custom Skill limit, or `threat_signals_feed_skill_limit` (with `errors[0].feed_id`, `errors[0].feed_custom_skill_limit`, and `errors[0].feed_custom_skill_count`) when a feed it is assigned to is at its per-feed limit.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4833,7 +5077,8 @@
 							"config": {
 								"description": "Optional skill configuration (stored but not currently interpreted).",
 								"type": "string",
-								"x-fern-property-name": "skill-config"
+								"x-fern-property-name": "skill-config",
+								"x-forge-property-name": "skill-config"
 							},
 							"is_active": {
 								"description": "Whether the skill is active and eligible for feed assignment.",
@@ -4891,16 +5136,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -4912,18 +5147,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -5007,6 +5230,117 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Access forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_skill_count": {
+												"description": "The current count of active Custom Skills for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_skill_limit": {
+												"description": "The active Custom Skill limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"feed_custom_skill_count": {
+												"description": "The feed's current count of active Custom Skills.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"feed_custom_skill_limit": {
+												"description": "The active Custom Skill limit for one feed.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"feed_id": {
+												"description": "The feed that is at its active Custom Skill limit.",
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_skills_disabled",
+													"threat_signals_skill_limit",
+													"threat_signals_feed_skill_limit"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
 				"description": "Client error response."
 			}
@@ -5024,7 +5358,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.skills",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/reprocess": {
 		"operationId": "rssArticleReprocess",
@@ -5075,16 +5415,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -5096,18 +5426,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -5123,16 +5441,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -5144,18 +5452,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -5251,6 +5547,91 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Access forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_skill_run_disabled"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
 				"description": "Client error response."
 			}
@@ -5269,6 +5650,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles",
 		"x-fern-sdk-method-name": "reprocess",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles",
+		"x-forge-method-name": "reprocess",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/run": {
@@ -5342,16 +5729,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -5363,18 +5740,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -5390,16 +5755,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -5411,18 +5766,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -5916,6 +6259,91 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Access forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_skill_run_disabled"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
 				"description": "Client error response."
 			}
@@ -5933,7 +6361,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.skills",
-		"x-fern-sdk-method-name": "run"
+		"x-fern-sdk-method-name": "run",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles.skills",
+		"x-forge-method-name": "run",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/tag": {
 		"operationId": "rssArticleTagGenerate",
@@ -5988,16 +6422,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -6009,18 +6433,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -6110,7 +6522,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.tags",
-		"x-fern-sdk-method-name": "generate"
+		"x-fern-sdk-method-name": "generate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles.tags",
+		"x-forge-method-name": "generate",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/tags": {
 		"operationId": "rssArticleTagAdd",
@@ -6184,16 +6602,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -6205,18 +6613,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -6290,7 +6686,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.articles.tags",
-		"x-fern-sdk-method-name": "add"
+		"x-fern-sdk-method-name": "add",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.articles.tags",
+		"x-forge-method-name": "add",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds": {
 		"operationId": "rssFeedCreate",
@@ -6401,16 +6803,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -6422,18 +6814,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -6585,13 +6965,7 @@
 											"reason": {
 												"type": "string",
 												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
+													"threat_signals_feed_limit"
 												]
 											}
 										},
@@ -6608,16 +6982,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -6629,18 +6993,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -6683,16 +7035,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -6704,18 +7046,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -6731,16 +7061,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -6752,18 +7072,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -6806,16 +7114,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -6827,18 +7125,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -6854,16 +7140,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -6875,18 +7151,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -6929,7 +7193,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.feeds",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/poll": {
 		"operationId": "rssFeedPoll",
@@ -7065,12 +7335,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds",
-		"x-fern-sdk-method-name": "poll"
+		"x-fern-sdk-method-name": "poll",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.feeds",
+		"x-forge-method-name": "poll",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills": {
 		"operationId": "rssSkillCreate",
 		"summary": "Create Threat Signals skill",
-		"description": "Creates a Custom Skill for the account. Free Threat Signals accounts cannot create Custom Skills.",
+		"description": "Creates an active Custom Skill for the account. Free Threat Signals accounts cannot create Custom Skills. When the account is at its active Custom Skill limit (`cfone.threat.threat_signals_skills`), returns 403 with `errors[0].reason` `threat_signals_skill_limit`, and `errors[0].custom_skill_limit` and `errors[0].custom_skill_count` give the limit and current count. Managed Default Skills do not count.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7154,16 +7430,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -7175,18 +7441,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -7270,6 +7524,102 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Access forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"custom_skill_count": {
+												"description": "The current count of active Custom Skills for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"custom_skill_limit": {
+												"description": "The active Custom Skill limit for the account.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_skills_disabled",
+													"threat_signals_skill_limit"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
 				"description": "Client error response."
 			}
@@ -7287,12 +7637,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.skills",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills": {
 		"operationId": "rssFeedSkillsSet",
 		"summary": "Set Threat Signals feed skills",
-		"description": "Replaces the ordered custom skills assigned to a Threat Signals feed. Requires a paid Threat Signals subscription.",
+		"description": "Replaces the ordered custom skills assigned to a Threat Signals feed. Requires a paid Threat Signals subscription. Adding an active Custom Skill that would put the feed above its per-feed limit (`cfone.threat.threat_signals_active_skills_per_feed`) returns 403 with `errors[0].reason` `threat_signals_feed_skill_limit`, and `errors[0].feed_custom_skill_limit` and `errors[0].feed_custom_skill_count` give the limit and current count. Removing or reordering skills is always allowed.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -7366,16 +7722,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -7387,18 +7733,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -7456,6 +7790,106 @@
 					}
 				}
 			},
+			"403": {
+				"description": "Access forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"feed_custom_skill_count": {
+												"description": "The feed's current count of active Custom Skills.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"feed_custom_skill_limit": {
+												"description": "The active Custom Skill limit for one feed.",
+												"type": "integer",
+												"minimum": 0
+											},
+											"feed_id": {
+												"description": "The feed that is at its active Custom Skill limit.",
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											},
+											"reason": {
+												"type": "string",
+												"enum": [
+													"free_custom_skills_disabled",
+													"threat_signals_feed_skill_limit"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"expected": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												}
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
 				"description": "Client error response."
 			}
@@ -7473,7 +7907,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.feeds.skills",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.feeds.skills",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories": {
 		"operationId": "rssSkillTagCategoriesReplace",
@@ -7602,6 +8042,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-signals.skills.tag-categories",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-signals.skills.tag-categories",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	}
 }

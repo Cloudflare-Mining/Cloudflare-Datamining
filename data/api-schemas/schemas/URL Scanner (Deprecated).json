@@ -152,6 +152,8 @@
 			"URL Scanner (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -165,6 +167,16 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "url-scanner.response",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "url-scanner.response",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		},
@@ -521,6 +533,8 @@
 			"URL Scanner (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -534,6 +548,16 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "url-scanner.scan.get.urlscanner",
 		"x-fern-sdk-method-name": "scans",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "url-scanner.scan.get.urlscanner",
+		"x-forge-method-name": "scans",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		},
@@ -2087,6 +2111,8 @@
 			"URL Scanner (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -2100,6 +2126,16 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "url-scanner.scan.get.urlscanner",
 		"x-fern-sdk-method-name": "scan",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "url-scanner.scan.get.urlscanner",
+		"x-forge-method-name": "scan",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		},
@@ -2737,6 +2773,8 @@
 			"URL Scanner (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -2750,6 +2788,16 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "url-scanner.scan.har",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "url-scanner.scan.har",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		},
@@ -3058,6 +3106,8 @@
 			"URL Scanner (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -3071,6 +3121,16 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "url-scanner.scan.screenshot",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "url-scanner.scan.screenshot",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		},
@@ -3123,14 +3183,12 @@
 									"BW",
 									"BY",
 									"CA",
-									"CD",
 									"CH",
 									"CI",
 									"CL",
 									"CM",
 									"CO",
 									"CR",
-									"CW",
 									"CY",
 									"CZ",
 									"DE",
@@ -3147,17 +3205,14 @@
 									"FJ",
 									"FR",
 									"GB",
-									"GD",
 									"GE",
 									"GH",
 									"GR",
 									"GT",
-									"GU",
 									"GY",
 									"HK",
 									"HN",
 									"HR",
-									"HT",
 									"HU",
 									"ID",
 									"IE",
@@ -3178,21 +3233,17 @@
 									"LA",
 									"LB",
 									"LK",
-									"LR",
 									"LT",
 									"LU",
 									"LV",
-									"MA",
 									"MD",
 									"MG",
 									"MK",
-									"MM",
 									"MN",
 									"MO",
 									"MT",
 									"MU",
 									"MV",
-									"MW",
 									"MX",
 									"MY",
 									"MZ",
@@ -3228,7 +3279,6 @@
 									"SN",
 									"SR",
 									"TH",
-									"TJ",
 									"TN",
 									"TR",
 									"TT",
@@ -3237,7 +3287,6 @@
 									"UA",
 									"UG",
 									"US",
-									"UZ",
 									"VN",
 									"ZA",
 									"ZM",
@@ -3665,6 +3714,8 @@
 			"URL Scanner (Deprecated)"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -3678,6 +3729,16 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "url-scanner.scan",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "url-scanner.scan",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		},

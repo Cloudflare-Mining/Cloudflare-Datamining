@@ -394,7 +394,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "billing.usage",
-		"x-fern-sdk-method-name": "get-v1"
+		"x-fern-sdk-method-name": "get-v1",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "billing.usage",
+		"x-forge-method-name": "get-v1"
 	},
 	"GET /accounts/{account_id}/billable-usage/info": {
 		"operationId": "billable-usage-get-v1-account-usage-info",
@@ -642,6 +645,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "billing.usage",
-		"x-fern-sdk-method-name": "get-info-v1"
+		"x-fern-sdk-method-name": "get-info-v1",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "billing.usage",
+		"x-forge-method-name": "get-info-v1"
 	}
 }

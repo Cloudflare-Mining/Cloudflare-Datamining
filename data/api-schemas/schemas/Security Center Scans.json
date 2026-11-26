@@ -1,4 +1,331 @@
 {
+	"GET /{account_or_zone}/{account_or_zone_id}/security-center/insights/scans": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/security-center/insights/scans",
+		"summary": "Get Recent account or zone Scans",
+		"description": "Returns the most recent on-demand scans for the account or zone, up to a maximum of 5. Each scan includes its ID, start time, and current status. This includes both account or zone-wide and zone-scoped scans. Also returns quota information showing how many scans have been used and how many remain in the current 24-hour window.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The request was successful.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"quota": {
+													"description": "Quota information for on-demand scans. Scans are rate limited per account per 24-hour rolling window.",
+													"type": "object",
+													"properties": {
+														"available": {
+															"description": "The number of on-demand scans remaining in the current 24-hour window.",
+															"type": "integer",
+															"example": 2
+														},
+														"used": {
+															"description": "The number of on-demand scans initiated in the current 24-hour window.",
+															"type": "integer",
+															"example": 3
+														}
+													},
+													"required": [
+														"used",
+														"available"
+													]
+												},
+												"scans": {
+													"description": "List of on-demand scans.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"scan_id": {
+																"description": "An opaque identifier for the scan.",
+																"type": "string",
+																"example": "d5e94e48-504f-4a7f-a8c4-e0dc2e05e5f2"
+															},
+															"started_at": {
+																"description": "The time at which the scan was started, in RFC 3339 format.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2026-04-13T23:59:59Z"
+															},
+															"status": {
+																"description": "The current status of the scan.",
+																"type": "string",
+																"enum": [
+																	"in_progress",
+																	"completed"
+																]
+															}
+														},
+														"required": [
+															"scan_id",
+															"started_at",
+															"status"
+														]
+													}
+												}
+											},
+											"required": [
+												"scans",
+												"quota"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "A client error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Security Center Scans"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-insights.scans",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "security-insights.scans",
+		"x-forge-method-name": "list",
+		"x-stainless-skip": true
+	},
 	"GET /accounts/{account_id}/security-center/insights/scans": {
 		"operationId": "get-security-center-account-scans",
 		"summary": "Get Recent Account Scans",
@@ -305,8 +632,9 @@
 			"Security Center Scans"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-insights.scans",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/security-center/insights/scans": {
 		"operationId": "get-security-center-zone-scans",
@@ -618,8 +946,338 @@
 			"Zone Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-insights.zone.scans",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-settings.read",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
+	},
+	"POST /{account_or_zone}/{account_or_zone_id}/security-center/insights/scans": {
+		"operationId": "generated:post:/account_or_zone/account_or_zone_id/security-center/insights/scans",
+		"summary": "Start On-Demand account or zone Scan",
+		"description": "Initiates an on-demand security scan for the entire account or zone, scanning all zones associated with the account or zone. Rate limited to 5 scans per account or zone per 24-hour window.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request body for starting an on-demand scan. Specify issue_type or issue_class to scope the scan, or provide an empty object to scan all issue types.",
+						"oneOf": [
+							{
+								"properties": {
+									"issue_type": {
+										"type": "string",
+										"enum": [
+											"compliance_violation",
+											"email_security",
+											"exposed_infrastructure",
+											"insecure_configuration",
+											"weak_authentication",
+											"configuration_suggestion"
+										],
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"issue_type"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"issue_class": {
+										"type": "string",
+										"example": "always_use_https_not_enabled",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"issue_class"
+								],
+								"type": "object"
+							},
+							{
+								"additionalProperties": false,
+								"type": "object"
+							}
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The request was successful.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"scan_id": {
+													"description": "An opaque identifier for the initiated scan.",
+													"type": "string",
+													"example": "d5e94e48-504f-4a7f-a8c4-e0dc2e05e5f2",
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "A client error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Security Center Scans"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-insights.scans",
+		"x-fern-sdk-method-name": "start",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "security-insights.scans",
+		"x-forge-method-name": "start",
+		"x-stainless-skip": true
 	},
 	"POST /accounts/{account_id}/security-center/insights/scans": {
 		"operationId": "start-security-center-account-scan",
@@ -925,8 +1583,9 @@
 			"Security Center Scans"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-insights.scans",
-		"x-fern-sdk-method-name": "start"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/security-center/insights/scans": {
 		"operationId": "start-security-center-zone-scan",
@@ -1235,7 +1894,11 @@
 			"Zone Settings Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-insights.zone.scans",
-		"x-fern-sdk-method-name": "start"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	}
 }

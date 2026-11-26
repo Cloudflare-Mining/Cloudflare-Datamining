@@ -48,7 +48,8 @@
 					"type": "boolean",
 					"example": true
 				},
-				"x-fern-parameter-name": "allow-aliased"
+				"x-fern-parameter-name": "allow-aliased",
+				"x-forge-parameter-name": "allow-aliased"
 			}
 		],
 		"responses": {
@@ -288,7 +289,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.deployments",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.deployments",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/tails/{tail_id}": {
 		"operationId": "pages-deployment-delete-tail",
@@ -582,7 +589,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "pages.deployments.tails",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.deployments.tails",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments": {
 		"operationId": "pages-deployment-get-deployments",
@@ -838,6 +852,7 @@
 																"type": "string",
 																"example": "021e1057c18547eca7b79f2516f06o7x",
 																"nullable": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														},
@@ -965,6 +980,7 @@
 																		"value": {
 																			"description": "Secret value.",
 																			"type": "string",
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -1511,12 +1527,21 @@
 			"Pages Deployment"
 		],
 		"x-api-token-group": [
+			"Pages Metadata Read",
 			"Pages Read",
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.deployments",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.deployments",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"pages.metadata_read",
+			"page.read",
+			"page.write"
+		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}": {
 		"operationId": "pages-deployment-get-deployment-info",
@@ -1711,6 +1736,7 @@
 															"type": "string",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -1838,6 +1864,7 @@
 																	"value": {
 																		"description": "Secret value.",
 																		"type": "string",
+																		"x-forge-sensitive": true,
 																		"x-sensitive": true
 																	}
 																},
@@ -2383,12 +2410,21 @@
 			"Pages Deployment"
 		],
 		"x-api-token-group": [
+			"Pages Metadata Read",
 			"Pages Read",
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.deployments",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.deployments",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"pages.metadata_read",
+			"page.read",
+			"page.write"
+		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/history/logs": {
 		"operationId": "pages-deployment-get-deployment-logs",
@@ -2825,12 +2861,21 @@
 			"Pages Deployment"
 		],
 		"x-api-token-group": [
+			"Pages Metadata Read",
 			"Pages Read",
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.deployments.history.logs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.deployments.history.logs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"pages.metadata_read",
+			"page.read",
+			"page.write"
+		]
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments": {
 		"operationId": "pages-deployment-create-deployment",
@@ -3117,6 +3162,7 @@
 															"type": "string",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -3244,6 +3290,7 @@
 																	"value": {
 																		"description": "Secret value.",
 																		"type": "string",
+																		"x-forge-sensitive": true,
 																		"x-sensitive": true
 																	}
 																},
@@ -3793,7 +3840,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.deployments",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.deployments",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/retry": {
 		"operationId": "pages-deployment-retry-deployment",
@@ -3988,6 +4041,7 @@
 															"type": "string",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -4115,6 +4169,7 @@
 																	"value": {
 																		"description": "Secret value.",
 																		"type": "string",
+																		"x-forge-sensitive": true,
 																		"x-sensitive": true
 																	}
 																},
@@ -4664,7 +4719,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.deployments",
-		"x-fern-sdk-method-name": "retry"
+		"x-fern-sdk-method-name": "retry",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.deployments",
+		"x-forge-method-name": "retry",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/rollback": {
 		"operationId": "pages-deployment-rollback-deployment",
@@ -4859,6 +4920,7 @@
 															"type": "string",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -4986,6 +5048,7 @@
 																	"value": {
 																		"description": "Secret value.",
 																		"type": "string",
+																		"x-forge-sensitive": true,
 																		"x-sensitive": true
 																	}
 																},
@@ -5536,6 +5599,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.deployments",
 		"x-fern-sdk-method-name": "rollback",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.deployments",
+		"x-forge-method-name": "rollback",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		],
 		"x-forge-require-confirmation": "This operation rolls back the production deployment to an earlier deployment."
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/tails": {
@@ -5864,6 +5933,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "pages.deployments.tails",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.deployments.tails",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		],
+		"x-forge-skip": true
 	}
 }

@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/pay-per-use/enabled-domains": {
 		"operationId": "pay-per-use.listEnabledDomains",
 		"summary": "List enabled Pay Per Use domains",
-		"description": "Returns publisher domains associated with the requesting Pay Per Use operator through an accepted price agreement. License expiration is the earlier non-null boundary from the price agreement and publisher zone lifecycles. A future expiration remains active and is exposed to the operator. After expiration, the license remains listed as expired for one calendar month before it is omitted; an active agreement for the same domain takes precedence. The requesting account must be an active Pay Per Use operator.",
+		"description": "Returns publisher domains associated with the requesting Pay Per Use operator through an accepted price agreement. License expiration is the earlier non-null boundary from the price agreement and publisher zone lifecycles. A future expiration remains active and is exposed to the operator. After expiration, the license remains listed as expired for one calendar month before it is omitted; an active agreement for the same domain takes precedence. Report usage for these domains with url. Publisher offers are listed by the enabled publishers endpoint instead. The requesting account must be an active Pay Per Use operator.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -73,12 +73,6 @@
 															"expired"
 														]
 													},
-													"non_billable_since": {
-														"description": "When the publisher zone was classified for local-only, non-billable settlement. Null for billable zones.",
-														"type": "string",
-														"format": "date-time",
-														"nullable": true
-													},
 													"price_usd_microcents": {
 														"description": "Price of the selected accepted agreement in microcents. For an active license this is the price currently in effect; for an expired license it is the last accepted price.",
 														"type": "integer",
@@ -89,8 +83,7 @@
 													"domain",
 													"license_status",
 													"license_expires_at",
-													"price_usd_microcents",
-													"non_billable_since"
+													"price_usd_microcents"
 												]
 											}
 										}
@@ -323,6 +316,9 @@
 			"ppu_enabled_domains"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.enabled-domains",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-group-name": "pay-per-use.enabled-domains",
+		"x-forge-method-name": "list",
+		"x-stability": "beta"
 	}
 }

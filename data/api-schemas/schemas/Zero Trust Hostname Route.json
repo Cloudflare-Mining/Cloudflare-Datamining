@@ -514,6 +514,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.hostname",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes.hostname",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes a hostname route."
 	},
 	"GET /accounts/{account_id}/zerotrust/routes/hostname": {
@@ -1194,7 +1201,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.hostname",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes.hostname",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-networks.read",
+			"argotunnel.read",
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}": {
 		"operationId": "zero-trust-networks-route-hostname-get",
@@ -1712,7 +1728,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.hostname",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes.hostname",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-networks.read",
+			"argotunnel.read",
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/zerotrust/routes/hostname/{hostname_route_id}": {
 		"operationId": "zero-trust-networks-route-hostname-update",
@@ -2261,7 +2286,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.hostname",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes.hostname",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	},
 	"POST /accounts/{account_id}/zerotrust/routes/hostname": {
 		"operationId": "zero-trust-networks-route-hostname-create",
@@ -2798,6 +2830,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.hostname",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes.hostname",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	}
 }

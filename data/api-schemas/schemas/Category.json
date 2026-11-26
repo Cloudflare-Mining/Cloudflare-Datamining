@@ -100,6 +100,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -204,7 +210,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories": {
 		"operationId": "get_CategoryList",
@@ -337,7 +349,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "get_LegacyCategoryRead",
@@ -468,6 +487,13 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -592,7 +618,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories.catalog",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories.catalog",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "get_CategoryRead",
@@ -721,7 +754,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/resource-library/categories": {
 		"operationId": "getResourceLibraryCategories",
@@ -1193,7 +1233,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.categories",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.categories",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/resource-library/categories/{id}": {
 		"operationId": "getResourceLibraryCategoryById",
@@ -1492,7 +1535,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.categories",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.categories",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "patch_LegacyCategoryUpdate",
@@ -1658,6 +1704,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -1825,7 +1877,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "post_LegacyCategoryUpdate",
@@ -1993,6 +2051,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
 		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories.legacy",
+		"x-forge-method-name": "replace",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true,
 		"x-forge-sunset": {
 			"date": "2026-11-28T00:00:00Z"
 		},
@@ -2154,7 +2220,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/event-categories/by-id/{category_id}": {
 		"operationId": "post_CategoryUpdate",
@@ -2320,6 +2393,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.events.categories",
-		"x-fern-sdk-method-name": "replace"
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.events.categories",
+		"x-forge-method-name": "replace",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	}
 }

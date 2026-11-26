@@ -21,7 +21,8 @@
 					"type": "string",
 					"example": "production"
 				},
-				"x-fern-parameter-name": "namespace"
+				"x-fern-parameter-name": "namespace",
+				"x-forge-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -184,6 +185,10 @@
 		"tags": [
 			"AI Search Namespaces"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -198,6 +203,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.namespace",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.namespace",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"name": {
 				"description": "Namespace to delete."
@@ -511,6 +523,13 @@
 		"tags": [
 			"AI Search Namespaces"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -524,7 +543,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.namespace",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.namespace",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		]
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}": {
 		"operationId": "ai-search-fetch-namespace",
@@ -548,7 +577,8 @@
 					"type": "string",
 					"example": "production"
 				},
-				"x-fern-parameter-name": "namespace"
+				"x-fern-parameter-name": "namespace",
+				"x-forge-parameter-name": "namespace"
 			}
 		],
 		"responses": {
@@ -771,6 +801,13 @@
 		"tags": [
 			"AI Search Namespaces"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -785,6 +822,16 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.namespace",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.namespace",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"name": {
 				"description": "Namespace to retrieve."
@@ -815,7 +862,8 @@
 					"type": "string",
 					"example": "production"
 				},
-				"x-fern-parameter-name": "source-namespace"
+				"x-fern-parameter-name": "source-namespace",
+				"x-forge-parameter-name": "source-namespace"
 			},
 			{
 				"name": "id",
@@ -827,7 +875,8 @@
 					"type": "string",
 					"example": "my-blog"
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			}
 		],
 		"requestBody": {
@@ -841,7 +890,8 @@
 								"type": "string",
 								"example": "staging",
 								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-								"x-fern-property-name": "destination-namespace"
+								"x-fern-property-name": "destination-namespace",
+								"x-forge-property-name": "destination-namespace"
 							}
 						},
 						"required": [
@@ -1046,6 +1096,10 @@
 		"tags": [
 			"AI Search Namespaces"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -1060,6 +1114,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-search",
 		"x-fern-sdk-method-name": "move",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-search",
+		"x-forge-method-name": "move",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -1104,7 +1165,8 @@
 							"name": {
 								"type": "string",
 								"pattern": "^[a-z0-9]([a-z0-9-]{0,26}[a-z0-9])?$",
-								"x-fern-property-name": "namespace"
+								"x-fern-property-name": "namespace",
+								"x-forge-property-name": "namespace"
 							},
 							"public_endpoint_params": {
 								"type": "object",
@@ -1524,6 +1586,10 @@
 		"tags": [
 			"AI Search Namespaces"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -1538,6 +1604,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.namespace",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.namespace",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"name": {
 				"description": "Name for the new namespace.",
@@ -1567,7 +1640,8 @@
 					"type": "string",
 					"example": "production"
 				},
-				"x-fern-parameter-name": "namespace"
+				"x-fern-parameter-name": "namespace",
+				"x-forge-parameter-name": "namespace"
 			}
 		],
 		"requestBody": {
@@ -1999,6 +2073,10 @@
 		"tags": [
 			"AI Search Namespaces"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -2013,6 +2091,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.namespace",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.namespace",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"name": {
 				"description": "Namespace to update."

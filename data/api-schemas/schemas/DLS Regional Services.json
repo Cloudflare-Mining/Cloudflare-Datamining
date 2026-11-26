@@ -253,11 +253,19 @@
 			"DLS Regional Services"
 		],
 		"x-api-token-group": [
+			"DLS: Write",
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.regional-hostnames",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.regional-hostnames",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"dls.write",
+			"dns.write"
+		]
 	},
 	"GET /accounts/{account_id}/addressing/regional_hostnames/regions": {
 		"operationId": "dls-account-regional-hostnames-list-regions",
@@ -566,12 +574,23 @@
 			"DLS Regional Services"
 		],
 		"x-api-token-group": [
+			"DLS: Write",
+			"DLS: Read",
 			"DNS Read",
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.regional-hostnames.regions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.regional-hostnames.regions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"dls.read",
+			"dns.read",
+			"dls.write",
+			"dns.write"
+		]
 	},
 	"GET /zones/{zone_id}/addressing/regional_hostnames": {
 		"operationId": "dls-zone-regional-hostnames-list",
@@ -912,12 +931,23 @@
 			"DLS Regional Services"
 		],
 		"x-api-token-group": [
+			"DLS: Write",
+			"DLS: Read",
 			"DNS Read",
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.regional-hostnames",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.regional-hostnames",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"dls.read",
+			"dns.read",
+			"dls.write",
+			"dns.write"
+		]
 	},
 	"GET /zones/{zone_id}/addressing/regional_hostnames/{hostname}": {
 		"operationId": "dls-zone-regional-hostnames-fetch",
@@ -1226,12 +1256,23 @@
 			"DLS Regional Services"
 		],
 		"x-api-token-group": [
+			"DLS: Write",
+			"DLS: Read",
 			"DNS Read",
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.regional-hostnames",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.regional-hostnames",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"dls.read",
+			"dns.read",
+			"dls.write",
+			"dns.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/addressing/regional_hostnames/{hostname}": {
 		"operationId": "dls-zone-regional-hostnames-patch",
@@ -1560,11 +1601,19 @@
 			"DLS Regional Services"
 		],
 		"x-api-token-group": [
+			"DLS: Write",
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.regional-hostnames",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.regional-hostnames",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"dls.write",
+			"dns.write"
+		]
 	},
 	"POST /zones/{zone_id}/addressing/regional_hostnames": {
 		"operationId": "dls-zone-regional-hostnames-create",
@@ -1896,10 +1945,18 @@
 			"DLS Regional Services"
 		],
 		"x-api-token-group": [
+			"DLS: Write",
 			"DNS Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.regional-hostnames",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.regional-hostnames",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"dls.write",
+			"dns.write"
+		]
 	}
 }

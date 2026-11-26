@@ -44,7 +44,8 @@
 						"SIM"
 					]
 				},
-				"x-fern-parameter-name": "waf-mode"
+				"x-fern-parameter-name": "waf-mode",
+				"x-forge-parameter-name": "waf-mode"
 			},
 			{
 				"name": "group_id",
@@ -717,7 +718,14 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.waf.packages.rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.packages.rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		]
 	},
 	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}": {
 		"operationId": "waf-rules-get-a-waf-rule",
@@ -982,7 +990,14 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.waf.packages.rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.packages.rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}": {
 		"operationId": "waf-rules-update-a-waf-rule",
@@ -1049,7 +1064,8 @@
 									"on",
 									"off"
 								],
-								"x-fern-property-name": "waf-mode"
+								"x-fern-property-name": "waf-mode",
+								"x-forge-property-name": "waf-mode"
 							}
 						}
 					}
@@ -1625,6 +1641,12 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "firewall.waf.packages.rules",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.packages.rules",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		]
 	}
 }

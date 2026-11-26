@@ -244,6 +244,7 @@
 			"Domains"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-fern-audiences": [
@@ -252,6 +253,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.domains",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.domains",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will stop routing traffic on this domain to the Worker."
 	},
 	"GET /accounts/{account_id}/workers/domains": {
@@ -689,6 +697,10 @@
 			"Domains"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
@@ -697,7 +709,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.domains",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.domains",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/domains/{domain_id}": {
 		"operationId": "workers.domains.get",
@@ -1037,6 +1060,10 @@
 			"Domains"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
@@ -1045,7 +1072,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.domains",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.domains",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/domains": {
 		"operationId": "workers.domains.update",
@@ -1474,6 +1512,8 @@
 			"Domains"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-fern-audiences": [
@@ -1481,6 +1521,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.domains",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.domains",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	}
 }

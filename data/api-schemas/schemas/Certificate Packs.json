@@ -400,7 +400,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ssl.certificate-packs",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.write"
+		]
 	},
 	"GET /zones/{zone_id}/ssl/certificate_packs": {
 		"operationId": "certificate-packs-list-certificate-packs",
@@ -1634,7 +1640,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ssl.certificate-packs",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.read",
+			"ssl-and-certificates.write"
+		]
 	},
 	"GET /zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}": {
 		"operationId": "certificate-packs-get-certificate-pack",
@@ -2759,7 +2772,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ssl.certificate-packs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.read",
+			"ssl-and-certificates.write"
+		]
 	},
 	"GET /zones/{zone_id}/ssl/certificate_packs/quota": {
 		"operationId": "certificate-packs-get-certificate-pack-quotas",
@@ -3166,7 +3186,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs.quota",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ssl.certificate-packs.quota",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.read",
+			"ssl-and-certificates.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}": {
 		"operationId": "certificate-packs-restart-validation-for-advanced-certificate-manager-certificate-pack",
@@ -4309,7 +4336,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ssl.certificate-packs",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.write"
+		]
 	},
 	"POST /zones/{zone_id}/ssl/certificate_packs/order": {
 		"operationId": "certificate-packs-order-advanced-certificate-manager-certificate-pack",
@@ -4982,6 +5015,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.certificate-packs",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ssl.certificate-packs",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.write"
+		]
 	}
 }

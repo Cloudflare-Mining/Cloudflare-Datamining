@@ -302,9 +302,18 @@
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.proxy-endpoints",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints": {
 		"operationId": "zero-trust-gateway-proxy-endpoints-list-proxy-endpoints",
@@ -965,9 +974,20 @@
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.proxy-endpoints",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
 		"operationId": "zero-trust-gateway-proxy-endpoints-proxy-endpoint-details",
@@ -1500,9 +1520,20 @@
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.proxy-endpoints",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
 		"operationId": "zero-trust-gateway-proxy-endpoints-update-proxy-endpoint",
@@ -2060,9 +2091,18 @@
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.proxy-endpoints",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/gateway/proxy_endpoints": {
 		"operationId": "zero-trust-gateway-proxy-endpoints-create-proxy-endpoint",
@@ -2659,8 +2699,17 @@
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.proxy-endpoints",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

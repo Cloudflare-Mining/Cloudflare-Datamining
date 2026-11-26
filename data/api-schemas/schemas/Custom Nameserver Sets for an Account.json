@@ -282,14 +282,18 @@
 		"tags": [
 			"Custom Nameserver Sets for an Account"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.custom-ns-set.delete"
-			]
-		},
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "dns.settings.account.nameserver-sets",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "dns.settings.account.nameserver-sets",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/dns_settings/nameserver_sets": {
@@ -868,17 +872,19 @@
 			"Custom Nameserver Sets for an Account"
 		],
 		"x-api-token-group": [
-			"Account DNS Settings Write",
-			"Account DNS Settings Read"
+			"Account Settings Write",
+			"Account Settings Read"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.custom-ns-set.list"
-			]
-		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "dns.settings.account.nameserver-sets",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "dns.settings.account.nameserver-sets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"account-settings.read",
+			"account-settings.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/dns_settings/nameserver_sets/{nameserver_set_id}": {
@@ -1410,17 +1416,19 @@
 			"Custom Nameserver Sets for an Account"
 		],
 		"x-api-token-group": [
-			"Account DNS Settings Write",
-			"Account DNS Settings Read"
+			"Account Settings Write",
+			"Account Settings Read"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.custom-ns-set.read"
-			]
-		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "dns.settings.account.nameserver-sets",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "dns.settings.account.nameserver-sets",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-settings.read",
+			"account-settings.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/dns_settings/nameserver_sets/{nameserver_set_id}": {
@@ -1974,16 +1982,17 @@
 			"Custom Nameserver Sets for an Account"
 		],
 		"x-api-token-group": [
-			"Account DNS Settings Write"
+			"Account Settings Write"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.custom-ns-set.update"
-			]
-		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "dns.settings.account.nameserver-sets",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "dns.settings.account.nameserver-sets",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/dns_settings/nameserver_sets": {
@@ -2570,14 +2579,18 @@
 		"tags": [
 			"Custom Nameserver Sets for an Account"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.custom-ns-set.create"
-			]
-		},
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "dns.settings.account.nameserver-sets",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "dns.settings.account.nameserver-sets",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		],
 		"x-stability": "beta"
 	}
 }

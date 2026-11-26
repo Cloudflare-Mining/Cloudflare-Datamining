@@ -273,12 +273,20 @@
 			"Zone-Level Access identity providers"
 		],
 		"x-api-token-group": [
+			"Individual Access Identity Provider Admin",
+			"Access: Identity Providers Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-identity-providers",
-		"x-fern-sdk-method-name": "delete"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-idp.write",
+			"access-acct.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/access/identity_providers": {
 		"operationId": "zone-level-access-identity-providers-list-access-identity-providers",
@@ -497,6 +505,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -557,6 +567,8 @@
 																						"type": "string",
 																						"example": "<your client secret>",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				}
@@ -663,6 +675,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -723,6 +737,8 @@
 																						"type": "string",
 																						"example": "<your client secret>",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				}
@@ -815,6 +831,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -873,6 +891,8 @@
 																				"type": "string",
 																				"example": "<your client secret>",
 																				"writeOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		}
@@ -946,6 +966,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -1004,6 +1026,8 @@
 																				"type": "string",
 																				"example": "<your client secret>",
 																				"writeOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		}
@@ -1077,6 +1101,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -1135,6 +1161,8 @@
 																				"type": "string",
 																				"example": "<your client secret>",
 																				"writeOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		}
@@ -1208,6 +1236,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -1268,6 +1298,8 @@
 																						"type": "string",
 																						"example": "<your client secret>",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				}
@@ -1371,6 +1403,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -1429,6 +1463,8 @@
 																				"type": "string",
 																				"example": "<your client secret>",
 																				"writeOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		}
@@ -1502,6 +1538,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -1562,6 +1600,8 @@
 																						"type": "string",
 																						"example": "<your client secret>",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				}
@@ -1685,6 +1725,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -1742,6 +1784,8 @@
 																				"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
 																				"type": "string",
 																				"example": "<your client secret>",
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"issuer_url": {
@@ -1828,6 +1872,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -1888,6 +1934,8 @@
 																						"type": "string",
 																						"example": "<your client secret>",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				}
@@ -1974,6 +2022,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -2034,6 +2084,8 @@
 																						"type": "string",
 																						"example": "<your client secret>",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				}
@@ -2120,6 +2172,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -2180,6 +2234,8 @@
 																						"type": "string",
 																						"example": "<your client secret>",
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				}
@@ -2266,6 +2322,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -2467,6 +2525,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -2525,6 +2585,8 @@
 																				"type": "string",
 																				"example": "<your client secret>",
 																				"writeOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		}
@@ -2598,6 +2660,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -2726,6 +2790,8 @@
 																				"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																				"type": "string",
 																				"readOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"user_deprovision": {
@@ -2935,13 +3001,27 @@
 			"Zone-Level Access identity providers"
 		],
 		"x-api-token-group": [
+			"Individual Access Identity Provider Read",
+			"Individual Access Identity Provider Admin",
+			"Access: Identity Providers Write",
+			"Access: Identity Providers Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-identity-providers",
-		"x-fern-sdk-method-name": "list"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-idp.read",
+			"access-idp.write",
+			"access-acct.read",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/access/identity_providers/{identity_provider_id}": {
 		"operationId": "zone-level-access-identity-providers-get-an-access-identity-provider",
@@ -3135,6 +3215,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -3195,6 +3277,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -3301,6 +3385,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -3361,6 +3447,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -3453,6 +3541,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -3511,6 +3601,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -3584,6 +3676,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -3642,6 +3736,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -3715,6 +3811,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -3773,6 +3871,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -3846,6 +3946,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -3906,6 +4008,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -4009,6 +4113,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -4067,6 +4173,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -4140,6 +4248,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -4200,6 +4310,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -4323,6 +4435,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -4380,6 +4494,8 @@
 																			"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
 																			"type": "string",
 																			"example": "<your client secret>",
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"issuer_url": {
@@ -4466,6 +4582,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -4526,6 +4644,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -4612,6 +4732,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -4672,6 +4794,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -4758,6 +4882,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -4818,6 +4944,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -4904,6 +5032,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -5105,6 +5235,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -5163,6 +5295,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -5236,6 +5370,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -5444,13 +5580,27 @@
 			"Zone-Level Access identity providers"
 		],
 		"x-api-token-group": [
+			"Individual Access Identity Provider Read",
+			"Individual Access Identity Provider Admin",
+			"Access: Identity Providers Write",
+			"Access: Identity Providers Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-identity-providers",
-		"x-fern-sdk-method-name": "get"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-idp.read",
+			"access-idp.write",
+			"access-acct.read",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/access/identity_providers": {
 		"operationId": "zone-level-access-identity-providers-add-an-access-identity-provider",
@@ -5539,6 +5689,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -5599,6 +5751,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -5705,6 +5859,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -5765,6 +5921,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -5857,6 +6015,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -5915,6 +6075,8 @@
 														"type": "string",
 														"example": "<your client secret>",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -5988,6 +6150,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -6046,6 +6210,8 @@
 														"type": "string",
 														"example": "<your client secret>",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -6119,6 +6285,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -6177,6 +6345,8 @@
 														"type": "string",
 														"example": "<your client secret>",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -6250,6 +6420,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -6310,6 +6482,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -6413,6 +6587,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -6471,6 +6647,8 @@
 														"type": "string",
 														"example": "<your client secret>",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -6544,6 +6722,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -6604,6 +6784,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -6727,6 +6909,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -6784,6 +6968,8 @@
 														"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
 														"type": "string",
 														"example": "<your client secret>",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"issuer_url": {
@@ -6870,6 +7056,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -6930,6 +7118,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -7016,6 +7206,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -7076,6 +7268,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -7162,6 +7356,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -7222,6 +7418,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -7308,6 +7506,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -7509,6 +7709,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -7567,6 +7769,8 @@
 														"type": "string",
 														"example": "<your client secret>",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -7640,6 +7844,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -7878,6 +8084,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -7938,6 +8146,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -8044,6 +8254,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -8104,6 +8316,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -8196,6 +8410,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -8254,6 +8470,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -8327,6 +8545,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -8385,6 +8605,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -8458,6 +8680,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -8516,6 +8740,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -8589,6 +8815,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -8649,6 +8877,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -8752,6 +8982,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -8810,6 +9042,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -8883,6 +9117,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -8943,6 +9179,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -9066,6 +9304,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -9123,6 +9363,8 @@
 																			"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
 																			"type": "string",
 																			"example": "<your client secret>",
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"issuer_url": {
@@ -9209,6 +9451,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -9269,6 +9513,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -9355,6 +9601,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -9415,6 +9663,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -9501,6 +9751,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -9561,6 +9813,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -9647,6 +9901,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -9848,6 +10104,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -9906,6 +10164,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -9979,6 +10239,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -10187,12 +10449,20 @@
 			"Zone-Level Access identity providers"
 		],
 		"x-api-token-group": [
+			"Individual Access Identity Provider Admin",
+			"Access: Identity Providers Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-identity-providers",
-		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-idp.write",
+			"access-acct.write",
+			"teams.write"
+		],
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	},
 	"PUT /zones/{zone_id}/access/identity_providers/{identity_provider_id}": {
@@ -10294,6 +10564,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -10354,6 +10626,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -10460,6 +10734,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -10520,6 +10796,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -10612,6 +10890,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -10670,6 +10950,8 @@
 														"type": "string",
 														"example": "<your client secret>",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -10743,6 +11025,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -10801,6 +11085,8 @@
 														"type": "string",
 														"example": "<your client secret>",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -10874,6 +11160,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -10932,6 +11220,8 @@
 														"type": "string",
 														"example": "<your client secret>",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -11005,6 +11295,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -11065,6 +11357,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -11168,6 +11462,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -11226,6 +11522,8 @@
 														"type": "string",
 														"example": "<your client secret>",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -11299,6 +11597,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -11359,6 +11659,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -11482,6 +11784,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -11539,6 +11843,8 @@
 														"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
 														"type": "string",
 														"example": "<your client secret>",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"issuer_url": {
@@ -11625,6 +11931,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -11685,6 +11993,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -11771,6 +12081,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -11831,6 +12143,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -11917,6 +12231,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -11977,6 +12293,8 @@
 																"type": "string",
 																"example": "<your client secret>",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														}
@@ -12063,6 +12381,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -12264,6 +12584,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -12322,6 +12644,8 @@
 														"type": "string",
 														"example": "<your client secret>",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -12395,6 +12719,8 @@
 														"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 														"type": "string",
 														"readOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"user_deprovision": {
@@ -12633,6 +12959,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -12693,6 +13021,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -12799,6 +13129,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -12859,6 +13191,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -12951,6 +13285,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -13009,6 +13345,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -13082,6 +13420,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -13140,6 +13480,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -13213,6 +13555,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -13271,6 +13615,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -13344,6 +13690,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -13404,6 +13752,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -13507,6 +13857,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -13565,6 +13917,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -13638,6 +13992,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -13698,6 +14054,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -13821,6 +14179,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -13878,6 +14238,8 @@
 																			"description": "The client secret from the Duo Generic OIDC Relying Party metadata.",
 																			"type": "string",
 																			"example": "<your client secret>",
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"issuer_url": {
@@ -13964,6 +14326,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -14024,6 +14388,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -14110,6 +14476,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -14170,6 +14538,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -14256,6 +14626,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -14316,6 +14688,8 @@
 																					"type": "string",
 																					"example": "<your client secret>",
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				}
 																			}
@@ -14402,6 +14776,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -14603,6 +14979,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -14661,6 +15039,8 @@
 																			"type": "string",
 																			"example": "<your client secret>",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	}
@@ -14734,6 +15114,8 @@
 																			"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests. If you lose this you will need to refresh it at /access/identity_providers/:idpID/refresh_scim_secret.",
 																			"type": "string",
 																			"readOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"user_deprovision": {
@@ -14942,12 +15324,20 @@
 			"Zone-Level Access identity providers"
 		],
 		"x-api-token-group": [
+			"Individual Access Identity Provider Admin",
+			"Access: Identity Providers Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-identity-providers",
-		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-idp.write",
+			"access-acct.write",
+			"teams.write"
+		],
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	}
 }

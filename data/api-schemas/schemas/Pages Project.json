@@ -266,7 +266,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/pages/projects/{project_name}/source": {
 		"operationId": "pages-project-disconnect-project-source",
@@ -436,6 +442,7 @@
 															"type": "string",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -531,6 +538,7 @@
 																			"type": "string",
 																			"example": "021e1057c18547eca7b79f2516f06o7x",
 																			"nullable": true,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -658,6 +666,7 @@
 																					"value": {
 																						"description": "Secret value.",
 																						"type": "string",
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				},
@@ -1281,6 +1290,7 @@
 																							"value": {
 																								"description": "Secret value.",
 																								"type": "string",
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							}
 																						},
@@ -1754,6 +1764,7 @@
 																							"value": {
 																								"description": "Secret value.",
 																								"type": "string",
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							}
 																						},
@@ -2131,6 +2142,7 @@
 																			"type": "string",
 																			"example": "021e1057c18547eca7b79f2516f06o7x",
 																			"nullable": true,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -2258,6 +2270,7 @@
 																					"value": {
 																						"description": "Secret value.",
 																						"type": "string",
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				},
@@ -3001,7 +3014,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.source",
-		"x-fern-sdk-method-name": "disconnect"
+		"x-fern-sdk-method-name": "disconnect",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.source",
+		"x-forge-method-name": "disconnect",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	},
 	"GET /accounts/{account_id}/pages/projects": {
 		"operationId": "pages-project-get-projects",
@@ -3219,6 +3238,7 @@
 																"type": "string",
 																"example": "021e1057c18547eca7b79f2516f06o7x",
 																"nullable": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														},
@@ -3314,6 +3334,7 @@
 																				"type": "string",
 																				"example": "021e1057c18547eca7b79f2516f06o7x",
 																				"nullable": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		},
@@ -3441,6 +3462,7 @@
 																						"value": {
 																							"description": "Secret value.",
 																							"type": "string",
+																							"x-forge-sensitive": true,
 																							"x-sensitive": true
 																						}
 																					},
@@ -4064,6 +4086,7 @@
 																								"value": {
 																									"description": "Secret value.",
 																									"type": "string",
+																									"x-forge-sensitive": true,
 																									"x-sensitive": true
 																								}
 																							},
@@ -4537,6 +4560,7 @@
 																								"value": {
 																									"description": "Secret value.",
 																									"type": "string",
+																									"x-forge-sensitive": true,
 																									"x-sensitive": true
 																								}
 																							},
@@ -4914,6 +4938,7 @@
 																				"type": "string",
 																				"example": "021e1057c18547eca7b79f2516f06o7x",
 																				"nullable": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		},
@@ -5041,6 +5066,7 @@
 																						"value": {
 																							"description": "Secret value.",
 																							"type": "string",
+																							"x-forge-sensitive": true,
 																							"x-sensitive": true
 																						}
 																					},
@@ -5781,12 +5807,21 @@
 			"Pages Project"
 		],
 		"x-api-token-group": [
+			"Pages Metadata Read",
 			"Pages Read",
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"pages.metadata_read",
+			"page.read",
+			"page.write"
+		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}": {
 		"operationId": "pages-project-get-project",
@@ -5956,6 +5991,7 @@
 															"type": "string",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -6051,6 +6087,7 @@
 																			"type": "string",
 																			"example": "021e1057c18547eca7b79f2516f06o7x",
 																			"nullable": true,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -6178,6 +6215,7 @@
 																					"value": {
 																						"description": "Secret value.",
 																						"type": "string",
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				},
@@ -6801,6 +6839,7 @@
 																							"value": {
 																								"description": "Secret value.",
 																								"type": "string",
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							}
 																						},
@@ -7274,6 +7313,7 @@
 																							"value": {
 																								"description": "Secret value.",
 																								"type": "string",
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							}
 																						},
@@ -7651,6 +7691,7 @@
 																			"type": "string",
 																			"example": "021e1057c18547eca7b79f2516f06o7x",
 																			"nullable": true,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -7778,6 +7819,7 @@
 																					"value": {
 																						"description": "Secret value.",
 																						"type": "string",
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				},
@@ -8517,12 +8559,21 @@
 			"Pages Project"
 		],
 		"x-api-token-group": [
+			"Pages Metadata Read",
 			"Pages Read",
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"pages.metadata_read",
+			"page.read",
+			"page.write"
+		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/upload-token": {
 		"operationId": "pages-project-get-upload-token",
@@ -8651,6 +8702,7 @@
 												"jwt": {
 													"description": "Short-lived JWT used to authenticate Pages Direct Upload asset operations.",
 													"type": "string",
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											},
@@ -8801,7 +8853,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "pages.upload-token",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.upload-token",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/pages/projects/{project_name}": {
 		"operationId": "pages-project-update-project",
@@ -8880,6 +8939,7 @@
 										"type": "string",
 										"example": "021e1057c18547eca7b79f2516f06o7x",
 										"nullable": true,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									}
 								}
@@ -9090,6 +9150,7 @@
 																		"value": {
 																			"description": "Secret value.",
 																			"type": "string",
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -9567,6 +9628,7 @@
 																		"value": {
 																			"description": "Secret value.",
 																			"type": "string",
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -10133,6 +10195,7 @@
 															"type": "string",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -10228,6 +10291,7 @@
 																			"type": "string",
 																			"example": "021e1057c18547eca7b79f2516f06o7x",
 																			"nullable": true,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -10355,6 +10419,7 @@
 																					"value": {
 																						"description": "Secret value.",
 																						"type": "string",
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				},
@@ -10978,6 +11043,7 @@
 																							"value": {
 																								"description": "Secret value.",
 																								"type": "string",
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							}
 																						},
@@ -11451,6 +11517,7 @@
 																							"value": {
 																								"description": "Secret value.",
 																								"type": "string",
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							}
 																						},
@@ -11828,6 +11895,7 @@
 																			"type": "string",
 																			"example": "021e1057c18547eca7b79f2516f06o7x",
 																			"nullable": true,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -11955,6 +12023,7 @@
 																					"value": {
 																						"description": "Secret value.",
 																						"type": "string",
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				},
@@ -12698,7 +12767,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	},
 	"POST /accounts/{account_id}/pages/projects": {
 		"operationId": "pages-project-create-project",
@@ -12765,6 +12840,7 @@
 										"type": "string",
 										"example": "021e1057c18547eca7b79f2516f06o7x",
 										"nullable": true,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									}
 								}
@@ -12975,6 +13051,7 @@
 																		"value": {
 																			"description": "Secret value.",
 																			"type": "string",
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -13452,6 +13529,7 @@
 																		"value": {
 																			"description": "Secret value.",
 																			"type": "string",
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -14002,6 +14080,7 @@
 															"type": "string",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -14097,6 +14176,7 @@
 																			"type": "string",
 																			"example": "021e1057c18547eca7b79f2516f06o7x",
 																			"nullable": true,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -14224,6 +14304,7 @@
 																					"value": {
 																						"description": "Secret value.",
 																						"type": "string",
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				},
@@ -14847,6 +14928,7 @@
 																							"value": {
 																								"description": "Secret value.",
 																								"type": "string",
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							}
 																						},
@@ -15320,6 +15402,7 @@
 																							"value": {
 																								"description": "Secret value.",
 																								"type": "string",
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							}
 																						},
@@ -15697,6 +15780,7 @@
 																			"type": "string",
 																			"example": "021e1057c18547eca7b79f2516f06o7x",
 																			"nullable": true,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -15824,6 +15908,7 @@
 																					"value": {
 																						"description": "Secret value.",
 																						"type": "string",
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				},
@@ -16567,7 +16652,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/source": {
 		"operationId": "pages-project-connect-project-source",
@@ -16719,7 +16810,8 @@
 										]
 									}
 								],
-								"x-fern-property-name": "source-config"
+								"x-fern-property-name": "source-config",
+								"x-forge-property-name": "source-config"
 							},
 							"type": {
 								"description": "The source control management provider.",
@@ -16878,6 +16970,7 @@
 															"type": "string",
 															"example": "021e1057c18547eca7b79f2516f06o7x",
 															"nullable": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -16973,6 +17066,7 @@
 																			"type": "string",
 																			"example": "021e1057c18547eca7b79f2516f06o7x",
 																			"nullable": true,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -17100,6 +17194,7 @@
 																					"value": {
 																						"description": "Secret value.",
 																						"type": "string",
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				},
@@ -17723,6 +17818,7 @@
 																							"value": {
 																								"description": "Secret value.",
 																								"type": "string",
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							}
 																						},
@@ -18196,6 +18292,7 @@
 																							"value": {
 																								"description": "Secret value.",
 																								"type": "string",
+																								"x-forge-sensitive": true,
 																								"x-sensitive": true
 																							}
 																						},
@@ -18573,6 +18670,7 @@
 																			"type": "string",
 																			"example": "021e1057c18547eca7b79f2516f06o7x",
 																			"nullable": true,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		}
 																	},
@@ -18700,6 +18798,7 @@
 																					"value": {
 																						"description": "Secret value.",
 																						"type": "string",
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					}
 																				},
@@ -19443,6 +19542,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.source",
-		"x-fern-sdk-method-name": "connect"
+		"x-fern-sdk-method-name": "connect",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.source",
+		"x-forge-method-name": "connect",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	}
 }

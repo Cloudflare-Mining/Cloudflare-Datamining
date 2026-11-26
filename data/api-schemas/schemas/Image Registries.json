@@ -587,6 +587,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "containers.registries",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.registries",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"containers.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the registry configuration. Containers will no longer be able to pull images from it."
 	},
 	"GET /accounts/{account_id}/containers/registries": {
@@ -977,7 +983,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "containers.registries",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.registries",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"containers.read",
+			"containers.write"
+		]
 	},
 	"POST /accounts/{account_id}/containers/registries": {
 		"operationId": "createImageRegistry",
@@ -1675,7 +1688,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "containers.registries",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.registries",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"containers.write"
+		]
 	},
 	"POST /accounts/{account_id}/containers/registries/{domain}/credentials": {
 		"operationId": "generateImageRegistryCredentials",
@@ -2412,6 +2431,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "containers.registries.credentials",
-		"x-fern-sdk-method-name": "generate"
+		"x-fern-sdk-method-name": "generate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.registries.credentials",
+		"x-forge-method-name": "generate"
 	}
 }

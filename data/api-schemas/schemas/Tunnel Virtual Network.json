@@ -468,6 +468,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.virtual-networks",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.virtual-networks",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes a virtual network."
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks": {
@@ -1086,7 +1093,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.virtual-networks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.virtual-networks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-networks.read",
+			"argotunnel.read",
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
 		"operationId": "tunnel-virtual-network-get",
@@ -1552,7 +1568,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.virtual-networks",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.virtual-networks",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
 		"operationId": "tunnel-virtual-network-update",
@@ -2057,7 +2076,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.virtual-networks",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.virtual-networks",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	},
 	"POST /accounts/{account_id}/teamnet/virtual_networks": {
 		"operationId": "tunnel-virtual-network-create-a-virtual-network",
@@ -2562,6 +2588,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.virtual-networks",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.virtual-networks",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	}
 }

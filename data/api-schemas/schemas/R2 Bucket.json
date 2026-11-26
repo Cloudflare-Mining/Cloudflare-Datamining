@@ -208,11 +208,19 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.event-notifications",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This deletes event notification rules for the selected R2 bucket and queue. Without a request body, all rules for that bucket and queue are deleted."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}": {
@@ -386,11 +394,19 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This permanently deletes the empty R2 bucket and its configuration."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
@@ -573,6 +589,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.cors",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.cors",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "This removes the R2 bucket's CORS policy. Browser requests that depend on these cross-origin permissions may fail."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/custom_domains/{domain}": {
@@ -783,11 +802,19 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
 		"x-fern-sdk-method-name": "delete-legacy",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2.buckets.domains.custom",
+		"x-forge-method-name": "delete-legacy",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This disconnects the custom domain from the R2 bucket. Access through other enabled domains remains available."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
@@ -997,11 +1024,19 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.domains.custom",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This disconnects the custom domain from the R2 bucket. Access through other enabled domains remains available."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
@@ -1184,6 +1219,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.locks",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.locks",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "This removes all lock rules from the R2 bucket, removing their protection against object deletion and overwriting."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
@@ -1377,11 +1415,19 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.sippy",
 		"x-fern-sdk-method-name": "disable",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.sippy",
+		"x-forge-method-name": "disable",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This disables Sippy on-demand migration for the R2 bucket. Objects already copied to R2 remain in the bucket."
 	},
 	"GET /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration": {
@@ -1743,12 +1789,25 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Workers R2 Storage Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write",
 			"Workers R2 Storage Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.event-notifications",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-r2.metadata_read",
+			"workers-r2.read",
+			"workers-r2.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}": {
 		"operationId": "r2-get-event-notification-config",
@@ -2107,12 +2166,25 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Workers R2 Storage Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write",
 			"Workers R2 Storage Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.event-notifications",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-r2.metadata_read",
+			"workers-r2.read",
+			"workers-r2.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/r2/buckets": {
 		"operationId": "r2-list-buckets",
@@ -2445,12 +2517,25 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Workers R2 Storage Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write",
 			"Workers R2 Storage Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-r2.metadata_read",
+			"workers-r2.read",
+			"workers-r2.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"operationId": "r2-get-bucket",
@@ -2695,7 +2780,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
 		"operationId": "r2-get-bucket-cors-policy",
@@ -2960,7 +3048,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.cors",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.cors",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/custom_domains": {
 		"operationId": "r2-list-custom-domains-legacy",
@@ -3251,7 +3342,10 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
-		"x-fern-sdk-method-name": "list-legacy"
+		"x-fern-sdk-method-name": "list-legacy",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2.buckets.domains.custom",
+		"x-forge-method-name": "list-legacy"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom": {
 		"operationId": "r2-list-custom-domains",
@@ -3557,7 +3651,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.domains.custom",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"operationId": "r2-get-custom-domain-settings",
@@ -3848,12 +3945,25 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Workers R2 Storage Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write",
 			"Workers R2 Storage Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.domains.custom",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-r2.metadata_read",
+			"workers-r2.read",
+			"workers-r2.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed": {
 		"operationId": "r2-get-bucket-public-policy",
@@ -4072,7 +4182,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.managed",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.domains.managed",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/jobs": {
 		"operationId": "r2-list-bucket-jobs",
@@ -4535,7 +4648,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.jobs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.jobs",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/jobs/{job_id}": {
 		"operationId": "r2-get-bucket-job",
@@ -4941,7 +5057,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.jobs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.jobs",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle": {
 		"operationId": "r2-get-bucket-lifecycle-configuration",
@@ -5326,7 +5445,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.lifecycle",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.lifecycle",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads": {
 		"operationId": "r2-get-bucket-local-uploads-configuration",
@@ -5509,7 +5631,10 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "r2.buckets.local-uploads",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "r2.buckets.local-uploads",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
 		"operationId": "r2-get-bucket-lock-configuration",
@@ -5794,7 +5919,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.locks",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.locks",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"operationId": "r2-get-bucket-sippy-config",
@@ -6058,7 +6186,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.sippy",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.sippy",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"operationId": "r2-patch-bucket",
@@ -6323,7 +6454,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets",
+		"x-forge-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/r2/buckets": {
 		"operationId": "r2-create-bucket",
@@ -6597,11 +6731,19 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/custom_domains": {
 		"operationId": "r2-add-custom-domain-legacy",
@@ -6836,7 +6978,10 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
-		"x-fern-sdk-method-name": "create-legacy"
+		"x-fern-sdk-method-name": "create-legacy",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2.buckets.domains.custom",
+		"x-forge-method-name": "create-legacy"
 	},
 	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom": {
 		"operationId": "r2-add-custom-domain",
@@ -7128,7 +7273,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.domains.custom",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/jobs": {
 		"operationId": "r2-create-bucket-job",
@@ -7815,11 +7963,19 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.jobs",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.jobs",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This starts a background job that either permanently deletes every object under the given prefix (every object in the bucket for an empty prefix) or migrates every object in the bucket between storage classes."
 	},
 	"POST /accounts/{account_id}/r2/temp-access-credentials": {
@@ -8033,11 +8189,13 @@
 												"secretAccessKey": {
 													"description": "Secret access key.",
 													"type": "string",
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												},
 												"sessionToken": {
 													"description": "Security token.",
 													"type": "string",
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											},
@@ -8125,7 +8283,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.temporary-credentials",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.temporary-credentials",
+		"x-forge-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}": {
 		"operationId": "r2-put-event-notification-config",
@@ -8383,11 +8544,19 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.event-notifications",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		]
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"operationId": "r2-create-bucket-by-name",
@@ -8645,6 +8814,7 @@
 			"R2 Bucket"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-audiences": [
@@ -8652,7 +8822,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets",
-		"x-fern-sdk-method-name": "create-by-name"
+		"x-fern-sdk-method-name": "create-by-name",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets",
+		"x-forge-method-name": "create-by-name",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		]
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
 		"operationId": "r2-put-bucket-cors-policy",
@@ -8923,6 +9100,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.cors",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.cors",
+		"x-forge-method-name": "update",
 		"x-forge-require-confirmation": "This replaces the R2 bucket's CORS policy. Browser requests that relied on the previous rules may fail."
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
@@ -9207,7 +9387,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.domains.custom",
+		"x-forge-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed": {
 		"operationId": "r2-put-bucket-public-policy",
@@ -9450,6 +9633,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.domains.managed",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.domains.managed",
+		"x-forge-method-name": "update",
 		"x-forge-require-confirmation": "This changes public access to the R2 bucket through its r2.dev domain."
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle": {
@@ -9837,6 +10023,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.lifecycle",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.lifecycle",
+		"x-forge-method-name": "update",
 		"x-forge-require-confirmation": "This operation replaces all of the R2 bucket's object lifecycle rules. Rules left out of the request are removed, including the Default Multipart Abort Rule that aborts incomplete multipart uploads after 7 days, and the new rules can schedule object deletion."
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads": {
@@ -10027,7 +10216,10 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "r2.buckets.local-uploads",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "r2.buckets.local-uploads",
+		"x-forge-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
 		"operationId": "r2-put-bucket-lock-configuration",
@@ -10314,6 +10506,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.locks",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.locks",
+		"x-forge-method-name": "update",
 		"x-forge-require-confirmation": "This replaces the R2 bucket's lock rules. Removing or shortening retention can allow objects to be overwritten or deleted."
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
@@ -10389,6 +10584,7 @@
 											"secretAccessKey": {
 												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										}
@@ -10421,6 +10617,7 @@
 											"secretAccessKey": {
 												"description": "Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										}
@@ -10446,6 +10643,7 @@
 											"secretAccessKey": {
 												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										}
@@ -10466,6 +10664,7 @@
 											"privateKey": {
 												"description": "Private Key of an IAM credential (ideally scoped to a single GCS bucket).",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											},
 											"provider": {
@@ -10498,6 +10697,7 @@
 											"secretAccessKey": {
 												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										}
@@ -10525,6 +10725,7 @@
 											"secretAccessKey": {
 												"description": "Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										}
@@ -10551,6 +10752,7 @@
 											"secretAccessKey": {
 												"description": "Value of a Cloudflare API token.\nThis is the value labelled \"Secret Access Key\" when creating an API.\ntoken from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).\n\nSippy will use this token when writing objects to R2, so it is\nbest to scope this token to the bucket you're enabling Sippy for.\n",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										}
@@ -10562,6 +10764,7 @@
 											"accountKey": {
 												"description": "Access key for the Azure Storage account. Mutually exclusive with sasToken.",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											},
 											"accountName": {
@@ -10584,6 +10787,7 @@
 											"sasToken": {
 												"description": "Shared Access Signature token for the Azure Storage account. Mutually exclusive with accountKey.",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										}
@@ -10810,6 +11014,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.buckets.sippy",
-		"x-fern-sdk-method-name": "enable"
+		"x-fern-sdk-method-name": "enable",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.buckets.sippy",
+		"x-forge-method-name": "enable"
 	}
 }

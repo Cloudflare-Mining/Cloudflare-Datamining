@@ -283,7 +283,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.partners.settings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "security-insights.partners.settings",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/security-center/partners/{partner}/shadow-zones": {
 		"operationId": "get-security-center-partner-shadow-zones",
@@ -689,7 +692,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.partners.shadow-zones",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "security-insights.partners.shadow-zones",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/security-center/partners/{partner}/shadow-zones/{domain}/hosts": {
 		"operationId": "get-security-center-partner-shadow-zone-hosts",
@@ -1138,7 +1144,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.partners.shadow-zone-hosts",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "security-insights.partners.shadow-zone-hosts",
+		"x-forge-method-name": "list"
 	},
 	"GET /zones/{zone_id}/security-center/partners/{partner}/shadow-hosts": {
 		"operationId": "get-zone-security-center-partner-shadow-hosts",
@@ -1581,7 +1590,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.partners.shadow-hosts",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "security-insights.partners.shadow-hosts",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/security-center/partners/{partner}/settings": {
 		"operationId": "update-security-center-partner-settings",
@@ -1877,6 +1893,9 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "security-insights.partners.settings",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "security-insights.partners.settings",
+		"x-forge-method-name": "update"
 	}
 }

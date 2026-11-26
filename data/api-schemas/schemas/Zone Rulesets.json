@@ -15,7 +15,8 @@
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
 				},
-				"x-fern-parameter-name": "id"
+				"x-fern-parameter-name": "id",
+				"x-forge-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -37,7 +38,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"x-fern-parameter-name": "validate-only"
+				"x-fern-parameter-name": "validate-only",
+				"x-forge-parameter-name": "validate-only"
 			}
 		],
 		"responses": {
@@ -226,7 +228,10 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
 			"Response Compression Write",
+			"Account Custom Pages Write",
+			"Custom Pages Write",
 			"Config Settings Write",
 			"Dynamic URL Redirects Write",
 			"Cache Settings Write",
@@ -255,8 +260,35 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.zone",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"DELETE /zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
 		"operationId": "deleteZoneRulesetRule",
@@ -307,7 +339,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"x-fern-parameter-name": "validate-only"
+				"x-fern-parameter-name": "validate-only",
+				"x-forge-parameter-name": "validate-only"
 			}
 		],
 		"responses": {
@@ -9102,7 +9135,10 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
 			"Response Compression Write",
+			"Account Custom Pages Write",
+			"Custom Pages Write",
 			"Config Settings Write",
 			"Dynamic URL Redirects Write",
 			"Cache Settings Write",
@@ -9131,8 +9167,35 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.zone.rules",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"DELETE /zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 		"operationId": "deleteZoneRulesetVersion",
@@ -9162,7 +9225,8 @@
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
 				},
-				"x-fern-parameter-name": "id"
+				"x-fern-parameter-name": "id",
+				"x-forge-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -9184,7 +9248,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"x-fern-parameter-name": "validate-only"
+				"x-fern-parameter-name": "validate-only",
+				"x-forge-parameter-name": "validate-only"
 			}
 		],
 		"responses": {
@@ -9373,7 +9438,10 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
 			"Response Compression Write",
+			"Account Custom Pages Write",
+			"Custom Pages Write",
 			"Config Settings Write",
 			"Dynamic URL Redirects Write",
 			"Cache Settings Write",
@@ -9403,8 +9471,34 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "rulesets.zone.versions",
-		"x-fern-sdk-method-name": "delete"
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/rulesets": {
 		"operationId": "listZoneRulesets",
@@ -9996,8 +10090,14 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
+			"Account Custom Error Rules Read",
 			"Response Compression Write",
 			"Response Compression Read",
+			"Account Custom Pages Write",
+			"Account Custom Pages Read",
+			"Custom Pages Write",
+			"Custom Pages Read",
 			"Config Settings Write",
 			"Config Settings Read",
 			"Dynamic URL Redirects Write",
@@ -10046,8 +10146,59 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.zone",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.read",
+			"dynamic-redirect.read",
+			"http-ddos-managed-ruleset.read",
+			"origin.read",
+			"response-compression.read",
+			"sanitize.read",
+			"cache-settings.read",
+			"custom-errors.read",
+			"l4-ddos-managed-ruleset.read",
+			"managed-headers.read",
+			"mass-url-redirects.read",
+			"bot-management.read",
+			"account-custom-error-rules.read",
+			"custom-pages.read",
+			"logs.read",
+			"select-configuration.read",
+			"zone-transform-rules.read",
+			"account-logs.read",
+			"account-custom-pages.read",
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"magic-firewall.read",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"transform-rules.read",
+			"zone-waf.read",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"account-waf.read",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-rulesets.read",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/rulesets/{ruleset_id}": {
 		"operationId": "getZoneRuleset",
@@ -10065,7 +10216,8 @@
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
 				},
-				"x-fern-parameter-name": "id"
+				"x-fern-parameter-name": "id",
+				"x-forge-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -18860,8 +19012,14 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
+			"Account Custom Error Rules Read",
 			"Response Compression Write",
 			"Response Compression Read",
+			"Account Custom Pages Write",
+			"Account Custom Pages Read",
+			"Custom Pages Write",
+			"Custom Pages Read",
 			"Config Settings Write",
 			"Config Settings Read",
 			"Dynamic URL Redirects Write",
@@ -18910,8 +19068,59 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.zone",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.read",
+			"dynamic-redirect.read",
+			"http-ddos-managed-ruleset.read",
+			"origin.read",
+			"response-compression.read",
+			"sanitize.read",
+			"cache-settings.read",
+			"custom-errors.read",
+			"l4-ddos-managed-ruleset.read",
+			"managed-headers.read",
+			"mass-url-redirects.read",
+			"bot-management.read",
+			"account-custom-error-rules.read",
+			"custom-pages.read",
+			"logs.read",
+			"select-configuration.read",
+			"zone-transform-rules.read",
+			"account-logs.read",
+			"account-custom-pages.read",
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"magic-firewall.read",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"transform-rules.read",
+			"zone-waf.read",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"account-waf.read",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-rulesets.read",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/rulesets/{ruleset_id}/versions": {
 		"operationId": "listZoneRulesetVersions",
@@ -18929,7 +19138,8 @@
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
 				},
-				"x-fern-parameter-name": "id"
+				"x-fern-parameter-name": "id",
+				"x-forge-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -19493,8 +19703,14 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
+			"Account Custom Error Rules Read",
 			"Response Compression Write",
 			"Response Compression Read",
+			"Account Custom Pages Write",
+			"Account Custom Pages Read",
+			"Custom Pages Write",
+			"Custom Pages Read",
 			"Config Settings Write",
 			"Config Settings Read",
 			"Dynamic URL Redirects Write",
@@ -19544,8 +19760,58 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "rulesets.zone.versions",
-		"x-fern-sdk-method-name": "list"
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.read",
+			"dynamic-redirect.read",
+			"http-ddos-managed-ruleset.read",
+			"origin.read",
+			"response-compression.read",
+			"sanitize.read",
+			"cache-settings.read",
+			"custom-errors.read",
+			"l4-ddos-managed-ruleset.read",
+			"managed-headers.read",
+			"mass-url-redirects.read",
+			"bot-management.read",
+			"account-custom-error-rules.read",
+			"custom-pages.read",
+			"logs.read",
+			"select-configuration.read",
+			"zone-transform-rules.read",
+			"account-logs.read",
+			"account-custom-pages.read",
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"magic-firewall.read",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"transform-rules.read",
+			"zone-waf.read",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"account-waf.read",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-rulesets.read",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 		"operationId": "getZoneRulesetVersion",
@@ -19575,7 +19841,8 @@
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
 				},
-				"x-fern-parameter-name": "id"
+				"x-fern-parameter-name": "id",
+				"x-forge-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -28370,8 +28637,14 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
+			"Account Custom Error Rules Read",
 			"Response Compression Write",
 			"Response Compression Read",
+			"Account Custom Pages Write",
+			"Account Custom Pages Read",
+			"Custom Pages Write",
+			"Custom Pages Read",
 			"Config Settings Write",
 			"Config Settings Read",
 			"Dynamic URL Redirects Write",
@@ -28421,8 +28694,58 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "rulesets.zone.versions",
-		"x-fern-sdk-method-name": "get"
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.read",
+			"dynamic-redirect.read",
+			"http-ddos-managed-ruleset.read",
+			"origin.read",
+			"response-compression.read",
+			"sanitize.read",
+			"cache-settings.read",
+			"custom-errors.read",
+			"l4-ddos-managed-ruleset.read",
+			"managed-headers.read",
+			"mass-url-redirects.read",
+			"bot-management.read",
+			"account-custom-error-rules.read",
+			"custom-pages.read",
+			"logs.read",
+			"select-configuration.read",
+			"zone-transform-rules.read",
+			"account-logs.read",
+			"account-custom-pages.read",
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"magic-firewall.read",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"transform-rules.read",
+			"zone-waf.read",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"account-waf.read",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-rulesets.read",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}/by_tag/{rule_tag}": {
 		"operationId": "listZoneRulesetVersionRulesByTag",
@@ -28440,7 +28763,8 @@
 					"minLength": 1,
 					"title": "Category"
 				},
-				"x-fern-parameter-name": "tag"
+				"x-fern-parameter-name": "tag",
+				"x-forge-parameter-name": "tag"
 			},
 			{
 				"name": "ruleset_version",
@@ -28465,7 +28789,8 @@
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Ruleset ID"
 				},
-				"x-fern-parameter-name": "id"
+				"x-fern-parameter-name": "id",
+				"x-forge-parameter-name": "id"
 			},
 			{
 				"name": "zone_id",
@@ -37260,8 +37585,14 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
+			"Account Custom Error Rules Read",
 			"Response Compression Write",
 			"Response Compression Read",
+			"Account Custom Pages Write",
+			"Account Custom Pages Read",
+			"Custom Pages Write",
+			"Custom Pages Read",
 			"Config Settings Write",
 			"Config Settings Read",
 			"Dynamic URL Redirects Write",
@@ -37311,8 +37642,58 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "rulesets.zone.versions.by-tag",
-		"x-fern-sdk-method-name": "get"
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.read",
+			"dynamic-redirect.read",
+			"http-ddos-managed-ruleset.read",
+			"origin.read",
+			"response-compression.read",
+			"sanitize.read",
+			"cache-settings.read",
+			"custom-errors.read",
+			"l4-ddos-managed-ruleset.read",
+			"managed-headers.read",
+			"mass-url-redirects.read",
+			"bot-management.read",
+			"account-custom-error-rules.read",
+			"custom-pages.read",
+			"logs.read",
+			"select-configuration.read",
+			"zone-transform-rules.read",
+			"account-logs.read",
+			"account-custom-pages.read",
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"magic-firewall.read",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"transform-rules.read",
+			"zone-waf.read",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"account-waf.read",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-rulesets.read",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 		"operationId": "getZoneEntrypointRuleset",
@@ -37356,7 +37737,8 @@
 					],
 					"title": "Phase"
 				},
-				"x-fern-parameter-name": "phase"
+				"x-fern-parameter-name": "phase",
+				"x-forge-parameter-name": "phase"
 			},
 			{
 				"name": "zone_id",
@@ -46151,8 +46533,14 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
+			"Account Custom Error Rules Read",
 			"Response Compression Write",
 			"Response Compression Read",
+			"Account Custom Pages Write",
+			"Account Custom Pages Read",
+			"Custom Pages Write",
+			"Custom Pages Read",
 			"Config Settings Write",
 			"Config Settings Read",
 			"Dynamic URL Redirects Write",
@@ -46201,8 +46589,59 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.zone.entrypoint",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.read",
+			"dynamic-redirect.read",
+			"http-ddos-managed-ruleset.read",
+			"origin.read",
+			"response-compression.read",
+			"sanitize.read",
+			"cache-settings.read",
+			"custom-errors.read",
+			"l4-ddos-managed-ruleset.read",
+			"managed-headers.read",
+			"mass-url-redirects.read",
+			"bot-management.read",
+			"account-custom-error-rules.read",
+			"custom-pages.read",
+			"logs.read",
+			"select-configuration.read",
+			"zone-transform-rules.read",
+			"account-logs.read",
+			"account-custom-pages.read",
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"magic-firewall.read",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"transform-rules.read",
+			"zone-waf.read",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"account-waf.read",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-rulesets.read",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions": {
 		"operationId": "listZoneEntrypointRulesetVersions",
@@ -46246,7 +46685,8 @@
 					],
 					"title": "Phase"
 				},
-				"x-fern-parameter-name": "phase"
+				"x-fern-parameter-name": "phase",
+				"x-forge-parameter-name": "phase"
 			},
 			{
 				"name": "zone_id",
@@ -46810,8 +47250,14 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
+			"Account Custom Error Rules Read",
 			"Response Compression Write",
 			"Response Compression Read",
+			"Account Custom Pages Write",
+			"Account Custom Pages Read",
+			"Custom Pages Write",
+			"Custom Pages Read",
 			"Config Settings Write",
 			"Config Settings Read",
 			"Dynamic URL Redirects Write",
@@ -46861,8 +47307,58 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "rulesets.zone.entrypoint.versions",
-		"x-fern-sdk-method-name": "list"
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.read",
+			"dynamic-redirect.read",
+			"http-ddos-managed-ruleset.read",
+			"origin.read",
+			"response-compression.read",
+			"sanitize.read",
+			"cache-settings.read",
+			"custom-errors.read",
+			"l4-ddos-managed-ruleset.read",
+			"managed-headers.read",
+			"mass-url-redirects.read",
+			"bot-management.read",
+			"account-custom-error-rules.read",
+			"custom-pages.read",
+			"logs.read",
+			"select-configuration.read",
+			"zone-transform-rules.read",
+			"account-logs.read",
+			"account-custom-pages.read",
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"magic-firewall.read",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"transform-rules.read",
+			"zone-waf.read",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"account-waf.read",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-rulesets.read",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}": {
 		"operationId": "getZoneEntrypointRulesetVersion",
@@ -46918,7 +47414,8 @@
 					],
 					"title": "Phase"
 				},
-				"x-fern-parameter-name": "phase"
+				"x-fern-parameter-name": "phase",
+				"x-forge-parameter-name": "phase"
 			},
 			{
 				"name": "zone_id",
@@ -55713,8 +56210,14 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
+			"Account Custom Error Rules Read",
 			"Response Compression Write",
 			"Response Compression Read",
+			"Account Custom Pages Write",
+			"Account Custom Pages Read",
+			"Custom Pages Write",
+			"Custom Pages Read",
 			"Config Settings Write",
 			"Config Settings Read",
 			"Dynamic URL Redirects Write",
@@ -55764,8 +56267,58 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "rulesets.zone.entrypoint.versions",
-		"x-fern-sdk-method-name": "get"
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.read",
+			"dynamic-redirect.read",
+			"http-ddos-managed-ruleset.read",
+			"origin.read",
+			"response-compression.read",
+			"sanitize.read",
+			"cache-settings.read",
+			"custom-errors.read",
+			"l4-ddos-managed-ruleset.read",
+			"managed-headers.read",
+			"mass-url-redirects.read",
+			"bot-management.read",
+			"account-custom-error-rules.read",
+			"custom-pages.read",
+			"logs.read",
+			"select-configuration.read",
+			"zone-transform-rules.read",
+			"account-logs.read",
+			"account-custom-pages.read",
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"magic-firewall.read",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"transform-rules.read",
+			"zone-waf.read",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"account-waf.read",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-rulesets.read",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
 		"operationId": "updateZoneRulesetRule",
@@ -55816,7 +56369,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"x-fern-parameter-name": "validate-only"
+				"x-fern-parameter-name": "validate-only",
+				"x-forge-parameter-name": "validate-only"
 			}
 		],
 		"requestBody": {
@@ -72928,7 +73482,10 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
 			"Response Compression Write",
+			"Account Custom Pages Write",
+			"Custom Pages Write",
 			"Config Settings Write",
 			"Dynamic URL Redirects Write",
 			"Cache Settings Write",
@@ -72957,8 +73514,35 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.zone.rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/rulesets": {
 		"operationId": "createZoneRuleset",
@@ -72985,7 +73569,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"x-fern-parameter-name": "validate-only"
+				"x-fern-parameter-name": "validate-only",
+				"x-forge-parameter-name": "validate-only"
 			}
 		],
 		"requestBody": {
@@ -90147,7 +90732,10 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
 			"Response Compression Write",
+			"Account Custom Pages Write",
+			"Custom Pages Write",
 			"Config Settings Write",
 			"Dynamic URL Redirects Write",
 			"Cache Settings Write",
@@ -90176,8 +90764,35 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.zone",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/rulesets/{ruleset_id}/rules": {
 		"operationId": "createZoneRulesetRule",
@@ -90216,7 +90831,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"x-fern-parameter-name": "validate-only"
+				"x-fern-parameter-name": "validate-only",
+				"x-forge-parameter-name": "validate-only"
 			}
 		],
 		"requestBody": {
@@ -107328,7 +107944,10 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
 			"Response Compression Write",
+			"Account Custom Pages Write",
+			"Custom Pages Write",
 			"Config Settings Write",
 			"Dynamic URL Redirects Write",
 			"Cache Settings Write",
@@ -107357,8 +107976,35 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.zone.rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/rulesets/{ruleset_id}": {
 		"operationId": "updateZoneRuleset",
@@ -107397,7 +108043,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"x-fern-parameter-name": "validate-only"
+				"x-fern-parameter-name": "validate-only",
+				"x-forge-parameter-name": "validate-only"
 			}
 		],
 		"requestBody": {
@@ -124554,7 +125201,10 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
 			"Response Compression Write",
+			"Account Custom Pages Write",
+			"Custom Pages Write",
 			"Config Settings Write",
 			"Dynamic URL Redirects Write",
 			"Cache Settings Write",
@@ -124583,8 +125233,35 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.zone",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 		"operationId": "updateZoneEntrypointRuleset",
@@ -124628,7 +125305,8 @@
 					],
 					"title": "Phase"
 				},
-				"x-fern-parameter-name": "phase"
+				"x-fern-parameter-name": "phase",
+				"x-forge-parameter-name": "phase"
 			},
 			{
 				"name": "zone_id",
@@ -124650,7 +125328,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"x-fern-parameter-name": "validate-only"
+				"x-fern-parameter-name": "validate-only",
+				"x-forge-parameter-name": "validate-only"
 			}
 		],
 		"requestBody": {
@@ -141762,7 +142441,10 @@
 			"Zone Rulesets"
 		],
 		"x-api-token-group": [
+			"Account Custom Error Rules Write",
 			"Response Compression Write",
+			"Account Custom Pages Write",
+			"Custom Pages Write",
 			"Config Settings Write",
 			"Dynamic URL Redirects Write",
 			"Cache Settings Write",
@@ -141791,7 +142473,34 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "rulesets.zone.entrypoint",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"config-settings.write",
+			"dynamic-redirect.write",
+			"http-ddos-managed-ruleset.write",
+			"origin.write",
+			"response-compression.write",
+			"sanitize.write",
+			"cache-settings.write",
+			"custom-errors.write",
+			"l4-ddos-managed-ruleset.write",
+			"managed-headers.write",
+			"mass-url-redirects.write",
+			"bot-management.write",
+			"custom-pages.write",
+			"logs.write",
+			"account-custom-error-rules.write",
+			"select-configuration.write",
+			"zone-transform-rules.write",
+			"account-custom-pages.write",
+			"account-logs.write",
+			"magic-firewall.write",
+			"zone-waf.write",
+			"transform-rules.write",
+			"account-waf.write",
+			"account-rulesets.write"
+		],
+		"x-forge-skip": true
 	}
 }

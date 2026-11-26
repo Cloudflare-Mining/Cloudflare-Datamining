@@ -280,7 +280,11 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "pages.assets.hashes",
-		"x-fern-sdk-method-name": "check"
+		"x-fern-sdk-method-name": "check",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.assets.hashes",
+		"x-forge-method-name": "check",
+		"x-forge-skip": true
 	},
 	"POST /pages/assets/upload": {
 		"operationId": "pages-assets-upload",
@@ -560,7 +564,11 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "pages.assets",
-		"x-fern-sdk-method-name": "upload"
+		"x-fern-sdk-method-name": "upload",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.assets",
+		"x-forge-method-name": "upload",
+		"x-forge-skip": true
 	},
 	"POST /pages/assets/upsert-hashes": {
 		"operationId": "pages-assets-upsert-hashes",
@@ -818,6 +826,10 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "pages.assets.hashes",
-		"x-fern-sdk-method-name": "upsert"
+		"x-fern-sdk-method-name": "upsert",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.assets.hashes",
+		"x-forge-method-name": "upsert",
+		"x-forge-skip": true
 	}
 }

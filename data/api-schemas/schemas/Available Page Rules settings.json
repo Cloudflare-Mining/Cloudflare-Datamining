@@ -552,6 +552,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "page-rules.settings",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "page-rules.settings",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"page-rules.read",
+			"zone.read",
+			"page-rules.write",
+			"zone.write"
+		],
 		"x-forge-sunset": {
 			"date": "2030-01-01T00:00:00Z"
 		}

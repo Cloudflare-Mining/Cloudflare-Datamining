@@ -323,12 +323,21 @@
 			"Notification policies"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.policies",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the notification policy."
 	},
 	"GET /accounts/{account_id}/alerting/v3/policies": {
@@ -600,6 +609,60 @@
 																	"x-auditable": true
 																}
 															},
+															"alert_trigger_preferences_long_window": {
+																"description": "Usage depends on specific alert type. Takes at most one value, a duration such as `4h`. custom_analytics requires it when alert_trigger_preferences is slo, zscore_spike, zscore_drop or zscore_spike_and_drop. There it must be at most 24h, and for the z-score types at least six times alert_trigger_preferences_short_window.",
+																"type": "array",
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"example": [
+																	"4h"
+																],
+																"maxItems": 1
+															},
+															"alert_trigger_preferences_minimum_threshold": {
+																"description": "Usage depends on specific alert type. Takes at most one value, a number as a string.",
+																"type": "array",
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"maxItems": 1
+															},
+															"alert_trigger_preferences_operator": {
+																"description": "Used for configuring custom_analytics, which requires it. Takes exactly one value, the operator that compares the result with alert_trigger_preferences_value. It must be `<` unless alert_trigger_preferences is threshold.",
+																"type": "array",
+																"items": {
+																	"enum": [
+																		"<",
+																		">",
+																		"<=",
+																		">=",
+																		"==",
+																		"!="
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"example": [
+																	">"
+																],
+																"maxItems": 1,
+																"minItems": 1
+															},
+															"alert_trigger_preferences_short_window": {
+																"description": "Usage depends on specific alert type. Takes at most one value, a duration such as `5m`. custom_analytics requires it, and it must be at least 1m there. queues_lag_alert requires it, at least 5m.",
+																"type": "array",
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"example": [
+																	"5m"
+																],
+																"maxItems": 1
+															},
 															"alert_trigger_preferences_value": {
 																"description": "Usage depends on specific alert type",
 																"type": "array",
@@ -663,6 +726,19 @@
 																	"type": "string",
 																	"x-auditable": true
 																}
+															},
+															"execution_interval": {
+																"description": "Used for configuring custom_analytics when source is sql_api. Other sources reject it. Takes at most one value, how often the query runs, as a duration in whole seconds such as `5m`. It can't be shorter than the minimum for the query, which is 1m, or 10m for Log Explorer datasets. If it's omitted, the API sets it to that minimum.",
+																"type": "array",
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"example": [
+																	"5m"
+																],
+																"maxItems": 1,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"group_by": {
 																"description": "Usage depends on specific alert type",
@@ -851,6 +927,23 @@
 																	"type": "string",
 																	"x-auditable": true
 																}
+															},
+															"source": {
+																"description": "Used for configuring custom_analytics, which requires it. Takes exactly one value, the dataset the alert queries.",
+																"type": "array",
+																"items": {
+																	"enum": [
+																		"workers_analytics_engine",
+																		"sql_api"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"example": [
+																	"sql_api"
+																],
+																"maxItems": 1,
+																"minItems": 1
 															},
 															"status": {
 																"description": "Used for configuring health_check_status_notification",
@@ -1165,6 +1258,8 @@
 			"Notification policies"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Zero Trust: PII Read",
 			"Notifications Write",
 			"Notifications Read",
@@ -1173,7 +1268,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.policies",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"notifications.read",
+			"notifications.write",
+			"teams-pii.read",
+			"observability.read",
+			"account-settings.read",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
 		"operationId": "notification-policies-get-a-notification-policy",
@@ -1459,6 +1566,60 @@
 																"x-auditable": true
 															}
 														},
+														"alert_trigger_preferences_long_window": {
+															"description": "Usage depends on specific alert type. Takes at most one value, a duration such as `4h`. custom_analytics requires it when alert_trigger_preferences is slo, zscore_spike, zscore_drop or zscore_spike_and_drop. There it must be at most 24h, and for the z-score types at least six times alert_trigger_preferences_short_window.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"4h"
+															],
+															"maxItems": 1
+														},
+														"alert_trigger_preferences_minimum_threshold": {
+															"description": "Usage depends on specific alert type. Takes at most one value, a number as a string.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"maxItems": 1
+														},
+														"alert_trigger_preferences_operator": {
+															"description": "Used for configuring custom_analytics, which requires it. Takes exactly one value, the operator that compares the result with alert_trigger_preferences_value. It must be `<` unless alert_trigger_preferences is threshold.",
+															"type": "array",
+															"items": {
+																"enum": [
+																	"<",
+																	">",
+																	"<=",
+																	">=",
+																	"==",
+																	"!="
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																">"
+															],
+															"maxItems": 1,
+															"minItems": 1
+														},
+														"alert_trigger_preferences_short_window": {
+															"description": "Usage depends on specific alert type. Takes at most one value, a duration such as `5m`. custom_analytics requires it, and it must be at least 1m there. queues_lag_alert requires it, at least 5m.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"5m"
+															],
+															"maxItems": 1
+														},
 														"alert_trigger_preferences_value": {
 															"description": "Usage depends on specific alert type",
 															"type": "array",
@@ -1522,6 +1683,19 @@
 																"type": "string",
 																"x-auditable": true
 															}
+														},
+														"execution_interval": {
+															"description": "Used for configuring custom_analytics when source is sql_api. Other sources reject it. Takes at most one value, how often the query runs, as a duration in whole seconds such as `5m`. It can't be shorter than the minimum for the query, which is 1m, or 10m for Log Explorer datasets. If it's omitted, the API sets it to that minimum.",
+															"type": "array",
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"5m"
+															],
+															"maxItems": 1,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"group_by": {
 															"description": "Usage depends on specific alert type",
@@ -1710,6 +1884,23 @@
 																"type": "string",
 																"x-auditable": true
 															}
+														},
+														"source": {
+															"description": "Used for configuring custom_analytics, which requires it. Takes exactly one value, the dataset the alert queries.",
+															"type": "array",
+															"items": {
+																"enum": [
+																	"workers_analytics_engine",
+																	"sql_api"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"sql_api"
+															],
+															"maxItems": 1,
+															"minItems": 1
 														},
 														"status": {
 															"description": "Used for configuring health_check_status_notification",
@@ -2178,6 +2369,60 @@
 																		"x-auditable": true
 																	}
 																},
+																"alert_trigger_preferences_long_window": {
+																	"description": "Usage depends on specific alert type. Takes at most one value, a duration such as `4h`. custom_analytics requires it when alert_trigger_preferences is slo, zscore_spike, zscore_drop or zscore_spike_and_drop. There it must be at most 24h, and for the z-score types at least six times alert_trigger_preferences_short_window.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"4h"
+																	],
+																	"maxItems": 1
+																},
+																"alert_trigger_preferences_minimum_threshold": {
+																	"description": "Usage depends on specific alert type. Takes at most one value, a number as a string.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"maxItems": 1
+																},
+																"alert_trigger_preferences_operator": {
+																	"description": "Used for configuring custom_analytics, which requires it. Takes exactly one value, the operator that compares the result with alert_trigger_preferences_value. It must be `<` unless alert_trigger_preferences is threshold.",
+																	"type": "array",
+																	"items": {
+																		"enum": [
+																			"<",
+																			">",
+																			"<=",
+																			">=",
+																			"==",
+																			"!="
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		">"
+																	],
+																	"maxItems": 1,
+																	"minItems": 1
+																},
+																"alert_trigger_preferences_short_window": {
+																	"description": "Usage depends on specific alert type. Takes at most one value, a duration such as `5m`. custom_analytics requires it, and it must be at least 1m there. queues_lag_alert requires it, at least 5m.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"5m"
+																	],
+																	"maxItems": 1
+																},
 																"alert_trigger_preferences_value": {
 																	"description": "Usage depends on specific alert type",
 																	"type": "array",
@@ -2241,6 +2486,19 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
+																},
+																"execution_interval": {
+																	"description": "Used for configuring custom_analytics when source is sql_api. Other sources reject it. Takes at most one value, how often the query runs, as a duration in whole seconds such as `5m`. It can't be shorter than the minimum for the query, which is 1m, or 10m for Log Explorer datasets. If it's omitted, the API sets it to that minimum.",
+																	"type": "array",
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"5m"
+																	],
+																	"maxItems": 1,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"group_by": {
 																	"description": "Usage depends on specific alert type",
@@ -2429,6 +2687,23 @@
 																		"type": "string",
 																		"x-auditable": true
 																	}
+																},
+																"source": {
+																	"description": "Used for configuring custom_analytics, which requires it. Takes exactly one value, the dataset the alert queries.",
+																	"type": "array",
+																	"items": {
+																		"enum": [
+																			"workers_analytics_engine",
+																			"sql_api"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"example": [
+																		"sql_api"
+																	],
+																	"maxItems": 1,
+																	"minItems": 1
 																},
 																"status": {
 																	"description": "Used for configuring health_check_status_notification",
@@ -2733,6 +3008,8 @@
 			"Notification policies"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Zero Trust: PII Read",
 			"Notifications Write",
 			"Notifications Read",
@@ -2741,7 +3018,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.policies",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"notifications.read",
+			"notifications.write",
+			"teams-pii.read",
+			"observability.read",
+			"account-settings.read",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/policies/{policy_id}/email/unsubscribe": {
 		"operationId": "notification-policies-show-email-unsubscribe-details",
@@ -2894,6 +3183,8 @@
 												},
 												"token": {
 													"type": "string",
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											}
@@ -2998,6 +3289,8 @@
 			"Notification policies"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Zero Trust: PII Read",
 			"Notifications Write",
 			"Notifications Read",
@@ -3006,7 +3299,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies.email",
-		"x-fern-sdk-method-name": "details"
+		"x-fern-sdk-method-name": "details",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.policies.email",
+		"x-forge-method-name": "details",
+		"x-forge-oauth-scopes": [
+			"notifications.read",
+			"notifications.write",
+			"teams-pii.read",
+			"observability.read",
+			"account-settings.read",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/alerting/v3/policies": {
 		"operationId": "notification-policies-create-a-notification-policy",
@@ -3205,6 +3510,60 @@
 											"x-auditable": true
 										}
 									},
+									"alert_trigger_preferences_long_window": {
+										"description": "Usage depends on specific alert type. Takes at most one value, a duration such as `4h`. custom_analytics requires it when alert_trigger_preferences is slo, zscore_spike, zscore_drop or zscore_spike_and_drop. There it must be at most 24h, and for the z-score types at least six times alert_trigger_preferences_short_window.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"4h"
+										],
+										"maxItems": 1
+									},
+									"alert_trigger_preferences_minimum_threshold": {
+										"description": "Usage depends on specific alert type. Takes at most one value, a number as a string.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"maxItems": 1
+									},
+									"alert_trigger_preferences_operator": {
+										"description": "Used for configuring custom_analytics, which requires it. Takes exactly one value, the operator that compares the result with alert_trigger_preferences_value. It must be `<` unless alert_trigger_preferences is threshold.",
+										"type": "array",
+										"items": {
+											"enum": [
+												"<",
+												">",
+												"<=",
+												">=",
+												"==",
+												"!="
+											],
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											">"
+										],
+										"maxItems": 1,
+										"minItems": 1
+									},
+									"alert_trigger_preferences_short_window": {
+										"description": "Usage depends on specific alert type. Takes at most one value, a duration such as `5m`. custom_analytics requires it, and it must be at least 1m there. queues_lag_alert requires it, at least 5m.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"5m"
+										],
+										"maxItems": 1
+									},
 									"alert_trigger_preferences_value": {
 										"description": "Usage depends on specific alert type",
 										"type": "array",
@@ -3268,6 +3627,19 @@
 											"type": "string",
 											"x-auditable": true
 										}
+									},
+									"execution_interval": {
+										"description": "Used for configuring custom_analytics when source is sql_api. Other sources reject it. Takes at most one value, how often the query runs, as a duration in whole seconds such as `5m`. It can't be shorter than the minimum for the query, which is 1m, or 10m for Log Explorer datasets. If it's omitted, the API sets it to that minimum.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"5m"
+										],
+										"maxItems": 1,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"group_by": {
 										"description": "Usage depends on specific alert type",
@@ -3456,6 +3828,23 @@
 											"type": "string",
 											"x-auditable": true
 										}
+									},
+									"source": {
+										"description": "Used for configuring custom_analytics, which requires it. Takes exactly one value, the dataset the alert queries.",
+										"type": "array",
+										"items": {
+											"enum": [
+												"workers_analytics_engine",
+												"sql_api"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"sql_api"
+										],
+										"maxItems": 1,
+										"minItems": 1
 									},
 									"status": {
 										"description": "Used for configuring health_check_status_notification",
@@ -3932,12 +4321,21 @@
 			"Notification policies"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.policies",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/alerting/v3/policies/{policy_id}/email/unsubscribe": {
 		"operationId": "notification-policies-unsubscribe-email-from-notification-policy",
@@ -4185,7 +4583,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies.email",
-		"x-fern-sdk-method-name": "unsubscribe"
+		"x-fern-sdk-method-name": "unsubscribe",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.policies.email",
+		"x-forge-method-name": "unsubscribe"
 	},
 	"POST /accounts/{account_id}/alerting/v3/policies/{policy_id}/test": {
 		"operationId": "notification-policies-test-a-notification-policy",
@@ -4420,12 +4821,21 @@
 			"Notification policies"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
-		"x-fern-sdk-method-name": "test"
+		"x-fern-sdk-method-name": "test",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.policies",
+		"x-forge-method-name": "test",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"PUT /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
 		"operationId": "notification-policies-update-a-notification-policy",
@@ -4636,6 +5046,60 @@
 											"x-auditable": true
 										}
 									},
+									"alert_trigger_preferences_long_window": {
+										"description": "Usage depends on specific alert type. Takes at most one value, a duration such as `4h`. custom_analytics requires it when alert_trigger_preferences is slo, zscore_spike, zscore_drop or zscore_spike_and_drop. There it must be at most 24h, and for the z-score types at least six times alert_trigger_preferences_short_window.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"4h"
+										],
+										"maxItems": 1
+									},
+									"alert_trigger_preferences_minimum_threshold": {
+										"description": "Usage depends on specific alert type. Takes at most one value, a number as a string.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"maxItems": 1
+									},
+									"alert_trigger_preferences_operator": {
+										"description": "Used for configuring custom_analytics, which requires it. Takes exactly one value, the operator that compares the result with alert_trigger_preferences_value. It must be `<` unless alert_trigger_preferences is threshold.",
+										"type": "array",
+										"items": {
+											"enum": [
+												"<",
+												">",
+												"<=",
+												">=",
+												"==",
+												"!="
+											],
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											">"
+										],
+										"maxItems": 1,
+										"minItems": 1
+									},
+									"alert_trigger_preferences_short_window": {
+										"description": "Usage depends on specific alert type. Takes at most one value, a duration such as `5m`. custom_analytics requires it, and it must be at least 1m there. queues_lag_alert requires it, at least 5m.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"5m"
+										],
+										"maxItems": 1
+									},
 									"alert_trigger_preferences_value": {
 										"description": "Usage depends on specific alert type",
 										"type": "array",
@@ -4699,6 +5163,19 @@
 											"type": "string",
 											"x-auditable": true
 										}
+									},
+									"execution_interval": {
+										"description": "Used for configuring custom_analytics when source is sql_api. Other sources reject it. Takes at most one value, how often the query runs, as a duration in whole seconds such as `5m`. It can't be shorter than the minimum for the query, which is 1m, or 10m for Log Explorer datasets. If it's omitted, the API sets it to that minimum.",
+										"type": "array",
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"5m"
+										],
+										"maxItems": 1,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"group_by": {
 										"description": "Usage depends on specific alert type",
@@ -4887,6 +5364,23 @@
 											"type": "string",
 											"x-auditable": true
 										}
+									},
+									"source": {
+										"description": "Used for configuring custom_analytics, which requires it. Takes exactly one value, the dataset the alert queries.",
+										"type": "array",
+										"items": {
+											"enum": [
+												"workers_analytics_engine",
+												"sql_api"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
+										"example": [
+											"sql_api"
+										],
+										"maxItems": 1,
+										"minItems": 1
 									},
 									"status": {
 										"description": "Used for configuring health_check_status_notification",
@@ -5357,11 +5851,20 @@
 			"Notification policies"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.policies",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.policies",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		]
 	}
 }

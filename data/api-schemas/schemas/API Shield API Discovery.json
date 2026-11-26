@@ -455,7 +455,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.discovery",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.discovery",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		]
 	},
 	"GET /zones/{zone_id}/api_gateway/discovery/operations": {
 		"operationId": "api-shield-api-discovery-retrieve-discovered-operations-on-a-zone",
@@ -1027,7 +1036,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.discovery.operations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.discovery.operations",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		]
 	},
 	"GET /zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}": {
 		"operationId": "api-shield-api-discovery-retrieve-discovered-operation-by-id",
@@ -1470,7 +1488,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.discovery.operations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.discovery.operations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/api_gateway/discovery/operations": {
 		"operationId": "api-shield-api-patch-discovered-operations",
@@ -1767,7 +1794,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.discovery.operations",
-		"x-fern-sdk-method-name": "bulk-edit"
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.discovery.operations",
+		"x-forge-method-name": "bulk-edit",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}": {
 		"operationId": "api-shield-api-patch-discovered-operation",
@@ -2045,6 +2079,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.discovery.operations",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.discovery.operations",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	}
 }

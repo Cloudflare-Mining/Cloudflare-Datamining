@@ -166,7 +166,7 @@
 			}
 		],
 		"tags": [
-			"warp-teams-device-api_other"
+			"teams-devices_other"
 		],
 		"x-api-token-group": [
 			"Zero Trust Read",
@@ -174,6 +174,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.registrations.override-codes",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.registrations.override-codes",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	}
 }

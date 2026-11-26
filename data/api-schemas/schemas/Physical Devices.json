@@ -166,7 +166,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/devices/registrations": {
 		"operationId": "delete-registrations",
@@ -374,7 +380,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.registrations",
-		"x-fern-sdk-method-name": "bulk-delete"
+		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.registrations",
+		"x-forge-method-name": "bulk-delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/devices/physical-devices": {
 		"operationId": "list-devices",
@@ -463,7 +475,8 @@
 				"name": "per_page",
 				"schema": {
 					"type": "integer",
-					"format": "uint64"
+					"format": "uint64",
+					"minimum": 1
 				}
 			},
 			{
@@ -963,9 +976,20 @@
 		"tags": [
 			"Physical Devices"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/devices/physical-devices/{device_id}": {
 		"operationId": "get-device",
@@ -1368,7 +1392,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/physical-devices/{device_id}": {
 		"operationId": "patch-device",
@@ -1858,7 +1885,10 @@
 		"x-auditable": true,
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.devices",
+		"x-forge-method-name": "update"
 	},
 	"POST /accounts/{account_id}/devices/physical-devices/{device_id}/revoke": {
 		"operationId": "revoke-device",
@@ -2029,6 +2059,13 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.devices",
-		"x-fern-sdk-method-name": "revoke"
+		"x-fern-sdk-method-name": "revoke",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "zero-trust.devices",
+		"x-forge-method-name": "revoke",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	}
 }

@@ -465,6 +465,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.ip-lists",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.ip-lists",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"intel.read",
+			"intel.write"
+		]
 	}
 }

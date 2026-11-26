@@ -59,7 +59,8 @@
 					"maximum": 1000,
 					"minimum": 1
 				},
-				"example": 100
+				"example": 100,
+				"x-auditable": true
 			},
 			{
 				"name": "return_uuids",
@@ -69,7 +70,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"example": true
+				"example": true,
+				"x-auditable": true
 			},
 			{
 				"name": "return_details",
@@ -79,7 +81,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"example": true
+				"example": true,
+				"x-auditable": true
 			}
 		],
 		"responses": {
@@ -217,7 +220,8 @@
 																"description": "Indicates the creation timestamp in ISO 8601 format.",
 																"type": "string",
 																"format": "date-time",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"identifier": {
 																"description": "Specifies a unique table identifier within a catalog.",
@@ -226,13 +230,15 @@
 																	"name": {
 																		"description": "Specifies the table name.",
 																		"type": "string",
-																		"example": "events"
+																		"example": "events",
+																		"x-auditable": true
 																	},
 																	"namespace": {
 																		"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
 																		"type": "array",
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"example": [
 																			"bronze",
@@ -250,23 +256,27 @@
 															"location": {
 																"description": "Specifies the base S3 URI for table storage location.",
 																"type": "string",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"metadata_location": {
 																"description": "Contains the S3 URI to table metadata file. Null for staged tables.",
 																"type": "string",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"table_uuid": {
 																"description": "Contains the UUID that persists across renames.",
 																"type": "string",
-																"format": "uuid"
+																"format": "uuid",
+																"x-auditable": true
 															},
 															"updated_at": {
 																"description": "Shows the last update timestamp in ISO 8601 format. Null if never updated.",
 																"type": "string",
 																"format": "date-time",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -286,13 +296,15 @@
 															"name": {
 																"description": "Specifies the table name.",
 																"type": "string",
-																"example": "events"
+																"example": "events",
+																"x-auditable": true
 															},
 															"namespace": {
 																"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"bronze",
@@ -319,7 +331,8 @@
 													"type": "array",
 													"items": {
 														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"0199b9a1-28a0-71e0-a73e-b0fc32c8468e",
@@ -549,12 +562,21 @@
 			"Table Management"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog.namespaces.tables",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog.namespaces.tables",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		]
 	},
 	"GET /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}": {
 		"operationId": "basin-get-table",
@@ -750,13 +772,15 @@
 														"name": {
 															"description": "Specifies the table name.",
 															"type": "string",
-															"example": "events"
+															"example": "events",
+															"x-auditable": true
 														},
 														"namespace": {
 															"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"bronze",
@@ -861,25 +885,29 @@
 												"metadata_location": {
 													"description": "Specifies the S3-compatible URI to the current Iceberg metadata file\nin R2. Omitted for staged tables that have not yet been committed.\n",
 													"type": "string",
-													"example": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/metadata/00001-abc.metadata.json"
+													"example": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/metadata/00001-abc.metadata.json",
+													"x-auditable": true
 												},
 												"returned_snapshots": {
 													"description": "Describes the number of snapshots that appear in `metadata.snapshots`. Caps the\nlist at 10 (the most recent by `timestamp-ms`), but if the current\nsnapshot falls outside the recent window, the result includes it in the\nset, leading to a possible total of 11.\n",
 													"type": "integer",
 													"example": 10,
-													"minimum": 0
+													"minimum": 0,
+													"x-auditable": true
 												},
 												"table_uuid": {
 													"description": "Contains the Iceberg table UUID, stable across renames.",
 													"type": "string",
 													"format": "uuid",
-													"example": "550e8400-e29b-41d4-a716-446655440000"
+													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"x-auditable": true
 												},
 												"total_snapshots": {
 													"description": "Indicates the total number of snapshots stored for the table, before pruning.",
 													"type": "integer",
 													"example": 122113,
-													"minimum": 0
+													"minimum": 0,
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1107,12 +1135,21 @@
 			"Table Management"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog.namespaces.tables",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog.namespaces.tables",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		]
 	},
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables": {
 		"operationId": "list-tables",
@@ -1174,7 +1211,8 @@
 					"maximum": 1000,
 					"minimum": 1
 				},
-				"example": 100
+				"example": 100,
+				"x-auditable": true
 			},
 			{
 				"name": "return_uuids",
@@ -1184,7 +1222,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"example": true
+				"example": true,
+				"x-auditable": true
 			},
 			{
 				"name": "return_details",
@@ -1194,7 +1233,8 @@
 					"type": "boolean",
 					"default": false
 				},
-				"example": true
+				"example": true,
+				"x-auditable": true
 			}
 		],
 		"responses": {
@@ -1332,7 +1372,8 @@
 																"description": "Indicates the creation timestamp in ISO 8601 format.",
 																"type": "string",
 																"format": "date-time",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"identifier": {
 																"description": "Specifies a unique table identifier within a catalog.",
@@ -1341,13 +1382,15 @@
 																	"name": {
 																		"description": "Specifies the table name.",
 																		"type": "string",
-																		"example": "events"
+																		"example": "events",
+																		"x-auditable": true
 																	},
 																	"namespace": {
 																		"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
 																		"type": "array",
 																		"items": {
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"example": [
 																			"bronze",
@@ -1365,23 +1408,27 @@
 															"location": {
 																"description": "Specifies the base S3 URI for table storage location.",
 																"type": "string",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"metadata_location": {
 																"description": "Contains the S3 URI to table metadata file. Null for staged tables.",
 																"type": "string",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"table_uuid": {
 																"description": "Contains the UUID that persists across renames.",
 																"type": "string",
-																"format": "uuid"
+																"format": "uuid",
+																"x-auditable": true
 															},
 															"updated_at": {
 																"description": "Shows the last update timestamp in ISO 8601 format. Null if never updated.",
 																"type": "string",
 																"format": "date-time",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1401,13 +1448,15 @@
 															"name": {
 																"description": "Specifies the table name.",
 																"type": "string",
-																"example": "events"
+																"example": "events",
+																"x-auditable": true
 															},
 															"namespace": {
 																"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"example": [
 																	"bronze",
@@ -1434,7 +1483,8 @@
 													"type": "array",
 													"items": {
 														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"example": [
 														"0199b9a1-28a0-71e0-a73e-b0fc32c8468e",
@@ -1665,12 +1715,21 @@
 			"Table Management"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2-data-catalog.namespaces.tables",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		],
 		"x-stainless-deprecation-message": "Use `GET /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables` instead."
 	},
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}": {
@@ -1867,13 +1926,15 @@
 														"name": {
 															"description": "Specifies the table name.",
 															"type": "string",
-															"example": "events"
+															"example": "events",
+															"x-auditable": true
 														},
 														"namespace": {
 															"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
 															"type": "array",
 															"items": {
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"example": [
 																"bronze",
@@ -1978,25 +2039,29 @@
 												"metadata_location": {
 													"description": "Specifies the S3-compatible URI to the current Iceberg metadata file\nin R2. Omitted for staged tables that have not yet been committed.\n",
 													"type": "string",
-													"example": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/metadata/00001-abc.metadata.json"
+													"example": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/metadata/00001-abc.metadata.json",
+													"x-auditable": true
 												},
 												"returned_snapshots": {
 													"description": "Describes the number of snapshots that appear in `metadata.snapshots`. Caps the\nlist at 10 (the most recent by `timestamp-ms`), but if the current\nsnapshot falls outside the recent window, the result includes it in the\nset, leading to a possible total of 11.\n",
 													"type": "integer",
 													"example": 10,
-													"minimum": 0
+													"minimum": 0,
+													"x-auditable": true
 												},
 												"table_uuid": {
 													"description": "Contains the Iceberg table UUID, stable across renames.",
 													"type": "string",
 													"format": "uuid",
-													"example": "550e8400-e29b-41d4-a716-446655440000"
+													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"x-auditable": true
 												},
 												"total_snapshots": {
 													"description": "Indicates the total number of snapshots stored for the table, before pruning.",
 													"type": "integer",
 													"example": 122113,
-													"minimum": 0
+													"minimum": 0,
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2225,12 +2290,21 @@
 			"Table Management"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2-data-catalog.namespaces.tables",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		],
 		"x-stainless-deprecation-message": "Use `GET /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}` instead."
 	}
 }

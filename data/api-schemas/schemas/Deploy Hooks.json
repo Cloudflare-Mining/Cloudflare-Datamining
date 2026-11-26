@@ -23,7 +23,8 @@
 					"type": "string",
 					"example": "my-worker"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"description": "UUID of the deploy hook, as returned by deploy-hooks list.",
@@ -321,6 +322,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.deploy-hooks",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.deploy-hooks",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the deploy hook. Requests to its URL will no longer start builds."
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks": {
@@ -347,7 +354,8 @@
 					"type": "string",
 					"example": "my-worker"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			}
 		],
 		"responses": {
@@ -575,12 +583,21 @@
 			"Deploy Hooks"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.deploy-hooks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.deploy-hooks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}": {
 		"operationId": "getDeployHook",
@@ -606,7 +623,8 @@
 					"type": "string",
 					"example": "my-worker"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"description": "UUID of the deploy hook, as returned by deploy-hooks list.",
@@ -899,12 +917,21 @@
 			"Deploy Hooks"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.deploy-hooks",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.deploy-hooks",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"POST /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks": {
 		"operationId": "createDeployHook",
@@ -930,7 +957,8 @@
 					"type": "string",
 					"example": "my-worker"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			}
 		],
 		"requestBody": {
@@ -1378,7 +1406,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.deploy-hooks",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.deploy-hooks",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	},
 	"POST /workers/builds/deploy_hooks/{deploy_hook_uuid}": {
 		"operationId": "triggerDeployHook",
@@ -1671,7 +1705,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.deploy-hooks",
-		"x-fern-sdk-method-name": "trigger"
+		"x-fern-sdk-method-name": "trigger",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.deploy-hooks",
+		"x-forge-method-name": "trigger"
 	},
 	"PUT /accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}": {
 		"operationId": "updateDeployHook",
@@ -1697,7 +1734,8 @@
 					"type": "string",
 					"example": "my-worker"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"description": "UUID of the deploy hook, as returned by deploy-hooks list.",
@@ -2156,6 +2194,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.deploy-hooks",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.deploy-hooks",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	}
 }

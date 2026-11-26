@@ -276,6 +276,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
 		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.operations",
+		"x-forge-method-name": "bulk-delete",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the selected web or API operations."
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}": {
@@ -503,6 +510,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.operations",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the web or API operation."
 	},
 	"GET /zones/{zone_id}/api_gateway/operations": {
@@ -1349,7 +1363,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.operations",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		]
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}": {
 		"operationId": "api-shield-endpoint-management-retrieve-information-about-an-operation",
@@ -2129,7 +2152,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.operations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		]
 	},
 	"GET /zones/{zone_id}/api_gateway/schemas": {
 		"operationId": "api-shield-endpoint-management-retrieve-operations-and-features-as-open-api-schemas",
@@ -2468,7 +2500,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.schemas",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.schemas",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		]
 	},
 	"POST /zones/{zone_id}/api_gateway/operations": {
 		"operationId": "api-shield-endpoint-management-add-operations-to-a-zone",
@@ -3214,7 +3255,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
-		"x-fern-sdk-method-name": "bulk-create"
+		"x-fern-sdk-method-name": "bulk-create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.operations",
+		"x-forge-method-name": "bulk-create",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	},
 	"POST /zones/{zone_id}/api_gateway/operations/item": {
 		"operationId": "api-shield-endpoint-management-add-operation-to-a-zone",
@@ -4010,6 +4058,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "web-assets.operations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "web-assets.operations",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		]
 	}
 }

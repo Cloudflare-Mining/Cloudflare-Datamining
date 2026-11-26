@@ -878,7 +878,12 @@
 			"#reports:read"
 		],
 		"x-fern-sdk-group-name": "reporting.industry",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "reporting.industry",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"reports-application-security-report.read"
+		]
 	},
 	"GET /accounts/{account_id}/reporting/policies": {
 		"operationId": "reporting-policies-list",
@@ -1116,7 +1121,12 @@
 			"#reports:read"
 		],
 		"x-fern-sdk-group-name": "reporting.policies",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-group-name": "reporting.policies",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"reports-application-security-report.read"
+		]
 	},
 	"GET /accounts/{account_id}/reporting/policies/{policy_id}": {
 		"operationId": "reporting-policies-get",
@@ -1362,7 +1372,12 @@
 			"#reports:read"
 		],
 		"x-fern-sdk-group-name": "reporting.policies",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "reporting.policies",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"reports-application-security-report.read"
+		]
 	},
 	"GET /accounts/{account_id}/reporting/reports": {
 		"operationId": "reporting-reports-list",
@@ -1730,7 +1745,12 @@
 			"#reports:read"
 		],
 		"x-fern-sdk-group-name": "reporting.reports",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-group-name": "reporting.reports",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"reports-application-security-report.read"
+		]
 	},
 	"GET /accounts/{account_id}/reporting/reports/{report_id}": {
 		"operationId": "reporting-reports-get",
@@ -3339,7 +3359,12 @@
 			"#reports:read"
 		],
 		"x-fern-sdk-group-name": "reporting.reports",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "reporting.reports",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"reports-application-security-report.read"
+		]
 	},
 	"PATCH /accounts/{account_id}/reporting/industry": {
 		"operationId": "reporting-industry-update",
@@ -5063,6 +5088,8 @@
 			"#reports:edit"
 		],
 		"x-fern-sdk-group-name": "reporting.industry",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-group-name": "reporting.industry",
+		"x-forge-method-name": "update"
 	}
 }

@@ -541,6 +541,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.domain-history",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.domain-history",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"intel.read",
+			"intel.write"
+		]
 	}
 }

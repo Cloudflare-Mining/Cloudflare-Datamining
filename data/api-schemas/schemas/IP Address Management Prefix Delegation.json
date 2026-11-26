@@ -403,7 +403,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.delegations",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.delegations",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write"
+		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/delegations": {
 		"operationId": "ip-address-management-prefix-delegation-list-prefix-delegations",
@@ -933,7 +939,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.delegations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.delegations",
+		"x-forge-method-name": "list"
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/delegations": {
 		"operationId": "ip-address-management-prefix-delegation-create-prefix-delegation",
@@ -1419,6 +1428,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.delegations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.delegations",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write"
+		]
 	}
 }

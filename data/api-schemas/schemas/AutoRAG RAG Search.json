@@ -378,6 +378,7 @@
 			"AutoRAG RAG Search"
 		],
 		"x-api-token-group": [
+			"AI Search Write",
 			"Auto Rag Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -393,7 +394,14 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "autorag",
-		"x-fern-sdk-method-name": "ai-search"
+		"x-fern-sdk-method-name": "ai-search",
+		"x-forge-group-name": "autorag",
+		"x-forge-method-name": "ai-search",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/autorag/rags/{id}/search": {
 		"operationId": "autorag-config-search",
@@ -723,6 +731,7 @@
 			"AutoRAG RAG Search"
 		],
 		"x-api-token-group": [
+			"AI Search Write",
 			"Auto Rag Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -738,6 +747,13 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "autorag",
-		"x-fern-sdk-method-name": "search"
+		"x-fern-sdk-method-name": "search",
+		"x-forge-group-name": "autorag",
+		"x-forge-method-name": "search",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	}
 }

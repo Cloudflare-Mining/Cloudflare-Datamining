@@ -26,7 +26,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "gateway-id"
+				"x-fern-parameter-name": "gateway-id",
+				"x-forge-parameter-name": "gateway-id"
 			}
 		],
 		"responses": {
@@ -876,6 +877,8 @@
 			"AI Gateway Gateways"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -892,6 +895,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.gateways",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This permanently deletes the gateway, its configuration, and its stored logs. Requests sent to this gateway will fail. This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways": {
@@ -1748,6 +1759,9 @@
 			"AI Gateway Gateways"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -1764,7 +1778,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.gateways",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/url/{provider}": {
 		"operationId": "aig-config-get-gateway-url",
@@ -1802,7 +1826,8 @@
 					"type": "string",
 					"example": "workers-ai"
 				},
-				"x-fern-parameter-name": "ai-gateway-provider"
+				"x-fern-parameter-name": "ai-gateway-provider",
+				"x-forge-parameter-name": "ai-gateway-provider"
 			}
 		],
 		"responses": {
@@ -1880,6 +1905,9 @@
 			"AI Gateway Gateways"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -1896,7 +1924,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
-		"x-fern-sdk-method-name": "get-url"
+		"x-fern-sdk-method-name": "get-url",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.gateways",
+		"x-forge-method-name": "get-url",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-fetch-gateway",
@@ -1925,7 +1963,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "gateway-id"
+				"x-fern-parameter-name": "gateway-id",
+				"x-forge-parameter-name": "gateway-id"
 			}
 		],
 		"responses": {
@@ -2775,6 +2814,9 @@
 			"AI Gateway Gateways"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -2791,7 +2833,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.gateways",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways": {
 		"operationId": "aig-config-create-gateway",
@@ -4308,6 +4360,8 @@
 			"AI Gateway Gateways"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -4323,7 +4377,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.gateways",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"operationId": "aig-config-update-gateway",
@@ -4352,7 +4414,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "gateway-id"
+				"x-fern-parameter-name": "gateway-id",
+				"x-forge-parameter-name": "gateway-id"
 			}
 		],
 		"requestBody": {
@@ -5883,6 +5946,8 @@
 			"AI Gateway Gateways"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -5898,6 +5963,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai-gateway.gateways",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.gateways",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	}
 }

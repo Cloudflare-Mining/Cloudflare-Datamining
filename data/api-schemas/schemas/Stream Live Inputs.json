@@ -59,6 +59,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		],
 		"x-forge-require-confirmation": "Permanently delete this live input? It cannot be recreated."
 	},
 	"DELETE /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}": {
@@ -133,6 +139,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs.outputs",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		],
 		"x-forge-require-confirmation": "Delete this output? Any active broadcast to this target will be terminated."
 	},
 	"GET /accounts/{account_id}/stream/live_inputs": {
@@ -451,12 +463,21 @@
 			"Stream Live Inputs"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write"
+		]
 	},
 	"GET /accounts/{account_id}/stream/live_inputs/{live_input_identifier}": {
 		"operationId": "stream-live-inputs-retrieve-a-live-input",
@@ -722,12 +743,15 @@
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -740,12 +764,15 @@
 															"description": "The secret key to use for playback via RTMPS.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -758,6 +785,8 @@
 															"description": "The secret key to use when streaming via SRT to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -770,6 +799,7 @@
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "srt://live.cloudflare.com:778",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -782,6 +812,8 @@
 															"description": "The secret key to use for playback via SRT.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -794,6 +826,7 @@
 															"description": "The URL used to play live video over SRT.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -830,6 +863,7 @@
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -842,6 +876,7 @@
 															"description": "The URL used to play live video over WebRTC.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -981,12 +1016,21 @@
 			"Stream Live Inputs"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write"
+		]
 	},
 	"GET /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs": {
 		"operationId": "stream-live-inputs-list-all-outputs-associated-with-a-specified-live-input",
@@ -1124,6 +1168,8 @@
 														"description": "The streamKey used to authenticate against an output's target.",
 														"type": "string",
 														"example": "uzya-f19y-g2g9-a2ee-51j2",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"uid": {
@@ -1137,6 +1183,7 @@
 														"description": "The URL an output uses to restream.",
 														"type": "string",
 														"example": "rtmp://a.rtmp.youtube.com/live2",
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -1275,12 +1322,21 @@
 			"Stream Live Inputs"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs.outputs",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write"
+		]
 	},
 	"POST /accounts/{account_id}/stream/live_inputs": {
 		"operationId": "stream-live-inputs-create-a-live-input",
@@ -1641,12 +1697,15 @@
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -1659,12 +1718,15 @@
 															"description": "The secret key to use for playback via RTMPS.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -1677,6 +1739,8 @@
 															"description": "The secret key to use when streaming via SRT to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -1689,6 +1753,7 @@
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "srt://live.cloudflare.com:778",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -1701,6 +1766,8 @@
 															"description": "The secret key to use for playback via SRT.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -1713,6 +1780,7 @@
 															"description": "The URL used to play live video over SRT.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -1749,6 +1817,7 @@
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -1761,6 +1830,7 @@
 															"description": "The URL used to play live video over WebRTC.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -1904,7 +1974,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		]
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/disable": {
 		"operationId": "stream-live-inputs-disable-a-live-input",
@@ -2170,12 +2246,15 @@
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2188,12 +2267,15 @@
 															"description": "The secret key to use for playback via RTMPS.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2206,6 +2288,8 @@
 															"description": "The secret key to use when streaming via SRT to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -2218,6 +2302,7 @@
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "srt://live.cloudflare.com:778",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2230,6 +2315,8 @@
 															"description": "The secret key to use for playback via SRT.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -2242,6 +2329,7 @@
 															"description": "The URL used to play live video over SRT.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2278,6 +2366,7 @@
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2290,6 +2379,7 @@
 															"description": "The URL used to play live video over WebRTC.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2431,6 +2521,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs",
 		"x-fern-sdk-method-name": "disable",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs",
+		"x-forge-method-name": "disable",
 		"x-forge-require-confirmation": "Disable this live input? Active broadcasts will be terminated and future connections will be blocked until it is re-enabled."
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/enable": {
@@ -2697,12 +2790,15 @@
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2715,12 +2811,15 @@
 															"description": "The secret key to use for playback via RTMPS.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2733,6 +2832,8 @@
 															"description": "The secret key to use when streaming via SRT to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -2745,6 +2846,7 @@
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "srt://live.cloudflare.com:778",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2757,6 +2859,8 @@
 															"description": "The secret key to use for playback via SRT.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -2769,6 +2873,7 @@
 															"description": "The URL used to play live video over SRT.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2805,6 +2910,7 @@
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2817,6 +2923,7 @@
 															"description": "The URL used to play live video over WebRTC.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -2957,7 +3064,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs",
-		"x-fern-sdk-method-name": "enable"
+		"x-fern-sdk-method-name": "enable",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs",
+		"x-forge-method-name": "enable"
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs": {
 		"operationId": "stream-live-inputs-create-a-new-output,-connected-to-a-live-input",
@@ -3006,12 +3116,15 @@
 								"description": "The streamKey used to authenticate against an output's target.",
 								"type": "string",
 								"example": "uzya-f19y-g2g9-a2ee-51j2",
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							},
 							"url": {
 								"description": "The URL an output uses to restream.",
 								"type": "string",
 								"example": "rtmp://a.rtmp.youtube.com/live2",
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						},
@@ -3132,6 +3245,8 @@
 													"description": "The streamKey used to authenticate against an output's target.",
 													"type": "string",
 													"example": "uzya-f19y-g2g9-a2ee-51j2",
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												},
 												"uid": {
@@ -3145,6 +3260,7 @@
 													"description": "The URL an output uses to restream.",
 													"type": "string",
 													"example": "rtmp://a.rtmp.youtube.com/live2",
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											}
@@ -3283,7 +3399,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs.outputs",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/rotate_keys": {
 		"operationId": "stream-live-inputs-rotate-keys-for-a-live-input",
@@ -3549,12 +3668,15 @@
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -3567,12 +3689,15 @@
 															"description": "The secret key to use for playback via RTMPS.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -3585,6 +3710,8 @@
 															"description": "The secret key to use when streaming via SRT to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -3597,6 +3724,7 @@
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "srt://live.cloudflare.com:778",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -3609,6 +3737,8 @@
 															"description": "The secret key to use for playback via SRT.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -3621,6 +3751,7 @@
 															"description": "The URL used to play live video over SRT.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -3657,6 +3788,7 @@
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -3669,6 +3801,7 @@
 															"description": "The URL used to play live video over WebRTC.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -3810,6 +3943,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs",
 		"x-fern-sdk-method-name": "rotate-keys",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs",
+		"x-forge-method-name": "rotate-keys",
 		"x-forge-require-confirmation": "Rotate keys for this live input? Active broadcasts will be terminated. New broadcasts cannot start with outdated credentials."
 	},
 	"PUT /accounts/{account_id}/stream/live_inputs/{live_input_identifier}": {
@@ -4174,12 +4310,15 @@
 															"description": "The secret key to use when streaming via RTMPS to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The RTMPS URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -4192,12 +4331,15 @@
 															"description": "The secret key to use for playback via RTMPS.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"url": {
 															"description": "The URL used to play live video over RTMPS.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -4210,6 +4352,8 @@
 															"description": "The secret key to use when streaming via SRT to a live input.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -4222,6 +4366,7 @@
 															"description": "The SRT URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "srt://live.cloudflare.com:778",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -4234,6 +4379,8 @@
 															"description": "The secret key to use for playback via SRT.",
 															"type": "string",
 															"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"streamId": {
@@ -4246,6 +4393,7 @@
 															"description": "The URL used to play live video over SRT.",
 															"type": "string",
 															"example": "rtmps://live.cloudflare.com:443/live/",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -4282,6 +4430,7 @@
 															"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -4294,6 +4443,7 @@
 															"description": "The URL used to play live video over WebRTC.",
 															"type": "string",
 															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -4437,7 +4587,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		]
 	},
 	"PUT /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}": {
 		"operationId": "stream-live-inputs-update-an-output",
@@ -4611,6 +4767,8 @@
 													"description": "The streamKey used to authenticate against an output's target.",
 													"type": "string",
 													"example": "uzya-f19y-g2g9-a2ee-51j2",
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												},
 												"uid": {
@@ -4624,6 +4782,7 @@
 													"description": "The URL an output uses to restream.",
 													"type": "string",
 													"example": "rtmp://a.rtmp.youtube.com/live2",
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											}
@@ -4765,6 +4924,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.live-inputs.outputs",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		]
 	}
 }

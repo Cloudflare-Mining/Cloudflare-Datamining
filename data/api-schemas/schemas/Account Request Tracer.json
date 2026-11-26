@@ -460,6 +460,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "request-tracers.traces",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "request-tracers.traces",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"request-tracer.read"
+		]
 	}
 }

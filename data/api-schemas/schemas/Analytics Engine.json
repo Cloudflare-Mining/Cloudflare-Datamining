@@ -271,7 +271,26 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "analytics-engine.sql",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "analytics-engine.sql",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-analytics.read",
+			"dns-firewall.read",
+			"dns-firewall.write",
+			"teams.report",
+			"observability.read",
+			"workers-scripts.read",
+			"observability.write",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"teams.read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/analytics_engine/sql": {
 		"operationId": "analytics-engine-sql-query-post",
@@ -557,6 +576,24 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "analytics-engine.sql",
-		"x-fern-sdk-method-name": "query"
+		"x-fern-sdk-method-name": "query",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "analytics-engine.sql",
+		"x-forge-method-name": "query",
+		"x-forge-oauth-scopes": [
+			"account-analytics.read",
+			"dns-firewall.read",
+			"dns-firewall.write",
+			"teams.report",
+			"observability.read",
+			"workers-scripts.read",
+			"observability.write",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"teams.read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	}
 }

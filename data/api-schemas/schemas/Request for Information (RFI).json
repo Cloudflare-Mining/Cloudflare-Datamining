@@ -230,9 +230,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}": {
 		"operationId": "cloudforce-one-request-asset-delete",
@@ -476,9 +484,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests.assets",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests.assets",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}": {
 		"operationId": "cloudforce-one-request-message-delete",
@@ -719,9 +735,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests.message",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests.message",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/{request_id}": {
 		"operationId": "cloudforce-one-request-get",
@@ -1073,9 +1097,18 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}": {
 		"operationId": "cloudforce-one-request-asset-get",
@@ -1377,9 +1410,18 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests.assets",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests.assets",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/constants": {
 		"operationId": "cloudforce-one-request-constants",
@@ -1683,9 +1725,18 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests",
 		"x-fern-sdk-method-name": "constants",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "constants",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/quota": {
 		"operationId": "cloudforce-one-request-quota",
@@ -1959,9 +2010,18 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests",
 		"x-fern-sdk-method-name": "quota",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "quota",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/requests/types": {
 		"operationId": "cloudforce-one-request-types",
@@ -2206,9 +2266,18 @@
 			"Cloudforce One Read"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests",
 		"x-fern-sdk-method-name": "types",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "types",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests": {
 		"operationId": "cloudforce-one-request-list",
@@ -2673,9 +2742,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset": {
 		"operationId": "cloudforce-one-request-asset-list",
@@ -2991,9 +3068,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests.assets",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests.assets",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/new": {
 		"operationId": "cloudforce-one-request-asset-new",
@@ -3298,9 +3383,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests.asset-new",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests.asset-new",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/message": {
 		"operationId": "cloudforce-one-request-message-list",
@@ -3667,9 +3760,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests.message",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests.message",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/{request_id}/message/new": {
 		"operationId": "cloudforce-one-request-message-new",
@@ -3989,9 +4090,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests.message",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests.message",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/requests/new": {
 		"operationId": "cloudforce-one-request-new",
@@ -4380,9 +4489,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/requests/{request_id}": {
 		"operationId": "cloudforce-one-request-update",
@@ -4782,9 +4899,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}": {
 		"operationId": "cloudforce-one-request-asset-update",
@@ -5100,9 +5225,17 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests.assets",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests.assets",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}": {
 		"operationId": "cloudforce-one-request-message-update",
@@ -5430,8 +5563,16 @@
 			"Cloudforce One Write"
 		],
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.requests.message",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-hidden": true
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.requests.message",
+		"x-forge-hidden": true,
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	}
 }

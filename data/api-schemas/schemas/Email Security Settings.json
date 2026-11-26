@@ -254,6 +254,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.allow-policies",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the allow policy and restores normal security scanning and disposition actions for matching emails.",
 		"x-stability": "beta"
 	},
@@ -512,6 +518,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.block-senders",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the blocked sender pattern and stops automatically blocking matching emails based on this rule.",
 		"x-stability": "beta"
 	},
@@ -770,6 +782,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.content-policies",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the content policy and stops evaluating emails against its pattern.",
 		"x-stability": "beta"
 	},
@@ -1059,7 +1077,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "email-security.domains",
+		"x-forge-method-name": "bulk-delete",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes protection for the selected email domains. Emails for these domains will no longer be processed by Email Security.",
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -1317,6 +1342,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.domains",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes protection for the email domain. Emails for this domain will no longer be processed by Email Security.",
 		"x-stability": "beta"
 	},
@@ -1575,6 +1606,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.impersonation-registry",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the impersonation registry entry and stops protecting the identity from impersonation.",
 		"x-stability": "beta"
 	},
@@ -1833,6 +1870,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.sending-domain-restrictions",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the sending domain restriction and removes TLS enforcement for emails from this domain.",
 		"x-stability": "beta"
 	},
@@ -2091,6 +2134,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.trusted-domains",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the trusted domain pattern and restores normal recent domain and similarity checks for matching emails.",
 		"x-stability": "beta"
 	},
@@ -2349,6 +2398,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.url-ignore-patterns",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the URL rewrite ignore pattern and causes matching URLs to be rewritten again.",
 		"x-stability": "beta"
 	},
@@ -2669,7 +2724,8 @@
 														"example": false,
 														"deprecated": true,
 														"x-auditable": true,
-														"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+														"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+														"x-sunset": "2026-07-01T00:00:00Z"
 													},
 													"is_regex": {
 														"type": "boolean",
@@ -2682,7 +2738,8 @@
 														"example": true,
 														"deprecated": true,
 														"x-auditable": true,
-														"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+														"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+														"x-sunset": "2026-07-01T00:00:00Z"
 													},
 													"is_spoof": {
 														"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -2690,7 +2747,8 @@
 														"example": false,
 														"deprecated": true,
 														"x-auditable": true,
-														"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+														"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+														"x-sunset": "2026-07-01T00:00:00Z"
 													},
 													"is_trusted_sender": {
 														"description": "Bypasses all detections and link following for messages from this sender.",
@@ -2710,7 +2768,8 @@
 														],
 														"deprecated": true,
 														"readOnly": true,
-														"x-stainless-deprecation-message": "Use `modified_at` instead."
+														"x-stainless-deprecation-message": "Use `modified_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"modified_at": {
 														"allOf": [
@@ -2898,6 +2957,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.allow-policies",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
@@ -3059,7 +3125,8 @@
 													"example": false,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_regex": {
 													"type": "boolean",
@@ -3072,7 +3139,8 @@
 													"example": true,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_spoof": {
 													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -3080,7 +3148,8 @@
 													"example": false,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_trusted_sender": {
 													"description": "Bypasses all detections and link following for messages from this sender.",
@@ -3100,7 +3169,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -3287,6 +3357,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.allow-policies",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders": {
@@ -3574,7 +3651,8 @@
 														],
 														"deprecated": true,
 														"readOnly": true,
-														"x-stainless-deprecation-message": "Use `modified_at` instead."
+														"x-stainless-deprecation-message": "Use `modified_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"modified_at": {
 														"allOf": [
@@ -3751,6 +3829,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.block-senders",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -3912,7 +3997,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -4088,6 +4174,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.block-senders",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/content_policies": {
@@ -4540,6 +4633,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.content-policies",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/content_policies/{policy_id}": {
@@ -4878,6 +4978,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.content-policies",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains": {
@@ -5315,7 +5422,8 @@
 														],
 														"deprecated": true,
 														"readOnly": true,
-														"x-stainless-deprecation-message": "Use `modified_at` instead."
+														"x-stainless-deprecation-message": "Use `modified_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"lookback_hops": {
 														"type": "integer",
@@ -5533,6 +5641,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.domains",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -5815,7 +5930,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"lookback_hops": {
 													"type": "integer",
@@ -6032,6 +6148,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.domains",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}/verification": {
@@ -6308,6 +6431,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains.verification",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.domains.verification",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry": {
@@ -6554,7 +6684,8 @@
 														"type": "string",
 														"deprecated": true,
 														"nullable": true,
-														"x-stainless-deprecation-message": "This field is deprecated."
+														"x-stainless-deprecation-message": "This field is deprecated.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"id": {
 														"allOf": [
@@ -6586,7 +6717,8 @@
 														],
 														"deprecated": true,
 														"readOnly": true,
-														"x-stainless-deprecation-message": "Use `modified_at` instead."
+														"x-stainless-deprecation-message": "Use `modified_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"modified_at": {
 														"allOf": [
@@ -6766,6 +6898,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.impersonation-registry",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": {
@@ -6909,7 +7048,8 @@
 													"type": "string",
 													"deprecated": true,
 													"nullable": true,
-													"x-stainless-deprecation-message": "This field is deprecated."
+													"x-stainless-deprecation-message": "This field is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"id": {
 													"allOf": [
@@ -6941,7 +7081,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -7120,6 +7261,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.impersonation-registry",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/sending_domain_restrictions": {
@@ -7373,7 +7521,8 @@
 														],
 														"deprecated": true,
 														"readOnly": true,
-														"x-stainless-deprecation-message": "Use `modified_at` instead."
+														"x-stainless-deprecation-message": "Use `modified_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"modified_at": {
 														"allOf": [
@@ -7530,6 +7679,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.sending-domain-restrictions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": {
@@ -7694,7 +7850,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -7850,6 +8007,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.sending-domain-restrictions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains": {
@@ -8127,7 +8291,8 @@
 														],
 														"deprecated": true,
 														"readOnly": true,
-														"x-stainless-deprecation-message": "Use `modified_at` instead."
+														"x-stainless-deprecation-message": "Use `modified_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"modified_at": {
 														"allOf": [
@@ -8292,6 +8457,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.trusted-domains",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -8457,7 +8629,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -8621,6 +8794,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.trusted-domains",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/url_ignore_patterns": {
@@ -8817,7 +8997,8 @@
 														"deprecated": true,
 														"readOnly": true,
 														"x-auditable": true,
-														"x-stainless-deprecation-message": "Use `modified_at` instead."
+														"x-stainless-deprecation-message": "Use `modified_at` instead.",
+														"x-sunset": "2026-11-01T00:00:00Z"
 													},
 													"modified_at": {
 														"type": "string",
@@ -8982,6 +9163,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.url-ignore-patterns",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
@@ -9121,7 +9309,8 @@
 													"deprecated": true,
 													"readOnly": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"type": "string",
@@ -9285,6 +9474,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.url-ignore-patterns",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.read",
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
@@ -9357,7 +9553,8 @@
 										"example": false,
 										"deprecated": true,
 										"x-auditable": true,
-										"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+										"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+										"x-sunset": "2026-07-01T00:00:00Z"
 									},
 									"is_regex": {
 										"type": "boolean",
@@ -9370,7 +9567,8 @@
 										"example": true,
 										"deprecated": true,
 										"x-auditable": true,
-										"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+										"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+										"x-sunset": "2026-07-01T00:00:00Z"
 									},
 									"is_spoof": {
 										"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -9378,7 +9576,8 @@
 										"example": false,
 										"deprecated": true,
 										"x-auditable": true,
-										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+										"x-sunset": "2026-07-01T00:00:00Z"
 									},
 									"is_trusted_sender": {
 										"description": "Bypasses all detections and link following for messages from this sender.",
@@ -9398,7 +9597,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -9605,7 +9805,8 @@
 													"example": false,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_regex": {
 													"type": "boolean",
@@ -9618,7 +9819,8 @@
 													"example": true,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_spoof": {
 													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -9626,7 +9828,8 @@
 													"example": false,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_trusted_sender": {
 													"description": "Bypasses all detections and link following for messages from this sender.",
@@ -9646,7 +9849,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -9832,6 +10036,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.allow-policies",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -9904,7 +10114,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -10100,7 +10311,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -10275,6 +10487,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.block-senders",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/content_policies/{policy_id}": {
@@ -10720,6 +10938,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.content-policies",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -11127,7 +11351,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"lookback_hops": {
 													"type": "integer",
@@ -11343,6 +11568,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.domains",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": {
@@ -11397,7 +11628,8 @@
 										"type": "string",
 										"deprecated": true,
 										"nullable": true,
-										"x-stainless-deprecation-message": "This field is deprecated."
+										"x-stainless-deprecation-message": "This field is deprecated.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"id": {
 										"allOf": [
@@ -11429,7 +11661,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -11610,7 +11843,8 @@
 													"type": "string",
 													"deprecated": true,
 													"nullable": true,
-													"x-stainless-deprecation-message": "This field is deprecated."
+													"x-stainless-deprecation-message": "This field is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"id": {
 													"allOf": [
@@ -11642,7 +11876,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -11820,6 +12055,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.impersonation-registry",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": {
@@ -11895,7 +12136,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -12074,7 +12316,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -12229,6 +12472,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.sending-domain-restrictions",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -12305,7 +12554,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -12493,7 +12743,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -12656,6 +12907,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.trusted-domains",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
@@ -12826,7 +13083,8 @@
 													"deprecated": true,
 													"readOnly": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"type": "string",
@@ -12989,6 +13247,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.url-ignore-patterns",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies": {
@@ -13061,7 +13325,8 @@
 										"example": false,
 										"deprecated": true,
 										"x-auditable": true,
-										"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+										"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+										"x-sunset": "2026-07-01T00:00:00Z"
 									},
 									"is_regex": {
 										"type": "boolean",
@@ -13074,7 +13339,8 @@
 										"example": true,
 										"deprecated": true,
 										"x-auditable": true,
-										"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+										"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+										"x-sunset": "2026-07-01T00:00:00Z"
 									},
 									"is_spoof": {
 										"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -13082,7 +13348,8 @@
 										"example": false,
 										"deprecated": true,
 										"x-auditable": true,
-										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+										"x-sunset": "2026-07-01T00:00:00Z"
 									},
 									"is_trusted_sender": {
 										"description": "Bypasses all detections and link following for messages from this sender.",
@@ -13102,7 +13369,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -13317,7 +13585,8 @@
 													"example": false,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_regex": {
 													"type": "boolean",
@@ -13330,7 +13599,8 @@
 													"example": true,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_spoof": {
 													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -13338,7 +13608,8 @@
 													"example": false,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_trusted_sender": {
 													"description": "Bypasses all detections and link following for messages from this sender.",
@@ -13358,7 +13629,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -13544,6 +13816,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.allow-policies",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies/batch": {
@@ -13644,7 +13922,8 @@
 															"example": false,
 															"deprecated": true,
 															"x-auditable": true,
-															"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+															"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+															"x-sunset": "2026-07-01T00:00:00Z"
 														},
 														"is_regex": {
 															"type": "boolean",
@@ -13657,7 +13936,8 @@
 															"example": true,
 															"deprecated": true,
 															"x-auditable": true,
-															"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+															"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+															"x-sunset": "2026-07-01T00:00:00Z"
 														},
 														"is_spoof": {
 															"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -13665,7 +13945,8 @@
 															"example": false,
 															"deprecated": true,
 															"x-auditable": true,
-															"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+															"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+															"x-sunset": "2026-07-01T00:00:00Z"
 														},
 														"is_trusted_sender": {
 															"description": "Bypasses all detections and link following for messages from this sender.",
@@ -13685,7 +13966,8 @@
 															],
 															"deprecated": true,
 															"readOnly": true,
-															"x-stainless-deprecation-message": "Use `modified_at` instead."
+															"x-stainless-deprecation-message": "Use `modified_at` instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"modified_at": {
 															"allOf": [
@@ -13822,7 +14104,8 @@
 													"example": false,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_regex": {
 													"type": "boolean",
@@ -13835,7 +14118,8 @@
 													"example": true,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_spoof": {
 													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -13843,7 +14127,8 @@
 													"example": false,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_trusted_sender": {
 													"description": "Bypasses all detections and link following for messages from this sender.",
@@ -13863,7 +14148,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -13989,7 +14275,8 @@
 															"example": false,
 															"deprecated": true,
 															"x-auditable": true,
-															"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+															"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+															"x-sunset": "2026-07-01T00:00:00Z"
 														},
 														"is_regex": {
 															"type": "boolean",
@@ -14002,7 +14289,8 @@
 															"example": true,
 															"deprecated": true,
 															"x-auditable": true,
-															"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+															"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+															"x-sunset": "2026-07-01T00:00:00Z"
 														},
 														"is_spoof": {
 															"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -14010,7 +14298,8 @@
 															"example": false,
 															"deprecated": true,
 															"x-auditable": true,
-															"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+															"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+															"x-sunset": "2026-07-01T00:00:00Z"
 														},
 														"is_trusted_sender": {
 															"description": "Bypasses all detections and link following for messages from this sender.",
@@ -14030,7 +14319,8 @@
 															],
 															"deprecated": true,
 															"readOnly": true,
-															"x-stainless-deprecation-message": "Use `modified_at` instead."
+															"x-stainless-deprecation-message": "Use `modified_at` instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"modified_at": {
 															"allOf": [
@@ -14299,7 +14589,8 @@
 																"example": false,
 																"deprecated": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+																"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+																"x-sunset": "2026-07-01T00:00:00Z"
 															},
 															"is_regex": {
 																"type": "boolean",
@@ -14312,7 +14603,8 @@
 																"example": true,
 																"deprecated": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+																"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+																"x-sunset": "2026-07-01T00:00:00Z"
 															},
 															"is_spoof": {
 																"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -14320,7 +14612,8 @@
 																"example": false,
 																"deprecated": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+																"x-sunset": "2026-07-01T00:00:00Z"
 															},
 															"is_trusted_sender": {
 																"description": "Bypasses all detections and link following for messages from this sender.",
@@ -14340,7 +14633,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"allOf": [
@@ -14448,7 +14742,8 @@
 																"example": false,
 																"deprecated": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+																"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+																"x-sunset": "2026-07-01T00:00:00Z"
 															},
 															"is_regex": {
 																"type": "boolean",
@@ -14461,7 +14756,8 @@
 																"example": true,
 																"deprecated": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+																"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+																"x-sunset": "2026-07-01T00:00:00Z"
 															},
 															"is_spoof": {
 																"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -14469,7 +14765,8 @@
 																"example": false,
 																"deprecated": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+																"x-sunset": "2026-07-01T00:00:00Z"
 															},
 															"is_trusted_sender": {
 																"description": "Bypasses all detections and link following for messages from this sender.",
@@ -14489,7 +14786,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"allOf": [
@@ -14597,7 +14895,8 @@
 																"example": false,
 																"deprecated": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+																"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+																"x-sunset": "2026-07-01T00:00:00Z"
 															},
 															"is_regex": {
 																"type": "boolean",
@@ -14610,7 +14909,8 @@
 																"example": true,
 																"deprecated": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+																"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+																"x-sunset": "2026-07-01T00:00:00Z"
 															},
 															"is_spoof": {
 																"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -14618,7 +14918,8 @@
 																"example": false,
 																"deprecated": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+																"x-sunset": "2026-07-01T00:00:00Z"
 															},
 															"is_trusted_sender": {
 																"description": "Bypasses all detections and link following for messages from this sender.",
@@ -14638,7 +14939,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"allOf": [
@@ -14827,6 +15129,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "bulk-apply",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.allow-policies",
+		"x-forge-method-name": "bulk-apply",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation may delete the selected allow policies and restore normal security scanning and disposition actions for matching emails.",
 		"x-stability": "beta"
 	},
@@ -14900,7 +15208,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -15100,7 +15409,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -15275,6 +15585,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.block-senders",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders/batch": {
@@ -15375,7 +15691,8 @@
 															],
 															"deprecated": true,
 															"readOnly": true,
-															"x-stainless-deprecation-message": "Use `modified_at` instead."
+															"x-stainless-deprecation-message": "Use `modified_at` instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"modified_at": {
 															"allOf": [
@@ -15501,7 +15818,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -15612,7 +15930,8 @@
 															],
 															"deprecated": true,
 															"readOnly": true,
-															"x-stainless-deprecation-message": "Use `modified_at` instead."
+															"x-stainless-deprecation-message": "Use `modified_at` instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"modified_at": {
 															"allOf": [
@@ -15866,7 +16185,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"allOf": [
@@ -15963,7 +16283,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"allOf": [
@@ -16060,7 +16381,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"allOf": [
@@ -16238,6 +16560,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "bulk-apply",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.block-senders",
+		"x-forge-method-name": "bulk-apply",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation may delete the selected blocked sender patterns and stop automatically blocking matching emails based on those rules.",
 		"x-stability": "beta"
 	},
@@ -16689,6 +17017,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.content-policies",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/content_policies/batch": {
@@ -17660,6 +17994,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.content-policies",
 		"x-fern-sdk-method-name": "bulk-apply",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.content-policies",
+		"x-forge-method-name": "bulk-apply",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation may delete the selected content policies and stop evaluating emails against their patterns.",
 		"x-stability": "beta"
 	},
@@ -18091,7 +18431,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"lookback_hops": {
 													"type": "integer",
@@ -18307,6 +18648,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.domains",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/domains/batch": {
@@ -19097,7 +19444,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"lookback_hops": {
 																"type": "integer",
@@ -19356,7 +19704,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"lookback_hops": {
 																"type": "integer",
@@ -19615,7 +19964,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"lookback_hops": {
 																"type": "integer",
@@ -19840,6 +20190,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "bulk-apply",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.domains",
+		"x-forge-method-name": "bulk-apply",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation may permanently delete protection for the selected email domains. Emails for those domains will no longer be processed by Email Security.",
 		"x-stability": "beta"
 	},
@@ -19895,7 +20251,8 @@
 										"type": "string",
 										"deprecated": true,
 										"nullable": true,
-										"x-stainless-deprecation-message": "This field is deprecated."
+										"x-stainless-deprecation-message": "This field is deprecated.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"id": {
 										"allOf": [
@@ -19927,7 +20284,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -20112,7 +20470,8 @@
 													"type": "string",
 													"deprecated": true,
 													"nullable": true,
-													"x-stainless-deprecation-message": "This field is deprecated."
+													"x-stainless-deprecation-message": "This field is deprecated.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"id": {
 													"allOf": [
@@ -20144,7 +20503,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -20322,6 +20682,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.impersonation-registry",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.impersonation-registry",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/sending_domain_restrictions": {
@@ -20397,7 +20763,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -20579,7 +20946,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -20734,6 +21102,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.sending-domain-restrictions",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/sending_domain_restrictions/batch": {
@@ -21038,7 +21412,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-security.sending-domain-restrictions",
 		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.sending-domain-restrictions",
+		"x-forge-method-name": "bulk-delete",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the selected sending domain restrictions and removes TLS enforcement for the specified domains.",
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains": {
@@ -21115,7 +21496,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -21308,7 +21690,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -21471,6 +21854,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.trusted-domains",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains/batch": {
@@ -21575,7 +21964,8 @@
 															],
 															"deprecated": true,
 															"readOnly": true,
-															"x-stainless-deprecation-message": "Use `modified_at` instead."
+															"x-stainless-deprecation-message": "Use `modified_at` instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"modified_at": {
 															"allOf": [
@@ -21693,7 +22083,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -21797,7 +22188,8 @@
 															],
 															"deprecated": true,
 															"readOnly": true,
-															"x-stainless-deprecation-message": "Use `modified_at` instead."
+															"x-stainless-deprecation-message": "Use `modified_at` instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"modified_at": {
 															"allOf": [
@@ -22044,7 +22436,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"allOf": [
@@ -22133,7 +22526,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"allOf": [
@@ -22222,7 +22616,8 @@
 																],
 																"deprecated": true,
 																"readOnly": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"allOf": [
@@ -22388,6 +22783,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "bulk-apply",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.trusted-domains",
+		"x-forge-method-name": "bulk-apply",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation may delete the selected trusted domain patterns and restore normal recent domain and similarity checks for matching emails.",
 		"x-stability": "beta"
 	},
@@ -22561,7 +22962,8 @@
 													"deprecated": true,
 													"readOnly": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"type": "string",
@@ -22724,6 +23126,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.url-ignore-patterns",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/url_ignore_patterns/batch": {
@@ -23056,7 +23464,8 @@
 																"deprecated": true,
 																"readOnly": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"type": "string",
@@ -23119,7 +23528,8 @@
 																"deprecated": true,
 																"readOnly": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"type": "string",
@@ -23182,7 +23592,8 @@
 																"deprecated": true,
 																"readOnly": true,
 																"x-auditable": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"type": "string",
@@ -23357,6 +23768,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.url-ignore-patterns",
 		"x-fern-sdk-method-name": "bulk-apply",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.url-ignore-patterns",
+		"x-forge-method-name": "bulk-apply",
+		"x-forge-oauth-scopes": [
+			"cloud-email-security.write"
+		],
 		"x-forge-require-confirmation": "This operation may delete the selected URL rewrite ignore patterns and cause matching URLs to be rewritten again.",
 		"x-stability": "beta"
 	},
@@ -23430,7 +23847,8 @@
 										"example": false,
 										"deprecated": true,
 										"x-auditable": true,
-										"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+										"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+										"x-sunset": "2026-07-01T00:00:00Z"
 									},
 									"is_regex": {
 										"type": "boolean",
@@ -23443,7 +23861,8 @@
 										"example": true,
 										"deprecated": true,
 										"x-auditable": true,
-										"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+										"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+										"x-sunset": "2026-07-01T00:00:00Z"
 									},
 									"is_spoof": {
 										"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -23451,7 +23870,8 @@
 										"example": false,
 										"deprecated": true,
 										"x-auditable": true,
-										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+										"x-sunset": "2026-07-01T00:00:00Z"
 									},
 									"is_trusted_sender": {
 										"description": "Bypasses all detections and link following for messages from this sender.",
@@ -23471,7 +23891,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -23686,7 +24107,8 @@
 													"example": false,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_regex": {
 													"type": "boolean",
@@ -23699,7 +24121,8 @@
 													"example": true,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_spoof": {
 													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
@@ -23707,7 +24130,8 @@
 													"example": false,
 													"deprecated": true,
 													"x-auditable": true,
-													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead.",
+													"x-sunset": "2026-07-01T00:00:00Z"
 												},
 												"is_trusted_sender": {
 													"description": "Bypasses all detections and link following for messages from this sender.",
@@ -23727,7 +24151,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -23910,6 +24335,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.allow-policies",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.allow-policies",
+		"x-forge-method-name": "update",
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -23982,7 +24410,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -24182,7 +24611,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -24354,6 +24784,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.block-senders",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.block-senders",
+		"x-forge-method-name": "update",
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -24778,7 +25211,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"lookback_hops": {
 													"type": "integer",
@@ -24991,6 +25425,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.domains",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.domains",
+		"x-forge-method-name": "update",
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -25067,7 +25504,8 @@
 										],
 										"deprecated": true,
 										"readOnly": true,
-										"x-stainless-deprecation-message": "Use `modified_at` instead."
+										"x-stainless-deprecation-message": "Use `modified_at` instead.",
+										"x-sunset": "2026-11-01T00:00:00Z"
 									},
 									"modified_at": {
 										"allOf": [
@@ -25260,7 +25698,8 @@
 													],
 													"deprecated": true,
 													"readOnly": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"allOf": [
@@ -25420,6 +25859,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.trusted-domains",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "email-security.trusted-domains",
+		"x-forge-method-name": "update",
 		"x-stability": "beta"
 	}
 }

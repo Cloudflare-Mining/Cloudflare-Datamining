@@ -819,11 +819,22 @@
 			"content"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.content",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.content",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	}
 }

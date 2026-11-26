@@ -131,7 +131,8 @@
 																"format": "date-time",
 																"example": "2024-01-15T10:30:00.12345Z",
 																"deprecated": true,
-																"x-stainless-deprecation-message": "Use `created_at` instead."
+																"x-stainless-deprecation-message": "Use `created_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"created_at": {
 																"description": "Creation timestamp",
@@ -161,7 +162,8 @@
 																"format": "date-time",
 																"example": "2024-01-15T11:45:00.12345Z",
 																"deprecated": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"description": "Last modification timestamp",
@@ -193,7 +195,8 @@
 													"format": "date-time",
 													"example": "2024-01-15T10:30:00.12345Z",
 													"deprecated": true,
-													"x-stainless-deprecation-message": "Use `created_at` instead."
+													"x-stainless-deprecation-message": "Use `created_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"created_at": {
 													"description": "Creation timestamp",
@@ -212,7 +215,8 @@
 													"format": "date-time",
 													"example": "2024-01-15T11:45:00.12345Z",
 													"deprecated": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"description": "Last modification timestamp",
@@ -521,7 +525,8 @@
 																"deprecated": true
 															},
 															"deprecated": true,
-															"x-stainless-deprecation-message": "Use the `resolved` field on the corresponding entry in cname_dmarc_records instead."
+															"x-stainless-deprecation-message": "Use the `resolved` field on the corresponding entry in cname_dmarc_records instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"spf_records": {
 															"description": "SPF TXT records",
@@ -597,7 +602,8 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"deprecated": true,
-													"x-stainless-deprecation-message": "Use `zone_id` instead."
+													"x-stainless-deprecation-message": "Use `zone_id` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"zone_id": {
 													"description": "Zone identifier",
@@ -742,7 +748,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-auth.dmarc-reports",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-auth.dmarc-reports",
+		"x-forge-method-name": "get"
 	},
 	"GET /zones/{zone_id}/email/auth/spf/inspect": {
 		"operationId": "inspect_spf",
@@ -1130,7 +1139,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-auth.spf",
-		"x-fern-sdk-method-name": "inspect"
+		"x-fern-sdk-method-name": "inspect",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-auth.spf",
+		"x-forge-method-name": "inspect"
 	},
 	"PATCH /zones/{zone_id}/email/auth/dmarc-reports": {
 		"operationId": "configure_dmarc_reports",
@@ -1289,7 +1301,8 @@
 																"format": "date-time",
 																"example": "2024-01-15T10:30:00.12345Z",
 																"deprecated": true,
-																"x-stainless-deprecation-message": "Use `created_at` instead."
+																"x-stainless-deprecation-message": "Use `created_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"created_at": {
 																"description": "Creation timestamp",
@@ -1319,7 +1332,8 @@
 																"format": "date-time",
 																"example": "2024-01-15T11:45:00.12345Z",
 																"deprecated": true,
-																"x-stainless-deprecation-message": "Use `modified_at` instead."
+																"x-stainless-deprecation-message": "Use `modified_at` instead.",
+																"x-sunset": "2026-11-01T00:00:00Z"
 															},
 															"modified_at": {
 																"description": "Last modification timestamp",
@@ -1351,7 +1365,8 @@
 													"format": "date-time",
 													"example": "2024-01-15T10:30:00.12345Z",
 													"deprecated": true,
-													"x-stainless-deprecation-message": "Use `created_at` instead."
+													"x-stainless-deprecation-message": "Use `created_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"created_at": {
 													"description": "Creation timestamp",
@@ -1370,7 +1385,8 @@
 													"format": "date-time",
 													"example": "2024-01-15T11:45:00.12345Z",
 													"deprecated": true,
-													"x-stainless-deprecation-message": "Use `modified_at` instead."
+													"x-stainless-deprecation-message": "Use `modified_at` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"modified_at": {
 													"description": "Last modification timestamp",
@@ -1679,7 +1695,8 @@
 																"deprecated": true
 															},
 															"deprecated": true,
-															"x-stainless-deprecation-message": "Use the `resolved` field on the corresponding entry in cname_dmarc_records instead."
+															"x-stainless-deprecation-message": "Use the `resolved` field on the corresponding entry in cname_dmarc_records instead.",
+															"x-sunset": "2026-11-01T00:00:00Z"
 														},
 														"spf_records": {
 															"description": "SPF TXT records",
@@ -1755,7 +1772,8 @@
 													"type": "string",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"deprecated": true,
-													"x-stainless-deprecation-message": "Use `zone_id` instead."
+													"x-stainless-deprecation-message": "Use `zone_id` instead.",
+													"x-sunset": "2026-11-01T00:00:00Z"
 												},
 												"zone_id": {
 													"description": "Zone identifier",
@@ -1900,6 +1918,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-auth.dmarc-reports",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-auth.dmarc-reports",
+		"x-forge-method-name": "edit"
 	}
 }

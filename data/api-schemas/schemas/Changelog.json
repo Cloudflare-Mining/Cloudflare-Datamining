@@ -2435,6 +2435,13 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags.changelog",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.flags.changelog",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"flagship.read",
+			"flagship.write"
+		]
 	}
 }

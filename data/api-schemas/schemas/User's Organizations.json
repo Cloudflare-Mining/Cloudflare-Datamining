@@ -181,6 +181,9 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "user.organizations",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "user.organizations",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /user/organizations": {
@@ -608,7 +611,14 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "user.organizations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "user.organizations",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"memberships.read",
+			"memberships.write"
+		]
 	},
 	"GET /user/organizations/{organization_id}": {
 		"operationId": "user'-s-organizations-organization-details",
@@ -877,6 +887,9 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "user.organizations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "user.organizations",
+		"x-forge-method-name": "get"
 	}
 }

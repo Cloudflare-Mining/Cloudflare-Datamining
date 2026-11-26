@@ -230,6 +230,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.members",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.members",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Delete this organization membership? The member will lose access to this organization and its sub-organizations."
 	},
 	"GET /organizations/{organization_id}/members": {
@@ -656,7 +659,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.members",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.members",
+		"x-forge-method-name": "list"
 	},
 	"GET /organizations/{organization_id}/members/{member_id}": {
 		"operationId": "Members_retrieve",
@@ -1002,7 +1008,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.members",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.members",
+		"x-forge-method-name": "get"
 	},
 	"POST /organizations/{organization_id}/members": {
 		"operationId": "Members_create",
@@ -1371,7 +1380,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.members",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.members",
+		"x-forge-method-name": "create"
 	},
 	"POST /organizations/{organization_id}/members:batchCreate": {
 		"operationId": "Members_batchCreate",
@@ -1745,7 +1757,10 @@
 			"OrganizationMembers"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organizations.members.batch",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-group-name": "organizations.members",
+		"x-fern-sdk-method-name": "bulk-create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.members",
+		"x-forge-method-name": "bulk-create"
 	}
 }

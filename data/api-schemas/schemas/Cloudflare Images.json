@@ -388,6 +388,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		],
 		"x-forge-require-confirmation": "This operation will delete this image."
 	},
 	"GET /accounts/{account_id}/images/v1": {
@@ -938,13 +944,23 @@
 			"Cloudflare Images"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "images.v1",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "images.v1",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/images/v1/{image_id}": {
 		"operationId": "cloudflare-images-image-details",
@@ -1500,12 +1516,21 @@
 			"Cloudflare Images"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v1/{image_id}/blob": {
 		"operationId": "cloudflare-images-base-image",
@@ -1676,12 +1701,21 @@
 			"Cloudflare Images"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "get-blob"
+		"x-fern-sdk-method-name": "get-blob",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images",
+		"x-forge-method-name": "get-blob",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v1/stats": {
 		"operationId": "cloudflare-images-images-usage-statistics",
@@ -2094,12 +2128,21 @@
 			"Cloudflare Images"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "stats"
+		"x-fern-sdk-method-name": "stats",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images",
+		"x-forge-method-name": "stats",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v2": {
 		"operationId": "cloudflare-images-list-images-v2",
@@ -2632,12 +2675,21 @@
 			"Cloudflare Images"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v2/metadata/keys": {
 		"operationId": "cloudflare-images-list-metadata-keys",
@@ -2887,13 +2939,23 @@
 			"Cloudflare Images"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "images.metadata.keys",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.metadata.keys",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/images/v1/{image_id}": {
 		"operationId": "cloudflare-images-update-image",
@@ -3479,7 +3541,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	},
 	"POST /accounts/{account_id}/images/v1": {
 		"operationId": "cloudflare-images-upload-an-image-via-url",
@@ -4071,7 +4139,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	},
 	"POST /accounts/{account_id}/images/v1/direct_upload": {
 		"operationId": "cloudflare-images-create-authenticated-direct-upload-url-v-1",
@@ -4491,7 +4565,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "images.v1.direct-uploads",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "images.v1.direct-uploads",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/images/v2/direct_upload": {
 		"operationId": "cloudflare-images-create-authenticated-direct-upload-url-v-2",
@@ -4940,6 +5021,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images",
-		"x-fern-sdk-method-name": "direct-upload"
+		"x-fern-sdk-method-name": "direct-upload",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images",
+		"x-forge-method-name": "direct-upload",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	}
 }

@@ -387,6 +387,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.variants",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.variants",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		],
 		"x-forge-require-confirmation": "This operation will delete this variant."
 	},
 	"GET /accounts/{account_id}/images/v1/variants": {
@@ -878,12 +884,21 @@
 			"Cloudflare Images Variants"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.variants",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.variants",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}": {
 		"operationId": "cloudflare-images-variants-variant-details",
@@ -1416,12 +1431,21 @@
 			"Cloudflare Images Variants"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.variants",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.variants",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}/flat": {
 		"operationId": "cloudflare-images-variants-variant-details-flat",
@@ -1945,13 +1969,23 @@
 			"Cloudflare Images Variants"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "images.v1.variants-flat",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "images.v1.variants-flat",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/images/v1/variants/{variant_id}": {
 		"operationId": "cloudflare-images-variants-update-a-variant",
@@ -2560,7 +2594,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.variants",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.variants",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	},
 	"POST /accounts/{account_id}/images/v1/variants": {
 		"operationId": "cloudflare-images-variants-create-a-variant",
@@ -3165,6 +3205,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.variants",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.variants",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	}
 }

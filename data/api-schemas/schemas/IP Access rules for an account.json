@@ -1,4 +1,274 @@
 {
+	"DELETE /{account_or_zone}/{account_or_zone_id}/firewall/access_rules/rules/{rule_id}": {
+		"operationId": "generated:delete:/account_or_zone/account_or_zone_id/firewall/access_rules/rules/rule_id",
+		"summary": "Delete an IP Access rule",
+		"description": "Deletes an existing IP Access rule defined.\n\nNote: This operation will affect all zones in the account or zone.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "rule_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier for a rule.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Defines an account identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete an IP Access rule response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Defines whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"nullable": true,
+											"properties": {
+												"id": {
+													"description": "Defines an identifier.",
+													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true
+												}
+											},
+											"required": [
+												"id"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete an IP Access rule response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"IP Access rules for an account"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.access-rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "firewall.access-rules",
+		"x-forge-method-name": "delete",
+		"x-forge-require-confirmation": "This operation deletes the account-level IP Access Rule and affects every zone in the account.",
+		"x-stainless-skip": true
+	},
 	"DELETE /accounts/{account_id}/firewall/access_rules/rules/{rule_id}": {
 		"operationId": "ip-access-rules-for-an-account-delete-an-ip-access-rule",
 		"summary": "Delete an IP Access rule",
@@ -255,18 +525,36 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "firewall.access-rules",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-require-confirmation": "This operation deletes the account-level IP Access Rule and affects every zone in the account."
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-firewall-access-rules.write"
+		],
+		"x-forge-require-confirmation": "This operation deletes the account-level IP Access Rule and affects every zone in the account.",
+		"x-forge-skip": true
 	},
-	"GET /accounts/{account_id}/firewall/access_rules/rules": {
-		"operationId": "ip-access-rules-for-an-account-list-ip-access-rules",
+	"GET /{account_or_zone}/{account_or_zone_id}/firewall/access_rules/rules": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/firewall/access_rules/rules",
 		"summary": "List IP Access rules",
-		"description": "Fetches IP Access rules of an account. These rules apply to all the zones in the account. You can filter the results using several optional parameters.",
+		"description": "Fetches IP Access rules of an account or zone. These rules apply to all the zones in the account or zone. You can filter the results using several optional parameters.",
 		"parameters": [
 			{
-				"name": "account_id",
+				"name": "account_or_zone",
 				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
 				"required": true,
 				"schema": {
 					"description": "Defines an account identifier.",
@@ -291,7 +579,8 @@
 					],
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "access-rule-mode"
+				"x-fern-parameter-name": "access-rule-mode",
+				"x-forge-parameter-name": "access-rule-mode"
 			},
 			{
 				"name": "configuration.target",
@@ -354,7 +643,8 @@
 				"schema": {
 					"description": "Defines the maximum number of results requested.",
 					"type": "number",
-					"example": 20
+					"example": 20,
+					"minimum": 1
 				}
 			},
 			{
@@ -679,7 +969,1129 @@
 																		"x-auditable": true
 																	}
 																],
-																"x-fern-property-name": "access-rule-mode"
+																"x-fern-property-name": "access-rule-mode",
+																"x-forge-property-name": "access-rule-mode"
+															},
+															"modified_on": {
+																"description": "The timestamp of when the rule was last modified.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
+															},
+															"notes": {
+																"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+																"type": "string",
+																"example": "This rule is enabled because of an event that occurred on date X.",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"mode",
+															"allowed_modes",
+															"configuration"
+														]
+													},
+													{
+														"properties": {
+															"scope": {
+																"description": "All zones owned by the user will have the rule applied.",
+																"type": "object",
+																"properties": {
+																	"email": {
+																		"description": "The contact email address of the user.",
+																		"type": "string",
+																		"example": "user@example.com",
+																		"maxLength": 90
+																	},
+																	"id": {
+																		"description": "Defines an identifier.",
+																		"type": "string",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"readOnly": true
+																	},
+																	"type": {
+																		"description": "Defines the scope of the rule.",
+																		"type": "string",
+																		"example": "user",
+																		"enum": [
+																			"user",
+																			"organization"
+																		],
+																		"readOnly": true
+																	}
+																},
+																"readOnly": true
+															}
+														},
+														"type": "object"
+													}
+												],
+												"required": [
+													"id",
+													"mode",
+													"allowed_modes",
+													"configuration",
+													"scope"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List IP Access rules response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"IP Access rules for an account"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.access-rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "firewall.access-rules",
+		"x-forge-method-name": "list",
+		"x-stainless-skip": true
+	},
+	"GET /{account_or_zone}/{account_or_zone_id}/firewall/access_rules/rules/{rule_id}": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/firewall/access_rules/rules/rule_id",
+		"summary": "Get an IP Access rule",
+		"description": "Fetches the details of an IP Access rule defined.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "rule_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier for a rule.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Defines an account identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get an IP Access rule response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"allowed_modes": {
+															"description": "The available actions that a rule can apply to a matched request.",
+															"type": "array",
+															"items": {
+																"description": "The action to apply to a matched request.",
+																"type": "string",
+																"example": "challenge",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"whitelist",
+																	"js_challenge",
+																	"managed_challenge"
+																],
+																"x-auditable": true
+															},
+															"example": [
+																"whitelist",
+																"block",
+																"challenge",
+																"js_challenge",
+																"managed_challenge"
+															],
+															"readOnly": true
+														},
+														"configuration": {
+															"description": "The rule configuration.",
+															"type": "object",
+															"oneOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
+																			"type": "string",
+																			"example": "ip",
+																			"enum": [
+																				"ip"
+																			]
+																		},
+																		"value": {
+																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
+																			"type": "string",
+																			"example": "198.51.100.4"
+																		}
+																	},
+																	"title": "An IP address configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
+																			"type": "string",
+																			"example": "ip6",
+																			"enum": [
+																				"ip6"
+																			]
+																		},
+																		"value": {
+																			"description": "The IPv6 address to match.",
+																			"type": "string",
+																			"example": "2001:DB8:100::CF"
+																		}
+																	},
+																	"title": "An IPv6 address configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
+																			"type": "string",
+																			"example": "ip_range",
+																			"enum": [
+																				"ip_range"
+																			]
+																		},
+																		"value": {
+																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
+																			"type": "string",
+																			"example": "198.51.100.4/16"
+																		}
+																	},
+																	"title": "An IP address range configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
+																			"type": "string",
+																			"example": "asn",
+																			"enum": [
+																				"asn"
+																			]
+																		},
+																		"value": {
+																			"description": "The AS number to match.",
+																			"type": "string",
+																			"example": "AS12345"
+																		}
+																	},
+																	"title": "An ASN configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
+																			"type": "string",
+																			"example": "country",
+																			"enum": [
+																				"country"
+																			]
+																		},
+																		"value": {
+																			"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
+																			"type": "string",
+																			"example": "US",
+																			"x-auditable": true
+																		}
+																	},
+																	"title": "A country configuration."
+																}
+															]
+														},
+														"created_on": {
+															"description": "The timestamp of when the rule was created.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
+														},
+														"id": {
+															"description": "The unique identifier of the IP Access rule.",
+															"type": "string",
+															"example": "92f17202ed8bd63d69a66b86a49a8f6b",
+															"maxLength": 32,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"mode": {
+															"allOf": [
+																{
+																	"description": "The action to apply to a matched request.",
+																	"type": "string",
+																	"example": "challenge",
+																	"enum": [
+																		"block",
+																		"challenge",
+																		"whitelist",
+																		"js_challenge",
+																		"managed_challenge"
+																	],
+																	"x-auditable": true
+																}
+															],
+															"x-fern-property-name": "access-rule-mode",
+															"x-forge-property-name": "access-rule-mode"
+														},
+														"modified_on": {
+															"description": "The timestamp of when the rule was last modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
+														},
+														"notes": {
+															"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+															"type": "string",
+															"example": "This rule is enabled because of an event that occurred on date X.",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"mode",
+														"allowed_modes",
+														"configuration"
+													]
+												},
+												{
+													"properties": {
+														"scope": {
+															"description": "All zones owned by the user will have the rule applied.",
+															"type": "object",
+															"properties": {
+																"email": {
+																	"description": "The contact email address of the user.",
+																	"type": "string",
+																	"example": "user@example.com",
+																	"maxLength": 90
+																},
+																"id": {
+																	"description": "Defines an identifier.",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"readOnly": true
+																},
+																"type": {
+																	"description": "Defines the scope of the rule.",
+																	"type": "string",
+																	"example": "user",
+																	"enum": [
+																		"user",
+																		"organization"
+																	],
+																	"readOnly": true
+																}
+															},
+															"readOnly": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"required": [
+												"id",
+												"mode",
+												"allowed_modes",
+												"configuration",
+												"scope"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get an IP Access rule response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"IP Access rules for an account"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.access-rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "firewall.access-rules",
+		"x-forge-method-name": "get",
+		"x-stainless-skip": true
+	},
+	"GET /accounts/{account_id}/firewall/access_rules/rules": {
+		"operationId": "ip-access-rules-for-an-account-list-ip-access-rules",
+		"summary": "List IP Access rules",
+		"description": "Fetches IP Access rules of an account. These rules apply to all the zones in the account. You can filter the results using several optional parameters.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Defines an account identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "mode",
+				"in": "query",
+				"schema": {
+					"description": "The action to apply to a matched request.",
+					"type": "string",
+					"example": "challenge",
+					"enum": [
+						"block",
+						"challenge",
+						"whitelist",
+						"js_challenge",
+						"managed_challenge"
+					],
+					"x-auditable": true
+				},
+				"x-fern-parameter-name": "access-rule-mode",
+				"x-forge-parameter-name": "access-rule-mode"
+			},
+			{
+				"name": "configuration.target",
+				"in": "query",
+				"schema": {
+					"description": "Defines the target to search in existing rules.",
+					"type": "string",
+					"example": "ip",
+					"enum": [
+						"ip",
+						"ip_range",
+						"asn",
+						"country"
+					]
+				}
+			},
+			{
+				"name": "configuration.value",
+				"in": "query",
+				"schema": {
+					"description": "Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.\nNotes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.",
+					"type": "string",
+					"example": "198.51.100.4"
+				}
+			},
+			{
+				"name": "notes",
+				"in": "query",
+				"schema": {
+					"description": "Defines the string to search for in the notes of existing IP Access rules.\nNotes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.",
+					"type": "string",
+					"example": "my note"
+				}
+			},
+			{
+				"name": "match",
+				"in": "query",
+				"schema": {
+					"description": "Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+					"type": "string",
+					"default": "all",
+					"enum": [
+						"any",
+						"all"
+					]
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"description": "Defines the requested page within paginated list of results.",
+					"type": "number",
+					"example": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"description": "Defines the maximum number of results requested.",
+					"type": "number",
+					"example": 20,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"schema": {
+					"description": "Defines the field used to sort returned rules.",
+					"type": "string",
+					"example": "mode",
+					"enum": [
+						"configuration.target",
+						"configuration.value",
+						"mode"
+					]
+				}
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"schema": {
+					"description": "Defines the direction used to sort returned rules.",
+					"type": "string",
+					"example": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List IP Access rules response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object"
+													},
+													"nullable": true
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Defines the total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Defines the current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Defines the number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Defines the total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"allOf": [
+													{
+														"type": "object",
+														"properties": {
+															"allowed_modes": {
+																"description": "The available actions that a rule can apply to a matched request.",
+																"type": "array",
+																"items": {
+																	"description": "The action to apply to a matched request.",
+																	"type": "string",
+																	"example": "challenge",
+																	"enum": [
+																		"block",
+																		"challenge",
+																		"whitelist",
+																		"js_challenge",
+																		"managed_challenge"
+																	],
+																	"x-auditable": true
+																},
+																"example": [
+																	"whitelist",
+																	"block",
+																	"challenge",
+																	"js_challenge",
+																	"managed_challenge"
+																],
+																"readOnly": true
+															},
+															"configuration": {
+																"description": "The rule configuration.",
+																"type": "object",
+																"oneOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"target": {
+																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
+																				"type": "string",
+																				"example": "ip",
+																				"enum": [
+																					"ip"
+																				]
+																			},
+																			"value": {
+																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
+																				"type": "string",
+																				"example": "198.51.100.4"
+																			}
+																		},
+																		"title": "An IP address configuration."
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"target": {
+																				"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
+																				"type": "string",
+																				"example": "ip6",
+																				"enum": [
+																					"ip6"
+																				]
+																			},
+																			"value": {
+																				"description": "The IPv6 address to match.",
+																				"type": "string",
+																				"example": "2001:DB8:100::CF"
+																			}
+																		},
+																		"title": "An IPv6 address configuration."
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"target": {
+																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
+																				"type": "string",
+																				"example": "ip_range",
+																				"enum": [
+																					"ip_range"
+																				]
+																			},
+																			"value": {
+																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
+																				"type": "string",
+																				"example": "198.51.100.4/16"
+																			}
+																		},
+																		"title": "An IP address range configuration."
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"target": {
+																				"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
+																				"type": "string",
+																				"example": "asn",
+																				"enum": [
+																					"asn"
+																				]
+																			},
+																			"value": {
+																				"description": "The AS number to match.",
+																				"type": "string",
+																				"example": "AS12345"
+																			}
+																		},
+																		"title": "An ASN configuration."
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"target": {
+																				"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
+																				"type": "string",
+																				"example": "country",
+																				"enum": [
+																					"country"
+																				]
+																			},
+																			"value": {
+																				"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
+																				"type": "string",
+																				"example": "US",
+																				"x-auditable": true
+																			}
+																		},
+																		"title": "A country configuration."
+																	}
+																]
+															},
+															"created_on": {
+																"description": "The timestamp of when the rule was created.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"readOnly": true
+															},
+															"id": {
+																"description": "The unique identifier of the IP Access rule.",
+																"type": "string",
+																"example": "92f17202ed8bd63d69a66b86a49a8f6b",
+																"maxLength": 32,
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"mode": {
+																"allOf": [
+																	{
+																		"description": "The action to apply to a matched request.",
+																		"type": "string",
+																		"example": "challenge",
+																		"enum": [
+																			"block",
+																			"challenge",
+																			"whitelist",
+																			"js_challenge",
+																			"managed_challenge"
+																		],
+																		"x-auditable": true
+																	}
+																],
+																"x-fern-property-name": "access-rule-mode",
+																"x-forge-property-name": "access-rule-mode"
 															},
 															"modified_on": {
 																"description": "The timestamp of when the rule was last modified.",
@@ -873,8 +2285,13 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "firewall.access-rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-firewall-access-rules.read",
+			"account-firewall-access-rules.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/firewall/access_rules/rules/{rule_id}": {
 		"operationId": "ip-access-rules-for-an-account-get-an-ip-access-rule",
@@ -1176,7 +2593,8 @@
 																	"x-auditable": true
 																}
 															],
-															"x-fern-property-name": "access-rule-mode"
+															"x-fern-property-name": "access-rule-mode",
+															"x-forge-property-name": "access-rule-mode"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the rule was last modified.",
@@ -1369,14 +2787,32 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "firewall.access-rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-firewall-access-rules.read",
+			"account-firewall-access-rules.write"
+		],
+		"x-forge-skip": true
 	},
-	"PATCH /accounts/{account_id}/firewall/access_rules/rules/{rule_id}": {
-		"operationId": "ip-access-rules-for-an-account-update-an-ip-access-rule",
+	"PATCH /{account_or_zone}/{account_or_zone_id}/firewall/access_rules/rules/{rule_id}": {
+		"operationId": "generated:patch:/account_or_zone/account_or_zone_id/firewall/access_rules/rules/rule_id",
 		"summary": "Update an IP Access rule",
-		"description": "Updates an IP Access rule defined at the account level.\n\nNote: This operation will affect all zones in the account.",
+		"description": "Updates an IP Access rule defined.\n\nNote: This operation will affect all zones in the account or zone.",
 		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
 			{
 				"name": "rule_id",
 				"in": "path",
@@ -1389,8 +2825,9 @@
 				}
 			},
 			{
-				"name": "account_id",
+				"name": "account_or_zone_id",
 				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
 				"required": true,
 				"schema": {
 					"description": "Defines an account identifier.",
@@ -1568,7 +3005,8 @@
 												"x-auditable": true
 											}
 										],
-										"x-fern-property-name": "access-rule-mode"
+										"x-fern-property-name": "access-rule-mode",
+										"x-forge-property-name": "access-rule-mode"
 									},
 									"modified_on": {
 										"description": "The timestamp of when the rule was last modified.",
@@ -1910,7 +3348,739 @@
 																	"x-auditable": true
 																}
 															],
-															"x-fern-property-name": "access-rule-mode"
+															"x-fern-property-name": "access-rule-mode",
+															"x-forge-property-name": "access-rule-mode"
+														},
+														"modified_on": {
+															"description": "The timestamp of when the rule was last modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
+														},
+														"notes": {
+															"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+															"type": "string",
+															"example": "This rule is enabled because of an event that occurred on date X.",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"mode",
+														"allowed_modes",
+														"configuration"
+													]
+												},
+												{
+													"properties": {
+														"scope": {
+															"description": "All zones owned by the user will have the rule applied.",
+															"type": "object",
+															"properties": {
+																"email": {
+																	"description": "The contact email address of the user.",
+																	"type": "string",
+																	"example": "user@example.com",
+																	"maxLength": 90
+																},
+																"id": {
+																	"description": "Defines an identifier.",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"readOnly": true
+																},
+																"type": {
+																	"description": "Defines the scope of the rule.",
+																	"type": "string",
+																	"example": "user",
+																	"enum": [
+																		"user",
+																		"organization"
+																	],
+																	"readOnly": true
+																}
+															},
+															"readOnly": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"required": [
+												"id",
+												"mode",
+												"allowed_modes",
+												"configuration",
+												"scope"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update an IP Access rule response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"IP Access rules for an account"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.access-rules",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "firewall.access-rules",
+		"x-forge-method-name": "edit",
+		"x-stainless-skip": true
+	},
+	"PATCH /accounts/{account_id}/firewall/access_rules/rules/{rule_id}": {
+		"operationId": "ip-access-rules-for-an-account-update-an-ip-access-rule",
+		"summary": "Update an IP Access rule",
+		"description": "Updates an IP Access rule defined at the account level.\n\nNote: This operation will affect all zones in the account.",
+		"parameters": [
+			{
+				"name": "rule_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier for a rule.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Defines an account identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"allOf": [
+							{
+								"type": "object",
+								"properties": {
+									"allowed_modes": {
+										"description": "The available actions that a rule can apply to a matched request.",
+										"type": "array",
+										"items": {
+											"description": "The action to apply to a matched request.",
+											"type": "string",
+											"example": "challenge",
+											"enum": [
+												"block",
+												"challenge",
+												"whitelist",
+												"js_challenge",
+												"managed_challenge"
+											],
+											"x-auditable": true
+										},
+										"example": [
+											"whitelist",
+											"block",
+											"challenge",
+											"js_challenge",
+											"managed_challenge"
+										],
+										"readOnly": true
+									},
+									"configuration": {
+										"description": "The rule configuration.",
+										"type": "object",
+										"oneOf": [
+											{
+												"type": "object",
+												"properties": {
+													"target": {
+														"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
+														"type": "string",
+														"example": "ip",
+														"enum": [
+															"ip"
+														]
+													},
+													"value": {
+														"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
+														"type": "string",
+														"example": "198.51.100.4"
+													}
+												},
+												"title": "An IP address configuration."
+											},
+											{
+												"type": "object",
+												"properties": {
+													"target": {
+														"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
+														"type": "string",
+														"example": "ip6",
+														"enum": [
+															"ip6"
+														]
+													},
+													"value": {
+														"description": "The IPv6 address to match.",
+														"type": "string",
+														"example": "2001:DB8:100::CF"
+													}
+												},
+												"title": "An IPv6 address configuration."
+											},
+											{
+												"type": "object",
+												"properties": {
+													"target": {
+														"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
+														"type": "string",
+														"example": "ip_range",
+														"enum": [
+															"ip_range"
+														]
+													},
+													"value": {
+														"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
+														"type": "string",
+														"example": "198.51.100.4/16"
+													}
+												},
+												"title": "An IP address range configuration."
+											},
+											{
+												"type": "object",
+												"properties": {
+													"target": {
+														"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
+														"type": "string",
+														"example": "asn",
+														"enum": [
+															"asn"
+														]
+													},
+													"value": {
+														"description": "The AS number to match.",
+														"type": "string",
+														"example": "AS12345"
+													}
+												},
+												"title": "An ASN configuration."
+											},
+											{
+												"type": "object",
+												"properties": {
+													"target": {
+														"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
+														"type": "string",
+														"example": "country",
+														"enum": [
+															"country"
+														]
+													},
+													"value": {
+														"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
+														"type": "string",
+														"example": "US",
+														"x-auditable": true
+													}
+												},
+												"title": "A country configuration."
+											}
+										]
+									},
+									"created_on": {
+										"description": "The timestamp of when the rule was created.",
+										"type": "string",
+										"format": "date-time",
+										"example": "2014-01-01T05:20:00.12345Z",
+										"readOnly": true
+									},
+									"id": {
+										"description": "The unique identifier of the IP Access rule.",
+										"type": "string",
+										"example": "92f17202ed8bd63d69a66b86a49a8f6b",
+										"maxLength": 32,
+										"readOnly": true,
+										"x-auditable": true
+									},
+									"mode": {
+										"allOf": [
+											{
+												"description": "The action to apply to a matched request.",
+												"type": "string",
+												"example": "challenge",
+												"enum": [
+													"block",
+													"challenge",
+													"whitelist",
+													"js_challenge",
+													"managed_challenge"
+												],
+												"x-auditable": true
+											}
+										],
+										"x-fern-property-name": "access-rule-mode",
+										"x-forge-property-name": "access-rule-mode"
+									},
+									"modified_on": {
+										"description": "The timestamp of when the rule was last modified.",
+										"type": "string",
+										"format": "date-time",
+										"example": "2014-01-01T05:20:00.12345Z",
+										"readOnly": true
+									},
+									"notes": {
+										"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+										"type": "string",
+										"example": "This rule is enabled because of an event that occurred on date X.",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"id",
+									"mode",
+									"allowed_modes",
+									"configuration"
+								]
+							},
+							{
+								"properties": {
+									"scope": {
+										"description": "All zones owned by the user will have the rule applied.",
+										"type": "object",
+										"properties": {
+											"email": {
+												"description": "The contact email address of the user.",
+												"type": "string",
+												"example": "user@example.com",
+												"maxLength": 90
+											},
+											"id": {
+												"description": "Defines an identifier.",
+												"type": "string",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"maxLength": 32,
+												"readOnly": true
+											},
+											"type": {
+												"description": "Defines the scope of the rule.",
+												"type": "string",
+												"example": "user",
+												"enum": [
+													"user",
+													"organization"
+												],
+												"readOnly": true
+											}
+										},
+										"readOnly": true
+									}
+								},
+								"type": "object"
+							}
+						],
+						"required": [
+							"id",
+							"mode",
+							"allowed_modes",
+							"configuration",
+							"scope"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update an IP Access rule response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"allowed_modes": {
+															"description": "The available actions that a rule can apply to a matched request.",
+															"type": "array",
+															"items": {
+																"description": "The action to apply to a matched request.",
+																"type": "string",
+																"example": "challenge",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"whitelist",
+																	"js_challenge",
+																	"managed_challenge"
+																],
+																"x-auditable": true
+															},
+															"example": [
+																"whitelist",
+																"block",
+																"challenge",
+																"js_challenge",
+																"managed_challenge"
+															],
+															"readOnly": true
+														},
+														"configuration": {
+															"description": "The rule configuration.",
+															"type": "object",
+															"oneOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
+																			"type": "string",
+																			"example": "ip",
+																			"enum": [
+																				"ip"
+																			]
+																		},
+																		"value": {
+																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
+																			"type": "string",
+																			"example": "198.51.100.4"
+																		}
+																	},
+																	"title": "An IP address configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
+																			"type": "string",
+																			"example": "ip6",
+																			"enum": [
+																				"ip6"
+																			]
+																		},
+																		"value": {
+																			"description": "The IPv6 address to match.",
+																			"type": "string",
+																			"example": "2001:DB8:100::CF"
+																		}
+																	},
+																	"title": "An IPv6 address configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
+																			"type": "string",
+																			"example": "ip_range",
+																			"enum": [
+																				"ip_range"
+																			]
+																		},
+																		"value": {
+																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
+																			"type": "string",
+																			"example": "198.51.100.4/16"
+																		}
+																	},
+																	"title": "An IP address range configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
+																			"type": "string",
+																			"example": "asn",
+																			"enum": [
+																				"asn"
+																			]
+																		},
+																		"value": {
+																			"description": "The AS number to match.",
+																			"type": "string",
+																			"example": "AS12345"
+																		}
+																	},
+																	"title": "An ASN configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
+																			"type": "string",
+																			"example": "country",
+																			"enum": [
+																				"country"
+																			]
+																		},
+																		"value": {
+																			"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
+																			"type": "string",
+																			"example": "US",
+																			"x-auditable": true
+																		}
+																	},
+																	"title": "A country configuration."
+																}
+															]
+														},
+														"created_on": {
+															"description": "The timestamp of when the rule was created.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
+														},
+														"id": {
+															"description": "The unique identifier of the IP Access rule.",
+															"type": "string",
+															"example": "92f17202ed8bd63d69a66b86a49a8f6b",
+															"maxLength": 32,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"mode": {
+															"allOf": [
+																{
+																	"description": "The action to apply to a matched request.",
+																	"type": "string",
+																	"example": "challenge",
+																	"enum": [
+																		"block",
+																		"challenge",
+																		"whitelist",
+																		"js_challenge",
+																		"managed_challenge"
+																	],
+																	"x-auditable": true
+																}
+															],
+															"x-fern-property-name": "access-rule-mode",
+															"x-forge-property-name": "access-rule-mode"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the rule was last modified.",
@@ -2102,17 +4272,35 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "firewall.access-rules",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-firewall-access-rules.write"
+		],
+		"x-forge-skip": true
 	},
-	"POST /accounts/{account_id}/firewall/access_rules/rules": {
-		"operationId": "ip-access-rules-for-an-account-create-an-ip-access-rule",
+	"POST /{account_or_zone}/{account_or_zone_id}/firewall/access_rules/rules": {
+		"operationId": "generated:post:/account_or_zone/account_or_zone_id/firewall/access_rules/rules",
 		"summary": "Create an IP Access rule",
-		"description": "Creates a new IP Access rule for an account. The rule will apply to all zones in the account.\n\nNote: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints.",
+		"description": "Creates a new IP Access rule for an account or zone. The rule will apply to all zones in the account or zone.\n\nNote: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints.",
 		"parameters": [
 			{
-				"name": "account_id",
+				"name": "account_or_zone",
 				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
 				"required": true,
 				"schema": {
 					"description": "Defines an account identifier.",
@@ -2247,7 +4435,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "access-rule-mode"
+								"x-fern-property-name": "access-rule-mode",
+								"x-forge-property-name": "access-rule-mode"
 							},
 							"notes": {
 								"default": "",
@@ -2541,7 +4730,637 @@
 																	"x-auditable": true
 																}
 															],
-															"x-fern-property-name": "access-rule-mode"
+															"x-fern-property-name": "access-rule-mode",
+															"x-forge-property-name": "access-rule-mode"
+														},
+														"modified_on": {
+															"description": "The timestamp of when the rule was last modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
+														},
+														"notes": {
+															"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+															"type": "string",
+															"example": "This rule is enabled because of an event that occurred on date X.",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"mode",
+														"allowed_modes",
+														"configuration"
+													]
+												},
+												{
+													"properties": {
+														"scope": {
+															"description": "All zones owned by the user will have the rule applied.",
+															"type": "object",
+															"properties": {
+																"email": {
+																	"description": "The contact email address of the user.",
+																	"type": "string",
+																	"example": "user@example.com",
+																	"maxLength": 90
+																},
+																"id": {
+																	"description": "Defines an identifier.",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"readOnly": true
+																},
+																"type": {
+																	"description": "Defines the scope of the rule.",
+																	"type": "string",
+																	"example": "user",
+																	"enum": [
+																		"user",
+																		"organization"
+																	],
+																	"readOnly": true
+																}
+															},
+															"readOnly": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"required": [
+												"id",
+												"mode",
+												"allowed_modes",
+												"configuration",
+												"scope"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create an IP Access rule response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Defines whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"IP Access rules for an account"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "firewall.access-rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "firewall.access-rules",
+		"x-forge-method-name": "create",
+		"x-stainless-skip": true
+	},
+	"POST /accounts/{account_id}/firewall/access_rules/rules": {
+		"operationId": "ip-access-rules-for-an-account-create-an-ip-access-rule",
+		"summary": "Create an IP Access rule",
+		"description": "Creates a new IP Access rule for an account. The rule will apply to all zones in the account.\n\nNote: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Defines an account identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"configuration": {
+								"description": "The rule configuration.",
+								"type": "object",
+								"oneOf": [
+									{
+										"type": "object",
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
+												"type": "string",
+												"example": "ip",
+												"enum": [
+													"ip"
+												]
+											},
+											"value": {
+												"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
+												"type": "string",
+												"example": "198.51.100.4"
+											}
+										},
+										"title": "An IP address configuration."
+									},
+									{
+										"type": "object",
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
+												"type": "string",
+												"example": "ip6",
+												"enum": [
+													"ip6"
+												]
+											},
+											"value": {
+												"description": "The IPv6 address to match.",
+												"type": "string",
+												"example": "2001:DB8:100::CF"
+											}
+										},
+										"title": "An IPv6 address configuration."
+									},
+									{
+										"type": "object",
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
+												"type": "string",
+												"example": "ip_range",
+												"enum": [
+													"ip_range"
+												]
+											},
+											"value": {
+												"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
+												"type": "string",
+												"example": "198.51.100.4/16"
+											}
+										},
+										"title": "An IP address range configuration."
+									},
+									{
+										"type": "object",
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
+												"type": "string",
+												"example": "asn",
+												"enum": [
+													"asn"
+												]
+											},
+											"value": {
+												"description": "The AS number to match.",
+												"type": "string",
+												"example": "AS12345"
+											}
+										},
+										"title": "An ASN configuration."
+									},
+									{
+										"type": "object",
+										"properties": {
+											"target": {
+												"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
+												"type": "string",
+												"example": "country",
+												"enum": [
+													"country"
+												]
+											},
+											"value": {
+												"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
+												"type": "string",
+												"example": "US",
+												"x-auditable": true
+											}
+										},
+										"title": "A country configuration."
+									}
+								]
+							},
+							"mode": {
+								"allOf": [
+									{
+										"description": "The action to apply to a matched request.",
+										"type": "string",
+										"example": "challenge",
+										"enum": [
+											"block",
+											"challenge",
+											"whitelist",
+											"js_challenge",
+											"managed_challenge"
+										],
+										"x-auditable": true
+									}
+								],
+								"x-fern-property-name": "access-rule-mode",
+								"x-forge-property-name": "access-rule-mode"
+							},
+							"notes": {
+								"default": "",
+								"anyOf": [
+									{
+										"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+										"type": "string",
+										"example": "This rule is enabled because of an event that occurred on date X.",
+										"x-auditable": true
+									}
+								]
+							}
+						},
+						"required": [
+							"mode",
+							"configuration"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Create an IP Access rule response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {
+																"type": "object"
+															},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Defines whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"allowed_modes": {
+															"description": "The available actions that a rule can apply to a matched request.",
+															"type": "array",
+															"items": {
+																"description": "The action to apply to a matched request.",
+																"type": "string",
+																"example": "challenge",
+																"enum": [
+																	"block",
+																	"challenge",
+																	"whitelist",
+																	"js_challenge",
+																	"managed_challenge"
+																],
+																"x-auditable": true
+															},
+															"example": [
+																"whitelist",
+																"block",
+																"challenge",
+																"js_challenge",
+																"managed_challenge"
+															],
+															"readOnly": true
+														},
+														"configuration": {
+															"description": "The rule configuration.",
+															"type": "object",
+															"oneOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
+																			"type": "string",
+																			"example": "ip",
+																			"enum": [
+																				"ip"
+																			]
+																		},
+																		"value": {
+																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
+																			"type": "string",
+																			"example": "198.51.100.4"
+																		}
+																	},
+																	"title": "An IP address configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
+																			"type": "string",
+																			"example": "ip6",
+																			"enum": [
+																				"ip6"
+																			]
+																		},
+																		"value": {
+																			"description": "The IPv6 address to match.",
+																			"type": "string",
+																			"example": "2001:DB8:100::CF"
+																		}
+																	},
+																	"title": "An IPv6 address configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
+																			"type": "string",
+																			"example": "ip_range",
+																			"enum": [
+																				"ip_range"
+																			]
+																		},
+																		"value": {
+																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
+																			"type": "string",
+																			"example": "198.51.100.4/16"
+																		}
+																	},
+																	"title": "An IP address range configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
+																			"type": "string",
+																			"example": "asn",
+																			"enum": [
+																				"asn"
+																			]
+																		},
+																		"value": {
+																			"description": "The AS number to match.",
+																			"type": "string",
+																			"example": "AS12345"
+																		}
+																	},
+																	"title": "An ASN configuration."
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"target": {
+																			"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
+																			"type": "string",
+																			"example": "country",
+																			"enum": [
+																				"country"
+																			]
+																		},
+																		"value": {
+																			"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
+																			"type": "string",
+																			"example": "US",
+																			"x-auditable": true
+																		}
+																	},
+																	"title": "A country configuration."
+																}
+															]
+														},
+														"created_on": {
+															"description": "The timestamp of when the rule was created.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"readOnly": true
+														},
+														"id": {
+															"description": "The unique identifier of the IP Access rule.",
+															"type": "string",
+															"example": "92f17202ed8bd63d69a66b86a49a8f6b",
+															"maxLength": 32,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"mode": {
+															"allOf": [
+																{
+																	"description": "The action to apply to a matched request.",
+																	"type": "string",
+																	"example": "challenge",
+																	"enum": [
+																		"block",
+																		"challenge",
+																		"whitelist",
+																		"js_challenge",
+																		"managed_challenge"
+																	],
+																	"x-auditable": true
+																}
+															],
+															"x-fern-property-name": "access-rule-mode",
+															"x-forge-property-name": "access-rule-mode"
 														},
 														"modified_on": {
 															"description": "The timestamp of when the rule was last modified.",
@@ -2733,7 +5552,11 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "firewall.access-rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-firewall-access-rules.write"
+		],
+		"x-forge-skip": true
 	}
 }

@@ -334,6 +334,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.ua-rules",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "firewall.ua-rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the User Agent Blocking rule from the zone."
 	},
 	"GET /zones/{zone_id}/firewall/ua_rules": {
@@ -712,7 +718,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.ua-rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "firewall.ua-rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		]
 	},
 	"GET /zones/{zone_id}/firewall/ua_rules/{ua_rule_id}": {
 		"operationId": "user-agent-blocking-rules-get-a-user-agent-blocking-rule",
@@ -1027,7 +1040,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.ua-rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "firewall.ua-rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		]
 	},
 	"POST /zones/{zone_id}/firewall/ua_rules": {
 		"operationId": "user-agent-blocking-rules-create-a-user-agent-blocking-rule",
@@ -1097,7 +1117,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "access-rule-mode"
+								"x-fern-property-name": "access-rule-mode",
+								"x-forge-property-name": "access-rule-mode"
 							},
 							"paused": {
 								"description": "When true, indicates that the rule is currently paused.",
@@ -1395,7 +1416,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.ua-rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "firewall.ua-rules",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		]
 	},
 	"PUT /zones/{zone_id}/firewall/ua_rules/{ua_rule_id}": {
 		"operationId": "user-agent-blocking-rules-update-a-user-agent-blocking-rule",
@@ -1567,7 +1594,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "access-rule-mode"
+								"x-fern-property-name": "access-rule-mode",
+								"x-forge-property-name": "access-rule-mode"
 							},
 							"paused": {
 								"description": "When true, indicates that the rule is currently paused.",
@@ -1866,6 +1894,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.ua-rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "firewall.ua-rules",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		]
 	}
 }

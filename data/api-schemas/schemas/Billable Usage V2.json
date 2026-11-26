@@ -285,7 +285,7 @@
 												}
 											},
 											"x_BillableMetricId": {
-												"description": "The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId.",
+												"description": "The unique identifier for the billable metric in the Cloudflare catalog. For cost billed under a since-archived billable metric this is the metric's catalog public id (a UUID) rather than its usage metric name, so it stays separate from the live metric that replaced it. Cloudflare extension; replaces FOCUS SkuId.",
 												"type": "string",
 												"example": "workers_standard_requests"
 											},
@@ -458,7 +458,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "billing.usage",
-		"x-fern-sdk-method-name": "get-account-usage-v2"
+		"x-fern-sdk-method-name": "get-account-usage-v2",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "billing.usage",
+		"x-forge-method-name": "get-account-usage-v2"
 	},
 	"GET /accounts/{account_id}/billable/usage/billable-metrics": {
 		"operationId": "billable-usage-v2-get-account-billable-metrics",
@@ -753,7 +756,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "billing.usage",
-		"x-fern-sdk-method-name": "get-account-billable-metrics"
+		"x-fern-sdk-method-name": "get-account-billable-metrics",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "billing.usage",
+		"x-forge-method-name": "get-account-billable-metrics"
 	},
 	"GET /organizations/{organization_id}/billable/usage": {
 		"operationId": "billable-usage-v2-get-organization-usage",
@@ -1041,7 +1047,7 @@
 												}
 											},
 											"x_BillableMetricId": {
-												"description": "The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId.",
+												"description": "The unique identifier for the billable metric in the Cloudflare catalog. For cost billed under a since-archived billable metric this is the metric's catalog public id (a UUID) rather than its usage metric name, so it stays separate from the live metric that replaced it. Cloudflare extension; replaces FOCUS SkuId.",
 												"type": "string",
 												"example": "workers_standard_requests"
 											},
@@ -1214,7 +1220,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.billing.usage",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.billing.usage",
+		"x-forge-method-name": "get"
 	},
 	"POST /accounts/{account_id}/billable/usage": {
 		"operationId": "billable-usage-v2-query-account-usage",
@@ -1247,7 +1256,7 @@
 								"type": "object",
 								"properties": {
 									"BillableMetricIds": {
-										"description": "Restrict results to rows whose `x_BillableMetricId` matches one of these billable metric ids (e.g. `workers_standard_requests`). Values must be unique.",
+										"description": "Restrict results to rows whose `x_BillableMetricId` matches one of these billable metric ids (e.g. `workers_standard_requests`). Values must be unique. Cost billed under an archived billable metric carries that metric's catalog public id as `x_BillableMetricId` and is never matched by this filter; omit the filter to include it.",
 										"type": "array",
 										"items": {
 											"maxLength": 128,
@@ -1638,7 +1647,7 @@
 												}
 											},
 											"x_BillableMetricId": {
-												"description": "The unique identifier for the billable metric in the Cloudflare catalog. Cloudflare extension; replaces FOCUS SkuId.",
+												"description": "The unique identifier for the billable metric in the Cloudflare catalog. For cost billed under a since-archived billable metric this is the metric's catalog public id (a UUID) rather than its usage metric name, so it stays separate from the live metric that replaced it. Cloudflare extension; replaces FOCUS SkuId.",
 												"type": "string",
 												"example": "workers_standard_requests"
 											},
@@ -1811,6 +1820,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "billing.usage",
-		"x-fern-sdk-method-name": "query"
+		"x-fern-sdk-method-name": "query",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "billing.usage",
+		"x-forge-method-name": "query"
 	}
 }

@@ -253,7 +253,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.posture.integrations",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/devices/posture/integration": {
 		"operationId": "device-posture-integrations-list-device-posture-integrations",
@@ -590,7 +596,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.posture.integrations",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/posture/integration/{integration_id}": {
 		"operationId": "device-posture-integrations-device-posture-integration-details",
@@ -916,7 +925,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.posture.integrations",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/devices/posture/integration/{integration_id}": {
 		"operationId": "device-posture-integrations-update-device-posture-integration",
@@ -986,6 +998,8 @@
 														"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1015,6 +1029,8 @@
 														"description": "The Crowdstrike client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"customer_id": {
@@ -1045,12 +1061,16 @@
 														"description": "The Uptycs client secret.",
 														"type": "string",
 														"example": "example client key",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"client_secret": {
 														"description": "The Uptycs client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"customer_id": {
@@ -1079,6 +1099,8 @@
 														"description": "The Intune client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"customer_id": {
@@ -1106,6 +1128,8 @@
 														"description": "The Kolide client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1127,6 +1151,8 @@
 														"description": "If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
 														"type": "string",
 														"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"api_url": {
@@ -1139,6 +1165,8 @@
 														"description": "The Tanium client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1160,6 +1188,8 @@
 														"description": "The SentinelOne S2S client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1181,6 +1211,8 @@
 														"description": "This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
 														"type": "string",
 														"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"api_url": {
@@ -1200,7 +1232,8 @@
 										]
 									}
 								],
-								"x-fern-property-name": "integration-config"
+								"x-fern-property-name": "integration-config",
+								"x-forge-property-name": "integration-config"
 							},
 							"interval": {
 								"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
@@ -1535,7 +1568,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.posture.integrations",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/devices/posture/integration": {
 		"operationId": "device-posture-integrations-create-device-posture-integration",
@@ -1593,6 +1632,8 @@
 														"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1622,6 +1663,8 @@
 														"description": "The Crowdstrike client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"customer_id": {
@@ -1652,12 +1695,16 @@
 														"description": "The Uptycs client secret.",
 														"type": "string",
 														"example": "example client key",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"client_secret": {
 														"description": "The Uptycs client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"customer_id": {
@@ -1686,6 +1733,8 @@
 														"description": "The Intune client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"customer_id": {
@@ -1713,6 +1762,8 @@
 														"description": "The Kolide client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1734,6 +1785,8 @@
 														"description": "If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
 														"type": "string",
 														"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"api_url": {
@@ -1746,6 +1799,8 @@
 														"description": "The Tanium client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1767,6 +1822,8 @@
 														"description": "The SentinelOne S2S client secret.",
 														"type": "string",
 														"example": "example client secret",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1788,6 +1845,8 @@
 														"description": "This secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.",
 														"type": "string",
 														"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"api_url": {
@@ -1807,7 +1866,8 @@
 										]
 									}
 								],
-								"x-fern-property-name": "integration-config"
+								"x-fern-property-name": "integration-config",
+								"x-forge-property-name": "integration-config"
 							},
 							"interval": {
 								"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
@@ -2148,6 +2208,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.posture.integrations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.posture.integrations",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

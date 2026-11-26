@@ -320,7 +320,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.sites",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/sites": {
 		"operationId": "magic-sites-list-sites",
@@ -642,7 +649,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.sites",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}": {
 		"operationId": "magic-sites-site-details",
@@ -975,7 +991,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.sites",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/magic/sites/{site_id}": {
 		"operationId": "magic-sites-patch-site",
@@ -1354,7 +1379,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.sites",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"POST /accounts/{account_id}/magic/sites": {
 		"operationId": "magic-sites-create-site",
@@ -1719,7 +1751,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.sites",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"PUT /accounts/{account_id}/magic/sites/{site_id}": {
 		"operationId": "magic-sites-update-site",
@@ -2098,6 +2137,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.sites",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.sites",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	}
 }

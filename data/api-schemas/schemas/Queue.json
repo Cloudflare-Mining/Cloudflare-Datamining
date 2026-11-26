@@ -391,12 +391,21 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.subscriptions",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.subscriptions",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"DELETE /accounts/{account_id}/queues/{queue_id}": {
 		"operationId": "queues-delete",
@@ -558,6 +567,7 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -568,7 +578,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"DELETE /accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}": {
 		"operationId": "queues-delete-consumer",
@@ -743,6 +761,7 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -753,7 +772,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.consumers",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.consumers",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/event_subscriptions/subscriptions": {
 		"operationId": "subscriptions-list",
@@ -771,6 +798,14 @@
 					"maxLength": 32,
 					"readOnly": true,
 					"x-auditable": true
+				}
+			},
+			{
+				"name": "queue_id",
+				"in": "query",
+				"description": "Filter event subscriptions by destination queue ID.",
+				"schema": {
+					"type": "string"
 				}
 			},
 			{
@@ -1218,6 +1253,11 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Queues Metadata Read",
 			"Queues Write",
 			"Queues Read",
 			"Workers Scripts Write",
@@ -1225,7 +1265,21 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.subscriptions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.subscriptions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"queues.metadata_read",
+			"queues.read",
+			"queues.write",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}": {
 		"operationId": "subscriptions-get",
@@ -1619,12 +1673,21 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.subscriptions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.subscriptions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/queues": {
 		"operationId": "queues-list",
@@ -2102,6 +2165,11 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Queues Metadata Read",
 			"Queues Write",
 			"Queues Read",
 			"Workers Scripts Write",
@@ -2114,7 +2182,21 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"queues.metadata_read",
+			"queues.read",
+			"queues.write",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/queues/{queue_id}": {
 		"operationId": "queues-get",
@@ -2551,6 +2633,11 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Queues Metadata Read",
 			"Queues Write",
 			"Queues Read",
 			"Workers Scripts Write",
@@ -2563,7 +2650,21 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"queues.metadata_read",
+			"queues.read",
+			"queues.write",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/queues/{queue_id}/consumers": {
 		"operationId": "queues-list-consumers",
@@ -2891,6 +2992,11 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Queues Metadata Read",
 			"Queues Write",
 			"Queues Read",
 			"Workers Scripts Write",
@@ -2903,7 +3009,21 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.consumers",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.consumers",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"queues.metadata_read",
+			"queues.read",
+			"queues.write",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}": {
 		"operationId": "queues-get-consumer",
@@ -3241,6 +3361,11 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Queues Metadata Read",
 			"Queues Write",
 			"Queues Read",
 			"Workers Scripts Write",
@@ -3253,7 +3378,21 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.consumers",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.consumers",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"queues.metadata_read",
+			"queues.read",
+			"queues.write",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/queues/{queue_id}/metrics": {
 		"operationId": "queues-get-metrics",
@@ -3485,6 +3624,11 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Queues Metadata Read",
 			"Queues Write",
 			"Queues Read",
 			"Workers Scripts Write",
@@ -3492,7 +3636,21 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.metrics",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.metrics",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"queues.metadata_read",
+			"queues.read",
+			"queues.write",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/queues/{queue_id}/purge": {
 		"operationId": "queues-purge-get",
@@ -3681,6 +3839,11 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Queues Metadata Read",
 			"Queues Write",
 			"Queues Read",
 			"Workers Scripts Write",
@@ -3693,7 +3856,21 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.purge",
-		"x-fern-sdk-method-name": "status"
+		"x-fern-sdk-method-name": "status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.purge",
+		"x-forge-method-name": "status",
+		"x-forge-oauth-scopes": [
+			"queues.metadata_read",
+			"queues.read",
+			"queues.write",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}": {
 		"operationId": "subscriptions-patch",
@@ -4204,12 +4381,21 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.subscriptions",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.subscriptions",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-params": {
 			"enabled": {
 				"default": null
@@ -4927,6 +5113,8 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -4937,7 +5125,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/event_subscriptions/subscriptions": {
 		"operationId": "subscriptions-create",
@@ -5636,12 +5833,21 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.subscriptions",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.subscriptions",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/queues": {
 		"operationId": "queues-create",
@@ -6094,6 +6300,7 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -6104,7 +6311,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/consumers": {
 		"operationId": "queues-create-consumer",
@@ -6559,6 +6774,7 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -6569,7 +6785,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.consumers",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.consumers",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages": {
 		"operationId": "queues-push-message",
@@ -6835,6 +7059,8 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -6846,7 +7072,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.messages",
-		"x-fern-sdk-method-name": "push"
+		"x-fern-sdk-method-name": "push",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.messages",
+		"x-forge-method-name": "push",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/ack": {
 		"operationId": "queues-ack-messages",
@@ -7085,6 +7320,8 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -7096,7 +7333,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.messages",
-		"x-fern-sdk-method-name": "ack"
+		"x-fern-sdk-method-name": "ack",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.messages",
+		"x-forge-method-name": "ack",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/batch": {
 		"operationId": "queues-push-messages",
@@ -7376,18 +7622,24 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
 		"x-auditable": false,
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.queue.push"
-			]
-		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.messages",
-		"x-fern-sdk-method-name": "bulk-push"
+		"x-fern-sdk-method-name": "bulk-push",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.messages",
+		"x-forge-method-name": "bulk-push",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/extend": {
 		"operationId": "queues-extend-messages",
@@ -7607,18 +7859,24 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
 		"x-auditable": false,
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.queue.pull"
-			]
-		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.messages",
-		"x-fern-sdk-method-name": "extend-leases"
+		"x-fern-sdk-method-name": "extend-leases",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.messages",
+		"x-forge-method-name": "extend-leases",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/peek": {
 		"operationId": "queues-peek-messages",
@@ -7857,18 +8115,32 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Queues Write",
-			"Workers Scripts Write"
+			"Queues Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		],
 		"x-auditable": false,
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.queue.peek"
-			]
-		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.messages",
-		"x-fern-sdk-method-name": "peek"
+		"x-fern-sdk-method-name": "peek",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.messages",
+		"x-forge-method-name": "peek",
+		"x-forge-oauth-scopes": [
+			"queues.read",
+			"queues.write",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/preview": {
 		"operationId": "queues-preview-messages",
@@ -8108,6 +8380,11 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Queues Metadata Read",
 			"Queues Write",
 			"Queues Read",
 			"Workers Scripts Write",
@@ -8122,7 +8399,22 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "queues.messages",
-		"x-fern-sdk-method-name": "preview"
+		"x-fern-sdk-method-name": "preview",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.messages",
+		"x-forge-method-name": "preview",
+		"x-forge-oauth-scopes": [
+			"queues.metadata_read",
+			"queues.read",
+			"queues.write",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/preview/ack": {
 		"operationId": "queues-ack-preview-messages",
@@ -8353,6 +8645,8 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -8365,7 +8659,17 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "queues.messages",
-		"x-fern-sdk-method-name": "ack-preview"
+		"x-fern-sdk-method-name": "ack-preview",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.messages",
+		"x-forge-method-name": "ack-preview",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/pull": {
 		"operationId": "queues-pull-messages",
@@ -8649,6 +8953,8 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -8660,7 +8966,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.messages",
-		"x-fern-sdk-method-name": "pull"
+		"x-fern-sdk-method-name": "pull",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.messages",
+		"x-forge-method-name": "pull",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/purge": {
 		"operationId": "queues-purge-messages",
@@ -8888,18 +9203,24 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
 		"x-auditable": false,
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.worker.queue.ack"
-			]
-		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.messages",
 		"x-fern-sdk-method-name": "purge",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.messages",
+		"x-forge-method-name": "purge",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes the selected messages from the Queue."
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/purge": {
@@ -9359,6 +9680,8 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -9370,6 +9693,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.purge",
 		"x-fern-sdk-method-name": "start",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.purge",
+		"x-forge-method-name": "start",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This operation drops every message in the queue."
 	},
 	"PUT /accounts/{account_id}/queues/{queue_id}": {
@@ -10083,6 +10415,7 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -10094,7 +10427,16 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "queues",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}": {
 		"operationId": "queues-update-consumer",
@@ -10563,6 +10905,7 @@
 			"Queue"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Queues Write",
 			"Workers Scripts Write"
 		],
@@ -10573,6 +10916,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.consumers",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "queues.consumers",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"queues.write",
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	}
 }

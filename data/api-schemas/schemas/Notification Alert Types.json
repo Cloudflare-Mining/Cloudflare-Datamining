@@ -283,6 +283,8 @@
 			"Notification Alert Types"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Zero Trust: PII Read",
 			"Notifications Write",
 			"Notifications Read",
@@ -291,6 +293,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.available-alerts",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.available-alerts",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"notifications.read",
+			"notifications.write",
+			"teams-pii.read",
+			"observability.read",
+			"account-settings.read",
+			"observability.write",
+			"account-settings.write"
+		]
 	}
 }

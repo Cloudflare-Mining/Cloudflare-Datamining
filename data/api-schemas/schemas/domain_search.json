@@ -297,12 +297,21 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
 			"Intel Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.queries",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/brand-protection/matches": {
 		"operationId": "getAccountsAccountIdBrandProtectionMatches",
@@ -570,13 +579,25 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"Intel Write",
 			"Intel Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.matches",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.matches",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"intel.read",
+			"cloudforce-one.read",
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/brand-protection/matches/download": {
 		"operationId": "getAccountsAccountIdBrandProtectionMatchesDownload",
@@ -844,13 +865,25 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"Intel Write",
 			"Intel Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.matches",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.matches",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"intel.read",
+			"cloudforce-one.read",
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/brand-protection/queries": {
 		"operationId": "getAccountsAccountIdBrandProtectionQueries",
@@ -1029,13 +1062,25 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"Intel Write",
 			"Intel Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.queries",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"intel.read",
+			"cloudforce-one.read",
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/brand-protection/total-queries": {
 		"operationId": "getAccountsAccountIdBrandProtectionTotalQueries",
@@ -1214,13 +1259,25 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"Intel Write",
 			"Intel Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.total-queries",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.total-queries",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"intel.read",
+			"cloudforce-one.read",
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/brand-protection/queries": {
 		"operationId": "patchAccountsAccountIdBrandProtectionQueries",
@@ -1443,12 +1500,21 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
 			"Intel Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.queries",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/brand-protection/queries": {
 		"operationId": "postAccountsAccountIdBrandProtectionQueries",
@@ -1726,12 +1792,21 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
 			"Intel Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.queries",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/brand-protection/queries/{query_id}/matches/{domain_id}/dismiss": {
 		"operationId": "postAccountsAccountIdBrandProtectionQueriesQueryIdMatchesDomainIdDismiss",
@@ -1941,12 +2016,21 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
 			"Intel Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "dismiss"
+		"x-fern-sdk-method-name": "dismiss",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.queries",
+		"x-forge-method-name": "dismiss",
+		"x-forge-oauth-scopes": [
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/brand-protection/queries/{query_id}/matches/{domain_id}/undismiss": {
 		"operationId": "postAccountsAccountIdBrandProtectionQueriesQueryIdMatchesDomainIdUndismiss",
@@ -2156,12 +2240,21 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
 			"Intel Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "undismiss"
+		"x-fern-sdk-method-name": "undismiss",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.queries",
+		"x-forge-method-name": "undismiss",
+		"x-forge-oauth-scopes": [
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/brand-protection/queries/bulk": {
 		"operationId": "postAccountsAccountIdBrandProtectionQueriesBulk",
@@ -2392,12 +2485,21 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
 			"Intel Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.queries",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.queries",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/brand-protection/search": {
 		"operationId": "postAccountsAccountIdBrandProtectionSearch",
@@ -2576,11 +2678,20 @@
 			"domain_search"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
 			"Intel Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "brand-protection.search",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "brand-protection.search",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"intel.write",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	}
 }

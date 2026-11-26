@@ -539,7 +539,20 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "csam-scanner",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "csam-scanner",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/settings/csam_scanner_third_party": {
 		"operationId": "csam-scanner-update-setting",
@@ -1134,6 +1147,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "csam-scanner",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "csam-scanner",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-routes.write",
+			"zone-settings.write"
+		]
 	}
 }

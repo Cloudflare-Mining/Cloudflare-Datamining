@@ -435,7 +435,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -445,6 +444,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"DELETE /accounts/{account_id}/shares/{share_id}/excluded-recipients/{excluded_recipient_id}": {
@@ -719,7 +721,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -729,6 +730,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.excluded-recipients",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Removing the exclusion makes the share apply to this account."
 	},
 	"DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
@@ -1055,7 +1059,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1065,6 +1068,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.recipients",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.recipients",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"DELETE /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
@@ -1383,7 +1389,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -1393,6 +1398,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.resources",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.resources",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/shares": {
@@ -2039,7 +2047,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"resource-sharing.read"
+		]
 	},
 	"GET /accounts/{account_id}/shares/{share_id}": {
 		"operationId": "shares-get-by-id",
@@ -2526,7 +2540,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"resource-sharing.read"
+		]
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/excluded-recipients": {
 		"operationId": "share-excluded-recipients-list",
@@ -2854,7 +2874,9 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Resource Sharing Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -2863,7 +2885,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.excluded-recipients",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"resource-sharing.read"
+		]
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/excluded-recipients/{excluded_recipient_id}": {
 		"operationId": "share-excluded-recipients-get-by-id",
@@ -3137,7 +3165,9 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Resource Sharing Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -3146,7 +3176,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.excluded-recipients",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"resource-sharing.read"
+		]
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/recipients": {
 		"operationId": "share-recipients-list",
@@ -3535,7 +3571,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -3544,7 +3579,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.recipients",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.recipients",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
 		"operationId": "share-recipients-get-by-id",
@@ -3879,7 +3917,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -3888,7 +3925,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.recipients",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.recipients",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/resources": {
 		"operationId": "share-resources-list",
@@ -4294,7 +4334,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -4303,7 +4342,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.resources",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.resources",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"operationId": "share-resources-get-by-id",
@@ -4621,7 +4663,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -4630,7 +4671,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.resources",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.resources",
+		"x-forge-method-name": "get"
 	},
 	"GET /organizations/{organization_id}/shares": {
 		"operationId": "organization-shares-list",
@@ -5170,7 +5214,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.shares",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.shares",
+		"x-forge-method-name": "list"
 	},
 	"POST /accounts/{account_id}/shares": {
 		"operationId": "share-create",
@@ -5255,7 +5302,8 @@
 											"x-stainless-deprecation-message": "This field has been renamed to `recipient_account_id`. Both names are accepted during the deprecation period.",
 											"x-stainless-skip": [
 												"terraform"
-											]
+											],
+											"x-sunset": "2027-05-26T00:00:00Z"
 										},
 										"organization_id": {
 											"description": "Organization identifier.",
@@ -5754,7 +5802,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -5763,7 +5810,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/excluded-recipients": {
 		"operationId": "share-excluded-recipient-create",
@@ -6052,7 +6102,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -6061,7 +6110,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.excluded-recipients",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/recipients": {
 		"operationId": "share-recipient-create",
@@ -6122,7 +6174,8 @@
 								"x-stainless-deprecation-message": "This field has been renamed to `recipient_account_id`. Both names are accepted during the deprecation period.",
 								"x-stainless-skip": [
 									"terraform"
-								]
+								],
+								"x-sunset": "2027-05-26T00:00:00Z"
 							},
 							"recipient_account_id": {
 								"description": "The account that will receive the share.",
@@ -6420,7 +6473,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -6429,7 +6481,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.recipients",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.recipients",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/resources": {
 		"operationId": "share-resource-create",
@@ -6789,7 +6844,6 @@
 		"tags": [
 			"Resource Sharing"
 		],
-		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": false,
 			"enterprise": true,
@@ -6798,7 +6852,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.resources",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.resources",
+		"x-forge-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}": {
 		"operationId": "share-update",
@@ -7273,7 +7330,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing",
+		"x-forge-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/excluded-recipients": {
 		"operationId": "share-excluded-recipients-update",
@@ -7484,7 +7544,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.excluded-recipients",
-		"x-fern-sdk-method-name": "update",
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.excluded-recipients",
+		"x-forge-method-name": "replace",
 		"x-forge-require-confirmation": "Accounts omitted from the list are no longer excluded and will receive the share."
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/recipients": {
@@ -7548,7 +7611,8 @@
 									"x-stainless-deprecation-message": "This field has been renamed to `recipient_account_id`. Both names are accepted during the deprecation period.",
 									"x-stainless-skip": [
 										"terraform"
-									]
+									],
+									"x-sunset": "2027-05-26T00:00:00Z"
 								},
 								"recipient_account_id": {
 									"description": "The account that will receive the share.",
@@ -7714,7 +7778,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.recipients",
-		"x-fern-sdk-method-name": "update",
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.recipients",
+		"x-forge-method-name": "replace",
 		"x-forge-require-confirmation": "Accounts omitted from the list are disassociated from the share."
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
@@ -8060,6 +8127,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "resource-sharing.resources",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "resource-sharing.resources",
+		"x-forge-method-name": "update"
 	}
 }

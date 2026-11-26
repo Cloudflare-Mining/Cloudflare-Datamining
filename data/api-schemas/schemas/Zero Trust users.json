@@ -264,10 +264,22 @@
 		"tags": [
 			"Zero Trust users"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Access: Users Write",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.users",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"access-users.write",
+			"access-acct.write",
+			"teams.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/access/users/{user_id}/mfa_authenticators/{authenticator_id}": {
 		"operationId": "zero-trust-users-delete-mfa-authenticator",
@@ -544,10 +556,22 @@
 		"tags": [
 			"Zero Trust users"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Access: Users Write",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.users.mfa.authenticators",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.users.mfa.authenticators",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"access-users.write",
+			"access-acct.write",
+			"teams.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/access/users/{user_id}/passkeys/{authenticator_id}": {
 		"operationId": "zero-trust-users-delete-passkey",
@@ -824,10 +848,22 @@
 		"tags": [
 			"Zero Trust users"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Access: Users Write",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.users.passkeys",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.users.passkeys",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"access-users.write",
+			"access-acct.write",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/users": {
 		"operationId": "zero-trust-users-get-users",
@@ -1251,11 +1287,27 @@
 			"Zero Trust users"
 		],
 		"x-api-token-group": [
-			"Access: Audit Logs Read"
+			"Access: Users Write",
+			"Access: Users Read",
+			"Access: Audit Logs Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.users",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"access-users.read",
+			"access-audit-log.read",
+			"access-users.write",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}": {
 		"operationId": "zero-trust-users-get-user",
@@ -1584,11 +1636,27 @@
 			"Zero Trust users"
 		],
 		"x-api-token-group": [
-			"Access: Audit Logs Read"
+			"Access: Users Write",
+			"Access: Users Read",
+			"Access: Audit Logs Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.users",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"access-users.read",
+			"access-audit-log.read",
+			"access-users.write",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions": {
 		"operationId": "zero-trust-users-get-active-sessions",
@@ -1947,11 +2015,27 @@
 			"Zero Trust users"
 		],
 		"x-api-token-group": [
-			"Access: Audit Logs Read"
+			"Access: Users Write",
+			"Access: Users Read",
+			"Access: Audit Logs Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users.active-sessions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.users.active-sessions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"access-users.read",
+			"access-audit-log.read",
+			"access-users.write",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions/{nonce}": {
 		"operationId": "zero-trust-users-get-active-session",
@@ -2406,11 +2490,27 @@
 			"Zero Trust users"
 		],
 		"x-api-token-group": [
-			"Access: Audit Logs Read"
+			"Access: Users Write",
+			"Access: Users Read",
+			"Access: Audit Logs Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users.active-sessions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.users.active-sessions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"access-users.read",
+			"access-audit-log.read",
+			"access-users.write",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/failed_logins": {
 		"operationId": "zero-trust-users-get-failed-logins",
@@ -2731,11 +2831,27 @@
 			"Zero Trust users"
 		],
 		"x-api-token-group": [
-			"Access: Audit Logs Read"
+			"Access: Users Write",
+			"Access: Users Read",
+			"Access: Audit Logs Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users.failed-logins",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.users.failed-logins",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"access-users.read",
+			"access-audit-log.read",
+			"access-users.write",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/last_seen_identity": {
 		"operationId": "zero-trust-users-get-last-seen-identity",
@@ -3201,11 +3317,27 @@
 			"Zero Trust users"
 		],
 		"x-api-token-group": [
-			"Access: Audit Logs Read"
+			"Access: Users Write",
+			"Access: Users Read",
+			"Access: Audit Logs Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users.last-seen-identity",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.users.last-seen-identity",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"access-users.read",
+			"access-audit-log.read",
+			"access-users.write",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/access/users": {
 		"operationId": "zero-trust-users-create-user",
@@ -3547,10 +3679,22 @@
 		"tags": [
 			"Zero Trust users"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Access: Users Write",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.users",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"access-users.write",
+			"access-acct.write",
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/access/users/{user_id}": {
 		"operationId": "zero-trust-users-update-user",
@@ -3906,10 +4050,22 @@
 			"Zero Trust users"
 		],
 		"x-api-token-group": [
-			"Zero Trust: Seats Write"
+			"Access: Users Write",
+			"Zero Trust: Seats Write",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.users",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.users",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"access-seats.write",
+			"access-users.write",
+			"access-acct.write",
+			"teams.write"
+		]
 	}
 }

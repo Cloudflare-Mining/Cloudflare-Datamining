@@ -201,7 +201,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.datasets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.datasets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/datasets/{alias}": {
 		"operationId": "radar-get-reports-dataset-download",
@@ -292,7 +299,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.datasets",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.datasets",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"POST /radar/datasets/download": {
 		"operationId": "radar-post-reports-dataset-download-url",
@@ -430,6 +444,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.datasets",
-		"x-fern-sdk-method-name": "download"
+		"x-fern-sdk-method-name": "download",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.datasets",
+		"x-forge-method-name": "download",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	}
 }

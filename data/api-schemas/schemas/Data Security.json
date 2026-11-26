@@ -99,7 +99,8 @@
 								"format": "int64",
 								"example": 10,
 								"minimum": 1,
-								"x-fern-property-name": "limit"
+								"x-fern-property-name": "limit",
+								"x-forge-property-name": "limit"
 							},
 							"to": {
 								"description": "End of the query time range (exclusive). RFC3339.",
@@ -464,6 +465,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "analytics.query.data-security.content-findings",
 		"x-fern-sdk-method-name": "top-n",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "analytics.query.data-security.content-findings",
+		"x-forge-method-name": "top-n",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/analytics/query/data-security/findings/summary": {
@@ -968,6 +972,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "analytics.query.data-security.findings",
 		"x-fern-sdk-method-name": "summary",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "analytics.query.data-security.findings",
+		"x-forge-method-name": "summary",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/analytics/query/data-security/findings/timeseries": {
@@ -1467,6 +1474,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "analytics.query.data-security.findings",
 		"x-fern-sdk-method-name": "timeseries",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "analytics.query.data-security.findings",
+		"x-forge-method-name": "timeseries",
 		"x-stability": "beta"
 	}
 }

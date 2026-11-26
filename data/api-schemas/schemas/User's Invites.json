@@ -378,7 +378,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.invites",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.invites",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"memberships.read",
+			"memberships.write"
+		]
 	},
 	"GET /user/invites/{invite_id}": {
 		"operationId": "user'-s-invites-invitation-details",
@@ -741,7 +748,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.invites",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.invites",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"memberships.read",
+			"memberships.write"
+		]
 	},
 	"PATCH /user/invites/{invite_id}": {
 		"operationId": "user'-s-invites-respond-to-invitation",
@@ -1127,6 +1141,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.invites",
-		"x-fern-sdk-method-name": "respond"
+		"x-fern-sdk-method-name": "respond",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.invites",
+		"x-forge-method-name": "respond",
+		"x-forge-oauth-scopes": [
+			"memberships.write"
+		]
 	}
 }

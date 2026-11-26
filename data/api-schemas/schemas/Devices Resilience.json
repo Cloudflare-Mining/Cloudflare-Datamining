@@ -259,7 +259,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.emergency-disconnect",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.emergency-disconnect",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-resilience.read",
+			"teams-resilience.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/devices/resilience/disconnect": {
 		"operationId": "devices-resilience-set-global-warp-override",
@@ -546,6 +555,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.emergency-disconnect",
-		"x-fern-sdk-method-name": "set"
+		"x-fern-sdk-method-name": "set",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.emergency-disconnect",
+		"x-forge-method-name": "set",
+		"x-forge-oauth-scopes": [
+			"teams-resilience.write"
+		]
 	}
 }

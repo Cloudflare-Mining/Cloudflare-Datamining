@@ -244,7 +244,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.endpoint-healthchecks",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "diagnostics.endpoint-healthchecks",
+		"x-forge-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/diagnostics/endpoint-healthchecks": {
 		"operationId": "diagnostics-endpoint-healthcheck-list",
@@ -543,7 +546,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.endpoint-healthchecks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "diagnostics.endpoint-healthchecks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}": {
 		"operationId": "diagnostics-endpoint-healthcheck-get",
@@ -850,7 +859,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.endpoint-healthchecks",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "diagnostics.endpoint-healthchecks",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-transit.write"
+		]
 	},
 	"POST /accounts/{account_id}/diagnostics/endpoint-healthchecks": {
 		"operationId": "diagnostics-endpoint-healthcheck-create",
@@ -1181,7 +1196,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.endpoint-healthchecks",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "diagnostics.endpoint-healthchecks",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"magic-transit.write"
+		]
 	},
 	"PUT /accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}": {
 		"operationId": "diagnostics-endpoint-healthcheck-update",
@@ -1520,6 +1541,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.endpoint-healthchecks",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "diagnostics.endpoint-healthchecks",
+		"x-forge-method-name": "update"
 	}
 }

@@ -268,11 +268,19 @@
 			"Access custom pages"
 		],
 		"x-api-token-group": [
-			"Access: Custom Pages Write"
+			"Access: Custom Pages Write",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.custom-pages",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"access-custom-page.write",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/custom_pages": {
 		"operationId": "access-custom-pages-list-custom-pages",
@@ -452,6 +460,7 @@
 														"description": "Number of apps the custom page is assigned to.",
 														"type": "integer",
 														"x-auditable": true,
+														"x-forge-skip": true,
 														"x-stainless-skip": true
 													},
 													"contract_version": {
@@ -464,6 +473,7 @@
 															{
 																"type": "string",
 																"x-auditable": true,
+																"x-forge-skip": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -502,6 +512,7 @@
 															{
 																"type": "string",
 																"x-auditable": true,
+																"x-forge-skip": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -682,11 +693,22 @@
 		],
 		"x-api-token-group": [
 			"Access: Custom Pages Write",
-			"Access: Custom Pages Read"
+			"Access: Custom Pages Read",
+			"Zero Trust Read",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.custom-pages",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"access-custom-page.read",
+			"access-custom-page.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
 		"operationId": "access-custom-pages-get-a-custom-page",
@@ -822,6 +844,7 @@
 													"description": "Number of apps the custom page is assigned to.",
 													"type": "integer",
 													"x-auditable": true,
+													"x-forge-skip": true,
 													"x-stainless-skip": true
 												},
 												"contract_version": {
@@ -834,6 +857,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -877,6 +901,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1030,11 +1055,22 @@
 		],
 		"x-api-token-group": [
 			"Access: Custom Pages Write",
-			"Access: Custom Pages Read"
+			"Access: Custom Pages Read",
+			"Zero Trust Read",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.custom-pages",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"access-custom-page.read",
+			"access-custom-page.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/access/custom_pages": {
 		"operationId": "access-custom-pages-create-a-custom-page",
@@ -1064,6 +1100,7 @@
 								"description": "Number of apps the custom page is assigned to.",
 								"type": "integer",
 								"x-auditable": true,
+								"x-forge-skip": true,
 								"x-stainless-skip": true
 							},
 							"contract_version": {
@@ -1076,6 +1113,7 @@
 									{
 										"type": "string",
 										"x-auditable": true,
+										"x-forge-skip": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -1119,6 +1157,7 @@
 									{
 										"type": "string",
 										"x-auditable": true,
+										"x-forge-skip": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -1243,6 +1282,7 @@
 													"description": "Number of apps the custom page is assigned to.",
 													"type": "integer",
 													"x-auditable": true,
+													"x-forge-skip": true,
 													"x-stainless-skip": true
 												},
 												"contract_version": {
@@ -1255,6 +1295,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1293,6 +1334,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1657,11 +1699,19 @@
 			"Access custom pages"
 		],
 		"x-api-token-group": [
-			"Access: Custom Pages Write"
+			"Access: Custom Pages Write",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.custom-pages",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"access-custom-page.write",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/access/custom_pages/validate": {
 		"operationId": "access-custom-pages-validate-a-custom-page-template",
@@ -1707,7 +1757,8 @@
 								"description": "Contract version to validate against; omit for the latest.",
 								"type": "integer",
 								"x-auditable": true,
-								"x-fern-property-name": "contract-version"
+								"x-fern-property-name": "contract-version",
+								"x-forge-property-name": "contract-version"
 							}
 						},
 						"required": [
@@ -2032,11 +2083,19 @@
 			"Access custom pages"
 		],
 		"x-api-token-group": [
-			"Access: Custom Pages Write"
+			"Access: Custom Pages Write",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "validate"
+		"x-fern-sdk-method-name": "validate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.custom-pages",
+		"x-forge-method-name": "validate",
+		"x-forge-oauth-scopes": [
+			"access-custom-page.write",
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
 		"operationId": "access-custom-pages-update-a-custom-page",
@@ -2078,6 +2137,7 @@
 								"description": "Number of apps the custom page is assigned to.",
 								"type": "integer",
 								"x-auditable": true,
+								"x-forge-skip": true,
 								"x-stainless-skip": true
 							},
 							"contract_version": {
@@ -2090,6 +2150,7 @@
 									{
 										"type": "string",
 										"x-auditable": true,
+										"x-forge-skip": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -2133,6 +2194,7 @@
 									{
 										"type": "string",
 										"x-auditable": true,
+										"x-forge-skip": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -2257,6 +2319,7 @@
 													"description": "Number of apps the custom page is assigned to.",
 													"type": "integer",
 													"x-auditable": true,
+													"x-forge-skip": true,
 													"x-stainless-skip": true
 												},
 												"contract_version": {
@@ -2269,6 +2332,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2307,6 +2371,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -2671,10 +2736,18 @@
 			"Access custom pages"
 		],
 		"x-api-token-group": [
-			"Access: Custom Pages Write"
+			"Access: Custom Pages Write",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.custom-pages",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"access-custom-page.write",
+			"teams.write"
+		]
 	}
 }

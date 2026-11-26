@@ -45,6 +45,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/{interest_id}": {
@@ -94,7 +100,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.interests",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/profile": {
 		"operationId": "delete_PirProfileDelete",
@@ -133,6 +145,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.profile",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.profile",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence": {
@@ -192,6 +210,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}": {
@@ -241,6 +266,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}/matches": {
@@ -329,6 +361,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.matches",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.matches",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}/matches/aggregate": {
@@ -711,6 +750,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.matches",
 		"x-fern-sdk-method-name": "aggregate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.matches",
+		"x-forge-method-name": "aggregate",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}/matches/series": {
@@ -873,6 +919,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.matches",
 		"x-fern-sdk-method-name": "series",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.matches",
+		"x-forge-method-name": "series",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/constants": {
@@ -913,6 +966,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.constants",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.constants",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests": {
@@ -983,7 +1043,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.interests",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/backtests/{backtest_id}": {
 		"operationId": "get_PirInterestBacktestGet",
@@ -1033,7 +1100,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests.backtests",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.interests.backtests",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/evaluations/{evaluation_id}": {
 		"operationId": "get_PirInterestEvaluationGet",
@@ -1083,7 +1157,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests.evaluations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.interests.evaluations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/matches/aggregate": {
 		"operationId": "get_PirAllMatchAggregates",
@@ -1605,6 +1686,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.matches",
 		"x-fern-sdk-method-name": "aggregate-all",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.matches",
+		"x-forge-method-name": "aggregate-all",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/profile": {
@@ -1645,6 +1733,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.profile",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.profile",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/topics": {
@@ -2072,6 +2167,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.topics",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.topics",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}/matches": {
@@ -2173,6 +2275,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.matches",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.matches",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/{interest_id}": {
@@ -2244,7 +2352,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.interests",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence": {
 		"operationId": "post_PirCreate",
@@ -4403,6 +4517,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/filters/generate": {
@@ -4457,16 +4577,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -4478,18 +4588,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -4505,16 +4603,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -4526,18 +4614,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -5249,6 +5325,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.filters",
 		"x-fern-sdk-method-name": "generate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.filters",
+		"x-forge-method-name": "generate",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests": {
@@ -5329,7 +5411,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.interests",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/backtests": {
 		"operationId": "post_PirInterestBacktestCreate",
@@ -5430,7 +5518,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests.backtests",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.interests.backtests",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/interests/evaluations": {
 		"operationId": "post_PirInterestEvaluationCreate",
@@ -5525,7 +5619,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.interests.evaluations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.interests.evaluations",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/quota": {
 		"operationId": "post_PirQuota",
@@ -5564,6 +5664,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.quota",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.quota",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/resolve": {
@@ -6970,6 +7076,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
 		"x-fern-sdk-method-name": "resolve",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence",
+		"x-forge-method-name": "resolve",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/{priority_id}": {
@@ -9156,6 +9268,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/v2/priority-intelligence/profile": {
@@ -9432,6 +9550,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.priority-intelligence.profile",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.priority-intelligence.profile",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	}
 }

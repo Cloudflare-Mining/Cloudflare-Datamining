@@ -404,7 +404,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.transformers",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logpush.transformers",
+		"x-forge-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/logpush/transformers": {
 		"operationId": "get-accounts-account_id-logpush-transformers",
@@ -748,7 +751,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.transformers",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logpush.transformers",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/logpush/transformers/{transformer_id}": {
 		"operationId": "get-accounts-account_id-logpush-transformers-transformer_id",
@@ -1106,7 +1112,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.transformers",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logpush.transformers",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/logpush/transformers/{transformer_id}/content": {
 		"operationId": "get-accounts-account_id-logpush-transformers-transformer_id-content",
@@ -1405,7 +1414,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.transformers.content",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logpush.transformers.content",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/logpush/transformers/{transformer_id}/versions": {
 		"operationId": "get-accounts-account_id-logpush-transformers-transformer_id-versions",
@@ -1718,7 +1730,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.transformers.versions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logpush.transformers.versions",
+		"x-forge-method-name": "list"
 	},
 	"POST /accounts/{account_id}/logpush/transformers": {
 		"operationId": "post-accounts-account_id-logpush-transformers",
@@ -2101,7 +2116,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.transformers",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logpush.transformers",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/logpush/transformers/preview": {
 		"operationId": "post-accounts-account_id-logpush-transformers-preview",
@@ -2418,7 +2436,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.transformers",
-		"x-fern-sdk-method-name": "preview"
+		"x-fern-sdk-method-name": "preview",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logpush.transformers",
+		"x-forge-method-name": "preview"
 	},
 	"PUT /accounts/{account_id}/logpush/transformers/{transformer_id}": {
 		"operationId": "put-accounts-account_id-logpush-transformers-transformer_id",
@@ -2812,6 +2833,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logpush.transformers",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logpush.transformers",
+		"x-forge-method-name": "update"
 	}
 }

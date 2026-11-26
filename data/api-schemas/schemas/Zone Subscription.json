@@ -265,7 +265,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.subscriptions",
+		"x-forge-method-name": "delete"
 	},
 	"DELETE /zones/{zone_id}/subscriptions": {
 		"operationId": "zone-subscription-delete-zone-subscriptions",
@@ -533,12 +536,15 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "delete-bulk"
+		"x-fern-sdk-method-name": "delete-bulk",
+		"x-forge-group-name": "zones.subscriptions",
+		"x-forge-method-name": "delete-bulk",
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/subscription": {
 		"operationId": "zone-subscription-zone-subscription-details",
 		"summary": "Zone Subscription Details",
-		"description": "Lists zone subscription details.",
+		"description": "Lists zone subscription details. Zones on the Free plan normally have no zone subscription, so this returns 404 with error code 1207.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -801,7 +807,7 @@
 																"id": {
 																	"description": "The ID of the rate plan.",
 																	"type": "string",
-																	"example": "free",
+																	"example": "business",
 																	"x-auditable": true
 																},
 																"is_contract": {
@@ -879,7 +885,8 @@
 																	}
 																}
 															],
-															"x-fern-property-name": "subscription-zone"
+															"x-fern-property-name": "subscription-zone",
+															"x-forge-property-name": "subscription-zone"
 														}
 													}
 												},
@@ -1046,12 +1053,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.subscriptions",
+		"x-forge-method-name": "get"
 	},
 	"POST /zones/{zone_id}/subscription": {
 		"operationId": "zone-subscription-create-zone-subscription",
 		"summary": "Create Zone Subscription",
-		"description": "Create a zone subscription, either plan or add-ons.",
+		"description": "Create a zone subscription, either plan or add-ons. Requesting the `free` rate plan does not create a subscription.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -1207,7 +1217,7 @@
 									"id": {
 										"description": "The ID of the rate plan.",
 										"type": "string",
-										"example": "free",
+										"example": "business",
 										"x-auditable": true
 									},
 									"is_contract": {
@@ -1285,7 +1295,8 @@
 										}
 									}
 								],
-								"x-fern-property-name": "subscription-zone"
+								"x-fern-property-name": "subscription-zone",
+								"x-forge-property-name": "subscription-zone"
 							}
 						}
 					}
@@ -1539,7 +1550,7 @@
 																"id": {
 																	"description": "The ID of the rate plan.",
 																	"type": "string",
-																	"example": "free",
+																	"example": "business",
 																	"x-auditable": true
 																},
 																"is_contract": {
@@ -1617,7 +1628,8 @@
 																	}
 																}
 															],
-															"x-fern-property-name": "subscription-zone"
+															"x-fern-property-name": "subscription-zone",
+															"x-forge-property-name": "subscription-zone"
 														}
 													}
 												},
@@ -1784,7 +1796,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.subscriptions",
+		"x-forge-method-name": "create"
 	},
 	"POST /zones/{zone_id}/subscriptions": {
 		"operationId": "zone-subscription-create-zone-subscriptions",
@@ -1945,7 +1960,7 @@
 									"id": {
 										"description": "The ID of the rate plan.",
 										"type": "string",
-										"example": "free",
+										"example": "business",
 										"x-auditable": true
 									},
 									"is_contract": {
@@ -2023,7 +2038,8 @@
 										}
 									}
 								],
-								"x-fern-property-name": "subscription-zone"
+								"x-fern-property-name": "subscription-zone",
+								"x-forge-property-name": "subscription-zone"
 							}
 						}
 					}
@@ -2277,7 +2293,7 @@
 																"id": {
 																	"description": "The ID of the rate plan.",
 																	"type": "string",
-																	"example": "free",
+																	"example": "business",
 																	"x-auditable": true
 																},
 																"is_contract": {
@@ -2355,7 +2371,8 @@
 																	}
 																}
 															],
-															"x-fern-property-name": "subscription-zone"
+															"x-fern-property-name": "subscription-zone",
+															"x-forge-property-name": "subscription-zone"
 														}
 													}
 												},
@@ -2521,13 +2538,12 @@
 			"pro": true
 		},
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "create-bulk"
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/subscription": {
 		"operationId": "zone-subscription-update-zone-subscription",
 		"summary": "Update Zone Subscription",
-		"description": "Updates zone subscriptions, either plan or add-ons.",
+		"description": "Updates zone subscriptions, either plan or add-ons. Updating to the `free` rate plan downgrades the zone to the Free plan, after which the zone has no zone subscription.",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -2683,7 +2699,7 @@
 									"id": {
 										"description": "The ID of the rate plan.",
 										"type": "string",
-										"example": "free",
+										"example": "business",
 										"x-auditable": true
 									},
 									"is_contract": {
@@ -2761,7 +2777,8 @@
 										}
 									}
 								],
-								"x-fern-property-name": "subscription-zone"
+								"x-fern-property-name": "subscription-zone",
+								"x-forge-property-name": "subscription-zone"
 							}
 						}
 					}
@@ -3015,7 +3032,7 @@
 																"id": {
 																	"description": "The ID of the rate plan.",
 																	"type": "string",
-																	"example": "free",
+																	"example": "business",
 																	"x-auditable": true
 																},
 																"is_contract": {
@@ -3093,7 +3110,8 @@
 																	}
 																}
 															],
-															"x-fern-property-name": "subscription-zone"
+															"x-fern-property-name": "subscription-zone",
+															"x-forge-property-name": "subscription-zone"
 														}
 													}
 												},
@@ -3260,7 +3278,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.subscriptions",
+		"x-forge-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/subscriptions": {
 		"operationId": "zone-subscription-update-zone-subscriptions",
@@ -3421,7 +3442,7 @@
 									"id": {
 										"description": "The ID of the rate plan.",
 										"type": "string",
-										"example": "free",
+										"example": "business",
 										"x-auditable": true
 									},
 									"is_contract": {
@@ -3499,7 +3520,8 @@
 										}
 									}
 								],
-								"x-fern-property-name": "subscription-zone"
+								"x-fern-property-name": "subscription-zone",
+								"x-forge-property-name": "subscription-zone"
 							}
 						}
 					}
@@ -3753,7 +3775,7 @@
 																"id": {
 																	"description": "The ID of the rate plan.",
 																	"type": "string",
-																	"example": "free",
+																	"example": "business",
 																	"x-auditable": true
 																},
 																"is_contract": {
@@ -3831,7 +3853,8 @@
 																	}
 																}
 															],
-															"x-fern-property-name": "subscription-zone"
+															"x-fern-property-name": "subscription-zone",
+															"x-forge-property-name": "subscription-zone"
 														}
 													}
 												},
@@ -3998,6 +4021,9 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.subscriptions",
-		"x-fern-sdk-method-name": "update-bulk"
+		"x-fern-sdk-method-name": "update-bulk",
+		"x-forge-group-name": "zones.subscriptions",
+		"x-forge-method-name": "update-bulk",
+		"x-forge-skip": true
 	}
 }

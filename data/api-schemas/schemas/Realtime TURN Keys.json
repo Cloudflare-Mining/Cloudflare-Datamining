@@ -188,11 +188,21 @@
 			"Realtime TURN Keys"
 		],
 		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime",
 			"Calls Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "realtime.turn.keys",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "realtime.turn.keys",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"calls.write",
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes the TURN key. Clients using it can no longer generate credentials."
 	},
 	"GET /accounts/{account_id}/calls/turn_keys": {
@@ -476,12 +486,25 @@
 			"Realtime TURN Keys"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
+			"Realtime Admin",
+			"Realtime",
 			"Calls Write",
 			"Calls Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "realtime.turn.keys",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "realtime.turn.keys",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"calls.read",
+			"realtime.read",
+			"calls.write",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/calls/turn_keys/{key_id}": {
 		"operationId": "calls-retrieve-turn-key-details",
@@ -779,12 +802,25 @@
 			"Realtime TURN Keys"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
+			"Realtime Admin",
+			"Realtime",
 			"Calls Write",
 			"Calls Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "realtime.turn.keys",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "realtime.turn.keys",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"calls.read",
+			"realtime.read",
+			"calls.write",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/calls/turn_keys": {
 		"operationId": "calls-turn-key-create",
@@ -947,6 +983,8 @@
 													"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
 													"maxLength": 64,
 													"minLength": 64,
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true,
 													"x-stainless-naming": {
 														"terraform": {
@@ -1102,11 +1140,21 @@
 			"Realtime TURN Keys"
 		],
 		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime",
 			"Calls Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "realtime.turn.keys",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "realtime.turn.keys",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"calls.write",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/calls/turn_keys/{key_id}": {
 		"operationId": "calls-update-turn-key",
@@ -1423,10 +1471,20 @@
 			"Realtime TURN Keys"
 		],
 		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime",
 			"Calls Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "realtime.turn.keys",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "realtime.turn.keys",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"calls.write",
+			"realtime.write",
+			"realtime.admin"
+		]
 	}
 }

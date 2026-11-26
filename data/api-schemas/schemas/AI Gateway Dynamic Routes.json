@@ -457,6 +457,8 @@
 			"AI Gateway Dynamic Routes"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -472,7 +474,15 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.dynamic-routing",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes": {
 		"operationId": "aig-config-list-gateway-dynamic-routes",
@@ -1030,6 +1040,9 @@
 			"AI Gateway Dynamic Routes"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -1046,7 +1059,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.dynamic-routing",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}": {
 		"operationId": "aig-config-get-gateway-dynamic-route",
@@ -1557,6 +1580,9 @@
 			"AI Gateway Dynamic Routes"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -1573,7 +1599,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.dynamic-routing",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments": {
 		"operationId": "aig-config-list-gateway-dynamic-route-deployments",
@@ -1751,6 +1787,9 @@
 			"AI Gateway Dynamic Routes"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -1767,7 +1806,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing.deployments",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.dynamic-routing.deployments",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions": {
 		"operationId": "aig-config-list-gateway-dynamic-route-versions",
@@ -1956,6 +2005,9 @@
 			"AI Gateway Dynamic Routes"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -1972,7 +2024,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing.versions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.dynamic-routing.versions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions/{version_id}": {
 		"operationId": "aig-config-get-gateway-dynamic-route-version",
@@ -2459,6 +2521,9 @@
 			"AI Gateway Dynamic Routes"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -2475,7 +2540,17 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing.versions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.dynamic-routing.versions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}": {
 		"operationId": "aig-config-update-gateway-dynamic-route",
@@ -3347,6 +3422,8 @@
 			"AI Gateway Dynamic Routes"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -3362,7 +3439,15 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.dynamic-routing",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes": {
 		"operationId": "aig-config-post-gateway-dynamic-route",
@@ -4205,6 +4290,8 @@
 			"AI Gateway Dynamic Routes"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -4220,7 +4307,15 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.dynamic-routing",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments": {
 		"operationId": "aig-config-post-gateway-dynamic-route-deployment",
@@ -4698,6 +4793,8 @@
 			"AI Gateway Dynamic Routes"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -4713,7 +4810,15 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing.deployments",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.dynamic-routing.deployments",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions": {
 		"operationId": "aig-config-post-gateway-dynamic-route-version",
@@ -5509,6 +5614,8 @@
 			"AI Gateway Dynamic Routes"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -5524,6 +5631,14 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing.versions",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.dynamic-routing.versions",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	}
 }

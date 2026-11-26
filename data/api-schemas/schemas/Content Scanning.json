@@ -424,6 +424,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan.expressions",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "content-scan.expressions",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"zone-waf.write",
+			"account-waf.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes a Content Scanning custom expression."
 	},
 	"GET /zones/{zone_id}/content-upload-scan/payloads": {
@@ -833,7 +840,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan.expressions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "content-scan.expressions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"zone-waf.read",
+			"account-waf.read",
+			"zone-waf.write",
+			"account-waf.write"
+		]
 	},
 	"GET /zones/{zone_id}/content-upload-scan/settings": {
 		"operationId": "waf-content-scanning-get-status",
@@ -1099,7 +1115,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "content-scan",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zone-waf.read",
+			"account-waf.read",
+			"zone-waf.write",
+			"account-waf.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/content-upload-scan/payloads/{expression_id}": {
 		"operationId": "waf-content-scanning-update-custom-scan-expression",
@@ -1547,7 +1572,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan.expressions",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "content-scan.expressions",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"zone-waf.write",
+			"account-waf.write"
+		]
 	},
 	"POST /zones/{zone_id}/content-upload-scan/disable": {
 		"operationId": "waf-content-scanning-disable",
@@ -1766,7 +1798,14 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "content-scan",
-		"x-fern-sdk-method-name": "disable"
+		"x-fern-sdk-method-name": "disable",
+		"x-forge-group-name": "content-scan",
+		"x-forge-method-name": "disable",
+		"x-forge-oauth-scopes": [
+			"zone-waf.write",
+			"account-waf.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/content-upload-scan/enable": {
 		"operationId": "waf-content-scanning-enable",
@@ -1985,7 +2024,14 @@
 		],
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "content-scan",
-		"x-fern-sdk-method-name": "enable"
+		"x-fern-sdk-method-name": "enable",
+		"x-forge-group-name": "content-scan",
+		"x-forge-method-name": "enable",
+		"x-forge-oauth-scopes": [
+			"zone-waf.write",
+			"account-waf.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/content-upload-scan/payloads": {
 		"operationId": "waf-content-scanning-add-custom-scan-expressions",
@@ -2417,7 +2463,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan.expressions",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "content-scan.expressions",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"zone-waf.write",
+			"account-waf.write"
+		]
 	},
 	"PUT /zones/{zone_id}/content-upload-scan/settings": {
 		"operationId": "waf-content-scanning-update-settings",
@@ -2707,6 +2760,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "content-scan",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "content-scan",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"zone-waf.write",
+			"account-waf.write"
+		],
 		"x-forge-require-confirmation": "This operation toggles Content Scanning for a zone."
 	}
 }

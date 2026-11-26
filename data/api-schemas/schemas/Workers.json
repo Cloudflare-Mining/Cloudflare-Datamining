@@ -23,7 +23,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			}
 		],
 		"responses": {
@@ -279,6 +280,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.workers",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.workers",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the Worker build configuration and its triggers, and cancels unfinished builds. The Worker is not deleted."
 	},
 	"DELETE /accounts/{account_id}/workers/workers/{worker_id}": {
@@ -314,7 +321,8 @@
 				"schema": {
 					"type": "boolean"
 				},
-				"x-fern-parameter-name": "delete-with-references"
+				"x-fern-parameter-name": "delete-with-references",
+				"x-forge-parameter-name": "delete-with-references"
 			}
 		],
 		"responses": {
@@ -1031,6 +1039,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete the Worker and its associated versions and deployments."
 	},
 	"GET /accounts/{account_id}/builds/workers/{external_script_id}/builds": {
@@ -1057,7 +1072,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"description": "Page number for pagination",
@@ -1619,12 +1635,21 @@
 			"Workers"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"GET /accounts/{account_id}/builds/workers/{external_script_id}/triggers": {
 		"operationId": "listTriggersByScript",
@@ -1990,6 +2015,7 @@
 			"Workers"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
@@ -1998,7 +2024,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.triggers",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_tag}": {
 		"operationId": "getWorkerBuild",
@@ -2024,7 +2058,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			}
 		],
 		"responses": {
@@ -2539,7 +2574,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.workers",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.workers",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_tag}/previews": {
 		"operationId": "listWorkerPreviews",
@@ -2565,7 +2608,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"description": "Page number for pagination",
@@ -2825,7 +2869,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.previews",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.previews",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_tag}/previews/{preview_id}": {
 		"operationId": "getWorkerPreview",
@@ -2851,7 +2903,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"description": "ID of the Preview.",
@@ -2862,7 +2915,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "preview"
+				"x-fern-parameter-name": "preview",
+				"x-forge-parameter-name": "preview"
 			}
 		],
 		"responses": {
@@ -3239,7 +3293,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.previews",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.previews",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_tag}/previews/{preview_id}/builds": {
 		"operationId": "listBuildsByPreview",
@@ -3265,7 +3327,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"description": "ID of the Preview.",
@@ -3276,7 +3339,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "preview"
+				"x-fern-parameter-name": "preview",
+				"x-forge-parameter-name": "preview"
 			},
 			{
 				"description": "Page number for pagination",
@@ -3910,7 +3974,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.previews",
-		"x-fern-sdk-method-name": "list-builds"
+		"x-fern-sdk-method-name": "list-builds",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.previews",
+		"x-forge-method-name": "list-builds",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"GET /accounts/{account_id}/workers/workers": {
 		"operationId": "listWorkers",
@@ -5389,7 +5461,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}": {
 		"operationId": "getWorker",
@@ -6944,7 +7028,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/builds/workers/{script_tag}": {
 		"operationId": "updateWorkerBuild",
@@ -6970,7 +7066,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"name": "patch_existing_previews",
@@ -7763,7 +7860,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.workers",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.workers",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/builds/workers/{script_tag}/previews/{preview_id}": {
 		"operationId": "updateWorkerPreview",
@@ -7789,7 +7892,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"description": "ID of the Preview.",
@@ -7800,7 +7904,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "preview"
+				"x-fern-parameter-name": "preview",
+				"x-forge-parameter-name": "preview"
 			}
 		],
 		"requestBody": {
@@ -8427,7 +8532,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.previews",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.previews",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/workers/workers/{worker_id}": {
 		"operationId": "editWorker",
@@ -12519,7 +12630,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers",
+		"x-forge-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/builds/workers": {
 		"operationId": "createWorkerBuild",
@@ -13569,6 +13683,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.workers",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.workers",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		],
 		"x-forge-params": {
 			"script_tag": {
 				"description": "Script tag of the Worker.",
@@ -13600,7 +13720,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			}
 		],
 		"requestBody": {
@@ -14374,7 +14495,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	},
 	"POST /accounts/{account_id}/builds/workers/{script_tag}/builds/{build_uuid}/retry": {
 		"operationId": "retryWorkerBuild",
@@ -14400,7 +14527,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"description": "UUID of the build, as returned by builds list.",
@@ -15062,7 +15190,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds",
-		"x-fern-sdk-method-name": "retry"
+		"x-fern-sdk-method-name": "retry",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds",
+		"x-forge-method-name": "retry",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	},
 	"POST /accounts/{account_id}/builds/workers/{script_tag}/migrate_to_previews": {
 		"operationId": "migrateWorkerToPreviews",
@@ -15088,7 +15222,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			}
 		],
 		"requestBody": {
@@ -15689,6 +15824,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.workers",
 		"x-fern-sdk-method-name": "migrate-to-previews",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.workers",
+		"x-forge-method-name": "migrate-to-previews",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		],
 		"x-forge-require-confirmation": "This operation switches the Worker to Previews and removes its legacy non-production trigger. It cannot be reversed."
 	},
 	"POST /accounts/{account_id}/builds/workers/{script_tag}/previews/{preview_id}/builds": {
@@ -15715,7 +15856,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			},
 			{
 				"description": "ID of the Preview.",
@@ -15726,7 +15868,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "preview"
+				"x-fern-parameter-name": "preview",
+				"x-forge-parameter-name": "preview"
 			}
 		],
 		"requestBody": {
@@ -16500,7 +16643,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.previews",
-		"x-fern-sdk-method-name": "create-build"
+		"x-fern-sdk-method-name": "create-build",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.previews",
+		"x-forge-method-name": "create-build",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	},
 	"POST /accounts/{account_id}/builds/workers/{script_tag}/purge_build_cache": {
 		"operationId": "purgeWorkerBuildCache",
@@ -16526,7 +16675,8 @@
 					"type": "string",
 					"example": "0123456789abcdef0123456789abcdef"
 				},
-				"x-fern-parameter-name": "worker"
+				"x-fern-parameter-name": "worker",
+				"x-forge-parameter-name": "worker"
 			}
 		],
 		"responses": {
@@ -16775,6 +16925,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.workers",
 		"x-fern-sdk-method-name": "purge-cache",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.workers",
+		"x-forge-method-name": "purge-cache",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		],
 		"x-forge-require-confirmation": "This operation purges the build cache for the Worker."
 	},
 	"POST /accounts/{account_id}/workers/workers": {
@@ -19731,6 +19887,7 @@
 			"Workers"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-fern-audiences": [
@@ -19738,7 +19895,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/workers/{worker_id}": {
 		"operationId": "updateWorker",
@@ -22883,6 +23047,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	}
 }

@@ -638,6 +638,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel.datasets",
-		"x-fern-sdk-method-name": "populate"
+		"x-fern-sdk-method-name": "populate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel.datasets",
+		"x-forge-method-name": "populate",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	}
 }

@@ -221,6 +221,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.addresses",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.addresses",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"email-routing-address.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes a destination address."
 	},
 	"GET /accounts/{account_id}/email/routing/addresses": {
@@ -544,7 +550,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.addresses",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.addresses",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"email-routing-address.read",
+			"email-routing-address.write"
+		]
 	},
 	"GET /accounts/{account_id}/email/routing/addresses/{destination_address_identifier}": {
 		"operationId": "email-routing-destination-addresses-get-a-destination-address",
@@ -768,7 +781,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.addresses",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.addresses",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"email-routing-address.read",
+			"email-routing-address.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/email/routing/addresses/{destination_address_identifier}": {
 		"operationId": "email-routing-destination-addresses-update-destination-address",
@@ -1016,7 +1036,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.addresses",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.addresses",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"email-routing-address.write"
+		]
 	},
 	"POST /accounts/{account_id}/email/routing/addresses": {
 		"operationId": "email-routing-destination-addresses-create-a-destination-address",
@@ -1248,6 +1274,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.addresses",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.addresses",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"email-routing-address.write"
+		]
 	}
 }

@@ -226,12 +226,23 @@
 			"Logpull"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Logs Write",
 			"Logs Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.list",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logs.list",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-logs.read",
+			"observability.read",
+			"account-logs.write",
+			"observability.write"
+		]
 	},
 	"GET /accounts/{account_id}/logs/retrieve": {
 		"operationId": "logpull-retrieve-logs",
@@ -414,11 +425,22 @@
 			"Logpull"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Logs Write",
 			"Logs Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.retrieve",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logs.retrieve",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-logs.read",
+			"observability.read",
+			"account-logs.write",
+			"observability.write"
+		]
 	}
 }

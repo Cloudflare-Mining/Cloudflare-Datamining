@@ -35,7 +35,8 @@
 				"schema": {
 					"type": "boolean"
 				},
-				"x-fern-parameter-name": "delete-with-references"
+				"x-fern-parameter-name": "delete-with-references",
+				"x-forge-parameter-name": "delete-with-references"
 			}
 		],
 		"responses": {
@@ -281,6 +282,13 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete the Worker script."
 	},
 	"DELETE /accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}": {
@@ -578,6 +586,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.secrets",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete the Worker script secret."
 	},
 	"DELETE /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
@@ -875,6 +890,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.subdomain",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.subdomain",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will disable all workers.dev subdomains for the Worker script."
 	},
 	"GET /accounts/{account_id}/workers/scripts": {
@@ -2121,7 +2144,19 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts-search": {
 		"operationId": "worker-script-search-workers",
@@ -2537,7 +2572,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.scripts",
-		"x-fern-sdk-method-name": "search"
+		"x-fern-sdk-method-name": "search",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.scripts",
+		"x-forge-method-name": "search",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}": {
 		"operationId": "worker-script-download-worker",
@@ -2737,7 +2784,19 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/content/v2": {
 		"operationId": "worker-script-get-content",
@@ -2940,7 +2999,19 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.content",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.content",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/script-settings": {
 		"operationId": "worker-script-settings-get-settings",
@@ -3471,7 +3542,19 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.settings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.settings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/secrets": {
 		"operationId": "worker-list-script-secrets",
@@ -3621,6 +3704,7 @@
 																"type": "string",
 																"example": "My secret.",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"type": {
@@ -3662,12 +3746,14 @@
 																"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																"type": "string",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"key_jwk": {
 																"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																"type": "object",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"name": {
@@ -3868,7 +3954,19 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.secrets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}": {
 		"operationId": "worker-get-script-secret",
@@ -4039,6 +4137,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -4080,12 +4179,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -4285,7 +4386,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.secrets",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/settings": {
 		"operationId": "worker-script-get-settings",
@@ -5363,6 +5467,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -5656,12 +5761,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -6811,6 +6918,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -7104,12 +7212,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -8837,7 +8947,19 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.script-and-version-settings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.script-and-version-settings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
 		"operationId": "worker-script-get-subdomain",
@@ -9139,7 +9261,19 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.subdomain",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.subdomain",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/usage-model": {
 		"operationId": "worker-script-fetch-usage-model",
@@ -9447,7 +9581,19 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.usage-model",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.usage-model",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/script-settings": {
 		"operationId": "worker-script-settings-patch-settings",
@@ -10404,7 +10550,15 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.settings",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.settings",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/secrets-bulk": {
 		"operationId": "worker-patch-script-secrets-bulk",
@@ -10474,6 +10628,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -10515,12 +10670,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -10619,6 +10776,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -10660,12 +10818,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -10850,6 +11010,7 @@
 																"type": "string",
 																"example": "My secret.",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"type": {
@@ -10891,12 +11052,14 @@
 																"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																"type": "string",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"key_jwk": {
 																"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																"type": "object",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"name": {
@@ -11204,7 +11367,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
-		"x-fern-sdk-method-name": "bulk-edit"
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.secrets",
+		"x-forge-method-name": "bulk-edit"
 	},
 	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/settings": {
 		"operationId": "worker-script-patch-settings",
@@ -12203,6 +12369,7 @@
 																	"type": "string",
 																	"example": "My secret.",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"type": {
@@ -12496,12 +12663,14 @@
 																	"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"key_jwk": {
 																	"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																	"type": "object",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"name": {
@@ -13651,6 +13820,7 @@
 																	"type": "string",
 																	"example": "My secret.",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"type": {
@@ -13944,12 +14114,14 @@
 																	"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"key_jwk": {
 																	"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																	"type": "object",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"name": {
@@ -16573,6 +16745,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -16866,12 +17039,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -18021,6 +18196,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -18314,12 +18490,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -20213,7 +20391,15 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.script-and-version-settings",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.script-and-version-settings",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/workers/assets/upload": {
 		"operationId": "worker-assets-upload",
@@ -20361,6 +20547,7 @@
 												"jwt": {
 													"description": "A \"completion\" JWT which can be redeemed when creating a Worker version.",
 													"type": "string",
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											}
@@ -20603,7 +20790,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.assets.upload",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.assets.upload",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/assets-upload-session": {
 		"operationId": "worker-script-update-create-assets-upload-session",
@@ -20782,6 +20972,7 @@
 												"jwt": {
 													"description": "A JWT to use as authentication for uploading assets.",
 													"type": "string",
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											}
@@ -20906,6 +21097,7 @@
 														"jwt": {
 															"description": "A JWT to use as authentication for uploading assets.",
 															"type": "string",
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													}
@@ -21040,6 +21232,7 @@
 			"Worker Script"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-fern-audiences": [
@@ -21047,7 +21240,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.assets.upload",
-		"x-fern-sdk-method-name": "create-session"
+		"x-fern-sdk-method-name": "create-session",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.assets.upload",
+		"x-forge-method-name": "create-session",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/subdomain": {
 		"operationId": "worker-script-post-subdomain",
@@ -21371,7 +21571,15 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.subdomain",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.subdomain",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}": {
 		"operationId": "worker-script-upload-worker-module",
@@ -21526,6 +21734,7 @@
 													"jwt": {
 														"description": "Token provided upon successful upload of all files from a registered manifest.",
 														"type": "string",
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												}
@@ -22456,6 +22665,7 @@
 																	"type": "string",
 																	"example": "My secret.",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"type": {
@@ -22749,12 +22959,14 @@
 																	"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"key_jwk": {
 																	"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																	"type": "object",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"name": {
@@ -25819,7 +26031,14 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/content": {
 		"operationId": "worker-script-put-content",
@@ -27081,7 +27300,15 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.content",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.content",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/secrets": {
 		"operationId": "worker-put-script-secret",
@@ -27142,6 +27369,7 @@
 										"type": "string",
 										"example": "My secret.",
 										"writeOnly": true,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"type": {
@@ -27183,12 +27411,14 @@
 										"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 										"type": "string",
 										"writeOnly": true,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"key_jwk": {
 										"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 										"type": "object",
 										"writeOnly": true,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"name": {
@@ -27358,6 +27588,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -27399,12 +27630,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -27711,7 +27944,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.secrets",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.secrets",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/scripts/{script_name}/usage-model": {
 		"operationId": "worker-script-update-usage-model",
@@ -28050,6 +28290,14 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "workers.legacy.scripts.usage-model",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "workers.legacy.scripts.usage-model",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	}
 }

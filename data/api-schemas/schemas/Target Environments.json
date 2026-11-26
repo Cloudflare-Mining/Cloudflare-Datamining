@@ -240,6 +240,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "This operation permanently deletes the target environment from Vulnerability Scanner."
 	},
 	"GET /accounts/{account_id}/vuln_scanner/target_environments": {
@@ -600,7 +603,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
 		"operationId": "get-target-environment",
@@ -898,7 +904,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
 		"operationId": "edit-target-environment",
@@ -1253,7 +1262,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-forge-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/vuln_scanner/target_environments": {
 		"operationId": "create-target-environment",
@@ -1611,7 +1623,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-forge-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/vuln_scanner/target_environments/{target_environment_id}": {
 		"operationId": "update-target-environment",
@@ -1970,6 +1985,9 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.target-environments",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "api-security.vulnerability-scanner.target-environments",
+		"x-forge-method-name": "update"
 	}
 }

@@ -702,7 +702,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar-sandbox.registrations",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}": {
 		"operationId": "sandbox-registrar-domain-registration-get",
@@ -1103,7 +1106,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar-sandbox.registrations",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}/registration-status": {
 		"operationId": "sandbox-registrar-domain-registration-get-status",
@@ -1618,7 +1624,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "get-registration-status"
+		"x-fern-sdk-method-name": "get-registration-status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar-sandbox.registrations",
+		"x-forge-method-name": "get-registration-status"
 	},
 	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}/update-status": {
 		"operationId": "sandbox-registrar-domain-registration-get-update-status",
@@ -2082,7 +2091,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "get-update-status"
+		"x-fern-sdk-method-name": "get-update-status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar-sandbox.registrations",
+		"x-forge-method-name": "get-update-status"
 	},
 	"GET /accounts/{account_id}/registrar/registrations": {
 		"operationId": "registrar-domain-registration-list",
@@ -2787,7 +2799,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/registrar/registrations/{domain_name}": {
 		"operationId": "registrar-domain-registration-get",
@@ -3188,7 +3203,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/registrar/registrations/{domain_name}/registration-status": {
 		"operationId": "registrar-domain-registration-get-status",
@@ -3703,7 +3721,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "get-registration-status"
+		"x-fern-sdk-method-name": "get-registration-status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "get-registration-status"
 	},
 	"GET /accounts/{account_id}/registrar/registrations/{domain_name}/update-status": {
 		"operationId": "registrar-domain-registration-get-update-status",
@@ -4167,7 +4188,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "get-update-status"
+		"x-fern-sdk-method-name": "get-update-status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "get-update-status"
 	},
 	"PATCH /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}": {
 		"operationId": "sandbox-registrar-domain-registration-update",
@@ -4901,7 +4925,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar-sandbox.registrations",
+		"x-forge-method-name": "update"
 	},
 	"PATCH /accounts/{account_id}/registrar/registrations/{domain_name}": {
 		"operationId": "registrar-domain-registration-update",
@@ -5635,7 +5662,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "update"
 	},
 	"POST /accounts/{account_id}/registrar-sandbox/registrations": {
 		"operationId": "sandbox-registrar-domain-registration-create",
@@ -5686,7 +5716,7 @@
 												"city": "Ottawa",
 												"country_code": "CA",
 												"postal_code": "K1A 0B1",
-												"state": true,
+												"state": "ON",
 												"street": "123 Queen St"
 											},
 											"name": "Ada Lovelace",
@@ -7013,7 +7043,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar-sandbox.registrations",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/registrar/registrations": {
 		"operationId": "registrar-domain-registration-create",
@@ -7064,7 +7097,7 @@
 												"city": "Ottawa",
 												"country_code": "CA",
 												"postal_code": "K1A 0B1",
-												"state": true,
+												"state": "ON",
 												"street": "123 Queen St"
 											},
 											"name": "Ada Lovelace",
@@ -8391,6 +8424,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "registrar.registrations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "registrar.registrations",
+		"x-forge-method-name": "create"
 	}
 }

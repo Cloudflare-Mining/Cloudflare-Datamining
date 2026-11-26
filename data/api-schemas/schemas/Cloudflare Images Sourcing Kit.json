@@ -386,6 +386,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		],
 		"x-forge-require-confirmation": "This operation will delete this import migration."
 	},
 	"DELETE /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}": {
@@ -775,6 +781,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import.sources",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import.sources",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		],
 		"x-forge-require-confirmation": "This operation will delete this import source."
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations": {
@@ -1321,12 +1333,21 @@
 			"Cloudflare Images Sourcing Kit"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}": {
 		"operationId": "cloudflare-images-sourcingkit-get-migration",
@@ -1886,12 +1907,21 @@
 			"Cloudflare Images Sourcing Kit"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/lifecycle": {
 		"operationId": "cloudflare-images-sourcingkit-get-migration-progress",
@@ -2407,12 +2437,21 @@
 			"Cloudflare Images Sourcing Kit"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import",
-		"x-fern-sdk-method-name": "progress"
+		"x-fern-sdk-method-name": "progress",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import",
+		"x-forge-method-name": "progress",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/logs": {
 		"operationId": "cloudflare-images-sourcingkit-list-migration-logs",
@@ -2851,12 +2890,21 @@
 			"Cloudflare Images Sourcing Kit"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import",
-		"x-fern-sdk-method-name": "logs"
+		"x-fern-sdk-method-name": "logs",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import",
+		"x-forge-method-name": "logs",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/sources": {
 		"operationId": "cloudflare-images-sourcingkit-list-sources",
@@ -3324,12 +3372,21 @@
 			"Cloudflare Images Sourcing Kit"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import.sources",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import.sources",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}": {
 		"operationId": "cloudflare-images-sourcingkit-get-source",
@@ -3803,12 +3860,21 @@
 			"Cloudflare Images Sourcing Kit"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import.sources",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import.sources",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"GET /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}/connectivity": {
 		"operationId": "cloudflare-images-sourcingkit-get-source-connectivity",
@@ -4230,12 +4296,21 @@
 			"Cloudflare Images Sourcing Kit"
 		],
 		"x-api-token-group": [
+			"Images Metadata Read",
 			"Images Read",
 			"Images Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import.sources",
-		"x-fern-sdk-method-name": "check"
+		"x-fern-sdk-method-name": "check",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import.sources",
+		"x-forge-method-name": "check",
+		"x-forge-oauth-scopes": [
+			"images.metadata_read",
+			"images.read",
+			"images.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/lifecycle/abort": {
 		"operationId": "cloudflare-images-sourcingkit-abort-migration",
@@ -4592,7 +4667,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import",
-		"x-fern-sdk-method-name": "abort"
+		"x-fern-sdk-method-name": "abort",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import",
+		"x-forge-method-name": "abort",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/lifecycle/start": {
 		"operationId": "cloudflare-images-sourcingkit-start-migration",
@@ -4949,7 +5030,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import",
-		"x-fern-sdk-method-name": "start"
+		"x-fern-sdk-method-name": "start",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import",
+		"x-forge-method-name": "start",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}": {
 		"operationId": "cloudflare-images-sourcingkit-update-source",
@@ -5449,7 +5536,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import.sources",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import.sources",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	},
 	"POST /accounts/{account_id}/images/v2/sourcingkit/migrations": {
 		"operationId": "cloudflare-images-sourcingkit-create-migration",
@@ -6060,7 +6153,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	},
 	"POST /accounts/{account_id}/images/v2/sourcingkit/sources": {
 		"operationId": "cloudflare-images-sourcingkit-create-source",
@@ -6577,7 +6676,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import.sources",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import.sources",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	},
 	"POST /accounts/{account_id}/images/v2/sourcingkit/sources/connectivity-precheck": {
 		"operationId": "cloudflare-images-sourcingkit-precheck-source-connectivity",
@@ -7038,6 +7143,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "images.import.sources",
-		"x-fern-sdk-method-name": "pre-check"
+		"x-fern-sdk-method-name": "pre-check",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "images.import.sources",
+		"x-forge-method-name": "pre-check",
+		"x-forge-oauth-scopes": [
+			"images.write"
+		]
 	}
 }

@@ -1442,12 +1442,23 @@
 			"findings"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}": {
 		"operationId": "GetFinding",
@@ -2776,12 +2787,23 @@
 			"findings"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances": {
 		"operationId": "ListFindingInstances",
@@ -3604,12 +3626,23 @@
 			"findings"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings.instances",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings.instances",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/{instance_id}": {
 		"operationId": "GetFindingInstance",
@@ -4251,12 +4284,23 @@
 			"findings"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings.instances",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings.instances",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/archive": {
 		"operationId": "ArchiveFindingInstance",
@@ -4914,11 +4958,19 @@
 			"findings"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings.instances",
-		"x-fern-sdk-method-name": "archive"
+		"x-fern-sdk-method-name": "archive",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings.instances",
+		"x-forge-method-name": "archive",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/unarchive": {
 		"operationId": "UnarchiveFindingInstance",
@@ -5576,11 +5628,19 @@
 			"findings"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings.instances",
-		"x-fern-sdk-method-name": "unarchive"
+		"x-fern-sdk-method-name": "unarchive",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings.instances",
+		"x-forge-method-name": "unarchive",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/reset_finding_severity": {
 		"operationId": "ResetFindingSeverity",
@@ -6591,11 +6651,19 @@
 			"findings"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings",
-		"x-fern-sdk-method-name": "reset-severity"
+		"x-fern-sdk-method-name": "reset-severity",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings",
+		"x-forge-method-name": "reset-severity",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/tune_finding_severity": {
 		"operationId": "ChangeFindingSeverity",
@@ -7632,11 +7700,19 @@
 			"findings"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings",
-		"x-fern-sdk-method-name": "tune-severity"
+		"x-fern-sdk-method-name": "tune-severity",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings",
+		"x-forge-method-name": "tune-severity",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/ignore": {
 		"operationId": "IgnoreFinding",
@@ -8556,11 +8632,19 @@
 			"findings"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings",
-		"x-fern-sdk-method-name": "ignore"
+		"x-fern-sdk-method-name": "ignore",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings",
+		"x-forge-method-name": "ignore",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/unignore": {
 		"operationId": "UnIgnoreFinding",
@@ -9480,10 +9564,18 @@
 			"findings"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings",
-		"x-fern-sdk-method-name": "unignore"
+		"x-fern-sdk-method-name": "unignore",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings",
+		"x-forge-method-name": "unignore",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	}
 }

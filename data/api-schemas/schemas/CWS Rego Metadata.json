@@ -46,6 +46,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -78,6 +115,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -147,6 +221,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -179,6 +290,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -245,6 +393,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -277,6 +462,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -343,6 +565,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.cws.rego-metadata",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.cws.rego-metadata",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Delete this Rego metadata document?",
 		"x-stability": "beta"
 	},
@@ -457,6 +682,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -489,6 +751,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -690,6 +989,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -722,6 +1058,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -788,6 +1161,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -820,6 +1230,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -886,6 +1333,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.cws.rego-metadata",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.cws.rego-metadata",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}": {
@@ -935,6 +1385,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -967,6 +1454,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -1137,6 +1661,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -1169,6 +1730,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -1235,6 +1833,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -1267,6 +1902,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -1333,6 +2005,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.cws.rego-metadata",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.cws.rego-metadata",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/cws/rego-metadata": {
@@ -1473,6 +2148,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -1505,6 +2217,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -1675,6 +2424,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -1707,6 +2493,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -1773,6 +2596,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -1805,6 +2665,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -1871,6 +2768,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.cws.rego-metadata",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.cws.rego-metadata",
+		"x-forge-method-name": "create",
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/cws/rego-metadata/{rego_metadata_id}": {
@@ -2022,6 +2922,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -2054,6 +2991,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -2224,6 +3198,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -2256,6 +3267,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -2322,6 +3370,43 @@
 												"type": "integer",
 												"format": "int64"
 											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
+											},
 											"message": {
 												"type": "string"
 											},
@@ -2354,6 +3439,43 @@
 											"code": {
 												"type": "integer",
 												"format": "int64"
+											},
+											"details": {
+												"type": "object",
+												"properties": {
+													"references": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"format": "uuid"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"resource_type": {
+																	"type": "string",
+																	"enum": [
+																		"deployment",
+																		"policy_set",
+																		"policy",
+																		"rego_module"
+																	]
+																}
+															},
+															"additionalProperties": false,
+															"required": [
+																"resource_type",
+																"id",
+																"name"
+															]
+														},
+														"nullable": true
+													}
+												},
+												"additionalProperties": false
 											},
 											"message": {
 												"type": "string"
@@ -2420,6 +3542,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.cws.rego-metadata",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.cws.rego-metadata",
+		"x-forge-method-name": "update",
 		"x-stability": "beta"
 	}
 }

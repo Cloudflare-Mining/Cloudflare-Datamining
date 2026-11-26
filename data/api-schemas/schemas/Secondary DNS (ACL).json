@@ -392,7 +392,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.acls",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.acls",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/secondary_dns/acls": {
 		"operationId": "secondary-dns-(-acl)-list-ac-ls",
@@ -887,7 +893,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.acls",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.acls",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/secondary_dns/acls/{acl_id}": {
 		"operationId": "secondary-dns-(-acl)-acl-details",
@@ -1317,7 +1330,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.acls",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.acls",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/secondary_dns/acls": {
 		"operationId": "secondary-dns-(-acl)-create-acl",
@@ -1763,7 +1783,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.acls",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.acls",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		]
 	},
 	"PUT /accounts/{account_id}/secondary_dns/acls/{acl_id}": {
 		"operationId": "secondary-dns-(-acl)-update-acl",
@@ -2227,6 +2253,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.zone-transfers.acls",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.zone-transfers.acls",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		]
 	}
 }

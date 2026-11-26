@@ -508,6 +508,12 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"flagship.write"
+		],
 		"x-forge-require-confirmation": "Delete this Flagship app, all of its flags, and all changelog history? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/flagship/apps": {
@@ -973,7 +979,14 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"flagship.read",
+			"flagship.write"
+		]
 	},
 	"GET /accounts/{account_id}/flagship/apps/{app_id}": {
 		"operationId": "flagship_get_app",
@@ -1445,7 +1458,14 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"flagship.read",
+			"flagship.write"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/apps": {
 		"operationId": "get_apps",
@@ -1667,12 +1687,21 @@
 			"Apps"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.apps",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.apps",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/apps/{app_id}": {
 		"operationId": "get_app",
@@ -1851,12 +1880,21 @@
 			"Apps"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.apps",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.apps",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/apps/{app_id}": {
 		"operationId": "update_app",
@@ -2089,7 +2127,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.apps",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.apps",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/flagship/apps": {
 		"operationId": "flagship_create_app",
@@ -2573,7 +2618,13 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"flagship.write"
+		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/apps": {
 		"operationId": "create_app",
@@ -2758,7 +2809,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.apps",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.apps",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/flagship/apps/{app_id}": {
 		"operationId": "flagship_update_app",
@@ -3249,6 +3307,12 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"flagship.write"
+		]
 	}
 }

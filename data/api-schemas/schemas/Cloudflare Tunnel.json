@@ -717,6 +717,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.write",
+			"teams-connectors.write",
+			"argotunnel.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes a Cloudflare Tunnel."
 	},
 	"DELETE /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
@@ -1108,6 +1116,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.connections",
 		"x-fern-sdk-method-name": "cleanup",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.connections",
+		"x-forge-method-name": "cleanup",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.write",
+			"teams-connectors.write",
+			"argotunnel.write"
+		],
 		"x-forge-require-confirmation": "This operation removes Cloudflare Tunnel connections."
 	},
 	"DELETE /accounts/{account_id}/warp_connector/{tunnel_id}": {
@@ -1141,7 +1157,8 @@
 					"readOnly": true,
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "node-id"
+				"x-fern-parameter-name": "node-id",
+				"x-forge-parameter-name": "node-id"
 			}
 		],
 		"responses": {
@@ -1790,6 +1807,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-connector-warp.write",
+			"teams-connectors.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes a Mesh node."
 	},
 	"GET /accounts/{account_id}/cfd_tunnel": {
@@ -2689,6 +2713,9 @@
 			"Cloudflare Tunnel"
 		],
 		"x-api-token-group": [
+			"Connectivity Directory Read",
+			"Connectivity Directory Bind",
+			"Connectivity Directory Admin",
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: cloudflared Write",
@@ -2701,7 +2728,21 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnel",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnel",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.read",
+			"teams-connectors.read",
+			"connectivity-directory.read",
+			"argotunnel.read",
+			"connectivity-directory.bind",
+			"teams-connector-cloudflared.write",
+			"connectivity-directory.admin",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel",
@@ -3414,6 +3455,9 @@
 			"Cloudflare Tunnel"
 		],
 		"x-api-token-group": [
+			"Connectivity Directory Read",
+			"Connectivity Directory Bind",
+			"Connectivity Directory Admin",
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: cloudflared Write",
@@ -3423,7 +3467,21 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.read",
+			"teams-connectors.read",
+			"connectivity-directory.read",
+			"argotunnel.read",
+			"connectivity-directory.bind",
+			"teams-connector-cloudflared.write",
+			"connectivity-directory.admin",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
 		"operationId": "cloudflare-tunnel-list-cloudflare-tunnel-connections",
@@ -4100,6 +4158,9 @@
 			"Cloudflare Tunnel"
 		],
 		"x-api-token-group": [
+			"Connectivity Directory Read",
+			"Connectivity Directory Bind",
+			"Connectivity Directory Admin",
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: cloudflared Write",
@@ -4109,7 +4170,21 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.connections",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.connections",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.read",
+			"teams-connectors.read",
+			"connectivity-directory.read",
+			"argotunnel.read",
+			"connectivity-directory.bind",
+			"teams-connector-cloudflared.write",
+			"connectivity-directory.admin",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}": {
 		"operationId": "cloudflare-tunnel-get-cloudflare-tunnel-connector",
@@ -4710,6 +4785,9 @@
 			"Cloudflare Tunnel"
 		],
 		"x-api-token-group": [
+			"Connectivity Directory Read",
+			"Connectivity Directory Bind",
+			"Connectivity Directory Admin",
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: cloudflared Write",
@@ -4719,7 +4797,21 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.connectors",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.connectors",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.read",
+			"teams-connectors.read",
+			"connectivity-directory.read",
+			"argotunnel.read",
+			"connectivity-directory.bind",
+			"teams-connector-cloudflared.write",
+			"connectivity-directory.admin",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/token": {
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-token",
@@ -4856,6 +4948,7 @@
 											"example": "eyJhIjoiNWFiNGU5Z...",
 											"readOnly": true,
 											"x-auditable": false,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										}
 									},
@@ -4969,6 +5062,7 @@
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
 													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											},
@@ -5098,7 +5192,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.token",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.token",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.write",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/tunnels": {
 		"operationId": "cloudflare-tunnel-list-all-tunnels",
@@ -6347,6 +6449,9 @@
 			"Cloudflare Tunnel"
 		],
 		"x-api-token-group": [
+			"Connectivity Directory Read",
+			"Connectivity Directory Bind",
+			"Connectivity Directory Admin",
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: cloudflared Write",
@@ -6356,7 +6461,21 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.read",
+			"teams-connectors.read",
+			"connectivity-directory.read",
+			"argotunnel.read",
+			"connectivity-directory.bind",
+			"teams-connector-cloudflared.write",
+			"connectivity-directory.admin",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/warp_connector": {
 		"operationId": "cloudflare-tunnel-list-warp-connector-tunnels",
@@ -7224,7 +7343,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-connector-warp.read",
+			"teams-connector-warp.write",
+			"teams-connectors.read",
+			"teams-connectors.write"
+		]
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-get-a-warp-connector-tunnel",
@@ -7257,7 +7385,8 @@
 					"readOnly": true,
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "node-id"
+				"x-fern-parameter-name": "node-id",
+				"x-forge-parameter-name": "node-id"
 			}
 		],
 		"responses": {
@@ -7907,7 +8036,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-connector-warp.read",
+			"teams-connector-warp.write",
+			"teams-connectors.read",
+			"teams-connectors.write"
+		]
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connections": {
 		"operationId": "cloudflare-tunnel-list-warp-connector-tunnel-connections",
@@ -7940,7 +8078,8 @@
 					"readOnly": true,
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "node-id"
+				"x-fern-parameter-name": "node-id",
+				"x-forge-parameter-name": "node-id"
 			}
 		],
 		"responses": {
@@ -8562,7 +8701,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.connections",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes.connections",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-connector-warp.read",
+			"teams-connector-warp.write",
+			"teams-connectors.read",
+			"teams-connectors.write"
+		]
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connectors/{connector_id}": {
 		"operationId": "cloudflare-tunnel-get-warp-connector-tunnel-connector",
@@ -8595,7 +8743,8 @@
 					"readOnly": true,
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "node-id"
+				"x-fern-parameter-name": "node-id",
+				"x-forge-parameter-name": "node-id"
 			},
 			{
 				"name": "connector_id",
@@ -9141,7 +9290,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.connectors",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes.connectors",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-connector-warp.read",
+			"teams-connector-warp.write",
+			"teams-connectors.read",
+			"teams-connectors.write"
+		]
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/token": {
 		"operationId": "cloudflare-tunnel-get-a-warp-connector-tunnel-token",
@@ -9174,7 +9332,8 @@
 					"readOnly": true,
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "node-id"
+				"x-fern-parameter-name": "node-id",
+				"x-forge-parameter-name": "node-id"
 			}
 		],
 		"responses": {
@@ -9279,6 +9438,7 @@
 											"example": "eyJhIjoiNWFiNGU5Z...",
 											"readOnly": true,
 											"x-auditable": false,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										}
 									},
@@ -9392,6 +9552,7 @@
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
 													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											},
@@ -9521,7 +9682,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes.token",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes.token",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.write",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-update-a-cloudflare-tunnel",
@@ -9573,6 +9742,7 @@
 								"type": "string",
 								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
 								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						}
@@ -10264,7 +10434,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.write",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"operationId": "cloudflare-tunnel-update-a-warp-connector-tunnel",
@@ -10297,7 +10475,8 @@
 					"readOnly": true,
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "node-id"
+				"x-fern-parameter-name": "node-id",
+				"x-forge-parameter-name": "node-id"
 			}
 		],
 		"requestBody": {
@@ -10317,6 +10496,7 @@
 								"type": "string",
 								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
 								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						}
@@ -10969,7 +11149,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"teams-connector-warp.write",
+			"teams-connectors.write"
+		]
 	},
 	"POST /accounts/{account_id}/cfd_tunnel": {
 		"operationId": "cloudflare-tunnel-create-a-cloudflare-tunnel",
@@ -11010,7 +11197,8 @@
 										]
 									}
 								],
-								"x-fern-property-name": "config-source"
+								"x-fern-property-name": "config-source",
+								"x-forge-property-name": "config-source"
 							},
 							"name": {
 								"description": "A user-friendly name for a tunnel.",
@@ -11022,6 +11210,7 @@
 								"type": "string",
 								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
 								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						},
@@ -11716,7 +11905,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.write",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"POST /accounts/{account_id}/cfd_tunnel/{tunnel_id}/management": {
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-management-token",
@@ -11879,6 +12076,7 @@
 											"example": "eyJhIjoiNWFiNGU5Z...",
 											"readOnly": true,
 											"x-auditable": false,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										}
 									},
@@ -11992,6 +12190,7 @@
 													"example": "eyJhIjoiNWFiNGU5Z...",
 													"readOnly": true,
 													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											},
@@ -12121,7 +12320,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.management-token",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.management-token",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.write",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"POST /accounts/{account_id}/warp_connector": {
 		"operationId": "cloudflare-tunnel-create-a-warp-connector-tunnel",
@@ -12812,7 +13019,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-connector-warp.write",
+			"teams-connectors.write"
+		]
 	},
 	"PUT /accounts/{account_id}/warp_connector/{tunnel_id}/failover": {
 		"operationId": "cloudflare-tunnel-manual-failover-warp-connector-tunnel",
@@ -12845,7 +13059,8 @@
 					"readOnly": true,
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "node-id"
+				"x-fern-parameter-name": "node-id",
+				"x-forge-parameter-name": "node-id"
 			}
 		],
 		"requestBody": {
@@ -12866,7 +13081,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "connector-id"
+								"x-fern-property-name": "connector-id",
+								"x-forge-property-name": "connector-id"
 							}
 						},
 						"required": [
@@ -13218,6 +13434,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "mesh.nodes",
 		"x-fern-sdk-method-name": "failover",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "mesh.nodes",
+		"x-forge-method-name": "failover",
+		"x-forge-oauth-scopes": [
+			"teams-connector-warp.write",
+			"teams-connectors.write"
+		],
 		"x-forge-require-confirmation": "This operation triggers a manual failover, changing the active connector for a Mesh node."
 	}
 }

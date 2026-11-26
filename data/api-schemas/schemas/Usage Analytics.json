@@ -1,4 +1,1034 @@
 {
+	"GET /{account_or_zone}/{account_or_zone_id}/media/usage": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/media/usage",
+		"summary": "Get account or zone Media usage",
+		"description": "Retrieve Media usage analytics for an account or zone. This endpoint shares the same backend handler as the Stream usage endpoint and returns identical Stream metrics (streamMinutesViewed). The gateway rewrites this path to the shared usage handler.\n",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare resource identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"description": "Comma-separated list of metrics to include in the response. Available metrics depend on the endpoint. Billing usage supports: streamMinutesViewed, rateLimitingRequestsAllowed, loadBalancingQueries, argoAcceleratedBytes, workersRequests, workersKVReads, imageResizingRequests, spectrumBytesTransferred, mediaUniqueTransformations. Stream/media usage supports: streamMinutesViewed.\n",
+				"in": "query",
+				"name": "metrics",
+				"schema": {
+					"type": "string",
+					"example": "streamMinutesViewed"
+				}
+			},
+			{
+				"description": "Start of the time range for the query (inclusive). ISO 8601 timestamp. Defaults to 6 hours before the current time.\n",
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"type": "string",
+					"format": "date-time",
+					"example": "2023-09-01T00:00:00Z"
+				}
+			},
+			{
+				"description": "End of the time range for the query (inclusive). ISO 8601 timestamp. Defaults to the current time.\n",
+				"in": "query",
+				"name": "until",
+				"schema": {
+					"type": "string",
+					"format": "date-time",
+					"example": "2023-09-01T06:00:00Z"
+				}
+			},
+			{
+				"description": "Time unit to aggregate usage observations into. Data retention is approximately 18 months. The effective number of data points returned depends on the time range and granularity selected. For example, requesting hourly granularity over 18 months could produce up to ~13,000 data points; use the limit parameter to cap results and be aware that responses may be truncated.\n",
+				"in": "query",
+				"name": "time_delta",
+				"schema": {
+					"type": "string",
+					"example": "hour",
+					"default": "hour",
+					"enum": [
+						"hour",
+						"day",
+						"week",
+						"month",
+						"quarter",
+						"year"
+					]
+				}
+			},
+			{
+				"description": "Maximum number of data points to return. The actual number of results depends on the interaction between the time range (since/until) and time_delta granularity. Results are truncated to this limit without error if the time range produces more data points than the limit allows.\n",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"type": "integer",
+					"example": 100,
+					"default": 100,
+					"maximum": 10000,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Filter expressions to apply to the query. Format: field==value. Multiple filters can be combined.\n",
+				"in": "query",
+				"name": "filters",
+				"schema": {
+					"type": "string",
+					"example": ""
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Usage analytics response.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"success": {
+								"summary": "Successful usage retrieval",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": [
+										{
+											"streamMinutesViewed": 125000,
+											"ts": 1693526400
+										},
+										{
+											"streamMinutesViewed": 98000,
+											"ts": 1693530000
+										}
+									],
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare v4 API response containing Stream usage analytics data.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors, empty on success.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "integer",
+												"example": 10010
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "Bad Request"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Array of usage data points for the requested time range.",
+									"type": "array",
+									"items": {
+										"description": "A single Stream usage data point for a time period.",
+										"type": "object",
+										"properties": {
+											"streamMinutesViewed": {
+												"description": "Number of Stream billable minutes viewed in this time period.",
+												"type": "integer",
+												"format": "int64",
+												"example": 12500
+											},
+											"ts": {
+												"description": "Unix timestamp (epoch seconds) for the start of this time period.",
+												"type": "integer",
+												"format": "int64",
+												"example": 1693526400
+											}
+										}
+									}
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request - invalid parameters or query.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"bad_request": {
+								"summary": "Invalid request parameters",
+								"value": {
+									"errors": [
+										{
+											"code": 10010,
+											"message": "Bad Request"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare v4 API error response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "integer",
+												"example": 10010
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "Bad Request"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty array or null on error.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": [],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"unauthorized": {
+								"summary": "Missing or invalid authentication",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Authentication required"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare v4 API error response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "integer",
+												"example": 10010
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "Bad Request"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty array or null on error.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": [],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Insufficient permissions to access this resource.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"forbidden": {
+								"summary": "Insufficient permissions",
+								"value": {
+									"errors": [
+										{
+											"code": 10001,
+											"message": "Forbidden"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare v4 API error response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "integer",
+												"example": 10010
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "Bad Request"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty array or null on error.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": [],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Usage Analytics"
+		],
+		"x-api-token-group": [
+			"Images Read"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "media.usage",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "media.usage",
+		"x-forge-method-name": "get",
+		"x-stainless-skip": true
+	},
+	"GET /{account_or_zone}/{account_or_zone_id}/stream/usage": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/stream/usage",
+		"summary": "Get account or zone Stream usage",
+		"description": "Retrieve Stream usage analytics for an account or zone. Returns time-series data for Stream billable minutes viewed across all zones in the account or zone. The gateway rewrites this path before forwarding to the backend usage handler.\n",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare resource identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32
+				}
+			},
+			{
+				"description": "Comma-separated list of metrics to include in the response. Available metrics depend on the endpoint. Billing usage supports: streamMinutesViewed, rateLimitingRequestsAllowed, loadBalancingQueries, argoAcceleratedBytes, workersRequests, workersKVReads, imageResizingRequests, spectrumBytesTransferred, mediaUniqueTransformations. Stream/media usage supports: streamMinutesViewed.\n",
+				"in": "query",
+				"name": "metrics",
+				"schema": {
+					"type": "string",
+					"example": "streamMinutesViewed"
+				}
+			},
+			{
+				"description": "Start of the time range for the query (inclusive). ISO 8601 timestamp. Defaults to 6 hours before the current time.\n",
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"type": "string",
+					"format": "date-time",
+					"example": "2023-09-01T00:00:00Z"
+				}
+			},
+			{
+				"description": "End of the time range for the query (inclusive). ISO 8601 timestamp. Defaults to the current time.\n",
+				"in": "query",
+				"name": "until",
+				"schema": {
+					"type": "string",
+					"format": "date-time",
+					"example": "2023-09-01T06:00:00Z"
+				}
+			},
+			{
+				"description": "Time unit to aggregate usage observations into. Data retention is approximately 18 months. The effective number of data points returned depends on the time range and granularity selected. For example, requesting hourly granularity over 18 months could produce up to ~13,000 data points; use the limit parameter to cap results and be aware that responses may be truncated.\n",
+				"in": "query",
+				"name": "time_delta",
+				"schema": {
+					"type": "string",
+					"example": "hour",
+					"default": "hour",
+					"enum": [
+						"hour",
+						"day",
+						"week",
+						"month",
+						"quarter",
+						"year"
+					]
+				}
+			},
+			{
+				"description": "Maximum number of data points to return. The actual number of results depends on the interaction between the time range (since/until) and time_delta granularity. Results are truncated to this limit without error if the time range produces more data points than the limit allows.\n",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"type": "integer",
+					"example": 100,
+					"default": 100,
+					"maximum": 10000,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Filter expressions to apply to the query. Format: field==value. Multiple filters can be combined.\n",
+				"in": "query",
+				"name": "filters",
+				"schema": {
+					"type": "string",
+					"example": ""
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Usage analytics response.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"success": {
+								"summary": "Successful Stream usage retrieval",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": [
+										{
+											"streamMinutesViewed": 125000,
+											"ts": 1693526400
+										},
+										{
+											"streamMinutesViewed": 98000,
+											"ts": 1693530000
+										}
+									],
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare v4 API response containing Stream usage analytics data.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors, empty on success.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "integer",
+												"example": 10010
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "Bad Request"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Array of usage data points for the requested time range.",
+									"type": "array",
+									"items": {
+										"description": "A single Stream usage data point for a time period.",
+										"type": "object",
+										"properties": {
+											"streamMinutesViewed": {
+												"description": "Number of Stream billable minutes viewed in this time period.",
+												"type": "integer",
+												"format": "int64",
+												"example": 12500
+											},
+											"ts": {
+												"description": "Unix timestamp (epoch seconds) for the start of this time period.",
+												"type": "integer",
+												"format": "int64",
+												"example": 1693526400
+											}
+										}
+									}
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request - invalid parameters or query.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"bad_request": {
+								"summary": "Invalid request parameters",
+								"value": {
+									"errors": [
+										{
+											"code": 10010,
+											"message": "Bad Request"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare v4 API error response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "integer",
+												"example": 10010
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "Bad Request"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty array or null on error.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": [],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Authentication required.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"unauthorized": {
+								"summary": "Missing or invalid authentication",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Authentication required"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare v4 API error response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "integer",
+												"example": 10010
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "Bad Request"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty array or null on error.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": [],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Insufficient permissions to access this resource.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"forbidden": {
+								"summary": "Insufficient permissions",
+								"value": {
+									"errors": [
+										{
+											"code": 10001,
+											"message": "Forbidden"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"description": "Standard Cloudflare v4 API error response.",
+							"type": "object",
+							"properties": {
+								"errors": {
+									"description": "List of errors.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error code.",
+												"type": "integer",
+												"example": 10010
+											},
+											"message": {
+												"description": "Human-readable error message.",
+												"type": "string",
+												"example": "Bad Request"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"description": "List of informational messages.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Message code.",
+												"type": "integer",
+												"example": 0
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string",
+												"example": ""
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty array or null on error.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": [],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"deprecated": true,
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Usage Analytics"
+		],
+		"x-api-token-group": [
+			"Stream Read"
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "stream.usage",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "stream.usage",
+		"x-forge-method-name": "get",
+		"x-stainless-skip": true
+	},
 	"GET /accounts/{account_id}/billing/usage": {
 		"operationId": "usage-analytics-get-account-billing-usage",
 		"summary": "Get account billing usage",
@@ -529,6 +1559,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -546,7 +1577,10 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "billing.usage",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "billing.usage",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/media/usage": {
 		"operationId": "usage-analytics-get-account-media-usage",
@@ -1026,6 +2060,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1042,8 +2077,14 @@
 			"Images Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "media.usage",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/stream/usage": {
 		"operationId": "usage-analytics-get-account-stream-usage",
@@ -1523,6 +2564,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -1539,8 +2581,14 @@
 			"Stream Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "stream.usage",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/media/usage": {
 		"operationId": "usage-analytics-get-zone-media-usage",
@@ -2020,6 +3068,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -2036,8 +3085,14 @@
 			"Images Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "media.usage",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/stream/usage": {
 		"operationId": "usage-analytics-get-zone-stream-usage",
@@ -2517,6 +3572,7 @@
 				}
 			}
 		},
+		"deprecated": true,
 		"security": [
 			{
 				"api_token": []
@@ -2533,7 +3589,13 @@
 			"Stream Read"
 		],
 		"x-fern-availability": "deprecated",
-		"x-fern-sdk-group-name": "stream.usage",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write"
+		],
+		"x-forge-skip": true
 	}
 }

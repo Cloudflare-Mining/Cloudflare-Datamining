@@ -106,6 +106,9 @@
 			"Workers AI"
 		],
 		"x-api-token-group": [
+			"Workers AI Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write",
 			"Workers AI Read"
 		],
@@ -122,7 +125,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.authors",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai.authors",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers_ai.metadata_read",
+			"ai.read",
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai/models/schema": {
 		"operationId": "workers-ai-get-model-schema",
@@ -277,6 +290,9 @@
 			"Workers AI"
 		],
 		"x-api-token-group": [
+			"Workers AI Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write",
 			"Workers AI Read"
 		],
@@ -292,7 +308,16 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "ai",
-		"x-fern-sdk-method-name": "get-model-schema"
+		"x-fern-sdk-method-name": "get-model-schema",
+		"x-forge-group-name": "ai",
+		"x-forge-method-name": "get-model-schema",
+		"x-forge-oauth-scopes": [
+			"workers_ai.metadata_read",
+			"ai.read",
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai/models/search": {
 		"operationId": "workers-ai-search-model",
@@ -495,6 +520,9 @@
 			"Workers AI"
 		],
 		"x-api-token-group": [
+			"Workers AI Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write",
 			"Workers AI Read"
 		],
@@ -511,7 +539,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.models",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai.models",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers_ai.metadata_read",
+			"ai.read",
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai/tasks/search": {
 		"operationId": "workers-ai-search-task",
@@ -608,6 +646,9 @@
 			"Workers AI"
 		],
 		"x-api-token-group": [
+			"Workers AI Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write",
 			"Workers AI Read"
 		],
@@ -624,7 +665,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.tasks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai.tasks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers_ai.metadata_read",
+			"ai.read",
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai/tomarkdown/supported": {
 		"operationId": "workers-ai-get-to-markdown-supported",
@@ -734,6 +785,9 @@
 			"Workers AI"
 		],
 		"x-api-token-group": [
+			"Workers AI Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write",
 			"Workers AI Read"
 		],
@@ -749,7 +803,16 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "ai",
-		"x-fern-sdk-method-name": "list-markdown-supported-formats"
+		"x-fern-sdk-method-name": "list-markdown-supported-formats",
+		"x-forge-group-name": "ai",
+		"x-forge-method-name": "list-markdown-supported-formats",
+		"x-forge-oauth-scopes": [
+			"workers_ai.metadata_read",
+			"ai.read",
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai/run": {
 		"operationId": "workers-ai-post-run-generic",
@@ -914,6 +977,8 @@
 			"Workers AI"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write",
 			"Workers AI Read"
 		],
@@ -930,7 +995,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai",
-		"x-fern-sdk-method-name": "run"
+		"x-fern-sdk-method-name": "run",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai",
+		"x-forge-method-name": "run",
+		"x-forge-oauth-scopes": [
+			"ai.read",
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai/run/{model_name}": {
 		"operationId": "workers-ai-post-run-model",
@@ -2230,6 +2304,8 @@
 			"Workers AI"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write",
 			"Workers AI Read"
 		],
@@ -2248,7 +2324,15 @@
 			"sdk"
 		],
 		"x-fern-sdk-group-name": "ai",
-		"x-fern-sdk-method-name": "run-model"
+		"x-fern-sdk-method-name": "run-model",
+		"x-forge-group-name": "ai",
+		"x-forge-method-name": "run-model",
+		"x-forge-oauth-scopes": [
+			"ai.read",
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai/tomarkdown": {
 		"operationId": "workers-ai-post-to-markdown",
@@ -2395,6 +2479,8 @@
 			"Workers AI"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write",
 			"Workers AI Read"
 		],
@@ -2410,6 +2496,14 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "ai",
-		"x-fern-sdk-method-name": "to-markdown"
+		"x-fern-sdk-method-name": "to-markdown",
+		"x-forge-group-name": "ai",
+		"x-forge-method-name": "to-markdown",
+		"x-forge-oauth-scopes": [
+			"ai.read",
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	}
 }

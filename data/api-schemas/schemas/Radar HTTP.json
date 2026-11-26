@@ -638,7 +638,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http",
-		"x-fern-sdk-method-name": "summary"
+		"x-fern-sdk-method-name": "summary",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http",
+		"x-forge-method-name": "summary",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/summary/bot_class": {
 		"operationId": "radar-get-http-summary-by-bot-class",
@@ -1191,6 +1198,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.summary",
 		"x-fern-sdk-method-name": "bot-class",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.summary",
+		"x-forge-method-name": "bot-class",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) instead."
 	},
 	"GET /radar/http/summary/device_type": {
@@ -1750,6 +1765,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.summary",
 		"x-fern-sdk-method-name": "device-type",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.summary",
+		"x-forge-method-name": "device-type",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) instead."
 	},
 	"GET /radar/http/summary/http_protocol": {
@@ -2303,6 +2326,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.summary",
 		"x-fern-sdk-method-name": "http-protocol",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.summary",
+		"x-forge-method-name": "http-protocol",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) instead."
 	},
 	"GET /radar/http/summary/http_version": {
@@ -2862,6 +2893,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.summary",
 		"x-fern-sdk-method-name": "http-version",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.summary",
+		"x-forge-method-name": "http-version",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) instead."
 	},
 	"GET /radar/http/summary/ip_version": {
@@ -3415,6 +3454,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.summary",
 		"x-fern-sdk-method-name": "ip-version",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.summary",
+		"x-forge-method-name": "ip-version",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) instead."
 	},
 	"GET /radar/http/summary/os": {
@@ -3963,6 +4010,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.summary",
 		"x-fern-sdk-method-name": "os",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.summary",
+		"x-forge-method-name": "os",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) instead."
 	},
 	"GET /radar/http/summary/post_quantum": {
@@ -4533,6 +4588,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.summary",
 		"x-fern-sdk-method-name": "post-quantum",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.summary",
+		"x-forge-method-name": "post-quantum",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) instead."
 	},
 	"GET /radar/http/summary/tls_version": {
@@ -5104,6 +5167,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.summary",
 		"x-fern-sdk-method-name": "tls-version",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.summary",
+		"x-forge-method-name": "tls-version",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) instead."
 	},
 	"GET /radar/http/timeseries": {
@@ -5782,7 +5853,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http",
-		"x-fern-sdk-method-name": "timeseries"
+		"x-fern-sdk-method-name": "timeseries",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http",
+		"x-forge-method-name": "timeseries",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/timeseries_groups/{dimension}": {
 		"operationId": "radar-get-http-timeseries-group",
@@ -6488,7 +6566,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http",
-		"x-fern-sdk-method-name": "timeseries-groups"
+		"x-fern-sdk-method-name": "timeseries-groups",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http",
+		"x-forge-method-name": "timeseries-groups",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/timeseries_groups/bot_class": {
 		"operationId": "radar-get-http-timeseries-group-by-bot-class",
@@ -7083,6 +7168,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.timeseries-groups",
 		"x-fern-sdk-method-name": "bot-class",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.timeseries-groups",
+		"x-forge-method-name": "bot-class",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/http/timeseries_groups/browser": {
@@ -7702,6 +7795,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.timeseries-groups",
 		"x-fern-sdk-method-name": "browser",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.timeseries-groups",
+		"x-forge-method-name": "browser",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/http/timeseries_groups/browser_family": {
@@ -8302,6 +8403,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.timeseries-groups",
 		"x-fern-sdk-method-name": "browser-family",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.timeseries-groups",
+		"x-forge-method-name": "browser-family",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/http/timeseries_groups/device_type": {
@@ -8906,6 +9015,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.timeseries-groups",
 		"x-fern-sdk-method-name": "device-type",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.timeseries-groups",
+		"x-forge-method-name": "device-type",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/http/timeseries_groups/http_protocol": {
@@ -9501,6 +9618,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.timeseries-groups",
 		"x-fern-sdk-method-name": "http-protocol",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.timeseries-groups",
+		"x-forge-method-name": "http-protocol",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/http/timeseries_groups/http_version": {
@@ -10105,6 +10230,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.timeseries-groups",
 		"x-fern-sdk-method-name": "http-version",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.timeseries-groups",
+		"x-forge-method-name": "http-version",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/http/timeseries_groups/ip_version": {
@@ -10700,6 +10833,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.timeseries-groups",
 		"x-fern-sdk-method-name": "ip-version",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.timeseries-groups",
+		"x-forge-method-name": "ip-version",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/http/timeseries_groups/os": {
@@ -11287,6 +11428,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.timeseries-groups",
 		"x-fern-sdk-method-name": "os",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.timeseries-groups",
+		"x-forge-method-name": "os",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/http/timeseries_groups/post_quantum": {
@@ -11899,6 +12048,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.timeseries-groups",
 		"x-fern-sdk-method-name": "post-quantum",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.timeseries-groups",
+		"x-forge-method-name": "post-quantum",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/http/timeseries_groups/tls_version": {
@@ -12521,6 +12678,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.timeseries-groups",
 		"x-fern-sdk-method-name": "tls-version",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.timeseries-groups",
+		"x-forge-method-name": "tls-version",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Timeseries Groups By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/timeseries_groups_v2/) instead."
 	},
 	"GET /radar/http/top/ases": {
@@ -13108,7 +13273,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.ases",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.ases",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/ases/bot_class/{bot_class}": {
 		"operationId": "radar-get-http-top-ases-by-bot-class",
@@ -13692,7 +13864,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.ases.bot-class",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.ases.bot-class",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/ases/browser_family/{browser_family}": {
 		"operationId": "radar-get-http-top-ases-by-browser-family",
@@ -14276,7 +14455,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.ases.browser-family",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.ases.browser-family",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/ases/device_type/{device_type}": {
 		"operationId": "radar-get-http-top-ases-by-device-type",
@@ -14860,7 +15046,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.ases.device-type",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.ases.device-type",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/ases/http_protocol/{http_protocol}": {
 		"operationId": "radar-get-http-top-ases-by-http-protocol",
@@ -15444,7 +15637,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.ases.http-protocol",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.ases.http-protocol",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/ases/http_version/{http_version}": {
 		"operationId": "radar-get-http-top-ases-by-http-version",
@@ -16028,7 +16228,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.ases.http-version",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.ases.http-version",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/ases/ip_version/{ip_version}": {
 		"operationId": "radar-get-http-top-ases-by-ip-version",
@@ -16612,7 +16819,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.ases.ip-version",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.ases.ip-version",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/ases/os/{os}": {
 		"operationId": "radar-get-http-top-ases-by-operating-system",
@@ -17196,7 +17410,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.ases.os",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.ases.os",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/ases/tls_version/{tls_version}": {
 		"operationId": "radar-get-http-top-ases-by-tls-version",
@@ -17780,7 +18001,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.ases.tls-version",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.ases.tls-version",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/browser": {
 		"operationId": "radar-get-http-top-browsers",
@@ -18343,6 +18571,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.top",
 		"x-fern-sdk-method-name": "browser",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.top",
+		"x-forge-method-name": "browser",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) instead."
 	},
 	"GET /radar/http/top/browser_family": {
@@ -18887,6 +19123,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.http.top",
 		"x-fern-sdk-method-name": "browser-family",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.http.top",
+		"x-forge-method-name": "browser-family",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar HTTP Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) instead."
 	},
 	"GET /radar/http/top/locations": {
@@ -19474,7 +19718,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.locations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.locations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/locations/bot_class/{bot_class}": {
 		"operationId": "radar-get-http-top-locations-by-bot-class",
@@ -20058,7 +20309,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.locations.bot-class",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.locations.bot-class",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/locations/browser_family/{browser_family}": {
 		"operationId": "radar-get-http-top-locations-by-browser-family",
@@ -20642,7 +20900,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.locations.browser-family",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.locations.browser-family",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/locations/device_type/{device_type}": {
 		"operationId": "radar-get-http-top-locations-by-device-type",
@@ -21226,7 +21491,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.locations.device-type",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.locations.device-type",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/locations/http_protocol/{http_protocol}": {
 		"operationId": "radar-get-http-top-locations-by-http-protocol",
@@ -21810,7 +22082,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.locations.http-protocol",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.locations.http-protocol",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/locations/http_version/{http_version}": {
 		"operationId": "radar-get-http-top-locations-by-http-version",
@@ -22394,7 +22673,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.locations.http-version",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.locations.http-version",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/locations/ip_version/{ip_version}": {
 		"operationId": "radar-get-http-top-locations-by-ip-version",
@@ -22978,7 +23264,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.locations.ip-version",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.locations.ip-version",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/locations/os/{os}": {
 		"operationId": "radar-get-http-top-locations-by-operating-system",
@@ -23562,7 +23855,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.locations.os",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.locations.os",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/http/top/locations/tls_version/{tls_version}": {
 		"operationId": "radar-get-http-top-locations-by-tls-version",
@@ -24146,6 +24446,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.http.top.locations.tls-version",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.http.top.locations.tls-version",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	}
 }

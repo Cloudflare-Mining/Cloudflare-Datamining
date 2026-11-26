@@ -765,7 +765,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "smart-shield",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zone.read",
+			"zone.write",
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/smart_shield": {
 		"operationId": "smart-shield-patch-settings",
@@ -1556,6 +1565,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "smart-shield",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"zone-settings.write"
+		]
 	}
 }

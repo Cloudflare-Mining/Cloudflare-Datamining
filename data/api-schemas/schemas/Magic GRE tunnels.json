@@ -530,7 +530,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.gre-tunnels",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/gre_tunnels": {
 		"operationId": "magic-gre-tunnels-list-gre-tunnels",
@@ -1052,7 +1059,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.gre-tunnels",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}": {
 		"operationId": "magic-gre-tunnels-list-gre-tunnel-details",
@@ -1583,7 +1599,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.gre-tunnels",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"POST /accounts/{account_id}/magic/gre_tunnels": {
 		"operationId": "magic-gre-tunnels-create-gre-tunnels",
@@ -2285,7 +2310,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.gre-tunnels",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"PUT /accounts/{account_id}/magic/gre_tunnels": {
 		"operationId": "magic-gre-tunnels-update-multiple-gre-tunnels",
@@ -2822,7 +2854,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
-		"x-fern-sdk-method-name": "bulk-update"
+		"x-fern-sdk-method-name": "bulk-update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.gre-tunnels",
+		"x-forge-method-name": "bulk-update",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"PUT /accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}": {
 		"operationId": "magic-gre-tunnels-update-gre-tunnel",
@@ -3513,6 +3552,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "magic-transit.gre-tunnels",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	}
 }

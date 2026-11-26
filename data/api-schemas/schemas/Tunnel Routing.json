@@ -470,6 +470,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.cidr",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes.cidr",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes a private network route."
 	},
 	"DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
@@ -985,6 +992,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "network.routes.cidr",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-group-name": "network.routes.cidr",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	},
 	"GET /accounts/{account_id}/teamnet/routes": {
@@ -1732,7 +1746,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.cidr",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes.cidr",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-networks.read",
+			"argotunnel.read",
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/teamnet/routes/{route_id}": {
 		"operationId": "tunnel-route-get-tunnel-route",
@@ -2200,7 +2223,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.cidr",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes.cidr",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/teamnet/routes/ip/{ip}": {
 		"operationId": "tunnel-route-get-tunnel-route-by-ip",
@@ -2747,7 +2773,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes",
-		"x-fern-sdk-method-name": "resolve"
+		"x-fern-sdk-method-name": "resolve",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes",
+		"x-forge-method-name": "resolve",
+		"x-forge-oauth-scopes": [
+			"teams-networks.read",
+			"argotunnel.read",
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/{route_id}": {
 		"operationId": "tunnel-route-update-a-tunnel-route",
@@ -3262,7 +3297,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.cidr",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes.cidr",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"operationId": "tunnel-route-update-a-tunnel-route-with-cidr",
@@ -3734,6 +3776,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "network.routes.cidr",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-group-name": "network.routes.cidr",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	},
 	"POST /accounts/{account_id}/teamnet/routes": {
@@ -4241,7 +4290,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.routes.cidr",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.routes.cidr",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		]
 	},
 	"POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"operationId": "tunnel-route-create-a-tunnel-route-with-cidr",
@@ -4752,6 +4808,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "network.routes.cidr",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-group-name": "network.routes.cidr",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write",
+			"argotunnel.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	}
 }

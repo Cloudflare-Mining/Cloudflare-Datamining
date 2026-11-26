@@ -218,7 +218,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"dns.write"
+		]
 	},
 	"GET /zones/{zone_id}/dns_records": {
 		"operationId": "dns-records-for-a-zone-list-dns-records",
@@ -539,7 +545,7 @@
 				"schema": {
 					"description": "Opaque token for cursor pagination, obtained from `result_info.cursor` of the previous response. An empty value starts cursor pagination. Mutually exclusive with `page` and `prev_cursor`.\n",
 					"type": "string",
-					"maxLength": 4096
+					"maxLength": 6144
 				}
 			},
 			{
@@ -548,7 +554,7 @@
 				"schema": {
 					"description": "Opaque token for requesting the previous page in cursor pagination, obtained from `result_info.prev_cursor` of the previous response. Mutually exclusive with `page` and `cursor`.\n",
 					"type": "string",
-					"maxLength": 4096,
+					"maxLength": 6144,
 					"minLength": 1
 				}
 			},
@@ -585,7 +591,9 @@
 						"name",
 						"content",
 						"ttl",
-						"proxied"
+						"proxied",
+						"created_on",
+						"modified_on"
 					]
 				}
 			},
@@ -3806,6 +3814,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"dns.read",
+			"dns.write"
+		],
 		"x-forge-params": {
 			"zone_id": {
 				"description": "Zone ID"
@@ -6975,7 +6990,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"dns.read",
+			"dns.write"
+		]
 	},
 	"GET /zones/{zone_id}/dns_records/export": {
 		"operationId": "dns-records-for-a-zone-export-dns-records",
@@ -7484,7 +7506,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "export"
+		"x-fern-sdk-method-name": "export",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "export",
+		"x-forge-oauth-scopes": [
+			"dns.read",
+			"dns.write"
+		]
 	},
 	"GET /zones/{zone_id}/dns_records/scan/review": {
 		"operationId": "dns-records-for-a-zone-review-dns-scan",
@@ -10665,7 +10694,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "scan-list"
+		"x-fern-sdk-method-name": "scan-list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "scan-list",
+		"x-forge-oauth-scopes": [
+			"dns.read",
+			"dns.write"
+		]
 	},
 	"GET /zones/{zone_id}/dns_records/usage": {
 		"operationId": "dns-records-for-a-zone-get-usage",
@@ -10956,8 +10992,15 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dns.usage.zone",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-dns-settings.read",
+			"zone-dns-settings.write",
+			"dns.read",
+			"dns.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /zones/{zone_id}/dns_records/{dns_record_id}": {
 		"operationId": "dns-records-for-a-zone-patch-dns-record",
@@ -16892,7 +16935,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"dns.write"
+		]
 	},
 	"POST /zones/{zone_id}/dns_records": {
 		"operationId": "dns-records-for-a-zone-create-dns-record",
@@ -22815,7 +22864,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"dns.write"
+		]
 	},
 	"POST /zones/{zone_id}/dns_records/batch": {
 		"operationId": "dns-records-for-a-zone-batch-dns-records",
@@ -42989,12 +43044,18 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "bulk-apply"
+		"x-fern-sdk-method-name": "bulk-apply",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "bulk-apply",
+		"x-forge-oauth-scopes": [
+			"dns.write"
+		]
 	},
 	"POST /zones/{zone_id}/dns_records/import": {
 		"operationId": "dns-records-for-a-zone-import-dns-records",
 		"summary": "Import DNS Records",
-		"description": "You can upload your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint. It assumes that cURL is called from a location with bind_config.txt (valid BIND config) present.\n\nSee [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.",
+		"description": "You can upload your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint. It assumes that cURL is called from a location with bind_config.txt (valid BIND config) present.\n\nEach import accepts zone files up to 32 MiB and parses at most the zone or account record quota plus a small buffer for skipped records, including records expanded by `$GENERATE` directives, which may expand to at most 1,000,000 records in total. Up to 1,000 warning or error messages are returned per import, followed by a warning with the number of messages left out, if any.\n\nSee [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.\n",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -43297,7 +43358,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "import"
+		"x-fern-sdk-method-name": "import",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "import",
+		"x-forge-oauth-scopes": [
+			"dns.write"
+		]
 	},
 	"POST /zones/{zone_id}/dns_records/scan": {
 		"operationId": "dns-records-for-a-zone-scan-dns-records",
@@ -43581,6 +43648,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
 		"x-fern-sdk-method-name": "scan",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "scan",
+		"x-forge-oauth-scopes": [
+			"dns.write"
+		],
 		"x-stainless-deprecation-message": "This endpoint is deprecated in favor of a new asynchronous version. Please use the [/scan/trigger](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/scan/trigger) and [/scan/review](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/scan/review) endpoints instead.\n"
 	},
 	"POST /zones/{zone_id}/dns_records/scan/review": {
@@ -49548,7 +49621,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "scan-review"
+		"x-fern-sdk-method-name": "scan-review",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "scan-review",
+		"x-forge-oauth-scopes": [
+			"dns.write"
+		]
 	},
 	"POST /zones/{zone_id}/dns_records/scan/trigger": {
 		"operationId": "dns-records-for-a-zone-trigger-dns-scan",
@@ -49810,7 +49889,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "scan-trigger"
+		"x-fern-sdk-method-name": "scan-trigger",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "scan-trigger",
+		"x-forge-oauth-scopes": [
+			"dns.write"
+		]
 	},
 	"PUT /zones/{zone_id}/dns_records/{dns_record_id}": {
 		"operationId": "dns-records-for-a-zone-update-dns-record",
@@ -55745,6 +55830,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dns.records",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dns.records",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"dns.write"
+		]
 	}
 }

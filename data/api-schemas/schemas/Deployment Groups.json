@@ -172,7 +172,10 @@
 		"x-auditable": true,
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.devices.deployment-groups",
+		"x-forge-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/devices/deployment-groups": {
 		"operationId": "list-deployment-groups",
@@ -463,9 +466,20 @@
 		"tags": [
 			"Deployment Groups"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.devices.deployment-groups",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/devices/deployment-groups/{group_id}": {
 		"operationId": "get-deployment-group",
@@ -701,9 +715,20 @@
 		"tags": [
 			"Deployment Groups"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.devices.deployment-groups",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/devices/deployment-groups/{group_id}": {
 		"operationId": "update-deployment-group",
@@ -995,7 +1020,10 @@
 		"x-auditable": true,
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.devices.deployment-groups",
+		"x-forge-method-name": "update"
 	},
 	"POST /accounts/{account_id}/devices/deployment-groups": {
 		"operationId": "create-deployment-group",
@@ -1284,6 +1312,9 @@
 		"x-auditable": true,
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.deployment-groups",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.devices.deployment-groups",
+		"x-forge-method-name": "create"
 	}
 }

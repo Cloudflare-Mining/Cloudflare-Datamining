@@ -366,11 +366,19 @@
 			"webhooks"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.webhooks",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/data-security/posture/webhooks": {
 		"operationId": "ListWebhooks",
@@ -543,6 +551,7 @@
 																	"type": "string",
 																	"example": "my-authorization-value",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																}
 															},
@@ -945,12 +954,23 @@
 			"webhooks"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.webhooks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}": {
 		"operationId": "GetWebhookConfigByID",
@@ -1130,6 +1150,7 @@
 																"type": "string",
 																"example": "my-authorization-value",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														},
@@ -1747,12 +1768,23 @@
 			"webhooks"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.webhooks",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks": {
 		"operationId": "CreateWebhook",
@@ -1816,6 +1848,7 @@
 											"maxLength": 4096,
 											"nullable": true,
 											"writeOnly": true,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										}
 									},
@@ -1840,6 +1873,7 @@
 								"type": "string",
 								"example": "my-secret-key",
 								"writeOnly": true,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							},
 							"status": {
@@ -2014,6 +2048,7 @@
 																"type": "string",
 																"example": "my-authorization-value",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														},
@@ -2631,11 +2666,19 @@
 			"webhooks"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.webhooks",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}/evaluate": {
 		"operationId": "EvaluateExistingWebhook",
@@ -3360,11 +3403,19 @@
 			"webhooks"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
-		"x-fern-sdk-method-name": "evaluate-existing"
+		"x-fern-sdk-method-name": "evaluate-existing",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.webhooks",
+		"x-forge-method-name": "evaluate-existing",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/evaluate": {
 		"operationId": "EvaluateNewWebhook",
@@ -3428,6 +3479,7 @@
 											"maxLength": 4096,
 											"nullable": true,
 											"writeOnly": true,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										}
 									},
@@ -3447,6 +3499,7 @@
 								"type": "string",
 								"example": "my-secret-key",
 								"writeOnly": true,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						},
@@ -4047,11 +4100,19 @@
 			"webhooks"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
-		"x-fern-sdk-method-name": "evaluate"
+		"x-fern-sdk-method-name": "evaluate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.webhooks",
+		"x-forge-method-name": "evaluate",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/jobs": {
 		"operationId": "CreateWebhookJobs",
@@ -4938,11 +4999,19 @@
 			"webhooks"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.webhooks.jobs",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.webhooks.jobs",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}": {
 		"operationId": "UpdateWebhook",
@@ -5016,6 +5085,7 @@
 											"maxLength": 4096,
 											"nullable": true,
 											"writeOnly": true,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										}
 									},
@@ -5040,6 +5110,7 @@
 								"type": "string",
 								"example": "my-secret-key",
 								"writeOnly": true,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							},
 							"status": {
@@ -5214,6 +5285,7 @@
 																"type": "string",
 																"example": "my-authorization-value",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														},
@@ -5831,10 +5903,18 @@
 			"webhooks"
 		],
 		"x-api-token-group": [
+			"CASB Write",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.webhooks",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.webhooks",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"casb.write",
+			"teams.write"
+		]
 	}
 }

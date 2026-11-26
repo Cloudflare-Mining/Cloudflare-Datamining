@@ -904,6 +904,7 @@
 			"Keys"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "generally-available",
@@ -912,8 +913,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.telemetry",
-				"x-fern-sdk-method-name": "keys"
+				"x-fern-sdk-method-name": "keys",
+				"x-forge-group-name": "o11y.telemetry",
+				"x-forge-method-name": "keys"
 			}
+		],
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "observability.telemetry",
+		"x-forge-method-name": "keys",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		]
 	}
 }

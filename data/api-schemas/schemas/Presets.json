@@ -226,7 +226,8 @@
 																"max_screenshare_count",
 																"media"
 															],
-															"x-fern-property-name": "preset-config"
+															"x-fern-property-name": "preset-config",
+															"x-forge-property-name": "preset-config"
 														},
 														"name": {
 															"description": "Name of the preset",
@@ -829,6 +830,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.presets",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.presets",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes the preset."
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/presets": {
@@ -1082,12 +1090,21 @@
 			"Presets"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.presets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.presets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
 		"operationId": "get-presets-preset_id",
@@ -1316,7 +1333,8 @@
 																"max_screenshare_count",
 																"media"
 															],
-															"x-fern-property-name": "preset-config"
+															"x-fern-property-name": "preset-config",
+															"x-forge-property-name": "preset-config"
 														},
 														"name": {
 															"description": "Name of the preset",
@@ -1913,12 +1931,21 @@
 			"Presets"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.presets",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.presets",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
 		"operationId": "patch-presets-preset_id",
@@ -2073,7 +2100,8 @@
 										]
 									}
 								},
-								"x-fern-property-name": "preset-config"
+								"x-fern-property-name": "preset-config",
+								"x-forge-property-name": "preset-config"
 							},
 							"name": {
 								"description": "Name of the preset",
@@ -2638,7 +2666,8 @@
 																"max_screenshare_count",
 																"media"
 															],
-															"x-fern-property-name": "preset-config"
+															"x-fern-property-name": "preset-config",
+															"x-forge-property-name": "preset-config"
 														},
 														"name": {
 															"description": "Name of the preset",
@@ -3240,7 +3269,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.presets",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.presets",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/presets": {
 		"operationId": "post-presets",
@@ -3408,7 +3444,8 @@
 									"max_screenshare_count",
 									"media"
 								],
-								"x-fern-property-name": "preset-config"
+								"x-fern-property-name": "preset-config",
+								"x-forge-property-name": "preset-config"
 							},
 							"name": {
 								"description": "Name of the preset",
@@ -4081,7 +4118,8 @@
 																"max_screenshare_count",
 																"media"
 															],
-															"x-fern-property-name": "preset-config"
+															"x-fern-property-name": "preset-config",
+															"x-forge-property-name": "preset-config"
 														},
 														"name": {
 															"description": "Name of the preset",
@@ -4683,7 +4721,14 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.presets",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.presets",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}": {
 		"operationId": "put-presets-preset_id",
@@ -4861,7 +4906,8 @@
 									"max_screenshare_count",
 									"media"
 								],
-								"x-fern-property-name": "preset-config"
+								"x-fern-property-name": "preset-config",
+								"x-forge-property-name": "preset-config"
 							},
 							"name": {
 								"description": "Name of the preset",
@@ -5534,7 +5580,8 @@
 																"max_screenshare_count",
 																"media"
 															],
-															"x-fern-property-name": "preset-config"
+															"x-fern-property-name": "preset-config",
+															"x-forge-property-name": "preset-config"
 														},
 														"name": {
 															"description": "Name of the preset",
@@ -6136,6 +6183,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.presets",
-		"x-fern-sdk-method-name": "replace"
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.presets",
+		"x-forge-method-name": "replace",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	}
 }

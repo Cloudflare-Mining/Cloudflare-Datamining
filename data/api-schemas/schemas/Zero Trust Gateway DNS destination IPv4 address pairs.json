@@ -429,6 +429,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.dns-destination-ips",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.dns-destination-ips",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-secure.location",
+			"teams.read",
+			"teams.write"
+		]
 	}
 }

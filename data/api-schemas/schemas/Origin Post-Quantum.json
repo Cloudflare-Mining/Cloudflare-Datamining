@@ -341,7 +341,17 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "origin-post-quantum-encryption",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "origin-post-quantum-encryption",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zone.read",
+			"zone.write",
+			"zone-settings.read",
+			"zone-settings.write"
+		],
+		"x-sunset": "2026-07-19T00:00:00Z"
 	},
 	"PUT /zones/{zone_id}/cache/origin_post_quantum_encryption": {
 		"operationId": "zone-cache-settings-change-origin-post-quantum-encryption-setting",
@@ -709,6 +719,14 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "origin-post-quantum-encryption",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "origin-post-quantum-encryption",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"zone.write",
+			"zone-settings.write"
+		],
+		"x-sunset": "2026-07-19T00:00:00Z"
 	}
 }

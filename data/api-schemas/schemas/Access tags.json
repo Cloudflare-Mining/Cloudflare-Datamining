@@ -270,9 +270,22 @@
 		"tags": [
 			"Access tags"
 		],
+		"x-api-token-group": [
+			"Access: Tags Write",
+			"Zero Trust Write",
+			"Access: Apps and Policies Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.tags",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.tags",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"access-tag.write",
+			"access.write",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/tags": {
 		"operationId": "access-tags-list-tags",
@@ -454,6 +467,7 @@
 														"type": "integer",
 														"example": 1,
 														"x-auditable": true,
+														"x-forge-skip": true,
 														"x-stainless-skip": true
 													},
 													"created_at": {
@@ -461,6 +475,7 @@
 															{
 																"type": "string",
 																"x-auditable": true,
+																"x-forge-skip": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -482,6 +497,7 @@
 															{
 																"type": "string",
 																"x-auditable": true,
+																"x-forge-skip": true,
 																"x-stainless-skip": true
 															},
 															{
@@ -632,9 +648,28 @@
 		"tags": [
 			"Access tags"
 		],
+		"x-api-token-group": [
+			"Access: Tags Write",
+			"Access: Tags Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.tags",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.tags",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"access-tag.read",
+			"access-tag.write",
+			"access.read",
+			"access.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/tags/{tag_name}": {
 		"operationId": "access-tags-get-a-tag",
@@ -771,6 +806,7 @@
 													"type": "integer",
 													"example": 1,
 													"x-auditable": true,
+													"x-forge-skip": true,
 													"x-stainless-skip": true
 												},
 												"created_at": {
@@ -778,6 +814,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -799,6 +836,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -948,9 +986,28 @@
 		"tags": [
 			"Access tags"
 		],
+		"x-api-token-group": [
+			"Access: Tags Write",
+			"Access: Tags Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.tags",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.tags",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"access-tag.read",
+			"access-tag.write",
+			"access.read",
+			"access.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/access/tags": {
 		"operationId": "access-tags-create-tag",
@@ -1093,6 +1150,7 @@
 													"type": "integer",
 													"example": 1,
 													"x-auditable": true,
+													"x-forge-skip": true,
 													"x-stainless-skip": true
 												},
 												"created_at": {
@@ -1100,6 +1158,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1121,6 +1180,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1270,9 +1330,22 @@
 		"tags": [
 			"Access tags"
 		],
+		"x-api-token-group": [
+			"Access: Tags Write",
+			"Zero Trust Write",
+			"Access: Apps and Policies Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.tags",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.tags",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"access-tag.write",
+			"access.write",
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/access/tags/{tag_name}": {
 		"operationId": "access-tags-update-a-tag",
@@ -1315,6 +1388,7 @@
 									{
 										"type": "string",
 										"x-auditable": true,
+										"x-forge-skip": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -1336,6 +1410,7 @@
 									{
 										"type": "string",
 										"x-auditable": true,
+										"x-forge-skip": true,
 										"x-stainless-skip": true
 									},
 									{
@@ -1460,6 +1535,7 @@
 													"type": "integer",
 													"example": 1,
 													"x-auditable": true,
+													"x-forge-skip": true,
 													"x-stainless-skip": true
 												},
 												"created_at": {
@@ -1467,6 +1543,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1488,6 +1565,7 @@
 														{
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-skip": true,
 															"x-stainless-skip": true
 														},
 														{
@@ -1637,8 +1715,21 @@
 		"tags": [
 			"Access tags"
 		],
+		"x-api-token-group": [
+			"Access: Tags Write",
+			"Zero Trust Write",
+			"Access: Apps and Policies Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.tags",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.tags",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"access-tag.write",
+			"access.write",
+			"teams.write"
+		]
 	}
 }

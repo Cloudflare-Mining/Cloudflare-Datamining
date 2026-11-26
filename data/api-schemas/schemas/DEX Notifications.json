@@ -261,7 +261,7 @@
 																"type": "string"
 															},
 															"outcome_counts": {
-																"description": "Weighted delivery outcome counts derived from sampled delivery events.",
+																"description": "Exact delivery outcome counts.",
 																"allOf": [
 																	{
 																		"type": "object",
@@ -271,10 +271,6 @@
 																				"type": "integer",
 																				"format": "int64",
 																				"minimum": 0
-																			},
-																			"estimated": {
-																				"description": "Whether these weighted counts may be affected by equitable sampling before full-resolution storage.",
-																				"type": "boolean"
 																			},
 																			"expired": {
 																				"description": "Number of expired outcomes.",
@@ -292,8 +288,7 @@
 																		"required": [
 																			"delivered",
 																			"failed",
-																			"expired",
-																			"estimated"
+																			"expired"
 																		]
 																	}
 																]
@@ -491,12 +486,22 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dex.notifications",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.dex.notifications",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/dex/notifications/{notification_id}/outcomes": {
 		"operationId": "list-dex-notification-outcomes",
 		"summary": "List notification outcomes",
-		"description": "Lists observed device outcomes for a notification sendout. Sampling may omit outcomes; each result includes its sampling interval.",
+		"description": "Lists observed device outcomes for a notification sendout.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -706,12 +711,6 @@
 																"description": "Registration ID of the device that produced the outcome.",
 																"type": "string"
 															},
-															"sample_interval": {
-																"description": "Sampling interval for this event. Values above one indicate a sampled result.",
-																"type": "integer",
-																"format": "int64",
-																"minimum": 1
-															},
 															"status": {
 																"description": "Observed notification delivery status.",
 																"type": "string",
@@ -737,8 +736,7 @@
 															"registration_id",
 															"status",
 															"timestamp",
-															"duration_ms",
-															"sample_interval"
+															"duration_ms"
 														]
 													}
 												}
@@ -893,7 +891,17 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dex.notifications.outcomes",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.dex.notifications.outcomes",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/dex/notifications": {
 		"operationId": "create-dex-notification",
@@ -1083,7 +1091,7 @@
 													"type": "string"
 												},
 												"outcome_counts": {
-													"description": "Weighted delivery outcome counts derived from sampled delivery events.",
+													"description": "Exact delivery outcome counts.",
 													"allOf": [
 														{
 															"type": "object",
@@ -1093,10 +1101,6 @@
 																	"type": "integer",
 																	"format": "int64",
 																	"minimum": 0
-																},
-																"estimated": {
-																	"description": "Whether these weighted counts may be affected by equitable sampling before full-resolution storage.",
-																	"type": "boolean"
 																},
 																"expired": {
 																	"description": "Number of expired outcomes.",
@@ -1114,8 +1118,7 @@
 															"required": [
 																"delivered",
 																"failed",
-																"expired",
-																"estimated"
+																"expired"
 															]
 														}
 													]
@@ -1304,6 +1307,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dex.notifications",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.dex.notifications",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-dex.write"
+		],
+		"x-forge-skip": true
 	}
 }

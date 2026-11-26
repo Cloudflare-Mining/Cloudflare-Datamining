@@ -492,9 +492,18 @@
 		"tags": [
 			"Zero Trust certificates"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.certificates",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.certificates",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/certificates": {
 		"operationId": "zero-trust-certificates-list-zero-trust-certificates",
@@ -1044,9 +1053,20 @@
 		"tags": [
 			"Zero Trust certificates"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.certificates",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.certificates",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/certificates/{certificate_id}": {
 		"operationId": "zero-trust-certificates-zero-trust-certificate-details",
@@ -1542,9 +1562,20 @@
 		"tags": [
 			"Zero Trust certificates"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.certificates",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.certificates",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates": {
 		"operationId": "zero-trust-certificates-create-zero-trust-certificate",
@@ -1576,7 +1607,7 @@
 								"x-auditable": true
 							},
 							"validity_period_days": {
-								"description": "Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.",
+								"description": "Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation. Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.",
 								"type": "integer",
 								"example": 1826,
 								"x-auditable": true
@@ -2051,9 +2082,18 @@
 		"tags": [
 			"Zero Trust certificates"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.certificates",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.certificates",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates/{certificate_id}/activate": {
 		"operationId": "zero-trust-certificates-activate-zero-trust-certificate",
@@ -2548,9 +2588,18 @@
 		"tags": [
 			"Zero Trust certificates"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.certificates",
-		"x-fern-sdk-method-name": "activate"
+		"x-fern-sdk-method-name": "activate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.certificates",
+		"x-forge-method-name": "activate",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/gateway/certificates/{certificate_id}/deactivate": {
 		"operationId": "zero-trust-certificates-deactivate-zero-trust-certificate",
@@ -3046,8 +3095,17 @@
 		"tags": [
 			"Zero Trust certificates"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.certificates",
-		"x-fern-sdk-method-name": "deactivate"
+		"x-fern-sdk-method-name": "deactivate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.certificates",
+		"x-forge-method-name": "deactivate",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

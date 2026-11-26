@@ -1,4 +1,850 @@
 {
+	"GET /{account_or_zone}/{account_or_zone_id}/security-center/insights/{issue_id}/audit-log": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/security-center/insights/issue_id/audit-log",
+		"summary": "Retrieves Issue Audit Log",
+		"description": "Lists audit log entries for a specific Security Center insight, showing changes to its status and classification over time.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "issue_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"default": 25,
+					"maximum": 1000,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Opaque cursor for pagination. Use the cursor value from result_info of the previous response.",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by the field that was changed.",
+				"in": "query",
+				"name": "field_changed",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"status",
+						"user_classification"
+					]
+				}
+			},
+			{
+				"description": "Filter by the actor that made the change.",
+				"in": "query",
+				"name": "changed_by",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter entries changed at or after this timestamp (RFC 3339).",
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"description": "Filter entries changed before this timestamp (RFC 3339).",
+				"in": "query",
+				"name": "before",
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"description": "Sort order for results. Use 'asc' for oldest first or 'desc' for newest first.",
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"type": "string",
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The request was successful.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"changed_at": {
+														"description": "The timestamp when the change occurred.",
+														"type": "string",
+														"format": "date-time",
+														"x-auditable": true
+													},
+													"changed_by": {
+														"description": "The actor that made the change. 'system' for automated changes, or a user identifier.",
+														"type": "string",
+														"example": "system",
+														"x-auditable": true
+													},
+													"current_value": {
+														"description": "The value of the field after the change. Null if the field was cleared.",
+														"type": "string",
+														"nullable": true,
+														"x-auditable": true
+													},
+													"field_changed": {
+														"description": "The field that was changed.",
+														"type": "string",
+														"enum": [
+															"status",
+															"user_classification"
+														],
+														"x-auditable": true
+													},
+													"id": {
+														"description": "UUIDv7 identifier for the audit log entry, time-ordered.",
+														"type": "string",
+														"format": "uuid",
+														"example": "019b0000-0000-7000-8000-000000000001",
+														"x-auditable": true
+													},
+													"issue_id": {
+														"description": "The ID of the insight this audit log entry relates to.",
+														"type": "string",
+														"x-auditable": true
+													},
+													"previous_value": {
+														"description": "The value of the field before the change. Null if the field was not previously set.",
+														"type": "string",
+														"nullable": true,
+														"x-auditable": true
+													},
+													"rationale": {
+														"description": "Optional rationale provided for the change.",
+														"type": "string",
+														"nullable": true,
+														"x-auditable": true
+													},
+													"zone_id": {
+														"description": "The zone ID associated with the insight. Only present for zone-level insights.",
+														"type": "integer",
+														"format": "int64",
+														"x-auditable": true
+													}
+												}
+											}
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "The number of items in the current result set.",
+													"type": "integer",
+													"example": 25
+												},
+												"cursor": {
+													"description": "Opaque cursor for the next page of results. Absent when there are no more results.",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "The requested number of items per page.",
+													"type": "integer",
+													"example": 25
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "A client error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Security Center Audit Log"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-insights.audit-logs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "security-insights.audit-logs",
+		"x-forge-method-name": "get",
+		"x-stainless-skip": true
+	},
+	"GET /{account_or_zone}/{account_or_zone_id}/security-center/insights/audit-log": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/security-center/insights/audit-log",
+		"summary": "Retrieves account or zone Audit Log",
+		"description": "Lists audit log entries for all Security Center insights in the account or zone, showing changes to insight status and classification.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"default": 25,
+					"maximum": 1000,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Opaque cursor for pagination. Use the cursor value from result_info of the previous response.",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by the field that was changed.",
+				"in": "query",
+				"name": "field_changed",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"status",
+						"user_classification"
+					]
+				}
+			},
+			{
+				"description": "Filter by the actor that made the change.",
+				"in": "query",
+				"name": "changed_by",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter entries changed at or after this timestamp (RFC 3339).",
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"description": "Filter entries changed before this timestamp (RFC 3339).",
+				"in": "query",
+				"name": "before",
+				"schema": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			{
+				"description": "Sort order for results. Use 'asc' for oldest first or 'desc' for newest first.",
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"type": "string",
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The request was successful.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"changed_at": {
+														"description": "The timestamp when the change occurred.",
+														"type": "string",
+														"format": "date-time",
+														"x-auditable": true
+													},
+													"changed_by": {
+														"description": "The actor that made the change. 'system' for automated changes, or a user identifier.",
+														"type": "string",
+														"example": "system",
+														"x-auditable": true
+													},
+													"current_value": {
+														"description": "The value of the field after the change. Null if the field was cleared.",
+														"type": "string",
+														"nullable": true,
+														"x-auditable": true
+													},
+													"field_changed": {
+														"description": "The field that was changed.",
+														"type": "string",
+														"enum": [
+															"status",
+															"user_classification"
+														],
+														"x-auditable": true
+													},
+													"id": {
+														"description": "UUIDv7 identifier for the audit log entry, time-ordered.",
+														"type": "string",
+														"format": "uuid",
+														"example": "019b0000-0000-7000-8000-000000000001",
+														"x-auditable": true
+													},
+													"issue_id": {
+														"description": "The ID of the insight this audit log entry relates to.",
+														"type": "string",
+														"x-auditable": true
+													},
+													"previous_value": {
+														"description": "The value of the field before the change. Null if the field was not previously set.",
+														"type": "string",
+														"nullable": true,
+														"x-auditable": true
+													},
+													"rationale": {
+														"description": "Optional rationale provided for the change.",
+														"type": "string",
+														"nullable": true,
+														"x-auditable": true
+													},
+													"zone_id": {
+														"description": "The zone ID associated with the insight. Only present for zone-level insights.",
+														"type": "integer",
+														"format": "int64",
+														"x-auditable": true
+													}
+												}
+											}
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "The number of items in the current result set.",
+													"type": "integer",
+													"example": 25
+												},
+												"cursor": {
+													"description": "Opaque cursor for the next page of results. Absent when there are no more results.",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "The requested number of items per page.",
+													"type": "integer",
+													"example": 25
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "A client error occurred.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Security Center Audit Log"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "security-insights.audit-logs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "security-insights.audit-logs",
+		"x-forge-method-name": "list",
+		"x-stainless-skip": true
+	},
 	"GET /accounts/{account_id}/security-center/insights/{issue_id}/audit-log": {
 		"operationId": "get-security-center-issue-audit-log",
 		"summary": "Retrieves Issue Audit Log",
@@ -405,8 +1251,9 @@
 			"Security Center Audit Log"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-insights.audit-logs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/security-center/insights/audit-log": {
 		"operationId": "get-security-center-account-audit-log",
@@ -806,8 +1653,9 @@
 			"Security Center Audit Log"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-insights.audit-logs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/security-center/insights/{issue_id}/audit-log": {
 		"operationId": "get-zone-security-center-issue-audit-log",
@@ -1219,8 +2067,13 @@
 			"Zone Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-insights.zone.audit-logs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-settings.read",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/security-center/insights/audit-log": {
 		"operationId": "get-zone-security-center-audit-log",
@@ -1624,7 +2477,12 @@
 			"Zone Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "security-insights.zone.audit-logs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-settings.read",
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	}
 }

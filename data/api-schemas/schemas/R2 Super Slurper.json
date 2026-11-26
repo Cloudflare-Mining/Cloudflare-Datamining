@@ -221,7 +221,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.jobs",
+		"x-forge-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/slurper/jobs": {
 		"operationId": "slurper-list-jobs",
@@ -551,7 +554,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.jobs",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}": {
 		"operationId": "slurper-get-job",
@@ -871,7 +877,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.jobs",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}/logs": {
 		"operationId": "slurper-get-job-logs",
@@ -1091,7 +1100,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs.logs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.jobs.logs",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/slurper/jobs/{job_id}/progress": {
 		"operationId": "slurper-get-job-progress",
@@ -1286,7 +1298,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "progress"
+		"x-fern-sdk-method-name": "progress",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.jobs",
+		"x-forge-method-name": "progress"
 	},
 	"POST /accounts/{account_id}/slurper/jobs": {
 		"operationId": "slurper-create-job",
@@ -1352,6 +1367,8 @@
 													},
 													"secretAccessKey": {
 														"type": "string",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1399,6 +1416,8 @@
 													},
 													"privateKey": {
 														"type": "string",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1460,6 +1479,8 @@
 													},
 													"secretAccessKey": {
 														"type": "string",
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													}
 												},
@@ -1511,6 +1532,8 @@
 											},
 											"secretAccessKey": {
 												"type": "string",
+												"x-auditable": false,
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										},
@@ -1742,7 +1765,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.jobs",
+		"x-forge-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/abort": {
 		"operationId": "slurper-abort-job",
@@ -1909,6 +1935,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
 		"x-fern-sdk-method-name": "abort",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.jobs",
+		"x-forge-method-name": "abort",
 		"x-forge-require-confirmation": "This operation stops a running migration job."
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/pause": {
@@ -2133,7 +2162,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "pause"
+		"x-fern-sdk-method-name": "pause",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.jobs",
+		"x-forge-method-name": "pause"
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/{job_id}/resume": {
 		"operationId": "slurper-resume-job",
@@ -2299,7 +2331,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
-		"x-fern-sdk-method-name": "resume"
+		"x-fern-sdk-method-name": "resume",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.jobs",
+		"x-forge-method-name": "resume"
 	},
 	"PUT /accounts/{account_id}/slurper/jobs/abortAll": {
 		"operationId": "slurper-abort-all-jobs",
@@ -2458,6 +2493,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.jobs",
 		"x-fern-sdk-method-name": "abort-all",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.jobs",
+		"x-forge-method-name": "abort-all",
 		"x-forge-require-confirmation": "This operation stops every running migration job."
 	},
 	"PUT /accounts/{account_id}/slurper/source/connectivity-precheck": {
@@ -2517,6 +2555,8 @@
 											},
 											"secretAccessKey": {
 												"type": "string",
+												"x-auditable": false,
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										},
@@ -2564,6 +2604,8 @@
 											},
 											"privateKey": {
 												"type": "string",
+												"x-auditable": false,
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										},
@@ -2625,6 +2667,8 @@
 											},
 											"secretAccessKey": {
 												"type": "string",
+												"x-auditable": false,
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										},
@@ -2802,7 +2846,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.connectivity-precheck",
-		"x-fern-sdk-method-name": "source"
+		"x-fern-sdk-method-name": "source",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.connectivity-precheck",
+		"x-forge-method-name": "source"
 	},
 	"PUT /accounts/{account_id}/slurper/target/connectivity-precheck": {
 		"operationId": "slurper-check-target-connectivity",
@@ -2850,6 +2897,8 @@
 									},
 									"secretAccessKey": {
 										"type": "string",
+										"x-auditable": false,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									}
 								},
@@ -3025,6 +3074,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.super-slurper.connectivity-precheck",
-		"x-fern-sdk-method-name": "target"
+		"x-fern-sdk-method-name": "target",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.super-slurper.connectivity-precheck",
+		"x-forge-method-name": "target"
 	}
 }

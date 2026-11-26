@@ -436,7 +436,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.hijacks.events",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.hijacks.events",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/ips/timeseries": {
 		"operationId": "radar-get-bgp-ips-timeseries",
@@ -972,7 +979,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.ips",
-		"x-fern-sdk-method-name": "timeseries"
+		"x-fern-sdk-method-name": "timeseries",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.ips",
+		"x-forge-method-name": "timeseries",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/ips/top/ases": {
 		"operationId": "radar-get-bgp-ips-top-ases",
@@ -1176,7 +1190,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.ips.top",
-		"x-fern-sdk-method-name": "ases"
+		"x-fern-sdk-method-name": "ases",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.ips.top",
+		"x-forge-method-name": "ases",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/leaks/events": {
 		"operationId": "radar-get-bgp-route-leak-events",
@@ -1531,7 +1552,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.leaks.events",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.leaks.events",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/routes/ases": {
 		"operationId": "radar-get-bgp-routes-asns",
@@ -1787,7 +1815,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
-		"x-fern-sdk-method-name": "ases"
+		"x-fern-sdk-method-name": "ases",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.routes",
+		"x-forge-method-name": "ases",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/routes/moas": {
 		"operationId": "radar-get-bgp-pfx2as-moas",
@@ -1989,7 +2024,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
-		"x-fern-sdk-method-name": "moas"
+		"x-fern-sdk-method-name": "moas",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.routes",
+		"x-forge-method-name": "moas",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/routes/paths/{asn}": {
 		"operationId": "radar-get-bgp-routes-paths",
@@ -2244,7 +2286,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes.paths",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.routes.paths",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/routes/pfx2as": {
 		"operationId": "radar-get-bgp-pfx2as",
@@ -2451,7 +2500,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
-		"x-fern-sdk-method-name": "pfx2as"
+		"x-fern-sdk-method-name": "pfx2as",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.routes",
+		"x-forge-method-name": "pfx2as",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/routes/realtime": {
 		"operationId": "radar-get-bgp-routes-realtime",
@@ -2760,7 +2816,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
-		"x-fern-sdk-method-name": "realtime"
+		"x-fern-sdk-method-name": "realtime",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.routes",
+		"x-forge-method-name": "realtime",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/routes/stats": {
 		"operationId": "radar-get-bgp-routes-stats",
@@ -2993,7 +3056,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes",
-		"x-fern-sdk-method-name": "stats"
+		"x-fern-sdk-method-name": "stats",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.routes",
+		"x-forge-method-name": "stats",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/routes/upstreams/{asn}/timeseries": {
 		"operationId": "radar-get-bgp-routes-upstreams-timeseries",
@@ -3232,7 +3302,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.routes.upstreams",
-		"x-fern-sdk-method-name": "timeseries"
+		"x-fern-sdk-method-name": "timeseries",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.routes.upstreams",
+		"x-forge-method-name": "timeseries",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/rpki/aspa/changes": {
 		"operationId": "radar-get-bgp-rpki-aspa-changes",
@@ -3511,7 +3588,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.rpki.aspa",
-		"x-fern-sdk-method-name": "changes"
+		"x-fern-sdk-method-name": "changes",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.rpki.aspa",
+		"x-forge-method-name": "changes",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/rpki/aspa/snapshot": {
 		"operationId": "radar-get-bgp-rpki-aspa-snapshot",
@@ -3742,7 +3826,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.rpki.aspa",
-		"x-fern-sdk-method-name": "snapshot"
+		"x-fern-sdk-method-name": "snapshot",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.rpki.aspa",
+		"x-forge-method-name": "snapshot",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/rpki/aspa/timeseries": {
 		"operationId": "radar-get-bgp-rpki-aspa-timeseries",
@@ -3967,7 +4058,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.rpki.aspa",
-		"x-fern-sdk-method-name": "timeseries"
+		"x-fern-sdk-method-name": "timeseries",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.rpki.aspa",
+		"x-forge-method-name": "timeseries",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/rpki/roas/timeseries": {
 		"operationId": "radar-get-bgp-rpki-roas-timeseries",
@@ -4204,7 +4302,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.rpki.roas",
-		"x-fern-sdk-method-name": "timeseries"
+		"x-fern-sdk-method-name": "timeseries",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.rpki.roas",
+		"x-forge-method-name": "timeseries",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/timeseries": {
 		"operationId": "radar-get-bgp-timeseries",
@@ -4612,7 +4717,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp",
-		"x-fern-sdk-method-name": "timeseries"
+		"x-fern-sdk-method-name": "timeseries",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp",
+		"x-forge-method-name": "timeseries",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/top/ases": {
 		"operationId": "radar-get-bgp-top-ases",
@@ -4902,7 +5014,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.top.ases",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.top.ases",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/top/ases/prefixes": {
 		"operationId": "radar-get-bgp-top-asns-by-prefixes",
@@ -5061,7 +5180,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.top.ases",
-		"x-fern-sdk-method-name": "prefixes"
+		"x-fern-sdk-method-name": "prefixes",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.top.ases",
+		"x-forge-method-name": "prefixes",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /radar/bgp/top/prefixes": {
 		"operationId": "radar-get-bgp-top-prefixes",
@@ -5327,6 +5453,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.bgp.top",
-		"x-fern-sdk-method-name": "prefixes"
+		"x-fern-sdk-method-name": "prefixes",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.bgp.top",
+		"x-forge-method-name": "prefixes",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	}
 }

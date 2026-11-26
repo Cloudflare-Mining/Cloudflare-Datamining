@@ -363,6 +363,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.suppressions",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.suppressions",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "This operation removes an Email Sending suppression and may allow email delivery to resume for the address."
 	},
 	"GET /accounts/{account_id}/email/sending/suppressions": {
@@ -705,9 +708,20 @@
 		"tags": [
 			"Email Sending suppressions"
 		],
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.suppressions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.suppressions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	},
 	"GET /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "get_publicGetSendingSuppression",
@@ -942,9 +956,20 @@
 		"tags": [
 			"Email Sending suppressions"
 		],
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.suppressions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.suppressions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/email/sending/suppressions/{suppression_id}": {
 		"operationId": "patch_publicUpdateSendingSuppression",
@@ -1324,7 +1349,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.suppressions",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.suppressions",
+		"x-forge-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/email/sending/suppressions": {
 		"operationId": "post_publicCreateSendingSuppression",
@@ -1757,9 +1785,18 @@
 		"tags": [
 			"Email Sending suppressions"
 		],
+		"x-api-token-group": [
+			"Email Sending Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.suppressions",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.suppressions",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"email-sending.write"
+		]
 	},
 	"POST /accounts/{account_id}/email/sending/suppressions/bulk": {
 		"operationId": "post_publicBulkCreateSendingSuppressions",
@@ -2126,8 +2163,17 @@
 		"tags": [
 			"Email Sending suppressions"
 		],
+		"x-api-token-group": [
+			"Email Sending Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.suppressions",
-		"x-fern-sdk-method-name": "import"
+		"x-fern-sdk-method-name": "import",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.suppressions",
+		"x-forge-method-name": "import",
+		"x-forge-oauth-scopes": [
+			"email-sending.write"
+		]
 	}
 }

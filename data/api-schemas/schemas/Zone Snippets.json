@@ -396,7 +396,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "snippets",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "snippets",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"snippets.write"
+		]
 	},
 	"DELETE /zones/{zone_id}/snippets/snippet_rules": {
 		"operationId": "deleteZoneSnippetRules",
@@ -842,7 +848,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "snippets.rules",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "snippets.rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"snippets.write"
+		]
 	},
 	"GET /zones/{zone_id}/snippets": {
 		"operationId": "listZoneSnippets",
@@ -1344,7 +1356,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "snippets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "snippets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"snippets.read",
+			"snippets.write"
+		]
 	},
 	"GET /zones/{zone_id}/snippets/{snippet_name}": {
 		"operationId": "getZoneSnippet",
@@ -1772,7 +1791,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "snippets",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "snippets",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"snippets.read",
+			"snippets.write"
+		]
 	},
 	"GET /zones/{zone_id}/snippets/{snippet_name}/content": {
 		"operationId": "getZoneSnippetContent",
@@ -2091,7 +2117,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "snippets.content",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "snippets.content",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"snippets.read",
+			"snippets.write"
+		]
 	},
 	"GET /zones/{zone_id}/snippets/snippet_rules": {
 		"operationId": "listZoneSnippetRules",
@@ -2538,7 +2571,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "snippets.rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "snippets.rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"snippets.read",
+			"snippets.write"
+		]
 	},
 	"PUT /zones/{zone_id}/snippets/{snippet_name}": {
 		"operationId": "updateZoneSnippet",
@@ -3014,7 +3054,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "snippets",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "snippets",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"snippets.write"
+		]
 	},
 	"PUT /zones/{zone_id}/snippets/snippet_rules": {
 		"operationId": "updateZoneSnippetRules",
@@ -3545,6 +3591,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "snippets.rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "snippets.rules",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"snippets.write"
+		]
 	}
 }

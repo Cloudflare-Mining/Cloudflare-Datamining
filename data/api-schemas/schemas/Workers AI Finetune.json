@@ -110,7 +110,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.finetunes",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai.finetunes",
+		"x-forge-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/ai/finetunes": {
 		"operationId": "workers-ai-list-finetunes",
@@ -235,6 +238,9 @@
 			"Workers AI Finetune"
 		],
 		"x-api-token-group": [
+			"Workers AI Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write",
 			"Workers AI Read"
 		],
@@ -251,7 +257,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.finetunes",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai.finetunes",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers_ai.metadata_read",
+			"ai.read",
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai/finetunes/public": {
 		"operationId": "workers-ai-list-public-finetunes",
@@ -413,6 +429,9 @@
 			"Workers AI Finetune"
 		],
 		"x-api-token-group": [
+			"Workers AI Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write",
 			"Workers AI Read"
 		],
@@ -429,7 +448,17 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.finetunes.public",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai.finetunes.public",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers_ai.metadata_read",
+			"ai.read",
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai/finetunes": {
 		"operationId": "workers-ai-create-finetune",
@@ -577,6 +606,8 @@
 			"Workers AI Finetune"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -592,7 +623,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.finetunes",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai.finetunes",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets": {
 		"operationId": "workers-ai-upload-finetune-asset",
@@ -701,6 +740,8 @@
 			"Workers AI Finetune"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"Workers AI Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -716,6 +757,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai.finetunes.assets",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai.finetunes.assets",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"ai.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	}
 }

@@ -259,7 +259,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.sensitivity-groups",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.sensitivity-groups",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/sensitivity_groups": {
 		"operationId": "dlp-sensitivity-groups-list",
@@ -581,7 +587,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.sensitivity-groups",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.sensitivity-groups",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}": {
 		"operationId": "dlp-sensitivity-groups-read",
@@ -909,7 +922,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.sensitivity-groups",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.sensitivity-groups",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/level_order": {
 		"operationId": "dlp-sensitivity-groups-get-level-order",
@@ -1184,7 +1204,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.sensitivity-groups",
-		"x-fern-sdk-method-name": "get-level-order"
+		"x-fern-sdk-method-name": "get-level-order",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.sensitivity-groups",
+		"x-forge-method-name": "get-level-order",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/dlp/sensitivity_groups": {
 		"operationId": "dlp-sensitivity-groups-create",
@@ -1555,7 +1582,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.sensitivity-groups",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.sensitivity-groups",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}": {
 		"operationId": "dlp-sensitivity-groups-update",
@@ -1939,7 +1972,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.sensitivity-groups",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.sensitivity-groups",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/level_order": {
 		"operationId": "dlp-sensitivity-groups-put-level-order",
@@ -2237,6 +2276,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.sensitivity-groups",
-		"x-fern-sdk-method-name": "update-level-order"
+		"x-fern-sdk-method-name": "update-level-order",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.sensitivity-groups",
+		"x-forge-method-name": "update-level-order",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

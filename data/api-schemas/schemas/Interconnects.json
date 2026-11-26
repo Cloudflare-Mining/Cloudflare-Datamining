@@ -53,7 +53,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.interconnects",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/cni/interconnects": {
 		"operationId": "list_interconnects",
@@ -292,7 +299,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.interconnects",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}": {
 		"operationId": "get_interconnect",
@@ -491,7 +507,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.interconnects",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/loa": {
 		"operationId": "get_interconnect_loa",
@@ -558,7 +583,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "loa"
+		"x-fern-sdk-method-name": "loa",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.interconnects",
+		"x-forge-method-name": "loa",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/loa/default": {
 		"operationId": "get_interconnect_loa_default_name",
@@ -632,7 +666,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "loa-default-name"
+		"x-fern-sdk-method-name": "loa-default-name",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.interconnects",
+		"x-forge-method-name": "loa-default-name",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/cni/interconnects/{icon}/status": {
 		"operationId": "get_interconnect_status",
@@ -768,7 +811,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "status"
+		"x-fern-sdk-method-name": "status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.interconnects",
+		"x-forge-method-name": "status",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-transit.read",
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	},
 	"POST /accounts/{account_id}/cni/interconnects": {
 		"operationId": "create_interconnect",
@@ -1061,6 +1113,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network-interconnects.interconnects",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network-interconnects.interconnects",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write",
+			"magic-transit.write"
+		]
 	}
 }

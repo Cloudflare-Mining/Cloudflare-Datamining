@@ -379,7 +379,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.sinkholes",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.sinkholes",
+		"x-forge-method-name": "delete"
 	},
 	"DELETE /zones/{zone_id}/intel/sinkholes/{sinkhole_id}/ingresses/{ingress_id}": {
 		"operationId": "sinkhole-config-delete-ingress",
@@ -654,7 +657,335 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.sinkholes.ingresses",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"intel.write"
+		]
+	},
+	"GET /{account_or_zone}/{account_or_zone_id}/intel/sinkholes/{sinkhole_id}/ingresses": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/intel/sinkholes/sinkhole_id/ingresses",
+		"summary": "List ingresses for a sinkhole",
+		"description": "Returns all ingress rules associated with the specified sinkhole.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "An identifier for the resource.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true
+				}
+			},
+			{
+				"description": "The unique identifier for the sinkhole.",
+				"in": "path",
+				"name": "sinkhole_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "93defa6e909e464e8c89a85859f36d3c"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"cidr": {
+														"description": "The CIDR block for the ingress rule.",
+														"type": "string"
+													},
+													"created_on": {
+														"description": "The date and time when the ingress rule was created.",
+														"type": "string",
+														"format": "date-time"
+													},
+													"id": {
+														"description": "The unique identifier for the ingress rule.",
+														"type": "string"
+													},
+													"modified_on": {
+														"description": "The date and time when the ingress rule was last modified.",
+														"type": "string",
+														"format": "date-time"
+													},
+													"sinkhole_id": {
+														"description": "The sinkhole this ingress rule belongs to.",
+														"type": "string"
+													},
+													"zone_tag": {
+														"description": "The zone tag associated with this ingress rule.",
+														"type": "string"
+													}
+												},
+												"example": {
+													"cidr": "192.0.2.0/24",
+													"created_on": "2023-06-01T10:00:00Z",
+													"id": "de32ae5203724ed08dcc26e971a4d22f",
+													"modified_on": "2023-06-15T14:30:00Z",
+													"sinkhole_id": "93defa6e909e464e8c89a85859f36d3c",
+													"zone_tag": "4c961e9d94f40aa922775483b9ee18cf"
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Error response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Sinkhole Config"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.sinkholes.ingresses",
+		"x-forge-method-name": "list",
+		"x-stainless-skip": true
 	},
 	"GET /accounts/{account_id}/intel/sinkholes": {
 		"operationId": "sinkhole-config-list-sinkholes",
@@ -954,7 +1285,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.sinkholes",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.sinkholes",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"intel.read",
+			"intel.write"
+		]
 	},
 	"GET /accounts/{account_id}/intel/sinkholes/{sinkhole_id}": {
 		"operationId": "sinkhole-config-get-sinkhole",
@@ -1261,7 +1599,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.sinkholes",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.sinkholes",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"intel.read",
+			"intel.write"
+		]
 	},
 	"GET /accounts/{account_id}/intel/sinkholes/{sinkhole_id}/ingresses": {
 		"operationId": "sinkhole-config-list-sinkhole-ingresses",
@@ -1565,8 +1910,13 @@
 			"Intel Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"intel.read",
+			"intel.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/intel/sinkholes/{sinkhole_id}/ingresses/{ingress_id}": {
 		"operationId": "sinkhole-config-get-ingress",
@@ -1878,7 +2228,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.sinkholes.ingresses",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"intel.read",
+			"intel.write"
+		]
 	},
 	"POST /accounts/{account_id}/intel/sinkholes": {
 		"operationId": "sinkhole-config-create-sinkhole",
@@ -2214,7 +2571,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.sinkholes",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.sinkholes",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"intel.write"
+		]
 	},
 	"POST /zones/{zone_id}/intel/sinkholes/{sinkhole_id}/ingresses": {
 		"operationId": "sinkhole-config-create-ingress",
@@ -2542,7 +2905,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.sinkholes.ingresses",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"intel.write"
+		]
 	},
 	"PUT /accounts/{account_id}/intel/sinkholes/{sinkhole_id}": {
 		"operationId": "sinkhole-config-update-sinkhole",
@@ -2839,7 +3208,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.sinkholes",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.sinkholes",
+		"x-forge-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/intel/sinkholes/{sinkhole_id}/ingresses/{ingress_id}": {
 		"operationId": "sinkhole-config-update-ingress",
@@ -3133,6 +3505,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "intel.sinkholes.ingresses",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "intel.sinkholes.ingresses",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"intel.write"
+		]
 	}
 }

@@ -329,7 +329,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.networks",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.networks",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/devices/networks": {
 		"operationId": "device-managed-networks-list-device-managed-networks",
@@ -646,7 +652,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.networks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.networks",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/devices/networks/{network_id}": {
 		"operationId": "device-managed-networks-device-managed-network-details",
@@ -952,7 +961,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.networks",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.networks",
+		"x-forge-method-name": "get"
 	},
 	"POST /accounts/{account_id}/devices/networks": {
 		"operationId": "device-managed-networks-create-device-managed-network",
@@ -1007,7 +1019,8 @@
 										]
 									}
 								],
-								"x-fern-property-name": "network-config"
+								"x-fern-property-name": "network-config",
+								"x-forge-property-name": "network-config"
 							},
 							"name": {
 								"description": "The name of the device managed network. This name must be unique.",
@@ -1314,7 +1327,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.networks",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.networks",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/devices/networks/{network_id}": {
 		"operationId": "device-managed-networks-update-device-managed-network",
@@ -1381,7 +1400,8 @@
 										]
 									}
 								],
-								"x-fern-property-name": "network-config"
+								"x-fern-property-name": "network-config",
+								"x-forge-property-name": "network-config"
 							},
 							"name": {
 								"description": "The name of the device managed network. This name must be unique.",
@@ -1683,6 +1703,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.devices.networks",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.devices.networks",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

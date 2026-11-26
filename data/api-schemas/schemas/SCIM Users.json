@@ -108,6 +108,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "scim.users",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.write"
+		],
 		"x-forge-require-confirmation": "Are you sure you want to remove this user from the account?"
 	},
 	"GET /accounts/{account_id}/scim/v2/Users": {
@@ -412,7 +419,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "scim.users",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/scim/v2/Users/{user_id}": {
 		"operationId": "scim-users-get",
@@ -660,7 +675,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "scim.users",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/scim/v2/Users/{user_id}": {
 		"operationId": "scim-users-patch",
@@ -1030,7 +1053,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "scim.users",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/scim/v2/Users": {
 		"operationId": "scim-users-create",
@@ -1376,7 +1406,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "scim.users",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.write"
+		]
 	},
 	"PUT /accounts/{account_id}/scim/v2/Users/{user_id}": {
 		"operationId": "scim-users-put",
@@ -1731,6 +1768,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "scim.users",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "scim.users",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.write"
+		]
 	}
 }

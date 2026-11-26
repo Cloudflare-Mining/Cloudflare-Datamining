@@ -313,11 +313,20 @@
 			"GitHub Integration"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.repos.config-autofill",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.repos.config-autofill",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	}
 }

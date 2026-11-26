@@ -303,7 +303,10 @@
 			"ppu_pricing"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.pricing",
-		"x-fern-sdk-method-name": "opt-out-operator-price"
+		"x-fern-sdk-method-name": "opt-out-operator-price",
+		"x-forge-group-name": "pay-per-use.pricing",
+		"x-forge-method-name": "opt-out-operator-price",
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/pay-per-use/proposals": {
 		"operationId": "pay-per-crawl.listPPUProposals",
@@ -454,13 +457,6 @@
 														"type": "string",
 														"format": "date-time"
 													},
-													"non_billable_since": {
-														"description": "When the proposing publisher zone was classified for local-only, non-billable settlement. Null for billable zones.",
-														"type": "string",
-														"format": "date-time",
-														"nullable": true,
-														"readOnly": true
-													},
 													"price_id": {
 														"description": "Use this value to accept or reject this specific pending proposal.",
 														"type": "integer",
@@ -477,7 +473,6 @@
 												"required": [
 													"price_id",
 													"price_usd_microcents",
-													"non_billable_since",
 													"created_at"
 												]
 											}
@@ -662,7 +657,10 @@
 			"ppu_pricing"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.proposals",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-group-name": "pay-per-use.proposals",
+		"x-forge-method-name": "list",
+		"x-stability": "beta"
 	},
 	"GET /zones/{zone_id}/pay-per-use/operators": {
 		"operationId": "pay-per-crawl.listPPUOperators",
@@ -858,13 +856,6 @@
 													"name": {
 														"type": "string"
 													},
-													"non_billable_since": {
-														"description": "When this operator was classified for local-only, non-billable settlement. Null for billable operators. Always matches the requesting zone's classification.",
-														"type": "string",
-														"format": "date-time",
-														"nullable": true,
-														"readOnly": true
-													},
 													"operator_id": {
 														"description": "Stable pay-per-use operator identifier.",
 														"type": "string",
@@ -962,8 +953,7 @@
 												"required": [
 													"operator_id",
 													"name",
-													"default_price_usd_microcents",
-													"non_billable_since"
+													"default_price_usd_microcents"
 												]
 											}
 										}
@@ -1147,7 +1137,10 @@
 			"ppu_pricing"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.pricing",
-		"x-fern-sdk-method-name": "list-operators"
+		"x-fern-sdk-method-name": "list-operators",
+		"x-forge-group-name": "pay-per-use.pricing",
+		"x-forge-method-name": "list-operators",
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/pay-per-use/proposals": {
 		"operationId": "pay-per-crawl.postPPUProposalDecision",
@@ -1558,7 +1551,10 @@
 			"ppu_pricing"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.proposals",
-		"x-fern-sdk-method-name": "decide"
+		"x-fern-sdk-method-name": "decide",
+		"x-forge-group-name": "pay-per-use.proposals",
+		"x-forge-method-name": "decide",
+		"x-stability": "beta"
 	},
 	"POST /zones/{zone_id}/pay-per-use/operators/{operator_id}/price": {
 		"operationId": "pay-per-crawl.postPPUPublisherPriceAction",
@@ -2056,6 +2052,9 @@
 			"ppu_pricing"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.pricing",
-		"x-fern-sdk-method-name": "set-operator-price"
+		"x-fern-sdk-method-name": "set-operator-price",
+		"x-forge-group-name": "pay-per-use.pricing",
+		"x-forge-method-name": "set-operator-price",
+		"x-stability": "beta"
 	}
 }

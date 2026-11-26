@@ -294,6 +294,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.sso",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "iam.sso",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/sso_connectors": {
@@ -659,7 +662,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.sso",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "iam.sso",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/sso_connectors/{sso_connector_id}": {
 		"operationId": "get-sso-connector",
@@ -1010,7 +1016,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.sso",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "iam.sso",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/sso_connectors/{sso_connector_id}": {
 		"operationId": "update-sso-connector-state",
@@ -1384,7 +1393,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.sso",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "iam.sso",
+		"x-forge-method-name": "update"
 	},
 	"POST /accounts/{account_id}/sso_connectors": {
 		"operationId": "init-new-sso-connector",
@@ -1749,7 +1761,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.sso",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "iam.sso",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/sso_connectors/{sso_connector_id}/begin_verification": {
 		"operationId": "begin-sso-connector-verification",
@@ -2023,6 +2038,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "iam.sso",
-		"x-fern-sdk-method-name": "begin-verification"
+		"x-fern-sdk-method-name": "begin-verification",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "iam.sso",
+		"x-forge-method-name": "begin-verification"
 	}
 }

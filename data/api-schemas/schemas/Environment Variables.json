@@ -283,7 +283,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers.environment-variables",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.triggers.environment-variables",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	},
 	"GET /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables": {
 		"operationId": "listEnvironmentVariables",
@@ -526,6 +532,7 @@
 			"Environment Variables"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
@@ -534,7 +541,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers.environment-variables",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.triggers.environment-variables",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"PATCH /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables": {
 		"operationId": "upsertEnvironmentVariables",
@@ -892,6 +907,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.triggers.environment-variables",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.triggers.environment-variables",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	}
 }

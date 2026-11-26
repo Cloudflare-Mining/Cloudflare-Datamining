@@ -726,6 +726,7 @@
 			"Audit Logs"
 		],
 		"x-api-token-group": [
+			"Audit Logs Read",
 			"Account Settings Write",
 			"Account Settings Read"
 		],
@@ -737,7 +738,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "audit-logs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "audit-logs",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"audit-logs.read",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/logs/audit": {
 		"operationId": "audit-logs-v2-get-account-audit-logs",
@@ -1739,6 +1748,7 @@
 			"Audit Logs"
 		],
 		"x-api-token-group": [
+			"Audit Logs Read",
 			"Account Settings Write",
 			"Account Settings Read"
 		],
@@ -1750,7 +1760,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.logs.audit",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.logs.audit",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"audit-logs.read",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/logs/audit/{id}/history": {
 		"operationId": "audit-logs-v2-get-account-audit-log-history",
@@ -2263,6 +2281,7 @@
 			"Audit Logs"
 		],
 		"x-api-token-group": [
+			"Audit Logs Read",
 			"Account Settings Write",
 			"Account Settings Read"
 		],
@@ -2274,7 +2293,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.logs.audit",
-		"x-fern-sdk-method-name": "history"
+		"x-fern-sdk-method-name": "history",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.logs.audit",
+		"x-forge-method-name": "history",
+		"x-forge-oauth-scopes": [
+			"audit-logs.read",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/logs/audit/product_categories": {
 		"operationId": "audit-logs-v2-list-account-product-categories",
@@ -2437,6 +2464,7 @@
 			"Audit Logs"
 		],
 		"x-api-token-group": [
+			"Audit Logs Read",
 			"Account Settings Write",
 			"Account Settings Read"
 		],
@@ -2448,7 +2476,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.logs.audit",
-		"x-fern-sdk-method-name": "product-categories"
+		"x-fern-sdk-method-name": "product-categories",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.logs.audit",
+		"x-forge-method-name": "product-categories",
+		"x-forge-oauth-scopes": [
+			"audit-logs.read",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"GET /organizations/{organization_id}/logs/audit": {
 		"operationId": "audit-logs-v2-get-organization-audit-logs",
@@ -3319,7 +3355,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.logs.audit",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.logs.audit",
+		"x-forge-method-name": "get"
 	},
 	"GET /organizations/{organization_id}/logs/audit/{id}/history": {
 		"operationId": "audit-logs-v2-get-organization-audit-log-history",
@@ -3817,7 +3856,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.logs.audit",
-		"x-fern-sdk-method-name": "history"
+		"x-fern-sdk-method-name": "history",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.logs.audit",
+		"x-forge-method-name": "history"
 	},
 	"GET /user/audit_logs": {
 		"operationId": "audit-logs-get-user-audit-logs",
@@ -4534,6 +4576,7 @@
 			"Audit Logs"
 		],
 		"x-api-token-group": [
+			"Audit Logs Read",
 			"Account Settings Write",
 			"Account Settings Read"
 		],
@@ -4545,6 +4588,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.audit-logs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.audit-logs",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"audit-logs.read",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	}
 }

@@ -661,6 +661,7 @@
 			"Saved Queries"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "generally-available",
@@ -669,8 +670,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.queries",
-				"x-fern-sdk-method-name": "delete"
+				"x-fern-sdk-method-name": "delete",
+				"x-forge-group-name": "o11y.queries",
+				"x-forge-method-name": "delete"
 			}
+		],
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "observability.queries",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		],
 		"x-forge-require-confirmation": "This operation deletes the saved query."
 	},
@@ -1374,6 +1384,9 @@
 			"Saved Queries"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -1383,8 +1396,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.queries",
-				"x-fern-sdk-method-name": "list"
+				"x-fern-sdk-method-name": "list",
+				"x-forge-group-name": "o11y.queries",
+				"x-forge-method-name": "list"
 			}
+		],
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "observability.queries",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		]
 	},
 	"GET /accounts/{account_id}/workers/observability/queries/{queryId}": {
@@ -2049,6 +2074,9 @@
 			"Saved Queries"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -2058,8 +2086,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.queries",
-				"x-fern-sdk-method-name": "get"
+				"x-fern-sdk-method-name": "get",
+				"x-forge-group-name": "o11y.queries",
+				"x-forge-method-name": "get"
 			}
+		],
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "observability.queries",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		]
 	},
 	"PATCH /accounts/{account_id}/workers/observability/queries/{queryId}": {
@@ -3121,6 +3161,7 @@
 			"Saved Queries"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "generally-available",
@@ -3129,8 +3170,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.queries",
-				"x-fern-sdk-method-name": "edit"
+				"x-fern-sdk-method-name": "edit",
+				"x-forge-group-name": "o11y.queries",
+				"x-forge-method-name": "edit"
 			}
+		],
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "observability.queries",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		]
 	},
 	"POST /accounts/{account_id}/workers/observability/queries": {
@@ -4182,6 +4232,7 @@
 			"Saved Queries"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "generally-available",
@@ -4190,8 +4241,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.queries",
-				"x-fern-sdk-method-name": "create"
+				"x-fern-sdk-method-name": "create",
+				"x-forge-group-name": "o11y.queries",
+				"x-forge-method-name": "create"
 			}
+		],
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "observability.queries",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		]
 	}
 }

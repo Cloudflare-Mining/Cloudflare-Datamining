@@ -430,6 +430,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloud-connector.rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloud-connector.rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloud-connector.read",
+			"cloud-connector.write"
+		]
 	}
 }

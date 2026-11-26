@@ -262,11 +262,20 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Namespace Admin"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete the Workers for Platforms dispatch namespace."
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts": {
@@ -482,7 +491,10 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
 		],
 		"x-fern-audiences": [
 			"sdk"
@@ -490,6 +502,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
 		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
+		"x-forge-method-name": "bulk-delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete matching scripts in the Workers for Platforms dispatch namespace."
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
@@ -540,7 +559,8 @@
 				"schema": {
 					"type": "boolean"
 				},
-				"x-fern-parameter-name": "delete-with-references"
+				"x-fern-parameter-name": "delete-with-references",
+				"x-forge-parameter-name": "delete-with-references"
 			}
 		],
 		"responses": {
@@ -776,11 +796,21 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete the Workers for Platforms script."
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
@@ -1081,11 +1111,21 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete the Workers for Platforms script secret."
 	},
 	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
@@ -1531,11 +1571,21 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will delete the tag from the Workers for Platforms script."
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces": {
@@ -1848,11 +1898,27 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
 		"operationId": "namespace-worker-get-namespace",
@@ -2173,11 +2239,28 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Workers Namespace Admin"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts": {
 		"operationId": "namespace-worker-list-scripts",
@@ -3402,11 +3485,31 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor",
+			"Workers Namespace Content Read-Only",
+			"Workers Namespace Metadata Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"operationId": "namespace-worker-script-worker-details",
@@ -4631,11 +4734,31 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor",
+			"Workers Namespace Content Read-Only",
+			"Workers Namespace Metadata Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/bindings": {
 		"operationId": "namespace-worker-get-script-bindings",
@@ -5696,6 +5819,7 @@
 																"type": "string",
 																"example": "My secret.",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"type": {
@@ -5989,12 +6113,14 @@
 																"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																"type": "string",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"key_jwk": {
 																"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																"type": "object",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"name": {
@@ -6359,11 +6485,31 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor",
+			"Workers Namespace Content Read-Only",
+			"Workers Namespace Metadata Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.bindings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.bindings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
 		"operationId": "namespace-worker-get-script-content",
@@ -6565,14 +6711,32 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor",
+			"Workers Namespace Content Read-Only"
 		],
 		"x-fern-audiences": [
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.content",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.content",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
 		"operationId": "namespace-worker-list-script-secrets",
@@ -6734,6 +6898,7 @@
 																"type": "string",
 																"example": "My secret.",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"type": {
@@ -6775,12 +6940,14 @@
 																"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																"type": "string",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"key_jwk": {
 																"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																"type": "object",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"name": {
@@ -6972,11 +7139,30 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor",
+			"Workers Namespace Content Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets/{secret_name}": {
 		"operationId": "namespace-worker-get-script-secrets",
@@ -7159,6 +7345,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -7200,12 +7387,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -7396,11 +7585,30 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor",
+			"Workers Namespace Content Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
 		"operationId": "namespace-worker-get-script-settings",
@@ -8467,6 +8675,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -8760,12 +8969,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -9915,6 +10126,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -10208,12 +10420,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -11923,11 +12137,31 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor",
+			"Workers Namespace Content Read-Only",
+			"Workers Namespace Metadata Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.settings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.settings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags": {
 		"operationId": "namespace-worker-get-script-tags",
@@ -12212,11 +12446,31 @@
 		"x-api-token-group": [
 			"Workers Tail Read",
 			"Workers Scripts Write",
-			"Workers Scripts Read"
+			"Workers Scripts Read",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Metadata Read-Only",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor",
+			"Workers Namespace Content Read-Only",
+			"Workers Namespace Metadata Read-Only"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
 		"operationId": "namespace-worker-patch-namespace",
@@ -12256,7 +12510,7 @@
 						"type": "object",
 						"properties": {
 							"name": {
-								"description": "The name of the dispatch namespace.",
+								"description": "The name of the dispatch namespace. If set, must match the namespace's current name. Dispatch namespaces cannot be renamed.",
 								"type": "string",
 								"example": "my-dispatch-namespace",
 								"x-auditable": true
@@ -12560,14 +12814,25 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Namespace Admin"
 		],
 		"x-fern-audiences": [
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets-bulk": {
 		"operationId": "namespace-worker-patch-script-secrets-bulk",
@@ -12649,6 +12914,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -12690,12 +12956,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -12794,6 +13062,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -12835,12 +13104,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -13025,6 +13296,7 @@
 																"type": "string",
 																"example": "My secret.",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"type": {
@@ -13066,12 +13338,14 @@
 																"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																"type": "string",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"key_jwk": {
 																"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																"type": "object",
 																"writeOnly": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"name": {
@@ -13373,9 +13647,19 @@
 		"tags": [
 			"Workers for Platforms"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
-		"x-fern-sdk-method-name": "bulk-edit"
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
+		"x-forge-method-name": "bulk-edit"
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
 		"operationId": "namespace-worker-patch-script-settings",
@@ -14363,6 +14647,7 @@
 																	"type": "string",
 																	"example": "My secret.",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"type": {
@@ -14656,12 +14941,14 @@
 																	"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"key_jwk": {
 																	"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																	"type": "object",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"name": {
@@ -15811,6 +16098,7 @@
 																	"type": "string",
 																	"example": "My secret.",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"type": {
@@ -16104,12 +16392,14 @@
 																	"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																	"type": "string",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"key_jwk": {
 																	"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																	"type": "object",
 																	"writeOnly": true,
+																	"x-forge-sensitive": true,
 																	"x-sensitive": true
 																},
 																"name": {
@@ -18710,6 +19000,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -19003,12 +19294,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -20158,6 +20451,7 @@
 																				"type": "string",
 																				"example": "My secret.",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"type": {
@@ -20451,12 +20745,14 @@
 																				"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 																				"type": "string",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"key_jwk": {
 																				"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 																				"type": "object",
 																				"writeOnly": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"name": {
@@ -22336,11 +22632,23 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.settings",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.settings",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
 		"operationId": "namespace-worker-patch-script-tag",
@@ -22678,12 +22986,22 @@
 		"tags": [
 			"Workers for Platforms"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
+		],
 		"x-fern-audiences": [
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
+		"x-forge-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/workers/dispatch/namespaces": {
 		"operationId": "namespace-worker-create",
@@ -23015,11 +23333,21 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/assets-upload-session": {
 		"operationId": "namespace-worker-script-update-create-assets-upload-session",
@@ -23210,6 +23538,7 @@
 												"jwt": {
 													"description": "A JWT to use as authentication for uploading assets.",
 													"type": "string",
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											}
@@ -23348,12 +23677,21 @@
 		"tags": [
 			"Workers for Platforms"
 		],
+		"x-api-token-group": [
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
+		],
 		"x-fern-audiences": [
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.assets.upload",
-		"x-fern-sdk-method-name": "create-session"
+		"x-fern-sdk-method-name": "create-session",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.assets.upload",
+		"x-forge-method-name": "create-session"
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}": {
 		"operationId": "namespace-worker-put-namespace",
@@ -23393,7 +23731,7 @@
 						"type": "object",
 						"properties": {
 							"name": {
-								"description": "The name of the dispatch namespace.",
+								"description": "The name of the dispatch namespace. Must match the namespace's current name. Dispatch namespaces cannot be renamed.",
 								"type": "string",
 								"example": "my-dispatch-namespace",
 								"x-auditable": true
@@ -23697,14 +24035,25 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Namespace Admin"
 		],
 		"x-fern-audiences": [
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"operationId": "namespace-worker-script-upload-worker-module",
@@ -23869,6 +24218,7 @@
 											"jwt": {
 												"description": "Token provided upon successful upload of all files from a registered manifest.",
 												"type": "string",
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											}
 										}
@@ -24799,6 +25149,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -25092,12 +25443,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -28121,14 +28474,24 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
 		],
 		"x-fern-audiences": [
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
 		"operationId": "namespace-worker-put-script-content",
@@ -29391,14 +29754,26 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
 		],
 		"x-fern-audiences": [
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.content",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.content",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/secrets": {
 		"operationId": "namespace-worker-put-script-secrets",
@@ -29471,6 +29846,7 @@
 										"type": "string",
 										"example": "My secret.",
 										"writeOnly": true,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"type": {
@@ -29512,12 +29888,14 @@
 										"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 										"type": "string",
 										"writeOnly": true,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"key_jwk": {
 										"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 										"type": "object",
 										"writeOnly": true,
+										"x-forge-sensitive": true,
 										"x-sensitive": true
 									},
 									"name": {
@@ -29687,6 +30065,7 @@
 															"type": "string",
 															"example": "My secret.",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -29728,12 +30107,14 @@
 															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
 															"type": "string",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"key_jwk": {
 															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
 															"type": "object",
 															"writeOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"name": {
@@ -30035,11 +30416,21 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.secrets",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags": {
 		"operationId": "namespace-worker-put-script-tags",
@@ -30349,11 +30740,23 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/tags/{tag}": {
 		"operationId": "namespace-worker-put-script-tag",
@@ -30641,13 +31044,25 @@
 			"Workers for Platforms"
 		],
 		"x-api-token-group": [
-			"Workers Scripts Write"
+			"Workers Scripts Write",
+			"Workers Admin",
+			"Workers Editor",
+			"Workers Namespace Admin",
+			"Workers Namespace Editor"
 		],
 		"x-fern-audiences": [
 			"sdk"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers-for-platforms.dispatch-namespaces.scripts.tags",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	}
 }

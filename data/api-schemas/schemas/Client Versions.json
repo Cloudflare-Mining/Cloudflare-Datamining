@@ -270,9 +270,20 @@
 		"tags": [
 			"Client Versions"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.client-versions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.devices.client-versions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/devices/client-versions/target-environments": {
 		"operationId": "list-client-target-environments",
@@ -447,8 +458,19 @@
 		"tags": [
 			"Client Versions"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "zero-trust.devices.client-versions.target-environments",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "zero-trust.devices.client-versions.target-environments",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	}
 }

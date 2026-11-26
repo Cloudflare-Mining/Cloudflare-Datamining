@@ -253,6 +253,11 @@
 		"x-api-token-group": [
 			"Zone Settings Write"
 		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.config.update"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -262,6 +267,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing",
 		"x-fern-sdk-method-name": "disable",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing",
+		"x-forge-method-name": "disable",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		],
 		"x-forge-require-confirmation": "This operation disables Email Routing and removes its DNS records."
 	},
 	"GET /zones/{zone_id}/email/routing": {
@@ -514,7 +525,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.settings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.settings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/email/routing/dns": {
 		"operationId": "email-routing-settings-email-routing-dns-settings",
@@ -794,7 +812,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.dns",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.dns",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zone-settings.read",
+			"zone-settings.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/email/routing": {
 		"operationId": "email-routing-settings-update-email-routing-settings",
@@ -1085,7 +1110,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.settings",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.settings",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/email/routing/dns": {
 		"operationId": "email-routing-settings-unlock-email-routing-dns",
@@ -1354,7 +1385,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.dns",
-		"x-fern-sdk-method-name": "unlock"
+		"x-fern-sdk-method-name": "unlock",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.dns",
+		"x-forge-method-name": "unlock",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/email/routing/disable": {
 		"operationId": "email-routing-settings-disable-email-routing",
@@ -1608,7 +1645,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-routing",
 		"x-fern-sdk-method-name": "disable",
-		"x-forge-require-confirmation": "This operation turns off email routing for a zone."
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "email-routing",
+		"x-forge-method-name": "disable",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		],
+		"x-forge-require-confirmation": "This operation turns off email routing for a zone.",
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/email/routing/dns": {
 		"operationId": "email-routing-settings-enable-email-routing-dns",
@@ -1877,7 +1921,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing",
-		"x-fern-sdk-method-name": "enable"
+		"x-fern-sdk-method-name": "enable",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing",
+		"x-forge-method-name": "enable",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/email/routing/enable": {
 		"operationId": "email-routing-settings-enable-email-routing",
@@ -2130,7 +2180,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-routing",
-		"x-fern-sdk-method-name": "enable"
+		"x-fern-sdk-method-name": "enable",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "email-routing",
+		"x-forge-method-name": "enable",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/email/routing/unlock": {
 		"operationId": "email-routing-settings-unlock-email-routing",
@@ -2401,7 +2458,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "email-routing",
-		"x-fern-sdk-method-name": "unlock"
+		"x-fern-sdk-method-name": "unlock",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "email-routing",
+		"x-forge-method-name": "unlock",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/email/routing": {
 		"operationId": "email-routing-settings-replace-email-routing-settings",
@@ -2692,6 +2756,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.settings",
-		"x-fern-sdk-method-name": "replace"
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.settings",
+		"x-forge-method-name": "replace",
+		"x-forge-oauth-scopes": [
+			"zone-settings.write"
+		]
 	}
 }

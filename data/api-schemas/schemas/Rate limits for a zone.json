@@ -77,7 +77,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rate-limits",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "rate-limits",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/rate_limits": {
 		"operationId": "rate-limits-for-a-zone-list-rate-limits",
@@ -167,7 +174,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rate-limits",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "rate-limits",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/rate_limits/{rate_limit_id}": {
 		"operationId": "rate-limits-for-a-zone-get-a-rate-limit",
@@ -248,7 +263,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rate-limits",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "rate-limits",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/rate_limits": {
 		"operationId": "rate-limits-for-a-zone-create-a-rate-limit",
@@ -505,7 +528,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rate-limits",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "rate-limits",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/rate_limits/{rate_limit_id}": {
 		"operationId": "rate-limits-for-a-zone-update-a-rate-limit",
@@ -774,6 +804,13 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "rate-limits",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "rate-limits",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	}
 }

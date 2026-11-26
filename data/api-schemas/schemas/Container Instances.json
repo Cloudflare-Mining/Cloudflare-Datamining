@@ -792,7 +792,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "containers.applications.instances",
-		"x-fern-sdk-method-name": "list-v1"
+		"x-fern-sdk-method-name": "list-v1",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "containers.applications.instances",
+		"x-forge-method-name": "list-v1",
+		"x-forge-oauth-scopes": [
+			"containers.read",
+			"containers.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/containers/applications/{application_id}/instances-v2": {
 		"operationId": "listContainerInstances_v2",
@@ -1582,7 +1590,14 @@
 			"results": "$response.result"
 		},
 		"x-fern-sdk-group-name": "containers.applications.instances",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.applications.instances",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"containers.read",
+			"containers.write"
+		]
 	},
 	"GET /accounts/{account_id}/containers/applications/{application_id}/instances/{instance_id}": {
 		"operationId": "getContainerInstance",
@@ -2318,6 +2333,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "containers.applications.instances",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.applications.instances",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"containers.read",
+			"containers.write"
+		]
 	}
 }

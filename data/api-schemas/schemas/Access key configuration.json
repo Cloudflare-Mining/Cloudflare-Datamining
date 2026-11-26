@@ -276,12 +276,27 @@
 			"Access key configuration"
 		],
 		"x-api-token-group": [
+			"Access: Keys Write",
+			"Access: Keys Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.signing-keys",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.signing-keys",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"access-key.read",
+			"access-key.write",
+			"access-acct.read",
+			"access-acct.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/access/keys/rotate": {
 		"operationId": "access-key-configuration-rotate-access-keys",
@@ -560,11 +575,21 @@
 			"Access key configuration"
 		],
 		"x-api-token-group": [
+			"Access: Keys Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.signing-keys",
-		"x-fern-sdk-method-name": "rotate"
+		"x-fern-sdk-method-name": "rotate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.signing-keys",
+		"x-forge-method-name": "rotate",
+		"x-forge-oauth-scopes": [
+			"access-key.write",
+			"access-acct.write",
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/access/keys": {
 		"operationId": "access-key-configuration-update-the-access-key-configuration",
@@ -866,10 +891,20 @@
 			"Access key configuration"
 		],
 		"x-api-token-group": [
+			"Access: Keys Write",
+			"Zero Trust Write",
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.signing-keys",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.signing-keys",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"access-key.write",
+			"access-acct.write",
+			"teams.write"
+		]
 	}
 }

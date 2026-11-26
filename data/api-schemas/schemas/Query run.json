@@ -41,7 +41,8 @@
 								"description": "When true, executes the query without persisting the results. Useful for validation or previewing.",
 								"type": "boolean",
 								"default": false,
-								"x-fern-property-name": "preview"
+								"x-fern-property-name": "preview",
+								"x-forge-property-name": "preview"
 							},
 							"granularity": {
 								"description": "Number of time-series buckets. Only used when view is 'calculations'. Omit to let the system auto-detect an appropriate granularity.",
@@ -1496,9 +1497,7 @@
 																			},
 																			"gateway": {
 																				"type": "object",
-																				"additionalProperties": {
-																					"nullable": true
-																				},
+																				"additionalProperties": true,
 																				"properties": {
 																					"requestId": {
 																						"type": "string"
@@ -1627,9 +1626,7 @@
 																			},
 																			"gateway": {
 																				"type": "object",
-																				"additionalProperties": {
-																					"nullable": true
-																				},
+																				"additionalProperties": true,
 																				"properties": {
 																					"requestId": {
 																						"type": "string"
@@ -2082,9 +2079,7 @@
 																		},
 																		"gateway": {
 																			"type": "object",
-																			"additionalProperties": {
-																				"nullable": true
-																			},
+																			"additionalProperties": true,
 																			"properties": {
 																				"requestId": {
 																					"type": "string"
@@ -2213,9 +2208,7 @@
 																		},
 																		"gateway": {
 																			"type": "object",
-																			"additionalProperties": {
-																				"nullable": true
-																			},
+																			"additionalProperties": true,
 																			"properties": {
 																				"requestId": {
 																					"type": "string"
@@ -3326,6 +3319,7 @@
 			"Query run"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "generally-available",
@@ -3334,8 +3328,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.telemetry",
-				"x-fern-sdk-method-name": "query"
+				"x-fern-sdk-method-name": "query",
+				"x-forge-group-name": "o11y.telemetry",
+				"x-forge-method-name": "query"
 			}
+		],
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "observability.telemetry",
+		"x-forge-method-name": "query",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		]
 	}
 }

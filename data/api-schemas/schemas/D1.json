@@ -225,7 +225,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
 		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"d1.write"
+		],
 		"x-forge-require-confirmation": "This permanently deletes the D1 database and all of its data."
 	},
 	"GET /accounts/{account_id}/d1/database": {
@@ -274,6 +280,34 @@
 					"maximum": 10000,
 					"minimum": 10
 				}
+			},
+			{
+				"name": "fields",
+				"in": "query",
+				"description": "Comma-separated list of fields to include for each database. When omitted, every field except `recommendation_count` is returned.",
+				"schema": {
+					"type": "array",
+					"items": {
+						"enum": [
+							"uuid",
+							"name",
+							"created_at",
+							"version",
+							"jurisdiction",
+							"num_tables",
+							"file_size",
+							"recommendation_count"
+						],
+						"type": "string"
+					}
+				},
+				"example": [
+					"uuid",
+					"name",
+					"recommendation_count"
+				],
+				"explode": false,
+				"style": "form"
 			}
 		],
 		"responses": {
@@ -359,6 +393,12 @@
 														"readOnly": true,
 														"x-auditable": true
 													},
+													"file_size": {
+														"description": "The D1 database's size, in bytes.",
+														"type": "number",
+														"example": 12,
+														"x-auditable": true
+													},
 													"jurisdiction": {
 														"description": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.",
 														"type": "string",
@@ -376,6 +416,20 @@
 														"type": "string",
 														"example": "my-database",
 														"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
+														"x-auditable": true
+													},
+													"num_tables": {
+														"description": "The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.",
+														"type": "number",
+														"example": 12,
+														"deprecated": true,
+														"x-auditable": true
+													},
+													"recommendation_count": {
+														"description": "Number of current index recommendations for the database. To list them, use\n`GET /accounts/{account_id}/d1/insights/recommendations?database_id={database_id}`.\n\nOnly returned when requested with `fields`. Left out of every database when D1 Insights\nis turned off for the account, or when the count is unavailable, so a missing value\nmeans unknown, not `0`.\n",
+														"type": "integer",
+														"example": 2,
+														"minimum": 0,
 														"x-auditable": true
 													},
 													"uuid": {
@@ -532,13 +586,24 @@
 			"D1"
 		],
 		"x-api-token-group": [
+			"D1 Metadata Read",
+			"AI Search Index Engine",
 			"D1 Read",
 			"D1 Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "list",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "generally-available",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"d1.metadata_read",
+			"d1.read",
+			"d1.write",
+			"ai-search.index"
+		]
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}": {
 		"operationId": "d1-get-database",
@@ -868,13 +933,24 @@
 			"D1"
 		],
 		"x-api-token-group": [
+			"D1 Metadata Read",
+			"AI Search Index Engine",
 			"D1 Read",
 			"D1 Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "generally-available",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"d1.metadata_read",
+			"d1.read",
+			"d1.write",
+			"ai-search.index"
+		]
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark": {
 		"operationId": "d1-time-travel-get-bookmark",
@@ -1113,13 +1189,24 @@
 			"D1"
 		],
 		"x-api-token-group": [
+			"D1 Metadata Read",
+			"AI Search Index Engine",
 			"D1 Read",
 			"D1 Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1.time-travel",
 		"x-fern-sdk-method-name": "get-bookmark",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "generally-available",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1.time-travel",
+		"x-forge-method-name": "get-bookmark",
+		"x-forge-oauth-scopes": [
+			"d1.metadata_read",
+			"d1.read",
+			"d1.write",
+			"ai-search.index"
+		]
 	},
 	"GET /accounts/{account_id}/d1/insights/databases": {
 		"operationId": "d1-list-insights-databases",
@@ -1459,7 +1546,10 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "d1.insights",
 		"x-fern-sdk-method-name": "databases",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "beta",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1.insights",
+		"x-forge-method-name": "databases"
 	},
 	"GET /accounts/{account_id}/d1/insights/queries": {
 		"operationId": "d1-list-insights-queries",
@@ -1807,7 +1897,681 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "d1.insights",
 		"x-fern-sdk-method-name": "queries",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "beta",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1.insights",
+		"x-forge-method-name": "queries"
+	},
+	"GET /accounts/{account_id}/d1/insights/recommendations": {
+		"operationId": "d1-list-insights-recommendations",
+		"summary": "List D1 Index Recommendations",
+		"description": "List index recommendations for the databases in your account, or for the databases in\n`database_id`, from highest to lowest estimated impact.\n\nD1 generates recommendations in the background from recent query usage. Each run replaces\nthe recommendations of the databases it analyzed. Recommendations that are not refreshed\nexpire after 7 days. Not every database has recommendations.\n\nRecommendations are only generated and returned while `ai_enabled` is true in the account's\nD1 Insights settings. When it is false, the response is an empty list. To check or change the\nsetting, use `GET` or `PUT /accounts/{account_id}/d1/insights/settings`.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "database_id",
+				"in": "query",
+				"description": "Only return recommendations for these databases, at most 50. Pass a comma-separated list or repeat the parameter. Defaults to all databases in the account. A database that is not in the account returns no recommendations.",
+				"schema": {
+					"type": "array",
+					"items": {
+						"description": "D1 database identifier (UUID).",
+						"format": "uuid",
+						"type": "string",
+						"x-auditable": true
+					},
+					"maxItems": 50
+				},
+				"explode": false,
+				"style": "form"
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"schema": {
+					"description": "Maximum number of recommendations to return in a page.",
+					"type": "integer",
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"schema": {
+					"description": "`result_info.next_cursor` from the previous page. Pass the same `database_id` values as that request, or the request will fail.",
+					"type": "string",
+					"maxLength": 512
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List D1 index recommendations response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The page of recommendations.",
+											"type": "object",
+											"properties": {
+												"recommendations": {
+													"description": "The recommendations in this page.",
+													"type": "object",
+													"properties": {
+														"items": {
+															"description": "Recommendations, from highest to lowest estimated impact. Empty when there are none or `ai_enabled` is false.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"database_id": {
+																		"description": "D1 database identifier (UUID).",
+																		"type": "string",
+																		"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																		"readOnly": true,
+																		"x-auditable": true
+																	},
+																	"database_name": {
+																		"description": "The current name of the database.",
+																		"type": "string",
+																		"example": "orders-prod",
+																		"x-auditable": true
+																	},
+																	"generated_at": {
+																		"description": "When D1 generated the recommendation.",
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2026-11-20T10:32:00Z",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "Recommendation identifier.",
+																		"type": "string",
+																		"format": "uuid",
+																		"example": "9f8a7b6c-5d4e-4a21-9234-6f7890abcdef",
+																		"x-auditable": true
+																	},
+																	"impacted_queries": {
+																		"description": "The queries the change is expected to speed up, with their usage in `query_window`.",
+																		"type": "array",
+																		"items": {
+																			"properties": {
+																				"metrics": {
+																					"type": "object",
+																					"properties": {
+																						"execution_count": {
+																							"description": "Estimated number of times the query ran in `query_window`.",
+																							"type": "number",
+																							"example": 320,
+																							"x-auditable": true
+																						},
+																						"p95_query_duration_ms": {
+																							"description": "95th percentile execution time in `query_window`, in milliseconds.",
+																							"type": "number",
+																							"example": 42.8,
+																							"x-auditable": true
+																						},
+																						"total_rows_read": {
+																							"description": "Estimated number of rows the query read in `query_window`.",
+																							"type": "number",
+																							"example": 1250000,
+																							"x-auditable": true
+																						},
+																						"total_rows_written": {
+																							"description": "Estimated number of rows the query wrote in `query_window`.",
+																							"type": "number",
+																							"example": 0,
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"execution_count",
+																						"total_rows_read",
+																						"total_rows_written",
+																						"p95_query_duration_ms"
+																					]
+																				},
+																				"query": {
+																					"description": "The SQL statement text, as sent to the database.",
+																					"example": "SELECT * FROM OrderDetail WHERE OrderId = ?",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"query",
+																				"metrics"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"priority": {
+																		"description": "`high` when the impacted queries spend a large amount of time scanning rows they do not return.",
+																		"type": "string",
+																		"enum": [
+																			"high",
+																			"low"
+																		],
+																		"x-auditable": true
+																	},
+																	"query_window": {
+																		"description": "The window of query usage the recommendation is based on, in UTC. `from` is inclusive, `to` is exclusive.",
+																		"type": "object",
+																		"properties": {
+																			"from": {
+																				"description": "Start of the window (inclusive).",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2026-11-19T10:00:00Z",
+																				"x-auditable": true
+																			},
+																			"to": {
+																				"description": "End of the window (exclusive).",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2026-11-20T10:00:00Z",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"from",
+																			"to"
+																		]
+																	},
+																	"reasoning": {
+																		"description": "Why the change is recommended.",
+																		"type": "string",
+																		"example": "Two query patterns filter OrderDetail by OrderId and scan the whole table."
+																	},
+																	"suggestions": {
+																		"description": "The changes to make.",
+																		"type": "array",
+																		"items": {
+																			"properties": {
+																				"kind": {
+																					"description": "The kind of change. Always `index_creation`.",
+																					"type": "string",
+																					"enum": [
+																						"index_creation"
+																					],
+																					"x-auditable": true
+																				},
+																				"sql": {
+																					"description": "The statement to run, for example in a migration. D1 checks that it parses as one `CREATE INDEX` statement. It does not check it against the database schema or run it.",
+																					"type": "string",
+																					"example": "CREATE INDEX idx_OrderDetail_OrderId ON OrderDetail(OrderId);"
+																				}
+																			},
+																			"required": [
+																				"kind",
+																				"sql"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"summary": {
+																		"description": "A short description of the recommended change.",
+																		"type": "string",
+																		"example": "Create an index on OrderDetail.OrderId"
+																	},
+																	"type": {
+																		"description": "The kind of recommendation.",
+																		"type": "string",
+																		"enum": [
+																			"index_suggestion"
+																		],
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"database_id",
+																	"database_name",
+																	"generated_at",
+																	"query_window",
+																	"type",
+																	"priority",
+																	"summary",
+																	"reasoning",
+																	"suggestions",
+																	"impacted_queries"
+																]
+															}
+														}
+													}
+												}
+											}
+										},
+										"result_info": {
+											"description": "Pagination information.",
+											"type": "object",
+											"properties": {
+												"next_cursor": {
+													"description": "Pass as `cursor` to get the next page. Null on the last page.",
+													"type": "string",
+													"nullable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List D1 index recommendations response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"D1"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "d1.insights",
+		"x-fern-sdk-method-name": "recommendations",
+		"x-forge-availability": "beta",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1.insights",
+		"x-forge-method-name": "recommendations"
+	},
+	"GET /accounts/{account_id}/d1/insights/settings": {
+		"operationId": "d1-get-insights-settings",
+		"summary": "Get D1 Insights Settings",
+		"description": "Get whether D1 Insights uses AI on this account's query data.\n\nWhile `ai_enabled` is true, D1 sends the account's query statements, query usage and database\nschemas to Workers AI to generate index recommendations, and\n`GET /accounts/{account_id}/d1/insights/recommendations` returns them.\n\nUntil the account changes the setting with `PUT`, the default depends on the account's plan.\n\nRequires the Account Settings Read permission.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get D1 Insights settings response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The account's D1 Insights settings.",
+											"type": "object",
+											"properties": {
+												"ai_enabled": {
+													"description": "Whether D1 Insights uses AI on this account's query data.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"ai_enabled"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get D1 Insights settings response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"D1"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "d1.insights.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "d1.insights.settings",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/d1/database/{database_id}": {
 		"operationId": "d1-update-partial-database",
@@ -2137,7 +2901,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"d1.write"
+		]
 	},
 	"POST /accounts/{account_id}/d1/database": {
 		"operationId": "d1-create-database",
@@ -2491,7 +3261,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "generally-available",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"d1.write"
+		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/export": {
 		"operationId": "d1-export-database",
@@ -2941,7 +3717,11 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "export",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "generally-available",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "export",
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/import": {
 		"operationId": "d1-import-database",
@@ -3502,7 +4282,11 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "import",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "generally-available",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "import",
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/query": {
 		"operationId": "d1-query-database",
@@ -3885,13 +4669,24 @@
 			"D1"
 		],
 		"x-api-token-group": [
+			"D1 Metadata Read",
+			"AI Search Index Engine",
 			"D1 Read",
 			"D1 Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "query",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "generally-available",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "query",
+		"x-forge-oauth-scopes": [
+			"d1.metadata_read",
+			"d1.read",
+			"d1.write",
+			"ai-search.index"
+		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/raw": {
 		"operationId": "d1-raw-database-query",
@@ -4298,13 +5093,24 @@
 			"D1"
 		],
 		"x-api-token-group": [
+			"D1 Metadata Read",
+			"AI Search Index Engine",
 			"D1 Read",
 			"D1 Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "raw",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "generally-available",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "raw",
+		"x-forge-oauth-scopes": [
+			"d1.metadata_read",
+			"d1.read",
+			"d1.write",
+			"ai-search.index"
+		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/time_travel/restore": {
 		"operationId": "d1-time-travel-restore",
@@ -4585,7 +5391,10 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1.time-travel",
 		"x-fern-sdk-method-name": "restore",
+		"x-forge-availability": "generally-available",
 		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1.time-travel",
+		"x-forge-method-name": "restore",
 		"x-forge-require-confirmation": "This reverts the D1 database to a previous point in time. Data written after the bookmark will be lost."
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/undelete": {
@@ -4906,7 +5715,10 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "undelete",
+		"x-forge-availability": "generally-available",
 		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "undelete",
 		"x-forge-require-confirmation": "After undeleting, Time Travel cannot restore the D1 database to a point in time at or before the undeletion."
 	},
 	"PUT /accounts/{account_id}/d1/database/{database_id}": {
@@ -5242,6 +6054,257 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "d1",
 		"x-fern-sdk-method-name": "update",
-		"x-forge-epilogue": "This command acts on remote D1 Databases."
+		"x-forge-availability": "generally-available",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-group-name": "d1",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"d1.write"
+		],
+		"x-forge-skip": true
+	},
+	"PUT /accounts/{account_id}/d1/insights/settings": {
+		"operationId": "d1-update-insights-settings",
+		"summary": "Update D1 Insights Settings",
+		"description": "Turn AI use for D1 Insights on or off for every database in this account.\n\nWhen you turn it off, D1 stops generating index recommendations for the account and\n`GET /accounts/{account_id}/d1/insights/recommendations` returns an empty list. Existing\nrecommendations are not deleted. They expire 7 days after they were generated, so any that\nhave not expired are returned again if you turn it back on.\n\nRequires the Account Settings Write permission.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"ai_enabled": {
+								"description": "Whether D1 Insights uses AI on this account's query data.",
+								"type": "boolean",
+								"x-auditable": true
+							}
+						},
+						"additionalProperties": false,
+						"required": [
+							"ai_enabled"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update D1 Insights settings response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The account's D1 Insights settings.",
+											"type": "object",
+											"properties": {
+												"ai_enabled": {
+													"description": "Whether D1 Insights uses AI on this account's query data.",
+													"type": "boolean",
+													"example": true,
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"ai_enabled"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update D1 Insights settings response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"D1"
+		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "d1.insights.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "d1.insights.settings",
+		"x-forge-method-name": "update"
 	}
 }

@@ -179,7 +179,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.scans.config",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
 		"operationId": "delete-scan",
@@ -432,6 +438,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "api-security.vulnerability-scanner.scans",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "This operation permanently deletes the completed or failed scan and all associated scan data."
 	},
 	"GET /accounts/{account_id}/cloudforce-one/banner/{config_id}": {
@@ -642,7 +651,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.results",
-		"x-fern-sdk-method-name": "get-banners"
+		"x-fern-sdk-method-name": "get-banners",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.scans.results",
+		"x-forge-method-name": "get-banners"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "get_ConfigFetch",
@@ -933,7 +945,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.scans.config",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/scans/results/{config_id}": {
 		"operationId": "get_GetOpenPorts",
@@ -1147,7 +1166,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.results",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.scans.results",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/vuln_scanner/scans": {
 		"operationId": "list-scans",
@@ -1979,7 +2005,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "api-security.vulnerability-scanner.scans",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/vuln_scanner/scans/{scan_id}": {
 		"operationId": "get-scan",
@@ -2749,7 +2778,10 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "api-security.vulnerability-scanner.scans",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/scans/config/{config_id}": {
 		"operationId": "post_ConfigUpdate",
@@ -3088,7 +3120,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.scans.config",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/scans/config": {
 		"operationId": "post_ConfigCreate",
@@ -3420,7 +3458,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.scans.config",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.scans.config",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/vuln_scanner/scans": {
 		"operationId": "create-scan",
@@ -4254,6 +4298,9 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "api-security.vulnerability-scanner.scans",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "api-security.vulnerability-scanner.scans",
+		"x-forge-method-name": "create"
 	}
 }

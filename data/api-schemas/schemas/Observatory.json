@@ -273,7 +273,8 @@
 			"Observatory"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write"
+			"Zone Settings Write",
+			"Workers Routes Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -283,7 +284,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages.tests",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "speed.pages.tests",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-routes.write",
+			"zone-settings.write"
+		]
 	},
 	"DELETE /zones/{zone_id}/speed_api/schedule/{url}": {
 		"operationId": "speed-delete-test-schedule",
@@ -559,7 +567,8 @@
 			"Observatory"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write"
+			"Zone Settings Write",
+			"Workers Routes Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -569,7 +578,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.schedule",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "speed.schedule",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-routes.write",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/speed_api/availabilities": {
 		"operationId": "speed-get-availabilities",
@@ -1095,8 +1111,14 @@
 			"Observatory"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1106,7 +1128,20 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.availabilities",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "speed.availabilities",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/speed_api/pages": {
 		"operationId": "speed-list-pages",
@@ -1680,8 +1715,14 @@
 			"Observatory"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -1691,7 +1732,20 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "speed.pages",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/tests": {
 		"operationId": "speed-list-test-history",
@@ -2301,8 +2355,14 @@
 			"Observatory"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2312,7 +2372,20 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages.tests",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "speed.pages.tests",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/tests/{test_id}": {
 		"operationId": "speed-get-test",
@@ -2838,8 +2911,14 @@
 			"Observatory"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -2849,7 +2928,20 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages.tests",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "speed.pages.tests",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/speed_api/pages/{url}/trend": {
 		"operationId": "speed-list-page-trend",
@@ -3240,8 +3332,14 @@
 			"Observatory"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3251,7 +3349,20 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages",
-		"x-fern-sdk-method-name": "trend"
+		"x-fern-sdk-method-name": "trend",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "speed.pages",
+		"x-forge-method-name": "trend",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"GET /zones/{zone_id}/speed_api/schedule/{url}": {
 		"operationId": "speed-get-scheduled-test",
@@ -3567,8 +3678,14 @@
 			"Observatory"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zone Settings Read",
+			"Workers Routes Write",
+			"Workers Routes Read"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -3578,7 +3695,20 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.schedule",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "speed.schedule",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-routes.read",
+			"zone-settings.read",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/speed_api/pages/{url}/tests": {
 		"operationId": "speed-create-test",
@@ -4144,7 +4274,8 @@
 			"Observatory"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write"
+			"Zone Settings Write",
+			"Workers Routes Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -4154,7 +4285,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.pages.tests",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "speed.pages.tests",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-routes.write",
+			"zone-settings.write"
+		]
 	},
 	"POST /zones/{zone_id}/speed_api/schedule/{url}": {
 		"operationId": "speed-create-scheduled-test",
@@ -4786,7 +4924,8 @@
 			"Observatory"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write"
+			"Zone Settings Write",
+			"Workers Routes Write"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -4796,6 +4935,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "speed.schedule",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "speed.schedule",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-routes.write",
+			"zone-settings.write"
+		]
 	}
 }

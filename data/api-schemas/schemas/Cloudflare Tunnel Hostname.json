@@ -480,6 +480,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.hostnames",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.hostnames",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.write",
+			"teams-connectors.write",
+			"argotunnel.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes a tunnel hostname."
 	},
 	"GET /accounts/{account_id}/tunnels/{tunnel_id}/hostnames": {
@@ -1049,6 +1057,9 @@
 			"Cloudflare Tunnel Hostname"
 		],
 		"x-api-token-group": [
+			"Connectivity Directory Read",
+			"Connectivity Directory Bind",
+			"Connectivity Directory Admin",
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: cloudflared Write",
@@ -1058,7 +1069,21 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.hostnames",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.hostnames",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.read",
+			"teams-connectors.read",
+			"connectivity-directory.read",
+			"argotunnel.read",
+			"connectivity-directory.bind",
+			"teams-connector-cloudflared.write",
+			"connectivity-directory.admin",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"GET /accounts/{account_id}/tunnels/{tunnel_id}/hostnames/{hostname_id}": {
 		"operationId": "cloudflare-tunnel-hostname-get",
@@ -1534,6 +1559,9 @@
 			"Cloudflare Tunnel Hostname"
 		],
 		"x-api-token-group": [
+			"Connectivity Directory Read",
+			"Connectivity Directory Bind",
+			"Connectivity Directory Admin",
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: cloudflared Write",
@@ -1543,7 +1571,21 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.hostnames",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.hostnames",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-connector-cloudflared.read",
+			"teams-connectors.read",
+			"connectivity-directory.read",
+			"argotunnel.read",
+			"connectivity-directory.bind",
+			"teams-connector-cloudflared.write",
+			"connectivity-directory.admin",
+			"teams-connectors.write",
+			"argotunnel.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/tunnels/{tunnel_id}/hostnames/{hostname_id}": {
 		"operationId": "cloudflare-tunnel-hostname-update",
@@ -2048,7 +2090,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.hostnames",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.hostnames",
+		"x-forge-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/tunnels/{tunnel_id}/hostnames": {
 		"operationId": "cloudflare-tunnel-hostname-create",
@@ -2541,6 +2586,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tunnels.hostnames",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tunnels.hostnames",
+		"x-forge-method-name": "create"
 	}
 }

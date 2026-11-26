@@ -500,7 +500,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "durable-objects.namespaces",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "durable-objects.namespaces",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/durable_objects/namespaces/{id}/export": {
 		"operationId": "durable-objects-namespace-export",
@@ -813,6 +824,10 @@
 			"Durable Objects Namespace"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
@@ -821,7 +836,18 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "durable-objects.namespaces",
-		"x-fern-sdk-method-name": "export"
+		"x-fern-sdk-method-name": "export",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "durable-objects.namespaces",
+		"x-forge-method-name": "export",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects": {
 		"operationId": "durable-objects-namespace-list-objects",
@@ -1355,7 +1381,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "durable-objects.namespaces.objects",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "durable-objects.namespaces.objects",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/workers/durable_objects/namespaces/{id}/query/v2": {
 		"operationId": "durable-objects-namespace-query",
@@ -1785,6 +1822,8 @@
 			"Durable Objects Namespace"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-fern-audiences": [
@@ -1792,6 +1831,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "durable-objects.namespaces",
-		"x-fern-sdk-method-name": "query"
+		"x-fern-sdk-method-name": "query",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "durable-objects.namespaces",
+		"x-forge-method-name": "query",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	}
 }

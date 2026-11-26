@@ -79,7 +79,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.collections",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.collections",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/columns/{column_id}": {
 		"operationId": "delete_ColumnDelete",
@@ -177,7 +184,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.columns",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.columns",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items/{item_id}": {
 		"operationId": "delete_ItemDelete",
@@ -258,7 +272,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.items",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.items",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections": {
 		"operationId": "get_CollectionList",
@@ -398,7 +419,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.collections",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.collections",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}": {
 		"operationId": "get_CollectionGet",
@@ -542,7 +571,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.collections",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.collections",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/export": {
 		"operationId": "get_CollectionExportEndpoint",
@@ -634,7 +671,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.collections",
-		"x-fern-sdk-method-name": "export"
+		"x-fern-sdk-method-name": "export",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.collections",
+		"x-forge-method-name": "export",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items": {
 		"operationId": "get_ItemQuery",
@@ -689,7 +734,8 @@
 					"maxLength": 500,
 					"minLength": 1
 				},
-				"x-fern-parameter-name": "query-search"
+				"x-fern-parameter-name": "query-search",
+				"x-forge-parameter-name": "query-search"
 			}
 		],
 		"responses": {
@@ -810,7 +856,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.items",
-		"x-fern-sdk-method-name": "query"
+		"x-fern-sdk-method-name": "query",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.items",
+		"x-forge-method-name": "query",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items/{item_id}": {
 		"operationId": "get_ItemGet",
@@ -905,7 +959,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.items",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.items",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}": {
 		"operationId": "patch_CollectionUpdate",
@@ -1047,7 +1109,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.collections",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.collections",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/columns/{column_id}": {
 		"operationId": "patch_ColumnUpdate",
@@ -1181,7 +1250,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.columns",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.columns",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items/{item_id}": {
 		"operationId": "patch_ItemUpdate",
@@ -1296,7 +1372,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.items",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.items",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/collections": {
 		"operationId": "post_CollectionCreate",
@@ -1698,7 +1781,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.collections",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.collections",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/columns": {
 		"operationId": "post_ColumnAdd",
@@ -1841,6 +1931,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.columns",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.columns",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	}
 }

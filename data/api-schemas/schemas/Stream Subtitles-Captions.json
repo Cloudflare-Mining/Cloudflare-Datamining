@@ -274,6 +274,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.captions.language",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.captions.language",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		],
 		"x-forge-require-confirmation": "Remove this caption?"
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions": {
@@ -566,12 +572,23 @@
 			"Stream Subtitles/Captions"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
+			"AI Search Index Engine",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.captions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.captions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write",
+			"ai-search.index"
+		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions/{language}": {
 		"operationId": "stream-subtitles/-captions-get-caption-or-subtitle-for-language",
@@ -876,12 +893,23 @@
 			"Stream Subtitles/Captions"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
+			"AI Search Index Engine",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.captions.language",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.captions.language",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write",
+			"ai-search.index"
+		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions/{language}/vtt": {
 		"operationId": "stream-subtitles/-captions-get-vtt-caption-or-subtitle",
@@ -1061,12 +1089,23 @@
 			"Stream Subtitles/Captions"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
+			"AI Search Index Engine",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.captions.language.vtt",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.captions.language.vtt",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write",
+			"ai-search.index"
+		]
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/captions/{language}/generate": {
 		"operationId": "stream-subtitles/-captions-generate-caption-or-subtitle-for-language",
@@ -1372,7 +1411,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.captions.language",
-		"x-fern-sdk-method-name": "generate"
+		"x-fern-sdk-method-name": "generate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.captions.language",
+		"x-forge-method-name": "generate"
 	},
 	"PUT /accounts/{account_id}/stream/{identifier}/captions/{language}": {
 		"operationId": "stream-subtitles/-captions-upload-captions-or-subtitles",
@@ -1702,6 +1744,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.captions.language",
-		"x-fern-sdk-method-name": "upload"
+		"x-fern-sdk-method-name": "upload",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.captions.language",
+		"x-forge-method-name": "upload",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		]
 	}
 }

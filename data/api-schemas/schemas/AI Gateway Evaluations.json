@@ -321,6 +321,8 @@
 			"AI Gateway Evaluations"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -336,7 +338,15 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "ai-gateway.evaluations",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.evaluations",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/evaluation-types": {
 		"operationId": "aig-config-list-evaluators",
@@ -533,6 +543,9 @@
 			"AI Gateway Evaluations"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -549,7 +562,17 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "ai-gateway.evaluation-types",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.evaluation-types",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
 		"operationId": "aig-config-list-evaluations",
@@ -910,6 +933,9 @@
 			"AI Gateway Evaluations"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -926,7 +952,17 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "ai-gateway.evaluations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.evaluations",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}": {
 		"operationId": "aig-config-fetch-evaluations",
@@ -1250,6 +1286,9 @@
 			"AI Gateway Evaluations"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -1266,7 +1305,17 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "ai-gateway.evaluations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.evaluations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
 		"operationId": "aig-config-create-evaluations",
@@ -1623,6 +1672,8 @@
 			"AI Gateway Evaluations"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -1638,6 +1689,14 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "ai-gateway.evaluations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.evaluations",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		]
 	}
 }

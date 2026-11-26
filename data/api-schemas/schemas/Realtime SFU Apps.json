@@ -188,11 +188,21 @@
 			"Realtime SFU Apps"
 		],
 		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime",
 			"Calls Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "realtime.sfu.apps",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "realtime.sfu.apps",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"calls.write",
+			"realtime.write",
+			"realtime.admin"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes the SFU app."
 	},
 	"GET /accounts/{account_id}/calls/apps": {
@@ -476,12 +486,25 @@
 			"Realtime SFU Apps"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
+			"Realtime Admin",
+			"Realtime",
 			"Calls Write",
 			"Calls Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "realtime.sfu.apps",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "realtime.sfu.apps",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"calls.read",
+			"realtime.read",
+			"calls.write",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/calls/apps/{app_id}": {
 		"operationId": "calls-apps-retrieve-app-details",
@@ -779,12 +802,25 @@
 			"Realtime SFU Apps"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
+			"Realtime Admin",
+			"Realtime",
 			"Calls Write",
 			"Calls Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "realtime.sfu.apps",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "realtime.sfu.apps",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"calls.read",
+			"realtime.read",
+			"calls.write",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/calls/apps": {
 		"operationId": "calls-apps-create-a-new-app",
@@ -947,6 +983,8 @@
 													"example": "66bcf64aa8907b9f9d90ac17746a77ce394c393b92b3916633dc02846e608ad4",
 													"maxLength": 64,
 													"minLength": 64,
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												},
 												"uid": {
@@ -1097,11 +1135,21 @@
 			"Realtime SFU Apps"
 		],
 		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime",
 			"Calls Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "realtime.sfu.apps",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "realtime.sfu.apps",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"calls.write",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/calls/apps/{app_id}": {
 		"operationId": "calls-apps-update-app-details",
@@ -1418,10 +1466,20 @@
 			"Realtime SFU Apps"
 		],
 		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime",
 			"Calls Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "realtime.sfu.apps",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "realtime.sfu.apps",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"calls.write",
+			"realtime.write",
+			"realtime.admin"
+		]
 	}
 }

@@ -279,7 +279,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "page-rules",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "page-rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"page-rules.write",
+			"zone.write"
+		]
 	},
 	"GET /zones/{zone_id}/pagerules": {
 		"operationId": "page-rules-list-page-rules",
@@ -1192,7 +1199,8 @@
 																	"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 																	"x-stainless-skip": [
 																		"terraform"
-																	]
+																	],
+																	"x-sunset": "2025-12-31T00:00:00Z"
 																},
 																{
 																	"type": "object",
@@ -1822,7 +1830,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "page-rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "page-rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"page-rules.read",
+			"zone.read",
+			"page-rules.write",
+			"zone.write"
+		]
 	},
 	"GET /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"operationId": "page-rules-get-a-page-rule",
@@ -2696,7 +2713,8 @@
 																"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 																"x-stainless-skip": [
 																	"terraform"
-																]
+																],
+																"x-sunset": "2025-12-31T00:00:00Z"
 															},
 															{
 																"type": "object",
@@ -3318,6 +3336,27 @@
 			"Page Rules"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Zone Security Insights Partner Assets Read",
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Registrar Sandbox Domains Read",
+			"Registrar Sandbox Domains Admin",
+			"Precursor Write",
+			"Precursor Read",
+			"Account Abuse Protection PII Read",
+			"Registrar Domains Admin",
+			"Zone Security Center Insights Write",
+			"Zone Security Center Insights Read",
+			"Access: Policies Write",
+			"Access: Policies Read",
+			"Access: Apps Write",
+			"Access: Apps Revoke",
+			"Access: Apps Read",
+			"Registrar Domains Read",
 			"Trust and Safety Write",
 			"Trust and Safety Read",
 			"Zero Trust: PII Read",
@@ -3360,7 +3399,72 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "page-rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "page-rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"precursor.read",
+			"zaraz.read",
+			"apps.write",
+			"load-balancers.read",
+			"page-rules.read",
+			"registrar-domains.read",
+			"registrar-sandbox-domains.read",
+			"zone-security-center-partner-assets.read",
+			"precursor.write",
+			"zaraz.edit",
+			"zone-access.revoke",
+			"zaraz.write",
+			"access-app.read",
+			"fraud-detection-pii.read",
+			"zone-access.read",
+			"zone.read",
+			"access-app.revoke",
+			"access.revoke",
+			"cache.purge",
+			"load-balancers.write",
+			"page-rules.write",
+			"access-policy.read",
+			"analytics.read",
+			"logs.read",
+			"registrar-sandbox-domains.admin",
+			"teams-pii.read",
+			"registrar-domains.admin",
+			"dns.read",
+			"zone-access.write",
+			"access.read",
+			"trust-and-safety.read",
+			"zone-security-center-insights.read",
+			"access-app.write",
+			"access-certificate.write",
+			"stream.read",
+			"access-policy.write",
+			"trust-and-safety.write",
+			"zone.write",
+			"observability.read",
+			"logs.write",
+			"dns.write",
+			"zone-security-center-insights.write",
+			"firewall-services.read",
+			"access-acct.write",
+			"workers-scripts.read",
+			"ssl-and-certificates.read",
+			"stream.write",
+			"access.write",
+			"observability.write",
+			"workers-routes.read",
+			"firewall-services.write",
+			"zone-settings.read",
+			"ssl-and-certificates.write",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-routes.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin",
+			"zone-settings.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"operationId": "page-rules-edit-a-page-rule",
@@ -4142,7 +4246,8 @@
 											"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 											"x-stainless-skip": [
 												"terraform"
-											]
+											],
+											"x-sunset": "2025-12-31T00:00:00Z"
 										},
 										{
 											"type": "object",
@@ -5440,7 +5545,8 @@
 																"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 																"x-stainless-skip": [
 																	"terraform"
-																]
+																],
+																"x-sunset": "2025-12-31T00:00:00Z"
 															},
 															{
 																"type": "object",
@@ -6067,7 +6173,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "page-rules",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "page-rules",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"page-rules.write",
+			"zone.write"
+		]
 	},
 	"POST /zones/{zone_id}/pagerules": {
 		"operationId": "page-rules-create-a-page-rule",
@@ -6836,7 +6949,8 @@
 											"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 											"x-stainless-skip": [
 												"terraform"
-											]
+											],
+											"x-sunset": "2025-12-31T00:00:00Z"
 										},
 										{
 											"type": "object",
@@ -8138,7 +8252,8 @@
 																"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 																"x-stainless-skip": [
 																	"terraform"
-																]
+																],
+																"x-sunset": "2025-12-31T00:00:00Z"
 															},
 															{
 																"type": "object",
@@ -8765,7 +8880,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "page-rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "page-rules",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"page-rules.write",
+			"zone.write"
+		]
 	},
 	"PUT /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"operationId": "page-rules-update-a-page-rule",
@@ -9547,7 +9669,8 @@
 											"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 											"x-stainless-skip": [
 												"terraform"
-											]
+											],
+											"x-sunset": "2025-12-31T00:00:00Z"
 										},
 										{
 											"type": "object",
@@ -10849,7 +10972,8 @@
 																"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 																"x-stainless-skip": [
 																	"terraform"
-																]
+																],
+																"x-sunset": "2025-12-31T00:00:00Z"
 															},
 															{
 																"type": "object",
@@ -11476,6 +11600,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "page-rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "page-rules",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"page-rules.write",
+			"zone.write"
+		]
 	}
 }

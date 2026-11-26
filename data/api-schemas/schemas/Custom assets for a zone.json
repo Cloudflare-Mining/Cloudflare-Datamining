@@ -162,6 +162,8 @@
 			"Custom assets for a zone"
 		],
 		"x-api-token-group": [
+			"Zone Custom Asset Write",
+			"Custom Pages Write",
 			"Custom Errors Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -176,8 +178,14 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.zone-assets",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-custom-asset.write",
+			"custom-errors.write",
+			"custom-pages.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/custom_pages/assets": {
 		"operationId": "custom-assets-for-a-zone-list-custom-assets",
@@ -524,6 +532,10 @@
 			"Custom assets for a zone"
 		],
 		"x-api-token-group": [
+			"Zone Custom Asset Write",
+			"Zone Custom Asset Read",
+			"Custom Pages Write",
+			"Custom Pages Read",
 			"Custom Errors Write",
 			"Custom Errors Read"
 		],
@@ -539,8 +551,17 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.zone-assets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-custom-asset.read",
+			"zone-custom-asset.write",
+			"custom-errors.read",
+			"custom-pages.read",
+			"custom-errors.write",
+			"custom-pages.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/custom_pages/assets/{asset_name}": {
 		"operationId": "custom-assets-for-a-zone-get-a-custom-asset",
@@ -841,6 +862,10 @@
 			"Custom assets for a zone"
 		],
 		"x-api-token-group": [
+			"Zone Custom Asset Write",
+			"Zone Custom Asset Read",
+			"Custom Pages Write",
+			"Custom Pages Read",
 			"Custom Errors Write",
 			"Custom Errors Read"
 		],
@@ -856,8 +881,17 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.zone-assets",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-custom-asset.read",
+			"zone-custom-asset.write",
+			"custom-errors.read",
+			"custom-pages.read",
+			"custom-errors.write",
+			"custom-pages.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/custom_pages/assets": {
 		"operationId": "custom-assets-for-a-zone-create-a-custom-asset",
@@ -1181,6 +1215,8 @@
 			"Custom assets for a zone"
 		],
 		"x-api-token-group": [
+			"Zone Custom Asset Write",
+			"Custom Pages Write",
 			"Custom Errors Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -1195,8 +1231,14 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.zone-assets",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-custom-asset.write",
+			"custom-errors.write",
+			"custom-pages.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/custom_pages/assets/{asset_name}": {
 		"operationId": "custom-assets-for-a-zone-update-a-custom-asset",
@@ -1524,6 +1566,8 @@
 			"Custom assets for a zone"
 		],
 		"x-api-token-group": [
+			"Zone Custom Asset Write",
+			"Custom Pages Write",
 			"Custom Errors Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -1538,7 +1582,13 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-pages.zone-assets",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-custom-asset.write",
+			"custom-errors.write",
+			"custom-pages.write"
+		],
+		"x-forge-skip": true
 	}
 }

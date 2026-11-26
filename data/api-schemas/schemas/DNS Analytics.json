@@ -667,6 +667,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.analytics.reports",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "dns.analytics.reports",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"analytics.read"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "This endpoint is deprecated. See [the API deprecation notice](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-12-09)."
 	},
 	"GET /zones/{zone_id}/dns_analytics/report/bytime": {
@@ -1448,6 +1455,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "dns.analytics.reports.bytimes",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "dns.analytics.reports.bytimes",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"analytics.read"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "This endpoint is deprecated. See [the API deprecation notice](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-12-09)."
 	}
 }

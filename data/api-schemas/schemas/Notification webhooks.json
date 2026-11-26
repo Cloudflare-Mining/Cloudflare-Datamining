@@ -195,6 +195,7 @@
 			"Notification webhooks"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
@@ -207,6 +208,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.destinations.webhooks",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes the webhook destination."
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/webhooks": {
@@ -341,6 +350,8 @@
 														"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 														"type": "string",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"type": {
@@ -362,7 +373,8 @@
 													"url": {
 														"description": "The POST endpoint to call when dispatching a notification.",
 														"type": "string",
-														"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd"
+														"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
+														"x-auditable": false
 													}
 												}
 											}
@@ -489,6 +501,8 @@
 																"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 																"type": "string",
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"type": {
@@ -510,7 +524,8 @@
 															"url": {
 																"description": "The POST endpoint to call when dispatching a notification.",
 																"type": "string",
-																"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd"
+																"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
+																"x-auditable": false
 															}
 														}
 													}
@@ -613,6 +628,8 @@
 			"Notification webhooks"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Zero Trust: PII Read",
 			"Notifications Write",
 			"Notifications Read",
@@ -627,7 +644,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.destinations.webhooks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"notifications.read",
+			"notifications.write",
+			"teams-pii.read",
+			"observability.read",
+			"account-settings.read",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}": {
 		"operationId": "notification-webhooks-get-a-webhook",
@@ -776,6 +805,8 @@
 													"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 													"type": "string",
 													"writeOnly": true,
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												},
 												"type": {
@@ -797,7 +828,8 @@
 												"url": {
 													"description": "The POST endpoint to call when dispatching a notification.",
 													"type": "string",
-													"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd"
+													"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
+													"x-auditable": false
 												}
 											}
 										}
@@ -926,6 +958,8 @@
 															"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 															"type": "string",
 															"writeOnly": true,
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"type": {
@@ -947,7 +981,8 @@
 														"url": {
 															"description": "The POST endpoint to call when dispatching a notification.",
 															"type": "string",
-															"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd"
+															"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
+															"x-auditable": false
 														}
 													}
 												}
@@ -1049,6 +1084,8 @@
 			"Notification webhooks"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Zero Trust: PII Read",
 			"Notifications Write",
 			"Notifications Read",
@@ -1063,7 +1100,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.destinations.webhooks",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"notifications.read",
+			"notifications.write",
+			"teams-pii.read",
+			"observability.read",
+			"account-settings.read",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/alerting/v3/destinations/webhooks": {
 		"operationId": "notification-webhooks-create-a-webhook",
@@ -1101,12 +1150,15 @@
 								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 								"type": "string",
 								"writeOnly": true,
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							},
 							"url": {
 								"description": "The POST endpoint to call when dispatching a notification.",
 								"type": "string",
-								"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd"
+								"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
+								"x-auditable": false
 							}
 						},
 						"required": [
@@ -1392,6 +1444,7 @@
 			"Notification webhooks"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
@@ -1403,7 +1456,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.destinations.webhooks",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"PUT /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}": {
 		"operationId": "notification-webhooks-update-a-webhook",
@@ -1732,6 +1793,7 @@
 			"Notification webhooks"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
@@ -1743,6 +1805,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.webhooks",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.destinations.webhooks",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		]
 	}
 }

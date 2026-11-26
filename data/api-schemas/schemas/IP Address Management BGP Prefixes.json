@@ -257,9 +257,18 @@
 		"tags": [
 			"IP Address Management BGP Prefixes"
 		],
+		"x-api-token-group": [
+			"IP Prefixes: Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.bgp-prefixes",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write"
+		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {
 		"operationId": "ip-address-management-prefixes-list-bgp-prefixes",
@@ -845,7 +854,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.bgp-prefixes",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"ip-prefix-bgp-on-demand.read",
+			"ip-prefix-bgp-on-demand.write",
+			"ip-prefix.read",
+			"ip-prefix.write",
+			"magic-transit.read",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
 		"operationId": "ip-address-management-prefixes-fetch-bgp-prefix",
@@ -1437,7 +1457,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.bgp-prefixes",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ip-prefix-bgp-on-demand.read",
+			"ip-prefix-bgp-on-demand.write",
+			"ip-prefix.read",
+			"ip-prefix.write",
+			"magic-transit.read",
+			"magic-transit.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
 		"operationId": "ip-address-management-prefixes-update-bgp-prefix",
@@ -2062,7 +2093,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.bgp-prefixes",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"ip-prefix-bgp-on-demand.write",
+			"ip-prefix.write",
+			"magic-transit.write"
+		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {
 		"operationId": "ip-address-management-prefixes-create-bgp-prefix",
@@ -2653,8 +2692,17 @@
 		"tags": [
 			"IP Address Management BGP Prefixes"
 		],
+		"x-api-token-group": [
+			"IP Prefixes: Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.bgp-prefixes",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.bgp-prefixes",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write"
+		]
 	}
 }

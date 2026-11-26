@@ -804,6 +804,13 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.definitions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.definitions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"flagship.read",
+			"flagship.write"
+		]
 	}
 }

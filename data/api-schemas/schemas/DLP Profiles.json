@@ -259,7 +259,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.custom",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"DELETE /accounts/{account_id}/dlp/profiles/integration/{profile_id}": {
 		"operationId": "dlp-profiles-delete-integration-profile",
@@ -534,6 +540,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.integration",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.integration",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-skip": [
 			"terraform"
 		]
@@ -802,7 +815,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.predefined",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/dlp/profiles": {
 		"operationId": "dlp-profiles-list-all-profiles",
@@ -3958,7 +3978,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/{profile_id}": {
 		"operationId": "dlp-profiles-get-dlp-profile",
@@ -7112,7 +7139,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/dlp/profiles/custom": {
 		"operationId": "dlp-profiles-list-all-custom-profiles",
@@ -8535,7 +8569,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.custom",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
 		"operationId": "dlp-profiles-get-custom-profile",
@@ -11690,7 +11732,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.custom",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/dlp/profiles/integration/{profile_id}/references": {
 		"operationId": "dlp-profiles-list-integration-profile-references",
@@ -12069,6 +12119,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.integration.references",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.integration.references",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-skip": [
 			"terraform"
 		]
@@ -15226,7 +15284,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.predefined",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config": {
 		"operationId": "dlp-profiles-get-predefined-profile-config",
@@ -16054,7 +16120,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined.config",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.predefined.config",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/dlp/profiles/custom": {
 		"operationId": "dlp-profiles-create-custom-profiles",
@@ -19412,7 +19486,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.custom",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/dlp/profiles/predefined": {
 		"operationId": "dlp-profiles-create-predefined-profile",
@@ -22667,7 +22747,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.predefined",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config": {
 		"operationId": "dlp-profiles-create-predefined-profile-config",
@@ -23558,7 +23645,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined.config",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.predefined.config",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
 		"operationId": "dlp-profiles-update-custom-profile",
@@ -26957,7 +27051,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.custom",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.custom",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
 		"operationId": "dlp-profiles-update-predefined-profile",
@@ -30201,7 +30301,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.predefined",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/dlp/profiles/predefined/{profile_id}/config": {
 		"operationId": "dlp-profiles-update-predefined-profile-config",
@@ -31092,6 +31198,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.dlp.profiles.predefined.config",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dlp.profiles.predefined.config",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	}
 }

@@ -305,7 +305,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.locations",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.locations",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-secure.location",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/locations": {
 		"operationId": "zero-trust-gateway-locations-list-zero-trust-gateway-locations",
@@ -1297,7 +1304,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.locations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.locations",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-secure.location",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/gateway/locations/{location_id}": {
 		"operationId": "zero-trust-gateway-locations-zero-trust-gateway-location-details",
@@ -2158,7 +2173,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.locations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.locations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-secure.location",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/gateway/locations": {
 		"operationId": "zero-trust-gateway-locations-create-zero-trust-gateway-location",
@@ -3241,7 +3264,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.locations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.locations",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-secure.location",
+			"teams.write"
+		]
 	},
 	"PUT /accounts/{account_id}/gateway/locations/{location_id}": {
 		"operationId": "zero-trust-gateway-locations-update-zero-trust-gateway-location",
@@ -4334,6 +4364,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.gateway.locations",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.gateway.locations",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams-secure.location",
+			"teams.write"
+		]
 	}
 }

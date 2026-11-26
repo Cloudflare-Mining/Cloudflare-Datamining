@@ -267,6 +267,8 @@
 			"Logs Received"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Logs Write",
 			"Logs Read"
 		],
@@ -284,7 +286,16 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "logs.control.retention",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "logs.control.retention",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"logs.read",
+			"observability.read",
+			"logs.write",
+			"observability.write"
+		]
 	},
 	"GET /zones/{zone_id}/logs/rayids/{ray_id}": {
 		"operationId": "get-zones-zone_id-logs-rayids-ray_id",
@@ -467,6 +478,8 @@
 			"Logs Received"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Logs Write",
 			"Logs Read"
 		],
@@ -478,7 +491,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.rayid",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logs.rayid",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"logs.read",
+			"observability.read",
+			"logs.write",
+			"observability.write"
+		]
 	},
 	"GET /zones/{zone_id}/logs/received": {
 		"operationId": "get-zones-zone_id-logs-received",
@@ -705,6 +727,8 @@
 			"Logs Received"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Logs Write",
 			"Logs Read"
 		],
@@ -721,7 +745,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.received",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logs.received",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"logs.read",
+			"observability.read",
+			"logs.write",
+			"observability.write"
+		]
 	},
 	"GET /zones/{zone_id}/logs/received/fields": {
 		"operationId": "get-zones-zone_id-logs-received-fields",
@@ -864,6 +897,8 @@
 			"Logs Received"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Logs Write",
 			"Logs Read"
 		],
@@ -875,7 +910,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "logs.received.fields",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "logs.received.fields",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"logs.read",
+			"observability.read",
+			"logs.write",
+			"observability.write"
+		]
 	},
 	"POST /zones/{zone_id}/logs/control/retention/flag": {
 		"operationId": "post-zones-zone_id-logs-control-retention-flag",
@@ -1164,6 +1208,7 @@
 			"Logs Received"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Logs Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -1179,6 +1224,13 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "logs.control.retention",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "logs.control.retention",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"logs.write",
+			"observability.write"
+		]
 	}
 }

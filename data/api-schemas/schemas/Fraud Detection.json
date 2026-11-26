@@ -367,7 +367,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "fraud",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "fraud",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"fraud-detection.read",
+			"fraud-detection.write"
+		]
 	},
 	"PUT /zones/{zone_id}/fraud_detection/settings": {
 		"operationId": "fraud-detection-zone-update-settings",
@@ -909,6 +916,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "fraud",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "fraud",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"fraud-detection.write"
+		]
 	}
 }

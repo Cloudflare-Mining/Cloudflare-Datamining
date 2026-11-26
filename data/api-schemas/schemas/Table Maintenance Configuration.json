@@ -157,7 +157,8 @@
 																	"type": "string",
 																	"format": "date-time",
 																	"nullable": true,
-																	"readOnly": true
+																	"readOnly": true,
+																	"x-auditable": true
 																},
 																"next_eligible_reason": {
 																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
@@ -169,7 +170,8 @@
 																		"no_credential",
 																		"scheduled"
 																	],
-																	"readOnly": true
+																	"readOnly": true,
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
@@ -178,7 +180,8 @@
 																	"enum": [
 																		"enabled",
 																		"disabled"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"target_size_mb": {
 																	"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -189,7 +192,8 @@
 																		"128",
 																		"256",
 																		"512"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -203,7 +207,8 @@
 																	"description": "Scheduling interval between normal table maintenance runs.",
 																	"type": "string",
 																	"example": "1h",
-																	"pattern": "^\\d+(d|h|m|s)$"
+																	"pattern": "^\\d+(d|h|m|s)$",
+																	"x-auditable": true
 																}
 															],
 															"readOnly": true
@@ -215,21 +220,24 @@
 																	"description": "Specifies the maximum age for snapshots.",
 																	"type": "string",
 																	"example": "7d",
-																	"pattern": "^\\d+(d|h|m|s)$"
+																	"pattern": "^\\d+(d|h|m|s)$",
+																	"x-auditable": true
 																},
 																"min_snapshots_to_keep": {
 																	"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
 																	"type": "integer",
 																	"format": "int64",
 																	"example": 100,
-																	"minimum": 1
+																	"minimum": 1,
+																	"x-auditable": true
 																},
 																"next_eligible_at": {
 																	"description": "Earliest time when the scheduler can claim this operation. Null when disabled.",
 																	"type": "string",
 																	"format": "date-time",
 																	"nullable": true,
-																	"readOnly": true
+																	"readOnly": true,
+																	"x-auditable": true
 																},
 																"next_eligible_reason": {
 																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
@@ -241,7 +249,8 @@
 																		"no_credential",
 																		"scheduled"
 																	],
-																	"readOnly": true
+																	"readOnly": true,
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
@@ -250,7 +259,8 @@
 																	"enum": [
 																		"enabled",
 																		"disabled"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -483,12 +493,21 @@
 			"Table Maintenance Configuration"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog.namespaces.tables.maintenance-configs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog.namespaces.tables.maintenance-configs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		]
 	},
 	"GET /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-runs": {
 		"operationId": "basin-list-table-maintenance-runs",
@@ -542,7 +561,8 @@
 					"type": "integer",
 					"maximum": 100,
 					"minimum": 1
-				}
+				},
+				"x-auditable": true
 			},
 			{
 				"name": "page_token",
@@ -633,14 +653,16 @@
 															"completed_at": {
 																"type": "string",
 																"format": "date-time",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"configuration_type": {
 																"type": "string",
 																"enum": [
 																	"compaction",
 																	"snapshot_expiration"
-																]
+																],
+																"x-auditable": true
 															},
 															"customer_message": {
 																"type": "string",
@@ -649,7 +671,8 @@
 															"duration_ms": {
 																"type": "integer",
 																"format": "int64",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"operation_results": {
 																"type": "array",
@@ -658,12 +681,14 @@
 																	"properties": {
 																		"duration_ms": {
 																			"type": "integer",
-																			"format": "int64"
+																			"format": "int64",
+																			"x-auditable": true
 																		},
 																		"error_code": {
 																			"type": "integer",
 																			"format": "int32",
-																			"nullable": true
+																			"nullable": true,
+																			"x-auditable": true
 																		},
 																		"metrics": {
 																			"type": "object",
@@ -676,7 +701,8 @@
 																				"rewrite_manifests",
 																				"compaction",
 																				"snapshot_expiration"
-																			]
+																			],
+																			"x-auditable": true
 																		},
 																		"status": {
 																			"type": "string",
@@ -685,7 +711,8 @@
 																				"failed",
 																				"skipped",
 																				"not_run"
-																			]
+																			],
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -697,26 +724,31 @@
 															},
 															"outcome": {
 																"type": "string",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"primary_error_code": {
 																"type": "integer",
 																"format": "int32",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"request_id": {
 																"description": "The request ID supplied when this run was queued via the manual queue endpoint, so customers can locate their manually-triggered run in this history listing. Absent for runs picked up by normal polling.",
 																"type": "string",
 																"format": "uuid",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"run_id": {
 																"type": "integer",
-																"format": "int64"
+																"format": "int64",
+																"x-auditable": true
 															},
 															"started_at": {
 																"type": "string",
-																"format": "date-time"
+																"format": "date-time",
+																"x-auditable": true
 															},
 															"status": {
 																"type": "string",
@@ -727,7 +759,8 @@
 																	"interrupted",
 																	"timed_out",
 																	"cancelled"
-																]
+																],
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -924,7 +957,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog.namespaces.tables.maintenance-runs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog.namespaces.tables.maintenance-runs",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs": {
 		"operationId": "get-table-maintenance-config",
@@ -1084,7 +1120,8 @@
 																	"type": "string",
 																	"format": "date-time",
 																	"nullable": true,
-																	"readOnly": true
+																	"readOnly": true,
+																	"x-auditable": true
 																},
 																"next_eligible_reason": {
 																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
@@ -1096,7 +1133,8 @@
 																		"no_credential",
 																		"scheduled"
 																	],
-																	"readOnly": true
+																	"readOnly": true,
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
@@ -1105,7 +1143,8 @@
 																	"enum": [
 																		"enabled",
 																		"disabled"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"target_size_mb": {
 																	"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -1116,7 +1155,8 @@
 																		"128",
 																		"256",
 																		"512"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1130,7 +1170,8 @@
 																	"description": "Scheduling interval between normal table maintenance runs.",
 																	"type": "string",
 																	"example": "1h",
-																	"pattern": "^\\d+(d|h|m|s)$"
+																	"pattern": "^\\d+(d|h|m|s)$",
+																	"x-auditable": true
 																}
 															],
 															"readOnly": true
@@ -1142,21 +1183,24 @@
 																	"description": "Specifies the maximum age for snapshots.",
 																	"type": "string",
 																	"example": "7d",
-																	"pattern": "^\\d+(d|h|m|s)$"
+																	"pattern": "^\\d+(d|h|m|s)$",
+																	"x-auditable": true
 																},
 																"min_snapshots_to_keep": {
 																	"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
 																	"type": "integer",
 																	"format": "int64",
 																	"example": 100,
-																	"minimum": 1
+																	"minimum": 1,
+																	"x-auditable": true
 																},
 																"next_eligible_at": {
 																	"description": "Earliest time when the scheduler can claim this operation. Null when disabled.",
 																	"type": "string",
 																	"format": "date-time",
 																	"nullable": true,
-																	"readOnly": true
+																	"readOnly": true,
+																	"x-auditable": true
 																},
 																"next_eligible_reason": {
 																	"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
@@ -1168,7 +1212,8 @@
 																		"no_credential",
 																		"scheduled"
 																	],
-																	"readOnly": true
+																	"readOnly": true,
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
@@ -1177,7 +1222,8 @@
 																	"enum": [
 																		"enabled",
 																		"disabled"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1411,12 +1457,21 @@
 			"Table Maintenance Configuration"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables.maintenance-configs",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2-data-catalog.namespaces.tables.maintenance-configs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		],
 		"x-stainless-deprecation-message": "Use `GET /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs` instead."
 	},
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-runs": {
@@ -1471,7 +1526,8 @@
 					"type": "integer",
 					"maximum": 100,
 					"minimum": 1
-				}
+				},
+				"x-auditable": true
 			},
 			{
 				"name": "page_token",
@@ -1562,14 +1618,16 @@
 															"completed_at": {
 																"type": "string",
 																"format": "date-time",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"configuration_type": {
 																"type": "string",
 																"enum": [
 																	"compaction",
 																	"snapshot_expiration"
-																]
+																],
+																"x-auditable": true
 															},
 															"customer_message": {
 																"type": "string",
@@ -1578,7 +1636,8 @@
 															"duration_ms": {
 																"type": "integer",
 																"format": "int64",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"operation_results": {
 																"type": "array",
@@ -1587,12 +1646,14 @@
 																	"properties": {
 																		"duration_ms": {
 																			"type": "integer",
-																			"format": "int64"
+																			"format": "int64",
+																			"x-auditable": true
 																		},
 																		"error_code": {
 																			"type": "integer",
 																			"format": "int32",
-																			"nullable": true
+																			"nullable": true,
+																			"x-auditable": true
 																		},
 																		"metrics": {
 																			"type": "object",
@@ -1605,7 +1666,8 @@
 																				"rewrite_manifests",
 																				"compaction",
 																				"snapshot_expiration"
-																			]
+																			],
+																			"x-auditable": true
 																		},
 																		"status": {
 																			"type": "string",
@@ -1614,7 +1676,8 @@
 																				"failed",
 																				"skipped",
 																				"not_run"
-																			]
+																			],
+																			"x-auditable": true
 																		}
 																	},
 																	"required": [
@@ -1626,26 +1689,31 @@
 															},
 															"outcome": {
 																"type": "string",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"primary_error_code": {
 																"type": "integer",
 																"format": "int32",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"request_id": {
 																"description": "The request ID supplied when this run was queued via the manual queue endpoint, so customers can locate their manually-triggered run in this history listing. Absent for runs picked up by normal polling.",
 																"type": "string",
 																"format": "uuid",
-																"nullable": true
+																"nullable": true,
+																"x-auditable": true
 															},
 															"run_id": {
 																"type": "integer",
-																"format": "int64"
+																"format": "int64",
+																"x-auditable": true
 															},
 															"started_at": {
 																"type": "string",
-																"format": "date-time"
+																"format": "date-time",
+																"x-auditable": true
 															},
 															"status": {
 																"type": "string",
@@ -1656,7 +1724,8 @@
 																	"interrupted",
 																	"timed_out",
 																	"cancelled"
-																]
+																],
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -1855,6 +1924,9 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables.maintenance-runs",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2-data-catalog.namespaces.tables.maintenance-runs",
+		"x-forge-method-name": "list",
 		"x-stainless-deprecation-message": "Use `GET /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-runs` instead."
 	},
 	"POST /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs": {
@@ -1939,7 +2011,8 @@
 										"enum": [
 											"enabled",
 											"disabled"
-										]
+										],
+										"x-auditable": true
 									},
 									"target_size_mb": {
 										"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -1950,7 +2023,8 @@
 											"128",
 											"256",
 											"512"
-										]
+										],
+										"x-auditable": true
 									}
 								}
 							},
@@ -1961,13 +2035,15 @@
 									"max_snapshot_age": {
 										"description": "Updates the maximum age for snapshots optionally.",
 										"type": "string",
-										"pattern": "^\\d+(d|h|m|s)$"
+										"pattern": "^\\d+(d|h|m|s)$",
+										"x-auditable": true
 									},
 									"min_snapshots_to_keep": {
 										"description": "Updates the minimum number of snapshots to retain optionally.",
 										"type": "integer",
 										"format": "int64",
-										"minimum": 1
+										"minimum": 1,
+										"x-auditable": true
 									},
 									"state": {
 										"description": "Specifies the state of maintenance operations.",
@@ -1976,7 +2052,8 @@
 										"enum": [
 											"enabled",
 											"disabled"
-										]
+										],
+										"x-auditable": true
 									}
 								}
 							}
@@ -2083,7 +2160,8 @@
 															"type": "string",
 															"format": "date-time",
 															"nullable": true,
-															"readOnly": true
+															"readOnly": true,
+															"x-auditable": true
 														},
 														"next_eligible_reason": {
 															"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
@@ -2095,7 +2173,8 @@
 																"no_credential",
 																"scheduled"
 															],
-															"readOnly": true
+															"readOnly": true,
+															"x-auditable": true
 														},
 														"state": {
 															"description": "Specifies the state of maintenance operations.",
@@ -2104,7 +2183,8 @@
 															"enum": [
 																"enabled",
 																"disabled"
-															]
+															],
+															"x-auditable": true
 														},
 														"target_size_mb": {
 															"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -2115,7 +2195,8 @@
 																"128",
 																"256",
 																"512"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2129,7 +2210,8 @@
 															"description": "Scheduling interval between normal table maintenance runs.",
 															"type": "string",
 															"example": "1h",
-															"pattern": "^\\d+(d|h|m|s)$"
+															"pattern": "^\\d+(d|h|m|s)$",
+															"x-auditable": true
 														}
 													],
 													"readOnly": true
@@ -2141,21 +2223,24 @@
 															"description": "Specifies the maximum age for snapshots.",
 															"type": "string",
 															"example": "7d",
-															"pattern": "^\\d+(d|h|m|s)$"
+															"pattern": "^\\d+(d|h|m|s)$",
+															"x-auditable": true
 														},
 														"min_snapshots_to_keep": {
 															"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
 															"type": "integer",
 															"format": "int64",
 															"example": 100,
-															"minimum": 1
+															"minimum": 1,
+															"x-auditable": true
 														},
 														"next_eligible_at": {
 															"description": "Earliest time when the scheduler can claim this operation. Null when disabled.",
 															"type": "string",
 															"format": "date-time",
 															"nullable": true,
-															"readOnly": true
+															"readOnly": true,
+															"x-auditable": true
 														},
 														"next_eligible_reason": {
 															"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
@@ -2167,7 +2252,8 @@
 																"no_credential",
 																"scheduled"
 															],
-															"readOnly": true
+															"readOnly": true,
+															"x-auditable": true
 														},
 														"state": {
 															"description": "Specifies the state of maintenance operations.",
@@ -2176,7 +2262,8 @@
 															"enum": [
 																"enabled",
 																"disabled"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -2408,7 +2495,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog.namespaces.tables.maintenance-configs",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog.namespaces.tables.maintenance-configs",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"r2-catalog.write"
+		]
 	},
 	"POST /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs/{configuration_type}/queue": {
 		"operationId": "basin-queue-table-maintenance",
@@ -2478,7 +2571,8 @@
 							"request_id": {
 								"type": "string",
 								"format": "uuid",
-								"nullable": true
+								"nullable": true,
+								"x-auditable": true
 							}
 						}
 					}
@@ -2555,15 +2649,18 @@
 											"type": "object",
 											"properties": {
 												"message": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"queued": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"request_id": {
 													"type": "string",
 													"format": "uuid",
-													"nullable": true
+													"nullable": true,
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -2789,7 +2886,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog.namespaces.tables.maintenance-configs",
-		"x-fern-sdk-method-name": "queue"
+		"x-fern-sdk-method-name": "queue",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog.namespaces.tables.maintenance-configs",
+		"x-forge-method-name": "queue"
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs": {
 		"operationId": "update-table-maintenance-config",
@@ -2873,7 +2973,8 @@
 										"enum": [
 											"enabled",
 											"disabled"
-										]
+										],
+										"x-auditable": true
 									},
 									"target_size_mb": {
 										"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -2884,7 +2985,8 @@
 											"128",
 											"256",
 											"512"
-										]
+										],
+										"x-auditable": true
 									}
 								}
 							},
@@ -2895,13 +2997,15 @@
 									"max_snapshot_age": {
 										"description": "Updates the maximum age for snapshots optionally.",
 										"type": "string",
-										"pattern": "^\\d+(d|h|m|s)$"
+										"pattern": "^\\d+(d|h|m|s)$",
+										"x-auditable": true
 									},
 									"min_snapshots_to_keep": {
 										"description": "Updates the minimum number of snapshots to retain optionally.",
 										"type": "integer",
 										"format": "int64",
-										"minimum": 1
+										"minimum": 1,
+										"x-auditable": true
 									},
 									"state": {
 										"description": "Specifies the state of maintenance operations.",
@@ -2910,7 +3014,8 @@
 										"enum": [
 											"enabled",
 											"disabled"
-										]
+										],
+										"x-auditable": true
 									}
 								}
 							}
@@ -3017,7 +3122,8 @@
 															"type": "string",
 															"format": "date-time",
 															"nullable": true,
-															"readOnly": true
+															"readOnly": true,
+															"x-auditable": true
 														},
 														"next_eligible_reason": {
 															"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
@@ -3029,7 +3135,8 @@
 																"no_credential",
 																"scheduled"
 															],
-															"readOnly": true
+															"readOnly": true,
+															"x-auditable": true
 														},
 														"state": {
 															"description": "Specifies the state of maintenance operations.",
@@ -3038,7 +3145,8 @@
 															"enum": [
 																"enabled",
 																"disabled"
-															]
+															],
+															"x-auditable": true
 														},
 														"target_size_mb": {
 															"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -3049,7 +3157,8 @@
 																"128",
 																"256",
 																"512"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3063,7 +3172,8 @@
 															"description": "Scheduling interval between normal table maintenance runs.",
 															"type": "string",
 															"example": "1h",
-															"pattern": "^\\d+(d|h|m|s)$"
+															"pattern": "^\\d+(d|h|m|s)$",
+															"x-auditable": true
 														}
 													],
 													"readOnly": true
@@ -3075,21 +3185,24 @@
 															"description": "Specifies the maximum age for snapshots.",
 															"type": "string",
 															"example": "7d",
-															"pattern": "^\\d+(d|h|m|s)$"
+															"pattern": "^\\d+(d|h|m|s)$",
+															"x-auditable": true
 														},
 														"min_snapshots_to_keep": {
 															"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
 															"type": "integer",
 															"format": "int64",
 															"example": 100,
-															"minimum": 1
+															"minimum": 1,
+															"x-auditable": true
 														},
 														"next_eligible_at": {
 															"description": "Earliest time when the scheduler can claim this operation. Null when disabled.",
 															"type": "string",
 															"format": "date-time",
 															"nullable": true,
-															"readOnly": true
+															"readOnly": true,
+															"x-auditable": true
 														},
 														"next_eligible_reason": {
 															"description": "Why the operation is not eligible to run before next_eligible_at. Returned by the per-table GET only, and absent from the update response. `held_after_user_error` means a customer-caused failure holds the lease until it expires.",
@@ -3101,7 +3214,8 @@
 																"no_credential",
 																"scheduled"
 															],
-															"readOnly": true
+															"readOnly": true,
+															"x-auditable": true
 														},
 														"state": {
 															"description": "Specifies the state of maintenance operations.",
@@ -3110,7 +3224,8 @@
 															"enum": [
 																"enabled",
 																"disabled"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -3344,6 +3459,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables.maintenance-configs",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2-data-catalog.namespaces.tables.maintenance-configs",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"r2-catalog.write"
+		],
 		"x-stainless-deprecation-message": "Use `POST /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs` instead."
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs/{configuration_type}/queue": {
@@ -3414,7 +3535,8 @@
 							"request_id": {
 								"type": "string",
 								"format": "uuid",
-								"nullable": true
+								"nullable": true,
+								"x-auditable": true
 							}
 						}
 					}
@@ -3491,15 +3613,18 @@
 											"type": "object",
 											"properties": {
 												"message": {
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"queued": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"request_id": {
 													"type": "string",
 													"format": "uuid",
-													"nullable": true
+													"nullable": true,
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3727,6 +3852,9 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables.maintenance-configs",
 		"x-fern-sdk-method-name": "queue",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2-data-catalog.namespaces.tables.maintenance-configs",
+		"x-forge-method-name": "queue",
 		"x-stainless-deprecation-message": "Use `POST /accounts/{account_id}/basin-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs/{configuration_type}/queue` instead."
 	}
 }

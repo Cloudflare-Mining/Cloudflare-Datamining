@@ -377,6 +377,8 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -393,7 +395,16 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.spending-limit",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.billing.spending-limit",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"DELETE /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"operationId": "aig-billing-delete-topup-config",
@@ -772,6 +783,8 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -788,7 +801,16 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup.config",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.billing.topup.config",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/credit-balance": {
 		"operationId": "aig-billing-get-credit-balance",
@@ -1244,6 +1266,9 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -1261,7 +1286,18 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "credit-balance"
+		"x-fern-sdk-method-name": "credit-balance",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.billing",
+		"x-forge-method-name": "credit-balance",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/invoice-history": {
 		"operationId": "aig-billing-get-invoice-history",
@@ -1773,6 +1809,9 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -1790,7 +1829,18 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "invoice-history"
+		"x-fern-sdk-method-name": "invoice-history",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.billing",
+		"x-forge-method-name": "invoice-history",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/invoice-preview": {
 		"operationId": "aig-billing-get-invoice-preview",
@@ -2331,6 +2381,9 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -2348,7 +2401,18 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "invoice-preview"
+		"x-fern-sdk-method-name": "invoice-preview",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.billing",
+		"x-forge-method-name": "invoice-preview",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/spending-limit": {
 		"operationId": "aig-billing-get-spending-limit",
@@ -2767,6 +2831,9 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -2784,7 +2851,18 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.spending-limit",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.billing.spending-limit",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"operationId": "aig-billing-get-topup-config",
@@ -3199,6 +3277,9 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -3216,7 +3297,18 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup.config",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.billing.topup.config",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/topup/eligibility": {
 		"operationId": "aig-billing-get-topup-eligibility",
@@ -3452,17 +3544,17 @@
 												"additionalProperties": false,
 												"properties": {
 													"brand": {
-														"description": "Card brand. Present for cards.",
+														"description": "Card brand. Present for cards, including cards saved in a wallet.",
 														"type": "string",
 														"example": "visa"
 													},
 													"exp_month": {
-														"description": "Expiration month, 1 to 12. Present for cards.",
+														"description": "Expiration month, 1 to 12. Present for cards, including cards saved in a wallet.",
 														"type": "integer",
 														"example": 12
 													},
 													"exp_year": {
-														"description": "Four-digit expiration year. Present for cards.",
+														"description": "Four-digit expiration year. Present for cards, including cards saved in a wallet.",
 														"type": "integer",
 														"example": 2030
 													},
@@ -3476,12 +3568,12 @@
 														"type": "boolean"
 													},
 													"last4": {
-														"description": "Last 4 digits. Present for cards.",
+														"description": "Last 4 digits. Present for cards, including cards saved in a wallet.",
 														"type": "string",
 														"example": "4242"
 													},
 													"type": {
-														"description": "Payment method type.",
+														"description": "Payment method type. A card saved in a wallet has the wallet type and its card details. `link` is a card saved with Link, which has card details, or a Link payment that no card funds, which has none.",
 														"type": "string",
 														"example": "card",
 														"enum": [
@@ -4054,7 +4146,18 @@
 		"x-fern-availability": "beta",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
-		"x-fern-sdk-method-name": "get-eligibility"
+		"x-fern-sdk-method-name": "get-eligibility",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-gateway.billing.topup",
+		"x-forge-method-name": "get-eligibility",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/topup/limits": {
 		"operationId": "aig-billing-get-topup-limits",
@@ -4456,6 +4559,9 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -4473,7 +4579,18 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
-		"x-fern-sdk-method-name": "limits"
+		"x-fern-sdk-method-name": "limits",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.billing.topup",
+		"x-forge-method-name": "limits",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/usage-history": {
 		"operationId": "aig-billing-get-usage-history",
@@ -4927,6 +5044,9 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Gateway Metadata Read",
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write",
 			"AI Gateway Read"
 		],
@@ -4944,7 +5064,18 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing",
-		"x-fern-sdk-method-name": "usage-history"
+		"x-fern-sdk-method-name": "usage-history",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.billing",
+		"x-forge-method-name": "usage-history",
+		"x-forge-oauth-scopes": [
+			"aig.metadata_read",
+			"aig.read",
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/spending-limit": {
 		"operationId": "aig-billing-set-spending-limit",
@@ -5367,6 +5498,8 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -5383,7 +5516,16 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.spending-limit",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.billing.spending-limit",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup": {
 		"operationId": "aig-billing-create-topup",
@@ -6003,7 +6145,16 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-require-confirmation": "This purchases AI Gateway credits and charges the amount to the account's default payment method."
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.billing.topup",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-require-confirmation": "This purchases AI Gateway credits and charges the amount to the account's default payment method.",
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"operationId": "aig-billing-set-topup-config",
@@ -6831,7 +6982,16 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup.config",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.billing.topup.config",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/eligibility": {
 		"operationId": "aig-billing-topup-eligibility",
@@ -7364,7 +7524,16 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
-		"x-fern-sdk-method-name": "eligibility"
+		"x-fern-sdk-method-name": "eligibility",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "ai-gateway.billing.topup",
+		"x-forge-method-name": "eligibility",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/status": {
 		"operationId": "aig-billing-check-topup-status",
@@ -7784,6 +7953,8 @@
 			"AI Gateway"
 		],
 		"x-api-token-group": [
+			"AI Search Index Engine",
+			"Auto Rag Write Run Engine",
 			"AI Gateway Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -7800,7 +7971,16 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "ai-gateway.billing.topup",
-		"x-fern-sdk-method-name": "status"
+		"x-fern-sdk-method-name": "status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai-gateway.billing.topup",
+		"x-forge-method-name": "status",
+		"x-forge-oauth-scopes": [
+			"aig.write",
+			"ai-search.index",
+			"rag.run"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/ai/websearch": {
 		"operationId": "workers-ai-ai-gateway-web-search",
@@ -8181,6 +8361,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ai",
-		"x-fern-sdk-method-name": "websearch"
+		"x-fern-sdk-method-name": "websearch",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ai",
+		"x-forge-method-name": "websearch"
 	}
 }

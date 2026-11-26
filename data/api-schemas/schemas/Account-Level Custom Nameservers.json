@@ -459,7 +459,614 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-nameservers",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "custom-nameservers",
+		"x-forge-method-name": "delete"
+	},
+	"GET /{account_or_zone}/{account_or_zone_id}/custom_ns": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/custom_ns",
+		"summary": "List account or zone Custom Nameservers",
+		"description": "List an account or zone's custom nameservers.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"type": "string",
+					"example": "372e67954025e0ba6aaa6d586b9e0b59",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List account or zone Custom Nameservers response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "A single account custom nameserver.",
+												"type": "object",
+												"properties": {
+													"dns_records": {
+														"description": "A and AAAA records associated with the nameserver.",
+														"type": "array",
+														"items": {
+															"properties": {
+																"type": {
+																	"description": "DNS record type.",
+																	"type": "string",
+																	"example": "A",
+																	"enum": [
+																		"A",
+																		"AAAA"
+																	],
+																	"x-auditable": true
+																},
+																"value": {
+																	"description": "DNS record contents (an IPv4 or IPv6 address).",
+																	"type": "string",
+																	"example": "1.1.1.1",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"x-stainless-collection-type": "set"
+													},
+													"ns_name": {
+														"description": "The FQDN of the name server.",
+														"type": "string",
+														"format": "hostname",
+														"example": "ns1.example.com",
+														"x-auditable": true
+													},
+													"ns_set": {
+														"description": "The number of the set that this name server belongs to.",
+														"type": "number",
+														"example": 1,
+														"default": 1,
+														"maximum": 5,
+														"minimum": 1,
+														"x-auditable": true
+													},
+													"status": {
+														"description": "Verification status of the nameserver.",
+														"type": "string",
+														"example": "verified",
+														"enum": [
+															"moved",
+															"pending",
+															"verified"
+														],
+														"deprecated": true,
+														"x-auditable": true
+													},
+													"zone_tag": {
+														"description": "Identifier.",
+														"type": "string",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"dns_records",
+													"ns_name",
+													"status",
+													"zone_tag"
+												],
+												"title": "Custom NS"
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List account or zone Custom Nameservers response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												},
+												{
+													"properties": {
+														"result_info": {
+															"type": "object",
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service.",
+																	"type": "number",
+																	"example": 1
+																},
+																"page": {
+																	"description": "Current page within paginated list of results.",
+																	"type": "number",
+																	"example": 1
+																},
+																"per_page": {
+																	"description": "Number of results per page of results.",
+																	"type": "number",
+																	"example": 20
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters.",
+																	"type": "number",
+																	"example": 2000
+																},
+																"total_pages": {
+																	"description": "The number of total pages in the entire result set.",
+																	"type": "number",
+																	"example": 100
+																}
+															}
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"description": "A single account custom nameserver.",
+														"type": "object",
+														"properties": {
+															"dns_records": {
+																"description": "A and AAAA records associated with the nameserver.",
+																"type": "array",
+																"items": {
+																	"properties": {
+																		"type": {
+																			"description": "DNS record type.",
+																			"type": "string",
+																			"example": "A",
+																			"enum": [
+																				"A",
+																				"AAAA"
+																			],
+																			"x-auditable": true
+																		},
+																		"value": {
+																			"description": "DNS record contents (an IPv4 or IPv6 address).",
+																			"type": "string",
+																			"example": "1.1.1.1",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"x-stainless-collection-type": "set"
+															},
+															"ns_name": {
+																"description": "The FQDN of the name server.",
+																"type": "string",
+																"format": "hostname",
+																"example": "ns1.example.com",
+																"x-auditable": true
+															},
+															"ns_set": {
+																"description": "The number of the set that this name server belongs to.",
+																"type": "number",
+																"example": 1,
+																"default": 1,
+																"maximum": 5,
+																"minimum": 1,
+																"x-auditable": true
+															},
+															"status": {
+																"description": "Verification status of the nameserver.",
+																"type": "string",
+																"example": "verified",
+																"enum": [
+																	"moved",
+																	"pending",
+																	"verified"
+																],
+																"deprecated": true,
+																"x-auditable": true
+															},
+															"zone_tag": {
+																"description": "Identifier.",
+																"type": "string",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"dns_records",
+															"ns_name",
+															"status",
+															"zone_tag"
+														],
+														"title": "Custom NS"
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Account-Level Custom Nameservers"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-nameservers",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "custom-nameservers",
+		"x-forge-method-name": "get",
+		"x-stainless-skip": true
 	},
 	"GET /accounts/{account_id}/custom_ns": {
 		"operationId": "account-level-custom-nameservers-list-account-custom-nameservers",
@@ -1053,8 +1660,573 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-settings.read",
+			"account-settings.write"
+		],
+		"x-forge-skip": true
+	},
+	"POST /{account_or_zone}/{account_or_zone_id}/custom_ns": {
+		"operationId": "generated:post:/account_or_zone/account_or_zone_id/custom_ns",
+		"summary": "Add account or zone Custom Nameserver",
+		"description": "Adds a custom nameserver to the account or zone for use as a vanity nameserver on zones.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"type": "string",
+					"example": "372e67954025e0ba6aaa6d586b9e0b59",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"ns_name": {
+								"description": "The FQDN of the name server.",
+								"type": "string",
+								"format": "hostname",
+								"example": "ns1.example.com",
+								"x-auditable": true
+							},
+							"ns_set": {
+								"description": "The number of the set that this name server belongs to.",
+								"type": "number",
+								"example": 1,
+								"default": 1,
+								"maximum": 5,
+								"minimum": 1,
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"ns_name"
+						],
+						"title": "Custom NS Input"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Add account or zone Custom Nameserver response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A single account custom nameserver.",
+											"type": "object",
+											"properties": {
+												"dns_records": {
+													"description": "A and AAAA records associated with the nameserver.",
+													"type": "array",
+													"items": {
+														"properties": {
+															"type": {
+																"description": "DNS record type.",
+																"type": "string",
+																"example": "A",
+																"enum": [
+																	"A",
+																	"AAAA"
+																],
+																"x-auditable": true
+															},
+															"value": {
+																"description": "DNS record contents (an IPv4 or IPv6 address).",
+																"type": "string",
+																"example": "1.1.1.1",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"x-stainless-collection-type": "set"
+												},
+												"ns_name": {
+													"description": "The FQDN of the name server.",
+													"type": "string",
+													"format": "hostname",
+													"example": "ns1.example.com",
+													"x-auditable": true
+												},
+												"ns_set": {
+													"description": "The number of the set that this name server belongs to.",
+													"type": "number",
+													"example": 1,
+													"default": 1,
+													"maximum": 5,
+													"minimum": 1,
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Verification status of the nameserver.",
+													"type": "string",
+													"example": "verified",
+													"enum": [
+														"moved",
+														"pending",
+														"verified"
+													],
+													"deprecated": true,
+													"x-auditable": true
+												},
+												"zone_tag": {
+													"description": "Identifier.",
+													"type": "string",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"dns_records",
+												"ns_name",
+												"status",
+												"zone_tag"
+											],
+											"title": "Custom NS"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Add account or zone Custom Nameserver response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "A single account custom nameserver.",
+													"type": "object",
+													"properties": {
+														"dns_records": {
+															"description": "A and AAAA records associated with the nameserver.",
+															"type": "array",
+															"items": {
+																"properties": {
+																	"type": {
+																		"description": "DNS record type.",
+																		"type": "string",
+																		"example": "A",
+																		"enum": [
+																			"A",
+																			"AAAA"
+																		],
+																		"x-auditable": true
+																	},
+																	"value": {
+																		"description": "DNS record contents (an IPv4 or IPv6 address).",
+																		"type": "string",
+																		"example": "1.1.1.1",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"x-stainless-collection-type": "set"
+														},
+														"ns_name": {
+															"description": "The FQDN of the name server.",
+															"type": "string",
+															"format": "hostname",
+															"example": "ns1.example.com",
+															"x-auditable": true
+														},
+														"ns_set": {
+															"description": "The number of the set that this name server belongs to.",
+															"type": "number",
+															"example": 1,
+															"default": 1,
+															"maximum": 5,
+															"minimum": 1,
+															"x-auditable": true
+														},
+														"status": {
+															"description": "Verification status of the nameserver.",
+															"type": "string",
+															"example": "verified",
+															"enum": [
+																"moved",
+																"pending",
+																"verified"
+															],
+															"deprecated": true,
+															"x-auditable": true
+														},
+														"zone_tag": {
+															"description": "Identifier.",
+															"type": "string",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"dns_records",
+														"ns_name",
+														"status",
+														"zone_tag"
+													],
+													"title": "Custom NS"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Account-Level Custom Nameservers"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-nameservers",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "custom-nameservers",
+		"x-forge-method-name": "create",
+		"x-stainless-skip": true
 	},
 	"POST /accounts/{account_id}/custom_ns": {
 		"operationId": "account-level-custom-nameservers-add-account-custom-nameserver",
@@ -1603,7 +2775,11 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-nameservers",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-settings.write"
+		],
+		"x-forge-skip": true
 	}
 }

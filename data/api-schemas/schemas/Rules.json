@@ -89,6 +89,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules",
 		"x-fern-sdk-method-name": "delete-all",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules",
+		"x-forge-method-name": "delete-all",
 		"x-forge-require-confirmation": "Are you sure you want to delete all rules in this account?"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/rules/{id}": {
@@ -284,7 +287,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules",
+		"x-forge-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/rules/exemptions": {
 		"operationId": "cloudforce-one-remove-account-exemptions",
@@ -455,7 +461,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.exemptions",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.exemptions",
+		"x-forge-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/rules/structured/{id}": {
 		"operationId": "cloudforce-one-delete-email-rule",
@@ -633,7 +642,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.email",
+		"x-forge-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules": {
 		"operationId": "cloudforce-one-list-rules",
@@ -980,7 +992,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/{id}": {
 		"operationId": "cloudforce-one-get-rule",
@@ -1237,7 +1252,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/exemptions": {
 		"operationId": "cloudforce-one-get-exemptions",
@@ -1372,7 +1390,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.exemptions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.exemptions",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/managed": {
 		"operationId": "cloudforce-one-get-managed-rules",
@@ -1474,7 +1495,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.managed",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.managed",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/search": {
 		"operationId": "cloudforce-one-search-rules",
@@ -1625,7 +1649,8 @@
 						"keyword"
 					]
 				},
-				"x-fern-parameter-name": "search-mode"
+				"x-fern-parameter-name": "search-mode",
+				"x-forge-parameter-name": "search-mode"
 			},
 			{
 				"name": "language",
@@ -1957,7 +1982,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules",
-		"x-fern-sdk-method-name": "search"
+		"x-fern-sdk-method-name": "search",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules",
+		"x-forge-method-name": "search"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/stats": {
 		"operationId": "cloudforce-one-get-rule-stats",
@@ -2045,7 +2073,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.stats",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.stats",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/structured": {
 		"operationId": "cloudforce-one-list-email-rules",
@@ -2314,7 +2345,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.email",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/structured/{id}": {
 		"operationId": "cloudforce-one-get-email-rule",
@@ -2571,7 +2605,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.email",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/structured/schema": {
 		"operationId": "cloudforce-one-get-email-rule-schema",
@@ -2839,7 +2876,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email.schema",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.email.schema",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/tree": {
 		"operationId": "cloudforce-one-get-rule-tree",
@@ -2937,7 +2977,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.tree",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.tree",
+		"x-forge-method-name": "get"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules": {
 		"operationId": "cloudforce-one-create-rule",
@@ -3372,7 +3415,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/exemptions": {
 		"operationId": "cloudforce-one-add-account-exemptions",
@@ -3543,7 +3589,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.exemptions",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.exemptions",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/structured": {
 		"operationId": "cloudforce-one-create-email-rule",
@@ -4159,7 +4208,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.email",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/structured/{id}/test": {
 		"operationId": "cloudforce-one-test-email-rule",
@@ -4290,7 +4342,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
-		"x-fern-sdk-method-name": "test"
+		"x-fern-sdk-method-name": "test",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.email",
+		"x-forge-method-name": "test"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/structured/approvals/{id}/resubmit": {
 		"operationId": "cloudforce-one-resubmit-email-rule-approval",
@@ -4811,7 +4866,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email.approvals",
-		"x-fern-sdk-method-name": "resubmit"
+		"x-fern-sdk-method-name": "resubmit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.email.approvals",
+		"x-forge-method-name": "resubmit"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/structured/validate": {
 		"operationId": "cloudforce-one-validate-email-rule",
@@ -5241,7 +5299,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
-		"x-fern-sdk-method-name": "validate"
+		"x-fern-sdk-method-name": "validate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.email",
+		"x-forge-method-name": "validate"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/validate": {
 		"operationId": "cloudforce-one-validate-rule",
@@ -5358,7 +5419,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules",
-		"x-fern-sdk-method-name": "validate"
+		"x-fern-sdk-method-name": "validate",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules",
+		"x-forge-method-name": "validate"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/rules/{id}": {
 		"operationId": "cloudforce-one-update-rule",
@@ -5771,7 +5835,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules",
+		"x-forge-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/rules/exemptions": {
 		"operationId": "cloudforce-one-update-account-exemptions",
@@ -6022,7 +6089,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.exemptions",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.exemptions",
+		"x-forge-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/rules/structured/{id}": {
 		"operationId": "cloudforce-one-update-email-rule",
@@ -6694,7 +6764,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.email",
+		"x-forge-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/rules/structured/approvals/{id}": {
 		"operationId": "cloudforce-one-update-pending-email-rule-approval",
@@ -7682,6 +7755,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.rules.email.approvals",
-		"x-fern-sdk-method-name": "replace"
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.rules.email.approvals",
+		"x-forge-method-name": "replace"
 	}
 }

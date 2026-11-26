@@ -517,10 +517,20 @@
 			"Rate Limiting Analytics"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Analytics Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "rate-limit-analytics",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "rate-limit-analytics",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"analytics.read",
+			"observability.read",
+			"observability.write"
+		]
 	}
 }

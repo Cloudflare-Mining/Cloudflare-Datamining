@@ -422,11 +422,19 @@
 			"R2 Object"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.objects",
 		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.objects",
+		"x-forge-method-name": "bulk-delete",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This permanently deletes the listed R2 objects. With the deprecated `prefix` parameter it deletes every object under that prefix, and an empty prefix empties the bucket."
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}": {
@@ -631,11 +639,19 @@
 			"R2 Object"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Workers R2 Storage Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.objects",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.objects",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-r2.write",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This permanently deletes the specified object from the R2 bucket."
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/objects": {
@@ -977,7 +993,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.objects",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.objects",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}": {
 		"operationId": "r2-get-object",
@@ -1183,7 +1202,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.objects",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.objects",
+		"x-forge-method-name": "get"
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_key}": {
 		"operationId": "r2-put-object",
@@ -1467,6 +1489,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "r2.objects",
-		"x-fern-sdk-method-name": "put"
+		"x-fern-sdk-method-name": "put",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "r2.objects",
+		"x-forge-method-name": "put"
 	}
 }

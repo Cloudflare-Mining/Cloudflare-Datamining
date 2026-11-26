@@ -189,6 +189,7 @@
 												},
 												"license_key": {
 													"type": "string",
+													"x-auditable": false,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"notes": {
@@ -614,7 +615,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connectors",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/connectors": {
 		"operationId": "mconn-connectors-list",
@@ -811,6 +818,7 @@
 													},
 													"license_key": {
 														"type": "string",
+														"x-auditable": false,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"notes": {
@@ -1164,7 +1172,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connectors",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-wan.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}": {
 		"operationId": "mconn-connectors-get",
@@ -1356,6 +1371,7 @@
 												},
 												"license_key": {
 													"type": "string",
+													"x-auditable": false,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"notes": {
@@ -1782,7 +1798,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connectors",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-wan.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/interrupts": {
 		"operationId": "mconn-connector-interrupts-list",
@@ -2348,7 +2371,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-interrupts",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connector-interrupts",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-wan.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events": {
 		"operationId": "mconn-connector-telemetry-events-list",
@@ -2412,7 +2442,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"x-fern-parameter-name": "kind"
+				"x-fern-parameter-name": "kind",
+				"x-forge-parameter-name": "kind"
 			}
 		],
 		"responses": {
@@ -2821,7 +2852,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-telemetry-events",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connector-telemetry-events",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-wan.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/{event_t}.{event_n}": {
 		"operationId": "mconn-connector-telemetry-events-get",
@@ -3348,7 +3386,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-telemetry-events",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connector-telemetry-events",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-wan.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/latest": {
 		"operationId": "mconn-connector-telemetry-events-latest-get",
@@ -3874,7 +3919,14 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "connector-telemetry-events-latest",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "connector-telemetry-events-latest",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-wan.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots": {
 		"operationId": "mconn-connector-telemetry-snapshots-list",
@@ -4328,7 +4380,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-telemetry-snapshots",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connector-telemetry-snapshots",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-wan.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/{snapshot_t}": {
 		"operationId": "mconn-connector-telemetry-snapshots-get",
@@ -6273,7 +6332,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-telemetry-snapshots",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connector-telemetry-snapshots",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-wan.write"
+		]
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/latest": {
 		"operationId": "mconn-connector-telemetry-snapshots-latest-get",
@@ -8225,7 +8291,14 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "connector-telemetry-snapshots-latest",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "connector-telemetry-snapshots-latest",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"magic-wan.read",
+			"magic-wan.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/magic/connectors/{connector_id}": {
 		"operationId": "mconn-connectors-edit",
@@ -8499,6 +8572,7 @@
 												},
 												"license_key": {
 													"type": "string",
+													"x-auditable": false,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"notes": {
@@ -8924,7 +8998,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connectors",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write"
+		]
 	},
 	"POST /accounts/{account_id}/magic/connectors": {
 		"operationId": "mconn-connectors-create",
@@ -9210,6 +9290,7 @@
 												},
 												"license_key": {
 													"type": "string",
+													"x-auditable": false,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"notes": {
@@ -9709,7 +9790,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connectors",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write"
+		]
 	},
 	"POST /accounts/{account_id}/magic/connectors/{connector_id}/interrupts": {
 		"operationId": "mconn-connector-interrupts-create",
@@ -10391,7 +10478,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connector-interrupts",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connector-interrupts",
+		"x-forge-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/magic/connectors/{connector_id}": {
 		"operationId": "mconn-connectors-update",
@@ -10665,6 +10755,7 @@
 												},
 												"license_key": {
 													"type": "string",
+													"x-auditable": false,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"notes": {
@@ -11090,6 +11181,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "connectors",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "connectors",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"magic-wan.write"
+		]
 	}
 }

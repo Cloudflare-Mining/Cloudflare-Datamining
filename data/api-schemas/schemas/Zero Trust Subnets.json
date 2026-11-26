@@ -519,6 +519,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.warp",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.subnets.warp",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes a WARP IP subnet."
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets": {
@@ -1236,7 +1242,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.subnets",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-networks.read",
+			"teams-networks.write"
+		]
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets/cloudflare_source/{address_family}": {
 		"operationId": "zero-trust-networks-subnet-get-cloudflare-source",
@@ -1754,7 +1767,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.cloudflare-source",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.subnets.cloudflare-source",
+		"x-forge-method-name": "get"
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets/initial_resolved_ip/{address_family}": {
 		"operationId": "zero-trust-networks-subnet-get-initial-resolved-ip",
@@ -2276,7 +2292,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.initial-resolved-ip",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.subnets.initial-resolved-ip",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-networks.read",
+			"teams-networks.write"
+		]
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}": {
 		"operationId": "zero-trust-networks-subnet-get-warp",
@@ -2796,7 +2819,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.warp",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.subnets.warp",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-networks.read",
+			"teams-networks.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/zerotrust/subnets/cloudflare_source/{address_family}": {
 		"operationId": "zero-trust-networks-subnet-update-cloudflare-source",
@@ -3349,7 +3379,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.cloudflare-source",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.subnets.cloudflare-source",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}": {
 		"operationId": "zero-trust-networks-subnet-update-warp",
@@ -3901,7 +3937,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.warp",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.subnets.warp",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write"
+		]
 	},
 	"POST /accounts/{account_id}/zerotrust/subnets/warp": {
 		"operationId": "zero-trust-networks-subnet-create-warp",
@@ -4451,7 +4493,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.warp",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.subnets.warp",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-networks.write"
+		]
 	},
 	"PUT /accounts/{account_id}/zerotrust/subnets/initial_resolved_ip/{address_family}": {
 		"operationId": "zero-trust-networks-subnet-update-initial-resolved-ip",
@@ -5001,6 +5049,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "network.subnets.initial-resolved-ip",
-		"x-fern-sdk-method-name": "replace"
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "network.subnets.initial-resolved-ip",
+		"x-forge-method-name": "replace"
 	}
 }

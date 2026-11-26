@@ -520,7 +520,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.packages",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.packages",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}": {
 		"operationId": "waf-packages-get-a-waf-package",
@@ -787,7 +795,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.packages",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.packages",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /zones/{zone_id}/firewall/waf/packages/{package_id}": {
 		"operationId": "waf-packages-update-a-waf-package",
@@ -1199,6 +1215,13 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.waf.packages",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.waf.packages",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	}
 }

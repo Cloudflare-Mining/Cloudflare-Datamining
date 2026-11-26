@@ -267,6 +267,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "stream.videos.downloads-default",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "stream.videos.downloads-default",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		],
 		"x-forge-require-confirmation": "Remove this default download? It will need to be regenerated for future use."
 	},
 	"DELETE /accounts/{account_id}/stream/{identifier}/downloads/{download_type}": {
@@ -553,6 +559,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.downloads",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.downloads",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		],
 		"x-forge-require-confirmation": "Remove this download? It will need to be regenerated for future use."
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/downloads": {
@@ -896,12 +908,23 @@
 			"Stream MP4 Downloads"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
+			"AI Search Index Engine",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "stream.videos.downloads-default",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "stream.videos.downloads-default",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write",
+			"ai-search.index"
+		]
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/downloads": {
 		"operationId": "stream-mp4-downloads-create-downloads",
@@ -1245,7 +1268,10 @@
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "stream.videos.downloads-default",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "stream.videos.downloads-default",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/downloads/{download_type}": {
 		"operationId": "stream-downloads-create-type-specific-downloads",
@@ -1605,6 +1631,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.downloads",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.downloads",
+		"x-forge-method-name": "create"
 	}
 }

@@ -588,7 +588,15 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.evaluate",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.evaluate",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"flagship.evaluate",
+			"flagship.read",
+			"flagship.write"
+		]
 	},
 	"POST /accounts/{account_id}/flagship/apps/{app_id}/evaluate": {
 		"operationId": "flagship_evaluate_flag_post",
@@ -1210,6 +1218,853 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "flagship.apps.flags",
-		"x-fern-sdk-method-name": "evaluate"
+		"x-fern-sdk-method-name": "evaluate",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.flags",
+		"x-forge-method-name": "evaluate",
+		"x-forge-oauth-scopes": [
+			"flagship.evaluate",
+			"flagship.read",
+			"flagship.write"
+		]
+	},
+	"POST /accounts/{account_id}/flagship/apps/{app_id}/ofrep/v1/evaluate/flags": {
+		"operationId": "flagship_ofrep_evaluate_flags",
+		"summary": "Evaluate all flags (OFREP)",
+		"description": "Evaluates every flag in the app following the [OpenFeature Remote Evaluation Protocol](https://github.com/open-feature/protocol) (OFREP) bulk contract. A flag with an invalid config appears as a failure entry rather than failing the request. Send the returned `ETag` in `If-None-Match` to receive `304` when the evaluated results are unchanged; a rollout whose targeting attribute is missing re-buckets randomly on each request, so it does not stay cached. Request-level failures omit `key` from the OFREP error body.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID that owns the Flagship app.",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID that owns the Flagship app.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "app_id",
+				"in": "path",
+				"description": "Flagship app ID returned when the app was created.",
+				"required": true,
+				"schema": {
+					"description": "Flagship app ID returned when the app was created.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "If-None-Match",
+				"in": "header",
+				"description": "Previously returned ETag, or `*`.",
+				"schema": {
+					"description": "Previously returned ETag, or `*`.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"context": {
+								"description": "Evaluation attributes keyed by name. Values may be any JSON value; the context supports up to 100 entries, nesting depth of 10, 10,000 values, and 32 KB. Omit for an empty context.",
+								"type": "object",
+								"default": {},
+								"additionalProperties": {
+									"oneOf": [
+										{
+											"nullable": true,
+											"type": "string"
+										},
+										{
+											"type": "number"
+										},
+										{
+											"type": "boolean"
+										},
+										{
+											"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/ofrep/v1/evaluate/flags.requestBody.content.application/json.schema.properties.context.additionalProperties]",
+											"type": "object"
+										},
+										{
+											"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/ofrep/v1/evaluate/flags.requestBody.content.application/json.schema.properties.context.additionalProperties]",
+											"type": "array"
+										}
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Evaluation results for every flag.",
+				"headers": {
+					"ETag": {
+						"description": "Strong entity tag over the evaluated results (not the config and context).",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"flags": {
+									"description": "One entry per flag in the app. A flag with an invalid config is reported as a failure entry.",
+									"type": "array",
+									"items": {
+										"anyOf": [
+											{
+												"type": "object",
+												"properties": {
+													"key": {
+														"description": "Key of the evaluated flag.",
+														"type": "string"
+													},
+													"metadata": {
+														"description": "Key-value metadata associated with the flag. Returned only when the flag has metadata.",
+														"type": "object",
+														"additionalProperties": {
+															"anyOf": [
+																{
+																	"type": "boolean"
+																},
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																}
+															]
+														},
+														"maxProperties": 32
+													},
+													"reason": {
+														"description": "Reason the evaluator selected this variation.",
+														"type": "string",
+														"enum": [
+															"STATIC",
+															"TARGETING_MATCH",
+															"DEFAULT",
+															"DISABLED",
+															"SPLIT"
+														]
+													},
+													"value": {
+														"oneOf": [
+															{
+																"nullable": true,
+																"type": "string"
+															},
+															{
+																"type": "number"
+															},
+															{
+																"type": "boolean"
+															},
+															{
+																"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/ofrep/v1/evaluate/flags.responses.200.content.application/json.schema.properties.flags.items.anyOf.0.properties.value]",
+																"type": "object"
+															},
+															{
+																"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/ofrep/v1/evaluate/flags.responses.200.content.application/json.schema.properties.flags.items.anyOf.0.properties.value]",
+																"type": "array"
+															}
+														]
+													},
+													"variant": {
+														"description": "Name of the variation that supplied the resolved value. Omitted when the flag is disabled.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"key",
+													"reason"
+												]
+											},
+											{
+												"type": "object",
+												"properties": {
+													"errorCode": {
+														"description": "OpenFeature error code for the failed evaluation.",
+														"type": "string",
+														"enum": [
+															"PROVIDER_NOT_READY",
+															"FLAG_NOT_FOUND",
+															"PARSE_ERROR",
+															"TYPE_MISMATCH",
+															"TARGETING_KEY_MISSING",
+															"INVALID_CONTEXT",
+															"GENERAL"
+														]
+													},
+													"errorDetails": {
+														"description": "Human-readable description of the failure.",
+														"type": "string"
+													},
+													"key": {
+														"description": "Key of the flag that failed. Omitted on request-level errors.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"errorCode"
+												]
+											}
+										]
+									}
+								}
+							},
+							"required": [
+								"flags"
+							]
+						}
+					}
+				}
+			},
+			"304": {
+				"description": "Evaluated results have not changed.",
+				"headers": {
+					"ETag": {
+						"description": "Strong entity tag over the evaluated results (not the config and context).",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Malformed JSON, non-object body, or invalid context.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errorCode": {
+									"description": "OpenFeature error code for the failed evaluation.",
+									"type": "string",
+									"enum": [
+										"PROVIDER_NOT_READY",
+										"FLAG_NOT_FOUND",
+										"PARSE_ERROR",
+										"TYPE_MISMATCH",
+										"TARGETING_KEY_MISSING",
+										"INVALID_CONTEXT",
+										"GENERAL"
+									]
+								},
+								"errorDetails": {
+									"description": "Human-readable description of the failure.",
+									"type": "string"
+								},
+								"key": {
+									"description": "Key of the flag that failed. Omitted on request-level errors.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"errorCode"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "App not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errorCode": {
+									"description": "OpenFeature error code for the failed evaluation.",
+									"type": "string",
+									"enum": [
+										"PROVIDER_NOT_READY",
+										"FLAG_NOT_FOUND",
+										"PARSE_ERROR",
+										"TYPE_MISMATCH",
+										"TARGETING_KEY_MISSING",
+										"INVALID_CONTEXT",
+										"GENERAL"
+									]
+								},
+								"errorDetails": {
+									"description": "Human-readable description of the failure.",
+									"type": "string"
+								},
+								"key": {
+									"description": "Key of the flag that failed. Omitted on request-level errors.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"errorCode"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Evaluation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errorCode": {
+									"description": "OpenFeature error code for the failed evaluation.",
+									"type": "string",
+									"enum": [
+										"PROVIDER_NOT_READY",
+										"FLAG_NOT_FOUND",
+										"PARSE_ERROR",
+										"TYPE_MISMATCH",
+										"TARGETING_KEY_MISSING",
+										"INVALID_CONTEXT",
+										"GENERAL"
+									]
+								},
+								"errorDetails": {
+									"description": "Human-readable description of the failure.",
+									"type": "string"
+								},
+								"key": {
+									"description": "Key of the flag that failed. Omitted on request-level errors.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"errorCode"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Flag store temporarily unavailable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errorCode": {
+									"description": "OpenFeature error code for the failed evaluation.",
+									"type": "string",
+									"enum": [
+										"PROVIDER_NOT_READY",
+										"FLAG_NOT_FOUND",
+										"PARSE_ERROR",
+										"TYPE_MISMATCH",
+										"TARGETING_KEY_MISSING",
+										"INVALID_CONTEXT",
+										"GENERAL"
+									]
+								},
+								"errorDetails": {
+									"description": "Human-readable description of the failure.",
+									"type": "string"
+								},
+								"key": {
+									"description": "Key of the flag that failed. Omitted on request-level errors.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"errorCode"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Evaluation"
+		],
+		"x-api-token-group": [
+			"Flagship Read",
+			"Flagship Write",
+			"Flagship Evaluate"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.flagship.app.evaluate"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "flagship.apps.ofrep",
+		"x-fern-sdk-method-name": "evaluate-all",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.ofrep",
+		"x-forge-method-name": "evaluate-all",
+		"x-forge-oauth-scopes": [
+			"flagship.evaluate",
+			"flagship.read",
+			"flagship.write"
+		],
+		"x-forge-skip": true
+	},
+	"POST /accounts/{account_id}/flagship/apps/{app_id}/ofrep/v1/evaluate/flags/{flag_key}": {
+		"operationId": "flagship_ofrep_evaluate_flag",
+		"summary": "Evaluate flag (OFREP)",
+		"description": "Evaluates a single flag following the [OpenFeature Remote Evaluation Protocol](https://github.com/open-feature/protocol) (OFREP). Send the evaluation context as `{ \"context\": { ... } }`; it may be omitted. A disabled flag returns `reason: DISABLED` without `value` or `variant` so the client uses its own default. Failures use the OFREP error shape `{ key, errorCode, errorDetails }`.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Cloudflare account ID that owns the Flagship app.",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID that owns the Flagship app.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "app_id",
+				"in": "path",
+				"description": "Flagship app ID returned when the app was created.",
+				"required": true,
+				"schema": {
+					"description": "Flagship app ID returned when the app was created.",
+					"type": "string"
+				}
+			},
+			{
+				"name": "flag_key",
+				"in": "path",
+				"description": "Case-sensitive key identifying the flag within the app.",
+				"required": true,
+				"schema": {
+					"description": "Case-sensitive key identifying the flag within the app.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"context": {
+								"description": "Evaluation attributes keyed by name. Values may be any JSON value; the context supports up to 100 entries, nesting depth of 10, 10,000 values, and 32 KB. Omit for an empty context.",
+								"type": "object",
+								"default": {},
+								"additionalProperties": {
+									"oneOf": [
+										{
+											"nullable": true,
+											"type": "string"
+										},
+										{
+											"type": "number"
+										},
+										{
+											"type": "boolean"
+										},
+										{
+											"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/ofrep/v1/evaluate/flags/{flag_key}.requestBody.content.application/json.schema.properties.context.additionalProperties]",
+											"type": "object"
+										},
+										{
+											"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/ofrep/v1/evaluate/flags/{flag_key}.requestBody.content.application/json.schema.properties.context.additionalProperties]",
+											"type": "array"
+										}
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Flag evaluation result.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"key": {
+									"description": "Key of the evaluated flag.",
+									"type": "string"
+								},
+								"metadata": {
+									"description": "Key-value metadata associated with the flag. Returned only when the flag has metadata.",
+									"type": "object",
+									"additionalProperties": {
+										"anyOf": [
+											{
+												"type": "boolean"
+											},
+											{
+												"type": "string"
+											},
+											{
+												"type": "number"
+											}
+										]
+									},
+									"maxProperties": 32
+								},
+								"reason": {
+									"description": "Reason the evaluator selected this variation.",
+									"type": "string",
+									"enum": [
+										"STATIC",
+										"TARGETING_MATCH",
+										"DEFAULT",
+										"DISABLED",
+										"SPLIT"
+									]
+								},
+								"value": {
+									"oneOf": [
+										{
+											"nullable": true,
+											"type": "string"
+										},
+										{
+											"type": "number"
+										},
+										{
+											"type": "boolean"
+										},
+										{
+											"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/ofrep/v1/evaluate/flags/{flag_key}.responses.200.content.application/json.schema.properties.value]",
+											"type": "object"
+										},
+										{
+											"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/ofrep/v1/evaluate/flags/{flag_key}.responses.200.content.application/json.schema.properties.value]",
+											"type": "array"
+										}
+									]
+								},
+								"variant": {
+									"description": "Name of the variation that supplied the resolved value. Omitted when the flag is disabled.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"key",
+								"reason"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Malformed JSON, non-object body, or invalid context.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errorCode": {
+									"description": "OpenFeature error code for the failed evaluation.",
+									"type": "string",
+									"enum": [
+										"PROVIDER_NOT_READY",
+										"FLAG_NOT_FOUND",
+										"PARSE_ERROR",
+										"TYPE_MISMATCH",
+										"TARGETING_KEY_MISSING",
+										"INVALID_CONTEXT",
+										"GENERAL"
+									]
+								},
+								"errorDetails": {
+									"description": "Human-readable description of the failure.",
+									"type": "string"
+								},
+								"key": {
+									"description": "Key of the flag that failed. Omitted on request-level errors.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"errorCode"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Forbidden.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Flag or app not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errorCode": {
+									"description": "OpenFeature error code for the failed evaluation.",
+									"type": "string",
+									"enum": [
+										"PROVIDER_NOT_READY",
+										"FLAG_NOT_FOUND",
+										"PARSE_ERROR",
+										"TYPE_MISMATCH",
+										"TARGETING_KEY_MISSING",
+										"INVALID_CONTEXT",
+										"GENERAL"
+									]
+								},
+								"errorDetails": {
+									"description": "Human-readable description of the failure.",
+									"type": "string"
+								},
+								"key": {
+									"description": "Key of the flag that failed. Omitted on request-level errors.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"errorCode"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Evaluation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errorCode": {
+									"description": "OpenFeature error code for the failed evaluation.",
+									"type": "string",
+									"enum": [
+										"PROVIDER_NOT_READY",
+										"FLAG_NOT_FOUND",
+										"PARSE_ERROR",
+										"TYPE_MISMATCH",
+										"TARGETING_KEY_MISSING",
+										"INVALID_CONTEXT",
+										"GENERAL"
+									]
+								},
+								"errorDetails": {
+									"description": "Human-readable description of the failure.",
+									"type": "string"
+								},
+								"key": {
+									"description": "Key of the flag that failed. Omitted on request-level errors.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"errorCode"
+							]
+						}
+					}
+				}
+			},
+			"503": {
+				"description": "Flag store temporarily unavailable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errorCode": {
+									"description": "OpenFeature error code for the failed evaluation.",
+									"type": "string",
+									"enum": [
+										"PROVIDER_NOT_READY",
+										"FLAG_NOT_FOUND",
+										"PARSE_ERROR",
+										"TYPE_MISMATCH",
+										"TARGETING_KEY_MISSING",
+										"INVALID_CONTEXT",
+										"GENERAL"
+									]
+								},
+								"errorDetails": {
+									"description": "Human-readable description of the failure.",
+									"type": "string"
+								},
+								"key": {
+									"description": "Key of the flag that failed. Omitted on request-level errors.",
+									"type": "string"
+								}
+							},
+							"required": [
+								"errorCode"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Evaluation"
+		],
+		"x-api-token-group": [
+			"Flagship Read",
+			"Flagship Write",
+			"Flagship Evaluate"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.flagship.app.evaluate"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "flagship.apps.ofrep",
+		"x-fern-sdk-method-name": "evaluate",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "flagship.apps.ofrep",
+		"x-forge-method-name": "evaluate",
+		"x-forge-oauth-scopes": [
+			"flagship.evaluate",
+			"flagship.read",
+			"flagship.write"
+		],
+		"x-forge-skip": true
 	}
 }

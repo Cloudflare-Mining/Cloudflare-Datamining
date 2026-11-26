@@ -183,12 +183,21 @@
 			"Notification destinations with PagerDuty"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.pagerduty",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.destinations.pagerduty",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes all PagerDuty services connected to the account."
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/pagerduty": {
@@ -405,6 +414,8 @@
 			"Notification destinations with PagerDuty"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
 			"Zero Trust: PII Read",
 			"Notifications Write",
 			"Notifications Read",
@@ -419,7 +430,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.pagerduty",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.destinations.pagerduty",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"notifications.read",
+			"notifications.write",
+			"teams-pii.read",
+			"observability.read",
+			"account-settings.read",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/alerting/v3/destinations/pagerduty/connect/{token_id}": {
 		"operationId": "notification-destinations-with-pager-duty-connect-pager-duty-token",
@@ -727,12 +750,21 @@
 			"Notification destinations with PagerDuty"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.pagerduty",
-		"x-fern-sdk-method-name": "link"
+		"x-fern-sdk-method-name": "link",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.destinations.pagerduty",
+		"x-forge-method-name": "link",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/alerting/v3/destinations/pagerduty/connect": {
 		"operationId": "notification-destinations-with-pager-duty-connect-pager-duty",
@@ -833,6 +865,8 @@
 													"type": "string",
 													"example": "a313ba7d3e464c0ea40808fafbc3816a",
 													"maxLength": 32,
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											}
@@ -1028,11 +1062,20 @@
 			"Notification destinations with PagerDuty"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Notifications Write",
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "alerting.destinations.pagerduty",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "alerting.destinations.pagerduty",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"notifications.write",
+			"observability.write",
+			"account-settings.write"
+		]
 	}
 }

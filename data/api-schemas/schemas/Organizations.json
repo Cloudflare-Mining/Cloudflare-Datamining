@@ -219,6 +219,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Delete this empty organization? This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise": {
@@ -471,12 +474,21 @@
 			"Organizations"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.analytics.usage",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.analytics.usage",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /organizations": {
 		"operationId": "Organization_listOrganizations",
@@ -1007,7 +1019,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"GET /organizations/{organization_id}": {
 		"operationId": "Organizations_retrieve",
@@ -1371,7 +1390,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations",
+		"x-forge-method-name": "get"
 	},
 	"GET /organizations/{organization_id}/accounts": {
 		"operationId": "Organizations_getAccounts",
@@ -1597,12 +1619,27 @@
 														"type": "string",
 														"format": "date-time"
 													},
+													"enterprise_provisioning_status": {
+														"type": "string",
+														"enum": [
+															"pending",
+															"completed",
+															"rejected",
+															"cancelled"
+														]
+													},
 													"id": {
 														"type": "string"
 													},
 													"name": {
 														"type": "string",
 														"nullable": true
+													},
+													"provisioning_mode": {
+														"type": "string",
+														"enum": [
+															"assisted"
+														]
 													},
 													"settings": {
 														"type": "object",
@@ -1896,7 +1933,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.accounts",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.accounts",
+		"x-forge-method-name": "list"
 	},
 	"GET /organizations/{organization_id}/profile": {
 		"operationId": "Organizations_getProfile",
@@ -2136,7 +2176,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.profile",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.profile",
+		"x-forge-method-name": "get"
 	},
 	"POST /organizations": {
 		"operationId": "Organizations_createUserOrganization",
@@ -2552,7 +2595,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"user-details.write"
+		]
 	},
 	"PUT /organizations/{organization_id}": {
 		"operationId": "Organizations_modify",
@@ -2946,7 +2995,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations",
+		"x-forge-method-name": "update"
 	},
 	"PUT /organizations/{organization_id}/invites/{member_code}": {
 		"operationId": "Organizations_handleOrganizationInvite",
@@ -3264,7 +3316,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.invites",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.invites",
+		"x-forge-method-name": "update"
 	},
 	"PUT /organizations/{organization_id}/profile": {
 		"operationId": "Organizations_modifyProfile",
@@ -3463,6 +3518,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "organizations.profile",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "organizations.profile",
+		"x-forge-method-name": "update"
 	}
 }

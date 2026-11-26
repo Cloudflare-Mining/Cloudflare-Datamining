@@ -294,7 +294,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.origin-tls-compliance-modes",
+		"x-forge-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/settings/auto_origin_tls_kex": {
 		"operationId": "ssl-detector-auto-origin-tls-kex-get-enrollment",
@@ -580,7 +583,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.auto-origin-tls-kex",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ssl.auto-origin-tls-kex",
+		"x-forge-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/origin_tls_compliance_modes": {
 		"operationId": "zone-cache-settings-get-origin-tls-compliance-modes-setting",
@@ -911,7 +917,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.origin-tls-compliance-modes",
+		"x-forge-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/settings/auto_origin_tls_kex": {
 		"operationId": "ssl-detector-auto-origin-tls-kex-patch-enrollment",
@@ -1218,7 +1227,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.auto-origin-tls-kex",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ssl.auto-origin-tls-kex",
+		"x-forge-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/origin_tls_compliance_modes": {
 		"operationId": "zone-cache-settings-change-origin-tls-compliance-modes-setting",
@@ -1580,7 +1592,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.origin-tls-compliance-modes",
+		"x-forge-method-name": "edit"
 	},
 	"PUT /zones/{zone_id}/settings/origin_tls_compliance_modes": {
 		"operationId": "zone-cache-settings-replace-origin-tls-compliance-modes-setting",
@@ -1942,6 +1957,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.origin-tls-compliance-modes",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.origin-tls-compliance-modes",
+		"x-forge-method-name": "update"
 	}
 }

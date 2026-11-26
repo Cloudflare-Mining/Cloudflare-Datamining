@@ -472,6 +472,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "containers.applications",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.applications",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"containers.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes the application and stops its containers."
 	},
 	"DELETE /accounts/{account_id}/resource-library/applications/{id}": {
@@ -1219,6 +1225,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.applications",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "This operation deletes the custom application and all of its versions. This action cannot be undone."
 	},
 	"GET /accounts/{account_id}/containers/applications": {
@@ -2301,7 +2310,10 @@
 			"results": "$response.result"
 		},
 		"x-fern-sdk-group-name": "containers.applications",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.applications",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/containers/applications/{application_id}": {
 		"operationId": "getApplication",
@@ -3332,7 +3344,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "containers.applications",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.applications",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"containers.read",
+			"containers.write"
+		]
 	},
 	"GET /accounts/{account_id}/containers/applications/{application_id}/versions": {
 		"operationId": "listApplicationVersions",
@@ -3926,7 +3945,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "containers.applications.versions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.applications.versions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"containers.read",
+			"containers.write"
+		]
 	},
 	"GET /accounts/{account_id}/one/applications": {
 		"operationId": "list_applications_v2",
@@ -4279,6 +4305,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.applications",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.applications",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/applications/{application_id}": {
@@ -4687,6 +4716,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.applications",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.applications",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/applications/{application_id}/auth-methods": {
@@ -4966,6 +4998,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.applications.auth-methods",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.applications.auth-methods",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/applications/{application_id}/setup-flows": {
@@ -5497,6 +5532,10 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.casb.applications.setup-flows",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.applications.setup-flows",
+		"x-forge-method-name": "list",
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/resource-library/applications": {
@@ -6376,7 +6415,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.applications",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/resource-library/applications/{id}": {
 		"operationId": "getResourceLibraryApplicationById",
@@ -6925,7 +6967,536 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.applications",
+		"x-forge-method-name": "get"
+	},
+	"GET /accounts/{account_id}/resource-library/applications/{id}/references": {
+		"operationId": "getResourceLibraryApplicationReferences",
+		"summary": "Get application references",
+		"description": "List the resources in the account that reference a custom application, such as Gateway rules. This is the same list a delete of the application returns when it is rejected. A delete checks the references again, so the list can change before the delete runs.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"description": "Account ID.",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"example": "023e105f4ecef8ad9ca31a8372d0c353"
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"description": "Application ID of a custom application in the account.",
+				"required": true,
+				"schema": {
+					"description": "Numeric identifier for the application.",
+					"type": "integer",
+					"format": "int64",
+					"example": 498,
+					"maximum": 4294967295,
+					"minimum": 0
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The resources that reference the application. The list is empty when nothing references it.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The complete list of resources in the account that reference the application.",
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"description": "The public identifier of the referencing resource.",
+														"type": "string",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+													},
+													"name": {
+														"description": "The name of the referencing resource.",
+														"type": "string",
+														"example": "Allow Spotify"
+													},
+													"type": {
+														"description": "The resource type, such as Rule or Profile. Additional types may be returned.",
+														"type": "string",
+														"example": "Rule"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"type"
+												]
+											}
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated principal does not have access to the requested account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"502": {
+				"description": "The references could not be listed because a required validation was unavailable.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get application references response failure. The application ID must be a custom application in the account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Applications"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write",
+			"Resource Library Read",
+			"Resource Library Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.applications",
+		"x-fern-sdk-method-name": "references",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.applications",
+		"x-forge-method-name": "references"
 	},
 	"PATCH /accounts/{account_id}/containers/applications/{application_id}": {
 		"operationId": "modifyApplication",
@@ -8283,7 +8854,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "containers.applications",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.applications",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"containers.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/resource-library/applications/{id}": {
 		"operationId": "updateResourceLibraryApplication",
@@ -9014,7 +9591,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.applications",
+		"x-forge-method-name": "update"
 	},
 	"POST /accounts/{account_id}/containers/applications": {
 		"operationId": "createApplication",
@@ -10558,7 +11138,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "containers.applications",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "containers.applications",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/resource-library/applications": {
 		"operationId": "createResourceLibraryApplication",
@@ -11364,7 +11947,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.applications",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.applications",
+		"x-forge-method-name": "create"
 	},
 	"POST /accounts/{account_id}/resource-library/applications/lookup": {
 		"operationId": "lookupResourceLibraryApplications",
@@ -12218,6 +12804,9 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "accounts.applications",
-		"x-fern-sdk-method-name": "lookup"
+		"x-fern-sdk-method-name": "lookup",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "accounts.applications",
+		"x-forge-method-name": "lookup"
 	}
 }

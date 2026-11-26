@@ -695,7 +695,13 @@
 			"User Details Read"
 		],
 		"x-fern-sdk-group-name": "cps",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "cps",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	},
 	"PUT /user/communication_preferences": {
 		"operationId": "user-communication-preferences-update",
@@ -1483,6 +1489,11 @@
 			"User Details Write"
 		],
 		"x-fern-sdk-group-name": "cps",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-group-name": "cps",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"user-details.write"
+		]
 	}
 }

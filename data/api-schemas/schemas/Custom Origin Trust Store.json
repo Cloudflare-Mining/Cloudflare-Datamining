@@ -403,7 +403,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "acm.custom-trust-store",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "acm.custom-trust-store",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.write"
+		]
 	},
 	"GET /zones/{zone_id}/acm/custom_trust_store": {
 		"operationId": "custom-origin-trust-store-list-details",
@@ -1045,7 +1051,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "acm.custom-trust-store",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "acm.custom-trust-store",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.read",
+			"ssl-and-certificates.write"
+		]
 	},
 	"GET /zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}": {
 		"operationId": "custom-origin-trust-store-details",
@@ -1585,7 +1598,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "acm.custom-trust-store",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "acm.custom-trust-store",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.read",
+			"ssl-and-certificates.write"
+		]
 	},
 	"POST /zones/{zone_id}/acm/custom_trust_store": {
 		"operationId": "custom-origin-trust-store-create",
@@ -2132,6 +2152,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "acm.custom-trust-store",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "acm.custom-trust-store",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.write"
+		]
 	}
 }

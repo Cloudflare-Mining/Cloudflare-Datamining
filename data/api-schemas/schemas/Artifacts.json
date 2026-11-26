@@ -594,6 +594,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces",
+		"x-forge-method-name": "delete",
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}": {
@@ -1268,6 +1271,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos",
+		"x-forge-method-name": "delete",
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens/{id}": {
@@ -1849,6 +1855,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.tokens",
 		"x-fern-sdk-method-name": "revoke",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.tokens",
+		"x-forge-method-name": "revoke",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces": {
@@ -2456,6 +2465,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}": {
@@ -3148,6 +3160,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos": {
@@ -3818,6 +3833,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}": {
@@ -4631,6 +4649,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/blob/{hash}": {
@@ -5270,6 +5291,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos.blobs",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos.blobs",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/commit/{hash}": {
@@ -6023,6 +6047,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos.commits",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos.commits",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/file": {
@@ -6666,6 +6693,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos.files",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos.files",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/log": {
@@ -7431,6 +7461,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos.logs",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos.logs",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/raw/{ref}/{path}": {
@@ -8094,6 +8127,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos.raw",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos.raw",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tokens": {
@@ -8926,6 +8962,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos.tokens",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos.tokens",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tree/{hash}": {
@@ -9733,6 +9772,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos.trees",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos.trees",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces": {
@@ -10442,6 +10484,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces",
+		"x-forge-method-name": "create",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/repos": {
@@ -11161,6 +11206,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos",
+		"x-forge-method-name": "create",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/fork": {
@@ -12078,6 +12126,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos",
 		"x-fern-sdk-method-name": "fork",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos",
+		"x-forge-method-name": "fork",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/import": {
@@ -13365,6 +13416,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.repos",
 		"x-fern-sdk-method-name": "import",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.repos",
+		"x-forge-method-name": "import",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens": {
@@ -14171,6 +14225,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "artifacts.namespaces.tokens",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "artifacts.namespaces.tokens",
+		"x-forge-method-name": "create",
 		"x-stability": "beta"
 	}
 }

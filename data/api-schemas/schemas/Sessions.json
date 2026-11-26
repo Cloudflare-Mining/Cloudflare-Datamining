@@ -358,12 +358,21 @@
 			"Sessions"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.sessions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.sessions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}": {
 		"operationId": "GetSessionDetails",
@@ -619,12 +628,21 @@
 			"Sessions"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.sessions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.sessions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/chat": {
 		"operationId": "GetSessionChat",
@@ -801,12 +819,21 @@
 			"Sessions"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.sessions.chat",
-		"x-fern-sdk-method-name": "export"
+		"x-fern-sdk-method-name": "export",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.sessions.chat",
+		"x-forge-method-name": "export",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants": {
 		"operationId": "GetSessionParticipants",
@@ -1260,12 +1287,21 @@
 			"Sessions"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.sessions.participants",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.sessions.participants",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants/{participant_id}": {
 		"operationId": "GetParticipantDetails",
@@ -1560,12 +1596,21 @@
 			"Sessions"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.sessions.participants",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.sessions.participants",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
 		"operationId": "GetSessionSummary",
@@ -1746,12 +1791,21 @@
 			"Sessions"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.sessions.summaries",
-		"x-fern-sdk-method-name": "export"
+		"x-fern-sdk-method-name": "export",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.sessions.summaries",
+		"x-forge-method-name": "export",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript": {
 		"operationId": "GetSessionTranscript",
@@ -1947,12 +2001,21 @@
 			"Sessions"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.sessions.transcripts",
-		"x-fern-sdk-method-name": "export"
+		"x-fern-sdk-method-name": "export",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.sessions.transcripts",
+		"x-forge-method-name": "export",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/peer-report/{peer_id}": {
 		"operationId": "GetParticipantDataFromPeerId",
@@ -4069,12 +4132,21 @@
 			"Sessions"
 		],
 		"x-api-token-group": [
+			"Realtime Read",
 			"Realtime Admin",
 			"Realtime"
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.sessions.peers",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.sessions.peers",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"realtime.read",
+			"realtime.write",
+			"realtime.admin"
+		]
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
 		"operationId": "post-sessions-session_id-summary",
@@ -4250,6 +4322,13 @@
 		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "realtime.kit.sessions.summaries",
-		"x-fern-sdk-method-name": "generate"
+		"x-fern-sdk-method-name": "generate",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "realtime.kit.sessions.summaries",
+		"x-forge-method-name": "generate",
+		"x-forge-oauth-scopes": [
+			"realtime.write",
+			"realtime.admin"
+		]
 	}
 }

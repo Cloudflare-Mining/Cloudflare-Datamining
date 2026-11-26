@@ -273,11 +273,19 @@
 			"Gateway CA"
 		],
 		"x-api-token-group": [
-			"Access: SSH Auditing Write"
+			"Access: SSH Auditing Write",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.infrastructure.ssh-ca",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.infrastructure.ssh-ca",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"access-ssh-auditing.write",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/access/gateway_ca": {
 		"operationId": "access-gateway-ca-list-SSH-ca",
@@ -582,11 +590,22 @@
 		],
 		"x-api-token-group": [
 			"Access: SSH Auditing Write",
-			"Access: SSH Auditing Read"
+			"Access: SSH Auditing Read",
+			"Zero Trust Read",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.infrastructure.ssh-ca",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.infrastructure.ssh-ca",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"access-ssh-auditing.read",
+			"access-ssh-auditing.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/access/gateway_ca": {
 		"operationId": "access-gateway-ca-add-an-SSH-ca",
@@ -852,10 +871,18 @@
 			"Gateway CA"
 		],
 		"x-api-token-group": [
-			"Access: SSH Auditing Write"
+			"Access: SSH Auditing Write",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.access.infrastructure.ssh-ca",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.access.infrastructure.ssh-ca",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"access-ssh-auditing.write",
+			"teams.write"
+		]
 	}
 }

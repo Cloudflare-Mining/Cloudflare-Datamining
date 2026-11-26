@@ -539,7 +539,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.hostnames.settings.tls",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.hostnames.settings.tls",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.write"
+		]
 	},
 	"GET /zones/{zone_id}/hostnames/settings/{setting_id}": {
 		"operationId": "per-hostname-tls-settings-list",
@@ -1237,7 +1243,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.hostnames.settings.tls",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.hostnames.settings.tls",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.read",
+			"ssl-and-certificates.write"
+		]
 	},
 	"GET /zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}": {
 		"operationId": "per-hostname-tls-settings-get",
@@ -1771,7 +1784,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.hostnames.settings.tls-single",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.hostnames.settings.tls-single",
+		"x-forge-method-name": "get"
 	},
 	"PUT /zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}": {
 		"operationId": "per-hostname-tls-settings-put",
@@ -2367,6 +2383,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zones.hostnames.settings.tls",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.hostnames.settings.tls",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.write"
+		]
 	}
 }

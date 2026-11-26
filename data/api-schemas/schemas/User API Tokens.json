@@ -274,6 +274,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.tokens",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.tokens",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"user-api-tokens.write"
+		],
 		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /user/tokens": {
@@ -909,7 +915,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.tokens",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.tokens",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"user-api-tokens.write"
+		]
 	},
 	"GET /user/tokens/{token_id}": {
 		"operationId": "user-api-tokens-token-details",
@@ -1481,7 +1493,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.tokens",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.tokens",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"user-api-tokens.write"
+		]
 	},
 	"GET /user/tokens/permission_groups": {
 		"operationId": "permission-groups-list-permission-groups",
@@ -1903,7 +1921,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.tokens.permission-groups",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.tokens.permission-groups",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"user-api-tokens.write"
+		]
 	},
 	"GET /user/tokens/verify": {
 		"operationId": "user-api-tokens-verify-token",
@@ -2186,7 +2210,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.tokens",
-		"x-fern-sdk-method-name": "verify"
+		"x-fern-sdk-method-name": "verify",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.tokens",
+		"x-forge-method-name": "verify"
 	},
 	"POST /user/tokens": {
 		"operationId": "user-api-tokens-create-token",
@@ -2841,6 +2868,7 @@
 															"maxLength": 80,
 															"minLength": 40,
 															"readOnly": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -2996,7 +3024,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.tokens",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.tokens",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"user-api-tokens.write"
+		]
 	},
 	"PUT /user/tokens/{token_id}": {
 		"operationId": "user-api-tokens-update-token",
@@ -3893,7 +3927,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.tokens",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.tokens",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"user-api-tokens.write"
+		]
 	},
 	"PUT /user/tokens/{token_id}/value": {
 		"operationId": "user-api-tokens-roll-token",
@@ -4017,6 +4057,7 @@
 											"maxLength": 80,
 											"minLength": 40,
 											"readOnly": true,
+											"x-forge-sensitive": true,
 											"x-sensitive": true
 										}
 									},
@@ -4166,6 +4207,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.tokens",
 		"x-fern-sdk-method-name": "roll",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.tokens",
+		"x-forge-method-name": "roll",
+		"x-forge-oauth-scopes": [
+			"user-api-tokens.write"
+		],
 		"x-forge-require-confirmation": "Rolling this token will invalidate the current secret and generate a new one. Any integrations using the current secret will stop working."
 	}
 }

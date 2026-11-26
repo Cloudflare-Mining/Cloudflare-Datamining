@@ -291,9 +291,13 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "firewall.zone-access-rules",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-require-confirmation": "This operation deletes the zone-level IP Access Rule. If cascade is enabled, similar rules in other zones may also be deleted."
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-require-confirmation": "This operation deletes the zone-level IP Access Rule. If cascade is enabled, similar rules in other zones may also be deleted.",
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/firewall/access_rules/rules": {
 		"operationId": "ip-access-rules-for-a-zone-list-ip-access-rules",
@@ -328,7 +332,8 @@
 					],
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "access-rule-mode"
+				"x-fern-parameter-name": "access-rule-mode",
+				"x-forge-parameter-name": "access-rule-mode"
 			},
 			{
 				"name": "configuration.target",
@@ -391,7 +396,8 @@
 				"schema": {
 					"description": "Maximum number of results requested.",
 					"type": "number",
-					"example": 20
+					"example": 20,
+					"minimum": 1
 				}
 			},
 			{
@@ -713,7 +719,8 @@
 																"x-auditable": true
 															}
 														],
-														"x-fern-property-name": "access-rule-mode"
+														"x-fern-property-name": "access-rule-mode",
+														"x-forge-property-name": "access-rule-mode"
 													},
 													"modified_on": {
 														"description": "The timestamp of when the rule was last modified.",
@@ -858,8 +865,13 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "firewall.zone-access-rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /zones/{zone_id}/firewall/access_rules/rules/{rule_id}": {
 		"operationId": "ip-access-rules-for-a-zone-update-an-ip-access-rule",
@@ -913,7 +925,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "access-rule-mode"
+								"x-fern-property-name": "access-rule-mode",
+								"x-forge-property-name": "access-rule-mode"
 							},
 							"notes": {
 								"description": "An informative summary of the rule, typically used as a reminder or explanation.",
@@ -1195,7 +1208,8 @@
 															"x-auditable": true
 														}
 													],
-													"x-fern-property-name": "access-rule-mode"
+													"x-fern-property-name": "access-rule-mode",
+													"x-forge-property-name": "access-rule-mode"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
@@ -1338,8 +1352,12 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "firewall.zone-access-rules",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/firewall/access_rules/rules": {
 		"operationId": "ip-access-rules-for-a-zone-create-an-ip-access-rule",
@@ -1484,7 +1502,8 @@
 										"x-auditable": true
 									}
 								],
-								"x-fern-property-name": "access-rule-mode"
+								"x-fern-property-name": "access-rule-mode",
+								"x-forge-property-name": "access-rule-mode"
 							},
 							"notes": {
 								"default": "",
@@ -1775,7 +1794,8 @@
 															"x-auditable": true
 														}
 													],
-													"x-fern-property-name": "access-rule-mode"
+													"x-fern-property-name": "access-rule-mode",
+													"x-forge-property-name": "access-rule-mode"
 												},
 												"modified_on": {
 													"description": "The timestamp of when the rule was last modified.",
@@ -1918,7 +1938,11 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "firewall.zone-access-rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	}
 }

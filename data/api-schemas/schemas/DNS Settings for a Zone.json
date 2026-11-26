@@ -1064,8 +1064,15 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dns.settings.zone",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-dns-settings.read",
+			"zone-dns-settings.write",
+			"dns.read",
+			"dns.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /zones/{zone_id}/dns_settings": {
 		"operationId": "dns-settings-for-a-zone-update-dns-settings",
@@ -2364,7 +2371,12 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "dns.settings.zone",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"zone-dns-settings.write",
+			"dns.write"
+		],
+		"x-forge-skip": true
 	}
 }

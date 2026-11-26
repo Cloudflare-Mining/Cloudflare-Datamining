@@ -1028,6 +1028,7 @@
 																			"value": {
 																				"type": "string",
 																				"x-auditable": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		},
@@ -1760,7 +1761,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zaraz.config",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zaraz.config",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zaraz.read",
+			"zaraz.edit",
+			"zaraz.write"
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/default": {
 		"operationId": "get-zones-zone_identifier-zaraz-default",
@@ -2791,6 +2800,7 @@
 																			"value": {
 																				"type": "string",
 																				"x-auditable": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		},
@@ -3523,7 +3533,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zaraz.default",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zaraz.default",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zaraz.read",
+			"zaraz.edit",
+			"zaraz.write"
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/export": {
 		"operationId": "get-zones-zone_identifier-zaraz-export",
@@ -4477,6 +4495,7 @@
 															"value": {
 																"type": "string",
 																"x-auditable": true,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															}
 														},
@@ -5204,7 +5223,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zaraz.export",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zaraz.export",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zaraz.read",
+			"zaraz.edit",
+			"zaraz.write"
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/history": {
 		"operationId": "get-zones-zone_identifier-zaraz-history",
@@ -5563,7 +5590,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zaraz.history",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zaraz.history",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"zaraz.read",
+			"zaraz.edit",
+			"zaraz.write"
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/history/configs": {
 		"operationId": "get-zones-zone_identifier-zaraz-config-history",
@@ -6733,6 +6768,7 @@
 																								"value": {
 																									"type": "string",
 																									"x-auditable": true,
+																									"x-forge-sensitive": true,
 																									"x-sensitive": true
 																								}
 																							},
@@ -7474,7 +7510,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zaraz.history.configs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zaraz.history.configs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zaraz.read",
+			"zaraz.edit",
+			"zaraz.write"
+		]
 	},
 	"GET /zones/{zone_id}/settings/zaraz/workflow": {
 		"operationId": "get-zones-zone_identifier-zaraz-workflow",
@@ -7734,7 +7778,15 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zaraz.workflow",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zaraz.workflow",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"zaraz.read",
+			"zaraz.edit",
+			"zaraz.write"
+		]
 	},
 	"POST /zones/{zone_id}/settings/zaraz/publish": {
 		"operationId": "post-zones-zone_identifier-zaraz-publish",
@@ -8003,7 +8055,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zaraz.publish",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zaraz.publish",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"zaraz.write"
+		]
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/config": {
 		"operationId": "put-zones-zone_identifier-zaraz-config",
@@ -8948,6 +9006,7 @@
 														"value": {
 															"type": "string",
 															"x-auditable": true,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														}
 													},
@@ -10553,6 +10612,7 @@
 																			"value": {
 																				"type": "string",
 																				"x-auditable": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		},
@@ -11284,7 +11344,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zaraz.config",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zaraz.config",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"zaraz.edit",
+			"zaraz.write"
+		]
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/history": {
 		"operationId": "put-zones-zone_identifier-zaraz-history",
@@ -12328,6 +12395,7 @@
 																			"value": {
 																				"type": "string",
 																				"x-auditable": true,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			}
 																		},
@@ -13059,7 +13127,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zaraz.history",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zaraz.history",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"zaraz.edit",
+			"zaraz.write"
+		]
 	},
 	"PUT /zones/{zone_id}/settings/zaraz/workflow": {
 		"operationId": "put-zones-zone_identifier-zaraz-workflow",
@@ -13336,6 +13411,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zaraz.workflow",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zaraz.workflow",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"zaraz.edit",
+			"zaraz.write"
+		]
 	}
 }

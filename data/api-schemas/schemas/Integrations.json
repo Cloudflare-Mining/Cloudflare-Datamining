@@ -47,6 +47,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.integrations",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.integrations",
+		"x-forge-method-name": "delete",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/integrations": {
@@ -456,6 +459,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.integrations",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.integrations",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/one/integrations/{id}": {
@@ -842,6 +848,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.integrations",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.integrations",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/one/integrations/{id}": {
@@ -959,7 +968,8 @@
 										}
 									}
 								],
-								"x-fern-property-name": "integration_config"
+								"x-fern-property-name": "integration_config",
+								"x-forge-property-name": "integration_config"
 							},
 							"credentials": {
 								"description": "Partial credential fields to merge with existing.",
@@ -1053,7 +1063,8 @@
 										}
 									}
 								],
-								"x-fern-property-name": "integration_config"
+								"x-fern-property-name": "integration_config",
+								"x-forge-property-name": "integration_config"
 							},
 							"credentials": {
 								"description": "Partial credential fields to merge with existing.",
@@ -1460,6 +1471,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.integrations",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.integrations",
+		"x-forge-method-name": "update",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/one/integrations": {
@@ -2031,6 +2045,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.integrations",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.integrations",
+		"x-forge-method-name": "create",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/one/integrations/{id}/pause": {
@@ -2417,6 +2434,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.integrations",
 		"x-fern-sdk-method-name": "pause",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.integrations",
+		"x-forge-method-name": "pause",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/one/integrations/{id}/resume": {
@@ -2803,6 +2823,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.integrations",
 		"x-fern-sdk-method-name": "resume",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.integrations",
+		"x-forge-method-name": "resume",
 		"x-stability": "beta"
 	}
 }

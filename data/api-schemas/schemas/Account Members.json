@@ -298,6 +298,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.members",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.members",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.write"
+		],
 		"x-forge-require-confirmation": "Are you sure you want to remove this user from the account?"
 	},
 	"GET /accounts/{account_id}/members": {
@@ -1233,7 +1240,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.members",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.members",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"GET /accounts/{account_id}/members/{member_id}": {
 		"operationId": "account-members-member-details",
@@ -2085,7 +2100,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.members",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.members",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.read",
+			"account-settings.write"
+		]
 	},
 	"POST /accounts/{account_id}/members": {
 		"operationId": "account-members-add-member",
@@ -3078,7 +3101,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.members",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.members",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.write"
+		]
 	},
 	"PUT /accounts/{account_id}/members/{member_id}": {
 		"operationId": "account-members-update-member",
@@ -4388,6 +4418,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "accounts.members",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "accounts.members",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"scim-provisioning.write",
+			"account-settings.write"
+		]
 	}
 }

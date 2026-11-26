@@ -202,7 +202,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.environments",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.environments",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"zone-versioning.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/environments": {
 		"operationId": "zonesEnvironmentsList",
@@ -408,7 +415,15 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.environments",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.environments",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"zone-versioning.read",
+			"zone-versioning.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /zones/{zone_id}/environments": {
 		"operationId": "zonesEnvironmentsEdit",
@@ -677,7 +692,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.environments",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.environments",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"zone-versioning.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/environments": {
 		"operationId": "zonesEnvironmentsCreate",
@@ -946,7 +968,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.environments",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.environments",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"zone-versioning.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/environments/{environment_id}/rollback": {
 		"operationId": "zonesEnvironmentsRollback",
@@ -1151,7 +1180,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.environments",
-		"x-fern-sdk-method-name": "rollback"
+		"x-fern-sdk-method-name": "rollback",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.environments",
+		"x-forge-method-name": "rollback",
+		"x-forge-oauth-scopes": [
+			"zone-versioning.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/environments": {
 		"operationId": "zonesEnvironmentsUpdate",
@@ -1420,6 +1456,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zones.environments",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zones.environments",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"zone-versioning.write"
+		],
+		"x-forge-skip": true
 	}
 }

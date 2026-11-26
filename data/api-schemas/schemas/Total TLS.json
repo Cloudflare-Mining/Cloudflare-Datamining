@@ -424,7 +424,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "acm.total-tls",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "acm.total-tls",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.read",
+			"ssl-and-certificates.write"
+		]
 	},
 	"POST /zones/{zone_id}/acm/total_tls": {
 		"operationId": "total-tls-enable-or-disable-total-tls",
@@ -883,6 +890,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "acm.total-tls",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "acm.total-tls",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.write"
+		]
 	}
 }

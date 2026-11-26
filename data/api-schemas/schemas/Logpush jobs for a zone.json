@@ -281,9 +281,14 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.jobs",
-		"x-fern-sdk-method-name": "delete",
-		"x-forge-require-confirmation": "This operation deletes the Logpush job."
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-require-confirmation": "This operation deletes the Logpush job.",
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/logpush/datasets/{dataset_id}/fields": {
 		"operationId": "get-zones-zone_id-logpush-datasets-dataset_id-fields",
@@ -605,8 +610,15 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.datasets.fields",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.read",
+			"observability.read",
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/logpush/datasets/{dataset_id}/jobs": {
 		"operationId": "get-zones-zone_id-logpush-datasets-dataset_id-jobs",
@@ -871,6 +883,8 @@
 																"format": "uri",
 																"example": "s3://mybucket/logs?region=us-west-2",
 																"maxLength": 4096,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"destination_name": {
@@ -1289,8 +1303,15 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.datasets.jobs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.read",
+			"observability.read",
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/logpush/jobs": {
 		"operationId": "get-zones-zone_id-logpush-jobs",
@@ -1502,6 +1523,8 @@
 																"format": "uri",
 																"example": "s3://mybucket/logs?region=us-west-2",
 																"maxLength": 4096,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"destination_name": {
@@ -1920,8 +1943,15 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.jobs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.read",
+			"observability.read",
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/logpush/jobs/{job_id}": {
 		"operationId": "get-zones-zone_id-logpush-jobs-job_id",
@@ -2146,6 +2176,8 @@
 															"format": "uri",
 															"example": "s3://mybucket/logs?region=us-west-2",
 															"maxLength": 4096,
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"destination_name": {
@@ -2562,8 +2594,15 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.jobs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.read",
+			"observability.read",
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/logpush/jobs": {
 		"operationId": "post-zones-zone_id-logpush-jobs",
@@ -2673,6 +2712,8 @@
 								"format": "uri",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"maxLength": 4096,
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							},
 							"enabled": {
@@ -2910,6 +2951,8 @@
 								"example": "00000000000000000000",
 								"maxLength": 4096,
 								"pattern": "^[a-zA-Z0-9/\\+\\._-]*$",
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						},
@@ -3114,6 +3157,8 @@
 															"format": "uri",
 															"example": "s3://mybucket/logs?region=us-west-2",
 															"maxLength": 4096,
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"destination_name": {
@@ -3530,8 +3575,13 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.jobs",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/logpush/ownership": {
 		"operationId": "post-zones-zone_id-logpush-ownership",
@@ -3564,6 +3614,8 @@
 								"format": "uri",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"maxLength": 4096,
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						},
@@ -3837,8 +3889,13 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.ownership",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/logpush/ownership/validate": {
 		"operationId": "post-zones-zone_id-logpush-ownership-validate",
@@ -3871,6 +3928,8 @@
 								"format": "uri",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"maxLength": 4096,
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							},
 							"ownership_challenge": {
@@ -3879,6 +3938,8 @@
 								"example": "00000000000000000000",
 								"maxLength": 4096,
 								"pattern": "^[a-zA-Z0-9/\\+\\._-]*$",
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						},
@@ -4143,8 +4204,13 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.ownership",
-		"x-fern-sdk-method-name": "validate"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/logpush/validate/destination": {
 		"operationId": "post-zones-zone_id-logpush-validate-destination",
@@ -4177,6 +4243,8 @@
 								"format": "uri",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"maxLength": 4096,
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						},
@@ -4445,8 +4513,13 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.validate",
-		"x-fern-sdk-method-name": "destination"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/logpush/validate/destination/exists": {
 		"operationId": "post-zones-zone_id-logpush-validate-destination-exists",
@@ -4479,6 +4552,8 @@
 								"format": "uri",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"maxLength": 4096,
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						},
@@ -4742,8 +4817,13 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.validate",
-		"x-fern-sdk-method-name": "destination-exists"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/logpush/validate/origin": {
 		"operationId": "post-zones-zone_id-logpush-validate-origin",
@@ -5046,8 +5126,13 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.validate",
-		"x-fern-sdk-method-name": "origin"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/logpush/jobs/{job_id}": {
 		"operationId": "put-zones-zone_id-logpush-jobs-job_id",
@@ -5118,6 +5203,8 @@
 								"format": "uri",
 								"example": "s3://mybucket/logs?region=us-west-2",
 								"maxLength": 4096,
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							},
 							"enabled": {
@@ -5355,6 +5442,8 @@
 								"example": "00000000000000000000",
 								"maxLength": 4096,
 								"pattern": "^[a-zA-Z0-9/\\+\\._-]*$",
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						}
@@ -5556,6 +5645,8 @@
 															"format": "uri",
 															"example": "s3://mybucket/logs?region=us-west-2",
 															"maxLength": 4096,
+															"x-auditable": false,
+															"x-forge-sensitive": true,
 															"x-sensitive": true
 														},
 														"destination_name": {
@@ -5972,7 +6063,12 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "logpush.jobs",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"logs.write",
+			"observability.write"
+		],
+		"x-forge-skip": true
 	}
 }

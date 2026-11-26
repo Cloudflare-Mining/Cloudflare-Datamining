@@ -401,6 +401,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "ssl.analyze",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "ssl.analyze",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"access-certificate.read",
+			"access-certificate.write",
+			"ssl-and-certificates.read",
+			"ssl-and-certificates.write"
+		]
 	}
 }

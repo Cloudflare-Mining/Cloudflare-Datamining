@@ -458,7 +458,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tenant-custom-nameservers",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tenant-custom-nameservers",
+		"x-forge-method-name": "delete"
 	},
 	"GET /tenants/{tenant_id}/custom_ns": {
 		"operationId": "tenant-level-custom-nameservers-list-tenant-custom-nameservers",
@@ -1043,7 +1046,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tenant-custom-nameservers",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tenant-custom-nameservers",
+		"x-forge-method-name": "get"
 	},
 	"POST /tenants/{tenant_id}/custom_ns": {
 		"operationId": "tenant-level-custom-nameservers-add-tenant-custom-nameserver",
@@ -1584,6 +1590,9 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "tenant-custom-nameservers",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "tenant-custom-nameservers",
+		"x-forge-method-name": "create"
 	}
 }

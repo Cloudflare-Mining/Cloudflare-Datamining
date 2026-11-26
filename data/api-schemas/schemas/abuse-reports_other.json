@@ -620,7 +620,7 @@
 			}
 		],
 		"tags": [
-			"tseng-abuse-complaint-processor_other"
+			"abuse-reports_other"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write",
@@ -628,7 +628,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "abuse-reports",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"trust-and-safety.read",
+			"trust-and-safety.write"
+		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/appeals/eligibility": {
 		"operationId": "CheckAppealEligibility",
@@ -1034,7 +1041,7 @@
 			}
 		],
 		"tags": [
-			"tseng-abuse-complaint-processor_other"
+			"abuse-reports_other"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write",
@@ -1042,7 +1049,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.appeals",
-		"x-fern-sdk-method-name": "eligibility"
+		"x-fern-sdk-method-name": "eligibility",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "abuse-reports.appeals",
+		"x-forge-method-name": "eligibility",
+		"x-forge-oauth-scopes": [
+			"trust-and-safety.read",
+			"trust-and-safety.write"
+		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/emails": {
 		"operationId": "ListEmails",
@@ -1522,7 +1536,7 @@
 			}
 		],
 		"tags": [
-			"tseng-abuse-complaint-processor_other"
+			"abuse-reports_other"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write",
@@ -1530,7 +1544,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.emails",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "abuse-reports.emails",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"trust-and-safety.read",
+			"trust-and-safety.write"
+		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/mitigations": {
 		"operationId": "ListMitigations",
@@ -1723,6 +1744,12 @@
 													"id": {
 														"description": "ID of remediation.",
 														"type": "string"
+													},
+													"scheduled_removal_date": {
+														"description": "Date when the mitigation is scheduled to be removed. Present only when a removal is scheduled, for example after an approved counter notice. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+														"type": "string",
+														"format": "date-time",
+														"example": "2009-11-10T23:00:00Z"
 													},
 													"status": {
 														"description": "The status of a mitigation",
@@ -2063,7 +2090,7 @@
 			}
 		],
 		"tags": [
-			"tseng-abuse-complaint-processor_other"
+			"abuse-reports_other"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write",
@@ -2071,7 +2098,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.mitigations",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "abuse-reports.mitigations",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"trust-and-safety.read",
+			"trust-and-safety.write"
+		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_param}": {
 		"operationId": "GetAbuseReport",
@@ -2097,7 +2131,8 @@
 				"schema": {
 					"type": "string"
 				},
-				"x-fern-parameter-name": "report-id"
+				"x-fern-parameter-name": "report-id",
+				"x-forge-parameter-name": "report-id"
 			}
 		],
 		"responses": {
@@ -2850,7 +2885,7 @@
 			}
 		],
 		"tags": [
-			"tseng-abuse-complaint-processor_other"
+			"abuse-reports_other"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write",
@@ -2858,7 +2893,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "abuse-reports",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"trust-and-safety.read",
+			"trust-and-safety.write"
+		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/submitted": {
 		"operationId": "ListSubmittedAbuseReports",
@@ -3410,7 +3452,7 @@
 			}
 		],
 		"tags": [
-			"tseng-abuse-complaint-processor_other"
+			"abuse-reports_other"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write",
@@ -3418,7 +3460,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "list-submitted"
+		"x-fern-sdk-method-name": "list-submitted",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "abuse-reports",
+		"x-forge-method-name": "list-submitted",
+		"x-forge-oauth-scopes": [
+			"trust-and-safety.read",
+			"trust-and-safety.write"
+		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/submitted/{report_id}": {
 		"operationId": "GetSubmittedAbuseReport",
@@ -4015,7 +4064,7 @@
 			}
 		],
 		"tags": [
-			"tseng-abuse-complaint-processor_other"
+			"abuse-reports_other"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write",
@@ -4023,7 +4072,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "get-submitted"
+		"x-fern-sdk-method-name": "get-submitted",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "abuse-reports",
+		"x-forge-method-name": "get-submitted",
+		"x-forge-oauth-scopes": [
+			"trust-and-safety.read",
+			"trust-and-safety.write"
+		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/submitted/{report_id}/emails": {
 		"operationId": "ListSubmittedAbuseReportEmails",
@@ -4431,7 +4487,7 @@
 			}
 		],
 		"tags": [
-			"tseng-abuse-complaint-processor_other"
+			"abuse-reports_other"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write",
@@ -4439,7 +4495,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.emails",
-		"x-fern-sdk-method-name": "list-submitted"
+		"x-fern-sdk-method-name": "list-submitted",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "abuse-reports.emails",
+		"x-forge-method-name": "list-submitted",
+		"x-forge-oauth-scopes": [
+			"trust-and-safety.read",
+			"trust-and-safety.write"
+		]
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal": {
 		"operationId": "RequestReview",
@@ -4665,6 +4728,12 @@
 												"description": "ID of remediation.",
 												"type": "string"
 											},
+											"scheduled_removal_date": {
+												"description": "Date when the mitigation is scheduled to be removed. Present only when a removal is scheduled, for example after an approved counter notice. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+												"type": "string",
+												"format": "date-time",
+												"example": "2009-11-10T23:00:00Z"
+											},
 											"status": {
 												"description": "The status of a mitigation",
 												"type": "string",
@@ -4792,6 +4861,12 @@
 											"id": {
 												"description": "ID of remediation.",
 												"type": "string"
+											},
+											"scheduled_removal_date": {
+												"description": "Date when the mitigation is scheduled to be removed. Present only when a removal is scheduled, for example after an approved counter notice. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+												"type": "string",
+												"format": "date-time",
+												"example": "2009-11-10T23:00:00Z"
 											},
 											"status": {
 												"description": "The status of a mitigation",
@@ -5160,14 +5235,20 @@
 			}
 		],
 		"tags": [
-			"tseng-abuse-complaint-processor_other"
+			"abuse-reports_other"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports.mitigations",
-		"x-fern-sdk-method-name": "review"
+		"x-fern-sdk-method-name": "review",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "abuse-reports.mitigations",
+		"x-forge-method-name": "review",
+		"x-forge-oauth-scopes": [
+			"trust-and-safety.write"
+		]
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_param}": {
 		"operationId": "SubmitAbuseReport",
@@ -5194,7 +5275,8 @@
 					"description": "The report type for submitted reports.",
 					"type": "string"
 				},
-				"x-fern-parameter-name": "report-type"
+				"x-fern-parameter-name": "report-type",
+				"x-forge-parameter-name": "report-type"
 			}
 		],
 		"requestBody": {
@@ -7178,13 +7260,16 @@
 			}
 		],
 		"tags": [
-			"tseng-abuse-complaint-processor_other"
+			"abuse-reports_other"
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "abuse-reports",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "abuse-reports",
+		"x-forge-method-name": "create"
 	}
 }

@@ -185,6 +185,8 @@
 			"URL Scanner"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -196,7 +198,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "url-scanner.scans",
-		"x-fern-sdk-method-name": "dom"
+		"x-fern-sdk-method-name": "dom",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "url-scanner.scans",
+		"x-forge-method-name": "dom",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/har/{scan_id}": {
 		"operationId": "urlscanner-get-scan-har-v2",
@@ -675,6 +686,8 @@
 			"URL Scanner"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -686,7 +699,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "url-scanner.scans",
-		"x-fern-sdk-method-name": "har"
+		"x-fern-sdk-method-name": "har",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "url-scanner.scans",
+		"x-forge-method-name": "har",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/responses/{response_id}": {
 		"operationId": "urlscanner-get-response-v2",
@@ -790,6 +812,8 @@
 			"URL Scanner"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -801,7 +825,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "url-scanner.responses",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "url-scanner.responses",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/result/{scan_id}": {
 		"operationId": "urlscanner-get-scan-v2",
@@ -5878,6 +5911,8 @@
 			"URL Scanner"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -5889,7 +5924,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "url-scanner.scans",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "url-scanner.scans",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/screenshots/{scan_id}.png": {
 		"operationId": "urlscanner-get-scan-screenshot-v2",
@@ -6092,6 +6136,8 @@
 			"URL Scanner"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -6103,7 +6149,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "url-scanner.scans",
-		"x-fern-sdk-method-name": "screenshot"
+		"x-fern-sdk-method-name": "screenshot",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "url-scanner.scans",
+		"x-forge-method-name": "screenshot",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"GET /accounts/{account_id}/urlscanner/v2/search": {
 		"operationId": "urlscanner-search-scans-v2",
@@ -6138,7 +6193,8 @@
 					"description": "Filter scans",
 					"type": "string"
 				},
-				"x-fern-parameter-name": "query"
+				"x-fern-parameter-name": "query",
+				"x-forge-parameter-name": "query"
 			}
 		],
 		"responses": {
@@ -6337,6 +6393,8 @@
 			"URL Scanner"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -6348,7 +6406,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "url-scanner.scans",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "url-scanner.scans",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/urlscanner/v2/bulk": {
 		"operationId": "urlscanner-create-scan-bulk-v2",
@@ -6606,6 +6673,8 @@
 			"URL Scanner"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -6617,7 +6686,16 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "url-scanner.scans",
-		"x-fern-sdk-method-name": "bulk-create"
+		"x-fern-sdk-method-name": "bulk-create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "url-scanner.scans",
+		"x-forge-method-name": "bulk-create",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	},
 	"POST /accounts/{account_id}/urlscanner/v2/scan": {
 		"operationId": "urlscanner-create-scan-v2",
@@ -6670,14 +6748,12 @@
 									"BW",
 									"BY",
 									"CA",
-									"CD",
 									"CH",
 									"CI",
 									"CL",
 									"CM",
 									"CO",
 									"CR",
-									"CW",
 									"CY",
 									"CZ",
 									"DE",
@@ -6694,17 +6770,14 @@
 									"FJ",
 									"FR",
 									"GB",
-									"GD",
 									"GE",
 									"GH",
 									"GR",
 									"GT",
-									"GU",
 									"GY",
 									"HK",
 									"HN",
 									"HR",
-									"HT",
 									"HU",
 									"ID",
 									"IE",
@@ -6725,21 +6798,17 @@
 									"LA",
 									"LB",
 									"LK",
-									"LR",
 									"LT",
 									"LU",
 									"LV",
-									"MA",
 									"MD",
 									"MG",
 									"MK",
-									"MM",
 									"MN",
 									"MO",
 									"MT",
 									"MU",
 									"MV",
-									"MW",
 									"MX",
 									"MY",
 									"MZ",
@@ -6775,7 +6844,6 @@
 									"SN",
 									"SR",
 									"TH",
-									"TJ",
 									"TN",
 									"TR",
 									"TT",
@@ -6784,7 +6852,6 @@
 									"UA",
 									"UG",
 									"US",
-									"UZ",
 									"VN",
 									"ZA",
 									"ZM",
@@ -7086,6 +7153,8 @@
 			"URL Scanner"
 		],
 		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read",
 			"URL Scanner Write",
 			"URL Scanner Read"
 		],
@@ -7097,6 +7166,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "url-scanner.scans",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "url-scanner.scans",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"url-scanner.read",
+			"url-scanner.write",
+			"cloudforce-one.read",
+			"cloudforce-one.write"
+		]
 	}
 }

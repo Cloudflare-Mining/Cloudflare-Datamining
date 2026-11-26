@@ -261,7 +261,10 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.triggers",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-group-name": "workflows.triggers",
+		"x-forge-method-name": "delete",
+		"x-forge-skip": true
 	},
 	"DELETE /accounts/{account_id}/workflows/{workflow_name}": {
 		"operationId": "wor-delete-workflow",
@@ -519,6 +522,8 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
+			"Individual Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -536,6 +541,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes the Workflow."
 	},
 	"DELETE /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}": {
@@ -748,6 +760,8 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
+			"Individual Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -764,7 +778,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.instances",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"DELETE /accounts/{account_id}/workflows/concurrency/{key_id}": {
 		"operationId": "wor-delete-concurrency-key",
@@ -1131,6 +1152,8 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
+			"Individual Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -1147,7 +1170,14 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workflows.concurrency",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "workflows.concurrency",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/triggers/{script_name}": {
 		"operationId": "wor-get-script-triggers",
@@ -1476,7 +1506,10 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.triggers",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "workflows.triggers",
+		"x-forge-method-name": "get",
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/workflows": {
 		"operationId": "wor-list-workflows",
@@ -1764,6 +1797,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -1782,7 +1824,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}": {
 		"operationId": "wor-get-workflow-details",
@@ -2103,6 +2157,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -2121,7 +2184,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances": {
 		"operationId": "wor-list-workflow-instances",
@@ -2205,7 +2280,8 @@
 					"type": "string",
 					"format": "date-time"
 				},
-				"x-fern-parameter-name": "start"
+				"x-fern-parameter-name": "start",
+				"x-forge-parameter-name": "start"
 			},
 			{
 				"name": "date_end",
@@ -2215,7 +2291,8 @@
 					"type": "string",
 					"format": "date-time"
 				},
-				"x-fern-parameter-name": "end"
+				"x-fern-parameter-name": "end",
+				"x-forge-parameter-name": "end"
 			},
 			{
 				"name": "account_id",
@@ -2516,6 +2593,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -2534,7 +2620,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.instances",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}": {
 		"operationId": "wor-describe-workflow-instance",
@@ -3300,6 +3398,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -3318,7 +3425,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.instances",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/step": {
 		"operationId": "wor-get-workflow-instance-step",
@@ -3767,6 +3886,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -3785,7 +3913,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances.step",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.instances.step",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/subscribe/token": {
 		"operationId": "wor-create-workflow-instance-subscription-token",
@@ -3872,7 +4012,8 @@
 									"type": "object",
 									"properties": {
 										"token": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": false
 										},
 										"websocketUrl": {
 											"type": "string"
@@ -4105,6 +4246,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -4123,7 +4273,19 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.instances",
-		"x-fern-sdk-method-name": "subscribe-token"
+		"x-fern-sdk-method-name": "subscribe-token",
+		"x-forge-group-name": "workflows.instances",
+		"x-forge-method-name": "subscribe-token",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/terminate": {
 		"operationId": "wor-status-terminate-workflow-instances",
@@ -4377,6 +4539,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -4395,7 +4566,19 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.instances.batch",
-		"x-fern-sdk-method-name": "termination-status"
+		"x-fern-sdk-method-name": "termination-status",
+		"x-forge-group-name": "workflows.instances.batch",
+		"x-forge-method-name": "termination-status",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions": {
 		"operationId": "wor-list-workflow-versions",
@@ -4683,6 +4866,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -4701,7 +4893,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.versions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.versions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}": {
 		"operationId": "wor-describe-workflow-versions",
@@ -5031,6 +5235,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -5049,7 +5262,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.versions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.versions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/dag": {
 		"operationId": "wor-describe-workflow-versions-dag",
@@ -5278,6 +5503,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -5296,7 +5530,19 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.versions",
-		"x-fern-sdk-method-name": "dag"
+		"x-fern-sdk-method-name": "dag",
+		"x-forge-group-name": "workflows.versions",
+		"x-forge-method-name": "dag",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/graph": {
 		"operationId": "wor-describe-workflow-versions-graph",
@@ -6442,6 +6688,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -6460,7 +6715,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.versions",
-		"x-fern-sdk-method-name": "graph"
+		"x-fern-sdk-method-name": "graph",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.versions",
+		"x-forge-method-name": "graph",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workflows/concurrency": {
 		"operationId": "wor-list-concurrency-keys",
@@ -6743,6 +7010,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -6761,7 +7037,19 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workflows.concurrency",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "workflows.concurrency",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workflows/concurrency/{key_id}": {
 		"operationId": "wor-get-concurrency-key",
@@ -7108,6 +7396,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -7126,7 +7423,19 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workflows.concurrency",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "workflows.concurrency",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"GET /accounts/{account_id}/workflows/settings": {
 		"operationId": "wor-get-workflow-settings",
@@ -7321,6 +7630,15 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
+			"Individual Workers Metadata Read-Only",
+			"Individual Workers Editor",
+			"Individual Workers Content Read-Only",
+			"Individual Workers Admin",
+			"Granular Workers Scripts Read",
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
@@ -7339,7 +7657,19 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.settings",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.settings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-tail.read",
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/triggers/{script_name}": {
 		"operationId": "wor-add-script-triggers",
@@ -7741,7 +8071,10 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.triggers",
-		"x-fern-sdk-method-name": "add"
+		"x-fern-sdk-method-name": "add",
+		"x-forge-group-name": "workflows.triggers",
+		"x-forge-method-name": "add",
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status": {
 		"operationId": "wor-change-status-workflow-instance",
@@ -8173,6 +8506,10 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
+			"Individual Workers Editor",
+			"Individual Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -8194,6 +8531,9 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "workflows.instances",
 				"x-fern-sdk-method-name": "pause",
+				"x-forge-availability": "generally-available",
+				"x-forge-group-name": "workflows.instances",
+				"x-forge-method-name": "pause",
 				"x-forge-params": {
 					"from": {
 						"hidden": true
@@ -8211,6 +8551,9 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "workflows.instances",
 				"x-fern-sdk-method-name": "resume",
+				"x-forge-availability": "generally-available",
+				"x-forge-group-name": "workflows.instances",
+				"x-forge-method-name": "resume",
 				"x-forge-params": {
 					"from": {
 						"hidden": true
@@ -8228,6 +8571,9 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "workflows.instances",
 				"x-fern-sdk-method-name": "terminate",
+				"x-forge-availability": "generally-available",
+				"x-forge-group-name": "workflows.instances",
+				"x-forge-method-name": "terminate",
 				"x-forge-params": {
 					"from": {
 						"hidden": true
@@ -8243,6 +8589,9 @@
 				"x-fern-availability": "generally-available",
 				"x-fern-sdk-group-name": "workflows.instances",
 				"x-fern-sdk-method-name": "restart",
+				"x-forge-availability": "generally-available",
+				"x-forge-group-name": "workflows.instances",
+				"x-forge-method-name": "restart",
 				"x-forge-params": {
 					"rollback": {
 						"hidden": true
@@ -8253,6 +8602,13 @@
 					}
 				}
 			}
+		],
+		"x-forge-group-name": "workflows.instances.status",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
 		]
 	},
 	"PATCH /accounts/{account_id}/workflows/concurrency/{key_id}": {
@@ -8601,6 +8957,10 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
+			"Individual Workers Editor",
+			"Individual Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -8617,7 +8977,15 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workflows.concurrency",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "workflows.concurrency",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PATCH /accounts/{account_id}/workflows/settings": {
 		"operationId": "wor-update-workflow-settings",
@@ -8858,6 +9226,10 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
+			"Individual Workers Editor",
+			"Individual Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -8874,7 +9246,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.settings",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.settings",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances": {
 		"operationId": "wor-create-new-workflow-instance",
@@ -8931,7 +9311,8 @@
 												"type": "string"
 											}
 										],
-										"x-fern-property-name": "error"
+										"x-fern-property-name": "error",
+										"x-forge-property-name": "error"
 									},
 									"success_retention": {
 										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
@@ -8946,7 +9327,8 @@
 												"type": "string"
 											}
 										],
-										"x-fern-property-name": "success"
+										"x-fern-property-name": "success",
+										"x-forge-property-name": "success"
 									}
 								}
 							},
@@ -9236,6 +9618,7 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -9253,6 +9636,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.instances",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-params": {
 			"params": {
 				"fromFile": {
@@ -9547,6 +9937,7 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -9563,7 +9954,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances.events",
-		"x-fern-sdk-method-name": "send"
+		"x-fern-sdk-method-name": "send",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.instances.events",
+		"x-forge-method-name": "send",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch": {
 		"operationId": "wor-batch-create-workflow-instance",
@@ -9621,7 +10019,8 @@
 													"type": "string"
 												}
 											],
-											"x-fern-property-name": "error"
+											"x-fern-property-name": "error",
+											"x-forge-property-name": "error"
 										},
 										"success_retention": {
 											"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
@@ -9636,7 +10035,8 @@
 													"type": "string"
 												}
 											],
-											"x-fern-property-name": "success"
+											"x-fern-property-name": "success",
+											"x-forge-property-name": "success"
 										}
 									}
 								},
@@ -9933,6 +10333,7 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -9949,7 +10350,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances.batch",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.instances.batch",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch/delete": {
 		"operationId": "wor-batch-delete-workflow-instances",
@@ -10260,6 +10668,7 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -10277,6 +10686,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workflows.instances.batch",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workflows.instances.batch",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes the Workflow instances."
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch/terminate": {
@@ -10553,6 +10969,7 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -10569,7 +10986,14 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.instances.batch",
-		"x-fern-sdk-method-name": "terminate"
+		"x-fern-sdk-method-name": "terminate",
+		"x-forge-group-name": "workflows.instances.batch",
+		"x-forge-method-name": "terminate",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/workflows/concurrency": {
 		"operationId": "wor-create-concurrency-key",
@@ -10914,6 +11338,7 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -10930,7 +11355,14 @@
 		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workflows.concurrency",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "workflows.concurrency",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/triggers/{script_name}": {
 		"operationId": "wor-replace-script-triggers",
@@ -11332,7 +11764,10 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows.triggers",
-		"x-fern-sdk-method-name": "replace"
+		"x-fern-sdk-method-name": "replace",
+		"x-forge-group-name": "workflows.triggers",
+		"x-forge-method-name": "replace",
+		"x-forge-skip": true
 	},
 	"PUT /accounts/{account_id}/workflows/{workflow_name}": {
 		"operationId": "wor-create-or-modify-workflow",
@@ -11744,6 +12179,10 @@
 			"Workflows"
 		],
 		"x-api-token-group": [
+			"Workers Editor",
+			"Workers Admin",
+			"Individual Workers Editor",
+			"Individual Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -11760,6 +12199,14 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "workflows",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-group-name": "workflows",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		],
+		"x-forge-skip": true
 	}
 }

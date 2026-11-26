@@ -273,7 +273,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "healthchecks",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "healthchecks",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"healthcheck.write"
+		]
 	},
 	"DELETE /zones/{zone_id}/healthchecks/preview/{healthcheck_id}": {
 		"operationId": "health-checks-delete-preview-health-check",
@@ -549,7 +555,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "healthchecks.previews",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "healthchecks.previews",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"healthcheck.write"
+		]
 	},
 	"DELETE /zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}": {
 		"operationId": "smart-shield-delete-health-check",
@@ -841,7 +853,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield.health-checks",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "smart-shield.health-checks",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"healthcheck.write"
+		]
 	},
 	"GET /zones/{zone_id}/healthchecks": {
 		"operationId": "health-checks-list-health-checks",
@@ -1383,7 +1401,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "healthchecks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "healthchecks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"healthcheck.read",
+			"healthcheck.write"
+		]
 	},
 	"GET /zones/{zone_id}/healthchecks/{healthcheck_id}": {
 		"operationId": "health-checks-health-check-details",
@@ -1892,7 +1917,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "healthchecks",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "healthchecks",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"healthcheck.read",
+			"healthcheck.write"
+		]
 	},
 	"GET /zones/{zone_id}/healthchecks/preview/{healthcheck_id}": {
 		"operationId": "health-checks-health-check-preview-details",
@@ -2401,7 +2433,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "healthchecks.previews",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "healthchecks.previews",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"healthcheck.read",
+			"healthcheck.write"
+		]
 	},
 	"GET /zones/{zone_id}/smart_shield/healthchecks": {
 		"operationId": "smart-shield-list-health-checks",
@@ -2976,7 +3015,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield.health-checks",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "smart-shield.health-checks",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"healthcheck.read",
+			"healthcheck.write"
+		]
 	},
 	"GET /zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}": {
 		"operationId": "smart-shield-health-check-details",
@@ -3502,7 +3548,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield.health-checks",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "smart-shield.health-checks",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"healthcheck.read",
+			"healthcheck.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/healthchecks/{healthcheck_id}": {
 		"operationId": "health-checks-patch-health-check",
@@ -4224,7 +4277,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "healthchecks",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "healthchecks",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"healthcheck.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}": {
 		"operationId": "smart-shield-patch-health-check",
@@ -4962,7 +5021,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield.health-checks",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "smart-shield.health-checks",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"healthcheck.write"
+		]
 	},
 	"POST /zones/{zone_id}/healthchecks": {
 		"operationId": "health-checks-create-health-check",
@@ -5671,7 +5736,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "healthchecks",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "healthchecks",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"healthcheck.write"
+		]
 	},
 	"POST /zones/{zone_id}/healthchecks/preview": {
 		"operationId": "health-checks-create-preview-health-check",
@@ -6380,7 +6451,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "healthchecks.previews",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "healthchecks.previews",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"healthcheck.write"
+		]
 	},
 	"POST /zones/{zone_id}/smart_shield/healthchecks": {
 		"operationId": "smart-shield-create-health-check",
@@ -7105,7 +7182,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield.health-checks",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "smart-shield.health-checks",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"healthcheck.write"
+		]
 	},
 	"PUT /zones/{zone_id}/healthchecks/{healthcheck_id}": {
 		"operationId": "health-checks-update-health-check",
@@ -7827,7 +7910,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "healthchecks",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "healthchecks",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"healthcheck.write"
+		]
 	},
 	"PUT /zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}": {
 		"operationId": "smart-shield-update-health-check",
@@ -8689,6 +8778,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "smart-shield.health-checks",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "smart-shield.health-checks",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"healthcheck.write"
+		]
 	}
 }

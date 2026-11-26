@@ -141,11 +141,9 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.delete"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -155,6 +153,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.subdomains",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"email-sending.write"
+		],
 		"x-forge-require-confirmation": "This operation disables sending and removes the subdomain's Email Sending DNS records."
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains": {
@@ -407,11 +411,10 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.read"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -420,7 +423,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.subdomains",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
 		"operationId": "email-sending-subdomains-get-sending-subdomain",
@@ -647,11 +657,10 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.read"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -660,7 +669,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.subdomains",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns": {
 		"operationId": "email-sending-subdomains-get-sending-subdomain-dns",
@@ -924,11 +940,10 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.read"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -937,7 +952,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains.dns",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.subdomains.dns",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns/status": {
 		"operationId": "email-sending-subdomains-get-sending-subdomain-dns-status",
@@ -1455,11 +1477,10 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.read"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1468,7 +1489,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains.dns",
-		"x-fern-sdk-method-name": "status"
+		"x-fern-sdk-method-name": "status",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.subdomains.dns",
+		"x-forge-method-name": "status",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	},
 	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/reputation/complaints": {
 		"operationId": "email-sending-subdomains-get-sending-subdomain-reputation-complaints",
@@ -1662,11 +1690,10 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.read"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1675,7 +1702,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains.reputation",
-		"x-fern-sdk-method-name": "get-complaints"
+		"x-fern-sdk-method-name": "get-complaints",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.subdomains.reputation",
+		"x-forge-method-name": "get-complaints",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	},
 	"PATCH /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
 		"operationId": "email-sending-subdomains-update-sending-subdomain",
@@ -1941,11 +1975,9 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.update"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1954,7 +1986,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.subdomains",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"email-sending.write"
+		]
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains": {
 		"operationId": "email-sending-subdomains-create-sending-subdomain",
@@ -2188,11 +2226,9 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.create"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2201,7 +2237,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.subdomains",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"email-sending.write"
+		]
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns": {
 		"operationId": "email-sending-subdomains-fix-sending-subdomain-dns",
@@ -2725,11 +2767,9 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.create"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2738,7 +2778,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains.dns",
-		"x-fern-sdk-method-name": "fix"
+		"x-fern-sdk-method-name": "fix",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.subdomains.dns",
+		"x-forge-method-name": "fix",
+		"x-forge-oauth-scopes": [
+			"email-sending.write"
+		]
 	},
 	"POST /zones/{zone_id}/email/sending/subdomains/preview": {
 		"operationId": "email-sending-subdomains-preview-sending-subdomain",
@@ -3250,11 +3296,10 @@
 		"tags": [
 			"Email Sending subdomains"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.email.sending.read"
-			]
-		},
+		"x-api-token-group": [
+			"Email Sending Write",
+			"Email Sending Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3263,6 +3308,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-sending.subdomains",
-		"x-fern-sdk-method-name": "preview"
+		"x-fern-sdk-method-name": "preview",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-sending.subdomains",
+		"x-forge-method-name": "preview",
+		"x-forge-oauth-scopes": [
+			"email-sending.read",
+			"email-sending.write"
+		]
 	}
 }

@@ -235,6 +235,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "hyperdrive",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"query-cache.write"
+		],
 		"x-forge-require-confirmation": "This operation deletes an existing Hyperdrive configuration."
 	},
 	"GET /accounts/{account_id}/hyperdrive/configs": {
@@ -514,7 +520,8 @@
 																"description": "Define mTLS certificate ID obtained after uploading client cert.",
 																"type": "string",
 																"example": "00000000-0000-0000-0000-0000000000",
-																"x-fern-property-name": "certificate-id"
+																"x-fern-property-name": "certificate-id",
+																"x-forge-property-name": "certificate-id"
 															},
 															"sslmode": {
 																"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -555,6 +562,8 @@
 																						"type": "string",
 																						"maxLength": 2048,
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					},
 																					"scheme": {
@@ -632,6 +641,8 @@
 																						"type": "string",
 																						"maxLength": 2048,
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					},
 																					"scheme": {
@@ -676,6 +687,8 @@
 																				"type": "string",
 																				"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																				"writeOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"host": {
@@ -715,6 +728,8 @@
 																						"type": "string",
 																						"maxLength": 2048,
 																						"writeOnly": true,
+																						"x-auditable": false,
+																						"x-forge-sensitive": true,
 																						"x-sensitive": true
 																					},
 																					"scheme": {
@@ -914,7 +929,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "hyperdrive",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "hyperdrive",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"query-cache.read",
+			"query-cache.write"
+		]
 	},
 	"GET /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
 		"operationId": "get-hyperdrive",
@@ -1154,7 +1176,8 @@
 															"description": "Define mTLS certificate ID obtained after uploading client cert.",
 															"type": "string",
 															"example": "00000000-0000-0000-0000-0000000000",
-															"x-fern-property-name": "certificate-id"
+															"x-fern-property-name": "certificate-id",
+															"x-forge-property-name": "certificate-id"
 														},
 														"sslmode": {
 															"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -1195,6 +1218,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -1272,6 +1297,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -1316,6 +1343,8 @@
 																			"type": "string",
 																			"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"host": {
@@ -1355,6 +1384,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -1553,7 +1584,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "hyperdrive",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "hyperdrive",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"query-cache.read",
+			"query-cache.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
 		"operationId": "patch-hyperdrive",
@@ -1663,7 +1701,8 @@
 										"description": "Define mTLS certificate ID obtained after uploading client cert.",
 										"type": "string",
 										"example": "00000000-0000-0000-0000-0000000000",
-										"x-fern-property-name": "certificate-id"
+										"x-fern-property-name": "certificate-id",
+										"x-forge-property-name": "certificate-id"
 									},
 									"sslmode": {
 										"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -1697,6 +1736,8 @@
 												"type": "string",
 												"maxLength": 2048,
 												"writeOnly": true,
+												"x-auditable": false,
+												"x-forge-sensitive": true,
 												"x-sensitive": true
 											},
 											"scheme": {
@@ -1759,6 +1800,8 @@
 														"type": "string",
 														"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"host": {
@@ -2007,7 +2050,8 @@
 															"description": "Define mTLS certificate ID obtained after uploading client cert.",
 															"type": "string",
 															"example": "00000000-0000-0000-0000-0000000000",
-															"x-fern-property-name": "certificate-id"
+															"x-fern-property-name": "certificate-id",
+															"x-forge-property-name": "certificate-id"
 														},
 														"sslmode": {
 															"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -2048,6 +2092,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -2125,6 +2171,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -2169,6 +2217,8 @@
 																			"type": "string",
 																			"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"host": {
@@ -2208,6 +2258,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -2406,6 +2458,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "hyperdrive",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"query-cache.write"
+		],
 		"x-forge-params": {
 			"mtls.sslmode": {
 				"choices": [
@@ -2547,7 +2605,8 @@
 														"description": "Define mTLS certificate ID obtained after uploading client cert.",
 														"type": "string",
 														"example": "00000000-0000-0000-0000-0000000000",
-														"x-fern-property-name": "certificate-id"
+														"x-fern-property-name": "certificate-id",
+														"x-forge-property-name": "certificate-id"
 													},
 													"sslmode": {
 														"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -2617,6 +2676,8 @@
 																				"type": "string",
 																				"maxLength": 2048,
 																				"writeOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"scheme": {
@@ -2694,6 +2755,8 @@
 																				"type": "string",
 																				"maxLength": 2048,
 																				"writeOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"scheme": {
@@ -2738,6 +2801,8 @@
 																		"type": "string",
 																		"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																		"writeOnly": true,
+																		"x-auditable": false,
+																		"x-forge-sensitive": true,
 																		"x-sensitive": true
 																	},
 																	"host": {
@@ -2777,6 +2842,8 @@
 																				"type": "string",
 																				"maxLength": 2048,
 																				"writeOnly": true,
+																				"x-auditable": false,
+																				"x-forge-sensitive": true,
 																				"x-sensitive": true
 																			},
 																			"scheme": {
@@ -2938,7 +3005,8 @@
 														"description": "Define mTLS certificate ID obtained after uploading client cert.",
 														"type": "string",
 														"example": "00000000-0000-0000-0000-0000000000",
-														"x-fern-property-name": "certificate-id"
+														"x-fern-property-name": "certificate-id",
+														"x-forge-property-name": "certificate-id"
 													},
 													"sslmode": {
 														"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -3263,7 +3331,8 @@
 															"description": "Define mTLS certificate ID obtained after uploading client cert.",
 															"type": "string",
 															"example": "00000000-0000-0000-0000-0000000000",
-															"x-fern-property-name": "certificate-id"
+															"x-fern-property-name": "certificate-id",
+															"x-forge-property-name": "certificate-id"
 														},
 														"sslmode": {
 															"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -3304,6 +3373,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -3381,6 +3452,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -3425,6 +3498,8 @@
 																			"type": "string",
 																			"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"host": {
@@ -3464,6 +3539,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -3662,6 +3739,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "hyperdrive",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"query-cache.write"
+		],
 		"x-forge-params": {
 			"mtls.sslmode": {
 				"choices": [
@@ -3913,7 +3996,8 @@
 															"description": "Define mTLS certificate ID obtained after uploading client cert.",
 															"type": "string",
 															"example": "00000000-0000-0000-0000-0000000000",
-															"x-fern-property-name": "certificate-id"
+															"x-fern-property-name": "certificate-id",
+															"x-forge-property-name": "certificate-id"
 														},
 														"sslmode": {
 															"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -3954,6 +4038,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -4031,6 +4117,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -4075,6 +4163,8 @@
 																			"type": "string",
 																			"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"host": {
@@ -4114,6 +4204,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -4306,7 +4398,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "hyperdrive",
-		"x-fern-sdk-method-name": "restart"
+		"x-fern-sdk-method-name": "restart",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "hyperdrive",
+		"x-forge-method-name": "restart",
+		"x-forge-oauth-scopes": [
+			"query-cache.write"
+		]
 	},
 	"POST /accounts/{account_id}/hyperdrive/integrationsOperations/planetScale/createDatabaseSignature": {
 		"operationId": "create-hyperdrive-database-signature",
@@ -4416,7 +4514,10 @@
 												"signature": {
 													"description": "Hex-encoded signature authorizing the database creation.",
 													"type": "string",
-													"example": "9f2b8c1d4e6a7b3c5d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c"
+													"example": "9f2b8c1d4e6a7b3c5d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c",
+													"x-auditable": false,
+													"x-forge-sensitive": true,
+													"x-sensitive": true
 												},
 												"timestamp": {
 													"description": "Unix timestamp, in seconds, at which the signature was issued. The integration partner uses it to verify the signature and reject stale authorizations.",
@@ -4544,13 +4645,9 @@
 			"Hyperdrive"
 		],
 		"x-api-token-group": [
-			"Hyperdrive Write"
+			"Hyperdrive PlanetScale Setup",
+			"Billing Write"
 		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.hyperdrive.planetscale.database.create"
-			]
-		},
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "create-database-signature",
@@ -4558,8 +4655,17 @@
 			{
 				"x-fern-availability": "beta",
 				"x-fern-sdk-group-name": "hyperdrive.integration.planetscale",
-				"x-fern-sdk-method-name": "signature"
+				"x-fern-sdk-method-name": "signature",
+				"x-forge-availability": "beta",
+				"x-forge-group-name": "hyperdrive.integration.planetscale",
+				"x-forge-method-name": "signature"
 			}
+		],
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "hyperdrive",
+		"x-forge-method-name": "create-database-signature",
+		"x-forge-oauth-scopes": [
+			"hyperdrive-planetscale.setup"
 		]
 	},
 	"PUT /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
@@ -4694,7 +4800,8 @@
 										"description": "Define mTLS certificate ID obtained after uploading client cert.",
 										"type": "string",
 										"example": "00000000-0000-0000-0000-0000000000",
-										"x-fern-property-name": "certificate-id"
+										"x-fern-property-name": "certificate-id",
+										"x-forge-property-name": "certificate-id"
 									},
 									"sslmode": {
 										"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -4735,6 +4842,8 @@
 																"type": "string",
 																"maxLength": 2048,
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"scheme": {
@@ -4812,6 +4921,8 @@
 																"type": "string",
 																"maxLength": 2048,
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"scheme": {
@@ -4856,6 +4967,8 @@
 														"type": "string",
 														"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 														"writeOnly": true,
+														"x-auditable": false,
+														"x-forge-sensitive": true,
 														"x-sensitive": true
 													},
 													"host": {
@@ -4895,6 +5008,8 @@
 																"type": "string",
 																"maxLength": 2048,
 																"writeOnly": true,
+																"x-auditable": false,
+																"x-forge-sensitive": true,
 																"x-sensitive": true
 															},
 															"scheme": {
@@ -5176,7 +5291,8 @@
 															"description": "Define mTLS certificate ID obtained after uploading client cert.",
 															"type": "string",
 															"example": "00000000-0000-0000-0000-0000000000",
-															"x-fern-property-name": "certificate-id"
+															"x-fern-property-name": "certificate-id",
+															"x-forge-property-name": "certificate-id"
 														},
 														"sslmode": {
 															"description": "PostgreSQL accepts `require`, `verify-ca`, and `verify-full`. MySQL accepts `REQUIRED`, `VERIFY_CA`, and `VERIFY_IDENTITY`. The verify modes require a CA certificate; the require modes cannot be used with a CA certificate.",
@@ -5217,6 +5333,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -5294,6 +5412,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -5338,6 +5458,8 @@
 																			"type": "string",
 																			"example": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 																			"writeOnly": true,
+																			"x-auditable": false,
+																			"x-forge-sensitive": true,
 																			"x-sensitive": true
 																		},
 																		"host": {
@@ -5377,6 +5499,8 @@
 																					"type": "string",
 																					"maxLength": 2048,
 																					"writeOnly": true,
+																					"x-auditable": false,
+																					"x-forge-sensitive": true,
 																					"x-sensitive": true
 																				},
 																				"scheme": {
@@ -5575,6 +5699,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "hyperdrive",
 		"x-fern-sdk-method-name": "replace",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "hyperdrive",
+		"x-forge-method-name": "replace",
+		"x-forge-oauth-scopes": [
+			"query-cache.write"
+		],
 		"x-forge-params": {
 			"mtls.sslmode": {
 				"choices": [

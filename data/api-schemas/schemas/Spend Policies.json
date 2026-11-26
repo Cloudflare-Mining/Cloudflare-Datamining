@@ -763,6 +763,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "billing.spend-policies",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "billing.spend-policies",
+		"x-forge-method-name": "delete",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/billing/spend-policies": {
@@ -1508,6 +1511,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "billing.spend-policies",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "billing.spend-policies",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/billing/spend-policies/{policy_id}": {
@@ -2270,6 +2276,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "billing.spend-policies",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "billing.spend-policies",
+		"x-forge-method-name": "get",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/billing/spend-policies/{policy_id}/audit": {
@@ -2969,6 +2978,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "billing.spend-policies.audit",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "billing.spend-policies.audit",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/billing/spend-policies/activity": {
@@ -3991,6 +4003,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "billing.spend-policies.activity",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "billing.spend-policies.activity",
+		"x-forge-method-name": "list",
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/billing/spend-policies": {
@@ -4924,6 +4939,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "billing.spend-policies",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "billing.spend-policies",
+		"x-forge-method-name": "create",
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/billing/spend-policies/{policy_id}": {
@@ -5988,6 +6006,9 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "billing.spend-policies",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "billing.spend-policies",
+		"x-forge-method-name": "update",
 		"x-stability": "beta"
 	}
 }

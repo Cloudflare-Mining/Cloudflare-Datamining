@@ -150,9 +150,18 @@
 		"tags": [
 			"Connectivity Services"
 		],
+		"x-api-token-group": [
+			"Connectivity Directory Admin"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workers-vpc.services",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "workers-vpc.services",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"connectivity-directory.admin"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes a Workers VPC connectivity service."
 	},
 	"GET /accounts/{account_id}/connectivity/directory/services": {
@@ -999,9 +1008,22 @@
 		"tags": [
 			"Connectivity Services"
 		],
+		"x-api-token-group": [
+			"Connectivity Directory Read",
+			"Connectivity Directory Bind",
+			"Connectivity Directory Admin"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workers-vpc.services",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "workers-vpc.services",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"connectivity-directory.read",
+			"connectivity-directory.bind",
+			"connectivity-directory.admin"
+		]
 	},
 	"GET /accounts/{account_id}/connectivity/directory/services/{service_id}": {
 		"operationId": "connectivity-services-get",
@@ -1774,9 +1796,22 @@
 		"tags": [
 			"Connectivity Services"
 		],
+		"x-api-token-group": [
+			"Connectivity Directory Read",
+			"Connectivity Directory Bind",
+			"Connectivity Directory Admin"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workers-vpc.services",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "workers-vpc.services",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"connectivity-directory.read",
+			"connectivity-directory.bind",
+			"connectivity-directory.admin"
+		]
 	},
 	"POST /accounts/{account_id}/connectivity/directory/services": {
 		"operationId": "connectivity-services-post",
@@ -3193,9 +3228,18 @@
 		"tags": [
 			"Connectivity Services"
 		],
+		"x-api-token-group": [
+			"Connectivity Directory Admin"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workers-vpc.services",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "workers-vpc.services",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"connectivity-directory.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/connectivity/directory/services/{service_id}": {
 		"operationId": "connectivity-services-put",
@@ -4526,8 +4570,17 @@
 		"tags": [
 			"Connectivity Services"
 		],
+		"x-api-token-group": [
+			"Connectivity Directory Admin"
+		],
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "workers-vpc.services",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "workers-vpc.services",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"connectivity-directory.admin"
+		]
 	}
 }

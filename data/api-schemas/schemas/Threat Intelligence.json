@@ -85,16 +85,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -106,18 +96,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -133,16 +111,6 @@
 											"code": {
 												"type": "number"
 											},
-											"custom_feed_count": {
-												"description": "The current count of custom feeds for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
-											"custom_feed_limit": {
-												"description": "The custom feed limit for the account.",
-												"type": "integer",
-												"minimum": 0
-											},
 											"expected": {
 												"type": "string"
 											},
@@ -154,18 +122,6 @@
 												"items": {
 													"type": "string"
 												}
-											},
-											"reason": {
-												"type": "string",
-												"enum": [
-													"threat_signals_feed_limit",
-													"free_custom_skills_disabled",
-													"free_skill_run_disabled",
-													"free_tier_reconciliation_in_progress",
-													"free_tier_reconciliation_failed",
-													"raw_content_expired",
-													"curated_visibility_changed"
-												]
 											}
 										},
 										"required": [
@@ -452,6 +408,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cloudforce-one.threat-intel",
 		"x-fern-sdk-method-name": "search",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.threat-intel",
+		"x-forge-method-name": "search",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
 		"x-stability": "beta"
 	}
 }

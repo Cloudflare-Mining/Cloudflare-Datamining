@@ -300,7 +300,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.filters",
-		"x-fern-sdk-method-name": "bulk-delete"
+		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.filters",
+		"x-forge-method-name": "bulk-delete",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"DELETE /zones/{zone_id}/filters/{filter_id}": {
 		"operationId": "filters-delete-a-filter",
@@ -583,7 +590,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.filters",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.filters",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/filters": {
 		"operationId": "filters-list-filters",
@@ -967,7 +981,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.filters",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.filters",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/filters/{filter_id}": {
 		"operationId": "filters-get-a-filter",
@@ -1271,7 +1293,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.filters",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.filters",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/filters": {
 		"operationId": "filters-create-filters",
@@ -1631,7 +1661,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.filters",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.filters",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/filters": {
 		"operationId": "filters-update-filters",
@@ -2008,7 +2045,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.filters",
-		"x-fern-sdk-method-name": "bulk-update"
+		"x-fern-sdk-method-name": "bulk-update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.filters",
+		"x-forge-method-name": "bulk-update",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/filters/{filter_id}": {
 		"operationId": "filters-update-a-filter",
@@ -2354,6 +2398,13 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.filters",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.filters",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	}
 }

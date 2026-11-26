@@ -364,12 +364,18 @@
 			"Zone-Level Access service tokens"
 		],
 		"x-api-token-group": [
-			"Access: Service Tokens Write"
+			"Individual Access Service Token Admin",
+			"Access: Service Tokens Write",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-service-tokens",
-		"x-fern-sdk-method-name": "delete"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-service-token.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/access/service_tokens": {
 		"operationId": "zone-level-access-service-tokens-list-service-tokens",
@@ -762,13 +768,23 @@
 			"Zone-Level Access service tokens"
 		],
 		"x-api-token-group": [
+			"Individual Access Service Token Read",
+			"Individual Access Service Token Admin",
 			"Access: Service Tokens Write",
-			"Access: Service Tokens Read"
+			"Access: Service Tokens Read",
+			"Zero Trust Read",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-service-tokens",
-		"x-fern-sdk-method-name": "list"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-service-token.read",
+			"access-service-token.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/access/service_tokens/{service_token_id}": {
 		"operationId": "zone-level-access-service-tokens-get-a-service-token",
@@ -1135,13 +1151,23 @@
 			"Zone-Level Access service tokens"
 		],
 		"x-api-token-group": [
+			"Individual Access Service Token Read",
+			"Individual Access Service Token Admin",
 			"Access: Service Tokens Write",
-			"Access: Service Tokens Read"
+			"Access: Service Tokens Read",
+			"Zero Trust Read",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-service-tokens",
-		"x-fern-sdk-method-name": "get"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-service-token.read",
+			"access-service-token.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/access/service_tokens": {
 		"operationId": "zone-level-access-service-tokens-create-a-service-token",
@@ -1331,6 +1357,8 @@
 													"description": "The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.",
 													"type": "string",
 													"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5",
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												},
 												"created_at": {
@@ -1519,12 +1547,18 @@
 			"Zone-Level Access service tokens"
 		],
 		"x-api-token-group": [
-			"Access: Service Tokens Write"
+			"Individual Access Service Token Admin",
+			"Access: Service Tokens Write",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-service-tokens",
-		"x-fern-sdk-method-name": "create"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-service-token.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/access/service_tokens/{service_token_id}": {
 		"operationId": "zone-level-access-service-tokens-update-a-service-token",
@@ -1948,11 +1982,17 @@
 			"Zone-Level Access service tokens"
 		],
 		"x-api-token-group": [
-			"Access: Service Tokens Write"
+			"Individual Access Service Token Admin",
+			"Access: Service Tokens Write",
+			"Zero Trust Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-service-tokens",
-		"x-fern-sdk-method-name": "update"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-service-token.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	}
 }

@@ -230,7 +230,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.schemas",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-group-name": "api-security.schema-validation.legacy.schemas",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes the legacy uploaded schema and removes its validation coverage.",
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation": {
@@ -413,6 +420,15 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.settings.operations",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "api-security.schema-validation.legacy.settings.operations",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/settings/schema_validation": {
@@ -588,6 +604,15 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.settings",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "api-security.schema-validation.legacy.settings",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas": {
@@ -986,6 +1011,15 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.schemas",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-group-name": "api-security.schema-validation.legacy.schemas",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
@@ -1307,6 +1341,15 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.schemas",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "api-security.schema-validation.legacy.schemas",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations": {
@@ -2184,6 +2227,15 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.schemas.operations",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-group-name": "api-security.schema-validation.legacy.schemas.operations",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/hosts": {
@@ -2521,6 +2573,15 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.schemas.hosts",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-group-name": "api-security.schema-validation.legacy.schemas.hosts",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"api-gateway.read",
+			"api-gateway.write",
+			"account-api-gateway.read",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/operations/schema_validation": {
@@ -2832,6 +2893,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.settings.operations",
 		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-group-name": "api-security.schema-validation.legacy.settings.operations",
+		"x-forge-method-name": "bulk-edit",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/settings/schema_validation": {
@@ -3042,6 +3110,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.settings",
 		"x-fern-sdk-method-name": "edit",
+		"x-forge-group-name": "api-security.schema-validation.legacy.settings",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PATCH /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
@@ -3377,6 +3452,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.schemas",
 		"x-fern-sdk-method-name": "set-validation",
+		"x-forge-group-name": "api-security.schema-validation.legacy.schemas",
+		"x-forge-method-name": "set-validation",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"POST /zones/{zone_id}/api_gateway/user_schemas": {
@@ -3857,6 +3939,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.schemas",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-group-name": "api-security.schema-validation.legacy.schemas",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PUT /zones/{zone_id}/api_gateway/operations/{operation_id}/schema_validation": {
@@ -4062,6 +4151,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.settings.operations",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-group-name": "api-security.schema-validation.legacy.settings.operations",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	},
 	"PUT /zones/{zone_id}/api_gateway/settings/schema_validation": {
@@ -4273,6 +4369,13 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "api-security.schema-validation.legacy.settings",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-group-name": "api-security.schema-validation.legacy.settings",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"api-gateway.write",
+			"account-api-gateway.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Schema Validation API](https://developers.cloudflare.com/api/resources/schema_validation/) instead."
 	}
 }

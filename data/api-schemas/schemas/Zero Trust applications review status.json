@@ -374,10 +374,22 @@
 		"tags": [
 			"Zero Trust applications review status"
 		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.apps.review.status",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.apps.review.status",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /accounts/{account_id}/gateway/apps/review_status": {
 		"operationId": "zero-trust-applications-review-status-update",
@@ -798,9 +810,19 @@
 		"tags": [
 			"Zero Trust applications review status"
 		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.apps.review.status",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.apps.review.status",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
+		"x-forge-skip": true
 	}
 }

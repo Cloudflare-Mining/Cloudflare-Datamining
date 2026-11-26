@@ -190,14 +190,14 @@
 															"x-auditable": true
 														},
 														"matchers": {
-															"description": "Matching patterns to forward to your actions.",
+															"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
 															"type": "array",
 															"items": {
 																"description": "Matching pattern to forward your actions.",
 																"type": "object",
 																"properties": {
 																	"field": {
-																		"description": "Field for type matcher.",
+																		"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
 																		"type": "string",
 																		"example": "to",
 																		"enum": [
@@ -306,7 +306,445 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"email-routing-rule.write"
+		],
 		"x-forge-require-confirmation": "This operation permanently deletes an Email Routing rule."
+	},
+	"GET /{account_or_zone}/{account_or_zone_id}/email/routing/rules": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/email/routing/rules",
+		"summary": "List account or zone routing rules",
+		"description": "Lists existing routing rules across all zones in the account or zone.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"description": "Page number of paginated results.",
+					"type": "number",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"description": "Maximum number of results per page.",
+					"type": "number",
+					"default": 20,
+					"maximum": 50,
+					"minimum": 5
+				}
+			},
+			{
+				"name": "enabled",
+				"in": "query",
+				"schema": {
+					"description": "Filter by enabled routing rules.",
+					"type": "boolean",
+					"example": true,
+					"enum": [
+						true,
+						false
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List account or zone routing rules response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"allOf": [
+													{
+														"type": "object",
+														"properties": {
+															"actions": {
+																"description": "List actions patterns.",
+																"type": "array",
+																"items": {
+																	"description": "Actions pattern.",
+																	"type": "object",
+																	"properties": {
+																		"type": {
+																			"description": "Type of supported action.",
+																			"type": "string",
+																			"example": "forward",
+																			"enum": [
+																				"drop",
+																				"forward",
+																				"worker"
+																			],
+																			"x-auditable": true
+																		},
+																		"value": {
+																			"description": "List of values for the action. Currently limited to a single value.",
+																			"type": "array",
+																			"items": {
+																				"description": "Value for action.",
+																				"example": "destinationaddress@example.net",
+																				"maxLength": 90,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"maxItems": 1
+																		}
+																	},
+																	"required": [
+																		"type"
+																	]
+																},
+																"maxItems": 1,
+																"minItems": 1
+															},
+															"enabled": {
+																"description": "Routing rule status.",
+																"type": "boolean",
+																"example": true,
+																"default": true,
+																"enum": [
+																	true,
+																	false
+																],
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Routing rule identifier.",
+																"type": "string",
+																"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+																"maxLength": 32,
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"matchers": {
+																"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
+																"type": "array",
+																"items": {
+																	"description": "Matching pattern to forward your actions.",
+																	"type": "object",
+																	"properties": {
+																		"field": {
+																			"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
+																			"type": "string",
+																			"example": "to",
+																			"enum": [
+																				"to"
+																			],
+																			"x-auditable": true
+																		},
+																		"type": {
+																			"description": "Type of matcher.",
+																			"type": "string",
+																			"example": "literal",
+																			"enum": [
+																				"all",
+																				"literal"
+																			],
+																			"x-auditable": true
+																		},
+																		"value": {
+																			"description": "Value for matcher.",
+																			"type": "string",
+																			"example": "test@example.com",
+																			"maxLength": 90,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"type"
+																	]
+																}
+															},
+															"name": {
+																"description": "Routing rule name.",
+																"type": "string",
+																"example": "Send to user@example.net rule.",
+																"maxLength": 256,
+																"x-auditable": true
+															},
+															"priority": {
+																"description": "Priority of the routing rule.",
+																"type": "number",
+																"default": 0,
+																"minimum": 0,
+																"x-auditable": true
+															},
+															"source": {
+																"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+																"type": "string",
+																"example": "api",
+																"default": "api",
+																"enum": [
+																	"api",
+																	"wrangler"
+																],
+																"x-auditable": true
+															},
+															"tag": {
+																"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
+																"type": "string",
+																"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+																"deprecated": true,
+																"maxLength": 32,
+																"readOnly": true
+															}
+														}
+													},
+													{
+														"properties": {
+															"zone": {
+																"description": "Zone information for the routing rule.",
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "Zone name.",
+																		"type": "string",
+																		"example": "example.com",
+																		"readOnly": true
+																	},
+																	"tag": {
+																		"description": "Zone tag.",
+																		"type": "string",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"readOnly": true
+																	}
+																}
+															}
+														},
+														"type": "object"
+													}
+												]
+											}
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service.",
+													"type": "number",
+													"example": 1
+												},
+												"page": {
+													"description": "Current page within paginated list of results.",
+													"type": "number",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page of results.",
+													"type": "number",
+													"example": 20
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"type": "number",
+													"example": 1
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Authentication error or missing account or zone rule list permission."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Email Routing routing rules"
+		],
+		"x-api-token-group": [
+			"Email Routing Account Rules Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-routing.rules",
+		"x-fern-sdk-method-name": "list-account",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.rules",
+		"x-forge-method-name": "list-account",
+		"x-forge-oauth-scopes": [
+			"email-routing-account-rule.read"
+		],
+		"x-stainless-skip": true
 	},
 	"GET /accounts/{account_id}/email/routing/rules": {
 		"operationId": "email-routing-routing-rules-list-account-routing-rules",
@@ -557,14 +995,14 @@
 																"x-auditable": true
 															},
 															"matchers": {
-																"description": "Matching patterns to forward to your actions.",
+																"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
 																"type": "array",
 																"items": {
 																	"description": "Matching pattern to forward your actions.",
 																	"type": "object",
 																	"properties": {
 																		"field": {
-																			"description": "Field for type matcher.",
+																			"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
 																			"type": "string",
 																			"example": "to",
 																			"enum": [
@@ -706,7 +1144,14 @@
 		"tags": [
 			"Email Routing routing rules"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Email Routing Account Rules Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.email.routing.rule.list"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -714,8 +1159,12 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "list-account"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"email-routing-account-rule.read"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/email/routing/rules": {
 		"operationId": "email-routing-routing-rules-list-routing-rules",
@@ -966,14 +1415,14 @@
 																"x-auditable": true
 															},
 															"matchers": {
-																"description": "Matching patterns to forward to your actions.",
+																"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
 																"type": "array",
 																"items": {
 																	"description": "Matching pattern to forward your actions.",
 																	"type": "object",
 																	"properties": {
 																		"field": {
-																			"description": "Field for type matcher.",
+																			"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
 																			"type": "string",
 																			"example": "to",
 																			"enum": [
@@ -1107,8 +1556,13 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"email-routing-rule.read",
+			"email-routing-rule.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
 		"operationId": "email-routing-routing-rules-get-routing-rule",
@@ -1301,14 +1755,14 @@
 															"x-auditable": true
 														},
 														"matchers": {
-															"description": "Matching patterns to forward to your actions.",
+															"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
 															"type": "array",
 															"items": {
 																"description": "Matching pattern to forward your actions.",
 																"type": "object",
 																"properties": {
 																	"field": {
-																		"description": "Field for type matcher.",
+																		"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
 																		"type": "string",
 																		"example": "to",
 																		"enum": [
@@ -1417,7 +1871,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"email-routing-rule.read",
+			"email-routing-rule.write"
+		]
 	},
 	"GET /zones/{zone_id}/email/routing/rules/catch_all": {
 		"operationId": "email-routing-routing-rules-get-catch-all-rule",
@@ -1684,7 +2145,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules.catch-all",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.rules.catch-all",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"email-routing-rule.read",
+			"email-routing-rule.write"
+		]
 	},
 	"POST /accounts/{account_id}/email/routing/rules/plan": {
 		"operationId": "email-routing-routing-rules-plan-account-routing-rules",
@@ -1873,14 +2341,14 @@
 											"x-auditable": true
 										},
 										"matchers": {
-											"description": "Matching patterns to forward to your actions.",
+											"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
 											"type": "array",
 											"items": {
 												"description": "Matching pattern to forward your actions.",
 												"type": "object",
 												"properties": {
 													"field": {
-														"description": "Field for type matcher.",
+														"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
 														"type": "string",
 														"example": "to",
 														"enum": [
@@ -2174,14 +2642,14 @@
 																					"x-auditable": true
 																				},
 																				"matchers": {
-																					"description": "Matching patterns to forward to your actions.",
+																					"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
 																					"type": "array",
 																					"items": {
 																						"description": "Matching pattern to forward your actions.",
 																						"type": "object",
 																						"properties": {
 																							"field": {
-																								"description": "Field for type matcher.",
+																								"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
 																								"type": "string",
 																								"example": "to",
 																								"enum": [
@@ -2405,7 +2873,9 @@
 		"tags": [
 			"Email Routing routing rules"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Email Routing Account Rules Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2414,7 +2884,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "plan"
+		"x-fern-sdk-method-name": "plan",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.rules",
+		"x-forge-method-name": "plan",
+		"x-forge-oauth-scopes": [
+			"email-routing-account-rule.read"
+		]
 	},
 	"POST /zones/{zone_id}/email/routing/rules": {
 		"operationId": "email-routing-routing-rules-create-routing-rule",
@@ -2491,14 +2967,14 @@
 								"x-auditable": true
 							},
 							"matchers": {
-								"description": "Matching patterns to forward to your actions.",
+								"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
 								"type": "array",
 								"items": {
 									"description": "Matching pattern to forward your actions.",
 									"type": "object",
 									"properties": {
 										"field": {
-											"description": "Field for type matcher.",
+											"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
 											"type": "string",
 											"example": "to",
 											"enum": [
@@ -2731,14 +3207,14 @@
 															"x-auditable": true
 														},
 														"matchers": {
-															"description": "Matching patterns to forward to your actions.",
+															"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
 															"type": "array",
 															"items": {
 																"description": "Matching pattern to forward your actions.",
 																"type": "object",
 																"properties": {
 																	"field": {
-																		"description": "Field for type matcher.",
+																		"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
 																		"type": "string",
 																		"example": "to",
 																		"enum": [
@@ -2849,7 +3325,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.rules",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"email-routing-rule.write"
+		]
 	},
 	"PUT /zones/{zone_id}/email/routing/rules/{rule_identifier}": {
 		"operationId": "email-routing-routing-rules-update-routing-rule",
@@ -2939,14 +3421,14 @@
 								"x-auditable": true
 							},
 							"matchers": {
-								"description": "Matching patterns to forward to your actions.",
+								"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
 								"type": "array",
 								"items": {
 									"description": "Matching pattern to forward your actions.",
 									"type": "object",
 									"properties": {
 										"field": {
-											"description": "Field for type matcher.",
+											"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
 											"type": "string",
 											"example": "to",
 											"enum": [
@@ -3179,14 +3661,14 @@
 															"x-auditable": true
 														},
 														"matchers": {
-															"description": "Matching patterns to forward to your actions.",
+															"description": "Matching patterns to forward to your actions. Creating or updating a rule requires exactly one matcher.",
 															"type": "array",
 															"items": {
 																"description": "Matching pattern to forward your actions.",
 																"type": "object",
 																"properties": {
 																	"field": {
-																		"description": "Field for type matcher.",
+																		"description": "Field for type matcher. Required for `literal` matchers, and must be `to`.",
 																		"type": "string",
 																		"example": "to",
 																		"enum": [
@@ -3297,7 +3779,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.rules",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"email-routing-rule.write"
+		]
 	},
 	"PUT /zones/{zone_id}/email/routing/rules/catch_all": {
 		"operationId": "email-routing-routing-rules-update-catch-all-rule",
@@ -3679,6 +4167,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "email-routing.rules.catch-all",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "email-routing.rules.catch-all",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"email-routing-rule.write"
+		]
 	}
 }

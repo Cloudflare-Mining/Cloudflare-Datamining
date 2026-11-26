@@ -766,65 +766,6 @@
 				"readOnly": true,
 				"x-auditable": true
 			}
-		},
-		{
-			"name": "page",
-			"in": "query",
-			"schema": {
-				"description": "Page number of paginated results.",
-				"type": "number",
-				"default": 1,
-				"minimum": 1
-			}
-		},
-		{
-			"name": "per_page",
-			"in": "query",
-			"schema": {
-				"description": "Number of items per page.",
-				"type": "number",
-				"default": 25,
-				"maximum": 1000,
-				"minimum": 5
-			}
-		},
-		{
-			"name": "order",
-			"in": "query",
-			"schema": {
-				"description": "Field to order widgets by.",
-				"type": "string",
-				"example": "id",
-				"enum": [
-					"id",
-					"sitekey",
-					"name",
-					"created_on",
-					"modified_on"
-				]
-			}
-		},
-		{
-			"name": "direction",
-			"in": "query",
-			"schema": {
-				"description": "Direction to order widgets.",
-				"type": "string",
-				"example": "asc",
-				"enum": [
-					"asc",
-					"desc"
-				]
-			}
-		},
-		{
-			"name": "filter",
-			"in": "query",
-			"description": "Filter widgets by field. The `name` field uses case-insensitive\nsubstring matching; `sitekey` uses exact matching.\nFormat: `field:value`\n\nSupported fields:\n- `name` - Filter by widget name (e.g., `filter=name:login-form`)\n- `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)\n\nReturns 400 Bad Request if the field is unsupported or format is invalid.\nAn empty filter value returns all results.\n",
-			"schema": {
-				"type": "string",
-				"example": "name:my-widget"
-			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/challenges/widgets/{sitekey}": [

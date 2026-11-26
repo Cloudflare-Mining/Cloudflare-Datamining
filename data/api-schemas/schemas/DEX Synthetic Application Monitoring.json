@@ -404,7 +404,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.tests",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"teams-dex.write"
+		]
 	},
 	"GET /accounts/{account_id}/dex/colos": {
 		"operationId": "dex-endpoints-list-colos",
@@ -722,7 +728,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.colos",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.colos",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/fleet-status/live": {
 		"operationId": "devices-live-status",
@@ -1740,7 +1755,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.devices",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.devices",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/fleet-status/over-time": {
 		"operationId": "dex-device-status-over-time",
@@ -2833,7 +2857,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.devices.over-time",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.devices.over-time",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/isps": {
 		"operationId": "dex-endpoints-list-device-isps",
@@ -3315,7 +3348,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.isps",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.isps",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/devices/dex_tests": {
 		"operationId": "device-dex-test-details",
@@ -3768,7 +3810,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.tests",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}": {
 		"operationId": "device-dex-test-get-device-dex-test",
@@ -4176,7 +4227,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.tests",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/devices": {
 		"operationId": "dex-fleet-status-devices",
@@ -4290,7 +4350,8 @@
 					"type": "string",
 					"example": "proxy"
 				},
-				"x-fern-parameter-name": "device-mode"
+				"x-fern-parameter-name": "device-mode",
+				"x-forge-parameter-name": "device-mode"
 			},
 			{
 				"name": "status",
@@ -4321,7 +4382,8 @@
 					"type": "string",
 					"example": "1.0.0"
 				},
-				"x-fern-parameter-name": "warp-version"
+				"x-fern-parameter-name": "warp-version",
+				"x-forge-parameter-name": "warp-version"
 			},
 			{
 				"name": "source",
@@ -5424,7 +5486,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.devices",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.devices",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/live": {
 		"operationId": "dex-fleet-status-live",
@@ -5794,7 +5865,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.devices.aggregates.live",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.devices.aggregates.live",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/over-time": {
 		"operationId": "dex-fleet-status-over-time",
@@ -6148,7 +6228,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.devices.aggregates.over-time",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.devices.aggregates.over-time",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/http-tests/{test_id}": {
 		"operationId": "dex-endpoints-http-test-details",
@@ -6990,7 +7079,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.test-results.http",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.test-results.http",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/http-tests/{test_id}/percentiles": {
 		"operationId": "dex-endpoints-http-test-percentiles",
@@ -7387,7 +7485,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.test-results.http.percentiles",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.test-results.http.percentiles",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/tests/overview": {
 		"operationId": "dex-endpoints-list-tests-overview",
@@ -8304,7 +8411,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.overview.tests",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.overview.tests",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/tests/unique-devices": {
 		"operationId": "dex-endpoints-tests-unique-devices",
@@ -8599,7 +8715,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.overview.tests.unique-devices",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.overview.tests.unique-devices",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-test-results/{test_result_id}/network-path": {
 		"operationId": "dex-endpoints-traceroute-test-result-network-path",
@@ -8997,7 +9122,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.test-results.traceroute.network-path",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.test-results.traceroute.network-path",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}": {
 		"operationId": "dex-endpoints-traceroute-test-details",
@@ -9780,7 +9914,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.test-results.traceroute",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.test-results.traceroute",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/network-path": {
 		"operationId": "dex-endpoints-traceroute-test-network-path",
@@ -10207,7 +10350,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests.network-path",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.tests.network-path",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/percentiles": {
 		"operationId": "dex-endpoints-traceroute-test-percentiles",
@@ -10600,7 +10752,16 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.test-results.traceroute.percentiles",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.test-results.traceroute.percentiles",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-dex.read",
+			"teams-dex.write",
+			"teams.report",
+			"teams.read"
+		]
 	},
 	"POST /accounts/{account_id}/dex/devices/dex_tests": {
 		"operationId": "device-dex-test-create-device-dex-test",
@@ -11135,7 +11296,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.tests",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"teams-dex.write"
+		]
 	},
 	"PUT /accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}": {
 		"operationId": "device-dex-test-update-device-dex-test",
@@ -11682,6 +11849,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.dex.tests",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.dex.tests",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams-dex.write"
+		]
 	}
 }

@@ -278,7 +278,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.domains",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.domains",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/domains": {
 		"operationId": "pages-domains-get-domains",
@@ -733,12 +739,21 @@
 			"Pages Domains"
 		],
 		"x-api-token-group": [
+			"Pages Metadata Read",
 			"Pages Read",
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.domains",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.domains",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"pages.metadata_read",
+			"page.read",
+			"page.write"
+		]
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}": {
 		"operationId": "pages-domains-get-domain",
@@ -1141,12 +1156,21 @@
 			"Pages Domains"
 		],
 		"x-api-token-group": [
+			"Pages Metadata Read",
 			"Pages Read",
 			"Pages Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.domains",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.domains",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"pages.metadata_read",
+			"page.read",
+			"page.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}": {
 		"operationId": "pages-domains-patch-domain",
@@ -1553,7 +1577,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.domains.validation",
-		"x-fern-sdk-method-name": "retry"
+		"x-fern-sdk-method-name": "retry",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.domains.validation",
+		"x-forge-method-name": "retry",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/domains": {
 		"operationId": "pages-domains-add-domain",
@@ -1970,6 +2000,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "pages.domains",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.domains",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"page.write"
+		]
 	}
 }

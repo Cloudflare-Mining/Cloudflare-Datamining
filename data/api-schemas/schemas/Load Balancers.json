@@ -241,8 +241,12 @@
 			"Load Balancers Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "load-balancers",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"load-balancers.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/load_balancers": {
 		"operationId": "load-balancers-list-load-balancers",
@@ -1392,8 +1396,13 @@
 			"Load Balancers Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "load-balancers",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"load-balancers.read",
+			"load-balancers.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/load_balancers/{load_balancer_id}": {
 		"operationId": "load-balancers-load-balancer-details",
@@ -2529,8 +2538,13 @@
 			"Load Balancers Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "load-balancers",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"load-balancers.read",
+			"load-balancers.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /zones/{zone_id}/load_balancers/{load_balancer_id}": {
 		"operationId": "load-balancers-patch-load-balancer",
@@ -4549,8 +4563,12 @@
 			"Load Balancers Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "load-balancers",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"load-balancers.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/load_balancers": {
 		"operationId": "load-balancers-create-load-balancer",
@@ -6564,8 +6582,12 @@
 			"Load Balancers Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "load-balancers",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"load-balancers.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/load_balancers/{load_balancer_id}": {
 		"operationId": "load-balancers-update-load-balancer",
@@ -8589,7 +8611,11 @@
 			"Load Balancers Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "load-balancers",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"load-balancers.write"
+		],
+		"x-forge-skip": true
 	}
 }

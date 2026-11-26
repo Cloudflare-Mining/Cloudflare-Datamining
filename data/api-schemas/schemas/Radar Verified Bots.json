@@ -412,6 +412,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.verified-bots.top",
 		"x-fern-sdk-method-name": "bots",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.verified-bots.top",
+		"x-forge-method-name": "bots",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar Bots API](https://developers.cloudflare.com/api/resources/radar/subresources/bots/) instead."
 	},
 	"GET /radar/verified_bots/top/categories": {
@@ -817,6 +825,14 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "radar.verified-bots.top",
 		"x-fern-sdk-method-name": "categories",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "radar.verified-bots.top",
+		"x-forge-method-name": "categories",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		],
+		"x-forge-skip": true,
 		"x-stainless-deprecation-message": "Use [Radar Bots API](https://developers.cloudflare.com/api/resources/radar/subresources/bots/) instead."
 	}
 }

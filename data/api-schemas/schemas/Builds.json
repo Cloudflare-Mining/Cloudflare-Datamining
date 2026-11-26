@@ -543,12 +543,21 @@
 			"Builds"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds.versions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.versions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"GET /accounts/{account_id}/builds/builds/{build_uuid}": {
 		"operationId": "getBuildByUuid",
@@ -1154,12 +1163,21 @@
 			"Builds"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"GET /accounts/{account_id}/builds/builds/{build_uuid}/logs": {
 		"operationId": "getBuildLogs",
@@ -1477,12 +1495,21 @@
 			"Builds"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds",
-		"x-fern-sdk-method-name": "logs"
+		"x-fern-sdk-method-name": "logs",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds",
+		"x-forge-method-name": "logs",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		]
 	},
 	"GET /accounts/{account_id}/builds/builds/latest": {
 		"operationId": "getLatestBuildsByScripts",
@@ -2028,13 +2055,23 @@
 			"Builds"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
 			"Workers CI Write",
 			"Workers CI Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "builds.latest",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds.latest",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-ci.read",
+			"workers-ci.write",
+			"workers-scripts.metadata_read"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /accounts/{account_id}/builds/builds/{build_uuid}/cancel": {
 		"operationId": "cancelBuildByUuid",
@@ -2337,6 +2374,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "builds",
-		"x-fern-sdk-method-name": "cancel"
+		"x-fern-sdk-method-name": "cancel",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "builds",
+		"x-forge-method-name": "cancel",
+		"x-forge-oauth-scopes": [
+			"workers-ci.write"
+		]
 	}
 }

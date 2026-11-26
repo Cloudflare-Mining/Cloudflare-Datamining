@@ -436,7 +436,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "bulk-delete"
+		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.rules",
+		"x-forge-method-name": "bulk-delete",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"DELETE /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-delete-a-firewall-rule",
@@ -858,7 +865,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.rules",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-list-firewall-rules",
@@ -1335,7 +1349,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.rules",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-get-a-firewall-rule",
@@ -1757,7 +1779,15 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.rules",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"firewall-services.read",
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-update-priority-of-firewall-rules",
@@ -2193,7 +2223,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "bulk-edit"
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.rules",
+		"x-forge-method-name": "bulk-edit",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-update-priority-of-a-firewall-rule",
@@ -2644,7 +2681,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.rules",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-create-firewall-rules",
@@ -3169,7 +3213,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.rules",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/firewall/rules": {
 		"operationId": "firewall-rules-update-firewall-rules",
@@ -3605,7 +3656,14 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "bulk-update"
+		"x-fern-sdk-method-name": "bulk-update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.rules",
+		"x-forge-method-name": "bulk-update",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	},
 	"PUT /zones/{zone_id}/firewall/rules/{rule_id}": {
 		"operationId": "firewall-rules-update-a-firewall-rule",
@@ -4127,6 +4185,13 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "firewall.rules",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "firewall.rules",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"firewall-services.write"
+		],
+		"x-forge-skip": true
 	}
 }

@@ -223,6 +223,8 @@
 			"AutoRAG Jobs"
 		],
 		"x-api-token-group": [
+			"AI Search Write",
+			"AI Search Read",
 			"Auto Rag Write",
 			"Auto Rag Read"
 		],
@@ -239,7 +241,16 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "autorag.jobs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-group-name": "autorag.jobs",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/autorag/rags/{id}/jobs/{job_id}": {
 		"operationId": "autorag-config-get-job",
@@ -427,6 +438,8 @@
 			"AutoRAG Jobs"
 		],
 		"x-api-token-group": [
+			"AI Search Write",
+			"AI Search Read",
 			"Auto Rag Write",
 			"Auto Rag Read"
 		],
@@ -443,7 +456,16 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "autorag.jobs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-group-name": "autorag.jobs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/autorag/rags/{id}/jobs/{job_id}/logs": {
 		"operationId": "autorag-config-list-job-logs",
@@ -669,6 +691,8 @@
 			"AutoRAG Jobs"
 		],
 		"x-api-token-group": [
+			"AI Search Write",
+			"AI Search Read",
 			"Auto Rag Write",
 			"Auto Rag Read"
 		],
@@ -685,6 +709,15 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "autorag.jobs",
-		"x-fern-sdk-method-name": "logs"
+		"x-fern-sdk-method-name": "logs",
+		"x-forge-group-name": "autorag.jobs",
+		"x-forge-method-name": "logs",
+		"x-forge-oauth-scopes": [
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	}
 }

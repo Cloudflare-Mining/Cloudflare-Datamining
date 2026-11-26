@@ -2,29 +2,98 @@
 	"GET /accounts/{account_id}/zt_risk_scoring/{user_id}": {
 		"operationId": "dlp-risk-score-summary-get-for-user",
 		"summary": "Get risk event/score information for a specific user",
-		"description": "Retrieves the detailed risk score breakdown for a specific user, including contributing factors.",
+		"description": "Gets the risk level, the last reset time, and the risk events of one user. The server reads\nrisk events from at most 180 days before the current time, and after the last reset of the user.\nReturns 404 when the request reaches a server outside of the configured region of the account.\n",
 		"parameters": [
 			{
+				"description": "Cloudflare account tag.",
+				"in": "path",
 				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"name": "user_id",
-				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string",
-					"format": "uuid"
+					"example": "0ee7ea44703746e777422a5a11d797b9"
+				}
+			},
+			{
+				"description": "User ID (UUID v4).",
+				"in": "path",
+				"name": "user_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+				}
+			},
+			{
+				"name": "timestamp.between",
+				"in": "query",
+				"description": "Time range as <start_seconds>:<end_seconds> in Unix epoch seconds. The start must be before\nthe end.\n",
+				"schema": {
+					"type": "string",
+					"example": "1790812800:1790899200"
+				}
+			},
+			{
+				"name": "time_zone",
+				"in": "query",
+				"description": "IANA time zone name. The server validates the value. The value does not change the response.",
+				"schema": {
+					"type": "string",
+					"example": "America/Chicago"
+				}
+			},
+			{
+				"description": "Page number, starting at 1.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Number of results per page. The server uses 100 for a larger value.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"default": 25,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "order_by",
+				"in": "query",
+				"description": "Field to sort the events by.",
+				"schema": {
+					"type": "string",
+					"default": "timestamp",
+					"enum": [
+						"timestamp",
+						"risk_level"
+					]
+				}
+			},
+			{
+				"description": "Sort direction.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"type": "string",
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Risk events.",
+				"description": "Risk events for the user.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -113,67 +182,51 @@
 												"errors",
 												"messages"
 											]
-										},
-										{
-											"properties": {
-												"result_info": {
-													"type": "object",
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service.",
-															"type": "number",
-															"example": 1
-														},
-														"page": {
-															"description": "Current page within paginated list of results.",
-															"type": "number",
-															"example": 1
-														},
-														"per_page": {
-															"description": "Number of results per page of results.",
-															"type": "number",
-															"example": 20
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"type": "number",
-															"example": 2000
-														},
-														"total_pages": {
-															"description": "The number of total pages in the entire result set.",
-															"type": "number",
-															"example": 100
-														}
-													}
-												}
-											},
-											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"description": "Risk level, last reset time, and risk events of one user.",
 											"type": "object",
 											"properties": {
 												"email": {
-													"type": "string"
+													"description": "Email address of the user.",
+													"type": "string",
+													"example": "jdoe@example.com"
 												},
 												"events": {
+													"description": "Risk events of the user on this page.",
 													"type": "array",
 													"items": {
+														"description": "One risk event of a user.",
 														"type": "object",
 														"properties": {
 															"event_details": {
-																"type": "object"
+																"description": "Details of the event. The fields depend on the behavior. The server omits the field when the details are not valid JSON.",
+																"type": "object",
+																"additionalProperties": true
 															},
 															"id": {
-																"type": "string"
+																"description": "ID of the behavior that caused the event.",
+																"type": "string",
+																"example": "high_dlp"
 															},
 															"name": {
-																"type": "string"
+																"description": "Name of the behavior that caused the event.",
+																"type": "string",
+																"example": "High number of DLP policies triggered"
+															},
+															"points": {
+																"description": "Risk score points of a behavior.",
+																"type": "integer",
+																"example": 85,
+																"maximum": 100,
+																"minimum": 1
 															},
 															"risk_level": {
+																"description": "Risk level of a behavior or an event.",
 																"type": "string",
 																"enum": [
 																	"info",
@@ -183,44 +236,80 @@
 																]
 															},
 															"timestamp": {
+																"description": "Time of the event.",
 																"type": "string",
-																"format": "date-time"
+																"format": "date-time",
+																"example": "2026-04-08T13:48:01Z"
 															}
 														},
 														"required": [
 															"id",
 															"risk_level",
+															"points",
 															"name",
 															"timestamp"
 														]
 													}
 												},
 												"last_reset_time": {
+													"description": "Time of the last risk score reset of the user. The value is null when the score was never reset.",
 													"type": "string",
 													"format": "date-time",
 													"nullable": true
 												},
 												"name": {
-													"type": "string"
+													"description": "Name of the user.",
+													"type": "string",
+													"example": "John Doe"
 												},
 												"risk_level": {
-													"allOf": [
-														{
-															"type": "string",
-															"enum": [
-																"info",
-																"low",
-																"medium",
-																"high"
-															]
-														}
+													"description": "Risk level of a behavior or an event.",
+													"type": "string",
+													"enum": [
+														"info",
+														"low",
+														"medium",
+														"high"
 													]
 												}
 											},
 											"required": [
 												"name",
 												"email",
+												"last_reset_time",
 												"events"
+											]
+										},
+										"result_info": {
+											"description": "Pagination information. The server always returns every field.",
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Number of results on this page.",
+													"type": "integer",
+													"example": 25
+												},
+												"page": {
+													"description": "Current page within the paginated list of results.",
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page.",
+													"type": "integer",
+													"example": 25
+												},
+												"total_count": {
+													"description": "Total number of results that match the request.",
+													"type": "integer",
+													"example": 2000
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"count",
+												"total_count"
 											]
 										}
 									},
@@ -232,7 +321,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to get risk events.",
+				"description": "Failed to get the risk events for the user.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -347,9 +436,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -360,25 +451,84 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.risk-scoring",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.risk-scoring",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-pii.read"
+		]
 	},
-	"GET /accounts/{account_id}/zt_risk_scoring/behaviors": {
-		"operationId": "dlp-risk-score-behaviors-get",
-		"summary": "Get all behaviors and associated configuration",
-		"description": "Retrieves configured risk score behaviors that define how user actions affect their overall risk score.",
+	"GET /accounts/{account_id}/zt_risk_scoring/{user_id}/event_clusters": {
+		"operationId": "dlp-risk-score-event-clusters-list-for-user",
+		"summary": "List risk event clusters for a specific user",
+		"description": "Lists the risk events of one user, grouped by calendar day in the requested time zone. Each\ncluster contains at most 25 events, oldest first. The time range is at most 30 days. The server\nreads risk events from at most 180 days before the current time.\nReturns 404 when the request reaches a server outside of the configured region of the account.\n",
 		"parameters": [
 			{
-				"name": "account_id",
+				"description": "Cloudflare account tag.",
 				"in": "path",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"example": "0ee7ea44703746e777422a5a11d797b9"
+				}
+			},
+			{
+				"description": "User ID (UUID v4).",
+				"in": "path",
+				"name": "user_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+				}
+			},
+			{
+				"name": "timestamp.between",
+				"in": "query",
+				"description": "Time range as <start_seconds>:<end_seconds> in Unix epoch seconds. The default is the last\n7 days. The server returns 400 when the range is longer than 30 days.\n",
+				"schema": {
+					"type": "string",
+					"example": "1789707600:1790312400"
+				}
+			},
+			{
+				"name": "time_zone",
+				"in": "query",
+				"description": "IANA time zone name that sets the calendar day of each cluster.",
+				"schema": {
+					"type": "string",
+					"example": "America/Chicago",
+					"default": "UTC"
+				}
+			},
+			{
+				"description": "Page number, starting at 1.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"description": "Number of clusters per page. The server uses 10 for a larger value.",
+				"schema": {
+					"type": "integer",
+					"default": 10,
+					"maximum": 10,
+					"minimum": 1
 				}
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Risk scoring behaviors.",
+				"description": "Risk event clusters for the user.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -473,23 +623,491 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Risk level, last reset time, and daily risk event clusters of one user.",
+											"type": "object",
+											"properties": {
+												"clusters": {
+													"description": "Daily risk event clusters on this page.",
+													"type": "array",
+													"items": {
+														"description": "The risk events of one user on one calendar day.",
+														"type": "object",
+														"properties": {
+															"end_time": {
+																"description": "End of the calendar day of the cluster, in the requested time zone.",
+																"type": "string",
+																"format": "date-time"
+															},
+															"event_count": {
+																"description": "Number of events in the cluster.",
+																"type": "integer",
+																"minimum": 0
+															},
+															"events": {
+																"description": "At most 25 events of the cluster, oldest first.",
+																"type": "array",
+																"items": {
+																	"description": "One risk event of a user.",
+																	"type": "object",
+																	"properties": {
+																		"event_details": {
+																			"description": "Details of the event. The fields depend on the behavior. The server omits the field when the details are not valid JSON.",
+																			"type": "object",
+																			"additionalProperties": true
+																		},
+																		"id": {
+																			"description": "ID of the behavior that caused the event.",
+																			"type": "string",
+																			"example": "high_dlp"
+																		},
+																		"name": {
+																			"description": "Name of the behavior that caused the event.",
+																			"type": "string",
+																			"example": "High number of DLP policies triggered"
+																		},
+																		"points": {
+																			"description": "Risk score points of a behavior.",
+																			"type": "integer",
+																			"example": 85,
+																			"maximum": 100,
+																			"minimum": 1
+																		},
+																		"risk_level": {
+																			"description": "Risk level of a behavior or an event.",
+																			"type": "string",
+																			"enum": [
+																				"info",
+																				"low",
+																				"medium",
+																				"high"
+																			]
+																		},
+																		"timestamp": {
+																			"description": "Time of the event.",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2026-04-08T13:48:01Z"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"risk_level",
+																		"points",
+																		"name",
+																		"timestamp"
+																	]
+																}
+															},
+															"first_event_time": {
+																"description": "Time of the first event in the cluster.",
+																"type": "string",
+																"format": "date-time"
+															},
+															"highest_risk_level": {
+																"description": "Highest risk level. The value is unset when no event maps to a configured behavior.",
+																"type": "string",
+																"enum": [
+																	"unset",
+																	"info",
+																	"low",
+																	"medium",
+																	"high"
+																]
+															},
+															"last_event_time": {
+																"description": "Time of the last event in the cluster.",
+																"type": "string",
+																"format": "date-time"
+															},
+															"points": {
+																"description": "Sum of the points of all events in the cluster.",
+																"type": "integer",
+																"minimum": 0
+															},
+															"start_time": {
+																"description": "Start of the calendar day of the cluster, in the requested time zone.",
+																"type": "string",
+																"format": "date-time"
+															}
+														},
+														"required": [
+															"start_time",
+															"end_time",
+															"event_count",
+															"points",
+															"first_event_time",
+															"last_event_time",
+															"highest_risk_level",
+															"events"
+														]
+													}
+												},
+												"email": {
+													"description": "Email address of the user.",
+													"type": "string",
+													"example": "alice@example.com"
+												},
+												"last_reset_time": {
+													"description": "Time of the last risk score reset of the user. The value is null when the score was never reset.",
+													"type": "string",
+													"format": "date-time",
+													"nullable": true
+												},
+												"name": {
+													"description": "Name of the user.",
+													"type": "string",
+													"example": "Alice Johnson"
+												},
+												"range_event_count": {
+													"description": "Number of events in the requested time range.",
+													"type": "integer",
+													"minimum": 0
+												},
+												"risk_level": {
+													"description": "Risk level of a behavior or an event.",
+													"type": "string",
+													"enum": [
+														"info",
+														"low",
+														"medium",
+														"high"
+													]
+												}
+											},
+											"required": [
+												"name",
+												"email",
+												"last_reset_time",
+												"range_event_count",
+												"clusters"
+											]
+										},
+										"result_info": {
+											"description": "Pagination information. The server always returns every field.",
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Number of results on this page.",
+													"type": "integer",
+													"example": 25
+												},
+												"page": {
+													"description": "Current page within the paginated list of results.",
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page.",
+													"type": "integer",
+													"example": 25
+												},
+												"total_count": {
+													"description": "Total number of results that match the request.",
+													"type": "integer",
+													"example": 2000
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"count",
+												"total_count"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failed to get the risk event clusters for the user.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Zero Trust: PII Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.risk-scoring.event-clusters",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.risk-scoring.event-clusters",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"teams-pii.read"
+		]
+	},
+	"GET /accounts/{account_id}/zt_risk_scoring/behaviors": {
+		"operationId": "dlp-risk-score-behaviors-get",
+		"summary": "Get all behaviors and associated configuration",
+		"description": "Gets all risk behaviors for an account and their configuration. The response omits a disabled\nbehavior when the account does not have the gates or entitlements for that behavior.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account tag.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "0ee7ea44703746e777422a5a11d797b9"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Risk behaviors for the account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Risk behaviors, keyed by behavior ID.",
 											"type": "object",
 											"properties": {
 												"behaviors": {
+													"description": "Risk behaviors, keyed by behavior ID.",
 													"type": "object",
 													"additionalProperties": {
+														"description": "A risk behavior and its configuration.",
 														"type": "object",
 														"properties": {
 															"description": {
-																"type": "string"
+																"description": "Explains what the behavior detects.",
+																"type": "string",
+																"example": "A user signed in from two locations that are too far apart for the time between them."
 															},
 															"enabled": {
-																"type": "boolean"
+																"description": "Whether the behavior counts toward the risk score.",
+																"type": "boolean",
+																"example": true
 															},
 															"name": {
-																"type": "string"
+																"description": "Display name of the behavior.",
+																"type": "string",
+																"example": "Impossible travel"
+															},
+															"points": {
+																"description": "Risk score points of a behavior.",
+																"type": "integer",
+																"example": 85,
+																"maximum": 100,
+																"minimum": 1
 															},
 															"risk_level": {
+																"description": "Risk level of a behavior or an event.",
 																"type": "string",
 																"enum": [
 																	"info",
@@ -503,6 +1121,7 @@
 															"name",
 															"description",
 															"risk_level",
+															"points",
 															"enabled"
 														]
 													}
@@ -521,7 +1140,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to get risk scoring behaviors.",
+				"description": "Failed to get risk behaviors.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -636,9 +1255,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -650,25 +1271,64 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.risk-scoring.behaviours",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.risk-scoring.behaviours",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
 	},
-	"GET /accounts/{account_id}/zt_risk_scoring/summary": {
-		"operationId": "dlp-risk-score-summary-get",
-		"summary": "Get risk score info for all users in the account",
-		"description": "Gets an aggregate summary of risk scores across the account, including distribution and trends.",
+	"GET /accounts/{account_id}/zt_risk_scoring/behaviors/{behavior_id}": {
+		"operationId": "dlp-risk-score-behavior-get",
+		"summary": "Get a risk behavior",
+		"description": "Gets one risk behavior that has no additional configuration. Returns 404 when the behavior is\ndisabled and the account does not have the gates or entitlements for it.\n",
 		"parameters": [
 			{
-				"name": "account_id",
+				"description": "Cloudflare account tag.",
 				"in": "path",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"example": "0ee7ea44703746e777422a5a11d797b9"
+				}
+			},
+			{
+				"description": "ID of a risk behavior that has no additional configuration.",
+				"in": "path",
+				"name": "behavior_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "imp_travel",
+					"enum": [
+						"imp_travel",
+						"malware",
+						"sentinel_one",
+						"crowdstrike_low",
+						"crowdstrike_med",
+						"suspicious_domain_visited",
+						"high_risk_domain_visited",
+						"unusual_access_login",
+						"new_domain_rotating_ips",
+						"beaconing",
+						"novel_mcp_usage",
+						"cloud_storage_upload_anomaly",
+						"new_access_app",
+						"new_access_device",
+						"new_access_country",
+						"new_access_location",
+						"unusual_access_day",
+						"unusual_access_hour"
+					]
 				}
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Risk score for all users in the account.",
+				"description": "The risk behavior.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -757,68 +1417,725 @@
 												"errors",
 												"messages"
 											]
-										},
-										{
-											"properties": {
-												"result_info": {
-													"type": "object",
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service.",
-															"type": "number",
-															"example": 1
-														},
-														"page": {
-															"description": "Current page within paginated list of results.",
-															"type": "number",
-															"example": 1
-														},
-														"per_page": {
-															"description": "Number of results per page of results.",
-															"type": "number",
-															"example": 20
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"type": "number",
-															"example": 2000
-														},
-														"total_pages": {
-															"description": "The number of total pages in the entire result set.",
-															"type": "number",
-															"example": 100
-														}
-													}
-												}
-											},
-											"type": "object"
 										}
 									]
 								},
 								{
 									"properties": {
 										"result": {
+											"description": "A risk behavior and its configuration.",
+											"type": "object",
+											"properties": {
+												"description": {
+													"description": "Explains what the behavior detects.",
+													"type": "string",
+													"example": "A user signed in from two locations that are too far apart for the time between them."
+												},
+												"enabled": {
+													"description": "Whether the behavior counts toward the risk score.",
+													"type": "boolean",
+													"example": true
+												},
+												"name": {
+													"description": "Display name of the behavior.",
+													"type": "string",
+													"example": "Impossible travel"
+												},
+												"points": {
+													"description": "Risk score points of a behavior.",
+													"type": "integer",
+													"example": 85,
+													"maximum": 100,
+													"minimum": 1
+												},
+												"risk_level": {
+													"description": "Risk level of a behavior or an event.",
+													"type": "string",
+													"enum": [
+														"info",
+														"low",
+														"medium",
+														"high"
+													]
+												}
+											},
+											"required": [
+												"name",
+												"description",
+												"risk_level",
+												"points",
+												"enabled"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failed to get the risk behavior.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.risk-scoring.behaviours.single",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.risk-scoring.behaviours.single",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
+	},
+	"GET /accounts/{account_id}/zt_risk_scoring/behaviors/high_dlp": {
+		"operationId": "dlp-risk-score-behaviors-high-dlp-get",
+		"summary": "Get the high_dlp risk behavior",
+		"description": "Gets the high_dlp risk behavior and its DLP configuration. Returns 404 when the behavior is\ndisabled and the account does not have the gates or entitlements for it.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account tag.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "0ee7ea44703746e777422a5a11d797b9"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "The high_dlp risk behavior.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The high_dlp risk behavior and its DLP configuration.",
+											"type": "object",
+											"properties": {
+												"config": {
+													"description": "DLP configuration of the high_dlp behavior.",
+													"type": "object",
+													"properties": {
+														"duration_secs": {
+															"description": "Rolling window in seconds, from 60 to 172800.",
+															"type": "integer",
+															"format": "int64",
+															"example": 3600,
+															"maximum": 172800,
+															"minimum": 60
+														},
+														"hits": {
+															"description": "Number of DLP policy matches that triggers the behavior.",
+															"type": "integer",
+															"format": "int64",
+															"example": 15,
+															"minimum": 1
+														}
+													},
+													"required": [
+														"hits",
+														"duration_secs"
+													]
+												},
+												"description": {
+													"description": "Explains what the behavior detects.",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "Whether the behavior counts toward the risk score.",
+													"type": "boolean"
+												},
+												"name": {
+													"description": "Display name of the behavior.",
+													"type": "string",
+													"example": "High number of DLP policies triggered"
+												},
+												"points": {
+													"description": "Risk score points of a behavior.",
+													"type": "integer",
+													"example": 85,
+													"maximum": 100,
+													"minimum": 1
+												},
+												"risk_level": {
+													"description": "Risk level of a behavior or an event.",
+													"type": "string",
+													"enum": [
+														"info",
+														"low",
+														"medium",
+														"high"
+													]
+												}
+											},
+											"required": [
+												"name",
+												"description",
+												"risk_level",
+												"points",
+												"enabled",
+												"config"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failed to get the high_dlp risk behavior.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.risk-scoring.behaviours.high-dlp",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.risk-scoring.behaviours.high-dlp",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams.read",
+			"teams.write"
+		]
+	},
+	"GET /accounts/{account_id}/zt_risk_scoring/summary": {
+		"operationId": "dlp-risk-score-summary-get",
+		"summary": "Get risk score info for all users in the account",
+		"description": "Gets the users in an account that have risk events, with the highest risk level, the event\ncount, and the time of the last event for each user. The server reads risk events from at most\n180 days before the current time, and after the last reset of each user.\nReturns 404 when the request reaches a server outside of the configured region of the account.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account tag.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "0ee7ea44703746e777422a5a11d797b9"
+				}
+			},
+			{
+				"description": "Page number, starting at 1.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"description": "Number of results per page. The server uses 100 for a larger value.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer",
+					"default": 25,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "order_by",
+				"in": "query",
+				"description": "Field to sort the users by.",
+				"schema": {
+					"type": "string",
+					"default": "last_event",
+					"enum": [
+						"last_event",
+						"event_count",
+						"max_risk_level"
+					]
+				}
+			},
+			{
+				"description": "Sort direction.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"type": "string",
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Risk score summary for the account.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Risk summary of the users in an account.",
 											"type": "object",
 											"properties": {
 												"users": {
+													"description": "Users on this page, with their risk summary.",
 													"type": "array",
 													"items": {
+														"description": "Risk summary of one user.",
 														"type": "object",
 														"properties": {
 															"email": {
+																"description": "Email address of the user.",
 																"type": "string"
 															},
 															"event_count": {
+																"description": "Number of risk events of the user.",
 																"type": "integer",
 																"minimum": 0
 															},
 															"last_event": {
+																"description": "Time of the most recent risk event of the user.",
 																"type": "string",
 																"format": "date-time"
 															},
 															"max_risk_level": {
+																"description": "Highest risk level. The value is unset when no event maps to a configured behavior.",
 																"type": "string",
 																"enum": [
+																	"unset",
 																	"info",
 																	"low",
 																	"medium",
@@ -826,9 +2143,11 @@
 																]
 															},
 															"name": {
+																"description": "Name of the user.",
 																"type": "string"
 															},
 															"user_id": {
+																"description": "User ID (UUID v4).",
 																"type": "string",
 																"format": "uuid"
 															}
@@ -847,6 +2166,38 @@
 											"required": [
 												"users"
 											]
+										},
+										"result_info": {
+											"description": "Pagination information. The server always returns every field.",
+											"type": "object",
+											"properties": {
+												"count": {
+													"description": "Number of results on this page.",
+													"type": "integer",
+													"example": 25
+												},
+												"page": {
+													"description": "Current page within the paginated list of results.",
+													"type": "integer",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page.",
+													"type": "integer",
+													"example": 25
+												},
+												"total_count": {
+													"description": "Total number of results that match the request.",
+													"type": "integer",
+													"example": 2000
+												}
+											},
+											"required": [
+												"page",
+												"per_page",
+												"count",
+												"total_count"
+											]
 										}
 									},
 									"type": "object"
@@ -857,7 +2208,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Failed to get risk scores.",
+				"description": "Failed to get the risk score summary.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -972,9 +2323,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -985,34 +2338,44 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.risk-scoring.summary",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.risk-scoring.summary",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"teams-pii.read"
+		]
 	},
 	"POST /accounts/{account_id}/zt_risk_scoring/{user_id}/reset": {
 		"operationId": "dlp-risk-score-reset-post",
 		"summary": "Clear the risk score for a particular user",
-		"description": "Resets risk scores for specified users, clearing their accumulated risk history.",
+		"description": "Resets the risk score of one user. Risk events before the reset do not count toward the score\nof the user.\n",
 		"parameters": [
 			{
+				"description": "Cloudflare account tag.",
+				"in": "path",
 				"name": "account_id",
-				"in": "path",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"name": "user_id",
-				"in": "path",
 				"required": true,
 				"schema": {
 					"type": "string",
-					"format": "uuid"
+					"example": "0ee7ea44703746e777422a5a11d797b9"
+				}
+			},
+			{
+				"description": "User ID (UUID v4).",
+				"in": "path",
+				"name": "user_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 				}
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Dataset created successfully.",
+				"description": "The risk score of the user is reset. The result is null.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1107,6 +2470,7 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Empty result.",
 											"type": "object",
 											"nullable": true
 										}
@@ -1119,7 +2483,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Dataset creation failed.",
+				"description": "Failed to reset the risk score of the user.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1234,9 +2598,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1248,40 +2614,60 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.risk-scoring",
 		"x-fern-sdk-method-name": "reset",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.risk-scoring",
+		"x-forge-method-name": "reset",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		],
 		"x-forge-require-confirmation": "This operation wipes risk-scoring history."
 	},
 	"PUT /accounts/{account_id}/zt_risk_scoring/behaviors": {
 		"operationId": "dlp-risk-score-behaviors-put",
 		"summary": "Update configuration for risk behaviors",
-		"description": "Updates risk score behavior configurations, defining weights and thresholds for risk calculation.",
+		"description": "Updates the configuration of one or more risk behaviors for an account. The server skips an\nunknown behavior, and a behavior that the account does not have the gates or entitlements for.\nThe response contains all behaviors for the account.\n",
 		"parameters": [
 			{
-				"name": "account_id",
+				"description": "Cloudflare account tag.",
 				"in": "path",
-				"description": "Account ID.",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "string",
+					"example": "0ee7ea44703746e777422a5a11d797b9"
 				}
 			}
 		],
 		"requestBody": {
-			"description": "Behaviors.",
 			"required": true,
 			"content": {
 				"application/json": {
 					"schema": {
+						"description": "Settings for one or more risk behaviors, keyed by behavior ID.",
 						"type": "object",
 						"properties": {
 							"behaviors": {
+								"description": "Settings for each behavior to update, keyed by behavior ID.",
 								"type": "object",
 								"additionalProperties": {
+									"description": "Settings for one risk behavior. Supply risk_level, points, or both. When you supply both,\npoints must be in the range of risk_level. When you supply only one, the server derives the\nother.\n",
 									"type": "object",
 									"properties": {
 										"enabled": {
-											"type": "boolean"
+											"description": "Whether the behavior counts toward the risk score.",
+											"type": "boolean",
+											"example": true
+										},
+										"points": {
+											"description": "Risk score points of the behavior. A null value is the same as an omitted value.",
+											"type": "integer",
+											"example": 50,
+											"maximum": 100,
+											"minimum": 1,
+											"nullable": true
 										},
 										"risk_level": {
+											"description": "Risk level of a behavior or an event.",
 											"type": "string",
 											"enum": [
 												"info",
@@ -1292,7 +2678,6 @@
 										}
 									},
 									"required": [
-										"risk_level",
 										"enabled"
 									]
 								}
@@ -1307,7 +2692,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Dataset created successfully.",
+				"description": "Risk behaviors for the account after the update.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1402,17 +2787,40 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Risk behaviors, keyed by behavior ID.",
 											"type": "object",
 											"properties": {
 												"behaviors": {
+													"description": "Risk behaviors, keyed by behavior ID.",
 													"type": "object",
 													"additionalProperties": {
+														"description": "A risk behavior and its configuration.",
 														"type": "object",
 														"properties": {
+															"description": {
+																"description": "Explains what the behavior detects.",
+																"type": "string",
+																"example": "A user signed in from two locations that are too far apart for the time between them."
+															},
 															"enabled": {
-																"type": "boolean"
+																"description": "Whether the behavior counts toward the risk score.",
+																"type": "boolean",
+																"example": true
+															},
+															"name": {
+																"description": "Display name of the behavior.",
+																"type": "string",
+																"example": "Impossible travel"
+															},
+															"points": {
+																"description": "Risk score points of a behavior.",
+																"type": "integer",
+																"example": 85,
+																"maximum": 100,
+																"minimum": 1
 															},
 															"risk_level": {
+																"description": "Risk level of a behavior or an event.",
 																"type": "string",
 																"enum": [
 																	"info",
@@ -1423,7 +2831,10 @@
 															}
 														},
 														"required": [
+															"name",
+															"description",
 															"risk_level",
+															"points",
 															"enabled"
 														]
 													}
@@ -1442,7 +2853,7 @@
 				}
 			},
 			"4XX": {
-				"description": "Dataset creation failed.",
+				"description": "Failed to update risk behaviors.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1557,9 +2968,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": [],
 				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"tags": [
@@ -1570,6 +2983,783 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.risk-scoring.behaviours",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.risk-scoring.behaviours",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
+	},
+	"PUT /accounts/{account_id}/zt_risk_scoring/behaviors/{behavior_id}": {
+		"operationId": "dlp-risk-score-behavior-put",
+		"summary": "Update a risk behavior",
+		"description": "Updates one risk behavior that has no additional configuration. Returns 404 when the account\ndoes not have the gates or entitlements for the behavior.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account tag.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "0ee7ea44703746e777422a5a11d797b9"
+				}
+			},
+			{
+				"description": "ID of a risk behavior that has no additional configuration.",
+				"in": "path",
+				"name": "behavior_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "imp_travel",
+					"enum": [
+						"imp_travel",
+						"malware",
+						"sentinel_one",
+						"crowdstrike_low",
+						"crowdstrike_med",
+						"suspicious_domain_visited",
+						"high_risk_domain_visited",
+						"unusual_access_login",
+						"new_domain_rotating_ips",
+						"beaconing",
+						"novel_mcp_usage",
+						"cloud_storage_upload_anomaly",
+						"new_access_app",
+						"new_access_device",
+						"new_access_country",
+						"new_access_location",
+						"unusual_access_day",
+						"unusual_access_hour"
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Settings for one risk behavior. Supply risk_level, points, or both. When you supply both,\npoints must be in the range of risk_level. When you supply only one, the server derives the\nother.\n",
+						"type": "object",
+						"properties": {
+							"enabled": {
+								"description": "Whether the behavior counts toward the risk score.",
+								"type": "boolean",
+								"example": true
+							},
+							"points": {
+								"description": "Risk score points of the behavior. A null value is the same as an omitted value.",
+								"type": "integer",
+								"example": 50,
+								"maximum": 100,
+								"minimum": 1,
+								"nullable": true
+							},
+							"risk_level": {
+								"description": "Risk level of a behavior or an event.",
+								"type": "string",
+								"enum": [
+									"info",
+									"low",
+									"medium",
+									"high"
+								]
+							}
+						},
+						"required": [
+							"enabled"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The risk behavior after the update.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A risk behavior and its configuration.",
+											"type": "object",
+											"properties": {
+												"description": {
+													"description": "Explains what the behavior detects.",
+													"type": "string",
+													"example": "A user signed in from two locations that are too far apart for the time between them."
+												},
+												"enabled": {
+													"description": "Whether the behavior counts toward the risk score.",
+													"type": "boolean",
+													"example": true
+												},
+												"name": {
+													"description": "Display name of the behavior.",
+													"type": "string",
+													"example": "Impossible travel"
+												},
+												"points": {
+													"description": "Risk score points of a behavior.",
+													"type": "integer",
+													"example": 85,
+													"maximum": 100,
+													"minimum": 1
+												},
+												"risk_level": {
+													"description": "Risk level of a behavior or an event.",
+													"type": "string",
+													"enum": [
+														"info",
+														"low",
+														"medium",
+														"high"
+													]
+												}
+											},
+											"required": [
+												"name",
+												"description",
+												"risk_level",
+												"points",
+												"enabled"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failed to update the risk behavior.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.risk-scoring.behaviours.single",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.risk-scoring.behaviours.single",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
+	},
+	"PUT /accounts/{account_id}/zt_risk_scoring/behaviors/high_dlp": {
+		"operationId": "dlp-risk-score-behaviors-high-dlp-put",
+		"summary": "Update the high_dlp risk behavior",
+		"description": "Updates the high_dlp risk behavior and its DLP configuration. Returns 404 when the account does\nnot have the gates or entitlements for the behavior.\n",
+		"parameters": [
+			{
+				"description": "Cloudflare account tag.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "0ee7ea44703746e777422a5a11d797b9"
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Settings for the high_dlp risk behavior. Supply risk_level, points, or both. When you supply\nboth, points must be in the range of risk_level. An omitted or null config keeps the stored\nconfiguration.\n",
+						"type": "object",
+						"properties": {
+							"config": {
+								"description": "DLP configuration of the behavior. A null value is the same as an omitted value.",
+								"allOf": [
+									{
+										"description": "DLP configuration of the high_dlp behavior.",
+										"type": "object",
+										"properties": {
+											"duration_secs": {
+												"description": "Rolling window in seconds, from 60 to 172800.",
+												"type": "integer",
+												"format": "int64",
+												"example": 3600,
+												"maximum": 172800,
+												"minimum": 60
+											},
+											"hits": {
+												"description": "Number of DLP policy matches that triggers the behavior.",
+												"type": "integer",
+												"format": "int64",
+												"example": 15,
+												"minimum": 1
+											}
+										},
+										"required": [
+											"hits",
+											"duration_secs"
+										]
+									}
+								],
+								"nullable": true,
+								"x-fern-property-name": "dlp-config",
+								"x-forge-property-name": "dlp-config"
+							},
+							"enabled": {
+								"description": "Whether the behavior counts toward the risk score.",
+								"type": "boolean"
+							},
+							"points": {
+								"description": "Risk score points of the behavior. A null value is the same as an omitted value.",
+								"type": "integer",
+								"maximum": 100,
+								"minimum": 1,
+								"nullable": true
+							},
+							"risk_level": {
+								"description": "Risk level of a behavior or an event.",
+								"type": "string",
+								"enum": [
+									"info",
+									"low",
+									"medium",
+									"high"
+								]
+							}
+						},
+						"required": [
+							"enabled"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "The high_dlp risk behavior after the update.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The high_dlp risk behavior and its DLP configuration.",
+											"type": "object",
+											"properties": {
+												"config": {
+													"description": "DLP configuration of the high_dlp behavior.",
+													"type": "object",
+													"properties": {
+														"duration_secs": {
+															"description": "Rolling window in seconds, from 60 to 172800.",
+															"type": "integer",
+															"format": "int64",
+															"example": 3600,
+															"maximum": 172800,
+															"minimum": 60
+														},
+														"hits": {
+															"description": "Number of DLP policy matches that triggers the behavior.",
+															"type": "integer",
+															"format": "int64",
+															"example": 15,
+															"minimum": 1
+														}
+													},
+													"required": [
+														"hits",
+														"duration_secs"
+													]
+												},
+												"description": {
+													"description": "Explains what the behavior detects.",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "Whether the behavior counts toward the risk score.",
+													"type": "boolean"
+												},
+												"name": {
+													"description": "Display name of the behavior.",
+													"type": "string",
+													"example": "High number of DLP policies triggered"
+												},
+												"points": {
+													"description": "Risk score points of a behavior.",
+													"type": "integer",
+													"example": 85,
+													"maximum": 100,
+													"minimum": 1
+												},
+												"risk_level": {
+													"description": "Risk level of a behavior or an event.",
+													"type": "string",
+													"enum": [
+														"info",
+														"low",
+														"medium",
+														"high"
+													]
+												}
+											},
+											"required": [
+												"name",
+												"description",
+												"risk_level",
+												"points",
+												"enabled",
+												"config"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failed to update the high_dlp risk behavior.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zero Trust Risk Scoring"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.risk-scoring.behaviours.high-dlp",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.risk-scoring.behaviours.high-dlp",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"teams.write"
+		]
 	}
 }

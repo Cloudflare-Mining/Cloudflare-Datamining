@@ -322,6 +322,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "radar.search",
-		"x-fern-sdk-method-name": "global"
+		"x-fern-sdk-method-name": "global",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "radar.search",
+		"x-forge-method-name": "global",
+		"x-forge-oauth-scopes": [
+			"user-details.read",
+			"user-details.write"
+		]
 	}
 }

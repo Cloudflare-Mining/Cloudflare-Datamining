@@ -424,12 +424,23 @@
 			"exports"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.exports",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.exports",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"GET /accounts/{account_id}/data-security/posture/exports/{id}": {
 		"operationId": "GetExportJob",
@@ -786,12 +797,23 @@
 			"exports"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.exports",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.exports",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/content/export": {
 		"operationId": "CreateContentExport",
@@ -1330,12 +1352,23 @@
 			"exports"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.content",
-		"x-fern-sdk-method-name": "export"
+		"x-fern-sdk-method-name": "export",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.content",
+		"x-forge-method-name": "export",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{storage_namespace_id}/instances/export": {
 		"operationId": "CreateFindingInstancesExportCSV",
@@ -1362,7 +1395,8 @@
 					"type": "string",
 					"pattern": "^[\\da-f]{8}-([\\da-f]{4}-){3}[\\da-f]{12}-[\\da-f]{8}-([\\da-f]{4}-){3}[\\da-f]{12}$"
 				},
-				"x-fern-parameter-name": "finding-namespace-id"
+				"x-fern-parameter-name": "finding-namespace-id",
+				"x-forge-parameter-name": "finding-namespace-id"
 			}
 		],
 		"requestBody": {
@@ -1761,12 +1795,23 @@
 			"exports"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings.instances",
-		"x-fern-sdk-method-name": "export"
+		"x-fern-sdk-method-name": "export",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings.instances",
+		"x-forge-method-name": "export",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/export": {
 		"operationId": "CreateFindingExportCSV",
@@ -2248,12 +2293,23 @@
 			"exports"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.findings",
-		"x-fern-sdk-method-name": "export"
+		"x-fern-sdk-method-name": "export",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.findings",
+		"x-forge-method-name": "export",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	},
 	"POST /accounts/{account_id}/data-security/posture/remediations/jobs/export": {
 		"operationId": "CreateRemediationJobsExportCSV",
@@ -2694,11 +2750,22 @@
 			"exports"
 		],
 		"x-api-token-group": [
+			"CASB Write",
+			"CASB Read",
 			"Zero Trust Read",
 			"Zero Trust Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "zero-trust.casb.remediations.jobs",
-		"x-fern-sdk-method-name": "export"
+		"x-fern-sdk-method-name": "export",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.casb.remediations.jobs",
+		"x-forge-method-name": "export",
+		"x-forge-oauth-scopes": [
+			"casb.read",
+			"casb.write",
+			"teams.read",
+			"teams.write"
+		]
 	}
 }

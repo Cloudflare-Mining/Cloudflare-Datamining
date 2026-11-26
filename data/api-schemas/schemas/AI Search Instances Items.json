@@ -18,7 +18,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -290,6 +291,10 @@
 		"tags": [
 			"AI Search Instances Items"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -304,6 +309,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.items",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -336,7 +348,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -747,6 +760,13 @@
 		"tags": [
 			"AI Search Instances Items"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -761,6 +781,16 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
 		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.items",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -790,7 +820,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -1043,6 +1074,13 @@
 		"tags": [
 			"AI Search Instances Items"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -1057,6 +1095,16 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.items",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -1089,7 +1137,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -1385,6 +1434,13 @@
 		"tags": [
 			"AI Search Instances Items"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -1399,6 +1455,16 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
 		"x-fern-sdk-method-name": "chunks",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.items",
+		"x-forge-method-name": "chunks",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -1431,7 +1497,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -1731,6 +1798,13 @@
 		"tags": [
 			"AI Search Instances Items"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -1745,6 +1819,16 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
 		"x-fern-sdk-method-name": "download",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.items",
+		"x-forge-method-name": "download",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -1777,7 +1861,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -2055,6 +2140,13 @@
 		"tags": [
 			"AI Search Instances Items"
 		],
+		"x-api-token-group": [
+			"AI Search Metadata Read",
+			"AI Search Write",
+			"AI Search Read",
+			"Auto Rag Write",
+			"Auto Rag Read"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -2069,6 +2161,16 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
 		"x-fern-sdk-method-name": "logs",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.items",
+		"x-forge-method-name": "logs",
+		"x-forge-oauth-scopes": [
+			"ai-search.metadata_read",
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -2101,7 +2203,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "item_id",
@@ -2519,6 +2622,10 @@
 		"tags": [
 			"AI Search Instances Items"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -2533,6 +2640,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
 		"x-fern-sdk-method-name": "sync",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.items",
+		"x-forge-method-name": "sync",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -2569,7 +2683,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -3251,6 +3366,10 @@
 		"tags": [
 			"AI Search Instances Items"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -3265,6 +3384,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
 		"x-fern-sdk-method-name": "upload",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.items",
+		"x-forge-method-name": "upload",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."
@@ -3294,7 +3420,8 @@
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 					"x-auditable": true
 				},
-				"x-fern-parameter-name": "instance-id"
+				"x-fern-parameter-name": "instance-id",
+				"x-forge-parameter-name": "instance-id"
 			},
 			{
 				"name": "account_id",
@@ -3742,6 +3869,10 @@
 		"tags": [
 			"AI Search Instances Items"
 		],
+		"x-api-token-group": [
+			"AI Search Write",
+			"Auto Rag Write"
+		],
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.api.account.ai-search"
@@ -3756,6 +3887,13 @@
 		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "ai-search.items",
 		"x-fern-sdk-method-name": "upsert",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "ai-search.items",
+		"x-forge-method-name": "upsert",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
 		"x-forge-params": {
 			"id": {
 				"description": "AI Search instance ID."

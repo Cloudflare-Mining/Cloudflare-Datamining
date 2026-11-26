@@ -294,7 +294,7 @@
 																						"min_latency_ms": 0.014,
 																						"name": "one.one.one.one",
 																						"packet_count": 3,
-																						"std_dev_latency_ms": 0.011269427669584647
+																						"std_dev_latency_ms": 0.011269427669584648
 																					}
 																				}
 																			},
@@ -324,7 +324,7 @@
 																		"min_latency_ms": 0.014,
 																		"name": "1.1.1.1",
 																		"packet_count": 3,
-																		"std_dev_latency_ms": 0.011269427669584647
+																		"std_dev_latency_ms": 0.011269427669584648
 																	}
 																},
 																"traceroute_time_ms": {
@@ -479,6 +479,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "diagnostics.traceroutes",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "diagnostics.traceroutes",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"magic-transit.write"
+		]
 	}
 }

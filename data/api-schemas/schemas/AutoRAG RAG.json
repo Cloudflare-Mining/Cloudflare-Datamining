@@ -229,6 +229,8 @@
 			"AutoRAG RAG"
 		],
 		"x-api-token-group": [
+			"AI Search Write",
+			"AI Search Read",
 			"Auto Rag Write",
 			"Auto Rag Read"
 		],
@@ -245,7 +247,16 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "autorag",
-		"x-fern-sdk-method-name": "files"
+		"x-fern-sdk-method-name": "files",
+		"x-forge-group-name": "autorag",
+		"x-forge-method-name": "files",
+		"x-forge-oauth-scopes": [
+			"rag.read",
+			"ai-search.read",
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	},
 	"PATCH /accounts/{account_id}/autorag/rags/{id}/sync": {
 		"operationId": "autorag-config-sync",
@@ -489,6 +500,7 @@
 			"AutoRAG RAG"
 		],
 		"x-api-token-group": [
+			"AI Search Write",
 			"Auto Rag Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -504,6 +516,13 @@
 		},
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "autorag",
-		"x-fern-sdk-method-name": "sync"
+		"x-fern-sdk-method-name": "sync",
+		"x-forge-group-name": "autorag",
+		"x-forge-method-name": "sync",
+		"x-forge-oauth-scopes": [
+			"rag.write",
+			"ai-search.write"
+		],
+		"x-forge-skip": true
 	}
 }

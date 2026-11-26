@@ -186,7 +186,14 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.items",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.items",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/search": {
 		"operationId": "post_ItemSearch",
@@ -342,7 +349,8 @@
 								"type": "string",
 								"maxLength": 500,
 								"minLength": 1,
-								"x-fern-property-name": "query-search"
+								"x-fern-property-name": "query-search",
+								"x-forge-property-name": "query-search"
 							},
 							"sort": {
 								"type": "object",
@@ -486,6 +494,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cloudforce-one.stakeout.items",
-		"x-fern-sdk-method-name": "search"
+		"x-fern-sdk-method-name": "search",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cloudforce-one.stakeout.items",
+		"x-forge-method-name": "search",
+		"x-forge-oauth-scopes": [
+			"cloudforce-one.write"
+		],
+		"x-forge-skip": true
 	}
 }

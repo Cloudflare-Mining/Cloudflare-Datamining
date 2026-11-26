@@ -338,7 +338,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "delete-v1"
+		"x-fern-sdk-method-name": "delete-v1",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "delete-v1",
+		"x-forge-skip": true,
+		"x-sunset": "2026-10-01T00:00:00Z"
 	},
 	"DELETE /zones/{zone_id}/cache/origin_cloud_regions/batch": {
 		"operationId": "origin-cloud-regions-batch-delete",
@@ -834,7 +839,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "bulk-delete-v1"
+		"x-fern-sdk-method-name": "bulk-delete-v1",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "bulk-delete-v1",
+		"x-forge-skip": true,
+		"x-sunset": "2026-10-01T00:00:00Z"
 	},
 	"DELETE /zones/{zone_id}/origin/cloud_regions/{origin_ip}": {
 		"operationId": "origin-cloud-regions-v2-delete",
@@ -1105,6 +1115,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "delete",
 		"x-forge-require-confirmation": "Are you sure you want to delete this Origin Cloud Region configuration?"
 	},
 	"DELETE /zones/{zone_id}/origin/cloud_regions/batch": {
@@ -1444,8 +1457,11 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cache.origin-cloud-regions.bulk",
-		"x-fern-sdk-method-name": "delete",
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "bulk-delete",
 		"x-forge-require-confirmation": "Are you sure you want to delete these Origin Cloud Region configurations?"
 	},
 	"GET /zones/{zone_id}/cache/origin_cloud_regions": {
@@ -1786,7 +1802,11 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "list-v1"
+		"x-fern-sdk-method-name": "list-v1",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "list-v1",
+		"x-sunset": "2026-10-01T00:00:00Z"
 	},
 	"GET /zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}": {
 		"operationId": "origin-cloud-regions-get",
@@ -2127,7 +2147,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "get-v1"
+		"x-fern-sdk-method-name": "get-v1",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "get-v1",
+		"x-forge-skip": true,
+		"x-sunset": "2026-10-01T00:00:00Z"
 	},
 	"GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions": {
 		"operationId": "origin-cloud-regions-supported-regions",
@@ -2437,7 +2462,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "supported-regions-v1"
+		"x-fern-sdk-method-name": "supported-regions-v1",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "supported-regions-v1",
+		"x-forge-skip": true,
+		"x-sunset": "2026-10-01T00:00:00Z"
 	},
 	"GET /zones/{zone_id}/origin/cloud_regions": {
 		"operationId": "origin-cloud-regions-v2-list",
@@ -2822,7 +2852,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "list"
 	},
 	"GET /zones/{zone_id}/origin/cloud_regions/{origin_ip}": {
 		"operationId": "origin-cloud-regions-v2-get",
@@ -3121,7 +3154,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "get"
 	},
 	"GET /zones/{zone_id}/origin/cloud_regions/supported_regions": {
 		"operationId": "origin-cloud-regions-v2-supported-regions",
@@ -3423,7 +3459,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions.regions",
-		"x-fern-sdk-method-name": "list-supported"
+		"x-fern-sdk-method-name": "list-supported",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.origin-cloud-regions.regions",
+		"x-forge-method-name": "list-supported"
 	},
 	"PATCH /zones/{zone_id}/cache/origin_cloud_regions": {
 		"operationId": "origin-cloud-regions-upsert",
@@ -3829,7 +3868,11 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "edit-v1"
+		"x-fern-sdk-method-name": "edit-v1",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "edit-v1",
+		"x-sunset": "2026-10-01T00:00:00Z"
 	},
 	"PATCH /zones/{zone_id}/cache/origin_cloud_regions/batch": {
 		"operationId": "origin-cloud-regions-batch-upsert",
@@ -4391,7 +4434,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "bulk-edit-v1"
+		"x-fern-sdk-method-name": "bulk-edit-v1",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "bulk-edit-v1",
+		"x-forge-skip": true,
+		"x-sunset": "2026-10-01T00:00:00Z"
 	},
 	"POST /zones/{zone_id}/cache/origin_cloud_regions": {
 		"operationId": "origin-cloud-regions-create",
@@ -4798,7 +4846,11 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "create-v1"
+		"x-fern-sdk-method-name": "create-v1",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "create-v1",
+		"x-sunset": "2026-10-01T00:00:00Z"
 	},
 	"PUT /zones/{zone_id}/origin/cloud_regions/{origin_ip}": {
 		"operationId": "origin-cloud-regions-v2-upsert",
@@ -5174,7 +5226,10 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "update"
 	},
 	"PUT /zones/{zone_id}/origin/cloud_regions/batch": {
 		"operationId": "origin-cloud-regions-v2-batch-upsert",
@@ -5566,7 +5621,10 @@
 			"pro": true
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "cache.origin-cloud-regions.bulk",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-group-name": "cache.origin-cloud-regions",
+		"x-fern-sdk-method-name": "bulk-replace",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "cache.origin-cloud-regions",
+		"x-forge-method-name": "bulk-replace"
 	}
 }

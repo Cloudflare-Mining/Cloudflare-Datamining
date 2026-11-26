@@ -148,6 +148,7 @@
 			"Worker Subdomain"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-fern-audiences": [
@@ -156,6 +157,13 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.subdomains",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.subdomains",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		],
 		"x-forge-require-confirmation": "This will permanently delete the Workers subdomain."
 	},
 	"GET /accounts/{account_id}/workers/subdomain": {
@@ -418,6 +426,10 @@
 			"Worker Subdomain"
 		],
 		"x-api-token-group": [
+			"Workers Metadata Read-Only",
+			"Workers Editor",
+			"Workers Content Read-Only",
+			"Workers Admin",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
 		],
@@ -426,7 +438,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.subdomains",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.subdomains",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.read",
+			"workers-scripts.write",
+			"workers-scripts.content_read",
+			"workers-scripts.metadata_read",
+			"workers-scripts.edit",
+			"workers-scripts.admin"
+		]
 	},
 	"PUT /accounts/{account_id}/workers/subdomain": {
 		"operationId": "worker-subdomain-create-subdomain",
@@ -708,6 +731,7 @@
 			"Worker Subdomain"
 		],
 		"x-api-token-group": [
+			"Workers Admin",
 			"Workers Scripts Write"
 		],
 		"x-fern-audiences": [
@@ -715,6 +739,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "workers.subdomains",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "workers.subdomains",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"workers-scripts.write",
+			"workers-scripts.admin"
+		]
 	}
 }

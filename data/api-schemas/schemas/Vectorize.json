@@ -254,6 +254,7 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -263,7 +264,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes": {
 		"operationId": "vectorize-list-vectorize-indexes",
@@ -568,6 +576,7 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
@@ -578,7 +587,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}": {
 		"operationId": "vectorize-get-vectorize-index",
@@ -913,6 +930,7 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
@@ -923,7 +941,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}/info": {
 		"operationId": "vectorize-index-info",
@@ -1218,6 +1244,7 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
@@ -1228,7 +1255,15 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "info"
+		"x-fern-sdk-method-name": "info",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize",
+		"x-forge-method-name": "info",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}/list": {
 		"operationId": "vectorize-list-vectors",
@@ -1270,7 +1305,8 @@
 					"maximum": 1000,
 					"minimum": 1
 				},
-				"x-fern-parameter-name": "result-count"
+				"x-fern-parameter-name": "result-count",
+				"x-forge-parameter-name": "result-count"
 			},
 			{
 				"name": "cursor",
@@ -1561,6 +1597,7 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
@@ -1570,8 +1607,16 @@
 			]
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "list-vectors"
+		"x-fern-sdk-group-name": "vectorize.vectors",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize.vectors",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"GET /accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/list": {
 		"operationId": "vectorize-list-metadata-indexes",
@@ -1870,12 +1915,21 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "vectorize.metadata-index",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-group-name": "vectorize.metadata-indexes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize.metadata-indexes",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes": {
 		"operationId": "vectorize-create-vectorize-index",
@@ -1959,7 +2013,8 @@
 										]
 									}
 								],
-								"x-fern-property-name": "index-config"
+								"x-fern-property-name": "index-config",
+								"x-forge-property-name": "index-config"
 							},
 							"description": {
 								"description": "Specifies the description of the index.",
@@ -2285,6 +2340,7 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -2294,7 +2350,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/delete_by_ids": {
 		"operationId": "vectorize-delete-vectors-by-id",
@@ -2587,6 +2650,7 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -2595,8 +2659,15 @@
 			]
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "delete-by-ids"
+		"x-fern-sdk-group-name": "vectorize.vectors",
+		"x-fern-sdk-method-name": "bulk-delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize.vectors",
+		"x-forge-method-name": "bulk-delete",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/get_by_ids": {
 		"operationId": "vectorize-get-vectors-by-id",
@@ -2910,12 +2981,21 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "get-by-ids"
+		"x-fern-sdk-group-name": "vectorize.vectors",
+		"x-fern-sdk-method-name": "bulk-get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize.vectors",
+		"x-forge-method-name": "bulk-get",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert": {
 		"operationId": "vectorize-insert-vector",
@@ -3206,11 +3286,19 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "insert"
+		"x-fern-sdk-group-name": "vectorize.vectors",
+		"x-fern-sdk-method-name": "insert",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize.vectors",
+		"x-forge-method-name": "insert",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/create": {
 		"operationId": "vectorize-create-metadata-index",
@@ -3508,6 +3596,7 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -3516,8 +3605,15 @@
 			]
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "vectorize.metadata-index",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-group-name": "vectorize.metadata-indexes",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize.metadata-indexes",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/metadata_index/delete": {
 		"operationId": "vectorize-delete-metadata-index",
@@ -3804,6 +3900,7 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-cfPermissionsRequired": {
@@ -3812,8 +3909,15 @@
 			]
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "vectorize.metadata-index",
+		"x-fern-sdk-group-name": "vectorize.metadata-indexes",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize.metadata-indexes",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		],
 		"x-forge-require-confirmation": "This operation deletes a metadata index destructively."
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/query": {
@@ -4169,12 +4273,21 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write",
 			"Vectorize Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "query"
+		"x-fern-sdk-group-name": "vectorize.vectors",
+		"x-fern-sdk-method-name": "query",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize.vectors",
+		"x-forge-method-name": "query",
+		"x-forge-oauth-scopes": [
+			"vectorize.read",
+			"vectorize.write",
+			"rag.run"
+		]
 	},
 	"POST /accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert": {
 		"operationId": "vectorize-upsert-vector",
@@ -4465,10 +4578,18 @@
 			"Vectorize"
 		],
 		"x-api-token-group": [
+			"Auto Rag Write Run Engine",
 			"Vectorize Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "vectorize",
-		"x-fern-sdk-method-name": "upsert"
+		"x-fern-sdk-group-name": "vectorize.vectors",
+		"x-fern-sdk-method-name": "upsert",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "vectorize.vectors",
+		"x-forge-method-name": "upsert",
+		"x-forge-oauth-scopes": [
+			"vectorize.write",
+			"rag.run"
+		]
 	}
 }

@@ -1,0 +1,267 @@
+{
+	"POST /pages/webhooks/deploy_hooks/{deploy_hook_id}": {
+		"operationId": "pages-deploy-hook-trigger",
+		"summary": "Trigger deploy hook",
+		"description": "Start a deployment of the deploy hook's branch at its latest commit.\nThis endpoint does not require authentication. The deploy hook ID in\nthe URL acts as a secret token.\n",
+		"parameters": [
+			{
+				"name": "deploy_hook_id",
+				"in": "path",
+				"description": "Identifier of the deploy hook, taken from its URL.",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"format": "uuid",
+					"example": "5d1afd45-8f14-4ebd-b9c2-557fb46f0a27",
+					"x-forge-sensitive": true,
+					"x-sensitive": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Deploy hook trigger response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"description": "Identifier of the deployment started by the deploy hook.",
+													"type": "string",
+													"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6f10"
+												}
+											},
+											"required": [
+												"id"
+											]
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"304": {
+				"description": "A deployment already exists for the branch's latest commit."
+			},
+			"4XX": {
+				"description": "Deploy hook trigger failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [],
+		"tags": [
+			"Pages Deploy Hooks"
+		],
+		"x-fern-audiences": [
+			"sdk"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.deploy-hooks",
+		"x-fern-sdk-method-name": "trigger",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "pages.deploy-hooks",
+		"x-forge-method-name": "trigger"
+	}
+}

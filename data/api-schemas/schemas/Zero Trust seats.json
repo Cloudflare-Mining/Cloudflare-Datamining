@@ -376,11 +376,24 @@
 			"Zero Trust seats"
 		],
 		"x-api-token-group": [
-			"Zero Trust: Seats Write"
+			"Access: Users Write",
+			"Zero Trust: Seats Write",
+			"Zero Trust Write",
+			"Access: Organizations, Identity Providers, and Groups Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "zero-trust.seats",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "zero-trust.seats",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"access-seats.write",
+			"access-users.write",
+			"access-acct.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	}
 }

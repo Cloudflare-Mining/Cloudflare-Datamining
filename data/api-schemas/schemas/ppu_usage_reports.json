@@ -20,7 +20,7 @@
 			"content": {
 				"application/jsonl": {
 					"schema": {
-						"description": "UTF-8 JSON Lines document with exactly one object per line and a maximum entry size of 32 KiB, excluding its LF or CRLF line terminator. Each object requires used_at (an RFC 3339 timestamp string, any UTC offset, between the Unix epoch and now), an absolute HTTP or HTTPS source URL with a hostname, and an opaque id that is a nonempty string or a number. Event IDs are assumed unique within a participant and are not enforced by this endpoint. No other or duplicate fields are accepted.",
+						"description": "UTF-8 JSON Lines document with exactly one object per line and a maximum entry size of 32 KiB, excluding its LF or CRLF line terminator. Each object requires used_at (an RFC 3339 timestamp string, any UTC offset, between the Unix epoch and now), an opaque id that is a nonempty string or a number, and exactly one of publisher_id and url. publisher_id is the 32-character lowercase hexadecimal publisher identifier returned by the enabled publishers endpoint and is charged against that publisher's offer. url is an absolute HTTP or HTTPS source URL with a hostname, for the domains returned by the enabled domains endpoint. A null value counts as absent; a line with both is rejected with code url_and_publisher_id. Event IDs are assumed unique within a participant and are not enforced by this endpoint. No other or duplicate fields are accepted.",
 						"type": "string"
 					}
 				}
@@ -491,6 +491,9 @@
 			"ppu_usage_reports"
 		],
 		"x-fern-sdk-group-name": "pay-per-use.usage-reports",
-		"x-fern-sdk-method-name": "submit"
+		"x-fern-sdk-method-name": "submit",
+		"x-forge-group-name": "pay-per-use.usage-reports",
+		"x-forge-method-name": "submit",
+		"x-stability": "beta"
 	}
 }

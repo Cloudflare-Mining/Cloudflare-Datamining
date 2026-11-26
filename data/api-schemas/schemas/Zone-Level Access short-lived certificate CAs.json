@@ -274,13 +274,22 @@
 			"Zone-Level Access short-lived certificate CAs"
 		],
 		"x-api-token-group": [
+			"Individual Access App Admin",
+			"Access: Apps Write",
 			"Access: Apps and Policies Write",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-apps.ca",
-		"x-fern-sdk-method-name": "delete"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"zone-access.write",
+			"access-app.write",
+			"access.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}/ca": {
 		"operationId": "zone-level-access-short-lived-certificate-c-as-get-a-short-lived-certificate-ca",
@@ -570,15 +579,31 @@
 			"Zone-Level Access short-lived certificate CAs"
 		],
 		"x-api-token-group": [
+			"Individual Access App Read",
+			"Individual Access App Admin",
+			"Access: Apps Write",
+			"Access: Apps Read",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-apps.ca",
-		"x-fern-sdk-method-name": "get"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-app.read",
+			"zone-access.read",
+			"zone-access.write",
+			"access.read",
+			"access-app.write",
+			"access.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /zones/{zone_id}/access/apps/ca": {
 		"operationId": "zone-level-access-short-lived-certificate-c-as-list-short-lived-certificate-c-as",
@@ -894,15 +919,31 @@
 			"Zone-Level Access short-lived certificate CAs"
 		],
 		"x-api-token-group": [
+			"Individual Access App Read",
+			"Individual Access App Admin",
+			"Access: Apps Write",
+			"Access: Apps Read",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read",
+			"Zero Trust Read",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-apps.ca",
-		"x-fern-sdk-method-name": "list"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"access-app.read",
+			"zone-access.read",
+			"zone-access.write",
+			"access.read",
+			"access-app.write",
+			"access.write",
+			"teams.read",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	},
 	"POST /zones/{zone_id}/access/apps/{app_id}/ca": {
 		"operationId": "zone-level-access-short-lived-certificate-c-as-create-a-short-lived-certificate-ca",
@@ -1192,12 +1233,21 @@
 			"Zone-Level Access short-lived certificate CAs"
 		],
 		"x-api-token-group": [
+			"Individual Access App Admin",
+			"Access: Apps Write",
 			"Access: Apps and Policies Write",
+			"Zero Trust Write",
 			"Access: Apps and Policies Write"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-ignore": true,
-		"x-fern-sdk-group-name": "zero-trust.access.zone-apps.ca",
-		"x-fern-sdk-method-name": "create"
+		"x-forge-availability": "deprecated",
+		"x-forge-oauth-scopes": [
+			"zone-access.write",
+			"access-app.write",
+			"access.write",
+			"teams.write"
+		],
+		"x-forge-skip": true
 	}
 }

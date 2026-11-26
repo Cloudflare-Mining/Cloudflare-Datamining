@@ -415,7 +415,11 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "browser-extension.config",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "browser-extension.config",
+		"x-forge-method-name": "delete",
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/browser-extension/config": {
 		"operationId": "accounts-browser-extension-config-get",
@@ -812,6 +816,10 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "browser-extension.config",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "browser-extension.config",
+		"x-forge-method-name": "get",
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/browser-extension/config": {
@@ -845,7 +853,8 @@
 										]
 									}
 								],
-								"x-fern-property-name": "browser-config"
+								"x-fern-property-name": "browser-config",
+								"x-forge-property-name": "browser-config"
 							}
 						},
 						"required": [
@@ -1303,6 +1312,10 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "browser-extension.config",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "browser-extension.config",
+		"x-forge-method-name": "create",
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/browser-extension/config/logs/extension-events/search": {
@@ -1994,6 +2007,10 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "browser-extension.config.logs.extension-events",
 		"x-fern-sdk-method-name": "search",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "browser-extension.config.logs.extension-events",
+		"x-forge-method-name": "search",
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/browser-extension/config/logs/extension-events/timeseries": {
@@ -2655,6 +2672,10 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "browser-extension.config.logs.extension-events",
 		"x-fern-sdk-method-name": "timeseries",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "browser-extension.config.logs.extension-events",
+		"x-forge-method-name": "timeseries",
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/browser-extension/config": {
@@ -2688,7 +2709,8 @@
 										]
 									}
 								],
-								"x-fern-property-name": "browser-config"
+								"x-fern-property-name": "browser-config",
+								"x-forge-property-name": "browser-config"
 							}
 						},
 						"required": [
@@ -3146,6 +3168,10 @@
 		"x-fern-ignore": true,
 		"x-fern-sdk-group-name": "browser-extension.config",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "beta",
+		"x-forge-group-name": "browser-extension.config",
+		"x-forge-method-name": "update",
+		"x-forge-skip": true,
 		"x-stability": "beta"
 	}
 }

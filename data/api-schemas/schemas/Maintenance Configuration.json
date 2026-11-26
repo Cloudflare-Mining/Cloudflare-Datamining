@@ -127,7 +127,8 @@
 													"enum": [
 														"present",
 														"absent"
-													]
+													],
+													"x-auditable": true
 												},
 												"maintenance_config": {
 													"description": "Configures maintenance for the catalog.",
@@ -144,7 +145,8 @@
 																	"enum": [
 																		"enabled",
 																		"disabled"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"target_size_mb": {
 																	"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -155,7 +157,8 @@
 																		"128",
 																		"256",
 																		"512"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -167,7 +170,8 @@
 															"description": "Scheduling interval between normal table maintenance runs.",
 															"type": "string",
 															"example": "1h",
-															"pattern": "^\\d+(d|h|m|s)$"
+															"pattern": "^\\d+(d|h|m|s)$",
+															"x-auditable": true
 														},
 														"snapshot_expiration": {
 															"description": "Configures snapshot expiration settings.",
@@ -177,14 +181,16 @@
 																	"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\nDefaults to \"7d\".\n",
 																	"type": "string",
 																	"example": "7d",
-																	"pattern": "^\\d+(d|h|m|s)$"
+																	"pattern": "^\\d+(d|h|m|s)$",
+																	"x-auditable": true
 																},
 																"min_snapshots_to_keep": {
 																	"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
 																	"type": "integer",
 																	"format": "int64",
 																	"example": 100,
-																	"minimum": 1
+																	"minimum": 1,
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
@@ -193,7 +199,8 @@
 																	"enum": [
 																		"enabled",
 																		"disabled"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -427,12 +434,21 @@
 			"Maintenance Configuration"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog.maintenance-configs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog.maintenance-configs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		]
 	},
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs": {
 		"operationId": "get-maintenance-config",
@@ -562,7 +578,8 @@
 													"enum": [
 														"present",
 														"absent"
-													]
+													],
+													"x-auditable": true
 												},
 												"maintenance_config": {
 													"description": "Configures maintenance for the catalog.",
@@ -579,7 +596,8 @@
 																	"enum": [
 																		"enabled",
 																		"disabled"
-																	]
+																	],
+																	"x-auditable": true
 																},
 																"target_size_mb": {
 																	"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -590,7 +608,8 @@
 																		"128",
 																		"256",
 																		"512"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -602,7 +621,8 @@
 															"description": "Scheduling interval between normal table maintenance runs.",
 															"type": "string",
 															"example": "1h",
-															"pattern": "^\\d+(d|h|m|s)$"
+															"pattern": "^\\d+(d|h|m|s)$",
+															"x-auditable": true
 														},
 														"snapshot_expiration": {
 															"description": "Configures snapshot expiration settings.",
@@ -612,14 +632,16 @@
 																	"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\nDefaults to \"7d\".\n",
 																	"type": "string",
 																	"example": "7d",
-																	"pattern": "^\\d+(d|h|m|s)$"
+																	"pattern": "^\\d+(d|h|m|s)$",
+																	"x-auditable": true
 																},
 																"min_snapshots_to_keep": {
 																	"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
 																	"type": "integer",
 																	"format": "int64",
 																	"example": 100,
-																	"minimum": 1
+																	"minimum": 1,
+																	"x-auditable": true
 																},
 																"state": {
 																	"description": "Specifies the state of maintenance operations.",
@@ -628,7 +650,8 @@
 																	"enum": [
 																		"enabled",
 																		"disabled"
-																	]
+																	],
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -863,12 +886,21 @@
 			"Maintenance Configuration"
 		],
 		"x-api-token-group": [
+			"Workers R2 SQL Read",
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.maintenance-configs",
 		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2-data-catalog.maintenance-configs",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"r2-catalog-sql.read",
+			"r2-catalog.read",
+			"r2-catalog.write"
+		],
 		"x-stainless-deprecation-message": "Use `GET /accounts/{account_id}/basin-catalog/{bucket_name}/maintenance-configs` instead."
 	},
 	"POST /accounts/{account_id}/basin-catalog/{bucket_name}/maintenance-configs": {
@@ -936,7 +968,8 @@
 												"enum": [
 													"enabled",
 													"disabled"
-												]
+												],
+												"x-auditable": true
 											},
 											"target_size_mb": {
 												"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -947,7 +980,8 @@
 													"128",
 													"256",
 													"512"
-												]
+												],
+												"x-auditable": true
 											}
 										}
 									},
@@ -958,13 +992,15 @@
 											"max_snapshot_age": {
 												"description": "Updates the maximum age for snapshots optionally.",
 												"type": "string",
-												"pattern": "^\\d+(d|h|m|s)$"
+												"pattern": "^\\d+(d|h|m|s)$",
+												"x-auditable": true
 											},
 											"min_snapshots_to_keep": {
 												"description": "Updates the minimum number of snapshots to retain optionally.",
 												"type": "integer",
 												"format": "int64",
-												"minimum": 1
+												"minimum": 1,
+												"x-auditable": true
 											},
 											"state": {
 												"description": "Specifies the state of maintenance operations.",
@@ -973,7 +1009,8 @@
 												"enum": [
 													"enabled",
 													"disabled"
-												]
+												],
+												"x-auditable": true
 											}
 										}
 									}
@@ -1081,7 +1118,8 @@
 															"enum": [
 																"enabled",
 																"disabled"
-															]
+															],
+															"x-auditable": true
 														},
 														"target_size_mb": {
 															"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -1092,7 +1130,8 @@
 																"128",
 																"256",
 																"512"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1104,7 +1143,8 @@
 													"description": "Scheduling interval between normal table maintenance runs.",
 													"type": "string",
 													"example": "1h",
-													"pattern": "^\\d+(d|h|m|s)$"
+													"pattern": "^\\d+(d|h|m|s)$",
+													"x-auditable": true
 												},
 												"snapshot_expiration": {
 													"description": "Configures snapshot expiration settings.",
@@ -1114,14 +1154,16 @@
 															"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\nDefaults to \"7d\".\n",
 															"type": "string",
 															"example": "7d",
-															"pattern": "^\\d+(d|h|m|s)$"
+															"pattern": "^\\d+(d|h|m|s)$",
+															"x-auditable": true
 														},
 														"min_snapshots_to_keep": {
 															"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
 															"type": "integer",
 															"format": "int64",
 															"example": 100,
-															"minimum": 1
+															"minimum": 1,
+															"x-auditable": true
 														},
 														"state": {
 															"description": "Specifies the state of maintenance operations.",
@@ -1130,7 +1172,8 @@
 															"enum": [
 																"enabled",
 																"disabled"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1362,7 +1405,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "basin-catalog.maintenance-configs",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "basin-catalog.maintenance-configs",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"r2-catalog.write"
+		]
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs": {
 		"operationId": "update-maintenance-config",
@@ -1429,7 +1478,8 @@
 												"enum": [
 													"enabled",
 													"disabled"
-												]
+												],
+												"x-auditable": true
 											},
 											"target_size_mb": {
 												"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -1440,7 +1490,8 @@
 													"128",
 													"256",
 													"512"
-												]
+												],
+												"x-auditable": true
 											}
 										}
 									},
@@ -1451,13 +1502,15 @@
 											"max_snapshot_age": {
 												"description": "Updates the maximum age for snapshots optionally.",
 												"type": "string",
-												"pattern": "^\\d+(d|h|m|s)$"
+												"pattern": "^\\d+(d|h|m|s)$",
+												"x-auditable": true
 											},
 											"min_snapshots_to_keep": {
 												"description": "Updates the minimum number of snapshots to retain optionally.",
 												"type": "integer",
 												"format": "int64",
-												"minimum": 1
+												"minimum": 1,
+												"x-auditable": true
 											},
 											"state": {
 												"description": "Specifies the state of maintenance operations.",
@@ -1466,7 +1519,8 @@
 												"enum": [
 													"enabled",
 													"disabled"
-												]
+												],
+												"x-auditable": true
 											}
 										}
 									}
@@ -1574,7 +1628,8 @@
 															"enum": [
 																"enabled",
 																"disabled"
-															]
+															],
+															"x-auditable": true
 														},
 														"target_size_mb": {
 															"description": "Sets the target file size for compaction in megabytes. Defaults to \"128\".",
@@ -1585,7 +1640,8 @@
 																"128",
 																"256",
 																"512"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1597,7 +1653,8 @@
 													"description": "Scheduling interval between normal table maintenance runs.",
 													"type": "string",
 													"example": "1h",
-													"pattern": "^\\d+(d|h|m|s)$"
+													"pattern": "^\\d+(d|h|m|s)$",
+													"x-auditable": true
 												},
 												"snapshot_expiration": {
 													"description": "Configures snapshot expiration settings.",
@@ -1607,14 +1664,16 @@
 															"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\nDefaults to \"7d\".\n",
 															"type": "string",
 															"example": "7d",
-															"pattern": "^\\d+(d|h|m|s)$"
+															"pattern": "^\\d+(d|h|m|s)$",
+															"x-auditable": true
 														},
 														"min_snapshots_to_keep": {
 															"description": "Specifies the minimum number of snapshots to retain. Defaults to 100.",
 															"type": "integer",
 															"format": "int64",
 															"example": 100,
-															"minimum": 1
+															"minimum": 1,
+															"x-auditable": true
 														},
 														"state": {
 															"description": "Specifies the state of maintenance operations.",
@@ -1623,7 +1682,8 @@
 															"enum": [
 																"enabled",
 																"disabled"
-															]
+															],
+															"x-auditable": true
 														}
 													},
 													"required": [
@@ -1857,6 +1917,12 @@
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "r2-data-catalog.maintenance-configs",
 		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "r2-data-catalog.maintenance-configs",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"r2-catalog.write"
+		],
 		"x-stainless-deprecation-message": "Use `POST /accounts/{account_id}/basin-catalog/{bucket_name}/maintenance-configs` instead."
 	}
 }

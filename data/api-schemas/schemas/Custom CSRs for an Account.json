@@ -1,4 +1,419 @@
 {
+	"DELETE /{account_or_zone}/{account_or_zone_id}/custom_csrs/{custom_csr_id}": {
+		"operationId": "generated:delete:/account_or_zone/account_or_zone_id/custom_csrs/custom_csr_id",
+		"summary": "Delete Custom CSR",
+		"description": "Delete a custom Certificate Signing Request (CSR) and its associated private key.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "custom_csr_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Custom CSR identifier tag.",
+					"type": "string",
+					"example": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+					"maxLength": 36,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete Custom CSR response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"description": "Custom CSR identifier tag.",
+													"type": "string",
+													"example": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+													"maxLength": 36,
+													"readOnly": true,
+													"x-auditable": true
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete Custom CSR response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"description": "Custom CSR identifier tag.",
+															"type": "string",
+															"example": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+															"maxLength": 36,
+															"readOnly": true,
+															"x-auditable": true
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Custom CSRs for an Account"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-csrs",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "custom-csrs",
+		"x-forge-method-name": "delete",
+		"x-stainless-skip": true
+	},
 	"DELETE /accounts/{account_id}/custom_csrs/{custom_csr_id}": {
 		"operationId": "custom-csrs-for-an-account-delete-custom-csr",
 		"summary": "Delete Custom CSR",
@@ -401,8 +816,1349 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-ssl-and-certificates.write"
+		],
+		"x-forge-skip": true
+	},
+	"GET /{account_or_zone}/{account_or_zone_id}/custom_csrs": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/custom_csrs",
+		"summary": "List Custom CSRs",
+		"description": "List all custom Certificate Signing Requests (CSRs) for an account or zone.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "page",
+				"in": "query",
+				"schema": {
+					"description": "Page number of paginated results.",
+					"type": "number",
+					"default": 1,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "per_page",
+				"in": "query",
+				"schema": {
+					"description": "Number of custom CSRs per page.",
+					"type": "number",
+					"default": 50,
+					"maximum": 50,
+					"minimum": 5
+				}
+			},
+			{
+				"name": "order",
+				"in": "query",
+				"schema": {
+					"description": "The field to sort the returned custom CSRs by.",
+					"type": "string",
+					"default": "created_at",
+					"enum": [
+						"name",
+						"account_tag",
+						"created_at"
+					]
+				}
+			},
+			{
+				"name": "direction",
+				"in": "query",
+				"schema": {
+					"description": "The direction to sort by.",
+					"type": "string",
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List Custom CSRs response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"type": "number",
+															"example": 1
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"type": "number",
+															"example": 20
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"type": "number",
+															"example": 2000
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"type": "number",
+															"example": 100
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "A custom Certificate Signing Request (CSR).",
+												"type": "object",
+												"properties": {
+													"account_tag": {
+														"description": "Account identifier associated with this CSR.",
+														"type": "string",
+														"example": "23e087bd19bc1d40ae95b6f297263ceb",
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"common_name": {
+														"description": "The common name (domain) for the CSR.",
+														"type": "string",
+														"example": "example.com",
+														"maxLength": 64,
+														"x-auditable": true
+													},
+													"country": {
+														"description": "Two-letter ISO 3166-1 alpha-2 country code.",
+														"type": "string",
+														"example": "US",
+														"x-auditable": true
+													},
+													"created_at": {
+														"description": "When the CSR was created.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2024-01-15T10:30:00Z",
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"csr": {
+														"description": "The PEM-encoded Certificate Signing Request.",
+														"type": "string",
+														"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICYzCCAUsCAQAwHj...",
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"description": {
+														"description": "Optional description for the CSR.",
+														"type": "string",
+														"example": "CSR for example.com wildcard",
+														"x-auditable": true
+													},
+													"id": {
+														"description": "Custom CSR identifier tag.",
+														"type": "string",
+														"example": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+														"maxLength": 36,
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"key_type": {
+														"description": "The key algorithm used to generate the CSR.",
+														"type": "string",
+														"example": "rsa2048",
+														"enum": [
+															"rsa2048",
+															"p256v1"
+														],
+														"x-auditable": true
+													},
+													"locality": {
+														"description": "City or locality name.",
+														"type": "string",
+														"example": "San Francisco",
+														"x-auditable": true
+													},
+													"name": {
+														"description": "Human-readable name for the CSR.",
+														"type": "string",
+														"example": "My Custom CSR",
+														"x-auditable": true
+													},
+													"organization": {
+														"description": "Organization name.",
+														"type": "string",
+														"example": "Cloudflare, Inc.",
+														"x-auditable": true
+													},
+													"organizational_unit": {
+														"description": "Organizational unit name.",
+														"type": "string",
+														"example": "Engineering",
+														"x-auditable": true
+													},
+													"sans": {
+														"description": "Subject Alternative Names included in the CSR.",
+														"type": "array",
+														"items": {
+															"type": "string"
+														},
+														"example": [
+															"example.com",
+															"www.example.com"
+														],
+														"x-auditable": true
+													},
+													"state": {
+														"description": "State or province name.",
+														"type": "string",
+														"example": "California",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id",
+													"key_type",
+													"created_at"
+												]
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List Custom CSRs response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												},
+												{
+													"properties": {
+														"result_info": {
+															"type": "object",
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service.",
+																	"type": "number",
+																	"example": 1
+																},
+																"page": {
+																	"description": "Current page within paginated list of results.",
+																	"type": "number",
+																	"example": 1
+																},
+																"per_page": {
+																	"description": "Number of results per page of results.",
+																	"type": "number",
+																	"example": 20
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters.",
+																	"type": "number",
+																	"example": 2000
+																},
+																"total_pages": {
+																	"description": "The number of total pages in the entire result set.",
+																	"type": "number",
+																	"example": 100
+																}
+															}
+														}
+													},
+													"type": "object"
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"description": "A custom Certificate Signing Request (CSR).",
+														"type": "object",
+														"properties": {
+															"account_tag": {
+																"description": "Account identifier associated with this CSR.",
+																"type": "string",
+																"example": "23e087bd19bc1d40ae95b6f297263ceb",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"common_name": {
+																"description": "The common name (domain) for the CSR.",
+																"type": "string",
+																"example": "example.com",
+																"maxLength": 64,
+																"x-auditable": true
+															},
+															"country": {
+																"description": "Two-letter ISO 3166-1 alpha-2 country code.",
+																"type": "string",
+																"example": "US",
+																"x-auditable": true
+															},
+															"created_at": {
+																"description": "When the CSR was created.",
+																"type": "string",
+																"format": "date-time",
+																"example": "2024-01-15T10:30:00Z",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"csr": {
+																"description": "The PEM-encoded Certificate Signing Request.",
+																"type": "string",
+																"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICYzCCAUsCAQAwHj...",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"description": {
+																"description": "Optional description for the CSR.",
+																"type": "string",
+																"example": "CSR for example.com wildcard",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Custom CSR identifier tag.",
+																"type": "string",
+																"example": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+																"maxLength": 36,
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"key_type": {
+																"description": "The key algorithm used to generate the CSR.",
+																"type": "string",
+																"example": "rsa2048",
+																"enum": [
+																	"rsa2048",
+																	"p256v1"
+																],
+																"x-auditable": true
+															},
+															"locality": {
+																"description": "City or locality name.",
+																"type": "string",
+																"example": "San Francisco",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Human-readable name for the CSR.",
+																"type": "string",
+																"example": "My Custom CSR",
+																"x-auditable": true
+															},
+															"organization": {
+																"description": "Organization name.",
+																"type": "string",
+																"example": "Cloudflare, Inc.",
+																"x-auditable": true
+															},
+															"organizational_unit": {
+																"description": "Organizational unit name.",
+																"type": "string",
+																"example": "Engineering",
+																"x-auditable": true
+															},
+															"sans": {
+																"description": "Subject Alternative Names included in the CSR.",
+																"type": "array",
+																"items": {
+																	"type": "string"
+																},
+																"example": [
+																	"example.com",
+																	"www.example.com"
+																],
+																"x-auditable": true
+															},
+															"state": {
+																"description": "State or province name.",
+																"type": "string",
+																"example": "California",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"key_type",
+															"created_at"
+														]
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Custom CSRs for an Account"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "custom-csrs",
+		"x-forge-method-name": "list",
+		"x-stainless-skip": true
+	},
+	"GET /{account_or_zone}/{account_or_zone_id}/custom_csrs/{custom_csr_id}": {
+		"operationId": "generated:get:/account_or_zone/account_or_zone_id/custom_csrs/custom_csr_id",
+		"summary": "Custom CSR Details",
+		"description": "Retrieve details for a specific custom Certificate Signing Request (CSR).",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "custom_csr_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Custom CSR identifier tag.",
+					"type": "string",
+					"example": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+					"maxLength": 36,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Custom CSR Details response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A custom Certificate Signing Request (CSR).",
+											"type": "object",
+											"properties": {
+												"account_tag": {
+													"description": "Account identifier associated with this CSR.",
+													"type": "string",
+													"example": "23e087bd19bc1d40ae95b6f297263ceb",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"common_name": {
+													"description": "The common name (domain) for the CSR.",
+													"type": "string",
+													"example": "example.com",
+													"maxLength": 64,
+													"x-auditable": true
+												},
+												"country": {
+													"description": "Two-letter ISO 3166-1 alpha-2 country code.",
+													"type": "string",
+													"example": "US",
+													"x-auditable": true
+												},
+												"created_at": {
+													"description": "When the CSR was created.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2024-01-15T10:30:00Z",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"csr": {
+													"description": "The PEM-encoded Certificate Signing Request.",
+													"type": "string",
+													"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICYzCCAUsCAQAwHj...",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"description": {
+													"description": "Optional description for the CSR.",
+													"type": "string",
+													"example": "CSR for example.com wildcard",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Custom CSR identifier tag.",
+													"type": "string",
+													"example": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+													"maxLength": 36,
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"key_type": {
+													"description": "The key algorithm used to generate the CSR.",
+													"type": "string",
+													"example": "rsa2048",
+													"enum": [
+														"rsa2048",
+														"p256v1"
+													],
+													"x-auditable": true
+												},
+												"locality": {
+													"description": "City or locality name.",
+													"type": "string",
+													"example": "San Francisco",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Human-readable name for the CSR.",
+													"type": "string",
+													"example": "My Custom CSR",
+													"x-auditable": true
+												},
+												"organization": {
+													"description": "Organization name.",
+													"type": "string",
+													"example": "Cloudflare, Inc.",
+													"x-auditable": true
+												},
+												"organizational_unit": {
+													"description": "Organizational unit name.",
+													"type": "string",
+													"example": "Engineering",
+													"x-auditable": true
+												},
+												"sans": {
+													"description": "Subject Alternative Names included in the CSR.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													},
+													"example": [
+														"example.com",
+														"www.example.com"
+													],
+													"x-auditable": true
+												},
+												"state": {
+													"description": "State or province name.",
+													"type": "string",
+													"example": "California",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"key_type",
+												"created_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Custom CSR Details response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "A custom Certificate Signing Request (CSR).",
+													"type": "object",
+													"properties": {
+														"account_tag": {
+															"description": "Account identifier associated with this CSR.",
+															"type": "string",
+															"example": "23e087bd19bc1d40ae95b6f297263ceb",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"common_name": {
+															"description": "The common name (domain) for the CSR.",
+															"type": "string",
+															"example": "example.com",
+															"maxLength": 64,
+															"x-auditable": true
+														},
+														"country": {
+															"description": "Two-letter ISO 3166-1 alpha-2 country code.",
+															"type": "string",
+															"example": "US",
+															"x-auditable": true
+														},
+														"created_at": {
+															"description": "When the CSR was created.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2024-01-15T10:30:00Z",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"csr": {
+															"description": "The PEM-encoded Certificate Signing Request.",
+															"type": "string",
+															"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICYzCCAUsCAQAwHj...",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"description": {
+															"description": "Optional description for the CSR.",
+															"type": "string",
+															"example": "CSR for example.com wildcard",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Custom CSR identifier tag.",
+															"type": "string",
+															"example": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+															"maxLength": 36,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"key_type": {
+															"description": "The key algorithm used to generate the CSR.",
+															"type": "string",
+															"example": "rsa2048",
+															"enum": [
+																"rsa2048",
+																"p256v1"
+															],
+															"x-auditable": true
+														},
+														"locality": {
+															"description": "City or locality name.",
+															"type": "string",
+															"example": "San Francisco",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Human-readable name for the CSR.",
+															"type": "string",
+															"example": "My Custom CSR",
+															"x-auditable": true
+														},
+														"organization": {
+															"description": "Organization name.",
+															"type": "string",
+															"example": "Cloudflare, Inc.",
+															"x-auditable": true
+														},
+														"organizational_unit": {
+															"description": "Organizational unit name.",
+															"type": "string",
+															"example": "Engineering",
+															"x-auditable": true
+														},
+														"sans": {
+															"description": "Subject Alternative Names included in the CSR.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"example.com",
+																"www.example.com"
+															],
+															"x-auditable": true
+														},
+														"state": {
+															"description": "State or province name.",
+															"type": "string",
+															"example": "California",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"key_type",
+														"created_at"
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Custom CSRs for an Account"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-csrs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "custom-csrs",
+		"x-forge-method-name": "get",
+		"x-stainless-skip": true
 	},
 	"GET /accounts/{account_id}/custom_csrs": {
 		"operationId": "custom-csrs-for-an-account-list-custom-csrs",
@@ -1116,8 +2872,13 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-ssl-and-certificates.read",
+			"account-ssl-and-certificates.write"
+		],
+		"x-forge-skip": true
 	},
 	"GET /accounts/{account_id}/custom_csrs/{custom_csr_id}": {
 		"operationId": "custom-csrs-for-an-account-custom-csr-details",
@@ -1720,8 +3481,699 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-ssl-and-certificates.read",
+			"account-ssl-and-certificates.write"
+		],
+		"x-forge-skip": true
+	},
+	"POST /{account_or_zone}/{account_or_zone_id}/custom_csrs": {
+		"operationId": "generated:post:/account_or_zone/account_or_zone_id/custom_csrs",
+		"summary": "Create Custom CSR",
+		"description": "Generate a new custom Certificate Signing Request (CSR) for an account or zone. Cloudflare generates and securely stores the private key associated with the CSR.",
+		"parameters": [
+			{
+				"name": "account_or_zone",
+				"in": "path",
+				"description": "Whether ${account_or_zone} is an account ID (`accounts`) or a zone ID (`zones`).",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"enum": [
+						"accounts",
+						"zones"
+					]
+				}
+			},
+			{
+				"name": "account_or_zone_id",
+				"in": "path",
+				"description": "The account ID or zone ID, as selected by ${account_or_zone}.",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request body for creating a custom CSR.",
+						"type": "object",
+						"properties": {
+							"common_name": {
+								"description": "The common name (domain) for the CSR. Must be at most 64 characters.",
+								"type": "string",
+								"example": "example.com",
+								"maxLength": 64
+							},
+							"country": {
+								"description": "Two-letter ISO 3166-1 alpha-2 country code.",
+								"type": "string",
+								"example": "US"
+							},
+							"description": {
+								"description": "Optional description for the CSR.",
+								"type": "string",
+								"example": "CSR for example.com wildcard"
+							},
+							"key_type": {
+								"description": "Key algorithm to use for the CSR. Defaults to rsa2048 if not specified.",
+								"type": "string",
+								"example": "rsa2048",
+								"default": "rsa2048",
+								"enum": [
+									"rsa2048",
+									"p256v1"
+								]
+							},
+							"locality": {
+								"description": "City or locality name.",
+								"type": "string",
+								"example": "San Francisco"
+							},
+							"name": {
+								"description": "Human-readable name for the CSR.",
+								"type": "string",
+								"example": "My Custom CSR"
+							},
+							"organization": {
+								"description": "Organization name.",
+								"type": "string",
+								"example": "Cloudflare, Inc."
+							},
+							"organizational_unit": {
+								"description": "Organizational unit name.",
+								"type": "string",
+								"example": "Engineering"
+							},
+							"sans": {
+								"description": "Subject Alternative Names for the CSR. At least one SAN is required.",
+								"type": "array",
+								"items": {
+									"maxLength": 256,
+									"type": "string"
+								},
+								"example": [
+									"example.com",
+									"www.example.com"
+								],
+								"maxItems": 150,
+								"minItems": 1
+							},
+							"state": {
+								"description": "State or province name.",
+								"type": "string",
+								"example": "California"
+							}
+						},
+						"required": [
+							"country",
+							"state",
+							"locality",
+							"organization",
+							"common_name",
+							"sans"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Create Custom CSR response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A custom Certificate Signing Request (CSR).",
+											"type": "object",
+											"properties": {
+												"account_tag": {
+													"description": "Account identifier associated with this CSR.",
+													"type": "string",
+													"example": "23e087bd19bc1d40ae95b6f297263ceb",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"common_name": {
+													"description": "The common name (domain) for the CSR.",
+													"type": "string",
+													"example": "example.com",
+													"maxLength": 64,
+													"x-auditable": true
+												},
+												"country": {
+													"description": "Two-letter ISO 3166-1 alpha-2 country code.",
+													"type": "string",
+													"example": "US",
+													"x-auditable": true
+												},
+												"created_at": {
+													"description": "When the CSR was created.",
+													"type": "string",
+													"format": "date-time",
+													"example": "2024-01-15T10:30:00Z",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"csr": {
+													"description": "The PEM-encoded Certificate Signing Request.",
+													"type": "string",
+													"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICYzCCAUsCAQAwHj...",
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"description": {
+													"description": "Optional description for the CSR.",
+													"type": "string",
+													"example": "CSR for example.com wildcard",
+													"x-auditable": true
+												},
+												"id": {
+													"description": "Custom CSR identifier tag.",
+													"type": "string",
+													"example": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+													"maxLength": 36,
+													"readOnly": true,
+													"x-auditable": true
+												},
+												"key_type": {
+													"description": "The key algorithm used to generate the CSR.",
+													"type": "string",
+													"example": "rsa2048",
+													"enum": [
+														"rsa2048",
+														"p256v1"
+													],
+													"x-auditable": true
+												},
+												"locality": {
+													"description": "City or locality name.",
+													"type": "string",
+													"example": "San Francisco",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Human-readable name for the CSR.",
+													"type": "string",
+													"example": "My Custom CSR",
+													"x-auditable": true
+												},
+												"organization": {
+													"description": "Organization name.",
+													"type": "string",
+													"example": "Cloudflare, Inc.",
+													"x-auditable": true
+												},
+												"organizational_unit": {
+													"description": "Organizational unit name.",
+													"type": "string",
+													"example": "Engineering",
+													"x-auditable": true
+												},
+												"sans": {
+													"description": "Subject Alternative Names included in the CSR.",
+													"type": "array",
+													"items": {
+														"type": "string"
+													},
+													"example": [
+														"example.com",
+														"www.example.com"
+													],
+													"x-auditable": true
+												},
+												"state": {
+													"description": "State or province name.",
+													"type": "string",
+													"example": "California",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"key_type",
+												"created_at"
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create Custom CSR response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "A custom Certificate Signing Request (CSR).",
+													"type": "object",
+													"properties": {
+														"account_tag": {
+															"description": "Account identifier associated with this CSR.",
+															"type": "string",
+															"example": "23e087bd19bc1d40ae95b6f297263ceb",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"common_name": {
+															"description": "The common name (domain) for the CSR.",
+															"type": "string",
+															"example": "example.com",
+															"maxLength": 64,
+															"x-auditable": true
+														},
+														"country": {
+															"description": "Two-letter ISO 3166-1 alpha-2 country code.",
+															"type": "string",
+															"example": "US",
+															"x-auditable": true
+														},
+														"created_at": {
+															"description": "When the CSR was created.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2024-01-15T10:30:00Z",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"csr": {
+															"description": "The PEM-encoded Certificate Signing Request.",
+															"type": "string",
+															"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICYzCCAUsCAQAwHj...",
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"description": {
+															"description": "Optional description for the CSR.",
+															"type": "string",
+															"example": "CSR for example.com wildcard",
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Custom CSR identifier tag.",
+															"type": "string",
+															"example": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+															"maxLength": 36,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"key_type": {
+															"description": "The key algorithm used to generate the CSR.",
+															"type": "string",
+															"example": "rsa2048",
+															"enum": [
+																"rsa2048",
+																"p256v1"
+															],
+															"x-auditable": true
+														},
+														"locality": {
+															"description": "City or locality name.",
+															"type": "string",
+															"example": "San Francisco",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Human-readable name for the CSR.",
+															"type": "string",
+															"example": "My Custom CSR",
+															"x-auditable": true
+														},
+														"organization": {
+															"description": "Organization name.",
+															"type": "string",
+															"example": "Cloudflare, Inc.",
+															"x-auditable": true
+														},
+														"organizational_unit": {
+															"description": "Organizational unit name.",
+															"type": "string",
+															"example": "Engineering",
+															"x-auditable": true
+														},
+														"sans": {
+															"description": "Subject Alternative Names included in the CSR.",
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"example.com",
+																"www.example.com"
+															],
+															"x-auditable": true
+														},
+														"state": {
+															"description": "State or province name.",
+															"type": "string",
+															"example": "California",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"key_type",
+														"created_at"
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Custom CSRs for an Account"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "custom-csrs",
+		"x-forge-method-name": "create",
+		"x-stainless-skip": true
 	},
 	"POST /accounts/{account_id}/custom_csrs": {
 		"operationId": "custom-csrs-for-an-account-create-custom-csr",
@@ -2396,7 +4848,11 @@
 			"pro": false
 		},
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "custom-csrs",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-ignore": true,
+		"x-forge-availability": "generally-available",
+		"x-forge-oauth-scopes": [
+			"account-ssl-and-certificates.write"
+		],
+		"x-forge-skip": true
 	}
 }

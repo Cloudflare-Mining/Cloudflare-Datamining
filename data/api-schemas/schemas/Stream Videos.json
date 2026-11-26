@@ -163,6 +163,12 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos",
 		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		],
 		"x-forge-require-confirmation": "Permanently delete this video?"
 	},
 	"GET /accounts/{account_id}/stream": {
@@ -467,6 +473,16 @@
 														"type": "number",
 														"x-auditable": true
 													},
+													"encodingMode": {
+														"description": "Specifies whether to generate a preview rendition before the standard encoding ladder. `default` generates only the standard encoding ladder. `previewFirst` generates a preview rendition first.",
+														"type": "string",
+														"default": "default",
+														"enum": [
+															"default",
+															"previewFirst"
+														],
+														"x-auditable": true
+													},
 													"input": {
 														"type": "object",
 														"properties": {
@@ -488,7 +504,8 @@
 														"example": "fc0a8dc887b16759bfd9ad922230a014",
 														"maxLength": 32,
 														"x-auditable": true,
-														"x-fern-type-name": "LiveInputId"
+														"x-fern-type-name": "LiveInputId",
+														"x-forge-model-name": "LiveInputId"
 													},
 													"maxDurationSeconds": {
 														"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
@@ -538,6 +555,25 @@
 														"type": "string",
 														"format": "uri",
 														"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
+														"x-auditable": true
+													},
+													"previewStatus": {
+														"description": "Reports the current status of preview generation. This value is `null` when `encodingMode` is `default`.",
+														"type": "string",
+														"enum": [
+															"pending",
+															"ready",
+															"error",
+															"not-eligible-container",
+															"not-eligible-video-codec",
+															"not-eligible-audio-codec",
+															"not-eligible-resolution",
+															"not-eligible-bitrate",
+															"not-eligible-gop",
+															"not-eligible-pixel-format",
+															"not-eligible-edit-list"
+														],
+														"nullable": true,
 														"x-auditable": true
 													},
 													"publicDetails": {
@@ -906,12 +942,23 @@
 			"Stream Videos"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
+			"AI Search Index Engine",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write",
+			"ai-search.index"
+		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}": {
 		"operationId": "stream-videos-retrieve-video-details",
@@ -1077,6 +1124,16 @@
 													"type": "number",
 													"x-auditable": true
 												},
+												"encodingMode": {
+													"description": "Specifies whether to generate a preview rendition before the standard encoding ladder. `default` generates only the standard encoding ladder. `previewFirst` generates a preview rendition first.",
+													"type": "string",
+													"default": "default",
+													"enum": [
+														"default",
+														"previewFirst"
+													],
+													"x-auditable": true
+												},
 												"input": {
 													"type": "object",
 													"properties": {
@@ -1098,7 +1155,8 @@
 													"example": "fc0a8dc887b16759bfd9ad922230a014",
 													"maxLength": 32,
 													"x-auditable": true,
-													"x-fern-type-name": "LiveInputId"
+													"x-fern-type-name": "LiveInputId",
+													"x-forge-model-name": "LiveInputId"
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
@@ -1148,6 +1206,25 @@
 													"type": "string",
 													"format": "uri",
 													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
+													"x-auditable": true
+												},
+												"previewStatus": {
+													"description": "Reports the current status of preview generation. This value is `null` when `encodingMode` is `default`.",
+													"type": "string",
+													"enum": [
+														"pending",
+														"ready",
+														"error",
+														"not-eligible-container",
+														"not-eligible-video-codec",
+														"not-eligible-audio-codec",
+														"not-eligible-resolution",
+														"not-eligible-bitrate",
+														"not-eligible-gop",
+														"not-eligible-pixel-format",
+														"not-eligible-edit-list"
+													],
+													"nullable": true,
 													"x-auditable": true
 												},
 												"publicDetails": {
@@ -1500,12 +1577,23 @@
 			"Stream Videos"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
+			"AI Search Index Engine",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write",
+			"ai-search.index"
+		]
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/embed": {
 		"operationId": "stream-videos-retreieve-embed-code-html",
@@ -1674,12 +1762,23 @@
 			"Stream Videos"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
+			"AI Search Index Engine",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "stream.videos",
-		"x-fern-sdk-method-name": "embed"
+		"x-fern-sdk-method-name": "embed",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "stream.videos",
+		"x-forge-method-name": "embed",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write",
+			"ai-search.index"
+		]
 	},
 	"GET /accounts/{account_id}/stream/storage-usage": {
 		"operationId": "stream-videos-storage-usage",
@@ -1964,12 +2063,23 @@
 			"Stream Videos"
 		],
 		"x-api-token-group": [
+			"Stream Metadata Read",
+			"AI Search Index Engine",
 			"Stream Write",
 			"Stream Read"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream",
-		"x-fern-sdk-method-name": "storage-usage"
+		"x-fern-sdk-method-name": "storage-usage",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream",
+		"x-forge-method-name": "storage-usage",
+		"x-forge-oauth-scopes": [
+			"stream.metadata_read",
+			"stream.read",
+			"stream.write",
+			"ai-search.index"
+		]
 	},
 	"POST /accounts/{account_id}/stream": {
 		"operationId": "stream-videos-initiate-video-uploads-using-tus",
@@ -2016,9 +2126,9 @@
 				"name": "Upload-Metadata",
 				"in": "header",
 				"schema": {
-					"description": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.\nSupported keys: `name`, `requiresignedurls`, `allowedorigins`, `thumbnailtimestamppct`, `watermark`, `scheduleddeletion`, `maxdurationseconds`.",
+					"description": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.\nSupported keys: `name`, `requiresignedurls`, `allowedorigins`, `thumbnailtimestamppct`, `watermark`, `scheduleddeletion`, `maxdurationseconds`, `encodingmode`.\n`encodingmode` accepts `default` or `previewFirst`.",
 					"type": "string",
-					"example": "name aGVsbG8gd29ybGQ=, requiresignedurls, allowedorigins ZXhhbXBsZS5jb20sdGVzdC5jb20=",
+					"example": "name aGVsbG8gd29ybGQ=, requiresignedurls, allowedorigins ZXhhbXBsZS5jb20sdGVzdC5jb20=, encodingmode cHJldmlld0ZpcnN0",
 					"x-auditable": true
 				}
 			},
@@ -2200,7 +2310,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		]
 	},
 	"POST /accounts/{account_id}/stream/{identifier}": {
 		"operationId": "stream-videos-update-video-details",
@@ -2467,6 +2583,16 @@
 													"type": "number",
 													"x-auditable": true
 												},
+												"encodingMode": {
+													"description": "Specifies whether to generate a preview rendition before the standard encoding ladder. `default` generates only the standard encoding ladder. `previewFirst` generates a preview rendition first.",
+													"type": "string",
+													"default": "default",
+													"enum": [
+														"default",
+														"previewFirst"
+													],
+													"x-auditable": true
+												},
 												"input": {
 													"type": "object",
 													"properties": {
@@ -2488,7 +2614,8 @@
 													"example": "fc0a8dc887b16759bfd9ad922230a014",
 													"maxLength": 32,
 													"x-auditable": true,
-													"x-fern-type-name": "LiveInputId"
+													"x-fern-type-name": "LiveInputId",
+													"x-forge-model-name": "LiveInputId"
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
@@ -2538,6 +2665,25 @@
 													"type": "string",
 													"format": "uri",
 													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
+													"x-auditable": true
+												},
+												"previewStatus": {
+													"description": "Reports the current status of preview generation. This value is `null` when `encodingMode` is `default`.",
+													"type": "string",
+													"enum": [
+														"pending",
+														"ready",
+														"error",
+														"not-eligible-container",
+														"not-eligible-video-codec",
+														"not-eligible-audio-codec",
+														"not-eligible-resolution",
+														"not-eligible-bitrate",
+														"not-eligible-gop",
+														"not-eligible-pixel-format",
+														"not-eligible-edit-list"
+													],
+													"nullable": true,
 													"x-auditable": true
 												},
 												"publicDetails": {
@@ -2891,7 +3037,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos",
+		"x-forge-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/token": {
 		"operationId": "stream-videos-create-signed-url-tokens-for-videos",
@@ -3035,6 +3184,8 @@
 								"description": "The optional base64 encoded private key in PEM format associated with a Stream signing key. If present, the `id` field is also required.",
 								"type": "string",
 								"example": "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBc284dnBvOFpEWXRkOUgzbWlPaW1qYXAzVXlVM0oyZ3kwTUYvN1R4blJuRnkwRHpDCkxqUk9naFZsQ0hPQmxsd3NVaE9GU0lyYnN4K05tUTdBeS90TFpXSGxuVGF3UWJ5WGZGOStJeDhVSnNlSHBGV1oKNVF5Z1JYd2liSjh1MVVsZ2xlcmZHMkpueldjVXpZTzEySktZN3doSkw1ajROMWgxZFJNUXQ5Q1pkZFlCQWRzOQpCdk02cjRFMDcxQkhQekhWeDMrUTI1VWtubGdUNXIwS3FiM1E1Y0dlTlBXY1JreW1ybkJEWWR0OXR4eFFMb1dPCllzNXdsMnVYWFVYL0VGcDMwajU0Nmp6czllWExLYlNDbjJjTDZFVE96Y2x3aG9DRGx2a2VQT05rUE9LMDVKNUMKTm1TdFdhMG9hV1VGRzM0MFl3cVVrWGt4OU9tNndXd1JldU1uU1FJREFRQUJBb0lCQUFJOHo1ck5kOEdtOGJBMgo1S3pxQjI1R2lOVENwbUNJeW53NXRJWHZTQmNHcEdydUcvdlN2WG9kVlFVSVY0TWdHQkVXUEFrVzdsNWVBcHI4CnA1ZFd5SkRXYTNkdklFSE9vSEpYU3dBYksxZzZEMTNVa2NkZ1EyRGpoNVhuWDhHZCtBY2c2SmRTQWgxOWtYSHEKMk54RUtBVDB6Ri83a1g2MkRkREFBcWxmQkpGSXJodVIvZUdEVWh4L2piTTRhQ2JCcFdiM0pnRE9OYm5tS1ZoMwpxS2ZwZmRZZENZU1lzWUxrNTlxRDF2VFNwUVFUQ0VadW9VKzNzRVNhdkJzaUs1bU0vTzY5ZkRMRXNURG1MeTVQCmhEK3BMQXI0SlhNNjFwRGVBS0l3cUVqWWJybXlDRHRXTUdJNnZzZ0E1eXQzUUJaME9vV2w5QUkwdWxoZ3p4dXQKZ2ZFNTRRRUNnWUVBN0F3a0lhVEEzYmQ4Nk9jSVZnNFlrWGk1cm5aNDdsM1k4V24zcjIzUmVISXhLdkllRUtSbgp5bUlFNDFtRVBBSmlGWFpLK1VPTXdkeS9EcnFJUithT1JiT2NiV01jWUg2QzgvbG1wdVJFaXE3SW1Ub3VWcnA4CnlnUkprMWprVDA4cTIvNmg4eTBEdjJqMitsaHFXNzRNOUt0cmwxcTRlWmZRUFREL01tR1NnTWtDZ1lFQXdhY04KaSttN1p6dnJtL3NuekF2VlZ5SEtwZHVUUjNERk1naC9maC9tZ0ZHZ1RwZWtUOVV5b3FleGNYQXdwMVlhL01iQQoyNTVJVDZRbXZZTm5yNXp6Wmxic2tMV0hsYllvbWhmWnVXTHhXR3hRaEFORWdaMFVVdUVTRGMvbWx2UXZHbEtSCkZoaGhBUWlVSmdDamhPaHk1SlBiNGFldGRKd0UxK09lVWRFaE1vRUNnWUVBNG8yZ25CM1o4ck5xa3NzemlBek4KYmNuMlJVbDJOaW9pejBwS3JMaDFaT29NNE5BekpQdjJsaHRQMzdtS0htS1hLMHczRjFqTEgwSTBxZmxFVmVZbQpSU1huakdHazJjUnpBYUVzOGgrQzNheDE0Z01pZUtGU3BqNUpNOEFNbVVZOXQ1cUVhN2FYc3o0V1ZoOUlMYmVTCkRiNzlhKzVwd21LQVBrcnBsTHhyZFdrQ2dZQlNNSHVBWVdBbmJYZ1BDS2FZWklGVWJNUWNacmY0ZnpWQ2lmYksKYWZHampvRlNPZXdEOGdGK3BWdWJRTGwxbkFieU44ek1xVDRaaHhybUhpcFlqMjJDaHV2NmN3RXJtbGRiSnpwQwpBMnRaVXdkTk1ESFlMUG5lUHlZeGRJWnlsUXFVeW14SGkydElUQUxNcWtLOGV3ZWdXZHpkeGhQSlJScU5JazhrCmZIVHhnUUtCZ1FEUFc2UXIxY3F3QjNUdnVWdWR4WGRqUTdIcDFodXhrNEVWaEFJZllKNFhSTW1NUE5YS28wdHUKdUt6LzE0QW14R0dvSWJxYVc1bDMzeFNteUxhem84clNUN0tSTjVKME9JSHcrZkR5SFgxdHpVSjZCTldDcEFTcwpjbWdNK0htSzVON0w2bkNaZFJQY2IwU1hGaVRQUGhCUG1PVWFDUnpER0ZMK2JYM1VwajJKbWc9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=",
+								"x-auditable": false,
+								"x-forge-sensitive": true,
 								"x-sensitive": true
 							}
 						}
@@ -3145,6 +3296,8 @@
 													"description": "The signed token used with the signed URLs feature.",
 													"type": "string",
 													"example": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImU5ZGI5OTBhODI2NjZkZDU3MWM3N2Y5NDRhNWM1YzhkIn0.eyJzdWIiOiJlYTk1MTMyYzE1NzMyNDEyZDIyYzE0NzZmYTgzZjI3YSIsImtpZCI6ImU5ZGI5OTBhODI2NjZkZDU3MWM3N2Y5NDRhNWM1YzhkIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.OZhqOARADn1iubK6GKcn25hN3nU-hCFF5q9w2C4yup0C4diG7aMIowiRpP-eDod8dbAJubsiFuTKrqPcmyCKWYsiv0TQueukqbQlF7HCO1TV-oF6El5-7ldJ46eD-ZQ0XgcIYEKrQOYFF8iDQbqPm3REWd6BnjKZdeVrLzuRaiSnZ9qqFpGu5dfxIY9-nZKDubJHqCr3Imtb211VIG_b9MdtO92JjvkDS-rxT_pkEfTZSafl1OU-98A7KBGtPSJHz2dHORIrUiTA6on4eIXTj9aFhGiir4rSn-rn0OjPRTtJMWIDMoQyE_fwrSYzB7MPuzL2t82BWaEbHZTfixBm5A",
+													"x-auditable": false,
+													"x-forge-sensitive": true,
 													"x-sensitive": true
 												}
 											}
@@ -3284,6 +3437,9 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.token",
 		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.token",
+		"x-forge-method-name": "create",
 		"x-forge-require-confirmation": "Provision temporary token? For use at scale, consider creating a signing key instead."
 	},
 	"POST /accounts/{account_id}/stream/copy": {
@@ -3341,11 +3497,22 @@
 								"maxLength": 64,
 								"x-auditable": true
 							},
+							"encodingMode": {
+								"description": "Specifies whether to generate a preview rendition before the standard encoding ladder. `default` generates only the standard encoding ladder. `previewFirst` generates a preview rendition first.",
+								"type": "string",
+								"default": "default",
+								"enum": [
+									"default",
+									"previewFirst"
+								],
+								"x-auditable": true
+							},
 							"input": {
 								"description": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This is the preferred field over `url`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/myvideo.mp4"
+								"example": "https://example.com/myvideo.mp4",
+								"x-auditable": false
 							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
@@ -3386,7 +3553,8 @@
 								"description": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. This field is deprecated in favor of `input`.",
 								"type": "string",
 								"format": "uri",
-								"example": "https://example.com/myvideo.mp4"
+								"example": "https://example.com/myvideo.mp4",
+								"x-auditable": false
 							},
 							"watermark": {
 								"type": "object",
@@ -3553,6 +3721,16 @@
 													"type": "number",
 													"x-auditable": true
 												},
+												"encodingMode": {
+													"description": "Specifies whether to generate a preview rendition before the standard encoding ladder. `default` generates only the standard encoding ladder. `previewFirst` generates a preview rendition first.",
+													"type": "string",
+													"default": "default",
+													"enum": [
+														"default",
+														"previewFirst"
+													],
+													"x-auditable": true
+												},
 												"input": {
 													"type": "object",
 													"properties": {
@@ -3574,7 +3752,8 @@
 													"example": "fc0a8dc887b16759bfd9ad922230a014",
 													"maxLength": 32,
 													"x-auditable": true,
-													"x-fern-type-name": "LiveInputId"
+													"x-fern-type-name": "LiveInputId",
+													"x-forge-model-name": "LiveInputId"
 												},
 												"maxDurationSeconds": {
 													"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
@@ -3624,6 +3803,25 @@
 													"type": "string",
 													"format": "uri",
 													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
+													"x-auditable": true
+												},
+												"previewStatus": {
+													"description": "Reports the current status of preview generation. This value is `null` when `encodingMode` is `default`.",
+													"type": "string",
+													"enum": [
+														"pending",
+														"ready",
+														"error",
+														"not-eligible-container",
+														"not-eligible-video-codec",
+														"not-eligible-audio-codec",
+														"not-eligible-resolution",
+														"not-eligible-bitrate",
+														"not-eligible-gop",
+														"not-eligible-pixel-format",
+														"not-eligible-edit-list"
+													],
+													"nullable": true,
 													"x-auditable": true
 												},
 												"publicDetails": {
@@ -3980,12 +4178,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos",
-		"x-fern-sdk-method-name": "copy"
+		"x-fern-sdk-method-name": "copy",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos",
+		"x-forge-method-name": "copy",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		]
 	},
 	"POST /accounts/{account_id}/stream/direct_upload": {
 		"operationId": "stream-videos-upload-videos-via-direct-upload-ur-ls",
 		"summary": "Upload videos via direct upload URLs",
-		"description": "Creates a direct upload endpoint that allows an end-user to upload a video without an API key.",
+		"description": "Creates a direct upload endpoint that allows an end-user to upload a video without an API key. `encodingMode` is fixed when the upload URL is created and cannot be changed when the generated URL is used.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4034,6 +4238,16 @@
 								"type": "string",
 								"example": "creator-id_abcde12345",
 								"maxLength": 64,
+								"x-auditable": true
+							},
+							"encodingMode": {
+								"description": "Specifies whether to generate a preview rendition before the standard encoding ladder. `default` generates only the standard encoding ladder. `previewFirst` generates a preview rendition first.",
+								"type": "string",
+								"default": "default",
+								"enum": [
+									"default",
+									"previewFirst"
+								],
 								"x-auditable": true
 							},
 							"expiry": {
@@ -4440,6 +4654,12 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "stream.videos.direct-upload",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "stream.videos.direct-upload",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"stream.write"
+		]
 	}
 }

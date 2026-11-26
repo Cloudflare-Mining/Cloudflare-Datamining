@@ -592,7 +592,13 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "analytics.colo",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "analytics.colo",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"analytics.read"
+		]
 	},
 	"GET /zones/{zone_id}/analytics/dashboard": {
 		"operationId": "zone-analytics-(-deprecated)-get-dashboard",
@@ -1459,6 +1465,12 @@
 		},
 		"x-fern-availability": "deprecated",
 		"x-fern-sdk-group-name": "analytics.dashboard",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "deprecated",
+		"x-forge-group-name": "analytics.dashboard",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"analytics.read"
+		]
 	}
 }

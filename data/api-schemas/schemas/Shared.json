@@ -783,9 +783,7 @@
 																			},
 																			"gateway": {
 																				"type": "object",
-																				"additionalProperties": {
-																					"nullable": true
-																				},
+																				"additionalProperties": true,
 																				"properties": {
 																					"requestId": {
 																						"type": "string"
@@ -914,9 +912,7 @@
 																			},
 																			"gateway": {
 																				"type": "object",
-																				"additionalProperties": {
-																					"nullable": true
-																				},
+																				"additionalProperties": true,
 																				"properties": {
 																					"requestId": {
 																						"type": "string"
@@ -1369,9 +1365,7 @@
 																		},
 																		"gateway": {
 																			"type": "object",
-																			"additionalProperties": {
-																				"nullable": true
-																			},
+																			"additionalProperties": true,
 																			"properties": {
 																				"requestId": {
 																					"type": "string"
@@ -1500,9 +1494,7 @@
 																		},
 																		"gateway": {
 																			"type": "object",
-																			"additionalProperties": {
-																				"nullable": true
-																			},
+																			"additionalProperties": true,
 																			"properties": {
 																				"requestId": {
 																					"type": "string"
@@ -2500,6 +2492,9 @@
 			"Query"
 		],
 		"x-api-token-group": [
+			"Observability Write",
+			"Observability Read",
+			"Workers Metadata Read-Only",
 			"Workers Observability Write",
 			"Workers Observability Read"
 		],
@@ -2509,8 +2504,20 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.shared-queries",
-				"x-fern-sdk-method-name": "get"
+				"x-fern-sdk-method-name": "get",
+				"x-forge-group-name": "o11y.shared-queries",
+				"x-forge-method-name": "get"
 			}
+		],
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "observability.shared-queries",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"workers-observability.read",
+			"workers-observability.write",
+			"observability.read",
+			"observability.write",
+			"workers-scripts.metadata_read"
 		]
 	},
 	"POST /accounts/{account_id}/workers/observability/shared/query": {
@@ -2555,7 +2562,8 @@
 								"description": "When true, executes the query without persisting the results. Useful for validation or previewing.",
 								"type": "boolean",
 								"default": false,
-								"x-fern-property-name": "preview"
+								"x-fern-property-name": "preview",
+								"x-forge-property-name": "preview"
 							},
 							"granularity": {
 								"description": "Number of time-series buckets. Only used when view is 'calculations'. Omit to let the system auto-detect an appropriate granularity.",
@@ -3558,6 +3566,7 @@
 			"Query"
 		],
 		"x-api-token-group": [
+			"Observability Write",
 			"Workers Observability Write"
 		],
 		"x-fern-availability": "generally-available",
@@ -3566,8 +3575,17 @@
 		"x-forge-aliases": [
 			{
 				"x-fern-sdk-group-name": "o11y.shared-queries",
-				"x-fern-sdk-method-name": "create"
+				"x-fern-sdk-method-name": "create",
+				"x-forge-group-name": "o11y.shared-queries",
+				"x-forge-method-name": "create"
 			}
+		],
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "observability.shared-queries",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"workers-observability.write",
+			"observability.write"
 		]
 	}
 }

@@ -541,7 +541,10 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dls.regions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dls.regions",
+		"x-forge-method-name": "list"
 	},
 	"GET /accounts/{account_id}/dls/regions/{region_id}": {
 		"operationId": "publicGetRegion",
@@ -1060,6 +1063,9 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "dls.regions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "dls.regions",
+		"x-forge-method-name": "get"
 	}
 }

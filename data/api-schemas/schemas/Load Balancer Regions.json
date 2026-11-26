@@ -258,7 +258,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.regions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.regions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.read",
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"GET /accounts/{account_id}/load_balancers/regions/{region_id}": {
 		"operationId": "load-balancer-regions-get-region",
@@ -598,7 +605,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "load-balancers.regions",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "load-balancers.regions",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.read",
+			"load-balancing-monitors-and-pools.write"
+		]
 	},
 	"GET /user/load_balancers/regions": {
 		"operationId": "user-load-balancer-regions-list-regions",
@@ -836,6 +850,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "user.load-balancers.regions",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "user.load-balancers.regions",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"load-balancing-monitors-and-pools.read",
+			"load-balancing-monitors-and-pools.write"
+		]
 	}
 }

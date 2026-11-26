@@ -465,7 +465,13 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames.fallback-origin",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "custom-hostnames.fallback-origin",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.write"
+		]
 	},
 	"GET /zones/{zone_id}/custom_hostnames/fallback_origin": {
 		"operationId": "custom-hostname-fallback-origin-for-a-zone-get-fallback-origin-for-custom-hostnames",
@@ -934,7 +940,14 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames.fallback-origin",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "custom-hostnames.fallback-origin",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.read",
+			"ssl-and-certificates.write"
+		]
 	},
 	"PUT /zones/{zone_id}/custom_hostnames/fallback_origin": {
 		"operationId": "custom-hostname-fallback-origin-for-a-zone-update-fallback-origin-for-custom-hostnames",
@@ -1424,6 +1437,12 @@
 		},
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "custom-hostnames.fallback-origin",
-		"x-fern-sdk-method-name": "update"
+		"x-fern-sdk-method-name": "update",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "custom-hostnames.fallback-origin",
+		"x-forge-method-name": "update",
+		"x-forge-oauth-scopes": [
+			"ssl-and-certificates.write"
+		]
 	}
 }

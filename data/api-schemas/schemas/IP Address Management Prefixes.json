@@ -377,11 +377,19 @@
 			"IP Address Management Prefixes"
 		],
 		"x-api-token-group": [
-			"Magic Transit Write"
+			"Magic Transit Write",
+			"IP Prefixes: Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes",
-		"x-fern-sdk-method-name": "delete"
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes",
+		"x-forge-method-name": "delete",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/addressing/loa_documents": {
 		"operationId": "ip-address-management-prefixes-list-loa-documents",
@@ -923,11 +931,20 @@
 		],
 		"x-api-token-group": [
 			"Magic Transit Read",
-			"Magic Transit Write"
+			"Magic Transit Write",
+			"IP Prefixes: Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.loa-documents",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.loa-documents",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write",
+			"magic-transit.read",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/addressing/loa_documents/{loa_document_id}/download": {
 		"operationId": "ip-address-management-prefixes-download-loa-document",
@@ -1100,11 +1117,20 @@
 		],
 		"x-api-token-group": [
 			"Magic Transit Read",
-			"Magic Transit Write"
+			"Magic Transit Write",
+			"IP Prefixes: Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.loa-documents",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.loa-documents",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write",
+			"magic-transit.read",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes": {
 		"operationId": "ip-address-management-prefixes-list-prefixes",
@@ -1776,7 +1802,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes",
-		"x-fern-sdk-method-name": "list"
+		"x-fern-sdk-method-name": "list",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes",
+		"x-forge-method-name": "list",
+		"x-forge-oauth-scopes": [
+			"ip-prefix-bgp-on-demand.read",
+			"ip-prefix-bgp-on-demand.write",
+			"ip-prefix.read",
+			"ip-prefix.write",
+			"magic-transit.read",
+			"magic-transit.write"
+		]
 	},
 	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
 		"operationId": "ip-address-management-prefixes-prefix-details",
@@ -2454,7 +2491,18 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes",
-		"x-fern-sdk-method-name": "get"
+		"x-fern-sdk-method-name": "get",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes",
+		"x-forge-method-name": "get",
+		"x-forge-oauth-scopes": [
+			"ip-prefix-bgp-on-demand.read",
+			"ip-prefix-bgp-on-demand.write",
+			"ip-prefix.read",
+			"ip-prefix.write",
+			"magic-transit.read",
+			"magic-transit.write"
+		]
 	},
 	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
 		"operationId": "ip-address-management-prefixes-update-prefix-description",
@@ -3150,7 +3198,14 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes",
-		"x-fern-sdk-method-name": "edit"
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes",
+		"x-forge-method-name": "edit",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write",
+			"magic-transit.write"
+		]
 	},
 	"POST /accounts/{account_id}/addressing/loa_documents": {
 		"operationId": "ip-address-management-prefixes-upload-loa-document",
@@ -3635,11 +3690,19 @@
 			"IP Address Management Prefixes"
 		],
 		"x-api-token-group": [
-			"Magic Transit Write"
+			"Magic Transit Write",
+			"IP Prefixes: Write"
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.loa-documents",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.loa-documents",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write",
+			"magic-transit.write"
+		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes": {
 		"operationId": "ip-address-management-prefixes-add-prefix",
@@ -4345,10 +4408,20 @@
 		"tags": [
 			"IP Address Management Prefixes"
 		],
-		"x-api-token-group": null,
+		"x-api-token-group": [
+			"Magic Transit Write",
+			"IP Prefixes: Write"
+		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write",
+			"magic-transit.write"
+		]
 	},
 	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/validate": {
 		"operationId": "ip-address-management-prefixes-validate-prefix",
@@ -5022,6 +5095,13 @@
 		],
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "addressing.prefixes.validate",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-sdk-method-name": "create",
+		"x-forge-availability": "generally-available",
+		"x-forge-group-name": "addressing.prefixes.validate",
+		"x-forge-method-name": "create",
+		"x-forge-oauth-scopes": [
+			"ip-prefix.write",
+			"magic-transit.write"
+		]
 	}
 }

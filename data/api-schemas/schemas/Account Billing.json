@@ -341,7 +341,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "accounts.billing",
-		"x-fern-sdk-method-name": "get-bad-debt"
+		"x-fern-sdk-method-name": "get-bad-debt",
+		"x-forge-group-name": "accounts.billing",
+		"x-forge-method-name": "get-bad-debt"
 	},
 	"GET /accounts/{account_id}/billing/credits": {
 		"operationId": "account-billing-get-credits",
@@ -658,7 +660,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "accounts.billing",
-		"x-fern-sdk-method-name": "get-credits"
+		"x-fern-sdk-method-name": "get-credits",
+		"x-forge-group-name": "accounts.billing",
+		"x-forge-method-name": "get-credits"
 	},
 	"GET /accounts/{account_id}/billing/unpaid-invoice": {
 		"operationId": "account-billing-get-unpaid-invoices",
@@ -987,7 +991,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "accounts.billing",
-		"x-fern-sdk-method-name": "get-unpaid-invoices"
+		"x-fern-sdk-method-name": "get-unpaid-invoices",
+		"x-forge-group-name": "accounts.billing",
+		"x-forge-method-name": "get-unpaid-invoices"
 	},
 	"GET /accounts/{account_id}/receipts/{receipt_id}/pdf": {
 		"operationId": "account-billing-get-receipt-pdf",
@@ -1151,7 +1157,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "accounts.billing",
-		"x-fern-sdk-method-name": "get-receipt-pdf"
+		"x-fern-sdk-method-name": "get-receipt-pdf",
+		"x-forge-group-name": "accounts.billing",
+		"x-forge-method-name": "get-receipt-pdf"
 	},
 	"PATCH /accounts/{account_id}/invoices": {
 		"operationId": "account-billing-toggle-pdf-invoices",
@@ -1404,7 +1412,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "accounts.billing",
-		"x-fern-sdk-method-name": "toggle-pdf-invoices"
+		"x-fern-sdk-method-name": "toggle-pdf-invoices",
+		"x-forge-group-name": "accounts.billing",
+		"x-forge-method-name": "toggle-pdf-invoices"
 	},
 	"POST /accounts/{account_id}/billing/profile/payment-method": {
 		"operationId": "account-billing-create-payment-intent",
@@ -1666,7 +1676,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "billing.profiles",
-		"x-fern-sdk-method-name": "create-payment-intent"
+		"x-fern-sdk-method-name": "create-payment-intent",
+		"x-forge-group-name": "billing.profiles",
+		"x-forge-method-name": "create-payment-intent"
 	},
 	"POST /accounts/{account_id}/client-secret": {
 		"operationId": "account-billing-create-setup-intent",
@@ -1921,7 +1933,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "accounts.billing",
-		"x-fern-sdk-method-name": "create-setup-intent"
+		"x-fern-sdk-method-name": "create-setup-intent",
+		"x-forge-group-name": "accounts.billing",
+		"x-forge-method-name": "create-setup-intent"
 	},
 	"POST /accounts/{account_id}/pay-invoice": {
 		"operationId": "account-billing-pay-invoice",
@@ -2203,7 +2217,9 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "accounts.billing",
-		"x-fern-sdk-method-name": "pay-invoice"
+		"x-fern-sdk-method-name": "pay-invoice",
+		"x-forge-group-name": "accounts.billing",
+		"x-forge-method-name": "pay-invoice"
 	},
 	"POST /billing/address-validation": {
 		"operationId": "billing-validate-address",
@@ -2513,6 +2529,8 @@
 			"pro": true
 		},
 		"x-fern-sdk-group-name": "billing.addresses",
-		"x-fern-sdk-method-name": "validate"
+		"x-fern-sdk-method-name": "validate",
+		"x-forge-group-name": "billing.addresses",
+		"x-forge-method-name": "validate"
 	}
 }
