@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-react-ui",
 	"dist-tags": {
 		"latest": "2.1.0",
-		"staging": "2.2.0-staging.2"
+		"staging": "2.2.0-staging.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -2997,12 +2997,42 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDN1jODprDrVeHIPx6OJWrna1zUlw8ZB4u2fh9Jbfdn7QIgIecACqGkDxK7uw/TRnCyX4/3r1NV1ruCbz0rTLqO90Y="
+						"sig": "MEUCIQDN1jODprDrVeHIPx6OJWrna1zUlw8ZB4u2fh9Jbfdn7QIgIecACqGkDxK7uw/TRnCyX4/3r1NV1ruCbz0rTLqO90Y=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@2.2.0-staging.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 161363
+			}
+		},
+		"2.2.0-staging.3": {
+			"name": "@cloudflare/realtimekit-react-ui",
+			"version": "2.2.0-staging.3",
+			"dependencies": {
+				"@cloudflare/realtimekit-ui": "2.2.0-staging.3"
+			},
+			"dist": {
+				"shasum": "a6c0a7492648a9065273660945b56788d7b3de12",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-2.2.0-staging.3.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-Y9IBH2awAjSfQfIXpVbGfTg6Z8otR/mEH1Obm3tDu/KP6rHccrPNN1L+K5oyb3FmoQmFnTIzDTLDTYuuSHGUEw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCwu+WQTyLTL0CQCfR6MgNxhQnIo0r2tn/QvTHQp+rSqgIgWpMC+D5BOmCRa3jYM7SnKFLA/guDuzbMhq2Fc2XqSNY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDBtChuvWT9RYaCYhEvt89CXta3HJ0QC39OazLgMJjIHQIhAM6tGjucGItFJg5PBHUW/aAHMoa12PLEZJyeUBsqr9uU"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@2.2.0-staging.3",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}

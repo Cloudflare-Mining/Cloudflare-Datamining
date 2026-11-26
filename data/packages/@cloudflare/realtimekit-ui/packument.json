@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-ui",
 	"dist-tags": {
 		"latest": "2.1.0",
-		"staging": "2.2.0-staging.2"
+		"staging": "2.2.0-staging.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -3524,8 +3524,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCunqKqbmr4zCWtgLiWPR+FhJnDJwHW3bmoqRX1mFmwDgIgOvBPOVanroTO+gDpQn225CalwC8p3pEYDSa96jbppZU="
+						"sig": "MEUCIQCunqKqbmr4zCWtgLiWPR+FhJnDJwHW3bmoqRX1mFmwDgIgOvBPOVanroTO+gDpQn225CalwC8p3pEYDSa96jbppZU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -3535,6 +3535,40 @@
 					}
 				},
 				"unpackedSize": 29374235
+			}
+		},
+		"2.2.0-staging.3": {
+			"name": "@cloudflare/realtimekit-ui",
+			"version": "2.2.0-staging.3",
+			"dependencies": {
+				"hark": "^1.2.3",
+				"hls.js": "^1.5.17",
+				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.7.4",
+				"resize-observer-polyfill": "^1.5.1"
+			},
+			"dist": {
+				"shasum": "9b5910c9db84f2584c7190e0bd84cd140a9385a0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-2.2.0-staging.3.tgz",
+				"fileCount": 1273,
+				"integrity": "sha512-UDUv+XGHTW8SQgF5VF/DNGMSDEMwXh5bgH8anwVyZf4edk9RYPw8jdl8xx3Tpe39/olciJBNfFbFAwfrSJLcBw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCNmMOe6dvHYM2zibBGuly6LCMdEg2Vx+cudhqC1C6D0AIgNnD2o27SVu4MjGwYngXDjlkbIzwoymz0mvxQmML0qB8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIC+WtYZ0l+wZp6tEl9nlYQzo8G7HlcSdIT3lR5J6CLiMAiEA+zzfdWgAmc5VVLl0JuIhwtwWEi7oJIzrMUMZwXkamGM="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-ui@2.2.0-staging.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 29378185
 			}
 		}
 	}
