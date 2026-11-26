@@ -4751,6 +4751,15 @@
 						"experimental": true
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "udpIngress",
+					"annotations": {
+						"compatEnableFlag": "udp_ingress",
+						"compatDisableFlag": "no_udp_ingress",
+						"compatEnableDate": "2026-12-16"
+					},
+					"type": "Bool"
 				}
 			]
 		},
@@ -4825,6 +4834,51 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/io/trace.capnp:OptionalString",
+			"fields": [
+				{
+					"name": "none",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "value",
+					"annotations": {},
+					"type": "Text"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/trace.capnp:OptionalBool",
+			"fields": [
+				{
+					"name": "none",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "value",
+					"annotations": {},
+					"type": "Bool"
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/io/trace.capnp:OptionalFloat64",
+			"fields": [
+				{
+					"name": "none",
+					"annotations": {},
+					"type": "Void"
+				},
+				{
+					"name": "value",
+					"annotations": {},
+					"type": "Float64"
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/io/trace.capnp:TagValue",
 			"fields": [
 				{
@@ -4846,6 +4900,21 @@
 					"name": "float64",
 					"annotations": {},
 					"type": "Float64"
+				},
+				{
+					"name": "stringArray",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/trace.capnp:OptionalString)"
+				},
+				{
+					"name": "boolArray",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/trace.capnp:OptionalBool)"
+				},
+				{
+					"name": "float64Array",
+					"annotations": {},
+					"type": "List(workerd/src/workerd/io/trace.capnp:OptionalFloat64)"
 				}
 			]
 		},
