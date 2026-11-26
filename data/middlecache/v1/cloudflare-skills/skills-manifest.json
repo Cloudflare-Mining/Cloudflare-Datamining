@@ -28,6 +28,14 @@
 			]
 		},
 		{
+			"name": "artifacts",
+			"description": "Build, debug, or review code that uses Cloudflare Artifacts, Git-compatible versioned storage, from Workers, the REST API, or Git clients. Use for the env.ARTIFACTS binding, creating, forking, or importing repositories, repo-scoped tokens, and pushing commits from a Worker.",
+			"files": [
+				"SKILL.md",
+				"references/skill-feedback.md"
+			]
+		},
+		{
 			"name": "basin",
 			"description": "Build and troubleshoot Cloudflare Basin analytics workflows with Basin Pipelines, Basin Catalog, and Basin SQL. Use for streaming data into R2 Iceberg tables, managing catalogs, or querying those tables; also use for requests using the former Data Platform, Pipelines, R2 Data Catalog, or R2 SQL names.",
 			"files": [
@@ -240,6 +248,14 @@
 				"references/skill-feedback.md",
 				"references/testing.md",
 				"references/workers.md"
+			]
+		},
+		{
+			"name": "flagship",
+			"description": "Build, debug, or review code that uses Cloudflare Flagship feature flags from Workers, OpenFeature SDKs, the evaluation API, or Wrangler. Use for the Flagship binding, targeting rules, percentage rollouts and A/B splits, kill switches, local flag stores, and flag-related API tokens.",
+			"files": [
+				"SKILL.md",
+				"references/skill-feedback.md"
 			]
 		},
 		{
