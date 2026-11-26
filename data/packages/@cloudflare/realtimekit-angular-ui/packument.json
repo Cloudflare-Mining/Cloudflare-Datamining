@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
 		"latest": "2.1.0",
-		"staging": "2.2.0-staging.3"
+		"staging": "2.2.0-staging.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -3525,8 +3525,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIHTh7dGJbjhljSpgEPuKGHfdeuFWZylPzzUY91bBTTlPAiA1XTjfP+lV+ndaLfOaZyUOKsDj2WiJv5zpXrZBcbHP5Q=="
+						"sig": "MEQCIHTh7dGJbjhljSpgEPuKGHfdeuFWZylPzzUY91bBTTlPAiA1XTjfP+lV+ndaLfOaZyUOKsDj2WiJv5zpXrZBcbHP5Q==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -3536,6 +3536,41 @@
 					}
 				},
 				"unpackedSize": 1708983
+			}
+		},
+		"2.2.0-staging.4": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "2.2.0-staging.4",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "2.2.0-staging.4"
+			},
+			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "180da858060af932e44e1fab1da80ac1df38b779",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-2.2.0-staging.4.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-ZFTdAdq3aoWBzjt8I5npJXYpW1QsCCb6/cwLGykMTUT3HJ1E3qZkLyu6xX4XHFxQTey0KIN2UWNGxPHhT9pbfA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCnGTT48teL9R2pr/OemUK5bunGWuxkr4YMnbu0xCwdKQIgb+6ZssAYOoXsPM6WsCoXzUmotpEF4UglyvtRKsMamag=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIA2bIY7upARj+x/s5bhUCTdlKXPCY3lyatZr9ABZ0/jLAiAHjeCrZWcU5zS2813uFf4VdfsXlyTiRL0ranNZmNoSkA=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-angular-ui@2.2.0-staging.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1709605
 			}
 		}
 	}
