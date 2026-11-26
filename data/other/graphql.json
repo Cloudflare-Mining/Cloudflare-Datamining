@@ -3984,6 +3984,480 @@
 	"AccountD1StorageAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountDexHttpTestResultsAdaptiveGroups": {
+		"__description": "Beta. DEX HTTP test results with adaptive sampling",
+		"avg": "",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Number of HTTP test results",
+		"dimensions": "List of dimensions to group by",
+		"max": "",
+		"min": "",
+		"quantiles": "",
+		"ratio": "",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsAvg": {
+		"__description": "",
+		"dnsResponseTimeMs": "Average DNS response time in milliseconds for successful HTTP test results",
+		"resourceFetchTimeMs": "Average resource fetch time in milliseconds for successful HTTP test results",
+		"sampleInterval": "Average sample interval",
+		"serverResponseTimeMs": "Average server response time in milliseconds for successful HTTP test results"
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of HTTP test results, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": ""
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"bodyBytes": "HTTP response body size in bytes",
+		"clientPlatform": "Device operating system",
+		"clientVersion": "WARP client version",
+		"colo": "Cloudflare colo associated with the test result",
+		"date": "Test result timestamp truncated to the day",
+		"datetime": "Test result timestamp",
+		"datetimeFifteenMinutes": "Test result timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Test result timestamp truncated to five minutes",
+		"datetimeHour": "Test result timestamp truncated to the hour",
+		"datetimeMinute": "Test result timestamp truncated to the minute",
+		"datetimeThirtyMinutes": "Test result timestamp truncated to thirty minutes",
+		"deviceId": "Device ID",
+		"deviceRegistration": "Device registration ID",
+		"dnsResponseTimeMs": "DNS response time in milliseconds",
+		"executionContext": "Whether the test ran inside or outside the WARP tunnel",
+		"headerBytes": "HTTP response headers size in bytes",
+		"method": "HTTP request method",
+		"redirectDurationMs": "HTTP redirect duration in milliseconds",
+		"resourceFetchTimeMs": "Total resource fetch time in milliseconds",
+		"serverResponseTimeMs": "Server response time in milliseconds",
+		"statusCode": "HTTP response status code",
+		"tcpConnectTimeMs": "TCP connection time in milliseconds",
+		"testId": "DEX test configuration ID",
+		"testResultId": "Unique test result ID",
+		"tunnelType": "WARP tunnel protocol"
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsMax": {
+		"__description": "",
+		"dnsResponseTimeMs": "Maximum DNS response time in milliseconds for successful HTTP test results",
+		"resourceFetchTimeMs": "Maximum resource fetch time in milliseconds for successful HTTP test results",
+		"serverResponseTimeMs": "Maximum server response time in milliseconds for successful HTTP test results",
+		"timestamp": "Latest test result timestamp"
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsMin": {
+		"__description": "",
+		"dnsResponseTimeMs": "Minimum DNS response time in milliseconds for successful HTTP test results",
+		"resourceFetchTimeMs": "Minimum resource fetch time in milliseconds for successful HTTP test results",
+		"serverResponseTimeMs": "Minimum server response time in milliseconds for successful HTTP test results"
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"dnsResponseTimeMsP25": "DNS response time in milliseconds at the 25th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP50": "DNS response time in milliseconds at the 50th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP75": "DNS response time in milliseconds at the 75th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP90": "DNS response time in milliseconds at the 90th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP95": "DNS response time in milliseconds at the 95th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP99": "DNS response time in milliseconds at the 99th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP999": "DNS response time in milliseconds at the 99.9th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP25": "Resource fetch time in milliseconds at the 25th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP50": "Resource fetch time in milliseconds at the 50th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP75": "Resource fetch time in milliseconds at the 75th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP90": "Resource fetch time in milliseconds at the 90th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP95": "Resource fetch time in milliseconds at the 95th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP99": "Resource fetch time in milliseconds at the 99th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP999": "Resource fetch time in milliseconds at the 99.9th percentile for successful HTTP test results",
+		"serverResponseTimeMsP25": "Server response time in milliseconds at the 25th percentile for successful HTTP test results",
+		"serverResponseTimeMsP50": "Server response time in milliseconds at the 50th percentile for successful HTTP test results",
+		"serverResponseTimeMsP75": "Server response time in milliseconds at the 75th percentile for successful HTTP test results",
+		"serverResponseTimeMsP90": "Server response time in milliseconds at the 90th percentile for successful HTTP test results",
+		"serverResponseTimeMsP95": "Server response time in milliseconds at the 95th percentile for successful HTTP test results",
+		"serverResponseTimeMsP99": "Server response time in milliseconds at the 99th percentile for successful HTTP test results",
+		"serverResponseTimeMsP999": "Server response time in milliseconds at the 99.9th percentile for successful HTTP test results"
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsRatio": {
+		"__description": "",
+		"availabilityPct": "Percentage of HTTP test results that completed successfully"
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsSum": {
+		"__description": "",
+		"httpStatusCode2xx": "Number of HTTP test results with a 2xx response status",
+		"httpStatusCode3xx": "Number of HTTP test results with a 3xx response status",
+		"httpStatusCode4xx": "Number of HTTP test results with a 4xx response status",
+		"httpStatusCode5xx": "Number of HTTP test results with a 5xx response status",
+		"successfulTestResults": "Number of successful HTTP test results"
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"httpStatusCode2xx": "Confidence interval for the corresponding point estimate",
+		"httpStatusCode3xx": "Confidence interval for the corresponding point estimate",
+		"httpStatusCode4xx": "Confidence interval for the corresponding point estimate",
+		"httpStatusCode5xx": "Confidence interval for the corresponding point estimate",
+		"successfulTestResults": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountDexHttpTestResultsAdaptiveGroupsUniq": {
+		"__description": "",
+		"deviceIds": "Approximate count of unique device IDs"
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroups": {
+		"__description": "Beta. DEX HTTP test results with adaptive sampling (staging)",
+		"avg": "",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Number of HTTP test results",
+		"dimensions": "List of dimensions to group by",
+		"max": "",
+		"min": "",
+		"quantiles": "",
+		"ratio": "",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsAvg": {
+		"__description": "",
+		"dnsResponseTimeMs": "Average DNS response time in milliseconds for successful HTTP test results",
+		"resourceFetchTimeMs": "Average resource fetch time in milliseconds for successful HTTP test results",
+		"sampleInterval": "Average sample interval",
+		"serverResponseTimeMs": "Average server response time in milliseconds for successful HTTP test results"
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of HTTP test results, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": ""
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"bodyBytes": "HTTP response body size in bytes",
+		"clientPlatform": "Device operating system",
+		"clientVersion": "WARP client version",
+		"colo": "Cloudflare colo associated with the test result",
+		"date": "Test result timestamp truncated to the day",
+		"datetime": "Test result timestamp",
+		"datetimeFifteenMinutes": "Test result timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Test result timestamp truncated to five minutes",
+		"datetimeHour": "Test result timestamp truncated to the hour",
+		"datetimeMinute": "Test result timestamp truncated to the minute",
+		"datetimeThirtyMinutes": "Test result timestamp truncated to thirty minutes",
+		"deviceId": "Device ID",
+		"deviceRegistration": "Device registration ID",
+		"dnsResponseTimeMs": "DNS response time in milliseconds",
+		"executionContext": "Whether the test ran inside or outside the WARP tunnel",
+		"headerBytes": "HTTP response headers size in bytes",
+		"method": "HTTP request method",
+		"redirectDurationMs": "HTTP redirect duration in milliseconds",
+		"resourceFetchTimeMs": "Total resource fetch time in milliseconds",
+		"serverResponseTimeMs": "Server response time in milliseconds",
+		"statusCode": "HTTP response status code",
+		"tcpConnectTimeMs": "TCP connection time in milliseconds",
+		"testId": "DEX test configuration ID",
+		"testResultId": "Unique test result ID",
+		"tunnelType": "WARP tunnel protocol"
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"dnsResponseTimeMs": "Maximum DNS response time in milliseconds for successful HTTP test results",
+		"resourceFetchTimeMs": "Maximum resource fetch time in milliseconds for successful HTTP test results",
+		"serverResponseTimeMs": "Maximum server response time in milliseconds for successful HTTP test results",
+		"timestamp": "Latest test result timestamp"
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsMin": {
+		"__description": "",
+		"dnsResponseTimeMs": "Minimum DNS response time in milliseconds for successful HTTP test results",
+		"resourceFetchTimeMs": "Minimum resource fetch time in milliseconds for successful HTTP test results",
+		"serverResponseTimeMs": "Minimum server response time in milliseconds for successful HTTP test results"
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"dnsResponseTimeMsP25": "DNS response time in milliseconds at the 25th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP50": "DNS response time in milliseconds at the 50th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP75": "DNS response time in milliseconds at the 75th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP90": "DNS response time in milliseconds at the 90th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP95": "DNS response time in milliseconds at the 95th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP99": "DNS response time in milliseconds at the 99th percentile for successful HTTP test results",
+		"dnsResponseTimeMsP999": "DNS response time in milliseconds at the 99.9th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP25": "Resource fetch time in milliseconds at the 25th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP50": "Resource fetch time in milliseconds at the 50th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP75": "Resource fetch time in milliseconds at the 75th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP90": "Resource fetch time in milliseconds at the 90th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP95": "Resource fetch time in milliseconds at the 95th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP99": "Resource fetch time in milliseconds at the 99th percentile for successful HTTP test results",
+		"resourceFetchTimeMsP999": "Resource fetch time in milliseconds at the 99.9th percentile for successful HTTP test results",
+		"serverResponseTimeMsP25": "Server response time in milliseconds at the 25th percentile for successful HTTP test results",
+		"serverResponseTimeMsP50": "Server response time in milliseconds at the 50th percentile for successful HTTP test results",
+		"serverResponseTimeMsP75": "Server response time in milliseconds at the 75th percentile for successful HTTP test results",
+		"serverResponseTimeMsP90": "Server response time in milliseconds at the 90th percentile for successful HTTP test results",
+		"serverResponseTimeMsP95": "Server response time in milliseconds at the 95th percentile for successful HTTP test results",
+		"serverResponseTimeMsP99": "Server response time in milliseconds at the 99th percentile for successful HTTP test results",
+		"serverResponseTimeMsP999": "Server response time in milliseconds at the 99.9th percentile for successful HTTP test results"
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsRatio": {
+		"__description": "",
+		"availabilityPct": "Percentage of HTTP test results that completed successfully"
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsSum": {
+		"__description": "",
+		"httpStatusCode2xx": "Number of HTTP test results with a 2xx response status",
+		"httpStatusCode3xx": "Number of HTTP test results with a 3xx response status",
+		"httpStatusCode4xx": "Number of HTTP test results with a 4xx response status",
+		"httpStatusCode5xx": "Number of HTTP test results with a 5xx response status",
+		"successfulTestResults": "Number of successful HTTP test results"
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"httpStatusCode2xx": "Confidence interval for the corresponding point estimate",
+		"httpStatusCode3xx": "Confidence interval for the corresponding point estimate",
+		"httpStatusCode4xx": "Confidence interval for the corresponding point estimate",
+		"httpStatusCode5xx": "Confidence interval for the corresponding point estimate",
+		"successfulTestResults": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountDexHttpTestResultsStagingAdaptiveGroupsUniq": {
+		"__description": "",
+		"deviceIds": "Approximate count of unique device IDs"
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroups": {
+		"__description": "Beta. DEX traceroute test results with adaptive sampling",
+		"avg": "",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Number of traceroute test results",
+		"dimensions": "List of dimensions to group by",
+		"max": "",
+		"min": "",
+		"quantiles": "",
+		"ratio": "",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsAvg": {
+		"__description": "",
+		"numberOfHops": "Average number of hops for traceroute tests that reached the destination",
+		"packetLossPct": "Average packet loss percentage for traceroute tests that reached the destination",
+		"roundTripTimeMs": "Average round-trip time in milliseconds for traceroute tests that reached the destination",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of traceroute test results, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": ""
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"avgRttMs": "Average round-trip time to the final hop in milliseconds",
+		"clientPlatform": "Device operating system",
+		"clientVersion": "WARP client version",
+		"colo": "Cloudflare colo associated with the test result",
+		"date": "Test result timestamp truncated to the day",
+		"datetime": "Test result timestamp",
+		"datetimeFifteenMinutes": "Test result timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Test result timestamp truncated to five minutes",
+		"datetimeHour": "Test result timestamp truncated to the hour",
+		"datetimeMinute": "Test result timestamp truncated to the minute",
+		"datetimeThirtyMinutes": "Test result timestamp truncated to thirty minutes",
+		"deviceId": "Device ID",
+		"deviceRegistration": "Device registration ID",
+		"dstName": "Traceroute destination hostname",
+		"executionContext": "Whether the test ran inside or outside the WARP tunnel",
+		"ispAsn": "Autonomous system number for the device's ISP IP address",
+		"ispAso": "Autonomous system organization for the device's ISP IP address",
+		"ispIpAddress": "Public ISP IP address",
+		"maxRttMs": "Maximum round-trip time to the final hop in milliseconds",
+		"minRttMs": "Minimum round-trip time to the final hop in milliseconds",
+		"numberOfHops": "Number of traceroute hops",
+		"packetLossFraction": "Fraction of packets lost on the final hop",
+		"protocol": "Traceroute protocol",
+		"reachedDestination": "Whether the traceroute reached its destination",
+		"status": "Traceroute test status",
+		"testId": "DEX test configuration ID",
+		"testResultId": "Unique test result ID",
+		"tunnelType": "WARP tunnel protocol"
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsMax": {
+		"__description": "",
+		"numberOfHops": "Maximum number of hops for traceroute tests that reached the destination",
+		"packetLossPct": "Maximum packet loss percentage for traceroute tests that reached the destination",
+		"roundTripTimeMs": "Maximum round-trip time in milliseconds for traceroute tests that reached the destination",
+		"timestamp": "Latest test result timestamp"
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsMin": {
+		"__description": "",
+		"numberOfHops": "Minimum number of hops for traceroute tests that reached the destination",
+		"packetLossPct": "Minimum packet loss percentage for traceroute tests that reached the destination",
+		"roundTripTimeMs": "Minimum round-trip time in milliseconds for traceroute tests that reached the destination"
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"numberOfHopsP25": "Number of hops at the 25th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP50": "Number of hops at the 50th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP75": "Number of hops at the 75th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP90": "Number of hops at the 90th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP95": "Number of hops at the 95th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP99": "Number of hops at the 99th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP999": "Number of hops at the 99.9th percentile for traceroute tests that reached the destination",
+		"packetLossPctP25": "Packet loss percentage at the 25th percentile for traceroute tests that reached the destination",
+		"packetLossPctP50": "Packet loss percentage at the 50th percentile for traceroute tests that reached the destination",
+		"packetLossPctP75": "Packet loss percentage at the 75th percentile for traceroute tests that reached the destination",
+		"packetLossPctP90": "Packet loss percentage at the 90th percentile for traceroute tests that reached the destination",
+		"packetLossPctP95": "Packet loss percentage at the 95th percentile for traceroute tests that reached the destination",
+		"packetLossPctP99": "Packet loss percentage at the 99th percentile for traceroute tests that reached the destination",
+		"packetLossPctP999": "Packet loss percentage at the 99.9th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP25": "Round-trip time in milliseconds at the 25th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP50": "Round-trip time in milliseconds at the 50th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP75": "Round-trip time in milliseconds at the 75th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP90": "Round-trip time in milliseconds at the 90th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP95": "Round-trip time in milliseconds at the 95th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP99": "Round-trip time in milliseconds at the 99th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP999": "Round-trip time in milliseconds at the 99.9th percentile for traceroute tests that reached the destination"
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsRatio": {
+		"__description": "",
+		"availabilityPct": "Percentage of traceroute test results that reached the destination"
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsSum": {
+		"__description": "",
+		"successfulTestResults": "Number of traceroute test results that reached the destination"
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"successfulTestResults": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountDexTracerouteTestResultsAdaptiveGroupsUniq": {
+		"__description": "",
+		"deviceIds": "Approximate count of unique device IDs"
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroups": {
+		"__description": "Beta. DEX traceroute test results with adaptive sampling (staging)",
+		"avg": "",
+		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
+		"count": "Number of traceroute test results",
+		"dimensions": "List of dimensions to group by",
+		"max": "",
+		"min": "",
+		"quantiles": "",
+		"ratio": "",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsAvg": {
+		"__description": "",
+		"numberOfHops": "Average number of hops for traceroute tests that reached the destination",
+		"packetLossPct": "Average packet loss percentage for traceroute tests that reached the destination",
+		"roundTripTimeMs": "Average round-trip time in milliseconds for traceroute tests that reached the destination",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of traceroute test results, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": ""
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsDimensions": {
+		"__description": "",
+		"avgRttMs": "Average round-trip time to the final hop in milliseconds",
+		"clientPlatform": "Device operating system",
+		"clientVersion": "WARP client version",
+		"colo": "Cloudflare colo associated with the test result",
+		"date": "Test result timestamp truncated to the day",
+		"datetime": "Test result timestamp",
+		"datetimeFifteenMinutes": "Test result timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Test result timestamp truncated to five minutes",
+		"datetimeHour": "Test result timestamp truncated to the hour",
+		"datetimeMinute": "Test result timestamp truncated to the minute",
+		"datetimeThirtyMinutes": "Test result timestamp truncated to thirty minutes",
+		"deviceId": "Device ID",
+		"deviceRegistration": "Device registration ID",
+		"dstName": "Traceroute destination hostname",
+		"executionContext": "Whether the test ran inside or outside the WARP tunnel",
+		"ispAsn": "Autonomous system number for the device's ISP IP address",
+		"ispAso": "Autonomous system organization for the device's ISP IP address",
+		"ispIpAddress": "Public ISP IP address",
+		"maxRttMs": "Maximum round-trip time to the final hop in milliseconds",
+		"minRttMs": "Minimum round-trip time to the final hop in milliseconds",
+		"numberOfHops": "Number of traceroute hops",
+		"packetLossFraction": "Fraction of packets lost on the final hop",
+		"protocol": "Traceroute protocol",
+		"reachedDestination": "Whether the traceroute reached its destination",
+		"status": "Traceroute test status",
+		"testId": "DEX test configuration ID",
+		"testResultId": "Unique test result ID",
+		"tunnelType": "WARP tunnel protocol"
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsMax": {
+		"__description": "",
+		"numberOfHops": "Maximum number of hops for traceroute tests that reached the destination",
+		"packetLossPct": "Maximum packet loss percentage for traceroute tests that reached the destination",
+		"roundTripTimeMs": "Maximum round-trip time in milliseconds for traceroute tests that reached the destination",
+		"timestamp": "Latest test result timestamp"
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsMin": {
+		"__description": "",
+		"numberOfHops": "Minimum number of hops for traceroute tests that reached the destination",
+		"packetLossPct": "Minimum packet loss percentage for traceroute tests that reached the destination",
+		"roundTripTimeMs": "Minimum round-trip time in milliseconds for traceroute tests that reached the destination"
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"numberOfHopsP25": "Number of hops at the 25th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP50": "Number of hops at the 50th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP75": "Number of hops at the 75th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP90": "Number of hops at the 90th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP95": "Number of hops at the 95th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP99": "Number of hops at the 99th percentile for traceroute tests that reached the destination",
+		"numberOfHopsP999": "Number of hops at the 99.9th percentile for traceroute tests that reached the destination",
+		"packetLossPctP25": "Packet loss percentage at the 25th percentile for traceroute tests that reached the destination",
+		"packetLossPctP50": "Packet loss percentage at the 50th percentile for traceroute tests that reached the destination",
+		"packetLossPctP75": "Packet loss percentage at the 75th percentile for traceroute tests that reached the destination",
+		"packetLossPctP90": "Packet loss percentage at the 90th percentile for traceroute tests that reached the destination",
+		"packetLossPctP95": "Packet loss percentage at the 95th percentile for traceroute tests that reached the destination",
+		"packetLossPctP99": "Packet loss percentage at the 99th percentile for traceroute tests that reached the destination",
+		"packetLossPctP999": "Packet loss percentage at the 99.9th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP25": "Round-trip time in milliseconds at the 25th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP50": "Round-trip time in milliseconds at the 50th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP75": "Round-trip time in milliseconds at the 75th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP90": "Round-trip time in milliseconds at the 90th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP95": "Round-trip time in milliseconds at the 95th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP99": "Round-trip time in milliseconds at the 99th percentile for traceroute tests that reached the destination",
+		"roundTripTimeMsP999": "Round-trip time in milliseconds at the 99.9th percentile for traceroute tests that reached the destination"
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsRatio": {
+		"__description": "",
+		"availabilityPct": "Percentage of traceroute test results that reached the destination"
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsSum": {
+		"__description": "",
+		"successfulTestResults": "Number of traceroute test results that reached the destination"
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"successfulTestResults": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountDexTracerouteTestResultsStagingAdaptiveGroupsUniq": {
+		"__description": "",
+		"deviceIds": "Approximate count of unique device IDs"
+	},
 	"AccountDnsAnalyticsAdaptive": {
 		"__description": "Analytics data for DNS queries",
 		"coloName": "IATA airport code of the data center that processed the query",
@@ -4999,7 +5473,7 @@
 	"AccountFlagshipFlagEvaluationsAdaptive": {
 		"__description": "Flagship feature flag evaluations with adaptive sampling. Each row represents an individual flag evaluation.",
 		"appId": "The Flagship application identifier the evaluation belongs to",
-		"colo": "The Cloudflare colo that served the evaluation",
+		"colo": "Numeric ID of the Cloudflare data center that served the evaluation",
 		"datetime": "The time the flag evaluation occurred",
 		"durationMs": "End-to-end evaluation duration in milliseconds",
 		"evaluationContext": "The evaluation context (per-evaluation attributes supplied by the caller)",
@@ -5007,7 +5481,7 @@
 		"flagEnabled": "Whether the flag was enabled for this evaluation ('true' or 'false')",
 		"flagKey": "The key of the feature flag that was evaluated",
 		"flagValue": "The value returned by the flag evaluation. Note: high-cardinality - prefer filtering over grouping for large time windows",
-		"matchedRulePriority": "Priority of the targeting rule that matched (NaN if no rule matched)",
+		"matchedRulePriority": "Zero-based priority of the targeting rule that matched (-1 if no rule matched)",
 		"sampleInterval": "ABR sample interval used for this row",
 		"variant": "The variant returned by the evaluation (for multi-variant flags)"
 	},
@@ -5038,7 +5512,7 @@
 	"AccountFlagshipFlagEvaluationsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"appId": "The Flagship application identifier the evaluation belongs to",
-		"colo": "The Cloudflare colo that served the evaluation",
+		"colo": "Numeric ID of the Cloudflare data center that served the evaluation",
 		"date": "The date the flag evaluation occurred",
 		"datetime": "The date and time the flag evaluation occurred",
 		"datetimeFifteenMinutes": "The date and time the flag evaluation occurred truncated to fifteen minutes",
@@ -11128,6 +11602,7 @@
 		"__description": "Estimated R2 transfer usage with adaptive sampling. Transfers smaller than 100 KiB are excluded.",
 		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
 		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountR2BandwidthUsageAdaptiveGroupsConfidence": {
@@ -11151,6 +11626,10 @@
 	},
 	"AccountR2BandwidthUsageAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
+	},
+	"AccountR2BandwidthUsageAdaptiveGroupsMax": {
+		"__description": "",
+		"bandwidthLimitBitsPerSecond": "Account bandwidth limit in bits per second, applied separately to downloads and uploads"
 	},
 	"AccountR2BandwidthUsageAdaptiveGroupsOrderBy": {
 		"__description": ""
@@ -12078,6 +12557,10 @@
 		"d1AnalyticsAdaptiveGroups": "",
 		"d1QueriesAdaptiveGroups": "",
 		"d1StorageAdaptiveGroups": "",
+		"dexHttpTestResultsAdaptiveGroups": "",
+		"dexHttpTestResultsStagingAdaptiveGroups": "",
+		"dexTracerouteTestResultsAdaptiveGroups": "",
+		"dexTracerouteTestResultsStagingAdaptiveGroups": "",
 		"dnsAnalyticsAdaptive": "",
 		"dnsAnalyticsAdaptiveGroups": "",
 		"dnsFirewallAnalyticsAdaptive": "",
@@ -14266,15 +14749,15 @@
 		"__description": ""
 	},
 	"AccountWorkflowsBlockedReasonAdaptiveGroups": {
-		"__description": "Workflow gatekeeper block reason metrics with adaptive sampling. Each sample represents instances that were blocked by the gatekeeper, grouped by the reason for blocking.",
+		"__description": "Workflow instances held back by a concurrency limit, with adaptive sampling, by the limit that held them back. Each instance is counted once, when the limit first refuses it a slot.",
 		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
-		"count": "Number of blocked reason samples",
+		"count": "Number of samples, one per shard and refusal round, not per instance; use sum.blockedCount for instances",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
 	},
 	"AccountWorkflowsBlockedReasonAdaptiveGroupsConfidence": {
 		"__description": "",
-		"count": "Number of blocked reason samples, with confidence intervals",
+		"count": "Number of samples, one per shard and refusal round, not per instance; use sum.blockedCount for instances, with confidence intervals",
 		"level": "Confidence level that was requested",
 		"sum": ""
 	},
@@ -14286,8 +14769,8 @@
 		"datetimeFiveMinutes": "Sample timestamp truncated to five minutes",
 		"datetimeHour": "Sample timestamp truncated to the hour",
 		"datetimeMinute": "Sample timestamp truncated to the minute",
-		"reason": "Gatekeeper block reason: WORKFLOW_LIMIT, GLOBAL_LIMIT, or LIMIT_RESOLUTION_ERROR",
-		"workflowId": "Workflow script name"
+		"reason": "The limit that held the instance back: WORKFLOW_LIMIT (the workflow's concurrency limit), GLOBAL_LIMIT (the account's concurrent-instance limit, which raising the workflow limit will not help), or LIMIT_RESOLUTION_ERROR (the workflow's limit could not be read)",
+		"workflowId": "Workflow ID"
 	},
 	"AccountWorkflowsBlockedReasonAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -14297,27 +14780,28 @@
 	},
 	"AccountWorkflowsBlockedReasonAdaptiveGroupsSum": {
 		"__description": "",
-		"blockedCount": "Total number of instances blocked by the gatekeeper"
+		"blockedCount": "Number of instances held back by a concurrency limit, each counted once at its first refusal"
 	},
 	"AccountWorkflowsBlockedReasonAdaptiveGroupsSumConfidence": {
 		"__description": "",
 		"blockedCount": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountWorkflowsQueueDepthAdaptiveGroups": {
-		"__description": "Workflow queue depth gauge metrics with adaptive sampling. Each sample represents a snapshot of the number of instances waiting in the gatekeeper queue for a workflow.",
+		"__description": "Number of workflow instances held back by a concurrency limit, summed across all of the workflow's shards, with adaptive sampling. Sampled every few seconds while at least one instance is held back, plus a single 0 when none are left; no samples means none were held back.",
 		"avg": "",
 		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
-		"count": "Number of queue depth samples",
+		"count": "Number of samples (not instances)",
 		"dimensions": "List of dimensions to group by",
+		"max": "The maximum value of a metric per dimension",
 		"quantiles": ""
 	},
 	"AccountWorkflowsQueueDepthAdaptiveGroupsAvg": {
 		"__description": "",
-		"queueDepth": "Average queue depth (number of queued instances)"
+		"queueDepth": "Average of the samples, which are only taken while instances are held back, so not a time average; use max for the peak"
 	},
 	"AccountWorkflowsQueueDepthAdaptiveGroupsConfidence": {
 		"__description": "",
-		"count": "Number of queue depth samples, with confidence intervals",
+		"count": "Number of samples (not instances), with confidence intervals",
 		"level": "Confidence level that was requested"
 	},
 	"AccountWorkflowsQueueDepthAdaptiveGroupsDimensions": {
@@ -14328,40 +14812,44 @@
 		"datetimeFiveMinutes": "Sample timestamp truncated to five minutes",
 		"datetimeHour": "Sample timestamp truncated to the hour",
 		"datetimeMinute": "Sample timestamp truncated to the minute",
-		"workflowId": "Workflow script name"
+		"workflowId": "Workflow ID"
 	},
 	"AccountWorkflowsQueueDepthAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
+	},
+	"AccountWorkflowsQueueDepthAdaptiveGroupsMax": {
+		"__description": "",
+		"queueDepth": "Peak number of instances held back by a concurrency limit"
 	},
 	"AccountWorkflowsQueueDepthAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
 	"AccountWorkflowsQueueDepthAdaptiveGroupsQuantiles": {
 		"__description": "",
-		"queueDepthP25": "Queue depth at the 25th percentile",
-		"queueDepthP50": "Queue depth at the 50th percentile",
-		"queueDepthP75": "Queue depth at the 75th percentile",
-		"queueDepthP90": "Queue depth at the 90th percentile",
-		"queueDepthP95": "Queue depth at the 95th percentile",
-		"queueDepthP99": "Queue depth at the 99th percentile",
-		"queueDepthP999": "Queue depth at the 99.9th percentile"
+		"queueDepthP25": "Held-back instances at the 25th percentile of samples, which are only taken while instances are held back",
+		"queueDepthP50": "Held-back instances at the 50th percentile of samples, which are only taken while instances are held back",
+		"queueDepthP75": "Held-back instances at the 75th percentile of samples, which are only taken while instances are held back",
+		"queueDepthP90": "Held-back instances at the 90th percentile of samples, which are only taken while instances are held back",
+		"queueDepthP95": "Held-back instances at the 95th percentile of samples, which are only taken while instances are held back",
+		"queueDepthP99": "Held-back instances at the 99th percentile of samples, which are only taken while instances are held back",
+		"queueDepthP999": "Held-back instances at the 99.9th percentile of samples, which are only taken while instances are held back"
 	},
 	"AccountWorkflowsQueueWaitAdaptiveGroups": {
-		"__description": "Workflow queue wait time metrics with adaptive sampling. Each sample represents the time a workflow instance spent waiting in the gatekeeper queue before being admitted.",
+		"__description": "Time workflow instances spent held back by a concurrency limit (the workflow's or the account's), with adaptive sampling. Each sample is one instance that was refused a slot at least once, recorded when it starts and measured from its first refusal; instances that start without being refused are not sampled.",
 		"avg": "",
 		"confidence": "Returns confidence intervals for adaptive sampling estimates. The level argument must be between 0.5 and 0.99.",
-		"count": "Number of queue wait samples",
+		"count": "Number of held-back instances that started",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
 		"sum": ""
 	},
 	"AccountWorkflowsQueueWaitAdaptiveGroupsAvg": {
 		"__description": "",
-		"waitMs": "Average queue wait time (ms)"
+		"waitMs": "Average time a held-back instance waited for a slot (ms)"
 	},
 	"AccountWorkflowsQueueWaitAdaptiveGroupsConfidence": {
 		"__description": "",
-		"count": "Number of queue wait samples, with confidence intervals",
+		"count": "Number of held-back instances that started, with confidence intervals",
 		"level": "Confidence level that was requested",
 		"sum": ""
 	},
@@ -14373,7 +14861,7 @@
 		"datetimeFiveMinutes": "Sample timestamp truncated to five minutes",
 		"datetimeHour": "Sample timestamp truncated to the hour",
 		"datetimeMinute": "Sample timestamp truncated to the minute",
-		"workflowId": "Workflow script name"
+		"workflowId": "Workflow ID"
 	},
 	"AccountWorkflowsQueueWaitAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -14383,17 +14871,17 @@
 	},
 	"AccountWorkflowsQueueWaitAdaptiveGroupsQuantiles": {
 		"__description": "",
-		"waitMsP25": "Queue wait time (ms) at the 25th percentile",
-		"waitMsP50": "Queue wait time (ms) at the 50th percentile",
-		"waitMsP75": "Queue wait time (ms) at the 75th percentile",
-		"waitMsP90": "Queue wait time (ms) at the 90th percentile",
-		"waitMsP95": "Queue wait time (ms) at the 95th percentile",
-		"waitMsP99": "Queue wait time (ms) at the 99th percentile",
-		"waitMsP999": "Queue wait time (ms) at the 99.9th percentile"
+		"waitMsP25": "Time held back by a concurrency limit (ms) at the 25th percentile",
+		"waitMsP50": "Time held back by a concurrency limit (ms) at the 50th percentile",
+		"waitMsP75": "Time held back by a concurrency limit (ms) at the 75th percentile",
+		"waitMsP90": "Time held back by a concurrency limit (ms) at the 90th percentile",
+		"waitMsP95": "Time held back by a concurrency limit (ms) at the 95th percentile",
+		"waitMsP99": "Time held back by a concurrency limit (ms) at the 99th percentile",
+		"waitMsP999": "Time held back by a concurrency limit (ms) at the 99.9th percentile"
 	},
 	"AccountWorkflowsQueueWaitAdaptiveGroupsSum": {
 		"__description": "",
-		"waitMs": "Total queue wait time (ms)"
+		"waitMs": "Total time instances spent held back by a concurrency limit (ms), counted when each instance starts"
 	},
 	"AccountWorkflowsQueueWaitAdaptiveGroupsSumConfidence": {
 		"__description": "",
@@ -18526,6 +19014,10 @@
 		"d1AnalyticsAdaptiveGroups": "Aggregated D1 analytics with adaptive sampling",
 		"d1QueriesAdaptiveGroups": "D1 query metrics with adaptive sampling",
 		"d1StorageAdaptiveGroups": "D1 storage with adaptive sampling",
+		"dexHttpTestResultsAdaptiveGroups": "Beta. DEX HTTP test results with adaptive sampling",
+		"dexHttpTestResultsStagingAdaptiveGroups": "Beta. DEX HTTP test results with adaptive sampling (staging)",
+		"dexTracerouteTestResultsAdaptiveGroups": "Beta. DEX traceroute test results with adaptive sampling",
+		"dexTracerouteTestResultsStagingAdaptiveGroups": "Beta. DEX traceroute test results with adaptive sampling (staging)",
 		"dnsAnalyticsAdaptive": "Analytics data for DNS queries",
 		"dnsAnalyticsAdaptiveGroups": "Analytics data for DNS queries",
 		"dnsFirewallAnalyticsAdaptive": "Analytics data for DNS Firewall queries",
@@ -18710,9 +19202,9 @@
 		"workersVpcConnectionAdaptiveGroups": "Workers VPC connections with adaptive sampling.",
 		"workflowsAdaptive": "Workflows analytics",
 		"workflowsAdaptiveGroups": "Workflows analytics",
-		"workflowsBlockedReasonAdaptiveGroups": "Workflow gatekeeper block reason metrics with adaptive sampling. Each sample represents instances that were blocked by the gatekeeper, grouped by the reason for blocking.",
-		"workflowsQueueDepthAdaptiveGroups": "Workflow queue depth gauge metrics with adaptive sampling. Each sample represents a snapshot of the number of instances waiting in the gatekeeper queue for a workflow.",
-		"workflowsQueueWaitAdaptiveGroups": "Workflow queue wait time metrics with adaptive sampling. Each sample represents the time a workflow instance spent waiting in the gatekeeper queue before being admitted.",
+		"workflowsBlockedReasonAdaptiveGroups": "Workflow instances held back by a concurrency limit, with adaptive sampling, by the limit that held them back. Each instance is counted once, when the limit first refuses it a slot.",
+		"workflowsQueueDepthAdaptiveGroups": "Number of workflow instances held back by a concurrency limit, summed across all of the workflow's shards, with adaptive sampling. Sampled every few seconds while at least one instance is held back, plus a single 0 when none are left; no samples means none were held back.",
+		"workflowsQueueWaitAdaptiveGroups": "Time workflow instances spent held back by a concurrency limit (the workflow's or the account's), with adaptive sampling. Each sample is one instance that was refused a slot at least once, recorded when it starts and measured from its first refusal; instances that start without being refused are not sampled.",
 		"zarazTrackAdaptiveGroups": "Zaraz Track Analytics - counts zaraz.track calls",
 		"zarazTriggersAdaptiveGroups": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"zeroTrustPrivateNetworkDiscoveryGroups": "Beta - Unique origins, applications, and users discovered for Zero Trust private networks",
