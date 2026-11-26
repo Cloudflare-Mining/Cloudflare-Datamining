@@ -31,20 +31,16 @@ async function run() {
 	}
 	try {
 		const schemasJson = sortObjectByKeys(await schemasRes.json());
+		schemasJson.paths = sortObjectByKeys(schemasJson.paths);
+
+		// written before dereferencing (which mutates in place) since inlining every $ref pushes the file past GitHub's 100MB limit
+		await fs.writeFile(path.resolve('../data/api-schemas/openapi.json'), stringify(schemasJson, null, '\t'));
 
 		const dereferenced = await $RefParser.dereference(schemasJson);
-		const toWrite = {
-			info: dereferenced.info,
-			openapi: dereferenced.openapi,
-			paths: sortObjectByKeys(dereferenced.paths),
-			servers: dereferenced.servers,
-		};
-		await fs.writeFile(path.resolve('../data/api-schemas/openapi.json'), stringify(toWrite, null, '\t'));
-
 
 		const byTag = {};
 		// loop over paths and assign to byTag
-		for (const [path, pathData] of Object.entries(toWrite.paths)) {
+		for (const [path, pathData] of Object.entries(dereferenced.paths)) {
 			for (const [method, methodData] of Object.entries(pathData)) {
 				if (methodData.tags) {
 					for (const tag of methodData.tags) {
