@@ -1,5 +1,51 @@
 [
 	{
+		"id": "ea60410266f6de9652b3130034dc4178",
+		"name": "Observability Read",
+		"description": "Grants read access to Cloudflare Observability (Logs, Traces, Analytics, Export, Alerts, and more)",
+		"permissions": {
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"logs": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "2e26aeabbc6383154b64db7c791fff3c",
+		"name": "Observability Write",
+		"description": "Grants read and write access to Cloudflare Observability (Logs, Traces, Analytics, Export, Alerts, and more)",
+		"permissions": {
+			"logs": {
+				"read": true,
+				"edit": true
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "342262b406e5ac744e8e81ff06e13c1b",
 		"name": "Cloudflare Tunnel: Admin",
 		"description": "Can view and edit Cloudflare Tunnels and cloudflared connectors.",
@@ -1347,7 +1393,7 @@
 	{
 		"id": "f9828bed02e3f6f9b44e50ff177a0f45",
 		"name": "AI Gateway Admin",
-		"description": "Can perform all CRUD actions on AI Gateways and deploy Secrets used by AI Gateway provider configs",
+		"description": "Can create, view, edit and delete AI Gateways, including log request and response bodies and provider keys, run inference through them, and store provider keys in Secrets Store.",
 		"permissions": {
 			"organization": {
 				"read": true,
@@ -1362,7 +1408,7 @@
 	{
 		"id": "633c3ed8d9c90c79c7b3d3e87c0ade29",
 		"name": "AI Gateway Read Only",
-		"description": "Can list and read AI Gateways. Cannot run inference, modify, or delete.",
+		"description": "Can view AI Gateways, including log request and response bodies and provider keys. Cannot run inference through them or create, edit or delete them.",
 		"permissions": {
 			"organization": {
 				"read": true,
@@ -1377,7 +1423,7 @@
 	{
 		"id": "6c6d31495ec2ccf7b8ff0f68d2ba6558",
 		"name": "AI Gateway Run",
-		"description": "Can list, read, and run AI Gateway inference. Cannot create, modify, or delete gateways.",
+		"description": "Can run inference through AI Gateways and view them, including log request and response bodies and provider keys. Cannot create, edit or delete gateways.",
 		"permissions": {
 			"organization": {
 				"read": true,
@@ -1706,44 +1752,6 @@
 		"description": "Can view and edit all Zero Trust Gateway Resolver Policies.",
 		"permissions": {
 			"teams": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "e52c0b24c58c40179e59548a8c7269fb",
-		"name": "Zero Trust Proxy Endpoints Admin",
-		"description": "Can view and edit all Zero Trust Gateway Proxy Endpoints.",
-		"permissions": {
-			"teams": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "14f4def927c8cce7e116779e9931f521",
-		"name": "Account Abuse Protection (Account-Wide)",
-		"description": "Can view and edit Account Abuse Protection configurations for all domains on an account",
-		"permissions": {
-			"waf": {
 				"read": true,
 				"edit": true
 			},

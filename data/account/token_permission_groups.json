@@ -842,7 +842,7 @@
 	{
 		"id": "9ac97d58e2634cfcbd4f2481e849f3dd",
 		"name": "AI Gateway Metadata Read",
-		"description": "Grants read access to AI Gateway configuration without access to provider config secrets",
+		"description": "Grants read access to the settings and log metadata of every AI Gateway in the account, without log request and response bodies or provider keys.",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
@@ -852,7 +852,7 @@
 	{
 		"id": "4dc8917b4b40457d88d3035d5dadb054",
 		"name": "AI Gateway Read",
-		"description": "Grants access to reading AI Gateways",
+		"description": "Grants read access to every AI Gateway in the account, including log request and response bodies and provider keys. Also grants access to run inference through them.",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
@@ -862,7 +862,7 @@
 	{
 		"id": "644535f4ed854494a59cb289d634b257",
 		"name": "AI Gateway Run",
-		"description": "Grants access to run AI Gateways",
+		"description": "Grants access to run inference through every AI Gateway in the account, without access to gateway settings or logs.",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
@@ -872,7 +872,7 @@
 	{
 		"id": "6c8a3737f07f46369c1ea1f22138daaf",
 		"name": "AI Gateway Write",
-		"description": "Grants access to reading and editing AI Gateways",
+		"description": "Grants access to create, read, edit, delete and run inference through every AI Gateway in the account, including log request and response bodies and provider keys. Also grants access to store provider keys in Secrets Store.",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
@@ -1600,6 +1600,26 @@
 		"is_selectable": true
 	},
 	{
+		"id": "ce47b3e926ba4fb2804528f59d5bf680",
+		"name": "Custom Dashboards Read",
+		"description": "Grants read access to custom dashboards",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "analytics_and_logs",
+		"is_selectable": true
+	},
+	{
+		"id": "38b7f891b5544f11a9598417b683f443",
+		"name": "Custom Dashboards Write",
+		"description": "Grants read and write access to custom dashboards",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "analytics_and_logs",
+		"is_selectable": true
+	},
+	{
 		"id": "a2b55cd504d44ef18b7ba6a7f2b8fbb1",
 		"name": "Custom Errors Read",
 		"description": "Grants read access to custom errors phase",
@@ -2300,6 +2320,106 @@
 		"is_selectable": true
 	},
 	{
+		"id": "2b6a25981e554979888aeeed4464018a",
+		"name": "Individual Access App Admin",
+		"description": "Full management of a single Cloudflare Access application, including its inline policies.",
+		"scopes": [
+			"com.cloudflare.edge.access.app"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "4f4a0bf6ca324ffe9e317d56766cc71e",
+		"name": "Individual Access App Read",
+		"description": "Read-only access to a single Cloudflare Access application.",
+		"scopes": [
+			"com.cloudflare.edge.access.app"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "a39642c1bf1f457597d2aea92253a7d0",
+		"name": "Individual Access Identity Provider Admin",
+		"description": "Full management of a single Cloudflare Access identity provider.",
+		"scopes": [
+			"com.cloudflare.edge.access.identity-provider"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "ff4ecfee05524c75bdbf84276e5a317a",
+		"name": "Individual Access Identity Provider Read",
+		"description": "Read-only access to a single Cloudflare Access identity provider.",
+		"scopes": [
+			"com.cloudflare.edge.access.identity-provider"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "360fb4d810d849b9862f5de3c300c774",
+		"name": "Individual Access Policy Admin",
+		"description": "Full management of a single reusable Cloudflare Access policy.",
+		"scopes": [
+			"com.cloudflare.edge.access.policy"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "73a3aa61a83f4131af9c49e9622731b7",
+		"name": "Individual Access Policy Read",
+		"description": "Read-only access to a single reusable Cloudflare Access policy.",
+		"scopes": [
+			"com.cloudflare.edge.access.policy"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "7e8ef08a461d417396aa632d7ac0bc7c",
+		"name": "Individual Access SCIM Population Admin",
+		"description": "Full management of a single Cloudflare Access SCIM population.",
+		"scopes": [
+			"com.cloudflare.edge.access.population"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "e8260eddbc534f509a204df4f9cdf340",
+		"name": "Individual Access SCIM Population Read",
+		"description": "Read-only access to a single Cloudflare Access SCIM population.",
+		"scopes": [
+			"com.cloudflare.edge.access.population"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "2cbb0cec95924130b0fd758f19b11ba4",
+		"name": "Individual Access Service Token Admin",
+		"description": "Full management of a single Cloudflare Access service token.",
+		"scopes": [
+			"com.cloudflare.edge.access.service-token"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
+		"id": "45904771facc4b33b32a6f738fcd1adc",
+		"name": "Individual Access Service Token Read",
+		"description": "Read-only access to a single Cloudflare Access service token.",
+		"scopes": [
+			"com.cloudflare.edge.access.service-token"
+		],
+		"category": "cloudflare_one_and_zero_trust",
+		"is_selectable": true
+	},
+	{
 		"id": "1ef41180fdf74cf7b67415d2708167ac",
 		"name": "Individual Workers Admin",
 		"description": "Full access to a single Worker, including content, versions, deployments, previews, and delete.",
@@ -2887,6 +3007,26 @@
 			"com.cloudflare.api.account"
 		],
 		"category": "account_and_billing",
+		"is_selectable": true
+	},
+	{
+		"id": "42ef6300d09f4177b9b2ca522c418847",
+		"name": "Observability Read",
+		"description": "Grants read access to Cloudflare Observability (Logs, Traces, Analytics, Export, Alerts, and more)",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "analytics_and_logs",
+		"is_selectable": true
+	},
+	{
+		"id": "1982acf44b5d462ca473fefc753f1809",
+		"name": "Observability Write",
+		"description": "Grants read and write access to Cloudflare Observability (Logs, Traces, Analytics, Export, Alerts, and more)",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "analytics_and_logs",
 		"is_selectable": true
 	},
 	{
@@ -3785,6 +3925,46 @@
 		"description": "View Workers metadata, settings, and observability without access to script source content.",
 		"scopes": [
 			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform",
+		"is_selectable": true
+	},
+	{
+		"id": "537766c66ad34162923ea0ad55b8bb00",
+		"name": "Workers Namespace Admin",
+		"description": "Full access to Workers in a namespace, including adding, updating, deploying, and removing Workers.",
+		"scopes": [
+			"com.cloudflare.edge.worker.namespace"
+		],
+		"category": "developer_platform",
+		"is_selectable": true
+	},
+	{
+		"id": "85a82dfabf6149af99e476124d2113e2",
+		"name": "Workers Namespace Content Read-Only",
+		"description": "Read metadata and script source content for Workers in a namespace.",
+		"scopes": [
+			"com.cloudflare.edge.worker.namespace"
+		],
+		"category": "developer_platform",
+		"is_selectable": true
+	},
+	{
+		"id": "bd1de57b3f9b4f798763af3038d03324",
+		"name": "Workers Namespace Editor",
+		"description": "Add, update, deploy, and remove Workers in a namespace. Does not include managing the namespace itself.",
+		"scopes": [
+			"com.cloudflare.edge.worker.namespace"
+		],
+		"category": "developer_platform",
+		"is_selectable": true
+	},
+	{
+		"id": "7cbeb5fa8da14e8d826910736f8c775e",
+		"name": "Workers Namespace Metadata Read-Only",
+		"description": "Read metadata and settings for Workers in a namespace. Does not include script source content.",
+		"scopes": [
+			"com.cloudflare.edge.worker.namespace"
 		],
 		"category": "developer_platform",
 		"is_selectable": true
