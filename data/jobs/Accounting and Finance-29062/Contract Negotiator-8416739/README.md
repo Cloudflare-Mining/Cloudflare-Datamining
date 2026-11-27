@@ -3,31 +3,30 @@
 	<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 	<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 </div>
-<p><strong>Available Locations: </strong>Austin, Texas&nbsp;</p>
-<p><strong>About the role</strong></p>
-<p>The Demand Planning team sits at the intersection of traffic forecasting, infrastructure strategy, and operational execution. We predict when, where, and how many servers to deploy across Cloudflare's global edge so that customers' traffic stays in-region and they never have to think about infrastructure. This is not a reporting role — it is a planning and engineering role that requires you to build the models, own the data, and translate forecasts into real deployment decisions.</p>
-<p>As a Capacity Engineer, you will own one or more planning regions end-to-end with light supervision. That means maintaining the models, catching problems before they become incidents, working directly with hardware sourcing and infrastructure teams, and contributing to the data pipelines that feed your planning work. You will be the point of contact for your region — not someone who supports a more senior planner, but someone who runs the work.</p>
-<p>This is a role for someone with 3-5 years of experience who is ready to operate with real ownership and is actively growing toward full autonomy. You will work alongside senior peers who set team-wide standards, and you will be expected to contribute to cross-regional consistency — not just execute within your own lane. You will also work fluently with AI tooling, including OpenCode AI and MAS agent workflows, as a normal part of how planning gets done on this team.</p>
-<p>&nbsp;</p>
-<p><strong>Why Cloudflare/ Why This Team</strong></p>
-<p>Cloudflare's network spans hundreds of cities and carries a meaningful fraction of global internet traffic — the planning decisions this team makes have direct consequences at that scale. The Demand Planning team is in an active transition from manual planning toward intelligent, automated, AI-augmented capacity systems, and this role puts you at the center of that shift. You will work on problems that are genuinely hard, with teammates who take the craft seriously, in a team small enough that your work is visible and your contributions matter from day one.</p>
-<h4><strong>What you'll do</strong></h4>
-<p>- Own one or more edge planning regions end-to-end, producing deployment recommendations with minimal supervision</p>
-<p>- Maintain and continuously improve regional planning models, incorporating new traffic patterns, hardware generations, and infrastructure changes</p>
-<p>- Build and maintain data pipelines that feed regional planning — using BigQuery, Python, and Jupyter notebooks to query, explore, and validate planning data</p>
-<p>- Work directly with hardware sourcing, DCS, and infrastructure teams to translate forecasts into actionable deployment plans</p>
-<p>- Proactively identify capacity risks in your region and surface them before they require escalation</p>
-<p>- Use OpenCode AI and MAS agent tooling as a standard part of your daily planning workflow</p>
-<p>- Contribute to cross-regional consistency efforts alongside peers — shared methodology, shared standards</p>
-<p>- Participate in planning reviews and communicate forecast outputs clearly to non-technical stakeholders</p>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<p>- 3-5 years in an analytical, planning, or technical infrastructure role</p>
-<p>- Working SQL proficiency — comfortable querying and joining datasets in BigQuery to answer planning questions</p>
-<p>- Python proficiency — data analysis, scripting, and automation of planning workflows; comfortable working in Jupyter notebooks as a day-to-day analysis environment</p>
-<p>- Comfort working with large infrastructure datasets and translating them into decisions</p>
-<p>- Clear written and verbal communication — you can explain a capacity recommendation to a finance partner or a network engineer without losing either of them</p>
-<p>- Demonstrated ability to own a workstream end-to-end with light supervision</p>
-<p>&nbsp;</p>
+<p><strong>Job Location - Bengaluru, India (2 Days WFO)</strong></p>
+<p><strong>Title - Contract Negotiator </strong></p>
+<p><strong>What You'll Do</strong></p>
+<p>&nbsp;As a Contracts Negotiator at Cloudflare, you will manage agreements from initial intake through signature and beyond. You will act as the main contracting point of contact within Procurement, working side by side with Strategic Sourcing, Commercial Legal, and outside vendors to clear roadblocks and bring deals to a close. A big part of this role is bringing a fresh, practical approach to our daily work by using AI tools to handle repetitive tasks faster and improve how our team operates. Because our team is expanding, you will have the freedom to take ownership of your work and grow with the role.</p>
+<p><strong>Who You Are</strong>&nbsp;</p>
+<p>We are looking for a driven, independent professional who loves taking ownership and genuinely wants to make the team better. You are approachable, adaptable, and comfortable leading live meetings with both internal stakeholders and external vendors to work through redlines and resolve issues. You are also AI friendly and naturally curious about using modern tools to simplify everyday tasks like reviewing clauses, summarizing agreements, and spotting bottlenecks. You enjoy tracking metrics, pay close attention to the details, and stay calm and professional when deadlines get tight.</p>
+<p><strong>Key Functions</strong></p>
+<ul>
+	<li>Draft, review, redline, and negotiate a wide variety of commercial agreements, including SaaS, technology, internet infrastructure, security, and data privacy contracts.</li>
+	<li>Lead meetings and live negotiation calls with internal business owners, Commercial Legal, and external vendors to work through sticking points and get contracts signed.</li>
+	<li>Use AI tools and workflow automations to speed up daily contracting work, improve accuracy, and share new ways to make the broader team more efficient.</li>
+	<li>Spot and reduce contractual, legal, and commercial risks by reviewing terms carefully and partnering with Legal, Privacy, and Security.</li>
+	<li>Work with internal teams and suppliers to resolve contract issues after signature, manage renewals and amendments, and support vendor performance reviews.</li>
+	<li>Manage contracts from intake through execution in our contract management system, keeping records clean, following company policies, and tracking key metrics.</li>
+</ul>
+<p><strong>Qualifications</strong></p>
+<ul>
+	<li>At least 6+ years of experience drafting, reviewing, and negotiating commercial contracts in Procurement, Sourcing, or Commercial Legal.</li>
+	<li>Bachelor's degree required; a Juris Doctor (JD) or equivalent legal background is a plus.</li>
+	<li>Comfort and enthusiasm for using AI tools and contract management platforms to simplify daily work and reduce manual effort.</li>
+	<li>Proven ability to manage a busy contract pipeline independently, lead productive stakeholder and vendor meetings, and drive deals to completion.</li>
+	<li>Solid understanding of commercial contract law, data privacy, and security terms, ideally with exposure to SaaS, cybersecurity, internet infrastructure, or OEM vendors.</li>
+	<li>Strong organizational skills, sound judgment under pressure, and a proactive mindset focused on helping the team improve.</li>
+</ul>
 <div class="content-conclusion">
 	<h3>What Makes Cloudflare Special?</h3>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

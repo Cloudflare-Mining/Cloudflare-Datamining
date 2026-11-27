@@ -8,6 +8,7 @@
 	<li>Atlanta, US</li>
 	<li>Denver, US</li>
 	<li>Washington DC, US</li>
+	<li>Austin, US</li>
 </ul>
 <p><strong>Applications will be accepted until November 23, 2026.</strong></p>
 <h4>About the Role</h4>
