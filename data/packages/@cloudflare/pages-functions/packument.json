@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-functions",
 	"dist-tags": {
-		"latest": "0.1.14"
+		"latest": "0.1.15"
 	},
 	"versions": {
 		"0.0.1": {
@@ -679,12 +679,57 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIDZYmtHboyqeRp8fI+PkZvPuGxekeJHFo/5lY3FpUTTzAiEAsCXxKSE2SyN9t313vhE1aSC1Itvib7kEP7FV0YBDMJw="
+						"sig": "MEUCIDZYmtHboyqeRp8fI+PkZvPuGxekeJHFo/5lY3FpUTTzAiEAsCXxKSE2SyN9t313vhE1aSC1Itvib7kEP7FV0YBDMJw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fpages-functions@0.1.14",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2220479
+			},
+			"engines": {
+				"node": ">=22.0.0"
+			}
+		},
+		"0.1.15": {
+			"name": "@cloudflare/pages-functions",
+			"version": "0.1.15",
+			"dependencies": {
+				"esbuild": "0.28.2",
+				"path-to-regexp": "6.3.0"
+			},
+			"devDependencies": {
+				"tsdown": "0.22.14",
+				"vitest": "5.0.4",
+				"typescript": "6.0.3",
+				"@types/node": "22.15.17",
+				"@cloudflare/workers-utils": "0.58.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"bin": {
+				"pages-functions": "bin/pages-functions"
+			},
+			"dist": {
+				"shasum": "ec0022a51fd917abf495c71f2155c1883803cb2c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-functions/-/pages-functions-0.1.15.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-CB/QrNMyzyhtfhrC8/sm2AzaW2lJRJN5kR7sAUUQoQiyoOJR4GqbnLSuuC+PSF7O7dzBeu5rh73+L6l8ZJ8Nkw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDApDo9AwzBfyironass+xMFDiNqehSApi0XQxautU2dwIhAJdgv4R8gQwXHArxbRatWF6OGO4Oh0HvejjwM08m24AU",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIGaU7MesfiYBYiqU3dzyHwm4SAxtVv9lJl0BoLKs3QjMAiA4DV/2V4+9+RkUVqBrxQgnIw2BIp8Gu2Hy/v/kHkBrnA=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fpages-functions@0.1.15",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}

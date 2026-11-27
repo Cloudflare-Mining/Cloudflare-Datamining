@@ -1,5 +1,16 @@
 # @cloudflare/polystella-astro
 
+## 0.8.0
+
+### Minor Changes
+
+- [#97](https://github.com/cloudflare/polystella/pull/97) [`31b55ee`](https://github.com/cloudflare/polystella/commit/31b55ee2219d926083adefcb9c5f8e1192b5665d) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Builds now log an `AI usage:` line with model calls, tokens, and an estimated cost (tokens × list price). `dist/i18n-r2-report.json` fills in `tokens` per entry and `tokensIn`/`tokensOut` in `totals`, which were always empty before, and adds `estimatedCostUsd`, the same estimate. Workers AI prices come from the model catalog; set `provider.prices` to override them or to price Anthropic models.
+
+### Patch Changes
+
+- Updated dependencies [[`67e5f24`](https://github.com/cloudflare/polystella/commit/67e5f243f9333e01163caf141269fd0c2e965a86), [`31b55ee`](https://github.com/cloudflare/polystella/commit/31b55ee2219d926083adefcb9c5f8e1192b5665d)]:
+  - @cloudflare/polystella-core@0.9.0
+
 ## 0.7.1
 
 ### Patch Changes

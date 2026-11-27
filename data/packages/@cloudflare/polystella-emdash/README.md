@@ -75,8 +75,10 @@ provider: {
 }
 ```
 
-`models.defaults` may set a `default` fallback and locale-specific models. Each
-target locale receives its own model and glossary settings. Administrators can
+Administrators pick a default model for every language in the admin, and may
+pick another one per language. `models.defaults` is only the fallback until
+they do; without it, the first allowed model. Each target locale receives its
+own model and glossary settings. Administrators can
 use the deployment glossary unchanged or append/replace `Glossary.notes` with
 plain text; structured YAML remains code-defined. They cannot select a model
 outside `models.allowed`. Shared code-defined instructions can likewise be used

@@ -1,5 +1,13 @@
 # @cloudflare/polystella-core
 
+## 0.9.0
+
+### Minor Changes
+
+- [#96](https://github.com/cloudflare/polystella/pull/96) [`67e5f24`](https://github.com/cloudflare/polystella/commit/67e5f243f9333e01163caf141269fd0c2e965a86) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Add `loadGlossariesWithSources`, which returns each glossary with the YAML text it was read from. `loadGlossaries` is unchanged.
+
+- [#97](https://github.com/cloudflare/polystella/pull/97) [`31b55ee`](https://github.com/cloudflare/polystella/commit/31b55ee2219d926083adefcb9c5f8e1192b5665d) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Add cost estimates for AI calls: tokens × list price. New exports: `ModelPrice`, `TokenUsage`, `estimateCostUsd`, `createModelPriceLookup`, `summarizeUsage`, `formatUsageSummary`, and helpers for summing token usage. `@cloudflare/polystella-core/providers/workers-ai` adds `fetchWorkersAIModels`, `workersAIModelPrice`, and `workersAIPriceLookup`, which read list prices from the Workers AI model catalog. The Anthropic provider now reports token counts and stop reasons through `onResponse`, and Workers AI replies report cached input tokens as `cachedInputTokens`. `polystella translate-ui` logs calls, tokens, and an estimated cost at the end of a run, and accepts `provider.prices`.
+
 ## 0.8.0
 
 ### Minor Changes
