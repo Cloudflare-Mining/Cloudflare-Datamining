@@ -260902,6 +260902,15 @@
 																		"type": "object",
 																		"additionalProperties": true,
 																		"properties": {
+																			"browser_rendering_wait_until": {
+																				"type": "string",
+																				"enum": [
+																					"load",
+																					"domcontentloaded",
+																					"networkidle0",
+																					"networkidle2"
+																				]
+																			},
 																			"content_selector": {
 																				"type": "array",
 																				"items": {
@@ -261837,6 +261846,17 @@
 													"parse_options": {
 														"type": "object",
 														"properties": {
+															"browser_rendering_wait_until": {
+																"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																"type": "string",
+																"example": "load",
+																"enum": [
+																	"load",
+																	"domcontentloaded",
+																	"networkidle0",
+																	"networkidle2"
+																]
+															},
 															"content_selector": {
 																"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																"type": "array",
@@ -262641,6 +262661,17 @@
 																"parse_options": {
 																	"type": "object",
 																	"properties": {
+																		"browser_rendering_wait_until": {
+																			"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																			"type": "string",
+																			"example": "load",
+																			"enum": [
+																				"load",
+																				"domcontentloaded",
+																				"networkidle0",
+																				"networkidle2"
+																			]
+																		},
 																		"content_selector": {
 																			"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																			"type": "array",
@@ -263776,6 +263807,17 @@
 																"parse_options": {
 																	"type": "object",
 																	"properties": {
+																		"browser_rendering_wait_until": {
+																			"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																			"type": "string",
+																			"example": "load",
+																			"enum": [
+																				"load",
+																				"domcontentloaded",
+																				"networkidle0",
+																				"networkidle2"
+																			]
+																		},
 																		"content_selector": {
 																			"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																			"type": "array",
@@ -264742,6 +264784,17 @@
 																"parse_options": {
 																	"type": "object",
 																	"properties": {
+																		"browser_rendering_wait_until": {
+																			"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																			"type": "string",
+																			"example": "load",
+																			"enum": [
+																				"load",
+																				"domcontentloaded",
+																				"networkidle0",
+																				"networkidle2"
+																			]
+																		},
 																		"content_selector": {
 																			"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																			"type": "array",
@@ -265608,6 +265661,17 @@
 													"parse_options": {
 														"type": "object",
 														"properties": {
+															"browser_rendering_wait_until": {
+																"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																"type": "string",
+																"example": "load",
+																"enum": [
+																	"load",
+																	"domcontentloaded",
+																	"networkidle0",
+																	"networkidle2"
+																]
+															},
 															"content_selector": {
 																"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																"type": "array",
@@ -266427,6 +266491,17 @@
 																"parse_options": {
 																	"type": "object",
 																	"properties": {
+																		"browser_rendering_wait_until": {
+																			"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																			"type": "string",
+																			"example": "load",
+																			"enum": [
+																				"load",
+																				"domcontentloaded",
+																				"networkidle0",
+																				"networkidle2"
+																			]
+																		},
 																		"content_selector": {
 																			"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																			"type": "array",
@@ -274344,6 +274419,15 @@
 																		"type": "object",
 																		"additionalProperties": true,
 																		"properties": {
+																			"browser_rendering_wait_until": {
+																				"type": "string",
+																				"enum": [
+																					"load",
+																					"domcontentloaded",
+																					"networkidle0",
+																					"networkidle2"
+																				]
+																			},
 																			"content_selector": {
 																				"type": "array",
 																				"items": {
@@ -275294,6 +275378,17 @@
 													"parse_options": {
 														"type": "object",
 														"properties": {
+															"browser_rendering_wait_until": {
+																"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																"type": "string",
+																"example": "load",
+																"enum": [
+																	"load",
+																	"domcontentloaded",
+																	"networkidle0",
+																	"networkidle2"
+																]
+															},
 															"content_selector": {
 																"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																"type": "array",
@@ -276098,6 +276193,17 @@
 																"parse_options": {
 																	"type": "object",
 																	"properties": {
+																		"browser_rendering_wait_until": {
+																			"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																			"type": "string",
+																			"example": "load",
+																			"enum": [
+																				"load",
+																				"domcontentloaded",
+																				"networkidle0",
+																				"networkidle2"
+																			]
+																		},
 																		"content_selector": {
 																			"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																			"type": "array",
@@ -277263,6 +277369,17 @@
 																"parse_options": {
 																	"type": "object",
 																	"properties": {
+																		"browser_rendering_wait_until": {
+																			"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																			"type": "string",
+																			"example": "load",
+																			"enum": [
+																				"load",
+																				"domcontentloaded",
+																				"networkidle0",
+																				"networkidle2"
+																			]
+																		},
 																		"content_selector": {
 																			"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																			"type": "array",
@@ -278249,6 +278366,17 @@
 																"parse_options": {
 																	"type": "object",
 																	"properties": {
+																		"browser_rendering_wait_until": {
+																			"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																			"type": "string",
+																			"example": "load",
+																			"enum": [
+																				"load",
+																				"domcontentloaded",
+																				"networkidle0",
+																				"networkidle2"
+																			]
+																		},
 																		"content_selector": {
 																			"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																			"type": "array",
@@ -279431,6 +279559,17 @@
 													"parse_options": {
 														"type": "object",
 														"properties": {
+															"browser_rendering_wait_until": {
+																"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																"type": "string",
+																"example": "load",
+																"enum": [
+																	"load",
+																	"domcontentloaded",
+																	"networkidle0",
+																	"networkidle2"
+																]
+															},
 															"content_selector": {
 																"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																"type": "array",
@@ -280250,6 +280389,17 @@
 																"parse_options": {
 																	"type": "object",
 																	"properties": {
+																		"browser_rendering_wait_until": {
+																			"description": "Page load event Browser Rendering waits for before capturing content. Defaults to `networkidle2` when omitted. Use `load` or `domcontentloaded` for pages that keep network connections open and never reach network idle. Ignored when `use_browser_rendering` is false.",
+																			"type": "string",
+																			"example": "load",
+																			"enum": [
+																				"load",
+																				"domcontentloaded",
+																				"networkidle0",
+																				"networkidle2"
+																			]
+																		},
 																		"content_selector": {
 																			"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays.",
 																			"type": "array",
