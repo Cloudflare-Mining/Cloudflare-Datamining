@@ -50,7 +50,7 @@ Beyond the technical capabilities, Kastukevich was also impressed by the custome
 
 Based on these conversations and recommendations, he's confident that SOFTSWISS has the solutions that they need to deliver a positive experience for their clients.
 
-![SOFTSWISS logo](https://images.ctfassets.net/slt3lc6tev37/5bxjPa4u9uAL58rtIRoypj/1b1d0da263f17900e04770968a4c7b45/softswiss-hor.png) 
+![SOFTSWISS logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/1lIHOaUvGz3xfm1Av5Nuua/6e5fad217333938f3015cbcd4f164004/softswiss_logo.png) 
 
 Cloudflare protects and optimizes applications for iGaming brands on the SOFTSWISS platform
 
