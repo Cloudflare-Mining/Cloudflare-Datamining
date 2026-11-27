@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"agent": "1.1.7-agent.1",
 		"latest": "2.1.0",
-		"staging": "2.2.0-staging.10"
+		"staging": "2.2.0-staging.11"
 	},
 	"versions": {
 		"0.0.0": {
@@ -8801,11 +8801,52 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIFBM/GJbDh3j3hJOG9ZzAWUrijz7BrnuF1ihccMkMbq5AiEA78pfsf+JKii0ZNl2JBajZWT8v4zilMcozqM1tJC67kA="
+						"sig": "MEUCIFBM/GJbDh3j3hJOG9ZzAWUrijz7BrnuF1ihccMkMbq5AiEA78pfsf+JKii0ZNl2JBajZWT8v4zilMcozqM1tJC67kA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"unpackedSize": 5526957
+			}
+		},
+		"2.2.0-staging.11": {
+			"name": "@cloudflare/realtimekit",
+			"version": "2.2.0-staging.11",
+			"dependencies": {
+				"uuid": "^8.3.2",
+				"bowser": "^2.11.0",
+				"sdp-transform": "^2.14.1",
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"devDependencies": {
+				"type-fest": "^2.12.1",
+				"@types/long": "4.0.0",
+				"@types/node": "^16.0.0",
+				"@types/uuid": "^8.3.4",
+				"@types/events": "^3.0.0",
+				"@types/lodash-es": "^4.17.6",
+				"@types/sdp-transform": "^2.4.5",
+				"@cloudflare/realtimekit-utils": "1.0.0",
+				"@cloudflare/realtimekit-callstats": "10.0.0",
+				"@cloudflare/realtimekit-sockrates": "0.2.0",
+				"@cloudflare/realtimekit-proto-entities": "2.116.0"
+			},
+			"dist": {
+				"shasum": "a42c547615de7003642629ae842f721df699337f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-2.2.0-staging.11.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-xuPPPoFIm2F104SSC1r5Q46jdEDzXITQf8VT6xR7ZV2AGySRo82v/S5R/Srvv/1MUrbRY/UUahVJuPzISE3u4w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDtKHjktGfeOnCipmKwTRggQNeBg9Ow9SvZKsTcJgFuHQIhAJlMhhRyDtmJnnWw/nu08AqQOa7p2MPJXi3Q6jQmPJU2",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCqFYczxh1o4uFHDnJTqaX9ZxR318ztefMKZ4/0HVvByAIhAPDNZTS4N8ZZWhBxiGcmQparmCVVLyO4EtEifGCPY+Go"
+					}
+				],
+				"unpackedSize": 5528537
 			}
 		}
 	}
