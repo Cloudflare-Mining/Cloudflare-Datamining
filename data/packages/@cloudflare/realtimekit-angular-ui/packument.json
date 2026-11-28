@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
 		"latest": "2.1.0",
-		"staging": "2.2.0-staging.4"
+		"staging": "2.2.0-staging.5"
 	},
 	"versions": {
 		"0.0.0": {
@@ -3560,12 +3560,47 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIA2bIY7upARj+x/s5bhUCTdlKXPCY3lyatZr9ABZ0/jLAiAHjeCrZWcU5zS2813uFf4VdfsXlyTiRL0ranNZmNoSkA=="
+						"sig": "MEQCIA2bIY7upARj+x/s5bhUCTdlKXPCY3lyatZr9ABZ0/jLAiAHjeCrZWcU5zS2813uFf4VdfsXlyTiRL0ranNZmNoSkA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-angular-ui@2.2.0-staging.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1709605
+			}
+		},
+		"2.2.0-staging.5": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "2.2.0-staging.5",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "2.2.0-staging.5"
+			},
+			"peerDependencies": {
+				"@angular/core": ">=12",
+				"@angular/common": ">=12"
+			},
+			"dist": {
+				"shasum": "51358da82a080ef1a5bcae6c42aa12ebd60fbfbe",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-2.2.0-staging.5.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-ZsLMHrPaKJKs59vdHGyXDlC4xRn+3wOoRn/sAGSn6Bry3SQguPT0/ICzcfFoTSKi/8wd2l8BIaJkkBnDknmNbA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC00gfOdQ0evytaF7+yb7mgDJ5Di9JyrPvfkBQkNUTeLgIhAPwqyqTzrf994db+KlsBrdeSx6xi191u0OulRz7Kxt3Y",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIHsQGq5afPeDHdUzvtBnACU4Y37UyRm61zW2LAGALrRoAiAy6Q7zqJzLn7tdd1ovTF0iopDovgoC9n45m0K61EEDqg=="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-angular-ui@2.2.0-staging.5",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
